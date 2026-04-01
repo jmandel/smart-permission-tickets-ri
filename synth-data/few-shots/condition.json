@@ -1,0 +1,87 @@
+{
+  "resourceType": "Condition",
+  "id": "example-condition-7rl6pa",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "version": "4.0.0",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "version": "4.0.0",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://open.epic.com/FHIR/StructureDefinition/condition-category",
+          "code": "visit-diagnosis",
+          "display": "Visit Diagnosis"
+        }
+      ],
+      "text": "Visit Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40425004",
+        "display": "Postconcussion syndrome (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-9-cm",
+        "code": "310.2",
+        "display": "Postconcussion syndrome"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F07.81",
+        "display": "Postconcussional syndrome"
+      }
+    ],
+    "text": "Post concussion syndrome"
+  },
+  "subject": {
+    "reference": "Patient/synth-patient-001",
+    "display": "Synthetic Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/synth-encounter-001"
+  },
+  "onsetDateTime": "2020-09-01",
+  "recordedDate": "2022-08-29",
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "Condition/epCVtMcGpB2.HetQahGDyfkpTL..DUZjNB.hnumcLtWE3",
+          "display": "Post concussion syndrome"
+        }
+      ]
+    }
+  ]
+}

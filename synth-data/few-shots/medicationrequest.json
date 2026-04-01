@@ -1,0 +1,195 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "example-medicationrequest-mgsxc5",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationReference": {
+    "reference": "Medication/eDO6E2jpqXXkkRFNTmOTCVFQvRXX8LmZr1IrqwOgblQaHuiklQbiezwt6xAejQvmreCaEytu.z0FDXAcd8ZOvy2hcerQO4PHydSRBekn34Fk3",
+    "display": "nortriptyline 10 MG capsule"
+  },
+  "subject": {
+    "reference": "Patient/synth-patient-001",
+    "display": "Synthetic Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/synth-encounter-001"
+  },
+  "authoredOn": "2025-01-27",
+  "requester": {
+    "reference": "Practitioner/synth-practitioner-001",
+    "type": "Practitioner",
+    "display": "Dr. Z Rammelkamp"
+  },
+  "recorder": {
+    "reference": "Practitioner/synth-practitioner-001",
+    "type": "Practitioner",
+    "display": "Dr. Z Rammelkamp"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "40425004",
+          "display": "Postconcussion syndrome (disorder)"
+        },
+        {
+          "system": "http://hl7.org/fhir/sid/icd-9-cm",
+          "code": "310.2",
+          "display": "Postconcussion syndrome"
+        },
+        {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "F07.81",
+          "display": "Postconcussional syndrome"
+        }
+      ],
+      "text": "Post concussion syndrome"
+    }
+  ],
+  "courseOfTherapyType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+        "code": "acute",
+        "display": "Short course (acute) therapy"
+      }
+    ],
+    "text": "Short course (acute) therapy"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Take 3 (three) capsules (30 mg total) by mouth nightly., Starting Mon 1/27/2025, Until Thu 12/4/2025, Normal",
+      "patientInstruction": "Take 3 (three) capsules (30 mg total) by mouth nightly.",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2025-01-27",
+            "end": "2025-12-04"
+          },
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "nightly"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          },
+          {
+            "system": "urn:oid:1.2.840.114350.1.13.283.2.7.4.798268.7025",
+            "code": "15",
+            "display": "Oral"
+          }
+        ],
+        "text": "Oral"
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419652001",
+            "display": "Take"
+          }
+        ],
+        "text": "Take"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://epic.com/CodeSystem/dose-rate-type",
+                "code": "calculated",
+                "display": "calculated"
+              }
+            ],
+            "text": "calculated"
+          },
+          "doseQuantity": {
+            "value": 30,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        },
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://epic.com/CodeSystem/dose-rate-type",
+                "code": "admin-amount",
+                "display": "admin-amount"
+              }
+            ],
+            "text": "admin-amount"
+          },
+          "doseQuantity": {
+            "value": 3,
+            "unit": "capsule",
+            "system": "http://unitsofmeasure.org",
+            "code": "{capsule}"
+          }
+        },
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://epic.com/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "ordered"
+              }
+            ],
+            "text": "ordered"
+          },
+          "doseQuantity": {
+            "value": 30,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2025-01-27",
+      "end": "2025-12-04"
+    },
+    "numberOfRepeatsAllowed": 3,
+    "quantity": {
+      "value": 270,
+      "unit": "capsule"
+    },
+    "expectedSupplyDuration": {
+      "value": 90,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  },
+  "priorPrescription": {
+    "reference": "MedicationRequest/eAipZq.-v6EnRuhs.bbo2eTdNbf.bPsSJt1fFTYLEzwo3",
+    "display": "nortriptyline 10 MG capsule"
+  }
+}

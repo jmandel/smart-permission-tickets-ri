@@ -1,0 +1,70 @@
+{
+  "resourceType": "Encounter",
+  "id": "example-encounter-aafbit",
+  "status": "finished",
+  "class": {
+    "system": "urn:oid:1.2.840.114350.1.72.1.7.7.10.696784.13260",
+    "code": "13",
+    "display": "Support OP Encounter"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.283.2.7.10.698084.30",
+          "code": "70",
+          "display": "Telephone"
+        }
+      ],
+      "text": "Telephone"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/synth-patient-001",
+    "display": "Synthetic Patient"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Participation"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/synth-practitioner-001",
+        "display": "Jess Y"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-01-02",
+    "end": "2026-01-02"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.283.2.7.2.728286",
+          "code": "632",
+          "display": "Transfer Of Care"
+        }
+      ],
+      "text": "Transfer Of Care"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/eY3MQR9m.houWYvy5mpACL-tOdxUVkBDJ8VqL8pDwA6A3",
+        "display": "Assoc Physicians Internal Medicine"
+      }
+    }
+  ]
+}

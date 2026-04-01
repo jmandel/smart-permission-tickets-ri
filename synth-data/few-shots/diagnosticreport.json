@@ -1,0 +1,108 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "example-diagnosticreport-1yaeij",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.92.2.7.10.798268.30",
+          "code": "EKG/ECG"
+        }
+      ],
+      "text": "EKG/ECG"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP29708-2",
+          "display": "Cardiology"
+        }
+      ],
+      "text": "Cardiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34534-8"
+      },
+      {
+        "system": "urn:oid:2.16.840.1.113883.6.12",
+        "code": "93005",
+        "display": "ECG ROUTINE ECG W/LEAST 12 LDS TRCG ONLY W/O I&R"
+      },
+      {
+        "system": "urn:oid:1.2.840.114350.1.13.92.2.7.5.737384.10001",
+        "code": "EKG0008"
+      },
+      {
+        "system": "urn:oid:1.2.840.114350.1.13.92.2.7.5.737384.10011",
+        "code": "EKG0008"
+      },
+      {
+        "system": "urn:oid:1.2.840.114350.1.13.92.2.7.5.737384.10000",
+        "code": "EKG0008"
+      }
+    ],
+    "text": "ECG- 12 LEAD WITHOUT RHYTHM"
+  },
+  "subject": {
+    "reference": "Patient/synth-patient-001",
+    "display": "Synthetic Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/synth-encounter-001"
+  },
+  "effectiveDateTime": "2024-05-14T19:11:00Z",
+  "issued": "2024-05-15T01:06:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/synth-practitioner-001",
+      "type": "Practitioner",
+      "display": "Physician Assistant Olivia Swodzinski, PA"
+    },
+    {
+      "reference": "Organization/ekwCaW61N2o1uWAVVqD-avehSeL0bAiyoueQ0-.Pv8HQ3",
+      "type": "Organization",
+      "display": "UWHC MUSE"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/eiCVB.33k9-CC0hFG9XKnQqqfOYLhzCZIE25QTczEFJg3",
+      "display": "Narrative"
+    }
+  ],
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "29857009",
+          "display": "Chest pain (finding)"
+        },
+        {
+          "system": "http://hl7.org/fhir/sid/icd-9-cm",
+          "code": "786.59",
+          "display": "Other chest pain"
+        },
+        {
+          "system": "http://hl7.org/fhir/sid/icd-10-cm",
+          "code": "R07.89",
+          "display": "Other chest pain"
+        }
+      ],
+      "text": "Chest pain"
+    }
+  ],
+  "presentedForm": [
+    {
+      "contentType": "text/html",
+      "url": "Binary/eShvIDa2-J6EFn0nIbwRDuVcAl.YhiC.CDWOKA5Kq1xs3",
+      "title": "Narrative"
+    }
+  ]
+}

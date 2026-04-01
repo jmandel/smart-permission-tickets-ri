@@ -1,0 +1,70 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "example-allergyintolerance-9f3wtp",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "version": "4.0.0",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "version": "4.0.0",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "criticality": "high",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "891658",
+        "display": "PEANUT PROTEIN POWDER"
+      },
+      {
+        "system": "urn:oid:2.16.840.1.113883.4.9",
+        "code": "MNA8KG5NQ9"
+      },
+      {
+        "system": "urn:oid:2.16.840.1.113883.4.9",
+        "code": "QE1QX6B99R"
+      }
+    ],
+    "text": "PEANUT PROTEIN POWDER"
+  },
+  "patient": {
+    "reference": "Patient/synth-patient-001",
+    "display": "Synthetic Patient"
+  },
+  "onsetDateTime": "2025-05-09",
+  "recordedDate": "2025-05-09T14:27:42Z",
+  "note": [
+    {
+      "text": "Oral allergy syndrome to peanuts and tree nuts, confirmed by component testing with allergy. "
+    }
+  ],
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "text": "HIVES"
+        }
+      ],
+      "description": "HIVES"
+    }
+  ]
+}

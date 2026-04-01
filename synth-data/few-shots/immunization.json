@@ -1,0 +1,97 @@
+{
+  "resourceType": "Immunization",
+  "id": "example-immunization-t2f30a",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "150"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "58160-909-52"
+      }
+    ],
+    "text": "Influenza (FLUARIX) IIV4"
+  },
+  "patient": {
+    "reference": "Patient/synth-patient-001",
+    "display": "Synthetic Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/synth-encounter-001"
+  },
+  "occurrenceDateTime": "2023-09-28",
+  "primarySource": true,
+  "location": {
+    "display": "UnityPoint Health"
+  },
+  "manufacturer": {
+    "display": "GLAXO SMITH KLINE"
+  },
+  "lotNumber": "5ME77",
+  "expirationDate": "2024-06-30",
+  "site": {
+    "coding": [
+      {
+        "system": "urn:oid:1.2.840.114350.1.13.283.2.7.10.768076.4040",
+        "code": "7",
+        "display": "Left Deltoid"
+      }
+    ],
+    "text": "Left Deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "urn:oid:1.2.840.114350.1.13.283.2.7.10.768076.4030",
+        "code": "2",
+        "display": "Intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "doseQuantity": {
+    "value": 0.5,
+    "unit": "mL",
+    "system": "urn:oid:1.2.840.114350.1.13.283.2.7.10.768076.4019",
+    "code": "1"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "AP",
+            "display": "Administering Provider"
+          }
+        ],
+        "text": "Administering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/ec2pifA.qX7iOuRSPi2DB0w3",
+        "type": "Practitioner",
+        "display": "Mary S"
+      }
+    },
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/ey81YiHNZU361WB9p7j7lsw3",
+        "type": "Practitioner",
+        "display": "Dr. Z Rammelkamp"
+      }
+    }
+  ]
+}
