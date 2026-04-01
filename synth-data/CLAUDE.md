@@ -18,10 +18,10 @@ Each patient goes through these steps, each producing files on disk in `patients
 2. `steps/02-encounters.ts <patient-dir>` — Generates `encounters.md` (full encounter timeline)
 3. `steps/03-notes.ts <patient-dir>` — Fan-out: generates `notes/enc-*.txt` (plain-text clinical notes per encounter)
 4. `steps/04-inventory.ts <patient-dir>` — Fan-out: generates `inventories/enc-*.md` (per-encounter resource manifests, informed by the clinical notes)
-5. `steps/05-generate-fhir.ts <patient-dir>` — Templates + LLM → FHIR JSON in `sites/*/resources/`
-6. `steps/06-assemble.ts <patient-dir>` — Wires references, validates, assembles `sites/*/bundle.json` + updates `manifest.json`
+5. `steps/05-generate-fhir.ts <patient-dir>` — Reference scaffold + chronological encounter generation → FHIR JSON in `sites/*/resources/`
+6. `steps/06-assemble.ts <patient-dir>` — Assembles `sites/*/bundle.json` + updates `manifest.json`
 
-Steps 1-2 produce markdown meant for human review. Step 3 generates clinical notes (the narrative). Step 4 generates resource inventories that are consistent with those notes. Steps 5-6 produce FHIR JSON. Step 6 is pure code.
+Steps 1-2 produce markdown meant for human review. Step 3 generates clinical notes (the narrative). Step 4 generates resource inventories that are consistent with those notes. Step 5 first creates a small site reference scaffold, then generates encounters in chronological order with prior site resources available as context. Step 6 is pure code.
 
 Every step checks if its output already exists and skips if so. Pass `--force` to regenerate.
 
@@ -57,7 +57,7 @@ Good scenario briefs for the first few patients:
 - `terminology.sqlite` — Terminology database (symlink to Kiln). Query with `sqlite3` for SNOMED, LOINC, RxNorm, CVX codes.
 - `few-shots/` — Sanitized real FHIR resource examples for reference.
 - `prompts/` — System prompts used by the step scripts when they shell out to Claude CLI.
-- `plans/03-synthetic-data.md` — The full architectural plan (in the repo root `plans/` directory).
+- `../plans/03-synthetic-data.md` — The full architectural plan (in the repo root `plans/` directory).
 
 ## Terminology lookups
 

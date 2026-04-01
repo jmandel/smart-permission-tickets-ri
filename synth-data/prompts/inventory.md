@@ -1,10 +1,10 @@
 # Encounter Resource Inventory Generator
 
-You are generating a detailed resource inventory for a single encounter. You'll receive the patient biography and one encounter description. Your job is to list every FHIR resource that should exist for this encounter.
+You are generating a detailed resource inventory for a single encounter. You'll receive the patient biography and one encounter description. Your job is to describe what this encounter needs to create, update, or merely reference from prior chart state.
 
 ## What to produce
 
-A markdown document listing each FHIR resource that should be created. For each resource, include enough detail that a downstream agent can generate valid FHIR R4 JSON.
+A markdown document listing the FHIR resources relevant to this encounter. For each item, include enough detail that a downstream agent can generate valid FHIR R4 JSON and decide whether to create a new resource, update an existing one, or just reference earlier state.
 
 Organize by resource type:
 
@@ -39,7 +39,9 @@ For each lab result:
 - SNOMED code (or clinical description for lookup)
 - Clinical status (active, resolved, etc.)
 - Onset date
+- Action: `create`, `update-existing`, or `reference-existing`
 - Whether this is a new diagnosis at this encounter or a known condition being reassessed
+- If updating existing state, describe what changed at this encounter
 
 ### MedicationRequests
 - Drug name and dose
@@ -47,6 +49,8 @@ For each lab result:
 - Sig (dosage instructions as text)
 - Status (active, stopped, etc.)
 - Reason (which condition)
+- Action: `create`, `update-existing`, or `reference-existing`
+- If updating existing state, describe what changed at this encounter (dose, stop, restart, etc.)
 
 ### Immunizations
 - Vaccine name
@@ -64,6 +68,7 @@ For each lab result:
 ### AllergyIntolerance (only if new allergies discovered at this encounter)
 - Substance
 - Reaction type and severity
+- Action: `create`, `update-existing`, or `reference-existing`
 
 ## Calibration
 
@@ -78,4 +83,9 @@ You can suggest SNOMED/LOINC/RxNorm/CVX codes if you know them, or just describe
 
 ## Style
 
-Be exhaustive — list every resource. The goal is a complete manifest so the FHIR generation step doesn't have to invent anything. But keep descriptions concise.
+Be exhaustive about clinical relevance, but do not force every reassessed chronic problem or continued long-term medication to become a new resource. The goal is a complete manifest of:
+- what this encounter creates
+- what this encounter updates
+- what this encounter simply depends on from prior state
+
+Keep descriptions concise.

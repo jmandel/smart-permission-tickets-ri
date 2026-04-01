@@ -1,15 +1,15 @@
 #!/usr/bin/env bun
 /**
- * Step 05: Assemble bundles, wire references, validate, write manifest
+ * Step 06: Assemble bundles and write manifest
  *
- * Input:  patients/<slug>/sites/*/resources/*/*.json
- * Output: patients/<slug>/sites/*/bundle.json, manifest.json
+ * Input:  patients/<slug>/sites/<site>/resources/<type>/<id>.json
+ * Output: patients/<slug>/sites/<site>/bundle.json, manifest.json
  *
- * Pure code — no LLM needed.
+ * Pure code - no LLM needed.
  */
 
 import { resolve, dirname, basename } from "path";
-import { mkdir, readdir } from "fs/promises";
+import { readdir } from "fs/promises";
 
 const PIPELINE_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
 
@@ -47,7 +47,7 @@ async function collectResources(siteDir: string): Promise<any[]> {
       try {
         resources.push(JSON.parse(content));
       } catch (e) {
-        console.warn(`[05] Failed to parse ${typePath}/${file}: ${e}`);
+        console.warn(`[06] Failed to parse ${typePath}/${file}: ${e}`);
       }
     }
   }
@@ -80,7 +80,7 @@ async function main() {
   const patientDir = resolve(process.argv[2] ?? "");
 
   if (!patientDir) {
-    console.error("Usage: bun run steps/05-assemble.ts <patient-dir>");
+    console.error("Usage: bun run steps/06-assemble.ts <patient-dir>");
     process.exit(1);
   }
 
@@ -89,7 +89,7 @@ async function main() {
   try {
     siteDirs = await readdir(sitesDir);
   } catch {
-    console.error(`[05] No sites/ directory — run step 04 first`);
+      console.error(`[06] No sites/ directory — run step 05 first`);
     process.exit(1);
   }
 
@@ -101,7 +101,7 @@ async function main() {
     const resources = await collectResources(siteDir);
 
     if (resources.length === 0) {
-      console.warn(`[05] No resources found for site ${site}`);
+      console.warn(`[06] No resources found for site ${site}`);
       continue;
     }
 
@@ -116,9 +116,9 @@ async function main() {
       totalResources: resources.length,
     });
 
-    console.log(`[05] ${site}: ${resources.length} resources → bundle.json`);
+    console.log(`[06] ${site}: ${resources.length} resources → bundle.json`);
     for (const [type, count] of Object.entries(counts).sort()) {
-      console.log(`[05]   ${type}: ${count}`);
+      console.log(`[06]   ${type}: ${count}`);
     }
   }
 
@@ -140,8 +140,8 @@ async function main() {
   }
 
   await Bun.write(manifestPath, JSON.stringify(manifest, null, 2));
-  console.log(`[05] Updated ${manifestPath}`);
-  console.log(`[05] Done — ${patientSlug}: ${manifestEntry.sites.length} sites`);
+  console.log(`[06] Updated ${manifestPath}`);
+  console.log(`[06] Done — ${patientSlug}: ${manifestEntry.sites.length} sites`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

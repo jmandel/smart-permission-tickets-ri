@@ -157,14 +157,14 @@ The encounter list should read like a clinical chart summary. Agents reading thi
 
 **Input**: Encounter timeline + patient biography.
 
-**Output**: Per encounter, a description of what FHIR resources should be created. This is still an agent-readable document — the output describes resources in clinical terms, not FHIR JSON. It should capture enough detail (specific lab values, vital sign readings, medication names and doses, condition codes) that Level 4 can generate FHIR without further clinical reasoning.
+**Output**: Per encounter, a description of what FHIR resources should be created, updated, or simply referenced from prior state. This is still an agent-readable document — the output describes resources in clinical terms, not FHIR JSON. It should capture enough detail (specific lab values, vital sign readings, medication names and doses, condition codes) that Level 4 can generate FHIR without further clinical reasoning.
 
 This is where the fractal expansion happens at scale — each encounter from Level 2 gets expanded into 5-30 individual resources. **Subagents can parallelize here**: each encounter's inventory is independent, so fan them out.
 
 **Calibration against real data**:
-- An office visit typically produces: 1 Encounter + 8-12 Observation (vitals) + 2-4 Observation (screening like PHQ-2) + 0-10 Observation (labs if ordered) + 0-2 Condition updates + 0-2 MedicationRequest + 1 DocumentReference (progress note) + 0-1 DiagnosticReport + 0-1 Immunization
+- An office visit typically produces: 1 Encounter + 8-12 Observation (vitals) + 2-4 Observation (screening like PHQ-2) + 0-10 Observation (labs if ordered) + 0-2 Condition or MedicationRequest actions (new, update, or reuse) + 1 DocumentReference (progress note) + 0-1 DiagnosticReport + 0-1 Immunization
 - Conditions use SNOMED CT as the primary coding system (real data often includes additional codings like ICD-10, but SNOMED is sufficient for our purposes)
-- MedicationRequests reference Medication resources (which themselves carry the RxNorm code)
+- Medication lifecycle should be explicit at the inventory layer: new start, change, stop, restart, or continue-without-new-resource
 - Observations in "exam" and "functional-status" categories are common alongside pure vitals — things like depression screening scores, SDOH assessments
 
 **What matters here**: specific values. The A1c at the March 2018 visit should be 7.8%. The BP at the August 2020 new-patient visit should be 142/88. These numbers were established in the biography and timeline; the inventory locks them in and adds all the surrounding context (the other vitals, the routine labs, the documents).
@@ -174,6 +174,31 @@ This is where the fractal expansion happens at scale — each encounter from Lev
 ## Level 4 — FHIR Resource Generation
 
 This is where agent-readable artifacts become code-readable FHIR JSON. The boundary is sharp: everything out of this level must pass the FHIR validator.
+
+### Reference Scaffold + Prior State
+
+Rather than pre-creating a large set of persistent clinical resources, the pipeline now creates only a small **reference scaffold** up front for each site:
+
+- `Patient`
+- `Organization`
+- `Practitioner`
+- `Location`
+
+Clinical state then emerges **chronologically** from encounters.
+
+For each encounter, the generator receives:
+- the site reference scaffold
+- a compact index of prior resources already generated for that site
+- file paths for those prior resources, so the agent can inspect them directly if it needs more detail
+
+This keeps the model simple:
+- chronic conditions begin at the encounter where they are first diagnosed
+- long-term medications begin at the encounter where they are first prescribed
+- later encounters reuse those IDs
+- if a prior resource materially changes state, the encounter emits an updated resource using the same ID
+- if nothing materially changes, the encounter can simply reference prior state without minting a new resource
+
+This is intentionally agentic. We rely on prompt guidance and chronological processing rather than hard temporal sandboxing.
 
 ### Few-Shot Examples from Seed Data
 
@@ -277,14 +302,16 @@ The LLM generation calls include: the resource inventory item, the few-shot exam
 ### Reference Wiring and ID Assignment
 
 After generating individual resources:
-1. Assign UUIDs to each resource
-2. Create Patient, Organization, Practitioner, Location resources per the provider map
-3. Create Medication resources for each unique drug
-4. Wire encounter references: every clinical resource points to its encounter
-5. Wire patient references: everything points to the patient
-6. Wire organization references: encounters → serviceProvider → Organization
-7. Wire specimen/report chains: lab Observation → Specimen → DiagnosticReport → Observation (result)
-8. Apply constraint-exercise tags: `meta.tag` for source-org (NPI) and jurisdiction (state)
+1. Assign UUIDs when a resource is first created
+2. Create Patient, Organization, Practitioner, and Location resources per the provider map
+3. Generate encounters in chronological order within each site
+4. Let clinical resources emerge from the first relevant encounter instead of pre-baking them into the scaffold
+5. When a prior clinical resource changes state, reuse the same ID and overwrite the site snapshot with the updated resource
+6. Wire encounter references: every encounter-local clinical resource points to its encounter
+7. Wire patient references: everything points to the patient
+8. Wire organization references: encounters → serviceProvider → Organization
+9. Wire specimen/report chains: lab Observation → Specimen → DiagnosticReport → Observation (result)
+10. Apply constraint-exercise tags: `meta.tag` for source-org (NPI) and jurisdiction (state)
 
 ### Output Format
 
@@ -311,6 +338,10 @@ output/
             Patient/patient-1.json
             Encounter/enc-001.json
             Observation/obs-001.json
+            ...
+          encounter-manifests/   ← Which resources each encounter wrote/updated
+            enc-000.json
+            enc-001.json
             ...
         pacific-health-partners/
           bundle.json
@@ -370,7 +401,7 @@ Each patient goes through these steps, each producing files on disk:
 2. `steps/02-encounters.ts` — Generates encounter timeline
 3. `steps/03-notes.ts` — Fan-out: generates clinical notes per encounter (plain text)
 4. `steps/04-inventory.ts` — Fan-out: generates resource inventories per encounter (informed by notes)
-5. `steps/05-generate-fhir.ts` — Generates FHIR resources (templates + LLM)
+5. `steps/05-generate-fhir.ts` — Generates a small reference scaffold, then encounter FHIR resources in chronological order with prior-resource context
 6. `steps/06-assemble.ts` — Wires references, validates, assembles bundles
 
 Steps 1-2 produce markdown (for your review). Steps 3-4 produce markdown
@@ -406,7 +437,7 @@ synth-data/
     02-encounters.ts          ← Generates encounters.md
     03-notes.ts               ← Fan-out: generates notes/enc-*.txt (clinical notes)
     04-inventory.ts           ← Fan-out: generates inventories/enc-*.md (informed by notes)
-    05-generate-fhir.ts       ← Templates + LLM → FHIR JSON
+    05-generate-fhir.ts       ← Reference scaffold + chronological encounter generation → FHIR JSON
     06-assemble.ts            ← Wire refs, validate, bundle, manifest
   prompts/
     biography.md              ← System prompt for biography generation agent
@@ -447,6 +478,8 @@ synth-data/
         midwest-family-medicine/
           bundle.json
           resources/
+            ...
+          encounter-manifests/
             ...
         ...
   manifest.json               ← Global index of all patients

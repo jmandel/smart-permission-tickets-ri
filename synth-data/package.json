@@ -5,9 +5,10 @@
   "scripts": {
     "step:biography": "bun run steps/01-biography.ts",
     "step:encounters": "bun run steps/02-encounters.ts",
-    "step:inventory": "bun run steps/03-inventory.ts",
-    "step:generate": "bun run steps/04-generate-fhir.ts",
-    "step:assemble": "bun run steps/05-assemble.ts",
+    "step:notes": "bun run steps/03-notes.ts",
+    "step:inventory": "bun run steps/04-inventory.ts",
+    "step:generate": "bun run steps/05-generate-fhir.ts",
+    "step:assemble": "bun run steps/06-assemble.ts",
     "extract-few-shots": "bun run scripts/extract-few-shots.ts"
   },
   "dependencies": {},
