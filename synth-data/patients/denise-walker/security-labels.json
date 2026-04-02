@@ -1,0 +1,30 @@
+{
+  "encounters": {},
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine PCP annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-002",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening (positive at 2/6) at non-MH PCP visit for diabetes/CKD worsening"
+    },
+    {
+      "encounter_prefix": "enc-002",
+      "id_substring": "caregiver-stress",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "Caregiver stress and grief reaction condition documented at a non-MH primary care visit"
+    }
+  ],
+  "rationale": {}
+}

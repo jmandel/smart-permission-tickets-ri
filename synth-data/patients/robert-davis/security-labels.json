@@ -1,0 +1,54 @@
+{
+  "encounters": {},
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "hiv",
+      "labels": [
+        "HIV"
+      ],
+      "rationale": "HIV antigen/antibody screening as part of TB workup at non-HIV ED visit"
+    },
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "hiv-report",
+      "labels": [
+        "HIV"
+      ],
+      "rationale": "HIV test diagnostic report at non-HIV ED visit"
+    },
+    {
+      "encounter_prefix": "enc-003",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at TB follow-up visit"
+    },
+    {
+      "encounter_prefix": "enc-007",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at TB follow-up visit"
+    },
+    {
+      "encounter_prefix": "enc-012",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at TB phase transition visit"
+    },
+    {
+      "encounter_prefix": "enc-014",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at TB continuation phase visit"
+    }
+  ],
+  "rationale": {}
+}

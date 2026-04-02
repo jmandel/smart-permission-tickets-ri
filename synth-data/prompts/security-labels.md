@@ -1,51 +1,86 @@
-# FHIR Security Label Assignment
+# FHIR Security Label Classification
 
-You are assigning FHIR security labels to patient resources. You'll receive the patient's scenario, encounter inventories, and a resource manifest listing every FHIR resource file with its type, ID, and primary code/description.
+You are classifying encounters by clinical sensitivity. You'll receive the patient's scenario, encounter inventories, and a list of actual FHIR resource IDs grouped by encounter.
 
 ## Your job
 
-Decide which resources need sensitivity labels and call the `add-label` tool for each one.
+For each encounter, decide if the encounter as a whole carries a sensitivity category. Also identify any **individual resources** that carry sensitivity labels different from their encounter (e.g., a PHQ-2 Observation at an otherwise non-sensitive PCP visit).
 
 ## Available labels
 
 All labels use system `http://terminology.hl7.org/CodeSystem/v3-ActCode`:
 
-| Code | Use for |
+| Code | Assign to an encounter when... |
 |---|---|
-| **SEX** | Reproductive and sexual health: pregnancy, prenatal/postpartum care, pregnancy loss, contraception counseling, Pap smears, obstetric history, fertility treatment. Assign to the specific resources (Conditions, Observations, Encounters, DocumentReferences, DiagnosticReports) whose content is reproductive in nature. |
-| **HIV** | HIV test results (positive OR negative), HIV diagnoses, antiretroviral medications, viral load measurements. A negative HIV screening is still HIV-labeled — the test itself is protected. |
-| **ETH** | Substance abuse information protected under 42 CFR Part 2: alcohol/drug abuse diagnoses, AUDIT-C or DAST screening results, substance abuse treatment encounters, detox medications. |
-| **MH** | Mental health: depression/anxiety screening instruments (PHQ-2, PHQ-9, GAD-7, Columbia), psychiatric diagnoses, psychotropic medications, mental health referrals, documented psychological distress or grief reactions. |
-| **STD** | STI/STD testing, diagnoses, and treatment (chlamydia, gonorrhea, syphilis, herpes, HPV when tested for as STI). |
-| **SDV** | Sexual assault, abuse, or domestic violence: IPV screening results, assault-related diagnoses or injuries, DV referrals. |
+| **SEX** | The visit reason is reproductive/sexual health: prenatal care, pregnancy loss management, postpartum follow-up, Pap smear visit, contraception counseling, fertility treatment, STI-focused visit. |
+| **HIV** | The visit is primarily for HIV care, or HIV testing/results are a significant part of the encounter. |
+| **ETH** | The visit is for substance abuse treatment, detox, or substance use disorder management. |
+| **MH** | The visit is primarily for mental health: psychiatric evaluation, therapy session, crisis intervention. |
+| **STD** | The visit is primarily for STI testing, diagnosis, or treatment. |
+| **SDV** | The visit involves sexual assault, abuse, or domestic violence evaluation/referral. |
 
-## Labeling principles
+### Resource-level overrides
 
-**Label the resource, not the encounter.** If a PHQ-2 Observation was recorded during an office visit, label the PHQ-2 Observation with MH — but do NOT label the Encounter itself unless the encounter's primary reason/type is mental health care.
+Some individual resources carry sensitivity even when their encounter does not:
 
-**Label the Encounter when the visit reason is sensitive.** An OB/prenatal visit → label the Encounter with SEX. A substance abuse counseling session → label the Encounter with ETH. A routine PCP visit where a PHQ-2 happened → do NOT label the Encounter.
+| Pattern | Label |
+|---|---|
+| PHQ-2, PHQ-9, GAD-7, or other mental health screening Observation at a non-MH visit | **MH** |
+| HIV test Observation/DiagnosticReport at a non-HIV visit (e.g., TB workup, prenatal panel) | **HIV** |
+| Substance use screening (AUDIT-C, DAST) Observation at a non-ETH visit | **ETH** |
+| Grief/psychological distress Condition documented at a reproductive health visit | **MH** (in addition to encounter-level SEX) |
+| Reproductive-specific MedicationRequest (prenatal vitamin, contraception) at a non-SEX visit | **SEX** |
 
-**Label DocumentReferences when the note content is sensitive.** A prenatal visit progress note → SEX. An ED note that happens to include an HIV test → label the HIV Observation, but the ED note only gets HIV if HIV results are a significant part of the note content.
+## What NOT to label
 
-**Include associated resources.** If a Condition is labeled SEX, also label DiagnosticReports, Observations, and MedicationRequests that directly support or document that condition at the same encounter. For example, if "missed abortion" is SEX, then the transvaginal ultrasound DiagnosticReport, the obstetric Observations (fetal heart rate, crown-rump length), and the encounter note documenting it should also be SEX.
+- Encounters that are routine PCP visits, specialty visits (rheumatology, cardiology), urgent care for injuries, lab-only visits, or follow-up calls — unless the visit reason itself is sensitive.
+- Scaffold resources (Patient, Organization, Practitioner, Location) are never labeled.
 
-**Don't over-label.** Routine vitals (BP, HR, weight, temp) taken during a prenatal visit are just vitals — they don't get SEX unless they are specifically obstetric measurements (fundal height, fetal heart rate). A basic CBC drawn during a prenatal visit is just a CBC — unless it was specifically ordered for obstetric indications (e.g., Rh typing, GDM workup).
+## Output format
 
-**Scaffold resources are not labeled.** Patient, Organization, Practitioner, and Location resources never get sensitivity labels.
+Write a JSON file with this structure:
 
-## Workflow
+```json
+{
+  "encounters": {
+    "enc-001": ["SEX"],
+    "enc-002": ["SEX"],
+    "enc-003": ["SEX"]
+  },
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq2",
+      "labels": ["MH"],
+      "rationale": "PHQ-2 depression screening at routine PCP visit"
+    },
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "prenatal-vitamin",
+      "labels": ["SEX"],
+      "rationale": "Prenatal vitamin prescribed at non-OB visit reveals pregnancy"
+    }
+  ],
+  "rationale": {
+    "enc-001": "OB visit for missed abortion diagnosis and management",
+    "enc-002": "Prenatal visit with gestational diabetes workup",
+    "enc-003": "Postpartum follow-up visit"
+  }
+}
+```
 
-1. Read the scenario and inventories to understand the patient's clinical story
-2. Read the resource manifest to see what files exist
-3. For each resource that needs a label, run:
-   ```bash
-   bun run steps/add-label.ts <path-to-resource.json> <LABEL_CODE>
-   ```
-4. After labeling, produce a summary table of what you labeled and why
+- `encounters`: maps encounter IDs to label arrays. Only include encounters that need labels.
+- `resource_overrides`: individual resources that get labels their encounter doesn't have. Use `id_substring` to match — the apply script will find resources whose ID contains this substring within the given encounter prefix. **Use the resource ID list provided to pick substrings that actually match.**
+- `rationale`: brief explanation for each encounter classification.
 
-## Output
+## Validation
 
-After running all add-label commands, write a summary to `security-labels-report.md` listing:
-- Each labeled resource (path, resourceType, id, label code)
-- Brief rationale for the label
-- Any edge cases you considered but decided not to label
+After writing your output JSON, run the check script to verify all encounters and overrides match real resources:
+
+```bash
+bun run <CHECK_SCRIPT> <OUTPUT_FILE> <PATIENT_DIR>
+```
+
+The check script will report any unmatched entries and list the actual resource IDs available. If it reports errors, fix your JSON and re-check until it passes.
+
+Raw JSON only. No markdown fences. No commentary.

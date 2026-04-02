@@ -1,20 +1,22 @@
 #!/usr/bin/env bun
 /**
- * Step 07: Assign FHIR security labels to resources based on clinical sensitivity.
+ * Step 07: Classify encounters by clinical sensitivity, then apply labels.
  *
- * Input:  patients/{slug}/sites/{site}/resources/{Type}/{id}.json
- *         patients/{slug}/inventories/enc-NNN.json
- *         patients/{slug}/scenario.md
- * Output: Modifies resources in-place (adds meta.security labels)
- *         patients/{slug}/security-labels-report.md
+ * Phase 1 (LLM): Agent reads scenario + inventories + resource ID list,
+ *   outputs a classification JSON, then runs check-labels to validate it.
+ * Phase 2 (code): apply-labels.ts reads the classification and stamps
+ *   meta.security on all matching FHIR resources.
  *
- * Uses an LLM agent to review the patient's clinical content and decide which
- * resources need sensitivity labels (SEX, HIV, MH, ETH, etc.).
+ * Output: patients/{slug}/security-labels.json  (classification)
+ *         patients/{slug}/security-labels-report.md (human-readable report)
  */
 
-import { resolve, dirname } from "path";
+import { resolve } from "path";
 import { readdir } from "fs/promises";
-import { callAgentWorkdir, PIPELINE_ROOT } from "./lib";
+import { $ } from "bun";
+import { callAgent, PIPELINE_ROOT } from "./lib";
+
+const SCAFFOLD_TYPES = new Set(["Patient", "Organization", "Practitioner", "Location"]);
 
 const patientDir = resolve(process.argv[2] ?? "");
 if (!patientDir || !(await Bun.file(`${patientDir}/scenario.md`).exists())) {
@@ -23,22 +25,24 @@ if (!patientDir || !(await Bun.file(`${patientDir}/scenario.md`).exists())) {
 }
 
 const slug = patientDir.split("/").pop()!;
-const reportPath = `${patientDir}/security-labels-report.md`;
+const classificationPath = `${patientDir}/security-labels.json`;
 
 // Check if already done
-if (await Bun.file(reportPath).exists() && !process.argv.includes("--force")) {
-  console.log(`[07] ${slug}: security-labels-report.md already exists, skipping (use --force to redo)`);
+if (await Bun.file(classificationPath).exists() && !process.argv.includes("--force")) {
+  console.log(`[07] ${slug}: security-labels.json already exists, skipping (use --force to redo)`);
   process.exit(0);
 }
 
-console.log(`[07] ${slug}: Assigning security labels...`);
+// Strip any existing labels first
+console.log(`[07] ${slug}: Stripping any existing labels...`);
+await $`bun run ${PIPELINE_ROOT}/steps/strip-labels.ts ${patientDir}`.quiet();
+
+console.log(`[07] ${slug}: Classifying encounters for security labels...`);
 
 // ── Gather context ──────────────────────────────────────────────────────
 
-// 1. Scenario
 const scenario = await Bun.file(`${patientDir}/scenario.md`).text();
 
-// 2. Inventories (JSON sidecars — compact, structured)
 const invDir = `${patientDir}/inventories`;
 const invFiles = (await readdir(invDir)).filter(f => f.endsWith(".json")).sort();
 const inventories: string[] = [];
@@ -47,51 +51,46 @@ for (const f of invFiles) {
   inventories.push(`### ${f}\n\`\`\`json\n${content}\n\`\`\``);
 }
 
-// 3. Resource manifest — one line per resource with key info
-const siteDirs: string[] = [];
+// Build resource ID listing grouped by encounter prefix
+const resourceIdsByEnc: Record<string, string[]> = {};
 const sitesRoot = `${patientDir}/sites`;
 for (const site of (await readdir(sitesRoot)).sort()) {
   const resourcesDir = `${sitesRoot}/${site}/resources`;
-  try {
-    await readdir(resourcesDir);
-    siteDirs.push(site);
-  } catch { continue; }
-}
+  let typeDirs: string[];
+  try { typeDirs = await readdir(resourcesDir); } catch { continue; }
 
-const manifestLines: string[] = [];
-for (const site of siteDirs) {
-  const resourcesDir = `${sitesRoot}/${site}/resources`;
-  const typeDirs = (await readdir(resourcesDir)).sort();
   for (const typeDir of typeDirs) {
+    if (SCAFFOLD_TYPES.has(typeDir)) continue;
     const typePath = `${resourcesDir}/${typeDir}`;
     let files: string[];
-    try {
-      files = (await readdir(typePath)).filter(f => f.endsWith(".json")).sort();
-    } catch { continue; }
+    try { files = (await readdir(typePath)).filter(f => f.endsWith(".json")); } catch { continue; }
+
     for (const file of files) {
-      const fullPath = `${typePath}/${file}`;
       try {
-        const r = JSON.parse(await Bun.file(fullPath).text());
-        const code =
-          r.code?.text ?? r.code?.coding?.[0]?.display ??
-          r.type?.[0]?.text ?? r.type?.[0]?.coding?.[0]?.display ??
-          r.vaccineCode?.text ?? r.vaccineCode?.coding?.[0]?.display ??
-          r.medicationCodeableConcept?.text ?? r.medicationCodeableConcept?.coding?.[0]?.display ??
-          r.category?.[0]?.text ?? r.category?.[0]?.coding?.[0]?.display ??
-          "—";
-        manifestLines.push(`${fullPath} | ${r.resourceType} | ${r.id} | ${code}`);
-      } catch {
-        manifestLines.push(`${fullPath} | PARSE_ERROR`);
-      }
+        const r = JSON.parse(await Bun.file(`${typePath}/${file}`).text());
+        if (!r.id) continue;
+        // Group by encounter prefix (enc-NNN)
+        const encMatch = r.id.match(/^(enc-\d+)/);
+        const prefix = encMatch ? encMatch[1] : "_scaffold";
+        if (!resourceIdsByEnc[prefix]) resourceIdsByEnc[prefix] = [];
+        resourceIdsByEnc[prefix].push(`${r.id} (${r.resourceType})`);
+      } catch { /* skip */ }
     }
   }
 }
+
+const resourceIdListing = Object.entries(resourceIdsByEnc)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([enc, ids]) => `${enc}: ${ids.sort().join(", ")}`)
+  .join("\n");
 
 // ── Build prompt ────────────────────────────────────────────────────────
 
 const systemPrompt = await Bun.file(`${PIPELINE_ROOT}/prompts/security-labels.md`).text();
 
-const userMessage = `# Security Label Assignment for ${slug}
+const checkScript = `${PIPELINE_ROOT}/steps/check-labels.ts`;
+
+const userMessage = `# Encounter Classification for ${slug}
 
 ## Scenario
 ${scenario}
@@ -99,44 +98,72 @@ ${scenario}
 ## Encounter Inventories
 ${inventories.join("\n\n")}
 
-## Resource Manifest
-Each line: file_path | resourceType | id | primary_code_or_description
+## Resource IDs by Encounter
+
+Use these actual resource IDs when writing \`id_substring\` values in overrides.
 
 \`\`\`
-${manifestLines.join("\n")}
+${resourceIdListing}
 \`\`\`
 
 ## Available Tools
 
-- **add-label script**: \`bun run ${PIPELINE_ROOT}/steps/add-label.ts <file_path> <LABEL_CODE>\`
-  - Run from any directory — the file_path in the manifest above is absolute
-  - Supported codes: SEX, HIV, ETH, MH, STD, SDV
+- **Check script**: \`bun run ${checkScript} <your-output-file> ${patientDir}\`
+  Run this after writing your classification JSON to verify all encounter IDs and override substrings match real resources. Fix any errors it reports before finishing.
 
 ## Instructions
 
-1. Review the scenario and inventories to understand what's clinically sensitive
-2. Review the resource manifest to identify which specific resources need labels
-3. For each resource that needs a label, run the add-label command
-4. Write your summary report to \`${reportPath}\`
+1. Write your classification JSON to the output file
+2. Run the check script on it
+3. Fix any mismatches and re-check until clean
+
+Classify each encounter and identify any resource-level overrides. Output raw JSON only.
 `;
 
-// ── Run agent ───────────────────────────────────────────────────────────
+// ── Phase 1: LLM classification ─────────────────────────────────────────
 
-const workdir = await callAgentWorkdir({
+console.log(`[07] ${slug}: Running agent for classification...`);
+const rawOutput = await callAgent({
   systemPrompt,
   userMessage,
+  outputFileName: "security-labels.json",
 });
 
-// Check if report was written (agent writes it to the patient dir, not workdir)
-if (await Bun.file(reportPath).exists()) {
-  console.log(`[07] ${slug}: Labels assigned. Report: ${reportPath}`);
-} else {
-  console.log(`[07] ${slug}: Agent completed but no report found at ${reportPath}`);
-  console.log(`[07] Check workdir: ${workdir}`);
+// Parse and validate
+let classification: any;
+try {
+  classification = JSON.parse(rawOutput);
+} catch (e) {
+  console.error(`[07] ${slug}: Failed to parse classification JSON:`);
+  console.error(rawOutput.slice(0, 500));
+  console.error(`[07] Workdir preserved: ${workdir}`);
+  process.exit(1);
 }
 
-// Clean up workdir
+if (!classification.encounters || typeof classification.encounters !== "object") {
+  console.error(`[07] ${slug}: Classification missing 'encounters' object`);
+  process.exit(1);
+}
+
+// Write classification to patient dir
+await Bun.write(classificationPath, JSON.stringify(classification, null, 2) + "\n");
+console.log(`[07] ${slug}: Classification written to ${classificationPath}`);
+console.log(`[07] ${slug}: Encounters classified: ${Object.keys(classification.encounters).length}`);
+console.log(`[07] ${slug}: Resource overrides: ${classification.resource_overrides?.length ?? 0}`);
+
+// Run check ourselves too (agent should have already, but belt-and-suspenders)
 try {
-  const { $ } = await import("bun");
-  await $`rm -rf ${workdir}`.quiet();
-} catch {}
+  await $`bun run ${checkScript} ${classificationPath}`;
+} catch {
+  console.error(`[07] ${slug}: Check script found issues — review ${classificationPath}`);
+  process.exit(1);
+}
+
+// ── Phase 2: Apply labels ───────────────────────────────────────────────
+
+console.log(`[07] ${slug}: Applying labels...`);
+const applyScript = `${PIPELINE_ROOT}/steps/apply-labels.ts`;
+const result = await $`bun run ${applyScript} ${classificationPath}`.text();
+console.log(result);
+
+console.log(`[07] ${slug}: Done.`);

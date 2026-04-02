@@ -1,0 +1,68 @@
+{
+  "encounters": {
+    "enc-001": [
+      "SEX"
+    ],
+    "enc-002": [
+      "SEX"
+    ],
+    "enc-003": [
+      "SEX"
+    ]
+  },
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine PCP wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "prenatal-vitamin",
+      "labels": [
+        "SEX"
+      ],
+      "rationale": "Prenatal vitamin prescribed at non-OB PCP visit reveals pregnancy"
+    },
+    {
+      "encounter_prefix": "enc-001",
+      "id_substring": "cond-grief",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "Grief/psychological distress condition documented at reproductive health visit"
+    },
+    {
+      "encounter_prefix": "enc-003",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at postpartum (SEX) visit, not an MH encounter"
+    },
+    {
+      "encounter_prefix": "enc-004",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine new-patient PCP visit"
+    },
+    {
+      "encounter_prefix": "enc-005",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at rheumatology workup PCP visit"
+    }
+  ],
+  "rationale": {
+    "enc-001": "OB visit for missed abortion (early pregnancy loss) diagnosis and expectant management counseling",
+    "enc-002": "Prenatal visit at 28 weeks with gestational diabetes diagnosis via glucose tolerance testing",
+    "enc-003": "Six-week postpartum follow-up visit with metabolic screening confirming GDM resolution"
+  }
+}
