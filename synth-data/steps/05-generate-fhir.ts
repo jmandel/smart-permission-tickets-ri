@@ -11,15 +11,20 @@
  *           3. prior resource directory/manifests for agentic lookups
  */
 
+import { $ } from "bun";
 import { resolve } from "path";
 import { mkdir, readdir, rm } from "fs/promises";
-import { PIPELINE_ROOT, callClaude, parseEncounters, encId } from "./lib.ts";
-
-interface ParsedEncounter {
-  index: number;
-  heading: string;
-  text: string;
-}
+import { PIPELINE_ROOT, callClaude, callAgentWorkdir, encId } from "./lib.ts";
+import {
+  EncounterRecord,
+  ProviderSiteContract,
+  findSiteContract,
+  groupEncountersBySite,
+  loadEncounterTimeline,
+  loadInventorySidecar,
+  loadProviderMap,
+  parseResourceArrayWithRepair,
+} from "./artifacts.ts";
 
 interface ManifestEntry {
   resourceType: string;
@@ -32,35 +37,10 @@ interface ResourceFile {
   resource: any;
 }
 
-/** Parse the encounters file and group encounters by site */
-function groupEncountersBySite(encountersText: string): Map<string, ParsedEncounter[]> {
-  const sites = new Map<string, ParsedEncounter[]>();
-  let currentSite = "default";
+const META_TAG_SOURCE_SYSTEM = "urn:example:permissiontickets-demo:source-org-npi";
+const META_TAG_JURISDICTION_SYSTEM = "urn:example:permissiontickets-demo:jurisdiction-state";
 
-  const allEncounters = parseEncounters(encountersText);
-
-  const lines = encountersText.split("\n");
-  let encIdx = 0;
-  for (const line of lines) {
-    const siteMatch = line.match(/^## Site \d+[^:]*:\s*(.+)/);
-    if (siteMatch) {
-      currentSite = siteMatch[1]
-        .trim()
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/-+$/, "");
-    }
-
-    const encMatch = line.match(/^### \d{4}/);
-    if (encMatch && encIdx < allEncounters.length) {
-      if (!sites.has(currentSite)) sites.set(currentSite, []);
-      sites.get(currentSite)!.push(allEncounters[encIdx]);
-      encIdx++;
-    }
-  }
-
-  return sites;
-}
+// JSON parsing/repair is now in artifacts.ts — imported as parseResourceArrayWithRepair
 
 async function loadFewShots(): Promise<string> {
   const fewShotDir = `${PIPELINE_ROOT}/few-shots`;
@@ -173,14 +153,14 @@ async function loadManifestEntries(manifestFile: string): Promise<ManifestEntry[
   }
 }
 
-async function loadPriorResources(siteDir: string, encounters: ParsedEncounter[], currentIndex: number): Promise<ResourceFile[]> {
+async function loadPriorResources(siteDir: string, encounters: EncounterRecord[], currentIndex: number): Promise<ResourceFile[]> {
   const manifests: ManifestEntry[] = [];
 
   manifests.push(...await loadManifestEntries(`${siteDir}/scaffold-manifest.json`));
 
   for (const encounter of encounters) {
-    if (encounter.index >= currentIndex) break;
-    manifests.push(...await loadManifestEntries(`${siteDir}/encounter-manifests/enc-${encId(encounter.index)}.json`));
+    if (encounter.encounter_index >= currentIndex) break;
+    manifests.push(...await loadManifestEntries(`${siteDir}/encounter-manifests/enc-${encId(encounter.encounter_index)}.json`));
   }
 
   const uniqueByPath = new Map<string, ManifestEntry>();
@@ -207,35 +187,261 @@ function buildPriorResourceIndex(resources: ResourceFile[]): string {
     .join("\n");
 }
 
+function localReferencePattern(reference: string): boolean {
+  return /^[A-Za-z][A-Za-z0-9]+\/[A-Za-z0-9.\-]+$/.test(reference);
+}
+
+function normalizeTextKey(value: unknown): string {
+  if (typeof value !== "string") return "";
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function toStringArray(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === "string").map(item => item.trim()).filter(Boolean)
+    : [];
+}
+
+function collectReferences(value: any, refs: string[] = []): string[] {
+  if (Array.isArray(value)) {
+    for (const item of value) collectReferences(item, refs);
+    return refs;
+  }
+  if (!value || typeof value !== "object") return refs;
+
+  for (const [key, child] of Object.entries(value)) {
+    if (key === "reference" && typeof child === "string") refs.push(child);
+    collectReferences(child, refs);
+  }
+  return refs;
+}
+
+function resourceRefSet(resources: any[]): Set<string> {
+  return new Set(
+    resources
+      .filter(resource => resource?.resourceType && resource?.id)
+      .map(resource => `${resource.resourceType}/${resource.id}`),
+  );
+}
+
+function summarizeObservationName(resource: any): string {
+  if (resource?.resourceType !== "Observation") return "";
+  return summarizeCodeableConcept(resource.code);
+}
+
+function summarizeDiagnosticReportName(resource: any): string {
+  if (resource?.resourceType !== "DiagnosticReport") return "";
+  return summarizeCodeableConcept(resource.code);
+}
+
+function findMatchingDiagnosticReport(resources: any[], reportType: string): any | undefined {
+  const target = normalizeTextKey(reportType);
+  if (!target) return undefined;
+
+  return resources.find(resource => {
+    if (resource?.resourceType !== "DiagnosticReport") return false;
+    const candidates = [
+      summarizeDiagnosticReportName(resource),
+      resource?.code?.coding?.[0]?.display,
+      resource?.code?.text,
+    ]
+      .map(normalizeTextKey)
+      .filter(Boolean);
+    return candidates.some(candidate => candidate === target || candidate.includes(target) || target.includes(candidate));
+  });
+}
+
+function buildProjectMetaTags(site: ProviderSiteContract) {
+  return [
+    {
+      system: META_TAG_SOURCE_SYSTEM,
+      code: site.npi,
+      display: `Source Organization NPI ${site.npi}`,
+    },
+    {
+      system: META_TAG_JURISDICTION_SYSTEM,
+      code: site.state,
+      display: site.state,
+    },
+  ];
+}
+
+function normalizeInstant(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const trimmed = value.trim();
+  if (trimmed.length === 0) return undefined;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return `${trimmed}T00:00:00Z`;
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(trimmed)) return `${trimmed}:00Z`;
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?$/.test(trimmed)) return `${trimmed}Z`;
+  return trimmed;
+}
+
+function normalizeGeneratedResource(resource: any, site: ProviderSiteContract): any {
+  if (!resource || typeof resource !== "object" || Array.isArray(resource)) return resource;
+
+  const normalized = structuredClone(resource);
+  const meta = normalized.meta && typeof normalized.meta === "object" && !Array.isArray(normalized.meta)
+    ? normalized.meta
+    : {};
+  meta.tag = buildProjectMetaTags(site);
+  normalized.meta = meta;
+
+  if (normalized.resourceType === "DocumentReference") {
+    const normalizedDate = normalizeInstant(normalized.date);
+    if (normalizedDate) normalized.date = normalizedDate;
+  }
+
+  if (normalized.resourceType === "DiagnosticReport") {
+    const normalizedIssued = normalizeInstant(normalized.issued);
+    if (normalizedIssued) normalized.issued = normalizedIssued;
+  }
+
+  if (normalized.resourceType === "AllergyIntolerance") {
+    for (const codingBlock of [normalized.clinicalStatus, normalized.verificationStatus]) {
+      const codings = Array.isArray(codingBlock?.coding) ? codingBlock.coding : [];
+      for (const coding of codings) {
+        if (
+          coding
+          && typeof coding === "object"
+          && typeof coding.system === "string"
+          && coding.system.startsWith("http://terminology.hl7.org/CodeSystem/allergyintolerance-")
+        ) {
+          delete coding.version;
+        }
+      }
+    }
+  }
+
+  return normalized;
+}
+
+function validateScaffoldResources(resources: any[], site: ProviderSiteContract) {
+  const allowedTypes = new Set(["Patient", "Organization", "Practitioner", "Location"]);
+  const disallowed = resources.filter(resource => !allowedTypes.has(resource.resourceType));
+  if (disallowed.length > 0) {
+    throw new Error(`Scaffold for ${site.site_slug} emitted non-scaffold resource types: ${disallowed.map(r => r.resourceType).join(", ")}`);
+  }
+
+  const patients = resources.filter(resource => resource.resourceType === "Patient");
+  const organizations = resources.filter(resource => resource.resourceType === "Organization");
+  if (patients.length !== 1) throw new Error(`Scaffold for ${site.site_slug} must contain exactly 1 Patient`);
+  if (organizations.length !== 1) throw new Error(`Scaffold for ${site.site_slug} must contain exactly 1 Organization`);
+
+  const organization = organizations[0];
+  if (organization.name !== site.site_name) {
+    throw new Error(`Scaffold organization name mismatch for ${site.site_slug}: expected "${site.site_name}" but got "${organization.name}"`);
+  }
+
+  const identifiers = Array.isArray(organization.identifier) ? organization.identifier : [];
+  if (!identifiers.some((identifier: any) => String(identifier?.value ?? "").trim() === site.npi)) {
+    throw new Error(`Scaffold organization for ${site.site_slug} must include NPI ${site.npi}`);
+  }
+}
+
+function validateEncounterResources(
+  resources: any[],
+  encounter: EncounterRecord,
+  site: ProviderSiteContract,
+  scaffoldResources: any[],
+  priorResources: ResourceFile[],
+  inventory?: { diagnostic_reports?: Array<Record<string, any>> },
+) {
+  const forbiddenTypes = new Set(["Patient", "Organization", "Practitioner", "Location"]);
+  const forbidden = resources.filter(resource => forbiddenTypes.has(resource.resourceType));
+  if (forbidden.length > 0) {
+    throw new Error(
+      `Encounter ${encounter.encounter_id} emitted identity resources in pass B: ${[...new Set(forbidden.map(r => r.resourceType))].join(", ")}`,
+    );
+  }
+
+  const encounters = resources.filter(resource => resource.resourceType === "Encounter");
+  if (encounters.length !== 1) {
+    throw new Error(`Encounter ${encounter.encounter_id} must emit exactly 1 Encounter resource`);
+  }
+
+  const encounterResource = encounters[0];
+  const encounterStart = String(encounterResource?.period?.start ?? "");
+  if (!encounterStart.startsWith(encounter.date)) {
+    throw new Error(`Encounter ${encounter.encounter_id} period.start must match ${encounter.date}`);
+  }
+
+  const scaffoldRefSet = resourceRefSet(scaffoldResources);
+  const priorRefSet = resourceRefSet(priorResources.map(item => item.resource));
+  const currentRefSet = resourceRefSet(resources);
+  const validRefs = new Set([...scaffoldRefSet, ...priorRefSet, ...currentRefSet]);
+
+  const scaffoldOrganizations = scaffoldResources.filter(resource => resource.resourceType === "Organization");
+  const scaffoldPatients = scaffoldResources.filter(resource => resource.resourceType === "Patient");
+  if (scaffoldOrganizations.length !== 1 || scaffoldPatients.length !== 1) {
+    throw new Error(`Invalid scaffold state for ${site.site_slug}`);
+  }
+  const organizationRef = `Organization/${scaffoldOrganizations[0].id}`;
+  const patientRef = `Patient/${scaffoldPatients[0].id}`;
+
+  if (encounterResource?.serviceProvider?.reference !== organizationRef) {
+    throw new Error(`Encounter ${encounter.encounter_id} must reference scaffold organization ${organizationRef}`);
+  }
+  if (encounterResource?.subject?.reference !== patientRef) {
+    throw new Error(`Encounter ${encounter.encounter_id} must reference scaffold patient ${patientRef}`);
+  }
+
+  for (const participant of Array.isArray(encounterResource.participant) ? encounterResource.participant : []) {
+    const reference = participant?.individual?.reference;
+    if (typeof reference === "string" && reference.startsWith("Practitioner/") && !scaffoldRefSet.has(reference)) {
+      throw new Error(`Encounter ${encounter.encounter_id} references non-scaffold practitioner ${reference}`);
+    }
+  }
+
+  for (const location of Array.isArray(encounterResource.location) ? encounterResource.location : []) {
+    const reference = location?.location?.reference;
+    if (typeof reference === "string" && reference.startsWith("Location/") && !scaffoldRefSet.has(reference)) {
+      throw new Error(`Encounter ${encounter.encounter_id} references non-scaffold location ${reference}`);
+    }
+  }
+
+  for (const resource of resources) {
+    for (const reference of collectReferences(resource)) {
+      if (localReferencePattern(reference) && !validRefs.has(reference)) {
+        throw new Error(`Encounter ${encounter.encounter_id} contains unresolved reference ${reference}`);
+      }
+    }
+  }
+
+  // DiagnosticReport ↔ Observation linkage is validated by the general
+  // reference resolution check above — no need for fragile name matching
+  // between inventory concept names and generated FHIR display text.
+}
+
 async function main() {
   const patientDir = resolve(process.argv[2] ?? "");
   const force = process.argv.includes("--force");
 
-  const bioFile = `${patientDir}/biography.md`;
-  const encountersFile = `${patientDir}/encounters.md`;
+  const providerMapFile = `${patientDir}/provider-map.json`;
+  const encountersFile = `${patientDir}/encounters.json`;
   const inventoryDir = `${patientDir}/inventories`;
   const notesDir = `${patientDir}/notes`;
   const sitesDir = `${patientDir}/sites`;
 
-  if (!await Bun.file(bioFile).exists() || !await Bun.file(encountersFile).exists()) {
+  if (!await Bun.file(providerMapFile).exists() || !await Bun.file(encountersFile).exists()) {
     console.error("Usage: bun run steps/05-generate-fhir.ts <patient-dir>");
     process.exit(1);
   }
 
   await mkdir(sitesDir, { recursive: true });
 
-  const biography = await Bun.file(bioFile).text();
-  const encountersText = await Bun.file(encountersFile).text();
+  const providerMap = await loadProviderMap(providerMapFile);
+  const timeline = await loadEncounterTimeline(encountersFile, providerMap);
   const fewShots = await loadFewShots();
   const scaffoldPrompt = await Bun.file(`${PIPELINE_ROOT}/prompts/scaffold.md`).text();
   const encounterPrompt = await Bun.file(`${PIPELINE_ROOT}/prompts/fhir-generation.md`).text();
 
-  const siteEncounters = groupEncountersBySite(encountersText);
+  const siteEncounters = groupEncountersBySite(timeline);
   console.log(`[05] Found ${siteEncounters.size} sites: ${[...siteEncounters.keys()].join(", ")}`);
 
   console.log(`\n[05] === Pass A: Generating site reference scaffolds ===`);
 
   for (const [siteSlug, encounters] of siteEncounters) {
+    const site = findSiteContract(providerMap, siteSlug);
     const siteDir = `${sitesDir}/${siteSlug}`;
     const resourcesDir = `${siteDir}/resources`;
     const encounterManifestDir = `${siteDir}/encounter-manifests`;
@@ -250,27 +456,35 @@ async function main() {
       continue;
     }
 
-    const siteEncText = encounters.map(e => e.text).join("\n\n");
+    const siteEncounterSummary = encounters.map(encounter => ({
+      encounter_id: encounter.encounter_id,
+      date: encounter.date,
+      encounter_type: encounter.encounter_type,
+      reason: encounter.reason,
+      clinician_names: encounter.clinician_names,
+      location: encounter.location,
+      header: encounter.header,
+    }));
 
     const userMessage = [
       `## Real FHIR Examples (match this structural depth)\n${fewShots}`,
-      `## Patient Biography\n\n${biography}`,
-      `## Encounters at This Site\n\n${siteEncText}`,
+      `## Site Contract\n\`\`\`json\n${JSON.stringify(site, null, 2)}\n\`\`\``,
+      `## Patient Demographics\n\`\`\`json\n${JSON.stringify(providerMap.patient, null, 2)}\n\`\`\``,
+      `## Encounter List For This Site\n\`\`\`json\n${JSON.stringify(siteEncounterSummary, null, 2)}\n\`\`\``,
       `\nGenerate the reference scaffold resources for this site. Raw JSON array only.`,
     ].join("\n\n");
 
     console.log(`[05] Generating scaffold for ${siteSlug} (${encounters.length} encounters)...`);
-    const result = await callClaude({ systemPrompt: scaffoldPrompt, userMessage, model: "sonnet" });
+    const result = await callClaude({ systemPrompt: scaffoldPrompt, userMessage, outputFileName: "output.json" });
 
-    const jsonStr = (result.match(/```json\n([\s\S]*?)\n```/)?.[1] ?? result).trim();
     let resources: any[];
     try {
-      const parsed = JSON.parse(jsonStr);
-      resources = Array.isArray(parsed) ? parsed : [parsed];
+      resources = (await parseResourceArrayWithRepair(result)).map(resource => normalizeGeneratedResource(resource, site));
     } catch {
       await Bun.write(`${siteDir}/scaffold-raw.txt`, result);
       throw new Error(`Failed to parse scaffold JSON for ${siteSlug} — raw output saved`);
     }
+    validateScaffoldResources(resources, site);
 
     const manifestEntries: ManifestEntry[] = [];
     for (const resource of resources) {
@@ -293,7 +507,10 @@ async function main() {
   const totalEncounters = [...siteEncounters.values()].reduce((sum, encounters) => sum + encounters.length, 0);
   let completed = 0;
 
-  for (const [siteSlug, encounters] of siteEncounters) {
+  // Process sites in parallel (encounters within a site stay sequential
+  // because each encounter needs prior-resource context from earlier ones)
+  const siteResults = await Promise.allSettled([...siteEncounters.entries()].map(async ([siteSlug, encounters]) => {
+    const site = findSiteContract(providerMap, siteSlug);
     const siteDir = `${sitesDir}/${siteSlug}`;
     const scaffoldFile = `${siteDir}/scaffold.json`;
     const resourcesDir = `${siteDir}/resources`;
@@ -302,9 +519,10 @@ async function main() {
     const scaffold = await Bun.file(scaffoldFile).exists()
       ? await Bun.file(scaffoldFile).text()
       : "[]";
+    const scaffoldResources = JSON.parse(scaffold);
 
     for (const encounter of encounters) {
-      const encounterId = encId(encounter.index);
+      const encounterId = encId(encounter.encounter_index);
       const doneMarker = `${siteDir}/.done-${encounterId}`;
       if (!force && await Bun.file(doneMarker).exists()) {
         completed++;
@@ -312,40 +530,63 @@ async function main() {
         continue;
       }
 
-      const inventoryFile = `${inventoryDir}/enc-${encounterId}.md`;
+      const inventoryFile = `${inventoryDir}/enc-${encounterId}.json`;
       const noteFile = `${notesDir}/enc-${encounterId}.txt`;
       const inventory = await Bun.file(inventoryFile).exists()
-        ? await Bun.file(inventoryFile).text()
-        : "(no inventory)";
+        ? await loadInventorySidecar(inventoryFile, encounter)
+        : null;
+      if (!inventory) {
+        throw new Error(`Missing inventory JSON for ${encounter.encounter_id} at ${inventoryFile}`);
+      }
       const note = await Bun.file(noteFile).exists()
         ? await Bun.file(noteFile).text()
         : "";
 
-      const priorResources = await loadPriorResources(siteDir, encounters, encounter.index);
+      const priorResources = await loadPriorResources(siteDir, encounters, encounter.encounter_index);
       const priorResourceIndex = buildPriorResourceIndex(priorResources);
+
+      // Resolve absolute paths for tools the agent can use
+      const terminologyDbPath = resolve(PIPELINE_ROOT, "terminology.sqlite");
+      const validatorPort = Bun.env.VALIDATOR_PORT ?? "8090";
 
       const userMessage = [
         `## Real FHIR Examples (match this structural depth)\n${fewShots}`,
+        `## Site Contract\n\`\`\`json\n${JSON.stringify(site, null, 2)}\n\`\`\``,
+        `## Encounter Contract\n\`\`\`json\n${JSON.stringify(encounter, null, 2)}\n\`\`\``,
         `## Site Reference Scaffold\n\`\`\`json\n${scaffold}\n\`\`\``,
         `## Prior Resource Index (same site, earlier scaffold/resources only)\n${priorResourceIndex}`,
         `## Prior Resource Files\n- Resource directory: ${resourcesDir}\n- Scaffold manifest: ${siteDir}/scaffold-manifest.json\n- Earlier encounter manifests: ${encounterManifestDir}`,
-        `## Resource Inventory\n\n${inventory}`,
+        `## Structured Inventory JSON\n\`\`\`json\n${JSON.stringify(inventory, null, 2)}\n\`\`\``,
         note ? `## Clinical Note\n\n${note}` : "",
-        `\nGenerate FHIR R4 resources for this encounter. Reuse or update prior clinical resource IDs when appropriate. Raw JSON array only.`,
+        `## Available Tools`,
+        `- **Terminology DB**: \`sqlite3 ${terminologyDbPath}\` — look up SNOMED/LOINC/RxNorm/CVX codes. Example: \`sqlite3 ${terminologyDbPath} "SELECT c.code, c.display FROM designations_fts JOIN designations d ON d.id = designations_fts.rowid JOIN concepts c ON c.id = d.concept_id WHERE designations_fts MATCH 'rheumatoid arthritis' AND c.system = 'http://snomed.info/sct' ORDER BY bm25(designations_fts) LIMIT 5"\``,
+        `- **FHIR Validator**: \`curl -s -X POST http://localhost:${validatorPort}/validateResource -H "Content-Type: application/fhir+json" -d @resources/<id>.json\` — validate a resource file after writing it`,
+        `\nGenerate FHIR R4 resources for this encounter. Follow the workflow in the system prompt: write each resource to its own file in \`resources/\`, validate each one, then verify.`,
       ].filter(Boolean).join("\n\n");
 
-      const result = await callClaude({ systemPrompt: encounterPrompt, userMessage, model: "sonnet" });
+      const workdir = await callAgentWorkdir({ systemPrompt: encounterPrompt, userMessage });
 
-      const jsonStr = (result.match(/```json\n([\s\S]*?)\n```/)?.[1] ?? result).trim();
       let resources: any[];
       try {
-        const parsed = JSON.parse(jsonStr);
-        resources = Array.isArray(parsed) ? parsed : [parsed];
-      } catch {
-        const debugFile = `${siteDir}/enc-${encounterId}-raw.txt`;
-        await Bun.write(debugFile, result);
-        throw new Error(`Failed to parse FHIR for enc-${encounterId} at ${siteSlug} — raw saved to ${debugFile}`);
+        const agentResourceDir = `${workdir}/resources`;
+        const fileNames = (await readdir(agentResourceDir)).filter(f => f.endsWith(".json")).sort();
+        if (fileNames.length === 0) {
+          throw new Error("Agent produced no resource files");
+        }
+        resources = [];
+        for (const fileName of fileNames) {
+          const raw = JSON.parse(await Bun.file(`${agentResourceDir}/${fileName}`).text());
+          if (!raw || typeof raw !== "object" || Array.isArray(raw) || !raw.resourceType) {
+            throw new Error(`Invalid resource in ${fileName}: expected a FHIR resource object`);
+          }
+          resources.push(normalizeGeneratedResource(raw, site));
+        }
+      } catch (err) {
+        // Preserve workdir for debugging on failure
+        console.error(`[05] Agent workdir preserved for debugging: ${workdir}`);
+        throw new Error(`Failed to read FHIR resources for enc-${encounterId} at ${siteSlug}: ${err}`);
       }
+      validateEncounterResources(resources, encounter, site, scaffoldResources, priorResources, inventory);
 
       const manifestEntries: ManifestEntry[] = [];
       for (const resource of resources) {
@@ -361,12 +602,24 @@ async function main() {
       await Bun.write(`${encounterManifestDir}/enc-${encounterId}.json`, JSON.stringify(manifestEntries, null, 2));
       await Bun.write(doneMarker, new Date().toISOString());
 
+      // Clean up agent workdir after successful copy
+      try { await $`rm -rf ${workdir}`.quiet(); } catch {}
+
       completed++;
       console.log(
         `[05] (${completed}/${totalEncounters}) ${siteSlug}/enc-${encounterId} — `
         + `${manifestEntries.length} resources, ${priorResources.length} prior in context`
       );
     }
+  }));
+
+  const siteFailures = siteResults.filter(r => r.status === "rejected");
+  if (siteFailures.length > 0) {
+    console.error(`\n[05] ${siteFailures.length} site(s) failed:`);
+    for (const f of siteFailures) {
+      if (f.status === "rejected") console.error(`  ${f.reason}`);
+    }
+    process.exit(1);
   }
 
   console.log(`\n[05] Done — all resources in ${sitesDir}`);

@@ -38,6 +38,15 @@ Also note:
 - The clinician (use names from the biography's provider map)
 - The location/site
 
+## One Encounter Per Section
+
+Each `###` section should be a clean slice of one completed encounter.
+
+- Keep the body focused on the care delivered, findings, orders, documentation, and follow-up plan for that encounter
+- Keep future monitoring or follow-up in the same section only when it is part of that encounter's plan
+- Give each separately completed follow-up its own `### YYYY-MM-DD — ...` section
+- Keep site metadata at the site level, not inside the encounter body
+
 ## Clinical coherence
 
 Lab values should trend realistically across time:
@@ -79,4 +88,4 @@ If you receive additional guidance (e.g., "limit to 10 encounters" or "focus on 
 
 ## Style
 
-Write the timeline as a clinical chart summary that another AI agent will use to generate FHIR resources. Be specific about values, codes, and dates. Include narrative color about the clinical reasoning — it helps downstream agents make better FHIR.
+Write the timeline as a clinical chart summary that another AI agent will use to generate FHIR resources. Be specific about values, codes, and dates. Include narrative color about the clinical reasoning, but keep each encounter section as a self-contained slice so a downstream normalization step can extract one structured record per encounter.

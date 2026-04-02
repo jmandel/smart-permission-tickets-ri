@@ -20,6 +20,15 @@ Write a rich, natural markdown document that covers:
 
 4. **What this patient exercises for the demo**: Explain which Permission Ticket access constraint dimensions this patient's data can demonstrate (scopes, periods, jurisdictions, organizations).
 
+## Suggested section headings
+
+Use clear markdown headings so the narrative is easy for humans and downstream normalization steps to read:
+
+- `## Patient Overview`
+- `## Clinical Arc`
+- `## Provider Map`
+- `## Demo Relevance`
+
 ## Calibration (from real records)
 
 Real patient records show:
@@ -34,4 +43,4 @@ Real patient records show:
 
 ## Style
 
-Write naturally. This document will be read by another AI agent that generates the encounter timeline, so be specific about clinical details (disease names, medication names, approximate lab values) but write it as prose, not structured data. Include your reasoning about why this patient's story is interesting and what it demonstrates.
+Write naturally. This document will be read by downstream agents and by a JSON-normalization step, so be specific about clinical details (disease names, medication names, approximate lab values) but keep it prose-first rather than template-first. Include enough concrete provider-map detail that the sites, NPIs, clinicians, and states can be normalized reliably later.

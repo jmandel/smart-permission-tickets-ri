@@ -1,0 +1,91 @@
+{
+  "patient": {
+    "full_name": "Robert James Davis",
+    "date_of_birth": "1960-09-14",
+    "gender": "Male",
+    "race_ethnicity": "Black / African American, non-Hispanic",
+    "language": "English",
+    "marital_status": "Divorced",
+    "home_city": "Chicago",
+    "home_state": "IL",
+    "address_summary": "South Side Chicago, Illinois (zip 60621)"
+  },
+  "sites": [
+    {
+      "site_slug": "university-of-illinois-hospital",
+      "site_name": "University of Illinois Hospital",
+      "npi": "1346287905",
+      "state": "IL",
+      "city": "Chicago",
+      "site_type": "Academic medical center — ED and inpatient services",
+      "active_period": {
+        "start": "2026-01-22",
+        "end": "2026-01-27"
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Priya Anand",
+          "role": "ED attending",
+          "npi": null
+        },
+        {
+          "name": "Dr. Marcus Thompson",
+          "role": "Hospitalist/admitting",
+          "npi": null
+        },
+        {
+          "name": "Dr. Lena Okafor",
+          "role": "Infectious disease consult",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "University of Illinois Hospital",
+          "city": "Chicago",
+          "state": "IL",
+          "address_summary": "1740 W Taylor St, Chicago, IL 60612"
+        }
+      ],
+      "narrative_summary": "Emergency presentation, inpatient isolation, TB diagnosis and treatment initiation"
+    },
+    {
+      "site_slug": "ui-health-ambulatory-tb-clinic",
+      "site_name": "UI Health Ambulatory TB Clinic",
+      "npi": "1578432061",
+      "state": "IL",
+      "city": "Chicago",
+      "site_type": "Outpatient specialty clinic — TB treatment and DOT",
+      "active_period": {
+        "start": "2026-02-05",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Lena Okafor",
+          "role": "Infectious disease",
+          "npi": null
+        },
+        {
+          "name": "RN Patricia Gomez",
+          "role": "DOT nurse coordinator",
+          "npi": null
+        },
+        {
+          "name": "PharmD David Chen",
+          "role": "TB medication management",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "UI Health Ambulatory TB Clinic",
+          "city": "Chicago",
+          "state": "IL",
+          "address_summary": "1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+        }
+      ],
+      "narrative_summary": "Directly observed therapy, medication monitoring, follow-up labs and imaging, sputum culture surveillance, coordination with public health"
+    }
+  ]
+}

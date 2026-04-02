@@ -1,0 +1,86 @@
+{
+  "patient": {
+    "full_name": "Maria Yee-Ling Chen",
+    "date_of_birth": "1983-09-14",
+    "gender": "Female",
+    "race_ethnicity": "Chinese American (Asian — Chinese)",
+    "language": "English",
+    "marital_status": "Single (never married)",
+    "home_city": "Portland",
+    "home_state": "OR",
+    "address_summary": "Outer SE Portland, Oregon (ZIP 97266)"
+  },
+  "sites": [
+    {
+      "site_slug": "cascade-community-health-center",
+      "site_name": "Cascade Community Health Center",
+      "npi": "1346782901",
+      "state": "OR",
+      "city": "Portland",
+      "site_type": "Federally Qualified Health Center (FQHC) — Primary Care",
+      "active_period": {
+        "start": "2019-01",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Angela Morales, MD",
+          "role": "Primary care physician, family medicine",
+          "npi": null
+        },
+        {
+          "name": "Priya Nair, RN",
+          "role": "Care coordinator",
+          "npi": null
+        },
+        {
+          "name": "David Kim, MA",
+          "role": "Medical assistant",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Cascade Community Health Center",
+          "city": "Portland",
+          "state": "OR",
+          "address_summary": "8205 SE Foster Road, Portland, OR 97206"
+        }
+      ],
+      "narrative_summary": "Maria's primary care medical home since 2019. Provides annual wellness visits, acute care, preventive services, asthma management, SDOH screening, lab ordering, immunizations, and social care referral creation. Originating site for the closed-loop referral to Rose City Community Services."
+    },
+    {
+      "site_slug": "rose-city-community-services",
+      "site_name": "Rose City Community Services",
+      "npi": "1578234610",
+      "state": "OR",
+      "city": "Portland",
+      "site_type": "Community-Based Organization (CBO) — Social Care Navigation",
+      "active_period": {
+        "start": "2026-03",
+        "end": "2026-04"
+      },
+      "key_clinicians": [
+        {
+          "name": "Janet Flores",
+          "role": "Community health worker / case worker",
+          "npi": null
+        },
+        {
+          "name": "Robert Tran",
+          "role": "Program coordinator",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Rose City Community Services",
+          "city": "Portland",
+          "state": "OR",
+          "address_summary": "6530 SE 82nd Avenue, Portland, OR 97266"
+        }
+      ],
+      "narrative_summary": "Receives closed-loop social care referrals from partner clinics. Provided Maria with food pantry enrollment, SNAP application assistance, and TriMet transit vouchers for medical appointments. Does not provide clinical care."
+    }
+  ]
+}

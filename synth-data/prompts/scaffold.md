@@ -10,7 +10,7 @@ A JSON array of FHIR R4 resources that form the reference scaffold for this site
 
 2. **Organization** — The provider organization. Name, NPI identifier, type, address, telecom.
 
-3. **Practitioner** — Each clinician mentioned in the biography or encounters for this site. Name, NPI if applicable, qualification.
+3. **Practitioner** — Each clinician named in the site contract or site encounters for this site. Name, NPI if applicable, qualification.
 
 4. **Location** — The main clinical location or locations that encounters at this site should reference.
 
@@ -31,17 +31,20 @@ Those should emerge chronologically from encounters and then be reused or update
 ## Requirements
 
 - Every resource needs a stable UUID `id`
-- Proper `meta.tag` for source-org (NPI) and jurisdiction (state)
 - Consistent internal references (for example, PractitionerRole-style relationships may be implied through Encounter participants later)
+- Do not add project-specific metadata tags; the pipeline will stamp those in code after generation
 
 ## Context you'll receive
 
-- The patient biography (full clinical arc and provider map)
-- The encounter timeline for this site
+- Patient demographics from the provider-map sidecar
+- The canonical site contract for this site (`site_slug`, exact site name, NPI, state, clinicians, locations)
+- The encounter list for this site
 - Real FHIR examples from actual EHR exports (showing structural depth and coding patterns)
+
+Use the site contract as authoritative. Build only the stable reference layer for that site. The scaffold organization name and NPI must match the site contract exactly.
 
 ## Output
 
-A JSON array of FHIR R4 resources. No markdown fences. Raw JSON only.
+A JSON array of FHIR R4 resources. No markdown fences. No commentary.
 
 These resources will be saved first, then every encounter will receive them along with a running index of prior resources already generated for this site.

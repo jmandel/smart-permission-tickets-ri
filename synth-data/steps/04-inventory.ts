@@ -2,9 +2,9 @@
 /**
  * Step 04: Generate per-encounter resource inventories (fan-out)
  *
- * Input:  patients/<slug>/biography.md, patients/<slug>/encounters.md,
+ * Input:  patients/<slug>/biography.md, patients/<slug>/provider-map.json, patients/<slug>/encounters.json,
  *         patients/<slug>/notes/enc-NNN.txt (clinical notes from step 03)
- * Output: patients/<slug>/inventories/enc-NNN.md (one per encounter)
+ * Output: patients/<slug>/inventories/enc-NNN.md + enc-NNN.json (one pair per encounter)
  *
  * Reads the clinical note for each encounter so the resource inventory
  * is consistent with the narrative. Fans out with concurrency control.
@@ -12,19 +12,31 @@
 
 import { resolve } from "path";
 import { mkdir } from "fs/promises";
-import { PIPELINE_ROOT, callClaude, parseEncounters, createLimiter, encId } from "./lib.ts";
+import { PIPELINE_ROOT, callClaude, createLimiter, encId } from "./lib.ts";
+import {
+  generateJsonArtifact,
+  loadEncounterTimeline,
+  loadProviderMap,
+  normalizeInventorySidecar,
+} from "./artifacts.ts";
 
-const MAX_CONCURRENCY = 3;
+function parseConcurrency(argv = process.argv, fallback = 3): number {
+  const idx = argv.indexOf("--concurrency");
+  if (idx >= 0 && argv[idx + 1]) return Math.max(1, parseInt(argv[idx + 1], 10) || fallback);
+  return fallback;
+}
 
 async function main() {
   const patientDir = resolve(process.argv[2] ?? "");
   const force = process.argv.includes("--force");
+  const MAX_CONCURRENCY = parseConcurrency();
 
-  const encountersFile = `${patientDir}/encounters.md`;
+  const encountersFile = `${patientDir}/encounters.json`;
   const bioFile = `${patientDir}/biography.md`;
-  if (!patientDir || !await Bun.file(encountersFile).exists() || !await Bun.file(bioFile).exists()) {
+  const providerMapFile = `${patientDir}/provider-map.json`;
+  if (!patientDir || !await Bun.file(encountersFile).exists() || !await Bun.file(bioFile).exists() || !await Bun.file(providerMapFile).exists()) {
     console.error("Usage: bun run steps/04-inventory.ts <patient-dir>");
-    console.error("  <patient-dir> must contain biography.md + encounters.md (run steps 01-02 first)");
+    console.error("  <patient-dir> must contain biography.md + provider-map.json + encounters.json (run steps 01-02 first)");
     process.exit(1);
   }
 
@@ -33,10 +45,11 @@ async function main() {
   await mkdir(inventoryDir, { recursive: true });
 
   const biography = await Bun.file(bioFile).text();
-  const encountersText = await Bun.file(encountersFile).text();
   const systemPrompt = await Bun.file(`${PIPELINE_ROOT}/prompts/inventory.md`).text();
+  const sidecarPrompt = await Bun.file(`${PIPELINE_ROOT}/prompts/inventory-json.md`).text();
 
-  const encounters = parseEncounters(encountersText);
+  const providerMap = await loadProviderMap(providerMapFile);
+  const encounters = (await loadEncounterTimeline(encountersFile, providerMap)).encounters;
   console.log(`[04] Found ${encounters.length} encounters to inventory`);
 
   if (encounters.length === 0) {
@@ -50,14 +63,16 @@ async function main() {
   const results = await Promise.allSettled(
     encounters.map(enc =>
       limit(async () => {
-        const id = encId(enc.index);
+        const id = encId(enc.encounter_index);
         const outFile = `${inventoryDir}/enc-${id}.md`;
-        if (!force && await Bun.file(outFile).exists()) {
+        const jsonFile = `${inventoryDir}/enc-${id}.json`;
+        const markdownExists = await Bun.file(outFile).exists();
+        const jsonExists = await Bun.file(jsonFile).exists();
+        if (!force && markdownExists && jsonExists) {
           completed++;
           return;
         }
 
-        // Read the clinical note if it exists (from step 03)
         const noteFile = `${notesDir}/enc-${id}.txt`;
         let noteContext = "";
         if (await Bun.file(noteFile).exists()) {
@@ -65,15 +80,36 @@ async function main() {
           noteContext = `\n\n## Clinical Note for This Encounter\n\n${noteText}\n\nThe resource inventory below MUST be consistent with this clinical note. Every vital sign, lab value, diagnosis, and medication mentioned in the note should have a corresponding FHIR resource.`;
         }
 
-        const result = await callClaude({
-          systemPrompt,
-          userMessage: `## Patient Context\n\n${biography}\n\n## This Encounter\n\n${enc.text}${noteContext}`,
-          model: "haiku",
-        });
+        let markdown = markdownExists ? await Bun.file(outFile).text() : "";
+        if (force || !markdownExists) {
+          markdown = await callClaude({
+            systemPrompt,
+            userMessage: [
+              `## Encounter Contract\n\`\`\`json\n${JSON.stringify(enc, null, 2)}\n\`\`\``,
+              `## This Encounter Narrative\n\n### ${enc.header}\n\n${enc.body_markdown}${noteContext}`,
+              `## Patient Background\n\n${biography}`,
+            ].join("\n\n"),
+          });
 
-        await Bun.write(outFile, result);
+          await Bun.write(outFile, markdown);
+        }
+
+        if (force || !jsonExists) {
+          const sidecarRaw = await generateJsonArtifact({
+            systemPrompt: sidecarPrompt,
+            userMessage: [
+              `## Encounter Contract\n\`\`\`json\n${JSON.stringify(enc, null, 2)}\n\`\`\``,
+              `## Inventory Markdown\n\n${markdown}`,
+              noteContext ? `## Clinical Note\n\n${noteContext.replace(/^\n+/, "")}` : "",
+            ].filter(Boolean).join("\n\n"),
+            repairLabel: `inventory JSON for ${enc.encounter_id}`,
+          });
+          const inventorySidecar = normalizeInventorySidecar(sidecarRaw, enc);
+          await Bun.write(jsonFile, JSON.stringify(inventorySidecar, null, 2));
+        }
+
         completed++;
-        console.log(`[04] (${completed}/${encounters.length}) enc-${id} — ${enc.heading}`);
+        console.log(`[04] (${completed}/${encounters.length}) enc-${id} — ${enc.header}`);
       })
     )
   );

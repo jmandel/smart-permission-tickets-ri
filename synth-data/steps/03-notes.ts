@@ -2,7 +2,7 @@
 /**
  * Step 03: Generate clinical notes per encounter (fan-out)
  *
- * Input:  patients/<slug>/biography.md, patients/<slug>/encounters.md
+ * Input:  patients/<slug>/biography.md, patients/<slug>/provider-map.json, patients/<slug>/encounters.json
  * Output: patients/<slug>/notes/enc-NNN.txt (one per encounter)
  *
  * Generates plain-text clinical notes. These feed into step 04 (inventory)
@@ -11,19 +11,26 @@
 
 import { resolve } from "path";
 import { mkdir } from "fs/promises";
-import { PIPELINE_ROOT, callClaude, parseEncounters, createLimiter, encId } from "./lib.ts";
+import { PIPELINE_ROOT, callClaude, createLimiter, encId } from "./lib.ts";
+import { loadEncounterTimeline, loadProviderMap } from "./artifacts.ts";
 
-const MAX_CONCURRENCY = 3;
+function parseConcurrency(argv = process.argv, fallback = 3): number {
+  const idx = argv.indexOf("--concurrency");
+  if (idx >= 0 && argv[idx + 1]) return Math.max(1, parseInt(argv[idx + 1], 10) || fallback);
+  return fallback;
+}
 
 async function main() {
   const patientDir = resolve(process.argv[2] ?? "");
   const force = process.argv.includes("--force");
+  const MAX_CONCURRENCY = parseConcurrency();
 
-  const encountersFile = `${patientDir}/encounters.md`;
+  const encountersFile = `${patientDir}/encounters.json`;
   const bioFile = `${patientDir}/biography.md`;
-  if (!patientDir || !await Bun.file(encountersFile).exists() || !await Bun.file(bioFile).exists()) {
+  const providerMapFile = `${patientDir}/provider-map.json`;
+  if (!patientDir || !await Bun.file(encountersFile).exists() || !await Bun.file(bioFile).exists() || !await Bun.file(providerMapFile).exists()) {
     console.error("Usage: bun run steps/03-notes.ts <patient-dir>");
-    console.error("  <patient-dir> must contain biography.md + encounters.md");
+    console.error("  <patient-dir> must contain biography.md + provider-map.json + encounters.json");
     process.exit(1);
   }
 
@@ -31,10 +38,10 @@ async function main() {
   await mkdir(notesDir, { recursive: true });
 
   const biography = await Bun.file(bioFile).text();
-  const encountersText = await Bun.file(encountersFile).text();
   const systemPrompt = await Bun.file(`${PIPELINE_ROOT}/prompts/notes.md`).text();
 
-  const encounters = parseEncounters(encountersText);
+  const providerMap = await loadProviderMap(providerMapFile);
+  const encounters = (await loadEncounterTimeline(encountersFile, providerMap)).encounters;
   console.log(`[03] Found ${encounters.length} encounters for note generation`);
 
   if (encounters.length === 0) {
@@ -48,7 +55,7 @@ async function main() {
   const results = await Promise.allSettled(
     encounters.map(enc =>
       limit(async () => {
-        const outFile = `${notesDir}/enc-${encId(enc.index)}.txt`;
+        const outFile = `${notesDir}/enc-${encId(enc.encounter_index)}.txt`;
         if (!force && await Bun.file(outFile).exists()) {
           completed++;
           return;
@@ -56,13 +63,16 @@ async function main() {
 
         const result = await callClaude({
           systemPrompt,
-          userMessage: `## Patient Context\n\n${biography}\n\n## This Encounter\n\n${enc.text}`,
-          model: "haiku",
+          userMessage: [
+            `## Encounter Contract\n\`\`\`json\n${JSON.stringify(enc, null, 2)}\n\`\`\``,
+            `## Encounter Narrative\n\n### ${enc.header}\n\n${enc.body_markdown}`,
+            `## Patient Background\n\n${biography}`,
+          ].join("\n\n"),
         });
 
         await Bun.write(outFile, result);
         completed++;
-        console.log(`[03] (${completed}/${encounters.length}) ${enc.heading}`);
+        console.log(`[03] (${completed}/${encounters.length}) ${enc.header}`);
       })
     )
   );

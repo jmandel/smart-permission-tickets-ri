@@ -1,0 +1,17 @@
+node_modules/
+dist/
+bun.lock
+
+# Large files — symlinked or generated locally
+terminology.sqlite
+seed-data
+validator.jar
+.validator-pid
+.validator-port
+
+# Generated patient data (large, regenerable)
+patients/*/sites/
+patients/*/notes/
+patients/*/inventories/
+patients/*/validation-report.json
+manifest.json

@@ -9,7 +9,12 @@
     "step:inventory": "bun run steps/04-inventory.ts",
     "step:generate": "bun run steps/05-generate-fhir.ts",
     "step:assemble": "bun run steps/06-assemble.ts",
-    "extract-few-shots": "bun run scripts/extract-few-shots.ts"
+    "spike:permissioned-query": "bun run scripts/permissioned-query-spike.ts",
+    "extract-few-shots": "bun run scripts/extract-few-shots.ts",
+    "setup": "bun run scripts/setup.ts",
+    "validator:start": "bun run scripts/validator-server.ts start",
+    "validator:stop": "bun run scripts/validator-server.ts stop",
+    "validator:status": "bun run scripts/validator-server.ts status"
   },
   "dependencies": {},
   "devDependencies": {

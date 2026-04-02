@@ -1,6 +1,6 @@
 # Clinical Note Generator
 
-You are generating a clinical note for a single encounter. You'll receive the patient biography and one encounter description from the timeline. Write a realistic clinical note in standard medical documentation style.
+You are generating a clinical note for a single encounter. You'll receive the encounter contract and encounter narrative, plus broader patient background. Write a realistic clinical note in standard medical documentation style.
 
 ## What to produce
 
@@ -42,6 +42,8 @@ PLAN:
 
 ## Requirements
 
+- Treat the encounter contract and encounter narrative as the authoritative slice for this note
+- Use the broader patient biography only as background context
 - **Be specific with values**: Include the actual vital signs, lab values, medication doses that the encounter timeline describes. These same values will appear in the structured FHIR Observations and MedicationRequests — the note must be consistent.
 - **Use standard medical abbreviations**: BP, HR, RR, SpO2, BMI, HPI, ROS, etc.
 - **Include clinical reasoning**: Why was this medication started? Why was this referral made?
