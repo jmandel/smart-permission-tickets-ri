@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent as ReactPointerEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 
 import { buildFetchCurl, decodeJwtPayload } from "../demo";
 import { fetchJson } from "../lib/viewer-client";
@@ -10,7 +10,6 @@ import {
   buildEncounterDashboard,
   buildEncounterScale,
   diffDaysUtc,
-  encounterIntersects,
   groupResourcesByType,
   type ViewerEncounterDashboard,
   type ViewerResourceItem,
@@ -23,6 +22,7 @@ type TimelineDragState = {
   originIndex: number;
   start: number;
   end: number;
+  gripOffsetPx: number;
 };
 
 export function Viewer() {
@@ -73,7 +73,6 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   const setSelectedEncounterKeys = useViewerStore((state) => state.setSelectedEncounterKeys);
   const brushRef = useRef<HTMLDivElement | null>(null);
   const [dragState, setDragState] = useState<TimelineDragState | null>(null);
-  const [resourcePaneTab, setResourcePaneTab] = useState<"overview" | "notes" | "inventory">("overview");
 
   useEffect(() => {
     void initSession(encodedSession);
@@ -87,9 +86,28 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   const safeTimelineEndIndex = Math.min(Math.max(timelineEndIndex, safeTimelineStartIndex), maxTimelineIndex);
   const timelineStart = timelineScale ? addDaysUtc(timelineScale.start, safeTimelineStartIndex) : "";
   const timelineEnd = timelineScale ? addDaysUtc(timelineScale.start, safeTimelineEndIndex) : "";
+  const selectionGeometry = useMemo(
+    () =>
+      timelineScale
+        ? timelineWindowPosition(
+            safeTimelineStartIndex,
+            safeTimelineEndIndex,
+            timelineScale,
+          )
+        : { left: 0, width: 100, right: 100 },
+    [safeTimelineEndIndex, safeTimelineStartIndex, timelineScale],
+  );
+  const selectionLeft = selectionGeometry.left;
+  const selectionRight = selectionGeometry.right;
+  const selectionWidth = selectionGeometry.width;
   const visibleEncounters = useMemo(
-    () => encounterDashboard.encounters.filter((encounter) => encounterIntersects(encounter, timelineStart, timelineEnd)),
-    [encounterDashboard.encounters, timelineStart, timelineEnd],
+    () =>
+      encounterDashboard.encounters.filter((encounter) =>
+        timelineScale
+          ? encounterIntersectsWindowGeometry(encounter, timelineScale, selectionLeft, selectionRight)
+          : true,
+      ),
+    [encounterDashboard.encounters, selectionLeft, selectionRight, timelineScale],
   );
   const visibleEncounterKeySet = useMemo(() => new Set(visibleEncounters.map((encounter) => encounter.key)), [visibleEncounters]);
   const effectiveSelectedEncounterKeys = useMemo(() => {
@@ -145,19 +163,31 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       ].sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
     [selectedEncounterGroups, selectedEncounterNotes.length],
   );
-  const selectedEncounterRecentNotes = useMemo(() => selectedEncounterNotes.slice(0, 4), [selectedEncounterNotes]);
-  const selectedEncounterRecentResources = useMemo(
+  const selectedEncounterNoteLaunchGroups = useMemo(
     () =>
-      selectedEncounterGroups
-        .flatMap((group) => group.items)
+      selectedEncounters
+        .filter((encounter) => encounter.notes.length > 0)
+        .map((encounter) => ({
+          encounter,
+          notes: encounter.notes,
+        })),
+    [selectedEncounters],
+  );
+  const selectedEncounterNoteCards = useMemo(
+    () =>
+      selectedEncounterNoteLaunchGroups
+        .flatMap(({ encounter, notes }) => notes.map((note) => ({ encounter, note })))
         .sort((left, right) => {
-          const leftDate = left.timelineDate ?? "";
-          const rightDate = right.timelineDate ?? "";
+          const leftDate = left.note.timelineDate ?? left.encounter.startDate ?? "";
+          const rightDate = right.note.timelineDate ?? right.encounter.startDate ?? "";
           if (leftDate !== rightDate) return rightDate.localeCompare(leftDate);
-          return left.label.localeCompare(right.label);
-        })
-        .slice(0, 6),
-    [selectedEncounterGroups],
+          return left.note.label.localeCompare(right.note.label);
+        }),
+    [selectedEncounterNoteLaunchGroups],
+  );
+  const selectedEncountersWithoutNotes = useMemo(
+    () => selectedEncounters.filter((encounter) => encounter.notes.length === 0),
+    [selectedEncounters],
   );
   const timelineTicks = useMemo(() => (timelineScale ? buildTimelineTicks(timelineScale) : []), [timelineScale]);
   const siteStyles = useMemo(
@@ -192,15 +222,12 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       }),
     [selectedEncounterGroups, selectedEncounterNotes, selectedEncounterTypeCounts, siteStyles],
   );
-  const selectionLeft = maxTimelineIndex === 0 ? 0 : (safeTimelineStartIndex / maxTimelineIndex) * 100;
-  const selectionRight = maxTimelineIndex === 0 ? 100 : (safeTimelineEndIndex / maxTimelineIndex) * 100;
-  const selectionWidth = Math.max(selectionRight - selectionLeft, 1.5);
 
   const handleToggleEncounterSelection = (encounterKey: string) => {
     // If the encounter is outside the visible window, expand the window to include it
     if (timelineScale) {
       const encounter = encounterDashboard.encounters.find((e) => e.key === encounterKey);
-      if (encounter && !encounterIntersects(encounter, timelineStart, timelineEnd)) {
+      if (encounter && !visibleEncounterKeySet.has(encounter.key)) {
         const encStart = (encounter.startDate ?? encounter.endDate ?? "").slice(0, 10);
         const encEnd = (encounter.endDate ?? encounter.startDate ?? encStart).slice(0, 10);
         if (encStart) {
@@ -221,14 +248,40 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
     setSelectedEncounterKeys(nextSelectedKeys);
   };
 
-  const handleEncounterCardKeyDown = (event: ReactKeyboardEvent<HTMLElement>, encounterKey: string) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    event.preventDefault();
-    handleToggleEncounterSelection(encounterKey);
-  };
-
   const selectAllVisibleEncounters = () => {
     setSelectedEncounterKeys(visibleEncounters.map((encounter) => encounter.key));
+  };
+
+  const expandTimelineToAll = () => {
+    if (!timelineScale) return;
+    setTimelineWindow(0, maxTimelineIndex);
+    setSelectedEncounterKeys(encounterDashboard.encounters.map((encounter) => encounter.key));
+  };
+
+  const copyAllNotes = async () => {
+    const text = buildNoteExportText(selectedEncounterNoteCards);
+    if (!text) return;
+    await navigator.clipboard.writeText(text);
+  };
+
+  const focusLane = (siteSlug: string) => {
+    if (!timelineScale) return;
+    const laneEncounters = encounterDashboard.encounters.filter((encounter) => encounter.siteSlug === siteSlug);
+    if (laneEncounters.length === 0) return;
+    const laneStart = laneEncounters
+      .map((encounter) => encounter.startDate ?? encounter.endDate ?? "")
+      .filter(Boolean)
+      .sort()[0];
+    const laneEnd = laneEncounters
+      .map((encounter) => encounter.endDate ?? encounter.startDate ?? "")
+      .filter(Boolean)
+      .sort()
+      .at(-1);
+    if (!laneStart || !laneEnd) return;
+    const nextStart = diffDaysUtc(timelineScale.start, laneStart);
+    const nextEnd = diffDaysUtc(timelineScale.start, laneEnd);
+    setTimelineWindow(nextStart, nextEnd);
+    setSelectedEncounterKeys(laneEncounters.map((encounter) => encounter.key));
   };
 
   useEffect(() => {
@@ -242,7 +295,8 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      const nextIndex = clientXToIndex(event.clientX);
+      const boundaryClientX = event.clientX - dragState.gripOffsetPx;
+      const nextIndex = clientXToIndex(boundaryClientX);
       if (dragState.mode === "start") {
         setTimelineWindow(Math.min(nextIndex, dragState.end), dragState.end);
         return;
@@ -277,11 +331,19 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
     const rect = brushRef.current.getBoundingClientRect();
     const ratio = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
     const originIndex = Math.round(ratio * maxTimelineIndex);
+    const boundaryPct =
+      mode === "start"
+        ? selectionLeft
+        : mode === "end"
+          ? selectionRight
+          : ratio * 100;
+    const boundaryClientX = rect.left + (boundaryPct / 100) * rect.width;
     setDragState({
       mode,
       originIndex,
       start: safeTimelineStartIndex,
       end: safeTimelineEndIndex,
+      gripOffsetPx: event.clientX - boundaryClientX,
     });
   };
 
@@ -334,22 +396,22 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
           </div>
         </div>
 
-        <div className="summary-grid">
-          <div className="summary-card">
+        <div className="viewer-overview-strip">
+          <div className="viewer-overview-item">
             <span className="summary-label">Connected sites</span>
             <strong>{siteRuns.length}</strong>
           </div>
-          <div className="summary-card">
-            <span className="summary-label">Resources loaded</span>
-            <strong>{aggregatedResources.length}</strong>
+          <div className="viewer-overview-item">
+            <span className="summary-label">Resources</span>
+            <strong>{aggregatedResources.length} loaded</strong>
           </div>
-          <div className="summary-card">
-            <span className="summary-label">Client registration</span>
+          <div className="viewer-overview-item viewer-overview-item-wide">
+            <span className="summary-label">Client</span>
             <strong>{sharedClient ? sharedClient.clientName : launch.mode === "anonymous" || launch.mode === "open" ? "Not required" : "Pending"}</strong>
           </div>
-          <div className="summary-card">
-            <span className="summary-label">Access flow</span>
-            <strong>{launch.mode === "anonymous" ? "Preview links only" : "Per-site token exchange"}</strong>
+          <div className="viewer-overview-item">
+            <span className="summary-label">Flow</span>
+            <strong>{launch.mode === "anonymous" ? "Preview only" : "Per-site exchange"}</strong>
           </div>
         </div>
 
@@ -363,120 +425,9 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         )}
 
         <section className="subpanel viewer-section">
-          <h3>Sites</h3>
-          {error && <p className="error-text">{error}</p>}
-          <div className="site-session-grid">
-            {siteRuns.map((run) => {
-              const patientId = run.patientId ?? run.tokenClaims?.patient ?? run.site.patientId ?? null;
-              const previewTarget = patientId
-                ? `${launch.origin}${run.site.authSurface.previewFhirBasePath}/Patient/${patientId}`
-                : null;
-              const tone = siteStyles[run.site.siteSlug];
-              return (
-                <article key={run.site.siteSlug} className="site-session-card" style={siteCardStyle(tone)}>
-                  <div className="site-session-head">
-                    <div className="site-session-title">
-                      <div className="site-session-heading-row">
-                        <span className="site-color-dot" style={{ background: tone.solid }} aria-hidden="true" />
-                        <h4>{run.site.orgName}</h4>
-                      </div>
-                      <div className="site-session-meta-row">
-                        <span className="state-pill">{run.site.jurisdiction || "No state"}</span>
-                      </div>
-                    </div>
-                    <div className="site-session-toolbar">
-                      <span className={`session-phase session-phase-${run.phase}`}>{humanizePhase(run.phase)}</span>
-                      <SplitAction
-                        primary={{
-                          label: "Open",
-                          onSelect: previewTarget
-                            ? () =>
-                                void inspectRemoteArtifact({
-                                  title: `${run.site.orgName} preview patient`,
-                                  subtitle: run.site.authSurface.previewFhirBasePath,
-                                  targetUrl: previewTarget,
-                                  metadata: buildInspectionMetadata({
-                                    url: previewTarget,
-                                    curl: buildFetchCurl(previewTarget),
-                                  }),
-                                })
-                            : undefined,
-                          disabled: !previewTarget,
-                        }}
-                        secondary={[
-                          {
-                            label: "Copy preview curl",
-                            onSelect: () => previewTarget ? void navigator.clipboard.writeText(buildFetchCurl(previewTarget)) : undefined,
-                            feedbackLabel: "Copied",
-                          },
-                          ...(run.tokenResponse?.access_token
-                            ? [
-                                {
-                                  label: "Copy token",
-                                  onSelect: () => void navigator.clipboard.writeText(run.tokenResponse!.access_token),
-                                  feedbackLabel: "Copied",
-                                },
-                              ]
-                            : []),
-                        ]}
-                      />
-                    </div>
-                  </div>
-                  <div className="site-session-stats">
-                    <div className="site-session-stat">
-                      <span className="summary-label">Loaded</span>
-                      <strong>{run.resources.length}</strong>
-                    </div>
-                    <div className="site-session-stat">
-                      <span className="summary-label">Skipped</span>
-                      <strong>{run.queryErrors.length}</strong>
-                    </div>
-                  </div>
-                  <details className="site-session-technical">
-                    <summary>Technical details</summary>
-                    <dl className="mini-definition-list site-session-details">
-                      <div>
-                        <dt>FHIR base</dt>
-                        <dd className="mini-definition-value mono-value truncate-value" title={run.site.authSurface.fhirBasePath}>
-                          {compactDisplayValue(run.site.authSurface.fhirBasePath, 18, 10)}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>Token endpoint</dt>
-                        <dd className="mini-definition-value mono-value truncate-value" title={run.site.authSurface.tokenPath}>
-                          {compactDisplayValue(run.site.authSurface.tokenPath, 18, 10)}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>Patient ID</dt>
-                        <dd className="mini-definition-value mono-value truncate-value" title={`Patient/${patientId}`}>
-                          {patientId ? compactDisplayValue(patientId, 8, 8) : "Unavailable"}
-                        </dd>
-                      </div>
-                    </dl>
-                  </details>
-                  {run.queryErrors.length > 0 && (
-                    <details className="site-query-errors">
-                      <summary>Skipped or failed queries</summary>
-                      <ul>
-                        {run.queryErrors.map((item) => (
-                          <li key={`${item.relativePath}:${item.message}`}>
-                            <strong>{item.label}</strong>: {item.message}
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  )}
-                  {run.error && <p className="error-text">{run.error}</p>}
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="subpanel viewer-section">
           <h3>Authorization Artifacts</h3>
           <p className="subtle">Inspect the network-level authorization flow first, then the site-by-site exchanges that follow from it.</p>
+          {error && <p className="error-text">{error}</p>}
           <div className="artifact-toolbar">
             {launch.signedTicket && (
               <SplitAction
@@ -621,9 +572,17 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                 {siteRuns.map((run) => (
                   <tr key={`${run.site.siteSlug}-artifact-row`}>
                     <td>
-                      <div className="artifact-site-cell">
-                        <strong>{run.site.orgName}</strong>
-                        <span className="state-pill">{run.site.jurisdiction || "No state"}</span>
+                      <div className="artifact-site-stack" style={siteListItemStyle(siteStyles[run.site.siteSlug])}>
+                        <div className="artifact-site-cell">
+                          <strong>{run.site.orgName}</strong>
+                        </div>
+                        <div className="artifact-site-meta subtle">
+                          <span className="state-pill">{run.site.jurisdiction || "No state"}</span>
+                          <span className={`session-phase session-phase-${run.phase}`}>{humanizePhase(run.phase)}</span>
+                          <span><strong>{run.resources.length}</strong> loaded</span>
+                          <span><strong>{run.queryErrors.length}</strong> skipped</span>
+                        </div>
+                        {run.error && <p className="error-text artifact-site-error">{run.error}</p>}
                       </div>
                     </td>
                     <td>{renderArtifactCell(`SMART discovery · ${run.site.orgName}`, run.smartConfig)}</td>
@@ -709,8 +668,18 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                     <span className="summary-label">Window</span>
                     <strong>{formatTimelineWindow(timelineStart, timelineEnd)}</strong>
                   </div>
-                  <div className="subtle">
-                    {visibleEncounters.length} encounter{visibleEncounters.length !== 1 && "s"} visible · {encounterDashboard.encounters.length} total
+                  <div className="timeline-range-actions">
+                    <div className="subtle">
+                      {visibleEncounters.length} encounter{visibleEncounters.length !== 1 && "s"} visible · {encounterDashboard.encounters.length} total
+                    </div>
+                    <button
+                      type="button"
+                      className="button mini"
+                      onClick={expandTimelineToAll}
+                      disabled={safeTimelineStartIndex === 0 && safeTimelineEndIndex === maxTimelineIndex}
+                    >
+                      All
+                    </button>
                   </div>
                 </div>
                 <div className="timeline-overview">
@@ -720,14 +689,19 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                         const visibleCount = visibleEncounters.filter((encounter) => encounter.siteSlug === lane.siteSlug).length;
                         const tone = siteStyles[lane.siteSlug];
                         return (
-                          <div key={`${lane.siteSlug}:label`} className="timeline-overview-label">
+                          <button
+                            key={`${lane.siteSlug}:label`}
+                            type="button"
+                            className="timeline-overview-label"
+                            onClick={() => focusLane(lane.siteSlug)}
+                          >
                             <div className="timeline-lane-heading">
                               <span className="site-color-dot" style={{ background: tone.solid }} aria-hidden="true" />
                               <strong>{lane.siteName}</strong>
                               {lane.siteJurisdiction && <span className="state-pill">{lane.siteJurisdiction}</span>}
                             </div>
                             <span className="timeline-count-badge">{visibleCount}</span>
-                          </div>
+                          </button>
                         );
                       })}
                     </div>
@@ -797,442 +771,202 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                 </div>
               </div>
 
-              <div className="encounter-detail-grid">
-                <section className="encounter-detail-card">
-                  <div className="section-header">
-                    <div>
-                      <h4>Encounters in window</h4>
-                      <p className="subtle">
-                        Click encounter cards or timeline pills to include or exclude them from the resource pane.
-                      </p>
-                    </div>
-                    {visibleEncounters.length > 0 && (
-                      <button
-                        type="button"
-                        className="button mini"
-                        onClick={selectAllVisibleEncounters}
-                        disabled={selectedEncounters.length === visibleEncounters.length}
-                      >
-                        Use all visible
-                      </button>
-                    )}
+              <section className="encounter-detail-card">
+                <div className="section-header">
+                  <div>
+                    <h4>Selection workspace</h4>
+                    <p className="subtle">
+                      Use the timeline to shape the working set. The map shows type density, and the note list is the main drill-in path into encounter context.
+                    </p>
                   </div>
-                  {visibleEncounters.length > 0 ? (
-                    <div className="encounter-selection-list">
-                      {visibleEncounters.map((encounter) => {
-                        const isSelected = selectedEncounterKeySet.has(encounter.key);
-                        const tone = siteStyles[encounter.siteSlug];
-                        return (
-                          <article
-                            key={encounter.key}
-                            className={`encounter-selection-card${isSelected ? " active" : ""}`}
-                            style={siteCardStyle(tone)}
-                            role="button"
-                            tabIndex={0}
-                            aria-pressed={isSelected}
-                            onClick={() => handleToggleEncounterSelection(encounter.key)}
-                            onKeyDown={(event) => handleEncounterCardKeyDown(event, encounter.key)}
-                          >
-                            <div className={`encounter-selection-state${isSelected ? " active" : ""}`}>
-                              {isSelected ? "Included" : "Excluded"}
-                            </div>
-                            {encounter.fullUrl && (
-                              <div
-                                className="encounter-selection-actions"
-                                onClick={(event) => event.stopPropagation()}
-                                onKeyDown={(event) => event.stopPropagation()}
-                              >
-                                <SplitAction
-                                  primary={{
-                                    label: "Inspect",
-                                    onSelect: () => openClinicalArtifactViewer(encounter.key),
-                                  }}
-                                  secondary={[
-                                    {
-                                      label: "Copy curl",
-                                      onSelect: () =>
-                                        void navigator.clipboard.writeText(
-                                          buildFetchCurl(
-                                            encounter.fullUrl!,
-                                            accessTokenForSite(siteRuns, encounter.siteSlug),
-                                            proofForSite(siteRuns, encounter.siteSlug),
-                                          ),
-                                        ),
-                                      feedbackLabel: "Copied",
-                                    },
-                                  ]}
-                                />
-                              </div>
-                            )}
-                            <div className="encounter-selection-main">
-                              <div className="encounter-selection-topline">
-                                <div className="encounter-selection-heading">
-                                  <strong>{encounter.title}</strong>
-                                  {encounter.siteJurisdiction && <span className="state-pill">{encounter.siteJurisdiction}</span>}
-                                </div>
-                              </div>
-                              <p className="subtle">
-                                {encounter.siteName} · {formatTimelineWindow(encounter.startDate ?? "", encounter.endDate ?? "")}
-                              </p>
-                              <div className="encounter-selection-metrics">
-                                <span>{encounter.resources.length} resources</span>
-                                <span>{encounter.notes.length} note{encounter.notes.length === 1 ? "" : "s"}</span>
-                              </div>
-                              {encounter.summary && <p className="subtle encounter-selection-summary">{encounter.summary}</p>}
-                            </div>
-                          </article>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <p className="subtle">No encounters fall inside the selected window.</p>
+                  {visibleEncounters.length > 0 && (
+                    <button
+                      type="button"
+                      className="button mini"
+                      onClick={selectAllVisibleEncounters}
+                      disabled={selectedEncounters.length === visibleEncounters.length}
+                    >
+                      Use all visible
+                    </button>
                   )}
-                </section>
-
-                <section className="encounter-detail-card">
-                  <div className="section-header">
-                    <div>
-                      <h4>Selection workspace</h4>
-                      <p className="subtle">
-                        {selectedEncounters.length} encounter{selectedEncounters.length !== 1 && "s"} selected across {selectedEncounterSiteCount} site{selectedEncounterSiteCount !== 1 && "s"}.
-                      </p>
+                </div>
+                {selectedEncounters.length > 0 ? (
+                  <>
+                    <div className="encounter-detail-stats">
+                      <div className="summary-card compact">
+                        <span className="summary-label">Selected encounters</span>
+                        <strong>{selectedEncounters.length}</strong>
+                      </div>
+                      <div className="summary-card compact">
+                        <span className="summary-label">Linked resources</span>
+                        <strong>{selectedEncounterResourceCount}</strong>
+                      </div>
+                      <div className="summary-card compact">
+                        <span className="summary-label">Notes</span>
+                        <strong>{selectedEncounterNotes.length}</strong>
+                      </div>
+                      <div className="summary-card compact">
+                        <span className="summary-label">Sites represented</span>
+                        <strong>{selectedEncounterSiteCount}</strong>
+                      </div>
                     </div>
-                  </div>
-                  {selectedEncounters.length > 0 ? (
-                    <>
-                      <div className="encounter-detail-stats">
-                        <div className="summary-card">
-                          <span className="summary-label">Selected encounters</span>
-                          <strong>{selectedEncounters.length}</strong>
+                    <div className="encounter-overview-pane">
+                      <section className="encounter-overview-section">
+                        <div className="section-header">
+                          <div>
+                            <h5>Resource map</h5>
+                            <p className="subtle">Compact type counts with per-site distribution across the current selection.</p>
+                          </div>
                         </div>
-                        <div className="summary-card">
-                          <span className="summary-label">Linked resources</span>
-                          <strong>{selectedEncounterResourceCount}</strong>
-                        </div>
-                        <div className="summary-card">
-                          <span className="summary-label">Notes</span>
-                          <strong>{selectedEncounterNotes.length}</strong>
-                        </div>
-                        <div className="summary-card">
-                          <span className="summary-label">Sites represented</span>
-                          <strong>{selectedEncounterSiteCount}</strong>
-                        </div>
-                      </div>
-                      <div className="encounter-pane-tabs" role="tablist" aria-label="Selection workspace views">
-                        {[
-                          { key: "overview", label: "Overview" },
-                          { key: "notes", label: "Notes" },
-                          { key: "inventory", label: "Inventory" },
-                        ].map((tab) => (
-                          <button
-                            key={tab.key}
-                            type="button"
-                            role="tab"
-                            aria-selected={resourcePaneTab === tab.key}
-                            className={`encounter-pane-tab${resourcePaneTab === tab.key ? " active" : ""}`}
-                            onClick={() => setResourcePaneTab(tab.key as typeof resourcePaneTab)}
-                          >
-                            {tab.label}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  ) : null}
-                  {selectedEncounters.length > 0 ? (
-                    resourcePaneTab === "overview" ? (
-                      <div className="encounter-overview-pane">
-                        {selectedEncounterTypeCounts.length > 0 && (
-                          <section className="encounter-overview-section">
-                            <div className="section-header">
-                              <div>
-                                <h5>Resource map</h5>
-                                <p className="subtle">Compact type counts with per-site distribution across the current selection.</p>
-                              </div>
-                            </div>
-                            <div className="resource-density-grid">
-                              {selectedEncounterTypeMap.map((entry) => (
-                                <div key={entry.label} className="resource-density-tile">
-                                  <div className="resource-density-head">
-                                    <span className="summary-label">{entry.label}</span>
-                                    <strong>{entry.total}</strong>
-                                  </div>
-                                  <div className="resource-density-bars" aria-hidden="true">
-                                    {entry.siteCounts.map((site) => (
-                                      <span
-                                        key={`${entry.label}:${site.siteSlug}`}
-                                        className="resource-density-bar"
-                                        style={{
-                                          width: `${Math.max((site.count / entry.total) * 100, 8)}%`,
-                                          background: site.tone?.solid ?? "var(--accent)",
-                                        }}
-                                        title={`${site.siteSlug}: ${site.count}`}
-                                      />
-                                    ))}
-                                  </div>
-                                  <div className="resource-density-sites">
-                                    {entry.siteCounts.map((site) => (
-                                      <span key={`${entry.label}:${site.siteSlug}:label`}>
-                                        {site.count}
-                                      </span>
-                                    ))}
-                                  </div>
+                        {selectedEncounterTypeCounts.length > 0 ? (
+                          <div className="resource-density-grid">
+                            {selectedEncounterTypeMap.map((entry) => (
+                              <div key={entry.label} className="resource-density-tile">
+                                <div className="resource-density-head">
+                                  <span className="summary-label">{entry.label}</span>
+                                  <strong>{entry.total}</strong>
                                 </div>
-                              ))}
-                            </div>
-                          </section>
+                                <div className="resource-density-bars" aria-hidden="true">
+                                  {entry.siteCounts.map((site) => (
+                                    <span
+                                      key={`${entry.label}:${site.siteSlug}`}
+                                      className="resource-density-bar"
+                                      style={{
+                                        width: `${Math.max((site.count / entry.total) * 100, 8)}%`,
+                                        background: site.tone?.solid ?? "var(--accent)",
+                                      }}
+                                      title={`${site.siteSlug}: ${site.count}`}
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="subtle">No linked resources were loaded for the selected encounters.</p>
                         )}
-                        <div className="encounter-overview-grid">
-                          <section className="encounter-overview-section">
-                            <div className="section-header">
-                              <div>
-                                <h5>Recent notes</h5>
-                                <p className="subtle">Quick paths into the main documentation for this selection.</p>
-                              </div>
-                            </div>
-                            {selectedEncounterRecentNotes.length > 0 ? (
-                              <div className="result-list compact">
-                                {selectedEncounterRecentNotes.map((note) => (
-                                  <article key={note.key} className="result-item compact" style={siteListItemStyle(siteStyles[note.siteSlug])}>
-                                    <div>
-                                      <h4>{note.label}</h4>
-                                      {note.sublabel && <p className="subtle">{note.sublabel}</p>}
-                                      {extractDocumentReferenceText(note.resource) && (
-                                        <p className="subtle clamp-2">{firstParagraph(extractDocumentReferenceText(note.resource)!)}</p>
-                                      )}
-                                    </div>
-                                    <div className="result-meta">
-                                      <span>{note.siteName}</span>
-                                      <div className="result-actions">
-                                        {note.fullUrl && (
-                                          <SplitAction
-                                            primary={{ label: "Inspect", onSelect: () => openClinicalArtifactViewer(note.key) }}
-                                            secondary={[
-                                              {
-                                                label: "Copy curl",
-                                                onSelect: () =>
-                                                  void navigator.clipboard.writeText(
-                                                    buildFetchCurl(
-                                                      note.fullUrl!,
-                                                      accessTokenForSite(siteRuns, note.siteSlug),
-                                                      proofForSite(siteRuns, note.siteSlug),
-                                                    ),
-                                                  ),
-                                                feedbackLabel: "Copied",
-                                              },
-                                            ]}
-                                          />
-                                        )}
-                                      </div>
-                                    </div>
-                                  </article>
-                                ))}
-                              </div>
-                            ) : (
-                              <p className="subtle">No notes were loaded for the selected encounters.</p>
-                            )}
-                          </section>
-                          <section className="encounter-overview-section">
-                            <div className="section-header">
-                              <div>
-                                <h5>Recent clinical activity</h5>
-                                <p className="subtle">A small recent subset for drill-in, not the full inventory.</p>
-                              </div>
-                            </div>
-                            {selectedEncounterRecentResources.length > 0 ? (
-                              <div className="result-list compact">
-                                {selectedEncounterRecentResources.map((item) => (
-                                  <article key={item.key} className="result-item compact" style={siteListItemStyle(siteStyles[item.siteSlug])}>
-                                    <div>
-                                      <h4>{item.label}</h4>
-                                      {item.sublabel && <p className="subtle">{item.sublabel}</p>}
-                                    </div>
-                                    <div className="result-meta">
-                                      <span>{item.resourceType}</span>
-                                      <div className="result-actions">
-                                        {item.fullUrl && (
-                                          <SplitAction
-                                            primary={{ label: "Inspect", onSelect: () => openClinicalArtifactViewer(item.key) }}
-                                            secondary={[
-                                              {
-                                                label: "Copy curl",
-                                                onSelect: () =>
-                                                  void navigator.clipboard.writeText(
-                                                    buildFetchCurl(
-                                                      item.fullUrl!,
-                                                      accessTokenForSite(siteRuns, item.siteSlug),
-                                                      proofForSite(siteRuns, item.siteSlug),
-                                                    ),
-                                                  ),
-                                                feedbackLabel: "Copied",
-                                              },
-                                            ]}
-                                          />
-                                        )}
-                                      </div>
-                                    </div>
-                                  </article>
-                                ))}
-                              </div>
-                            ) : (
-                              <p className="subtle">No non-note linked resources were loaded for the selected encounters.</p>
-                            )}
-                          </section>
+                      </section>
+
+                      <section className="encounter-overview-section">
+                        <div className="section-header">
+                          <div>
+                            <h5>Encounter notes</h5>
+                            <p className="subtle">Use note cards as the primary drill-in surfaces, with brief encounter context embedded in each one.</p>
+                          </div>
+                          {selectedEncounterNoteCards.length > 0 && (
+                            <button type="button" className="button mini" onClick={() => void copyAllNotes()}>
+                              Copy all notes
+                            </button>
+                          )}
                         </div>
-                      </div>
-                    ) : resourcePaneTab === "notes" ? (
-                      selectedEncounterNotes.length > 0 ? (
-                        <div className="encounter-resource-groups">
-                          <details className="resource-group" open>
-                            <summary>
-                              <span>DocumentReference</span>
-                              <span className="subtle">{selectedEncounterNotes.length}</span>
-                            </summary>
-                            <div className="result-list">
-                              {selectedEncounterNotes.map((note) => (
-                                <article key={note.key} className="result-item" style={siteListItemStyle(siteStyles[note.siteSlug])}>
+                        {selectedEncounterNoteCards.length > 0 ? (
+                          <div className="encounter-note-card-grid">
+                            {selectedEncounterNoteCards.map(({ encounter, note }) => (
+                              <article key={`note-card:${note.key}`} className="encounter-note-card" style={siteCardStyle(siteStyles[note.siteSlug])}>
+                                <div className="encounter-note-card-head">
+                                  <div className="encounter-note-card-copy">
+                                    <h6>{note.label}</h6>
+                                    <p className="subtle encounter-note-card-meta">
+                                      {encounter.title}
+                                      {" · "}
+                                      {encounter.siteName}
+                                      {encounter.siteJurisdiction && <> · {encounter.siteJurisdiction}</>}
+                                      {" · "}
+                                      {formatTimelineWindow(encounter.startDate ?? "", encounter.endDate ?? "")}
+                                      {" · "}
+                                      {encounter.resources.length} resources
+                                    </p>
+                                  </div>
+                                  {note.fullUrl && (
+                                    <SplitAction
+                                      primary={{ label: "Open note", onSelect: () => openClinicalArtifactViewer(note.key) }}
+                                      secondary={[
+                                        {
+                                          label: "Open encounter",
+                                          onSelect: () => openClinicalArtifactViewer(encounter.key),
+                                        },
+                                        {
+                                          label: "Copy curl",
+                                          onSelect: () =>
+                                            void navigator.clipboard.writeText(
+                                              buildFetchCurl(
+                                                note.fullUrl!,
+                                                accessTokenForSite(siteRuns, note.siteSlug),
+                                                proofForSite(siteRuns, note.siteSlug),
+                                              ),
+                                            ),
+                                          feedbackLabel: "Copied",
+                                        },
+                                      ]}
+                                    />
+                                  )}
+                                </div>
+                                {extractDocumentReferenceText(note.resource) && (
+                                  <p className="subtle encounter-note-card-snippet clamp-3">{firstParagraph(extractDocumentReferenceText(note.resource)!)}</p>
+                                )}
+                              </article>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="subtle">No notes were loaded for the selected encounters.</p>
+                        )}
+
+                        {selectedEncountersWithoutNotes.length > 0 && (
+                          <div className="encounter-note-fallbacks">
+                            <div className="section-header">
+                              <div>
+                                <h5>Encounters without notes</h5>
+                                <p className="subtle">These encounters can still be opened directly in the viewer.</p>
+                              </div>
+                            </div>
+                            <div className="encounter-note-fallback-list">
+                              {selectedEncountersWithoutNotes.map((encounter) => (
+                                <article key={`fallback:${encounter.key}`} className="result-item compact" style={siteListItemStyle(siteStyles[encounter.siteSlug])}>
                                   <div>
-                                    <h4>{note.label}</h4>
-                                    {note.sublabel && <p className="subtle">{note.sublabel}</p>}
-                                    {extractDocumentReferenceText(note.resource) && (
-                                      <p className="subtle clamp-3">{firstParagraph(extractDocumentReferenceText(note.resource)!)}</p>
+                                    <h4>{encounter.title}</h4>
+                                    <p className="subtle">
+                                      {encounter.siteName}
+                                      {encounter.siteJurisdiction && <> · {encounter.siteJurisdiction}</>}
+                                      {" · "}
+                                      {formatTimelineWindow(encounter.startDate ?? "", encounter.endDate ?? "")}
+                                    </p>
+                                  </div>
+                                  <div className="result-meta">
+                                    <span>{encounter.resources.length} resources</span>
+                                    {encounter.fullUrl && (
+                                      <div className="result-actions">
+                                        <SplitAction
+                                          primary={{ label: "Open encounter", onSelect: () => openClinicalArtifactViewer(encounter.key) }}
+                                          secondary={[
+                                            {
+                                              label: "Copy curl",
+                                              onSelect: () =>
+                                                void navigator.clipboard.writeText(
+                                                  buildFetchCurl(
+                                                    encounter.fullUrl!,
+                                                    accessTokenForSite(siteRuns, encounter.siteSlug),
+                                                    proofForSite(siteRuns, encounter.siteSlug),
+                                                  ),
+                                                ),
+                                              feedbackLabel: "Copied",
+                                            },
+                                          ]}
+                                        />
+                                      </div>
                                     )}
                                   </div>
-                                  <div className="result-meta">
-                                    <span>{note.resourceType}/{note.id}</span>
-                                    <div className="result-actions">
-                                      {note.fullUrl && (
-                                        <SplitAction
-                                          primary={{
-                                            label: "Inspect",
-                                            onSelect: () => openClinicalArtifactViewer(note.key),
-                                          }}
-                                          secondary={[
-                                            {
-                                              label: "Copy curl",
-                                              onSelect: () =>
-                                                void navigator.clipboard.writeText(
-                                                  buildFetchCurl(
-                                                    note.fullUrl!,
-                                                    accessTokenForSite(siteRuns, note.siteSlug),
-                                                    proofForSite(siteRuns, note.siteSlug),
-                                                  ),
-                                                ),
-                                              feedbackLabel: "Copied",
-                                            },
-                                          ]}
-                                        />
-                                      )}
-                                    </div>
-                                  </div>
                                 </article>
                               ))}
                             </div>
-                          </details>
-                        </div>
-                      ) : (
-                        <p className="subtle">No notes were loaded for the selected encounters.</p>
-                      )
-                    ) : selectedEncounterNotes.length > 0 || selectedEncounterGroups.length > 0 ? (
-                      <div className="encounter-resource-groups">
-                        {selectedEncounterNotes.length > 0 && (
-                          <details className="resource-group" open>
-                            <summary>
-                              <span>DocumentReference</span>
-                              <span className="subtle">{selectedEncounterNotes.length}</span>
-                            </summary>
-                            <div className="result-list">
-                              {selectedEncounterNotes.map((note) => (
-                                <article key={note.key} className="result-item" style={siteListItemStyle(siteStyles[note.siteSlug])}>
-                                  <div>
-                                    <h4>{note.label}</h4>
-                                    {note.sublabel && <p className="subtle">{note.sublabel}</p>}
-                                  </div>
-                                  <div className="result-meta">
-                                    <span>{note.resourceType}/{note.id}</span>
-                                    <div className="result-actions">
-                                      {note.fullUrl && (
-                                        <SplitAction
-                                          primary={{
-                                            label: "Inspect",
-                                            onSelect: () => openClinicalArtifactViewer(note.key),
-                                          }}
-                                          secondary={[
-                                            {
-                                              label: "Copy curl",
-                                              onSelect: () =>
-                                                void navigator.clipboard.writeText(
-                                                  buildFetchCurl(
-                                                    note.fullUrl!,
-                                                    accessTokenForSite(siteRuns, note.siteSlug),
-                                                    proofForSite(siteRuns, note.siteSlug),
-                                                  ),
-                                                ),
-                                              feedbackLabel: "Copied",
-                                            },
-                                          ]}
-                                        />
-                                      )}
-                                    </div>
-                                  </div>
-                                </article>
-                              ))}
-                            </div>
-                          </details>
+                          </div>
                         )}
-                        {selectedEncounterGroups.map((group) => (
-                          <details key={`selected:${group.resourceType}`} className="resource-group" open>
-                            <summary>
-                              <span>{group.resourceType}</span>
-                              <span className="subtle">{group.count}</span>
-                            </summary>
-                            <div className="result-list">
-                              {group.items.map((item) => (
-                                <article key={item.key} className="result-item" style={siteListItemStyle(siteStyles[item.siteSlug])}>
-                                  <div>
-                                    <h4>{item.label}</h4>
-                                    {item.sublabel && <p className="subtle">{item.sublabel}</p>}
-                                  </div>
-                                  <div className="result-meta">
-                                    <span>{item.resourceType}/{item.id}</span>
-                                    <div className="result-actions">
-                                      {item.fullUrl && (
-                                        <SplitAction
-                                          primary={{
-                                            label: "Open",
-                                            onSelect: () => openClinicalArtifactViewer(item.key),
-                                          }}
-                                          secondary={[
-                                            {
-                                              label: "Copy curl",
-                                              onSelect: () =>
-                                                void navigator.clipboard.writeText(
-                                                  buildFetchCurl(
-                                                    item.fullUrl!,
-                                                    accessTokenForSite(siteRuns, item.siteSlug),
-                                                    proofForSite(siteRuns, item.siteSlug),
-                                                  ),
-                                                ),
-                                              feedbackLabel: "Copied",
-                                            },
-                                          ]}
-                                        />
-                                      )}
-                                    </div>
-                                  </div>
-                                </article>
-                              ))}
-                            </div>
-                          </details>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="subtle">No linked non-note resources were loaded for the selected encounters.</p>
-                    )
-                  ) : (
+                      </section>
+                    </div>
+                  </>
+                ) : (
                     <p className="subtle">No encounters are currently selected.</p>
                   )}
-                </section>
-              </div>
+              </section>
             </>
           ) : (
             <p className="subtle">No encounter timeline is available yet.</p>
@@ -1240,8 +974,8 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         </section>
 
         <section className="subpanel viewer-section">
-          <h3>Outside Encounter Context</h3>
-          <p className="subtle">Longitudinal resources without an encounter link are grouped here for the sites currently represented in your encounter selection.</p>
+          <h3>Supporting Context</h3>
+          <p className="subtle">Administrative and longitudinal resources not tied to a specific encounter, limited to the sites represented in your current selection.</p>
           <div className="resource-library">
             {outsideEncounterGroups.map((group) => (
               <details key={group.resourceType} className="resource-group">
@@ -1522,12 +1256,8 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
               {metadataSection}
               {noteText ? (
                 <section className="artifact-note-text">
-                  <h3>Rendered note text</h3>
-                  <div className="viewer-copy-block">
-                    {noteText.split(/\n\s*\n/g).map((paragraph, index) => (
-                      <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph.trim()}</p>
-                    ))}
-                  </div>
+                  <h3>Note text</h3>
+                  <pre className="artifact-note-pre">{noteText.trim()}</pre>
                 </section>
               ) : null}
               {payload.summary && focusNode?.resourceType === "Encounter" ? (
@@ -1554,12 +1284,8 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
             {metadataSection}
             {noteText ? (
               <section className="artifact-note-text">
-                <h3>Rendered note text</h3>
-                <div className="viewer-copy-block">
-                  {noteText.split(/\n\s*\n/g).map((paragraph, index) => (
-                    <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph.trim()}</p>
-                  ))}
-                </div>
+                <h3>Note text</h3>
+                <pre className="artifact-note-pre">{noteText.trim()}</pre>
               </section>
             ) : null}
             <section className="artifact-json-panel">
@@ -1611,6 +1337,7 @@ function formatCompactDate(value: string) {
 }
 
 const MIN_PILL_PCT = 3.5;
+const TIMELINE_SELECTION_PAD_PCT = 0.9;
 
 function encounterBarPosition(encounter: { startDate: string | null; endDate: string | null }, scale: { start: string; totalDays: number }) {
   const startDay = (encounter.startDate ?? encounter.endDate ?? scale.start).slice(0, 10);
@@ -1625,6 +1352,51 @@ function encounterBarPosition(encounter: { startDate: string | null; endDate: st
     left: Math.max(0, Math.min(usable, left)),
     width: Math.max(MIN_PILL_PCT, Math.min(100 - Math.max(0, left), width)),
   };
+}
+
+function timelineWindowPosition(startIndex: number, endIndex: number, scale: { start: string; totalDays: number }) {
+  const startDay = addDaysUtc(scale.start, startIndex);
+  const endDay = addDaysUtc(scale.start, endIndex);
+  const startGeometry = encounterBarPosition({ startDate: startDay, endDate: startDay }, scale);
+  const endGeometry = encounterBarPosition({ startDate: endDay, endDate: endDay }, scale);
+  // Make the visible selection slightly more inclusive than the pill geometry so
+  // the range reads as "covering" the outer pills instead of cutting through them.
+  const clampedLeft = Math.max(0, startGeometry.left - TIMELINE_SELECTION_PAD_PCT);
+  const clampedRight = Math.min(100, endGeometry.left + endGeometry.width + TIMELINE_SELECTION_PAD_PCT);
+  const clampedWidth = Math.max(MIN_PILL_PCT, clampedRight - clampedLeft);
+  return {
+    left: clampedLeft,
+    width: clampedWidth,
+    right: clampedLeft + clampedWidth,
+  };
+}
+
+function encounterIntersectsWindowGeometry(
+  encounter: { startDate: string | null; endDate: string | null },
+  scale: { start: string; totalDays: number },
+  windowLeft: number,
+  windowRight: number,
+) {
+  const position = encounterBarPosition(encounter, scale);
+  const encounterLeft = position.left;
+  const encounterRight = position.left + position.width;
+  return encounterRight >= windowLeft && encounterLeft <= windowRight;
+}
+
+function buildNoteExportText(noteCards: Array<{ encounter: { title: string; siteName: string; siteJurisdiction: string | null; startDate: string | null; endDate: string | null }; note: ViewerResourceItem }>) {
+  const sections = noteCards
+    .map(({ encounter, note }) => {
+      const text = extractDocumentReferenceText(note.resource);
+      if (!text) return null;
+      const heading = [
+        note.label,
+        `${encounter.title} · ${encounter.siteName}${encounter.siteJurisdiction ? ` · ${encounter.siteJurisdiction}` : ""}`,
+        formatTimelineWindow(encounter.startDate ?? "", encounter.endDate ?? ""),
+      ].join("\n");
+      return `${heading}\n\n${text.trim()}`;
+    })
+    .filter((value): value is string => Boolean(value));
+  return sections.join("\n\n---\n\n");
 }
 
 function buildTimelineTicks(scale: { start: string; end: string; totalDays: number }) {

@@ -30,7 +30,7 @@ export function PersonCard({
     >
       <div className="patient-card-header">
         <h3>{person.displayName}</h3>
-        <span className="patient-card-arrow">{selected ? "Selected" : "Choose"}</span>
+        {selected && <span className="patient-card-arrow">Selected</span>}
       </div>
       <p className="patient-card-meta">
         {person.birthDate ?? "unknown DOB"}

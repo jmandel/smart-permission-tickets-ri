@@ -67,14 +67,6 @@ export function App() {
               </div>
             </div>
             <div className="scenario-picker-grid">
-              <button
-                type="button"
-                className={`scenario-card${selectedUseCaseKey === null ? " active" : ""}`}
-                onClick={() => setSelectedUseCaseKey(null)}
-              >
-                <span className="scenario-card-label">All scenarios</span>
-                <strong>{persons.length} patients</strong>
-              </button>
               {useCaseOptions.map((useCase) => (
                 <button
                   key={useCase.key}

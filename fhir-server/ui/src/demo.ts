@@ -72,6 +72,10 @@ export type ConsentValidationIssue = {
   message: string;
 };
 
+function displayYear(date: string | null | undefined) {
+  return date?.slice(0, 4) ?? null;
+}
+
 export function defaultConsentState(person: PersonInfo): ConsentState {
   const selectedSiteSlugs = Object.fromEntries(person.sites.map((site) => [site.siteSlug, false]));
   const selectedStateCodes = Object.fromEntries(
@@ -246,7 +250,7 @@ export function validateConsent(person: PersonInfo, consent: ConsentState): Cons
   }
 
   if (consent.dateMode === "window" && !consent.dateRange.start && !consent.dateRange.end) {
-    issues.push({ section: "time", message: "Enter a generated start date, end date, or both." });
+    issues.push({ section: "time", message: "Select a generated start year, end year, or both." });
   }
 
   return issues;
@@ -263,7 +267,16 @@ export function summarizeConsent(person: PersonInfo, consent: ConsentState) {
         ? `${stateCount} state${stateCount === 1 ? "" : "s"}`
         : `${constrainedSiteCount} organization${constrainedSiteCount === 1 ? "" : "s"}`;
   const resources = consent.resourceScopeMode === "all" ? "All supported" : `${scopeCount} SMART scope${scopeCount === 1 ? "" : "s"}`;
-  const dates = consent.dateMode === "all" ? "All dates" : "Custom range";
+  const dates =
+    consent.dateMode === "all"
+      ? "All dates"
+      : displayYear(consent.dateRange.start) && displayYear(consent.dateRange.end)
+        ? `${displayYear(consent.dateRange.start)}–${displayYear(consent.dateRange.end)}`
+        : displayYear(consent.dateRange.start)
+          ? `From ${displayYear(consent.dateRange.start)}`
+          : displayYear(consent.dateRange.end)
+            ? `Through ${displayYear(consent.dateRange.end)}`
+            : "Custom range";
   return {
     sites: siteSummary,
     resources,

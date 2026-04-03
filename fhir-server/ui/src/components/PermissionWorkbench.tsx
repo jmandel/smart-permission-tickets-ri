@@ -16,6 +16,21 @@ import { buildArtifactViewerHref } from "../lib/artifact-viewer";
 import { signPermissionTicket } from "../lib/ticket-client";
 import { SplitAction } from "./SplitAction";
 
+function yearOptions(person: PersonInfo) {
+  const years = [
+    person.startDate ? Number.parseInt(person.startDate.slice(0, 4), 10) : null,
+    person.endDate ? Number.parseInt(person.endDate.slice(0, 4), 10) : null,
+    ...person.sites.flatMap((site) => [
+      site.startDate ? Number.parseInt(site.startDate.slice(0, 4), 10) : null,
+      site.endDate ? Number.parseInt(site.endDate.slice(0, 4), 10) : null,
+    ]),
+  ].filter((value): value is number => Number.isFinite(value));
+  if (years.length === 0) return [new Date().getFullYear()];
+  const minYear = Math.min(...years);
+  const maxYear = Math.max(...years);
+  return Array.from({ length: maxYear - minYear + 1 }, (_, index) => minYear + index);
+}
+
 type ArtifactState = {
   viewerLaunch: ViewerLaunch;
   viewerUrl: string;
@@ -85,6 +100,9 @@ export function PermissionWorkbench({
   const resourceIssue = validationIssues.find((issue) => issue.section === "resources");
   const locationIssue = validationIssues.find((issue) => issue.section === "sites");
   const dateIssue = validationIssues.find((issue) => issue.section === "time");
+  const generatedYears = yearOptions(currentPerson);
+  const selectedStartYear = currentConsent.dateRange.start?.slice(0, 4) ?? "";
+  const selectedEndYear = currentConsent.dateRange.end?.slice(0, 4) ?? "";
 
   function openArtifact(title: string, content: unknown, copyText?: string, subtitle?: string) {
     const href = buildArtifactViewerHref({ title, content, copyText, subtitle });
@@ -409,32 +427,44 @@ export function PermissionWorkbench({
             {consent.dateMode === "window" && (
               <div className="field-row">
                 <label className="field">
-                  <span className="control-label">Generated start</span>
-                  <input
-                    type="date"
-                    value={consent.dateRange.start ?? ""}
+                  <span className="control-label">Generated start year</span>
+                  <select
+                    value={selectedStartYear}
                     onChange={(event) =>
                       setConsent((current) =>
                         current
-                          ? { ...current, dateRange: { ...current.dateRange, start: event.target.value || null } }
+                          ? { ...current, dateRange: { ...current.dateRange, start: event.target.value ? `${event.target.value}-01-01` : null } }
                           : current,
                       )
                     }
-                  />
+                  >
+                    <option value="">Select year</option>
+                    {generatedYears.map((year) => (
+                      <option key={`start:${year}`} value={String(year)}>
+                        {year}
+                      </option>
+                    ))}
+                  </select>
                 </label>
                 <label className="field">
-                  <span className="control-label">Generated end</span>
-                  <input
-                    type="date"
-                    value={consent.dateRange.end ?? ""}
+                  <span className="control-label">Generated end year</span>
+                  <select
+                    value={selectedEndYear}
                     onChange={(event) =>
                       setConsent((current) =>
                         current
-                          ? { ...current, dateRange: { ...current.dateRange, end: event.target.value || null } }
+                          ? { ...current, dateRange: { ...current.dateRange, end: event.target.value ? `${event.target.value}-12-31` : null } }
                           : current,
                       )
                     }
-                  />
+                  >
+                    <option value="">Select year</option>
+                    {generatedYears.map((year) => (
+                      <option key={`end:${year}`} value={String(year)}>
+                        {year}
+                      </option>
+                    ))}
+                  </select>
                 </label>
               </div>
             )}

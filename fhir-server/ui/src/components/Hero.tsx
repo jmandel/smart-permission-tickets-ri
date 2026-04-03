@@ -13,6 +13,8 @@ export function Hero({ onToggleAbout, aboutOpen }: { onToggleAbout: () => void; 
           <a
             className="menu-link"
             href="https://build.fhir.org/ig/jmandel/smart-permission-tickets-wip/"
+            target="_blank"
+            rel="noreferrer"
           >
             IG
           </a>
@@ -24,7 +26,7 @@ export function Hero({ onToggleAbout, aboutOpen }: { onToggleAbout: () => void; 
       <h1>SMART Permission Tickets</h1>
       <p className="lede">
         Reference FHIR server for the{" "}
-        <a href="https://build.fhir.org/ig/jmandel/smart-permission-tickets-wip/">
+        <a href="https://build.fhir.org/ig/jmandel/smart-permission-tickets-wip/" target="_blank" rel="noreferrer">
           SMART Permission Tickets IG
         </a>
         . Synthetic patients across multiple sites, with ticket-based access constraints:

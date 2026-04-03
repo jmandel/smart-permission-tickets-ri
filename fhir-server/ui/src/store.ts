@@ -26,6 +26,15 @@ async function fetchJson<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+function defaultPersonId(persons: PersonInfo[]) {
+  return (
+    persons.find((person) => person.displayName === "Elena Marisol Reyes")?.personId ??
+    persons.find((person) => person.useCases.some((useCase) => /patient access/i.test(useCase.display)))?.personId ??
+    persons[0]?.personId ??
+    null
+  );
+}
+
 export const useStore = create<AppStore>((set) => ({
   loading: true,
   error: null,
@@ -47,7 +56,7 @@ export const useStore = create<AppStore>((set) => ({
         defaultTicketIssuer: bootstrap.defaultTicketIssuer,
         defaultNetwork: bootstrap.defaultNetwork,
         selectedMode: modeFromPath(),
-        selectedPersonId: null,
+        selectedPersonId: defaultPersonId(persons),
         loading: false,
       });
     } catch (e) {
