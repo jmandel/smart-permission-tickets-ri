@@ -31,6 +31,7 @@ export type PersonInfo = {
   birthDate: string | null;
   gender: string | null;
   summary: string | null;
+  useCases: Array<{ system: string; code: string; display: string }>;
   resourceCounts: Record<string, number>;
   sensitiveResourceCount: number;
   startDate: string | null;

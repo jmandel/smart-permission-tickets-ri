@@ -102,5 +102,14 @@
       "system": "urn:smart-permission-tickets:person-id",
       "value": "person-6fe9159adc6cb369be301246"
     }
-  ]
+  ],
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "public-health",
+        "display": "Public Health Investigation"
+      }
+    ]
+  }
 }

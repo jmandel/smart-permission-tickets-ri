@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T05:20:36.889Z",
+  "timestamp": "2026-04-03T18:45:37.097Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:34a5fa7f-abf9-46b6-b132-c0a5c7236939",
@@ -130,6 +130,15 @@
         "managingOrganization": {
           "reference": "Organization/799d7142-4129-4a18-99ad-3a160a2a2518",
           "display": "Riverside Internal Medicine"
+        },
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "proxy-access",
+              "display": "Proxy Access"
+            }
+          ]
         }
       }
     },

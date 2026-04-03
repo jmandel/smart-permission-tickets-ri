@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T07:06:13.892Z",
+  "timestamp": "2026-04-03T18:45:36.825Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:1bda4140-96af-46b5-8d23-53fe5163e756",
@@ -137,6 +137,15 @@
         "managingOrganization": {
           "reference": "Organization/fd2a0035-eecf-4f79-99c0-77e5840535cd",
           "display": "UNC Pediatric Allergy & Immunology"
+        },
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "proxy-access",
+              "display": "Proxy Access"
+            }
+          ]
         }
       }
     },

@@ -155,5 +155,14 @@
       "system": "urn:smart-permission-tickets:person-id",
       "value": "person-e91cc755383ff5c44b700b01"
     }
-  ]
+  ],
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "patient-access",
+        "display": "Patient Access"
+      }
+    ]
+  }
 }

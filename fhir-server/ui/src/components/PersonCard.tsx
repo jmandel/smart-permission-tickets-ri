@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 import type { PersonInfo } from "../types";
 
 export function PersonCard({
@@ -11,39 +9,8 @@ export function PersonCard({
   selected: boolean;
   onSelect: () => void;
 }) {
-  const [expanded, setExpanded] = useState(false);
-  const [canExpand, setCanExpand] = useState(false);
-  const summaryRef = useRef<HTMLParagraphElement | null>(null);
-  const SUMMARY_COLLAPSED_MAX_HEIGHT = 11 * 1.55 * 16;
-
-  useEffect(() => {
-    setExpanded(false);
-  }, [person.personId]);
-
-  useEffect(() => {
-    const element = summaryRef.current;
-    if (!element || !person.summary) {
-      setCanExpand(false);
-      return;
-    }
-
-    const measure = () => {
-      const overflow = element.scrollHeight > SUMMARY_COLLAPSED_MAX_HEIGHT + 1;
-      setCanExpand(overflow);
-      if (!overflow) setExpanded(false);
-    };
-
-    measure();
-
-    const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(measure) : null;
-    resizeObserver?.observe(element);
-    window.addEventListener("resize", measure);
-
-    return () => {
-      resizeObserver?.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [person.summary, person.personId]);
+  const visibleSites = person.sites.slice(0, 3);
+  const hiddenSiteCount = Math.max(person.sites.length - visibleSites.length, 0);
 
   return (
     <article
@@ -71,32 +38,22 @@ export function PersonCard({
         {" · "}
         {person.sites.reduce((total, site) => total + site.encounters.length, 0)} encounters
       </p>
-      {person.summary && (
-        <>
-          <p ref={summaryRef} className={`patient-card-summary${!expanded ? " clamped" : ""}`}>
-            {person.summary}
-          </p>
-          {canExpand && (
-            <button
-              type="button"
-              className="patient-card-toggle"
-              onClick={(event) => {
-                event.stopPropagation();
-                setExpanded((current) => !current);
-              }}
-            >
-              {expanded ? "Show less" : "Show more"}
-            </button>
-          )}
-        </>
+      {person.useCases?.length > 0 && (
+        <div className="patient-card-use-cases">
+          {person.useCases.map((uc) => (
+            <span key={uc.code} className="use-case-tag">{uc.display}</span>
+          ))}
+        </div>
       )}
+      {person.summary && <p className="patient-card-summary clamped">{person.summary}</p>}
       <div className="patient-card-tags">
-        {person.sites.map((site) => (
+        {visibleSites.map((site) => (
           <span key={site.siteSlug} className="patient-card-tag">
             {site.orgName}
             {site.jurisdiction ? ` · ${site.jurisdiction}` : ""}
           </span>
         ))}
+        {hiddenSiteCount > 0 && <span className="patient-card-tag">+{hiddenSiteCount} more</span>}
       </div>
     </article>
   );

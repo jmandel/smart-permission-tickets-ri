@@ -145,6 +145,28 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       ].sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
     [selectedEncounterGroups, selectedEncounterNotes.length],
   );
+  const selectedEncounterRecentNotes = useMemo(() => selectedEncounterNotes.slice(0, 4), [selectedEncounterNotes]);
+  const selectedEncounterRecentResources = useMemo(
+    () =>
+      selectedEncounterGroups
+        .flatMap((group) => group.items)
+        .sort((left, right) => {
+          const leftDate = left.timelineDate ?? "";
+          const rightDate = right.timelineDate ?? "";
+          if (leftDate !== rightDate) return rightDate.localeCompare(leftDate);
+          return left.label.localeCompare(right.label);
+        })
+        .slice(0, 6),
+    [selectedEncounterGroups],
+  );
+  const timelineTicks = useMemo(() => (timelineScale ? buildTimelineTicks(timelineScale) : []), [timelineScale]);
+  const siteStyles = useMemo(
+    () =>
+      Object.fromEntries(
+        siteRuns.map((run) => [run.site.siteSlug, buildSiteTone(run.site.siteSlug)]),
+      ),
+    [siteRuns],
+  );
   const selectedEncounterTypeMap = useMemo(
     () =>
       selectedEncounterTypeCounts.map((entry) => {
@@ -169,28 +191,6 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         };
       }),
     [selectedEncounterGroups, selectedEncounterNotes, selectedEncounterTypeCounts, siteStyles],
-  );
-  const selectedEncounterRecentNotes = useMemo(() => selectedEncounterNotes.slice(0, 4), [selectedEncounterNotes]);
-  const selectedEncounterRecentResources = useMemo(
-    () =>
-      selectedEncounterGroups
-        .flatMap((group) => group.items)
-        .sort((left, right) => {
-          const leftDate = left.timelineDate ?? "";
-          const rightDate = right.timelineDate ?? "";
-          if (leftDate !== rightDate) return rightDate.localeCompare(leftDate);
-          return left.label.localeCompare(right.label);
-        })
-        .slice(0, 6),
-    [selectedEncounterGroups],
-  );
-  const timelineTicks = useMemo(() => (timelineScale ? buildTimelineTicks(timelineScale) : []), [timelineScale]);
-  const siteStyles = useMemo(
-    () =>
-      Object.fromEntries(
-        siteRuns.map((run) => [run.site.siteSlug, buildSiteTone(run.site.siteSlug)]),
-      ),
-    [siteRuns],
   );
   const selectionLeft = maxTimelineIndex === 0 ? 0 : (safeTimelineStartIndex / maxTimelineIndex) * 100;
   const selectionRight = maxTimelineIndex === 0 ? 100 : (safeTimelineEndIndex / maxTimelineIndex) * 100;

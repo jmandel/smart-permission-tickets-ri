@@ -130,5 +130,14 @@
   "managingOrganization": {
     "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
     "display": "Ballard Family Medicine"
+  },
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "patient-access",
+        "display": "Patient Access"
+      }
+    ]
   }
 }

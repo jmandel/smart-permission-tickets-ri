@@ -186,46 +186,28 @@ export function PermissionWorkbench({
     <section className="panel section">
       <div className="workbench-header">
         <div>
-          <p className="eyebrow">Step 2 · Configure Ticket</p>
-          <h2>{currentPerson.displayName}</h2>
+          <p className="eyebrow">Step 2 · Configure Access</p>
+          <h2>Choose what this ticket can share</h2>
           <p className="subtle workbench-copy">
-            Choose what the ticket can share, then hand the signed ticket to the site-aware health app.
-            The viewer app will resolve accessible sites through the network directory, then exchange separate site tokens and browse each site independently.
+            Start with sites and dates, then narrow resources only if needed. The app launch uses the signed ticket, resolves record locations through the network directory, and exchanges site-specific tokens from there.
           </p>
         </div>
       </div>
 
-      <section className="subpanel workbench-briefing">
-        <h3>Selected Patient</h3>
-        <div className="summary-grid" style={{ marginTop: 14 }}>
-          <div className="summary-card">
-            <span className="summary-label">Patient</span>
-            <strong>{currentPerson.displayName}</strong>
-          </div>
-          <div className="summary-card">
-            <span className="summary-label">Sites in chart</span>
-            <strong>{currentPerson.sites.length}</strong>
-          </div>
-          <div className="summary-card">
-            <span className="summary-label">Encounters</span>
-            <strong>{currentPerson.sites.reduce((sum, site) => sum + site.encounters.length, 0)}</strong>
-          </div>
-          <div className="summary-card">
-            <span className="summary-label">Mode</span>
-            <strong>{mode}</strong>
-          </div>
-        </div>
-      </section>
-
       <div className="ticket-run-grid">
-        <section className="subpanel">
-          <h3>Ticket Constraints</h3>
-
-          <div className={`wizard-section${resourceIssue ? " invalid" : ""}`}>
+        <section className="subpanel ticket-constraints-panel">
+          <div className="section-header">
+            <div>
+              <h3>Ticket Constraints</h3>
+              <p className="subtle">Choose the scope of sharing. These controls behave as one-of choices, then expand only when a limit needs detail.</p>
+            </div>
+          </div>
+          <div className="ticket-constraint-list">
+          <div className={`wizard-section wizard-section-resources${resourceIssue ? " invalid" : ""}`}>
             <div className="wizard-section-header">
               <div>
                 <p className="eyebrow">Resources</p>
-                <h4>All resources or selected SMART scopes</h4>
+                <h4>All data or selected SMART scopes</h4>
               </div>
               <div className="choice-grid">
                 <button
@@ -233,7 +215,7 @@ export function PermissionWorkbench({
                   className={`choice-button${consent.resourceScopeMode === "all" ? " active" : ""}`}
                   onClick={() => setConsent((current) => (current ? { ...current, resourceScopeMode: "all" } : current))}
                 >
-                  No resource limits
+                  All resources
                 </button>
                 <button
                   type="button"
@@ -311,11 +293,11 @@ export function PermissionWorkbench({
             )}
           </div>
 
-          <div className={`wizard-section${locationIssue ? " invalid" : ""}`}>
+          <div className={`wizard-section wizard-section-sites${locationIssue ? " invalid" : ""}`}>
             <div className="wizard-section-header">
               <div>
                 <p className="eyebrow">Sites</p>
-                <h4>No site limits, states only, or selected organizations</h4>
+                <h4>Which sites may respond?</h4>
               </div>
               <div className="choice-grid choice-grid-three">
                 <button
@@ -323,7 +305,7 @@ export function PermissionWorkbench({
                   className={`choice-button${consent.locationMode === "all" ? " active" : ""}`}
                   onClick={() => setConsent((current) => (current ? { ...current, locationMode: "all" } : current))}
                 >
-                  No site limits
+                  All sites
                 </button>
                 <button
                   type="button"
@@ -401,11 +383,11 @@ export function PermissionWorkbench({
             {locationIssue && <p className="validation-hint">{locationIssue.message}</p>}
           </div>
 
-          <div className={`wizard-section${dateIssue ? " invalid" : ""}`}>
+          <div className={`wizard-section wizard-section-time${dateIssue ? " invalid" : ""}`}>
             <div className="wizard-section-header">
               <div>
                 <p className="eyebrow">Time</p>
-                <h4>All dates or generated during a window</h4>
+                <h4>Which generated-date window applies?</h4>
               </div>
               <div className="choice-grid">
                 <button
@@ -413,7 +395,7 @@ export function PermissionWorkbench({
                   className={`choice-button${consent.dateMode === "all" ? " active" : ""}`}
                   onClick={() => setConsent((current) => (current ? { ...current, dateMode: "all" } : current))}
                 >
-                  No date limits
+                  All dates
                 </button>
                 <button
                   type="button"
@@ -459,11 +441,11 @@ export function PermissionWorkbench({
             {dateIssue && <p className="validation-hint">{dateIssue.message}</p>}
           </div>
 
-          <div className="wizard-section">
+          <div className="wizard-section wizard-section-sensitive">
             <div className="wizard-section-header">
               <div>
                 <p className="eyebrow">Sensitive Data</p>
-                <h4>Exclude by default or include</h4>
+                <h4>Should sensitive data be included?</h4>
               </div>
               <div className="choice-grid">
                 <button
@@ -486,22 +468,23 @@ export function PermissionWorkbench({
               Sensitive labels currently cover reproductive health, HIV, mental health, ethnicity, STI, substance abuse, and sexual/domestic violence when present.
             </p>
           </div>
+          </div>
         </section>
 
         <section className="subpanel run-panel">
-          <p className="eyebrow">Step 3 · Hand Off to App</p>
-          <h2>Open in Health App</h2>
+          <p className="eyebrow">App Launch</p>
+          <h2>Launch the health app</h2>
           <p className="subtle">
-            This page prepares the signed ticket. The health app opens in a new tab, exchanges one token per site, and assembles the chart there.
+            This summary updates as you choose constraints. The health app opens in a new tab and performs the network and site exchanges there.
           </p>
 
           <div className="summary-grid">
             <div className="summary-card">
-              <span className="summary-label">Requested sites</span>
+              <span className="summary-label">Sites</span>
               <strong>{consentSummary.sites}</strong>
             </div>
             <div className="summary-card">
-              <span className="summary-label">Resources</span>
+              <span className="summary-label">Data</span>
               <strong>{consentSummary.resources}</strong>
             </div>
             <div className="summary-card">

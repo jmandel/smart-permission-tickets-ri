@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T01:45:02.216Z",
+  "timestamp": "2026-04-03T18:45:36.985Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:01fa5a17-41f0-4850-89a7-061c1dc199bd",
@@ -171,6 +171,15 @@
         "managingOrganization": {
           "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
           "display": "University of New Mexico Hospital and Heart Failure Clinic"
+        },
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "patient-access",
+              "display": "Patient Access"
+            }
+          ]
         }
       }
     },

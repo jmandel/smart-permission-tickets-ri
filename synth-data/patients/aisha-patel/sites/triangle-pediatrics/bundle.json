@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T07:06:13.886Z",
+  "timestamp": "2026-04-03T18:45:36.818Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:486b21ea-5a35-437c-b09f-284d596c5073",
@@ -172,7 +172,16 @@
               "country": "US"
             }
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "proxy-access",
+              "display": "Proxy Access"
+            }
+          ]
+        }
       }
     },
     {

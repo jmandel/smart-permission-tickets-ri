@@ -164,5 +164,14 @@
   "managingOrganization": {
     "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
     "display": "University of New Mexico Hospital and Heart Failure Clinic"
+  },
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "patient-access",
+        "display": "Patient Access"
+      }
+    ]
   }
 }

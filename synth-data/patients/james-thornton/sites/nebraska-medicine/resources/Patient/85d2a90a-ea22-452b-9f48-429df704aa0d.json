@@ -106,5 +106,14 @@
       "system": "urn:smart-permission-tickets:person-id",
       "value": "person-a5f2afa8a1754b8eb5f081f6"
     }
-  ]
+  ],
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "payer-claims",
+        "display": "Payer Claims Adjudication"
+      }
+    ]
+  }
 }

@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T14:05:46.044Z",
+  "timestamp": "2026-04-03T18:45:37.516Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:4be35504-84b4-4bee-8ebf-a2b459c82cab",
@@ -137,6 +137,15 @@
         "managingOrganization": {
           "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
           "display": "Ballard Family Medicine"
+        },
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "patient-access",
+              "display": "Patient Access"
+            }
+          ]
         }
       }
     },

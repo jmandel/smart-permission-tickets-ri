@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T01:45:02.208Z",
+  "timestamp": "2026-04-03T18:45:36.980Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
@@ -162,7 +162,16 @@
             "system": "urn:smart-permission-tickets:person-id",
             "value": "person-e91cc755383ff5c44b700b01"
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "patient-access",
+              "display": "Patient Access"
+            }
+          ]
+        }
       }
     },
     {

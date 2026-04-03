@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T17:01:08.640Z",
+  "timestamp": "2026-04-03T18:45:37.258Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:ba7d7892-4ea6-4151-bb74-13db30b6c361",
@@ -137,7 +137,16 @@
             },
             "preferred": true
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "provider-consult",
+              "display": "Provider-to-Provider Consult"
+            }
+          ]
+        }
       }
     },
     {

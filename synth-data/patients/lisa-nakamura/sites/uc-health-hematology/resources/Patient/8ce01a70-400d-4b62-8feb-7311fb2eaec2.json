@@ -98,5 +98,14 @@
       "system": "urn:smart-permission-tickets:person-id",
       "value": "person-da20b317ce6538646b7bbbd6"
     }
-  ]
+  ],
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "provider-consult",
+        "display": "Provider-to-Provider Consult"
+      }
+    ]
+  }
 }

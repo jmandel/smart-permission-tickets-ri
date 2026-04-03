@@ -456,6 +456,24 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   font-size: 0.86rem;
 }
 
+.patient-card-use-cases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.use-case-tag {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--accent-bg, rgba(26, 115, 232, 0.08));
+  color: var(--accent, #1a73e8);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 .subpanel {
   border-top: 1px solid var(--line);
   padding-top: 18px;
@@ -1891,6 +1909,57 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
+}
+
+.resource-density-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.resource-density-tile {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 88px;
+}
+
+.resource-density-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.resource-density-head strong {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.resource-density-bars {
+  height: 10px;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.resource-density-bar {
+  display: block;
+  min-width: 6px;
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+.resource-density-sites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .result-list.compact {

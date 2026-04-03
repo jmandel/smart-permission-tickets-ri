@@ -56,6 +56,7 @@ export type DemoPersonSummary = {
   birthDate: string | null;
   gender: string | null;
   summary: string | null;
+  useCases: Array<{ system: string; code: string; display: string }>;
   resourceCounts: Record<string, number>;
   sensitiveResourceCount: number;
   startDate: string | null;
@@ -705,11 +706,16 @@ function compareAlias(a: AllowedPatientAlias, b: AllowedPatientAlias) {
   return `${a.patientSlug}/${a.siteSlug}/${a.sourcePatientRef}`.localeCompare(`${b.patientSlug}/${b.siteSlug}/${b.sourcePatientRef}`);
 }
 
+const USE_CASE_TAG_SYSTEM = "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case";
+
 function buildDemoPerson(resource: any, patientSlug: string): DemoPersonSummary {
   const name = resource.name?.[0] ?? {};
   const givenNames = Array.isArray(name.given) ? name.given.filter((value: unknown) => typeof value === "string") : [];
   const familyName = typeof name.family === "string" ? name.family : null;
   const personId = (resource.identifier ?? []).find((identifier: any) => identifier?.system === "urn:smart-permission-tickets:person-id")?.value ?? patientSlug;
+  const useCases = (resource.meta?.tag ?? [])
+    .filter((tag: any) => tag?.system === USE_CASE_TAG_SYSTEM && tag?.code)
+    .map((tag: any) => ({ system: tag.system, code: tag.code, display: tag.display ?? tag.code }));
   return {
     personId,
     patientSlug,
@@ -719,6 +725,7 @@ function buildDemoPerson(resource: any, patientSlug: string): DemoPersonSummary 
     birthDate: typeof resource.birthDate === "string" ? resource.birthDate : null,
     gender: typeof resource.gender === "string" ? resource.gender : null,
     summary: findExtensionString(resource, PATIENT_SUMMARY_EXT),
+    useCases,
     resourceCounts: {},
     sensitiveResourceCount: 0,
     startDate: null,

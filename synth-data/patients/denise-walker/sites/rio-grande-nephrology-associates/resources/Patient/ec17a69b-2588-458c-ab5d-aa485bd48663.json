@@ -134,5 +134,14 @@
   "managingOrganization": {
     "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
     "display": "Rio Grande Nephrology Associates"
+  },
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "patient-access",
+        "display": "Patient Access"
+      }
+    ]
   }
 }

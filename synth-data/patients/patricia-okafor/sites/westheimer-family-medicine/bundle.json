@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T10:26:23.424Z",
+  "timestamp": "2026-04-03T18:45:37.391Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:fff90155-eaa9-4315-ad01-7f58831e5df3",
@@ -130,7 +130,16 @@
             },
             "preferred": true
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "research-study",
+              "display": "Research Study Consent"
+            }
+          ]
+        }
       }
     },
     {

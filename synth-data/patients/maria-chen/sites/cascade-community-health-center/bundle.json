@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T03:52:27.591Z",
+  "timestamp": "2026-04-03T18:45:37.347Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:bc606317-8b86-4886-9e03-d6a159f57952",
@@ -122,7 +122,16 @@
             "system": "urn:smart-permission-tickets:person-id",
             "value": "person-fa977290ff474ac87d97e3a0"
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "social-care-referral",
+              "display": "Social Care Referral"
+            }
+          ]
+        }
       }
     },
     {

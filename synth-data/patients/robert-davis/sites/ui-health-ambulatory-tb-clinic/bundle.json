@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T01:45:02.264Z",
+  "timestamp": "2026-04-03T18:45:37.462Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:ac7b2ece-f133-47cd-95ef-908df72dbc65",
@@ -129,7 +129,16 @@
             },
             "preferred": true
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "public-health",
+              "display": "Public Health Investigation"
+            }
+          ]
+        }
       }
     },
     {

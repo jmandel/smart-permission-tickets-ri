@@ -130,5 +130,14 @@
   "managingOrganization": {
     "reference": "Organization/fd2a0035-eecf-4f79-99c0-77e5840535cd",
     "display": "UNC Pediatric Allergy & Immunology"
+  },
+  "meta": {
+    "tag": [
+      {
+        "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+        "code": "proxy-access",
+        "display": "Proxy Access"
+      }
+    ]
   }
 }

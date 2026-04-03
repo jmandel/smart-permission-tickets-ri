@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T08:39:35.239Z",
+  "timestamp": "2026-04-03T18:45:37.162Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:537091c6-acfe-41e2-bf58-03bff451519d",
@@ -130,7 +130,16 @@
             },
             "preferred": true
           }
-        ]
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "https://smarthealthit.org/fhir/CodeSystem/smart-permission-ticket-use-case",
+              "code": "payer-claims",
+              "display": "Payer Claims Adjudication"
+            }
+          ]
+        }
       }
     },
     {
