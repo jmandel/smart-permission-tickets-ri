@@ -86,6 +86,15 @@ Example:
 
 This should feel like another SMART/FHIR surface, not a custom non-OAuth API.
 
+For network SMART configuration, the same namespaced extension pattern applies. The network surface should advertise:
+
+- `surface_kind = "network"`
+- `surface_mode = "{strict|registered|key-bound|open|anonymous}"`
+
+under:
+
+- `extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"]`
+
 ## Authentication Model
 
 The app should not call the network RLS with a raw Permission Ticket parameter.

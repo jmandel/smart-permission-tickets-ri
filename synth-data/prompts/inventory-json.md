@@ -60,6 +60,7 @@ Return a single JSON object with this shape:
 - For medications: include `name` (drug + dose like "methotrexate 15 mg oral tablet"), `sig`, `status`, `reason`, `action`
 - For immunizations: include `name` (vaccine name like "influenza vaccine, inactivated"), `date`, `route`
 - For allergies: include `substance` (plain name like "amoxicillin"), `reaction`, `severity`, `action`
+- For document references: include exactly **one** per encounter (the clinical note). Do not create separate entries for action plans, patient instructions, school forms, or other supplemental documents.
 - For service requests: include `description` (what was referred for), `reason`, `status`, `recipient` (if known), `action`
 - For diagnostic reports: include `type`, `report_state`, and:
   - `observation_names` when `report_state` is `report-with-results` — these MUST be exact names that appear in the observations.vitals, observations.labs, or observations.screening arrays

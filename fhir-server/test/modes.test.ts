@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
+import { NETWORK_PATIENT_ACCESS_TICKET_TYPE } from "../shared/permission-tickets.ts";
 import { decodeEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
@@ -64,7 +65,7 @@ describe("mode surfaces", () => {
       body: JSON.stringify({
         sub: "mode-test-ticket",
         aud: origin,
-        ticket_type: "urn:demo:ticket",
+        ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
         authorization: {
           subject: elenaMatchSubject(),
           access: {
@@ -89,6 +90,9 @@ describe("mode surfaces", () => {
     const config = await configResponse.json();
     expect(config.token_endpoint).toBe(`${origin}/networks/reference/token`);
     expect(config.fhir_base_url).toBe(`${origin}/networks/reference/fhir`);
+    expect(config.smart_permission_ticket_types_supported).toContain(NETWORK_PATIENT_ACCESS_TICKET_TYPE);
+    expect(config.mode).toBeUndefined();
+    expect(config.capabilities).toBeUndefined();
 
     const client = await registerDynamicClient(`${origin}/networks/reference/register`, "Network RLS Client");
     const token = await postFormJsonWithClient(`${origin}/networks/reference/token`, {
@@ -116,10 +120,8 @@ describe("mode surfaces", () => {
     );
     expect(siteSlugs).not.toContain("lone-star-womens-health");
     expect(siteSlugs).toContain("bay-area-rheumatology-associates");
-    expect(endpoints[0]?.resource?.extension?.some?.((extension: any) =>
-      extension?.url === "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-site-patient" &&
-      typeof extension?.valueReference?.reference === "string"
-    )).toBe(true);
+    expect(typeof endpoints[0]?.resource?.address).toBe("string");
+    expect(endpoints[0]?.resource?.extension).toBeUndefined();
   });
 
   test("strict token exchange rejects anonymous clients", async () => {
@@ -731,7 +733,7 @@ function mintTicket(input: {
     sub: "mode-test-ticket",
     aud: ticketOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
-    ticket_type: "urn:demo:ticket",
+    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
     cnf: input.cnf,
     authorization: {
       subject: input.subject,

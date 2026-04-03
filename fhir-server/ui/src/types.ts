@@ -124,6 +124,7 @@ export type ViewerLaunchSite = {
   patientId?: string | null;
   endpointId?: string;
   organizationId?: string;
+  fhirBaseUrl?: string;
   authSurface: AuthSurface;
 };
 

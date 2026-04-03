@@ -13,6 +13,11 @@ import { FhirStore } from "./store/store.ts";
 import type { AuthorizationEnvelope, ModeName, RegisteredClient, RouteContext, TokenExchangeRequest } from "./store/model.ts";
 import { SUPPORTED_RESOURCE_TYPES } from "./store/model.ts";
 import { buildAuthBasePath, buildFhirBasePath, modePrefix, normalizeModeSegment } from "../shared/surfaces.ts";
+import {
+  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  SMART_PERMISSION_TICKET_CONFIG_EXTENSION_URL,
+  SUPPORTED_PERMISSION_TICKET_TYPES,
+} from "../shared/permission-tickets.ts";
 
 export type AppContext = {
   config: ServerConfig;
@@ -392,11 +397,18 @@ function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteCont
     introspection_endpoint: absoluteUrl(url, `${authBasePath}/introspect`),
     fhir_base_url: absoluteUrl(url, fhirBasePath),
     grant_types_supported: ["urn:ietf:params:oauth:grant-type:token-exchange"],
+    smart_permission_ticket_types_supported: [...SUPPORTED_PERMISSION_TICKET_TYPES],
     token_endpoint_auth_methods_supported: ["none", "private_key_jwt"],
     token_endpoint_auth_signing_alg_values_supported: ["ES256"],
-    capabilities: ["permission-v2", "client-public", "client-confidential-asymmetric"],
-    mode: contextRoute.mode,
     scopes_supported: scopesSupported,
+    extensions: {
+      [SMART_PERMISSION_TICKET_CONFIG_EXTENSION_URL]: {
+        permission_ticket_profile: "v2",
+        surface_kind: contextRoute.networkSlug ? "network" : contextRoute.siteSlug ? "site" : "global",
+        surface_mode: contextRoute.mode,
+        ...(contextRoute.networkSlug ? { record_location_operation: "$resolve-record-locations" } : {}),
+      },
+    },
   };
 }
 
@@ -417,7 +429,7 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
     ...payload,
     aud: payload.aud ?? audienceOrigin,
     iss: payload.iss,
-    ticket_type: payload.ticket_type ?? "urn:smart-permission-tickets:demo-client",
+    ticket_type: payload.ticket_type ?? NETWORK_PATIENT_ACCESS_TICKET_TYPE,
     sub: payload.sub ?? "demo-client-ticket",
   };
 }

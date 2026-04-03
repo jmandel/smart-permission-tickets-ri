@@ -62,7 +62,7 @@ For each **individual** lab result:
 - Date, site, route
 
 ### DocumentReferences
-- Document type (progress note, ED note, patient instructions, discharge summary)
+- Emit exactly **one DocumentReference per encounter** — the clinical progress note (or ED note, telephone encounter note, discharge summary, etc.). Do not create separate DocumentReferences for supplemental documents like action plans, patient instructions, school forms, or care summaries. Instead, describe those as part of the clinical note's narrative (e.g., "an updated asthma action plan was provided to the family").
 - A brief description of what the note should contain (2-3 sentences summarizing the clinical narrative)
 
 ### DiagnosticReports (if labs or imaging were ordered)

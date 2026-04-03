@@ -3,19 +3,21 @@ import { create } from "zustand";
 import { decodeViewerLaunch } from "../demo";
 import type { RegisteredClientInfo, TokenResponseInfo, ViewerLaunch, ViewerLaunchSite } from "../types";
 import {
-  exchangeSiteToken,
+  exchangeTokenAtEndpoint,
   exchangeSurfaceToken,
-  fetchCapabilityStatement,
+  fetchCapabilityStatementFromFhirBase,
+  fetchFhirAllPagesFromBase,
+  fetchFhirFromBase,
   fetchPreviewSiteFhir,
   fetchPreviewSiteFhirAllPages,
-  fetchSiteFhir,
-  fetchSiteFhirAllPages,
   fetchSmartConfig,
-  introspectSiteToken,
+  fetchSmartConfigFromFhirBase,
+  introspectTokenAtEndpoint,
   introspectSurfaceToken,
   registerViewerClient,
   resolveRecordLocations,
 } from "./viewer-client";
+import { CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM } from "../../../src/store/model";
 import {
   buildSiteQueryPlan,
   summarizeSiteResources,
@@ -191,36 +193,38 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
       for (const site of resolvedSites) {
         try {
           updateRun(encodedSession, site.siteSlug, { phase: "loading-config", error: null }, set, get);
-          const smartConfig = await fetchSmartConfig(launch.origin, site.authSurface);
-          const capabilityStatement = await fetchCapabilityStatement(launch.origin, site.authSurface);
+          const siteFhirBaseUrl = site.fhirBaseUrl ?? `${launch.origin}${site.authSurface.fhirBasePath}`;
+          const smartConfig = await fetchSmartConfigFromFhirBase(siteFhirBaseUrl);
+          const capabilityStatement = await fetchCapabilityStatementFromFhirBase(siteFhirBaseUrl);
           if (get().sessionKey !== encodedSession) return;
           updateRun(encodedSession, site.siteSlug, { smartConfig, capabilityStatement }, set, get);
 
           const privateJwk = launch.clientBootstrap?.privateJwk ?? null;
           let accessToken: string | null = null;
           let proofJkt: string | null = launch.proofJkt;
-          let patientId: string | null = site.patientId ?? null;
+          let patientId: string | null = null;
 
           if (launch.mode !== "anonymous") {
             if (!launch.signedTicket) throw new Error("Missing signed ticket for token exchange");
             updateRun(encodedSession, site.siteSlug, { phase: "exchanging-token" }, set, get);
-            const { tokenResponse, tokenClaims } = await exchangeSiteToken(
-              launch.origin,
-              site,
+            const { tokenResponse, tokenClaims } = await exchangeTokenAtEndpoint(
+              String(smartConfig.token_endpoint),
               launch.signedTicket,
               sharedClient,
               privateJwk,
               proofJkt,
             );
             accessToken = tokenResponse.access_token;
-            patientId = typeof tokenResponse.patient === "string" ? tokenResponse.patient : patientId;
+            patientId =
+              typeof tokenResponse.patient === "string"
+                ? tokenResponse.patient
+                : await resolveSitePatientId(launch, site, null, accessToken, proofJkt, smartConfig);
             if (get().sessionKey !== encodedSession) return;
             updateRun(encodedSession, site.siteSlug, { tokenResponse, tokenClaims, proofJkt, patientId }, set, get);
 
             updateRun(encodedSession, site.siteSlug, { phase: "introspecting-token" }, set, get);
-            const introspection = await introspectSiteToken(
-              launch.origin,
-              site,
+            const introspection = await introspectTokenAtEndpoint(
+              String(smartConfig.introspection_endpoint),
               accessToken,
               sharedClient,
               privateJwk,
@@ -228,14 +232,16 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
             );
             if (get().sessionKey !== encodedSession) return;
             updateRun(encodedSession, site.siteSlug, { introspection }, set, get);
+          } else {
+            patientId = await resolveSitePatientId(launch, site, null, null, null, smartConfig);
           }
 
           if (!patientId) {
-            throw new Error("Site record location is missing a patient id");
+            throw new Error("Unable to resolve a site patient from the current ticket");
           }
 
           updateRun(encodedSession, site.siteSlug, { phase: "loading-data" }, set, get);
-          const { resources, queryErrors } = await loadSiteResources(launch, site, patientId, capabilityStatement, accessToken, proofJkt);
+          const { resources, queryErrors } = await loadSiteResources(launch, site, patientId, capabilityStatement, accessToken, proofJkt, smartConfig);
           if (get().sessionKey !== encodedSession) return;
           updateRun(encodedSession, site.siteSlug, { phase: "ready", resources, queryErrors, error: null, patientId }, set, get);
         } catch (siteError) {
@@ -279,18 +285,22 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
     try {
       for (const run of siteRuns) {
         try {
+          const siteFhirBaseUrl = String(run.smartConfig?.fhir_base_url ?? `${launch.origin}${run.site.authSurface.fhirBasePath}`);
           const payload =
             launch.mode === "anonymous"
               ? await fetchPreviewSiteFhir(launch.origin, run.site, relativePath)
               : run.tokenResponse?.access_token
-                ? await fetchSiteFhir(launch.origin, run.site, relativePath, run.tokenResponse.access_token, run.proofJkt)
+                ? await fetchFhirFromBase(siteFhirBaseUrl, relativePath, run.tokenResponse.access_token, run.proofJkt)
                 : null;
           const { shownCount, totalCount } = inferPayloadCounts(payload);
           nextResults.push({
             siteSlug: run.site.siteSlug,
             siteName: run.site.orgName,
             relativePath,
-            fullUrl: `${launch.origin}${run.site.authSurface.fhirBasePath}/${relativePath}`,
+            fullUrl:
+              launch.mode === "anonymous"
+                ? `${launch.origin}${run.site.authSurface.previewFhirBasePath}/${relativePath}`
+                : `${siteFhirBaseUrl.replace(/\/+$/, "")}/${relativePath}`,
             payload,
             shownCount,
             totalCount,
@@ -301,7 +311,10 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
             siteSlug: run.site.siteSlug,
             siteName: run.site.orgName,
             relativePath,
-            fullUrl: `${launch.origin}${run.site.authSurface.fhirBasePath}/${relativePath}`,
+            fullUrl:
+              launch.mode === "anonymous"
+                ? `${launch.origin}${run.site.authSurface.previewFhirBasePath}/${relativePath}`
+                : `${String(run.smartConfig?.fhir_base_url ?? `${launch.origin}${run.site.authSurface.fhirBasePath}`).replace(/\/+$/, "")}/${relativePath}`,
             payload: null,
             shownCount: 0,
             totalCount: 0,
@@ -362,17 +375,22 @@ async function loadSiteResources(
   capabilityStatement: Record<string, any> | null,
   accessToken: string | null,
   proofJkt: string | null,
+  smartConfig: Record<string, any> | null,
 ) {
   const resources: ViewerResourceItem[] = [];
   const queryErrors: Array<{ label: string; relativePath: string; message: string }> = [];
+  const siteFhirBaseUrl = String(smartConfig?.fhir_base_url ?? `${launch.origin}${site.authSurface.fhirBasePath}`);
 
   for (const query of buildSiteQueryPlan(launch, site, patientId, capabilityStatement)) {
-    const fullUrl = `${launch.origin}${site.authSurface.fhirBasePath}/${query.relativePath}`;
+    const fullUrl =
+      launch.mode === "anonymous"
+        ? `${launch.origin}${site.authSurface.previewFhirBasePath}/${query.relativePath}`
+        : `${siteFhirBaseUrl.replace(/\/+$/, "")}/${query.relativePath}`;
     try {
       const payload =
         launch.mode === "anonymous"
           ? await fetchPreviewSiteFhirAllPages(launch.origin, site, query.relativePath)
-          : await fetchSiteFhirAllPages(launch.origin, site, query.relativePath, accessToken, proofJkt);
+          : await fetchFhirAllPagesFromBase(siteFhirBaseUrl, query.relativePath, accessToken, proofJkt);
       resources.push(...summarizeSiteResources(site, payload, fullUrl));
     } catch (error) {
       queryErrors.push({
@@ -405,4 +423,24 @@ function inferPayloadCounts(payload: any) {
     };
   }
   return { shownCount: 1, totalCount: 1 };
+}
+
+async function resolveSitePatientId(
+  launch: ViewerLaunch,
+  site: ViewerLaunchSite,
+  _capabilityStatement: Record<string, any> | null,
+  accessToken: string | null,
+  proofJkt: string | null,
+  smartConfig: Record<string, any> | null,
+) {
+  const relativePath =
+    `Patient?identifier=${encodeURIComponent(CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM)}|${encodeURIComponent(launch.person.personId)}&_count=2`;
+  const payload =
+    launch.mode === "anonymous"
+      ? await fetchPreviewSiteFhir(launch.origin, site, relativePath)
+      : await fetchFhirFromBase(String(smartConfig?.fhir_base_url ?? `${launch.origin}${site.authSurface.fhirBasePath}`), relativePath, accessToken, proofJkt);
+  const entries = payload?.entry ?? [];
+  if (!entries.length) return null;
+  const match = entries[0]?.resource;
+  return typeof match?.id === "string" ? match.id : null;
 }

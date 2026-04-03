@@ -12,6 +12,7 @@ import {
 } from "../store/model.ts";
 import { decodeEs256Jwt, verifyEs256Jwt } from "./es256-jwt.ts";
 import type { TicketIssuerRegistry } from "./issuers.ts";
+import { SUPPORTED_PERMISSION_TICKET_TYPES } from "../../shared/permission-tickets.ts";
 
 const RESOURCE_WILDCARD = new Set(["*", "Patient", "Encounter", "Observation", "Condition", "DiagnosticReport", "DocumentReference", "MedicationRequest", "Procedure", "Immunization", "ServiceRequest", "Organization", "Practitioner", "Location", "AllergyIntolerance"]);
 const SUPPORTING_CONTEXT_TYPES = ["Organization", "Practitioner", "Location"] as const;
@@ -31,6 +32,9 @@ export function validatePermissionTicket(
   if (payload.exp <= now) throw new Error("Permission Ticket expired");
   const audValues = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
   if (!audValues.includes(expectedAudience)) throw new Error("Permission Ticket audience mismatch");
+  if (!SUPPORTED_PERMISSION_TICKET_TYPES.includes(payload.ticket_type as (typeof SUPPORTED_PERMISSION_TICKET_TYPES)[number])) {
+    throw new Error("Unsupported ticket type");
+  }
   return payload;
 }
 

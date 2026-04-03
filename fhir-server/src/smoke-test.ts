@@ -1,5 +1,6 @@
 import { decodeEs256Jwt } from "./auth/es256-jwt.ts";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
+import { NETWORK_PATIENT_ACCESS_TICKET_TYPE } from "../shared/permission-tickets.ts";
 import { createAppContext, startServer } from "./app.ts";
 
 const context = createAppContext({ port: 0 });
@@ -34,7 +35,7 @@ try {
     body: JSON.stringify({
       sub: "smoke-ticket",
       aud: origin,
-      ticket_type: "urn:demo:ticket",
+      ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
       authorization: {
         subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
         access: {
@@ -53,10 +54,14 @@ try {
   await expectJson(`${origin}/networks/reference/fhir/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/networks/reference/token`, "network smart config token endpoint mismatch");
     assert(body.fhir_base_url === `${origin}/networks/reference/fhir`, "network smart config fhir base mismatch");
+    assert(body.smart_permission_ticket_types_supported?.includes(NETWORK_PATIENT_ACCESS_TICKET_TYPE), "network smart config ticket types missing");
+    assert(body.mode === undefined, "network smart config should not expose legacy mode");
+    assert(body.capabilities === undefined, "network smart config should not expose legacy custom capabilities");
   });
 
   await expectJson(`${origin}/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/token`, "root smart config token endpoint mismatch");
+    assert(body.smart_permission_ticket_types_supported?.includes(NETWORK_PATIENT_ACCESS_TICKET_TYPE), "root smart config ticket types missing");
   });
   await expectJson(`${origin}/modes/open/sites/lone-star-womens-health/fhir/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/modes/open/sites/lone-star-womens-health/token`, "site smart config token endpoint mismatch");
@@ -245,7 +250,7 @@ function mintTicket(input: {
     sub: "smoke-ticket",
     aud: ticketOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
-    ticket_type: "urn:demo:ticket",
+    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
     cnf: input.cnf,
     authorization: {
       subject: input.subject,

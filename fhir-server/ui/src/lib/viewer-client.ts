@@ -53,8 +53,16 @@ export async function fetchSmartConfig(origin: string, surface: AuthSurface) {
   return fetchJson<Record<string, any>>(`${origin}${surface.smartConfigPath}`);
 }
 
+export async function fetchSmartConfigFromFhirBase(fhirBaseUrl: string) {
+  return fetchJson<Record<string, any>>(`${trimTrailingSlash(fhirBaseUrl)}/.well-known/smart-configuration`);
+}
+
 export async function fetchCapabilityStatement(origin: string, surface: AuthSurface) {
   return fetchJson<Record<string, any>>(`${origin}${surface.fhirBasePath}/metadata`);
+}
+
+export async function fetchCapabilityStatementFromFhirBase(fhirBaseUrl: string) {
+  return fetchJson<Record<string, any>>(`${trimTrailingSlash(fhirBaseUrl)}/metadata`);
 }
 
 export async function exchangeSurfaceToken(
@@ -93,6 +101,41 @@ export async function exchangeSurfaceToken(
   return { tokenResponse, tokenClaims };
 }
 
+export async function exchangeTokenAtEndpoint(
+  tokenEndpoint: string,
+  signedTicket: string,
+  client: RegisteredClientInfo | null,
+  privateJwk: JsonWebKey | null,
+  proofJkt: string | null,
+) {
+  const form = new URLSearchParams({
+    grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+    subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
+    subject_token: signedTicket,
+  });
+  if (client && privateJwk) {
+    form.set("client_id", client.clientId);
+    form.set("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
+    form.set(
+      "client_assertion",
+      await signPrivateKeyJwt(
+        {
+          iss: client.clientId,
+          sub: client.clientId,
+          aud: tokenEndpoint,
+          iat: Math.floor(Date.now() / 1000),
+          exp: Math.floor(Date.now() / 1000) + 300,
+          jti: crypto.randomUUID(),
+        },
+        privateJwk as any,
+      ),
+    );
+  }
+  const tokenResponse = await postFormJson<TokenResponseInfo>(tokenEndpoint, form, proofJkt);
+  const tokenClaims = decodeJwtPayload(tokenResponse.access_token) as Record<string, any>;
+  return { tokenResponse, tokenClaims };
+}
+
 export async function introspectSurfaceToken(
   origin: string,
   surface: AuthSurface,
@@ -123,6 +166,35 @@ export async function introspectSurfaceToken(
   return postFormJson<Record<string, any>>(`${origin}${surface.introspectPath}`, form, proofJkt);
 }
 
+export async function introspectTokenAtEndpoint(
+  introspectionEndpoint: string,
+  accessToken: string,
+  client: RegisteredClientInfo | null,
+  privateJwk: JsonWebKey | null,
+  proofJkt: string | null,
+) {
+  const form = new URLSearchParams({ token: accessToken });
+  if (client && privateJwk) {
+    form.set("client_id", client.clientId);
+    form.set("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
+    form.set(
+      "client_assertion",
+      await signPrivateKeyJwt(
+        {
+          iss: client.clientId,
+          sub: client.clientId,
+          aud: introspectionEndpoint,
+          iat: Math.floor(Date.now() / 1000),
+          exp: Math.floor(Date.now() / 1000) + 300,
+          jti: crypto.randomUUID(),
+        },
+        privateJwk as any,
+      ),
+    );
+  }
+  return postFormJson<Record<string, any>>(introspectionEndpoint, form, proofJkt);
+}
+
 export async function fetchSurfaceFhir(
   origin: string,
   surface: AuthSurface,
@@ -134,6 +206,18 @@ export async function fetchSurfaceFhir(
   if (accessToken) headers.authorization = `Bearer ${accessToken}`;
   if (proofJkt) headers["x-client-jkt"] = proofJkt;
   return fetchJson<any>(`${origin}${surface.fhirBasePath}/${stripLeadingSlash(relativePath)}`, { headers });
+}
+
+export async function fetchFhirFromBase(
+  fhirBaseUrl: string,
+  relativePath: string,
+  accessToken?: string | null,
+  proofJkt?: string | null,
+) {
+  const headers: Record<string, string> = {};
+  if (accessToken) headers.authorization = `Bearer ${accessToken}`;
+  if (proofJkt) headers["x-client-jkt"] = proofJkt;
+  return fetchJson<any>(`${trimTrailingSlash(fhirBaseUrl)}/${stripLeadingSlash(relativePath)}`, { headers });
 }
 
 export async function fetchPreviewSurfaceFhir(origin: string, surface: AuthSurface, relativePath: string) {
@@ -151,6 +235,18 @@ export async function fetchSurfaceFhirAllPages(
   if (accessToken) headers.authorization = `Bearer ${accessToken}`;
   if (proofJkt) headers["x-client-jkt"] = proofJkt;
   return fetchPaginatedFhir(`${origin}${surface.fhirBasePath}/${stripLeadingSlash(relativePath)}`, headers);
+}
+
+export async function fetchFhirAllPagesFromBase(
+  fhirBaseUrl: string,
+  relativePath: string,
+  accessToken?: string | null,
+  proofJkt?: string | null,
+) {
+  const headers: Record<string, string> = {};
+  if (accessToken) headers.authorization = `Bearer ${accessToken}`;
+  if (proofJkt) headers["x-client-jkt"] = proofJkt;
+  return fetchPaginatedFhir(`${trimTrailingSlash(fhirBaseUrl)}/${stripLeadingSlash(relativePath)}`, headers);
 }
 
 export async function fetchPreviewSurfaceFhirAllPages(origin: string, surface: AuthSurface, relativePath: string) {
@@ -186,15 +282,13 @@ export async function resolveRecordLocations(
       const organization = organizationId ? organizations.get(organizationId) : null;
       const siteName = organization?.name ?? endpoint.managingOrganization?.display ?? siteSlug ?? "Unknown site";
       const jurisdiction = organization?.address?.[0]?.state ?? null;
-      const patientId = endpoint.extension?.find?.(
-        (extension: any) => extension?.url === "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-site-patient",
-      )?.valueReference?.reference?.split?.("/")?.at?.(1) ?? null;
+      const fhirBaseUrl = typeof endpoint.address === "string" ? endpoint.address : null;
       if (!siteSlug) return null;
       return {
         siteSlug,
         orgName: siteName,
         jurisdiction,
-        patientId,
+        fhirBaseUrl: fhirBaseUrl ?? undefined,
         endpointId: typeof endpoint.id === "string" ? endpoint.id : undefined,
         organizationId,
         authSurface: buildAuthSurface(mode, { siteSlug }),
@@ -258,6 +352,10 @@ function extractErrorMessage(data: unknown, fallback: string) {
 
 function stripLeadingSlash(value: string) {
   return value.replace(/^\/+/, "");
+}
+
+function trimTrailingSlash(value: string) {
+  return value.replace(/\/+$/, "");
 }
 
 async function fetchPaginatedFhir(url: string, headers?: HeadersInit) {

@@ -1,12 +1,11 @@
 import type { ServerConfig } from "./config.ts";
 import type { AuthorizationEnvelope, RouteContext } from "./store/model.ts";
 import type { FhirStore, SiteSummary } from "./store/store.ts";
-import { buildAuthBasePath, buildFhirBasePath, buildSmartConfigPath } from "../shared/surfaces.ts";
+import { buildAuthBasePath, buildFhirBasePath } from "../shared/surfaces.ts";
 
 const SITE_SLUG_SYSTEM = "urn:smart-permission-tickets:site-slug";
 const NPI_SYSTEM = "http://hl7.org/fhir/sid/us-npi";
 const ENDPOINT_CONNECTION_SYSTEM = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type";
-const SITE_PATIENT_EXT = "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-site-patient";
 
 type NetworkDirectoryResource = {
   resourceType: "Endpoint" | "Organization";
@@ -124,18 +123,6 @@ export function resolveRecordLocationsBundle(
     type: "collection",
     total: endpoints.length,
     entry: endpoints.flatMap((endpoint) => {
-      const patientId = patientIdForSite(envelope, endpoint.siteSlug);
-      if (patientId) {
-        endpoint.resource.extension = [
-          ...(Array.isArray(endpoint.resource.extension) ? endpoint.resource.extension : []),
-          {
-            url: SITE_PATIENT_EXT,
-            valueReference: {
-              reference: `Patient/${patientId}`,
-            },
-          },
-        ];
-      }
       const organization = organizations.get(endpoint.siteSlug);
       const entries: Array<Record<string, any>> = [
         {
@@ -165,13 +152,6 @@ function visibleSiteSlugs(store: FhirStore, envelope: AuthorizationEnvelope) {
   });
 }
 
-function patientIdForSite(envelope: AuthorizationEnvelope, siteSlug: string) {
-  const patientRef = envelope.allowedPatientAliases
-    .find((alias) => alias.siteSlug === siteSlug)
-    ?.serverPatientRef;
-  return patientRef?.split("/", 2).at(1) ?? null;
-}
-
 function bindEnvelopeToSite(envelope: AuthorizationEnvelope, siteSlug: string): AuthorizationEnvelope | null {
   const allowedPatientAliases = envelope.allowedPatientAliases.filter((alias) => alias.siteSlug === siteSlug);
   if (!allowedPatientAliases.length) return null;
@@ -188,7 +168,6 @@ function directoryResources(config: ServerConfig, url: URL, context: RouteContex
     const endpointId = endpointIdFor(site.siteSlug);
     const siteContext: RouteContext = { mode: context.mode, siteSlug: site.siteSlug };
     const fhirBaseUrl = absoluteUrl(url, buildFhirBasePath(config.strictDefaultMode, siteContext));
-    const authBasePath = buildAuthBasePath(config.strictDefaultMode, siteContext);
     const organization = {
       resourceType: "Organization",
       id: organizationId,
@@ -219,11 +198,6 @@ function directoryResources(config: ServerConfig, url: URL, context: RouteContex
       },
       address: fhirBaseUrl,
       payloadType: [{ text: "FHIR R4" }],
-      extension: [
-        { url: "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-smart-config", valueUrl: absoluteUrl(url, buildSmartConfigPath(config.strictDefaultMode, siteContext)) },
-        { url: "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-token-endpoint", valueUrl: absoluteUrl(url, `${authBasePath}/token`) },
-        { url: "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-introspect-endpoint", valueUrl: absoluteUrl(url, `${authBasePath}/introspect`) },
-      ],
     };
     return [
       { resourceType: "Organization" as const, id: organizationId, siteSlug: site.siteSlug, resource: organization },

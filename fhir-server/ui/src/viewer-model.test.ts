@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
-import { buildEncounterDashboard, summarizeSiteResources } from "./lib/viewer-model";
+import { buildArtifactHull, buildEncounterDashboard, summarizeSiteResources } from "./lib/viewer-model";
 import type { ViewerLaunchSite } from "./types";
 
 const site: ViewerLaunchSite = {
@@ -121,5 +121,55 @@ describe("viewer model", () => {
       "Bay Area Rheumatology Associates",
       "Telegraph Ave Clinic",
     ]);
+  });
+
+  test("artifact hull includes same-encounter resources and notes for an encounter-bound focus", () => {
+    const resources = summarizeSiteResources(
+      site,
+      {
+        resourceType: "Bundle",
+        entry: [
+          {
+            resource: {
+              resourceType: "Encounter",
+              id: "enc-1",
+              status: "finished",
+              period: { start: "2025-01-10T10:00:00Z", end: "2025-01-10T11:00:00Z" },
+              type: [{ text: "Follow-up Visit" }],
+            },
+          },
+          {
+            resource: {
+              resourceType: "DocumentReference",
+              id: "note-1",
+              status: "current",
+              context: { encounter: [{ reference: "Encounter/enc-1" }] },
+              date: "2025-01-10T10:45:00Z",
+              type: { text: "Progress Note" },
+            },
+          },
+          {
+            resource: {
+              resourceType: "Observation",
+              id: "obs-1",
+              status: "final",
+              encounter: { reference: "Encounter/enc-1" },
+              effectiveDateTime: "2025-01-10T10:30:00Z",
+              code: { text: "C-reactive protein" },
+            },
+          },
+        ],
+      },
+      null,
+    );
+
+    const dashboard = buildEncounterDashboard(resources);
+    const hull = buildArtifactHull(`${site.siteSlug}:DocumentReference/note-1`, dashboard);
+
+    expect(hull?.focus.id).toBe("note-1");
+    expect(hull?.encounter?.encounter.id).toBe("enc-1");
+    expect(hull?.groups.map((group) => group.label)).toEqual(["Encounter", "Notes", "Observation"]);
+    expect(hull?.groups[1]?.items.map((item) => item.id)).toEqual(["note-1"]);
+    expect(hull?.groups[2]?.items.map((item) => item.id)).toEqual(["obs-1"]);
   });
 });

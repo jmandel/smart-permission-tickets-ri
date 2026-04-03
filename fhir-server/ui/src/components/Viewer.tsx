@@ -6,11 +6,14 @@ import { buildArtifactViewerHref, loadArtifactViewerPayload, renderArtifactText,
 import { SplitAction } from "./SplitAction";
 import {
   addDaysUtc,
+  buildArtifactHull,
   buildEncounterDashboard,
   buildEncounterScale,
   diffDaysUtc,
   encounterIntersects,
   groupResourcesByType,
+  type ViewerEncounterDashboard,
+  type ViewerResourceItem,
   type ViewerSiteRun,
 } from "../lib/viewer-model";
 import { useViewerStore } from "../lib/viewer-store";
@@ -26,13 +29,14 @@ export function Viewer() {
   const params = useMemo(() => new URLSearchParams(window.location.search), []);
   const session = params.get("session");
   const artifactKey = params.get("artifact_key");
+  const focusRef = params.get("focus");
 
   if (session) {
     return <ViewerApp encodedSession={session} />;
   }
 
   if (artifactKey) {
-    return <ArtifactViewer artifactKey={artifactKey} />;
+    return <ArtifactViewer artifactKey={artifactKey} requestedFocusRef={focusRef} />;
   }
 
   return (
@@ -69,6 +73,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   const setSelectedEncounterKeys = useViewerStore((state) => state.setSelectedEncounterKeys);
   const brushRef = useRef<HTMLDivElement | null>(null);
   const [dragState, setDragState] = useState<TimelineDragState | null>(null);
+  const [resourcePaneTab, setResourcePaneTab] = useState<"overview" | "notes" | "inventory">("overview");
 
   useEffect(() => {
     void initSession(encodedSession);
@@ -131,6 +136,53 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         encounterDashboard.unassignedResources.filter((resource) => selectedEncounterSiteSet.has(resource.siteSlug)),
       ),
     [encounterDashboard.unassignedResources, selectedEncounterSiteSet],
+  );
+  const selectedEncounterTypeCounts = useMemo(
+    () =>
+      [
+        ...(selectedEncounterNotes.length ? [{ label: "DocumentReference", count: selectedEncounterNotes.length }] : []),
+        ...selectedEncounterGroups.map((group) => ({ label: group.resourceType, count: group.count })),
+      ].sort((left, right) => right.count - left.count || left.label.localeCompare(right.label)),
+    [selectedEncounterGroups, selectedEncounterNotes.length],
+  );
+  const selectedEncounterTypeMap = useMemo(
+    () =>
+      selectedEncounterTypeCounts.map((entry) => {
+        const items =
+          entry.label === "DocumentReference"
+            ? selectedEncounterNotes
+            : selectedEncounterGroups.find((group) => group.resourceType === entry.label)?.items ?? [];
+        const siteCounts = new Map<string, number>();
+        for (const item of items) {
+          siteCounts.set(item.siteSlug, (siteCounts.get(item.siteSlug) ?? 0) + 1);
+        }
+        return {
+          label: entry.label,
+          total: entry.count,
+          siteCounts: [...siteCounts.entries()]
+            .map(([siteSlug, count]) => ({
+              siteSlug,
+              count,
+              tone: siteStyles[siteSlug],
+            }))
+            .sort((left, right) => right.count - left.count),
+        };
+      }),
+    [selectedEncounterGroups, selectedEncounterNotes, selectedEncounterTypeCounts, siteStyles],
+  );
+  const selectedEncounterRecentNotes = useMemo(() => selectedEncounterNotes.slice(0, 4), [selectedEncounterNotes]);
+  const selectedEncounterRecentResources = useMemo(
+    () =>
+      selectedEncounterGroups
+        .flatMap((group) => group.items)
+        .sort((left, right) => {
+          const leftDate = left.timelineDate ?? "";
+          const rightDate = right.timelineDate ?? "";
+          if (leftDate !== rightDate) return rightDate.localeCompare(leftDate);
+          return left.label.localeCompare(right.label);
+        })
+        .slice(0, 6),
+    [selectedEncounterGroups],
   );
   const timelineTicks = useMemo(() => (timelineScale ? buildTimelineTicks(timelineScale) : []), [timelineScale]);
   const siteStyles = useMemo(
@@ -231,6 +283,12 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       start: safeTimelineStartIndex,
       end: safeTimelineEndIndex,
     });
+  };
+
+  const openClinicalArtifactViewer = (focusKey: string) => {
+    const payload = buildClinicalArtifactPayload(focusKey, encounterDashboard, siteRuns);
+    if (!payload) return;
+    openArtifactViewer(payload);
   };
 
   if (!launch && loading) {
@@ -787,23 +845,8 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                 <SplitAction
                                   primary={{
                                     label: "Inspect",
-                                            onSelect: () =>
-                                              void inspectRemoteArtifact({
-                                                title: `${encounter.siteName} encounter`,
-                                                subtitle: `${encounter.encounter.resourceType}/${encounter.encounter.id}`,
-                                                targetUrl: encounter.fullUrl!,
-                                                accessToken: accessTokenForSite(siteRuns, encounter.siteSlug),
-                                                proofJkt: proofForSite(siteRuns, encounter.siteSlug),
-                                                metadata: buildInspectionMetadata({
-                                                  url: encounter.fullUrl!,
-                                                  curl: buildFetchCurl(
-                                                    encounter.fullUrl!,
-                                                    accessTokenForSite(siteRuns, encounter.siteSlug),
-                                                    proofForSite(siteRuns, encounter.siteSlug),
-                                                  ),
-                                                }),
-                                              }),
-                                          }}
+                                    onSelect: () => openClinicalArtifactViewer(encounter.key),
+                                  }}
                                   secondary={[
                                     {
                                       label: "Copy curl",
@@ -849,7 +892,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                 <section className="encounter-detail-card">
                   <div className="section-header">
                     <div>
-                      <h4>Resources from selected encounters</h4>
+                      <h4>Selection workspace</h4>
                       <p className="subtle">
                         {selectedEncounters.length} encounter{selectedEncounters.length !== 1 && "s"} selected across {selectedEncounterSiteCount} site{selectedEncounterSiteCount !== 1 && "s"}.
                       </p>
@@ -875,10 +918,221 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                           <strong>{selectedEncounterSiteCount}</strong>
                         </div>
                       </div>
+                      <div className="encounter-pane-tabs" role="tablist" aria-label="Selection workspace views">
+                        {[
+                          { key: "overview", label: "Overview" },
+                          { key: "notes", label: "Notes" },
+                          { key: "inventory", label: "Inventory" },
+                        ].map((tab) => (
+                          <button
+                            key={tab.key}
+                            type="button"
+                            role="tab"
+                            aria-selected={resourcePaneTab === tab.key}
+                            className={`encounter-pane-tab${resourcePaneTab === tab.key ? " active" : ""}`}
+                            onClick={() => setResourcePaneTab(tab.key as typeof resourcePaneTab)}
+                          >
+                            {tab.label}
+                          </button>
+                        ))}
+                      </div>
                     </>
                   ) : null}
                   {selectedEncounters.length > 0 ? (
-                    selectedEncounterNotes.length > 0 || selectedEncounterGroups.length > 0 ? (
+                    resourcePaneTab === "overview" ? (
+                      <div className="encounter-overview-pane">
+                        {selectedEncounterTypeCounts.length > 0 && (
+                          <section className="encounter-overview-section">
+                            <div className="section-header">
+                              <div>
+                                <h5>Resource map</h5>
+                                <p className="subtle">Compact type counts with per-site distribution across the current selection.</p>
+                              </div>
+                            </div>
+                            <div className="resource-density-grid">
+                              {selectedEncounterTypeMap.map((entry) => (
+                                <div key={entry.label} className="resource-density-tile">
+                                  <div className="resource-density-head">
+                                    <span className="summary-label">{entry.label}</span>
+                                    <strong>{entry.total}</strong>
+                                  </div>
+                                  <div className="resource-density-bars" aria-hidden="true">
+                                    {entry.siteCounts.map((site) => (
+                                      <span
+                                        key={`${entry.label}:${site.siteSlug}`}
+                                        className="resource-density-bar"
+                                        style={{
+                                          width: `${Math.max((site.count / entry.total) * 100, 8)}%`,
+                                          background: site.tone?.solid ?? "var(--accent)",
+                                        }}
+                                        title={`${site.siteSlug}: ${site.count}`}
+                                      />
+                                    ))}
+                                  </div>
+                                  <div className="resource-density-sites">
+                                    {entry.siteCounts.map((site) => (
+                                      <span key={`${entry.label}:${site.siteSlug}:label`}>
+                                        {site.count}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </section>
+                        )}
+                        <div className="encounter-overview-grid">
+                          <section className="encounter-overview-section">
+                            <div className="section-header">
+                              <div>
+                                <h5>Recent notes</h5>
+                                <p className="subtle">Quick paths into the main documentation for this selection.</p>
+                              </div>
+                            </div>
+                            {selectedEncounterRecentNotes.length > 0 ? (
+                              <div className="result-list compact">
+                                {selectedEncounterRecentNotes.map((note) => (
+                                  <article key={note.key} className="result-item compact" style={siteListItemStyle(siteStyles[note.siteSlug])}>
+                                    <div>
+                                      <h4>{note.label}</h4>
+                                      {note.sublabel && <p className="subtle">{note.sublabel}</p>}
+                                      {extractDocumentReferenceText(note.resource) && (
+                                        <p className="subtle clamp-2">{firstParagraph(extractDocumentReferenceText(note.resource)!)}</p>
+                                      )}
+                                    </div>
+                                    <div className="result-meta">
+                                      <span>{note.siteName}</span>
+                                      <div className="result-actions">
+                                        {note.fullUrl && (
+                                          <SplitAction
+                                            primary={{ label: "Inspect", onSelect: () => openClinicalArtifactViewer(note.key) }}
+                                            secondary={[
+                                              {
+                                                label: "Copy curl",
+                                                onSelect: () =>
+                                                  void navigator.clipboard.writeText(
+                                                    buildFetchCurl(
+                                                      note.fullUrl!,
+                                                      accessTokenForSite(siteRuns, note.siteSlug),
+                                                      proofForSite(siteRuns, note.siteSlug),
+                                                    ),
+                                                  ),
+                                                feedbackLabel: "Copied",
+                                              },
+                                            ]}
+                                          />
+                                        )}
+                                      </div>
+                                    </div>
+                                  </article>
+                                ))}
+                              </div>
+                            ) : (
+                              <p className="subtle">No notes were loaded for the selected encounters.</p>
+                            )}
+                          </section>
+                          <section className="encounter-overview-section">
+                            <div className="section-header">
+                              <div>
+                                <h5>Recent clinical activity</h5>
+                                <p className="subtle">A small recent subset for drill-in, not the full inventory.</p>
+                              </div>
+                            </div>
+                            {selectedEncounterRecentResources.length > 0 ? (
+                              <div className="result-list compact">
+                                {selectedEncounterRecentResources.map((item) => (
+                                  <article key={item.key} className="result-item compact" style={siteListItemStyle(siteStyles[item.siteSlug])}>
+                                    <div>
+                                      <h4>{item.label}</h4>
+                                      {item.sublabel && <p className="subtle">{item.sublabel}</p>}
+                                    </div>
+                                    <div className="result-meta">
+                                      <span>{item.resourceType}</span>
+                                      <div className="result-actions">
+                                        {item.fullUrl && (
+                                          <SplitAction
+                                            primary={{ label: "Inspect", onSelect: () => openClinicalArtifactViewer(item.key) }}
+                                            secondary={[
+                                              {
+                                                label: "Copy curl",
+                                                onSelect: () =>
+                                                  void navigator.clipboard.writeText(
+                                                    buildFetchCurl(
+                                                      item.fullUrl!,
+                                                      accessTokenForSite(siteRuns, item.siteSlug),
+                                                      proofForSite(siteRuns, item.siteSlug),
+                                                    ),
+                                                  ),
+                                                feedbackLabel: "Copied",
+                                              },
+                                            ]}
+                                          />
+                                        )}
+                                      </div>
+                                    </div>
+                                  </article>
+                                ))}
+                              </div>
+                            ) : (
+                              <p className="subtle">No non-note linked resources were loaded for the selected encounters.</p>
+                            )}
+                          </section>
+                        </div>
+                      </div>
+                    ) : resourcePaneTab === "notes" ? (
+                      selectedEncounterNotes.length > 0 ? (
+                        <div className="encounter-resource-groups">
+                          <details className="resource-group" open>
+                            <summary>
+                              <span>DocumentReference</span>
+                              <span className="subtle">{selectedEncounterNotes.length}</span>
+                            </summary>
+                            <div className="result-list">
+                              {selectedEncounterNotes.map((note) => (
+                                <article key={note.key} className="result-item" style={siteListItemStyle(siteStyles[note.siteSlug])}>
+                                  <div>
+                                    <h4>{note.label}</h4>
+                                    {note.sublabel && <p className="subtle">{note.sublabel}</p>}
+                                    {extractDocumentReferenceText(note.resource) && (
+                                      <p className="subtle clamp-3">{firstParagraph(extractDocumentReferenceText(note.resource)!)}</p>
+                                    )}
+                                  </div>
+                                  <div className="result-meta">
+                                    <span>{note.resourceType}/{note.id}</span>
+                                    <div className="result-actions">
+                                      {note.fullUrl && (
+                                        <SplitAction
+                                          primary={{
+                                            label: "Inspect",
+                                            onSelect: () => openClinicalArtifactViewer(note.key),
+                                          }}
+                                          secondary={[
+                                            {
+                                              label: "Copy curl",
+                                              onSelect: () =>
+                                                void navigator.clipboard.writeText(
+                                                  buildFetchCurl(
+                                                    note.fullUrl!,
+                                                    accessTokenForSite(siteRuns, note.siteSlug),
+                                                    proofForSite(siteRuns, note.siteSlug),
+                                                  ),
+                                                ),
+                                              feedbackLabel: "Copied",
+                                            },
+                                          ]}
+                                        />
+                                      )}
+                                    </div>
+                                  </div>
+                                </article>
+                              ))}
+                            </div>
+                          </details>
+                        </div>
+                      ) : (
+                        <p className="subtle">No notes were loaded for the selected encounters.</p>
+                      )
+                    ) : selectedEncounterNotes.length > 0 || selectedEncounterGroups.length > 0 ? (
                       <div className="encounter-resource-groups">
                         {selectedEncounterNotes.length > 0 && (
                           <details className="resource-group" open>
@@ -900,22 +1154,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                         <SplitAction
                                           primary={{
                                             label: "Inspect",
-                                            onSelect: () =>
-                                              void inspectRemoteArtifact({
-                                                title: `${note.resourceType} ${note.id}`,
-                                                subtitle: note.siteName,
-                                                targetUrl: note.fullUrl!,
-                                                accessToken: accessTokenForSite(siteRuns, note.siteSlug),
-                                                proofJkt: proofForSite(siteRuns, note.siteSlug),
-                                                metadata: buildInspectionMetadata({
-                                                  url: note.fullUrl!,
-                                                  curl: buildFetchCurl(
-                                                    note.fullUrl!,
-                                                    accessTokenForSite(siteRuns, note.siteSlug),
-                                                    proofForSite(siteRuns, note.siteSlug),
-                                                  ),
-                                                }),
-                                              }),
+                                            onSelect: () => openClinicalArtifactViewer(note.key),
                                           }}
                                           secondary={[
                                             {
@@ -960,22 +1199,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                         <SplitAction
                                           primary={{
                                             label: "Open",
-                                            onSelect: () =>
-                                              void inspectRemoteArtifact({
-                                                title: `${item.resourceType} ${item.id}`,
-                                                subtitle: item.siteName,
-                                                targetUrl: item.fullUrl!,
-                                                accessToken: accessTokenForSite(siteRuns, item.siteSlug),
-                                                proofJkt: proofForSite(siteRuns, item.siteSlug),
-                                                metadata: buildInspectionMetadata({
-                                                  url: item.fullUrl!,
-                                                  curl: buildFetchCurl(
-                                                    item.fullUrl!,
-                                                    accessTokenForSite(siteRuns, item.siteSlug),
-                                                    proofForSite(siteRuns, item.siteSlug),
-                                                  ),
-                                                }),
-                                              }),
+                                            onSelect: () => openClinicalArtifactViewer(item.key),
                                           }}
                                           secondary={[
                                             {
@@ -1040,22 +1264,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                             <SplitAction
                               primary={{
                                 label: "Open",
-                                onSelect: () =>
-                                  void inspectRemoteArtifact({
-                                    title: `${item.resourceType} ${item.id}`,
-                                    subtitle: item.siteName,
-                                    targetUrl: item.fullUrl!,
-                                    accessToken: accessTokenForSite(siteRuns, item.siteSlug),
-                                    proofJkt: proofForSite(siteRuns, item.siteSlug),
-                                    metadata: buildInspectionMetadata({
-                                      url: item.fullUrl!,
-                                      curl: buildFetchCurl(
-                                        item.fullUrl!,
-                                        accessTokenForSite(siteRuns, item.siteSlug),
-                                        proofForSite(siteRuns, item.siteSlug),
-                                      ),
-                                    }),
-                                  }),
+                                onSelect: () => openClinicalArtifactViewer(item.key),
                               }}
                               secondary={[
                                 {
@@ -1168,9 +1377,14 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   );
 }
 
-function ArtifactViewer({ artifactKey }: { artifactKey: string }) {
+function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: string; requestedFocusRef?: string | null }) {
   const payload = useMemo(() => loadArtifactViewerPayload(artifactKey), [artifactKey]);
   const [copiedAction, setCopiedAction] = useState<string | null>(null);
+  const [focusRef, setFocusRef] = useState<string | null>(requestedFocusRef ?? null);
+
+  useEffect(() => {
+    setFocusRef(requestedFocusRef ?? null);
+  }, [requestedFocusRef, artifactKey]);
 
   if (!payload) {
     return (
@@ -1183,8 +1397,37 @@ function ArtifactViewer({ artifactKey }: { artifactKey: string }) {
     );
   }
 
-  const text = renderArtifactText(payload);
+  const activeFocusRef =
+    payload.kind === "context"
+      ? payload.nodes.some((node) => node.ref === focusRef)
+        ? focusRef
+        : payload.focusRef
+      : null;
+  const focusNode =
+    payload.kind === "context"
+      ? payload.nodes.find((node) => node.ref === activeFocusRef) ?? payload.nodes[0] ?? null
+      : null;
+  const title = focusNode?.title ?? payload.title;
+  const subtitle = focusNode?.subtitle ?? payload.subtitle;
+  const metadata = payload.kind === "context" ? focusNode?.metadata ?? [] : payload.metadata ?? [];
+  const noteText = payload.kind === "context" ? focusNode?.noteText ?? null : payload.noteText ?? null;
+  const text =
+    payload.kind === "context"
+      ? focusNode
+        ? typeof focusNode.content === "string"
+          ? focusNode.content
+          : JSON.stringify(focusNode.content, null, 2)
+        : ""
+      : renderArtifactText(payload);
   const prettyHtml = renderHighlightedJson(text);
+
+  const setArtifactFocus = (nextFocusRef: string) => {
+    setFocusRef(nextFocusRef);
+    const params = new URLSearchParams(window.location.search);
+    params.set("artifact_key", artifactKey);
+    params.set("focus", nextFocusRef);
+    window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}`);
+  };
 
   const copyWithFeedback = async (key: string, value: string) => {
     await navigator.clipboard.writeText(value);
@@ -1194,59 +1437,142 @@ function ArtifactViewer({ artifactKey }: { artifactKey: string }) {
     }, 1200);
   };
 
+  const metadataSection = metadata.length ? (
+    <section className="artifact-metadata">
+      <dl className="artifact-metadata-grid">
+        {coalesceArtifactMetadata(metadata).map((entry) => (
+          <div key={`${entry.label}:${entry.value}`} className="artifact-metadata-item">
+            <div className="artifact-metadata-item-head">
+              <dt>{entry.label}</dt>
+              {entry.copyCurlValue && (
+                <button type="button" className="button mini artifact-metadata-copy" onClick={() => void copyWithFeedback(`${entry.label}:curl`, entry.copyCurlValue!)}>
+                  {copiedAction === `${entry.label}:curl` ? "Copied" : "Copy as curl"}
+                </button>
+              )}
+            </div>
+            <dd
+              className={`mini-definition-value mono-value${entry.compact ? " truncate-value" : ""}`}
+              title={entry.value}
+            >
+              {entry.compact ? compactDisplayValue(entry.value, 64, 16) : entry.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  ) : null;
+
   return (
     <main className="shell viewer-shell">
       <section className="panel section">
         <div className="section-header">
           <div>
             <p className="eyebrow">Artifact Viewer</p>
-            <h2>{payload.title}</h2>
-            {payload.subtitle && <p className="subtle viewer-target">{payload.subtitle}</p>}
+            <h2>{title}</h2>
+            {subtitle && <p className="subtle viewer-target">{subtitle}</p>}
           </div>
         </div>
-        {payload.metadata?.length ? (
-          <section className="artifact-metadata">
-            <dl className="artifact-metadata-grid">
-              {payload.metadata.map((entry) => (
-                <div key={`${entry.label}:${entry.value}`} className="artifact-metadata-item">
-                  <div className="artifact-metadata-item-head">
-                    <dt>{entry.label}</dt>
-                    {isCompactMetadataLabel(entry.label) && (
-                      <button type="button" className="button mini artifact-metadata-copy" onClick={() => void copyWithFeedback("curl", entry.value)}>
-                        {copiedAction === "curl" ? "Copied" : "Copy as curl"}
-                      </button>
-                    )}
+        {payload.kind === "context" ? (
+          <div className="artifact-context-layout">
+            <aside className="artifact-context-sidebar">
+              <section className="artifact-context-groups">
+                <h3>Related context</h3>
+                {payload.groups.map((group) => {
+                  const items = group.refs
+                    .map((ref) => payload.nodes.find((node) => node.ref === ref) ?? null)
+                    .filter((node): node is NonNullable<typeof node> => Boolean(node));
+                  if (!items.length) return null;
+                  return (
+                    <details key={group.id} className="resource-group artifact-context-group" open>
+                      <summary>
+                        <span>{group.label}</span>
+                        <span className="subtle">{items.length}</span>
+                      </summary>
+                      <div className="result-list artifact-context-list">
+                        {items.map((node) => {
+                          const isActive = node.ref === focusNode?.ref;
+                          return (
+                            <button
+                              key={node.ref}
+                              type="button"
+                              className={`result-item artifact-focus-item${isActive ? " active" : ""}`}
+                              onClick={() => setArtifactFocus(node.ref)}
+                            >
+                              <div>
+                                <h4>{node.title}</h4>
+                                {node.subtitle && <p className="subtle">{node.subtitle}</p>}
+                              </div>
+                              <div className="result-meta">
+                                <span>{node.resourceType ?? "Resource"}</span>
+                                <div className="artifact-focus-item-site">
+                                  {node.siteName && <span>{node.siteName}</span>}
+                                  {node.siteJurisdiction && <span className="state-pill">{node.siteJurisdiction}</span>}
+                                </div>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </details>
+                  );
+                })}
+              </section>
+            </aside>
+            <div className="artifact-context-main">
+              {metadataSection}
+              {noteText ? (
+                <section className="artifact-note-text">
+                  <h3>Rendered note text</h3>
+                  <div className="viewer-copy-block">
+                    {noteText.split(/\n\s*\n/g).map((paragraph, index) => (
+                      <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph.trim()}</p>
+                    ))}
                   </div>
-                  <dd
-                    className={`mini-definition-value mono-value${isCompactMetadataLabel(entry.label) ? " truncate-value" : ""}`}
-                    title={entry.value}
-                  >
-                    {isCompactMetadataLabel(entry.label) ? compactDisplayValue(entry.value, 64, 16) : entry.value}
-                  </dd>
+                </section>
+              ) : null}
+              {payload.summary && focusNode?.resourceType === "Encounter" ? (
+                <section className="artifact-context-summary">
+                  <h3>Encounter summary</h3>
+                  <div className="viewer-copy-block">
+                    {renderSummaryParagraphs(payload.summary)}
+                  </div>
+                </section>
+              ) : null}
+              <section className="artifact-json-panel">
+                <div className="artifact-json-head">
+                  <h3>JSON</h3>
+                  <button type="button" className="button mini" onClick={() => void copyWithFeedback("json", text)}>
+                    {copiedAction === "json" ? "Copied JSON" : "Copy JSON"}
+                  </button>
                 </div>
-              ))}
-            </dl>
-          </section>
-        ) : null}
-        {payload.noteText ? (
-          <section className="artifact-note-text">
-            <h3>Rendered note text</h3>
-            <div className="viewer-copy-block">
-              {payload.noteText.split(/\n\s*\n/g).map((paragraph, index) => (
-                <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph.trim()}</p>
-              ))}
+                <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: prettyHtml }} />
+              </section>
             </div>
-          </section>
-        ) : null}
-        <section className="artifact-json-panel">
-          <div className="artifact-json-head">
-            <h3>JSON</h3>
-            <button type="button" className="button mini" onClick={() => void copyWithFeedback("json", text)}>
-              {copiedAction === "json" ? "Copied JSON" : "Copy JSON"}
-            </button>
           </div>
-          <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: prettyHtml }} />
-        </section>
+        ) : (
+          <>
+            {metadataSection}
+            {noteText ? (
+              <section className="artifact-note-text">
+                <h3>Rendered note text</h3>
+                <div className="viewer-copy-block">
+                  {noteText.split(/\n\s*\n/g).map((paragraph, index) => (
+                    <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph.trim()}</p>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+            <section className="artifact-json-panel">
+              <div className="artifact-json-head">
+                <h3>JSON</h3>
+                <button type="button" className="button mini" onClick={() => void copyWithFeedback("json", text)}>
+                  {copiedAction === "json" ? "Copied JSON" : "Copy JSON"}
+                </button>
+              </div>
+              <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: prettyHtml }} />
+            </section>
+          </>
+        )}
       </section>
     </main>
   );
@@ -1373,6 +1699,13 @@ function renderSummaryParagraphs(summary: string) {
     .map((paragraph, index) => <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph}</p>);
 }
 
+function firstParagraph(text: string) {
+  return text
+    .split(/\n\s*\n/g)
+    .map((paragraph) => paragraph.trim())
+    .find(Boolean) ?? text.trim();
+}
+
 function openArtifactViewer(payload: ArtifactViewerPayload) {
   const href = buildArtifactViewerHref(payload);
   window.open(href, "_blank", "noopener,noreferrer");
@@ -1414,6 +1747,72 @@ async function inspectRemoteArtifact(input: {
   }
 }
 
+function buildClinicalArtifactPayload(
+  focusKey: string,
+  encounterDashboard: ViewerEncounterDashboard,
+  siteRuns: ViewerSiteRun[],
+): ArtifactViewerPayload | null {
+  const hull = buildArtifactHull(focusKey, encounterDashboard);
+  if (!hull) return null;
+
+  const nodes = new Map<
+    string,
+    {
+      ref: string;
+      title: string;
+      subtitle?: string | null;
+      resourceType?: string | null;
+      siteName?: string | null;
+      siteJurisdiction?: string | null;
+      noteText?: string | null;
+      content: unknown;
+      copyText?: string;
+      metadata?: Array<{ label: string; value: string }>;
+    }
+  >();
+
+  const addNode = (item: ViewerResourceItem) => {
+    if (nodes.has(item.key)) return;
+    const accessToken = accessTokenForSite(siteRuns, item.siteSlug);
+    const proofJkt = proofForSite(siteRuns, item.siteSlug);
+    nodes.set(item.key, {
+      ref: item.key,
+      title: item.label,
+      subtitle: [item.siteName, item.sublabel].filter(Boolean).join(" · ") || null,
+      resourceType: item.resourceType,
+      siteName: item.siteName,
+      siteJurisdiction: item.siteJurisdiction,
+      noteText: extractDocumentReferenceText(item.resource),
+      content: item.resource,
+      copyText: JSON.stringify(item.resource, null, 2),
+      metadata: item.fullUrl
+        ? buildInspectionMetadata({
+            url: item.fullUrl,
+            curl: buildFetchCurl(item.fullUrl, accessToken, proofJkt),
+          })
+        : undefined,
+    });
+  };
+
+  for (const group of hull.groups) {
+    for (const item of group.items) addNode(item);
+  }
+
+  return {
+    kind: "context",
+    title: hull.encounter ? `${hull.encounter.title} · Encounter context` : hull.focus.label,
+    subtitle: hull.encounter ? hull.encounter.siteName : hull.focus.siteName,
+    summary: hull.summary ?? null,
+    focusRef: hull.focus.key,
+    nodes: [...nodes.values()],
+    groups: hull.groups.map((group) => ({
+      id: group.id,
+      label: group.label,
+      refs: group.items.map((item) => item.key),
+    })),
+  };
+}
+
 function renderArtifactCell(
   title: string,
   content: unknown,
@@ -1451,9 +1850,39 @@ function buildInspectionMetadata(input: {
   ];
 }
 
-function isCompactMetadataLabel(label: string) {
-  const normalized = label.trim().toLowerCase();
-  return normalized.includes("curl");
+function coalesceArtifactMetadata(metadata: Array<{ label: string; value: string }>) {
+  const rows: Array<{ label: string; value: string; compact: boolean; copyCurlValue?: string }> = [];
+  const used = new Set<number>();
+  for (let index = 0; index < metadata.length; index += 1) {
+    if (used.has(index)) continue;
+    const entry = metadata[index]!;
+    const normalized = entry.label.trim().toLowerCase();
+    if (normalized === "url" || normalized === "preview url") {
+      const companionLabel = normalized === "url" ? "curl" : "preview curl";
+      const companionIndex = metadata.findIndex(
+        (candidate, candidateIndex) =>
+          candidateIndex > index &&
+          !used.has(candidateIndex) &&
+          candidate.label.trim().toLowerCase() === companionLabel,
+      );
+      if (companionIndex >= 0) {
+        used.add(companionIndex);
+        rows.push({
+          label: entry.label,
+          value: entry.value,
+          compact: false,
+          copyCurlValue: metadata[companionIndex]!.value,
+        });
+        continue;
+      }
+    }
+    rows.push({
+      label: entry.label,
+      value: entry.value,
+      compact: normalized.includes("curl"),
+    });
+  }
+  return rows;
 }
 
 function renderHighlightedJson(text: string) {

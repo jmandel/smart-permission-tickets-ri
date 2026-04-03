@@ -149,6 +149,25 @@ curl http://localhost:8091/.well-known/smart-configuration
 curl http://localhost:8091/modes/open/.well-known/smart-configuration
 ```
 
+Permission Ticket support is advertised in SMART config via:
+- `grant_types_supported` including `urn:ietf:params:oauth:grant-type:token-exchange`
+- `smart_permission_ticket_types_supported`
+
+Local surface metadata is carried under:
+- `extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"]`
+
+Implemented `surface_kind` values:
+- `global`
+- `site`
+- `network`
+
+Implemented `surface_mode` values:
+- `strict`
+- `registered`
+- `key-bound`
+- `open`
+- `anonymous`
+
 Dynamic registration:
 
 ```bash
@@ -207,7 +226,7 @@ curl -X POST http://localhost:8091/issuer/reference-demo/sign-ticket \
   -d '{
     "sub": "demo-client-patient-123",
     "aud": "http://localhost:8091",
-    "ticket_type": "urn:smart-permission-tickets:demo-client",
+    "ticket_type": "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
     "authorization": {
       "subject": {
         "type": "match",

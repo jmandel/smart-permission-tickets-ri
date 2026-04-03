@@ -17,6 +17,7 @@ import type {
 } from "./types";
 import { computeJwkThumbprint, generateClientKeyMaterial } from "../../shared/private-key-jwt";
 import { buildAuthSurface } from "./lib/surfaces";
+import { NETWORK_PATIENT_ACCESS_TICKET_TYPE } from "../../shared/permission-tickets";
 const OBSERVATION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/observation-category";
 const US_CORE_OBSERVATION_CATEGORY_SYSTEM = "http://hl7.org/fhir/us/core/CodeSystem/us-core-category";
 const CONDITION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-category";
@@ -151,7 +152,7 @@ export function buildTicketPayload(
     sub: `demo-client-${person.personId}`,
     aud: audienceOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
-    ticket_type: "urn:smart-permission-tickets:demo-client",
+    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
     ...(options?.proofJkt ? { cnf: { jkt: options.proofJkt } } : {}),
     authorization: {
       subject: {

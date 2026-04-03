@@ -119,6 +119,44 @@ The same auth endpoints should be available at both the global and site-specific
 
 For a site-specific FHIR base, the advertised token / registration / introspection endpoints should be site-specific as well.
 
+### SMART Configuration Extension Shape
+
+Project-specific SMART configuration fields should live under one namespaced extension object rather than as ad hoc top-level keys.
+
+Recommended shape:
+
+```json
+{
+  "grant_types_supported": [
+    "urn:ietf:params:oauth:grant-type:token-exchange"
+  ],
+  "smart_permission_ticket_types_supported": [
+    "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1"
+  ],
+  "extensions": {
+    "https://smarthealthit.org/smart-permission-tickets/smart-configuration": {
+      "permission_ticket_profile": "v2",
+      "surface_kind": "site",
+      "surface_mode": "strict"
+    }
+  }
+}
+```
+
+`surface_kind` values:
+- `global`
+- `site`
+- `network`
+
+`surface_mode` values:
+- `strict`
+- `registered`
+- `key-bound`
+- `open`
+- `anonymous`
+
+These values should be derived from the actual mounted surface, not configured independently.
+
 ### Client Registration Model
 
 Support both:

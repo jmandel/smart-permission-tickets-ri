@@ -88,6 +88,17 @@ export type ViewerEncounterScale = {
   totalDays: number;
 };
 
+export type ViewerArtifactHull = {
+  focus: ViewerResourceItem;
+  encounter: ViewerEncounterGroup | null;
+  groups: Array<{
+    id: string;
+    label: string;
+    items: ViewerResourceItem[];
+  }>;
+  summary?: string | null;
+};
+
 export function buildSiteQueryPlan(
   launch: ViewerLaunch,
   site: ViewerLaunchSite,
@@ -217,6 +228,43 @@ export function buildEncounterScale(encounters: ViewerEncounterGroup[]): ViewerE
     start: start.slice(0, 10),
     end: end.slice(0, 10),
     totalDays: Math.max(diffDaysUtc(start, end) + 1, 1),
+  };
+}
+
+export function buildArtifactHull(focusKey: string, dashboard: ViewerEncounterDashboard): ViewerArtifactHull | null {
+  for (const encounter of dashboard.encounters) {
+    if (encounter.encounter.key === focusKey) {
+      return {
+        focus: encounter.encounter,
+        encounter,
+        groups: buildEncounterHullGroups(encounter),
+        summary: encounter.summary,
+      };
+    }
+    const focused = encounter.resources.find((resource) => resource.key === focusKey);
+    if (focused) {
+      return {
+        focus: focused,
+        encounter,
+        groups: buildEncounterHullGroups(encounter),
+        summary: encounter.summary,
+      };
+    }
+  }
+
+  const unassigned = dashboard.unassignedResources.find((resource) => resource.key === focusKey);
+  if (!unassigned) return null;
+  return {
+    focus: unassigned,
+    encounter: null,
+    groups: [
+      {
+        id: "focus",
+        label: unassigned.resourceType,
+        items: [unassigned],
+      },
+    ],
+    summary: null,
   };
 }
 
@@ -525,4 +573,29 @@ function parseCapabilityStatement(capabilityStatement: Record<string, any> | nul
     map.set(String(type), searchParams);
   }
   return map;
+}
+
+function buildEncounterHullGroups(encounter: ViewerEncounterGroup) {
+  const grouped: Array<{ id: string; label: string; items: ViewerResourceItem[] }> = [
+    {
+      id: "encounter",
+      label: "Encounter",
+      items: [encounter.encounter],
+    },
+  ];
+  if (encounter.notes.length) {
+    grouped.push({
+      id: "notes",
+      label: "Notes",
+      items: [...encounter.notes],
+    });
+  }
+  for (const group of groupResourcesByType(encounter.resources.filter((resource) => resource.resourceType !== "DocumentReference"))) {
+    grouped.push({
+      id: `type:${group.resourceType}`,
+      label: group.resourceType,
+      items: [...group.items],
+    });
+  }
+  return grouped;
 }
