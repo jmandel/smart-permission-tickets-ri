@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 /**
- * Step 06: Assemble bundles, validate terminology, write manifest
+ * Step 07: Assemble bundles, validate terminology, write manifest
  *
  * Input:  patients/<slug>/sites/<site>/resources/<type>/<id>.json
  * Output: patients/<slug>/sites/<site>/bundle.json, manifest.json,
@@ -12,6 +12,8 @@
 import { resolve, dirname, basename } from "path";
 import { readdir } from "fs/promises";
 import Database from "bun:sqlite";
+
+import { enrichResource, loadEnrichmentContext } from "./enrichment.ts";
 
 const PIPELINE_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
 const TERMINOLOGY_DB = `${PIPELINE_ROOT}/terminology.sqlite`;
@@ -33,14 +35,19 @@ interface ManifestEntry {
 }
 
 async function collectResources(siteDir: string): Promise<any[]> {
-  const resources: any[] = [];
+  const files = await collectResourceFiles(siteDir);
+  return files.map(file => file.resource);
+}
+
+async function collectResourceFiles(siteDir: string): Promise<Array<{ path: string; resource: any }>> {
   const resourcesDir = `${siteDir}/resources`;
+  const resourceFiles: Array<{ path: string; resource: any }> = [];
 
   let typeDirs: string[];
   try {
     typeDirs = await readdir(resourcesDir);
   } catch {
-    return resources;
+    return resourceFiles;
   }
 
   for (const typeDir of typeDirs) {
@@ -53,16 +60,17 @@ async function collectResources(siteDir: string): Promise<any[]> {
     }
 
     for (const file of files) {
-      const content = await Bun.file(`${typePath}/${file}`).text();
+      const filePath = `${typePath}/${file}`;
+      const content = await Bun.file(filePath).text();
       try {
-        resources.push(JSON.parse(content));
+        resourceFiles.push({ path: filePath, resource: JSON.parse(content) });
       } catch (e) {
-        console.warn(`[06] Failed to parse ${typePath}/${file}: ${e}`);
+        console.warn(`[07] Failed to parse ${typePath}/${file}: ${e}`);
       }
     }
   }
 
-  return resources;
+  return resourceFiles;
 }
 
 function buildBundle(resources: any[]): any {
@@ -193,7 +201,7 @@ async function main() {
   const patientDir = resolve(process.argv[2] ?? "");
 
   if (!patientDir) {
-    console.error("Usage: bun run steps/06-assemble.ts <patient-dir>");
+    console.error("Usage: bun run steps/07-assemble.ts <patient-dir>");
     process.exit(1);
   }
 
@@ -202,23 +210,32 @@ async function main() {
   try {
     siteDirs = (await readdir(sitesDir)).filter(d => !d.startsWith("."));
   } catch {
-    console.error(`[06] No sites/ directory — run step 05 first`);
+    console.error(`[07] No sites/ directory — run step 05 first`);
     process.exit(1);
   }
 
   const patientSlug = basename(patientDir);
   const manifestEntry: ManifestEntry = { slug: patientSlug, sites: [] };
+  const enrichmentContext = await loadEnrichmentContext(patientDir);
 
   // Collect all resources across all sites for cross-site validation
   const allResources: any[] = [];
 
   for (const site of siteDirs) {
     const siteDir = `${sitesDir}/${site}`;
-    const resources = await collectResources(siteDir);
+    const resourceFiles = await collectResourceFiles(siteDir);
+    const resources = resourceFiles.map(file => {
+      enrichResource(file.resource, enrichmentContext, site);
+      return file.resource;
+    });
 
     if (resources.length === 0) {
-      console.warn(`[06] No resources found for site ${site}`);
+      console.warn(`[07] No resources found for site ${site}`);
       continue;
+    }
+
+    for (const file of resourceFiles) {
+      await Bun.write(file.path, `${JSON.stringify(file.resource, null, 2)}\n`);
     }
 
     allResources.push(...resources);
@@ -234,28 +251,28 @@ async function main() {
       totalResources: resources.length,
     });
 
-    console.log(`[06] ${site}: ${resources.length} resources → bundle.json`);
+    console.log(`[07] ${site}: ${resources.length} resources → bundle.json`);
     for (const [type, count] of Object.entries(counts).sort()) {
-      console.log(`[06]   ${type}: ${count}`);
+      console.log(`[07]   ${type}: ${count}`);
     }
   }
 
   // ─── Validation ───
 
-  console.log(`\n[06] === Validation ===`);
+  console.log(`\n[07] === Validation ===`);
 
   // Reference validation (across all sites for this patient)
   const referenceErrors = validateReferences(allResources);
   if (referenceErrors.length > 0) {
-    console.warn(`[06] ${referenceErrors.length} unresolved references:`);
+    console.warn(`[07] ${referenceErrors.length} unresolved references:`);
     for (const err of referenceErrors.slice(0, 20)) {
-      console.warn(`[06]   ${err}`);
+      console.warn(`[07]   ${err}`);
     }
     if (referenceErrors.length > 20) {
-      console.warn(`[06]   ... and ${referenceErrors.length - 20} more`);
+      console.warn(`[07]   ... and ${referenceErrors.length - 20} more`);
     }
   } else {
-    console.log(`[06] All references resolve ✓`);
+    console.log(`[07] All references resolve ✓`);
   }
 
   // Terminology validation
@@ -264,21 +281,21 @@ async function main() {
     const db = new Database(TERMINOLOGY_DB, { readonly: true });
     try {
       terminologyResult = validateTerminology(allResources, db);
-      console.log(`[06] Terminology: ${terminologyResult.validCodes}/${terminologyResult.totalCodes} codes valid`);
+      console.log(`[07] Terminology: ${terminologyResult.validCodes}/${terminologyResult.totalCodes} codes valid`);
       if (terminologyResult.unknownCodes > 0) {
-        console.warn(`[06] ${terminologyResult.unknownCodes} unknown codes:`);
+        console.warn(`[07] ${terminologyResult.unknownCodes} unknown codes:`);
         for (const detail of terminologyResult.unknownCodeDetails.slice(0, 20)) {
-          console.warn(`[06]   ${detail.resource}: ${detail.system} | ${detail.code} (${detail.display ?? "no display"})`);
+          console.warn(`[07]   ${detail.resource}: ${detail.system} | ${detail.code} (${detail.display ?? "no display"})`);
         }
         if (terminologyResult.unknownCodes > 20) {
-          console.warn(`[06]   ... and ${terminologyResult.unknownCodes - 20} more`);
+          console.warn(`[07]   ... and ${terminologyResult.unknownCodes - 20} more`);
         }
       }
     } finally {
       db.close();
     }
   } else {
-    console.warn(`[06] Skipping terminology validation — ${TERMINOLOGY_DB} not found`);
+    console.warn(`[07] Skipping terminology validation — ${TERMINOLOGY_DB} not found`);
   }
 
   manifestEntry.validation = {
@@ -294,7 +311,7 @@ async function main() {
     `${patientDir}/validation-report.json`,
     JSON.stringify(manifestEntry.validation, null, 2),
   );
-  console.log(`[06] Wrote validation-report.json`);
+  console.log(`[07] Wrote validation-report.json`);
 
   // Update global manifest
   const manifestPath = `${PIPELINE_ROOT}/manifest.json`;
@@ -313,12 +330,12 @@ async function main() {
   }
 
   await Bun.write(manifestPath, JSON.stringify(manifest, null, 2));
-  console.log(`\n[06] Updated ${manifestPath}`);
-  console.log(`[06] Done — ${patientSlug}: ${manifestEntry.sites.length} sites, ${allResources.length} total resources`);
+  console.log(`\n[07] Updated ${manifestPath}`);
+  console.log(`[07] Done — ${patientSlug}: ${manifestEntry.sites.length} sites, ${allResources.length} total resources`);
 
   // Exit with warning code if there were validation issues
   if (referenceErrors.length > 0 || terminologyResult.unknownCodes > 0) {
-    console.warn(`\n[06] Completed with validation warnings`);
+    console.warn(`\n[07] Completed with validation warnings`);
   }
 }
 

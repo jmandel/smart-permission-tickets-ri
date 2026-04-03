@@ -1,6 +1,6 @@
 import { Database } from "bun:sqlite";
 
-import { IDENTITY_TYPES, type DateSemantics, type HiddenRead, type ResourceRow, type Search, type Ticket } from "./model.ts";
+import { IDENTITY_TYPES, SENSITIVE_LABELS, type DateSemantics, type HiddenRead, type ResourceRow, type Search, type SensitiveMode, type Ticket } from "./model.ts";
 
 export function materializeVisibleSet(db: Database, ticket: Ticket) {
   db.exec(`
@@ -38,6 +38,7 @@ export function printTicketCase(db: Database, ticket: Ticket, searches: Search[]
     console.log(`Ticket date window: ${ticket.dateRange.start} to ${ticket.dateRange.end}`);
     console.log(`Date semantics: ${resolveDateSemantics(ticket)} with interval overlap`);
   }
+  console.log(`Sensitive sharing: ${resolveSensitiveMode(ticket)}${ticket.sensitive?.mode ? "" : " (default)"}`);
   if (ticket.requiredLabelsAll?.length) console.log(`Required labels: ${formatLabels(ticket.requiredLabelsAll)}`);
   if (ticket.deniedLabelsAny?.length) console.log(`Denied labels: ${formatLabels(ticket.deniedLabelsAny)}`);
   if (ticket.granularCategoryRules?.length) {
@@ -241,6 +242,22 @@ function buildVisibleSql(ticket: Ticket): { sql: string; params: Array<string> }
     params.push(ticket.dateRange.start, ticket.dateRange.end);
   }
 
+  if (resolveSensitiveMode(ticket) === "deny") {
+    const denyClauses = SENSITIVE_LABELS.map(() => `(rl.system = ? AND rl.code = ?)`).join(" OR ");
+    clauses.push(`
+      NOT EXISTS (
+        SELECT 1
+        FROM resource_labels rl
+        WHERE rl.resource_pk = r.resource_pk
+          AND rl.kind = 'security'
+          AND (${denyClauses})
+      )
+    `);
+    for (const label of SENSITIVE_LABELS) {
+      params.push(label.system, label.code);
+    }
+  }
+
   for (const label of ticket.requiredLabelsAll ?? []) {
     clauses.push(`
       EXISTS (
@@ -346,6 +363,10 @@ function formatGeneratedWindow(row: Pick<ResourceRow, "generated_start" | "gener
 
 function resolveDateSemantics(ticket: Ticket): DateSemantics {
   return ticket.dateSemantics ?? "generated-during-period";
+}
+
+function resolveSensitiveMode(ticket: Ticket): SensitiveMode {
+  return ticket.sensitive?.mode ?? "deny";
 }
 
 function columnsForSemantics(semantics: DateSemantics) {

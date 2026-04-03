@@ -1,0 +1,160 @@
+# Encounter Timeline — Patricia Chidinma Okafor (DOB 1963-08-14)
+
+---
+
+## Westheimer Family Medicine
+
+**Site:** Westheimer Family Medicine
+**Address:** 9745 Westheimer Rd, Suite 200, Houston, TX 77042
+**NPI:** 1326847590
+**Primary Clinician:** Dr. Adebayo Olatunde, MD (Family Medicine)
+
+---
+
+### 2022-01-18 — Office Visit — Annual wellness, prediabetes and hypertension monitoring
+
+Patricia presented for her annual wellness visit with Dr. Adebayo Olatunde. Vitals: BP 132/80 mmHg, HR 72 bpm, weight 168 lbs, height 5'5", BMI 28.0, temperature 98.4°F, respiratory rate 16, SpO2 98% on room air. PHQ-2 screening was negative (score 0/6). Labs drawn: HbA1c 6.0% (prediabetic range, stable), fasting glucose 108 mg/dL, CBC within normal limits (hemoglobin 13.2 g/dL, WBC 6.4, platelets 234K), comprehensive metabolic panel unremarkable (creatinine 0.82, eGFR >60, ALT 22, AST 19), lipid panel showed total cholesterol 218, LDL 132, HDL 54, triglycerides 160. Conditions assessed: essential hypertension — well-controlled on lisinopril 10 mg daily; prediabetes — continued dietary management, goal HbA1c <5.7%. Immunizations: influenza vaccine (quadrivalent, 2021–2022 season) administered left deltoid. Screening mammogram ordered — patient reported last one was 2020, due for biennial. Colonoscopy up to date (last 2019, next due ~2029). Medications continued: lisinopril 10 mg PO daily. Dr. Olatunde documented a progress note covering the comprehensive wellness exam, medication reconciliation, and preventive care plan. Follow-up: telephone call in 4 weeks for HbA1c counseling, return in 12 months for next wellness visit.
+
+---
+
+### 2022-02-14 — Telephone — HbA1c counseling, dietary guidance
+
+Dr. Olatunde called Patricia to discuss her HbA1c result of 6.0% from the January wellness visit. He reinforced the importance of dietary modifications to prevent progression to overt diabetes — specifically reducing refined carbohydrates, increasing fiber intake, and maintaining her daily 2-mile walking routine. Patricia reported good adherence to her exercise regimen and willingness to try reducing portion sizes. No medication changes. No vitals or labs obtained. Dr. Olatunde documented a brief telephone encounter note summarizing the dietary counseling discussion and Patricia's stated commitment to lifestyle changes. Follow-up: routine at next annual wellness visit unless concerns arise.
+
+---
+
+### 2023-01-24 — Office Visit — Annual wellness, statin discussion
+
+Annual wellness visit with Dr. Adebayo Olatunde. Vitals: BP 130/80 mmHg, HR 70 bpm, weight 166 lbs, BMI 27.6, temperature 98.2°F, respiratory rate 14, SpO2 99% on room air. PHQ-2 negative (score 0/6). Labs drawn: HbA1c 6.0% (stable prediabetic), fasting glucose 106 mg/dL, CBC normal (hemoglobin 13.0 g/dL, WBC 5.8, platelets 241K), CMP unremarkable, lipid panel: total cholesterol 224, LDL 138, HDL 52, triglycerides 170. Dr. Olatunde discussed initiation of statin therapy given LDL 138 and 10-year ASCVD risk score of approximately 12%. Patricia expressed preference to intensify dietary changes (reduce red meat, increase plant-based meals) and recheck lipids in 6 months before considering medication. The decision was documented as shared decision-making. Conditions assessed: hypertension — controlled, continue lisinopril; prediabetes — stable, continue lifestyle management. Immunizations reviewed: influenza given October 2022 at pharmacy, Tdap current (2019), pneumococcal PCV20 administered in November 2022 at pharmacy — documented. COVID-19 boosters up to date. She mentioned occasional mild bilateral knee stiffness but denied significant functional limitation at this time. Medications continued: lisinopril 10 mg PO daily. Progress note documented. Follow-up: return in 6 months for lipid recheck or sooner if needed.
+
+---
+
+### 2023-06-12 — Office Visit — Bilateral knee pain, osteoarthritis assessed
+
+Patricia presented to Dr. Olatunde with worsening bilateral knee pain over the past 2–3 months, worse with prolonged standing and stair climbing, improved with rest. She denied locking, swelling, or instability. Vitals: BP 134/82 mmHg, HR 74 bpm, weight 165 lbs, BMI 27.4, temperature 98.4°F, respiratory rate 16, SpO2 98% on room air. Musculoskeletal exam showed mild crepitus bilaterally on range of motion, no effusion, full extension, flexion to 120 degrees bilaterally, stable ligaments. No knee X-rays ordered at this time — clinical presentation consistent with early degenerative osteoarthritis. Dr. Olatunde diagnosed mild bilateral knee osteoarthritis and started naproxen 250 mg PO twice daily as needed for pain. He counseled Patricia on weight management, low-impact exercise, and avoiding prolonged kneeling. Lipid recheck deferred — Patricia reported improved dietary habits but preferred to wait for the next annual visit for lab work. Progress note documented, including musculoskeletal exam and treatment plan. Follow-up: as needed for knee symptoms, otherwise at next annual wellness visit.
+
+---
+
+### 2024-03-12 — Office Visit — Annual wellness, routine chronic disease monitoring
+
+Annual wellness visit with Dr. Adebayo Olatunde. Vitals: BP 128/78 mmHg, HR 68 bpm, weight 164 lbs, BMI 27.3, temperature 98.6°F, respiratory rate 14, SpO2 98% on room air. PHQ-2 negative (score 0/6). Labs drawn: HbA1c 5.9% (slight improvement, still prediabetic), fasting glucose 104 mg/dL, CBC normal (hemoglobin 13.1 g/dL, WBC 6.2, platelets 228K), CMP unremarkable (creatinine 0.84, eGFR >60), lipid panel: total cholesterol 210, LDL 128, HDL 56, triglycerides 130 — LDL improved from 138 to 128 with dietary changes. Dr. Olatunde acknowledged the lipid improvement and agreed to continue lifestyle management with annual monitoring. Conditions assessed: hypertension — well-controlled; prediabetes — stable/improved; bilateral knee osteoarthritis — intermittent, using naproxen infrequently. Medications reviewed and continued: lisinopril 10 mg PO daily, naproxen 250 mg PO PRN. Immunizations: influenza given October 2023 at pharmacy (documented). Tdap due 2029. Shingrix series completed 2020. COVID-19 booster (2023–2024 formulation) given at pharmacy November 2023 — documented. Patricia reported feeling well, maintaining daily walks, active in church community. Screening mammogram up to date (2023). Progress note documented. Follow-up in 12 months for next wellness visit.
+
+---
+
+### 2024-07-18 — Office Visit — Persistent dry cough evaluation
+
+Patricia called the office on July 15 reporting a persistent dry cough present for approximately 6 weeks, not responding to over-the-counter loratadine or cetirizine. She was seen for an acute visit by Dr. Adebayo Olatunde on July 18. Vitals: BP 134/80 mmHg, HR 76 bpm, weight 160 lbs (down from 164 lbs in March — 4 lbs lost), BMI 26.6, temperature 98.2°F, respiratory rate 16, SpO2 96% on room air. Lungs were clear to auscultation bilaterally, no wheezes, rhonchi, or crackles. Oropharynx was clear, no postnasal drip noted. No cervical or supraclavicular lymphadenopathy palpated. Dr. Olatunde assessed the cough as likely post-viral or allergic; he noted the SpO2 of 96% as slightly lower than her baseline of 98–99% but still within normal limits. He prescribed benzonatate 100 mg PO three times daily for 14 days for cough suppression and advised return in 2 weeks if not improved. He documented a progress note including respiratory exam findings, differential diagnosis (post-viral cough, allergic rhinitis, less likely GERD or ACE-inhibitor cough — she has been on lisinopril for years without issue). Follow-up in 2 weeks.
+
+---
+
+### 2024-08-01 — Office Visit — Cough follow-up, chest X-ray results, urgent pulmonology referral
+
+Patricia returned to Dr. Adebayo Olatunde for 2-week follow-up of persistent cough. The cough had not improved with benzonatate. She also reported continued unintentional weight loss — she estimated approximately 8 lbs lost over the past 2 months (from ~164 lbs in March to ~156 lbs today). She attributed the weight loss to stress related to her daughter's divorce proceedings. Vitals: BP 136/84 mmHg, HR 78 bpm, weight 156 lbs, BMI 26.0, temperature 98.4°F, respiratory rate 18, SpO2 96% on room air. Lung exam again clear to auscultation. Dr. Olatunde ordered: chest X-ray (performed same day at the on-site imaging suite — result: suspicious 3-cm opacity in the right upper lobe with irregular borders), CBC (hemoglobin 11.8 g/dL — mildly low, down from 13.1 in March; WBC 7.1, platelets 210K), comprehensive metabolic panel (albumin 3.4 g/dL — mildly low; remainder unremarkable). Dr. Olatunde's assessment: persistent cough with unintentional weight loss, declining hemoglobin, mildly low albumin, and a right upper lobe opacity — lung malignancy must be excluded. He urgently referred Patricia to Houston Pulmonary Associates (Dr. Nisha Ramaswamy) and ordered a CT chest with contrast to be performed prior to the pulmonology appointment. He discontinued benzonatate as ineffective. He discussed findings with Patricia and her husband Emeka, explaining the need for further evaluation. Progress note documented with detailed clinical reasoning. Follow-up: pending pulmonology consultation.
+
+---
+
+### 2024-08-05 — Telephone — Coordination with pulmonology, patient reassurance
+
+Dr. Olatunde called Patricia to confirm that the CT chest with contrast had been scheduled for August 8 at Houston Medical Center Imaging and that the Houston Pulmonary Associates consultation with Dr. Ramaswamy was scheduled for August 12. He reviewed the plan: CT first, then pulmonology review of findings. Patricia expressed anxiety about the chest X-ray findings. Dr. Olatunde provided reassurance while being honest about the need for further workup, and encouraged her to bring Emeka to the pulmonology appointment. No vitals or labs. Brief telephone note documented. Follow-up: Dr. Olatunde to receive consultation report from Dr. Ramaswamy.
+
+---
+
+## Houston Pulmonary Associates
+
+**Site:** Houston Pulmonary Associates
+**Address:** 6624 Fannin St, Suite 1540, Houston, TX 77030
+**NPI:** 1548273016
+**Primary Clinician:** Dr. Nisha Ramaswamy, MD (Pulmonary Medicine)
+
+---
+
+### 2024-08-12 — Office Visit — Pulmonary consultation, CT chest review
+
+Patricia was seen by Dr. Nisha Ramaswamy for initial pulmonary consultation, referred by Dr. Olatunde for evaluation of persistent cough, unintentional weight loss, and right upper lobe opacity. The CT chest with contrast (performed August 8) was reviewed: findings showed a **4.2 cm spiculated mass in the right upper lobe** with **ipsilateral mediastinal lymphadenopathy** at stations 4R (largest node 2.1 cm) and station 7 (1.4 cm). No pleural effusion. No contralateral lymphadenopathy. Vitals: BP 138/84 mmHg, HR 80 bpm, weight 155 lbs, BMI 25.8, temperature 98.4°F, respiratory rate 16, SpO2 96% on room air. Lung exam: diminished breath sounds in the right apex, no wheezes or crackles. No clubbing. Dr. Ramaswamy reviewed the CT images and interpreted the findings as highly suspicious for primary lung malignancy given the spiculated morphology, mediastinal lymphadenopathy, and clinical context (never-smoker with significant secondhand smoke exposure). She ordered pulmonary function testing for the following week to establish a baseline. She discussed the findings with Patricia and Emeka, explaining the high clinical suspicion and the plan to refer urgently to MD Anderson Cancer Center for staging workup and tissue diagnosis. Consultation note documented with detailed CT interpretation, clinical assessment, and recommendation for oncologic referral. A referral to MD Anderson Cancer Center (Thoracic Oncology, Dr. Carlos Menendez) was initiated. Follow-up: PFT scheduled for August 19.
+
+---
+
+### 2024-08-19 — Pulmonary Function Testing — Baseline spirometry and diffusion capacity
+
+Patricia returned to Houston Pulmonary Associates for pulmonary function testing. Full PFTs performed: FEV1 2.08 L (78% predicted), FVC 2.72 L (82% predicted), FEV1/FVC ratio 0.76 (normal), TLC 4.1 L (80% predicted), DLCO 16.2 mL/min/mmHg (71% predicted). Interpretation by Dr. Ramaswamy: mild restrictive ventilatory defect with reduced diffusion capacity, consistent with parenchymal disease and/or early lymphangitic involvement. No significant bronchodilator response. No vitals taken (PFT-only visit). PFT results documented as a diagnostic report with individual observations for each parameter. This baseline would be important for monitoring pulmonary function during any subsequent chemotherapy or immunotherapy, particularly given the risk of treatment-related pneumonitis.
+
+---
+
+### 2024-09-03 — Telephone — MD Anderson referral confirmation, cough management
+
+Dr. Ramaswamy called Patricia to confirm that the MD Anderson referral had been processed and her new patient consultation with Dr. Carlos Menendez was scheduled for September 16. She also addressed Patricia's worsening nighttime cough, which was interfering with sleep. Dr. Ramaswamy prescribed guaifenesin with codeine 10 mL (100 mg guaifenesin / 10 mg codeine) PO at bedtime as needed for cough suppression. She counseled Patricia on potential sedation and constipation. She also noted that she would send all records — CT interpretation, PFT results, and consultation notes — to MD Anderson prior to the appointment. No vitals or labs. Telephone encounter note documented. Follow-up: with Dr. Menendez at MD Anderson; Dr. Ramaswamy would remain available for pulmonary questions but anticipated care transition to oncology.
+
+---
+
+## The University of Texas MD Anderson Cancer Center
+
+**Site:** The University of Texas MD Anderson Cancer Center
+**Address:** 1515 Holcombe Blvd, Houston, TX 77030
+**NPI:** 1275689043
+**Key Clinicians:** Dr. Carlos Menendez, MD (Thoracic Oncology); Jennifer Liu, RN (Research Coordinator); Dr. Amy Pham, PharmD (Oncology Pharmacist)
+
+---
+
+### 2024-09-16 — Office Visit — New patient thoracic oncology consultation
+
+Patricia was seen by Dr. Carlos Menendez in the Thoracic Oncology Clinic for initial oncology consultation. She was accompanied by her husband Emeka. Comprehensive history and physical performed. Vitals: BP 140/86 mmHg, HR 82 bpm, weight 153 lbs, BMI 25.5, temperature 98.6°F, respiratory rate 16, SpO2 95% on room air. ECOG performance status assessed as 1 (restricted in physically strenuous activity but ambulatory, able to carry out light work). Review of outside records: chest X-ray (August 1), CT chest with contrast (August 8), and PFT results (August 19) from Houston Pulmonary Associates. Dr. Menendez agreed with the assessment of a highly suspicious right upper lobe mass with mediastinal lymphadenopathy. He outlined the staging workup plan: PET/CT for metabolic staging, brain MRI to exclude intracranial metastases, and EBUS-guided biopsy for tissue diagnosis. Labs drawn: CBC (hemoglobin 11.6 g/dL, WBC 6.8, ANC 4.2, platelets 218K), CMP (albumin 3.3, LDH 198 U/L, otherwise unremarkable), tumor markers (CEA 8.4 ng/mL — elevated). Allergy to sulfonamide antibiotics confirmed and documented. Dr. Menendez discussed the overall approach with Patricia and Emeka — he emphasized that tissue diagnosis was essential before any treatment decisions could be made. Comprehensive consultation note documented including HPI, past medical history, social history (secondhand smoke exposure quantified: ~15 pack-years equivalent passive exposure), family history (no first-degree relatives with lung cancer), review of systems, physical exam, assessment, and staging plan. Follow-up: PET/CT September 23, brain MRI September 25.
+
+---
+
+### 2024-09-23 — Imaging — PET/CT staging scan
+
+Patricia underwent whole-body FDG PET/CT at MD Anderson. She fasted for 6 hours prior. Blood glucose at time of injection: 112 mg/dL (acceptable). Findings: FDG-avid right upper lobe mass measuring 4.3 × 3.8 cm with SUVmax 12.4; FDG-avid right paratracheal lymph node (station 4R) measuring 2.1 cm with SUVmax 8.1; FDG-avid subcarinal lymph node (station 7) measuring 1.5 cm with SUVmax 6.3. No FDG-avid lesions in the contralateral lung, liver, adrenal glands, or skeleton. No distant metastases identified. Diagnostic report generated by nuclear medicine. Impression: metabolically active right upper lobe mass with ipsilateral mediastinal lymphadenopathy, consistent with stage III lung malignancy pending tissue confirmation. No evidence of distant metastatic disease. No vitals obtained (imaging visit). Follow-up: brain MRI September 25, biopsy to follow.
+
+---
+
+### 2024-10-02 — Procedure — EBUS-guided transbronchial needle aspiration biopsy
+
+Patricia underwent endobronchial ultrasound-guided transbronchial needle aspiration (EBUS-TBNA) under moderate sedation at MD Anderson. Pre-procedure vitals: BP 144/88 mmHg, HR 86 bpm, temperature 98.4°F, respiratory rate 18, SpO2 95% on room air. Stations 4R and 7 were sampled (3 passes each). Rapid on-site cytology evaluation confirmed adequate tissue. Intra-procedure SpO2 remained above 93% on 2L supplemental oxygen. Post-procedure: patient recovered in the procedural recovery area, SpO2 returned to 96% on room air, no pneumothorax on post-procedure chest X-ray. Discharged home with Emeka. Pathology results (finalized October 7): **adenocarcinoma** identified in both station 4R and station 7 lymph node samples. Immunohistochemistry: TTF-1 positive, CK7 positive, CK20 negative, p40 negative — consistent with primary pulmonary adenocarcinoma. Molecular testing ordered on biopsy tissue. Procedure note and pathology diagnostic report documented. Follow-up: await molecular profiling results, goals-of-care visit scheduled for October 15.
+
+---
+
+### 2024-10-15 — Office Visit — Pathology review, molecular results, goals-of-care discussion
+
+Patricia and Emeka returned to Dr. Menendez for a dedicated goals-of-care and treatment planning visit. Vitals: BP 136/82 mmHg, HR 78 bpm, weight 151 lbs, BMI 25.1, temperature 98.2°F, respiratory rate 16, SpO2 96% on room air. ECOG performance status: 1 (unchanged). Dr. Menendez reviewed the finalized pathology and molecular testing results. Molecular profiling (next-generation sequencing panel, results finalized October 10): EGFR wild-type, ALK rearrangement negative, ROS1 rearrangement negative, BRAF V600E negative, **KRAS G12C positive**, MET amplification negative. PD-L1 expression by 22C3 immunohistochemistry: **TPS 60%** (high expression). Brain MRI (September 25): no intracranial metastases. **Final staging: Stage IIIA (T2b N2 M0) non-small cell lung cancer, adenocarcinoma subtype, right upper lobe primary.** Dr. Menendez discussed the staging, prognosis, and treatment options at length. Given the unresectable stage IIIA disease, high PD-L1 expression, and good performance status, he recommended chemo-immunotherapy as first-line treatment. He introduced the possibility of a clinical trial (NCT05820295) comparing pembrolizumab plus carboplatin/pemetrexed versus carboplatin/pemetrexed alone. He explained the trial design, potential benefits of immunotherapy, and the randomization process. Patricia requested time to discuss with her family and her pastor before making a decision. Dr. Menendez also discussed code status — Patricia confirmed she wished to remain full code at this time. A detailed progress note was documented covering pathology review, molecular results, staging summary, treatment options, clinical trial discussion, and goals-of-care conversation. Jennifer Liu, RN (research coordinator) provided Patricia with the trial information packet. Follow-up: clinical trial screening visit if Patricia decides to participate, otherwise treatment initiation planning.
+
+---
+
+### 2024-11-04 — Office Visit — Clinical trial screening, baseline assessments
+
+Patricia returned for clinical trial screening after deciding to participate in NCT05820295. She reported discussing the trial with her children (by phone), her husband, and her pastor, all of whom supported her decision. Jennifer Liu, RN coordinated the screening visit. Vitals: BP 132/80 mmHg, HR 74 bpm, weight 150 lbs, BMI 25.0, temperature 98.4°F, respiratory rate 14, SpO2 96% on room air. ECOG performance status: 1. Screening labs drawn: CBC (hemoglobin 11.4 g/dL, WBC 6.5, ANC 3.9, platelets 222K), CMP (creatinine 0.86, ALT 20, AST 18, albumin 3.3, total bilirubin 0.6), LDH 204 U/L, TSH 2.1 mIU/L, free T4 1.2 ng/dL — all within acceptable ranges for trial enrollment. ECG: normal sinus rhythm, rate 72, no ST-T wave abnormalities, QTc 412 ms. Echocardiogram: LVEF 62%, normal wall motion, no valvular abnormalities, no pericardial effusion. Urinalysis: no proteinuria. Pregnancy test: not applicable (post-menopausal). All inclusion criteria met: histologically confirmed stage III NSCLC, measurable disease per RECIST 1.1, ECOG 0–1, adequate organ function. No exclusion criteria identified: no autoimmune disease, no prior immunotherapy, no active infection, no uncontrolled hypertension. Jennifer Liu completed the eligibility checklist. Quality-of-life baseline assessments administered: EORTC QLQ-C30 (global health status score 58/100) and QLQ-LC13 (cough symptom score 44/100, dyspnea score 22/100). Dr. Amy Pham, PharmD reviewed Patricia's medication list for interactions — naproxen use was flagged as a potential concern with carboplatin (renal toxicity) and she recommended minimizing NSAID use during chemotherapy. Progress note and screening documentation generated. Follow-up: consent visit scheduled for December 2 pending protocol amendment review.
+
+---
+
+### 2024-12-02 — Office Visit — Informed consent, clinical trial enrollment
+
+Patricia returned to MD Anderson for the formal consent and enrollment visit for clinical trial NCT05820295. Dr. Menendez reviewed the trial protocol, potential benefits and risks of pembrolizumab in combination with chemotherapy, and the data safety monitoring plan. Patricia confirmed her understanding and signed informed consent. Jennifer Liu, RN witnessed the consent process and completed enrollment paperwork, including HIPAA research authorization for access to historical medical records from Westheimer Family Medicine and Houston Pulmonary Associates (records from January 1, 2022 through present). She was randomized to the **pembrolizumab + carboplatin/pemetrexed arm** (the experimental arm). Dr. Amy Pham, PharmD conducted a pre-treatment medication counseling session: she reviewed the chemotherapy regimen, anticipated side effects (nausea, fatigue, myelosuppression, renal toxicity, immune-related adverse events), and supportive medications. She started Patricia on folic acid 1 mg PO daily and administered vitamin B12 1000 mcg IM (both required as pemetrexed supplementation — folic acid to be started at least 7 days before first pemetrexed dose). She also prescribed ondansetron 8 mg PO as pre-medication for nausea and dexamethasone 4 mg PO for pemetrexed premedication. Vitals: BP 130/78 mmHg, HR 72 bpm, weight 149 lbs, BMI 24.8, temperature 98.4°F, respiratory rate 14, SpO2 96% on room air. Influenza vaccine (2024–2025 season) administered — per oncology team recommendation to vaccinate prior to treatment initiation. Consent documentation, enrollment note, and pharmacy counseling note generated. Treatment start: Cycle 1 scheduled for January 6, 2025.
+
+---
+
+### 2025-01-06 — Infusion — Cycle 1 chemo-immunotherapy
+
+Patricia received Cycle 1 of protocol treatment at the MD Anderson Infusion Center. Pre-treatment labs drawn: CBC (hemoglobin 11.2 g/dL, WBC 6.1, ANC 3.6, platelets 216K), CMP (creatinine 0.88, ALT 18, AST 20, albumin 3.2), LDH 192 U/L, TSH 2.3 mIU/L — all within protocol parameters. Pre-infusion vitals: BP 134/82 mmHg, HR 76 bpm, weight 148 lbs, BMI 24.6, temperature 98.6°F, respiratory rate 14, SpO2 96% on room air. Pre-medications administered: dexamethasone 4 mg PO (given morning of infusion), ondansetron 8 mg IV. Treatment administered per protocol: **pembrolizumab 200 mg IV** over 30 minutes, followed by **carboplatin AUC 5 IV** (calculated dose 450 mg based on Calvert formula, GFR 68 mL/min) over 30 minutes, followed by **pemetrexed 500 mg/m² IV** (BSA 1.72 m², dose 860 mg) over 10 minutes. Total infusion time approximately 2.5 hours including observation. No infusion reactions. Post-infusion vitals: BP 128/76 mmHg, HR 80 bpm, SpO2 97% on room air. Patricia tolerated the infusion well. She was discharged home with prescriptions for ondansetron 8 mg PO every 8 hours PRN for 5 days and instructions to call for fever >100.4°F, severe nausea/vomiting, or bleeding. Infusion encounter note and medication administration records documented. Follow-up: Cycle 2 in 3 weeks (January 27), call clinic if concerns.
+
+---
+
+### 2025-01-27 — Infusion — Cycle 2 chemo-immunotherapy
+
+Patricia returned for Cycle 2. She reported grade 1 nausea during the first week after Cycle 1, managed with ondansetron, and grade 1 fatigue that improved by week 2. Her cough was slightly improved. Pre-treatment labs: CBC (hemoglobin 10.9 g/dL, WBC 5.4, ANC 1.8, platelets 156K — ANC acceptable but lower), CMP (creatinine 0.92, ALT 22, AST 24, albumin 3.1), LDH 188 U/L, TSH 2.4 mIU/L. Pre-infusion vitals: BP 130/80 mmHg, HR 78 bpm, weight 147 lbs, BMI 24.5, temperature 98.2°F, respiratory rate 16, SpO2 96% on room air. ECOG: 1. CTCAE toxicity grading: nausea grade 1, fatigue grade 1, no other toxicities. Treatment administered on schedule at same doses: pembrolizumab 200 mg IV, carboplatin 450 mg IV, pemetrexed 860 mg IV with standard pre-medications. No infusion reactions. Patricia was counseled on neutropenia precautions given the declining ANC. She was advised to avoid crowds, practice hand hygiene, and seek immediate care for fever. Infusion note and medication administration records documented. Follow-up: Cycle 3 in 3 weeks (February 17).
+
+---
+
+### 2025-02-17 — Infusion — Cycle 3, carboplatin dose reduction, neuropathy management
+
+Patricia presented for Cycle 3. She reported increased fatigue (grade 2 — limiting instrumental activities of daily living; she reduced her walks to half a mile and was napping daily) and new onset numbness/tingling in her fingertips bilaterally (grade 1 peripheral neuropathy). She denied motor weakness. Her cough was notably improved — she was sleeping through the night without coughing. Pre-treatment labs: CBC (hemoglobin 10.6 g/dL, WBC 4.8, ANC 2.1, platelets 148K), CMP (creatinine 0.94, ALT 24, AST 26, albumin 3.0), LDH 180 U/L, TSH 2.6 mIU/L. Pre-infusion vitals: BP 126/76 mmHg, HR 80 bpm, weight 145 lbs, BMI 24.1, temperature 98.4°F, respiratory rate 14, SpO2 97% on room air. ECOG: 1. CTCAE toxicity grading: fatigue grade 2, peripheral neuropathy grade 1, nausea grade 1. Dr. Menendez reviewed the toxicity profile and decided to **reduce carboplatin dose by 25%** (new dose: AUC 3.75, calculated 338 mg) per protocol guidelines for cumulative toxicity. Pembrolizumab and pemetrexed doses remained unchanged. Treatment administered with dose-modified carboplatin. Dr. Menendez also started **gabapentin 300 mg PO at bedtime** for neuropathy management. Dr. Amy Pham counseled Patricia on gabapentin (potential drowsiness, dose escalation if needed). A new condition — **chemotherapy-induced peripheral neuropathy** — was documented. Infusion note, medication administration records, and adverse event documentation generated. Follow-up: Cycle 4 in 3 weeks (March 10).
+
+---
+
+### 2025-03-10 — Infusion — Cycle 4, final induction cycle
+
+Patricia presented for Cycle 4, the final planned induction cycle before transition to maintenance. She reported neuropathy had improved with gabapentin — numbness limited to fingertip tips, not interfering with daily activities. Fatigue remained grade 1–2 but was more manageable. She had resumed walking one mile daily. Pre-treatment labs: CBC (hemoglobin 10.4 g/dL, WBC 5.2, ANC 2.4, platelets 162K), CMP (creatinine 0.90, ALT 20, AST 22, albumin 3.1), LDH 172 U/L, TSH 2.8 mIU/L. Pre-infusion vitals: BP 128/78 mmHg, HR 74 bpm, weight 144 lbs, BMI 24.0, temperature 98.2°F, respiratory rate 14, SpO2 97% on room air. ECOG: 1. CTCAE: fatigue grade 1, neuropathy grade 1 (improved), nausea grade 0 (resolved). Treatment administered: pembrolizumab 200 mg IV, carboplatin 338 mg IV (continued at reduced dose), pemetrexed 860 mg IV. No infusion reactions. Dr. Menendez discussed the plan for interim restaging CT in 2 weeks (March 24) and transition to maintenance pembrolizumab monotherapy if response is adequate. Patricia expressed cautious optimism, noting her cough had nearly resolved and she was feeling more energetic. Vitamin B12 1000 mcg IM administered (per protocol, every 9 weeks — due this visit). Infusion note and medication administration records documented. Follow-up: restaging CT March 24, results visit to follow.
+
+---
+
+### 2025-03-24 — Imaging — Interim restaging CT chest/abdomen/pelvis
+
+Patricia underwent CT chest/abdomen/pelvis with IV contrast for interim restaging per trial protocol. No vitals taken at the imaging suite (imaging-only visit). Findings: right upper lobe mass decreased from 4.2 cm (baseline September 2024) to **2.8 cm** in longest diameter — representing a 33% decrease. Right paratracheal lymph node (station 4R) decreased from 2.1 cm to 1.2 cm. Subcarinal node (station 7) decreased from 1.5 cm to 0.8 cm. No new pulmonary nodules. No pleural effusion. No new mediastinal or hilar lymphadenopathy. Abdomen/pelvis: no hepatic lesions, adrenals normal, no ascites, no retroperitoneal lymphadenopathy, no osseous metastases. **RECIST 1.1 assessment: partial response** (target lesion sum decreased from 4.2 cm to 2.8 cm, 33% reduction — meeting the ≥30% threshold for partial response). Diagnostic report generated by radiology. Dr. Menendez reviewed the results with Patricia and Emeka by telephone on March 26 — both were encouraged by the response. Plan: transition to maintenance pembrolizumab 200 mg IV every 3 weeks, discontinue carboplatin and pemetrexed per protocol. Continue gabapentin, folic acid, and vitamin B12 supplementation. Next restaging scan in approximately 12 weeks.

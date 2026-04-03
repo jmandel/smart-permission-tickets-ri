@@ -175,7 +175,7 @@ async function spawnAgent(opts: {
   await Bun.write(msgFile, opts.userMessage);
 
   let cmd: string[];
-  let stdin: Parameters<typeof Bun.spawn>[0] extends { stdin?: infer S } ? S : never;
+  let stdin: ReturnType<typeof Bun.file> | undefined;
 
   if (agentCli === "claude") {
     cmd = [
@@ -204,8 +204,6 @@ async function spawnAgent(opts: {
     if (agentCli === "copilot") {
       cmd = [
         "copilot",
-        "-p",
-        combinedPrompt,
         "--yolo",
         "--no-ask-user",
         "--stream",
@@ -213,7 +211,7 @@ async function spawnAgent(opts: {
         "--no-color",
       ];
       if (model) cmd.push("--model", model);
-      stdin = undefined;
+      stdin = Bun.file(msgFile);
     } else {
       // codex
       cmd = [
@@ -238,7 +236,7 @@ async function spawnAgent(opts: {
   const proc = Bun.spawn({
     cmd,
     cwd: workDir,
-    stdin: stdin as any,
+    ...(stdin ? { stdin } : {}),
     stdout: "pipe",
     stderr: "pipe",
     env: process.env,

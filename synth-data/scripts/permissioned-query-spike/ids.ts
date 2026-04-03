@@ -47,7 +47,7 @@ function siteScopedSemanticKey(descriptor: Pick<ResourceDescriptor, "siteSlug" |
   }
 }
 
-function findNpi(resource: any, allowMetaTagFallback: boolean): string | null {
+function findNpi(resource: any, _allowMetaTagFallback: boolean): string | null {
   for (const identifier of resource.identifier ?? []) {
     const system = normalizeText(identifier.system);
     const value = normalizeText(identifier.value);
@@ -55,11 +55,6 @@ function findNpi(resource: any, allowMetaTagFallback: boolean): string | null {
     if (system?.includes("npi")) return value;
     for (const coding of identifier.type?.coding ?? []) {
       if (coding.code === "NPI" && value) return value;
-    }
-  }
-  if (allowMetaTagFallback) {
-    for (const tag of resource.meta?.tag ?? []) {
-      if (tag.system === "urn:example:permissiontickets-demo:source-org-npi" && tag.code) return String(tag.code);
     }
   }
   return null;

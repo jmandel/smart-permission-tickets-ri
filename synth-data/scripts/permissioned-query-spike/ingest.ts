@@ -6,7 +6,14 @@ import { extractCareWindow, extractGeneratedWindow, extractLabels, extractRefere
 import { allowsEncounterFallback } from "./care-date.ts";
 import { allowsGeneratedEncounterFallback } from "./generated-date.ts";
 import { buildServerIdentity, scopeClassForResourceType, sourceLookupKeyForDescriptor } from "./ids.ts";
-import { DATA_ROOT, type LoadResult, type PatientAlias, type ResourceDescriptor } from "./model.ts";
+import {
+  DATA_ROOT,
+  JURISDICTION_STATE_SYSTEM,
+  SOURCE_ORG_NPI_SYSTEM,
+  type LoadResult,
+  type PatientAlias,
+  type ResourceDescriptor,
+} from "./model.ts";
 
 export function initializeSchema(db: Database) {
   db.exec(`
@@ -96,6 +103,7 @@ export function initializeSchema(db: Database) {
 export function loadAllResources(db: Database): LoadResult {
   const sourcePatientRefs = discoverSourcePatientRefs();
   const descriptors = collectDescriptors(sourcePatientRefs);
+  const siteMetadata = deriveSiteMetadata(descriptors);
   const sourceCollisionCount = countCollisions(descriptors.map((descriptor) => `${descriptor.resourceType}|${descriptor.sourceLogicalId}`));
   const serverCollisionCount = countCollisions(descriptors.map((descriptor) => `${descriptor.resourceType}|${descriptor.serverLogicalId}`));
 
@@ -232,6 +240,9 @@ export function loadAllResources(db: Database): LoadResult {
         insertRef.run(resourcePk, ref.paramName, ref.targetType, ref.targetLogicalId, ref.targetRef);
       }
       for (const label of extractLabels(rewritten, canonical.siteSlug)) {
+        insertLabel.run(resourcePk, label.kind, label.system, label.code);
+      }
+      for (const label of deriveSiteLabels(siteMetadata.get(canonical.siteSlug))) {
         insertLabel.run(resourcePk, label.kind, label.system, label.code);
       }
     }
@@ -411,6 +422,58 @@ function countCollisions(keys: string[]): number {
   const counts = new Map<string, number>();
   for (const key of keys) counts.set(key, (counts.get(key) ?? 0) + 1);
   return [...counts.values()].filter((count) => count > 1).length;
+}
+
+function deriveSiteMetadata(descriptors: ResourceDescriptor[]) {
+  const metadata = new Map<string, { npi: string | null; state: string | null }>();
+  const bySite = new Map<string, ResourceDescriptor[]>();
+  for (const descriptor of descriptors) {
+    const list = bySite.get(descriptor.siteSlug) ?? [];
+    list.push(descriptor);
+    bySite.set(descriptor.siteSlug, list);
+  }
+
+  for (const [siteSlug, siteDescriptors] of bySite.entries()) {
+    const organization = siteDescriptors.find((descriptor) => descriptor.resourceType === "Organization")?.sourceJson;
+    const location = siteDescriptors.find((descriptor) => descriptor.resourceType === "Location")?.sourceJson;
+    metadata.set(siteSlug, {
+      npi: findNpi(organization),
+      state: findState(organization) ?? findState(location),
+    });
+  }
+
+  return metadata;
+}
+
+function deriveSiteLabels(site: { npi: string | null; state: string | null } | undefined) {
+  const labels: Array<{ kind: string; system: string; code: string }> = [];
+  if (!site) return labels;
+  if (site.npi) labels.push({ kind: "tag", system: SOURCE_ORG_NPI_SYSTEM, code: site.npi });
+  if (site.state) labels.push({ kind: "tag", system: JURISDICTION_STATE_SYSTEM, code: site.state });
+  return labels;
+}
+
+function findNpi(resource: any): string | null {
+  for (const identifier of resource?.identifier ?? []) {
+    const system = typeof identifier?.system === "string" ? identifier.system.toLowerCase() : "";
+    const value = typeof identifier?.value === "string" ? identifier.value.trim() : "";
+    if (!value) continue;
+    if (system.includes("npi")) return value;
+    for (const coding of identifier?.type?.coding ?? []) {
+      if (coding?.code === "NPI") return value;
+    }
+  }
+  return null;
+}
+
+function findState(resource: any): string | null {
+  for (const address of resource?.address ?? []) {
+    if (typeof address?.state === "string" && address.state.trim()) return address.state.trim().toUpperCase();
+  }
+  if (typeof resource?.address?.state === "string" && resource.address.state.trim()) {
+    return resource.address.state.trim().toUpperCase();
+  }
+  return null;
 }
 
 function listDirs(dir: string): string[] {

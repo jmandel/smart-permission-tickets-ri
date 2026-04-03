@@ -10,15 +10,17 @@ Write a rich, natural markdown document that covers:
 
 2. **Clinical arc**: A narrative life story of this patient's health. What conditions do they have? When were they diagnosed? How has their health changed over time? What medications are they on? What allergies? What immunizations? Write this as a story, not a list.
 
-3. **Provider map**: Which healthcare sites has this patient received care at? For each site, include:
-   - Name, city, state, NPI (make up a realistic 10-digit NPI)
+3. **Provider map**: List the clinical care organizations where this patient has visits and where aspects of their medical record are recorded. For each provider, include:
+   - Name, city, state, NPI (make up a realistic 10-digit organizational NPI)
    - Type (primary care, specialty, ED, etc.)
    - Active period (when did the patient start/stop going there?)
    - What role does this site play in their care? What kind of data would it hold?
    - How many encounters roughly? What resource volume?
    - Key clinicians (made-up names are fine)
 
-4. **What this patient exercises for the demo**: Explain which Permission Ticket access constraint dimensions this patient's data can demonstrate (scopes, periods, jurisdictions, organizations).
+4. **Other entities**: List any other organizations relevant to the patient's story that are not clinical care providers — payers, public health agencies, research institutes, pharmacies, community organizations, etc. For each, include their name, city, state, NPI, type, and their role in the Permission Ticket scenario (e.g., requester, data holder, or both). These don't need the detailed encounter/resource estimates that providers do.
+
+5. **What this patient exercises for the demo**: Explain which Permission Ticket access constraint dimensions this patient's data can demonstrate (scopes, periods, jurisdictions, organizations). Describe how requesting organizations use Permission Tickets to access data from the providers listed above.
 
 ## Suggested section headings
 
@@ -26,7 +28,8 @@ Use clear markdown headings so the narrative is easy for humans and downstream n
 
 - `## Patient Overview`
 - `## Clinical Arc`
-- `## Provider Map`
+- `## Provider Map` (clinical care providers only)
+- `## Other Entities` (payers, PH agencies, research institutes, etc.)
 - `## Demo Relevance`
 
 ## Calibration (from real records)

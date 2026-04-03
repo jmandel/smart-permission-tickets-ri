@@ -311,7 +311,7 @@ After generating individual resources:
 7. Wire patient references: everything points to the patient
 8. Wire organization references: encounters → serviceProvider → Organization
 9. Wire specimen/report chains: lab Observation → Specimen → DiagnosticReport → Observation (result)
-10. Apply constraint-exercise tags: `meta.tag` for source-org (NPI) and jurisdiction (state)
+10. Apply security labels via `meta.security`; organization and jurisdiction context are derived later from site ingest metadata rather than stamped onto every resource
 
 ### Output Format
 
@@ -402,10 +402,11 @@ Each patient goes through these steps, each producing files on disk:
 3. `steps/03-notes.ts` — Fan-out: generates clinical notes per encounter (plain text)
 4. `steps/04-inventory.ts` — Fan-out: generates resource inventories per encounter (informed by notes)
 5. `steps/05-generate-fhir.ts` — Generates a small reference scaffold, then encounter FHIR resources in chronological order with prior-resource context
-6. `steps/06-assemble.ts` — Wires references, validates, assembles bundles
+6. `steps/06-security-labels.ts` — Classifies encounter sensitivity and applies `meta.security`
+7. `steps/07-assemble.ts` — Enriches, validates, assembles bundles
 
 Steps 1-2 produce markdown (for your review). Steps 3-4 produce markdown
-then FHIR JSON. Step 5 is pure code.
+artifacts for downstream generation. Step 6 applies security labels. Step 7 is pure code.
 
 ## Your workflow
 
@@ -413,7 +414,7 @@ then FHIR JSON. Step 5 is pure code.
 2. If new: ask for a scenario brief (or offer to suggest one)
 3. Run step 1. Show the biography to the user. Ask if it looks good.
 4. Run step 2. Show the encounter timeline. Ask if it looks good.
-5. Run steps 3-5 (these are more mechanical — show progress, flag errors)
+5. Run steps 3-7 (these are more mechanical — show progress, flag errors)
 6. Show summary: resource counts per site, any validation issues
 7. Ask if the user wants to generate another patient
 ```
@@ -438,7 +439,8 @@ synth-data/
     03-notes.ts               ← Fan-out: generates notes/enc-*.txt (clinical notes)
     04-inventory.ts           ← Fan-out: generates inventories/enc-*.md (informed by notes)
     05-generate-fhir.ts       ← Reference scaffold + chronological encounter generation → FHIR JSON
-    06-assemble.ts            ← Wire refs, validate, bundle, manifest
+    06-security-labels.ts     ← Classify sensitivity and stamp meta.security
+    07-assemble.ts            ← Enrich, validate, bundle, manifest
   prompts/
     biography.md              ← System prompt for biography generation agent
     encounters.md             ← System prompt for encounter timeline agent

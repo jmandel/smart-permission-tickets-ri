@@ -77,12 +77,12 @@ function main() {
     printTicketCase(
       db,
       item.ticket,
-      item.ticket.name.includes("reproductive sensitivity")
+      item.ticket.name.includes("default non-sensitive") && item.ticket.name.includes("Elena")
         ? [
             { resourceType: "Encounter", limit: 6 },
             { resourceType: "Observation", limit: 6 },
           ]
-        : item.ticket.name.includes("HIV and mental-health")
+        : item.ticket.name.includes("default non-sensitive") && item.ticket.name.includes("Robert")
           ? [
               { resourceType: "DiagnosticReport", limit: 6 },
               { resourceType: "Observation", limit: 6 },
@@ -126,7 +126,9 @@ function main() {
 
   console.log(`## Notes`);
   console.log(`- Tickets are evaluated against site-qualified source patient aliases, not a global person key.`);
-  console.log(`- The corpus now carries real meta.security labels for sensitive domains like sexuality/reproductive health, mental health, and HIV; the spike also layers on a few derived demo labels like clinical-note and renal.`);
+  console.log(`- Public ticket input now treats sensitivity as a simple all-or-none switch: sensitive.mode = deny (default) or allow.`);
+  console.log(`- The corpus carries real meta.security labels for sexuality/reproductive health, mental health, and HIV; the spike maps sensitive.mode onto that enumerated set internally.`);
+  console.log(`- The spike still layers on a few non-sensitive demo labels like clinical-note and renal for other filtering examples.`);
   console.log(`- Ticket date ranges now default to "generated during period" semantics, using generated_start/generated_end with encounter fallback where needed.`);
   console.log(`- Date filtering is interval overlap over the selected window model, not full containment.`);
   console.log(`- Clinical care windows are still stored separately so care-overlap can remain an explicit opt-in policy later.`);

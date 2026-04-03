@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 /**
- * Step 07: Classify encounters by clinical sensitivity, then apply labels.
+ * Step 06: Classify encounters by clinical sensitivity, then apply labels.
  *
  * Phase 1 (LLM): Agent reads scenario + inventories + resource ID list,
  *   outputs a classification JSON, then runs check-labels to validate it.
@@ -20,7 +20,7 @@ const SCAFFOLD_TYPES = new Set(["Patient", "Organization", "Practitioner", "Loca
 
 const patientDir = resolve(process.argv[2] ?? "");
 if (!patientDir || !(await Bun.file(`${patientDir}/scenario.md`).exists())) {
-  console.error("Usage: bun run steps/07-security-labels.ts patients/<slug>/");
+  console.error("Usage: bun run steps/06-security-labels.ts patients/<slug>/");
   process.exit(1);
 }
 
@@ -29,15 +29,15 @@ const classificationPath = `${patientDir}/security-labels.json`;
 
 // Check if already done
 if (await Bun.file(classificationPath).exists() && !process.argv.includes("--force")) {
-  console.log(`[07] ${slug}: security-labels.json already exists, skipping (use --force to redo)`);
+  console.log(`[06] ${slug}: security-labels.json already exists, skipping (use --force to redo)`);
   process.exit(0);
 }
 
 // Strip any existing labels first
-console.log(`[07] ${slug}: Stripping any existing labels...`);
+console.log(`[06] ${slug}: Stripping any existing labels...`);
 await $`bun run ${PIPELINE_ROOT}/steps/strip-labels.ts ${patientDir}`.quiet();
 
-console.log(`[07] ${slug}: Classifying encounters for security labels...`);
+console.log(`[06] ${slug}: Classifying encounters for security labels...`);
 
 // ── Gather context ──────────────────────────────────────────────────────
 
@@ -122,7 +122,7 @@ Classify each encounter and identify any resource-level overrides. Output raw JS
 
 // ── Phase 1: LLM classification ─────────────────────────────────────────
 
-console.log(`[07] ${slug}: Running agent for classification...`);
+console.log(`[06] ${slug}: Running agent for classification...`);
 const rawOutput = await callAgent({
   systemPrompt,
   userMessage,
@@ -134,36 +134,35 @@ let classification: any;
 try {
   classification = JSON.parse(rawOutput);
 } catch (e) {
-  console.error(`[07] ${slug}: Failed to parse classification JSON:`);
+  console.error(`[06] ${slug}: Failed to parse classification JSON:`);
   console.error(rawOutput.slice(0, 500));
-  console.error(`[07] Workdir preserved: ${workdir}`);
   process.exit(1);
 }
 
 if (!classification.encounters || typeof classification.encounters !== "object") {
-  console.error(`[07] ${slug}: Classification missing 'encounters' object`);
+  console.error(`[06] ${slug}: Classification missing 'encounters' object`);
   process.exit(1);
 }
 
 // Write classification to patient dir
 await Bun.write(classificationPath, JSON.stringify(classification, null, 2) + "\n");
-console.log(`[07] ${slug}: Classification written to ${classificationPath}`);
-console.log(`[07] ${slug}: Encounters classified: ${Object.keys(classification.encounters).length}`);
-console.log(`[07] ${slug}: Resource overrides: ${classification.resource_overrides?.length ?? 0}`);
+console.log(`[06] ${slug}: Classification written to ${classificationPath}`);
+console.log(`[06] ${slug}: Encounters classified: ${Object.keys(classification.encounters).length}`);
+console.log(`[06] ${slug}: Resource overrides: ${classification.resource_overrides?.length ?? 0}`);
 
 // Run check ourselves too (agent should have already, but belt-and-suspenders)
 try {
   await $`bun run ${checkScript} ${classificationPath}`;
 } catch {
-  console.error(`[07] ${slug}: Check script found issues — review ${classificationPath}`);
+  console.error(`[06] ${slug}: Check script found issues — review ${classificationPath}`);
   process.exit(1);
 }
 
 // ── Phase 2: Apply labels ───────────────────────────────────────────────
 
-console.log(`[07] ${slug}: Applying labels...`);
+console.log(`[06] ${slug}: Applying labels...`);
 const applyScript = `${PIPELINE_ROOT}/steps/apply-labels.ts`;
 const result = await $`bun run ${applyScript} ${classificationPath}`.text();
 console.log(result);
 
-console.log(`[07] ${slug}: Done.`);
+console.log(`[06] ${slug}: Done.`);

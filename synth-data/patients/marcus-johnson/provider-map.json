@@ -1,0 +1,40 @@
+{
+  "patient": {
+    "full_name": "Marcus Darnell Johnson",
+    "date_of_birth": "2004-07-22",
+    "gender": "Male",
+    "race_ethnicity": "Black / African American, non-Hispanic",
+    "language": "English",
+    "marital_status": "Single",
+    "home_city": "Madison",
+    "home_state": "WI",
+    "address_summary": "University of Wisconsin-Madison, Madison, WI 53706"
+  },
+  "sites": [
+    {
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "npi": "1346782150",
+      "state": "WI",
+      "city": "Madison",
+      "site_type": "University Student Health Center",
+      "active_period": {
+        "start": "2023-09",
+        "end": null
+      },
+      "key_clinicians": [
+        { "name": "Dr. Rachel Okonkwo", "role": "Primary Care Physician", "npi": "1923456780" },
+        { "name": "Amy Liu", "role": "Nurse Practitioner", "npi": "1567234890" }
+      ],
+      "locations": [
+        {
+          "name": "UW Health University Student Health Services",
+          "city": "Madison",
+          "state": "WI",
+          "address_summary": "333 East Campus Mall, Floor 4, Madison, WI 53715"
+        }
+      ],
+      "narrative_summary": "University student health center. Routine visits, STI screening, sports physical, and the index measles presentation with isolation, diagnostic workup, and follow-up clearance."
+    }
+  ]
+}

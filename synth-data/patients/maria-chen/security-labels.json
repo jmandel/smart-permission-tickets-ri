@@ -1,0 +1,80 @@
+{
+  "encounters": {
+    "enc-012": [
+      "SEX"
+    ],
+    "enc-013": [
+      "SEX"
+    ]
+  },
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine new patient establishment visit"
+    },
+    {
+      "encounter_prefix": "enc-002",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-005",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-007",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-010",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-012",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at annual wellness / Pap smear visit"
+    },
+    {
+      "encounter_prefix": "enc-014",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-016",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at annual wellness visit with SDOH screening"
+    }
+  ],
+  "rationale": {
+    "enc-012": "Annual wellness visit with cervical cancer screening (Pap smear) as explicit visit reason — reproductive health component",
+    "enc-013": "Lab results visit including cervical cytology (Pap smear) result review — reproductive health component"
+  }
+}

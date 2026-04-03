@@ -1,6 +1,6 @@
 # Encounter Timeline Generator
 
-You are generating a detailed encounter timeline for a synthetic patient. You'll receive their biography (with clinical arc and provider map). Your job is to expand that into a visit-by-visit timeline.
+You are generating a detailed encounter timeline for a synthetic patient. You'll receive the **Provider Map JSON** (the sites to generate encounters for) and the **Patient Biography** (the full clinical narrative). Generate encounters at the sites listed in the Provider Map.
 
 ## What to produce
 
@@ -67,12 +67,12 @@ Every in-person encounter (office visit, ED visit, consult) should produce a pro
 
 The biography is intentionally richer than what we need to generate. Your job is to **select the most important encounters** that tell the patient's story and exercise the demo's filtering dimensions. You do NOT need to generate every visit implied by the biography.
 
-Unless you receive other guidance, aim for **~15-25 encounters** across the patient's provider sites. Pick the encounters that matter most:
+Unless you receive other guidance, aim for **~15-25 encounters** across the sites in the Provider Map. Pick the encounters that matter most:
 - Key diagnostic moments
 - Sensitive data points
 - Treatment milestones
 - Enough routine visits to show monitoring rhythms
-- At least one encounter per provider site
+- At least one encounter per site in the Provider Map
 
 Skip routine encounters that don't add new clinical information. A single well-described annual wellness visit can stand in for several. The goal is a representative dataset — not an exhaustive chart.
 

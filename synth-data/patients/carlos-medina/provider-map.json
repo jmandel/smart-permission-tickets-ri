@@ -1,0 +1,63 @@
+{
+  "patient": {
+    "full_name": "Carlos Antonio Medina",
+    "date_of_birth": "1974-11-08",
+    "gender": "Male",
+    "race_ethnicity": "Hispanic / Latino",
+    "language": "English",
+    "marital_status": "Married",
+    "home_city": "San Antonio",
+    "home_state": "TX",
+    "address_summary": "San Antonio, TX"
+  },
+  "sites": [
+    {
+      "site_slug": "alamo-family-practice",
+      "site_name": "Alamo Family Practice",
+      "npi": "1467582390",
+      "state": "TX",
+      "city": "San Antonio",
+      "site_type": "Primary Care",
+      "active_period": {
+        "start": "2015-01",
+        "end": null
+      },
+      "key_clinicians": [
+        { "name": "Dr. Maria Santos", "role": "Family Medicine Physician", "npi": null }
+      ],
+      "locations": [
+        {
+          "name": "Alamo Family Practice",
+          "city": "San Antonio",
+          "state": "TX",
+          "address_summary": "San Antonio, TX"
+        }
+      ],
+      "narrative_summary": "Long-standing PCP. Managed routine care, initial joint complaint workup with labs, referral to rheumatology. Continued chronic disease management."
+    },
+    {
+      "site_slug": "south-texas-rheumatology",
+      "site_name": "South Texas Rheumatology",
+      "npi": "1923847561",
+      "state": "TX",
+      "city": "San Antonio",
+      "site_type": "Rheumatology Specialty",
+      "active_period": {
+        "start": "2021-01",
+        "end": null
+      },
+      "key_clinicians": [
+        { "name": "Dr. Daniel Fuentes", "role": "Rheumatologist", "npi": null }
+      ],
+      "locations": [
+        {
+          "name": "South Texas Rheumatology",
+          "city": "San Antonio",
+          "state": "TX",
+          "address_summary": "San Antonio, TX"
+        }
+      ],
+      "narrative_summary": "RA diagnosis, DMARD management (methotrexate then leflunomide), disease activity monitoring with DAS28-CRP, imaging showing erosive progression, biologic prior authorization documentation."
+    }
+  ]
+}

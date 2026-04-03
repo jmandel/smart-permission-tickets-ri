@@ -1,0 +1,148 @@
+{
+  "default": {
+    "allowEncounterFallback": false,
+    "rules": []
+  },
+  "resourceTypes": {
+    "Encounter": {
+      "allowEncounterFallback": false,
+      "rules": [
+        {
+          "label": "Encounter.period",
+          "kind": "period",
+          "startPaths": ["period.start"],
+          "endPaths": ["period.end"]
+        }
+      ]
+    },
+    "Observation": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Observation.issued",
+          "kind": "instant",
+          "startPaths": ["issued"]
+        },
+        {
+          "label": "Observation.effectiveDateTime",
+          "kind": "instant",
+          "startPaths": ["effectiveDateTime"]
+        },
+        {
+          "label": "Observation.effectivePeriod",
+          "kind": "period",
+          "startPaths": ["effectivePeriod.start"],
+          "endPaths": ["effectivePeriod.end"]
+        }
+      ]
+    },
+    "DiagnosticReport": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "DiagnosticReport.issued",
+          "kind": "instant",
+          "startPaths": ["issued"]
+        },
+        {
+          "label": "DiagnosticReport.effectiveDateTime",
+          "kind": "instant",
+          "startPaths": ["effectiveDateTime"]
+        },
+        {
+          "label": "DiagnosticReport.effectivePeriod",
+          "kind": "period",
+          "startPaths": ["effectivePeriod.start"],
+          "endPaths": ["effectivePeriod.end"]
+        }
+      ]
+    },
+    "DocumentReference": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "DocumentReference.date",
+          "kind": "instant",
+          "startPaths": ["date"]
+        },
+        {
+          "label": "DocumentReference.context.period",
+          "kind": "period",
+          "startPaths": ["context.period.start"],
+          "endPaths": ["context.period.end"]
+        }
+      ]
+    },
+    "Procedure": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Procedure.performedDateTime",
+          "kind": "instant",
+          "startPaths": ["performedDateTime"]
+        },
+        {
+          "label": "Procedure.performedPeriod",
+          "kind": "period",
+          "startPaths": ["performedPeriod.start"],
+          "endPaths": ["performedPeriod.end"]
+        }
+      ]
+    },
+    "MedicationRequest": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "MedicationRequest.authoredOn",
+          "kind": "instant",
+          "startPaths": ["authoredOn"]
+        }
+      ]
+    },
+    "Condition": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Condition.recordedDate",
+          "kind": "instant",
+          "startPaths": ["recordedDate"]
+        }
+      ]
+    },
+    "Immunization": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Immunization.recorded",
+          "kind": "instant",
+          "startPaths": ["recorded"]
+        },
+        {
+          "label": "Immunization.occurrenceDateTime",
+          "kind": "instant",
+          "startPaths": ["occurrenceDateTime"]
+        }
+      ]
+    },
+    "ServiceRequest": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "ServiceRequest.authoredOn",
+          "kind": "instant",
+          "startPaths": ["authoredOn"]
+        }
+      ]
+    },
+    "AllergyIntolerance": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "AllergyIntolerance.recordedDate",
+          "kind": "instant",
+          "startPaths": ["recordedDate"]
+        }
+      ]
+    }
+  }
+}

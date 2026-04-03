@@ -1,0 +1,106 @@
+{
+  "encounters": [
+    {
+      "encounter_index": 0,
+      "encounter_id": "enc-000",
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "site_npi": "1346782150",
+      "state": "WI",
+      "date": "2023-09-12",
+      "encounter_type": "Office Visit",
+      "reason": "New patient wellness, incomplete MMR series noted",
+      "clinician_names": [
+        "Dr. Rachel Okonkwo"
+      ],
+      "location": "UW Health University Student Health Services, Madison, WI",
+      "header": "2023-09-12 — Office Visit — New patient wellness, incomplete MMR series noted",
+      "body_markdown": "Marcus presented for his initial student health visit upon enrollment at UW–Madison. This was a new patient encounter; records from his Milwaukee pediatrician were not fully transferred. His mother provided childhood immunization records listing a single MMR dose administered at 12 months (June 2005) with no documented second dose.\n\n**Clinician:** Dr. Rachel Okonkwo, MD\n**Location:** UW Health University Student Health Services, Madison, WI\n\n**Vitals:**\n- Blood pressure: 118/72 mmHg\n- Heart rate: 68 bpm\n- Temperature: 98.4 °F (36.9 °C)\n- Weight: 176 lbs (79.8 kg)\n- Height: 5'11\" (180.3 cm)\n- BMI: 24.5 kg/m²\n- SpO2: 99%\n- Respiratory rate: 16 breaths/min\n\n**Screening:**\n- PHQ-2 depression screen: score 0 (negative)\n\n**Assessment and Plan:**\n- Healthy 19-year-old male, no acute concerns.\n- Condition noted: Incomplete immunization status (SNOMED 171279008) — single MMR dose on record, missing second dose. Documented \"incomplete MMR series — consider catch-up\" in the chart. Not flagged for immediate follow-up action at this visit.\n- Allergies documented: No known drug allergies (NKDA).\n- No labs ordered at this visit.\n- Social history: full-time undergraduate student, physically active (intramural basketball), denies tobacco, occasional alcohol use, no illicit drug use.\n- Seasonal allergies noted — managed with OTC loratadine as needed.\n- Follow-up: routine, return as needed or for next annual wellness.\n\n**Documents generated:** Progress note (new patient comprehensive wellness visit). Patient instructions for campus health resources."
+    },
+    {
+      "encounter_index": 1,
+      "encounter_id": "enc-001",
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "site_npi": "1346782150",
+      "state": "WI",
+      "date": "2025-01-22",
+      "encounter_type": "Office Visit",
+      "reason": "Acute upper respiratory infection",
+      "clinician_names": [
+        "Dr. Rachel Okonkwo"
+      ],
+      "location": "UW Health University Student Health Services, Madison, WI",
+      "header": "2025-01-22 — Office Visit — Acute upper respiratory infection",
+      "body_markdown": "Marcus presented with a 3-day history of nasal congestion, sore throat, and mild cough. He reported no fever at home but felt generally unwell. No sick contacts identified. No shortness of breath, no ear pain, no rash.\n\n**Clinician:** Dr. Rachel Okonkwo, MD\n**Location:** UW Health University Student Health Services, Madison, WI\n\n**Vitals:**\n- Blood pressure: 120/74 mmHg\n- Heart rate: 76 bpm\n- Temperature: 99.1 °F (37.3 °C)\n- Weight: 178 lbs (80.7 kg)\n- BMI: 24.8 kg/m²\n- SpO2: 98%\n- Respiratory rate: 16 breaths/min\n\n**Labs/Testing:**\n- Rapid streptococcal antigen test (throat swab): **Negative**\n\n**Diagnostic Report:** Rapid strep test — negative result, supporting viral etiology.\n\n**Assessment and Plan:**\n- Diagnosis: Acute viral upper respiratory infection (SNOMED 54150009).\n- No antibiotics prescribed — viral etiology consistent with presentation and negative strep test.\n- Recommended: rest, oral fluids, OTC acetaminophen 500 mg every 6 hours as needed for discomfort, OTC loratadine for congestion if desired.\n- Return precautions: worsening fever >101 °F, difficulty breathing, symptoms persisting beyond 10 days.\n- Follow-up: as needed.\n\n**Documents generated:** Progress note (acute visit). Patient instructions for viral URI self-care."
+    },
+    {
+      "encounter_index": 2,
+      "encounter_id": "enc-002",
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "site_npi": "1346782150",
+      "state": "WI",
+      "date": "2025-10-08",
+      "encounter_type": "Office Visit",
+      "reason": "Routine STI screening",
+      "clinician_names": [
+        "Amy Liu"
+      ],
+      "location": "UW Health University Student Health Services, Madison, WI",
+      "header": "2025-10-08 — Office Visit — Routine STI screening",
+      "body_markdown": "Marcus requested routine STI screening. He reported one new sexual partner in the past 6 months, consistent condom use, no urinary symptoms, no genital lesions, no discharge.\n\n**Clinician:** Amy Liu, NP\n**Location:** UW Health University Student Health Services, Madison, WI\n\n**Vitals:**\n- Blood pressure: 116/70 mmHg\n- Heart rate: 64 bpm\n- Temperature: 98.2 °F (36.8 °C)\n- Weight: 180 lbs (81.6 kg)\n- BMI: 25.1 kg/m²\n- SpO2: 99%\n- Respiratory rate: 14 breaths/min\n\n**Labs Ordered and Results:**\n- Chlamydia trachomatis NAAT (urine): **Negative**\n- Neisseria gonorrhoeae NAAT (urine): **Negative**\n- HIV 4th-generation antigen/antibody screen (serum): **Non-reactive (Negative)**\n\n**Diagnostic Report:** STI screening panel — all results negative.\n\n**Assessment and Plan:**\n- Routine STI screening, all results negative.\n- Brief sexual health counseling provided: discussed consistent condom use, PrEP awareness, and recommended annual screening while sexually active.\n- Immunization status reviewed — incomplete MMR series still noted in chart but not acted upon at this visit (patient presented specifically for STI screening).\n- Follow-up: annual screening recommended, return as needed.\n\n**Documents generated:** Progress note (preventive screening visit). Lab result notification letter sent to patient portal."
+    },
+    {
+      "encounter_index": 3,
+      "encounter_id": "enc-003",
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "site_npi": "1346782150",
+      "state": "WI",
+      "date": "2026-03-23",
+      "encounter_type": "Office Visit",
+      "reason": "Fever and rash, measles diagnosed",
+      "clinician_names": [
+        "Dr. Rachel Okonkwo"
+      ],
+      "location": "UW Health University Student Health Services, Madison, WI",
+      "header": "2026-03-23 — Office Visit — Fever and rash, measles diagnosed",
+      "body_markdown": "Marcus presented urgently with a 3-day prodrome of malaise, loss of appetite, worsening cough, coryza, and conjunctivitis beginning March 20, followed by high fever and a spreading maculopapular rash that started on his face on March 22–23 and was progressing cephalocaudally to neck and trunk. He reported recent travel to Manila, Philippines (March 7–15, 2026), an area with active measles outbreak activity. He had been taking OTC acetaminophen and ibuprofen at home for symptom relief. He had attended large lecture halls (CS 400, ~250 students; Math 340, ~180 students), eaten at Gordon Dining Hall, and used the Nick Recreation Center between his return on March 15 and symptom onset.\n\n**Clinician:** Dr. Rachel Okonkwo, MD\n**Location:** UW Health University Student Health Services, Madison, WI\n\n**Vitals:**\n- Blood pressure: 110/68 mmHg\n- Heart rate: 108 bpm\n- Temperature: 104.1 °F (40.1 °C)\n- Respiratory rate: 20 breaths/min\n- Weight: 175 lbs (79.4 kg) — 5-lb weight loss from decreased oral intake\n- SpO2: 97%\n\n**Physical Examination Findings:**\n- Classic triad: cough, coryza, conjunctivitis present.\n- Oral exam: Koplik spots identified — small white lesions on erythematous base on buccal mucosa opposite molars.\n- Skin: maculopapular rash, confluent on face, discrete on trunk and upper arms, spreading cephalocaudally. No petechiae, no vesicles.\n- Lungs: scattered rhonchi bilaterally, no wheezing, no crackles.\n- Patient immediately placed in airborne isolation precautions.\n\n**Labs Ordered and Results:**\n- Measles IgM antibody (serum): **Positive** (resulted March 24)\n- Measles RNA PCR (nasopharyngeal swab): **Positive** (resulted March 25)\n- CBC with differential:\n  - WBC: 3.2 × 10³/µL (low — leukopenia)\n  - Hemoglobin: 14.8 g/dL\n  - Hematocrit: 43.5%\n  - Platelets: 195 × 10³/µL\n  - Neutrophils: 58%\n  - Lymphocytes: 18% (low)\n  - Monocytes: 12%\n- Comprehensive Metabolic Panel:\n  - Sodium: 138 mEq/L\n  - Potassium: 4.1 mEq/L\n  - Chloride: 101 mEq/L\n  - CO2: 24 mEq/L\n  - BUN: 14 mg/dL\n  - Creatinine: 0.95 mg/dL\n  - Glucose: 92 mg/dL\n  - Calcium: 9.2 mg/dL\n  - Total protein: 7.0 g/dL\n  - Albumin: 4.0 g/dL\n  - AST: 52 U/L (mildly elevated)\n  - ALT: 38 U/L\n  - Alkaline phosphatase: 68 U/L\n  - Total bilirubin: 0.8 mg/dL\n- C-reactive protein (CRP): 48 mg/L (elevated; reference <3.0 mg/L)\n\n**Diagnostic Reports:**\n- Measles serology (IgM) — positive, confirming acute measles infection.\n- Measles RNA PCR — positive (nasopharyngeal specimen), confirming viral shedding.\n- CBC with differential — leukopenia with lymphopenia consistent with acute measles.\n- Comprehensive metabolic panel — mildly elevated AST, otherwise within normal limits.\n\n**Procedures:**\n- Nasopharyngeal swab collection for measles RNA PCR.\n\n**Assessment and Plan:**\n- Diagnosis: **Measles** (SNOMED 14189004), confirmed by positive IgM serology and positive RNA PCR, with classic clinical presentation including Koplik spots.\n- Condition context: patient had incomplete MMR vaccination (single dose at age 12 months, no second dose), conferring incomplete immunity. Recent travel to measles-endemic area (Philippines) is the likely exposure.\n- **Reportable disease notification** filed same day to Public Health Madison & Dane County and Wisconsin Department of Health Services per Wisconsin Statute § 252. State case ID: **WI-MEAS-2026-0047**.\n- Patient placed in airborne isolation. Moved to designated isolation room in University Housing.\n- **Medications started:**\n  - Acetaminophen 500 mg PO every 6 hours as needed for fever (MedicationRequest)\n  - Vitamin A 200,000 IU PO × 2 doses (day 1 and day 2) per WHO recommendation for measles in young adults (MedicationRequest)\n- Oral rehydration and rest advised.\n- Estimated infectious period: March 19 – March 27, 2026 (4 days before rash onset through 4 days after).\n- Telehealth follow-up scheduled for March 26 to assess for complications.\n- Return precautions: worsening respiratory distress, altered mental status, persistent high fever beyond day 4 of rash.\n\n**Documents generated:** Progress note (acute measles evaluation with isolation). Public health case report (Communication to Wisconsin DHS). Patient isolation instructions."
+    },
+    {
+      "encounter_index": 4,
+      "encounter_id": "enc-004",
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "site_npi": "1346782150",
+      "state": "WI",
+      "date": "2026-03-26",
+      "encounter_type": "Telemedicine",
+      "reason": "Follow-up during measles isolation",
+      "clinician_names": [
+        "Amy Liu"
+      ],
+      "location": "Telemedicine (patient in university isolation housing; clinician at UW Health University Student Health Services, Madison, WI)",
+      "header": "2026-03-26 — Telemedicine — Follow-up during measles isolation",
+      "body_markdown": "Scheduled telehealth video visit to assess Marcus during his isolation period (day 3 post-rash onset). Marcus joined the video call from his university isolation housing room. He reported his fever had decreased from the peak of 104.1 °F to approximately 101 °F, taken by personal thermometer that morning. The rash had spread to his extremities (arms and legs) but was beginning to fade on his face, transitioning to brownish discoloration. His cough was persisting but subjectively improving. He was tolerating clear fluids and soft foods (soup, crackers, applesauce). He denied shortness of breath, headache, neck stiffness, confusion, ear pain, or visual changes.\n\n**Clinician:** Amy Liu, NP\n**Location:** Telemedicine (patient in university isolation housing; clinician at UW Health University Student Health Services, Madison, WI)\n\n**Vitals:** No vitals obtained (telemedicine encounter; patient self-reported temperature ~101 °F).\n\n**Assessment and Plan:**\n- Measles, day 6 of illness (day 3 post-rash onset), improving course.\n- No clinical signs of complications: no pneumonia symptoms (no dyspnea, no pleuritic pain), no encephalitis signs (no headache, no confusion, no seizures, no neck stiffness), no otitis media (no ear pain).\n- Advised to continue isolation through March 27, 2026 (4 full days after rash onset per CDC guidance).\n- Continue acetaminophen as needed for fever. Vitamin A second dose confirmed administered on March 24.\n- Encouraged continued oral hydration.\n- In-person clearance visit scheduled for March 30, 2026.\n\n**Documents generated:** Telehealth visit note (measles isolation follow-up)."
+    },
+    {
+      "encounter_index": 5,
+      "encounter_id": "enc-005",
+      "site_slug": "uw-health-university-student-health-services",
+      "site_name": "UW Health University Student Health Services",
+      "site_npi": "1346782150",
+      "state": "WI",
+      "date": "2026-03-30",
+      "encounter_type": "Office Visit",
+      "reason": "Post-measles recovery clearance",
+      "clinician_names": [
+        "Dr. Rachel Okonkwo"
+      ],
+      "location": "UW Health University Student Health Services, Madison, WI",
+      "header": "2026-03-30 — Office Visit — Post-measles recovery clearance",
+      "body_markdown": "Marcus returned for an in-person clearance visit following completion of his measles isolation period. He reported feeling significantly better — fever had resolved by March 28, appetite returning, energy improving. The rash had faded to brownish discoloration with fine desquamation on the trunk. He denied any residual respiratory symptoms, ear pain, headache, or visual changes. He was eager to return to classes and communal living.\n\n**Clinician:** Dr. Rachel Okonkwo, MD\n**Location:** UW Health University Student Health Services, Madison, WI\n\n**Vitals:**\n- Blood pressure: 116/72 mmHg\n- Heart rate: 72 bpm\n- Temperature: 98.6 °F (37.0 °C)\n- Weight: 177 lbs (80.3 kg) — weight recovering\n- SpO2: 99%\n- Respiratory rate: 14 breaths/min\n\n**Labs Ordered and Results:**\n- CBC with differential (repeat):\n  - WBC: 5.8 × 10³/µL (recovered from 3.2 on March 23)\n  - Hemoglobin: 14.6 g/dL\n  - Hematocrit: 43.0%\n  - Platelets: 210 × 10³/µL\n  - Neutrophils: 55%\n  - Lymphocytes: 30% (recovered)\n  - Monocytes: 8%\n- CRP: 8 mg/L (down from 48 mg/L on March 23; trending toward normal)\n\n**Diagnostic Reports:**\n- CBC with differential — leukocyte count recovered, lymphopenia resolved.\n- CRP — significantly decreased, consistent with resolving inflammation.\n\n**Assessment and Plan:**\n- Measles (SNOMED 14189004) — **resolved**. Clinical and laboratory recovery confirmed. No complications identified.\n- Patient cleared to return to classes, communal dining, and recreational activities effective immediately.\n- Natural measles infection now confers immunity; second MMR dose is no longer indicated. Immunization record updated to reflect natural immunity status.\n- Incomplete immunization status (SNOMED 171279008) — resolved in the context of measles (natural immunity). Other immunizations remain up to date.\n- Follow-up note sent to Wisconsin Department of Health Services confirming clinical recovery and case resolution.\n- No further follow-up needed for measles. Routine annual wellness visit recommended in fall 2026.\n\n**Documents generated:** Progress note (post-measles clearance visit). Follow-up communication to Wisconsin DHS confirming recovery. Updated immunization record notation."
+    }
+  ]
+}

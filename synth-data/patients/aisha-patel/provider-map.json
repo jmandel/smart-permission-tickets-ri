@@ -1,0 +1,104 @@
+{
+  "patient": {
+    "full_name": "Aisha Priya Patel",
+    "date_of_birth": "2020-03-15",
+    "gender": "Female",
+    "race_ethnicity": "Indian-American (Asian Indian)",
+    "language": "English",
+    "marital_status": "N/A (minor child)",
+    "home_city": "Raleigh",
+    "home_state": "NC",
+    "address_summary": "Raleigh, Wake County, North Carolina"
+  },
+  "sites": [
+    {
+      "site_slug": "triangle-pediatrics",
+      "site_name": "Triangle Pediatrics",
+      "npi": "1497823156",
+      "state": "NC",
+      "city": "Raleigh",
+      "site_type": "Pediatric primary care",
+      "active_period": {
+        "start": "2020-03",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Megan Harlow",
+          "role": "Pediatrician",
+          "npi": "1184627530"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Triangle Pediatrics",
+          "city": "Raleigh",
+          "state": "NC",
+          "address_summary": "4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+        }
+      ],
+      "narrative_summary": "Aisha's medical home since birth. Manages well-child care, immunizations, developmental screening, acute illness visits, and day-to-day asthma management including controller and rescue inhaler prescriptions, asthma action plan maintenance, and school health documentation."
+    },
+    {
+      "site_slug": "unc-pediatric-allergy-immunology",
+      "site_name": "UNC Pediatric Allergy & Immunology",
+      "npi": "1356482079",
+      "state": "NC",
+      "city": "Chapel Hill",
+      "site_type": "Pediatric subspecialty — Allergy and Immunology",
+      "active_period": {
+        "start": "2022-11",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Sunita Krishnamurthy",
+          "role": "Pediatric Allergist/Immunologist",
+          "npi": "1672935481"
+        }
+      ],
+      "locations": [
+        {
+          "name": "UNC Medical Center",
+          "city": "Chapel Hill",
+          "state": "NC",
+          "address_summary": "101 Manning Drive, Chapel Hill, NC 27514"
+        }
+      ],
+      "narrative_summary": "Specialty allergy and asthma management center. Conducts comprehensive allergy evaluations including skin prick testing and specific IgE panels, monitors asthma severity with FeNO and spirometry, and guides escalation decisions for asthma therapy and food allergy management including potential oral immunotherapy."
+    },
+    {
+      "site_slug": "wakemed-childrens-emergency-department",
+      "site_name": "WakeMed Children's Emergency Department",
+      "npi": "1238574960",
+      "state": "NC",
+      "city": "Raleigh",
+      "site_type": "Pediatric Emergency Department",
+      "active_period": {
+        "start": "2022-10",
+        "end": "2025-01"
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Jason Trammell",
+          "role": "Pediatric Emergency Medicine",
+          "npi": "1543296807"
+        },
+        {
+          "name": "Dr. Priscilla Okafor",
+          "role": "Pediatric Emergency Medicine",
+          "npi": "1891034265"
+        }
+      ],
+      "locations": [
+        {
+          "name": "WakeMed Raleigh Campus",
+          "city": "Raleigh",
+          "state": "NC",
+          "address_summary": "3000 New Bern Avenue, Raleigh, NC 27610"
+        }
+      ],
+      "narrative_summary": "Provided acute emergency care for two high-acuity episodes: peanut anaphylaxis at age 2 (October 2022) and severe asthma exacerbation at age 5 (January 2025). Episodic, high-intensity encounters generating dense clinical data over short time frames."
+    }
+  ]
+}

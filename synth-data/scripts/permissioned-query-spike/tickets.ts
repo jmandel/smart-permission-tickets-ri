@@ -1,5 +1,5 @@
 import type { HiddenRead, PatientAlias, Ticket } from "./model.ts";
-import { SECURITY_SYSTEM, V3_ACTCODE_SYSTEM } from "./model.ts";
+import { SECURITY_SYSTEM } from "./model.ts";
 
 export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ticket; hiddenRead?: HiddenRead }> {
   return [
@@ -7,6 +7,7 @@ export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ti
       ticket: {
         name: "Elena full chart across all sites",
         allowedPatientAliases: aliasesFor(patientAliases, "elena-reyes"),
+        sensitive: { mode: "allow" },
       },
     },
     {
@@ -20,6 +21,7 @@ export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ti
         ],
         allowedResourceTypes: ["Encounter", "Condition", "MedicationRequest", "Observation", "DiagnosticReport", "Patient", "Organization", "Practitioner", "Location"],
         dateRange: { start: "2023-01-01", end: "2025-12-31" },
+        sensitive: { mode: "deny" },
         deniedLabelsAny: [{ system: SECURITY_SYSTEM, code: "clinical-note" }],
       },
       hiddenRead: {
@@ -30,9 +32,9 @@ export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ti
     },
     {
       ticket: {
-        name: "Elena chart with reproductive sensitivity denied",
+        name: "Elena default non-sensitive view",
         allowedPatientAliases: aliasesFor(patientAliases, "elena-reyes"),
-        deniedLabelsAny: [{ system: V3_ACTCODE_SYSTEM, code: "SEX" }],
+        sensitive: { mode: "deny" },
       },
       hiddenRead: {
         resourceType: "Encounter",
@@ -46,19 +48,17 @@ export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ti
         allowedPatientAliases: aliasesFor(patientAliases, "robert-davis", ["ui-health-ambulatory-tb-clinic"]),
         allowedSites: ["ui-health-ambulatory-tb-clinic"],
         allowedResourceTypes: ["Patient", "Encounter", "Condition", "Observation", "DiagnosticReport", "MedicationRequest", "ServiceRequest", "Procedure", "Organization", "Practitioner", "Location"],
+        sensitive: { mode: "deny" },
         requiredLabelsAll: [{ system: SECURITY_SYSTEM, code: "infectious-disease" }],
         deniedLabelsAny: [{ system: SECURITY_SYSTEM, code: "clinical-note" }],
       },
     },
     {
       ticket: {
-        name: "Robert chart with HIV and mental-health sensitivity denied",
+        name: "Robert default non-sensitive view",
         allowedPatientAliases: aliasesFor(patientAliases, "robert-davis"),
         allowedResourceTypes: ["Patient", "Encounter", "Observation", "DiagnosticReport", "Condition", "DocumentReference", "Organization", "Practitioner", "Location"],
-        deniedLabelsAny: [
-          { system: V3_ACTCODE_SYSTEM, code: "HIV" },
-          { system: V3_ACTCODE_SYSTEM, code: "MH" },
-        ],
+        sensitive: { mode: "deny" },
       },
       hiddenRead: {
         resourceType: "DiagnosticReport",
@@ -73,6 +73,7 @@ export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ti
         allowedSites: ["rio-grande-nephrology-associates", "university-of-new-mexico-hospital-and-heart-failure-clinic"],
         allowedResourceTypes: ["Patient", "Encounter", "Observation", "DiagnosticReport", "Condition", "MedicationRequest", "DocumentReference", "Organization", "Practitioner", "Location"],
         dateRange: { start: "2024-01-01", end: "2024-12-31" },
+        sensitive: { mode: "deny" },
         requiredLabelsAll: [
           { system: "urn:example:permissiontickets-demo:jurisdiction-state", code: "NM" },
           { system: SECURITY_SYSTEM, code: "renal" },
@@ -93,6 +94,7 @@ export function buildTickets(patientAliases: PatientAlias[]): Array<{ ticket: Ti
         allowedPatientAliases: aliasesFor(patientAliases, "denise-walker"),
         allowedSites: ["sandia-retina-specialists"],
         allowedResourceTypes: ["Patient", "Encounter", "Observation", "DiagnosticReport", "Condition", "MedicationRequest", "Procedure", "DocumentReference", "Organization", "Practitioner", "Location"],
+        sensitive: { mode: "deny" },
         requiredLabelsAll: [{ system: SECURITY_SYSTEM, code: "vision" }],
       },
     },
@@ -106,6 +108,7 @@ export function buildChainedTicket(patientAliases: PatientAlias[]): Ticket {
     allowedSites: ["rio-grande-nephrology-associates", "university-of-new-mexico-hospital-and-heart-failure-clinic"],
     allowedResourceTypes: ["Encounter", "Observation", "Patient", "Organization", "Practitioner", "Location"],
     dateRange: { start: "2025-01-01", end: "2025-12-31" },
+    sensitive: { mode: "deny" },
     requiredLabelsAll: [{ system: "urn:example:permissiontickets-demo:jurisdiction-state", code: "NM" }],
     granularCategoryRules: [
       {

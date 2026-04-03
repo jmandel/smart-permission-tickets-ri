@@ -4,15 +4,14 @@ You are converting a narrative patient biography into a canonical JSON sidecar.
 
 ## Goal
 
-Read the full biography markdown and emit a machine-readable provider map that preserves the patient demographics and care-site contracts already present in the narrative.
+Extract a machine-readable JSON from the biography's `## Provider Map` section. This section lists the clinical care providers where the patient has visits — extract exactly those, nothing else.
 
 ## Rules
 
-- Do not invent new facts
-- Do not add sites, clinicians, locations, or demographics not present in the biography
-- Preserve exact organization names and clinician names when possible
-- Normalize only what is already in the narrative
-- If a field is genuinely absent, omit it or use `null` only where noted
+- Extract only organizations listed under the `## Provider Map` heading
+- Do not invent new facts or add organizations not in that section
+- Preserve exact organization names and clinician names
+- Every site must have an `npi` (10-digit string) and `state` (2-letter code)
 
 ## Output Shape
 

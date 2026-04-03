@@ -45,10 +45,10 @@ async function checkDependencies() {
     process.exit(1);
   }
 
-  // Check terminology.sqlite symlink
+  // Check terminology.sqlite
   if (!existsSync("./terminology.sqlite")) {
-    console.warn("Warning: terminology.sqlite not found. Symlink it from the Kiln project:");
-    console.warn("  ln -s /path/to/kiln/server/db/terminology.sqlite ./terminology.sqlite");
+    console.warn("Warning: terminology.sqlite not found. Build it with:");
+    console.warn("  bun run terminology:build");
   } else {
     console.log("terminology.sqlite found");
   }

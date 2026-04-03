@@ -1,0 +1,116 @@
+{
+  "encounters": {
+    "enc-000": [
+      "SEX"
+    ],
+    "enc-001": [
+      "SEX"
+    ],
+    "enc-002": [
+      "SEX"
+    ],
+    "enc-003": [
+      "SEX"
+    ],
+    "enc-004": [
+      "SEX"
+    ],
+    "enc-005": [
+      "SEX"
+    ],
+    "enc-006": [
+      "SEX"
+    ],
+    "enc-007": [
+      "SEX"
+    ],
+    "enc-008": [
+      "SEX"
+    ],
+    "enc-009": [
+      "SEX"
+    ],
+    "enc-010": [
+      "SEX"
+    ],
+    "enc-011": [
+      "SEX"
+    ],
+    "enc-012": [
+      "SEX"
+    ],
+    "enc-013": [
+      "SEX"
+    ],
+    "enc-014": [
+      "SEX"
+    ]
+  },
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at well-woman GYN visit"
+    },
+    {
+      "encounter_prefix": "enc-001",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at preconception counseling visit"
+    },
+    {
+      "encounter_prefix": "enc-004",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at pregnancy/loss management visit"
+    },
+    {
+      "encounter_prefix": "enc-006",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "Positive PHQ-2 depression screening at prenatal visit"
+    },
+    {
+      "encounter_prefix": "enc-006",
+      "id_substring": "anxiety",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "Pregnancy-related anxiety condition at reproductive health visit"
+    },
+    {
+      "encounter_prefix": "enc-008",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "Positive PHQ-2 screening and depression condition at APS results visit"
+    }
+  ],
+  "rationale": {
+    "enc-000": "Well-woman GYN exam with Pap smear, HPV co-test, and contraception management",
+    "enc-001": "Preconception counseling visit with OCP discontinuation and prenatal vitamin initiation",
+    "enc-002": "First pregnancy confirmation with serial beta-hCG monitoring",
+    "enc-003": "First pregnancy loss — spontaneous abortion at 6 weeks, expectant management",
+    "enc-004": "Second pregnancy confirmation and subsequent missed abortion with RPL diagnosis",
+    "enc-005": "Recurrent pregnancy loss workup — karyotyping, coagulation, and metabolic panel",
+    "enc-006": "Third pregnancy confirmation with early ultrasound and progesterone supplementation",
+    "enc-007": "Third pregnancy loss — missed abortion at 8 weeks, D&C with POC genetic testing",
+    "enc-008": "APS antibody panel results review with specialist referrals for recurrent pregnancy loss",
+    "enc-009": "Telephone follow-up coordinating MFM and hematology referrals for RPL/APS",
+    "enc-010": "MFM consultation for high-risk pregnancy planning with suspected APS",
+    "enc-011": "Telephone follow-up after MFM consultation — enoxaparin education and coordination",
+    "enc-012": "Initial hematology consultation for APS evaluation in context of recurrent pregnancy loss",
+    "enc-013": "Lab visit for confirmatory APS antibody testing and thrombophilia panel",
+    "enc-014": "Hematology follow-up confirming APS diagnosis and anticoagulation planning for future pregnancy"
+  }
+}

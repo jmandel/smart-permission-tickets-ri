@@ -1,0 +1,99 @@
+{
+  "patient": {
+    "full_name": "Lisa Nakamura",
+    "date_of_birth": "1989-08-14",
+    "gender": "Female",
+    "race_ethnicity": "Japanese-American (Asian, Not Hispanic or Latino)",
+    "language": "English",
+    "marital_status": "Married",
+    "home_city": "Denver",
+    "home_state": "CO",
+    "address_summary": "Denver, Colorado"
+  },
+  "sites": [
+    {
+      "site_slug": "rocky-mountain-womens-health",
+      "site_name": "Rocky Mountain Women's Health",
+      "npi": "1346782510",
+      "state": "CO",
+      "city": "Denver",
+      "site_type": "OB/GYN (Obstetrics and Gynecology)",
+      "active_period": {
+        "start": "August 2022",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Megan Forsythe",
+          "role": "MD, OB/GYN",
+          "npi": "1598234076"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Rocky Mountain Women's Health",
+          "city": "Denver",
+          "state": "CO",
+          "address_summary": "Denver, CO"
+        }
+      ],
+      "narrative_summary": "Primary OB/GYN provider holding Lisa's complete gynecologic and obstetric history, including all three pregnancy losses, RPL workup, APS screening labs, referral documentation, and routine preventive care."
+    },
+    {
+      "site_slug": "colorado-maternal-fetal-medicine",
+      "site_name": "Colorado Maternal-Fetal Medicine",
+      "npi": "1782345691",
+      "state": "CO",
+      "city": "Denver",
+      "site_type": "Maternal-Fetal Medicine (MFM) subspecialty",
+      "active_period": {
+        "start": "May 2025",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Sarah Whitfield",
+          "role": "MD, MFM",
+          "npi": "1467823159"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Colorado Maternal-Fetal Medicine",
+          "city": "Denver",
+          "state": "CO",
+          "address_summary": "Denver, CO"
+        }
+      ],
+      "narrative_summary": "MFM specialist consultation for high-risk pregnancy planning in the setting of suspected antiphospholipid syndrome. Requesting organization needing access to Lisa's OB/GYN records."
+    },
+    {
+      "site_slug": "uc-health-hematology",
+      "site_name": "UC Health Hematology",
+      "npi": "1623478905",
+      "state": "CO",
+      "city": "Aurora",
+      "site_type": "Hematology subspecialty (outpatient)",
+      "active_period": {
+        "start": "May 2025",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. James Okafor",
+          "role": "MD, Hematology",
+          "npi": "1234567893"
+        }
+      ],
+      "locations": [
+        {
+          "name": "UC Health Hematology",
+          "city": "Aurora",
+          "state": "CO",
+          "address_summary": "Aurora, CO"
+        }
+      ],
+      "narrative_summary": "Hematology specialist for APS diagnostic confirmation, thrombophilia screening, and anticoagulation planning for future pregnancy."
+    }
+  ]
+}

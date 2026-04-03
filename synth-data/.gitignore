@@ -5,8 +5,11 @@ bun.lock
 # Agent run logs
 logs/
 
-# Large files — symlinked or generated locally
+# Large files — built or downloaded locally
 terminology.sqlite
+terminology.sqlite-shm
+terminology.sqlite-wal
+.terminology-cache/
 seed-data
 validator.jar
 .validator-pid

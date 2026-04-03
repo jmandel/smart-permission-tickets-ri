@@ -1,0 +1,116 @@
+{
+  "encounters": {
+    "enc-001": [
+      "MH"
+    ],
+    "enc-002": [
+      "MH"
+    ],
+    "enc-003": [
+      "MH"
+    ],
+    "enc-004": [
+      "MH"
+    ],
+    "enc-007": [
+      "MH"
+    ],
+    "enc-008": [
+      "ETH"
+    ],
+    "enc-009": [
+      "ETH"
+    ],
+    "enc-010": [
+      "ETH"
+    ],
+    "enc-011": [
+      "ETH"
+    ],
+    "enc-012": [
+      "MH"
+    ],
+    "enc-015": [
+      "MH"
+    ],
+    "enc-017": [
+      "MH"
+    ],
+    "enc-020": [
+      "MH"
+    ]
+  },
+  "resource_overrides": [
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine new patient PCP visit"
+    },
+    {
+      "encounter_prefix": "enc-000",
+      "id_substring": "phq9",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-9 depression screening at routine new patient PCP visit"
+    },
+    {
+      "encounter_prefix": "enc-005",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at annual wellness visit"
+    },
+    {
+      "encounter_prefix": "enc-010",
+      "id_substring": "phq9",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-9 depression screening at addiction medicine IOP completion visit"
+    },
+    {
+      "encounter_prefix": "enc-013",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at PCP pre-move visit"
+    },
+    {
+      "encounter_prefix": "enc-014",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at new patient PCP visit"
+    },
+    {
+      "encounter_prefix": "enc-016",
+      "id_substring": "phq2",
+      "labels": [
+        "MH"
+      ],
+      "rationale": "PHQ-2 depression screening at routine PCP follow-up"
+    }
+  ],
+  "rationale": {
+    "enc-001": "PCP depression follow-up visit with sertraline dose adjustment",
+    "enc-002": "Initial psychiatric evaluation diagnosing bipolar II disorder",
+    "enc-003": "Psychiatric follow-up for lamotrigine titration completion and mood stabilization",
+    "enc-004": "Psychiatric telemedicine follow-up for worsening bipolar II depressive episode",
+    "enc-007": "Quarterly psychiatric follow-up with worsening depression and drinking concerns",
+    "enc-008": "Addiction medicine intake evaluation for alcohol use disorder with IOP enrollment",
+    "enc-009": "SUD treatment monitoring labs and hepatic ultrasound review at addiction medicine center",
+    "enc-010": "Intensive outpatient program completion visit for alcohol use disorder treatment",
+    "enc-011": "Telephone aftercare follow-up confirming sustained sobriety post-IOP",
+    "enc-012": "Pre-move psychiatric care transition planning with bridge prescriptions",
+    "enc-015": "New patient psychiatric evaluation for continuity of bipolar II and AUD management",
+    "enc-017": "Quarterly psychiatric follow-up with continued mood stability assessment",
+    "enc-020": "Quarterly psychiatric telemedicine follow-up for winter seasonal mood monitoring"
+  }
+}

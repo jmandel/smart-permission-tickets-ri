@@ -49,9 +49,6 @@ export function extractReferences(resource: any): Array<{ paramName: string; tar
 
 export function extractLabels(resource: any, siteSlug: string): Array<{ kind: string; system: string; code: string }> {
   const labels: Array<{ kind: string; system: string; code: string }> = [];
-  for (const tag of resource.meta?.tag ?? []) {
-    if (tag.system && tag.code) labels.push({ kind: "tag", system: tag.system, code: tag.code });
-  }
   for (const sec of resource.meta?.security ?? []) {
     if (sec.system && sec.code) labels.push({ kind: "security", system: sec.system, code: sec.code });
   }

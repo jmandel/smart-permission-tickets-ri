@@ -1,0 +1,412 @@
+# Harold James Washington — Encounter Timeline
+
+**Patient:** Harold James Washington | **DOB:** 1946-09-14 | **MRN:** (synthetic)
+**Current Address:** 1847 Candler Road, Decatur, GA 30034
+**Authorized Representative:** Margaret Elaine Washington-Clarke (daughter, DPOA-HC executed 2022-11-15)
+
+---
+
+## Riverside Internal Medicine
+
+**Site:** 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204
+**NPI:** 1346782015
+**Active Period:** March 2015 – October 2024
+**Key Clinician:** Dr. Cynthia Okafor, Internist
+
+---
+
+### 2015-03-18 — Office Visit — New patient, hypertension diagnosed
+
+Harold Washington, age 68, presented to Dr. Cynthia Okafor at Riverside Internal Medicine as a new patient after his previous PCP retired. He reported no acute complaints but had not seen a physician in over a year. He is a retired USPS letter carrier (retired 2008). He walks three to four times per week and follows a low-sodium diet. Social history notable for marriage to Dorothy Washington, active involvement at Bethel Baptist Church, and weekly dominoes at the VFW hall. No tobacco use. Occasional alcohol (one to two beers per week). Family history significant for father with hypertension and stroke, mother with type 2 diabetes.
+
+Vitals: BP 152/94 mmHg, HR 78 bpm, Temp 98.4°F, RR 16, SpO2 97%, Weight 198 lbs, Height 70 in, BMI 28.4. PHQ-2 score: 0/6 (negative screen).
+
+Physical exam was unremarkable except for elevated blood pressure confirmed on repeat measurement (148/92). No peripheral edema, no retinopathy on fundoscopic exam. Fasting glucose at time of visit was 138 mg/dL.
+
+Assessment: Essential hypertension (I10), newly diagnosed. Elevated fasting glucose — will order follow-up labs to evaluate for diabetes.
+
+Plan: Started lisinopril 10 mg daily. Ordered fasting lipid panel, hemoglobin A1c, comprehensive metabolic panel (CMP), CBC, and urinalysis. Counseled on DASH diet and continued exercise. Documented allergy to sulfonamide antibiotics (rash). Return in 8–12 weeks for lab review.
+
+Progress note generated: New patient evaluation, comprehensive history and physical.
+
+---
+
+### 2015-06-12 — Telephone — Lab results review, diabetes and hyperlipidemia diagnosed
+
+Dr. Okafor called Harold to discuss laboratory results drawn on 2015-06-05. Results: Hemoglobin A1c 7.2% (diabetic range), fasting glucose 142 mg/dL, total cholesterol 248 mg/dL, LDL 158 mg/dL, HDL 42 mg/dL, triglycerides 186 mg/dL, creatinine 1.0 mg/dL, eGFR 82 mL/min, BUN 18 mg/dL, sodium 140, potassium 4.2, ALT 24, AST 22, CBC within normal limits, urinalysis negative for protein and glucose.
+
+Assessment: Type 2 diabetes mellitus without complications (E11.9), newly diagnosed. Hyperlipidemia (E78.5), newly diagnosed. Hypertension — BP has been improving on lisinopril per home readings (patient reports ~140/88 range).
+
+Plan: Started metformin 500 mg twice daily with meals. Started atorvastatin 20 mg daily at bedtime. Referred to Certified Diabetes Educator for dietary counseling and glucose monitoring instruction. Discussed lifestyle modifications — reinforced low-glycemic, low-sodium diet. Follow-up lab draw in 3–4 months to reassess A1c, lipid panel. Office visit in 3 months.
+
+No progress note generated; telephone encounter documented in EHR.
+
+---
+
+### 2015-10-08 — Lab — Follow-up diabetes and lipid labs
+
+Harold presented for a lab-only visit. No vitals taken.
+
+Results: Hemoglobin A1c 6.8% (improved from 7.2%), fasting glucose 118 mg/dL, total cholesterol 198 mg/dL, LDL 98 mg/dL (improved from 158), HDL 44 mg/dL, triglycerides 162 mg/dL, creatinine 1.0 mg/dL, eGFR 82 mL/min.
+
+Lab results were reviewed by Dr. Okafor. Both diabetes and hyperlipidemia responding well to therapy. Patient reported good tolerance of metformin (mild GI symptoms resolved after first two weeks). No medication changes. Continue current regimen. Next office visit scheduled for annual wellness in early 2016.
+
+Diagnostic report generated: Lab result bundle (BMP, A1c, lipid panel).
+
+---
+
+### 2018-03-14 — Office Visit — Annual wellness, Tdap immunization
+
+Harold, age 71, presented for his annual wellness exam. He reported feeling well, walking regularly, and attending church and social activities. Dorothy accompanied him. No new complaints. Medication list: lisinopril 20 mg daily (uptitrated from 10 mg to 20 mg in March 2017 for suboptimal BP control), metformin 500 mg BID, atorvastatin 20 mg daily. He reports good adherence.
+
+Vitals: BP 134/82 mmHg, HR 72 bpm, Temp 98.2°F, RR 16, SpO2 97%, Weight 196 lbs, Height 70 in, BMI 28.1. PHQ-2 score: 0/6 (negative screen).
+
+Labs drawn today: A1c 6.7%, fasting glucose 112 mg/dL, CMP within normal limits (creatinine 1.0, eGFR 80), lipid panel — LDL 92 mg/dL, HDL 45 mg/dL, total cholesterol 192 mg/dL, triglycerides 154 mg/dL. Urinalysis: no microalbuminuria.
+
+Physical exam: Unremarkable. Diabetic foot exam performed — intact sensation to monofilament bilaterally, no lesions, pedal pulses 2+ bilaterally. Fall risk screening: low risk (Timed Up and Go 10 seconds). Home safety review: no hazards reported.
+
+Assessment: Essential hypertension — well controlled on lisinopril 20 mg. Type 2 diabetes — well controlled, A1c at goal. Hyperlipidemia — at target on atorvastatin 20 mg. Preventive care up to date.
+
+Immunizations administered: Tdap (tetanus, diphtheria, pertussis) booster. Influenza vaccine administered (2017–2018 season). Colonoscopy (2016) was negative — next due 2026.
+
+Plan: Continue current medications unchanged. Return in 6 months or sooner if concerns. Next annual wellness March 2019.
+
+Progress note generated: Annual wellness visit note with comprehensive preventive care documentation.
+
+---
+
+### 2019-10-16 — Office Visit — Annual wellness, Shingrix dose 1
+
+Harold, age 73, presented for his annual wellness exam. He reports feeling well overall. He and Dorothy recently returned from visiting Margaret in Georgia. He continues walking three to four times per week and maintains his low-sodium, low-glycemic diet. No new complaints.
+
+Vitals: BP 132/80 mmHg, HR 74 bpm, Temp 98.6°F, RR 16, SpO2 98%, Weight 197 lbs, Height 70 in, BMI 28.3. PHQ-2 score: 0/6 (negative screen).
+
+Labs (drawn 2019-10-09): A1c 6.8%, fasting glucose 116 mg/dL, creatinine 1.1 mg/dL, eGFR 78 mL/min, LDL 96 mg/dL, HDL 44 mg/dL, total cholesterol 194 mg/dL, triglycerides 158 mg/dL. CBC: WBC 6.2, Hgb 14.1, platelets 224.
+
+Physical exam: Unremarkable. Diabetic foot exam — intact monofilament sensation, no ulcers. Fall risk screening: low risk.
+
+Assessment: Hypertension, type 2 diabetes, and hyperlipidemia — all well controlled, stable on current regimen.
+
+Immunizations administered: Shingrix dose 1 (recombinant zoster vaccine) — left deltoid. Influenza vaccine (2019–2020 season) — right deltoid. Shingrix dose 2 scheduled in 2–6 months.
+
+Plan: Continue lisinopril 20 mg, metformin 500 mg BID, atorvastatin 20 mg. Shingrix dose 2 appointment scheduled for January 2020. Next annual wellness October 2020.
+
+Progress note generated: Annual wellness visit note.
+
+---
+
+### 2022-03-22 — Office Visit — Annual wellness, cognitive concerns identified
+
+Harold, age 75, presented for his annual wellness exam. Dorothy accompanied him and expressed concern about Harold's memory. She reports he has been repeating himself frequently over the past several months, forgot their grandson's birthday party in February, and has twice left the stove on unattended. Harold minimizes these concerns, stating "I just get distracted sometimes." Dorothy also notes he has been less engaged at dominoes and sometimes loses track of the conversation at church.
+
+Vitals: BP 136/82 mmHg, HR 76 bpm, Temp 98.4°F, RR 16, SpO2 97%, Weight 194 lbs, Height 70 in, BMI 27.8. PHQ-2 score: 0/6 (negative screen).
+
+Dr. Okafor administered the Mini-Mental State Examination (MMSE) in the office. Harold scored 24/30, losing points on recall (0/3 objects at 5 minutes), orientation to date (incorrect day and date), and one point on serial sevens. He was fully oriented to place and person. Clock drawing was mildly impaired (numbers correctly placed but hands pointing to wrong time).
+
+Labs (drawn 2022-03-15): A1c 6.9%, fasting glucose 122 mg/dL, TSH 2.4 mIU/L (normal), vitamin B12 485 pg/mL (normal), CMP — creatinine 1.1, eGFR 76, remainder normal. CBC normal.
+
+Assessment: Hypertension, type 2 diabetes, hyperlipidemia — all stable on current regimen. New concern: Cognitive decline, suspected early neurodegenerative process. MMSE 24/30 with deficits in recall and orientation. TSH and B12 normal — reversible metabolic causes less likely.
+
+Plan: Continue current medications unchanged. Referred to Dr. Raymond Patel at First Coast Neurology Associates for comprehensive cognitive evaluation, including brain imaging and neuropsychological testing. Counseled Harold and Dorothy on the referral. Discussed home safety — recommended not leaving stove unattended, use of timer reminders. Return in 6 months.
+
+Progress note generated: Annual wellness visit note with detailed cognitive screening documentation and neurology referral.
+
+---
+
+### 2024-09-18 — Telephone — Daughter reports wandering and driving incidents
+
+Margaret Washington-Clarke (daughter, authorized representative) called Dr. Okafor's office to report two concerning incidents. First, in early September 2024, a neighbor found Harold wandering two blocks from home, confused about where he was going. He could not explain his destination and appeared disoriented. Second, the following week, Harold backed his car into a mailbox while pulling out of the driveway. Margaret has been flying to Jacksonville from Decatur, GA every other weekend since Dorothy's death in June 2024 and has found expired food, unopened pill bottles, and unpaid bills at Harold's home.
+
+Dr. Okafor documented the call. She noted that Harold's cognitive decline appears to have accelerated significantly since Dorothy's passing, likely compounded by loss of his daily structure and medication reminders. She recommended Margaret consider Harold no longer safe for independent living or driving. She advised Margaret to contact the Florida DHSMV regarding voluntary license surrender and to arrange for supervised living. Dr. Okafor recommended scheduling a visit to reassess Harold's status and prepare for possible relocation. Margaret stated she plans to move Harold to live with her in Georgia.
+
+No progress note generated; telephone encounter documented in EHR.
+
+---
+
+### 2024-10-03 — Office Visit — Transfer of care, influenza immunization
+
+Harold, age 78, presented for what will be his final visit at Riverside Internal Medicine before relocating to Decatur, Georgia to live with his daughter Margaret. Margaret was present for the visit. Harold appeared thinner and mildly confused about the purpose of the visit. He was pleasant and cooperative but required redirection during the history.
+
+Vitals: BP 138/84 mmHg, HR 78 bpm, Temp 98.4°F, RR 18, SpO2 97%, Weight 190 lbs, Height 70 in, BMI 27.3. PHQ-2 score: not formally administered due to cognitive status — Margaret reports Harold has been sad and withdrawn since Dorothy's death but denies suicidal ideation.
+
+Labs (drawn 2024-09-26): A1c 7.1% (rising — attributed to medication non-adherence over the summer), fasting glucose 134 mg/dL, creatinine 1.1 mg/dL, eGFR 74 mL/min, LDL 108 mg/dL (slightly above target — likely adherence-related), total cholesterol 210 mg/dL, HDL 43 mg/dL, triglycerides 168 mg/dL.
+
+Assessment: Hypertension — slightly above target, may need augmentation at new PCP. Type 2 diabetes — A1c rising due to non-adherence, needs close monitoring. Hyperlipidemia — LDL above target, likely adherence issue. Alzheimer's disease — clinically progressing per neurology and family reports.
+
+Immunization administered: Influenza vaccine (2024–2025 season), left deltoid.
+
+Plan: Dr. Okafor prepared a comprehensive transfer-of-care summary including 9.5-year medication history, lab trends, immunization records, problem list, allergy documentation, and care coordination notes. She included the neurology referral information for Dr. Patel. Medications at transfer: lisinopril 20 mg daily, metformin 500 mg BID, atorvastatin 20 mg daily, donepezil 10 mg daily. She recommended the new PCP consider adding a second antihypertensive and closely monitor diabetes control. She wished Harold and Margaret well.
+
+Documents generated: Transfer-of-care summary, progress note, medication reconciliation document, immunization record.
+
+---
+
+## First Coast Neurology Associates
+
+**Site:** 836 Prudential Drive, Suite 1400, Jacksonville, FL 32207
+**NPI:** 1578934260
+**Active Period:** April 2022 – October 2024
+**Key Clinician:** Dr. Raymond Patel, Neurologist
+
+---
+
+### 2022-04-19 — Office Visit — Initial neurology consultation, Alzheimer's disease diagnosed
+
+Harold Washington, age 75, was referred by Dr. Cynthia Okafor for evaluation of progressive memory impairment noted over the preceding several months. Dorothy Washington accompanied him and provided corroborating history. She described insidious onset of episodic memory difficulties: repeating questions, forgetting recent events, leaving the stove on, and difficulty tracking conversations. She dates the onset to approximately late 2021. Harold has no history of stroke, head trauma, seizures, or significant alcohol use.
+
+Vitals: BP 134/80 mmHg, HR 74 bpm, Temp 98.4°F, RR 16, SpO2 98%, Weight 194 lbs.
+
+Neurological examination: Alert and oriented to person and place; oriented to month and year but not day or date. Cranial nerves II–XII intact. Motor strength 5/5 throughout. Sensation intact to light touch and proprioception. Reflexes 2+ and symmetric. Gait steady, no Parkinsonian features. No tremor, no rigidity. Romberg negative.
+
+Dr. Patel administered the Montreal Cognitive Assessment (MoCA): Harold scored 20/30, with deficits in delayed recall (1/5), visuospatial/executive function (2/5), and attention (4/6). Orientation 5/6.
+
+Brain MRI (ordered, performed 2022-04-26): Mild generalized cortical atrophy. Bilateral hippocampal volume loss, left greater than right. No acute infarcts, no mass lesions, no subdural collections. Small-vessel ischemic changes (Fazekas grade 1).
+
+Additional labs ordered to rule out reversible causes: TSH 2.4 mIU/L (normal, drawn by PCP), vitamin B12 485 pg/mL (normal), RPR non-reactive, HIV negative, CMP normal.
+
+Assessment: Alzheimer's disease, early onset type, mild stage (G30.9). Clinical picture is consistent with probable Alzheimer's disease based on NIA-AA criteria: insidious onset of progressive episodic memory impairment, corroborating informant history, objective cognitive deficit on MoCA (20/30), hippocampal atrophy on MRI, and exclusion of reversible etiologies.
+
+Plan: Started donepezil 5 mg daily at bedtime. Titrate to 10 mg daily after 4 weeks if tolerated. Discussed diagnosis with Harold and Dorothy in detail. Counseled on expected disease course, importance of structured routines, and safety precautions. Recommended advance care planning. Follow-up in 4–6 weeks for donepezil titration assessment, then every 3–4 months for cognitive monitoring.
+
+Documents generated: Comprehensive neurology consultation note, MRI diagnostic report.
+
+---
+
+### 2022-05-17 — Telephone — Donepezil titration follow-up
+
+Dr. Patel's office called Harold and Dorothy to assess tolerance of donepezil 5 mg daily, started four weeks ago. Dorothy reports Harold has tolerated the medication well — mild nausea for the first few days that resolved. No diarrhea, no vivid dreams, no significant bradycardia symptoms. She reports no clear improvement yet but understands this takes time.
+
+Plan: Titrate donepezil to 10 mg daily at bedtime starting tonight. Continue monitoring. Office follow-up scheduled for October 2022 (six-month mark from diagnosis).
+
+No progress note generated; telephone encounter documented in EHR.
+
+---
+
+### 2023-04-11 — Telemedicine — One-year cognitive monitoring follow-up
+
+Harold, age 76, connected via telemedicine video visit with Dr. Patel for his approximately one-year follow-up since Alzheimer's diagnosis. Dorothy was present and assisted with the technology. Dr. Patel noted Harold appeared well-groomed and alert. He was pleasant and engaged in conversation, though Dorothy needed to prompt him occasionally.
+
+Dr. Patel administered the MMSE via telemedicine: Harold scored 23/30, losing points on recall (1/3), orientation to date (missed day and date), and one point on serial sevens. This represents a stable trajectory compared to 24/30 at his PCP office (March 2022) and is consistent with mild-stage Alzheimer's disease on donepezil therapy.
+
+Dorothy reported Harold is managing well day-to-day. He can dress himself, manage basic hygiene, and participate in meals. She continues to manage his medications using a weekly pill organizer. He still drives short familiar routes (to church and the VFW) but she accompanies him. He occasionally gets confused about appointments and relies on Dorothy for scheduling.
+
+Assessment: Alzheimer's disease, mild stage — stable on donepezil 10 mg. MMSE 23/30, no significant decline from baseline on treatment. Donepezil appears to be providing stabilization.
+
+Plan: Continue donepezil 10 mg daily. Discussed safety — recommend limiting driving to familiar short routes only with Dorothy present. Reinforce structured daily routine. Next follow-up in 6 months. Recommend MMSE at PCP annual wellness visits as well for interim monitoring.
+
+Documents generated: Telemedicine follow-up note.
+
+---
+
+### 2024-10-10 — Office Visit — Final visit, transition referral to Georgia neurology
+
+Harold, age 78, presented for his final visit at First Coast Neurology before relocating to Decatur, Georgia. Margaret Washington-Clarke accompanied him. Dorothy Washington passed away in June 2024. Dr. Patel noted Harold appeared more subdued and thinner compared to prior visits. He had difficulty recalling the purpose of the visit and looked to Margaret frequently for information.
+
+Vitals: BP 140/86 mmHg, HR 76 bpm, Temp 98.4°F, RR 16, SpO2 97%, Weight 190 lbs.
+
+MMSE administered: Harold scored 19/30, a decline of 4 points from 23/30 approximately 18 months prior. He lost points on recall (0/3), orientation (missed day, date, month, and floor), attention (serial sevens 2/5), and one point on three-step command. This represents progression from mild to mild-moderate stage Alzheimer's disease.
+
+Dr. Patel discussed the accelerated decline with Margaret, noting the likely contribution of disrupted routines and loss of Dorothy's daily support. Harold is no longer driving (license voluntarily surrendered). Margaret reports he needs prompting for medications, sometimes forgets to eat, and has occasional nighttime confusion.
+
+Assessment: Alzheimer's disease, progressing from mild to moderate stage. MMSE declined from 23/30 to 19/30 over 18 months. Donepezil 10 mg continued. May benefit from addition of memantine given progression.
+
+Plan: Continue donepezil 10 mg daily. Dr. Patel wrote a detailed referral letter for a geriatric neurologist in the Atlanta/Decatur area, recommending: (1) re-evaluation with full neurocognitive battery within 3 months, (2) consideration of adding memantine or switching to combination donepezil/memantine therapy, (3) continued MMSE monitoring every 3–4 months, (4) advance care planning given disease trajectory. He provided a care summary including all MRI reports, cognitive testing history, and medication records.
+
+Documents generated: Neurology consultation note, transition referral letter, care summary with cognitive score trajectory.
+
+---
+
+## DeKalb Primary Care
+
+**Site:** 2701 North Decatur Road, Suite 300, Decatur, GA 30033
+**NPI:** 1692045837
+**Active Period:** November 2024 – present
+**Key Clinician:** Dr. Anita Desai, Internist
+
+---
+
+### 2024-11-14 — Office Visit — New patient establishment of care
+
+Harold Washington, age 78, presented as a new patient to Dr. Anita Desai at DeKalb Primary Care after relocating from Jacksonville, Florida to live with his daughter Margaret Washington-Clarke in Decatur, Georgia. Margaret accompanied Harold and provided much of the history. She brought the transfer-of-care summary from Dr. Cynthia Okafor and the referral letter from Dr. Raymond Patel. Harold was pleasant but had difficulty recalling his medication names and medical history details.
+
+Vitals: BP 142/86 mmHg, HR 80 bpm, Temp 98.6°F, RR 16, SpO2 97%, Weight 188 lbs, Height 70 in, BMI 27.0. PHQ-2 score: 3/6 (positive screen — Harold endorsed "feeling down, depressed, or hopeless" as "more than half the days" and "little interest or pleasure" as "several days").
+
+Physical exam: Well-appearing elderly male, slightly thin. Cardiac exam: regular rate and rhythm, no murmurs. Lungs clear bilaterally. Abdomen soft, non-tender. Extremities: no edema. Diabetic foot exam: intact monofilament sensation bilaterally, no ulcers or calluses, pedal pulses 2+ bilaterally. Neurological: alert, oriented to person and place but not date. Mildly impaired short-term recall.
+
+Review of transfer records: Hypertension on lisinopril 20 mg, type 2 diabetes on metformin 500 mg BID, hyperlipidemia on atorvastatin 20 mg, Alzheimer's disease (mild-moderate) on donepezil 10 mg. A1c 7.1% in September, LDL 108. Allergy: sulfonamide antibiotics (rash). MMSE 19/30 per neurology on 2024-10-10.
+
+Assessment: Essential hypertension — not at goal (likely white-coat effect plus relocation stress, but warrants augmentation). Type 2 diabetes — A1c 7.1%, rising from baseline 6.8%, attributed to medication non-adherence during transition. Hyperlipidemia — LDL slightly above target. Alzheimer's disease, mild-moderate stage — established diagnosis, continued on donepezil 10 mg per neurology. Positive PHQ-2 screen — likely bereavement-related depression in setting of wife's death (June 2024) and major life disruption.
+
+Plan: Continued lisinopril 20 mg daily. Added amlodipine 5 mg daily for improved BP control. Continued metformin 500 mg BID. Continued atorvastatin 20 mg daily. Continued donepezil 10 mg daily. Immunization administered: COVID-19 bivalent booster (2024–2025 formulation), right deltoid. Ordered baseline labs: CMP, CBC, hemoglobin A1c, fasting lipid panel, TSH, urinalysis. Referred to social work for bereavement support and caregiver resources for Margaret. Referred to Emory Cognitive Neurology Center (Dr. Lisa Nakamura) per Dr. Patel's recommendation for comprehensive Alzheimer's management. Follow-up appointment in 4–6 weeks after labs result.
+
+Documents generated: New patient comprehensive evaluation note, medication reconciliation, referral orders (social work, neurology).
+
+---
+
+### 2024-12-05 — Lab — Baseline laboratory work
+
+Harold presented for fasting blood draw as ordered at the November 14 new patient visit. No vitals taken.
+
+Results: Hemoglobin A1c 7.0%, fasting glucose 132 mg/dL, sodium 141, potassium 4.3, chloride 102, CO2 25, BUN 22, creatinine 1.2 mg/dL, eGFR 72 mL/min (mild decrease, consistent with age), calcium 9.4, glucose 132, total protein 7.0, albumin 3.9, ALT 22, AST 24. CBC: WBC 5.8, hemoglobin 13.6 g/dL, hematocrit 40.8%, platelets 218. Fasting lipid panel: total cholesterol 206 mg/dL, LDL 104 mg/dL, HDL 42 mg/dL, triglycerides 172 mg/dL. TSH 2.8 mIU/L (normal). Urinalysis: trace protein, no glucose, no blood.
+
+Results reviewed by Dr. Desai. A1c 7.0% — slightly improved from September, likely reflecting improved adherence under Margaret's supervision. Renal function mildly reduced (eGFR 72), appropriate for age; metformin remains safe. Lipids slightly above target — will reassess at next visit. TSH normal. Trace proteinuria — will repeat at next lab.
+
+No medication changes. Results communicated to Margaret via patient portal message.
+
+Diagnostic report generated: Lab result bundle (CMP, CBC, A1c, lipid panel, TSH, urinalysis).
+
+---
+
+### 2025-02-13 — Telephone — Post-ED follow-up check-in
+
+Dr. Desai's office called Margaret to check on Harold five days after his emergency department visit on February 8 (mechanical fall, forehead laceration repaired with dermabond, CT head and right hip X-ray negative). Margaret reported Harold is recovering well. The forehead laceration is healing cleanly with no signs of infection. His right wrist contusion has improved — he has full range of motion with only mild tenderness. He has been more cautious getting up at night. Margaret has had grab bars installed in the bathroom and removed all throw rugs from the home. She purchased a nightlight for the hallway.
+
+Dr. Desai documented the follow-up and recommended an in-person visit in 2–3 weeks for comprehensive chronic disease management and fall prevention counseling. She reminded Margaret to continue Harold's current medications and to monitor for any delayed symptoms (headache, confusion beyond baseline, vomiting).
+
+No progress note generated; telephone encounter documented in EHR.
+
+---
+
+### 2025-03-06 — Office Visit — Follow-up, chronic disease management, fall prevention
+
+Harold, age 78, presented for follow-up with Dr. Desai, accompanied by Margaret. This visit addresses post-ED fall follow-up, chronic disease management, and functional status assessment. Harold was pleasant, cooperative, and ambulatory without assistive device. Forehead laceration from February fully healed with minimal scarring.
+
+Vitals: BP 132/78 mmHg, HR 74 bpm, Temp 98.4°F, RR 16, SpO2 98%, Weight 186 lbs, Height 70 in, BMI 26.7. PHQ-2 score: 2/6 (below threshold — some improvement since November).
+
+Fall assessment: Harold fell while getting up from the toilet at night in February. No syncope, no dizziness preceding the fall. No orthostatic hypotension on testing today (sitting BP 132/78, standing BP 128/76 at 1 minute and 126/74 at 3 minutes). Gait is steady, no shuffling. Timed Up and Go: 14 seconds (mildly increased for age, within range). Medication review: no sedating medications on his list. Margaret confirms grab bars installed, throw rugs removed, nightlight added.
+
+Assessment: Essential hypertension — well controlled on lisinopril 20 mg plus amlodipine 5 mg. Type 2 diabetes — await updated A1c (labs ordered today). Hyperlipidemia — stable. Alzheimer's disease — now on Namzaric per Emory neurology (started January 2025). History of mechanical fall — low risk for recurrence with home modifications in place. Weight trending down (198 → 186 over 10 years, 190 → 186 over 5 months) — monitor nutritional status.
+
+Functional status documented: Harold requires assistance with bathing (Margaret helps with shower safety), dressing (needs help with buttons and shoe-tying), and medication management (Margaret fills weekly pill organizer and supervises administration). He is continent of bowel and bladder. He is ambulatory with a steady gait, no assistive device. He can feed himself but does not cook. He cannot manage finances or be left alone for more than a few hours.
+
+Plan: Ordered labs: hemoglobin A1c, CMP, fasting lipid panel, CBC, vitamin D 25-hydroxy, urinalysis with microalbumin. Counseled on fall prevention — continue home modifications, adequate lighting, non-skid footwear. Discussed nutritional support — Margaret to ensure regular meals and snacks, consider supplemental nutrition shakes. Continue all current medications. Follow-up after lab results and in 3 months for next chronic disease check.
+
+Progress note generated: Follow-up visit note with fall prevention counseling and functional status assessment.
+
+---
+
+### 2025-03-13 — Lab — Follow-up labs including vitamin D
+
+Harold presented for fasting blood draw as ordered at the March 6 visit.
+
+Results: Hemoglobin A1c 6.9% (improved from 7.0% in December — reflecting consistent adherence under Margaret's care). Fasting glucose 116 mg/dL. CMP: sodium 140, potassium 4.1, chloride 101, CO2 26, BUN 24, creatinine 1.2 mg/dL, eGFR 71 mL/min (stable), calcium 9.2, total protein 6.8, albumin 3.8, ALT 20, AST 22. CBC: WBC 6.0, hemoglobin 13.4 g/dL, hematocrit 40.2%, platelets 210. Fasting lipid panel: total cholesterol 198 mg/dL, LDL 100 mg/dL, HDL 43 mg/dL, triglycerides 160 mg/dL. 25-hydroxyvitamin D: 18 ng/mL (deficient; normal ≥30 ng/mL). Urinalysis: trace protein, no microalbumin, no glucose.
+
+Results flagged by Dr. Desai for vitamin D deficiency. Remaining labs stable and at or near goal.
+
+Diagnostic report generated: Lab result bundle (CMP, CBC, A1c, lipid panel, vitamin D, urinalysis).
+
+---
+
+### 2025-03-20 — Telephone — Lab results review, cholecalciferol started
+
+Dr. Desai called Margaret to review Harold's lab results from March 13. She reported that the A1c is improved at 6.9% — diabetes management is going well. Kidney function is stable. Lipids near target. However, Harold's vitamin D level is low at 18 ng/mL (deficient), which is a risk factor for falls and bone health, especially important given his recent fall history and age.
+
+Plan: Started cholecalciferol (vitamin D3) 2000 IU daily. Margaret will add this to Harold's daily pill organizer. Recheck vitamin D level in 3 months to ensure repletion. All other medications continued unchanged.
+
+Assessment: Vitamin D deficiency (E55.9), newly diagnosed.
+
+Current medication list updated: Namzaric (donepezil 10 mg/memantine 28 mg ER) daily at bedtime, lisinopril 20 mg daily, amlodipine 5 mg daily, metformin 500 mg BID, atorvastatin 20 mg daily at bedtime, cholecalciferol 2000 IU daily.
+
+No progress note generated; telephone encounter documented in EHR.
+
+---
+
+## Emory Cognitive Neurology Center
+
+**Site:** 12 Executive Park Drive NE, Suite 200, Atlanta, GA 30329
+**NPI:** 1823167490
+**Active Period:** January 2025 – present
+**Key Clinician:** Dr. Lisa Nakamura, Geriatric Neurologist
+
+---
+
+### 2025-01-22 — Office Visit — Comprehensive geriatric neurology evaluation
+
+Harold Washington, age 78, presented for an initial comprehensive evaluation at the Emory Cognitive Neurology Center, referred by Dr. Raymond Patel (First Coast Neurology, Jacksonville) and Dr. Anita Desai (DeKalb Primary Care). Margaret Washington-Clarke accompanied him and served as primary historian. She brought Dr. Patel's referral letter and cognitive score trajectory documentation.
+
+Vitals: BP 136/82 mmHg, HR 76 bpm, Temp 98.4°F, RR 16, SpO2 97%, Weight 187 lbs.
+
+History: Harold was diagnosed with Alzheimer's disease in April 2022. MMSE trajectory: 24/30 (March 2022), 23/30 (April 2023), 19/30 (October 2024). He has been on donepezil 10 mg daily since May 2022. His wife Dorothy died in June 2024, and his decline accelerated thereafter. He relocated from Jacksonville to Decatur in October 2024 to live with Margaret. Margaret reports he cannot manage finances, cook, or be left alone for more than 2–3 hours. He needs assistance with bathing, dressing, and medication management. He does not drive. He is continent and ambulatory.
+
+Neurological examination: Alert, oriented to person only (did not know date, day, month, year, or current location). Cranial nerves intact. Motor strength 5/5 throughout. No rigidity, no tremor. Gait steady but slightly slow. Reflexes 2+ and symmetric. Plantar responses flexor bilaterally.
+
+Neurocognitive testing battery administered (approximately 90-minute session with neuropsychologist): MMSE 17/30 (decline of 2 points from 19/30 three months prior). MoCA 13/30 (decline from 20/30 at diagnosis in 2022). Deficits prominent in delayed recall (0/5), orientation (2/6), visuospatial/executive (1/5), and naming (2/3). Relative preservation of language fluency and motor function. This profile is consistent with moderate-stage Alzheimer's disease.
+
+Assessment: Alzheimer's disease, progressed from mild to moderate stage (G30.9, F00.9). MMSE 17/30, MoCA 13/30. Five-point MMSE decline over 10 months, accelerated by psychosocial stressors (bereavement, relocation). Functional impairment in multiple instrumental and some basic ADLs.
+
+Plan: Discontinued donepezil 10 mg monotherapy. Started donepezil 10 mg / memantine 28 mg ER combination (Namzaric) — one capsule daily at bedtime. The memantine component may provide additional symptomatic benefit at moderate stage. Counseled Margaret on expected benefits (stabilization, not reversal) and potential side effects (headache, dizziness, constipation).
+
+Advance care planning discussion: Dr. Nakamura discussed goals of care with Harold (to the extent he could participate) and Margaret. Harold expressed preference for comfort-focused care. He stated he does not want to be intubated or placed on a ventilator. Margaret confirmed these preferences align with her understanding of his wishes. Dr. Nakamura documented advance directive preferences in the chart and recommended formal legal documentation update in Georgia.
+
+Placed referral for occupational therapy — home safety evaluation and adaptive strategies for ADL support.
+
+Follow-up scheduled in 3 months. Repeat brain MRI to be obtained before next visit for comparison to 2022 imaging.
+
+Documents generated: Comprehensive geriatric neurology evaluation note, neurocognitive testing report (separate diagnostic report), advance care planning documentation, OT referral order.
+
+---
+
+### 2025-04-02 — Imaging — Brain MRI
+
+Harold presented to Emory Imaging for a brain MRI without and with contrast, ordered by Dr. Nakamura for comparison to the April 2022 MRI from Jacksonville.
+
+MRI Brain findings: Progressive bilateral hippocampal atrophy compared to April 2022 study, now moderate in severity. Generalized cortical atrophy has mildly progressed, most prominent in temporal and parietal lobes. Chronic small-vessel ischemic white matter changes (Fazekas grade 1–2, mildly progressed). No acute infarct. No intracranial hemorrhage. No mass lesion. No hydrocephalus. Stable mild periventricular white matter hyperintensities.
+
+Impression: Progressive neurodegenerative changes consistent with Alzheimer's disease. Moderate hippocampal atrophy bilaterally. No acute pathology.
+
+Results forwarded to Dr. Nakamura for review at upcoming follow-up visit.
+
+Diagnostic report generated: Brain MRI radiology report.
+
+---
+
+### 2025-04-16 — Office Visit — Follow-up, MRI review, cognitive monitoring
+
+Harold, age 78, returned to Dr. Nakamura for his three-month follow-up. Margaret accompanied him. Harold was calm and cooperative. He did not recall having had the MRI two weeks ago but was not distressed.
+
+Vitals: BP 134/80 mmHg, HR 74 bpm, Temp 98.2°F, RR 16, SpO2 98%, Weight 186 lbs.
+
+MMSE administered: 17/30 — stable compared to January 2025 (17/30). Loss pattern unchanged: recall 0/3, orientation 2/10, serial sevens 2/5, three-step command 2/3. This stability at three months on Namzaric is cautiously encouraging.
+
+Dr. Nakamura reviewed the April 2, 2025, brain MRI with Margaret: progressive hippocampal atrophy and mild cortical atrophy progression compared to 2022, consistent with known Alzheimer's disease trajectory. No unexpected findings. No vascular events.
+
+Margaret reported that Harold has been tolerating Namzaric well — no headaches, dizziness, or GI side effects. She feels his day-to-day function has been stable since starting the combination therapy. The occupational therapist visited the home in February and recommended shower chair (installed), simplified clothing with elastic waistbands, and labeled drawers. Margaret found these helpful.
+
+Assessment: Alzheimer's disease, moderate stage — MMSE stable at 17/30 on Namzaric. Brain MRI shows expected disease progression without acute pathology. Medication tolerated well. Functional status stable per caregiver report.
+
+Plan: Continue Namzaric (donepezil 10 mg / memantine 28 mg ER) daily at bedtime. Continue coordinating with Dr. Desai at DeKalb Primary Care for chronic disease management. Discussed long-term planning with Margaret — as disease progresses, may need to consider adult day program for structured activity and respite for Margaret. Next follow-up in 3 months (July 2025). No repeat imaging needed at this time.
+
+Progress note generated: Follow-up neurology visit note with MRI comparison review and cognitive assessment.
+
+---
+
+## Emory Decatur Hospital — Emergency Department
+
+**Site:** 2701 North Decatur Road, Decatur, GA 30033
+**NPI:** 1456230178
+**Active Period:** Single encounter, February 2025
+**Key Clinician:** Dr. Marcus Williams, Emergency Medicine Physician
+
+---
+
+### 2025-02-08 — ED Visit — Mechanical fall at home, forehead laceration
+
+Harold Washington, age 78, was brought to the Emory Decatur Hospital Emergency Department by EMS after a mechanical fall at home at approximately 2:15 AM. Per Margaret Washington-Clarke (daughter, healthcare POA), Harold got up to use the bathroom and fell while rising from the toilet. He struck his forehead on the edge of the vanity countertop. No loss of consciousness per Margaret, who heard the fall and found him on the bathroom floor within one minute. He was alert but confused (baseline cognitive impairment — known Alzheimer's disease, moderate stage). No complaints of chest pain, dizziness, or palpitations prior to the fall.
+
+Triage vitals: BP 148/90 mmHg, HR 92 bpm, Temp 98.8°F, RR 18, SpO2 97%, Weight estimated 188 lbs. Pain scale: 4/10 (forehead, right wrist). GCS 14 (E4, V4, M6 — verbal score reduced from baseline cognitive impairment, not acute change per Margaret).
+
+Physical exam by Dr. Marcus Williams: 2.5 cm superficial laceration to the right forehead with minimal active bleeding, no underlying skull depression. Right wrist with mild swelling and tenderness over dorsal aspect, full range of motion, no deformity, intact radial pulse. Right hip: no tenderness to palpation, full passive range of motion. Neurological: no focal deficits, pupils equal and reactive, no Battle sign or raccoon eyes.
+
+Margaret provided Harold's medication list: donepezil 10 mg / memantine 28 mg ER daily, lisinopril 20 mg daily, amlodipine 5 mg daily, metformin 500 mg BID, atorvastatin 20 mg daily. No anticoagulants. Allergy: sulfonamide antibiotics (rash).
+
+Imaging: CT head without contrast — no acute intracranial hemorrhage, no skull fracture. Chronic microvascular ischemic changes and generalized cortical atrophy (known). Right hip X-ray (AP and lateral) — no fracture, no dislocation, mild degenerative changes.
+
+Procedures: Forehead laceration cleaned with normal saline irrigation. Wound edges approximated and closed with dermabond (tissue adhesive). No sutures required. Tetanus status confirmed up to date (Tdap 2018).
+
+Labs: Point-of-care glucose 128 mg/dL.
+
+Assessment: Mechanical fall (W19) in elderly patient with Alzheimer's disease. Forehead laceration — repaired. Right wrist contusion — no fracture suspected clinically. CT head negative. Right hip X-ray negative.
+
+Disposition: Discharged home to Margaret's care at 5:45 AM. Discharge instructions provided to Margaret: wound care for dermabond (keep dry 24 hours, no picking, will slough off in 5–10 days), fall precautions, return precautions (worsening headache, vomiting, confusion beyond baseline, inability to bear weight). Acetaminophen 500 mg every 6 hours as needed for pain (do not exceed 2000 mg/day given age). Follow up with PCP Dr. Desai within 1 week.
+
+Documents generated: Emergency department physician note, discharge summary with patient instructions, CT head radiology report, right hip X-ray radiology report.

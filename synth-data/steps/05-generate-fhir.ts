@@ -37,9 +37,6 @@ interface ResourceFile {
   resource: any;
 }
 
-const META_TAG_SOURCE_SYSTEM = "urn:example:permissiontickets-demo:source-org-npi";
-const META_TAG_JURISDICTION_SYSTEM = "urn:example:permissiontickets-demo:jurisdiction-state";
-
 // JSON parsing/repair is now in artifacts.ts — imported as parseResourceArrayWithRepair
 
 async function loadFewShots(): Promise<string> {
@@ -251,21 +248,6 @@ function findMatchingDiagnosticReport(resources: any[], reportType: string): any
   });
 }
 
-function buildProjectMetaTags(site: ProviderSiteContract) {
-  return [
-    {
-      system: META_TAG_SOURCE_SYSTEM,
-      code: site.npi,
-      display: `Source Organization NPI ${site.npi}`,
-    },
-    {
-      system: META_TAG_JURISDICTION_SYSTEM,
-      code: site.state,
-      display: site.state,
-    },
-  ];
-}
-
 function normalizeInstant(value: unknown): string | undefined {
   if (typeof value !== "string") return undefined;
   const trimmed = value.trim();
@@ -283,8 +265,11 @@ function normalizeGeneratedResource(resource: any, site: ProviderSiteContract): 
   const meta = normalized.meta && typeof normalized.meta === "object" && !Array.isArray(normalized.meta)
     ? normalized.meta
     : {};
-  meta.tag = buildProjectMetaTags(site);
-  normalized.meta = meta;
+  if (Object.keys(meta).length > 0) {
+    normalized.meta = meta;
+  } else {
+    delete normalized.meta;
+  }
 
   if (normalized.resourceType === "DocumentReference") {
     const normalizedDate = normalizeInstant(normalized.date);

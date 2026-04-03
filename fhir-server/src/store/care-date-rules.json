@@ -1,0 +1,159 @@
+{
+  "default": {
+    "allowEncounterFallback": false,
+    "rules": []
+  },
+  "resourceTypes": {
+    "Encounter": {
+      "allowEncounterFallback": false,
+      "rules": [
+        {
+          "label": "Encounter.period",
+          "kind": "period",
+          "startPaths": ["period.start"],
+          "endPaths": ["period.end"]
+        }
+      ]
+    },
+    "Observation": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Observation.effectivePeriod",
+          "kind": "period",
+          "startPaths": ["effectivePeriod.start"],
+          "endPaths": ["effectivePeriod.end"]
+        },
+        {
+          "label": "Observation.effectiveDateTime",
+          "kind": "instant",
+          "startPaths": ["effectiveDateTime"]
+        },
+        {
+          "label": "Observation.issued",
+          "kind": "instant",
+          "startPaths": ["issued"]
+        }
+      ]
+    },
+    "DiagnosticReport": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "DiagnosticReport.effectivePeriod",
+          "kind": "period",
+          "startPaths": ["effectivePeriod.start"],
+          "endPaths": ["effectivePeriod.end"]
+        },
+        {
+          "label": "DiagnosticReport.effectiveDateTime",
+          "kind": "instant",
+          "startPaths": ["effectiveDateTime"]
+        },
+        {
+          "label": "DiagnosticReport.issued",
+          "kind": "instant",
+          "startPaths": ["issued"]
+        }
+      ]
+    },
+    "DocumentReference": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "DocumentReference.context.period",
+          "kind": "period",
+          "startPaths": ["context.period.start"],
+          "endPaths": ["context.period.end"]
+        },
+        {
+          "label": "DocumentReference.date",
+          "kind": "instant",
+          "startPaths": ["date"]
+        }
+      ]
+    },
+    "Procedure": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Procedure.performedPeriod",
+          "kind": "period",
+          "startPaths": ["performedPeriod.start"],
+          "endPaths": ["performedPeriod.end"]
+        },
+        {
+          "label": "Procedure.performedDateTime",
+          "kind": "instant",
+          "startPaths": ["performedDateTime"]
+        }
+      ]
+    },
+    "MedicationRequest": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "MedicationRequest.authoredOn",
+          "kind": "instant",
+          "startPaths": ["authoredOn"]
+        }
+      ]
+    },
+    "Condition": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Condition.onsetAbatement",
+          "kind": "period",
+          "startPaths": ["onsetDateTime"],
+          "endPaths": ["abatementDateTime"]
+        },
+        {
+          "label": "Condition.recordedDate",
+          "kind": "instant",
+          "startPaths": ["recordedDate"]
+        }
+      ]
+    },
+    "Immunization": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "Immunization.occurrenceDateTime",
+          "kind": "instant",
+          "startPaths": ["occurrenceDateTime"]
+        }
+      ]
+    },
+    "ServiceRequest": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "ServiceRequest.authoredOn",
+          "kind": "instant",
+          "startPaths": ["authoredOn"]
+        },
+        {
+          "label": "ServiceRequest.occurrenceDateTime",
+          "kind": "instant",
+          "startPaths": ["occurrenceDateTime"]
+        }
+      ]
+    },
+    "AllergyIntolerance": {
+      "allowEncounterFallback": true,
+      "rules": [
+        {
+          "label": "AllergyIntolerance.recordedDate",
+          "kind": "instant",
+          "startPaths": ["recordedDate"]
+        },
+        {
+          "label": "AllergyIntolerance.onsetDateTime",
+          "kind": "instant",
+          "startPaths": ["onsetDateTime"]
+        }
+      ]
+    }
+  }
+}

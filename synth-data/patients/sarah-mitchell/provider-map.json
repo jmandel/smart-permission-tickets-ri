@@ -1,0 +1,160 @@
+{
+  "patient": {
+    "full_name": "Sarah Elizabeth Mitchell",
+    "date_of_birth": "1993-11-14",
+    "gender": "Female",
+    "race_ethnicity": "White, non-Hispanic",
+    "language": "English",
+    "marital_status": "Single, never married",
+    "home_city": "Seattle",
+    "home_state": "WA",
+    "address_summary": "Ballard neighborhood, Seattle, WA"
+  },
+  "sites": [
+    {
+      "site_slug": "hawthorne-health-center",
+      "site_name": "Hawthorne Health Center",
+      "npi": "1234567890",
+      "state": "OR",
+      "city": "Portland",
+      "site_type": "Primary care / family medicine clinic",
+      "active_period": {
+        "start": "January 2019",
+        "end": "May 2024"
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Emily Nakamura",
+          "role": "Family Medicine",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Hawthorne Health Center",
+          "city": "Portland",
+          "state": "OR",
+          "address_summary": "3847 SE Hawthorne Blvd, Portland, OR 97214"
+        }
+      ],
+      "narrative_summary": "Sarah's primary care medical home during her Portland years. Managed routine preventive care, initial depression evaluation and sertraline prescription, referral to psychiatry, annual wellness visits, immunizations, Pap smear, and general lab work."
+    },
+    {
+      "site_slug": "portland-behavioral-health-associates",
+      "site_name": "Portland Behavioral Health Associates",
+      "npi": "2345678901",
+      "state": "OR",
+      "city": "Portland",
+      "site_type": "Outpatient psychiatry practice",
+      "active_period": {
+        "start": "July 2019",
+        "end": "May 2024"
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. James Okafor",
+          "role": "Psychiatry",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Portland Behavioral Health Associates",
+          "city": "Portland",
+          "state": "OR",
+          "address_summary": "1520 NW 18th Ave, Suite 304, Portland, OR 97209"
+        }
+      ],
+      "narrative_summary": "Sarah's outpatient psychiatrist for bipolar II disorder management. Performed initial psychiatric evaluation, made the bipolar II diagnosis, managed medication changes, ordered mood-related labs, and provided quarterly psychiatric follow-up visits."
+    },
+    {
+      "site_slug": "bridgetown-recovery-center",
+      "site_name": "Bridgetown Recovery Center",
+      "npi": "3456789012",
+      "state": "OR",
+      "city": "Portland",
+      "site_type": "Addiction medicine / intensive outpatient program (IOP)",
+      "active_period": {
+        "start": "January 2023",
+        "end": "August 2023"
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Rosa Delgado",
+          "role": "Addiction Medicine",
+          "npi": null
+        },
+        {
+          "name": "Lisa Huang",
+          "role": "LCSW, IOP group therapist",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Bridgetown Recovery Center",
+          "city": "Portland",
+          "state": "OR",
+          "address_summary": "920 SE Sandy Blvd, Portland, OR 97214"
+        }
+      ],
+      "narrative_summary": "Sarah's substance use disorder treatment facility. Conducted addiction medicine intake evaluation, managed 12-week IOP, initiated naltrexone, ordered SUD-related labs, and provided aftercare follow-up. Coordinated with Dr. Okafor regarding medication interactions."
+    },
+    {
+      "site_slug": "ballard-family-medicine",
+      "site_name": "Ballard Family Medicine",
+      "npi": "4567890123",
+      "state": "WA",
+      "city": "Seattle",
+      "site_type": "Primary care / family medicine clinic",
+      "active_period": {
+        "start": "July 2024",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Kevin Tran",
+          "role": "Family Medicine",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ballard Family Medicine",
+          "city": "Seattle",
+          "state": "WA",
+          "address_summary": "5412 22nd Ave NW, Seattle, WA 98107"
+        }
+      ],
+      "narrative_summary": "Sarah's new PCP after relocating to Seattle. Performed new patient comprehensive visit with full history intake and medication reconciliation, manages ongoing preventive care, routine labs, immunizations, and chronic disease monitoring."
+    },
+    {
+      "site_slug": "puget-sound-psychiatry",
+      "site_name": "Puget Sound Psychiatry",
+      "npi": "5678901234",
+      "state": "WA",
+      "city": "Seattle",
+      "site_type": "Outpatient psychiatry practice",
+      "active_period": {
+        "start": "August 2024",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Anita Patel",
+          "role": "Psychiatry",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Puget Sound Psychiatry",
+          "city": "Seattle",
+          "state": "WA",
+          "address_summary": "1001 4th Ave, Suite 820, Seattle, WA 98154"
+        }
+      ],
+      "narrative_summary": "Sarah's current psychiatrist for bipolar II management after her move to Seattle. Conducted new patient psychiatric evaluation with full review of Portland records, continues medication management, monitors mood stability and metabolic effects."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "patient": {
+    "full_name": "Kevin Junghwan Park",
+    "date_of_birth": "1968-09-14",
+    "gender": "Male",
+    "race_ethnicity": "Korean-American",
+    "language": "English",
+    "marital_status": "Married",
+    "home_city": "Minneapolis",
+    "home_state": "MN",
+    "address_summary": "Minneapolis, Minnesota 55406"
+  },
+  "sites": [
+    {
+      "site_slug": "minnehaha-internal-medicine",
+      "site_name": "Minnehaha Internal Medicine",
+      "npi": "1234567890",
+      "state": "MN",
+      "city": "Minneapolis",
+      "site_type": "Primary Care / Internal Medicine",
+      "active_period": {
+        "start": "2018-06",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. Angela Whitfield, MD",
+          "role": "Internist, Primary Care Physician",
+          "npi": "1528374650"
+        },
+        {
+          "name": "Rachel Andersen, RN",
+          "role": "Clinic Nurse",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "Minnehaha Internal Medicine",
+          "city": "Minneapolis",
+          "state": "MN",
+          "address_summary": "3501 East Lake Street, Minneapolis, MN 55406"
+        }
+      ],
+      "narrative_summary": "Kevin's primary care home. Manages chronic conditions (hypertension, hyperlipidemia), preventive care, and initial discovery and workup of atrial fibrillation. Generated the referral to the EP specialist at University of Minnesota."
+    },
+    {
+      "site_slug": "university-of-minnesota-cardiac-electrophysiology-clinic",
+      "site_name": "University of Minnesota Cardiac Electrophysiology Clinic",
+      "npi": "1987654321",
+      "state": "MN",
+      "city": "Minneapolis",
+      "site_type": "Specialty — Cardiac Electrophysiology",
+      "active_period": {
+        "start": "2026-02",
+        "end": null
+      },
+      "key_clinicians": [
+        {
+          "name": "Dr. James Lindgren, MD, FHRS",
+          "role": "Cardiac Electrophysiologist",
+          "npi": "1345678902"
+        },
+        {
+          "name": "Dr. Sarah Okonkwo, MD",
+          "role": "EP Fellow",
+          "npi": null
+        },
+        {
+          "name": "Maria Torres, RN, CCRN",
+          "role": "EP Clinic Nurse",
+          "npi": null
+        }
+      ],
+      "locations": [
+        {
+          "name": "University of Minnesota Cardiac Electrophysiology Clinic",
+          "city": "Minneapolis",
+          "state": "MN",
+          "address_summary": "420 Delaware Street SE, MMC 508, Minneapolis, MN 55455"
+        }
+      ],
+      "narrative_summary": "Referred-to specialty site for evaluation and management of atrial fibrillation. Responsible for advanced diagnostic workup (Holter monitor), catheter ablation candidacy assessment, and procedure planning."
+    }
+  ]
+}

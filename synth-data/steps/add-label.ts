@@ -19,6 +19,8 @@
  * Idempotent — won't add a duplicate label.
  */
 
+export {};
+
 const LABELS: Record<string, string> = {
   SEX: "sexuality and reproductive health information sensitivity",
   HIV: "HIV/AIDS information sensitivity",

@@ -8,15 +8,19 @@
     "step:notes": "bun run steps/03-notes.ts",
     "step:inventory": "bun run steps/04-inventory.ts",
     "step:generate": "bun run steps/05-generate-fhir.ts",
-    "step:assemble": "bun run steps/06-assemble.ts",
+    "step:security-labels": "bun run steps/06-security-labels.ts",
+    "step:assemble": "bun run steps/07-assemble.ts",
     "spike:permissioned-query": "bun run scripts/permissioned-query-spike.ts",
     "extract-few-shots": "bun run scripts/extract-few-shots.ts",
     "setup": "bun run scripts/setup.ts",
+    "terminology:build": "bun run scripts/build-terminology.ts",
     "validator:start": "bun run scripts/validator-server.ts start",
     "validator:stop": "bun run scripts/validator-server.ts stop",
     "validator:status": "bun run scripts/validator-server.ts status"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fast-xml-parser": "^5.5.10"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^5.8"

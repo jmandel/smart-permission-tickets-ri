@@ -17,6 +17,11 @@ export type AllowedPatientAlias = {
 };
 
 export type DateSemantics = "generated-during-period" | "care-overlap";
+export type SensitiveMode = "deny" | "allow";
+
+export type SensitiveSharing = {
+  mode?: SensitiveMode;
+};
 
 export type Ticket = {
   name: string;
@@ -25,6 +30,7 @@ export type Ticket = {
   allowedResourceTypes?: string[];
   dateRange?: { start: string; end: string };
   dateSemantics?: DateSemantics;
+  sensitive?: SensitiveSharing;
   requiredLabelsAll?: Label[];
   deniedLabelsAny?: Label[];
   granularCategoryRules?: CategoryRule[];
@@ -92,6 +98,16 @@ export type ResourceRow = {
 
 export const DATA_ROOT = path.resolve(import.meta.dir, "..", "..", "patients");
 export const SECURITY_SYSTEM = "urn:example:permissiontickets-demo:security";
+export const SOURCE_ORG_NPI_SYSTEM = "urn:example:permissiontickets-demo:source-org-npi";
+export const JURISDICTION_STATE_SYSTEM = "urn:example:permissiontickets-demo:jurisdiction-state";
 export const V3_ACTCODE_SYSTEM = "http://terminology.hl7.org/CodeSystem/v3-ActCode";
+export const SENSITIVE_LABELS: Label[] = [
+  { system: V3_ACTCODE_SYSTEM, code: "SEX" },
+  { system: V3_ACTCODE_SYSTEM, code: "ETH" },
+  { system: V3_ACTCODE_SYSTEM, code: "MH" },
+  { system: V3_ACTCODE_SYSTEM, code: "HIV" },
+  { system: V3_ACTCODE_SYSTEM, code: "STD" },
+  { system: V3_ACTCODE_SYSTEM, code: "SDV" },
+];
 export const SITE_SCOPED_TYPES = new Set(["Organization", "Location", "Practitioner", "PractitionerRole"]);
 export const IDENTITY_TYPES = new Set(["Patient", "Organization", "Practitioner", "Location", "PractitionerRole"]);

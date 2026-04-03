@@ -1,0 +1,66 @@
+{
+  "patient": {
+    "full_name": "James Robert Thornton",
+    "date_of_birth": "1978-08-03",
+    "gender": "Male",
+    "race_ethnicity": "White, non-Hispanic",
+    "language": "English",
+    "marital_status": "Married",
+    "home_city": "Omaha",
+    "home_state": "NE",
+    "address_summary": "14208 Birch Drive, Omaha, NE 68164"
+  },
+  "sites": [
+    {
+      "site_slug": "nebraska-medicine",
+      "site_name": "Nebraska Medicine",
+      "npi": "1437289650",
+      "state": "NE",
+      "city": "Omaha",
+      "site_type": "Academic Medical Center (ED, Surgical, Inpatient)",
+      "active_period": {
+        "start": "2026-01",
+        "end": "2026-01"
+      },
+      "key_clinicians": [
+        { "name": "Dr. Marcus Okonkwo", "role": "Acute Care Surgeon", "npi": "1285634701" },
+        { "name": "Dr. Emily Tran", "role": "Emergency Medicine Attending", "npi": null },
+        { "name": "Dr. Samuel Kerr", "role": "Emergency Medicine Attending", "npi": null },
+        { "name": "Dr. Priya Nair", "role": "Hospitalist", "npi": null }
+      ],
+      "locations": [
+        {
+          "name": "Nebraska Medicine",
+          "city": "Omaha",
+          "state": "NE",
+          "address_summary": "4350 Dewey Avenue, Omaha, NE 68105"
+        }
+      ],
+      "narrative_summary": "Academic medical center where all acute care occurred. ED visits, emergent laparoscopic appendectomy for perforated appendicitis, inpatient stays, readmission for surgical site infection with IV antibiotics."
+    },
+    {
+      "site_slug": "heartland-surgical-associates",
+      "site_name": "Heartland Surgical Associates",
+      "npi": "1659482073",
+      "state": "NE",
+      "city": "Omaha",
+      "site_type": "Surgical Specialty — Outpatient Office",
+      "active_period": {
+        "start": "2026-01",
+        "end": "2026-02"
+      },
+      "key_clinicians": [
+        { "name": "Dr. Marcus Okonkwo", "role": "Acute Care Surgeon", "npi": "1285634701" }
+      ],
+      "locations": [
+        {
+          "name": "Heartland Surgical Associates",
+          "city": "Omaha",
+          "state": "NE",
+          "address_summary": "8901 West Dodge Road, Suite 210, Omaha, NE 68114"
+        }
+      ],
+      "narrative_summary": "Surgeon's outpatient office for post-operative follow-up. SSI detected here before ED readmission. Final post-readmission follow-up and wound clearance."
+    }
+  ]
+}
