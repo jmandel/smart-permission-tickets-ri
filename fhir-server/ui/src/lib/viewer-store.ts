@@ -25,6 +25,51 @@ import {
   type ViewerSiteRun,
 } from "./viewer-model";
 
+// ---------------------------------------------------------------------------
+// Concurrency control
+// ---------------------------------------------------------------------------
+
+/**
+ * Configurable concurrency limit for parallel fetches.
+ *
+ * Browser HTTP/2 multiplexes many streams over a single connection to the same
+ * origin, so we don't need to worry about connection-pool exhaustion.  But we
+ * still cap concurrency so the UI gets incremental updates and we don't flood
+ * a single-threaded server.  The limit applies independently to:
+ *   • site-level pipelines (config → token → data), and
+ *   • FHIR resource queries within a single site.
+ *
+ * Set to `Infinity` to remove the cap entirely (fine when every request goes
+ * to the same HTTP/2 origin).  Set to 1 to restore fully-serial behaviour.
+ */
+const SITE_CONCURRENCY = 6;
+const QUERY_CONCURRENCY = 8;
+
+/** Run an array of async tasks with at most `limit` in flight at once. */
+async function mapConcurrent<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T) => Promise<R>,
+): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < items.length) {
+      const i = nextIndex++;
+      results[i] = await fn(items[i]);
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(limit, items.length) }, () => worker());
+  await Promise.all(workers);
+  return results;
+}
+
+// ---------------------------------------------------------------------------
+// Store types
+// ---------------------------------------------------------------------------
+
 export type ViewerQueryResult = {
   siteSlug: string;
   siteName: string;
@@ -60,6 +105,10 @@ type ViewerStore = {
   setTimelineWindow: (startIndex: number, endIndex: number) => void;
   setSelectedEncounterKeys: (encounterKeys: string[]) => void;
 };
+
+// ---------------------------------------------------------------------------
+// Store implementation
+// ---------------------------------------------------------------------------
 
 export const useViewerStore = create<ViewerStore>((set, get) => ({
   sessionKey: null,
@@ -125,9 +174,15 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
       timelineEndIndex: Number.MAX_SAFE_INTEGER,
     });
 
+    const cancelled = () => get().sessionKey !== encodedSession;
+
     let sharedClient: RegisteredClientInfo | null = null;
 
     try {
+      // ---------------------------------------------------------------
+      // Phase 1 — Network bootstrap (serial: each step needs the last)
+      // ---------------------------------------------------------------
+
       if (launch.mode === "strict" || launch.mode === "registered" || launch.mode === "key-bound") {
         if (!launch.clientBootstrap) throw new Error("Missing viewer client bootstrap");
         sharedClient = await registerViewerClient(
@@ -136,13 +191,13 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
           launch.clientBootstrap.clientName,
           launch.clientBootstrap.publicJwk,
         );
-        if (get().sessionKey !== encodedSession) return;
+        if (cancelled()) return;
         set({ sharedClient });
       }
 
       if (!launch.signedTicket) throw new Error("Missing signed Permission Ticket");
       const networkSmartConfig = await fetchSmartConfig(launch.origin, launch.network.authSurface);
-      if (get().sessionKey !== encodedSession) return;
+      if (cancelled()) return;
       set({ networkSmartConfig });
 
       const { tokenResponse: networkTokenResponse, tokenClaims: networkTokenClaims } = await exchangeSurfaceToken(
@@ -153,28 +208,31 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
         launch.clientBootstrap?.privateJwk ?? null,
         launch.proofJkt,
       );
-      if (get().sessionKey !== encodedSession) return;
+      if (cancelled()) return;
       set({ networkTokenResponse, networkTokenClaims });
 
-      const networkIntrospection = await introspectSurfaceToken(
-        launch.origin,
-        launch.network.authSurface,
-        networkTokenResponse.access_token,
-        sharedClient,
-        launch.clientBootstrap?.privateJwk ?? null,
-        launch.proofJkt,
-      );
-      if (get().sessionKey !== encodedSession) return;
+      // ║ Introspect and resolve-record-locations are independent — run
+      // ║ them in parallel.  Both only need networkTokenResponse.
+      const [networkIntrospection, recordLocationResolution] = await Promise.all([
+        introspectSurfaceToken(
+          launch.origin,
+          launch.network.authSurface,
+          networkTokenResponse.access_token,
+          sharedClient,
+          launch.clientBootstrap?.privateJwk ?? null,
+          launch.proofJkt,
+        ),
+        resolveRecordLocations(
+          launch.origin,
+          launch.mode,
+          launch.network.authSurface,
+          networkTokenResponse.access_token,
+          launch.proofJkt,
+        ),
+      ]);
+      if (cancelled()) return;
       set({ networkIntrospection });
 
-      const recordLocationResolution = await resolveRecordLocations(
-        launch.origin,
-        launch.mode,
-        launch.network.authSurface,
-        networkTokenResponse.access_token,
-        launch.proofJkt,
-      );
-      if (get().sessionKey !== encodedSession) return;
       const resolvedSites = recordLocationResolution.sites;
       set({ networkRecordLocations: recordLocationResolution.bundle });
       if (!resolvedSites.length) {
@@ -190,62 +248,23 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
         siteRuns: resolvedSites.map(initialSiteRun),
       });
 
-      for (const site of resolvedSites) {
+      // ---------------------------------------------------------------
+      // Phase 2 — Per-site pipelines, all in parallel (capped)
+      //
+      // Dependency graph within each site:
+      //
+      //   smartConfig ┐
+      //               ├→ tokenExchange → patientId ┐
+      //   capability  ┘                            ├→ resource queries (parallel)
+      //                   introspect (fire & forget)┘
+      // ---------------------------------------------------------------
+
+      await mapConcurrent(resolvedSites, SITE_CONCURRENCY, async (site) => {
+        if (cancelled()) return;
         try {
-          updateRun(encodedSession, site.siteSlug, { phase: "loading-config", error: null }, set, get);
-          const siteFhirBaseUrl = site.fhirBaseUrl ?? `${launch.origin}${site.authSurface.fhirBasePath}`;
-          const smartConfig = await fetchSmartConfigFromFhirBase(siteFhirBaseUrl);
-          const capabilityStatement = await fetchCapabilityStatementFromFhirBase(siteFhirBaseUrl);
-          if (get().sessionKey !== encodedSession) return;
-          updateRun(encodedSession, site.siteSlug, { smartConfig, capabilityStatement }, set, get);
-
-          const privateJwk = launch.clientBootstrap?.privateJwk ?? null;
-          let accessToken: string | null = null;
-          let proofJkt: string | null = launch.proofJkt;
-          let patientId: string | null = null;
-
-          if (launch.mode !== "anonymous") {
-            if (!launch.signedTicket) throw new Error("Missing signed ticket for token exchange");
-            updateRun(encodedSession, site.siteSlug, { phase: "exchanging-token" }, set, get);
-            const { tokenResponse, tokenClaims } = await exchangeTokenAtEndpoint(
-              String(smartConfig.token_endpoint),
-              launch.signedTicket,
-              sharedClient,
-              privateJwk,
-              proofJkt,
-            );
-            accessToken = tokenResponse.access_token;
-            patientId =
-              typeof tokenResponse.patient === "string"
-                ? tokenResponse.patient
-                : await resolveSitePatientId(launch, site, null, accessToken, proofJkt, smartConfig);
-            if (get().sessionKey !== encodedSession) return;
-            updateRun(encodedSession, site.siteSlug, { tokenResponse, tokenClaims, proofJkt, patientId }, set, get);
-
-            updateRun(encodedSession, site.siteSlug, { phase: "introspecting-token" }, set, get);
-            const introspection = await introspectTokenAtEndpoint(
-              String(smartConfig.introspection_endpoint),
-              accessToken,
-              sharedClient,
-              privateJwk,
-              proofJkt,
-            );
-            if (get().sessionKey !== encodedSession) return;
-            updateRun(encodedSession, site.siteSlug, { introspection }, set, get);
-          } else {
-            patientId = await resolveSitePatientId(launch, site, null, null, null, smartConfig);
-          }
-
-          if (!patientId) {
-            throw new Error("Unable to resolve a site patient from the current ticket");
-          }
-
-          updateRun(encodedSession, site.siteSlug, { phase: "loading-data" }, set, get);
-          const { resources, queryErrors } = await loadSiteResources(launch, site, patientId, capabilityStatement, accessToken, proofJkt, smartConfig);
-          if (get().sessionKey !== encodedSession) return;
-          updateRun(encodedSession, site.siteSlug, { phase: "ready", resources, queryErrors, error: null, patientId }, set, get);
+          await loadOneSite(launch!, encodedSession, site, sharedClient, set, get);
         } catch (siteError) {
-          if (get().sessionKey !== encodedSession) return;
+          if (cancelled()) return;
           updateRun(
             encodedSession,
             site.siteSlug,
@@ -257,13 +276,13 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
             get,
           );
         }
-      }
+      });
 
-      if (get().sessionKey === encodedSession) {
+      if (!cancelled()) {
         set({ loading: false, error: null, sharedClient });
       }
     } catch (error) {
-      if (get().sessionKey === encodedSession) {
+      if (!cancelled()) {
         set({
           loading: false,
           error: error instanceof Error ? error.message : "Failed to load viewer session",
@@ -274,6 +293,7 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
 
   setQueryPath: (queryPath) => set({ queryPath }),
 
+  // Run the same ad-hoc FHIR query across all ready sites, in parallel.
   runCrossSiteQuery: async () => {
     const { launch, queryPath, siteRuns, sessionKey } = get();
     if (!launch) return;
@@ -281,9 +301,9 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
     if (!relativePath) return;
     set({ queryRunning: true, queryResults: [] });
 
-    const nextResults: ViewerQueryResult[] = [];
     try {
-      for (const run of siteRuns) {
+      const results = await mapConcurrent(siteRuns, SITE_CONCURRENCY, async (run) => {
+        if (get().sessionKey !== sessionKey) return null;
         try {
           const siteFhirBaseUrl = String(run.smartConfig?.fhir_base_url ?? `${launch.origin}${run.site.authSurface.fhirBasePath}`);
           const payload =
@@ -293,7 +313,7 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
                 ? await fetchFhirFromBase(siteFhirBaseUrl, relativePath, run.tokenResponse.access_token, run.proofJkt)
                 : null;
           const { shownCount, totalCount } = inferPayloadCounts(payload);
-          nextResults.push({
+          return {
             siteSlug: run.site.siteSlug,
             siteName: run.site.orgName,
             relativePath,
@@ -305,24 +325,26 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
             shownCount,
             totalCount,
             error: payload ? null : "No access token issued for this site",
-          });
+          } as ViewerQueryResult;
         } catch (error) {
-          nextResults.push({
+          const siteFhirBaseUrl = String(run.smartConfig?.fhir_base_url ?? `${launch.origin}${run.site.authSurface.fhirBasePath}`);
+          return {
             siteSlug: run.site.siteSlug,
             siteName: run.site.orgName,
             relativePath,
             fullUrl:
               launch.mode === "anonymous"
                 ? `${launch.origin}${run.site.authSurface.previewFhirBasePath}/${relativePath}`
-                : `${String(run.smartConfig?.fhir_base_url ?? `${launch.origin}${run.site.authSurface.fhirBasePath}`).replace(/\/+$/, "")}/${relativePath}`,
+                : `${siteFhirBaseUrl.replace(/\/+$/, "")}/${relativePath}`,
             payload: null,
             shownCount: 0,
             totalCount: 0,
             error: error instanceof Error ? error.message : "Query failed",
-          });
+          } as ViewerQueryResult;
         }
-        if (get().sessionKey !== sessionKey) return;
-        set({ queryResults: [...nextResults] });
+      });
+      if (get().sessionKey === sessionKey) {
+        set({ queryResults: results.filter((r): r is ViewerQueryResult => r !== null) });
       }
     } finally {
       set({ queryRunning: false });
@@ -337,6 +359,93 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
 
   setSelectedEncounterKeys: (selectedEncounterKeys) => set({ selectedEncounterKeys }),
 }));
+
+// ---------------------------------------------------------------------------
+// Per-site pipeline — maximally parallel within the dependency graph
+// ---------------------------------------------------------------------------
+
+async function loadOneSite(
+  launch: ViewerLaunch,
+  encodedSession: string,
+  site: ViewerLaunchSite,
+  sharedClient: RegisteredClientInfo | null,
+  set: (partial: Partial<ViewerStore> | ((state: ViewerStore) => Partial<ViewerStore>)) => void,
+  get: () => ViewerStore,
+) {
+  const cancelled = () => get().sessionKey !== encodedSession;
+
+  updateRun(encodedSession, site.siteSlug, { phase: "loading-config", error: null }, set, get);
+  const siteFhirBaseUrl = site.fhirBaseUrl ?? `${launch.origin}${site.authSurface.fhirBasePath}`;
+
+  // smartConfig and capabilityStatement are independent — fetch in parallel.
+  const [smartConfig, capabilityStatement] = await Promise.all([
+    fetchSmartConfigFromFhirBase(siteFhirBaseUrl),
+    fetchCapabilityStatementFromFhirBase(siteFhirBaseUrl),
+  ]);
+  if (cancelled()) return;
+  updateRun(encodedSession, site.siteSlug, { smartConfig, capabilityStatement }, set, get);
+
+  const privateJwk = launch.clientBootstrap?.privateJwk ?? null;
+  let accessToken: string | null = null;
+  let proofJkt: string | null = launch.proofJkt;
+  let patientId: string | null = null;
+
+  if (launch.mode !== "anonymous") {
+    if (!launch.signedTicket) throw new Error("Missing signed ticket for token exchange");
+
+    // Token exchange must complete before we can introspect or query.
+    updateRun(encodedSession, site.siteSlug, { phase: "exchanging-token" }, set, get);
+    const { tokenResponse, tokenClaims } = await exchangeTokenAtEndpoint(
+      String(smartConfig.token_endpoint),
+      launch.signedTicket,
+      sharedClient,
+      privateJwk,
+      proofJkt,
+    );
+    accessToken = tokenResponse.access_token;
+    if (cancelled()) return;
+    updateRun(encodedSession, site.siteSlug, { tokenResponse, tokenClaims, proofJkt }, set, get);
+
+    // Introspection and patient-id resolution are independent of each
+    // other — both only need the access token.  Fire them in parallel.
+    updateRun(encodedSession, site.siteSlug, { phase: "introspecting-token" }, set, get);
+    const [introspection, resolvedPatientId] = await Promise.all([
+      introspectTokenAtEndpoint(
+        String(smartConfig.introspection_endpoint),
+        accessToken,
+        sharedClient,
+        privateJwk,
+        proofJkt,
+      ),
+      typeof tokenResponse.patient === "string"
+        ? Promise.resolve(tokenResponse.patient)
+        : resolveSitePatientId(launch, site, null, accessToken, proofJkt, smartConfig),
+    ]);
+    if (cancelled()) return;
+    patientId = resolvedPatientId;
+    updateRun(encodedSession, site.siteSlug, { introspection, patientId }, set, get);
+  } else {
+    patientId = await resolveSitePatientId(launch, site, null, null, null, smartConfig);
+  }
+
+  if (!patientId) {
+    throw new Error("Unable to resolve a site patient from the current ticket");
+  }
+
+  // -----------------------------------------------------------------------
+  // Load FHIR resources — all query types in parallel (capped).
+  // -----------------------------------------------------------------------
+  updateRun(encodedSession, site.siteSlug, { phase: "loading-data" }, set, get);
+  const { resources, queryErrors } = await loadSiteResources(
+    launch, site, patientId, capabilityStatement, accessToken, proofJkt, smartConfig,
+  );
+  if (cancelled()) return;
+  updateRun(encodedSession, site.siteSlug, { phase: "ready", resources, queryErrors, error: null, patientId }, set, get);
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
 function initialSiteRun(site: ViewerLaunchSite): ViewerSiteRun {
   return {
@@ -368,6 +477,10 @@ function updateRun(
   }));
 }
 
+/**
+ * Load all FHIR resources for a site.  Each query from the plan is fired in
+ * parallel up to QUERY_CONCURRENCY.
+ */
 async function loadSiteResources(
   launch: ViewerLaunch,
   site: ViewerLaunchSite,
@@ -377,11 +490,12 @@ async function loadSiteResources(
   proofJkt: string | null,
   smartConfig: Record<string, any> | null,
 ) {
-  const resources: ViewerResourceItem[] = [];
+  const allResources: ViewerResourceItem[] = [];
   const queryErrors: Array<{ label: string; relativePath: string; message: string }> = [];
   const siteFhirBaseUrl = String(smartConfig?.fhir_base_url ?? `${launch.origin}${site.authSurface.fhirBasePath}`);
+  const queries = buildSiteQueryPlan(launch, site, patientId, capabilityStatement);
 
-  for (const query of buildSiteQueryPlan(launch, site, patientId, capabilityStatement)) {
+  await mapConcurrent(queries, QUERY_CONCURRENCY, async (query) => {
     const fullUrl =
       launch.mode === "anonymous"
         ? `${launch.origin}${site.authSurface.previewFhirBasePath}/${query.relativePath}`
@@ -391,7 +505,7 @@ async function loadSiteResources(
         launch.mode === "anonymous"
           ? await fetchPreviewSiteFhirAllPages(launch.origin, site, query.relativePath)
           : await fetchFhirAllPagesFromBase(siteFhirBaseUrl, query.relativePath, accessToken, proofJkt);
-      resources.push(...summarizeSiteResources(site, payload, fullUrl));
+      allResources.push(...summarizeSiteResources(site, payload, fullUrl));
     } catch (error) {
       queryErrors.push({
         label: query.label,
@@ -399,9 +513,9 @@ async function loadSiteResources(
         message: error instanceof Error ? error.message : "Query failed",
       });
     }
-  }
+  });
 
-  return { resources: dedupeResources(resources), queryErrors };
+  return { resources: dedupeResources(allResources), queryErrors };
 }
 
 function dedupeResources(resources: ViewerResourceItem[]) {
