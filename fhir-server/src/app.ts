@@ -51,7 +51,7 @@ export function startServer(context = createAppContext(), port = context.config.
 }
 
 export async function handleRequest(context: AppContext, request: Request): Promise<Response> {
-  const url = new URL(request.url);
+  const url = publicUrl(request);
   if (url.pathname === "/demo/bootstrap") {
     return jsonResponse({
       defaultMode: context.config.strictDefaultMode,
@@ -241,7 +241,7 @@ async function handleRead(context: AppContext, request: Request, contextRoute: R
   if (request.method !== "GET") return methodNotAllowed("GET");
   const envelope = authenticateAccessToken(context, request, contextRoute);
   if (contextRoute.networkSlug) {
-    const resource = readNetworkDirectory(context.config, context.store, new URL(request.url), contextRoute, resourceType, logicalId);
+    const resource = readNetworkDirectory(context.config, context.store, publicUrl(request), contextRoute, resourceType, logicalId);
     return resource ? fhirResponse(resource) : notFound();
   }
   const resource = executeRead(context.store.db, envelope, contextRoute.siteSlug, resourceType, logicalId);
@@ -340,7 +340,7 @@ function authenticateAccessToken(context: AppContext, request: Request, contextR
     payload,
     contextRoute.mode,
     request.headers.get("x-client-jkt"),
-    absoluteUrl(new URL(request.url), buildFhirBasePath(context.config.strictDefaultMode, contextRoute)),
+    absoluteUrl(publicUrl(request), buildFhirBasePath(context.config.strictDefaultMode, contextRoute)),
   );
   return payload as AuthorizationEnvelope;
 }
@@ -654,6 +654,17 @@ function buildAnonymousEnvelope(context: AppContext): AuthorizationEnvelope {
 
 function absoluteUrl(url: URL, path: string) {
   return `${url.origin}${path}`;
+}
+
+/** Reconstruct the public-facing URL from X-Forwarded-* headers (set by exe.dev reverse proxy). */
+function publicUrl(request: Request): URL {
+  const raw = new URL(request.url);
+  const proto = request.headers.get("x-forwarded-proto");
+  const host = request.headers.get("x-forwarded-host");
+  if (proto && host) {
+    return new URL(`${proto}://${host}${raw.pathname}${raw.search}`);
+  }
+  return raw;
 }
 
 const PATIENT_SCENARIOS: Record<string, { summary: string; constraints: string }> = {
