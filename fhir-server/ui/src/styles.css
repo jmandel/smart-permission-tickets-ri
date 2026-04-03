@@ -1406,10 +1406,6 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .artifact-metadata {
   margin-top: 14px;
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
 }
 
 .artifact-metadata-grid {
@@ -1456,6 +1452,14 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
+}
+
+.artifact-note-pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  line-height: 1.55;
 }
 
 .artifact-context-summary {
@@ -1529,14 +1533,6 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .artifact-note-text h3 {
   margin-bottom: 10px;
-}
-
-.artifact-note-text p {
-  margin: 0 0 10px;
-}
-
-.artifact-note-text p:last-child {
-  margin-bottom: 0;
 }
 
 @media (max-width: 960px) {
@@ -2090,11 +2086,8 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 }
 
 .encounter-note-card-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  position: relative;
+  min-height: 42px;
 }
 
 .encounter-note-card-head h6 {
@@ -2108,6 +2101,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding-right: 144px;
 }
 
 .encounter-note-card-meta {
@@ -2117,6 +2111,12 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .encounter-note-card-snippet {
   margin: 0;
   line-height: 1.45;
+}
+
+.encounter-note-card .split-action {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .encounter-note-fallbacks {

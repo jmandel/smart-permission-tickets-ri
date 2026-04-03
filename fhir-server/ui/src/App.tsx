@@ -46,6 +46,15 @@ export function App() {
     ? persons.filter((person) => person.useCases.some((useCase) => `${useCase.system}|${useCase.code}` === selectedUseCaseKey))
     : persons;
 
+  const handleSelectPerson = (personId: string) => {
+    if (personId === selectedPersonId) {
+      setShowPatientPicker(false);
+      return;
+    }
+    selectPerson(personId);
+    setShowPatientPicker(false);
+  };
+
   return (
     <main className="shell">
       <Hero aboutOpen={showAbout} onToggleAbout={() => setShowAbout((current) => !current)} />
@@ -136,7 +145,7 @@ export function App() {
                 key={person.personId}
                 person={person}
                 selected={person.personId === selectedPersonId}
-                onSelect={() => selectPerson(person.personId)}
+                onSelect={() => handleSelectPerson(person.personId)}
               />
             ))}
           </div>
