@@ -183,23 +183,23 @@ export function PermissionWorkbench({
   }
 
   return (
-    <section className="panel section">
-      <div className="workbench-header">
-        <div>
-          <p className="eyebrow">Step 2 · Configure Access</p>
-          <h2>Choose what this ticket can share</h2>
-          <p className="subtle workbench-copy">
-            Start with sites and dates, then narrow resources only if needed. The app launch uses the signed ticket, resolves record locations through the network directory, and exchanges site-specific tokens from there.
-          </p>
+    <>
+      <section className="panel section">
+        <div className="workbench-header">
+          <div>
+            <p className="eyebrow">Step 2 · Build Ticket</p>
+            <h2>Decide which sites and data the app may request</h2>
+            <p className="subtle workbench-copy">
+              Start with sites and dates, then narrow resources only if needed.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="ticket-run-grid">
         <section className="subpanel ticket-constraints-panel">
           <div className="section-header">
             <div>
               <h3>Ticket Constraints</h3>
-              <p className="subtle">Choose the scope of sharing. These controls behave as one-of choices, then expand only when a limit needs detail.</p>
+              <p className="subtle">Work top to bottom: choose sites first, then dates, then narrow resources only if needed.</p>
             </div>
           </div>
           <div className="ticket-constraint-list">
@@ -470,12 +470,14 @@ export function PermissionWorkbench({
           </div>
           </div>
         </section>
+      </section>
 
-        <section className="subpanel run-panel">
-          <p className="eyebrow">App Launch</p>
-          <h2>Launch the health app</h2>
+      <section className="panel section ticket-launch-section">
+        <section className="subpanel run-panel ticket-launch-panel">
+          <p className="eyebrow">Step 3 · Launch App</p>
+          <h2>Review and launch</h2>
           <p className="subtle">
-            This summary updates as you choose constraints. The health app opens in a new tab and performs the network and site exchanges there.
+            This summary stays stable while you edit the ticket. The app opens in a new tab and performs the network and site exchanges there.
           </p>
 
           <div className="summary-grid">
@@ -547,8 +549,7 @@ export function PermissionWorkbench({
           {error && <p className="error-text">{error}</p>}
 
         </section>
-      </div>
-
-    </section>
+      </section>
+    </>
   );
 }

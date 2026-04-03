@@ -9,8 +9,10 @@ export function PersonCard({
   selected: boolean;
   onSelect: () => void;
 }) {
-  const visibleSites = person.sites.slice(0, 3);
+  const visibleSites = person.sites.slice(0, 2);
   const hiddenSiteCount = Math.max(person.sites.length - visibleSites.length, 0);
+  const visibleUseCases = person.useCases.slice(0, 2);
+  const hiddenUseCaseCount = Math.max(person.useCases.length - visibleUseCases.length, 0);
 
   return (
     <article
@@ -38,11 +40,12 @@ export function PersonCard({
         {" · "}
         {person.sites.reduce((total, site) => total + site.encounters.length, 0)} encounters
       </p>
-      {person.useCases?.length > 0 && (
+      {visibleUseCases.length > 0 && (
         <div className="patient-card-use-cases">
-          {person.useCases.map((uc) => (
-            <span key={uc.code} className="use-case-tag">{uc.display}</span>
+          {visibleUseCases.map((useCase) => (
+            <span key={useCase.code} className="use-case-tag">{useCase.display}</span>
           ))}
+          {hiddenUseCaseCount > 0 && <span className="use-case-tag">… and {hiddenUseCaseCount} more</span>}
         </div>
       )}
       {person.summary && <p className="patient-card-summary clamped">{person.summary}</p>}
@@ -53,7 +56,7 @@ export function PersonCard({
             {site.jurisdiction ? ` · ${site.jurisdiction}` : ""}
           </span>
         ))}
-        {hiddenSiteCount > 0 && <span className="patient-card-tag">+{hiddenSiteCount} more</span>}
+        {hiddenSiteCount > 0 && <span className="patient-card-tag">… and {hiddenSiteCount} more</span>}
       </div>
     </article>
   );

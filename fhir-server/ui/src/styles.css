@@ -369,6 +369,57 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   align-items: start;
 }
 
+.scenario-picker {
+  margin-top: 18px;
+}
+
+.scenario-picker-header h3 {
+  margin: 0;
+  font-size: 1.04rem;
+}
+
+.scenario-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.scenario-card {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 92px;
+}
+
+.scenario-card:hover {
+  border-color: #a8c7fa;
+  box-shadow: 0 1px 2px rgba(26, 115, 232, 0.12);
+}
+
+.scenario-card.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.scenario-card-label {
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.scenario-card strong {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .patient-card {
   width: 100%;
   text-align: left;
@@ -381,6 +432,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  min-height: 278px;
   transition: border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 
@@ -423,27 +475,18 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 }
 
 .patient-card-summary.clamped {
-  max-height: calc(11 * 1.55em);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
   overflow: hidden;
-}
-
-.patient-card-toggle {
-  appearance: none;
-  border: none;
-  background: transparent;
-  color: var(--accent);
-  font: inherit;
-  font-weight: 600;
-  padding: 0;
-  margin-top: 8px;
-  cursor: pointer;
 }
 
 .patient-card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .patient-card-tag {
@@ -454,6 +497,48 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   color: var(--muted);
   background: #fff;
   font-size: 0.86rem;
+}
+
+.selected-person-banner {
+  margin-top: 18px;
+  border: 1px solid #d2e3fc;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f8fbff, #eef4ff);
+  padding: 18px 20px;
+}
+
+.selected-person-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.selected-person-header h3 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.selected-person-meta {
+  margin-top: 6px;
+}
+
+.selected-person-cta {
+  white-space: nowrap;
+}
+
+.selected-person-summary {
+  margin-top: 14px;
+  max-width: 88ch;
+}
+
+.selected-person-use-cases {
+  margin-top: 10px;
+}
+
+.selected-person-tags {
+  margin-top: 16px;
+  padding-top: 0;
 }
 
 .patient-card-use-cases {
@@ -488,17 +573,11 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   margin-top: 18px;
 }
 
-.ticket-run-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-  gap: 24px;
-  margin-top: 18px;
-}
-
 .run-panel {
-  position: sticky;
-  top: 18px;
-  align-self: start;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff, #fbfcff);
+  padding: 18px 18px 20px;
 }
 
 .run-panel h2 {
@@ -515,36 +594,48 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 }
 
 .wizard-section {
-  margin-top: 20px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+  margin-top: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 18px;
 }
 
 .wizard-section.invalid {
-  border-top-color: #f6c7c0;
-}
-
-.wizard-section:first-of-type {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
+  border-color: #f6c7c0;
+  background: #fffaf9;
 }
 
 .wizard-section-header {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 560px);
+  gap: 16px 20px;
+  align-items: start;
 }
 
 .wizard-section-header h4 {
   margin: 4px 0 0;
   font-size: 1.02rem;
-  max-width: 28ch;
+  max-width: 32ch;
 }
 
 .wizard-section-header .choice-grid,
 .wizard-section-header .choice-grid-three {
-  margin-top: 14px;
-  max-width: 460px;
+  margin-top: 0;
+  max-width: none;
 }
+
+.ticket-constraint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.wizard-section-sites { order: 1; }
+.wizard-section-time { order: 2; }
+.wizard-section-resources { order: 3; }
+.wizard-section-sensitive { order: 4; }
 
 .control-label {
   display: block;
@@ -626,6 +717,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   cursor: pointer;
   width: 100%;
   text-align: center;
+  white-space: nowrap;
 }
 
 .choice-button.active {
@@ -1181,6 +1273,25 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .handoff-actions {
   margin-top: 12px;
+}
+
+.ticket-constraints-panel {
+  border-top: none;
+  padding-top: 0;
+  max-width: 980px;
+}
+
+.ticket-launch-panel {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ticket-launch-section {
+  margin-top: 20px;
+}
+
+.ticket-launch-panel .summary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .site-session-grid {
@@ -2244,7 +2355,6 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   .locked-mode { flex-direction: column; }
   .locked-meta { align-items: flex-start; min-width: 0; }
   .dashboard-grid,
-  .ticket-run-grid,
   .viewer-main-grid,
   .field-row,
   .summary-grid,
@@ -2259,6 +2369,10 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   .workbench-header,
   .wizard-section-header {
     display: flex;
+    flex-direction: column;
+  }
+
+  .selected-person-header {
     flex-direction: column;
   }
 
@@ -2322,6 +2436,10 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
   .run-panel {
     position: static;
+  }
+
+  .ticket-launch-panel .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .scope-details-panel {

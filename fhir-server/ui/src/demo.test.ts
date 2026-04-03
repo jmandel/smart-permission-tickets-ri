@@ -27,6 +27,7 @@ const person: PersonInfo = {
   birthDate: "1989-09-14",
   gender: "female",
   summary: "Synthetic test patient",
+  useCases: [],
   resourceCounts: {
     Patient: 2,
     Encounter: 6,

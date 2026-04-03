@@ -47,7 +47,7 @@ export const useStore = create<AppStore>((set) => ({
         defaultTicketIssuer: bootstrap.defaultTicketIssuer,
         defaultNetwork: bootstrap.defaultNetwork,
         selectedMode: modeFromPath(),
-        selectedPersonId: persons[0]?.personId ?? null,
+        selectedPersonId: null,
         loading: false,
       });
     } catch (e) {

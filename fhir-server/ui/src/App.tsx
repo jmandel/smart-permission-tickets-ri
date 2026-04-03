@@ -14,6 +14,7 @@ export function App() {
   const { loading, error, init, persons, selectedPersonId, selectPerson, selectedMode, defaultTicketIssuer, defaultNetwork } = useStore();
   const [showAbout, setShowAbout] = useState(false);
   const [showPatientPicker, setShowPatientPicker] = useState(true);
+  const [selectedUseCaseKey, setSelectedUseCaseKey] = useState<string | null>(null);
 
   useEffect(() => { init(); }, []);
   useEffect(() => {
@@ -25,6 +26,25 @@ export function App() {
   if (error) return <main className="shell"><p style={{ color: "var(--warn)" }}>Error: {error}</p></main>;
 
   const selectedPerson = persons.find((person) => person.personId === selectedPersonId) ?? null;
+  const selectedSummaryParagraphs = selectedPerson?.summary
+    ? selectedPerson.summary.split(/\n\s*\n/g).map((paragraph) => paragraph.trim()).filter(Boolean).slice(0, 2)
+    : [];
+  const useCaseOptions = Array.from(
+    persons
+      .flatMap((person) => person.useCases.map((useCase) => ({ ...useCase, key: `${useCase.system}|${useCase.code}` })))
+      .reduce((map, useCase) => {
+        const existing = map.get(useCase.key);
+        map.set(useCase.key, {
+          ...useCase,
+          count: existing ? existing.count + 1 : 1,
+        });
+        return map;
+      }, new Map<string, { system: string; code: string; display: string; key: string; count: number }>())
+      .values(),
+  ).sort((a, b) => a.display.localeCompare(b.display));
+  const visiblePersons = selectedUseCaseKey
+    ? persons.filter((person) => person.useCases.some((useCase) => `${useCase.system}|${useCase.code}` === selectedUseCaseKey))
+    : persons;
 
   return (
     <main className="shell">
@@ -33,18 +53,42 @@ export function App() {
       <section className="panel section">
         <div className="section-header">
           <div>
-            <p className="eyebrow">Step 1 · Pick Patient</p>
-            <h2>{selectedPerson ? "Selected synthetic patient" : "Choose a synthetic patient"}</h2>
+            <p className="eyebrow">Step 1 · Choose Patient</p>
+            <h2>{selectedPerson ? "Patient selected" : "Choose a use case, then a patient"}</h2>
           </div>
-          <div className="button-row">
-            {selectedPerson && (
-              <button type="button" className="button" onClick={() => setShowPatientPicker((current) => !current)}>
-                {showPatientPicker ? "Hide patient list" : "Change patient"}
-              </button>
-            )}
-            <span className="subtle">{persons.length} loaded</span>
-          </div>
+          <span className="subtle">{persons.length} loaded</span>
         </div>
+        {(!selectedPerson || showPatientPicker) && useCaseOptions.length > 0 && (
+          <section className="scenario-picker">
+            <div className="scenario-picker-header">
+              <div>
+                <h3>Use cases</h3>
+                <p className="subtle">Start with the scenario you want to demonstrate, then choose a patient from the filtered list.</p>
+              </div>
+            </div>
+            <div className="scenario-picker-grid">
+              <button
+                type="button"
+                className={`scenario-card${selectedUseCaseKey === null ? " active" : ""}`}
+                onClick={() => setSelectedUseCaseKey(null)}
+              >
+                <span className="scenario-card-label">All scenarios</span>
+                <strong>{persons.length} patients</strong>
+              </button>
+              {useCaseOptions.map((useCase) => (
+                <button
+                  key={useCase.key}
+                  type="button"
+                  className={`scenario-card${selectedUseCaseKey === useCase.key ? " active" : ""}`}
+                  onClick={() => setSelectedUseCaseKey(useCase.key)}
+                >
+                  <span className="scenario-card-label">{useCase.display}</span>
+                  <strong>{useCase.count} patient{useCase.count !== 1 && "s"}</strong>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
         {selectedPerson && (
           <section className="selected-person-banner">
             <div className="selected-person-header">
@@ -58,22 +102,44 @@ export function App() {
                   {" · "}
                   {selectedPerson.sites.reduce((sum, site) => sum + site.encounters.length, 0)} encounters
                 </p>
+                {selectedPerson.useCases.length > 0 && (
+                  <div className="patient-card-use-cases selected-person-use-cases">
+                    {selectedPerson.useCases.slice(0, 3).map((useCase) => (
+                      <span key={useCase.code} className="use-case-tag">{useCase.display}</span>
+                    ))}
+                    {selectedPerson.useCases.length > 3 && (
+                      <span className="use-case-tag">… and {selectedPerson.useCases.length - 3} more</span>
+                    )}
+                  </div>
+                )}
               </div>
+              {!showPatientPicker && (
+                <button type="button" className="button selected-person-cta" onClick={() => setShowPatientPicker(true)}>
+                  Choose different patient
+                </button>
+              )}
             </div>
-            {selectedPerson.summary && <div className="viewer-copy-block selected-person-summary">{selectedPerson.summary.split(/\n\s*\n/g).map((paragraph, index) => <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph.trim()}</p>)}</div>}
+            {selectedSummaryParagraphs.length > 0 && (
+              <div className="viewer-copy-block selected-person-summary">
+                {selectedSummaryParagraphs.map((paragraph, index) => (
+                  <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph}</p>
+                ))}
+              </div>
+            )}
             <div className="patient-card-tags selected-person-tags">
-              {selectedPerson.sites.map((site) => (
+              {selectedPerson.sites.slice(0, 4).map((site) => (
                 <span key={site.siteSlug} className="patient-card-tag">
                   {site.orgName}
                   {site.jurisdiction ? ` · ${site.jurisdiction}` : ""}
                 </span>
               ))}
+              {selectedPerson.sites.length > 4 && <span className="patient-card-tag">… and {selectedPerson.sites.length - 4} more</span>}
             </div>
           </section>
         )}
         {(!selectedPerson || showPatientPicker) && (
           <div className="patient-picker-grid">
-            {persons.map((person) => (
+            {visiblePersons.map((person) => (
               <PersonCard
                 key={person.personId}
                 person={person}
