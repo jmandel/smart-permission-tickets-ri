@@ -1,0 +1,97 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-017-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2026-03-12",
+  "issued": "2026-03-12T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-017-bun",
+      "display": "BUN"
+    },
+    {
+      "reference": "Observation/enc-017-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-017-sodium",
+      "display": "Sodium"
+    },
+    {
+      "reference": "Observation/enc-017-potassium",
+      "display": "Potassium"
+    },
+    {
+      "reference": "Observation/enc-017-chloride",
+      "display": "Chloride"
+    },
+    {
+      "reference": "Observation/enc-017-co2",
+      "display": "CO2"
+    },
+    {
+      "reference": "Observation/enc-017-calcium",
+      "display": "Calcium"
+    },
+    {
+      "reference": "Observation/enc-017-albumin",
+      "display": "Albumin"
+    },
+    {
+      "reference": "Observation/enc-017-total-protein",
+      "display": "Total Protein"
+    },
+    {
+      "reference": "Observation/enc-017-alp",
+      "display": "Alkaline Phosphatase"
+    },
+    {
+      "reference": "Observation/enc-017-ast",
+      "display": "AST"
+    },
+    {
+      "reference": "Observation/enc-017-alt",
+      "display": "ALT"
+    },
+    {
+      "reference": "Observation/enc-017-total-bilirubin",
+      "display": "Total Bilirubin"
+    }
+  ],
+  "conclusion": "CMP within normal limits."
+}

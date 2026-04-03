@@ -1,0 +1,170 @@
+{
+  "encounter_id": "enc-021",
+  "encounter_index": 21,
+  "site_slug": "emory-cognitive-neurology-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "follow-up office visit, neurology",
+    "reason": "follow-up evaluation, brain MRI review, cognitive monitoring for Alzheimer's disease",
+    "period_start": "2025-04-16",
+    "participants": [
+      {
+        "name": "Dr. Lisa Nakamura",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Emory Cognitive Neurology Center",
+    "location": "Emory Cognitive Neurology Center, 12 Executive Park Drive NE, Suite 200, Atlanta, GA 30329"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 134,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 134,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 80,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 186,
+        "unit": "lb"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "Mini-Mental State Examination (MMSE) total score",
+        "value": 17,
+        "range_max": 30,
+        "interpretation": "moderate cognitive impairment; stable compared to January 2025 score of 17/30"
+      },
+      {
+        "name": "MMSE recall subscore",
+        "value": 0,
+        "range_max": 3
+      },
+      {
+        "name": "MMSE orientation subscore",
+        "value": 2,
+        "range_max": 10
+      },
+      {
+        "name": "MMSE attention and calculation (serial sevens) subscore",
+        "value": 2,
+        "range_max": 5
+      },
+      {
+        "name": "MMSE three-step command subscore",
+        "value": 2,
+        "range_max": 3
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 10 mg / memantine 28 mg extended-release capsule (Namzaric)",
+      "sig": "one capsule by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "Alzheimer's disease, moderate stage",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cholecalciferol (vitamin D3) 2000 international units oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "vitamin D deficiency",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Follow-up neurology office visit note documenting 3-month reassessment of moderate-stage Alzheimer's disease on Namzaric. Includes review of brain MRI (04/02/2025) showing progressive hippocampal and cortical atrophy consistent with disease trajectory, MMSE score of 17/30 (stable from January 2025), medication tolerance assessment, caregiver-reported functional status, and plan to continue current therapy with next follow-up in July 2025."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

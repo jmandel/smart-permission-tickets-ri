@@ -1,0 +1,68 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "first-coast-neurology-associates",
+  "encounter": {
+    "class": "virtual",
+    "type": "neurology follow-up visit",
+    "reason": "one-year cognitive monitoring follow-up for Alzheimer's disease",
+    "period_start": "2023-04-11",
+    "period_end": "2023-04-11",
+    "participants": [
+      {
+        "name": "Dr. Raymond Patel, MD",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "First Coast Neurology Associates",
+    "location": "First Coast Neurology Associates, 836 Prudential Drive, Suite 1400, Jacksonville, FL 32207"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": [
+      {
+        "name": "Mini-Mental State Examination (MMSE) total score",
+        "tool": "MMSE",
+        "value": "23/30",
+        "interpretation": "consistent with mild-stage Alzheimer's disease; stable trajectory compared to 24/30 approximately one year prior",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, mild stage",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "update-existing",
+      "note": "Disease confirmed stable on donepezil therapy. MMSE 23/30, one-point change from 24/30 over approximately one year, consistent with expected stabilization on cholinesterase inhibitor. Patient remains in the mild stage with preserved basic ADLs and partially preserved IADLs."
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "take one 10 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telemedicine follow-up note",
+      "description": "One-year cognitive monitoring follow-up for Alzheimer's disease via telemedicine video visit with Dr. Raymond Patel. Documents MMSE score of 23/30 (stable trajectory), caregiver report of functional status, continuation of donepezil 10 mg daily, and safety counseling regarding driving limitations. Plan includes 6-month follow-up and recommendation for interim MMSE at PCP visits.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

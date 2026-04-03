@@ -1,0 +1,101 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-000-sertraline",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "312938",
+        "display": "sertraline HCl 100 MG Oral Tablet"
+      }
+    ],
+    "text": "sertraline 100 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2019-04-16",
+  "requester": {
+    "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+    "display": "Dr. Emily Nakamura"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-mdd",
+      "display": "Major depressive disorder, single episode, moderate to severe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 100 mg by mouth once daily in the morning with food",
+      "patientInstruction": "Take 100 mg by mouth once daily in the morning with food.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "08:00:00"
+          ]
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 100,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "priorPrescription": {
+    "display": "sertraline 50 mg oral tablet (started 2019-02-12)"
+  },
+  "note": [
+    {
+      "text": "Dose increased from 50 mg to 100 mg daily due to partial response (PHQ-9 improved from 17 to 12 but still moderate). Patient tolerated 50 mg without significant side effects."
+    }
+  ]
+}

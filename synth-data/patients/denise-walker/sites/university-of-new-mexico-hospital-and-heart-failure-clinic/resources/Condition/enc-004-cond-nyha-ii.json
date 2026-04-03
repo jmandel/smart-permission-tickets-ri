@@ -1,0 +1,70 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-004-cond-nyha-ii",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item",
+          "display": "Problem List Item"
+        }
+      ],
+      "text": "Problem List Item"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "421704003",
+        "display": "New York Heart Association Classification - Class II (finding)"
+      }
+    ],
+    "text": "New York Heart Association class II functional limitation due to heart failure"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "onsetDateTime": "2024-05-03",
+  "recordedDate": "2024-05-03",
+  "note": [
+    {
+      "text": "Functional status was reassessed at clinic follow-up and documented as NYHA class II."
+    }
+  ]
+}

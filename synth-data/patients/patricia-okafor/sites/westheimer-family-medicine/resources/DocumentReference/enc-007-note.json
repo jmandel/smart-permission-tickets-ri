@@ -1,0 +1,69 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-007-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Chidinma Okafor"
+  },
+  "date": "2024-08-05T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+      "type": "Practitioner",
+      "display": "Dr. Adebayo Olatunde, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+    "type": "Practitioner",
+    "display": "Dr. Adebayo Olatunde, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwOC8wNS8yMDI0ClBhdGllbnQ6IFBhdHJpY2lhIENoaWRpbm1hIE9rYWZvciAgIERPQjogMDgvMTQvMTk2MwpQcm92aWRlcjogRHIuIEFkZWJheW8gT2xhdHVuZGUsIE1EClNpdGU6IFdlc3RoZWltZXIgRmFtaWx5IE1lZGljaW5lLCA5NzQ1IFdlc3RoZWltZXIgUmQsIFN1aXRlIDIwMCwgSG91c3RvbiwgVFggNzcwNDIKClJFQVNPTiBGT1IgQ0FMTDogQ29vcmRpbmF0aW9uIG9mIHB1bG1vbmFyeSB3b3JrdXAsIHBhdGllbnQgcmVhc3N1cmFuY2UgcmVnYXJkaW5nIHJlY2VudCBjaGVzdCBYLXJheSBmaW5kaW5ncy4KCkRJU0NVU1NJT046CkNhbGxlZCBwYXRpZW50IHRvIGNvbmZpcm0gc2NoZWR1bGluZyBvZiB1cGNvbWluZyBkaWFnbm9zdGljIHN0dWRpZXMuIENUIGNoZXN0IHdpdGggY29udHJhc3QgaXMgY29uZmlybWVkIGZvciBBdWd1c3QgOCwgMjAyNCBhdCBIb3VzdG9uIE1lZGljYWwgQ2VudGVyIEltYWdpbmcuIFB1bG1vbm9sb2d5IGNvbnN1bHRhdGlvbiB3aXRoIERyLiBOaXNoYSBSYW1hc3dhbXkgYXQgSG91c3RvbiBQdWxtb25hcnkgQXNzb2NpYXRlcyBpcyBzY2hlZHVsZWQgZm9yIEF1Z3VzdCAxMiwgMjAyNC4gUmV2aWV3ZWQgdGhlIHBsYW4gd2l0aCBwYXRpZW50OiBDVCBpbWFnaW5nIHRvIGJlIGNvbXBsZXRlZCBmaXJzdCwgZm9sbG93ZWQgYnkgcHVsbW9ub2xvZ3kgcmV2aWV3IG9mIGZpbmRpbmdzIGF0IHRoZSBjb25zdWx0YXRpb24gdmlzaXQuCgpQYXRpZW50IGV4cHJlc3NlZCBzaWduaWZpY2FudCBhbnhpZXR5IHJlZ2FyZGluZyB0aGUgcmlnaHQgdXBwZXIgbG9iZSBvcGFjaXR5IGlkZW50aWZpZWQgb24gcmVjZW50IGNoZXN0IFgtcmF5IChvYnRhaW5lZCAwOC8wMS8yMDI0KS4gUHJvdmlkZWQgcmVhc3N1cmFuY2Ugd2hpbGUgYmVpbmcgdHJhbnNwYXJlbnQgYWJvdXQgdGhlIG5lZWQgZm9yIGZ1cnRoZXIgZGlhZ25vc3RpYyB3b3JrdXAgdG8gY2hhcmFjdGVyaXplIHRoZSBmaW5kaW5nLiBEaXNjdXNzZWQgdGhlIGltcG9ydGFuY2Ugb2YgY29tcGxldGluZyB0aGUgQ1QgYW5kIHB1bG1vbm9sb2d5IGV2YWx1YXRpb24gaW4gYSB0aW1lbHkgbWFubmVyLiBFbmNvdXJhZ2VkIHBhdGllbnQgdG8gYnJpbmcgaGVyIGh1c2JhbmQgRW1la2EgdG8gdGhlIHB1bG1vbm9sb2d5IGFwcG9pbnRtZW50IGZvciBzdXBwb3J0LgoKTm8gdml0YWxzIG9idGFpbmVkLiBObyBuZXcgbWVkaWNhdGlvbnMgcHJlc2NyaWJlZC4gTm8gbGFicyBvcmRlcmVkLgoKUExBTjoKMS4gQ1QgY2hlc3Qgd2l0aCBjb250cmFzdCBzY2hlZHVsZWQgMDgvMDgvMjAyNCBhdCBIb3VzdG9uIE1lZGljYWwgQ2VudGVyIEltYWdpbmcuCjIuIFB1bG1vbm9sb2d5IGNvbnN1bHRhdGlvbiB3aXRoIERyLiBSYW1hc3dhbXkgc2NoZWR1bGVkIDA4LzEyLzIwMjQgYXQgSG91c3RvbiBQdWxtb25hcnkgQXNzb2NpYXRlcy4KMy4gQXdhaXQgY29uc3VsdGF0aW9uIHJlcG9ydCBmcm9tIERyLiBSYW1hc3dhbXkgZm9sbG93aW5nIHB1bG1vbm9sb2d5IGV2YWx1YXRpb24uCjQuIFBhdGllbnQgdG8gY2FsbCBvZmZpY2Ugd2l0aCBhbnkgd29yc2VuaW5nIHN5bXB0b21zIG9yIG5ldyBjb25jZXJucyBpbiB0aGUgaW50ZXJpbS4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKQWRlYmF5byBPbGF0dW5kZSwgTUQKMDgvMDUvMjAyNAo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-007"
+      }
+    ],
+    "period": {
+      "start": "2024-08-05",
+      "end": "2024-08-05"
+    }
+  }
+}

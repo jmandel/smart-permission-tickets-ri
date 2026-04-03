@@ -1,0 +1,60 @@
+{
+  "resourceType": "Organization",
+  "id": "61e4fff9-645e-42cb-9c0d-840a3ef27819",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "National Provider Identifier"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1497823156"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Pediatric primary care"
+    }
+  ],
+  "name": "Triangle Pediatrics",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(919) 555-0300",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "(919) 555-0301",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "4201 Lake Boone Trail",
+        "Suite 200"
+      ],
+      "city": "Raleigh",
+      "state": "NC",
+      "postalCode": "27607",
+      "country": "US"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Annual wellness labs",
+    "period_start": "2021-03-18",
+    "period_end": "2021-03-18",
+    "participants": [],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "fasting glucose",
+        "value": "88 mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal",
+        "specimen": "fasting venous blood"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.2%",
+        "reference_range": "< 5.7%",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "total cholesterol",
+        "value": "194 mg/dL",
+        "reference_range": "desirable < 200 mg/dL",
+        "flag": "normal",
+        "specimen": "fasting venous blood"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": "114 mg/dL",
+        "reference_range": "near optimal 100–129 mg/dL",
+        "flag": "normal",
+        "specimen": "fasting venous blood"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": "53 mg/dL",
+        "reference_range": "> 40 mg/dL",
+        "flag": "normal",
+        "specimen": "fasting venous blood"
+      },
+      {
+        "name": "triglycerides",
+        "value": "135 mg/dL",
+        "reference_range": "normal < 150 mg/dL",
+        "flag": "normal",
+        "specimen": "fasting venous blood"
+      },
+      {
+        "name": "white blood cell count (WBC)",
+        "value": "6.5 x10^3/uL",
+        "reference_range": "4.5–11.0 x10^3/uL",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "13.4 g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "hematocrit",
+        "value": "39.8%",
+        "reference_range": "36.0–46.0%",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "platelet count",
+        "value": "252 x10^3/uL",
+        "reference_range": "150–400 x10^3/uL",
+        "flag": "normal",
+        "specimen": "whole blood"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "overweight",
+      "action": "reference-existing"
+    },
+    {
+      "name": "family history of type 2 diabetes mellitus (mother)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild intermittent asthma",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs inhaled as needed",
+      "status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "results note",
+      "description": "Documents annual wellness fasting lab results including metabolic markers (fasting glucose, HbA1c), lipid panel, CBC, and CMP. All results within normal limits. Reviewed by Dr. Morales; patient notified via portal. No medication changes or follow-up actions needed; continue current preventive care schedule."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count (WBC)",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP reported as within normal limits. No individual component values provided beyond fasting glucose (which is listed separately as a metabolic test). Reviewed by Dr. Morales with no abnormalities noted."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

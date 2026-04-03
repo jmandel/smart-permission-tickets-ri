@@ -1,0 +1,41 @@
+{
+  "resourceType": "Location",
+  "id": "4cd27e98-771d-419d-ab82-e52e273f8fba",
+  "status": "active",
+  "name": "Riverside Internal Medicine",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(904) 555-0200",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "2255 Riverside Avenue",
+      "Suite 200"
+    ],
+    "city": "Jacksonville",
+    "state": "FL",
+    "postalCode": "32204",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/799d7142-4129-4a18-99ad-3a160a2a2518",
+    "display": "Riverside Internal Medicine"
+  }
+}

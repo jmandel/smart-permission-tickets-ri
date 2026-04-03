@@ -1,0 +1,58 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-009-uds-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "87428-9",
+        "display": "Drugs of abuse screen W Reflex confirm panel - Urine"
+      }
+    ],
+    "text": "Urine Drug Screen"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "effectiveDateTime": "2023-02-13",
+  "issued": "2023-02-13T12:00:00-08:00",
+  "performer": [
+    {
+      "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "display": "Dr. Rosa Delgado"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-009-uds",
+      "display": "Urine Drug Screen, Qualitative"
+    }
+  ],
+  "conclusion": "Negative for illicit substances.",
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

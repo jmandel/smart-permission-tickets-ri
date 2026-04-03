@@ -1,0 +1,66 @@
+{
+  "encounter_id": "enc-018",
+  "encounter_index": 18,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone",
+    "reason": "Follow-up on social care referral to Rose City Community Services for food insecurity and transportation barriers",
+    "period_start": "2026-04-01",
+    "period_end": "2026-04-01",
+    "participants": [
+      {
+        "name": "Priya Nair, RN",
+        "role": "care coordinator"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "action": "reference-existing"
+    },
+    {
+      "name": "food insecurity",
+      "action": "reference-existing"
+    },
+    {
+      "name": "transportation barriers",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs as needed",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Outbound care coordination call by Priya Nair, RN to follow up on social care referral to Rose City Community Services. Patient confirms CBO intake completed, SNAP application in progress, food pantry enrollment active, and TriMet transit voucher information received. Referral task status updated to in-progress. No clinical concerns raised."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

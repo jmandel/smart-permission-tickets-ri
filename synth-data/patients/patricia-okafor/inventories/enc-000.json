@@ -1,0 +1,264 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness, prediabetes and hypertension monitoring",
+    "period_start": "2022-01-18",
+    "participants": [
+      {
+        "name": "Dr. Adebayo Olatunde, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 132,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body weight",
+        "value": 168,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 65,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 28,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 108,
+        "unit": "mg/dL",
+        "reference_range": "70–99 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.2,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 6.4,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 234,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.82,
+        "unit": "mg/dL",
+        "reference_range": "0.6–1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": ">60",
+        "unit": "mL/min/1.73m2",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": 22,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": 19,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 218,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "low-density lipoprotein cholesterol",
+        "value": 132,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "high-density lipoprotein cholesterol",
+        "value": 54,
+        "unit": "mg/dL",
+        "reference_range": ">40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 160,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "unit": "score",
+        "interpretation": "negative"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing",
+      "note": "well-controlled on current regimen, BP 132/80 at goal"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing",
+      "note": "HbA1c 6.0%, stable in prediabetic range, continued dietary management, goal HbA1c <5.7%"
+    },
+    {
+      "name": "dyslipidemia",
+      "clinical_status": "active",
+      "onset_date": "2022-01-18",
+      "action": "create",
+      "note": "new diagnosis based on lipid panel results (LDL 132, total cholesterol 218, triglycerides 160); patient declined statin therapy, prefers continued dietary modification"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "onset_date": "2022-01-18",
+      "action": "create",
+      "note": "BMI 28.0, patient physically active, encouraged continued exercise and dietary adherence"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, quadrivalent, 2021-2022 season",
+      "date": "2022-01-18",
+      "site": "left deltoid",
+      "route": "intramuscular",
+      "note": "no immediate adverse reaction"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive annual wellness visit note documenting 14-point ROS, complete physical examination, vital signs, fasting lab results (HbA1c, CBC, CMP, lipid panel), PHQ-2 screening, assessment of hypertension (well-controlled), prediabetes (stable), dyslipidemia (new), and overweight. Plan includes continued lisinopril, dietary management, influenza vaccination administered, screening mammogram ordered, and follow-up schedule."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP described as unremarkable. Only creatinine, eGFR, ALT, and AST are individually reported — fewer than the minimum expected for a full CMP. Fasting glucose reported separately as a standalone test. Remaining CMP components (electrolytes, BUN, calcium, total protein, albumin, bilirubin) are not individually enumerated."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "low-density lipoprotein cholesterol",
+        "high-density lipoprotein cholesterol",
+        "triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

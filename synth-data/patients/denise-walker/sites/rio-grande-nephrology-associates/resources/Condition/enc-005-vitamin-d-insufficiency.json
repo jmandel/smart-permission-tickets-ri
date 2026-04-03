@@ -1,0 +1,58 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-vitamin-d-insufficiency",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "text": "Vitamin D insufficiency"
+  },
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "onsetDateTime": "2024-06-17",
+  "recordedDate": "2024-06-17",
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "Observation/enc-005-vitamin-d-25oh",
+          "display": "25-hydroxy vitamin D"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-ssi",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "433202001",
+        "display": "Surgical site infection (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "T81.41XD",
+        "display": "Infection following a procedure, superficial incisional surgical site, subsequent encounter"
+      }
+    ],
+    "text": "Surgical site infection, right lower quadrant port site, following laparoscopic appendectomy"
+  },
+  "subject": {
+    "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "onsetDateTime": "2026-01-20",
+  "abatementDateTime": "2026-02-05",
+  "recordedDate": "2026-01-22",
+  "recorder": {
+    "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+    "display": "Dr. Marcus Okonkwo"
+  },
+  "note": [
+    {
+      "text": "RLQ port site wound healed completely by secondary intention. Healthy, flat scar tissue with no residual erythema, induration, warmth, or drainage. Full antibiotic course completed (ciprofloxacin/metronidazole x 10 days following IV piperacillin-tazobactam during readmission). Resolved as of 2026-02-05 follow-up."
+    }
+  ]
+}

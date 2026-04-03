@@ -1,0 +1,186 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "methotrexate monitoring labs, hepatotoxicity identified",
+    "period_start": "2021-11-01",
+    "period_end": "2021-11-01",
+    "participants": [
+      {
+        "name": "Dr. Alejandro Fuentes",
+        "role": "ordering provider"
+      }
+    ],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "5.6",
+        "unit": "x10^3/uL",
+        "reference_range": "4.5-11.0 x10^3/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "14.5",
+        "unit": "g/dL",
+        "reference_range": "13.5-17.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": "244",
+        "unit": "x10^3/uL",
+        "reference_range": "150-400 x10^3/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": "100",
+        "unit": "mg/dL",
+        "reference_range": "70-100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": "0.9",
+        "unit": "mg/dL",
+        "reference_range": "0.7-1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "98",
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "high (critical — >2x upper limit of normal)"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "82",
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "high (critical — >2x upper limit of normal)"
+      },
+      {
+        "name": "albumin",
+        "value": "3.8",
+        "unit": "g/dL",
+        "reference_range": "3.5-5.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "total bilirubin",
+        "value": "0.8",
+        "unit": "mg/dL",
+        "reference_range": "0.1-1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alkaline phosphatase",
+        "value": "78",
+        "unit": "U/L",
+        "reference_range": "44-147 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "erythrocyte sedimentation rate (ESR)",
+        "value": "38",
+        "unit": "mm/hr",
+        "reference_range": "0-22 mm/hr",
+        "flag": "high"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": "2.4",
+        "unit": "mg/dL",
+        "reference_range": "0.0-0.5 mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "methotrexate-induced hepatotoxicity",
+      "clinical_status": "active",
+      "onset_date": "2021-11-01",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 20 mg oral tablet",
+      "sig": "once weekly",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "methotrexate supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "lab result note",
+      "description": "Laboratory result documentation for methotrexate monitoring labs drawn 2021-11-01 with results reported 2021-11-02. Documents CBC with differential (normal), comprehensive metabolic panel (ALT 98, AST 82 — critically elevated, >2x ULN), ESR 38 (elevated), and CRP 2.4 (elevated). Includes critical value flag for transaminase elevation and notation that results were forwarded to Dr. Fuentes for urgent review regarding methotrexate continuation."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "albumin",
+        "total bilirubin",
+        "alkaline phosphatase"
+      ]
+    },
+    {
+      "type": "erythrocyte sedimentation rate (ESR)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate (ESR)"
+      ]
+    },
+    {
+      "type": "C-reactive protein (CRP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein (CRP)"
+      ]
+    }
+  ],
+  "allergies": []
+}

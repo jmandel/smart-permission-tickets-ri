@@ -1,0 +1,64 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-000-ns-bolus",
+  "status": "completed",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1807639",
+        "display": "sodium chloride 0.9 % in 1000 ML Injection"
+      }
+    ],
+    "text": "Normal saline 0.9% 1000 mL IV bolus"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "authoredOn": "2026-01-12",
+  "requester": {
+    "reference": "Practitioner/97b199c6-1b9f-4a71-ad7f-09b019ec7024",
+    "display": "Dr. Emily Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-perf-appendicitis",
+      "display": "Acute perforated appendicitis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "1000 mL IV bolus, once",
+      "timing": {
+        "repeat": {
+          "count": 1
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 1000,
+            "unit": "mL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mL"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2774 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T05:20:36.901Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:35be9654-3b7f-4027-93a0-64a00b703c82",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "35be9654-3b7f-4027-93a0-64a00b703c82",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2054-5",
+                  "display": "Black or African American"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Black or African American",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In Georgia, Harold established with a new PCP and a geriatric neurologist at Emory. His MMSE dropped from 22/30 (mild) to 17/30 (moderate) over 6 months. He was switched from donepezil to a donepezil-memantine combination. His diabetes and hypertension management continued with his new PCP. He had one ED visit for a mechanical fall (no fracture, CT head negative).\n\nMargaret, as his authorized representative, uses a patient-facing app to access Harold's records across both the Florida and Georgia systems.\n\nFour sites across two states (FL, GA). Tests Permission Ticket constraints on jurisdictions (FL vs GA), organizations (4 providers), periods (pre-move Florida records vs post-move Georgia records), and scopes (can filter to just cognitive assessments or just diabetes management)."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Washington",
+            "given": [
+              "Harold",
+              "James"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1946-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "1847 Candler Road"
+            ],
+            "city": "Decatur",
+            "state": "GA",
+            "postalCode": "30034",
+            "country": "US"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "770-555-0148",
+            "use": "home"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "W",
+              "display": "Widowed"
+            }
+          ],
+          "text": "Widowed"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-48854edc2c9e736942f1f48e"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a195c115-0448-4095-9620-6fae08498555",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "a195c115-0448-4095-9620-6fae08498555",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1823167490"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Emory Cognitive Neurology Center",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "404-555-0172",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "12 Executive Park Drive NE",
+              "Suite 200"
+            ],
+            "city": "Atlanta",
+            "state": "GA",
+            "postalCode": "30329",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nakamura",
+            "given": [
+              "Lisa"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "394591006",
+                  "display": "Neurology (qualifier value)"
+                }
+              ],
+              "text": "Geriatric Neurology"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+      "resource": {
+        "resourceType": "Location",
+        "id": "f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+        "status": "active",
+        "name": "Emory Cognitive Neurology Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient Facility"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "404-555-0172",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "12 Executive Park Drive NE",
+            "Suite 200"
+          ],
+          "city": "Atlanta",
+          "state": "GA",
+          "postalCode": "30329",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+          "display": "Emory Cognitive Neurology Center"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-acp-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-014-acp-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75320-2",
+              "display": "Advance directive"
+            }
+          ],
+          "text": "Advance care planning documentation"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "date": "2025-01-22T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "description": "Documents goals-of-care discussion with patient and daughter/authorized representative. Patient expressed preference for comfort-focused care and stated he does not want intubation or mechanical ventilation. Authorized representative confirmed consistency with patient's long-standing wishes. Recommendation for formal legal documentation update in Georgia noted.",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "QURWQU5DRSBDQVJFIFBMQU5OSU5HIERPQ1VNRU5UQVRJT04KCkRhdGU6IDAxLzIyLzIwMjUKUHJvdmlkZXI6IExpc2EgTmFrYW11cmEsIE1ELCBQaEQKTG9jYXRpb246IEVtb3J5IENvZ25pdGl2ZSBOZXVyb2xvZ3kgQ2VudGVyLCAxMiBFeGVjdXRpdmUgUGFyayBEcml2ZSBORSwgU3VpdGUgMjAwLCBBdGxhbnRhLCBHQSAzMDMyOQpQYXRpZW50OiBIYXJvbGQgSi4gV2FzaGluZ3RvbgpET0I6IDA5LzE0LzE5NDYgICBBZ2U6IDc4ICAgU2V4OiBNYWxlCgpHb2Fscy1vZi1jYXJlIGRpc2N1c3Npb24gY29uZHVjdGVkIHdpdGggcGF0aWVudCBIYXJvbGQgV2FzaGluZ3RvbiAodG8gdGhlIGV4dGVudCBoZSBjb3VsZCBwYXJ0aWNpcGF0ZSBnaXZlbiBtb2RlcmF0ZS1zdGFnZSBBbHpoZWltZXIncyBkaXNlYXNlLCBNTVNFIDE3LzMwKSBhbmQgaGlzIGRhdWdodGVyL2F1dGhvcml6ZWQgcmVwcmVzZW50YXRpdmUgTWFyZ2FyZXQgV2FzaGluZ3Rvbi1DbGFya2UuCgpQQVRJRU5UIFBSRUZFUkVOQ0VTOgotIE1yLiBXYXNoaW5ndG9uIGV4cHJlc3NlZCBhIGNsZWFyIHByZWZlcmVuY2UgZm9yIGNvbWZvcnQtZm9jdXNlZCBjYXJlLgotIEhlIHN0YXRlZCBoZSBkb2VzIG5vdCB3YW50IHRvIGJlIGludHViYXRlZCBvciBwbGFjZWQgb24gYSB2ZW50aWxhdG9yLgotIEhlIGV4cHJlc3NlZCBhIGRlc2lyZSB0byByZW1haW4gYXQgaG9tZSB3aXRoIGhpcyBkYXVnaHRlciBhcyBsb25nIGFzIHBvc3NpYmxlLgoKQVVUSE9SSVpFRCBSRVBSRVNFTlRBVElWRSBDT05GSVJNQVRJT046Ci0gTWFyZ2FyZXQgV2FzaGluZ3Rvbi1DbGFya2UgY29uZmlybWVkIHRoZXNlIHByZWZlcmVuY2VzIGFyZSBjb25zaXN0ZW50IHdpdGggaGVyIHVuZGVyc3RhbmRpbmcgb2YgaGVyIGZhdGhlcidzIGxvbmctc3RhbmRpbmcgd2lzaGVzLgotIE1hcmdhcmV0IGhhcyBzZXJ2ZWQgYXMgTXIuIFdhc2hpbmd0b24ncyBwcmltYXJ5IGRlY2lzaW9uLW1ha2VyIHNpbmNlIGhpcyByZWxvY2F0aW9uIHRvIEdlb3JnaWEgaW4gT2N0b2JlciAyMDI0LgoKUkVDT01NRU5EQVRJT05TOgotIEZvcm1hbCBsZWdhbCBkb2N1bWVudGF0aW9uIHVwZGF0ZSByZWNvbW1lbmRlZCBpbiB0aGUgc3RhdGUgb2YgR2VvcmdpYSwgaW5jbHVkaW5nOgogIC0gR2VvcmdpYSBBZHZhbmNlIERpcmVjdGl2ZSBmb3IgSGVhbHRoIENhcmUKICAtIER1cmFibGUgUG93ZXIgb2YgQXR0b3JuZXkgZm9yIEhlYWx0aGNhcmUgbmFtaW5nIE1hcmdhcmV0IFdhc2hpbmd0b24tQ2xhcmtlCi0gUGF0aWVudCBhbmQgZmFtaWx5IHdlcmUgY291bnNlbGVkIHRoYXQgdGhlc2UgZG9jdW1lbnRzIHNob3VsZCBiZSBjb21wbGV0ZWQgd2hpbGUgdGhlIHBhdGllbnQgcmV0YWlucyBzb21lIGRlY2lzaW9uLW1ha2luZyBjYXBhY2l0eS4KCkFkdmFuY2UgZGlyZWN0aXZlIHByZWZlcmVuY2VzIGRvY3VtZW50ZWQgaW4gdGhlIG1lZGljYWwgY2hhcnQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ckxpc2EgTmFrYW11cmEsIE1ELCBQaEQKRW1vcnkgQ29nbml0aXZlIE5ldXJvbG9neSBDZW50ZXI="
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-014"
+            }
+          ],
+          "period": {
+            "start": "2025-01-22",
+            "end": "2025-01-22"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-014-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34905-0",
+              "display": "Neurology Note"
+            }
+          ],
+          "text": "Comprehensive geriatric neurology evaluation note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "date": "2025-01-22T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "description": "Comprehensive geriatric neurology evaluation note documenting detailed history, full neurological examination, neurocognitive testing results (MMSE 17/30, MoCA 13/30), assessment of Alzheimer's disease progression from mild to moderate stage, medication change to Namzaric, advance care planning discussion, and referrals for OT and brain MRI.",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "Q09NUFJFSEVOU0lWRSBHRVJJQVRSSUMgTkVVUk9MT0dZIEVWQUxVQVRJT04KCkRhdGU6IDAxLzIyLzIwMjUKUHJvdmlkZXI6IExpc2EgTmFrYW11cmEsIE1ELCBQaEQKTG9jYXRpb246IEVtb3J5IENvZ25pdGl2ZSBOZXVyb2xvZ3kgQ2VudGVyLCAxMiBFeGVjdXRpdmUgUGFyayBEcml2ZSBORSwgU3VpdGUgMjAwLCBBdGxhbnRhLCBHQSAzMDMyOQpQYXRpZW50OiBIYXJvbGQgSi4gV2FzaGluZ3RvbgpET0I6IDA5LzE0LzE5NDYgICBBZ2U6IDc4ICAgU2V4OiBNYWxlCgpTVUJKRUNUSVZFOgpNci4gV2FzaGluZ3RvbiBpcyBhIDc4LXllYXItb2xkIHJpZ2h0LWhhbmRlZCBnZW50bGVtYW4gcHJlc2VudGluZyBmb3IgYW4gaW5pdGlhbCBjb21wcmVoZW5zaXZlIGdlcmlhdHJpYyBuZXVyb2xvZ3kgZXZhbHVhdGlvbiwgcmVmZXJyZWQgYnkgRHIuIFJheW1vbmQgUGF0ZWwgKEZpcnN0IENvYXN0IE5ldXJvbG9neSwgSmFja3NvbnZpbGxlLCBGTCkgYW5kIERyLiBBbml0YSBEZXNhaSAoRGVLYWxiIFByaW1hcnkgQ2FyZSwgRGVjYXR1ciwgR0EpLiBIaXMgZGF1Z2h0ZXIsIE1hcmdhcmV0IFdhc2hpbmd0b24tQ2xhcmtlLCBhY2NvbXBhbmllZCBoaW0gYW5kIHNlcnZlZCBhcyBwcmltYXJ5IGhpc3Rvcmlhbi4gU2hlIGJyb3VnaHQgRHIuIFBhdGVsJ3MgcmVmZXJyYWwgbGV0dGVyIGFuZCBjb2duaXRpdmUgc2NvcmUgdHJhamVjdG9yeSBkb2N1bWVudGF0aW9uLgoKSFBJOiBNci4gV2FzaGluZ3RvbiB3YXMgZGlhZ25vc2VkIHdpdGggQWx6aGVpbWVyJ3MgZGlzZWFzZSBpbiBBcHJpbCAyMDIyIGJ5IERyLiBQYXRlbCBhZnRlciBwcmVzZW50aW5nIHdpdGggcHJvZ3Jlc3NpdmUgZXBpc29kaWMgbWVtb3J5IGltcGFpcm1lbnQuIE1SSSBicmFpbiBhdCB0aGF0IHRpbWUgc2hvd2VkIG1pbGQgZ2VuZXJhbGl6ZWQgY29ydGljYWwgYXRyb3BoeSBhbmQgaGlwcG9jYW1wYWwgdm9sdW1lIGxvc3Mgd2l0aG91dCBhY3V0ZSBpbmZhcmN0cy4gSGUgd2FzIHN0YXJ0ZWQgb24gZG9uZXBlemlsIDUgbWcsIHRpdHJhdGVkIHRvIDEwIG1nIGRhaWx5LCBhbmQgcmVtYWluZWQgcmVsYXRpdmVseSBzdGFibGUgdGhyb3VnaCAyMDIzIChNTVNFIDI0IGluIE1hcmNoIDIwMjIsIDIzIGluIEFwcmlsIDIwMjMpLgoKSGlzIHdpZmUgRG9yb3RoeSBkaWVkIG9mIHBhbmNyZWF0aWMgY2FuY2VyIGluIEp1bmUgMjAyNC4gRm9sbG93aW5nIGhlciBkZWF0aCwgaGlzIGNvZ25pdGl2ZSBhbmQgZnVuY3Rpb25hbCBkZWNsaW5lIGFjY2VsZXJhdGVkIG1hcmtlZGx5LiBXaXRob3V0IERvcm90aHkncyBkYWlseSBzdHJ1Y3R1cmUgYW5kIG1lZGljYXRpb24gcmVtaW5kZXJzLCBoZSBiZWNhbWUgdW5hYmxlIHRvIG1hbmFnZSBpbmRlcGVuZGVudGx5LiBJbiBTZXB0ZW1iZXIgMjAyNCBoZSB3YXMgZm91bmQgd2FuZGVyaW5nIGJ5IGEgbmVpZ2hib3IsIGRpc29yaWVudGVkLiBIZSBhbHNvIGhhZCBhIG1vdG9yIHZlaGljbGUgaW5jaWRlbnQgKGJhY2tlZCBpbnRvIGEgbWFpbGJveCkuIEhpcyBkYXVnaHRlciBNYXJnYXJldCBhcnJhbmdlZCByZWxvY2F0aW9uIGZyb20gSmFja3NvbnZpbGxlIHRvIERlY2F0dXIsIEdBIGluIE9jdG9iZXIgMjAyNC4gSGlzIGxhc3QgTU1TRSB3aXRoIERyLiBQYXRlbCBpbiBPY3RvYmVyIDIwMjQgd2FzIDE5LzMwLgoKTWFyZ2FyZXQgcmVwb3J0cyBoZSBjdXJyZW50bHkgY2Fubm90IG1hbmFnZSBmaW5hbmNlcywgY29vaywgb3IgYmUgbGVmdCBhbG9uZSBmb3IgbW9yZSB0aGFuIDItMyBob3Vycy4gSGUgcmVxdWlyZXMgYXNzaXN0YW5jZSB3aXRoIGJhdGhpbmcsIGRyZXNzaW5nLCBhbmQgbWVkaWNhdGlvbiBtYW5hZ2VtZW50LiBIZSBkb2VzIG5vdCBkcml2ZS4gSGUgcmVtYWlucyBjb250aW5lbnQgYW5kIGFtYnVsYXRvcnkuCgpQTUg6IEFsemhlaW1lcidzIGRpc2Vhc2UgKGRpYWdub3NlZCBBcHJpbCAyMDIyKSwgZXNzZW50aWFsIGh5cGVydGVuc2lvbiAoMjAxNSksIHR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cyAoMjAxNSksIGh5cGVybGlwaWRlbWlhICgyMDE1KS4KQWxsZXJnaWVzOiBTdWxmb25hbWlkZSBhbnRpYmlvdGljcyAocmFzaCkuIE5vIGtub3duIGZvb2QgYWxsZXJnaWVzLgpDdXJyZW50IE1lZGljYXRpb25zOiBEb25lcGV6aWwgMTAgbWcgZGFpbHksIGxpc2lub3ByaWwgMjAgbWcgZGFpbHksIGFtbG9kaXBpbmUgNSBtZyBkYWlseSwgbWV0Zm9ybWluIDUwMCBtZyBCSUQsIGF0b3J2YXN0YXRpbiAyMCBtZyBkYWlseS4KU29jaWFsIEh4OiBSZXRpcmVkIFVTUFMgbGV0dGVyIGNhcnJpZXIuIFdpZG93ZWQuIExpdmVzIHdpdGggZGF1Z2h0ZXIgTWFyZ2FyZXQgaW4gRGVjYXR1ciwgR0EuIEZvcm1lciByZWd1bGFyIHdhbGtlciwgY3VycmVudGx5IHNlZGVudGFyeS4gTm8gdG9iYWNjbywgYWxjb2hvbCwgb3IgaWxsaWNpdCBkcnVnIHVzZSByZXBvcnRlZC4KRmFtaWx5IEh4OiBOb3QgY29udHJpYnV0b3J5IHBlciBhdmFpbGFibGUgcmVjb3Jkcy4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMzYvODIgbW1IZywgSFIgNzYgYnBtLCBUZW1wIDk4LjRGLCBSUiAxNiwgU3BPMiA5NyUsIFd0IDE4NyBsYnMuCgpOZXVyb2xvZ2ljYWwgRXhhbWluYXRpb246CkdlbmVyYWw6IEFsZXJ0LCBjb29wZXJhdGl2ZSwgcGxlYXNhbnQgYWZmZWN0LiBPcmllbnRlZCB0byBwZXJzb24gb25seS4gQ291bGQgbm90IHByb3ZpZGUgZGF0ZSwgZGF5IG9mIHdlZWssIG1vbnRoLCB5ZWFyLCBvciBjdXJyZW50IGxvY2F0aW9uLgpDcmFuaWFsIE5lcnZlczogSUktWElJIGludGFjdC4gUHVwaWxzIGVxdWFsLCByb3VuZCwgcmVhY3RpdmUuIEVPTUkgd2l0aG91dCBueXN0YWdtdXMuIEZhY2Ugc3ltbWV0cmljLiBIZWFyaW5nIGdyb3NzbHkgaW50YWN0LgpNb3RvcjogU3RyZW5ndGggNS81IGluIGFsbCBleHRyZW1pdGllcy4gQnVsayBhbmQgdG9uZSBub3JtYWwuIE5vIHJpZ2lkaXR5LiBObyB0cmVtb3IuCkNvb3JkaW5hdGlvbjogRmluZ2VyLXRvLW5vc2UgaW50YWN0IGJpbGF0ZXJhbGx5LgpHYWl0OiBTdGVhZHkgYnV0IHNsaWdodGx5IHNsb3cuIE5vIHNodWZmbGluZy4gTm8gZmVzdGluYXRpb24uIE5vIGFzc2lzdGl2ZSBkZXZpY2UgcmVxdWlyZWQuClJlZmxleGVzOiAyKyBhbmQgc3ltbWV0cmljIHRocm91Z2hvdXQuIFBsYW50YXIgcmVzcG9uc2VzIGZsZXhvciBiaWxhdGVyYWxseS4KU2Vuc2F0aW9uOiBHcm9zc2x5IGludGFjdCB0byBsaWdodCB0b3VjaC4KCk5ldXJvY29nbml0aXZlIFRlc3RpbmcgQmF0dGVyeSAoYXBwcm94aW1hdGVseSA5MC1taW51dGUgc2Vzc2lvbiB3aXRoIG5ldXJvcHN5Y2hvbG9naXN0KToKTU1TRTogMTcvMzAgKGRlY2xpbmUgb2YgMiBwb2ludHMgZnJvbSAxOS8zMCB0aHJlZSBtb250aHMgcHJpb3IpCiAgLSBPcmllbnRhdGlvbjogMi8xMAogIC0gUmVnaXN0cmF0aW9uOiAzLzMKICAtIEF0dGVudGlvbi9jYWxjdWxhdGlvbjogMy81CiAgLSBSZWNhbGw6IDAvMwogIC0gTGFuZ3VhZ2UvcHJheGlzOiA5LzkKTW9DQTogMTMvMzAgKGRlY2xpbmUgZnJvbSAyMC8zMCBhdCBkaWFnbm9zaXMgaW4gQXByaWwgMjAyMikKICAtIERlbGF5ZWQgcmVjYWxsOiAwLzUKICAtIE9yaWVudGF0aW9uOiAyLzYKICAtIFZpc3Vvc3BhdGlhbC9leGVjdXRpdmU6IDEvNQogIC0gTmFtaW5nOiAyLzMKICAtIFJlbGF0aXZlIHByZXNlcnZhdGlvbiBvZiBsYW5ndWFnZSBmbHVlbmN5IGFuZCBtb3RvciBmdW5jdGlvbgoKQVNTRVNTTUVOVDoKMS4gQWx6aGVpbWVyJ3MgZGlzZWFzZSwgcHJvZ3Jlc3NlZCBmcm9tIG1pbGQgdG8gbW9kZXJhdGUgc3RhZ2UgKEczMC45LCBGMDAuOSkuIE1NU0UgMTcvMzAsIE1vQ0EgMTMvMzAuIFRoZSBwYXRpZW50IGhhcyBkZW1vbnN0cmF0ZWQgYSBmaXZlLXBvaW50IE1NU0UgZGVjbGluZSBvdmVyIDEwIG1vbnRocywgd2hpY2ggaXMgZmFzdGVyIHRoYW4gdHlwaWNhbCBwcm9ncmVzc2lvbiBhbmQgbGlrZWx5IGFjY2VsZXJhdGVkIGJ5IHNpZ25pZmljYW50IHBzeWNob3NvY2lhbCBzdHJlc3NvcnMgaW5jbHVkaW5nIGJlcmVhdmVtZW50IGFuZCBpbnRlcnN0YXRlIHJlbG9jYXRpb24uIFRoZSBjb2duaXRpdmUgcHJvZmlsZSDigJQgcHJvbWluZW50IGRlZmljaXRzIGluIGRlbGF5ZWQgcmVjYWxsLCBvcmllbnRhdGlvbiwgYW5kIHZpc3Vvc3BhdGlhbC9leGVjdXRpdmUgZnVuY3Rpb24gd2l0aCByZWxhdGl2ZSBsYW5ndWFnZSBwcmVzZXJ2YXRpb24g4oCUIGlzIGNvbnNpc3RlbnQgd2l0aCBtb2RlcmF0ZS1zdGFnZSBBbHpoZWltZXIncyBkaXNlYXNlLiBGdW5jdGlvbmFsIGltcGFpcm1lbnQgbm93IHNwYW5zIG11bHRpcGxlIGluc3RydW1lbnRhbCBBRExzIChmaW5hbmNlcywgY29va2luZywgbWVkaWNhdGlvbiBtYW5hZ2VtZW50KSBhbmQgc29tZSBiYXNpYyBBRExzIChiYXRoaW5nLCBkcmVzc2luZykuCgoyLiBDYXJlZ2l2ZXIvbGl2aW5nIHNpdHVhdGlvbiB0cmFuc2l0aW9uLiBEYXVnaHRlciBNYXJnYXJldCBpcyBzb2xlIGNhcmVnaXZlci4gSG9tZSBzYWZldHkgZXZhbHVhdGlvbiB3YXJyYW50ZWQgZ2l2ZW4gZnVuY3Rpb25hbCBkZWNsaW5lLgoKUExBTjoKMS4gRGlzY29udGludWUgZG9uZXBlemlsIDEwIG1nIG1vbm90aGVyYXB5LiBTdGFydCBkb25lcGV6aWwgMTAgbWcgLyBtZW1hbnRpbmUgMjggbWcgRVIgY29tYmluYXRpb24gKE5hbXphcmljKSDigJQgb25lIGNhcHN1bGUgZGFpbHkgYXQgYmVkdGltZS4gUmF0aW9uYWxlOiBwYXRpZW50IGhhcyBwcm9ncmVzc2VkIHRvIG1vZGVyYXRlLXN0YWdlIGRpc2Vhc2U7IGFkZGl0aW9uIG9mIG1lbWFudGluZSBtYXkgcHJvdmlkZSBhZGRpdGlvbmFsIHN5bXB0b21hdGljIGJlbmVmaXQgdmlhIE5NREEgcmVjZXB0b3IgYW50YWdvbmlzbS4gQ291bnNlbGVkIE1hcmdhcmV0IGV4dGVuc2l2ZWx5IG9uIGV4cGVjdGVkIGJlbmVmaXRzIChzdGFiaWxpemF0aW9uIG9mIHN5bXB0b21zLCBub3QgcmV2ZXJzYWwgb2YgZGlzZWFzZSkgYW5kIHBvdGVudGlhbCBzaWRlIGVmZmVjdHMgKGhlYWRhY2hlLCBkaXp6aW5lc3MsIGNvbnN0aXBhdGlvbiwgbmF1c2VhKS4KCjIuIEFkdmFuY2UgY2FyZSBwbGFubmluZyBkaXNjdXNzaW9uIGNvbmR1Y3RlZCB3aXRoIE1yLiBXYXNoaW5ndG9uICh0byB0aGUgZXh0ZW50IGhlIGNvdWxkIHBhcnRpY2lwYXRlKSBhbmQgTWFyZ2FyZXQuIE1yLiBXYXNoaW5ndG9uIGV4cHJlc3NlZCBhIGNsZWFyIHByZWZlcmVuY2UgZm9yIGNvbWZvcnQtZm9jdXNlZCBjYXJlLiBIZSBzdGF0ZWQgaGUgZG9lcyBub3Qgd2FudCB0byBiZSBpbnR1YmF0ZWQgb3IgcGxhY2VkIG9uIGEgdmVudGlsYXRvci4gTWFyZ2FyZXQgY29uZmlybWVkIHRoZXNlIHByZWZlcmVuY2VzIGFyZSBjb25zaXN0ZW50IHdpdGggaGVyIHVuZGVyc3RhbmRpbmcgb2YgaGlzIGxvbmctc3RhbmRpbmcgd2lzaGVzLiBBZHZhbmNlIGRpcmVjdGl2ZSBwcmVmZXJlbmNlcyBkb2N1bWVudGVkIGluIGNoYXJ0LiBSZWNvbW1lbmRlZCBmb3JtYWwgbGVnYWwgZG9jdW1lbnRhdGlvbiB1cGRhdGUgaW4gdGhlIHN0YXRlIG9mIEdlb3JnaWEuCgozLiBSZWZlcnJhbCBwbGFjZWQgZm9yIG9jY3VwYXRpb25hbCB0aGVyYXB5IOKAlCBob21lIHNhZmV0eSBldmFsdWF0aW9uIGFuZCBhZGFwdGl2ZSBzdHJhdGVnaWVzIGZvciBBREwgc3VwcG9ydC4KCjQuIE9yZGVyIHJlcGVhdCBicmFpbiBNUkkgdG8gYmUgb2J0YWluZWQgcHJpb3IgdG8gbmV4dCB2aXNpdCBmb3IgY29tcGFyaXNvbiB0byAyMDIyIGltYWdpbmcuCgo1LiBGb2xsb3ctdXAgaW4gMyBtb250aHMgYXQgdGhpcyBvZmZpY2UuCgo2LiBDb250aW51ZSBjdXJyZW50IG1lZGljYXRpb25zIGZvciBoeXBlcnRlbnNpb24sIGRpYWJldGVzLCBhbmQgaHlwZXJsaXBpZGVtaWEgcGVyIERyLiBEZXNhaSdzIG1hbmFnZW1lbnQuCgpUaW1lIHNwZW50OiA5MCBtaW51dGVzIGZhY2UtdG8tZmFjZSwgaW5jbHVkaW5nIGhpc3RvcnksIGV4YW1pbmF0aW9uLCBuZXVyb2NvZ25pdGl2ZSB0ZXN0aW5nIHJldmlldywgbWVkaWNhdGlvbiBjb3Vuc2VsaW5nLCBhbmQgYWR2YW5jZSBjYXJlIHBsYW5uaW5nIGRpc2N1c3Npb24uIEdyZWF0ZXIgdGhhbiA1MCUgb2YgdGhlIGVuY291bnRlciB0aW1lIHdhcyBzcGVudCBpbiBjb3Vuc2VsaW5nIGFuZCBjb29yZGluYXRpb24gb2YgY2FyZS4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKTGlzYSBOYWthbXVyYSwgTUQsIFBoRApFbW9yeSBDb2duaXRpdmUgTmV1cm9sb2d5IENlbnRlcgo="
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-014"
+            }
+          ],
+          "period": {
+            "start": "2025-01-22",
+            "end": "2025-01-22"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-020-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "68604-8",
+              "display": "Radiology Diagnostic study note"
+            }
+          ],
+          "text": "Radiology Report"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "date": "2025-04-02T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "type": "Practitioner",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UkFESU9MT0dZIFJFUE9SVAoKUGF0aWVudDogSGFyb2xkIEphbWVzIFdhc2hpbmd0b24KRE9COiAwOS8xNC8xOTQ2IChBZ2UgNzgpCk1STjogW29uIGZpbGVdCkRhdGUgb2YgRXhhbTogMDQvMDIvMjAyNQpPcmRlcmluZyBQaHlzaWNpYW46IExpc2EgTmFrYW11cmEsIE1ELCBQaEQKRmFjaWxpdHk6IEVtb3J5IENvZ25pdGl2ZSBOZXVyb2xvZ3kgQ2VudGVyLCAxMiBFeGVjdXRpdmUgUGFyayBEcml2ZSBORSwgU3VpdGUgMjAwLCBBdGxhbnRhLCBHQSAzMDMyOQoKRVhBTTogTVJJIEJyYWluIHdpdGhvdXQgYW5kIHdpdGggY29udHJhc3QKCkNMSU5JQ0FMIElORElDQVRJT046IEFsemhlaW1lcidzIGRpc2Vhc2UsIG1vZGVyYXRlIHN0YWdlLiBQcm9ncmVzc2l2ZSBjb2duaXRpdmUgZGVjbGluZS4gQ29tcGFyaXNvbiB0byBwcmlvciBicmFpbiBNUkkgcmVxdWVzdGVkLgoKQ09NUEFSSVNPTjogTVJJIEJyYWluIGRhdGVkIEFwcmlsIDIwMjIsIEZpcnN0IENvYXN0IE5ldXJvbG9neSBBc3NvY2lhdGVzLCBKYWNrc29udmlsbGUsIEZMLgoKVEVDSE5JUVVFOiBNdWx0aXBsYW5hciwgbXVsdGlzZXF1ZW5jZSBNUkkgb2YgdGhlIGJyYWluIHdhcyBwZXJmb3JtZWQgd2l0aG91dCBhbmQgd2l0aCBpbnRyYXZlbm91cyBnYWRvbGluaXVtIGNvbnRyYXN0IG9uIGEgM1QgbWFnbmV0LiBTZXF1ZW5jZXMgaW5jbHVkZSBzYWdpdHRhbCBUMSwgYXhpYWwgVDIsIGF4aWFsIEZMQUlSLCBheGlhbCBEV0kvQURDLCBheGlhbCBTV0ksIGNvcm9uYWwgVDIgdGhyb3VnaCB0aGUgaGlwcG9jYW1waSwgYW5kIHBvc3QtY29udHJhc3QgYXhpYWwgYW5kIGNvcm9uYWwgVDEtd2VpZ2h0ZWQgaW1hZ2VzLgoKRklORElOR1M6CgpDZXJlYnJhbCBwYXJlbmNoeW1hOiBHZW5lcmFsaXplZCBjb3J0aWNhbCBhdHJvcGh5IGhhcyBtaWxkbHkgcHJvZ3Jlc3NlZCBjb21wYXJlZCB0byB0aGUgQXByaWwgMjAyMiBzdHVkeSwgbW9zdCBwcm9taW5lbnQgaW4gdGhlIHRlbXBvcmFsIGFuZCBwYXJpZXRhbCBsb2Jlcy4gTm8gcmVzdHJpY3RlZCBkaWZmdXNpb24gdG8gc3VnZ2VzdCBhY3V0ZSBpbmZhcmN0LiBObyBpbnRyYWNyYW5pYWwgaGVtb3JyaGFnZS4gTm8gbWFzcyBsZXNpb24gb3IgYWJub3JtYWwgZW5oYW5jZW1lbnQuCgpIaXBwb2NhbXBpOiBQcm9ncmVzc2l2ZSBiaWxhdGVyYWwgaGlwcG9jYW1wYWwgYXRyb3BoeSBjb21wYXJlZCB0byB0aGUgQXByaWwgMjAyMiBzdHVkeSwgbm93IG1vZGVyYXRlIGluIHNldmVyaXR5LiBCaWxhdGVyYWwgbWVkaWFsIHRlbXBvcmFsIGxvYmUgdm9sdW1lIGxvc3MgaXMgZXZpZGVudCBvbiBjb3JvbmFsIHNlcXVlbmNlcy4KCldoaXRlIG1hdHRlcjogQ2hyb25pYyBzbWFsbC12ZXNzZWwgaXNjaGVtaWMgd2hpdGUgbWF0dGVyIGNoYW5nZXMgYXJlIHByZXNlbnQsIEZhemVrYXMgZ3JhZGUgMS0yLCBtaWxkbHkgcHJvZ3Jlc3NlZCBmcm9tIHByaW9yIGV4YW0uIFN0YWJsZSBtaWxkIHBlcml2ZW50cmljdWxhciB3aGl0ZSBtYXR0ZXIgaHlwZXJpbnRlbnNpdGllcyBvbiBGTEFJUiBzZXF1ZW5jZXMuCgpWZW50cmljbGVzIGFuZCBleHRyYS1heGlhbCBzcGFjZXM6IE5vIGh5ZHJvY2VwaGFsdXMuIFZlbnRyaWNsZXMgYXJlIHByb3BvcnRpb25hdGUgdG8gdGhlIGRlZ3JlZSBvZiBjb3J0aWNhbCBhdHJvcGh5LiBObyBleHRyYS1heGlhbCBmbHVpZCBjb2xsZWN0aW9uLgoKUG9zdGVyaW9yIGZvc3NhOiBVbnJlbWFya2FibGUuIE5vIGNlcmViZWxsYXIgYXRyb3BoeS4KClZhc2N1bGFyIHN0cnVjdHVyZXM6IE5vcm1hbCBmbG93IHZvaWRzIGluIHRoZSBtYWpvciBpbnRyYWNyYW5pYWwgdmVzc2Vscy4gTm8gYW5ldXJ5c20gaWRlbnRpZmllZC4KCk9yYml0cywgc2ludXNlcywgY2FsdmFyaXVtOiBVbnJlbWFya2FibGUuCgpJTVBSRVNTSU9OOgoxLiBQcm9ncmVzc2l2ZSBuZXVyb2RlZ2VuZXJhdGl2ZSBjaGFuZ2VzIGNvbnNpc3RlbnQgd2l0aCBBbHpoZWltZXIncyBkaXNlYXNlLiBNb2RlcmF0ZSBiaWxhdGVyYWwgaGlwcG9jYW1wYWwgYXRyb3BoeSwgcHJvZ3Jlc3NlZCBmcm9tIG1pbGQgb24gdGhlIEFwcmlsIDIwMjIgY29tcGFyaXNvbiBzdHVkeS4KMi4gTWlsZGx5IHByb2dyZXNzaXZlIGdlbmVyYWxpemVkIGNvcnRpY2FsIGF0cm9waHksIG1vc3QgcHJvbWluZW50IGluIHRoZSB0ZW1wb3JhbCBhbmQgcGFyaWV0YWwgbG9iZXMuCjMuIENocm9uaWMgc21hbGwtdmVzc2VsIGlzY2hlbWljIHdoaXRlIG1hdHRlciBjaGFuZ2VzLCBGYXpla2FzIGdyYWRlIDEtMiwgbWlsZGx5IHByb2dyZXNzZWQuCjQuIE5vIGFjdXRlIGluZmFyY3QsIGludHJhY3JhbmlhbCBoZW1vcnJoYWdlLCBtYXNzIGxlc2lvbiwgb3IgaHlkcm9jZXBoYWx1cy4KClJlc3VsdHMgZm9yd2FyZGVkIHRvIERyLiBMaXNhIE5ha2FtdXJhIGZvciByZXZpZXcgYXQgdXBjb21pbmcgZm9sbG93LXVwIHZpc2l0LiBDbGluaWNhbCBjb3JyZWxhdGlvbiB3aXRoIG5ldXJvY29nbml0aXZlIHRlc3RpbmcgcmVjb21tZW5kZWQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6ClJhZGlvbG9naXN0LCBNRApFbW9yeSBJbWFnaW5nIFNlcnZpY2VzCjA0LzAyLzIwMjUK"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-020"
+            }
+          ],
+          "period": {
+            "start": "2025-04-02"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-021-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34905-0",
+              "display": "Neurology Note"
+            }
+          ],
+          "text": "Follow-up neurology office visit note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "date": "2025-04-16T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "description": "Follow-up neurology office visit note documenting 3-month reassessment of moderate-stage Alzheimer's disease on Namzaric. Includes review of brain MRI (04/02/2025) showing progressive hippocampal and cortical atrophy consistent with disease trajectory, MMSE score of 17/30 (stable from January 2025), medication tolerance assessment, caregiver-reported functional status, and plan to continue current therapy with next follow-up in July 2025.",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "RU1PUlkgQ09HTklUSVZFIE5FVVJPTE9HWSBDRU5URVIKMTIgRXhlY3V0aXZlIFBhcmsgRHJpdmUgTkUsIFN1aXRlIDIwMCwgQXRsYW50YSwgR0EgMzAzMjkKTlBJOiAxODIzMTY3NDkwCgpQUk9HUkVTUyBOT1RFCgpQYXRpZW50OiBIYXJvbGQgSmFtZXMgV2FzaGluZ3RvbgpET0I6IDA5LzE0LzE5NDYgICBBZ2U6IDc4CkRhdGUgb2YgU2VydmljZTogMDQvMTYvMjAyNQpQcm92aWRlcjogTGlzYSBOYWthbXVyYSwgTUQsIFBoRApWaXNpdCBUeXBlOiBGb2xsb3ctdXAgT2ZmaWNlIFZpc2l0CkFjY29tcGFueWluZyBQZXJzb246IE1hcmdhcmV0IFdhc2hpbmd0b24tQ2xhcmtlIChkYXVnaHRlciwgaGVhbHRoY2FyZSBQT0EpCgpTVUJKRUNUSVZFOgpNci4gV2FzaGluZ3RvbiBwcmVzZW50cyBmb3IgaGlzIDMtbW9udGggZm9sbG93LXVwIGFmdGVyIGluaXRpYXRpb24gb2YgTmFtemFyaWMgKGRvbmVwZXppbCAxMCBtZyAvIG1lbWFudGluZSAyOCBtZyBFUikgaW4gSmFudWFyeSAyMDI1LiBIaXMgZGF1Z2h0ZXIgTWFyZ2FyZXQgYWNjb21wYW5pZWQgaGltIGFuZCBwcm92aWRlZCBjb2xsYXRlcmFsIGhpc3RvcnkuCgpIYXJvbGQgd2FzIGNhbG0gYW5kIGNvb3BlcmF0aXZlIHRocm91Z2hvdXQgdGhlIHZpc2l0LiBIZSBkaWQgbm90IHJlY2FsbCBoYXZpbmcgaGFkIGEgYnJhaW4gTVJJIHR3byB3ZWVrcyBhZ28gYnV0IHdhcyBub3QgZGlzdHJlc3NlZCBieSB0aGlzLiBNYXJnYXJldCByZXBvcnRzIHRoYXQgSGFyb2xkIGhhcyBiZWVuIHRvbGVyYXRpbmcgTmFtemFyaWMgd2VsbCB3aXRoIG5vIGhlYWRhY2hlcywgZGl6emluZXNzLCBvciBnYXN0cm9pbnRlc3RpbmFsIHNpZGUgZWZmZWN0cy4gU2hlIGZlZWxzIGhpcyBkYXktdG8tZGF5IGZ1bmN0aW9uIGhhcyBiZWVuIHN0YWJsZSBzaW5jZSBzdGFydGluZyB0aGUgY29tYmluYXRpb24gdGhlcmFweS4gQW4gb2NjdXBhdGlvbmFsIHRoZXJhcGlzdCB2aXNpdGVkIHRoZSBob21lIGluIEZlYnJ1YXJ5IDIwMjUgYW5kIHJlY29tbWVuZGVkIGEgc2hvd2VyIGNoYWlyIChub3cgaW5zdGFsbGVkKSwgc2ltcGxpZmllZCBjbG90aGluZyB3aXRoIGVsYXN0aWMgd2Fpc3RiYW5kcywgYW5kIGxhYmVsZWQgZHJhd2Vycy4gTWFyZ2FyZXQgZm91bmQgdGhlc2UgbW9kaWZpY2F0aW9ucyBoZWxwZnVsLgoKTm8gbmV3IGZhbGxzIHNpbmNlIHRoZSBGZWJydWFyeSAyMDI1IEVEIHZpc2l0LiBObyBzZWl6dXJlcywgaGVhZGFjaGVzLCBmb2NhbCB3ZWFrbmVzcywgb3IgZ2FpdCBjaGFuZ2VzLiBObyBiZWhhdmlvcmFsIGRpc3R1cmJhbmNlcywgYWdpdGF0aW9uLCBvciBzbGVlcCBkaXNydXB0aW9uIHJlcG9ydGVkLgoKQ3VycmVudCBNZWRpY2F0aW9uczoKMS4gTmFtemFyaWMgKGRvbmVwZXppbCAxMCBtZyAvIG1lbWFudGluZSAyOCBtZyBFUikgLSBkYWlseSBhdCBiZWR0aW1lCjIuIExpc2lub3ByaWwgMjAgbWcgLSBkYWlseQozLiBBbWxvZGlwaW5lIDUgbWcgLSBkYWlseQo0LiBNZXRmb3JtaW4gNTAwIG1nIC0gQklECjUuIEF0b3J2YXN0YXRpbiAyMCBtZyAtIGRhaWx5IGF0IGJlZHRpbWUKNi4gQ2hvbGVjYWxjaWZlcm9sIDIwMDAgSVUgLSBkYWlseQoKQWxsZXJnaWVzOiBTdWxmb25hbWlkZSBhbnRpYmlvdGljcyAocmFzaCkKCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMzQvODAgbW1IZywgSFIgNzQgYnBtLCBUZW1wIDk4LjIgRiAoMzYuOCBDKSwgUlIgMTYsIFNwTzIgOTglLCBXdCAxODYgbGJzICg4NC40IGtnKQoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcgZWxkZXJseSBtYWxlLCBjYWxtLCBjb29wZXJhdGl2ZSwgaW4gbm8gYWN1dGUgZGlzdHJlc3MuCk5ldXJvbG9naWNhbDogQWxlcnQgYW5kIG9yaWVudGVkIHRvIHBlcnNvbiBvbmx5LiBTcGVlY2ggZmx1ZW50IHdpdGhvdXQgcGFyYXBoYXNpYyBlcnJvcnMuIENyYW5pYWwgbmVydmVzIElJLVhJSSBncm9zc2x5IGludGFjdC4gTW90b3Igc3RyZW5ndGggNS81IGJpbGF0ZXJhbGx5IHVwcGVyIGFuZCBsb3dlciBleHRyZW1pdGllcy4gR2FpdCBzdGVhZHksIG5vIGFzc2lzdGl2ZSBkZXZpY2UgcmVxdWlyZWQuIE5vIHRyZW1vciwgbm8gZm9jYWwgZGVmaWNpdHMuCgpDb2duaXRpdmUgVGVzdGluZzoKTU1TRTogMTcvMzAgKHN0YWJsZSBmcm9tIEphbnVhcnkgMjAyNSBzY29yZSBvZiAxNy8zMCkKICAtIFJlY2FsbDogMC8zCiAgLSBPcmllbnRhdGlvbjogMi8xMAogIC0gU2VyaWFsIHNldmVuczogMi81CiAgLSBUaHJlZS1zdGVwIGNvbW1hbmQ6IDIvMwpMb3NzIHBhdHRlcm4gdW5jaGFuZ2VkIGZyb20gcHJpb3IgYXNzZXNzbWVudC4KCkltYWdpbmcgUmV2aWV3OgpCcmFpbiBNUkkgKDA0LzAyLzIwMjUpIHJldmlld2VkIHdpdGggcGF0aWVudCBhbmQgY2FyZWdpdmVyOiBQcm9ncmVzc2l2ZSBoaXBwb2NhbXBhbCBhdHJvcGh5IGJpbGF0ZXJhbGx5IGFuZCBtaWxkIGNvcnRpY2FsIGF0cm9waHkgcHJvZ3Jlc3Npb24gY29tcGFyZWQgdG8gMjAyMiBiYXNlbGluZSBzdHVkeS4gTm8gYWN1dGUgaW5mYXJjdCwgaGVtb3JyaGFnZSwgbWFzcyBsZXNpb24sIG9yIHVuZXhwZWN0ZWQgZmluZGluZ3MuIE5vIGV2aWRlbmNlIG9mIHZhc2N1bGFyIGV2ZW50cy4gRmluZGluZ3MgY29uc2lzdGVudCB3aXRoIGtub3duIEFsemhlaW1lcidzIGRpc2Vhc2UgdHJhamVjdG9yeS4KCkFTU0VTU01FTlQ6CjEuIEFsemhlaW1lcidzIGRpc2Vhc2UsIG1vZGVyYXRlIHN0YWdlIChHMzAuOS9GMDAuOSkgLSBNTVNFIHN0YWJsZSBhdCAxNy8zMCBvbiBOYW16YXJpYyBhdCAzIG1vbnRocy4gVGhpcyBzdGFiaWxpdHkgaXMgY2F1dGlvdXNseSBlbmNvdXJhZ2luZyBhbmQgc3VwcG9ydHMgY29udGludWVkIGNvbWJpbmF0aW9uIHRoZXJhcHkuIEJyYWluIE1SSSBzaG93cyBleHBlY3RlZCBwcm9ncmVzc2l2ZSBoaXBwb2NhbXBhbCBhbmQgY29ydGljYWwgYXRyb3BoeSB3aXRob3V0IGFjdXRlIHBhdGhvbG9neSBvciB2YXNjdWxhciBldmVudHMuCjIuIE1lZGljYXRpb24gdG9sZXJhbmNlIC0gTmFtemFyaWMgd2VsbCB0b2xlcmF0ZWQgcGVyIGNhcmVnaXZlciByZXBvcnQuIE5vIGFkdmVyc2UgZWZmZWN0cy4KMy4gRnVuY3Rpb25hbCBzdGF0dXMgLSBTdGFibGUgcGVyIGNhcmVnaXZlci4gUGF0aWVudCByZXF1aXJlcyBhc3Npc3RhbmNlIHdpdGggYmF0aGluZywgZHJlc3NpbmcsIGFuZCBtZWRpY2F0aW9uIG1hbmFnZW1lbnQuIEJlbmVmaXRzIGZyb20gT1QtcmVjb21tZW5kZWQgaG9tZSBtb2RpZmljYXRpb25zLiBDYW5ub3QgYmUgbGVmdCBhbG9uZSBmb3IgZXh0ZW5kZWQgcGVyaW9kcy4KNC4gQ2FyZWdpdmVyIHN1cHBvcnQgLSBNYXJnYXJldCBtYW5hZ2luZyB3ZWxsIHdpdGggY3VycmVudCBsZXZlbCBvZiBjYXJlIGRlbWFuZHMuIERpc2N1c3NlZCBmdXR1cmUgcGxhbm5pbmcgYXMgZGlzZWFzZSBwcm9ncmVzc2VzLgoKUExBTjoKMS4gQ29udGludWUgTmFtemFyaWMgKGRvbmVwZXppbCAxMCBtZyAvIG1lbWFudGluZSAyOCBtZyBFUikgb25jZSBkYWlseSBhdCBiZWR0aW1lLiBObyBkb3NlIGFkanVzdG1lbnQgaW5kaWNhdGVkLgoyLiBObyByZXBlYXQgaW1hZ2luZyBuZWVkZWQgYXQgdGhpcyB0aW1lLiBNUkkgZmluZGluZ3MgcmV2aWV3ZWQgYW5kIGNvbnNpc3RlbnQgd2l0aCBleHBlY3RlZCBkaXNlYXNlIGNvdXJzZS4KMy4gQ29udGludWUgY29vcmRpbmF0aW5nIHdpdGggRHIuIEFuaXRhIERlc2FpIGF0IERlS2FsYiBQcmltYXJ5IENhcmUgZm9yIG1hbmFnZW1lbnQgb2YgaHlwZXJ0ZW5zaW9uLCB0eXBlIDIgZGlhYmV0ZXMsIGh5cGVybGlwaWRlbWlhLCBhbmQgdml0YW1pbiBEIGRlZmljaWVuY3kuCjQuIERpc2N1c3NlZCBsb25nLXRlcm0gcGxhbm5pbmcgd2l0aCBNYXJnYXJldC4gQXMgZGlzZWFzZSBwcm9ncmVzc2VzLCBtYXkgbmVlZCB0byBjb25zaWRlciBhZHVsdCBkYXkgcHJvZ3JhbSBmb3Igc3RydWN0dXJlZCBhY3Rpdml0eSBhbmQgc29jaWFsIGVuZ2FnZW1lbnQsIHdoaWNoIHdvdWxkIGFsc28gcHJvdmlkZSByZXNwaXRlIGZvciBNYXJnYXJldCBhcyBjYXJlZ2l2ZXIuCjUuIEZhbGwgcHJldmVudGlvbiBtZWFzdXJlcyByZW1haW4gaW4gcGxhY2UgZm9sbG93aW5nIEZlYnJ1YXJ5IDIwMjUgRUQgdmlzaXQuIEdyYWIgYmFycyBpbnN0YWxsZWQsIHRocm93IHJ1Z3MgcmVtb3ZlZCwgc2hvd2VyIGNoYWlyIGluIHVzZS4KNi4gUmV0dXJuIHRvIGNsaW5pYyBpbiAzIG1vbnRocyAoSnVseSAyMDI1KSBmb3IgcmVwZWF0IE1NU0UgYW5kIGNsaW5pY2FsIHJlYXNzZXNzbWVudC4KNy4gQ29udGludWUgYWR2YW5jZSBjYXJlIHBsYW5uaW5nIGRvY3VtZW50YXRpb24gcGVyIHBhdGllbnQgcHJlZmVyZW5jZXMgKGNvbWZvcnQtZm9jdXNlZCBjYXJlLCBubyBpbnR1YmF0aW9uKSBhcyBwcmV2aW91c2x5IGRpc2N1c3NlZC4KCkxpc2EgTmFrYW11cmEsIE1ELCBQaEQKRW1vcnkgQ29nbml0aXZlIE5ldXJvbG9neSBDZW50ZXIKRGF0ZSBTaWduZWQ6IDA0LzE2LzIwMjUK"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-021"
+            }
+          ],
+          "period": {
+            "start": "2025-04-16",
+            "end": "2025-04-16"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-alzheimers",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-014-alzheimers",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "6736007",
+              "display": "Moderate (severity modifier) (qualifier value)"
+            }
+          ],
+          "text": "Moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "26929004",
+              "display": "Alzheimer's disease (disorder)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "G30.9",
+              "display": "Alzheimer's disease, unspecified"
+            }
+          ],
+          "text": "Alzheimer's disease, moderate stage"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "onsetDateTime": "2022-04",
+        "recordedDate": "2025-01-22",
+        "note": [
+          {
+            "text": "Staging updated from mild to moderate based on MMSE 17/30, MoCA 13/30, and documented functional decline in multiple instrumental and basic ADLs. Five-point MMSE decline over 10 months, accelerated by bereavement and relocation."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 136,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 82,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 76,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mmse-attention",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-mmse-attention",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE attention and calculation subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 3,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 5
+            },
+            "text": "0-5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mmse-language",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-mmse-language",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE language and praxis subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 9,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 9
+            },
+            "text": "0-9"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mmse-orientation",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-mmse-orientation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE orientation subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 10
+            },
+            "text": "0-10"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mmse-recall",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-mmse-recall",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE recall subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 0,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 3
+            },
+            "text": "0-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mmse-registration",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-mmse-registration",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE registration subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 3,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 3
+            },
+            "text": "0-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mmse",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-mmse",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72106-8",
+              "display": "Total score [MMSE]"
+            }
+          ],
+          "text": "Mini-Mental State Examination (MMSE) total score"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "valueQuantity": {
+          "value": 17,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "text": "Moderate cognitive impairment; decline of 2 points from 19/30 three months prior"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 30
+            },
+            "text": "0-30"
+          }
+        ],
+        "hasMember": [
+          {
+            "reference": "Observation/enc-014-mmse-orientation",
+            "display": "MMSE orientation subscore"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-registration",
+            "display": "MMSE registration subscore"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-attention",
+            "display": "MMSE attention and calculation subscore"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-recall",
+            "display": "MMSE recall subscore"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-language",
+            "display": "MMSE language and praxis subscore"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-moca-naming",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-moca-naming",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MoCA naming subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 3
+            },
+            "text": "0-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-moca-orientation",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-moca-orientation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MoCA orientation subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 6
+            },
+            "text": "0-6"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-moca-recall",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-moca-recall",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MoCA delayed recall subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 0,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 5
+            },
+            "text": "0-5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-moca-visuospatial",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-moca-visuospatial",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MoCA visuospatial/executive subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 1,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 5
+            },
+            "text": "0-5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-moca",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-moca",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72172-0",
+              "display": "Total score [MoCA]"
+            }
+          ],
+          "text": "Montreal Cognitive Assessment (MoCA) total score"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "valueQuantity": {
+          "value": 13,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "text": "Moderate cognitive impairment; decline from 20/30 at diagnosis in April 2022"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 30
+            },
+            "text": "0-30"
+          }
+        ],
+        "hasMember": [
+          {
+            "reference": "Observation/enc-014-moca-recall",
+            "display": "MoCA delayed recall subscore"
+          },
+          {
+            "reference": "Observation/enc-014-moca-orientation",
+            "display": "MoCA orientation subscore"
+          },
+          {
+            "reference": "Observation/enc-014-moca-visuospatial",
+            "display": "MoCA visuospatial/executive subscore"
+          },
+          {
+            "reference": "Observation/enc-014-moca-naming",
+            "display": "MoCA naming subscore"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 16,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 97,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "valueQuantity": {
+          "value": 187,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "performer": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 134,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 74,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-mmse-attention",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-mmse-attention",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE attention and calculation subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 5
+            },
+            "text": "0-5"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-mmse-command",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-mmse-command",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE three-step command subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 3
+            },
+            "text": "0-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-mmse-orientation",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-mmse-orientation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE orientation subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 10
+            },
+            "text": "0-10"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-mmse-recall",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-mmse-recall",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "MMSE recall subscore"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 0,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 3
+            },
+            "text": "0-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-mmse",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-mmse",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72106-8",
+              "display": "Total score [MMSE]"
+            }
+          ],
+          "text": "Mini-Mental State Examination (MMSE) total score"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "performer": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "valueQuantity": {
+          "value": 17,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "text": "Moderate cognitive impairment; stable compared to January 2025 score of 17/30"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 30
+            },
+            "text": "0-30"
+          }
+        ],
+        "hasMember": [
+          {
+            "reference": "Observation/enc-021-mmse-recall",
+            "display": "MMSE recall subscore"
+          },
+          {
+            "reference": "Observation/enc-021-mmse-orientation",
+            "display": "MMSE orientation subscore"
+          },
+          {
+            "reference": "Observation/enc-021-mmse-attention",
+            "display": "MMSE attention and calculation subscore"
+          },
+          {
+            "reference": "Observation/enc-021-mmse-command",
+            "display": "MMSE three-step command subscore"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 16,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 98.2,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-021-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-021"
+        },
+        "effectiveDateTime": "2025-04-16",
+        "valueQuantity": {
+          "value": 186,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-medrq-donepezil-stop",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-014-medrq-donepezil-stop",
+        "status": "stopped",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "997223",
+              "display": "donepezil HCl 10 MG Oral Tablet"
+            }
+          ],
+          "text": "donepezil 10 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2025-01-22",
+        "requester": {
+          "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+          "type": "Practitioner",
+          "display": "Dr. Lisa Nakamura"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26929004",
+                "display": "Alzheimer's disease (disorder)"
+              }
+            ],
+            "text": "Alzheimer's disease"
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-alzheimers",
+            "display": "Alzheimer's disease, moderate stage"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "10 mg once daily — discontinued, replaced by Namzaric",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Discontinued at this encounter. Patient progressed to moderate-stage Alzheimer's disease; switched to donepezil/memantine combination (Namzaric)."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-medrq-namzaric",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-014-medrq-namzaric",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1599803",
+              "display": "donepezil HCl 10 MG / memantine HCl 28 MG 24HR Extended Release Oral Capsule"
+            }
+          ],
+          "text": "donepezil 10 mg / memantine 28 mg extended-release oral capsule (Namzaric)"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2025-01-22",
+        "requester": {
+          "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+          "type": "Practitioner",
+          "display": "Dr. Lisa Nakamura"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26929004",
+                "display": "Alzheimer's disease (disorder)"
+              }
+            ],
+            "text": "Alzheimer's disease, moderate stage"
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-alzheimers",
+            "display": "Alzheimer's disease, moderate stage"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one capsule by mouth at bedtime daily",
+            "patientInstruction": "Take one capsule by mouth at bedtime daily",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d",
+                "timeOfDay": [
+                  "21:00:00"
+                ]
+              },
+              "code": {
+                "text": "at bedtime"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1,
+                  "unit": "capsule",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{capsule}"
+                }
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Memantine component added for moderate-stage Alzheimer's disease. May provide additional symptomatic benefit via NMDA receptor antagonism. Counseled caregiver on expected benefits and side effects."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-mri-order",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-014-mri-order",
+        "status": "completed",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "816077007",
+              "display": "Magnetic resonance imaging of brain (procedure)"
+            }
+          ],
+          "text": "Repeat brain MRI for comparison to 2022 baseline imaging"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2025-01-22",
+        "requester": {
+          "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+          "display": "Dr. Lisa Nakamura"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-alzheimers",
+            "display": "Alzheimer's disease, moderate stage"
+          }
+        ],
+        "note": [
+          {
+            "text": "To be obtained prior to next follow-up visit in 3 months for comparison to 2022 imaging to assess interval change."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-ot-referral",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-014-ot-referral",
+        "status": "active",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "306166004",
+              "display": "Referral to occupational therapy service (procedure)"
+            }
+          ],
+          "text": "Referral for occupational therapy — home safety evaluation and adaptive strategies for ADL support"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2025-01-22",
+        "requester": {
+          "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+          "display": "Dr. Lisa Nakamura"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-alzheimers",
+            "display": "Alzheimer's disease, moderate stage"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-neurocog-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-014-neurocog-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "LP248729-8",
+                "display": "Neuropsychology"
+              }
+            ],
+            "text": "Neuropsychology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85877-9",
+              "display": "Neuropsychology Initial evaluation note"
+            }
+          ],
+          "text": "Neurocognitive testing battery report"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2025-01-22",
+        "issued": "2025-01-22T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+            "display": "Dr. Lisa Nakamura"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-014-mmse",
+            "display": "MMSE total score 17/30"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-orientation",
+            "display": "MMSE orientation subscore 2/10"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-registration",
+            "display": "MMSE registration subscore 3/3"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-attention",
+            "display": "MMSE attention and calculation subscore 3/5"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-recall",
+            "display": "MMSE recall subscore 0/3"
+          },
+          {
+            "reference": "Observation/enc-014-mmse-language",
+            "display": "MMSE language and praxis subscore 9/9"
+          },
+          {
+            "reference": "Observation/enc-014-moca",
+            "display": "MoCA total score 13/30"
+          },
+          {
+            "reference": "Observation/enc-014-moca-recall",
+            "display": "MoCA delayed recall subscore 0/5"
+          },
+          {
+            "reference": "Observation/enc-014-moca-orientation",
+            "display": "MoCA orientation subscore 2/6"
+          },
+          {
+            "reference": "Observation/enc-014-moca-visuospatial",
+            "display": "MoCA visuospatial/executive subscore 1/5"
+          },
+          {
+            "reference": "Observation/enc-014-moca-naming",
+            "display": "MoCA naming subscore 2/3"
+          }
+        ],
+        "conclusion": "MMSE 17/30, MoCA 13/30. Cognitive profile consistent with moderate-stage Alzheimer's disease. Prominent deficits in delayed recall, orientation, and visuospatial/executive function with relative preservation of language fluency and motor function."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-mri-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-020-mri-report",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-014-mri-order",
+            "display": "Repeat brain MRI for comparison to 2022 baseline imaging"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24587-8",
+              "display": "MR Brain WO and W contrast IV"
+            }
+          ],
+          "text": "MRI Brain without and with contrast"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-020"
+        },
+        "effectiveDateTime": "2025-04-02",
+        "issued": "2025-04-02T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+            "type": "Organization",
+            "display": "Emory Cognitive Neurology Center"
+          }
+        ],
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26929004",
+                "display": "Alzheimer's disease (disorder)"
+              }
+            ],
+            "text": "Progressive neurodegenerative changes consistent with Alzheimer's disease"
+          }
+        ],
+        "conclusion": "1. Progressive neurodegenerative changes consistent with Alzheimer's disease. Moderate bilateral hippocampal atrophy, progressed from mild on the April 2022 comparison study. 2. Mildly progressive generalized cortical atrophy, most prominent in the temporal and parietal lobes. 3. Chronic small-vessel ischemic white matter changes, Fazekas grade 1-2, mildly progressed. 4. No acute infarct, intracranial hemorrhage, mass lesion, or hydrocephalus.",
+        "presentedForm": [
+          {
+            "contentType": "text/plain",
+            "data": "UkFESU9MT0dZIFJFUE9SVAoKUGF0aWVudDogSGFyb2xkIEphbWVzIFdhc2hpbmd0b24KRE9COiAwOS8xNC8xOTQ2IChBZ2UgNzgpCk1STjogW29uIGZpbGVdCkRhdGUgb2YgRXhhbTogMDQvMDIvMjAyNQpPcmRlcmluZyBQaHlzaWNpYW46IExpc2EgTmFrYW11cmEsIE1ELCBQaEQKRmFjaWxpdHk6IEVtb3J5IENvZ25pdGl2ZSBOZXVyb2xvZ3kgQ2VudGVyLCAxMiBFeGVjdXRpdmUgUGFyayBEcml2ZSBORSwgU3VpdGUgMjAwLCBBdGxhbnRhLCBHQSAzMDMyOQoKRVhBTTogTVJJIEJyYWluIHdpdGhvdXQgYW5kIHdpdGggY29udHJhc3QKCkNMSU5JQ0FMIElORElDQVRJT046IEFsemhlaW1lcidzIGRpc2Vhc2UsIG1vZGVyYXRlIHN0YWdlLiBQcm9ncmVzc2l2ZSBjb2duaXRpdmUgZGVjbGluZS4gQ29tcGFyaXNvbiB0byBwcmlvciBicmFpbiBNUkkgcmVxdWVzdGVkLgoKQ09NUEFSSVNPTjogTVJJIEJyYWluIGRhdGVkIEFwcmlsIDIwMjIsIEZpcnN0IENvYXN0IE5ldXJvbG9neSBBc3NvY2lhdGVzLCBKYWNrc29udmlsbGUsIEZMLgoKVEVDSE5JUVVFOiBNdWx0aXBsYW5hciwgbXVsdGlzZXF1ZW5jZSBNUkkgb2YgdGhlIGJyYWluIHdhcyBwZXJmb3JtZWQgd2l0aG91dCBhbmQgd2l0aCBpbnRyYXZlbm91cyBnYWRvbGluaXVtIGNvbnRyYXN0IG9uIGEgM1QgbWFnbmV0LiBTZXF1ZW5jZXMgaW5jbHVkZSBzYWdpdHRhbCBUMSwgYXhpYWwgVDIsIGF4aWFsIEZMQUlSLCBheGlhbCBEV0kvQURDLCBheGlhbCBTV0ksIGNvcm9uYWwgVDIgdGhyb3VnaCB0aGUgaGlwcG9jYW1waSwgYW5kIHBvc3QtY29udHJhc3QgYXhpYWwgYW5kIGNvcm9uYWwgVDEtd2VpZ2h0ZWQgaW1hZ2VzLgoKRklORElOR1M6CgpDZXJlYnJhbCBwYXJlbmNoeW1hOiBHZW5lcmFsaXplZCBjb3J0aWNhbCBhdHJvcGh5IGhhcyBtaWxkbHkgcHJvZ3Jlc3NlZCBjb21wYXJlZCB0byB0aGUgQXByaWwgMjAyMiBzdHVkeSwgbW9zdCBwcm9taW5lbnQgaW4gdGhlIHRlbXBvcmFsIGFuZCBwYXJpZXRhbCBsb2Jlcy4gTm8gcmVzdHJpY3RlZCBkaWZmdXNpb24gdG8gc3VnZ2VzdCBhY3V0ZSBpbmZhcmN0LiBObyBpbnRyYWNyYW5pYWwgaGVtb3JyaGFnZS4gTm8gbWFzcyBsZXNpb24gb3IgYWJub3JtYWwgZW5oYW5jZW1lbnQuCgpIaXBwb2NhbXBpOiBQcm9ncmVzc2l2ZSBiaWxhdGVyYWwgaGlwcG9jYW1wYWwgYXRyb3BoeSBjb21wYXJlZCB0byB0aGUgQXByaWwgMjAyMiBzdHVkeSwgbm93IG1vZGVyYXRlIGluIHNldmVyaXR5LiBCaWxhdGVyYWwgbWVkaWFsIHRlbXBvcmFsIGxvYmUgdm9sdW1lIGxvc3MgaXMgZXZpZGVudCBvbiBjb3JvbmFsIHNlcXVlbmNlcy4KCldoaXRlIG1hdHRlcjogQ2hyb25pYyBzbWFsbC12ZXNzZWwgaXNjaGVtaWMgd2hpdGUgbWF0dGVyIGNoYW5nZXMgYXJlIHByZXNlbnQsIEZhemVrYXMgZ3JhZGUgMS0yLCBtaWxkbHkgcHJvZ3Jlc3NlZCBmcm9tIHByaW9yIGV4YW0uIFN0YWJsZSBtaWxkIHBlcml2ZW50cmljdWxhciB3aGl0ZSBtYXR0ZXIgaHlwZXJpbnRlbnNpdGllcyBvbiBGTEFJUiBzZXF1ZW5jZXMuCgpWZW50cmljbGVzIGFuZCBleHRyYS1heGlhbCBzcGFjZXM6IE5vIGh5ZHJvY2VwaGFsdXMuIFZlbnRyaWNsZXMgYXJlIHByb3BvcnRpb25hdGUgdG8gdGhlIGRlZ3JlZSBvZiBjb3J0aWNhbCBhdHJvcGh5LiBObyBleHRyYS1heGlhbCBmbHVpZCBjb2xsZWN0aW9uLgoKUG9zdGVyaW9yIGZvc3NhOiBVbnJlbWFya2FibGUuIE5vIGNlcmViZWxsYXIgYXRyb3BoeS4KClZhc2N1bGFyIHN0cnVjdHVyZXM6IE5vcm1hbCBmbG93IHZvaWRzIGluIHRoZSBtYWpvciBpbnRyYWNyYW5pYWwgdmVzc2Vscy4gTm8gYW5ldXJ5c20gaWRlbnRpZmllZC4KCk9yYml0cywgc2ludXNlcywgY2FsdmFyaXVtOiBVbnJlbWFya2FibGUuCgpJTVBSRVNTSU9OOgoxLiBQcm9ncmVzc2l2ZSBuZXVyb2RlZ2VuZXJhdGl2ZSBjaGFuZ2VzIGNvbnNpc3RlbnQgd2l0aCBBbHpoZWltZXIncyBkaXNlYXNlLiBNb2RlcmF0ZSBiaWxhdGVyYWwgaGlwcG9jYW1wYWwgYXRyb3BoeSwgcHJvZ3Jlc3NlZCBmcm9tIG1pbGQgb24gdGhlIEFwcmlsIDIwMjIgY29tcGFyaXNvbiBzdHVkeS4KMi4gTWlsZGx5IHByb2dyZXNzaXZlIGdlbmVyYWxpemVkIGNvcnRpY2FsIGF0cm9waHksIG1vc3QgcHJvbWluZW50IGluIHRoZSB0ZW1wb3JhbCBhbmQgcGFyaWV0YWwgbG9iZXMuCjMuIENocm9uaWMgc21hbGwtdmVzc2VsIGlzY2hlbWljIHdoaXRlIG1hdHRlciBjaGFuZ2VzLCBGYXpla2FzIGdyYWRlIDEtMiwgbWlsZGx5IHByb2dyZXNzZWQuCjQuIE5vIGFjdXRlIGluZmFyY3QsIGludHJhY3JhbmlhbCBoZW1vcnJoYWdlLCBtYXNzIGxlc2lvbiwgb3IgaHlkcm9jZXBoYWx1cy4KClJlc3VsdHMgZm9yd2FyZGVkIHRvIERyLiBMaXNhIE5ha2FtdXJhIGZvciByZXZpZXcgYXQgdXBjb21pbmcgZm9sbG93LXVwIHZpc2l0LiBDbGluaWNhbCBjb3JyZWxhdGlvbiB3aXRoIG5ldXJvY29nbml0aXZlIHRlc3RpbmcgcmVjb21tZW5kZWQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6ClJhZGlvbG9naXN0LCBNRApFbW9yeSBJbWFnaW5nIFNlcnZpY2VzCjA0LzAyLzIwMjUK",
+            "title": "MRI Brain without and with contrast - Radiology Report"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-014",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11429006",
+                "display": "Consultation (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2025-01-22",
+              "end": "2025-01-22"
+            },
+            "individual": {
+              "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+              "display": "Dr. Lisa Nakamura"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-01-22",
+          "end": "2025-01-22"
+        },
+        "reasonCode": [
+          {
+            "text": "Comprehensive geriatric neurology evaluation; initial evaluation at new specialty center for known Alzheimer's disease with progressive cognitive decline"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+              "display": "Emory Cognitive Neurology Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+          "display": "Emory Cognitive Neurology Center"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Harold Washington, age 78, presented for an initial comprehensive evaluation at the Emory Cognitive Neurology Center, referred by Dr. Raymond Patel (First Coast Neurology, Jacksonville) and Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-020",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "7396004",
+                "display": "Diagnostic imaging (procedure)"
+              }
+            ],
+            "text": "Imaging"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "REF",
+                    "display": "referrer"
+                  }
+                ],
+                "text": "Ordering Physician"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+              "display": "Dr. Lisa Nakamura"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-04-02",
+          "end": "2025-04-02"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26929004",
+                "display": "Alzheimer's disease (disorder)"
+              }
+            ],
+            "text": "Brain MRI for Alzheimer's disease monitoring"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+              "display": "Emory Cognitive Neurology Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+          "display": "Emory Cognitive Neurology Center"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Harold presented to Emory Imaging for a brain MRI without and with contrast, ordered by Dr. Nakamura for comparison to the April 2022 MRI from Jacksonville."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-021",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185389009",
+                "display": "Follow-up visit (procedure)"
+              }
+            ],
+            "text": "Follow-up Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2025-04-16",
+              "end": "2025-04-16"
+            },
+            "individual": {
+              "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+              "display": "Dr. Lisa Nakamura"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-04-16",
+          "end": "2025-04-16"
+        },
+        "reasonCode": [
+          {
+            "text": "Follow-up evaluation, brain MRI review, cognitive monitoring for Alzheimer's disease"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+              "display": "Emory Cognitive Neurology Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+          "display": "Emory Cognitive Neurology Center"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Harold, age 78, returned to Dr. Nakamura for his three-month follow-up."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-brain-mri",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "enc-020-brain-mri",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-014-mri-order",
+            "display": "Repeat brain MRI for comparison to 2022 baseline imaging"
+          }
+        ],
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "816077007",
+              "display": "Magnetic resonance imaging of brain (procedure)"
+            }
+          ],
+          "text": "MRI of brain without and with intravenous gadolinium contrast"
+        },
+        "subject": {
+          "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-020"
+        },
+        "performedDateTime": "2025-04-02",
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-alzheimers",
+            "display": "Alzheimer's disease, moderate stage"
+          }
+        ],
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "12738006",
+                "display": "Brain structure (body structure)"
+              }
+            ],
+            "text": "Brain"
+          }
+        ],
+        "report": [
+          {
+            "reference": "DiagnosticReport/enc-020-mri-report",
+            "display": "MRI Brain without and with contrast report"
+          }
+        ]
+      }
+    }
+  ]
+}

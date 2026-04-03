@@ -1,0 +1,41 @@
+{
+  "resourceType": "Location",
+  "id": "73c24cc9-84fa-4e00-b8af-76200f737982",
+  "status": "active",
+  "name": "UW Health University Student Health Services",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "PC",
+          "display": "Primary care clinic"
+        }
+      ],
+      "text": "University Student Health Center"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "608-265-5600",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "333 East Campus Mall",
+      "Floor 4"
+    ],
+    "city": "Madison",
+    "state": "WI",
+    "postalCode": "53715",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/fbf9d609-1209-4829-a359-f646331955be",
+    "display": "UW Health University Student Health Services"
+  }
+}

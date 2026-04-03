@@ -1,0 +1,333 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "486b21ea-5a35-437c-b09f-284d596c5073",
+    "extension": [
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2028-9",
+              "display": "Asian"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2029-7",
+              "display": "Asian Indian"
+            },
+            "url": "detailed"
+          },
+          {
+            "valueString": "Asian Indian",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Not Hispanic or Latino",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      }
+    ],
+    "identifier": [
+      {
+        "use": "usual",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "MR",
+              "display": "Medical Record Number"
+            }
+          ],
+          "text": "Medical Record Number"
+        },
+        "system": "urn:oid:1.2.840.114350.1.13.triangle-pediatrics",
+        "value": "TP-20200315-001"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Patel",
+        "given": [
+          "Aisha",
+          "Priya"
+        ]
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "(919) 555-0142",
+        "use": "home"
+      }
+    ],
+    "gender": "female",
+    "birthDate": "2020-03-15",
+    "address": [
+      {
+        "use": "home",
+        "line": [
+          "802 Millbrook Road"
+        ],
+        "city": "Raleigh",
+        "district": "Wake County",
+        "state": "NC",
+        "postalCode": "27609",
+        "country": "US"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+          "code": "UNK",
+          "display": "unknown"
+        }
+      ],
+      "text": "N/A (minor child)"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ],
+    "contact": [
+      {
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                "code": "N",
+                "display": "Next-of-Kin"
+              }
+            ],
+            "text": "Parent"
+          }
+        ],
+        "name": {
+          "use": "official",
+          "family": "Patel",
+          "given": [
+            "Priya"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(919) 555-0142",
+            "use": "home"
+          }
+        ],
+        "address": {
+          "use": "home",
+          "city": "Raleigh",
+          "district": "Wake County",
+          "state": "NC",
+          "postalCode": "27609",
+          "country": "US"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "61e4fff9-645e-42cb-9c0d-840a3ef27819",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "National Provider Identifier"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1497823156"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Pediatric primary care"
+      }
+    ],
+    "name": "Triangle Pediatrics",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "(919) 555-0300",
+        "use": "work"
+      },
+      {
+        "system": "fax",
+        "value": "(919) 555-0301",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "line": [
+          "4201 Lake Boone Trail",
+          "Suite 200"
+        ],
+        "city": "Raleigh",
+        "state": "NC",
+        "postalCode": "27607",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "National Provider Identifier"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1184627530"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Harlow",
+        "given": [
+          "Megan"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Pediatrician"
+        },
+        "issuer": {
+          "display": "North Carolina Medical Board"
+        }
+      },
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://nucc.org/provider-taxonomy",
+              "code": "208000000X",
+              "display": "Pediatrics"
+            }
+          ],
+          "text": "Pediatrics"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Location",
+    "id": "b975c904-df4e-4d64-a7d3-793b906dc500",
+    "status": "active",
+    "name": "Triangle Pediatrics",
+    "description": "Triangle Pediatrics main clinical location",
+    "mode": "instance",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "PEDU",
+            "display": "Pediatric unit"
+          }
+        ],
+        "text": "Pediatric primary care clinic"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "(919) 555-0300",
+        "use": "work"
+      },
+      {
+        "system": "fax",
+        "value": "(919) 555-0301",
+        "use": "work"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "line": [
+        "4201 Lake Boone Trail",
+        "Suite 200"
+      ],
+      "city": "Raleigh",
+      "state": "NC",
+      "postalCode": "27607",
+      "country": "US"
+    },
+    "managingOrganization": {
+      "reference": "Organization/61e4fff9-645e-42cb-9c0d-840a3ef27819",
+      "display": "Triangle Pediatrics"
+    }
+  }
+]

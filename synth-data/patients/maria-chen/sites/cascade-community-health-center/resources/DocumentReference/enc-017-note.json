@@ -1,0 +1,57 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-017-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Laboratory Results Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "date": "2026-03-12T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCT1JBVE9SWSBSRVNVTFRTIE5PVEUKCkRhdGU6IDAzLzEyLzIwMjYKUGF0aWVudDogTWFyaWEgQ2hlbgpET0I6IDA5LzE0LzE5ODMKT3JkZXJpbmcgUHJvdmlkZXI6IERyLiBBbmdlbGEgTW9yYWxlcywgTUQKTG9jYXRpb246IENhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIsIDgyMDUgU0UgRm9zdGVyIFJvYWQsIFBvcnRsYW5kLCBPUiA5NzIwNgoKSU5ESUNBVElPTjoKQW5udWFsIHdlbGxuZXNzIGxhYnMgb3JkZXJlZCBhdCBwcmV2ZW50aXZlIHZpc2l0IG9uIDAzLzEwLzIwMjYuIEZhc3RpbmcgYmxvb2QgZHJhdyBjb21wbGV0ZWQgMDMvMTIvMjAyNi4KClJFU1VMVFM6CgpIZW1vZ2xvYmluIEExYzogNS40JSAobm9ybWFsLCA8NS43JSkKRmFzdGluZyBHbHVjb3NlOiA5NCBtZy9kTCAobm9ybWFsKQoKTGlwaWQgUGFuZWw6CiAgVG90YWwgQ2hvbGVzdGVyb2w6IDE5OCBtZy9kTAogIExETDogMTE4IG1nL2RMCiAgSERMOiA1MiBtZy9kTAogIFRyaWdseWNlcmlkZXM6IDE0MCBtZy9kTAoKQ0JDOgogIFdCQzogNi44IHgxMF4zL3VMIChub3JtYWwpCiAgSGVtb2dsb2JpbjogMTMuMiBnL2RMIChub3JtYWwpCiAgSGVtYXRvY3JpdDogMzkuNCUgKG5vcm1hbCkKICBQbGF0ZWxldHM6IDI0NSB4MTBeMy91TCAobm9ybWFsKQoKQ29tcHJlaGVuc2l2ZSBNZXRhYm9saWMgUGFuZWw6CiAgQlVOOiAxMyBtZy9kTAogIENyZWF0aW5pbmU6IDAuOCBtZy9kTAogIFNvZGl1bTogMTM5IG1FcS9MCiAgUG90YXNzaXVtOiA0LjAgbUVxL0wKICBDaGxvcmlkZTogMTAxIG1FcS9MCiAgQ08yOiAyNSBtRXEvTAogIENhbGNpdW06IDkuNSBtZy9kTAogIEFsYnVtaW46IDQuMSBnL2RMCiAgVG90YWwgUHJvdGVpbjogNy4xIGcvZEwKICBBTFA6IDU1IFUvTAogIEFTVDogMjAgVS9MCiAgQUxUOiAxNyBVL0wKICBUb3RhbCBCaWxpcnViaW46IDAuNSBtZy9kTAoKSU5URVJQUkVUQVRJT046CkFsbCBsYWJvcmF0b3J5IHJlc3VsdHMgd2l0aGluIG5vcm1hbCBsaW1pdHMuIEhiQTFjIDUuNCUgYW5kIGZhc3RpbmcgZ2x1Y29zZSA5NCBtZy9kTCBhcmUgcmVhc3N1cmluZyBnaXZlbiBmYW1pbHkgaGlzdG9yeSBvZiBkaWFiZXRlcyAobW90aGVyKS4gTGlwaWQgcGFuZWwgaXMgYWNjZXB0YWJsZTsgTERMIDExOCBpcyBib3JkZXJsaW5lIGJ1dCBhcHByb3ByaWF0ZSBmb3IgaGVyIGFnZSBhbmQgcmlzayBwcm9maWxlIHdpdGhvdXQgaW5kaWNhdGlvbiBmb3IgcGhhcm1hY290aGVyYXB5IGF0IHRoaXMgdGltZS4gQ0JDIGFuZCBDTVAgYXJlIHVucmVtYXJrYWJsZSB3aXRoIG5vcm1hbCByZW5hbCBmdW5jdGlvbiwgaGVwYXRpYyBmdW5jdGlvbiwgYW5kIGVsZWN0cm9seXRlcy4KClBMQU46Ck5vIGNoYW5nZXMgdG8gY3VycmVudCBjYXJlIHBsYW4uIFJlc3VsdHMgY29tbXVuaWNhdGVkIHRvIHBhdGllbnQgdmlhIHBvcnRhbCBtZXNzYWdlLiBSb3V0aW5lIGxhYnMgdG8gYmUgcmVwZWF0ZWQgYXQgbmV4dCBhbm51YWwgd2VsbG5lc3MgdmlzaXQuCgpSZXZpZXdlZCBhbmQgZWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpEci4gQW5nZWxhIE1vcmFsZXMsIE1ECjAzLzEyLzIwMjYK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-017"
+      }
+    ],
+    "period": {
+      "start": "2026-03-12"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit / preventive care office visit",
+    "reason": "annual wellness exam",
+    "period_start": "2024-04-22",
+    "period_end": "2024-04-22",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending/primary performer"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "date": "2024-04-22",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 126,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 78,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "date": "2024-04-22",
+        "value": 68,
+        "unit": "bpm",
+        "note": "regular rhythm"
+      },
+      {
+        "name": "body weight",
+        "date": "2024-04-22",
+        "value": 179,
+        "unit": "lbs",
+        "value_alt": 81.2,
+        "unit_alt": "kg"
+      },
+      {
+        "name": "body height",
+        "date": "2024-04-22",
+        "value": 69,
+        "unit": "in",
+        "value_alt": 175.3,
+        "unit_alt": "cm"
+      },
+      {
+        "name": "body mass index",
+        "date": "2024-04-22",
+        "value": 26.4,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "date": "2024-04-22",
+        "value": 98,
+        "unit": "degF",
+        "value_alt": 36.7,
+        "unit_alt": "degC"
+      },
+      {
+        "name": "respiratory rate",
+        "date": "2024-04-22",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "date": "2024-04-22",
+        "value": 99,
+        "unit": "%"
+      }
+    ],
+    "labs": [
+      {
+        "name": "LDL cholesterol",
+        "date": "2024-04-15",
+        "value": 122,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "triglycerides",
+        "date": "2024-04-15",
+        "value": 135,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "blood"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "date": "2024-04-22",
+        "score": 1,
+        "interpretation": "negative",
+        "note": "Patient endorsed 'little interest or pleasure in doing things' as 'several days,' attributed to winter seasonal pattern. No depressed mood endorsed. Below threshold; PHQ-9 follow-up not indicated."
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "take 1 tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "take 1 capsule by mouth once daily",
+      "status": "active",
+      "reason": "dietary supplement for lipid management",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Annual wellness visit note documenting comprehensive exam, review of systems, physical exam findings, vital signs, PHQ-2 screening (negative, score 1), review of lipid panel results from 04/15/2024 (LDL 122, triglycerides 135), preventive care checklist (colonoscopy 2019 normal — repeat 2029, Shingrix series complete 2023, Tdap 2022 — next 2032, flu and COVID boosters planned fall 2024), and updated care plan for hypertension (well-controlled on lisinopril) and hyperlipidemia (continued dietary management)."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "summary-only",
+      "description": "Lipid panel drawn 2024-04-15, reviewed at this encounter. Only LDL (122 mg/dL) and triglycerides (135 mg/dL) values are documented in the clinical note. Total cholesterol and HDL are not reported. Provider notes continuing gradual downward trend in LDL from baseline of 138 in 2019 and improved triglycerides. Full panel component values not available in the narrative."
+    }
+  ],
+  "allergies": []
+}

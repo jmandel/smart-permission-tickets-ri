@@ -1,0 +1,66 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-002-cerave",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "text": "Ceramide-based moisturizer (CeraVe)"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "authoredOn": "2022-11-14",
+  "requester": {
+    "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+    "display": "Dr. Sunita Krishnamurthy",
+    "type": "Practitioner"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-002-atopic-dermatitis",
+      "display": "Atopic dermatitis, moderate"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Apply to affected areas daily for skin barrier maintenance",
+      "patientInstruction": "Apply to affected areas daily for skin barrier maintenance",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        },
+        "code": {
+          "text": "daily"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "6064005",
+            "display": "Topical route (qualifier value)"
+          }
+        ],
+        "text": "Topical"
+      }
+    }
+  ]
+}

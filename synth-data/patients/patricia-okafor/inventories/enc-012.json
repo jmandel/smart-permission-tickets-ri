@@ -1,0 +1,69 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "nuclear medicine imaging encounter",
+    "reason": "PET/CT staging of suspected lung malignancy",
+    "period_start": "2024-09-23",
+    "period_end": "2024-09-23",
+    "participants": [],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "blood glucose",
+        "value": 112,
+        "unit": "mg/dL",
+        "context": "fasting blood glucose measured at time of FDG injection; acceptable threshold is <200 mg/dL",
+        "flag": "normal",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "suspected malignant neoplasm of right upper lobe of lung",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mediastinal lymphadenopathy",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "diagnostic imaging report",
+      "description": "Formal nuclear medicine diagnostic report for whole-body FDG PET/CT performed for staging of suspected lung malignancy in a 62-year-old female. Documents technique (6-hour fast, blood glucose 112 mg/dL, 12.4 mCi F-18 FDG IV, 60-minute uptake), detailed findings by body region (intensely FDG-avid right upper lobe mass 4.3 × 3.8 cm with SUVmax 12.4; FDG-avid right paratracheal node station 4R 2.1 cm SUVmax 8.1; FDG-avid subcarinal node station 7 1.5 cm SUVmax 6.3; no distant metastases), and impression of clinical stage III lung malignancy with recommendation for brain MRI and mediastinal node biopsy.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "whole-body FDG PET/CT",
+      "report_state": "summary-only",
+      "description": "Imaging study for staging of suspected lung malignancy. Findings include an intensely FDG-avid right upper lobe mass measuring 4.3 × 3.8 cm (SUVmax 12.4) highly suspicious for primary lung malignancy; FDG-avid right paratracheal lymph node at station 4R measuring 2.1 cm short axis (SUVmax 8.1); FDG-avid subcarinal lymph node at station 7 measuring 1.5 cm short axis (SUVmax 6.3). No FDG-avid lesions in the contralateral lung, liver, adrenal glands, skeleton, or visualized brain. No distant metastases. Overall staging assessment: metabolically active right upper lobe mass with ipsilateral mediastinal lymphadenopathy consistent with clinical stage III lung malignancy pending tissue confirmation. At least N2 nodal involvement. Recommendation for brain MRI with contrast and mediastinal lymph node tissue sampling."
+    }
+  ],
+  "allergies": []
+}

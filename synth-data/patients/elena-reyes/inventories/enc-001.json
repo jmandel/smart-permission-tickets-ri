@@ -1,0 +1,144 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "lone-star-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Missed abortion diagnosed, expectant management counseling",
+    "period_start": "2020-02-07",
+    "period_end": "2020-02-07",
+    "participants": [],
+    "service_provider": "Lone Star Women's Health",
+    "location": "Lone Star Women's Health, Austin, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "108/70",
+        "unit": "mmHg",
+        "reference_range": "< 120/80 mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": "74",
+        "unit": "beats per minute",
+        "reference_range": "60–100 bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.4",
+        "unit": "degrees Fahrenheit",
+        "reference_range": "97–99°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14",
+        "unit": "breaths per minute",
+        "reference_range": "12–20"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "99",
+        "unit": "percent",
+        "reference_range": "≥ 95%"
+      },
+      {
+        "name": "body weight",
+        "value": "138",
+        "unit": "pounds"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": "12.6",
+        "unit": "grams per deciliter",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "white blood cell count",
+        "value": "7.8",
+        "unit": "thousands per microliter",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": "248",
+        "unit": "thousands per microliter",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "blood type",
+        "value": "A positive"
+      }
+    ],
+    "screening": [
+      {
+        "name": "crown-rump length",
+        "value": "9 weeks 4 days",
+        "note": "Ultrasound measurement consistent with gestational age; confirms intrauterine location"
+      },
+      {
+        "name": "fetal cardiac activity",
+        "value": "absent",
+        "note": "No fetal cardiac activity detected; confirms fetal demise (missed abortion)"
+      },
+      {
+        "name": "adnexal mass",
+        "value": "not identified",
+        "note": "No adnexal mass; rules out ectopic pregnancy or other adnexal pathology"
+      },
+      {
+        "name": "pelvic free fluid",
+        "value": "none",
+        "note": "No free fluid in pelvis; no peritoneal hemorrhage or other fluid collection"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "missed abortion",
+      "clinical_status": "active",
+      "onset_date": "2020-02-07",
+      "action": "create",
+      "note": "First trimester pregnancy loss; intrauterine gestation measuring 9 weeks 4 days with no fetal cardiac activity on transvaginal ultrasound"
+    },
+    {
+      "name": "emotional distress related to pregnancy loss",
+      "clinical_status": "active",
+      "onset_date": "2020-02-07",
+      "action": "create",
+      "note": "Secondary to missed abortion diagnosis; patient tearful but appropriate; emotional support counseling provided"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "document_type": "clinical progress note",
+      "author": "Dr. Carmen Villanueva",
+      "date": "2020-02-07",
+      "description": "Office visit note documenting evaluation of first-trimester pregnancy loss, vital signs, transvaginal ultrasound findings confirming missed abortion, CBC results, assessment of missed abortion with clinical stability, counseling on management options (expectant, medical, surgical), patient's informed choice of expectant management, warning signs education, and follow-up plan for 1–2 weeks"
+    },
+    {
+      "document_type": "patient education handout",
+      "author": "Dr. Carmen Villanueva",
+      "date": "2020-02-07",
+      "description": "Written discharge instructions detailing expected course with expectant management, anticipated vaginal bleeding and cramping over 1–2 weeks, warning signs requiring urgent/emergency evaluation (soaking more than 2 pads per hour, fever, severe pain, dizziness, syncope, foul-smelling discharge), activity recommendations, self-care guidance, and office contact information"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "transvaginal obstetric ultrasound",
+      "report_state": "summary-only",
+      "description": "Transvaginal ultrasound demonstrating intrauterine pregnancy with crown-rump length consistent with 9 weeks 4 days gestation. No fetal cardiac activity detected, confirming fetal demise (missed abortion). No adnexal mass or free fluid identified. Findings rule out ectopic pregnancy, hemorrhagic complication, or infection; patient clinically stable"
+    }
+  ],
+  "allergies": []
+}

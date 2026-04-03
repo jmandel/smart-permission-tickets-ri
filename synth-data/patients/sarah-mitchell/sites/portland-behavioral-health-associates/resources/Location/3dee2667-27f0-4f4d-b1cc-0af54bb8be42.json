@@ -1,0 +1,39 @@
+{
+  "resourceType": "Location",
+  "id": "3dee2667-27f0-4f4d-b1cc-0af54bb8be42",
+  "status": "active",
+  "name": "Portland Behavioral Health Associates",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient psychiatry practice"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "503-555-0192",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "1520 NW 18th Ave",
+      "Suite 304"
+    ],
+    "city": "Portland",
+    "state": "OR",
+    "postalCode": "97209"
+  },
+  "managingOrganization": {
+    "reference": "Organization/3601e30e-19fa-4e51-b964-bac8e73581df",
+    "display": "Portland Behavioral Health Associates"
+  }
+}

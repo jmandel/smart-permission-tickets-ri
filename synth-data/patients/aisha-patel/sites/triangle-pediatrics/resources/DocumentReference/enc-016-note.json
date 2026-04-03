@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-016-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Immunization Visit Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "date": "2025-10-14T00:00:00-04:00",
+  "author": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "type": "Practitioner",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "SU1NVU5JWkFUSU9OIFZJU0lUIE5PVEUKCkRhdGU6IDEwLzE0LzIwMjUKUGF0aWVudDogQWlzaGEgUHJpeWEgUGF0ZWwKRE9COiAwMy8xNS8yMDIwIChBZ2UgNSB5ZWFycykKTVJOOiBUUC0yMDIwLTA0MTgyCkNsaW5pY2lhbjogRHIuIE1lZ2FuIEhhcmxvdywgTUQKTG9jYXRpb246IFRyaWFuZ2xlIFBlZGlhdHJpY3MsIDQyMDEgTGFrZSBCb29uZSBUcmFpbCwgU3VpdGUgMjAwLCBSYWxlaWdoLCBOQyAyNzYwNwoKUkVBU09OIEZPUiBWSVNJVDoKQW5udWFsIGluZmx1ZW56YSB2YWNjaW5hdGlvbi4KCkhJU1RPUlk6CkFpc2hhIHByZXNlbnRzIHRvZGF5IGZvciBoZXIgYW5udWFsIGluZmx1ZW56YSB2YWNjaW5lLiBObyBhY3V0ZSBjb21wbGFpbnRzIGF0IHRoaXMgdGltZS4gTW90aGVyIFByaXlhIFBhdGVsIHJlcG9ydHMgdGhhdCB0aGUgbW9ybmluZyBjb3VnaCBkaXNjdXNzZWQgZHVyaW5nIGEgdGVsZXBob25lIGVuY291bnRlciB0aGUgcHJpb3Igd2VlayBoYXMgZnVsbHkgcmVzb2x2ZWQuIE5vIGZldmVycywgcmhpbm9ycmhlYSwgd2hlZXppbmcsIG9yIHJlc3BpcmF0b3J5IGRpc3RyZXNzLiBObyByZWNlbnQgaWxsbmVzcyB0aGF0IHdvdWxkIGNvbnRyYWluZGljYXRlIHZhY2NpbmF0aW9uLgoKUmVsZXZhbnQgaGlzdG9yeTogU2V2ZXJlIHBlcnNpc3RlbnQgYXN0aG1hIG9uIEFkdmFpciBIRkEgMTE1LzIxIDEgcHVmZiBCSUQsIG1vbnRlbHVrYXN0IDQgbWcgZGFpbHksIGFuZCBQUk4gYWxidXRlcm9sLiBQZWFudXQgYWxsZXJneSB3aXRoIGhpc3Rvcnkgb2YgYW5hcGh5bGF4aXMuIFRyZWUgbnV0IGFsbGVyZ3kgKGNhc2hldywgYWxtb25kLCB3YWxudXQpLiBObyBrbm93biBlZ2cgYWxsZXJneS4gTm8ga25vd24gZHJ1ZyBhbGxlcmdpZXMuIE5vIHByaW9yIGFkdmVyc2UgcmVhY3Rpb25zIHRvIGluZmx1ZW56YSB2YWNjaW5lLgoKVklUQUxTIChhYmJyZXZpYXRlZCBwZXIgaW1tdW5pemF0aW9uIHZpc2l0IHByb3RvY29sKToKV2VpZ2h0OiAyMC4yIGtnICg1NHRoIHBlcmNlbnRpbGUpClRlbXA6IDM2LjYgQwpIUjogOTQgYnBtCgpJTU1VTklaQVRJT04gQURNSU5JU1RFUkVEOgpJbmZsdWVuemEgdmFjY2luZSwgcXVhZHJpdmFsZW50IGluYWN0aXZhdGVkIChJSVY0KSwgMC41IG1MLCBpbnRyYW11c2N1bGFyIGluamVjdGlvbiwgbGVmdCBkZWx0b2lkLiBMb3QgbnVtYmVyIGRvY3VtZW50ZWQgaW4gaW1tdW5pemF0aW9uIHJlY29yZC4gVmFjY2luZSBJbmZvcm1hdGlvbiBTdGF0ZW1lbnQgKFZJUykgcHJvdmlkZWQgdG8gbW90aGVyIFByaXlhIFBhdGVsIGFuZCByZXZpZXdlZCBwcmlvciB0byBhZG1pbmlzdHJhdGlvbi4gQ29uc2VudCBvYnRhaW5lZC4KClBPU1QtQURNSU5JU1RSQVRJT04gT0JTRVJWQVRJT046CkFpc2hhIHRvbGVyYXRlZCB0aGUgaW5qZWN0aW9uIHdlbGwuIE5vIGltbWVkaWF0ZSBhZHZlcnNlIHJlYWN0aW9uIG9ic2VydmVkLiBObyB1cnRpY2FyaWEsIGFuZ2lvZWRlbWEsIHdoZWV6aW5nLCBvciBjaGFuZ2UgaW4gcmVzcGlyYXRvcnkgc3RhdHVzLiAxNS1taW51dGUgcG9zdC12YWNjaW5hdGlvbiBvYnNlcnZhdGlvbiBwZXJpb2QgY29tcGxldGVkIHVuZXZlbnRmdWxseS4gUGF0aWVudCByZW1haW5lZCBoZW1vZHluYW1pY2FsbHkgc3RhYmxlIGFuZCBpbiBubyBkaXN0cmVzcyB0aHJvdWdob3V0LgoKQVNTRVNTTUVOVDoKMS4gQW5udWFsIGluZmx1ZW56YSBpbW11bml6YXRpb24gYWRtaW5pc3RlcmVkIHdpdGhvdXQgY29tcGxpY2F0aW9uLgoyLiBTZXZlcmUgcGVyc2lzdGVudCBhc3RobWEgLSBzdGFibGUsIG5vIGFjdXRlIHN5bXB0b21zIHRvZGF5LiBDb250aW51ZSBjdXJyZW50IGNvbnRyb2xsZXIgcmVnaW1lbi4KMy4gUGVhbnV0IGFuZCB0cmVlIG51dCBhbGxlcmd5IHdpdGggaGlzdG9yeSBvZiBhbmFwaHlsYXhpcyAtIEVwaVBlbiBKciBhdmFpbGFibGUsIG5vIGV4cG9zdXJlcyByZXBvcnRlZC4KClBMQU46CjEuIEltbXVuaXphdGlvbiBhZG1pbmlzdHJhdGlvbiByZWNvcmQgZ2VuZXJhdGVkIGFuZCBmaWxlZC4KMi4gSW1tdW5pemF0aW9uIGhpc3RvcnkgdXBkYXRlZCBpbiBwYXRpZW50IGNoYXJ0LgozLiBDb250aW51ZSBhbGwgY3VycmVudCBtZWRpY2F0aW9ucyBhcyBwcmVzY3JpYmVkLgo0LiBSZXR1cm4gZm9yIG5leHQgc2NoZWR1bGVkIHdlbGwtY2hpbGQgdmlzaXQgb3IgYXMgbmVlZGVkIGZvciBhY3V0ZSBjb25jZXJucy4KNS4gQW50aWNpcGF0b3J5IGd1aWRhbmNlOiBpbmZsdWVuemEgc2Vhc29uIHByZWNhdXRpb25zIHJldmlld2VkIHdpdGggbW90aGVyLCBpbXBvcnRhbmNlIG9mIGhhbmQgaHlnaWVuZSBhbmQgcHJvbXB0IGV2YWx1YXRpb24gaWYgcmVzcGlyYXRvcnkgc3ltcHRvbXMgd29yc2VuLgoKRHIuIE1lZ2FuIEhhcmxvdywgTUQKVHJpYW5nbGUgUGVkaWF0cmljcwpOUEk6IDExODQ2Mjc1MzAK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-016"
+      }
+    ],
+    "period": {
+      "start": "2025-10-14"
+    }
+  }
+}

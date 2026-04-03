@@ -1,0 +1,42 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-000-foot-exam",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "401191002",
+        "display": "Diabetic foot examination (regime/therapy)"
+      }
+    ],
+    "text": "Diabetic foot exam"
+  },
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "performedDateTime": "2021-09-14",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/20124955-3cbb-4fad-a63f-2ff51581c668",
+        "display": "Dr. Monica Reyes, MD"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Intact skin of both feet with no ulcers."
+    },
+    {
+      "text": "Dorsalis pedis pulses 2+ bilaterally."
+    },
+    {
+      "text": "Mildly reduced monofilament sensation at the plantar forefeet bilaterally."
+    }
+  ]
+}

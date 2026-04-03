@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-021-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+    "display": "Maria Chen"
+  },
+  "date": "2026-04-02T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+      "display": "Janet Flores"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNC8wMi8yMDI2ClNpdGU6IFJvc2UgQ2l0eSBDb21tdW5pdHkgU2VydmljZXMsIDY1MzAgU0UgODJuZCBBdmVudWUsIFBvcnRsYW5kLCBPUiA5NzI2NgpQcm92aWRlcjogSmFuZXQgRmxvcmVzLCBDb21tdW5pdHkgSGVhbHRoIFdvcmtlcgpQYXRpZW50OiBNYXJpYSBDaGVuCkRPQjogMDkvMTQvMTk4MwpJbnN1cmFuY2U6IE9yZWdvbiBIZWFsdGggUGxhbiAoTWVkaWNhaWQpCgpSZWFzb24gZm9yIENhbGw6IFNjaGVkdWxlZCBmb2xsb3ctdXAgZm9yIFNOQVAgYXBwbGljYXRpb24gYXNzaXN0YW5jZSBhbmQgZm9vZCBwYW50cnkgZW5yb2xsbWVudCBjb25maXJtYXRpb24uCgpESVNDVVNTSU9OOgpDYWxsZWQgcGF0aWVudCBmb3Igc2NoZWR1bGVkIGZvbGxvdy11cCBwZXIgb3BlbiBzb2NpYWwgY2FyZSByZWZlcnJhbCBmcm9tIENhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIgKERyLiBBbmdlbGEgTW9yYWxlcywgcmVmZXJyaW5nKS4gUGF0aWVudCB3YXMgc2NyZWVuZWQgcG9zaXRpdmUgZm9yIGZvb2QgaW5zZWN1cml0eSBhbmQgdHJhbnNwb3J0YXRpb24gYmFycmllcnMgb24gQUhDIEhSU04gc2NyZWVuaW5nIGF0IGhlciBhbm51YWwgd2VsbG5lc3MgdmlzaXQgaW4gTWFyY2ggMjAyNi4KCkNvbXBsZXRlZCBTTkFQIGFwcGxpY2F0aW9uIG9ubGluZSB3aXRoIHBhdGllbnQgZHVyaW5nIHRoZSBjYWxsLiBXYWxrZWQgcGF0aWVudCB0aHJvdWdoIGVsaWdpYmlsaXR5IHF1ZXN0aW9ucyBhbmQgYXNzaXN0ZWQgd2l0aCBnYXRoZXJpbmcgcmVxdWlyZWQgaW5jb21lIGRvY3VtZW50YXRpb24gKHBheSBzdHVicyBmcm9tIGN1cnJlbnQgZW1wbG95ZXIsIENvbWZvcnQgS2VlcGVycyBIb21lIENhcmU7IHBhcnQtdGltZSwgYXBwcm94aW1hdGVseSAyNSBocnMvd2VlaykuIEFwcGxpY2F0aW9uIHN1Ym1pdHRlZCBlbGVjdHJvbmljYWxseSB0byB0aGUgT3JlZ29uIERlcGFydG1lbnQgb2YgSHVtYW4gU2VydmljZXMuIFBlbmRpbmcgYXBwcm92YWwgZGV0ZXJtaW5hdGlvbi4KCkNvbmZpcm1lZCBmb29kIHBhbnRyeSBlbnJvbGxtZW50IGhhcyBiZWVuIHByb2Nlc3NlZC4gRmlyc3QgcGlja3VwIHNjaGVkdWxlZCBmb3IgMDQvMDUvMjAyNiBhdCB0aGUgUm9zZSBDaXR5IHBhbnRyeSBzaXRlLCBTRSBQb3J0bGFuZCAoU2F0dXJkYXlzLCA5IEFNIHRvIDEyIFBNLCB3ZWVrbHkpLgoKUHJvdmlkZWQgcGF0aWVudCB3aXRoIDEwIFRyaU1ldCBIT1AgY2FyZCB0cmFuc2l0IHZvdWNoZXJzIHByZS1sb2FkZWQgZm9yIG1lZGljYWwgYXBwb2ludG1lbnQgdHJpcHMgdG8gYWRkcmVzcyBkb2N1bWVudGVkIHRyYW5zcG9ydGF0aW9uIGJhcnJpZXIuCgpTRVJWSUNFUyBERUxJVkVSRUQ6CjEuIEZvb2QgcGFudHJ5IGVucm9sbG1lbnQg4oCUIGNvbXBsZXRlZCAwNC8wMi8yMDI2LCBmaXJzdCBwaWNrdXAgMDQvMDUvMjAyNgoyLiBTTkFQIGFwcGxpY2F0aW9uIOKAlCBzdWJtaXR0ZWQgMDQvMDIvMjAyNiwgcGVuZGluZyBhcHByb3ZhbAozLiBUcmFuc2l0IHZvdWNoZXJzIOKAlCAxMCBUcmlNZXQgSE9QIGNhcmQgdm91Y2hlcnMgZGlzdHJpYnV0ZWQgMDQvMDIvMjAyNgoKUExBTjoKLSBGb2xsb3cgdXAgb24gU05BUCBhcHBsaWNhdGlvbiBzdGF0dXMgdXBvbiByZWNlaXB0IG9mIGRldGVybWluYXRpb24gZnJvbSBPcmVnb24gREhTIChleHBlY3RlZCB3aXRoaW4gMzAgZGF5cykKLSBQYXRpZW50IHRvIGJlZ2luIHdlZWtseSBmb29kIHBhbnRyeSBwaWNrdXBzIHN0YXJ0aW5nIDA0LzA1LzIwMjYKLSBSZWZlcnJhbCB0YXNrIHJlbWFpbnMgaW4tcHJvZ3Jlc3MgcGVuZGluZyBTTkFQIGFwcHJvdmFsIGNvbmZpcm1hdGlvbgotIFdpbGwgdXBkYXRlIHJlZmVycmluZyBwcm92aWRlciBvbmNlIGFsbCBtaWxlc3RvbmVzIGNvbXBsZXRlZAoKSmFuZXQgRmxvcmVzLCBDSFcKUm9zZSBDaXR5IENvbW11bml0eSBTZXJ2aWNlcwo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-021"
+      }
+    ],
+    "period": {
+      "start": "2026-04-02"
+    }
+  }
+}

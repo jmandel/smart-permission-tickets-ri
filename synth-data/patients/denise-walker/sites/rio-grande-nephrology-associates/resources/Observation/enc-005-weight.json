@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-005-weight",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "29463-7",
+        "display": "Body weight"
+      }
+    ],
+    "text": "Body weight"
+  },
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2024-06-17",
+  "valueQuantity": {
+    "value": 193,
+    "unit": "[lb_av]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[lb_av]"
+  }
+}

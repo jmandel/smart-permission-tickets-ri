@@ -1,0 +1,58 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-010-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "date": "2023-04-04T09:45:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QU5OVUFMIFdFTExORVNTIFZJU0lUCgpQYXRpZW50OiBNYXJpYSBDaGVuCkRhdGU6IDA0LzA0LzIwMjMKUHJvdmlkZXI6IERyLiBBbmdlbGEgTW9yYWxlcywgTUQKTUE6IERhdmlkIEtpbSwgTUEKTG9jYXRpb246IENhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIsIDgyMDUgU0UgRm9zdGVyIFJvYWQsIFBvcnRsYW5kLCBPUiA5NzIwNgoKU1VCSkVDVElWRToKNDIteWVhci1vbGQgQ2hpbmVzZSBBbWVyaWNhbiBmZW1hbGUgcHJlc2VudHMgZm9yIGFubnVhbCB3ZWxsbmVzcyB2aXNpdC4gU2hlIHJlcG9ydHMgbm8gYWN1dGUgY29tcGxhaW50cy4gQXN0aG1hIHJlbWFpbnMgd2VsbCBjb250cm9sbGVkOyBzaGUgbm90ZXMgdGhlIGNvbGQtd2VhdGhlciBmbGFyZSBpbiBOb3ZlbWJlciAyMDIyIHJlc29sdmVkIGZ1bGx5IGFuZCBhbGJ1dGVyb2wgdXNlIGlzIGJhY2sgdG8gYmFzZWxpbmUgYXQgMS0yIHRpbWVzIHBlciBtb250aC4gTm8gcmVjZW50IFVSSSBvciB3aGVlemluZyBlcGlzb2Rlcy4gU2hlIGRlbmllcyBjaGVzdCBwYWluLCBTT0IgYXQgcmVzdCwgY291Z2gsIGZldmVyLCBvciB3ZWlnaHQgbG9zcy4gTm8gY2hhbmdlcyBpbiBtZWRpY2F0aW9ucy4gTm8gbmV3IGFsbGVyZ2llcy4gUEhRLTIgYWRtaW5pc3RlcmVkOiBzY29yZSAwLCBuZWdhdGl2ZSBmb3IgZGVwcmVzc2l2ZSBzeW1wdG9tcy4gQUhDIEhSU04gc2NyZWVuaW5nIGFkbWluaXN0ZXJlZDogYWxsIGRvbWFpbnMgbmVnYXRpdmUgZm9yIHNvY2lhbCByaXNrIGZhY3RvcnMgaW5jbHVkaW5nIGhvdXNpbmcgaW5zdGFiaWxpdHksIGZvb2QgaW5zZWN1cml0eSwgdHJhbnNwb3J0YXRpb24gYmFycmllcnMsIHV0aWxpdHkgbmVlZHMsIGFuZCBpbnRlcnBlcnNvbmFsIHNhZmV0eS4KCk9CSkVDVElWRToKVml0YWxzIChEYXZpZCBLaW0sIE1BKToKICBCUCAxMjAvNzggbW1IZwogIEhSIDcyIGJwbQogIFdlaWdodCAxNTQgbGJzCiAgQk1JIDI3LjMga2cvbTIKICBUZW1wIDk4LjRGICgzNi45QykKICBSUiAxNgogIFNwTzIgOTglIG9uIFJBCgpHZW5lcmFsOiBXZWxsLWFwcGVhcmluZyBmZW1hbGUgaW4gTkFELgpIRUVOVDogTm9ybW9jZXBoYWxpYywgYXRyYXVtYXRpYy4gUEVSUkwuIE9yb3BoYXJ5bnggY2xlYXIuCk5lY2s6IFN1cHBsZSwgbm8gbHltcGhhZGVub3BhdGh5LCBubyB0aHlyb21lZ2FseS4KQ2FyZGlvdmFzY3VsYXI6IFJSUiwgbm8gbXVybXVycywgcnVicywgb3IgZ2FsbG9wcy4KUHVsbW9uYXJ5OiBMdW5ncyBjbGVhciB0byBhdXNjdWx0YXRpb24gYmlsYXRlcmFsbHkuIE5vIHdoZWV6ZXMsIHJob25jaGksIG9yIGNyYWNrbGVzLiBHb29kIGFpciBtb3ZlbWVudCB0aHJvdWdob3V0LgpBYmRvbWVuOiBTb2Z0LCBub250ZW5kZXIsIG5vbmRpc3RlbmRlZC4gTm9ybWFsIGJvd2VsIHNvdW5kcy4KRXh0cmVtaXRpZXM6IE5vIGVkZW1hLiBQdWxzZXMgaW50YWN0LgpTa2luOiBObyByYXNoZXMgb3IgbGVzaW9ucyBub3RlZC4KUHN5Y2g6IEFsZXJ0IGFuZCBvcmllbnRlZCwgcGxlYXNhbnQsIGNvb3BlcmF0aXZlLiBBZmZlY3QgYXBwcm9wcmlhdGUuCgpTY3JlZW5pbmcgU2NvcmVzOgogIFBIUS0yOiAwIChuZWdhdGl2ZSkKICBBc3RobWEgQ29udHJvbCBUZXN0IChBQ1QpOiAyMyAod2VsbCBjb250cm9sbGVkKQogIEFIQyBIUlNOOiBBbGwgZG9tYWlucyBuZWdhdGl2ZQoKQVNTRVNTTUVOVDoKMS4gQW5udWFsIHdlbGxuZXNzIGV4YW0g4oCUIG92ZXJhbGwgaGVhbHRoIHN0YXR1cyBnb29kLgoyLiBNaWxkIGludGVybWl0dGVudCBhc3RobWEgKEo0NS4yMCkg4oCUIHdlbGwgY29udHJvbGxlZCwgQUNUIHNjb3JlIDIzLiBOb3ZlbWJlciBjb2xkLXdlYXRoZXIgZXhhY2VyYmF0aW9uIGZ1bGx5IHJlc29sdmVkLiBBbGJ1dGVyb2wgdXNlIGF0IGJhc2VsaW5lIDEtMiB0aW1lcy9tb250aC4KMy4gT3ZlcndlaWdodCAoRTY2LjMpIOKAlCBCTUkgMjcuMy4gV2VpZ2h0IHRyZW5kaW5nIHVwIGdyYWR1YWxseSBvdmVyIDQgeWVhcnMgKDE0OCAtPiAxNTAgLT4gMTUyIC0+IDE1NCBsYnMpLiBEaXNjdXNzZWQgbnV0cml0aW9uIGFuZCBwaHlzaWNhbCBhY3Rpdml0eSBjb3Vuc2VsaW5nLgo0LiBQcmV2ZW50aXZlIGNhcmUgcmV2aWV3OgogICBhLiBJbmZsdWVuemEgdmFjY2luZTogY3VycmVudCAoT2N0b2JlciAyMDIyKS4KICAgYi4gQ09WSUQtMTkgYml2YWxlbnQgYm9vc3RlcjogZGlzY3Vzc2VkLCBwYXRpZW50IHBsYW5zIHRvIG9idGFpbiBhdCBwaGFybWFjeS4KICAgYy4gUGFwIHNtZWFyOiBvdmVyZHVlIGZyb20gMjAyMi4gUGF0aWVudCBhZ3JlZXMgdG8gc2NoZWR1bGUuCjUuIERlcHJlc3Npb24gc2NyZWVuaW5nIG5lZ2F0aXZlIChQSFEtMiA9IDApLgo2LiBTRE9IIHNjcmVlbmluZyBuZWdhdGl2ZSBhY3Jvc3MgYWxsIGRvbWFpbnMuCgpQTEFOOgoxLiBBc3RobWE6IENvbnRpbnVlIGFsYnV0ZXJvbCBzdWxmYXRlIDkwIG1jZy9hY3R1YXRpb24gSEZBIGluaGFsZXIsIDIgcHVmZnMgUFJOIGZvciB3aGVlemluZyBvciBTT0IuIE5vIHN0ZXAtdXAgdGhlcmFweSBpbmRpY2F0ZWQuIFJlZmlsbCBhdXRob3JpemVkLgoyLiBXZWlnaHQgbWFuYWdlbWVudDogQ291bnNlbGVkIG9uIGJhbGFuY2VkIG51dHJpdGlvbiwgcG9ydGlvbiBjb250cm9sLCBhbmQgZ29hbCBvZiAxNTAgbWludXRlcy93ZWVrIG9mIG1vZGVyYXRlIHBoeXNpY2FsIGFjdGl2aXR5LiBXaWxsIHJlYXNzZXNzIGF0IG5leHQgYW5udWFsIHZpc2l0LgozLiBMYWJzIG9yZGVyZWQ6IENCQywgQ01QLCBsaXBpZCBwYW5lbCwgSGJBMWMgKHNjcmVlbmluZyBnaXZlbiBCTUkgYW5kIGZhbWlseSBoaXN0b3J5IG9mIGRpYWJldGVzIGluIG1vdGhlcikuIFBhdGllbnQgdG8gY29tcGxldGUgZmFzdGluZyBsYWJzLgo0LiBJbW11bml6YXRpb25zOiBQYXRpZW50IHRvIG9idGFpbiBDT1ZJRC0xOSBiaXZhbGVudCBib29zdGVyIGF0IHBoYXJtYWN5IG9mIGhlciBjaG9vc2luZy4gRmx1IHZhY2NpbmUgY3VycmVudCBmb3IgdGhpcyBzZWFzb24uCjUuIFBhcCBzbWVhcjogUGF0aWVudCBhZ3JlZXMgdG8gc2NoZWR1bGUgY2VydmljYWwgY2FuY2VyIHNjcmVlbmluZy4gU3RhZmYgdG8gYXNzaXN0IHdpdGggYXBwb2ludG1lbnQgc2NoZWR1bGluZy4KNi4gQWxsZXJnaWVzIHJldmlld2VkOiBTdWxmb25hbWlkZSBhbnRpYmlvdGljIGFsbGVyZ3kgKHJhc2gpIGNvbmZpcm1lZCwgbm8gY2hhbmdlcy4KNy4gUmV0dXJuIHRvIGNsaW5pYyBpbiAxIHllYXIgZm9yIG5leHQgYW5udWFsIHdlbGxuZXNzIHZpc2l0LCBvciBzb29uZXIgYXMgbmVlZGVkLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpEci4gQW5nZWxhIE1vcmFsZXMsIE1ECkNhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIKMDQvMDQvMjAyMwo="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-010"
+      }
+    ],
+    "period": {
+      "start": "2023-04-04T09:00:00-07:00",
+      "end": "2023-04-04T09:45:00-07:00"
+    }
+  }
+}

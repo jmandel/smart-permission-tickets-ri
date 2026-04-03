@@ -1,0 +1,93 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-020-pemetrexed",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1728072",
+        "display": "PEMEtrexed 500 MG Injection"
+      }
+    ],
+    "text": "pemetrexed 860 mg intravenous infusion"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-020"
+  },
+  "authoredOn": "2025-03-10",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-013-adenocarcinoma",
+      "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "500 mg/m² IV over 10 minutes, Cycle 4 of 4 (final induction cycle; BSA 1.72 m², calculated dose 860 mg)",
+      "patientInstruction": "Pemetrexed 860 mg IV infusion over 10 minutes.",
+      "timing": {
+        "event": [
+          "2025-03-10"
+        ]
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 860,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Cycle 4 of 4 (final induction cycle) administered 2025-03-10. No infusion reactions. Patient on folic acid and B12 supplementation per pemetrexed protocol requirements. Final pemetrexed dose per induction protocol; pemetrexed to be discontinued for maintenance phase."
+    }
+  ]
+}

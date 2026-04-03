@@ -1,0 +1,74 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-bipolar2",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83225003",
+        "display": "Bipolar II disorder (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F31.81",
+        "display": "Bipolar II disorder"
+      }
+    ],
+    "text": "Bipolar II disorder"
+  },
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "onsetDateTime": "2019-07-15",
+  "recordedDate": "2019-07-15",
+  "note": [
+    {
+      "text": "Depressive phase worsening at quarterly follow-up (2022-11-14). PHQ-9 increased from 7 to 14 (moderate depression) over three months. Possible contributing factors include financial stressors, possible increased alcohol use, and seasonal component. Lamotrigine level therapeutic at 4.8 mcg/mL. Continued lamotrigine 200 mg daily and quetiapine 50 mg nightly. Follow-up interval shortened to 6 weeks."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

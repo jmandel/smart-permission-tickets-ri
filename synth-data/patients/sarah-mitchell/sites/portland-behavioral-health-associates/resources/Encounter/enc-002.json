@@ -1,0 +1,87 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-002",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "165171009",
+          "display": "Initial psychiatric evaluation (procedure)"
+        }
+      ],
+      "text": "Initial Psychiatric Evaluation"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary Performer"
+        }
+      ],
+      "period": {
+        "start": "2019-07-15",
+        "end": "2019-07-15"
+      },
+      "individual": {
+        "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+        "type": "Practitioner",
+        "display": "Dr. James Okafor"
+      }
+    }
+  ],
+  "period": {
+    "start": "2019-07-15",
+    "end": "2019-07-15"
+  },
+  "reasonCode": [
+    {
+      "text": "Mood instability on sertraline, evaluate for bipolar spectrum disorder"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/3dee2667-27f0-4f4d-b1cc-0af54bb8be42",
+        "display": "Portland Behavioral Health Associates"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/3601e30e-19fa-4e51-b964-bac8e73581df",
+    "display": "Portland Behavioral Health Associates"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Sarah was seen by Dr. James Okafor for a comprehensive initial psychiatric evaluation, referred by Dr."
+    }
+  ]
+}

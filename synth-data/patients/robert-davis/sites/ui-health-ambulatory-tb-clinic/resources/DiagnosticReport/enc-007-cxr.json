@@ -1,0 +1,44 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-007-cxr",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24647-0",
+        "display": "XR Chest PA and Lateral upright"
+      }
+    ],
+    "text": "Chest X-ray, PA and lateral"
+  },
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2026-03-05",
+  "issued": "2026-03-05T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/fca1b37a-0004-4c92-8717-54842b25df2a",
+      "type": "Practitioner",
+      "display": "Dr. Lena Okafor"
+    }
+  ],
+  "conclusion": "Interval decrease in size of right upper lobe cavitary lesion, now approximately 2.5 cm (previously 3.5 cm on 01/22/2026). Surrounding infiltrate has partially cleared. Right hilar lymph nodes appear less prominent. No new infiltrates or effusions. Impression: Improving pulmonary tuberculosis on treatment."
+}

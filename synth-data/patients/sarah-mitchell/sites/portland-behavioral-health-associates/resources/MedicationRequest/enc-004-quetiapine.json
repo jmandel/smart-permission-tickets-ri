@@ -1,0 +1,140 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-004-quetiapine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "616487",
+        "display": "QUEtiapine fumarate 50 MG Oral Tablet"
+      }
+    ],
+    "text": "quetiapine 50 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "authoredOn": "2020-12-14",
+  "requester": {
+    "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+    "type": "Practitioner",
+    "display": "Dr. James Okafor"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "193462001",
+          "display": "Insomnia (disorder)"
+        }
+      ],
+      "text": "Insomnia and mood stabilization as adjunct to lamotrigine for bipolar II depressive episode"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-insomnia",
+      "display": "Insomnia"
+    },
+    {
+      "reference": "Condition/enc-002-bipolar2",
+      "display": "Bipolar II disorder"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 50 mg by mouth at bedtime",
+      "patientInstruction": "Take 50 mg by mouth at bedtime.",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2020-12-14"
+          },
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "at bedtime"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419652001",
+            "display": "Take"
+          }
+        ],
+        "text": "Take"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 50,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Initiated for insomnia and mood stabilization as adjunct to lamotrigine 200 mg daily for bipolar II depressive episode. Discussed expected sedation and potential metabolic side effects (weight gain, glucose/lipid changes). Baseline metabolic labs ordered."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

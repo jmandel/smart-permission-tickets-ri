@@ -1,0 +1,74 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-001",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386472008",
+          "display": "Telephone consultation (procedure)"
+        }
+      ],
+      "text": "Telephone"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Chidinma Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+        "type": "Practitioner",
+        "display": "Dr. Adebayo Olatunde, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-02-14",
+    "end": "2022-02-14"
+  },
+  "reasonCode": [
+    {
+      "text": "HbA1c counseling, dietary guidance"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/d99bf491-0419-49c3-a8af-4962be6c1cbd",
+        "display": "Westheimer Family Medicine"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/178b8397-4529-475f-a184-61dcd4ec7517",
+    "display": "Westheimer Family Medicine"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Dr. Olatunde called Patricia to discuss her HbA1c result of 6.0% from the January wellness visit."
+    }
+  ]
+}

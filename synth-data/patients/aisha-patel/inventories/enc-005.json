@@ -1,0 +1,223 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Food allergy follow-up, repeat IgE monitoring",
+    "period_start": "2023-10-02T09:00:00-04:00",
+    "period_end": "2023-10-02T09:45:00-04:00",
+    "participants": [
+      {
+        "name": "Dr. Sunita Krishnamurthy",
+        "role": "Pediatric Allergy/Immunology"
+      }
+    ],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 104,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 22,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 88,
+        "diastolic": 56,
+        "unit": "mmHg"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "interpretation": "on room air"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.7,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 14.6,
+        "unit": "kg",
+        "interpretation": "45th percentile for age"
+      },
+      {
+        "name": "body height",
+        "value": 97,
+        "unit": "cm",
+        "interpretation": "52nd percentile for age"
+      }
+    ],
+    "labs": [
+      {
+        "name": "peanut-specific IgE (serum)",
+        "value": 52.6,
+        "unit": "kU/L",
+        "flag": "high",
+        "interpretation": "Class 5, very high, slightly increased from prior 48.2 kU/L"
+      },
+      {
+        "name": "cashew-specific IgE (serum)",
+        "value": 19.4,
+        "unit": "kU/L",
+        "flag": "high",
+        "interpretation": "Class 4, high, slight decrease from prior 22.7 kU/L"
+      },
+      {
+        "name": "walnut-specific IgE (serum)",
+        "value": 12.8,
+        "unit": "kU/L",
+        "flag": "high",
+        "interpretation": "Class 3, moderate-high, slight decrease from prior 15.1 kU/L"
+      },
+      {
+        "name": "almond-specific IgE (serum)",
+        "value": 7.1,
+        "unit": "kU/L",
+        "flag": "high",
+        "interpretation": "Class 3, moderate-high, slight decrease from prior 8.3 kU/L"
+      },
+      {
+        "name": "total IgE (serum)",
+        "value": 412,
+        "unit": "IU/mL",
+        "flag": "high",
+        "interpretation": "elevated for age, up from prior 384 IU/mL"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, walnut, almond) — IgE-mediated sensitization",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone propionate inhaler 44 mcg, 1 puff inhaled twice daily via spacer",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol inhaler 90 mcg, 2 puffs inhaled as needed via spacer",
+      "sig": "2 puffs inhaled as needed for wheezing or shortness of breath, via spacer",
+      "status": "active",
+      "reason": "persistent asthma (rescue)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 2.5 mg oral tablet",
+      "sig": "2.5 mg by mouth once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "applied to eczema flares twice daily as needed",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ceramide-based moisturizer",
+      "sig": "applied to affected areas daily",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr) 0.15 mg intramuscular",
+      "sig": "0.15 mg intramuscular as needed for anaphylaxis, two-pack carried at all times",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Pediatric allergy/immunology subspecialty follow-up note for annual food allergy and asthma reassessment. Documents interval history, vitals, physical exam, repeat serum specific IgE panel results, five-problem assessment addressing peanut allergy, tree nut allergy, persistent asthma, atopic dermatitis, and allergic rhinitis, with plan for continued management and 6–8 month follow-up."
+    },
+    {
+      "type": "laboratory results document",
+      "description": "Updated serum specific IgE panel results including peanut, cashew, walnut, almond specific IgE values and total IgE, with comparison to prior November 2022 values."
+    },
+    {
+      "type": "patient instructions / care plan document",
+      "description": "Refreshed anaphylaxis emergency action plan for peanut and tree nut allergy. No content changes from prior version; date refreshed to 2023-10-02."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "allergen-specific IgE panel (serum)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "peanut-specific IgE (serum)",
+        "cashew-specific IgE (serum)",
+        "walnut-specific IgE (serum)",
+        "almond-specific IgE (serum)",
+        "total IgE (serum)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "cashew",
+      "reaction": "IgE-mediated sensitization",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "walnut",
+      "reaction": "IgE-mediated sensitization",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "almond",
+      "reaction": "IgE-mediated sensitization",
+      "action": "reference-existing"
+    }
+  ]
+}

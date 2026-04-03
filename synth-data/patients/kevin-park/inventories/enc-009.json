@@ -1,0 +1,76 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Nurse Visit",
+    "reason": "Influenza and COVID-19 vaccine administration",
+    "period_start": "2025-10-14",
+    "period_end": "2025-10-14",
+    "participants": [],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, quadrivalent",
+      "date": "2025-10-14",
+      "dose": "0.5 mL",
+      "route": "intramuscular injection",
+      "site": "left deltoid",
+      "lot_number": "FLU2526C"
+    },
+    {
+      "name": "COVID-19 vaccine, updated bivalent booster",
+      "date": "2025-10-14",
+      "dose": "0.5 mL",
+      "route": "intramuscular injection",
+      "site": "right deltoid",
+      "lot_number": "COV2526D"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "nursing note",
+      "description": "Brief nursing note documenting the administration of influenza and COVID-19 vaccines, including lot numbers, injection sites, patient tolerance, 15-minute observation period without adverse reaction, and patient education on expected side effects and when to seek care."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "severity": "intolerance",
+      "action": "reference-existing"
+    }
+  ]
+}

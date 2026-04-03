@@ -1,0 +1,36 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-015-irrigation",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "225116006",
+        "display": "Irrigation of wound (procedure)"
+      }
+    ],
+    "text": "Wound irrigation with normal saline"
+  },
+  "subject": {
+    "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "performedDateTime": "2025-02-08",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+        "display": "Dr. Marcus Williams"
+      }
+    }
+  ],
+  "bodySite": [
+    {
+      "text": "Right forehead"
+    }
+  ]
+}

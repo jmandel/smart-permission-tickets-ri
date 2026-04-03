@@ -1,0 +1,132 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "First pregnancy confirmation and early monitoring",
+    "period_start": "2024-05-06",
+    "period_end": "2024-05-06",
+    "participants": [],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 108,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 66,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "108/66 mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 108,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 66,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 131,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.8,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "serum beta-hCG",
+        "value": 1240,
+        "unit": "mIU/mL",
+        "effective_date": "2024-05-06",
+        "flag": "normal",
+        "specimen": "serum",
+        "note": "consistent with early pregnancy at approximately 4-5 weeks gestation"
+      },
+      {
+        "name": "serum beta-hCG",
+        "value": 2680,
+        "unit": "mIU/mL",
+        "effective_date": "2024-05-08",
+        "flag": "normal",
+        "specimen": "serum",
+        "note": "48-hour repeat; appropriate doubling demonstrated, calculated doubling time approximately 43 hours"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "early intrauterine pregnancy, approximately 4 weeks 5 days gestation by last menstrual period",
+      "clinical_status": "active",
+      "onset_date": "2024-04-08",
+      "action": "create",
+      "note": "confirmed by positive serum beta-hCG with appropriate 48-hour doubling kinetics; estimated due date 2025-01-03"
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin with folic acid, one tablet by mouth daily",
+      "sig": "Take one tablet by mouth daily",
+      "status": "active",
+      "reason": "preconception/prenatal supplementation; early pregnancy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note documenting a 34-year-old G1P0 woman presenting for pregnancy confirmation after positive home pregnancy test. Includes vital signs, serum beta-hCG results with appropriate 48-hour doubling, assessment of early intrauterine pregnancy at approximately 4 weeks 5 days by LMP (EDD 2025-01-03), counseling on early pregnancy symptoms and warning signs, dietary guidance, continuation of prenatal vitamins, and plan for 6-week transvaginal ultrasound follow-up."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "serial quantitative beta-hCG",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "serum beta-hCG"
+      ]
+    }
+  ],
+  "allergies": []
+}

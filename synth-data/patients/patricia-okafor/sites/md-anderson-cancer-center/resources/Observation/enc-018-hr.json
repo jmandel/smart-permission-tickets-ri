@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-018-hr",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8867-4",
+        "display": "Heart rate"
+      }
+    ],
+    "text": "Heart Rate"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-018"
+  },
+  "effectiveDateTime": "2025-01-27T08:00:00-06:00",
+  "valueQuantity": {
+    "value": 78,
+    "unit": "/min",
+    "system": "http://unitsofmeasure.org",
+    "code": "/min"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-012-mtx-hepatotoxicity",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active (resolving)"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "427399008",
+        "display": "Drug-induced disorder of liver (disorder)"
+      }
+    ],
+    "text": "Methotrexate hepatotoxicity"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "onsetDateTime": "2021-10",
+  "recordedDate": "2021-11-03",
+  "note": [
+    {
+      "text": "LFTs trending toward normalization (ALT 98→38, AST 82→34). Hepatitis B and C serologies previously negative. Methotrexate permanently discontinued; will not be rechallenged given severity of transaminase elevation (>2x ULN)."
+    }
+  ],
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "166603001",
+              "display": "Liver enzymes abnormal (finding)"
+            }
+          ],
+          "text": "ALT 38 U/L (improved from 98), AST 34 U/L (improved from 82)"
+        }
+      ],
+      "detail": [
+        {
+          "reference": "Observation/enc-013-alt",
+          "display": "ALT 38 U/L"
+        },
+        {
+          "reference": "Observation/enc-013-ast",
+          "display": "AST 34 U/L"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-002-nephrology-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306125004",
+        "display": "Referral to nephrology service (procedure)"
+      }
+    ],
+    "text": "Referral to nephrology service"
+  },
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "authoredOn": "2023-11-16",
+  "requester": {
+    "reference": "Practitioner/18f66d93-d6fd-42d0-b445-64c6dd55f7eb",
+    "display": "Samuel Hart, FNP-C"
+  },
+  "occurrenceDateTime": "2023-11-16",
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-cond-ckd",
+      "display": "Diabetic kidney disease with CKD stage 3b and albuminuria"
+    }
+  ]
+}

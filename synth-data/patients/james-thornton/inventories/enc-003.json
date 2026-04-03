@@ -1,0 +1,105 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "heartland-surgical-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Post-operative follow-up; surgical site infection detected at right lower quadrant port site following laparoscopic appendectomy",
+    "period_start": "2026-01-22",
+    "period_end": "2026-01-22",
+    "participants": [
+      {
+        "name": "Dr. Marcus Okonkwo",
+        "role": "Acute Care Surgeon"
+      }
+    ],
+    "service_provider": "Heartland Surgical Associates",
+    "location": "Heartland Surgical Associates, 8901 West Dodge Road, Suite 210, Omaha, NE 68114"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 101.8,
+        "unit": "°F",
+        "method": "oral"
+      },
+      {
+        "name": "heart rate",
+        "value": 94,
+        "unit": "bpm"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 138,
+        "diastolic": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%",
+        "qualifier": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 207,
+        "unit": "lb"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "surgical site infection, right lower quadrant port site, following laparoscopic appendectomy",
+      "clinical_status": "active",
+      "onset_date": "2026-01-20",
+      "action": "create",
+      "note": "3 cm erythema and induration at 12 mm port incision, mild wound dehiscence, purulent yellowish-green malodorous drainage, surrounding warmth and tenderness. Patient febrile at 101.8°F despite ongoing oral antibiotic therapy."
+    },
+    {
+      "name": "status post laparoscopic appendectomy for perforated gangrenous appendicitis with periappendiceal abscess",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "amoxicillin-clavulanate 875 mg / 125 mg oral tablet",
+      "sig": "Take one tablet by mouth twice daily",
+      "status": "stopped",
+      "reason": "originally prescribed for post-operative infection prophylaxis following laparoscopic appendectomy; discontinued due to clinical failure (progressive surgical site infection despite 9 of 14 days completed)",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Urgent same-day post-operative follow-up note by Dr. Marcus Okonkwo documenting POD10 evaluation following laparoscopic appendectomy. Documents subjective fever and wound complaints, vital signs including fever of 101.8°F, detailed wound examination revealing purulent drainage and erythema at right lower quadrant port site, assessment of surgical site infection with concern for deeper infection, and plan to direct patient to Nebraska Medicine ED for admission, IV antibiotics, and CT imaging."
+    },
+    {
+      "type": "wound assessment note",
+      "description": "Detailed wound examination findings for all three laparoscopic port sites. Right lower quadrant port site with 3 cm erythema, induration, mild dehiscence, and purulent drainage. Umbilical and left lower quadrant port sites well-healed without concern. No crepitus or subcutaneous emphysema."
+    },
+    {
+      "type": "referral communication note",
+      "description": "Documentation of telephone communication between Dr. Marcus Okonkwo and Dr. Samuel Kerr (ED attending, Nebraska Medicine) arranging transfer for admission. Communicates clinical findings including fever, wound purulence, surgical history of perforated appendicitis, and anticipated need for IV antibiotics and CT abdomen/pelvis imaging."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "no known drug allergies (NKDA)",
+      "action": "reference-existing"
+    }
+  ]
+}

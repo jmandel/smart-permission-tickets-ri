@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-012-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2024-03-18T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+      "type": "Practitioner",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMy8xOC8yMDI0ClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsCkRPQjogMTEvMTQvMTk5MwpQcm92aWRlcjogSmFtZXMgT2thZm9yLCBNRCAoUHN5Y2hpYXRyeSkKU2l0ZTogUG9ydGxhbmQgQmVoYXZpb3JhbCBIZWFsdGggQXNzb2NpYXRlcywgMTUyMCBOVyAxOHRoIEF2ZSwgU3VpdGUgMzA0LCBQb3J0bGFuZCwgT1IgOTcyMDkKTlBJOiAyMzQ1Njc4OTAxCkVuY291bnRlciBUeXBlOiBUZWxlcGhvbmUKUmVhc29uIGZvciBDYWxsOiBQcmUtbW92ZSBwbGFubmluZywgY2FyZSB0cmFuc2l0aW9uIGNvb3JkaW5hdGlvbgoKRElTQ1VTU0lPTjoKVGVsZXBob25lIGNvbnRhY3QgaW5pdGlhdGVkIHdpdGggcGF0aWVudCB0byBkaXNjdXNzIHVwY29taW5nIHJlbG9jYXRpb24gdG8gU2VhdHRsZSwgV0EgYW5kIGNvb3JkaW5hdGUgY29udGludWl0eSBvZiBwc3ljaGlhdHJpYyBjYXJlLiBQYXRpZW50IHJlcG9ydHMgbW9vZCBzdGFiaWxpdHkgd2l0aCBzZWxmLXJlcG9ydGVkIFBIUS05IHNjb3JlIG9mIDUsIGNvbnNpc3RlbnQgd2l0aCBtaWxkIGRlcHJlc3NpdmUgc3ltcHRvbXMuIFNoZSBlbmRvcnNlcyBubyBoeXBvbWFuaWMgb3IgZGVwcmVzc2l2ZSBlcGlzb2RlcyBzaW5jZSBsYXN0IHZpc2l0LiBTbGVlcCBpcyBhZGVxdWF0ZSBvbiBjdXJyZW50IHJlZ2ltZW4uIE5vIG1lZGljYXRpb24gc2lkZSBlZmZlY3RzIHJlcG9ydGVkLgoKUGF0aWVudCBoYXMgbWFpbnRhaW5lZCBzb2JyaWV0eSBmb3IgYXBwcm94aW1hdGVseSAxMSBtb250aHMgKHNvYmVyIHNpbmNlIEFwcmlsIDIwMjMpIGFuZCBjb250aW51ZXMgbmFsdHJleG9uZSA1MCBtZyBkYWlseSBhcyBwcmVzY3JpYmVkIGJ5IGhlciBhZGRpY3Rpb24gbWVkaWNpbmUgcHJvdmlkZXIuIFNoZSByZXBvcnRzIGF0dGVuZGluZyBBQSBtZWV0aW5ncyByZWd1bGFybHkgYW5kIGZlZWxzIG9wdGltaXN0aWMgYWJvdXQgdGhlIG1vdmUuCgpDdXJyZW50IG1lZGljYXRpb25zIGNvbmZpcm1lZCBhbmQgcmVjb25jaWxlZDoKMS4gTGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5CjIuIFF1ZXRpYXBpbmUgNTAgbWcgUE8gYXQgYmVkdGltZQozLiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5IChtYW5hZ2VkIGJ5IGFkZGljdGlvbiBtZWRpY2luZSkKCkFsbGVyZ2llczogU3VsZmEgYW50aWJpb3RpY3MgKFRNUC1TTVgpIOKAlCByYXNoCgpQTEFOOgoxLiBQcm92aWRlZCA5MC1kYXkgYnJpZGdlIHByZXNjcmlwdGlvbnMgZm9yIGxhbW90cmlnaW5lIDIwMCBtZyBkYWlseSBhbmQgcXVldGlhcGluZSA1MCBtZyBuaWdodGx5IHRvIGVuc3VyZSBubyBtZWRpY2F0aW9uIGdhcCBkdXJpbmcgY2FyZSB0cmFuc2l0aW9uLgoyLiBQcm92aWRlZCBwYXRpZW50IHdpdGggYSBsaXN0IG9mIHJlY29tbWVuZGVkIHBzeWNoaWF0cmlzdHMgaW4gdGhlIFNlYXR0bGUgYXJlYSBmb3IgZXN0YWJsaXNoaW5nIG9uZ29pbmcgcHN5Y2hpYXRyaWMgY2FyZS4KMy4gRW1waGFzaXplZCBpbXBvcnRhbmNlIG9mIGVzdGFibGlzaGluZyB3aXRoIGEgbmV3IHBzeWNoaWF0cmlzdCBwcm9tcHRseSB1cG9uIHJlbG9jYXRpb24gdG8gYXZvaWQgbGFwc2VzIGluIG1lZGljYXRpb24gbWFuYWdlbWVudCBhbmQgbW9vZCBtb25pdG9yaW5nLgo0LiBXaWxsIHByZXBhcmUgY29tcHJlaGVuc2l2ZSBwc3ljaGlhdHJpYyBzdW1tYXJ5IGluY2x1ZGluZyBiaXBvbGFyIElJIGRpYWdub3NpcyBhbmQgdHJlYXRtZW50IGhpc3RvcnksIG1lZGljYXRpb24gdHJpYWxzLCBsYW1vdHJpZ2luZSBsZXZlbHMsIG1ldGFib2xpYyBtb25pdG9yaW5nIGRhdGEsIGFuZCBjb29yZGluYXRpb24gbm90ZXMgd2l0aCBhZGRpY3Rpb24gbWVkaWNpbmUuCjUuIFBhdGllbnQgYXV0aG9yaXplZCByZWNvcmRzIHRyYW5zZmVyIHRvIG5ldyBwc3ljaGlhdHJpc3Qgb25jZSBpZGVudGlmaWVkLgo2LiBDYXJlIGF0IFBvcnRsYW5kIEJlaGF2aW9yYWwgSGVhbHRoIEFzc29jaWF0ZXMgdG8gY29uY2x1ZGUgcGVuZGluZyBjb21wbGV0aW9uIG9mIG1vdmUgdG8gU2VhdHRsZS4KCkRJQUdOT1NFUzoKMS4gQmlwb2xhciBJSSBkaXNvcmRlciDigJQgc3RhYmxlIG9uIGN1cnJlbnQgcmVnaW1lbgoyLiBBbGNvaG9sIHVzZSBkaXNvcmRlciwgbW9kZXJhdGUsIGluIHN1c3RhaW5lZCByZW1pc3Npb24KClRoaXMgdGVsZXBob25lIGVuY291bnRlciBjb25jbHVkZXMgYWN0aXZlIHBzeWNoaWF0cmljIGNhcmUgd2l0aCB0aGlzIHByYWN0aWNlLiBQYXRpZW50IGlzIHdlbGwtcG9zaXRpb25lZCBmb3IgY2FyZSB0cmFuc2l0aW9uIHdpdGggbWVkaWNhdGlvbiBicmlkZ2UgYW5kIHJlY29yZHMgdHJhbnNmZXIgcGxhbiBpbiBwbGFjZS4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieTogSmFtZXMgT2thZm9yLCBNRApEYXRlOiAwMy8xOC8yMDI0Cg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-012"
+      }
+    ],
+    "period": {
+      "start": "2024-03-18"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

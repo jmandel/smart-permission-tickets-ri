@@ -1,0 +1,60 @@
+{
+  "resourceType": "Organization",
+  "id": "98aa8ae1-c120-45f1-badb-20ff4263e55b",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "National Provider Identifier"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1578432061"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "UI Health Ambulatory TB Clinic",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(312) 996-6800",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "(312) 413-1598",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "1801 W Taylor St",
+        "Suite 1E"
+      ],
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60612",
+      "country": "US"
+    }
+  ]
+}

@@ -1,0 +1,4737 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T14:05:46.044Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:4be35504-84b4-4bee-8ebf-a2b459c82cab",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "4be35504-84b4-4bee-8ebf-a2b459c82cab",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "White",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In 2022, during a depressive episode and work stress, Sarah developed problematic alcohol use that escalated to alcohol use disorder (moderate severity). She self-referred to an outpatient addiction medicine program in Portland in early 2023. She completed a 12-week intensive outpatient program (IOP), began attending AA meetings, and was prescribed naltrexone 50mg daily. She achieved sobriety in April 2023 and has maintained it.\n\nIn mid-2024, Sarah moved to Seattle. She established with a new psychiatrist for bipolar management and a new PCP for general care. Her alcohol use disorder is in sustained remission (>12 months). She continues lamotrigine, quetiapine, and naltrexone.\n\nSarah uses a patient-facing app to access her health records across her Portland and Seattle providers. The behavioral health and substance use disorder data is subject to heightened sensitivity protections (42 CFR Part 2 for SUD records)."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.ballard-family-medicine",
+            "value": "BFM-20240715-001"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-240ccb706aa0c92a0b715d26"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Mitchell",
+            "given": [
+              "Sarah",
+              "Elizabeth"
+            ],
+            "text": "Sarah Elizabeth Mitchell"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0147",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sarah.mitchell@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1993-11-14",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "line": [
+              "2218 NW 63rd St"
+            ],
+            "city": "Seattle",
+            "district": "King",
+            "state": "WA",
+            "postalCode": "98107",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "S",
+              "display": "Never Married"
+            }
+          ],
+          "text": "Single, never married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
+          "display": "Ballard Family Medicine"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:153a668b-784f-4694-96bb-26a177023060",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "153a668b-784f-4694-96bb-26a177023060",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "NPI"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "4567890123"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Ballard Family Medicine",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0200",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "206-555-0201",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "line": [
+              "5412 22nd Ave NW"
+            ],
+            "city": "Seattle",
+            "state": "WA",
+            "postalCode": "98107",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:207608a9-6a13-4909-b390-b83a10582c49",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "207608a9-6a13-4909-b390-b83a10582c49",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Tran",
+            "given": [
+              "Kevin"
+            ],
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Kevin Tran"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "5412 22nd Ave NW"
+            ],
+            "city": "Seattle",
+            "state": "WA",
+            "postalCode": "98107",
+            "country": "US"
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            },
+            "issuer": {
+              "display": "Washington State Department of Health"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "207Q00000X",
+                  "display": "Family Medicine"
+                }
+              ],
+              "text": "Family Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+      "resource": {
+        "resourceType": "Location",
+        "id": "55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+        "status": "active",
+        "name": "Ballard Family Medicine",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient Facility"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0200",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "206-555-0201",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "type": "physical",
+          "line": [
+            "5412 22nd Ave NW"
+          ],
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98107",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
+          "display": "Ballard Family Medicine"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 26,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 7,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 56,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "7 - 56 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 22,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 10,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 40,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "10 - 40 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index (BMI)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 22.9,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 116,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 72,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-cholesterol",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-cholesterol",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Cholesterol [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Total cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 190,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 200,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "<200 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine, serum"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 0.8,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.6,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 1.2,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "0.6 - 1.2 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2345-7",
+              "display": "Glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Glucose"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 90,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 70,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 100,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "70 - 100 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-hdl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-hdl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "HDL cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 56,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 40,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": ">40 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 66,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-hgb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 13.9,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 16,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "text": "12.0 - 16.0 g/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 68,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-ldl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-ldl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2089-1",
+              "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "LDL cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 108,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 130,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "<130 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-phq2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-phq2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55758-7",
+              "display": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-2 depression screening"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 1
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Negative screen (below threshold of 3)"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-plt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-plt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet count"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 242,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 400,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "150 - 400 K/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglycerides"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 162,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 150,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "<150 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "White blood cell count"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 6,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 11,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "4.0 - 11.0 K/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-014-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "valueQuantity": {
+          "value": 142,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index (BMI)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 22.6,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 118,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 74,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-phq2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-phq2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55758-7",
+              "display": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-2 depression screening"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Negative screen"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.2,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectiveDateTime": "2024-10-08",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 140,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-a1c",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-a1c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ],
+          "text": "Hemoglobin A1c"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 5.1,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4,
+              "unit": "%",
+              "system": "http://unitsofmeasure.org",
+              "code": "%"
+            },
+            "high": {
+              "value": 5.6,
+              "unit": "%",
+              "system": "http://unitsofmeasure.org",
+              "code": "%"
+            },
+            "text": "4.0 - 5.6%"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 24,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 7,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 56,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "7 - 56 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 20,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 10,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 40,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "10 - 40 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-cholesterol",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-cholesterol",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Cholesterol [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Total cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 186,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 200,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "Desirable: <200 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine, serum"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 0.8,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.6,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 1.2,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "0.6 - 1.2 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2345-7",
+              "display": "Glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Glucose"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 88,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 70,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 100,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "70 - 100 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-hdl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-hdl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "HDL cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 58,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 40,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": ">=40 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-hgb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 16,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "text": "12.0 - 16.0 g/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-ldl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-ldl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2089-1",
+              "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "LDL cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 104,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 129,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "Optimal: <100, Near optimal: 100-129 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-plt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-plt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet count"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 250,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 400,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "150 - 400 x10^3/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglycerides"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 152,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 150,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "Normal: <150 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-tsh",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-tsh",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11580-8",
+              "display": "Thyrotropin [Units/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Thyroid-stimulating hormone (TSH)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 2.4,
+          "unit": "m[IU]/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "m[IU]/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.4,
+              "unit": "m[IU]/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "m[IU]/L"
+            },
+            "high": {
+              "value": 4,
+              "unit": "m[IU]/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "m[IU]/L"
+            },
+            "text": "0.4 - 4.0 mIU/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-018-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "White blood cell count"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "valueQuantity": {
+          "value": 5.6,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 11,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "4.0 - 11.0 x10^3/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-019-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglycerides"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-019"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-21T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "valueQuantity": {
+          "value": 152,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "note": [
+          {
+            "text": "Stable compared to prior values; consistent with quetiapine use. No pharmacologic intervention warranted."
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 150,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "Normal: <150 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-aud",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-014-aud",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "714829008",
+              "display": "Moderate alcohol dependence (disorder)"
+            }
+          ],
+          "text": "Alcohol use disorder, moderate, in sustained remission"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "onsetDateTime": "2023-01",
+        "recordedDate": "2024-07-15",
+        "note": [
+          {
+            "text": "Diagnosed January 2023. Completed 12-week IOP at Bridgetown Recovery Center. Sober since April 2023 with sustained remission >15 months. Continues naltrexone 50 mg daily and weekly AA attendance."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-bipolar-ii",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-014-bipolar-ii",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "83225003",
+              "display": "Bipolar II disorder (disorder)"
+            }
+          ],
+          "text": "Bipolar II disorder"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "onsetDateTime": "2019-07",
+        "recordedDate": "2024-07-15",
+        "note": [
+          {
+            "text": "Diagnosed July 2019 by Dr. James Okafor at Portland Behavioral Health Associates. Stable on lamotrigine and quetiapine. PHQ-2 negative at this visit."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-hypertriglyceridemia",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-014-hypertriglyceridemia",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "302870006",
+              "display": "Hypertriglyceridemia (disorder)"
+            }
+          ],
+          "text": "Hypertriglyceridemia, mild"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "recordedDate": "2024-07-15",
+        "note": [
+          {
+            "text": "Attributed to quetiapine use. Triglycerides 162 mg/dL at this visit, mildly elevated and consistent with prior trend."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-014-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count (CBC)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "issued": "2024-07-15T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-014-wbc",
+            "display": "White blood cell count"
+          },
+          {
+            "reference": "Observation/enc-014-hgb",
+            "display": "Hemoglobin"
+          },
+          {
+            "reference": "Observation/enc-014-plt",
+            "display": "Platelet count"
+          }
+        ],
+        "conclusion": "CBC within normal limits"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-014-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel (CMP)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "issued": "2024-07-15T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-014-glucose",
+            "display": "Glucose"
+          },
+          {
+            "reference": "Observation/enc-014-creatinine",
+            "display": "Creatinine"
+          },
+          {
+            "reference": "Observation/enc-014-ast",
+            "display": "AST"
+          },
+          {
+            "reference": "Observation/enc-014-alt",
+            "display": "ALT"
+          }
+        ],
+        "conclusion": "CMP within normal limits"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-lipid",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-014-lipid",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ],
+          "text": "Lipid Panel"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "effectiveDateTime": "2024-07-15",
+        "issued": "2024-07-15T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-014-cholesterol",
+            "display": "Total cholesterol"
+          },
+          {
+            "reference": "Observation/enc-014-ldl",
+            "display": "LDL cholesterol"
+          },
+          {
+            "reference": "Observation/enc-014-hdl",
+            "display": "HDL cholesterol"
+          },
+          {
+            "reference": "Observation/enc-014-triglycerides",
+            "display": "Triglycerides"
+          }
+        ],
+        "conclusion": "Triglycerides mildly elevated at 162 mg/dL. Remainder within normal limits."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-018-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count (CBC)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-14T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-018-wbc",
+            "display": "White blood cell count"
+          },
+          {
+            "reference": "Observation/enc-018-hgb",
+            "display": "Hemoglobin"
+          },
+          {
+            "reference": "Observation/enc-018-plt",
+            "display": "Platelet count"
+          }
+        ],
+        "conclusion": "CBC within normal limits"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-018-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel (CMP)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-14T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-018-glucose",
+            "display": "Glucose"
+          },
+          {
+            "reference": "Observation/enc-018-creatinine",
+            "display": "Creatinine, serum"
+          },
+          {
+            "reference": "Observation/enc-018-ast",
+            "display": "AST"
+          },
+          {
+            "reference": "Observation/enc-018-alt",
+            "display": "ALT"
+          }
+        ],
+        "conclusion": "CMP within normal limits. Liver enzymes reassuring in context of alcohol use disorder history and naltrexone use."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-lipid",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-018-lipid",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ],
+          "text": "Lipid Panel"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-018"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-14T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-018-cholesterol",
+            "display": "Total cholesterol"
+          },
+          {
+            "reference": "Observation/enc-018-ldl",
+            "display": "LDL cholesterol"
+          },
+          {
+            "reference": "Observation/enc-018-hdl",
+            "display": "HDL cholesterol"
+          },
+          {
+            "reference": "Observation/enc-018-triglycerides",
+            "display": "Triglycerides"
+          }
+        ],
+        "conclusion": "Mildly elevated triglycerides at 152 mg/dL, improved from 162 mg/dL (July 2024). LDL, HDL, and total cholesterol within acceptable range."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-019-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count (CBC)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-019"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-21T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "conclusion": "CBC reviewed during telephone call; all values within normal limits."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-019-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel (CMP)"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-019"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-21T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "conclusion": "CMP reviewed during telephone call; all values within normal limits."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019-lipid",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-019-lipid",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ],
+          "text": "Lipid Panel"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-019"
+        },
+        "effectiveDateTime": "2025-01-14",
+        "issued": "2025-01-21T12:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-019-triglycerides",
+            "display": "Triglycerides"
+          }
+        ],
+        "conclusion": "Lipid panel reviewed during telephone call. Triglycerides mildly elevated at 152 mg/dL, stable and consistent with quetiapine use. Remaining components within normal limits."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-covid-vaccine",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "enc-014-covid-vaccine",
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "309",
+              "display": "COVID-19, mRNA, LNP-S, PF, tris-sucrose, 30 mcg/0.3 mL"
+            }
+          ],
+          "text": "COVID-19 vaccine, mRNA (Pfizer-BioNTech), 2024-2025 updated formulation"
+        },
+        "patient": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "occurrenceDateTime": "2024-07-15",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+          "display": "Ballard Family Medicine"
+        },
+        "site": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+              "code": "LD",
+              "display": "left deltoid"
+            }
+          ],
+          "text": "Left deltoid"
+        },
+        "route": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+              "code": "IM",
+              "display": "Injection, intramuscular"
+            }
+          ],
+          "text": "Intramuscular"
+        },
+        "performer": [
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "OP",
+                  "display": "Ordering Provider"
+                }
+              ],
+              "text": "Ordering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          },
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "AP",
+                  "display": "Administering Provider"
+                }
+              ],
+              "text": "Administering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-flu-vaccine",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "enc-016-flu-vaccine",
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "158",
+              "display": "Influenza, split virus, quadrivalent, preservative"
+            }
+          ],
+          "text": "Influenza vaccine, inactivated, 2024-2025 seasonal formulation"
+        },
+        "patient": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "occurrenceDateTime": "2024-10-08",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+          "display": "Ballard Family Medicine"
+        },
+        "site": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+              "code": "LD",
+              "display": "Left Deltoid"
+            }
+          ],
+          "text": "Left Deltoid"
+        },
+        "route": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+              "code": "IM",
+              "display": "Injection, intramuscular"
+            }
+          ],
+          "text": "Intramuscular"
+        },
+        "doseQuantity": {
+          "value": 0.5,
+          "unit": "mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL"
+        },
+        "performer": [
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "OP",
+                  "display": "Ordering Provider"
+                }
+              ],
+              "text": "Ordering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          },
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "AP",
+                  "display": "Administering Provider"
+                }
+              ],
+              "text": "Administering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-lamotrigine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-014-lamotrigine",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "198429",
+              "display": "lamoTRIgine 200 MG Oral Tablet"
+            }
+          ],
+          "text": "lamotrigine 200 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2024-07-15",
+        "requester": {
+          "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+          "type": "Practitioner",
+          "display": "Dr. Kevin Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-bipolar-ii",
+            "display": "Bipolar II disorder"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "lamotrigine 200 mg by mouth once daily",
+            "patientInstruction": "Take 1 tablet (200 mg) by mouth once daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 200,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-naltrexone",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-014-naltrexone",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1483744",
+              "display": "naltrexone HCl 50 MG Oral Tablet"
+            }
+          ],
+          "text": "naltrexone 50 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2024-07-15",
+        "requester": {
+          "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+          "type": "Practitioner",
+          "display": "Dr. Kevin Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-aud",
+            "display": "Alcohol use disorder, moderate, in sustained remission"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "naltrexone 50 mg by mouth once daily",
+            "patientInstruction": "Take 1 tablet (50 mg) by mouth once daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 50,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-quetiapine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-014-quetiapine",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "616487",
+              "display": "QUEtiapine fumarate 50 MG Oral Tablet"
+            }
+          ],
+          "text": "quetiapine 50 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2024-07-15",
+        "requester": {
+          "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+          "type": "Practitioner",
+          "display": "Dr. Kevin Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-bipolar-ii",
+            "display": "Bipolar II disorder"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "quetiapine 50 mg by mouth at bedtime",
+            "patientInstruction": "Take 1 tablet (50 mg) by mouth at bedtime.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d",
+                "timeOfDay": [
+                  "21:00:00"
+                ]
+              },
+              "code": {
+                "text": "at bedtime"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 50,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019-naltrexone",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-019-naltrexone",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1483744",
+              "display": "naltrexone HCl 50 MG Oral Tablet"
+            }
+          ],
+          "text": "naltrexone 50 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-019"
+        },
+        "authoredOn": "2025-01-21",
+        "requester": {
+          "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+          "type": "Practitioner",
+          "display": "Dr. Kevin Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-aud",
+            "display": "Alcohol use disorder, moderate, in sustained remission"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 50 mg tablet by mouth once daily",
+            "patientInstruction": "Take 1 tablet (50 mg) by mouth once daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 50,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-01-21",
+            "end": "2025-04-21"
+          },
+          "quantity": {
+            "value": 90,
+            "unit": "tablet"
+          },
+          "expectedSupplyDuration": {
+            "value": 90,
+            "unit": "Day",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+          }
+        },
+        "priorPrescription": {
+          "reference": "MedicationRequest/enc-014-naltrexone",
+          "display": "naltrexone 50 mg oral tablet"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-014-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2024-07-15T12:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "type": "Practitioner",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "QkFMTEFSRCBGQU1JTFkgTUVESUNJTkUKNTQxMiAyMm5kIEF2ZSBOVywgU2VhdHRsZSwgV0EgOTgxMDcKTlBJOiA0NTY3ODkwMTIzCgpQQVRJRU5UOiBTYXJhaCBFbGl6YWJldGggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzCkRBVEUgT0YgU0VSVklDRTogMDcvMTUvMjAyNApQUk9WSURFUjogS2V2aW4gVHJhbiwgTUQKVklTSVQgVFlQRTogTmV3IFBhdGllbnQgQ29tcHJlaGVuc2l2ZSBWaXNpdAoKU1VCSkVDVElWRToKTXMuIE1pdGNoZWxsIGlzIGEgMzAteWVhci1vbGQgZmVtYWxlIHByZXNlbnRpbmcgYXMgYSBuZXcgcGF0aWVudCBmb2xsb3dpbmcgcmVsb2NhdGlvbiBmcm9tIFBvcnRsYW5kLCBPUiB0byBTZWF0dGxlLCBXQSBpbiBKdW5lIDIwMjQuIFNoZSBpcyBhIGZyZWVsYW5jZSBncmFwaGljIGRlc2lnbmVyIHdobyBtb3ZlZCBmb3IgYSBmcmVzaCBzdGFydCBhbmQgaXMgc2Vla2luZyB0byBlc3RhYmxpc2ggcHJpbWFyeSBjYXJlLiBDb21wcmVoZW5zaXZlIGhpc3Rvcnkgb2J0YWluZWQgd2l0aCByZXZpZXcgb2YgdHJhbnNmZXJyZWQgcmVjb3JkcyBmcm9tIHRocmVlIHByaW9yIHByb3ZpZGVyczogSGF3dGhvcm5lIEhlYWx0aCBDZW50ZXIgKFBDUCwgUG9ydGxhbmQpLCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzIChwc3ljaGlhdHJ5KSwgYW5kIEJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyIChhZGRpY3Rpb24gbWVkaWNpbmUpLgoKUGFzdCBNZWRpY2FsIEhpc3Rvcnk6CjEuIEJpcG9sYXIgSUkgZGlzb3JkZXIg4oCUIGRpYWdub3NlZCBKdWx5IDIwMTkgYnkgRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzLiBIaXN0b3J5IG9mIGh5cG9tYW5pYyBlcGlzb2RlcyBkYXRpbmcgdG8gY29sbGVnZSB5ZWFycywgaW5pdGlhbGx5IG1pc2RpYWdub3NlZCBhcyBNREQgYW5kIHRyZWF0ZWQgd2l0aCBzZXJ0cmFsaW5lIHdoaWNoIHRyaWdnZXJlZCBoeXBvbWFuaWEuIFN0YWJpbGl6ZWQgb24gbGFtb3RyaWdpbmUgc2luY2UgZmFsbCAyMDE5LCBxdWV0aWFwaW5lIGFkZGVkIHdpbnRlciAyMDIwIGZvciBpbnNvbW5pYSBhbmQgYXVnbWVudGF0aW9uLiBSZXBvcnRzIG1vb2QgaGFzIGJlZW4gc3RhYmxlLCBkZXNjcmliZXMgZmVlbGluZyAidGhlIG1vc3QgZXZlbiBJJ3ZlIGJlZW4gaW4geWVhcnMuIgoyLiBBbGNvaG9sIHVzZSBkaXNvcmRlciwgbW9kZXJhdGUg4oCUIGRpYWdub3NlZCBKYW51YXJ5IDIwMjMuIENvbXBsZXRlZCAxMi13ZWVrIElPUCBhdCBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlciBGZWLigJNBcHIgMjAyMy4gQWNoaWV2ZWQgc29icmlldHkgQXByaWwgMjAyMyBhbmQgaGFzIG1haW50YWluZWQgc3VzdGFpbmVkIHJlbWlzc2lvbiBmb3Igb3ZlciAxNSBtb250aHMuIENvbnRpbnVlcyBuYWx0cmV4b25lIGFuZCB3ZWVrbHkgQUEgYXR0ZW5kYW5jZS4KMy4gSHlwZXJ0cmlnbHljZXJpZGVtaWEsIG1pbGQg4oCUIGF0dHJpYnV0ZWQgdG8gcXVldGlhcGluZSwgbW9uaXRvcmVkIGJ5IHByaW9yIHByb3ZpZGVycy4gTGFzdCB0cmlnbHljZXJpZGVzIDE3OCBtZy9kTCBwZXIgUG9ydGxhbmQgcmVjb3Jkcy4KCk1lZGljYXRpb25zIChyZWNvbmNpbGVkLCBhbGwgY29uZmlybWVkIGFjdGl2ZSBhbmQgZmlsbGVkIHdpdGhpbiB0aGUgcGFzdCBtb250aCk6Ci0gTGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5Ci0gUXVldGlhcGluZSA1MCBtZyBQTyBhdCBiZWR0aW1lCi0gTmFsdHJleG9uZSA1MCBtZyBQTyBkYWlseQoKQWxsZXJnaWVzOiBTdWxmYSBhbnRpYmlvdGljcyAodHJpbWV0aG9wcmltLXN1bGZhbWV0aG94YXpvbGUpIOKAlCByYXNoIGluIGNoaWxkaG9vZC4KClNvY2lhbCBIaXN0b3J5OiBTaW5nbGUsIGxpdmVzIGFsb25lIHdpdGggaGVyIGNhdC4gU2VsZi1lbXBsb3llZCBmcmVlbGFuY2UgZ3JhcGhpYyBkZXNpZ25lci4gRGVuaWVzIGN1cnJlbnQgdG9iYWNjbyBvciByZWNyZWF0aW9uYWwgZHJ1ZyB1c2UuIEFsY29ob2w6IGluIHN1c3RhaW5lZCByZW1pc3Npb24sIHNvYmVyIHNpbmNlIEFwcmlsIDIwMjMsIGF0dGVuZGluZyBBQSB3ZWVrbHkuIE5vIGNoaWxkcmVuLgoKRmFtaWx5IEhpc3Rvcnk6IFJldmlld2VkIHBlciB0cmFuc2ZlcnJlZCByZWNvcmRzLCBub25jb250cmlidXRvcnkgZm9yIHRoaXMgdmlzaXQuCgpST1M6IFBIUS0yIGFkbWluaXN0ZXJlZCwgc2NvcmUgMSAobmVnYXRpdmUgc2NyZWVuKS4gUGF0aWVudCBkZW5pZXMgY3VycmVudCBkZXByZXNzaXZlIHN5bXB0b21zLCBtYW5pYS9oeXBvbWFuaWEsIGFueGlldHksIHN1aWNpZGFsIGlkZWF0aW9uLiBObyBmZXZlcnMsIHdlaWdodCBjaGFuZ2VzLCBjaGVzdCBwYWluLCBTT0IsIGFiZG9taW5hbCBwYWluLCBvciBvdGhlciBhY3V0ZSBjb21wbGFpbnRzLiBHZW5lcmFsIHJldmlldyBvZiBzeXN0ZW1zIG90aGVyd2lzZSBuZWdhdGl2ZS4KCk9CSkVDVElWRToKVml0YWxzOgogIEJQOiAxMTYvNzIgbW1IZwogIEhSOiA2OCBicG0KICBUZW1wOiA5OC40IGRlZ3JlZXMgRgogIFJSOiAxNCBicmVhdGhzL21pbgogIFNwTzI6IDk5JSBvbiByb29tIGFpcgogIFdlaWdodDogMTQyIGxicwogIEhlaWdodDogNjYgaW4gKDUgZnQgNiBpbikKICBCTUk6IDIyLjkga2cvbTIKCkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nIGZlbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4gQWxlcnQsIG9yaWVudGVkLCBwbGVhc2FudCBhbmQgY29vcGVyYXRpdmUuIEFmZmVjdCBldXRoeW1pYyBhbmQgYXBwcm9wcmlhdGUuCkhFRU5UOiBOb3Jtb2NlcGhhbGljLCBhdHJhdW1hdGljLiBPcm9waGFyeW54IGNsZWFyLiBObyB0aHlyb21lZ2FseSBvciBseW1waGFkZW5vcGF0aHkuCkNhcmRpb3Zhc2N1bGFyOiBSUlIsIG5vIG11cm11cnMsIHJ1YnMsIG9yIGdhbGxvcHMuIE5vIHBlcmlwaGVyYWwgZWRlbWEuClB1bG1vbmFyeTogQ2xlYXIgdG8gYXVzY3VsdGF0aW9uIGJpbGF0ZXJhbGx5LiBObyB3aGVlemVzLCByYWxlcywgb3IgcmhvbmNoaS4KQWJkb21lbjogU29mdCwgbm9udGVuZGVyLCBub25kaXN0ZW5kZWQuIE5vcm1hbCBib3dlbCBzb3VuZHMuIE5vIGhlcGF0b3NwbGVub21lZ2FseS4KU2tpbjogTm8gcmFzaGVzLCBsZXNpb25zLCBvciBpbmplY3Rpb24gc3RpZ21hdGEuCgpMYWJzIChyZXN1bHRlZCBzYW1lIGRheSk6CiAgQ0JDOiBXQkMgNi4wIEsvdUwsIEhnYiAxMy45IGcvZEwsIFBsdCAyNDIgSy91TCDigJQgd2l0aGluIG5vcm1hbCBsaW1pdHMKICBDTVA6IEdsdWNvc2UgOTAgbWcvZEwsIENyZWF0aW5pbmUgMC44IG1nL2RMLCBBU1QgMjIgVS9MLCBBTFQgMjYgVS9MIOKAlCB3aXRoaW4gbm9ybWFsIGxpbWl0cwogIExpcGlkIFBhbmVsOiBUb3RhbCBjaG9sZXN0ZXJvbCAxOTAgbWcvZEwsIExETCAxMDggbWcvZEwsIEhETCA1NiBtZy9kTCwgVHJpZ2x5Y2VyaWRlcyAxNjIgbWcvZEwgKG1pbGRseSBlbGV2YXRlZCkKCkFTU0VTU01FTlQ6CjEuIE5ldyBwYXRpZW50IGNvbXByZWhlbnNpdmUgdmlzaXQg4oCUIEVzdGFibGlzaGVkIGNhcmUgZm9sbG93aW5nIHJlbG9jYXRpb24gZnJvbSBQb3J0bGFuZCB0byBTZWF0dGxlLiBDb21wbGV0ZSBtZWRpY2FsIGhpc3RvcnksIG1lZGljYXRpb24gcmVjb25jaWxpYXRpb24sIGFuZCByZWNvcmRzIHJldmlldyBwZXJmb3JtZWQuCjIuIEJpcG9sYXIgSUkgZGlzb3JkZXIg4oCUIFN0YWJsZSBvbiBjdXJyZW50IHJlZ2ltZW4gb2YgbGFtb3RyaWdpbmUgMjAwIG1nIGRhaWx5IGFuZCBxdWV0aWFwaW5lIDUwIG1nIG5pZ2h0bHkuIFBIUS0yIG5lZ2F0aXZlLiBObyBtb29kIGVwaXNvZGVzIHJlcG9ydGVkLiBXaWxsIGNvb3JkaW5hdGUgd2l0aCBwc3ljaGlhdHJ5IGZvciBvbmdvaW5nIG1hbmFnZW1lbnQuCjMuIEFsY29ob2wgdXNlIGRpc29yZGVyLCBtb2RlcmF0ZSwgaW4gc3VzdGFpbmVkIHJlbWlzc2lvbiDigJQgU29iZXIgc2luY2UgQXByaWwgMjAyMyAoPjE1IG1vbnRocykuIENvbnRpbnVlcyBuYWx0cmV4b25lIDUwIG1nIGRhaWx5IGFuZCBBQSBhdHRlbmRhbmNlLiBMaXZlciBlbnp5bWVzIGhhdmUgbm9ybWFsaXplZCAoQVNUIDIyLCBBTFQgMjYpLiBObyBzaWducyBvZiByZWxhcHNlLgo0LiBIeXBlcnRyaWdseWNlcmlkZW1pYSwgbWlsZCDigJQgVHJpZ2x5Y2VyaWRlcyAxNjIgbWcvZEwsIG1pbGRseSBlbGV2YXRlZCBhbmQgY29uc2lzdGVudCB3aXRoIHByaW9yIHF1ZXRpYXBpbmUtcmVsYXRlZCB0cmVuZC4gTERMIDEwOCBtZy9kTCBpcyBhY2NlcHRhYmxlLiBXaWxsIGNvbnRpbnVlIHRvIG1vbml0b3I7IGxpZmVzdHlsZSBjb3Vuc2VsaW5nIHByb3ZpZGVkLgo1LiBJbW11bml6YXRpb24gdXBkYXRlIOKAlCBQYXRpZW50IGR1ZSBmb3IgdXBkYXRlZCBDT1ZJRC0xOSB2YWNjaW5lLgoKUExBTjoKMS4gQ29udGludWUgY3VycmVudCBtZWRpY2F0aW9ucyB3aXRob3V0IGNoYW5nZXM6IGxhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSwgcXVldGlhcGluZSA1MCBtZyBQTyBhdCBiZWR0aW1lLCBuYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5LgoyLiBSZWZlcnJhbCBwbGFjZWQgdG8gUHVnZXQgU291bmQgUHN5Y2hpYXRyeSAoRHIuIEFuaXRhIFBhdGVsKSBmb3Igb25nb2luZyBwc3ljaGlhdHJpYyBtZWRpY2F0aW9uIG1hbmFnZW1lbnQgYW5kIG1vbml0b3JpbmcuIFJlY29yZHMgdG8gYmUgZm9yd2FyZGVkLgozLiBBZG1pbmlzdGVyZWQgQ09WSUQtMTkgdmFjY2luZSAoMjAyNC0yMDI1IGZvcm11bGF0aW9uLCBQZml6ZXItQmlvTlRlY2gpIOKAlCBsZWZ0IGRlbHRvaWQsIG5vIGltbWVkaWF0ZSBhZHZlcnNlIHJlYWN0aW9uIG9ic2VydmVkLgo0LiBDb250aW51ZSBtb25pdG9yaW5nIGxpcGlkIHBhbmVsIGdpdmVuIHF1ZXRpYXBpbmUtYXNzb2NpYXRlZCBoeXBlcnRyaWdseWNlcmlkZW1pYS4gQ291bnNlbGVkIG9uIGhlYXJ0LWhlYWx0aHkgZGlldCBhbmQgcmVndWxhciBleGVyY2lzZS4KNS4gQWxsZXJneSB0byBzdWxmYSBhbnRpYmlvdGljcyAoVE1QLVNNWCDigJQgcmFzaCkgZG9jdW1lbnRlZCBpbiBjaGFydC4KNi4gQWN0aXZlIHByb2JsZW0gbGlzdCBlc3RhYmxpc2hlZCBpbiBFSFIuCjcuIEZvbGxvdy11cCBpbiAzIG1vbnRocyAoT2N0b2JlciAyMDI0KSBmb3Igcm91dGluZSBjaGVjaywgbGFiIHJldmlldywgYW5kIGZsdSB2YWNjaW5lLgoKUGF0aWVudCB2ZXJiYWxpemVkIHVuZGVyc3RhbmRpbmcgb2YgdGhlIHBsYW4uIFF1ZXN0aW9ucyBhbnN3ZXJlZC4gU2hlIHdhcyBhZHZpc2VkIHRvIGNhbGwgdGhlIG9mZmljZSBmb3IgYW55IGNvbmNlcm5zIGluIHRoZSBpbnRlcmltIGFuZCB0byBjb21wbGV0ZSB0cmFuc2ZlciBvZiByZW1haW5pbmcgUG9ydGxhbmQgcmVjb3Jkcy4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKS2V2aW4gVHJhbiwgTUQKQmFsbGFyZCBGYW1pbHkgTWVkaWNpbmUKRGF0ZTogMDcvMTUvMjAyNAo="
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-014"
+            }
+          ],
+          "period": {
+            "start": "2024-07-15"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-016-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2024-10-08T12:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "type": "Practitioner",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+          "type": "Practitioner",
+          "display": "Dr. Kevin Tran"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "QkFMTEFSRCBGQU1JTFkgTUVESUNJTkUKNTQxMiAyMm5kIEF2ZSBOVywgU2VhdHRsZSwgV0EgOTgxMDcKTlBJOiA0NTY3ODkwMTIzCgpQUk9HUkVTUyBOT1RFCgpQYXRpZW50OiBTYXJhaCBFbGl6YWJldGggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzCkRhdGUgb2YgU2VydmljZTogMTAvMDgvMjAyNApQcm92aWRlcjogS2V2aW4gVHJhbiwgTUQKVmlzaXQgVHlwZTogT2ZmaWNlIFZpc2l0IOKAlCBSb3V0aW5lIEZvbGxvdy11cCwgSW5mbHVlbnphIFZhY2NpbmUKClNVQkpFQ1RJVkU6Ck1zLiBNaXRjaGVsbCBpcyBhIDMwLXllYXItb2xkIHdvbWFuIHByZXNlbnRpbmcgZm9yIHJvdXRpbmUgZm9sbG93LXVwLiBTaGUgcmVwb3J0cyBmZWVsaW5nIHdlbGwgb3ZlcmFsbC4gTW9vZCBpcyBzdGFibGUgb24gY3VycmVudCBwc3ljaGlhdHJpYyByZWdpbWVuLiBTaGUgY29uZmlybXMgY29udGludWVkIHNvYnJpZXR5LCBub3cgMTggbW9udGhzIHNpbmNlIGxhc3QgYWxjb2hvbCB1c2UgKHNvYmVyIHNpbmNlIEFwcmlsIDIwMjMpLiBTaGUgc3RhdGVzIHNoZSBpcyBhZGp1c3Rpbmcgd2VsbCB0byBTZWF0dGxlIGFuZCBoYXMgc3VjY2Vzc2Z1bGx5IGVzdGFibGlzaGVkIHBzeWNoaWF0cmljIGNhcmUgd2l0aCBEci4gQW5pdGEgUGF0ZWwgYXQgUHVnZXQgU291bmQgUHN5Y2hpYXRyeS4gTm8gbmV3IG1lZGljYWwgY29tcGxhaW50cy4gTm8gbWVkaWNhdGlvbiBzaWRlIGVmZmVjdHMgcmVwb3J0ZWQuIE5vIGNoYW5nZXMgaW4gc2xlZXAsIGFwcGV0aXRlLCBvciBlbmVyZ3kgbGV2ZWwuIFNoZSBjb250aW51ZXMgdG8gYXR0ZW5kIEFBIG1lZXRpbmdzIHJlZ3VsYXJseS4KClJPUzogTmVnYXRpdmUgZm9yIGZldmVyLCBjaGlsbHMsIGNoZXN0IHBhaW4sIHNob3J0bmVzcyBvZiBicmVhdGgsIGFiZG9taW5hbCBwYWluLCBoZWFkYWNoZSwgb3IgbW9vZCBjaGFuZ2VzLiBObyBzdWljaWRhbCBpZGVhdGlvbi4gTm8gYWxjb2hvbCBjcmF2aW5ncy4KCk9CSkVDVElWRToKVml0YWxzOgogIEJQOiAxMTgvNzQgbW1IZwogIEhSOiA3MCBicG0KICBUZW1wOiA5OC4ywrBGICgzNi44wrBDKQogIFJSOiAxNC9taW4KICBTcE8yOiA5OSUgb24gcm9vbSBhaXIKICBXZWlnaHQ6IDE0MCBsYnMgKDYzLjUga2cpCiAgQk1JOiAyMi42IGtnL23CsgoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcsIHdlbGwtbm91cmlzaGVkIGZlbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4gQWZmZWN0IGlzIGJyaWdodCBhbmQgYXBwcm9wcmlhdGUuCkhFRU5UOiBOb3Jtb2NlcGhhbGljLCBhdHJhdW1hdGljLiBPcm9waGFyeW54IGNsZWFyLgpDYXJkaW92YXNjdWxhcjogUmVndWxhciByYXRlIGFuZCByaHl0aG0sIG5vIG11cm11cnMuCkx1bmdzOiBDbGVhciB0byBhdXNjdWx0YXRpb24gYmlsYXRlcmFsbHkuCkFiZG9tZW46IFNvZnQsIG5vbnRlbmRlciwgbm9uZGlzdGVuZGVkLgpFeHRyZW1pdGllczogTm8gZWRlbWEuClBzeWNoaWF0cmljOiBBbGVydCBhbmQgb3JpZW50ZWQgeDMuIE1vb2QgZXV0aHltaWMuIFRob3VnaHQgcHJvY2VzcyBsaW5lYXIgYW5kIGdvYWwtZGlyZWN0ZWQuCgpTY3JlZW5pbmc6CiAgUEhRLTI6IDAvNiAobmVnYXRpdmUgc2NyZWVuIOKAlCBubyBmdXJ0aGVyIGRlcHJlc3Npb24gc2NyZWVuaW5nIGluZGljYXRlZCkKCk1lZGljYXRpb25zIFJldmlld2VkOgogIDEuIExhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSAobW9vZCBzdGFiaWxpemVyIOKAlCBiaXBvbGFyIElJKQogIDIuIFF1ZXRpYXBpbmUgNTAgbWcgUE8gYXQgYmVkdGltZSAobW9vZC9zbGVlcCDigJQgYmlwb2xhciBJSSkKICAzLiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5IChhbnRpLWNyYXZpbmcg4oCUIGFsY29ob2wgdXNlIGRpc29yZGVyKQpBbGwgbWVkaWNhdGlvbnMgY29udGludWVkIHdpdGhvdXQgY2hhbmdlcy4gUGF0aWVudCByZXBvcnRzIGFkaGVyZW5jZS4KCkFsbGVyZ2llczogU3VsZmEgYW50aWJpb3RpY3MgKFRNUC1TTVgpIOKAlCByYXNoCgpMYWJzOiBOb25lIG9yZGVyZWQgdGhpcyB2aXNpdC4KCkltbXVuaXphdGlvbiBBZG1pbmlzdGVyZWQ6CiAgSW5mbHVlbnphIHZhY2NpbmUsIDIwMjQtMjAyNSBmb3JtdWxhdGlvbiwgMC41IG1MIElNLCBsZWZ0IGRlbHRvaWQuIExvdCBhbmQgZXhwaXJhdGlvbiBkb2N1bWVudGVkIGluIE1BUi4gUGF0aWVudCB0b2xlcmF0ZWQgaW5qZWN0aW9uIHdpdGhvdXQgYWR2ZXJzZSByZWFjdGlvbi4gT2JzZXJ2ZWQgMTUgbWludXRlcyBwb3N0LWFkbWluaXN0cmF0aW9uOyBubyBpbW1lZGlhdGUgcmVhY3Rpb24gbm90ZWQuCgpBU1NFU1NNRU5UOgoxLiBCaXBvbGFyIElJIGRpc29yZGVyIOKAlCBzdGFibGUgb24gbGFtb3RyaWdpbmUgMjAwIG1nIGRhaWx5IGFuZCBxdWV0aWFwaW5lIDUwIG1nIG5pZ2h0bHkuIE1vb2QgZXV0aHltaWMsIFBIUS0yIG5lZ2F0aXZlLiBQc3ljaGlhdHJpYyBjYXJlIGVzdGFibGlzaGVkIHdpdGggRHIuIFBhdGVsIGluIFNlYXR0bGUuIE5vIG1lZGljYXRpb24gYWRqdXN0bWVudHMgbmVlZGVkLgoyLiBBbGNvaG9sIHVzZSBkaXNvcmRlciwgbW9kZXJhdGUsIGluIHN1c3RhaW5lZCByZW1pc3Npb24g4oCUIDE4IG1vbnRocyBzb2Jlci4gQ29udGludWVzIG5hbHRyZXhvbmUgNTAgbWcgZGFpbHkgYW5kIHJlZ3VsYXIgQUEgYXR0ZW5kYW5jZS4gTm8gY3JhdmluZ3MgcmVwb3J0ZWQuCjMuIEh5cGVydHJpZ2x5Y2VyaWRlbWlhLCBtaWxkIOKAlCBtb25pdG9yaW5nOyB3aWxsIHJlY2hlY2sgbGlwaWQgcGFuZWwgYXQgYW5udWFsIHdlbGxuZXNzIHZpc2l0Lgo0LiBJbmZsdWVuemEgaW1tdW5pemF0aW9uIOKAlCAyMDI0LTIwMjUgdmFjY2luZSBhZG1pbmlzdGVyZWQgdG9kYXkuCjUuIEhlYWx0aCBtYWludGVuYW5jZSDigJQgdXAgdG8gZGF0ZS4gRHVlIGZvciBhbm51YWwgd2VsbG5lc3MgZXhhbSBKYW51YXJ5IDIwMjUuCgpQTEFOOgoxLiBDb250aW51ZSBjdXJyZW50IG1lZGljYXRpb25zOiBsYW1vdHJpZ2luZSAyMDAgbWcgZGFpbHksIHF1ZXRpYXBpbmUgNTAgbWcgbmlnaHRseSwgbmFsdHJleG9uZSA1MCBtZyBkYWlseS4KMi4gQ29udGludWUgZm9sbG93LXVwIHdpdGggRHIuIFBhdGVsIGF0IFB1Z2V0IFNvdW5kIFBzeWNoaWF0cnkgZm9yIHBzeWNoaWF0cmljIG1lZGljYXRpb24gbWFuYWdlbWVudC4KMy4gQ29udGludWUgc29icmlldHkgc3VwcG9ydCDigJQgQUEgbWVldGluZ3MsIG5hbHRyZXhvbmUuCjQuIEluZmx1ZW56YSB2YWNjaW5lIGFkbWluaXN0ZXJlZCB0b2RheTsgcGF0aWVudCBjb3Vuc2VsZWQgb24gZXhwZWN0ZWQgbWlsZCBzb3JlbmVzcyBhdCBpbmplY3Rpb24gc2l0ZSBhbmQgdG8gcmVwb3J0IGFueSBhZHZlcnNlIHJlYWN0aW9ucy4KNS4gTm8gbGFicyBpbmRpY2F0ZWQgdG9kYXkuIFdpbGwgb3JkZXIgQ0JDLCBDTVAsIGFuZCBsaXBpZCBwYW5lbCBhdCBuZXh0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdC4KNi4gUmV0dXJuIGZvciBhbm51YWwgd2VsbG5lc3MgdmlzaXQgaW4gSmFudWFyeSAyMDI1LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpLZXZpbiBUcmFuLCBNRApCYWxsYXJkIEZhbWlseSBNZWRpY2luZQoxMC8wOC8yMDI0Cg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-016"
+            }
+          ],
+          "period": {
+            "start": "2024-10-08"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-018-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11502-2",
+              "display": "Laboratory report"
+            }
+          ],
+          "text": "Laboratory Results Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2025-01-14T12:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "type": "Practitioner",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "TEFCT1JBVE9SWSBSRVNVTFRTIE5PVEUKCkRhdGU6IDAxLzE0LzIwMjUKUGF0aWVudDogU2FyYWggTWl0Y2hlbGwgKERPQjogMTEvMTQvMTk5MykKT3JkZXJpbmcgUHJvdmlkZXI6IERyLiBLZXZpbiBUcmFuLCBNRApTaXRlOiBCYWxsYXJkIEZhbWlseSBNZWRpY2luZSwgNTQxMiAyMm5kIEF2ZSBOVywgU2VhdHRsZSwgV0EgOTgxMDcKCklORElDQVRJT046CkFubnVhbCBzY3JlZW5pbmcgbGFib3JhdG9yeSBzdHVkaWVzIHBlciByb3V0aW5lIHByZXZlbnRpdmUgY2FyZSBwcm90b2NvbC4KCk5vIHZpdGFscyBvYnRhaW5lZCAobGFiLW9ubHkgdmlzaXQpLgoKUkVTVUxUUzoKCkNCQzoKICBXQkMgNS42IHgxMF4zL3VMIChub3JtYWwpCiAgSGVtb2dsb2JpbiAxNC4wIGcvZEwgKG5vcm1hbCkKICBQbGF0ZWxldHMgMjUwIHgxMF4zL3VMIChub3JtYWwpCgpDb21wcmVoZW5zaXZlIE1ldGFib2xpYyBQYW5lbDoKICBHbHVjb3NlIDg4IG1nL2RMIChub3JtYWwpCiAgQ3JlYXRpbmluZSAwLjggbWcvZEwgKG5vcm1hbCkKICBBU1QgMjAgVS9MIChub3JtYWwpCiAgQUxUIDI0IFUvTCAobm9ybWFsKQoKSGVtb2dsb2JpbiBBMWM6CiAgNS4xJSAobm9ybWFsLCBubyBldmlkZW5jZSBvZiBwcmVkaWFiZXRlcyBvciBkaWFiZXRlcykKClRoeXJvaWQgRnVuY3Rpb246CiAgVFNIIDIuNCBtSVUvTCAobm9ybWFsKQoKTGlwaWQgUGFuZWw6CiAgVG90YWwgY2hvbGVzdGVyb2wgMTg2IG1nL2RMCiAgTERMIDEwNCBtZy9kTAogIEhETCA1OCBtZy9kTAogIFRyaWdseWNlcmlkZXMgMTUyIG1nL2RMIChtaWxkbHkgZWxldmF0ZWQpCgpJTlRFUlBSRVRBVElPTjoKQ0JDLCBDTVAsIEExYywgYW5kIFRTSCBhcmUgYWxsIHdpdGhpbiBub3JtYWwgbGltaXRzLiBMaXZlciBlbnp5bWVzIChBU1QgMjAsIEFMVCAyNCkgYXJlIHdlbGwgd2l0aGluIG5vcm1hbCByYW5nZSwgcmVhc3N1cmluZyBpbiB0aGUgY29udGV4dCBvZiBoZXIgaGlzdG9yeSBvZiBhbGNvaG9sIHVzZSBkaXNvcmRlciBpbiBzdXN0YWluZWQgcmVtaXNzaW9uIGFuZCBjdXJyZW50IG5hbHRyZXhvbmUgdXNlLiBMaXBpZCBwYW5lbCBzaG93cyBtaWxkbHkgZWxldmF0ZWQgdHJpZ2x5Y2VyaWRlcyBhdCAxNTIgbWcvZEwsIGltcHJvdmVkIGZyb20gMTYyIG1nL2RMIG9uIHByaW9yIHRlc3RpbmcgaW4gSnVseSAyMDI0LCByZWZsZWN0aW5nIGEgc3RhYmxlIGRvd253YXJkIHRyZW5kLiBUaGlzIG1pbGQgaHlwZXJ0cmlnbHljZXJpZGVtaWEgaXMgbGlrZWx5IHJlbGF0ZWQgdG8gcXVldGlhcGluZSA1MG1nIG5pZ2h0bHksIHdoaWNoIHNoZSB0YWtlcyBmb3IgYmlwb2xhciBJSSBkaXNvcmRlciBtYW5hZ2VtZW50LiBMREwgYXQgMTA0IG1nL2RMIGlzIGFjY2VwdGFibGUgZm9yIGhlciByaXNrIHByb2ZpbGUuIEhETCBhdCA1OCBtZy9kTCBpcyB3aXRoaW4gbm9ybWFsIHJhbmdlLgoKUExBTjoKMS4gUmVzdWx0cyByb3V0ZWQgdG8gRHIuIFRyYW4gZm9yIGZpbmFsIHJldmlldy4KMi4gQ29udGludWUgbW9uaXRvcmluZyB0cmlnbHljZXJpZGVzIGF0IG5leHQgYW5udWFsIGxhYnM7IGN1cnJlbnQgdHJlbmQgaXMgZW5jb3VyYWdpbmcuCjMuIE5vIG1lZGljYXRpb24gY2hhbmdlcyBpbmRpY2F0ZWQgYmFzZWQgb24gdGhlc2UgcmVzdWx0cy4KNC4gQ29udGludWUgY3VycmVudCBtZWRpY2F0aW9uczogbGFtb3RyaWdpbmUgMjAwbWcgZGFpbHksIHF1ZXRpYXBpbmUgNTBtZyBhdCBiZWR0aW1lLCBuYWx0cmV4b25lIDUwbWcgZGFpbHkuCjUuIEZvbGxvdy11cCB3aXRoIERyLiBUcmFuIGFzIHByZXZpb3VzbHkgc2NoZWR1bGVkLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OiBEci4gS2V2aW4gVHJhbiwgTUQKRGF0ZTogMDEvMTQvMjAyNQo="
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-018"
+            }
+          ],
+          "period": {
+            "start": "2025-01-14"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-019-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34748-4",
+              "display": "Telephone encounter Note"
+            }
+          ],
+          "text": "Telephone Encounter Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2025-01-21T12:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+            "type": "Practitioner",
+            "display": "Dr. Kevin Tran"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMS8yMS8yMDI1ClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsIChET0I6IDExLzE0LzE5OTMpClByb3ZpZGVyOiBEci4gS2V2aW4gVHJhbiwgTUQKU2l0ZTogQmFsbGFyZCBGYW1pbHkgTWVkaWNpbmUsIDU0MTIgMjJuZCBBdmUgTlcsIFNlYXR0bGUsIFdBIDk4MTA3CgpSZWFzb24gZm9yIENhbGw6IEFubnVhbCBsYWIgcmVzdWx0cyByZXZpZXcKCkRyLiBUcmFuIGNvbnRhY3RlZCB0aGUgcGF0aWVudCBieSB0ZWxlcGhvbmUgdG8gcmV2aWV3IGhlciBhbm51YWwgbGFib3JhdG9yeSByZXN1bHRzLiBDQkMsIENNUCwgYW5kIGxpcGlkIHBhbmVsIHdlcmUgcmV2aWV3ZWQuIEFsbCB2YWx1ZXMgd2VyZSB3aXRoaW4gbm9ybWFsIGxpbWl0cyB3aXRoIHRoZSBleGNlcHRpb24gb2YgdHJpZ2x5Y2VyaWRlcyBhdCAxNTIgbWcvZEwgKG1pbGRseSBlbGV2YXRlZCksIHdoaWNoIGlzIHN0YWJsZSBjb21wYXJlZCB0byBwcmlvciB2YWx1ZXMgYW5kIGNvbnNpc3RlbnQgd2l0aCBvbmdvaW5nIHF1ZXRpYXBpbmUgNTBtZyBuaWdodGx5IHVzZS4gTm8gcGhhcm1hY29sb2dpYyBpbnRlcnZlbnRpb24gd2FycmFudGVkIGF0IHRoaXMgdGltZS4gRGlldGFyeSBjb3Vuc2VsaW5nIHdhcyByZWluZm9yY2VkOiByZWR1Y2UgcmVmaW5lZCBjYXJib2h5ZHJhdGVzIGFuZCBpbmNyZWFzZSBvbWVnYS0zIGZhdHR5IGFjaWQgaW50YWtlLiBDb250aW51ZWQgbW9uaXRvcmluZyBwbGFubmVkIGF0IG5leHQgYW5udWFsIHdlbGxuZXNzIHZpc2l0LgoKVGhlIHBhdGllbnQgaW5xdWlyZWQgYWJvdXQgYSBuYWx0cmV4b25lIHJlZmlsbC4gU2hlIGhhcyBiZWVuIG1haW50YWluZWQgb24gbmFsdHJleG9uZSA1MG1nIGRhaWx5IGZvciBhbGNvaG9sIHVzZSBkaXNvcmRlciBpbiBzdXN0YWluZWQgcmVtaXNzaW9uIChzb2JlciBzaW5jZSBBcHJpbCAyMDIzKS4gRHIuIFRyYW4gY29uZmlybWVkIGhlIGNhbiBwcmVzY3JpYmUgbmFsdHJleG9uZSBnb2luZyBmb3J3YXJkIGluIGNvb3JkaW5hdGlvbiB3aXRoIGhlciBwc3ljaGlhdHJpc3QsIERyLiBBbml0YSBQYXRlbCBhdCBQdWdldCBTb3VuZCBQc3ljaGlhdHJ5LCBpZiBuZWVkZWQuIEEgOTAtZGF5IHJlZmlsbCBvZiBuYWx0cmV4b25lIDUwbWcgUE8gZGFpbHkgd2FzIHByb3ZpZGVkLgoKUGxhbjoKMS4gQ29udGludWUgY3VycmVudCBtZWRpY2F0aW9uczogbGFtb3RyaWdpbmUgMjAwbWcgUE8gZGFpbHksIHF1ZXRpYXBpbmUgNTBtZyBQTyBhdCBiZWR0aW1lLCBuYWx0cmV4b25lIDUwbWcgUE8gZGFpbHkgKDkwLWRheSByZWZpbGwgcHJvdmlkZWQgdG9kYXkpCjIuIERpZXRhcnkgbW9kaWZpY2F0aW9ucyBmb3IgbWlsZCBoeXBlcnRyaWdseWNlcmlkZW1pYSDigJQgcmVkdWNlIHJlZmluZWQgY2FyYm9oeWRyYXRlcywgaW5jcmVhc2Ugb21lZ2EtMyBpbnRha2UKMy4gUmVjaGVjayBsaXBpZCBwYW5lbCBhdCBuZXh0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdAo0LiBGb2xsb3ctdXA6IEFubnVhbCB3ZWxsbmVzcyB2aXNpdCwgc3ByaW5nIDIwMjUK"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-019"
+            }
+          ],
+          "period": {
+            "start": "2025-01-21"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-psych-referral",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-014-psych-referral",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "386053000",
+                "display": "Evaluation procedure (procedure)"
+              }
+            ],
+            "text": "Evaluation"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "183524004",
+              "display": "Referral to psychiatry service (procedure)"
+            }
+          ],
+          "text": "Referral to psychiatry for ongoing medication management"
+        },
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-014"
+        },
+        "authoredOn": "2024-07-15",
+        "requester": {
+          "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+          "type": "Practitioner",
+          "display": "Dr. Kevin Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-014-bipolar-ii",
+            "display": "Bipolar II disorder"
+          }
+        ],
+        "note": [
+          {
+            "text": "Referral to Puget Sound Psychiatry (Dr. Anita Patel) for ongoing psychiatric medication management and monitoring. Records to be forwarded."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014-sulfa-allergy",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "enc-014-sulfa-allergy",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "criticality": "low",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "10831",
+              "display": "sulfamethoxazole / trimethoprim"
+            }
+          ],
+          "text": "Sulfa antibiotics (trimethoprim-sulfamethoxazole)"
+        },
+        "patient": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "recordedDate": "2024-07-15",
+        "note": [
+          {
+            "text": "Rash in childhood following trimethoprim-sulfamethoxazole exposure. Documented at new patient visit."
+          }
+        ],
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "text": "Rash"
+              }
+            ],
+            "severity": "mild"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-014",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-014",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185387006",
+                "display": "New patient consultation (procedure)"
+              }
+            ],
+            "text": "New Patient Comprehensive Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2024-07-15",
+              "end": "2024-07-15"
+            },
+            "individual": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-07-15",
+          "end": "2024-07-15"
+        },
+        "reasonCode": [
+          {
+            "text": "New patient comprehensive visit, medication reconciliation"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+              "display": "Ballard Family Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
+          "display": "Ballard Family Medicine"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah presented to Dr. Kevin Tran as a new patient following her relocation from Portland to Seattle."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-016",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185389009",
+                "display": "Follow-up visit (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending Physician"
+              }
+            ],
+            "period": {
+              "start": "2024-10-08",
+              "end": "2024-10-08"
+            },
+            "individual": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-10-08",
+          "end": "2024-10-08"
+        },
+        "reasonCode": [
+          {
+            "text": "Routine follow-up, influenza vaccine"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+              "display": "Ballard Family Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
+          "display": "Ballard Family Medicine"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah presented for routine follow-up with Dr. Tran."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-018",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-018",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "15220000",
+                "display": "Laboratory test (procedure)"
+              }
+            ],
+            "text": "Lab Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2025-01-14",
+              "end": "2025-01-14"
+            },
+            "individual": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-01-14",
+          "end": "2025-01-14"
+        },
+        "reasonCode": [
+          {
+            "text": "Annual screening laboratory studies"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+              "display": "Ballard Family Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
+          "display": "Ballard Family Medicine"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah presented to Ballard Family Medicine lab for annual laboratory studies ordered by Dr. Tran."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-019",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-019",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185317003",
+                "display": "Telephone encounter (procedure)"
+              }
+            ],
+            "text": "Telephone Encounter"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2025-01-21",
+              "end": "2025-01-21"
+            },
+            "individual": {
+              "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+              "type": "Practitioner",
+              "display": "Dr. Kevin Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-01-21",
+          "end": "2025-01-21"
+        },
+        "reasonCode": [
+          {
+            "text": "Lab results review"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+              "display": "Ballard Family Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/153a668b-784f-4694-96bb-26a177023060",
+          "display": "Ballard Family Medicine"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Dr. Tran called Sarah to review her annual lab results."
+          }
+        ]
+      }
+    }
+  ]
+}

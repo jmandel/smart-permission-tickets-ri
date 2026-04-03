@@ -1,0 +1,66 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-009-asthma-exacerbation",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "708090002",
+        "display": "Acute severe exacerbation of asthma (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.51",
+        "display": "Severe persistent asthma with (acute) exacerbation"
+      }
+    ],
+    "text": "Acute severe asthma exacerbation"
+  },
+  "subject": {
+    "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "onsetDateTime": "2025-01-12",
+  "recordedDate": "2025-01-14",
+  "abatementDateTime": "2025-01-14",
+  "note": [
+    {
+      "text": "Acute severe exacerbation triggered by viral URI in patient with known moderate persistent asthma on dual-controller therapy. Presented with SpO2 89% on room air, tachypnea to 38, intercostal and subcostal retractions. Resolved with continuous albuterol nebulization, ipratropium, and IV methylprednisolone over 4-hour observation period."
+    }
+  ]
+}

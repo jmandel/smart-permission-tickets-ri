@@ -1,0 +1,61 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-016-das28crp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "75633-8",
+        "display": "Rheumatoid arthritis disease activity score Calculated by VectraDA"
+      }
+    ],
+    "text": "DAS28-CRP (Disease Activity Score, 28 joints, using CRP)"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "effectiveDateTime": "2022-07-11",
+  "valueQuantity": {
+    "value": 4.8
+  },
+  "interpretation": [
+    {
+      "text": "Moderate-to-high disease activity (worsened from 4.4 at 3-month assessment)"
+    }
+  ],
+  "derivedFrom": [
+    {
+      "reference": "Observation/enc-016-crp",
+      "display": "C-reactive protein"
+    },
+    {
+      "reference": "Observation/enc-016-ptglobal",
+      "display": "Patient global assessment"
+    },
+    {
+      "reference": "Observation/enc-016-tjc28",
+      "display": "Tender joint count"
+    },
+    {
+      "reference": "Observation/enc-016-sjc28",
+      "display": "Swollen joint count"
+    }
+  ]
+}

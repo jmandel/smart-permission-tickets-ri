@@ -1,0 +1,250 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "university-of-new-mexico-hospital-and-heart-failure-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Post-discharge heart-failure follow-up and medication reconciliation",
+    "participants": [],
+    "service_provider": "University of New Mexico Hospital and Heart Failure Clinic",
+    "location": "UNM Heart Failure Clinic, Albuquerque, New Mexico"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "systolic": 118,
+        "diastolic": 72,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 97.8,
+        "unit": "F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "supporting_text": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 194,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 64,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 33.3,
+        "unit": "kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "serum creatinine",
+        "value": 1.58,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": 38,
+        "unit": "mL/min/1.73 m2",
+        "flag": "low",
+        "supporting_text": "approximately 38 mL/min/1.73 m2"
+      },
+      {
+        "name": "blood urea nitrogen",
+        "value": 31,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "serum potassium",
+        "value": 4.6,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "serum sodium",
+        "value": 139,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "serum bicarbonate",
+        "value": 25,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "NT-proBNP",
+        "value": 684,
+        "unit": "pg/mL",
+        "flag": "high",
+        "supporting_text": "improved from hospitalization"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "heart failure with reduced ejection fraction",
+      "clinical_status": "active",
+      "onset_date": "approximately 2021",
+      "action": "update-existing",
+      "supporting_text": "improving after recent hospitalization, euvolemic on exam, symptoms improved, and functional status assessed as NYHA class II"
+    },
+    {
+      "name": "New York Heart Association class II functional limitation due to heart failure",
+      "clinical_status": "active",
+      "onset_date": "2024-05-03",
+      "action": "create",
+      "supporting_text": "created to capture current heart-failure functional class during post-discharge reassessment"
+    },
+    {
+      "name": "paroxysmal atrial fibrillation",
+      "clinical_status": "active",
+      "onset_date": "approximately 2021",
+      "action": "update-existing",
+      "supporting_text": "remains rate/rhythm controlled, no current palpitations, tolerating anticoagulation without bleeding"
+    },
+    {
+      "name": "chronic kidney disease stage 3b",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "supporting_text": "renal function remained impaired but stable enough to continue current heart-failure regimen; creatinine, eGFR, and potassium reviewed"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "diabetic peripheral neuropathy",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "carvedilol 12.5 mg oral tablet",
+      "sig": "take 12.5 mg by mouth twice daily",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction",
+      "action": "update-existing",
+      "supporting_text": "dose increased from 6.25 mg twice daily to 12.5 mg twice daily because blood pressure tolerated therapy and heart-failure status was improving"
+    },
+    {
+      "name": "sacubitril/valsartan 24/26 mg oral tablet",
+      "sig": "take 1 tablet by mouth twice daily",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "furosemide 40 mg oral tablet",
+      "sig": "take 40 mg by mouth each morning",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction / volume management",
+      "action": "reference-existing"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "take 5 mg by mouth twice daily",
+      "status": "active",
+      "reason": "stroke prevention in atrial fibrillation",
+      "action": "reference-existing",
+      "supporting_text": "ongoing therapy confirmed; bleeding precautions reviewed and no bleeding reported"
+    },
+    {
+      "name": "insulin glargine 24 units subcutaneous injection",
+      "sig": "inject 24 units subcutaneously nightly",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "empagliflozin 10 mg oral tablet",
+      "sig": "take 10 mg by mouth daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus and heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 40 mg oral tablet",
+      "sig": "take 40 mg by mouth nightly",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "gabapentin 300 mg oral capsule",
+      "sig": "take 300 mg by mouth nightly",
+      "status": "active",
+      "reason": "diabetic peripheral neuropathy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "name": "Progress note",
+      "description": "Heart-failure clinic follow-up note documenting post-discharge symptom improvement, euvolemic examination, medication reconciliation, current vitals, and laboratory review. The note should summarize reassessment of HFrEF, atrial fibrillation, CKD stage 3b, and diabetes, and record the carvedilol dose increase with return precautions and follow-up plan."
+    },
+    {
+      "name": "Pharmacist medication access note",
+      "description": "Medication management note documenting reconciliation of the chronic medication list, confirmation of active use, and support from the PharmD during transition of care. The note should include manufacturer copay card assistance, prescription transfer to a local Albuquerque pharmacy, and efforts to reduce future medication-access interruption."
+    },
+    {
+      "name": "Patient instructions",
+      "description": "Written after-visit instructions reinforcing daily weight logging, medication adherence, sodium restriction, and return precautions for worsening dyspnea, orthopnea, edema, rapid weight gain, syncope, or bleeding. The instructions should also state that repeat labs are planned in 2 weeks and heart-failure/cardiology follow-up in 3 months."
+    },
+    {
+      "name": "Care plan update",
+      "description": "Updated outpatient heart-failure management plan reflecting improving NYHA class II symptoms, current euvolemic status, continued guideline-directed medical therapy, and monitoring plan. The document should capture medication titration, planned repeat laboratory monitoring, and follow-up timing."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Basic metabolic panel",
+      "report_state": "summary-only",
+      "description": "same-day chemistry panel reviewed during the visit with partial named component results documented in the note, including creatinine, BUN, sodium, potassium, and bicarbonate. The narrative does not provide a full enough panel component set to reliably represent the complete panel as report-with-results."
+    },
+    {
+      "type": "NT-proBNP laboratory report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "NT-proBNP"
+      ]
+    },
+    {
+      "type": "Repeat renal function and electrolyte laboratory testing",
+      "report_state": "ordered-not-resulted",
+      "description": "repeat labs planned in 2 weeks to monitor renal function, electrolytes, and response to medication titration after carvedilol dose increase; exact panel composition not fully specified, but likely includes repeat chemistry testing relevant to CKD and heart-failure therapy"
+    }
+  ],
+  "allergies": []
+}

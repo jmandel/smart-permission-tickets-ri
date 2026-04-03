@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-010-ecg-tracing",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11524-6",
+        "display": "EKG study"
+      }
+    ],
+    "text": "Electrocardiogram Tracing"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2026-01-12T09:15:00-06:00",
+  "author": [
+    {
+      "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+      "display": "Dr. Angela Whitfield, MD"
+    }
+  ],
+  "description": "In-office 12-lead ECG tracing showing atrial fibrillation with ventricular rate 92 bpm, normal axis, no ST-segment changes, no pathologic Q waves, no bundle branch block, normal QTc interval.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "title": "12-Lead ECG Tracing - 2026-01-12"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-010"
+      }
+    ],
+    "period": {
+      "start": "2026-01-12T09:15:00-06:00"
+    }
+  }
+}

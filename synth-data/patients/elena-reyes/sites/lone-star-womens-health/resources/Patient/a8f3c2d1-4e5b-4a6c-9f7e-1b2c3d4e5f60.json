@@ -1,0 +1,114 @@
+{
+  "resourceType": "Patient",
+  "id": "a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "White"
+        }
+      ]
+    },
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2135-2",
+            "display": "Hispanic or Latino"
+          }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2148-5",
+            "display": "Mexican"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Hispanic or Latino, Mexican-American"
+        }
+      ]
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "Mid-30s Latina woman. Lived in Austin, TX through 2022, then moved to Oakland, CA.\n\nTexas chapter: Reproductive history managed by an OB/GYN practice in Austin. First pregnancy (2019) was uncomplicated — vaginal delivery, healthy baby. In early 2020 she had a spontaneous abortion (miscarriage) at ~10 weeks — managed expectantly, emotionally difficult but no surgical intervention needed. Second successful pregnancy (2021) had mild gestational diabetes (diet-controlled, resolved postpartum), vaginal delivery. Also saw a PCP in Austin for routine care — annual wellness exams, immunizations, a couple of URIs. The miscarriage is particularly sensitive data — in a post-Dobbs environment, records of pregnancy loss could be misinterpreted or weaponized, making the case for granular data sharing controls viscerally concrete.\n\nCalifornia chapter: Established with a new PCP in Oakland in late 2022. In early 2023, started having bilateral hand and wrist pain, morning stiffness lasting over an hour. PCP ordered initial labs (RF, anti-CCP, ESR, CRP — all elevated). Referred to rheumatology. Diagnosed with rheumatoid arthritis, seropositive. Started methotrexate 15mg weekly + folic acid. Required regular monitoring (CBC, LFTs every 8-12 weeks). Partial response to methotrexate — added adalimumab (Humira) in late 2023. Good response by 2024. Ongoing monitoring, quarterly rheumatology visits, regular labs."
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Reyes",
+      "given": [
+        "Elena",
+        "Marisol"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "512-555-0147",
+      "use": "home"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-09-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "4521 South Congress Ave"
+      ],
+      "city": "Austin",
+      "state": "TX",
+      "postalCode": "78745",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "M",
+        "display": "Married"
+      }
+    ],
+    "text": "Married"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ],
+  "identifier": [
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-3b4d924f1bbc870106629acc"
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "encounter_id": "enc-018",
+  "encounter_index": 18,
+  "site_slug": "ballard-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "laboratory encounter",
+    "reason": "annual screening laboratory studies",
+    "period_start": "2025-01-14",
+    "period_end": "2025-01-14",
+    "participants": [
+      {
+        "name": "Dr. Kevin Tran, MD",
+        "role": "ordering provider"
+      }
+    ],
+    "service_provider": "Ballard Family Medicine",
+    "location": "Ballard Family Medicine, 5412 22nd Ave NW, Seattle, WA 98107"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "5.6",
+        "unit": "x10^3/uL",
+        "reference_range": "4.0-11.0 x10^3/uL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "14.0",
+        "unit": "g/dL",
+        "reference_range": "12.0-16.0 g/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": "250",
+        "unit": "x10^3/uL",
+        "reference_range": "150-400 x10^3/uL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "glucose",
+        "value": "88",
+        "unit": "mg/dL",
+        "reference_range": "70-100 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": "0.8",
+        "unit": "mg/dL",
+        "reference_range": "0.6-1.2 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "20",
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "24",
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.1",
+        "unit": "%",
+        "reference_range": "4.0-5.6%",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": "2.4",
+        "unit": "mIU/L",
+        "reference_range": "0.4-4.0 mIU/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "total cholesterol",
+        "value": "186",
+        "unit": "mg/dL",
+        "reference_range": "desirable <200 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": "104",
+        "unit": "mg/dL",
+        "reference_range": "optimal <100, near optimal 100-129 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": "58",
+        "unit": "mg/dL",
+        "reference_range": ">=40 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "triglycerides",
+        "value": "152",
+        "unit": "mg/dL",
+        "reference_range": "normal <150 mg/dL",
+        "flag": "high",
+        "specimen": "venous blood",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "alcohol use disorder, moderate severity, in sustained remission",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "laboratory results note",
+      "description": "Documents annual screening lab results for Sarah Mitchell ordered by Dr. Kevin Tran. Includes CBC, CMP, hemoglobin A1c, TSH, and lipid panel results with clinical interpretation noting all values within normal limits except mildly elevated triglycerides (152 mg/dL, improved from prior). Plan to continue monitoring and current medications unchanged.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP reported as normal. Four individual components provided (glucose, creatinine, AST, ALT) all within normal limits. Remaining standard CMP components not individually enumerated. Liver enzymes specifically noted as reassuring in context of alcohol use disorder history and naltrexone use."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "trimethoprim-sulfamethoxazole",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

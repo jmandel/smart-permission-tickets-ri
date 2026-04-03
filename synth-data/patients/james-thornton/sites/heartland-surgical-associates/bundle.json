@@ -1,0 +1,1609 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T08:39:35.239Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:537091c6-acfe-41e2-bf58-03bff451519d",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "537091c6-acfe-41e2-bf58-03bff451519d",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "White",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "Ten days post-discharge, James presents to his surgeon's clinic with increasing redness, warmth, and purulent drainage from a port site. He is diagnosed with a surgical site infection (SSI). Due to fever (101.8°F) and concern for deeper infection, he is readmitted for IV antibiotics (piperacillin-tazobactam), wound culture, and CT abdomen to rule out intra-abdominal abscess. CT shows a small residual collection that resolves with antibiotics. He is discharged after 4 days on oral ciprofloxacin + metronidazole.\n\nHis payer, BCBS of Nebraska, issues a Permission Ticket to access the surgical documentation, operative report, pathology report, and readmission records for claims adjudication review.\n\nTwo sites, one state (NE). Focused time window (January–February 2026). Tests Permission Ticket constraints on scopes (payer needs DocumentReference, Procedure, DiagnosticReport, Condition — not the full chart) and periods (just the surgical episode)."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.heartland-surgical-associates",
+            "value": "HSA-900471"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-a5f2afa8a1754b8eb5f081f6"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Thornton",
+            "given": [
+              "James",
+              "Robert"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "402-555-0148",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "james.thornton@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1978-08-03",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "14208 Birch Drive"
+            ],
+            "city": "Omaha",
+            "state": "NE",
+            "postalCode": "68164",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f27c97af-3cd4-4e41-bf05-31a0763bd751",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "f27c97af-3cd4-4e41-bf05-31a0763bd751",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1659482073"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Heartland Surgical Associates",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "402-555-0200",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "402-555-0201",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "8901 West Dodge Road",
+              "Suite 210"
+            ],
+            "city": "Omaha",
+            "state": "NE",
+            "postalCode": "68114",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1285634701"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Okonkwo",
+            "given": [
+              "Marcus"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "208600000X",
+                  "display": "Surgery"
+                }
+              ],
+              "text": "Acute Care Surgeon"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:87a967df-98a1-44c1-a0e1-24890c8c75d1",
+      "resource": {
+        "resourceType": "Location",
+        "id": "87a967df-98a1-44c1-a0e1-24890c8c75d1",
+        "status": "active",
+        "name": "Heartland Surgical Associates",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient Facility"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "402-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "8901 West Dodge Road",
+            "Suite 210"
+          ],
+          "city": "Omaha",
+          "state": "NE",
+          "postalCode": "68114",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/f27c97af-3cd4-4e41-bf05-31a0763bd751",
+          "display": "Heartland Surgical Associates"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-amox-clav",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-003-amox-clav",
+        "status": "stopped",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "562508",
+              "display": "amoxicillin 875 MG / clavulanate potassium 125 MG Oral Tablet"
+            }
+          ],
+          "text": "amoxicillin-clavulanate 875 mg / 125 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "authoredOn": "2026-01-22",
+        "requester": {
+          "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+          "type": "Practitioner",
+          "display": "Dr. Marcus Okonkwo"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "433202001",
+                "display": "Surgical site infection (disorder)"
+              }
+            ],
+            "text": "Post-operative infection prophylaxis following laparoscopic appendectomy; discontinued due to clinical failure"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one tablet by mouth twice daily for 14 days. Discontinued on day 9 due to clinical failure (progressive surgical site infection).",
+            "patientInstruction": "Take one tablet by mouth twice daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 2,
+                "period": 1,
+                "periodUnit": "d",
+                "boundsPeriod": {
+                  "start": "2026-01-12",
+                  "end": "2026-01-22"
+                }
+              }
+            },
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 1,
+                  "unit": "tablet",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{tbl}"
+                }
+              }
+            ]
+          }
+        ],
+        "statusReason": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "182840001",
+              "display": "Drug treatment stopped - medical advice (situation)"
+            }
+          ],
+          "text": "Discontinued due to clinical failure; progressive surgical site infection despite 9 of 14 days of therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2026-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 138,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 82,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2026-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 94,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory Rate"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2026-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 16,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen Saturation (Pulse Oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2026-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body Temperature"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2026-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 101.8,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body Weight"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2026-01-22",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 207,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2026-02-05",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 126,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 78,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2026-02-05",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 72,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory Rate"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2026-02-05",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen Saturation (Pulse Oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2026-02-05",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body Temperature"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2026-02-05",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body Weight"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2026-02-05",
+        "performer": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 208,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-003-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "date": "2026-01-22T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "type": "Practitioner",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+          "type": "Practitioner",
+          "display": "Dr. Marcus Okonkwo"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "SEVBUlRMQU5EIFNVUkdJQ0FMIEFTU09DSUFURVMKODkwMSBXZXN0IERvZGdlIFJvYWQsIFN1aXRlIDIxMCwgT21haGEsIE5FIDY4MTE0Ck5QSTogMTY1OTQ4MjA3MwoKT0ZGSUNFIFZJU0lUIOKAlCBQUk9HUkVTUyBOT1RFCgpQYXRpZW50OiBKYW1lcyBSb2JlcnQgVGhvcm50b24KRGF0ZSBvZiBTZXJ2aWNlOiAwMS8yMi8yMDI2CkNsaW5pY2lhbjogTWFyY3VzIE9rb25rd28sIE1ELCBGQUNTIChOUEk6IDEyODU2MzQ3MDEpClZpc2l0IFR5cGU6IFVyZ2VudCBzYW1lLWRheSBvZmZpY2UgdmlzaXQKClNVQkpFQ1RJVkU6Ck1yLiBUaG9ybnRvbiBpcyBhIDQ3LXllYXItb2xkIG1hbGUgcHJlc2VudGluZyBvbiBQT0QxMCBmb2xsb3dpbmcgbGFwYXJvc2NvcGljIGFwcGVuZGVjdG9teSBwZXJmb3JtZWQgMDEvMTIvMjAyNiBhdCBOZWJyYXNrYSBNZWRpY2luZSBmb3IgcGVyZm9yYXRlZCBnYW5ncmVub3VzIGFwcGVuZGljaXRpcyB3aXRoIHBlcmlhcHBlbmRpY2VhbCBhYnNjZXNzLiBIZSBjYWxsZWQgdGhlIG9mZmljZSB0aGlzIG1vcm5pbmcgcmVwb3J0aW5nIGluY3JlYXNpbmcgcmVkbmVzcyBhbmQgZHJhaW5hZ2UgZnJvbSBoaXMgcmlnaHQtc2lkZWQgcG9ydCBzaXRlIG92ZXIgdGhlIHBhc3QgMiBkYXlzLiBIZSBlbmRvcnNlcyBzdWJqZWN0aXZlIGZldmVycyBhdCBob21lLiBIZSB3YXMgb3JpZ2luYWxseSBzY2hlZHVsZWQgZm9yIHJvdXRpbmUgcG9zdC1vcCBmb2xsb3ctdXAgb24gMDEvMjYvMjAyNiAoUE9EMTQpIGJ1dCB3YXMgYnJvdWdodCBpbiBzYW1lLWRheSBnaXZlbiB0aGUgY29uY2VybmluZyBzeW1wdG9tcy4KCk1lZGljYXRpb25zOiBQYXRpZW50IHJlcG9ydHMgY29tcGxldGluZyA5IG9mIDE0IGRheXMgb2YgYW1veGljaWxsaW4tY2xhdnVsYW5hdGUgODc1LzEyNSBtZyBCSUQgYXMgcHJlc2NyaWJlZCBhdCBkaXNjaGFyZ2UuIE5vIG90aGVyIG1lZGljYXRpb25zLiBPY2Nhc2lvbmFsIGFjZXRhbWlub3BoZW4gUFJOLiBPeHljb2RvbmUgNSBtZyBwcmVzY3JpYmVkIGF0IGRpc2NoYXJnZSB1c2VkIG1pbmltYWxseS4KCkFsbGVyZ2llczogTktEQQoKUk9TOiBQb3NpdGl2ZSBmb3IgZmV2ZXIsIHdvdW5kIGRyYWluYWdlLCBhbmQgd291bmQgcmVkbmVzcy4gRGVuaWVzIG5hdXNlYSwgdm9taXRpbmcsIGRpYXJyaGVhLCBjaGVzdCBwYWluLCBzaG9ydG5lc3Mgb2YgYnJlYXRoLCBvciB1cmluYXJ5IHN5bXB0b21zLgoKT0JKRUNUSVZFOgpWaXRhbHM6CiAgVGVtcDogMTAxLjggRiAoMzguOCBDKSBvcmFsCiAgSFI6IDk0IGJwbQogIEJQOiAxMzgvODIgbW1IZwogIFJSOiAxNi9taW4KICBTcE8yOiA5OCUgb24gcm9vbSBhaXIKICBXdDogMjA3IGxicyAoOTMuOSBrZykKCkdlbmVyYWw6IEFsZXJ0LCBvcmllbnRlZCwgYXBwZWFycyBtaWxkbHkgdW5jb21mb3J0YWJsZS4gTm8gYWN1dGUgZGlzdHJlc3MuCgpBYmRvbWVuOiBTb2Z0LCBub25kaXN0ZW5kZWQuIE1pbGQgdGVuZGVybmVzcyBpbiB0aGUgUkxRIHN1cnJvdW5kaW5nIHRoZSBwb3J0IHNpdGUuIE5vIHBlcml0b25lYWwgc2lnbnMuIE5vIHJlYm91bmQgb3IgZ3VhcmRpbmcgcmVtb3RlIGZyb20gdGhlIHdvdW5kLgoKV291bmQgRXhhbWluYXRpb246Ci0gUmlnaHQgbG93ZXIgcXVhZHJhbnQgMTIgbW0gcG9ydCBpbmNpc2lvbjogMyBjbSBhcmVhIG9mIHN1cnJvdW5kaW5nIGVyeXRoZW1hIGFuZCBpbmR1cmF0aW9uLiBXb3VuZCBlZGdlcyBtaWxkbHkgZGVoaXNjZWQuIFB1cnVsZW50IGRyYWluYWdlICh5ZWxsb3dpc2gtZ3JlZW4sIG1hbG9kb3JvdXMpIGV4cHJlc3NlZCBvbiBwYWxwYXRpb24uIFN1cnJvdW5kaW5nIHNraW4gd2FybSBhbmQgdGVuZGVyIHRvIHRvdWNoLgotIFVtYmlsaWNhbCBwb3J0IHNpdGU6IFdlbGwtaGVhbGVkLCBubyBlcnl0aGVtYSBvciBkcmFpbmFnZS4KLSBMZWZ0IGxvd2VyIHF1YWRyYW50IHBvcnQgc2l0ZTogV2VsbC1oZWFsZWQsIG5vIGVyeXRoZW1hIG9yIGRyYWluYWdlLgotIE5vIGNyZXBpdHVzIG9yIHN1YmN1dGFuZW91cyBlbXBoeXNlbWEgYXBwcmVjaWF0ZWQgYXQgYW55IHNpdGUuCgpObyBsYWJzIG9yIGltYWdpbmcgcGVyZm9ybWVkIGluIG9mZmljZS4KCkFTU0VTU01FTlQ6CjEuIFN1cmdpY2FsIHNpdGUgaW5mZWN0aW9uLCByaWdodCBsb3dlciBxdWFkcmFudCBwb3J0IHNpdGUsIGZvbGxvd2luZyBsYXBhcm9zY29waWMgYXBwZW5kZWN0b215IChUODEuNDFYQSkg4oCUIFBhdGllbnQgaXMgZmVicmlsZSB3aXRoIHB1cnVsZW50IHdvdW5kIGRyYWluYWdlIG9uIFBPRDEwLiBEZXNwaXRlIG9uZ29pbmcgb3JhbCBhbnRpYmlvdGljIHRoZXJhcHkgd2l0aCBhbW94aWNpbGxpbi1jbGF2dWxhbmF0ZSwgdGhlIGluZmVjdGlvbiBoYXMgcHJvZ3Jlc3NlZCwgaW5kaWNhdGluZyBpbmFkZXF1YXRlIHNvdXJjZSBjb250cm9sIG9yIHJlc2lzdGFudCBvcmdhbmlzbS4KMi4gQ29uY2VybiBmb3IgcG9zc2libGUgZGVlcGVyIHNvZnQgdGlzc3VlIGludm9sdmVtZW50IG9yIGludHJhLWFiZG9taW5hbCBpbmZlY3Rpb24g4oCUIEdpdmVuIHRoZSBkZWdyZWUgb2YgZmV2ZXIgKDEwMS44IEYpIGFuZCBwdXJ1bGVuY2UgaW4gdGhlIHNldHRpbmcgb2YgYSBwcmlvciBwZXJmb3JhdGVkIGFwcGVuZGljaXRpcyB3aXRoIGtub3duIHBlcmlhcHBlbmRpY2VhbCBhYnNjZXNzLCBkZWVwZXIgaW5mZWN0aW9uIGNhbm5vdCBiZSBleGNsdWRlZCBpbiB0aGUgb3V0cGF0aWVudCBzZXR0aW5nIHdpdGhvdXQgY3Jvc3Mtc2VjdGlvbmFsIGltYWdpbmcuCgpQTEFOOgoxLiBBbW94aWNpbGxpbi1jbGF2dWxhbmF0ZSA4NzUvMTI1IG1nIGRpc2NvbnRpbnVlZCBnaXZlbiBjbGluaWNhbCBmYWlsdXJlIG9uIGN1cnJlbnQgb3JhbCBhbnRpYmlvdGljIHJlZ2ltZW4uCjIuIFBhdGllbnQgZGlyZWN0ZWQgdG8gcHJlc2VudCBpbW1lZGlhdGVseSB0byB0aGUgTmVicmFza2EgTWVkaWNpbmUgRW1lcmdlbmN5IERlcGFydG1lbnQgZm9yIGFkbWlzc2lvbiwgaW5pdGlhdGlvbiBvZiBJViBhbnRpYmlvdGljcywgYW5kIENUIGFiZG9tZW4vcGVsdmlzIHdpdGggSVYgY29udHJhc3QgdG8gZXZhbHVhdGUgZm9yIGludHJhLWFiZG9taW5hbCBhYnNjZXNzIG9yIHVuZHJhaW5lZCBjb2xsZWN0aW9uLgozLiBTcG9rZSBkaXJlY3RseSB3aXRoIERyLiBTYW11ZWwgS2VyciAoRUQgYXR0ZW5kaW5nLCBOZWJyYXNrYSBNZWRpY2luZSkgYnkgdGVsZXBob25lIHRvIGFycmFuZ2UgdHJhbnNmZXIgYW5kIGNvbW11bmljYXRlIGNsaW5pY2FsIGZpbmRpbmdzLCBpbmNsdWRpbmcgZmV2ZXIsIHdvdW5kIHB1cnVsZW5jZSwgYW5kIHN1cmdpY2FsIGhpc3RvcnkuIERyLiBLZXJyIGFudGljaXBhdGVzIGFkbWlzc2lvbiB0byBzdXJnaWNhbCBzZXJ2aWNlLgo0LiBQYXRpZW50IGFuZCB3aWZlIEthcmVuIGNvdW5zZWxlZCByZWdhcmRpbmcgdGhlIG5lZWQgZm9yIGVzY2FsYXRpb24gb2YgY2FyZS4gVGhleSB1bmRlcnN0YW5kIHRoZSBwbGFuIGFuZCBhcmUgcHJvY2VlZGluZyB0byB0aGUgRUQgZGlyZWN0bHkgZnJvbSB0aGUgb2ZmaWNlLgo1LiBQb3N0LXJlYWRtaXNzaW9uIGZvbGxvdy11cCB0byBiZSBzY2hlZHVsZWQgYXQgSGVhcnRsYW5kIFN1cmdpY2FsIEFzc29jaWF0ZXMgdXBvbiBkaXNjaGFyZ2UuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ck1hcmN1cyBPa29ua3dvLCBNRCwgRkFDUwpBY3V0ZSBDYXJlIFN1cmdlcnkKMDEvMjIvMjAyNgo="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-003"
+            }
+          ],
+          "period": {
+            "start": "2026-01-22"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-006-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "date": "2026-02-05T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+            "type": "Practitioner",
+            "display": "Dr. Marcus Okonkwo"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+          "type": "Practitioner",
+          "display": "Dr. Marcus Okonkwo"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "SEVBUlRMQU5EIFNVUkdJQ0FMIEFTU09DSUFURVMKODkwMSBXZXN0IERvZGdlIFJvYWQsIFN1aXRlIDIxMCwgT21haGEsIE5FIDY4MTE0Ck5QSTogMTY1OTQ4MjA3MwoKT0ZGSUNFIFZJU0lUIFBST0dSRVNTIE5PVEUKClBhdGllbnQ6IEphbWVzIFJvYmVydCBUaG9ybnRvbgpEYXRlIG9mIFNlcnZpY2U6IDAyLzA1LzIwMjYKUHJvdmlkZXI6IE1hcmN1cyBPa29ua3dvLCBNRCwgRkFDUyAoTlBJOiAxMjg1NjM0NzAxKQpWaXNpdCBUeXBlOiBQb3N0LXJlYWRtaXNzaW9uIGZvbGxvdy11cCwgd291bmQgY2xlYXJhbmNlCgpTVUJKRUNUSVZFOgpNci4gVGhvcm50b24gaXMgYSA0Ny15ZWFyLW9sZCBtYWxlIHByZXNlbnRpbmcgZm9yIHNjaGVkdWxlZCBwb3N0LXJlYWRtaXNzaW9uIGZvbGxvdy11cC4gSGUgaXMgbm93IDEwIGRheXMgc3RhdHVzIHBvc3Qgc2Vjb25kIGRpc2NoYXJnZSBhbmQgMjQgZGF5cyBzdGF0dXMgcG9zdCBsYXBhcm9zY29waWMgYXBwZW5kZWN0b215IGZvciBwZXJmb3JhdGVkIGFwcGVuZGljaXRpcy4gSGUgcmVwb3J0cyBmZWVsaW5nIHdlbGwgd2l0aCBnb29kIGVuZXJneSBhbmQgYXBwZXRpdGUuIEhlIHJldHVybmVkIHRvIGxpZ2h0IGR1dHkgd29yayBvbmUgd2VlayBhZ28gaW4gYSBzdXBlcnZpc29yeSBjYXBhY2l0eSB3aXRob3V0IGRpZmZpY3VsdHkuIEhlIGNvbXBsZXRlZCB0aGUgZnVsbCAxMC1kYXkgY291cnNlIG9mIGNpcHJvZmxveGFjaW4gNTAwIG1nIEJJRCBhbmQgbWV0cm9uaWRhem9sZSA1MDAgbWcgVElEIGFzIHByZXNjcmliZWQsIHdpdGggbGFzdCBkb3NlcyB0YWtlbiBvbiBGZWJydWFyeSA0LiBIZSBkZW5pZXMgZmV2ZXJzLCBjaGlsbHMsIG5hdXNlYSwgdm9taXRpbmcsIG9yIGFiZG9taW5hbCBwYWluIHNpbmNlIGRpc2NoYXJnZS4gSGlzIHdpZmUgS2FyZW4gaGFkIGJlZW4gcGVyZm9ybWluZyBkYWlseSB3b3VuZCBwYWNraW5nIGNoYW5nZXMgd2l0aCBzYWxpbmUtbW9pc3RlbmVkIGdhdXplIGJ1dCBkaXNjb250aW51ZWQgMyBkYXlzIGFnbyBhcyB0aGUgd291bmQgYXBwZWFyZWQgZnVsbHkgY2xvc2VkLiBIZSByZXBvcnRzIHVzaW5nIG9jY2FzaW9uYWwgT1RDIGFjZXRhbWlub3BoZW4gZm9yIG1pbm9yIGFjaGVzLiBUaGUgb3h5Y29kb25lIDUgbWcgcHJlc2NyaXB0aW9uIGZyb20gdGhlIGluaXRpYWwgZGlzY2hhcmdlIHdhcyB1c2VkIG1pbmltYWxseSAoNCBvZiAyMCB0YWJsZXRzIHRha2VuKSBhbmQgaGFzIGJlZW4gcHJvcGVybHkgZGlzcG9zZWQgb2YgdmlhIHBoYXJtYWN5IHRha2UtYmFjay4KClJPUzogTmVnYXRpdmUgZm9yIGZldmVyLCBjaGlsbHMsIG5hdXNlYSwgdm9taXRpbmcsIGRpYXJyaGVhLCBhYmRvbWluYWwgcGFpbiwgd291bmQgZHJhaW5hZ2UsIG9yIHdvdW5kIGVyeXRoZW1hLiBObyB1cmluYXJ5IG9yIHJlc3BpcmF0b3J5IGNvbXBsYWludHMuIEVuZXJneSBhbmQgYXBwZXRpdGUgYXQgYmFzZWxpbmUuCgpPQkpFQ1RJVkU6ClZpdGFsczoKICBUZW1wOiA5OC40IEYgKDM2LjkgQykgb3JhbAogIEhSOiA3MiBicG0KICBCUDogMTI2Lzc4IG1tSGcKICBSUjogMTQvbWluCiAgU3BPMjogOTklIG9uIHJvb20gYWlyCiAgV2VpZ2h0OiAyMDggbGJzICg5NC4zIGtnKSDigJQgYXQgYmFzZWxpbmUKCkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nIG1hbGUgaW4gbm8gYWN1dGUgZGlzdHJlc3MuIEFsZXJ0LCBvcmllbnRlZCwgY29tZm9ydGFibGUuCgpBYmRvbWVuOiBTb2Z0LCBub24tdGVuZGVyLCBub24tZGlzdGVuZGVkLiBOb3JtYWwgYm93ZWwgc291bmRzLiBObyBndWFyZGluZyBvciByZWJvdW5kLgoKV291bmQgRXhhbWluYXRpb246Ci0gUkxRIDEyIG1tIHBvcnQgc2l0ZTogSGVhbGVkIGNvbXBsZXRlbHkgYnkgc2Vjb25kYXJ5IGludGVudGlvbi4gSGVhbHRoeSwgZmxhdCBzY2FyIHRpc3N1ZS4gTm8gZXJ5dGhlbWEsIGluZHVyYXRpb24sIHdhcm10aCwgZHJhaW5hZ2UsIG9yIGZsdWN0dWFuY2UuIFN1cnJvdW5kaW5nIHNraW4gbm9ybWFsLgotIFVtYmlsaWNhbCBwb3J0IHNpdGU6IEZ1bGx5IGhlYWxlZCwgd2VsbC1hcHByb3hpbWF0ZWQgc2Nhci4gTm8gaGVybmlhIGRlZmVjdCBwYWxwYXRlZC4KLSBMTFEgcG9ydCBzaXRlOiBGdWxseSBoZWFsZWQsIHdlbGwtYXBwcm94aW1hdGVkIHNjYXIuIE5vIGhlcm5pYSBkZWZlY3QgcGFscGF0ZWQuCgpObyBpbmNpc2lvbmFsIGhlcm5pYSBkZWZlY3RzIGFwcHJlY2lhdGVkIGF0IGFueSBwb3J0IHNpdGUgb24gZXhhbS4KCkFTU0VTU01FTlQ6CjEuIFN1cmdpY2FsIHNpdGUgaW5mZWN0aW9uLCByZXNvbHZlZCAoVDgxLjQxWEQpIOKAlCBSTFEgcG9ydCBzaXRlIHdvdW5kIGhhcyBoZWFsZWQgYnkgc2Vjb25kYXJ5IGludGVudGlvbiB3aXRoIG5vIHNpZ25zIG9mIHJlc2lkdWFsIG9yIHJlY3VycmVudCBpbmZlY3Rpb24uIENvbXBsZXRlZCBmdWxsIGFudGliaW90aWMgY291cnNlIChjaXByb2Zsb3hhY2luL21ldHJvbmlkYXpvbGUgeCAxMCBkYXlzIGZvbGxvd2luZyBJViBwaXBlcmFjaWxsaW4tdGF6b2JhY3RhbSBkdXJpbmcgcmVhZG1pc3Npb24gSmFudWFyeSAyMi0yNikuCjIuIFN0YXR1cyBwb3N0IGxhcGFyb3Njb3BpYyBhcHBlbmRlY3RvbXkgZm9yIHBlcmZvcmF0ZWQgYXBwZW5kaWNpdGlzLCByZWNvdmVyZWQgKFo4Ny4wOSkg4oCUIE9yaWdpbmFsIHN1cmdlcnkgcGVyZm9ybWVkIEphbnVhcnkgMTIsIDIwMjYgYXQgTmVicmFza2EgTWVkaWNpbmUuIFBhdGhvbG9neSBjb25maXJtZWQgYWN1dGUgZ2FuZ3Jlbm91cyBhcHBlbmRpY2l0aXMgd2l0aCB0cmFuc211cmFsIG5lY3Jvc2lzIGFuZCBwZXJmb3JhdGlvbi4gQ291cnNlIGNvbXBsaWNhdGVkIGJ5IFNTSSByZXF1aXJpbmcgcmVhZG1pc3Npb24uIE5vdyBmdWxseSByZWNvdmVyZWQuCjMuIEFsbCBwb3J0IHNpdGUgaW5jaXNpb25zIGhlYWxlZCDigJQgbm8gZXZpZGVuY2Ugb2YgaGVybmlhIGF0IGFueSBwb3J0IHNpdGUuCgpQTEFOOgoxLiBBbnRpYmlvdGljczogQ29tcGxldGVkLCBubyBhZGRpdGlvbmFsIGNvdXJzZXMgbmVlZGVkLgoyLiBXb3VuZCBjYXJlOiBEaXNjb250aW51ZWQuIFdvdW5kIGZ1bGx5IGhlYWxlZCBieSBzZWNvbmRhcnkgaW50ZW50aW9uLgozLiBBY3Rpdml0eTogQ2xlYXJlZCB0byByZXN1bWUgZnVsbCB3b3JrIGR1dGllcyBpbmNsdWRpbmcgaGVhdnkgbGlmdGluZyBpbiAyIHdlZWtzLiBUYXJnZXQgZGF0ZSBmb3IgcmV0dXJuIHRvIGZ1bGwgZHV0eTogRmVicnVhcnkgMTksIDIwMjYuIFdvcmsgcmVsZWFzZSBsZXR0ZXIgcHJvdmlkZWQuCjQuIERpZXQ6IFVucmVzdHJpY3RlZC4KNS4gRm9sbG93LXVwOiBObyBmdXJ0aGVyIHN1cmdpY2FsIGZvbGxvdy11cCBuZWVkZWQuIFBhdGllbnQgdG8gcmV0dXJuIGlmIG5ldyBhYmRvbWluYWwgcGFpbiwgZmV2ZXIsIG9yIHdvdW5kIGNoYW5nZXMgZGV2ZWxvcC4KNi4gUHJpbWFyeSBjYXJlOiBSZWNvbW1lbmRlZCBlc3RhYmxpc2hpbmcgY2FyZSB3aXRoIGEgcHJpbWFyeSBjYXJlIHBoeXNpY2lhbiBmb3Igcm91dGluZSBoZWFsdGggbWFpbnRlbmFuY2UuIFBhdGllbnQgaGFzIG5vdCBoYWQgYSBQQ1AgdmlzaXQgc2luY2UgMjAxOS4KNy4gTWVkaWNhdGlvbnM6IE5vIGFjdGl2ZSBwcmVzY3JpcHRpb25zLiBPVEMgYWNldGFtaW5vcGhlbiBQUk4gYXMgbmVlZGVkLgoKV291bmQgYXNzZXNzbWVudCBhbmQgY2xlYXJhbmNlIGRvY3VtZW50YXRpb24gY29tcGxldGVkLiBXb3JrIHJlbGVhc2UgbGV0dGVyIGdlbmVyYXRlZCBmb3IgcmV0dXJuIHRvIGZ1bGwgZHV0aWVzIGVmZmVjdGl2ZSBGZWJydWFyeSAxOSwgMjAyNi4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKTWFyY3VzIE9rb25rd28sIE1ELCBGQUNTCkFjdXRlIENhcmUgU3VyZ2VyeQpIZWFydGxhbmQgU3VyZ2ljYWwgQXNzb2NpYXRlcwpEYXRlOiAwMi8wNS8yMDI2Cg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-006"
+            }
+          ],
+          "period": {
+            "start": "2026-02-05",
+            "end": "2026-02-05"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-ssi",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-003-ssi",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "433202001",
+              "display": "Surgical site infection (disorder)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "T81.41XD",
+              "display": "Infection following a procedure, superficial incisional surgical site, subsequent encounter"
+            }
+          ],
+          "text": "Surgical site infection, right lower quadrant port site, following laparoscopic appendectomy"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "onsetDateTime": "2026-01-20",
+        "abatementDateTime": "2026-02-05",
+        "recordedDate": "2026-01-22",
+        "recorder": {
+          "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+          "display": "Dr. Marcus Okonkwo"
+        },
+        "note": [
+          {
+            "text": "RLQ port site wound healed completely by secondary intention. Healthy, flat scar tissue with no residual erythema, induration, warmth, or drainage. Full antibiotic course completed (ciprofloxacin/metronidazole x 10 days following IV piperacillin-tazobactam during readmission). Resolved as of 2026-02-05 follow-up."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-status-post-appendectomy",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-006-status-post-appendectomy",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "1156321000",
+              "display": "History of laparoscopic appendectomy (situation)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "Z87.09",
+              "display": "Personal history of other diseases of the digestive system"
+            }
+          ],
+          "text": "Status post laparoscopic appendectomy for perforated appendicitis, recovered"
+        },
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "onsetDateTime": "2026-01-12",
+        "abatementDateTime": "2026-02-05",
+        "recordedDate": "2026-02-05",
+        "recorder": {
+          "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+          "display": "Dr. Marcus Okonkwo"
+        },
+        "note": [
+          {
+            "text": "Original laparoscopic appendectomy performed January 12, 2026 at Nebraska Medicine for acute gangrenous appendicitis with transmural necrosis and perforation. Course complicated by surgical site infection requiring readmission. Now fully recovered with all port site incisions healed and no hernia defects."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-003",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "439740005",
+                "display": "Postoperative follow-up visit (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary Performer"
+              }
+            ],
+            "period": {
+              "start": "2026-01-22",
+              "end": "2026-01-22"
+            },
+            "individual": {
+              "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+              "type": "Practitioner",
+              "display": "Dr. Marcus Okonkwo"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-01-22",
+          "end": "2026-01-22"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183644000",
+                "display": "Surgical follow-up (finding)"
+              }
+            ],
+            "text": "Post-operative follow-up; surgical site infection detected"
+          }
+        ],
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "Condition/enc-003-ssi",
+              "display": "Surgical site infection"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                  "code": "AD",
+                  "display": "Admission diagnosis"
+                }
+              ]
+            }
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/87a967df-98a1-44c1-a0e1-24890c8c75d1",
+              "display": "Heartland Surgical Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/f27c97af-3cd4-4e41-bf05-31a0763bd751",
+          "display": "Heartland Surgical Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Encounter type: Office visit (urgent same-day) Clinician: Dr. Marcus Okonkwo (Acute Care Surgeon, NPI: 1285634701), Heartland Surgical Associates"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-006",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "439740005",
+                "display": "Postoperative follow-up visit (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+          "display": "James Robert Thornton"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary Performer"
+              }
+            ],
+            "period": {
+              "start": "2026-02-05",
+              "end": "2026-02-05"
+            },
+            "individual": {
+              "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+              "type": "Practitioner",
+              "display": "Dr. Marcus Okonkwo"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-02-05",
+          "end": "2026-02-05"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183644000",
+                "display": "Surgical follow-up (finding)"
+              }
+            ],
+            "text": "Post-readmission follow-up, wound clearance"
+          }
+        ],
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "Condition/enc-003-ssi",
+              "display": "Surgical site infection, resolved"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                  "code": "AD",
+                  "display": "Admission diagnosis"
+                }
+              ]
+            }
+          },
+          {
+            "condition": {
+              "reference": "Condition/enc-006-status-post-appendectomy",
+              "display": "Status post laparoscopic appendectomy for perforated appendicitis"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                  "code": "AD",
+                  "display": "Admission diagnosis"
+                }
+              ]
+            }
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/87a967df-98a1-44c1-a0e1-24890c8c75d1",
+              "display": "Heartland Surgical Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/f27c97af-3cd4-4e41-bf05-31a0763bd751",
+          "display": "Heartland Surgical Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Encounter type: Office visit (scheduled follow-up) Clinician: Dr. Marcus Okonkwo (Acute Care Surgeon, NPI: 1285634701), Heartland Surgical Associates"
+          }
+        ]
+      }
+    }
+  ]
+}

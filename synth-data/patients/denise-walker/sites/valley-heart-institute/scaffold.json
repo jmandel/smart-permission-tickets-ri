@@ -1,0 +1,394 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2054-5",
+              "display": "Black or African American"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Black"
+          }
+        ]
+      },
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Non-Hispanic"
+          }
+        ]
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "text": "Denise Walker",
+        "family": "Walker",
+        "given": [
+          "Denise"
+        ]
+      }
+    ],
+    "gender": "female",
+    "_birthDate": {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+          "valueCode": "unknown"
+        }
+      ]
+    },
+    "address": [
+      {
+        "use": "home",
+        "city": "Albuquerque",
+        "state": "NM",
+        "country": "US",
+        "text": "Lives in Albuquerque, New Mexico, after relocating from Phoenix, Arizona in early 2024 to be closer to her adult daughter and grandchildren."
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "home",
+        "_value": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+              "valueCode": "unknown"
+            }
+          ]
+        }
+      }
+    ],
+    "contact": [
+      {
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                "code": "C",
+                "display": "Emergency Contact"
+              }
+            ],
+            "text": "Emergency Contact"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CHILD",
+                "display": "child"
+              }
+            ],
+            "text": "Adult daughter"
+          }
+        ],
+        "name": {
+          "text": "Adult daughter"
+        },
+        "address": {
+          "city": "Albuquerque",
+          "state": "NM",
+          "country": "US",
+          "text": "Adult daughter in Albuquerque, New Mexico"
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "mobile",
+            "_value": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                  "valueCode": "unknown"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "W",
+          "display": "Widowed"
+        }
+      ],
+      "text": "Widowed"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1730248652",
+          "display": "Source Organization NPI 1730248652"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Organization",
+    "id": "4450878e-25f2-4491-8594-1b519b0371ff",
+    "identifier": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1730248652"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Cardiology specialty practice"
+      }
+    ],
+    "name": "Valley Heart Institute",
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "work",
+        "_value": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+              "valueCode": "unknown"
+            }
+          ]
+        }
+      }
+    ],
+    "address": [
+      {
+        "city": "Phoenix",
+        "state": "AZ",
+        "country": "US",
+        "text": "Phoenix, Arizona"
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1730248652",
+          "display": "Source Organization NPI 1730248652"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+    "active": true,
+    "name": [
+      {
+        "text": "Dr. Aaron Patel, MD",
+        "family": "Patel",
+        "given": [
+          "Aaron"
+        ],
+        "prefix": [
+          "Dr."
+        ],
+        "suffix": [
+          "MD"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "MD"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1730248652",
+          "display": "Source Organization NPI 1730248652"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "86de17f8-4c2f-49f7-aaf0-cc09da94cc4e",
+    "active": true,
+    "name": [
+      {
+        "text": "Lisa Nguyen, PA-C",
+        "family": "Nguyen",
+        "given": [
+          "Lisa"
+        ],
+        "suffix": [
+          "PA-C"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "PA-C"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1730248652",
+          "display": "Source Organization NPI 1730248652"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "36e1fa18-41bb-4b3e-a025-8b5c233a5c87",
+    "active": true,
+    "name": [
+      {
+        "text": "Jeffrey Cole, RN",
+        "family": "Cole",
+        "given": [
+          "Jeffrey"
+        ],
+        "suffix": [
+          "RN"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "RN"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1730248652",
+          "display": "Source Organization NPI 1730248652"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Location",
+    "id": "369aa6be-d5d8-4538-8c06-fe8414866c2d",
+    "status": "active",
+    "name": "Valley Heart Institute",
+    "description": "Main clinical location for Valley Heart Institute encounters during the active period.",
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "work",
+        "_value": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+              "valueCode": "unknown"
+            }
+          ]
+        }
+      }
+    ],
+    "address": {
+      "city": "Phoenix",
+      "state": "AZ",
+      "country": "US",
+      "text": "Valley Heart Institute, Phoenix, Arizona"
+    },
+    "managingOrganization": {
+      "reference": "Organization/4450878e-25f2-4491-8594-1b519b0371ff",
+      "display": "Valley Heart Institute"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1730248652",
+          "display": "Source Organization NPI 1730248652"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  }
+]

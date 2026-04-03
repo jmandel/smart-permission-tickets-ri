@@ -1,0 +1,160 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Pathology review, molecular results review, goals-of-care discussion, treatment planning for non-small cell lung cancer",
+    "period_start": "2024-10-15T09:00:00-05:00",
+    "period_end": "2024-10-15T09:55:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending physician"
+      },
+      {
+        "name": "Jennifer Liu, RN",
+        "role": "research coordinator"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 136,
+        "value_diastolic": 82,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats per minute",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 151,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 25.1,
+        "unit": "kg/m²",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths per minute",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 96,
+        "unit": "%",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "ECOG performance status",
+        "value": 1,
+        "description": "Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, adenocarcinoma subtype, right upper lobe primary",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "update-existing",
+      "description": "Final staging: Stage IIIA (T2b N2 M0). KRAS G12C positive, PD-L1 TPS 60% (high expression). EGFR wild-type, ALK negative, ROS1 negative, BRAF V600E negative, MET amplification negative. Unresectable disease given N2 nodal involvement."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "knee osteoarthritis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive oncology progress note documenting review of finalized pathology, molecular profiling (KRAS G12C positive, PD-L1 TPS 60%), and imaging results. Includes final staging determination (Stage IIIA, T2b N2 M0), detailed discussion of treatment options including chemo-immunotherapy recommendation, clinical trial opportunity (NCT05820295), goals-of-care conversation, code status confirmation (full code), and advance directive discussion.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "next-generation sequencing molecular profiling panel",
+      "report_state": "summary-only",
+      "description": "EGFR wild-type, ALK rearrangement negative, ROS1 rearrangement negative, BRAF V600E negative, KRAS G12C positive, MET amplification negative. Finalized 2024-10-10."
+    },
+    {
+      "type": "PD-L1 expression by immunohistochemistry (22C3 assay)",
+      "report_state": "summary-only",
+      "description": "Tumor proportion score 60% (high expression). Associated with EBUS-TBNA specimen."
+    },
+    {
+      "type": "surgical pathology — endobronchial ultrasound-guided transbronchial needle aspiration",
+      "report_state": "summary-only",
+      "description": "Adenocarcinoma confirmed in mediastinal lymph node stations 4R and 7. Immunohistochemistry TTF-1 positive, CK7 positive, CK20 negative, p40 negative, consistent with pulmonary origin."
+    },
+    {
+      "type": "PET/CT",
+      "report_state": "summary-only",
+      "description": "FDG-avid right upper lobe mass (SUVmax 12.4), FDG-avid ipsilateral mediastinal nodes (SUVmax 8.1 at station 4R), no distant metastases."
+    },
+    {
+      "type": "brain MRI with contrast",
+      "report_state": "summary-only",
+      "description": "No intracranial metastases."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

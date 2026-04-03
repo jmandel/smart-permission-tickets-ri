@@ -1,0 +1,85 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-005-acetaminophen-iv",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "483017",
+        "display": "acetaminophen 1000 MG in 100 ML Injection"
+      }
+    ],
+    "text": "Acetaminophen 1000 mg IV"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "authoredOn": "2026-01-22",
+  "requester": {
+    "reference": "Practitioner/d71350cc-eff8-48b3-a0ce-93e1e91d0e6b",
+    "type": "Practitioner",
+    "display": "Dr. Priya Nair"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386661006",
+          "display": "Fever (finding)"
+        }
+      ],
+      "text": "Pain and fever management"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "1000 mg IV every 6 hours",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 6,
+          "periodUnit": "h"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 1000,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "encounter_id": "enc-018",
+  "encounter_index": 18,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "chemotherapy infusion encounter",
+    "reason": "Cycle 2 chemo-immunotherapy for non-small cell lung cancer",
+    "period_start": "2025-01-27T08:00:00-06:00",
+    "period_end": "2025-01-27T10:30:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending physician",
+        "specialty": "Thoracic Medical Oncology"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 130,
+        "value_diastolic": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 147,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 24.5,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%",
+        "interpretation": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 5.4,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "absolute neutrophil count (ANC)",
+        "value": 1.8,
+        "unit": "K/uL",
+        "reference_range": "1.5–8.0 K/uL",
+        "flag": "low-normal",
+        "interpretation": "acceptable for treatment but declining trend noted"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 10.9,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "low",
+        "interpretation": "mild anemia, stable"
+      },
+      {
+        "name": "platelet count",
+        "value": 156,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.92,
+        "unit": "mg/dL",
+        "reference_range": "0.6–1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 22,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 24,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": 3.1,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5 g/dL",
+        "flag": "low",
+        "interpretation": "consistent with chronic illness and malignancy"
+      },
+      {
+        "name": "lactate dehydrogenase (LDH)",
+        "value": 188,
+        "unit": "U/L",
+        "reference_range": "140–280 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": 2.4,
+        "unit": "mIU/L",
+        "reference_range": "0.4–4.0 mIU/L",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "ECOG performance status",
+        "value": 1,
+        "interpretation": "restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature"
+      },
+      {
+        "name": "CTCAE toxicity assessment — nausea",
+        "value": 1,
+        "interpretation": "loss of appetite without alteration in eating habits; managed with ondansetron"
+      },
+      {
+        "name": "CTCAE toxicity assessment — fatigue",
+        "value": 1,
+        "interpretation": "fatigue relieved by rest; improved by week 2 post Cycle 1"
+      },
+      {
+        "name": "CTCAE toxicity assessment — peripheral neuropathy",
+        "value": 0,
+        "interpretation": "none"
+      },
+      {
+        "name": "CTCAE toxicity assessment — rash",
+        "value": 0,
+        "interpretation": "none"
+      },
+      {
+        "name": "CTCAE toxicity assessment — diarrhea",
+        "value": 0,
+        "interpretation": "none"
+      },
+      {
+        "name": "CTCAE toxicity assessment — pneumonitis",
+        "value": 0,
+        "interpretation": "none"
+      },
+      {
+        "name": "CTCAE toxicity assessment — hepatotoxicity",
+        "value": 0,
+        "interpretation": "none"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA (T2b N2 M0), adenocarcinoma, right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "pembrolizumab 200 mg intravenous",
+      "sig": "200 mg IV every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer",
+      "action": "reference-existing"
+    },
+    {
+      "name": "carboplatin 450 mg intravenous (AUC 5)",
+      "sig": "450 mg IV every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pemetrexed 860 mg intravenous (500 mg/m²)",
+      "sig": "860 mg IV every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer",
+      "action": "reference-existing"
+    },
+    {
+      "name": "dexamethasone",
+      "sig": "per standard chemotherapy pre-medication protocol",
+      "status": "active",
+      "reason": "chemotherapy pre-medication (anti-emetic and hypersensitivity prophylaxis)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "diphenhydramine",
+      "sig": "per standard chemotherapy pre-medication protocol",
+      "status": "active",
+      "reason": "chemotherapy pre-medication (hypersensitivity prophylaxis)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "famotidine",
+      "sig": "per standard chemotherapy pre-medication protocol",
+      "status": "active",
+      "reason": "chemotherapy pre-medication (H2 blocker prophylaxis)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ondansetron 8 mg oral tablet",
+      "sig": "8 mg oral every 8 hours as needed for nausea",
+      "status": "active",
+      "reason": "chemotherapy-induced nausea",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "10 mg oral once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "1 mg oral once daily",
+      "status": "active",
+      "reason": "pemetrexed supplementation protocol",
+      "action": "reference-existing"
+    },
+    {
+      "name": "vitamin B12 intramuscular injection",
+      "sig": "per pemetrexed supplementation protocol",
+      "status": "active",
+      "reason": "pemetrexed supplementation protocol",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "infusion visit progress note",
+      "description": "Documents Cycle 2 chemo-immunotherapy administration for stage IIIA NSCLC. Includes pre-treatment assessment with interval history (grade 1 nausea and fatigue post Cycle 1, improving cough), CTCAE toxicity grading, ECOG status, pre-infusion vitals, pre-treatment lab results and interpretation, treatment administered (pembrolizumab 200 mg IV, pemetrexed 860 mg IV, carboplatin 450 mg IV) at full doses with no infusion reactions, neutropenia precautions counseling, and plan for Cycle 3 on February 17, 2025."
+    },
+    {
+      "type": "medication administration record",
+      "description": "Documents infusion start and end times, drug administration details (agents, doses, rates, routes), pre-medication administration, and monitoring during infusion. Approximately 2.5 hours total chair time with hemodynamic stability throughout."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "absolute neutrophil count (ANC)",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Partial CMP results reported — creatinine 0.92, ALT 22, AST 24, albumin 3.1. Renal and hepatic function within acceptable limits for continued chemotherapy. Albumin mildly low at 3.1, consistent with chronic illness and malignancy. Full CMP electrolytes and glucose not individually enumerated in the note; only 4 of the expected 14+ components are reported."
+    },
+    {
+      "type": "lactate dehydrogenase (LDH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lactate dehydrogenase (LDH)"
+      ]
+    },
+    {
+      "type": "thyroid-stimulating hormone (TSH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone (TSH)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

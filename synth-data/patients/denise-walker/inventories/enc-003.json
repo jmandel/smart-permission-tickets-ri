@@ -1,0 +1,370 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "university-of-new-mexico-hospital-and-heart-failure-clinic",
+  "encounter": {
+    "class": "inpatient hospitalization",
+    "type": "Inpatient Hospitalization",
+    "reason": "Acute decompensated heart failure after relocation and medication lapse",
+    "period_start": "2024-04-22",
+    "period_end": "2024-04-25",
+    "participants": [],
+    "service_provider": "University of New Mexico Hospital and Heart Failure Clinic",
+    "location": "University of New Mexico Hospital, Albuquerque, New Mexico"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "Blood pressure",
+        "value": "168/102",
+        "unit": "mmHg",
+        "systolic": "168",
+        "diastolic": "102",
+        "timing": "on ED presentation"
+      },
+      {
+        "name": "Heart rate",
+        "value": 118,
+        "unit": "bpm",
+        "timing": "on ED presentation"
+      },
+      {
+        "name": "Respiratory rate",
+        "value": 24,
+        "unit": "/min",
+        "timing": "on ED presentation"
+      },
+      {
+        "name": "Body temperature",
+        "value": 98,
+        "unit": "F",
+        "timing": "on ED presentation"
+      },
+      {
+        "name": "Oxygen saturation",
+        "value": 91,
+        "unit": "%",
+        "timing": "on room air on ED presentation"
+      },
+      {
+        "name": "Oxygen saturation",
+        "value": 96,
+        "unit": "%",
+        "timing": "on 2 L/min nasal cannula after supplemental oxygen"
+      },
+      {
+        "name": "Body weight",
+        "value": 205,
+        "unit": "lb",
+        "timing": "on admission"
+      },
+      {
+        "name": "Blood pressure",
+        "value": "128/78",
+        "unit": "mmHg",
+        "systolic": "128",
+        "diastolic": "78",
+        "timing": "at discharge"
+      },
+      {
+        "name": "Heart rate",
+        "value": 82,
+        "unit": "bpm",
+        "timing": "at discharge"
+      },
+      {
+        "name": "Body weight",
+        "value": 197,
+        "unit": "lb",
+        "timing": "at discharge"
+      }
+    ],
+    "labs": [
+      {
+        "name": "B-type natriuretic peptide",
+        "value": 1286,
+        "unit": "pg/mL",
+        "flag": "high"
+      },
+      {
+        "name": "High-sensitivity troponin",
+        "value": 19,
+        "unit": "ng/L",
+        "flag": "high"
+      },
+      {
+        "name": "High-sensitivity troponin",
+        "value": 18,
+        "unit": "ng/L",
+        "flag": "high"
+      },
+      {
+        "name": "Creatinine",
+        "value": 1.72,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "Creatinine",
+        "value": 1.89,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "Creatinine",
+        "value": 1.63,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "Estimated glomerular filtration rate",
+        "value": "about 30",
+        "unit": "mL/min/1.73 m2",
+        "flag": "low"
+      },
+      {
+        "name": "Estimated glomerular filtration rate",
+        "value": "about 36",
+        "unit": "mL/min/1.73 m2",
+        "flag": "low"
+      },
+      {
+        "name": "Blood urea nitrogen",
+        "value": 34,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "Potassium",
+        "value": 4.8,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "Sodium",
+        "value": 137,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "Glucose",
+        "value": 238,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "Hemoglobin A1c",
+        "value": 8.8,
+        "unit": "%",
+        "flag": "high"
+      },
+      {
+        "name": "Magnesium",
+        "value": 1.8,
+        "unit": "mg/dL",
+        "flag": "low-normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "Acute decompensated heart failure with reduced ejection fraction due to medication lapse after relocation",
+      "clinical_status": "active",
+      "onset_date": "2024-04-22",
+      "action": "update-existing",
+      "notes": "Known chronic HFrEF with acute exacerbation this encounter; hospitalization for volume-overload decompensation with orthopnea, edema, hypoxemia, BNP elevation, and need for IV diuresis; repeat echocardiogram documented LVEF 33%."
+    },
+    {
+      "name": "Atrial fibrillation with rapid ventricular response",
+      "clinical_status": "active",
+      "onset_date": "known prior to this encounter; acute RVR documented 2024-04-22",
+      "action": "update-existing",
+      "notes": "Known paroxysmal atrial fibrillation with acute rapid ventricular response on presentation; initial ECG showed atrial fibrillation with ventricular rate 122 bpm; rhythm later became rate-controlled with intermittent sinus rhythm after treatment and medication restart."
+    },
+    {
+      "name": "Acute hypoxemic respiratory failure secondary to heart-failure-related volume overload",
+      "clinical_status": "resolved by discharge",
+      "onset_date": "2024-04-22",
+      "action": "create",
+      "notes": "Required supplemental oxygen initially, then resolved before discharge."
+    },
+    {
+      "name": "Chronic kidney disease stage 3b",
+      "clinical_status": "active",
+      "onset_date": "known prior to this encounter",
+      "action": "update-existing",
+      "notes": "Renal function worsened transiently during diuresis with creatinine peak 1.89 mg/dL and eGFR nadir about 30, then improved by discharge to creatinine 1.63 mg/dL and eGFR about 36."
+    },
+    {
+      "name": "Type 2 diabetes mellitus with hyperglycemia",
+      "clinical_status": "active",
+      "onset_date": "known prior to this encounter",
+      "action": "update-existing",
+      "notes": "Inpatient hyperglycemia documented with glucose 238 mg/dL and hemoglobin A1c 8.8%; inpatient insulin regimen used."
+    },
+    {
+      "name": "Hypertension",
+      "clinical_status": "active",
+      "onset_date": "known prior to this encounter",
+      "action": "reference-existing",
+      "notes": "Severe elevation on presentation was noted, but no new hypertension diagnosis established."
+    },
+    {
+      "name": "Hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "known prior to this encounter",
+      "action": "reference-existing",
+      "notes": "Chronic condition acknowledged; statin therapy continued without substantive change."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Furosemide 40 mg IV",
+      "sig": "40 mg intravenously twice daily during hospitalization",
+      "status": "completed",
+      "reason": "acute decompensated heart failure with volume overload",
+      "action": "create"
+    },
+    {
+      "name": "Apixaban 5 mg oral tablet",
+      "sig": "take 5 mg by mouth twice daily",
+      "status": "active",
+      "reason": "atrial fibrillation for stroke prevention",
+      "action": "update-existing"
+    },
+    {
+      "name": "Carvedilol 6.25 mg oral tablet",
+      "sig": "take 6.25 mg by mouth twice daily",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction and atrial fibrillation rate control",
+      "action": "update-existing"
+    },
+    {
+      "name": "Sacubitril/valsartan 24/26 mg oral tablet",
+      "sig": "take 1 tablet by mouth twice daily",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction",
+      "action": "update-existing"
+    },
+    {
+      "name": "Empagliflozin 10 mg oral tablet",
+      "sig": "take 10 mg by mouth daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus and heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "Insulin glargine 24 units subcutaneous injection",
+      "sig": "inject 24 units subcutaneously every night",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus with hyperglycemia",
+      "action": "update-existing"
+    },
+    {
+      "name": "Correctional insulin",
+      "sig": "administer correctional insulin as instructed for inpatient hyperglycemia management",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus with hyperglycemia",
+      "action": "create"
+    },
+    {
+      "name": "Atorvastatin 40 mg oral tablet",
+      "sig": "take 40 mg by mouth nightly",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "Outpatient loop diuretic regimen after discharge",
+      "sig": "continue outpatient loop diuretic plan as reviewed at discharge",
+      "status": "active",
+      "reason": "chronic heart failure volume management",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "name": "ED note",
+      "description": "Emergency department documentation should summarize progressive dyspnea, orthopnea, abdominal bloating, and bilateral leg edema after medication disruption, along with hypertensive tachycardic presentation, hypoxemia, and atrial fibrillation with rapid ventricular response. It should include the initial exam, oxygen response, laboratory and imaging review, and decision to admit for acute decompensated heart failure."
+    },
+    {
+      "name": "Admission history and physical",
+      "description": "Admission H&P should document known HFrEF, paroxysmal atrial fibrillation, diabetes, CKD stage 3b, hypertension, and hyperlipidemia, with medication lapse after relocation as a likely precipitant. It should capture the volume-overload syndrome, cardiorenal risk, and the initial inpatient treatment plan including IV diuresis, telemetry, oxygen, daily weights, and medication re-establishment."
+    },
+    {
+      "name": "Daily inpatient progress notes",
+      "description": "Progress notes should track response to diuresis, oxygen weaning, renal function changes during decongestion, rhythm control on telemetry, and improvement in dyspnea and edema. They should also reflect re-initiation of guideline-directed medical therapy and ongoing discharge planning."
+    },
+    {
+      "name": "Discharge summary",
+      "description": "Discharge summary should describe hospitalization for acute decompensated HFrEF with atrial fibrillation with rapid ventricular response and transient hypoxemic respiratory failure, improvement after IV diuresis and medication restart, and renal recovery by discharge. It should include final diagnoses, discharge medications, discharge vitals and weight, and follow-up plans."
+    },
+    {
+      "name": "Medication reconciliation",
+      "description": "Medication reconciliation should document restart of apixaban, carvedilol, and sacubitril/valsartan, continuation of empagliflozin and atorvastatin, inpatient insulin management, and outpatient loop diuretic planning. It should note that prior medication access had been disrupted by relocation."
+    },
+    {
+      "name": "Heart-failure education materials / discharge instructions",
+      "description": "Patient instructions should cover daily weights, sodium restriction to less than 2 g/day, medication adherence, and return precautions for dyspnea, weight gain, edema, chest pain, or palpitations. They should also document planned follow-up with the heart-failure clinic within 1 week."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Basic metabolic / renal monitoring during hospitalization",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Creatinine",
+        "Estimated glomerular filtration rate",
+        "Blood urea nitrogen",
+        "Potassium",
+        "Sodium",
+        "Glucose",
+        "Magnesium"
+      ]
+    },
+    {
+      "type": "Hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "Cardiac biomarker testing",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "B-type natriuretic peptide",
+        "High-sensitivity troponin"
+      ]
+    },
+    {
+      "type": "Complete blood count",
+      "report_state": "summary-only",
+      "description": "CBC was reviewed and showed no leukocytosis, but individual component values were not provided, so no CBC component observations should be created from this note."
+    },
+    {
+      "type": "Chest radiograph",
+      "report_state": "summary-only",
+      "description": "Chest X-ray showed pulmonary vascular congestion with small bilateral pleural effusions, supporting heart-failure-related volume overload."
+    },
+    {
+      "type": "Electrocardiogram",
+      "report_state": "summary-only",
+      "description": "ECG demonstrated atrial fibrillation with rapid ventricular response at 122 bpm on presentation."
+    },
+    {
+      "type": "Telemetry rhythm monitoring",
+      "report_state": "summary-only",
+      "description": "Telemetry later showed rate-controlled atrial fibrillation with intermittent sinus rhythm during hospitalization."
+    },
+    {
+      "type": "Transthoracic echocardiogram",
+      "report_state": "summary-only",
+      "description": "Repeat echocardiogram documented LVEF 33%, global left ventricular hypokinesis, mildly reduced right ventricular function, moderate left atrial enlargement, and no left ventricular thrombus."
+    }
+  ],
+  "allergies": []
+}

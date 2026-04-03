@@ -1,0 +1,36 @@
+{
+  "resourceType": "Location",
+  "id": "8116aec9-563a-4f4a-ac13-7da7bf3619db",
+  "status": "active",
+  "name": "Desert Family Medicine",
+  "description": "Main clinical site for Desert Family Medicine in Phoenix, Arizona",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Office"
+        }
+      ],
+      "text": "Primary care clinic"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "602-555-0110",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "city": "Phoenix",
+    "state": "AZ",
+    "country": "US",
+    "text": "Phoenix, AZ"
+  },
+  "managingOrganization": {
+    "reference": "Organization/dbd558a3-303a-4216-9b3c-2b3e233ef600",
+    "display": "Desert Family Medicine"
+  }
+}

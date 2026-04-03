@@ -1,0 +1,110 @@
+{
+  "resourceType": "MedicationRequest",
+  "status": "draft",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "2640302",
+        "display": "adalimumab-bwwd 40 MG in 0.8 ML Prefilled Syringe"
+      }
+    ],
+    "text": "Hadlima (adalimumab-bwwd) 40 mg/0.8 mL prefilled syringe"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-018"
+  },
+  "authoredOn": "2022-09-12",
+  "requester": {
+    "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+    "display": "Dr. Alejandro Fuentes",
+    "type": "Practitioner"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-005-ra",
+      "display": "Seropositive rheumatoid arthritis"
+    }
+  ],
+  "note": [
+    {
+      "text": "Pending prior authorization from Aetna. Patient has failed two conventional DMARDs: methotrexate (hepatotoxicity) and leflunomide (inadequate response). Continue leflunomide 20 mg daily as background DMARD. Pre-biologic TB screening ordered (TST and QuantiFERON-TB Gold)."
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Inject 40 mg subcutaneously every 14 days",
+      "patientInstruction": "Inject 40 mg subcutaneously every 14 days.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 14,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "34206005",
+            "display": "Subcutaneous route (qualifier value)"
+          }
+        ],
+        "text": "Subcutaneous"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 40,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2022-09-12"
+    },
+    "quantity": {
+      "value": 2,
+      "unit": "syringe"
+    },
+    "expectedSupplyDuration": {
+      "value": 28,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  },
+  "id": "enc-018-adalimumab"
+}

@@ -1,0 +1,66 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "enc-000-sulfa-allergy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "criticality": "low",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "10831",
+        "display": "sulfamethoxazole / trimethoprim"
+      }
+    ],
+    "text": "Sulfa antibiotics (trimethoprim-sulfamethoxazole)"
+  },
+  "patient": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "recordedDate": "2019-02-12",
+  "note": [
+    {
+      "text": "Patient reports childhood rash with trimethoprim-sulfamethoxazole."
+    }
+  ],
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271807003",
+              "display": "Eruption of skin (disorder)"
+            }
+          ],
+          "text": "Rash"
+        }
+      ],
+      "severity": "mild"
+    }
+  ]
+}

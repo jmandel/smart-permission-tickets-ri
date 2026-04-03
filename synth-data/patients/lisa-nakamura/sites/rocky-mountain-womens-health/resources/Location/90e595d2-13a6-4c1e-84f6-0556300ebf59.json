@@ -1,0 +1,46 @@
+{
+  "resourceType": "Location",
+  "id": "90e595d2-13a6-4c1e-84f6-0556300ebf59",
+  "status": "active",
+  "name": "Rocky Mountain Women's Health",
+  "description": "Primary OB/GYN clinical location for Rocky Mountain Women's Health in Denver, CO",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "303-555-0200",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "303-555-0201",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "1600 Ogden Street, Suite 400"
+    ],
+    "city": "Denver",
+    "state": "CO",
+    "postalCode": "80218",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/04dc74ab-8c5a-470f-8a15-bc7cbba4408e",
+    "display": "Rocky Mountain Women's Health"
+  }
+}

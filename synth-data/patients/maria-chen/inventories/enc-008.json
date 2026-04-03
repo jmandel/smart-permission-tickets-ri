@@ -1,0 +1,72 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telemedicine",
+    "reason": "Asthma exacerbation triggered by cold air and occupational dust exposure",
+    "period_start": "2022-11-14",
+    "participants": [
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": [
+      {
+        "name": "Asthma Control Test score",
+        "value": 18,
+        "interpretation": "not well controlled",
+        "note": "Retrospectively estimated for the prior 2-week period",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "onset_date": "2008",
+      "action": "reference-existing"
+    },
+    {
+      "name": "acute asthma exacerbation, mild",
+      "clinical_status": "active",
+      "onset_date": "2022-11-04",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs inhaled every 4-6 hours as needed for wheezing or shortness of breath",
+      "status": "active",
+      "reason": "mild asthma exacerbation; underlying mild intermittent asthma",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Telemedicine video visit note documenting asthma exacerbation evaluation. Patient reports 10 days of increased albuterol use (daily, sometimes twice daily) associated with cold weather and occupational dust exposure. ACT score 18. Assessment: mild exacerbation, no infection. Plan: continue albuterol PRN, environmental modification counseling (cold air protection, occupational dust mitigation), return precautions for worsening, telephone follow-up in 7 days.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-010",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386472008",
+          "display": "Telephone consultation (procedure)"
+        }
+      ],
+      "text": "Telephone"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+        "display": "Dr. Nisha Ramaswamy, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-09-03",
+    "end": "2024-09-03"
+  },
+  "reasonCode": [
+    {
+      "text": "MD Anderson referral confirmation, cough management"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+        "display": "Houston Pulmonary Associates"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+    "display": "Houston Pulmonary Associates"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Dr. Ramaswamy called Patricia to confirm that the MD Anderson referral had been processed and her new patient consultation with Dr."
+    }
+  ]
+}

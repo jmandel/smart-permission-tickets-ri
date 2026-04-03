@@ -1,0 +1,54 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-012-phq2-depressed",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "44255-8",
+        "display": "Feeling down, depressed, or hopeless in last 2 weeks"
+      }
+    ],
+    "text": "Feeling down, depressed, or hopeless"
+  },
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "effectiveDateTime": "2024-11-14",
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "LA6570-1",
+        "display": "More than half the days"
+      }
+    ],
+    "text": "More than half the days"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

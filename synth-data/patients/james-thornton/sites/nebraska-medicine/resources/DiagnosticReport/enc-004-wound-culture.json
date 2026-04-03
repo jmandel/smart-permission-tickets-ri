@@ -1,0 +1,55 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-004-wound-culture",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "MB",
+          "display": "Microbiology"
+        }
+      ],
+      "text": "Microbiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "6462-6",
+        "display": "Bacteria identified in Wound by Culture"
+      }
+    ],
+    "text": "Wound Culture"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "effectiveDateTime": "2026-01-22T19:00:00-06:00",
+  "issued": "2026-01-24T12:00:00-06:00",
+  "performer": [
+    {
+      "reference": "Practitioner/e541b9d7-7d9e-442d-98a8-8bd3ea36f1ad",
+      "display": "Dr. Samuel Kerr"
+    }
+  ],
+  "conclusion": "Escherichia coli (pan-sensitive) and mixed anaerobes isolated from wound drainage at right lower quadrant port site.",
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "71057007",
+          "display": "Infection caused by Escherichia coli (disorder)"
+        }
+      ],
+      "text": "Escherichia coli infection"
+    }
+  ]
+}

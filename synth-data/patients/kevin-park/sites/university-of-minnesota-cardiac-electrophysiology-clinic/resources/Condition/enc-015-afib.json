@@ -1,0 +1,66 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-015-afib",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "440059007",
+        "display": "Persistent atrial fibrillation (disorder)"
+      }
+    ],
+    "text": "Persistent atrial fibrillation"
+  },
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "onsetDateTime": "2025-11",
+  "recordedDate": "2026-02-16",
+  "note": [
+    {
+      "text": "Refined characterization at EP consultation: AF classified as likely persistent based on continuous AF on ECG and approximately 3 months of ongoing symptoms. EHRA symptom class IIb (symptoms affecting daily activity). Ablation candidacy assessment initiated. Mild LA dilation (4.3 cm), preserved LVEF (58%). Rate controlled on metoprolol succinate 50 mg daily. CHA2DS2-VASc 1, on apixaban 5 mg BID."
+    },
+    {
+      "text": "2026-02-22: 48-hour Holter monitor confirms persistent atrial fibrillation with 100% AF burden. No periods of sinus rhythm identified over the entire recording. Reclassification from 'likely persistent' to confirmed persistent AF. Adequate rate control (avg 72 bpm), no significant pauses, minimal PVC burden (0.3%)."
+    },
+    {
+      "text": "2026-03-09: Follow-up consultation reviewing Holter results with patient and spouse. Symptomatic despite adequate rate control (exertional dyspnea, reduced exercise tolerance). Shared decision-making discussion regarding catheter ablation with pulmonary vein isolation (PVI). Patient elects to proceed with ablation as rhythm-control strategy. Pre-procedure workup initiated (pre-op labs, TEE/cardiac CT for LA anatomy and thrombus exclusion, anesthesia clearance)."
+    }
+  ]
+}

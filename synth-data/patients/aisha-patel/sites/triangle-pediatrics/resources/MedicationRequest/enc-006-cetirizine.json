@@ -1,0 +1,98 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-006-cetirizine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1014676",
+        "display": "cetirizine HCl 5 MG Oral Tablet"
+      }
+    ],
+    "text": "Cetirizine 5 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-03-15",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonCode": [
+    {
+      "text": "Allergic rhinitis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 1 tablet (5 mg) by mouth once daily",
+      "patientInstruction": "Give 1 tablet (5 mg) by mouth once daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        },
+        "code": {
+          "text": "once daily"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 5,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Dose increased from 2.5 mg to 5 mg daily based on current weight (16.2 kg) and ongoing allergic rhinitis symptoms."
+    }
+  ]
+}

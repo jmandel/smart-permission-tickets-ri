@@ -1,0 +1,80 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-003-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34105-7",
+        "display": "Hospital Discharge summary"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "18842-5",
+        "display": "Discharge summary"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Discharge Summary"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "date": "2024-04-25T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/4115ec43-6d5d-4ad2-ba16-21e45e8c35a4",
+      "type": "Practitioner",
+      "display": "Dr. Priya Nanduri, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/4115ec43-6d5d-4ad2-ba16-21e45e8c35a4",
+    "type": "Practitioner",
+    "display": "Dr. Priya Nanduri, MD"
+  },
+  "custodian": {
+    "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
+    "display": "University of New Mexico Hospital and Heart Failure Clinic"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "REFURSBPRiBBRE1JU1NJT046IDIwMjQtMDQtMjIKREFURSBPRiBESVNDSEFSR0U6IDIwMjQtMDQtMjUKTE9DQVRJT046IFVuaXZlcnNpdHkgb2YgTmV3IE1leGljbyBIb3NwaXRhbCwgQWxidXF1ZXJxdWUsIE5ldyBNZXhpY28KQVRURU5ESU5HOiBQcml5YSBOYW5kdXJpLCBNRAoKRElTQ0hBUkdFIFNVTU1BUlkKCkNISUVGIENPTVBMQUlOVDoKUHJvZ3Jlc3NpdmUgc2hvcnRuZXNzIG9mIGJyZWF0aCwgb3J0aG9wbmVhLCBhYmRvbWluYWwgYmxvYXRpbmcsIGFuZCBiaWxhdGVyYWwgbGVnIHN3ZWxsaW5nLgoKSElTVE9SWSBPRiBQUkVTRU5UIElMTE5FU1M6CkRlbmlzZSBXYWxrZXIgaXMgYSA1OC15ZWFyLW9sZCB3b21hbiB3aXRoIGtub3duIEhGckVGLCBwYXJveHlzbWFsIGF0cmlhbCBmaWJyaWxsYXRpb24sIHR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cywgQ0tEIHN0YWdlIDNiLCBoeXBlcnRlbnNpb24sIGFuZCBoeXBlcmxpcGlkZW1pYSB3aG8gcHJlc2VudGVkIGFmdGVyIHNldmVyYWwgd2Vla3Mgb2YgZGlzcnVwdGVkIG1lZGljYXRpb24gYWNjZXNzIGZvbGxvd2luZyByZWxvY2F0aW9uIGZyb20gQXJpem9uYSB0byBOZXcgTWV4aWNvLiBTaGUgcmVwb3J0ZWQgd29yc2VuaW5nIGR5c3BuZWEsIDMtcGlsbG93IG9ydGhvcG5lYSwgYWJkb21pbmFsIGZ1bGxuZXNzLCBhbmQgaW5jcmVhc2luZyBiaWxhdGVyYWwgbG93ZXItZXh0cmVtaXR5IGVkZW1hLiBJbiB0aGUgRUQgc2hlIHdhcyBoeXBlcnRlbnNpdmUgYW5kIHRhY2h5Y2FyZGljIHdpdGggaXJyZWd1bGFyIHJoeXRobSwgY29uc2lzdGVudCB3aXRoIGFjdXRlIGRlY29tcGVuc2F0ZWQgaGVhcnQgZmFpbHVyZSB3aXRoIHZvbHVtZSBvdmVybG9hZCBhbmQgYXRyaWFsIGZpYnJpbGxhdGlvbiB3aXRoIHJhcGlkIHZlbnRyaWN1bGFyIHJlc3BvbnNlLiBTaGUgZGVuaWVkIGluZmVjdGlvdXMgc3ltcHRvbXMsIGFuZCBDQkMgc2hvd2VkIG5vIGxldWtvY3l0b3Npcy4KCkhPU1BJVEFMIENPVVJTRToKT24gcHJlc2VudGF0aW9uLCBFRCB2aXRhbHMgd2VyZSBCUCAxNjgvMTAyIG1tSGcsIEhSIDExOCBicG0gaXJyZWd1bGFyLCBSUiAyNC9taW4sIFRlbXAgOTguMCBGLCBTcE8yIDkxJSBvbiByb29tIGFpciBpbXByb3ZpbmcgdG8gOTYlIG9uIDIgTCBuYXNhbCBjYW5udWxhLCB3ZWlnaHQgMjA1IGxiLiBBZG1pc3Npb24gbGFicyB3ZXJlIG5vdGFibGUgZm9yIEJOUCAxMjg2IHBnL21MLCBoaWdoLXNlbnNpdGl2aXR5IHRyb3BvbmluIDE5IG5nL0wgd2l0aCByZXBlYXQgMTggbmcvTCBhbmQgbm8gZHluYW1pYyByaXNlLCBjcmVhdGluaW5lIDEuNzIgbWcvZEwsIEJVTiAzNCBtZy9kTCwgcG90YXNzaXVtIDQuOCBtbW9sL0wsIHNvZGl1bSAxMzcgbW1vbC9MLCBnbHVjb3NlIDIzOCBtZy9kTCwgQTFjIDguOCUsIGFuZCBtYWduZXNpdW0gMS44IG1nL2RMLiBDaGVzdCByYWRpb2dyYXBoIHNob3dlZCBwdWxtb25hcnkgdmFzY3VsYXIgY29uZ2VzdGlvbiB3aXRoIHNtYWxsIGJpbGF0ZXJhbCBwbGV1cmFsIGVmZnVzaW9ucy4gRUNHIGRlbW9uc3RyYXRlZCBhdHJpYWwgZmlicmlsbGF0aW9uIHdpdGggcmFwaWQgdmVudHJpY3VsYXIgcmVzcG9uc2UgYXQgMTIyIGJwbS4gVGVsZW1ldHJ5IGxhdGVyIHNob3dlZCByYXRlLWNvbnRyb2xsZWQgYXRyaWFsIGZpYnJpbGxhdGlvbiB3aXRoIGludGVybWl0dGVudCBzaW51cyByaHl0aG0uCgpTaGUgd2FzIHRyZWF0ZWQgZm9yIGFjdXRlIG9uIGNocm9uaWMgc3lzdG9saWMgaGVhcnQgZmFpbHVyZSB3aXRoIElWIGZ1cm9zZW1pZGUgNDAgbWcgQklELCBzdXBwbGVtZW50YWwgb3h5Z2VuIGluaXRpYWxseSwgc3RyaWN0IEkvTyBtb25pdG9yaW5nLCBkYWlseSB3ZWlnaHRzLCBhbmQgZWxlY3Ryb2x5dGUgcmVwbGV0aW9uLiBSZXBlYXQgdHJhbnN0aG9yYWNpYyBlY2hvY2FyZGlvZ3JhbSBzaG93ZWQgTFZFRiAzMyUsIGdsb2JhbCBMViBoeXBva2luZXNpcywgbWlsZGx5IHJlZHVjZWQgUlYgZnVuY3Rpb24sIG1vZGVyYXRlIGxlZnQgYXRyaWFsIGVubGFyZ2VtZW50LCBhbmQgbm8gTFYgdGhyb21idXMsIGNvbnNpc3RlbnQgd2l0aCBrbm93biBIRnJFRi4gR3VpZGVsaW5lLWRpcmVjdGVkIG1lZGljYWwgdGhlcmFweSB3YXMgcmUtZXN0YWJsaXNoZWQgYWZ0ZXIgbWVkaWNhdGlvbiBsYXBzZSwgaW5jbHVkaW5nIHJlc3RhcnQgb2YgY2FydmVkaWxvbCA2LjI1IG1nIEJJRCBvbmNlIHBlcmZ1c2lvbiBzdGFiaWxpemVkLCByZS1pbml0aWF0aW9uIG9mIHNhY3ViaXRyaWwvdmFsc2FydGFuIDI0LzI2IG1nIEJJRCwgY29udGludWF0aW9uIG9mIGVtcGFnbGlmbG96aW4gMTAgbWcgZGFpbHksIGFuZCByZXN0YXJ0IG9mIGFwaXhhYmFuIDUgbWcgQklEIGZvciBzdHJva2UgcHJldmVudGlvbiBpbiBhdHJpYWwgZmlicmlsbGF0aW9uLiBBdG9ydmFzdGF0aW4gNDAgbWcgbmlnaHRseSB3YXMgY29udGludWVkLgoKUmVuYWwgZnVuY3Rpb24gd29yc2VuZWQgdHJhbnNpZW50bHkgZHVyaW5nIGRpdXJlc2lzIHdpdGggY3JlYXRpbmluZSBwZWFraW5nIGF0IDEuODkgbWcvZEwgYW5kIGVHRlIgbmFkaXIgYXJvdW5kIDMwIG1ML21pbi8xLjczIG0yLCB0aGVuIGltcHJvdmVkIHRvIGNyZWF0aW5pbmUgMS42MyBtZy9kTCBhbmQgZUdGUiBhYm91dCAzNiBieSBkaXNjaGFyZ2UsIGNvbnNpc3RlbnQgd2l0aCBjYXJkaW9yZW5hbCBwaHlzaW9sb2d5IGR1cmluZyBkZWNvbmdlc3Rpb24uIERpYWJldGVzIHdhcyBtYW5hZ2VkIGlucGF0aWVudCB3aXRoIGluc3VsaW4gZ2xhcmdpbmUgMjQgdW5pdHMgbmlnaHRseSBwbHVzIGNvcnJlY3Rpb25hbCBpbnN1bGluLiBTaGUgcmVzcG9uZGVkIGFwcHJvcHJpYXRlbHkgdG8gZGl1cmVzaXMgd2l0aCBpbXByb3ZlbWVudCBpbiBkeXNwbmVhIGFuZCBlZGVtYTsgd2VpZ2h0IGRlY3JlYXNlZCBmcm9tIDIwNSBsYiBvbiBhZG1pc3Npb24gdG8gMTk3IGxiIGJ5IGRpc2NoYXJnZS4gT3h5Z2VuIHdhcyB3ZWFuZWQgb2ZmIHByaW9yIHRvIGRpc2NoYXJnZS4KCkRJU0NIQVJHRSBWSVRBTFM6CkJQIDEyOC83OCBtbUhnLCBIUiA4MiBicG0sIHdlaWdodCAxOTcgbGIsIG9mZiBzdXBwbGVtZW50YWwgb3h5Z2VuLgoKRElTQ0hBUkdFIFBIWVNJQ0FMIEVYQU06CkdlbmVyYWw6IE5vIGFjdXRlIGRpc3RyZXNzLCBicmVhdGhpbmcgY29tZm9ydGFibHkuCkNWOiBJcnJlZ3VsYXJseSBpcnJlZ3VsYXIgcmh5dGhtLCByYXRlIGNvbnRyb2xsZWQuIEpWUCBpbXByb3ZlZCBmcm9tIGFkbWlzc2lvbi4KTHVuZ3M6IE1pbGQgYmliYXNpbGFyIGNyYWNrbGVzIGltcHJvdmVkLCBubyBpbmNyZWFzZWQgd29yayBvZiBicmVhdGhpbmcuCkFiZG9tZW46IFNvZnQsIGxlc3MgYmxvYXRlZCwgbm9udGVuZGVyLgpFeHRyZW1pdGllczogQmlsYXRlcmFsIGxvd2VyLWV4dHJlbWl0eSBlZGVtYSBpbXByb3ZlZCBmcm9tIGFkbWlzc2lvbi4KTmV1cm86IEFsZXJ0IGFuZCBvcmllbnRlZCwgbm8gZm9jYWwgZGVmaWNpdC4KCkRJU0NIQVJHRSBESUFHTk9TRVM6CjEuIEFjdXRlIGRlY29tcGVuc2F0ZWQgaGVhcnQgZmFpbHVyZSB3aXRoIHJlZHVjZWQgZWplY3Rpb24gZnJhY3Rpb24gZHVlIHRvIG1lZGljYXRpb24gbGFwc2UgYWZ0ZXIgcmVsb2NhdGlvbi4KMi4gQXRyaWFsIGZpYnJpbGxhdGlvbiB3aXRoIHJhcGlkIHZlbnRyaWN1bGFyIHJlc3BvbnNlLCBpbXByb3ZlZCB3aXRoIHJhdGUgY29udHJvbCBhbmQgcmVzdW1wdGlvbiBvZiB0aGVyYXB5LgozLiBBY3V0ZSBoeXBveGVtaWMgcmVzcGlyYXRvcnkgZmFpbHVyZSBzZWNvbmRhcnkgdG8gdm9sdW1lIG92ZXJsb2FkLCByZXNvbHZlZC4KNC4gQ2hyb25pYyBraWRuZXkgZGlzZWFzZSBzdGFnZSAzYiB3aXRoIHRyYW5zaWVudCB3b3JzZW5pbmcgZHVyaW5nIGRpdXJlc2lzLCBpbXByb3ZlZCBieSBkaXNjaGFyZ2UuCjUuIFR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cyB3aXRoIGh5cGVyZ2x5Y2VtaWEsIEExYyA4LjglLgo2LiBIeXBlcnRlbnNpb24uCjcuIEh5cGVybGlwaWRlbWlhLgoKRElTQ0hBUkdFIE1FRElDQVRJT05TOgpBcGl4YWJhbiA1IG1nIGJ5IG1vdXRoIHR3aWNlIGRhaWx5LgpDYXJ2ZWRpbG9sIDYuMjUgbWcgYnkgbW91dGggdHdpY2UgZGFpbHkuClNhY3ViaXRyaWwvdmFsc2FydGFuIDI0LzI2IG1nIGJ5IG1vdXRoIHR3aWNlIGRhaWx5LgpFbXBhZ2xpZmxvemluIDEwIG1nIGJ5IG1vdXRoIGRhaWx5LgpJbnN1bGluIGdsYXJnaW5lIDI0IHVuaXRzIHN1YmN1dGFuZW91c2x5IG5pZ2h0bHkuCkNvcnJlY3Rpb25hbCBpbnN1bGluIGFzIGluc3RydWN0ZWQuCkF0b3J2YXN0YXRpbiA0MCBtZyBieSBtb3V0aCBuaWdodGx5LgpMb29wIGRpdXJldGljIHBsYW4gcmV2aWV3ZWQgYXQgZGlzY2hhcmdlIGZvbGxvd2luZyBJViBmdXJvc2VtaWRlIGNvdXJzZSBpbnBhdGllbnQuCgpESVNQT1NJVElPTiBBTkQgRk9MTE9XLVVQOgpEaXNjaGFyZ2VkIGhvbWUgaW4gaW1wcm92ZWQgY29uZGl0aW9uIG9uIDIwMjQtMDQtMjUuIEhlYXJ0LWZhaWx1cmUgZWR1Y2F0aW9uIHByb3ZpZGVkLCBpbmNsdWRpbmcgZGFpbHkgd2VpZ2h0cywgc29kaXVtIHJlc3RyaWN0aW9uIHRvIGxlc3MgdGhhbiAyIGcvZGF5LCBtZWRpY2F0aW9uIGFkaGVyZW5jZSwgYW5kIHJldHVybiBwcmVjYXV0aW9ucyBmb3Igd29yc2VuaW5nIGR5c3BuZWEsIHJhcGlkIHdlaWdodCBnYWluLCBjaGVzdCBwYWluLCBwYWxwaXRhdGlvbnMsIG9yIHJlY3VycmVudCBlZGVtYS4gRm9sbG93IHVwIHdpdGggVU5NIEhlYXJ0IEZhaWx1cmUgQ2xpbmljIHdpdGhpbiAxIHdlZWsgZm9yIHZvbHVtZSBhc3Nlc3NtZW50LCBtZWRpY2F0aW9uIHRpdHJhdGlvbiwgYW5kIHJlcGVhdCByZW5hbC9lbGVjdHJvbHl0ZSBtb25pdG9yaW5nLiBDb250aW51ZSBjbG9zZSBvdXRwYXRpZW50IG1hbmFnZW1lbnQgb2YgZGlhYmV0ZXMsIENLRCwgYW5kIGF0cmlhbCBmaWJyaWxsYXRpb24uCg==",
+        "title": "Hospital discharge summary"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-003",
+        "display": "Inpatient Hospitalization"
+      }
+    ],
+    "period": {
+      "start": "2024-04-22",
+      "end": "2024-04-25"
+    }
+  }
+}

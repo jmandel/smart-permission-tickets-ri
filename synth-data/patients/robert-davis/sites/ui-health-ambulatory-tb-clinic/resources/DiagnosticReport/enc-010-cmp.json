@@ -1,0 +1,98 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-010-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel (CMP)"
+  },
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "effectiveDateTime": "2026-03-26",
+  "issued": "2026-03-26T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/c0d62614-7dd5-453f-83c3-0514edb2270d",
+      "type": "Practitioner",
+      "display": "RN Patricia Gomez"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-010-sodium",
+      "display": "Sodium"
+    },
+    {
+      "reference": "Observation/enc-010-potassium",
+      "display": "Potassium"
+    },
+    {
+      "reference": "Observation/enc-010-chloride",
+      "display": "Chloride"
+    },
+    {
+      "reference": "Observation/enc-010-co2",
+      "display": "CO2 (Bicarbonate)"
+    },
+    {
+      "reference": "Observation/enc-010-bun",
+      "display": "BUN"
+    },
+    {
+      "reference": "Observation/enc-010-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-010-glucose",
+      "display": "Fasting Glucose"
+    },
+    {
+      "reference": "Observation/enc-010-calcium",
+      "display": "Calcium"
+    },
+    {
+      "reference": "Observation/enc-010-albumin",
+      "display": "Albumin"
+    },
+    {
+      "reference": "Observation/enc-010-ast",
+      "display": "AST"
+    },
+    {
+      "reference": "Observation/enc-010-alt",
+      "display": "ALT"
+    },
+    {
+      "reference": "Observation/enc-010-alp",
+      "display": "Alkaline Phosphatase"
+    },
+    {
+      "reference": "Observation/enc-010-tbil",
+      "display": "Total Bilirubin"
+    }
+  ],
+  "conclusion": "Renal function stable. Albumin improving (3.4 g/dL, was 3.0 at admission). Fasting glucose 144 mg/dL, consistent with known type 2 DM."
+}

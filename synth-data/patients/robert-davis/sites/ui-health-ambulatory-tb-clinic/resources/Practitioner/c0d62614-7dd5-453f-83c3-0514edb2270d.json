@@ -1,0 +1,30 @@
+{
+  "resourceType": "Practitioner",
+  "id": "c0d62614-7dd5-453f-83c3-0514edb2270d",
+  "name": [
+    {
+      "use": "official",
+      "family": "Gomez",
+      "given": [
+        "Patricia"
+      ],
+      "prefix": [
+        "RN"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "RN",
+            "display": "Registered Nurse"
+          }
+        ],
+        "text": "DOT Nurse Coordinator"
+      }
+    }
+  ]
+}

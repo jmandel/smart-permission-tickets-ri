@@ -1,0 +1,89 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-016-dexamethasone",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197582",
+        "display": "dexamethasone 4 MG Oral Tablet"
+      }
+    ],
+    "text": "dexamethasone 4 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "authoredOn": "2024-12-02",
+  "requester": {
+    "reference": "Practitioner/e42e19b6-01f0-4f55-b971-653b4342282b",
+    "type": "Practitioner",
+    "display": "Dr. Amy Pham, PharmD"
+  },
+  "reasonCode": [
+    {
+      "text": "Pemetrexed premedication to reduce hypersensitivity reactions and skin toxicity"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-013-adenocarcinoma",
+      "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 4 mg by mouth the day before, day of, and day after pemetrexed infusion per protocol",
+      "patientInstruction": "Take 4 mg by mouth the day before, day of, and day after each pemetrexed infusion.",
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 4,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-017-carboplatin",
+  "status": "stopped",
+  "statusReason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "182840001",
+        "display": "Drug treatment stopped - medical advice (situation)"
+      }
+    ],
+    "text": "Induction chemotherapy completed per protocol (4 cycles); transitioning to maintenance pembrolizumab monotherapy"
+  },
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "597195",
+        "display": "CARBOplatin 10 MG/ML Injectable Solution"
+      }
+    ],
+    "text": "carboplatin AUC 3.75 intravenous infusion (calculated dose 338 mg, reduced 25% from AUC 5)"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-021"
+  },
+  "authoredOn": "2025-01-06",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-013-adenocarcinoma",
+      "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "AUC 3.75 IV over 30 minutes, every 3 weeks (dose reduced 25% from AUC 5; calculated 338 mg per Calvert formula with current GFR)",
+      "patientInstruction": "Carboplatin AUC 3.75 IV infusion over 30 minutes every 3 weeks. Dose reduced from AUC 5 due to cumulative toxicity.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 3,
+          "periodUnit": "wk"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 338,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Cycle 1 administered 2025-01-06. No infusion reactions. Dose calculated via Calvert formula: target AUC 5 x (GFR 68 + 25) = 465, rounded to 450 mg per protocol."
+    },
+    {
+      "text": "Cycle 3 (2025-02-17): Dose reduced 25% from AUC 5 to AUC 3.75 (338 mg) per protocol guidelines for cumulative toxicity (grade 2 fatigue, grade 1 peripheral neuropathy)."
+    },
+    {
+      "text": "Discontinued 2025-03-24: 4 induction cycles completed per clinical trial NCT05820295 protocol. Interim restaging CT shows partial response (RECIST 1.1). Transitioning to maintenance pembrolizumab monotherapy."
+    }
+  ]
+}

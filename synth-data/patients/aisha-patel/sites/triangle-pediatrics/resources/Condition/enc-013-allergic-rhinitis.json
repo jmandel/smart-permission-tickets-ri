@@ -1,0 +1,65 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-013-allergic-rhinitis",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "61582004",
+        "display": "Allergic rhinitis (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J30.9",
+        "display": "Allergic rhinitis, unspecified"
+      }
+    ],
+    "text": "Allergic rhinitis"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "onsetDateTime": "2022",
+  "recordedDate": "2025-03-17",
+  "note": [
+    {
+      "text": "Controlled on cetirizine 5 mg daily. Mild seasonal exacerbation expected with spring pollen."
+    }
+  ]
+}

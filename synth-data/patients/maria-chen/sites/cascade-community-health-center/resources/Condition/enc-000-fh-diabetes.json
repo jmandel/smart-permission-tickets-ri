@@ -1,0 +1,54 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-fh-diabetes",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "160303001",
+        "display": "Family history of diabetes mellitus (situation)"
+      }
+    ],
+    "text": "Family history of diabetes mellitus (mother)"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "recordedDate": "2019-01-22"
+}

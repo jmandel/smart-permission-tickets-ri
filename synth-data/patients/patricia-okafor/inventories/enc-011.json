@@ -1,0 +1,210 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "new patient consultation, office visit",
+    "reason": "new patient thoracic oncology consultation — evaluation of right upper lobe lung mass with mediastinal lymphadenopathy",
+    "period_start": "2024-09-16T09:00:00-05:00",
+    "period_end": "2024-09-16T10:15:00-05:00",
+    "participants": [],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030 — Thoracic Oncology Clinic"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": "140",
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": "86",
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": "82",
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body weight",
+        "value": "153",
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": "25.5",
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.6",
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "16",
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": "95",
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": "11.6",
+        "unit": "g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "white blood cell count",
+        "value": "6.8",
+        "unit": "K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "absolute neutrophil count (ANC)",
+        "value": "4.2",
+        "unit": "K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": "218",
+        "unit": "K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": "3.3",
+        "unit": "g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "lactate dehydrogenase (LDH)",
+        "value": "198",
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "carcinoembryonic antigen (CEA)",
+        "value": "8.4",
+        "unit": "ng/mL",
+        "flag": "elevated"
+      }
+    ],
+    "screening": [
+      {
+        "name": "ECOG performance status",
+        "value": "1",
+        "interpretation": "restricted in physically strenuous activity but ambulatory and able to carry out light work"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "right upper lobe lung mass, suspicious for malignancy",
+      "clinical_status": "active",
+      "onset_date": "2024-08",
+      "action": "create",
+      "note": "4.2 cm spiculated mass with ipsilateral mediastinal lymphadenopathy (stations 4R and 7). Clinical stage at minimum IIIA (T2b N2). Tissue diagnosis pending. First identified on chest X-ray August 1, 2024; CT characterization August 8, 2024. Documented as suspected malignancy; definitive histologic diagnosis not yet established."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing",
+      "note": "suboptimally controlled today (BP 140/86), likely white coat component. Medication adjustment deferred to PCP."
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing",
+      "note": "stable per recent records, no changes at this encounter"
+    },
+    {
+      "name": "mild anemia",
+      "clinical_status": "active",
+      "onset_date": "2024",
+      "action": "create",
+      "note": "hemoglobin 11.6 g/dL, likely multifactorial in setting of suspected malignancy. Plan to trend with subsequent labs."
+    },
+    {
+      "name": "mild bilateral knee osteoarthritis",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "reference-existing",
+      "note": "intermittent bilateral knee pain, chronic, stable. Mentioned in review of systems and history only."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "as needed for knee pain",
+      "status": "active",
+      "reason": "mild bilateral knee osteoarthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "guaifenesin with codeine oral solution",
+      "sig": "as needed for nighttime cough",
+      "status": "active",
+      "reason": "persistent cough associated with right upper lobe lung mass",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "consultation note",
+      "description": "Comprehensive new patient thoracic oncology consultation documenting HPI (persistent cough, 8 lb unintentional weight loss, referral pathway from PCP through pulmonology), past medical history (hypertension, prediabetes, osteoarthritis), social history (secondhand smoke exposure ~15 pack-years equivalent, retired teacher, never-smoker), family history (no first-degree relatives with lung cancer), medication reconciliation, allergy documentation, complete review of systems, physical exam (decreased breath sounds right upper lobe, no lymphadenopathy, no clubbing), review of outside imaging and PFTs, lab results, assessment of suspected stage IIIA lung malignancy, and staging workup plan including PET/CT, brain MRI, and EBUS biopsy. 75-minute visit with greater than 50% counseling and coordination of care."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "absolute neutrophil count (ANC)",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Albumin 3.3 g/dL (low) and LDH 198 U/L reported individually; remainder described as otherwise unremarkable without individual component values."
+    },
+    {
+      "type": "tumor markers",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "carcinoembryonic antigen (CEA)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "create"
+    }
+  ]
+}

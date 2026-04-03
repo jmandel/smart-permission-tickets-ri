@@ -1,0 +1,53 @@
+{
+  "resourceType": "Organization",
+  "id": "2377f598-6590-4511-ba0c-3a9011179b51",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "NPI"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1578934260"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "First Coast Neurology Associates",
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "836 Prudential Drive",
+        "Suite 1400"
+      ],
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32207"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "10-week follow-up, continuation phase transition",
+    "period_start": "2026-04-02",
+    "period_end": "2026-04-02",
+    "participants": [
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "attending",
+        "specialty": "Infectious Disease"
+      },
+      {
+        "name": "PharmD David Chen",
+        "role": "participant",
+        "specialty": "TB medication management"
+      },
+      {
+        "name": "RN Patricia Gomez",
+        "role": "participant",
+        "specialty": "nurse"
+      }
+    ],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic, 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 98.1,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 128,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 76,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "128/76",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 128,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 76,
+            "unit": "mmHg"
+          }
+        ],
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 15,
+        "unit": "/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 168,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 24.1,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 7.6,
+        "unit": "%",
+        "flag": "high",
+        "effective_date": "2026-03-26",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 12.4,
+        "unit": "g/dL",
+        "flag": "normal",
+        "effective_date": "2026-03-26",
+        "action": "create"
+      },
+      {
+        "name": "uric acid",
+        "unit": "mg/dL",
+        "flag": "high",
+        "note": "mildly elevated, expected to normalize after pyrazinamide discontinuation",
+        "effective_date": "2026-03-26",
+        "action": "create"
+      },
+      {
+        "name": "sputum AFB smear",
+        "value": "negative",
+        "note": "third consecutive negative smear; specimen collected at this visit",
+        "effective_date": "2026-04-02",
+        "action": "create"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative screen",
+        "action": "create"
+      },
+      {
+        "name": "visual acuity, right eye",
+        "value": "20/25",
+        "action": "create"
+      },
+      {
+        "name": "visual acuity, left eye",
+        "value": "20/25",
+        "note": "left eye returned to baseline; no ethambutol-related visual toxicity identified; final visual acuity check as ethambutol is being discontinued",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis, drug-susceptible",
+      "clinical_status": "active",
+      "onset_date": "2026-01",
+      "action": "update-existing",
+      "note": "sputum culture conversion confirmed, completing 2-month intensive phase, transitioning to 4-month continuation phase; third consecutive negative AFB smear; chest imaging shows continued improvement"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chronic obstructive pulmonary disease, mild",
+      "clinical_status": "active",
+      "onset_date": "2017",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "pyrazinamide 1500 mg oral tablet",
+      "status": "stopped",
+      "reason": "pulmonary tuberculosis",
+      "action": "update-existing",
+      "note": "discontinued — completing 2-month intensive phase, transitioning to continuation phase"
+    },
+    {
+      "name": "ethambutol 1200 mg oral tablet",
+      "status": "stopped",
+      "reason": "pulmonary tuberculosis",
+      "action": "update-existing",
+      "note": "discontinued — completing 2-month intensive phase, transitioning to continuation phase"
+    },
+    {
+      "name": "rifampin 600 mg oral capsule",
+      "sig": "600 mg by mouth once daily, continue through approximately late July 2026",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral tablet",
+      "sig": "300 mg by mouth once daily, continue through approximately late July 2026",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine 50 mg oral tablet",
+      "sig": "50 mg by mouth once daily",
+      "status": "active",
+      "reason": "peripheral neuropathy prophylaxis with isoniazid therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral tablet",
+      "sig": "1000 mg by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol HFA metered-dose inhaler",
+      "sig": "1-2 puffs by inhalation as needed for shortness of breath",
+      "status": "active",
+      "reason": "COPD",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Dr. Okafor's 10-week follow-up note documenting completion of TB intensive phase, transition to continuation phase, medication changes (discontinuation of pyrazinamide and ethambutol), reassessment of chronic conditions, and DOT schedule modification to three-times-weekly"
+    },
+    {
+      "type": "patient instructions",
+      "description": "Educational materials provided regarding continuation phase expectations, reduced medication regimen, DOT schedule change, and importance of treatment adherence"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "chest X-ray, PA and lateral",
+      "report_state": "summary-only",
+      "description": "Continued interval improvement. Right upper lobe cavitary lesion further decreased to approximately 1.8 cm with thinning walls. Surrounding infiltrate nearly resolved. Hilar lymph nodes normal in size. Impression: resolving pulmonary tuberculosis with good treatment response."
+    },
+    {
+      "type": "sputum AFB smear",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum AFB smear"
+      ]
+    },
+    {
+      "type": "sputum mycobacterial culture",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum culture sent for ongoing surveillance at this visit. Results not yet available."
+    },
+    {
+      "type": "liver function tests",
+      "report_state": "summary-only",
+      "description": "AST and ALT within normal limits. LFTs stable and reassuring. Individual values not enumerated. Labs drawn 2026-03-26, reviewed at this visit."
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Hemoglobin 12.4 g/dL noted (anemia resolved), but full CBC component values (WBC, hematocrit, platelets) not individually enumerated. Labs drawn 2026-03-26, reviewed at this visit."
+    }
+  ],
+  "allergies": []
+}

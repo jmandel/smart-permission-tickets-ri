@@ -1,0 +1,448 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "university-of-illinois-hospital",
+  "encounter": {
+    "class": "emergency",
+    "type": "Emergency department visit",
+    "reason": "Chronic cough with hemoptysis, weight loss, night sweats",
+    "period_start": "2026-01-22T14:20:00-06:00",
+    "participants": [],
+    "service_provider": "University of Illinois Hospital",
+    "location": "University of Illinois Hospital ED, 1740 W Taylor St, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 100.4,
+        "unit": "°F"
+      },
+      {
+        "name": "heart rate",
+        "value": 92,
+        "unit": "bpm"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 142,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 88,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "142/88",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 142,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 88,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "respiratory rate",
+        "value": 20,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 94,
+        "unit": "%",
+        "note": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 162,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 23.3,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 9.8,
+        "unit": "× 10³/µL",
+        "reference_range": "4.5–11.0 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "neutrophils, percentage",
+        "value": 68,
+        "unit": "%",
+        "flag": "normal"
+      },
+      {
+        "name": "lymphocytes, percentage",
+        "value": 22,
+        "unit": "%",
+        "flag": "normal"
+      },
+      {
+        "name": "monocytes, percentage",
+        "value": 8,
+        "unit": "%",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 11.2,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "hematocrit",
+        "value": 33.8,
+        "unit": "%",
+        "reference_range": "38.3–48.6 %",
+        "flag": "low"
+      },
+      {
+        "name": "mean corpuscular volume (MCV)",
+        "value": 86,
+        "unit": "fL",
+        "reference_range": "80–100 fL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 298,
+        "unit": "× 10³/µL",
+        "reference_range": "150–400 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "sodium",
+        "value": 138,
+        "unit": "mEq/L",
+        "reference_range": "136–145",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium",
+        "value": 4.2,
+        "unit": "mEq/L",
+        "reference_range": "3.5–5.0",
+        "flag": "normal"
+      },
+      {
+        "name": "chloride",
+        "value": 101,
+        "unit": "mEq/L",
+        "reference_range": "98–106",
+        "flag": "normal"
+      },
+      {
+        "name": "carbon dioxide (bicarbonate)",
+        "value": 24,
+        "unit": "mEq/L",
+        "reference_range": "23–29",
+        "flag": "normal"
+      },
+      {
+        "name": "blood urea nitrogen (BUN)",
+        "value": 18,
+        "unit": "mg/dL",
+        "reference_range": "7–20",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 1.1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": 188,
+        "unit": "mg/dL",
+        "reference_range": "70–100",
+        "flag": "high"
+      },
+      {
+        "name": "calcium",
+        "value": 9,
+        "unit": "mg/dL",
+        "reference_range": "8.5–10.5",
+        "flag": "normal"
+      },
+      {
+        "name": "total protein",
+        "value": 6.8,
+        "unit": "g/dL",
+        "reference_range": "6.0–8.3",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": 3,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5",
+        "flag": "low"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 28,
+        "unit": "U/L",
+        "reference_range": "10–40",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 32,
+        "unit": "U/L",
+        "reference_range": "7–56",
+        "flag": "normal"
+      },
+      {
+        "name": "alkaline phosphatase",
+        "value": 78,
+        "unit": "U/L",
+        "reference_range": "44–147",
+        "flag": "normal"
+      },
+      {
+        "name": "total bilirubin",
+        "value": 0.7,
+        "unit": "mg/dL",
+        "reference_range": "0.1–1.2",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 8.1,
+        "unit": "%",
+        "reference_range": "4.0–5.6 %",
+        "flag": "high"
+      },
+      {
+        "name": "HIV antigen/antibody combination test (4th generation)",
+        "value": "non-reactive",
+        "flag": "normal"
+      },
+      {
+        "name": "hepatitis B surface antigen",
+        "value": "negative",
+        "flag": "normal"
+      },
+      {
+        "name": "hepatitis C antibody",
+        "value": "non-reactive",
+        "flag": "normal"
+      },
+      {
+        "name": "sputum acid-fast bacilli (AFB) smear",
+        "value": "positive for acid-fast bacilli, moderate quantity (2+)",
+        "method": "Ziehl-Neelsen stain",
+        "specimen_type": "sputum",
+        "specimen_collected": "2026-01-22T15:40:00-06:00"
+      },
+      {
+        "name": "GeneXpert MTB/RIF assay",
+        "value": "Mycobacterium tuberculosis complex detected; rifampin resistance not detected",
+        "specimen_type": "sputum"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis, active",
+      "clinical_status": "active",
+      "onset_date": "2025-11",
+      "action": "create"
+    },
+    {
+      "name": "type 2 diabetes mellitus, poorly controlled",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chronic obstructive pulmonary disease (COPD), mild",
+      "clinical_status": "active",
+      "onset_date": "2017",
+      "action": "reference-existing"
+    },
+    {
+      "name": "normocytic anemia, mild (anemia of chronic disease)",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol HFA metered-dose inhaler",
+      "sig": "as needed (PRN)",
+      "status": "active",
+      "reason": "COPD",
+      "action": "reference-existing"
+    },
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "as needed (PRN)",
+      "status": "active",
+      "reason": "pain",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Emergency department note",
+      "description": "Comprehensive ED physician note by Dr. Priya Anand documenting presentation of 65-year-old male with 2-month history of productive cough with hemoptysis, constitutional symptoms, chest X-ray with cavitary RUL lesion, positive AFB smear and GeneXpert confirming pulmonary TB. Patient admitted to inpatient service under airborne isolation."
+    },
+    {
+      "type": "Triage note",
+      "description": "ED triage assessment documenting chief complaint, initial vitals, acuity level, and initiation of airborne isolation precautions for suspected pulmonary tuberculosis."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "neutrophils, percentage",
+        "lymphocytes, percentage",
+        "monocytes, percentage",
+        "hemoglobin",
+        "hematocrit",
+        "mean corpuscular volume (MCV)",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "Comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sodium",
+        "potassium",
+        "chloride",
+        "carbon dioxide (bicarbonate)",
+        "blood urea nitrogen (BUN)",
+        "creatinine",
+        "glucose",
+        "calcium",
+        "total protein",
+        "albumin",
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)",
+        "alkaline phosphatase",
+        "total bilirubin"
+      ]
+    },
+    {
+      "type": "Hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "HIV antigen/antibody combination test (4th generation)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "HIV antigen/antibody combination test (4th generation)"
+      ]
+    },
+    {
+      "type": "Hepatitis B surface antigen test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis B surface antigen"
+      ]
+    },
+    {
+      "type": "Hepatitis C antibody test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis C antibody"
+      ]
+    },
+    {
+      "type": "Sputum AFB smear (acid-fast bacilli smear microscopy)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum acid-fast bacilli (AFB) smear"
+      ]
+    },
+    {
+      "type": "GeneXpert MTB/RIF assay (rapid molecular test for tuberculosis)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "GeneXpert MTB/RIF assay"
+      ]
+    },
+    {
+      "type": "Chest X-ray, portable anteroposterior (AP)",
+      "report_state": "summary-only",
+      "description": "3.5 cm cavitary lesion in the right upper lobe with surrounding parenchymal infiltrate. Mildly enlarged right hilar lymph nodes. No pleural effusion. Radiographic appearance highly suspicious for pulmonary tuberculosis."
+    },
+    {
+      "type": "Sputum AFB smear #2 and #3",
+      "report_state": "ordered-not-resulted",
+      "description": "Two additional sputum specimens ordered for AFB smear and mycobacterial culture, to be collected during inpatient admission. Not resulted during this ED encounter."
+    },
+    {
+      "type": "Sputum mycobacterial culture",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum culture sent to mycobacteriology lab. Results expected in approximately 3 weeks. Not available during this ED encounter."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergies (NKDA)",
+      "action": "create"
+    },
+    {
+      "substance": "ragweed",
+      "reaction": "seasonal allergic rhinitis",
+      "severity": "mild",
+      "action": "create"
+    }
+  ]
+}

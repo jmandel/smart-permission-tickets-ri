@@ -1,0 +1,49 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-000-ct-abdomen",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "36813-4",
+        "display": "CT Abdomen and Pelvis W contrast IV"
+      }
+    ],
+    "text": "CT Abdomen and Pelvis with IV Contrast"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "effectiveDateTime": "2026-01-12T22:45:00Z",
+  "issued": "2026-01-12T23:15:00Z",
+  "conclusion": "Dilated, non-opacified appendix measuring 13 mm in diameter with periappendiceal fat stranding. Small focus of extraluminal gas adjacent to the appendiceal tip. A 2.3 cm rim-enhancing fluid collection adjacent to the cecum in the right paracolic gutter, consistent with a localized periappendiceal abscess. No free intraperitoneal air. No bowel obstruction. Impression: Perforated appendicitis with localized periappendiceal abscess.",
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "286967008",
+          "display": "Acute perforated appendicitis (disorder)"
+        }
+      ],
+      "text": "Perforated appendicitis with localized periappendiceal abscess"
+    }
+  ]
+}

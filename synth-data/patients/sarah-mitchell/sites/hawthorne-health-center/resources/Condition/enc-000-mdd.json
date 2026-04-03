@@ -1,0 +1,66 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-mdd",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "191603006",
+        "display": "Single major depressive episode, severe, without mention of psychosis (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F32.2",
+        "display": "Major depressive disorder, single episode, severe without psychotic features"
+      }
+    ],
+    "text": "Major depressive disorder, single episode, moderate to severe"
+  },
+  "subject": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2019-01",
+  "abatementString": "Resolved; reclassified under bipolar II disorder diagnosis",
+  "recordedDate": "2019-02-12",
+  "note": [
+    {
+      "text": "Initially diagnosed 2019, subsequently reclassified under bipolar II diagnosis. Documented as resolved at 2021-03-10 annual wellness visit."
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-016",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185389009",
+          "display": "Follow-up visit (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending Physician"
+        }
+      ],
+      "period": {
+        "start": "2024-12-02",
+        "end": "2024-12-02"
+      },
+      "individual": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Research Coordinator"
+        }
+      ],
+      "period": {
+        "start": "2024-12-02",
+        "end": "2024-12-02"
+      },
+      "individual": {
+        "reference": "Practitioner/f96088a6-9ff1-45de-8305-83d81938237c",
+        "display": "Jennifer Liu, RN"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Oncology Pharmacist"
+        }
+      ],
+      "period": {
+        "start": "2024-12-02",
+        "end": "2024-12-02"
+      },
+      "individual": {
+        "reference": "Practitioner/e42e19b6-01f0-4f55-b971-653b4342282b",
+        "display": "Dr. Amy Pham, PharmD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-12-02",
+    "end": "2024-12-02"
+  },
+  "reasonCode": [
+    {
+      "text": "Informed consent and clinical trial enrollment (NCT05820295)"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-013-adenocarcinoma",
+        "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      }
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+        "display": "The University of Texas MD Anderson Cancer Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia returned to MD Anderson for the formal consent and enrollment visit for clinical trial NCT05820295. Dr."
+    }
+  ]
+}

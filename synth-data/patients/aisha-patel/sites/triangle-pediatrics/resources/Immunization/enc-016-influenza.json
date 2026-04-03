@@ -1,0 +1,78 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-016-influenza",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "150",
+        "display": "Influenza, split virus, quadrivalent, PF"
+      }
+    ],
+    "text": "Influenza vaccine, quadrivalent inactivated (IIV4)"
+  },
+  "patient": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "occurrenceDateTime": "2025-10-14",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/b975c904-df4e-4d64-a7d3-793b906dc500",
+    "display": "Triangle Pediatrics"
+  },
+  "site": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+        "code": "LD",
+        "display": "left deltoid"
+      }
+    ],
+    "text": "Left Deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "doseQuantity": {
+    "value": 0.5,
+    "unit": "mL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mL"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+        "type": "Practitioner",
+        "display": "Dr. Megan Harlow"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "VIS provided to mother and reviewed. Consent obtained. 15-minute post-vaccination observation completed without adverse reaction."
+    }
+  ]
+}

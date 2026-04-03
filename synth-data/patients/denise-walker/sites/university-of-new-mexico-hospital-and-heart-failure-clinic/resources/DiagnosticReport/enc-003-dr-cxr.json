@@ -1,0 +1,24 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-003-dr-cxr",
+  "status": "final",
+  "code": {
+    "text": "Chest radiograph"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2024-04-22",
+  "issued": "2024-04-22T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
+      "display": "University of New Mexico Hospital and Heart Failure Clinic"
+    }
+  ],
+  "conclusion": "Chest radiograph showed pulmonary vascular congestion with small bilateral pleural effusions, supporting heart-failure-related volume overload."
+}

@@ -1,0 +1,73 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-000-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Progress note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "date": "2021-09-14T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/20124955-3cbb-4fad-a63f-2ff51581c668",
+      "display": "Dr. Monica Reyes, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/20124955-3cbb-4fad-a63f-2ff51581c668",
+    "display": "Dr. Monica Reyes, MD"
+  },
+  "custodian": {
+    "reference": "Organization/dbd558a3-303a-4216-9b3c-2b3e233ef600",
+    "display": "Desert Family Medicine"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "language": "en",
+        "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgd29tYW4gc2VlbiBmb3IgYW5udWFsIHdlbGxuZXNzIHZpc2l0IGFuZCBmb2xsb3ctdXAgb2YgdHlwZSAyIGRpYWJldGVzIG1lbGxpdHVzLCBoeXBlcnRlbnNpb24sIGFuZCBoeXBlcmxpcGlkZW1pYS4gU2hlIHJlcG9ydHMgZm9yIHJvdXRpbmUgcHJpbWFyeSBjYXJlIGZvbGxvdy11cCBhbmQgcHJldmVudGl2ZSBjYXJlLiBEaWFiZXRlcyBoYXMgYmVlbiBzdGFibGUgb24gbWV0Zm9ybWluIDEwMDAgbWcgQklEIGJ1dCByZW1haW5zIGFib3ZlIGdvYWwuIEh5cGVydGVuc2lvbiBoYXMgcmVtYWluZWQgZWxldmF0ZWQgZGVzcGl0ZSBhbWxvZGlwaW5lIDEwIG1nIGRhaWx5IGFuZCBoeWRyb2NobG9yb3RoaWF6aWRlIDI1IG1nIGRhaWx5LiBQcmlvciBoaXN0b3J5IG5vdGFibGUgZm9yIGFsYnVtaW51cmlhIGFuZCBwcmlvciBsaXNpbm9wcmlsLWFzc29jaWF0ZWQgY291Z2g7IHJlbmFsIHByb3RlY3Rpb24gb3B0aW9ucyB3ZXJlIHJldmlld2VkIHRvZGF5IHdpdGggcGxhbiB0byByZXRyeSBsaXNpbm9wcmlsIGFuZCBzdG9wIGlmIGNvdWdoIHJlY3Vycy4gU2hlIGNvbXBsZXRlZCBDT1ZJRC0xOSBwcmltYXJ5IHZhY2NpbmF0aW9uIHNlcmllcyBlYXJsaWVyIGluIDIwMjEuIFBIUS0yIHNjb3JlIDEvNiwgbmVnYXRpdmUgZm9yIG1ham9yIGRlcHJlc3Npb24uCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTQ4Lzg4IG1tSGcsIEhSIDc4IGJwbSwgUlIgMTYvbWluLCBUZW1wIDk4LjIgRiwgU3BPMiA5OCUgb24gcm9vbSBhaXIsIFd0IDE5OCBsYiwgSHQgNjQgaW4sIEJNSSAzNC4wIGtnL20yCkdlbmVyYWw6IE5vIGFjdXRlIGRpc3RyZXNzLgpFeHRyZW1pdGllcy9EaWFiZXRpYyBmb290IGV4YW06IFNraW4gaW50YWN0IGJpbGF0ZXJhbGx5LCBkb3JzYWxpcyBwZWRpcyBwdWxzZXMgMisgYmlsYXRlcmFsbHksIG1pbGRseSByZWR1Y2VkIG1vbm9maWxhbWVudCBzZW5zYXRpb24gYXQgdGhlIHBsYW50YXIgZm9yZWZlZXQsIG5vIHVsY2Vycy4KTGFiczogSGVtb2dsb2JpbiBBMWMgNy44JSwgc2VydW0gZ2x1Y29zZSAxNTYgbWcvZEwsIGNyZWF0aW5pbmUgMS4xOCBtZy9kTCwgZUdGUiBhcHByb3hpbWF0ZWx5IDUzIG1ML21pbi8xLjczIG0yLCB1cmluZSBhbGJ1bWluL2NyZWF0aW5pbmUgcmF0aW8gNjggbWcvZywgdG90YWwgY2hvbGVzdGVyb2wgMTk0IG1nL2RMLCBMREwgMTEyIG1nL2RMLCBIREwgNDYgbWcvZEwsIHRyaWdseWNlcmlkZXMgMTgxIG1nL2RMLCBwb3Rhc3NpdW0gNC4zIG1tb2wvTCwgQVNUIDE5IFUvTCwgQUxUIDIyIFUvTC4KCkFTU0VTU01FTlQ6CjEuIFR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cyB3aXRoIGVhcmx5IGRpYWJldGljIGtpZG5leSBkaXNlYXNlIGFuZCBwZXJpcGhlcmFsIG5ldXJvcGF0aHksIHN1Ym9wdGltYWxseSBjb250cm9sbGVkLiBBMWMgNy44JSByZW1haW5zIGFib3ZlIGdvYWwgdGhvdWdoIHN0YWJsZSBvbiBtZXRmb3JtaW4uIEZvb3QgZXhhbSBzaG93cyBtaWxkIHNlbnNvcnkgbG9zcyBhdCBwbGFudGFyIGZvcmVmZWV0IHdpdGhvdXQgc2tpbiBicmVha2Rvd24uCjIuIEh5cGVydGVuc2lvbiwgc3Vib3B0aW1hbGx5IGNvbnRyb2xsZWQuIEJQIDE0OC84OCB0b2RheSBkZXNwaXRlIGFtbG9kaXBpbmUgYW5kIGh5ZHJvY2hsb3JvdGhpYXppZGUuCjMuIERpYWJldGljIGtpZG5leSBkaXNlYXNlL0NLRCB3aXRoIGFsYnVtaW51cmlhLiBDciAxLjE4IHdpdGggZUdGUiBhYm91dCA1MyBhbmQgdXJpbmUgQUNSIDY4IG1nL2cuIFJBQVMgYmxvY2thZGUgaW5kaWNhdGVkIGZvciByZW5hbCBwcm90ZWN0aW9uLCB0aG91Z2ggcHJpb3IgbGlzaW5vcHJpbCBjYXVzZWQgY291Z2guCjQuIEh5cGVybGlwaWRlbWlhLCBub3QgYXQgZ29hbCBmb3IgZGlhYmV0ZXMgcmlzayBwcm9maWxlLiBMREwgMTEyIGFuZCB0cmlnbHljZXJpZGVzIDE4MS4KNS4gT2Jlc2l0eSwgQk1JIDM0LjAuCjYuIFByZXZlbnRpdmUgY2FyZS4gRGVwcmVzc2lvbiBzY3JlZW4gbmVnYXRpdmUuIER1ZSBmb3IgYW5udWFsIGluZmx1ZW56YSBpbW11bml6YXRpb24gYW5kIHJlY2VpdmVkIHRvZGF5LgoKUExBTjoKMS4gQ29udGludWUgbWV0Zm9ybWluIDEwMDAgbWcgUE8gQklELgoyLiBDb250aW51ZSBhbWxvZGlwaW5lIDEwIG1nIFBPIGRhaWx5IGFuZCBoeWRyb2NobG9yb3RoaWF6aWRlIDI1IG1nIFBPIGRhaWx5LgozLiBSZXRyeSBsaXNpbm9wcmlsIDEwIG1nIFBPIGRhaWx5IGZvciBCUCBjb250cm9sIGFuZCByZW5hbCBwcm90ZWN0aW9uOyBwYXRpZW50IGFkdmlzZWQgdG8gc3RvcCBtZWRpY2F0aW9uIGFuZCBjb250YWN0IGNsaW5pYyBpZiBjb3VnaCByZWN1cnMgZ2l2ZW4gcHJpb3IgaW50b2xlcmFuY2UuCjQuIEluY3JlYXNlIGF0b3J2YXN0YXRpbiBmcm9tIDIwIG1nIHRvIDQwIG1nIFBPIG5pZ2h0bHkgZm9yIHBlcnNpc3RlbnQgaHlwZXJsaXBpZGVtaWEgaW4gc2V0dGluZyBvZiBkaWFiZXRlcy4KNS4gUmV2aWV3ZWQgZmFzdGluZyBsYWJzIGluY2x1ZGluZyBBMWMsIHJlbmFsIGZ1bmN0aW9uLCB1cmluZSBhbGJ1bWluLCBhbmQgbGlwaWQgcGFuZWwuCjYuIENvdW5zZWxlZCBvbiBkaWFiZXRpYyBkaWV0LCB3ZWlnaHQgbWFuYWdlbWVudCwgZm9vdCBjYXJlLCBhbmQgaG9tZSBCUCBtb25pdG9yaW5nLgo3LiBJbmZsdWVuemEgdmFjY2luZSBhZG1pbmlzdGVyZWQgdG9kYXkuIENPVklELTE5IHByaW1hcnkgc2VyaWVzIHByZXZpb3VzbHkgY29tcGxldGVkIGVhcmxpZXIgdGhpcyB5ZWFyLgo4LiBGb2xsb3cgdXAgaW4gNCBtb250aHMgZm9yIEJQIGNoZWNrLCByZXBlYXQgZGlhYmV0ZXMgbGFicywgYW5kIHJldmlldyBvZiBtZWRpY2F0aW9uIHRvbGVyYW5jZSwgZXNwZWNpYWxseSBsaXNpbm9wcmlsLgo=",
+        "title": "Primary care progress note"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-000",
+        "display": "Office Visit"
+      }
+    ],
+    "period": {
+      "start": "2021-09-14"
+    }
+  }
+}

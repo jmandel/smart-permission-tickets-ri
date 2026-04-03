@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-016-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "date": "2025-02-13T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+      "display": "Dr. Anita Desai"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMi8xMy8yMDI1ClBhdGllbnQ6IEhhcm9sZCBKYW1lcyBXYXNoaW5ndG9uCkRPQjogMDkvMTQvMTk0NiAoQWdlIDc5KQpQcm92aWRlcjogQW5pdGEgRGVzYWksIE1EIOKAlCBEZUthbGIgUHJpbWFyeSBDYXJlCkVuY291bnRlciBUeXBlOiBUZWxlcGhvbmUKUmVhc29uIGZvciBDYWxsOiBQb3N0LUVEIGZvbGxvdy11cCBjaGVjay1pbgpJbmZvcm1hbnQ6IE1hcmdhcmV0IFdhc2hpbmd0b24tQ2xhcmtlIChkYXVnaHRlciwgaGVhbHRoY2FyZSBQT0EpCgpDQUxMIFNVTU1BUlk6CgpPdXRib3VuZCBjYWxsIHBsYWNlZCB0byBNYXJnYXJldCBXYXNoaW5ndG9uLUNsYXJrZSwgYXV0aG9yaXplZCByZXByZXNlbnRhdGl2ZSBmb3IgSGFyb2xkIFdhc2hpbmd0b24sIGZvciBwb3N0LUVEIGZvbGxvdy11cCBmaXZlIGRheXMgYWZ0ZXIgaGlzIGVtZXJnZW5jeSBkZXBhcnRtZW50IHZpc2l0IGF0IEVtb3J5IERlY2F0dXIgSG9zcGl0YWwgb24gMDIvMDgvMjAyNS4gSGFyb2xkIHdhcyBzZWVuIGluIHRoZSBFRCBhZnRlciBhIG1lY2hhbmljYWwgZmFsbCBhdCBob21lIHdoaWxlIGdldHRpbmcgdXAgZnJvbSB0aGUgdG9pbGV0IGF0IG5pZ2h0LiBIZSBzdXN0YWluZWQgYSBmb3JlaGVhZCBsYWNlcmF0aW9uIHJlcGFpcmVkIHdpdGggZGVybWFib25kIGFuZCBhIHJpZ2h0IHdyaXN0IGNvbnR1c2lvbi4gQ1QgaGVhZCB3YXMgbmVnYXRpdmUgZm9yIGFjdXRlIGludHJhY3JhbmlhbCBoZW1vcnJoYWdlIG9yIGZyYWN0dXJlLiBSaWdodCBoaXAgWC1yYXkgd2FzIG5lZ2F0aXZlLiBIZSB3YXMgZGlzY2hhcmdlZCBob21lIHdpdGggZmFsbCBwcmVjYXV0aW9ucy4KCk1hcmdhcmV0IHJlcG9ydHMgSGFyb2xkIGlzIHJlY292ZXJpbmcgd2VsbC4gVGhlIGZvcmVoZWFkIGxhY2VyYXRpb24gaXMgaGVhbGluZyBjbGVhbmx5IHdpdGggbm8gc2lnbnMgb2YgaW5mZWN0aW9uIOKAlCBubyBlcnl0aGVtYSwgZHJhaW5hZ2UsIG9yIGRlaGlzY2VuY2UuIFRoZSByaWdodCB3cmlzdCBjb250dXNpb24gaGFzIGltcHJvdmVkIHNpZ25pZmljYW50bHk7IGhlIGhhcyBmdWxsIHJhbmdlIG9mIG1vdGlvbiB3aXRoIG9ubHkgbWlsZCByZXNpZHVhbCB0ZW5kZXJuZXNzLiBObyBuZXcgY29tcGxhaW50cyBvZiBoZWFkYWNoZSwgdm9taXRpbmcsIG9yIGNvbmZ1c2lvbiBiZXlvbmQgaGlzIGNvZ25pdGl2ZSBiYXNlbGluZS4gSGUgaGFzIGJlZW4gbW9yZSBjYXV0aW91cyBnZXR0aW5nIHVwIGF0IG5pZ2h0LgoKTWFyZ2FyZXQgaGFzIGltcGxlbWVudGVkIGhvbWUgc2FmZXR5IG1vZGlmaWNhdGlvbnM6IGdyYWIgYmFycyBpbnN0YWxsZWQgaW4gdGhlIGJhdGhyb29tLCBhbGwgdGhyb3cgcnVncyByZW1vdmVkIGZyb20gdGhlIGhvbWUsIGFuZCBhIG5pZ2h0bGlnaHQgcHVyY2hhc2VkIGZvciB0aGUgaGFsbHdheS4KClBMQU46CgoxLiBObyBhY3V0ZSBjb25jZXJucyBpZGVudGlmaWVkIGF0IHRoaXMgdGltZS4gQ29udGludWUgY3VycmVudCByZWNvdmVyeSBjb3Vyc2UuCjIuIENvbnRpbnVlIGFsbCBjdXJyZW50IG1lZGljYXRpb25zOiBsaXNpbm9wcmlsIDIwIG1nIGRhaWx5LCBhbWxvZGlwaW5lIDUgbWcgZGFpbHksIG1ldGZvcm1pbiA1MDAgbWcgQklELCBhdG9ydmFzdGF0aW4gMjAgbWcgZGFpbHkgYXQgYmVkdGltZSwgZG9uZXBlemlsIDEwIG1nL21lbWFudGluZSAyOCBtZyBFUiAoTmFtemFyaWMpIGRhaWx5IGF0IGJlZHRpbWUuCjMuIE1vbml0b3IgZm9yIGRlbGF5ZWQgc3ltcHRvbXM6IG5ldyBvciB3b3JzZW5pbmcgaGVhZGFjaGUsIGNvbmZ1c2lvbiBiZXlvbmQgYmFzZWxpbmUsIHZvbWl0aW5nLCB2aXN1YWwgY2hhbmdlcyDigJQgc2VlayBpbW1lZGlhdGUgbWVkaWNhbCBhdHRlbnRpb24gaWYgYW55IGRldmVsb3AuCjQuIFJlY29tbWVuZGVkIGluLXBlcnNvbiBmb2xsb3ctdXAgdmlzaXQgaW4gMi0zIHdlZWtzIGZvciBjb21wcmVoZW5zaXZlIGNocm9uaWMgZGlzZWFzZSBtYW5hZ2VtZW50IGFuZCBmYWxsIHByZXZlbnRpb24gY291bnNlbGluZy4KNS4gQWNrbm93bGVkZ2VkIGhvbWUgc2FmZXR5IG1vZGlmaWNhdGlvbnMg4oCUIGdyYWIgYmFycywgcnVnIHJlbW92YWwsIG5pZ2h0bGlnaHQuIFdpbGwgcmV2aWV3IGFkZGl0aW9uYWwgZmFsbCBwcmV2ZW50aW9uIHN0cmF0ZWdpZXMgYXQgbmV4dCBvZmZpY2UgdmlzaXQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6IEFuaXRhIERlc2FpLCBNRApEYXRlOiAwMi8xMy8yMDI1Cg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-016"
+      }
+    ],
+    "period": {
+      "start": "2025-02-13"
+    }
+  }
+}

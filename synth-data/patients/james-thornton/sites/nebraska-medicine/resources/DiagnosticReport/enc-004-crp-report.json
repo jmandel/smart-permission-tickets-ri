@@ -1,0 +1,48 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-004-crp-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "1988-5",
+        "display": "C reactive protein [Mass/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "C-Reactive Protein"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "effectiveDateTime": "2026-01-22T19:00:00-06:00",
+  "issued": "2026-01-22T19:45:00-06:00",
+  "performer": [
+    {
+      "reference": "Practitioner/e541b9d7-7d9e-442d-98a8-8bd3ea36f1ad",
+      "display": "Dr. Samuel Kerr"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-004-crp",
+      "display": "C-Reactive Protein"
+    }
+  ]
+}

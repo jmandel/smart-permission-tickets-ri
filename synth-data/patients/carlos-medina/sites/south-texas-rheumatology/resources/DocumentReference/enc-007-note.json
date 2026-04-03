@@ -1,0 +1,58 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-007-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Lab Results Review Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "date": "2021-04-13T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCIFJFU1VMVFMgTk9URQoKUGF0aWVudDogQ2FybG9zIE1lZGluYQpEYXRlIG9mIFNlcnZpY2U6IDIwMjEtMDQtMTIKRGF0ZSBSZXN1bHRzIFJldmlld2VkOiAyMDIxLTA0LTEzCk9yZGVyaW5nL1Jldmlld2luZyBQaHlzaWNpYW46IERyLiBBbGVqYW5kcm8gRnVlbnRlcywgTUQg4oCUIFJoZXVtYXRvbG9neQpMb2NhdGlvbjogU291dGggVGV4YXMgUmhldW1hdG9sb2d5LCBTYW4gQW50b25pbywgVFgKCklORElDQVRJT046ClJvdXRpbmUgNC13ZWVrIGxhYm9yYXRvcnkgbW9uaXRvcmluZyBmb2xsb3dpbmcgaW5pdGlhdGlvbiBvZiBtZXRob3RyZXhhdGUgMTUgbWcgUE8gd2Vla2x5IGZvciBzZXJvcG9zaXRpdmUgcmhldW1hdG9pZCBhcnRocml0aXMgKE0wNS43OSkuIE5vIGNsaW5pY2lhbiB2aXNpdCBwZXJmb3JtZWQuIE5vIHZpdGFscyBvYnRhaW5lZC4KCkxBQlMgRFJBV04gMjAyMS0wNC0xMiwgUkVTVUxURUQgMjAyMS0wNC0xMzoKCkNCQyB3aXRoIERpZmZlcmVudGlhbDoKLSBXQkM6IDYuNCB4MTBeMy91TCAobm9ybWFsKQotIEhnYjogMTUuMCBnL2RMIChub3JtYWwpCi0gUGx0OiAyNDAgeDEwXjMvdUwgKG5vcm1hbCkKLSBObyBjeXRvcGVuaWFzIGlkZW50aWZpZWQKCkNvbXByZWhlbnNpdmUgTWV0YWJvbGljIFBhbmVsOgotIEdsdWNvc2U6IDk3IG1nL2RMIChub3JtYWwpCi0gQ3JlYXRpbmluZTogMC45IG1nL2RMIChub3JtYWwpCi0gQUxUOiAyMiBVL0wgKG5vcm1hbCkKLSBBU1Q6IDIwIFUvTCAobm9ybWFsKQotIEFsYnVtaW46IDQuMCBnL2RMIChub3JtYWwpCi0gVG90YWwgQmlsaXJ1YmluOiAwLjYgbWcvZEwgKG5vcm1hbCkKCklOVEVSUFJFVEFUSU9OOgpBbGwgdmFsdWVzIHdpdGhpbiBub3JtYWwgbGltaXRzLiBObyBldmlkZW5jZSBvZiBtZXRob3RyZXhhdGUtcmVsYXRlZCBoZW1hdG9sb2dpYyB0b3hpY2l0eSBvciBoZXBhdG90b3hpY2l0eSBhdCB0aGUgY3VycmVudCBkb3NlIG9mIDE1IG1nIHdlZWtseS4gUmVuYWwgZnVuY3Rpb24gc3RhYmxlLiBIZXBhdGljIHBhbmVsIHJlYXNzdXJpbmcgd2l0aCBBTFQgYW5kIEFTVCB3ZWxsIHdpdGhpbiBub3JtYWwgcmFuZ2UsIGNvbnNpc3RlbnQgd2l0aCBiYXNlbGluZSB2YWx1ZXMgcHJpb3IgdG8gbWV0aG90cmV4YXRlIGluaXRpYXRpb24uCgpQTEFOOgoxLiBDb250aW51ZSBtZXRob3RyZXhhdGUgMTUgbWcgUE8gd2Vla2x5IGF0IGN1cnJlbnQgZG9zZSDigJQgbm8gYWRqdXN0bWVudCBpbmRpY2F0ZWQuCjIuIENvbnRpbnVlIGZvbGljIGFjaWQgMSBtZyBQTyBkYWlseS4KMy4gUGF0aWVudCBub3RpZmllZCBvZiBub3JtYWwgcmVzdWx0cyB2aWEgcGF0aWVudCBwb3J0YWwuCjQuIE5leHQgc2NoZWR1bGVkIGZvbGxvdy11cCB3aXRoIERyLiBGdWVudGVzIGluIGFwcHJveGltYXRlbHkgMiBtb250aHMgZm9yIGRpc2Vhc2UgYWN0aXZpdHkgcmVhc3Nlc3NtZW50IChEQVMyOC1DUlApLiBMYWJzIHRvIGJlIHJlcGVhdGVkIGF0IHRoYXQgdGltZS4KClJldmlld2VkIGJ5OiBEci4gQWxlamFuZHJvIEZ1ZW50ZXMsIE1ECg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-007"
+      }
+    ],
+    "period": {
+      "start": "2021-04-12",
+      "end": "2021-04-13"
+    }
+  }
+}

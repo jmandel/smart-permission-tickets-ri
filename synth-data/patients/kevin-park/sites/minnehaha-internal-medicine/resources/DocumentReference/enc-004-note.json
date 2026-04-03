@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-004-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2023-01-30T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+      "display": "Dr. Angela Whitfield, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "display": "Dr. Angela Whitfield, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMS8zMC8yMDIzClBhdGllbnQ6IEtldmluIEp1bmdod2FuIFBhcmsgKERPQjogMDkvMTQvMTk2OCkKRW5jb3VudGVyIFR5cGU6IFRlbGVwaG9uZQpDbGluaWNpYW46IERyLiBBbmdlbGEgV2hpdGZpZWxkLCBNRApUcmlhZ2UgTnVyc2U6IFJhY2hlbCBBbmRlcnNlbiwgUk4KU2l0ZTogTWlubmVoYWhhIEludGVybmFsIE1lZGljaW5lLCBNaW5uZWFwb2xpcywgTU4KClJFQVNPTiBGT1IgQ0FMTDoKUGF0aWVudCByZXBvcnRzIDEyIGRheXMgb2YgbmFzYWwgY29uZ2VzdGlvbiB3aXRoIHB1cnVsZW50IGRpc2NoYXJnZSBhbmQgZmFjaWFsIHByZXNzdXJlLgoKSElTVE9SWToKTXIuIFBhcmsgY2FsbGVkIHRoZSBjbGluaWMgcmVwb3J0aW5nIG5hc2FsIGNvbmdlc3Rpb24gZm9yIDEyIGRheXMsIHRoaWNrIHllbGxvdy1ncmVlbiBuYXNhbCBkaXNjaGFyZ2UsIGJpbGF0ZXJhbCBmYWNpYWwgcHJlc3N1cmUgb3ZlciB0aGUgbWF4aWxsYXJ5IHNpbnVzZXMgdGhhdCB3b3JzZW5zIHdoZW4gYmVuZGluZyBmb3J3YXJkLCBhbmQgbWlsZCBoZWFkYWNoZS4gSGUgcmVwb3J0cyBhIGxvdy1ncmFkZSB0ZW1wZXJhdHVyZSBvZiA5OS40RiBtZWFzdXJlZCBhdCBob21lLiBIZSBoYXMgYmVlbiB1c2luZyBPVEMgc2FsaW5lIG5hc2FsIHNwcmF5IGFuZCBhY2V0YW1pbm9waGVuIHdpdGggcGFydGlhbCByZWxpZWYgb2Ygc3ltcHRvbXMuIEhlIGRlbmllcyBjb3VnaCwgZWFyIHBhaW4sIG9yIHNvcmUgdGhyb2F0LiBObyBoaXN0b3J5IG9mIHJlY3VycmVudCBzaW51c2l0aXMuIE5vIGhpZ2ggZmV2ZXIsIHBlcmlvcmJpdGFsIHN3ZWxsaW5nLCBvciBhbHRlcmVkIG1lbnRhbCBzdGF0dXMgdG8gc3VnZ2VzdCBjb21wbGljYXRlZCBkaXNlYXNlLgoKUmFjaGVsIEFuZGVyc2VuLCBSTiwgcGVyZm9ybWVkIGluaXRpYWwgdGVsZXBob25lIHRyaWFnZSBhbmQgY29uc3VsdGVkIHdpdGggRHIuIFdoaXRmaWVsZCBmb3IgY2xpbmljYWwgZGVjaXNpb24tbWFraW5nLgoKUkVMRVZBTlQgSElTVE9SWToKQWN0aXZlIG1lZGljYXRpb25zOiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5IChIVE4pLCBmaXNoIG9pbCAxMDAwIG1nIGRhaWx5IChPVEMpLiBEb2N1bWVudGVkIGludG9sZXJhbmNlIHRvIGlidXByb2ZlbiAoR0kgdXBzZXQpLiBObyBrbm93biBkcnVnIGFsbGVyZ2llcy4KCkFTU0VTU01FTlQ6CjEuIEFjdXRlIGJhY3RlcmlhbCBzaW51c2l0aXMgKEowMS45MCkg4oCUIG1lZXRzIGNsaW5pY2FsIGNyaXRlcmlhIGJhc2VkIG9uIHN5bXB0b20gZHVyYXRpb24gZ3JlYXRlciB0aGFuIDEwIGRheXMgd2l0aCBwdXJ1bGVudCBuYXNhbCBkaXNjaGFyZ2UgYW5kIGZhY2lhbCBwYWluL3ByZXNzdXJlLiBObyByZWQgZmxhZyBzeW1wdG9tcyB0byBzdWdnZXN0IGNvbXBsaWNhdGlvbnMuCgpQTEFOOgoxLiBBbW94aWNpbGxpbiA1MDAgbWcgb3JhbCBjYXBzdWxlLCBvbmUgY2Fwc3VsZSB0aHJlZSB0aW1lcyBkYWlseSBmb3IgMTAgZGF5cy4gRGlzcGVuc2UgIzMwLCB6ZXJvIHJlZmlsbHMuIFByZXNjcmlwdGlvbiBzZW50IGVsZWN0cm9uaWNhbGx5IHRvIHBhdGllbnQgcGhhcm1hY3kuCjIuIENvbnRpbnVlIHNhbGluZSBuYXNhbCBpcnJpZ2F0aW9uLgozLiBBY2V0YW1pbm9waGVuIFBSTiBmb3IgcGFpbiBhbmQgaGVhZGFjaGUuIElidXByb2ZlbiBhdm9pZGVkIHBlciBkb2N1bWVudGVkIGludG9sZXJhbmNlLgo0LiBSZXR1cm4gcHJlY2F1dGlvbnMgZGlzY3Vzc2VkOiBwYXRpZW50IGluc3RydWN0ZWQgdG8gY2FsbCBiYWNrIG9yIHNlZWsgZXZhbHVhdGlvbiBpZiBzeW1wdG9tcyB3b3JzZW4sIGZldmVyIGV4Y2VlZHMgMTAyRiwgcGVyaW9yYml0YWwgc3dlbGxpbmcgZGV2ZWxvcHMsIHNldmVyZSBoZWFkYWNoZSBvY2N1cnMsIG9yIGlmIG5vIGltcHJvdmVtZW50IHdpdGhpbiAzLTUgZGF5cyBvZiBzdGFydGluZyBhbnRpYmlvdGljcy4KNS4gTm8gaW4tb2ZmaWNlIHZpc2l0IHJlcXVpcmVkIGF0IHRoaXMgdGltZS4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKRHIuIEFuZ2VsYSBXaGl0ZmllbGQsIE1ECk1pbm5laGFoYSBJbnRlcm5hbCBNZWRpY2luZQowMS8zMC8yMDIzCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-004"
+      }
+    ],
+    "period": {
+      "start": "2023-01-30",
+      "end": "2023-01-30"
+    }
+  }
+}

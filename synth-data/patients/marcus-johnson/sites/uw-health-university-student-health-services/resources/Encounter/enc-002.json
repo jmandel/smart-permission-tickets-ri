@@ -1,0 +1,94 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-002",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185349003",
+          "display": "Encounter for check up (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "period": {
+        "start": "2025-10-08T09:00:00-05:00",
+        "end": "2025-10-08T09:45:00-05:00"
+      },
+      "individual": {
+        "reference": "Practitioner/e02a3bc3-c2e9-4eb5-b29c-e99b5041980a",
+        "type": "Practitioner",
+        "display": "Amy Liu, NP"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-10-08T09:00:00-05:00",
+    "end": "2025-10-08T09:45:00-05:00"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "171128005",
+          "display": "Venereal disease screening (procedure)"
+        }
+      ],
+      "text": "Routine STI screening"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/73c24cc9-84fa-4e00-b8af-76200f737982",
+        "display": "UW Health University Student Health Services"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/fbf9d609-1209-4829-a359-f646331955be",
+    "display": "UW Health University Student Health Services"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "STD",
+        "display": "sexually transmitted disease information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Marcus requested routine STI screening. He reported one new sexual partner in the past 6 months, consistent condom use, no urinary symptoms, no genital lesions, no discharge."
+    }
+  ]
+}

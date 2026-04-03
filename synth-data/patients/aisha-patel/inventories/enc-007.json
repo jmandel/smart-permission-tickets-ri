@@ -1,0 +1,207 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "subspecialty office visit, pediatric allergy and immunology",
+    "reason": "asthma reassessment, fractional exhaled nitric oxide testing, spirometry attempted",
+    "period_start": "2024-05-20",
+    "period_end": "2024-05-20",
+    "participants": [
+      {
+        "name": "Dr. Sunita Krishnamurthy",
+        "role": "Pediatric Allergist/Immunologist"
+      }
+    ],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 98,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 20,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 92,
+        "diastolic": 58,
+        "unit": "mmHg"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "supplemental_oxygen": "none (room air)"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.8,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 16.8,
+        "unit": "kg",
+        "percentile": "48th percentile for age"
+      },
+      {
+        "name": "body height",
+        "value": 103,
+        "unit": "cm",
+        "percentile": "52nd percentile for age"
+      }
+    ],
+    "labs": [
+      {
+        "name": "fractional exhaled nitric oxide",
+        "value": 38,
+        "unit": "ppb",
+        "reference_range": "<20 ppb normal for age",
+        "flag": "high",
+        "interpretation": "consistent with eosinophilic airway inflammation"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "moderate persistent asthma, partially controlled",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "update-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy — cashew, almond, walnut",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "onset_date": "2021",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA) 45/21 mcg inhaler",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "moderate persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "moderate persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA) 90 mcg inhaler",
+      "sig": "2 puffs inhaled as needed for wheezing or shortness of breath via spacer",
+      "status": "active",
+      "reason": "asthma rescue therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr) 0.15 mg",
+      "sig": "as needed for anaphylaxis, carried at all times",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 5 mg tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "apply to eczema flares twice daily as needed",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ceramide-based moisturizer (CeraVe)",
+      "sig": "apply to affected areas daily",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "description": "Subspecialty visit note — pediatric allergy/immunology office visit note documenting asthma reassessment at 2 months post-therapy step-up, FeNO result showing ongoing eosinophilic inflammation, technically inadequate spirometry, physical exam findings, review of all atopic conditions, and plan to continue current regimen with environmental control reinforcement"
+    },
+    {
+      "description": "FeNO test result report — point-of-care fractional exhaled nitric oxide measurement result: 38 ppb (elevated for age), consistent with eosinophilic airway inflammation despite current medium-dose ICS/LABA plus LTRA therapy"
+    },
+    {
+      "description": "Spirometry report (technically inadequate) — documentation of spirometry attempt that was not interpretable due to patient's inability to perform reproducible forced expiratory maneuvers across 6 attempts; noted as age-related limitation, to be reattempted at future visit"
+    },
+    {
+      "description": "Environmental control handout (patient education) — patient education materials on environmental control measures for asthma management, including HEPA air filtration, dust mite encasings, and trigger avoidance strategies"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "fractional exhaled nitric oxide (FeNO) test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fractional exhaled nitric oxide"
+      ]
+    },
+    {
+      "type": "spirometry",
+      "report_state": "summary-only",
+      "description": "Spirometry was attempted but was technically inadequate. Patient (age 4 years 2 months) was unable to perform a reproducible forced expiratory maneuver. Could not sustain exhalation for minimum acceptable duration. Flow-volume loops were not reproducible across 6 attempts. Test documented as not interpretable. Will be reattempted at next visit when patient is older and more cooperative."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis (urticaria, angioedema, wheezing)",
+      "severity": "severe",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "cashew",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "almond",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "walnut",
+      "action": "reference-existing"
+    }
+  ]
+}

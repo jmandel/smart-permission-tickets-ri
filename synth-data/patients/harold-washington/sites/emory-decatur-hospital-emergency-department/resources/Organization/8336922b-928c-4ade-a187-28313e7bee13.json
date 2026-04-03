@@ -1,0 +1,42 @@
+{
+  "resourceType": "Organization",
+  "id": "8336922b-928c-4ade-a187-28313e7bee13",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1456230178"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "Emory Decatur Hospital — Emergency Department",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "404-501-1000",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "2701 North Decatur Road"
+      ],
+      "city": "Decatur",
+      "state": "GA",
+      "postalCode": "30033"
+    }
+  ]
+}

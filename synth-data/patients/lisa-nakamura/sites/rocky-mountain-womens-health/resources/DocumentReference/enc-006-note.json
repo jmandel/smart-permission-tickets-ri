@@ -1,0 +1,76 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "date": "2025-01-27T09:45:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/bf9b0a0e-0ef0-40df-9eb6-72d51439701b",
+      "display": "Dr. Megan Forsythe"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/bf9b0a0e-0ef0-40df-9eb6-72d51439701b",
+    "display": "Dr. Megan Forsythe"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "Uk9DS1kgTU9VTlRBSU4gV09NRU4nUyBIRUFMVEgKRGVudmVyLCBDTwpOUEk6IDEzNDY3ODI1MTAKClBST0dSRVNTIE5PVEUKClBhdGllbnQ6IExpc2EgTmFrYW11cmEKRGF0ZSBvZiBTZXJ2aWNlOiAwMS8yNy8yMDI1ClByb3ZpZGVyOiBNZWdhbiBGb3JzeXRoZSwgTUQsIE9CL0dZTgpWaXNpdCBUeXBlOiBPZmZpY2UgVmlzaXQg4oCUIFByZWduYW5jeSBDb25maXJtYXRpb24gYW5kIEVhcmx5IE1vbml0b3JpbmcKClNVQkpFQ1RJVkU6CjM2LXllYXItb2xkIEczUDAgSmFwYW5lc2UtQW1lcmljYW4gd29tYW4gcHJlc2VudHMgZm9yIGVhcmx5IHByZWduYW5jeSBjb25maXJtYXRpb24gYXQgYXBwcm94aW1hdGVseSA1IHdlZWtzIGdlc3RhdGlvbi4gTE1QIGFwcHJveGltYXRlbHkgbWlkLURlY2VtYmVyIDIwMjQuIFBhdGllbnQgcmVwb3J0cyBzaGUgY29uY2VpdmVkIGluIEphbnVhcnkgMjAyNS4gU2hlIGlzIHNpZ25pZmljYW50bHkgYW54aW91cyBnaXZlbiBoZXIgaGlzdG9yeSBvZiB0d28gcHJpb3IgZWFybHkgcHJlZ25hbmN5IGxvc3NlcyDigJQgYSBzcG9udGFuZW91cyBhYm9ydGlvbiBhdCA2IHdlZWtzIGluIEp1bmUgMjAyNCBhbmQgYSBtaXNzZWQgYWJvcnRpb24gYXQgNyB3ZWVrcyBpbiBOb3ZlbWJlciAyMDI0LiBBIHJlY3VycmVudCBwcmVnbmFuY3kgbG9zcyB3b3JrdXAgcGVyZm9ybWVkIGluIERlY2VtYmVyIDIwMjQgd2FzIHVucmV2ZWFsaW5nOiBwYXJlbnRhbCBrYXJ5b3R5cGVzIG5vcm1hbCAoNDYsWFggYW5kIDQ2LFhZKSwgVFNIIDIuMSBtSVUvTCwgSGJBMWMgNS4yJSwgY29hZ3VsYXRpb24gc3R1ZGllcyBub3JtYWwsIEFOQSBuZWdhdGl2ZS4KClBhdGllbnQgZW5kb3JzZXMgcGVyc2lzdGVudCB3b3JyeSBhbmQgZGlmZmljdWx0eSBzbGVlcGluZyByZWxhdGVkIHRvIHByZWduYW5jeSBhbnhpZXR5LiBEZW5pZXMgdmFnaW5hbCBibGVlZGluZywgY3JhbXBpbmcsIG5hdXNlYSwgb3Igdm9taXRpbmcgYXQgdGhpcyB0aW1lLiBTaGUgaGFzIGJlZW4gY29tcGxpYW50IHdpdGggcHJlbmF0YWwgdml0YW1pbnMgc2luY2UgSmFudWFyeSAyMDI0LiBObyB0b2JhY2NvLCBhbGNvaG9sLCBvciBkcnVnIHVzZS4gTm8gbmV3IG1lZGljYXRpb25zIG9yIGFsbGVyZ2llcy4gTktEQS4KClJPUzogUG9zaXRpdmUgZm9yIGFueGlldHksIGluc29tbmlhLiBOZWdhdGl2ZSBmb3IgdmFnaW5hbCBibGVlZGluZywgYWJkb21pbmFsIHBhaW4sIGZldmVyLCB1cmluYXJ5IHN5bXB0b21zLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDExMi82OCBtbUhnLCBIUiA3MCBicG0sIFRlbXAgOTguNSBGLCBSUiAxNCwgU3BPMiA5OSUsIFdlaWdodCAxMzAgbGJzLCBCTUkgMjEuNgpQSFEtMiBTY29yZTogMyAocG9zaXRpdmUgc2NyZWVuKQoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcsIGFsZXJ0LCBhcHByb3ByaWF0ZWx5IGFueGlvdXMuIE5vIGFjdXRlIGRpc3RyZXNzLgpBYmRvbWVuOiBTb2Z0LCBub250ZW5kZXIsIG5vbmRpc3RlbmRlZC4gTm8gZ3VhcmRpbmcgb3IgcmVib3VuZC4KUGVsdmljOiBDZXJ2aXggY2xvc2VkLCBubyBhY3RpdmUgYmxlZWRpbmcgb3IgZGlzY2hhcmdlLiBVdGVydXMgc2xpZ2h0bHkgZW5sYXJnZWQsIG5vbnRlbmRlci4gQWRuZXhhIG5vbnRlbmRlciBiaWxhdGVyYWxseS4KCkxhYnM6Ci0gU2VydW0gYmV0YS1oQ0cgKDAxLzI3LzIwMjUpOiAzLDQ1MCBtSVUvbUwKLSBTZXJ1bSBiZXRhLWhDRyAoMDEvMjkvMjAyNSwgNDgtaG91ciByZXBlYXQpOiA3LDY4MCBtSVUvbUwg4oCUIGFwcHJvcHJpYXRlIGRvdWJsaW5nIHRpbWUKCkltYWdpbmc6Ci0gVHJhbnN2YWdpbmFsIHVsdHJhc291bmQgKDAyLzAzLzIwMjUsIDYgd2Vla3MgZ2VzdGF0aW9uKTogU2luZ2xlIGludHJhdXRlcmluZSBnZXN0YXRpb25hbCBzYWMgd2l0aCBmZXRhbCBwb2xlIGlkZW50aWZpZWQuIEZldGFsIGNhcmRpYWMgYWN0aXZpdHkgcHJlc2VudCwgRkhSIDExMiBicG0uIENyb3duLXJ1bXAgbGVuZ3RoIDQuMiBtbSwgY29uc2lzdGVudCB3aXRoIDYgd2Vla3MgMSBkYXkgZ2VzdGF0aW9uYWwgYWdlLiBObyBhZG5leGFsIG1hc3NlcyBvciBmcmVlIGZsdWlkLgoKQVNTRVNTTUVOVDoKMS4gSW50cmF1dGVyaW5lIHByZWduYW5jeSwgYXBwcm94aW1hdGVseSA1LTYgd2Vla3MgZ2VzdGF0aW9uIOKAlCB2aWFibGUgb24gZWFybHkgaW1hZ2luZyB3aXRoIHBvc2l0aXZlIGZldGFsIGNhcmRpYWMgYWN0aXZpdHkgYXQgNiB3ZWVrcy4gRW5jb3VyYWdpbmcgZmluZGluZ3MgZ2l2ZW4gaGlzdG9yeSBvZiByZWN1cnJlbnQgZWFybHkgcHJlZ25hbmN5IGxvc3MuCjIuIFJlY3VycmVudCBwcmVnbmFuY3kgbG9zcyAoRzNQMCwgdHdvIHByaW9yIGZpcnN0LXRyaW1lc3RlciBsb3NzZXMpIOKAlCBSUEwgd29ya3VwIHRvIGRhdGUgdW5yZXZlYWxpbmcuIENsb3NlIGVhcmx5IG1vbml0b3Jpbmcgd2FycmFudGVkLgozLiBQcmVnbmFuY3ktcmVsYXRlZCBhbnhpZXR5IOKAlCBQSFEtMiBwb3NpdGl2ZSBhdCAzLiBQYXRpZW50IGVuZG9yc2luZyB3b3JyeSBhbmQgc2xlZXAgZGlzdHVyYmFuY2UuIFVuZGVyc3RhbmRhYmxlIGluIGNvbnRleHQgb2YgcHJpb3IgbG9zc2VzLiBXaWxsIG1vbml0b3I7IHBhdGllbnQgY3VycmVudGx5IGVuZ2FnZWQgd2l0aCB0aGVyYXBpc3QgdGhyb3VnaCBFQVAuCgpQTEFOOgoxLiBJbml0aWF0ZSB2YWdpbmFsIG1pY3Jvbml6ZWQgcHJvZ2VzdGVyb25lIDIwMCBtZyBuaWdodGx5IGFzIHByZWNhdXRpb25hcnkgc3VwcGxlbWVudGF0aW9uIGZvciByZWN1cnJlbnQgZWFybHkgbG9zcy4gQ291bnNlbGVkIHBhdGllbnQgdGhhdCBldmlkZW5jZSBmb3IgYmVuZWZpdCBpbiBoZXIgc3BlY2lmaWMgc2l0dWF0aW9uIGlzIGxpbWl0ZWQgYnV0IGludGVydmVudGlvbiBjYXJyaWVzIG1pbmltYWwgcmlzay4gUGF0aWVudCBhZ3JlZWFibGUgdG8gdHJpYWwuCjIuIENvbnRpbnVlIHByZW5hdGFsIHZpdGFtaW5zIHdpdGggZm9sYXRlIGRhaWx5LgozLiBTZXJpYWwgYmV0YS1oQ0cgbW9uaXRvcmluZyBjb25maXJtZWQgYXBwcm9wcmlhdGUgZG91YmxpbmcuIE5vIGZ1cnRoZXIgc2VyaWFsIGRyYXdzIG5lZWRlZCBnaXZlbiBwb3NpdGl2ZSB1bHRyYXNvdW5kIGZpbmRpbmdzLgo0LiA2LXdlZWsgdHJhbnN2YWdpbmFsIHVsdHJhc291bmQgY29tcGxldGVkIDAyLzAzLzIwMjUgd2l0aCByZWFzc3VyaW5nIGZpbmRpbmdzIOKAlCBmZXRhbCBjYXJkaWFjIGFjdGl2aXR5IHByZXNlbnQsIENSTCBjb25zaXN0ZW50IHdpdGggZGF0ZXMuCjUuIFNjaGVkdWxlIGZvbGxvdy11cCB0cmFuc3ZhZ2luYWwgdWx0cmFzb3VuZCBhdCA4IHdlZWtzIGdlc3RhdGlvbiAoYXBwcm94aW1hdGVseSAwMi8xNy8yMDI1KSB0byBjb25maXJtIGNvbnRpbnVlZCB2aWFiaWxpdHkgYW5kIGludGVydmFsIGdyb3d0aC4KNi4gQW50aWNpcGF0b3J5IGd1aWRhbmNlIHByb3ZpZGVkIHJlZ2FyZGluZyB3YXJuaW5nIHNpZ25zOiB2YWdpbmFsIGJsZWVkaW5nLCBjcmFtcGluZywgcGFzc2FnZSBvZiB0aXNzdWUuIFBhdGllbnQgaW5zdHJ1Y3RlZCB0byBjYWxsIG9yIHByZXNlbnQgdG8gb2ZmaWNlIHVyZ2VudGx5IGlmIGFueSBvY2N1ci4KNy4gRGlzY3Vzc2VkIGVtb3Rpb25hbCB3ZWxsLWJlaW5nLiBQYXRpZW50IGFuZCBodXNiYW5kIFJ5YW4gcmVwb3J0IGNhdXRpb3VzIHJlbGllZiB3aXRoIHBvc2l0aXZlIHVsdHJhc291bmQuIEVuY291cmFnZWQgY29udGludWVkIHRoZXJhcHkgZm9yIGFueGlldHkgbWFuYWdlbWVudC4KOC4gUmV0dXJuIHRvIGNsaW5pYyBmb3IgOC13ZWVrIHVsdHJhc291bmQgYW5kIGZvbGxvdy11cC4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKTWVnYW4gRm9yc3l0aGUsIE1ECk5QSTogMTU5ODIzNDA3NgpSb2NreSBNb3VudGFpbiBXb21lbidzIEhlYWx0aAowMS8yNy8yMDI1Cg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006"
+      }
+    ],
+    "period": {
+      "start": "2025-01-27T09:00:00-07:00",
+      "end": "2025-01-27T09:45:00-07:00"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

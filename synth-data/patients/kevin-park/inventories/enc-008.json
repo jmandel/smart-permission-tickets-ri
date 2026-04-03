@@ -1,0 +1,97 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Hypertension follow-up",
+    "period_start": "2025-03-10",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 128,
+        "value_diastolic": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm",
+        "note": "regular rhythm"
+      },
+      {
+        "name": "body weight",
+        "value": 180,
+        "unit": "lbs",
+        "note": "81.6 kg"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.5,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": 97.8,
+        "unit": "°F",
+        "note": "36.6 °C"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily",
+      "dispense_quantity": 90,
+      "refills": 3,
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Brief focused follow-up note for chronic hypertension management. Documents subjective report of feeling well, medication adherence to lisinopril without side effects, continued lifestyle modifications, vitals showing well-controlled blood pressure, physical exam findings, assessment of stable hypertension and hyperlipidemia, and plan including medication refill authorization and scheduling of annual wellness exam."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

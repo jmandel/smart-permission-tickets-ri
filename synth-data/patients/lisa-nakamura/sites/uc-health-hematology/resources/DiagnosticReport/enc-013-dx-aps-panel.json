@@ -1,0 +1,73 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-013-dx-aps-panel",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-012-order-acl",
+      "display": "Repeat anticardiolipin antibodies (IgG and IgM)"
+    },
+    {
+      "reference": "ServiceRequest/enc-012-order-b2gp1",
+      "display": "Repeat anti-beta-2 glycoprotein I antibodies (IgG and IgM)"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "text": "Repeat antiphospholipid antibody panel"
+  },
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "effectiveDateTime": "2025-07-08",
+  "issued": "2025-07-08T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-013-acl-igg",
+      "display": "Anticardiolipin IgG antibody"
+    },
+    {
+      "reference": "Observation/enc-013-acl-igm",
+      "display": "Anticardiolipin IgM antibody"
+    },
+    {
+      "reference": "Observation/enc-013-b2gp1-igg",
+      "display": "Anti-beta-2 glycoprotein I IgG antibody"
+    },
+    {
+      "reference": "Observation/enc-013-b2gp1-igm",
+      "display": "Anti-beta-2 glycoprotein I IgM antibody"
+    }
+  ],
+  "conclusion": "Persistently elevated anticardiolipin IgG (52 GPL, positive >40) and now-positive anti-beta-2 glycoprotein I IgG (22 units, positive >20). Anticardiolipin IgM and anti-B2GP1 IgM remain negative. Confirms persistent medium-titer anticardiolipin IgG positivity on two occasions >=12 weeks apart.",
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

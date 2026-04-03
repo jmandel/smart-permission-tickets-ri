@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-017-mar",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "80565-5",
+        "display": "Medication administration record"
+      }
+    ],
+    "text": "Medication Administration Record"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "date": "2025-01-06T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/e42e19b6-01f0-4f55-b971-653b4342282b",
+      "type": "Practitioner",
+      "display": "Dr. Amy Pham, PharmD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TWVkaWNhdGlvbiBBZG1pbmlzdHJhdGlvbiBSZWNvcmQgLSBFbmNvdW50ZXIgMDEvMDYvMjAyNQoKUGF0aWVudDogUGF0cmljaWEgQ2hpZGlubWEgT2thZm9yCgpQcmUtbWVkaWNhdGlvbnM6CjEuIERleGFtZXRoYXNvbmUgNCBtZyBQTyAtIGFkbWluaXN0ZXJlZCBtb3JuaW5nIG9mIGluZnVzaW9uCjIuIE9uZGFuc2V0cm9uIDggbWcgSVYgLSBhZG1pbmlzdGVyZWQgcHJpb3IgdG8gY2hlbW90aGVyYXB5CgpDaGVtb3RoZXJhcHkgQWRtaW5pc3RyYXRpb246CjEuIFBlbWJyb2xpenVtYWIgMjAwIG1nIElWIG92ZXIgMzAgbWludXRlcyAtIGNvbXBsZXRlZCB3aXRob3V0IHJlYWN0aW9uCjIuIENhcmJvcGxhdGluIDQ1MCBtZyBJViAoQVVDIDUpIG92ZXIgMzAgbWludXRlcyAtIGNvbXBsZXRlZCB3aXRob3V0IHJlYWN0aW9uCjMuIFBlbWV0cmV4ZWQgODYwIG1nIElWICg1MDAgbWcvbTIpIG92ZXIgMTAgbWludXRlcyAtIGNvbXBsZXRlZCB3aXRob3V0IHJlYWN0aW9uCgpObyBpbmZ1c2lvbiByZWFjdGlvbnMgb2JzZXJ2ZWQu"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-017"
+      }
+    ],
+    "period": {
+      "start": "2025-01-06"
+    }
+  }
+}

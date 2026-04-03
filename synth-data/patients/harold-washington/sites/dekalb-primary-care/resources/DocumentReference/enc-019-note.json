@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-019-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "date": "2025-03-20T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+      "display": "Dr. Anita Desai"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMy8yMC8yMDI1ClBhdGllbnQ6IEhhcm9sZCBKYW1lcyBXYXNoaW5ndG9uIChET0I6IDA5LzE0LzE5NDYpCkNsaW5pY2lhbjogRHIuIEFuaXRhIERlc2FpLCBNRApTaXRlOiBEZUthbGIgUHJpbWFyeSBDYXJlLCAyNzAxIE5vcnRoIERlY2F0dXIgUm9hZCwgU3VpdGUgMzAwLCBEZWNhdHVyLCBHQSAzMDAzMwpDb250YWN0OiBNYXJnYXJldCBXYXNoaW5ndG9uLUNsYXJrZSAoZGF1Z2h0ZXIsIGhlYWx0aGNhcmUgUE9BKQoKUkVBU09OIEZPUiBDQUxMOiBSZXZpZXcgb2YgbGFiIHJlc3VsdHMgZnJvbSAwMy8xMy8yMDI1LgoKRElTQ1VTU0lPTjoKQ2FsbGVkIE1hcmdhcmV0IHRvIHJldmlldyBIYXJvbGQncyByZWNlbnQgbGFiIHJlc3VsdHMuIEExYyBpbXByb3ZlZCB0byA2LjklLCBpbmRpY2F0aW5nIGdvb2QgZGlhYmV0ZXMgY29udHJvbCBvbiBjdXJyZW50IHJlZ2ltZW4gb2YgbWV0Zm9ybWluIDUwMCBtZyBCSUQuIEtpZG5leSBmdW5jdGlvbiBzdGFibGUuIExpcGlkIHBhbmVsIG5lYXIgdGFyZ2V0IG9uIGF0b3J2YXN0YXRpbiAyMCBtZyBkYWlseS4gVml0YW1pbiBEIGxldmVsIHJldHVybmVkIGF0IDE4IG5nL21MLCB3aGljaCBpcyBkZWZpY2llbnQuIERpc2N1c3NlZCB0aGF0IHZpdGFtaW4gRCBkZWZpY2llbmN5IGlzIGEgcmlzayBmYWN0b3IgZm9yIGZhbGxzIGFuZCBkZWNyZWFzZWQgYm9uZSBoZWFsdGgsIHBhcnRpY3VsYXJseSBjb25jZXJuaW5nIGdpdmVuIEhhcm9sZCdzIHJlY2VudCBtZWNoYW5pY2FsIGZhbGwgaW4gRmVicnVhcnkgMjAyNSBhbmQgaGlzIGFnZSBvZiA3OC4KCkFTU0VTU01FTlQ6CjEuIFZpdGFtaW4gRCBkZWZpY2llbmN5IChFNTUuOSkg4oCUIG5ld2x5IGRpYWdub3NlZAoyLiBUeXBlIDIgZGlhYmV0ZXMgbWVsbGl0dXMgKEUxMS45KSDigJQgaW1wcm92ZWQsIEExYyA2LjklCjMuIEVzc2VudGlhbCBoeXBlcnRlbnNpb24gKEkxMCkg4oCUIHN0YWJsZSBvbiBjdXJyZW50IHJlZ2ltZW4KNC4gSHlwZXJsaXBpZGVtaWEgKEU3OC41KSDigJQgbGlwaWRzIG5lYXIgdGFyZ2V0CgpQTEFOOgoxLiBTdGFydCBjaG9sZWNhbGNpZmVyb2wgKHZpdGFtaW4gRDMpIDIwMDAgSVUgZGFpbHkuIE1hcmdhcmV0IHdpbGwgYWRkIHRvIEhhcm9sZCdzIGRhaWx5IHBpbGwgb3JnYW5pemVyLgoyLiBSZWNoZWNrIDI1LWh5ZHJveHl2aXRhbWluIEQgbGV2ZWwgaW4gMyBtb250aHMgdG8gY29uZmlybSByZXBsZXRpb24uCjMuIEFsbCBvdGhlciBtZWRpY2F0aW9ucyBjb250aW51ZWQgdW5jaGFuZ2VkOiBOYW16YXJpYyAoZG9uZXBlemlsIDEwIG1nL21lbWFudGluZSAyOCBtZyBFUikgZGFpbHkgYXQgYmVkdGltZSwgbGlzaW5vcHJpbCAyMCBtZyBkYWlseSwgYW1sb2RpcGluZSA1IG1nIGRhaWx5LCBtZXRmb3JtaW4gNTAwIG1nIEJJRCwgYXRvcnZhc3RhdGluIDIwIG1nIGRhaWx5IGF0IGJlZHRpbWUuCjQuIENvbnRpbnVlIHJvdXRpbmUgZm9sbG93LXVwIGFzIHNjaGVkdWxlZC4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieTogRHIuIEFuaXRhIERlc2FpLCBNRApEYXRlOiAwMy8yMC8yMDI1Cg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-019"
+      }
+    ],
+    "period": {
+      "start": "2025-03-20"
+    }
+  }
+}

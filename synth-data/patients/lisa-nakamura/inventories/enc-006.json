@@ -1,0 +1,151 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Third pregnancy confirmation and early monitoring",
+    "period_start": "2025-01-27",
+    "period_end": "2025-01-27",
+    "participants": [
+      {
+        "name": "Dr. Megan Forsythe",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 112,
+        "value_diastolic": 68,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.5,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 130,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "serum beta-hCG (quantitative), initial draw",
+        "value": 3450,
+        "unit": "mIU/mL",
+        "date": "2025-01-27",
+        "flag": "normal",
+        "interpretation": "appropriate for ~5 weeks gestation"
+      },
+      {
+        "name": "serum beta-hCG (quantitative), 48-hour repeat",
+        "value": 7680,
+        "unit": "mIU/mL",
+        "date": "2025-01-29",
+        "flag": "normal",
+        "interpretation": "appropriate doubling time confirmed"
+      },
+      {
+        "name": "fetal heart rate by ultrasound",
+        "value": 112,
+        "unit": "bpm",
+        "date": "2025-02-03",
+        "flag": "normal",
+        "interpretation": "appropriate for 6 weeks gestation"
+      },
+      {
+        "name": "crown-rump length by ultrasound",
+        "value": 4.2,
+        "unit": "mm",
+        "date": "2025-02-03",
+        "interpretation": "consistent with 6 weeks 1 day gestational age"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 3,
+        "interpretation": "positive screen",
+        "clinical_context": "patient endorsed persistent worry and difficulty sleeping related to pregnancy anxiety"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "intrauterine pregnancy, early first trimester",
+      "clinical_status": "active",
+      "onset_date": "2025-01-27",
+      "action": "create"
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pregnancy-related anxiety",
+      "clinical_status": "active",
+      "onset_date": "2025-01-27",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "micronized progesterone 200 mg vaginal capsule",
+      "sig": "Insert 200 mg vaginally every night at bedtime",
+      "status": "active",
+      "reason": "precautionary supplementation for recurrent early pregnancy loss",
+      "action": "create"
+    },
+    {
+      "name": "prenatal vitamin with folate, one tablet by mouth daily",
+      "status": "active",
+      "reason": "preconception/prenatal supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents third pregnancy confirmation at ~5 weeks gestation in G3P0 patient with history of two prior first-trimester losses. Records positive 6-week transvaginal ultrasound showing fetal cardiac activity, initiation of vaginal micronized progesterone 200 mg nightly as precautionary supplementation, positive PHQ-2 screen for anxiety, and plan for close follow-up with 8-week ultrasound."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "transvaginal pelvic ultrasound, obstetric, first trimester",
+      "report_state": "summary-only",
+      "description": "Single intrauterine gestational sac with fetal pole identified. Fetal cardiac activity present, FHR 112 bpm. Crown-rump length 4.2 mm, consistent with 6 weeks 1 day gestational age. No adnexal masses or free fluid. Reassuring findings in setting of recurrent early pregnancy loss."
+    }
+  ],
+  "allergies": []
+}

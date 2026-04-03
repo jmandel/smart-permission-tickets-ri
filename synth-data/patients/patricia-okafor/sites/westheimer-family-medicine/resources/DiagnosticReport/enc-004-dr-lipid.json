@@ -1,0 +1,60 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-004-dr-lipid",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24331-1",
+        "display": "Lipid 1996 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Lipid panel"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "effectiveDateTime": "2024-03-12",
+  "issued": "2024-03-12T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+      "display": "Dr. Adebayo Olatunde, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-004-cholesterol",
+      "display": "Total cholesterol"
+    },
+    {
+      "reference": "Observation/enc-004-ldl",
+      "display": "LDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-004-hdl",
+      "display": "HDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-004-triglycerides",
+      "display": "Triglycerides"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "resourceType": "Location",
+  "id": "369aa6be-d5d8-4538-8c06-fe8414866c2d",
+  "status": "active",
+  "name": "Valley Heart Institute",
+  "description": "Main clinical location for Valley Heart Institute encounters during the active period.",
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work",
+      "_value": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+            "valueCode": "unknown"
+          }
+        ]
+      }
+    }
+  ],
+  "address": {
+    "city": "Phoenix",
+    "state": "AZ",
+    "country": "US",
+    "text": "Valley Heart Institute, Phoenix, Arizona"
+  },
+  "managingOrganization": {
+    "reference": "Organization/4450878e-25f2-4491-8594-1b519b0371ff",
+    "display": "Valley Heart Institute"
+  }
+}

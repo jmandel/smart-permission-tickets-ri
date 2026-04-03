@@ -1,0 +1,66 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-013-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Lab Visit Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "date": "2025-07-08T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCIFZJU0lUIE5PVEUKCkRhdGU6IDA3LzA4LzIwMjUKUGF0aWVudDogTGlzYSBOYWthbXVyYQpET0I6IDA4LzE0LzE5ODkKUHJvdmlkZXI6IERyLiBKYW1lcyBPa2Fmb3IsIE1ELCBIZW1hdG9sb2d5CkxvY2F0aW9uOiBVQyBIZWFsdGggSGVtYXRvbG9neSwgQXVyb3JhLCBDTwoKUkVBU09OIEZPUiBWSVNJVDoKU2NoZWR1bGVkIGNvbmZpcm1hdG9yeSBibG9vZCBkcmF3IGZvciBhbnRpcGhvc3Bob2xpcGlkIGFudGlib2R5IHRlc3RpbmcgKDEyIHdlZWtzIHBvc3QgaW5pdGlhbCBwb3NpdGl2ZSByZXN1bHRzKSBhbmQgdGhyb21ib3BoaWxpYSBwYW5lbCwgYXMgb3JkZXJlZCBkdXJpbmcgaW5pdGlhbCBoZW1hdG9sb2d5IGNvbnN1bHRhdGlvbiBvbiAwNS8yMDI1LgoKQ0xJTklDQUwgQ09OVEVYVDoKMzYteWVhci1vbGQgRzNQMDAzMCB3b21hbiB3aXRoIGhpc3Rvcnkgb2YgdGhyZWUgY29uc2VjdXRpdmUgZWFybHkgcHJlZ25hbmN5IGxvc3NlcyAoMDYvMjAyNCwgMTEvMjAyNCwgMDMvMjAyNSksIGluY2x1ZGluZyBvbmUgd2l0aCBjaHJvbW9zb21hbGx5IG5vcm1hbCBQT0MgKDQ2LFhYKS4gSW5pdGlhbCBBUFMgYW50aWJvZHkgcGFuZWwgb24gMDQvMTQvMjAyNSBzaG93ZWQgZWxldmF0ZWQgYW50aWNhcmRpb2xpcGluIElnRyAoNDggR1BMKSwgd2Vha2x5IHBvc2l0aXZlIGx1cHVzIGFudGljb2FndWxhbnQsIGFuZCBib3JkZXJsaW5lIGFudGktYmV0YS0yIGdseWNvcHJvdGVpbiBJIElnRyAoMTQgdW5pdHMpLiBSUEwgd29ya3VwIG90aGVyd2lzZSBuZWdhdGl2ZSAobm9ybWFsIHBhcmVudGFsIGthcnlvdHlwZXMsIFRTSCwgSGJBMWMsIGNvYWd1bGF0aW9uIHBhbmVsLCBBTkEpLiBUb2RheSBpcyAxMiB3ZWVrcyBhbmQgMiBkYXlzIGZyb20gaW5pdGlhbCBwb3NpdGl2ZSByZXN1bHRzLCBtZWV0aW5nIHRoZSBtaW5pbXVtIGludGVydmFsIHJlcXVpcmVkIGJ5IHJldmlzZWQgU2FwcG9ybyAoU3lkbmV5KSBjbGFzc2lmaWNhdGlvbiBjcml0ZXJpYSBmb3IgY29uZmlybWF0b3J5IHRlc3RpbmcuCgpWSVRBTFM6Ck5vIHZpdGFscyBvYnRhaW5lZC4gTGFiLW9ubHkgdmlzaXQuCgpMQUJPUkFUT1JZIFJFU1VMVFM6CgpSZXBlYXQgQVBTIEFudGlib2R5IFBhbmVsOgotIEFudGljYXJkaW9saXBpbiBJZ0c6IDUyIEdQTCB1bml0cyAoUE9TSVRJVkU7IHJlZiA8NDAgR1BMKS4gUGVyc2lzdGVudGx5IGVsZXZhdGVkLCBzbGlnaHRseSBpbmNyZWFzZWQgZnJvbSBpbml0aWFsIDQ4IEdQTC4gQ29uZmlybXMgbWVkaXVtLXRpdGVyIHBvc2l0aXZpdHkgb24gdHdvIG9jY2FzaW9ucyA+PTEyIHdlZWtzIGFwYXJ0LgotIEFudGljYXJkaW9saXBpbiBJZ006IDEwIE1QTCB1bml0cyAobm9ybWFsOyByZWYgPDIwIE1QTCkuIENvbnNpc3RlbnQgd2l0aCBpbml0aWFsIHJlc3VsdC4KLSBBbnRpLWJldGEtMiBnbHljb3Byb3RlaW4gSSBJZ0c6IDIyIHVuaXRzIChQT1NJVElWRTsgcmVmIDwyMCkuIFByZXZpb3VzbHkgYm9yZGVybGluZSBhdCAxNCB1bml0czsgbm93IGFib3ZlIHRocmVzaG9sZC4gQ2xpbmljYWxseSBzaWduaWZpY2FudCBpbnRlcnZhbCBjaGFuZ2UuCi0gQW50aS1iZXRhLTIgZ2x5Y29wcm90ZWluIEkgSWdNOiA3IHVuaXRzIChub3JtYWw7IHJlZiA8MjApLgoKTHVwdXMgQW50aWNvYWd1bGFudCBBc3NheToKLSBMdXB1cyBhbnRpY29hZ3VsYW50OiBQT1NJVElWRSBvbiBkUlZWVCB3aXRoIGNvbmZpcm1hdG9yeSBtaXhpbmcgc3R1ZHkuIGRSVlZUIHNjcmVlbi10by1jb25maXJtIHJhdGlvIDEuMzUgKHBvc2l0aXZlID4xLjIwKS4gTW9yZSBjbGVhcmx5IHBvc2l0aXZlIHRoYW4gaW5pdGlhbCB3ZWFrbHkgcG9zaXRpdmUgcmVzdWx0LgoKVGhyb21ib3BoaWxpYSBHZW5ldGljIFBhbmVsOgotIEZhY3RvciBWIExlaWRlbiBtdXRhdGlvbjogTm90IGRldGVjdGVkICh3aWxkIHR5cGUpLgotIFByb3Rocm9tYmluIGdlbmUgbXV0YXRpb24gKEcyMDIxMEEpOiBOb3QgZGV0ZWN0ZWQgKHdpbGQgdHlwZSkuCgpUaHJvbWJvcGhpbGlhIEZ1bmN0aW9uYWwgUGFuZWw6Ci0gUHJvdGVpbiBDIGFjdGl2aXR5OiA5OCUgKG5vcm1hbDsgcmVmIDcwLTE0MCUpLgotIFByb3RlaW4gUyBhY3Rpdml0eSwgZnJlZTogNzIlIChub3JtYWw7IHJlZiA2MC0xNTAlKS4KLSBQcm90ZWluIFMgYWN0aXZpdHksIHRvdGFsOiA4OCUgKG5vcm1hbCkuCi0gQW50aXRocm9tYmluIGFjdGl2aXR5OiAxMDQlIChub3JtYWw7IHJlZiA4MC0xMjAlKS4KCklOVEVSUFJFVEFUSU9OOgpBbGwgaW5oZXJpdGVkIHRocm9tYm9waGlsaWEgc2NyZWVuaW5nIGlzIG5lZ2F0aXZlLCBlZmZlY3RpdmVseSBydWxpbmcgb3V0IEZhY3RvciBWIExlaWRlbiwgcHJvdGhyb21iaW4gZ2VuZSBtdXRhdGlvbiwgYW5kIGRlZmljaWVuY2llcyBvZiBwcm90ZWluIEMsIHByb3RlaW4gUywgb3IgYW50aXRocm9tYmluIGFzIGNvbnRyaWJ1dGluZyBmYWN0b3JzLgoKVGhlIEFQUyBhbnRpYm9keSBwcm9maWxlIG5vdyBzYXRpc2ZpZXMgbGFib3JhdG9yeSBjcml0ZXJpYSBmb3IgYW50aXBob3NwaG9saXBpZCBzeW5kcm9tZTogcGVyc2lzdGVudGx5IHBvc2l0aXZlIGFudGljYXJkaW9saXBpbiBJZ0cgYXQgbWVkaXVtIHRpdGVyICg+NDAgR1BMIG9uIHR3byBvY2Nhc2lvbnMgc2VwYXJhdGVkIGJ5ID49MTIgd2Vla3MpLCBwZXJzaXN0ZW50IGx1cHVzIGFudGljb2FndWxhbnQgcG9zaXRpdml0eSB3aXRoIGluY3JlYXNlZCBzdHJlbmd0aCwgYW5kIG5vdy1wb3NpdGl2ZSBhbnRpLWJldGEtMiBnbHljb3Byb3RlaW4gSSBJZ0cgKHByZXZpb3VzbHkgYm9yZGVybGluZSkuIFRoZSB0cmlwbGUgcG9zaXRpdml0eSBwYXR0ZXJuIChhQ0wgSWdHICsgTEEgKyBhbnRpLUIyR1BJIElnRykgY2FycmllcyB0aGUgaGlnaGVzdCByaXNrIHByb2ZpbGUgYW1vbmcgQVBTIGFudGlib2R5IGNvbWJpbmF0aW9ucy4KCkNvbWJpbmVkIHdpdGggdGhlIGNsaW5pY2FsIGNyaXRlcmlvbiBvZiB0aHJlZSBjb25zZWN1dGl2ZSBlYXJseSBwcmVnbmFuY3kgbG9zc2VzICg8MTAgd2Vla3MgZ2VzdGF0aW9uKSwgdGhlIHBhdGllbnQgbWVldHMgcmV2aXNlZCBTYXBwb3JvIChTeWRuZXkpIGNsYXNzaWZpY2F0aW9uIGNyaXRlcmlhIGZvciBhbnRpcGhvc3Bob2xpcGlkIHN5bmRyb21lLCBvYnN0ZXRyaWMgc3VidHlwZS4KClBMQU46CjEuIEZvdXIgZGlhZ25vc3RpYyByZXBvcnRzIGdlbmVyYXRlZDogcmVwZWF0IEFQUyBhbnRpYm9keSBwYW5lbCwgbHVwdXMgYW50aWNvYWd1bGFudCBhc3NheSwgdGhyb21ib3BoaWxpYSBnZW5ldGljIHBhbmVsLCBhbmQgdGhyb21ib3BoaWxpYSBmdW5jdGlvbmFsIHBhbmVsLgoyLiBSZXN1bHRzIHRyYW5zbWl0dGVkIHRvIERyLiBPa2Fmb3IgZm9yIHJldmlldyBhdCB1cGNvbWluZyBmb2xsb3ctdXAgdmlzaXQuCjMuIFJlc3VsdHMgY29tbXVuaWNhdGVkIHRvIERyLiBTYXJhaCBXaGl0ZmllbGQgYXQgQ29sb3JhZG8gTWF0ZXJuYWwtRmV0YWwgTWVkaWNpbmUgYW5kIERyLiBNZWdhbiBGb3JzeXRoZSBhdCBSb2NreSBNb3VudGFpbiBXb21lbidzIEhlYWx0aCBmb3IgY2FyZSBjb29yZGluYXRpb24uCjQuIEZvbGxvdy11cCBhcHBvaW50bWVudCB3aXRoIERyLiBPa2Fmb3IgdG8gYmUgc2NoZWR1bGVkIGZvciBmb3JtYWwgcmVzdWx0cyByZXZpZXcsIEFQUyBkaWFnbm9zaXMgY29uZmlybWF0aW9uLCBhbmQgYW50aWNvYWd1bGF0aW9uIHBsYW5uaW5nIGZvciBmdXR1cmUgcHJlZ25hbmN5LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OiBKYW1lcyBPa2Fmb3IsIE1ECkhlbWF0b2xvZ3ksIFVDIEhlYWx0aApEYXRlOiAwNy8wOC8yMDI1Cg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-013"
+      }
+    ],
+    "period": {
+      "start": "2025-07-08"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

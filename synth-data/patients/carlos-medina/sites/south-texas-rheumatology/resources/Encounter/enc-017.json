@@ -1,0 +1,85 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-017",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "363680008",
+          "display": "Radiographic imaging procedure (procedure)"
+        }
+      ],
+      "text": "Imaging"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Participation"
+        }
+      ],
+      "period": {
+        "start": "2022-08-15",
+        "end": "2022-08-15"
+      },
+      "individual": {
+        "reference": "Practitioner/b69f2069-cae7-4a3f-9426-ab17df92715e",
+        "type": "Practitioner",
+        "display": "Dr. Patricia Vega"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-08-15",
+    "end": "2022-08-15"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "239791005",
+          "display": "Seropositive rheumatoid arthritis (disorder)"
+        }
+      ],
+      "text": "Follow-up bilateral hand X-rays to assess radiographic progression of rheumatoid arthritis"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/a064bab9-f6d3-42ba-885b-acc55bff9f6a",
+        "display": "South Texas Rheumatology"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/061c9f2e-511c-42cd-976c-06a822d42c27",
+    "display": "South Texas Rheumatology"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Carlos presented for follow-up bilateral hand X-rays ordered by Dr. Fuentes for comparison with the March 2021 baseline to assess for radiographic progression of rheumatoid arthritis."
+    }
+  ]
+}

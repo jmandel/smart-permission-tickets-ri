@@ -1,0 +1,45 @@
+{
+  "resourceType": "Practitioner",
+  "id": "88db76ed-2e70-4364-9229-a6fe02a7ba13",
+  "name": [
+    {
+      "use": "official",
+      "family": "Morales",
+      "given": [
+        "Angela"
+      ],
+      "prefix": [
+        "Dr."
+      ],
+      "suffix": [
+        "MD"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Doctor of Medicine"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://nucc.org/provider-taxonomy",
+            "code": "207Q00000X",
+            "display": "Family Medicine Physician"
+          }
+        ],
+        "text": "Family Medicine"
+      }
+    }
+  ]
+}

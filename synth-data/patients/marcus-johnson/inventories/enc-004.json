@@ -1,0 +1,53 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "uw-health-university-student-health-services",
+  "encounter": {
+    "class": "virtual",
+    "type": "Scheduled Telehealth Follow-up Visit",
+    "reason": "Follow-up during measles isolation (day 3 post-rash onset)",
+    "period_start": "2026-03-26",
+    "participants": [],
+    "service_provider": "UW Health University Student Health Services",
+    "location": "Telemedicine (patient in university isolation housing, Madison, WI; clinician at UW Health University Student Health Services, Madison, WI)"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "measles",
+      "clinical_status": "active",
+      "onset_date": "2026-03-20",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "500 mg by mouth every 6 hours as needed for fever and discomfort",
+      "status": "active",
+      "reason": "measles — symptomatic fever management",
+      "action": "reference-existing"
+    },
+    {
+      "name": "vitamin A 200,000 international units oral",
+      "sig": "200,000 international units by mouth, two doses",
+      "status": "completed",
+      "reason": "measles — WHO-recommended vitamin A supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telehealth visit note",
+      "description": "Scheduled telemedicine video visit note documenting day 6 of confirmed measles illness during university isolation. Records subjective improvement (decreasing fever, rash progression, improving cough, tolerating oral intake), limited video-based objective assessment, assessment of improving course with no complications identified, and plan to continue isolation through March 27, continue acetaminophen PRN, encourage hydration, and return for in-person clearance visit on March 30, 2026."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

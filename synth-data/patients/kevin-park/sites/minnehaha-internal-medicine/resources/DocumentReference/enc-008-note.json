@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-008-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2025-03-10T09:30:00-05:00",
+  "author": [
+    {
+      "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+      "display": "Dr. Angela Whitfield, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "display": "Dr. Angela Whitfield, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TUlOTkVIQUhBIElOVEVSTkFMIE1FRElDSU5FCjM1MDEgRWFzdCBMYWtlIFN0cmVldCwgTWlubmVhcG9saXMsIE1OIDU1NDA2Ck5QSTogMTIzNDU2Nzg5MAoKUFJPR1JFU1MgTk9URQoKUGF0aWVudDogS2V2aW4gSnVuZ2h3YW4gUGFyawpET0I6IDA5LzE0LzE5NjgKRGF0ZSBvZiBTZXJ2aWNlOiAwMy8xMC8yMDI1ClByb3ZpZGVyOiBEci4gQW5nZWxhIFdoaXRmaWVsZCwgTUQgKE5QSTogMTUyODM3NDY1MCkKVmlzaXQgVHlwZTogT2ZmaWNlIFZpc2l0IOKAlCBDaHJvbmljIERpc2Vhc2UgTWFuYWdlbWVudApSZWFzb24gZm9yIFZpc2l0OiBIeXBlcnRlbnNpb24gZm9sbG93LXVwCgpTVUJKRUNUSVZFOgpLZXZpbiBpcyBhIDU2LXllYXItb2xkIEtvcmVhbi1BbWVyaWNhbiBtYWxlIHByZXNlbnRpbmcgZm9yIHJvdXRpbmUgaHlwZXJ0ZW5zaW9uIGZvbGxvdy11cC4gSGUgcmVwb3J0cyBmZWVsaW5nIHdlbGwgb3ZlcmFsbC4gSGUgY29udGludWVzIGhpcyBkYWlseSB3YWxraW5nIHJvdXRpbmUgYW5kIGlzIGxvb2tpbmcgZm9yd2FyZCB0byB0aGUgdXBjb21pbmcgZ29sZiBzZWFzb24uIEhlIG5vdGVzIGluY3JlYXNlZCBzdHJlc3MgYXQgd29yayByZWxhdGVkIHRvIHN1cHBseSBjaGFpbiBpc3N1ZXMgYWZmZWN0aW5nIGhpcyBkcnkgY2xlYW5pbmcgYnVzaW5lc3MsIGJ1dCBzdGF0ZXMgaGUgaXMgbWFuYWdpbmcgYWRlcXVhdGVseS4gSGUgZGVuaWVzIGNoZXN0IHBhaW4sIHBhbHBpdGF0aW9ucywgc2hvcnRuZXNzIG9mIGJyZWF0aCwgaGVhZGFjaGVzLCBkaXp6aW5lc3MsIG9yIHZpc3VhbCBjaGFuZ2VzLiBIZSByZXBvcnRzIGZ1bGwgYWRoZXJlbmNlIHRvIGxpc2lub3ByaWwgMTAgbWcgZGFpbHkgd2l0aG91dCBzaWRlIGVmZmVjdHMuIE5vIG5ldyBtZWRpY2F0aW9ucyBvciBzdXBwbGVtZW50cyBzaW5jZSBsYXN0IHZpc2l0LiBDb250aW51ZXMgZmlzaCBvaWwgMTAwMCBtZyBkYWlseS4gRGlldCByZW1haW5zIGltcHJvdmVkIHdpdGggcmVkdWNlZCByZWQgbWVhdCBhbmQgaW5jcmVhc2VkIGZpc2ggaW50YWtlLiBBbGNvaG9sIHVzZSB1bmNoYW5nZWQgYXQgMi0zIGdsYXNzZXMgb2YgcmVkIHdpbmUgcGVyIHdlZWsuIE5ldmVyIHNtb2tlci4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMjgvODAgbW1IZywgSFIgNzAgYnBtIChyZWd1bGFyKSwgV2VpZ2h0IDE4MC4wIGxicyAoODEuNiBrZyksIEJNSSAyNi41LCBUZW1wIDk3LjhGICgzNi42QyksIFJSIDE2LCBTcE8yIDk4JQoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcgbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4gQWxlcnQgYW5kIG9yaWVudGVkLgpIRUVOVDogTm9ybW9jZXBoYWxpYywgYXRyYXVtYXRpYy4gT3JvcGhhcnlueCBjbGVhci4KTmVjazogU3VwcGxlLCBubyBKVkQsIG5vIHRoeXJvbWVnYWx5LgpDYXJkaW92YXNjdWxhcjogUmVndWxhciByYXRlIGFuZCByaHl0aG0sIG5vcm1hbCBTMSBhbmQgUzIsIG5vIG11cm11cnMsIHJ1YnMsIG9yIGdhbGxvcHMuIE5vIHBlcmlwaGVyYWwgZWRlbWEuCkx1bmdzOiBDbGVhciB0byBhdXNjdWx0YXRpb24gYmlsYXRlcmFsbHkuCkFiZG9tZW46IFNvZnQsIG5vbnRlbmRlciwgbm9uZGlzdGVuZGVkLgoKQ3VycmVudCBNZWRpY2F0aW9uczoKMS4gTGlzaW5vcHJpbCAxMCBtZyBQTyBkYWlseQoyLiBGaXNoIG9pbCAxMDAwIG1nIFBPIGRhaWx5IChPVEMpCgpBbGxlcmdpZXMvSW50b2xlcmFuY2VzOiBJYnVwcm9mZW4gKEdJIHVwc2V0IOKAlCBpbnRvbGVyYW5jZSkKCkFTU0VTU01FTlQ6CjEuIEVzc2VudGlhbCBoeXBlcnRlbnNpb24gKEkxMCkg4oCUIHdlbGwgY29udHJvbGxlZCBvbiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5LiBCUCAxMjgvODAgdG9kYXksIGNvbnNpc3RlbnQgd2l0aCByZWNlbnQgdHJlbmQgaW4gdGhlIDEyNi0xMzQvNzgtODQgcmFuZ2Ugc2luY2UgaW5pdGlhdGlvbiBvZiBwaGFybWFjb3RoZXJhcHkuIE5vIGVuZC1vcmdhbiBkYW1hZ2Ugc3ltcHRvbXMuIFdpbGwgY29udGludWUgY3VycmVudCByZWdpbWVuLgoyLiBIeXBlcmxpcGlkZW1pYSAoRTc4LjUpIOKAlCBzdGFibGUsIGRpZXQtbWFuYWdlZC4gTGFzdCBMREwgMTIyIG1nL2RMIGluIEFwcmlsIDIwMjQsIGJvcmRlcmxpbmUgYnV0IGltcHJvdmVkIGZyb20gYmFzZWxpbmUgb2YgMTM4IGluIDIwMTkgd2l0aCBsaWZlc3R5bGUgbW9kaWZpY2F0aW9ucyBhbG9uZS4gUGF0aWVudCBjb250aW51ZXMgdG8gcHJlZmVyIGRpZXRhcnkgbWFuYWdlbWVudCBvdmVyIHN0YXRpbiB0aGVyYXB5LiBXaWxsIHJlY2hlY2sgZmFzdGluZyBsaXBpZCBwYW5lbCBhdCBhbm51YWwgd2VsbG5lc3MgZXhhbS4KClBMQU46CjEuIENvbnRpbnVlIGxpc2lub3ByaWwgMTAgbWcgUE8gZGFpbHkuIFByZXNjcmlwdGlvbiBhdXRob3JpemVkOiAjOTAsIDMgcmVmaWxscy4KMi4gQ29udGludWUgbGlmZXN0eWxlIG1vZGlmaWNhdGlvbnMgaW5jbHVkaW5nIHJlZ3VsYXIgZXhlcmNpc2UsIGxvdy1zb2RpdW0gZGlldCwgYW5kIGRpZXRhcnkgbWFuYWdlbWVudCBvZiBoeXBlcmxpcGlkZW1pYS4KMy4gQW5udWFsIHdlbGxuZXNzIGV4YW0gc2NoZWR1bGVkIGZvciBBcHJpbCAyMDI1Lgo0LiBSZWNvbW1lbmQgc2NoZWR1bGluZyBmYWxsIGluZmx1ZW56YSBhbmQgQ09WSUQtMTkgdmFjY2luZXMgd2hlbiBhdmFpbGFibGUuCjUuIFJldHVybiB0byBjbGluaWMgUFJOIG9yIGF0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdC4KNi4gUGF0aWVudCBlZHVjYXRlZCBvbiBpbXBvcnRhbmNlIG9mIGNvbnRpbnVlZCBtZWRpY2F0aW9uIGFkaGVyZW5jZSBhbmQgYmxvb2QgcHJlc3N1cmUgbW9uaXRvcmluZy4gRW5jb3VyYWdlZCB0byBjb250aW51ZSB3YWxraW5nIGFuZCBwaHlzaWNhbCBhY3Rpdml0eS4KClBhdGllbnQgdmVyYmFsaXplZCB1bmRlcnN0YW5kaW5nIG9mIHRoZSBwbGFuLiBObyBxdWVzdGlvbnMgYXQgdGhpcyB0aW1lLgoKRHIuIEFuZ2VsYSBXaGl0ZmllbGQsIE1ECk1pbm5laGFoYSBJbnRlcm5hbCBNZWRpY2luZQpEYXRlIHNpZ25lZDogMDMvMTAvMjAyNQo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-008"
+      }
+    ],
+    "period": {
+      "start": "2025-03-10T09:00:00-05:00",
+      "end": "2025-03-10T09:30:00-05:00"
+    }
+  }
+}

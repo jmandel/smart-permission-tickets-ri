@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-014-bipolar-ii",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "83225003",
+        "display": "Bipolar II disorder (disorder)"
+      }
+    ],
+    "text": "Bipolar II disorder"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "onsetDateTime": "2019-07",
+  "recordedDate": "2024-07-15",
+  "note": [
+    {
+      "text": "Diagnosed July 2019 by Dr. James Okafor at Portland Behavioral Health Associates. Stable on lamotrigine and quetiapine. PHQ-2 negative at this visit."
+    }
+  ]
+}

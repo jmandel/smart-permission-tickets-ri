@@ -1,0 +1,89 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone encounter",
+    "reason": "Culture results, phase transition planning",
+    "period_start": "2026-03-30",
+    "participants": [
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "Infectious Disease"
+      }
+    ],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic (telephone), 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral",
+      "sig": "daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral",
+      "sig": "daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral",
+      "sig": "daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral",
+      "sig": "daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine 50 mg oral",
+      "sig": "daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis with isoniazid",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents Dr. Okafor's telephone call with Robert Davis to relay final sputum mycobacterial culture results (March 5 specimen — negative, confirming culture conversion). Includes discussion of upcoming phase transition from intensive to continuation phase at the April 2 visit, possible DOT frequency reduction, and patient questions about activity resumption."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "sputum mycobacterial culture",
+      "report_state": "summary-only",
+      "description": "Sputum culture (collected 2026-03-05) returned negative — no growth of Mycobacterium tuberculosis after 25 days of incubation. Combined with the prior negative culture from the February 5 specimen, this confirms sputum culture conversion."
+    }
+  ],
+  "allergies": []
+}

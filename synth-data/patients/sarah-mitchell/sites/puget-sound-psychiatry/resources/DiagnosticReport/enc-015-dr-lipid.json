@@ -1,0 +1,58 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-015-dr-lipid",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "57698-3",
+        "display": "Lipid panel with direct LDL - Serum or Plasma"
+      }
+    ],
+    "text": "Lipid Panel"
+  },
+  "subject": {
+    "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "effectiveDateTime": "2024-08-12",
+  "issued": "2024-08-12T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+      "type": "Practitioner",
+      "display": "Dr. Anita Patel"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-015-triglycerides",
+      "display": "Triglycerides"
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

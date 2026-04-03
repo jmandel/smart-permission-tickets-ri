@@ -1,0 +1,86 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-016-functional-impairment",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "82971005",
+        "display": "Impaired mobility (finding)"
+      }
+    ],
+    "text": "Functional impairment due to rheumatoid arthritis"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "onsetDateTime": "2022-07-11",
+  "recordedDate": "2022-07-11",
+  "note": [
+    {
+      "text": "Worsening documented — HAQ-DI increased from 1.2 to 1.5. Patient unable to perform essential occupational tasks: cannot safely demonstrate power tools, has handed off batting practice. Grip strength severely diminished bilaterally (R 22 kg, L 18 kg vs pre-disease baseline >40 kg)."
+    }
+  ],
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "Observation/enc-016-haqdi",
+          "display": "HAQ-DI 1.5"
+        }
+      ]
+    },
+    {
+      "detail": [
+        {
+          "reference": "Observation/enc-016-grip-r",
+          "display": "Grip strength right hand 22 kg"
+        }
+      ]
+    },
+    {
+      "detail": [
+        {
+          "reference": "Observation/enc-016-grip-l",
+          "display": "Grip strength left hand 18 kg"
+        }
+      ]
+    }
+  ]
+}

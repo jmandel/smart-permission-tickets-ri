@@ -1,0 +1,189 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Interim hepatic function monitoring during RIPE therapy for pulmonary tuberculosis",
+    "period_start": "2026-02-19",
+    "participants": [],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic, 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "33",
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "36",
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "white blood cell count",
+        "value": "7.9",
+        "unit": "× 10³/µL",
+        "reference_range": "4.5–11.0 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "11.6",
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "hematocrit",
+        "value": "35.0",
+        "unit": "%",
+        "reference_range": "38.3–48.6%",
+        "flag": "low"
+      },
+      {
+        "name": "platelet count",
+        "value": "305",
+        "unit": "× 10³/µL",
+        "reference_range": "150–400 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "sodium",
+        "value": "139",
+        "unit": "mEq/L",
+        "reference_range": "136–145 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium",
+        "value": "4.1",
+        "unit": "mEq/L",
+        "reference_range": "3.5–5.0 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": "1.0",
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose, random",
+        "value": "168",
+        "unit": "mg/dL",
+        "reference_range": "70–140 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "uric acid",
+        "value": "8.2",
+        "unit": "mg/dL",
+        "reference_range": "3.5–7.2 mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "anemia of chronic disease, normocytic",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral tablet",
+      "sig": "600 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral tablet",
+      "sig": "300 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral tablet",
+      "sig": "1500 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral tablet",
+      "sig": "1200 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine (vitamin B6) 50 mg oral tablet",
+      "sig": "50 mg oral once daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis during isoniazid therapy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "lab encounter note",
+      "description": "Brief nursing note for a scheduled lab-draw-only visit during TB DOT. Documents that patient reported no new symptoms, morning RIPE dose was observed, no clinical examination was performed, and lab results (hepatic function panel, CBC, BMP, uric acid) are to be reviewed by Dr. Okafor and communicated at next DOT visit."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hepatic function panel",
+      "report_state": "summary-only",
+      "description": "Ordered for interim hepatotoxicity monitoring during RIPE therapy. Only AST (33 U/L) and ALT (36 U/L) values were reported — stable and within acceptable limits. Full panel components (alkaline phosphatase, total bilirubin, direct bilirubin, albumin, total protein) were not individually reported. No evidence of drug-induced hepatotoxicity."
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "basic metabolic panel (BMP)",
+      "report_state": "summary-only",
+      "description": "Four of eight standard BMP components were individually reported (sodium, potassium, creatinine, glucose). Chloride, CO2/bicarbonate, BUN, and calcium were not individually reported. Reported values show normal renal function and electrolytes; random glucose elevated at 168 mg/dL consistent with known diabetes."
+    },
+    {
+      "type": "uric acid",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "uric acid"
+      ]
+    }
+  ],
+  "allergies": []
+}

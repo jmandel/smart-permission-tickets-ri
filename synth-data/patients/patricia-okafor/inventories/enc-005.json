@@ -1,0 +1,113 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "acute office visit",
+    "reason": "persistent dry cough evaluation",
+    "period_start": "2024-07-18",
+    "period_end": "2024-07-18",
+    "participants": [
+      {
+        "name": "Dr. Adebayo Olatunde, MD",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 134,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 160,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.6,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 96,
+        "unit": "%",
+        "note": "on room air; slightly below patient's baseline of 98-99%"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "persistent dry cough",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "create"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "unintentional weight loss",
+      "clinical_status": "active",
+      "onset_date": "2024-03",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "benzonatate 100 mg oral capsule",
+      "sig": "Take 100 mg by mouth three times daily with water; swallow capsules whole. 14-day course.",
+      "status": "active",
+      "reason": "persistent dry cough",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Acute office visit note for evaluation of persistent dry cough of 6 weeks duration. Documents full respiratory exam (lungs clear bilaterally, no wheezes/rhonchi/crackles, oropharynx clear, no lymphadenopathy), vital signs including SpO2 96% on room air, differential diagnosis (post-viral cough, allergic rhinitis, GERD, ACE-inhibitor cough), new prescription for benzonatate, and plan for 2-week follow-up with further workup if cough persists."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

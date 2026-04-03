@@ -1,0 +1,37 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-008-renal-panel-order",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "text": "Laboratory procedure"
+    }
+  ],
+  "code": {
+    "text": "Renal panel"
+  },
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "authoredOn": "2026-02-11",
+  "requester": {
+    "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+    "display": "Omar Siddiqui, PA-C"
+  },
+  "occurrenceTiming": {
+    "code": {
+      "text": "Before next nephrology follow-up in 6 months"
+    }
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-005-ckd3b",
+      "display": "Chronic kidney disease stage 3b"
+    }
+  ]
+}

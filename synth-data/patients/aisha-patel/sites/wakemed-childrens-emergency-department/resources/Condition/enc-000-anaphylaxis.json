@@ -1,0 +1,61 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-anaphylaxis",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "241933001",
+        "display": "Peanut-induced anaphylaxis (disorder)"
+      }
+    ],
+    "text": "Anaphylaxis due to accidental peanut ingestion"
+  },
+  "subject": {
+    "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2022-10-22",
+  "recordedDate": "2022-10-22",
+  "abatementDateTime": "2022-10-22",
+  "note": [
+    {
+      "text": "First known allergic reaction and first known peanut exposure. Three-system involvement: cutaneous (urticaria, angioedema), respiratory (wheezing, desaturation), cardiovascular (tachycardia, borderline hypotension)."
+    }
+  ]
+}

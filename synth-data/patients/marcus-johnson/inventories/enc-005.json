@@ -1,0 +1,177 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "uw-health-university-student-health-services",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office visit — post-measles recovery clearance",
+    "reason": "Post-measles recovery clearance following completion of isolation period for confirmed measles",
+    "period_start": "2026-03-30",
+    "participants": [
+      {
+        "name": "Dr. Rachel Okonkwo, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "UW Health University Student Health Services",
+    "location": "UW Health University Student Health Services, 333 East Campus Mall, Floor 5, Madison, WI 53715"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure (systolic component)",
+        "value": 116,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": 72,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "body weight",
+        "value": 177,
+        "unit": "lbs"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 5.8,
+        "unit": "10³/µL",
+        "reference_range": "4.5–11.0 × 10³/µL",
+        "flag": "normal",
+        "note": "recovered from 3.2 × 10³/µL on 2026-03-23"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.6,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hematocrit",
+        "value": 43,
+        "unit": "%",
+        "reference_range": "38.3–48.6 %",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 210,
+        "unit": "10³/µL",
+        "reference_range": "150–400 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "neutrophils (percentage)",
+        "value": 55,
+        "unit": "%",
+        "reference_range": "40–70 %",
+        "flag": "normal"
+      },
+      {
+        "name": "lymphocytes (percentage)",
+        "value": 30,
+        "unit": "%",
+        "reference_range": "20–40 %",
+        "flag": "normal",
+        "note": "resolved from prior lymphopenia"
+      },
+      {
+        "name": "monocytes (percentage)",
+        "value": 8,
+        "unit": "%",
+        "reference_range": "2–8 %",
+        "flag": "normal"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": 8,
+        "unit": "mg/L",
+        "reference_range": "0–10 mg/L",
+        "flag": "normal",
+        "note": "markedly improved from 48 mg/L on 2026-03-23, trending toward normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "measles",
+      "clinical_status": "resolved",
+      "onset_date": "2026-03-20",
+      "action": "update-existing"
+    },
+    {
+      "name": "incomplete immunization status",
+      "clinical_status": "resolved",
+      "action": "update-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "every 6 hours as needed for fever",
+      "status": "stopped",
+      "reason": "measles (supportive care)",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents the post-measles recovery clearance visit on 2026-03-30. Patient completed measles isolation, demonstrates clinical and laboratory recovery (resolved fever, fading rash, normalized CBC, declining CRP). Cleared to return to classes and communal living. Measles status updated to resolved, natural immunity documented."
+    },
+    {
+      "type": "administrative communication / correspondence",
+      "description": "Follow-up notification sent to Wisconsin DHS confirming clinical recovery and case resolution for state case ID WI-MEAS-2026-0047. Documents that measles case is closed from a clinical standpoint with no complications and no secondary cases attributable to this patient."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count",
+        "neutrophils (percentage)",
+        "lymphocytes (percentage)",
+        "monocytes (percentage)"
+      ]
+    },
+    {
+      "type": "C-reactive protein",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein"
+      ]
+    }
+  ],
+  "allergies": []
+}

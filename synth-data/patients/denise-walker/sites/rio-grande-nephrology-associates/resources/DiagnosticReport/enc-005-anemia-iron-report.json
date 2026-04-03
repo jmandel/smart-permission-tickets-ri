@@ -1,0 +1,48 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-005-anemia-iron-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "HM",
+          "display": "Hematology"
+        }
+      ],
+      "text": "Hematology"
+    }
+  ],
+  "code": {
+    "text": "Anemia / iron studies report"
+  },
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2024-06-17",
+  "performer": [
+    {
+      "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+      "display": "Rio Grande Nephrology Associates"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-005-hemoglobin",
+      "display": "Hemoglobin"
+    },
+    {
+      "reference": "Observation/enc-005-ferritin",
+      "display": "Ferritin"
+    },
+    {
+      "reference": "Observation/enc-005-transferrin-sat",
+      "display": "Transferrin saturation"
+    }
+  ]
+}

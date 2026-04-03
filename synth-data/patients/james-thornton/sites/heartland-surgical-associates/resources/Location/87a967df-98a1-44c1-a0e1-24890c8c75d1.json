@@ -1,0 +1,41 @@
+{
+  "resourceType": "Location",
+  "id": "87a967df-98a1-44c1-a0e1-24890c8c75d1",
+  "status": "active",
+  "name": "Heartland Surgical Associates",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "402-555-0200",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "8901 West Dodge Road",
+      "Suite 210"
+    ],
+    "city": "Omaha",
+    "state": "NE",
+    "postalCode": "68114",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/f27c97af-3cd4-4e41-bf05-31a0763bd751",
+    "display": "Heartland Surgical Associates"
+  }
+}

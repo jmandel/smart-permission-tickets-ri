@@ -1,0 +1,39 @@
+{
+  "resourceType": "Practitioner",
+  "id": "e42e19b6-01f0-4f55-b971-653b4342282b",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Pham",
+      "given": [
+        "Amy"
+      ],
+      "prefix": [
+        "Dr."
+      ],
+      "suffix": [
+        "PharmD"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "PharmD",
+            "display": "Doctor of Pharmacy"
+          }
+        ],
+        "text": "Doctor of Pharmacy"
+      }
+    },
+    {
+      "code": {
+        "text": "Oncology Pharmacist"
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Laboratory Results Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2022-09-20T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+      "display": "Dr. Emily Nakamura"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+    "display": "Dr. Emily Nakamura"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCT1JBVE9SWSBSRVNVTFRTIE5PVEUKClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsCkRhdGU6IDA5LzIwLzIwMjIKU2l0ZTogSGF3dGhvcm5lIEhlYWx0aCBDZW50ZXIsIDM4NDcgU0UgSGF3dGhvcm5lIEJsdmQsIFBvcnRsYW5kLCBPUiA5NzIxNApPcmRlcmluZyBQcm92aWRlcjogRHIuIEVtaWx5IE5ha2FtdXJhLCBNRApFbmNvdW50ZXIgVHlwZTogTGFiIFZpc2l0CgpJTkRJQ0FUSU9OOgpBbm51YWwgc2NyZWVuaW5nIGxhYm9yYXRvcnkgc3R1ZGllcyBwZXIgcm91dGluZSBwcmV2ZW50aXZlIGNhcmUuCgpTUEVDSU1FTlMgQ09MTEVDVEVEOgpWZW5pcHVuY3R1cmUgcGVyZm9ybWVkLiBObyB2aXRhbHMgb2J0YWluZWQgKGxhYi1vbmx5IHZpc2l0KS4KClJFU1VMVFM6CgpDQkM6CiAgV0JDIDUuOCB4MTBeMy91TCAobm9ybWFsKQogIEhlbW9nbG9iaW4gMTMuNiBnL2RMIChub3JtYWwpCiAgUGxhdGVsZXRzIDIzOCB4MTBeMy91TCAobm9ybWFsKQoKQ29tcHJlaGVuc2l2ZSBNZXRhYm9saWMgUGFuZWw6CiAgR2x1Y29zZSA5MiBtZy9kTCAobm9ybWFsKQogIENyZWF0aW5pbmUgMC44IG1nL2RMIChub3JtYWwpCiAgU29kaXVtIDE0MSBtRXEvTCAobm9ybWFsKQogIFBvdGFzc2l1bSA0LjAgbUVxL0wgKG5vcm1hbCkKICBBU1QgMjggVS9MIChub3JtYWwpCiAgQUxUIDMyIFUvTCAobm9ybWFsKQoKSGVtb2dsb2JpbiBBMWM6CiAgQTFjIDUuMiUgKG5vcm1hbCwgbm8gZXZpZGVuY2Ugb2YgZGlhYmV0ZXMgb3IgcHJlZGlhYmV0ZXMpCgpMaXBpZCBQYW5lbDoKICBUb3RhbCBDaG9sZXN0ZXJvbCAxOTUgbWcvZEwgKGRlc2lyYWJsZSkKICBMREwgMTEyIG1nL2RMIChuZWFyIG9wdGltYWwpCiAgSERMIDUyIG1nL2RMIChub3JtYWwpCiAgVHJpZ2x5Y2VyaWRlcyAxNTUgbWcvZEwgKG1pbGRseSBlbGV2YXRlZCwgYm9yZGVybGluZSBoaWdoKQoKSU5URVJQUkVUQVRJT046CkNCQywgQ01QLCBhbmQgQTFjIGFyZSBhbGwgd2l0aGluIG5vcm1hbCBsaW1pdHMuIExpdmVyIGVuenltZXMgKEFTVCAyOCwgQUxUIDMyKSBoYXZlIG5vcm1hbGl6ZWQgZnJvbSBwcmV2aW91c2x5IGVsZXZhdGVkIHZhbHVlcyBhbmQgYXJlIG5vdyB1bnJlbWFya2FibGUuIExpcGlkIHBhbmVsIGlzIG5vdGFibGUgZm9yIG1pbGRseSBlbGV2YXRlZCB0cmlnbHljZXJpZGVzIGF0IDE1NSBtZy9kTCwgd2hpY2ggcmVwcmVzZW50cyBhbiB1cHdhcmQgdHJlbmQuIFRoaXMgaXMgYSByZWNvZ25pemVkIG1ldGFib2xpYyBlZmZlY3Qgb2YgcXVldGlhcGluZSwgd2hpY2ggdGhlIHBhdGllbnQgdGFrZXMgNTBtZyBuaWdodGx5IGZvciBiaXBvbGFyIElJIGRpc29yZGVyIG1hbmFnZW1lbnQuIFRvdGFsIGNob2xlc3Rlcm9sIGFuZCBMREwgcmVtYWluIHdpdGhpbiBhY2NlcHRhYmxlIHJhbmdlLgoKRk9MTE9XLVVQOgpSZXN1bHRzIHJldmlld2VkIGJ5IERyLiBOYWthbXVyYS4gUGF0aWVudCB3YXMgY29udGFjdGVkIHZpYSBwYXRpZW50IHBvcnRhbCBtZXNzYWdlIGFkdmlzaW5nIG9mIHRoZSBtaWxkIHRyaWdseWNlcmlkZSBlbGV2YXRpb24gYW5kIHJlY29tbWVuZGluZyBkaWV0YXJ5IG1vZGlmaWNhdGlvbnMgaW5jbHVkaW5nIHJlZHVjZWQgcmVmaW5lZCBjYXJib2h5ZHJhdGVzIGFuZCBpbmNyZWFzZWQgb21lZ2EtMyBmYXR0eSBhY2lkIGludGFrZS4gTm8gbWVkaWNhdGlvbiBjaGFuZ2VzIGluZGljYXRlZCBhdCB0aGlzIHRpbWUuIENvbnRpbnVlZCBtZXRhYm9saWMgbW9uaXRvcmluZyB3aWxsIG9jY3VyIHdpdGggbmV4dCBhbm51YWwgbGFicy4gTm8gZm9sbG93LXVwIHZpc2l0IHNjaGVkdWxlZC4gTmV4dCBhbm51YWwgd2VsbG5lc3MgZXhhbSBwbGFubmVkIGZvciBzcHJpbmcgMjAyMy4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKRW1pbHkgTmFrYW11cmEsIE1ECkhhd3Rob3JuZSBIZWFsdGggQ2VudGVyCkRhdGU6IDA5LzIwLzIwMjIK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006"
+      }
+    ],
+    "period": {
+      "start": "2022-09-20"
+    }
+  }
+}

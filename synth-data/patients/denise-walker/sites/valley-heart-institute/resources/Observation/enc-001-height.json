@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-001-height",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8302-2",
+        "display": "Body height"
+      }
+    ],
+    "text": "Body height"
+  },
+  "subject": {
+    "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "effectiveDateTime": "2022-06-08",
+  "valueQuantity": {
+    "value": 64,
+    "unit": "[in_i]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[in_i]"
+  }
+}

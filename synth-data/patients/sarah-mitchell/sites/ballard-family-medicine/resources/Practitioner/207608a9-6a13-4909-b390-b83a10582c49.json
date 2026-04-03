@@ -1,0 +1,66 @@
+{
+  "resourceType": "Practitioner",
+  "id": "207608a9-6a13-4909-b390-b83a10582c49",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Tran",
+      "given": [
+        "Kevin"
+      ],
+      "prefix": [
+        "Dr."
+      ],
+      "text": "Dr. Kevin Tran"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "206-555-0200",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "5412 22nd Ave NW"
+      ],
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98107",
+      "country": "US"
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Doctor of Medicine"
+      },
+      "issuer": {
+        "display": "Washington State Department of Health"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://nucc.org/provider-taxonomy",
+            "code": "207Q00000X",
+            "display": "Family Medicine"
+          }
+        ],
+        "text": "Family Medicine"
+      }
+    }
+  ]
+}

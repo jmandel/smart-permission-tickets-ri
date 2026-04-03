@@ -1,0 +1,228 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "nebraska-medicine",
+  "encounter": {
+    "class": "inpatient",
+    "type": "Inpatient Discharge",
+    "reason": "Surgical site infection treatment, post laparoscopic appendectomy — readmission for IV antibiotics, wound management, and monitoring",
+    "period_start": "2026-01-22T19:00:00-06:00",
+    "period_end": "2026-01-26T10:00:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Priya Nair",
+        "role": "Hospitalist, attending"
+      },
+      {
+        "name": "Dr. Marcus Okonkwo",
+        "role": "Surgeon, attending"
+      }
+    ],
+    "service_provider": "Nebraska Medicine",
+    "location": "Nebraska Medicine, 4350 Dewey Avenue, Omaha, NE 68105 — surgical floor"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": "100.2 °F (37.9 °C)",
+        "effective": "2026-01-23T07:00:00-06:00"
+      },
+      {
+        "name": "heart rate",
+        "value": "84 bpm",
+        "effective": "2026-01-23T07:00:00-06:00"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 134,
+        "diastolic": 80,
+        "unit": "mmHg",
+        "effective": "2026-01-23T07:00:00-06:00"
+      },
+      {
+        "name": "body temperature",
+        "value": "99.4 °F (37.4 °C)",
+        "effective": "2026-01-23T18:00:00-06:00"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.6 °F (37.0 °C)",
+        "effective": "2026-01-24T07:00:00-06:00"
+      },
+      {
+        "name": "heart rate",
+        "value": "78 bpm",
+        "effective": "2026-01-24T07:00:00-06:00"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 130,
+        "diastolic": 78,
+        "unit": "mmHg",
+        "effective": "2026-01-24T07:00:00-06:00"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.4 °F (36.9 °C)",
+        "effective": "2026-01-26T08:00:00-06:00"
+      },
+      {
+        "name": "heart rate",
+        "value": "74 bpm",
+        "effective": "2026-01-26T08:00:00-06:00"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 128,
+        "diastolic": 78,
+        "unit": "mmHg",
+        "effective": "2026-01-26T08:00:00-06:00"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14 breaths/min",
+        "effective": "2026-01-26T08:00:00-06:00"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": "99 %",
+        "effective": "2026-01-26T08:00:00-06:00"
+      },
+      {
+        "name": "body weight",
+        "value": "204 lbs (92.5 kg)",
+        "effective": "2026-01-26T08:00:00-06:00"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "12,800 /μL",
+        "reference_range": "4,500–11,000 /μL",
+        "flag": "high",
+        "specimen": "venous blood",
+        "effective": "2026-01-23T06:00:00-06:00"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": "8.4 mg/dL",
+        "reference_range": "0.0–0.5 mg/dL",
+        "flag": "high",
+        "specimen": "venous blood",
+        "effective": "2026-01-23T06:00:00-06:00"
+      },
+      {
+        "name": "white blood cell count",
+        "value": "9,800 /μL",
+        "reference_range": "4,500–11,000 /μL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "effective": "2026-01-24T06:00:00-06:00"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": "4.1 mg/dL",
+        "reference_range": "0.0–0.5 mg/dL",
+        "flag": "high",
+        "specimen": "venous blood",
+        "effective": "2026-01-24T06:00:00-06:00"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "surgical site infection, right lower quadrant port site, post laparoscopic appendectomy",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "update-existing"
+    },
+    {
+      "name": "Escherichia coli wound infection with mixed anaerobes",
+      "clinical_status": "active",
+      "onset_date": "2026-01-24",
+      "action": "create"
+    },
+    {
+      "name": "perforated appendicitis, status post laparoscopic appendectomy",
+      "clinical_status": "resolved",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "piperacillin-tazobactam 4.5 g intravenous",
+      "sig": "4.5 g IV every 8 hours",
+      "status": "completed",
+      "reason": "surgical site infection, broad-spectrum empiric coverage",
+      "action": "create"
+    },
+    {
+      "name": "acetaminophen 1000 mg intravenous",
+      "sig": "1000 mg IV every 6 hours",
+      "status": "completed",
+      "reason": "pain and fever management",
+      "action": "create"
+    },
+    {
+      "name": "ciprofloxacin 500 mg oral tablet",
+      "sig": "500 mg by mouth twice daily for 10 days (through February 5, 2026)",
+      "status": "active",
+      "reason": "surgical site infection — step-down from IV piperacillin-tazobactam, selected based on E. coli culture sensitivities",
+      "action": "create"
+    },
+    {
+      "name": "metronidazole 500 mg oral tablet",
+      "sig": "500 mg by mouth three times daily for 10 days (through February 5, 2026)",
+      "status": "active",
+      "reason": "surgical site infection — anaerobic coverage",
+      "action": "create"
+    },
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "500 mg by mouth every 6 hours as needed for pain",
+      "status": "active",
+      "reason": "post-operative pain management",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "discharge summary",
+      "description": "Comprehensive discharge summary authored by Dr. Priya Nair documenting the 4-day inpatient readmission for surgical site infection management following laparoscopic appendectomy. Covers hospital course including IV antibiotic therapy, wound management with bedside opening/irrigation/packing, trending labs and vitals showing clinical improvement, CT imaging ruling out drainable abscess, culture results guiding antibiotic step-down, and discharge plan with oral antibiotics and wound care instructions."
+    },
+    {
+      "type": "medication reconciliation document",
+      "description": "Reconciliation of inpatient medications to discharge prescriptions. Documents transition from IV piperacillin-tazobactam to oral ciprofloxacin plus metronidazole based on culture sensitivities, and transition from IV to oral acetaminophen for PRN pain."
+    },
+    {
+      "type": "patient instructions",
+      "description": "Written wound care instructions for patient and his wife covering daily wound packing changes with saline-moistened gauze, wound hygiene, return-to-ED precautions (fever >101°F, worsening redness/drainage, increasing pain, systemic illness), activity restrictions (no heavy lifting, light duty permitted), and follow-up with Dr. Okonkwo on February 5, 2026."
+    },
+    {
+      "type": "radiology report",
+      "description": "CT abdomen/pelvis with IV contrast performed hospital day 2 to evaluate for intra-abdominal abscess. Findings: small 1.8 cm residual fluid collection in the right lower quadrant near prior appendiceal bed (decreased from initial 2.3 cm), no new or drainable abscess, no free fluid, post-surgical changes only. Interventional radiology not indicated."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "CT abdomen and pelvis with intravenous contrast",
+      "report_state": "summary-only",
+      "description": "Imaging performed to evaluate for intra-abdominal abscess in context of SSI. Demonstrated a small 1.8 cm residual fluid collection in the right lower quadrant near the prior appendiceal bed, decreased from initial 2.3 cm. No new or drainable abscess identified. No free fluid. Post-surgical changes only. Interventional radiology not consulted."
+    },
+    {
+      "type": "wound culture",
+      "report_state": "summary-only",
+      "description": "Culture from purulent drainage at right lower quadrant port site. Grew Escherichia coli (pan-sensitive) and mixed anaerobes. Sensitivities guided step-down from IV piperacillin-tazobactam to oral ciprofloxacin plus metronidazole. Specimen obtained at ED/admission encounter; resulted during this inpatient stay."
+    },
+    {
+      "type": "blood culture",
+      "report_state": "summary-only",
+      "description": "Blood cultures drawn at admission. Negative at 48 hours. Final no-growth report issued January 27, 2026. No bacteremia identified."
+    }
+  ],
+  "allergies": []
+}

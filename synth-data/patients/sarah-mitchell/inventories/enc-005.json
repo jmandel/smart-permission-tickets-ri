@@ -1,0 +1,213 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "hawthorne-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness examination, cervical cancer screening, COVID-19 vaccination",
+    "period_start": "2021-03-10",
+    "period_end": "2021-03-10",
+    "participants": [
+      {
+        "name": "Dr. Emily Nakamura",
+        "role": "primary care physician"
+      }
+    ],
+    "service_provider": "Hawthorne Health Center",
+    "location": "Hawthorne Health Center, 3847 SE Hawthorne Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 118,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 72,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "118/72",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 118,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 72,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 140,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 66,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 22.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "total cholesterol",
+        "value": 188,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 106,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 55,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 135,
+        "unit": "mg/dL",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 1,
+        "interpretation": "negative screen (below threshold)"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing",
+      "note": "Stable on current regimen of lamotrigine 200 mg daily and quetiapine 50 mg nightly, managed by psychiatry (Dr. Okafor). PHQ-2 negative. No changes from PCP perspective."
+    },
+    {
+      "name": "major depressive disorder",
+      "clinical_status": "resolved",
+      "onset_date": "2019",
+      "action": "reference-existing",
+      "note": "Historical, initially diagnosed 2019, subsequently reclassified under bipolar II diagnosis. Documented as resolved."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet, once daily",
+      "sig": "lamotrigine 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet, once daily at bedtime",
+      "sig": "quetiapine 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, 2020-2021 formulation",
+      "date": "2021-03-10",
+      "site": "left deltoid",
+      "route": "intramuscular"
+    },
+    {
+      "name": "COVID-19 vaccine, mRNA (Pfizer-BioNTech), dose 1",
+      "date": "2021-03-10",
+      "site": "right deltoid",
+      "route": "intramuscular",
+      "note": "lot number documented; second dose scheduled for April 2021"
+    },
+    {
+      "name": "Tdap (tetanus, diphtheria, and acellular pertussis) vaccine, booster",
+      "date": "2021-03-10",
+      "route": "intramuscular",
+      "note": "last dose in adolescence, overdue per adult schedule"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents the annual wellness visit for a 27-year-old female including review of systems, physical examination, vital signs, PHQ-2 depression screening (negative), cervical Pap smear collection, administration of influenza, COVID-19 dose 1, and Tdap immunizations, annual lab orders, medication reconciliation of psychiatric medications, allergy confirmation, and follow-up plan for one year."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "summary-only",
+      "description": "CBC ordered at annual wellness visit; results reviewed at a later date and reported as within normal limits. No individual component values provided."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP ordered at annual wellness visit; results reviewed at a later date and reported as within normal limits. No individual component values provided."
+    },
+    {
+      "type": "cervical cytology (Pap smear)",
+      "report_state": "summary-only",
+      "description": "Cervical Pap smear collected at visit for routine cervical cancer screening. Results returned approximately two weeks later as negative for intraepithelial lesion or malignancy (NILM)."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

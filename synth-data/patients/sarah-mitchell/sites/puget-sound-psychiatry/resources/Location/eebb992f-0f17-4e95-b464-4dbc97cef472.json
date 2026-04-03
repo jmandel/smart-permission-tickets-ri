@@ -1,0 +1,41 @@
+{
+  "resourceType": "Location",
+  "id": "eebb992f-0f17-4e95-b464-4dbc97cef472",
+  "status": "active",
+  "name": "Puget Sound Psychiatry",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "206-555-0200",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "1001 4th Ave",
+      "Suite 820"
+    ],
+    "city": "Seattle",
+    "state": "WA",
+    "postalCode": "98154",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+    "display": "Puget Sound Psychiatry"
+  }
+}

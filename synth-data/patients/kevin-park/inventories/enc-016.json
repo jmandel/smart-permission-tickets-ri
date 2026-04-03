@@ -1,0 +1,182 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "university-of-minnesota-cardiac-electrophysiology-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "diagnostic / ambulatory cardiac monitoring",
+    "reason": "48-hour Holter monitor study to assess atrial fibrillation burden, rate control adequacy, and ventricular ectopy",
+    "period_start": "2026-02-18",
+    "period_end": "2026-02-20",
+    "participants": [
+      {
+        "name": "Maria Torres, RN, CCRN",
+        "role": "device application and removal"
+      },
+      {
+        "name": "Dr. Sarah Okonkwo, MD",
+        "role": "preliminary interpretation"
+      },
+      {
+        "name": "Dr. James Lindgren, MD, FHRS",
+        "role": "ordering physician, final interpretation"
+      }
+    ],
+    "service_provider": "University of Minnesota Cardiac Electrophysiology Clinic",
+    "location": "University of Minnesota Cardiac Electrophysiology Clinic, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "average ventricular rate during Holter monitoring",
+        "value": 72,
+        "unit": "bpm",
+        "interpretation": "adequate rate control at rest",
+        "action": "create"
+      },
+      {
+        "name": "minimum ventricular rate during Holter monitoring",
+        "value": 52,
+        "unit": "bpm",
+        "context": "occurred during sleep at 03:14 on 2026-02-19",
+        "interpretation": "no clinically significant bradycardia",
+        "action": "create"
+      },
+      {
+        "name": "maximum ventricular rate during Holter monitoring",
+        "value": 118,
+        "unit": "bpm",
+        "context": "occurred during brisk walking at 10:42 on 2026-02-19",
+        "interpretation": "brisk exertional response but within acceptable limits",
+        "action": "create"
+      },
+      {
+        "name": "atrial fibrillation burden",
+        "value": 100,
+        "unit": "%",
+        "interpretation": "persistent atrial fibrillation confirmed; no periods of sinus rhythm identified",
+        "action": "create"
+      },
+      {
+        "name": "longest R-R interval (longest pause)",
+        "value": 1.8,
+        "unit": "seconds",
+        "context": "occurred during sleep",
+        "interpretation": "no pauses greater than 2.0 seconds; not clinically significant",
+        "action": "create"
+      },
+      {
+        "name": "premature ventricular complex (PVC) burden",
+        "value": 0.3,
+        "unit": "% of total beats",
+        "interpretation": "rare isolated PVCs, no couplets, no ventricular tachycardia runs; low arrhythmic risk",
+        "action": "create"
+      },
+      {
+        "name": "total Holter recording duration",
+        "value": "47 hours 42 minutes",
+        "unit": "hours and minutes",
+        "interpretation": "adequate recording duration, signal quality adequate throughout",
+        "action": "create"
+      },
+      {
+        "name": "predominant cardiac rhythm on Holter monitoring",
+        "value": "atrial fibrillation (continuous, no sinus rhythm identified)",
+        "interpretation": "persistent atrial fibrillation throughout entire recording",
+        "action": "create"
+      },
+      {
+        "name": "number of patient-reported cardiac events during Holter monitoring",
+        "value": 4,
+        "unit": "events",
+        "context": "all correlated with periods of higher ventricular rate (88-118 bpm) during atrial fibrillation; no associated bradycardia, pauses, or ventricular ectopy at event times",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "persistent atrial fibrillation",
+      "clinical_status": "active",
+      "onset_date": "2026-01",
+      "action": "update-existing",
+      "note": "Holter results confirm reclassification from atrial fibrillation to persistent atrial fibrillation based on 100% AF burden with no periods of sinus rhythm over 48 hours"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metoprolol succinate 50 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "atrial fibrillation rate control",
+      "action": "reference-existing"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "anticoagulation for atrial fibrillation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "diagnostic report document / Holter monitor interpretive report",
+      "format": "PDF",
+      "description": "Complete 48-hour Holter monitor study report including indication, device details, rhythm analysis, ventricular rate summary, pause analysis, ectopy analysis, patient-reported event correlation, ST-segment analysis, and final impression by Dr. James Lindgren confirming persistent atrial fibrillation with adequate rate control",
+      "action": "create"
+    },
+    {
+      "type": "clinical encounter note",
+      "date": "2026-02-18",
+      "description": "Brief note documenting Holter monitor application by Maria Torres, RN. Includes device configuration (3-channel, 7-lead), electrode placement verification, patient education on symptom diary use, event marker button instructions, and activity guidance.",
+      "action": "create"
+    },
+    {
+      "type": "clinical encounter note",
+      "date": "2026-02-20",
+      "description": "Brief note documenting Holter monitor removal. Patient reported 4 event marker activations during the monitoring period (twice during walks, twice during household activities). No device malfunction or skin irritation noted.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "48-hour Holter monitor study (ambulatory electrocardiographic monitoring)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "average ventricular rate during Holter monitoring",
+        "minimum ventricular rate during Holter monitoring",
+        "maximum ventricular rate during Holter monitoring",
+        "atrial fibrillation burden",
+        "longest R-R interval (longest pause)",
+        "premature ventricular complex (PVC) burden",
+        "total Holter recording duration",
+        "predominant cardiac rhythm on Holter monitoring",
+        "number of patient-reported cardiac events during Holter monitoring"
+      ]
+    }
+  ],
+  "allergies": []
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-017-fev1-pre",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "exam",
+          "display": "Exam"
+        }
+      ],
+      "text": "Exam"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "20150-9",
+        "display": "FEV1"
+      }
+    ],
+    "text": "FEV1 (pre-bronchodilator)"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2026-02-09T09:40:00-05:00",
+  "performer": [
+    {
+      "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+      "display": "Dr. Sunita Krishnamurthy"
+    }
+  ],
+  "valueQuantity": {
+    "value": 1.02,
+    "unit": "L",
+    "system": "http://unitsofmeasure.org",
+    "code": "L"
+  },
+  "note": [
+    {
+      "text": "92% predicted"
+    }
+  ]
+}

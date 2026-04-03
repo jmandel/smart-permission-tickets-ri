@@ -1,0 +1,79 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-005-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Office Visit Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2023-03-17T10:00:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "type": "Practitioner",
+      "display": "Dr. Anita Okonkwo"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+    "type": "Practitioner",
+    "display": "Dr. Anita Okonkwo"
+  },
+  "custodian": {
+    "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+    "display": "Eastbay Primary Care Associates"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKQ2hpZWYgY29tcGxhaW50OiBCaWxhdGVyYWwgaGFuZCBzdGlmZm5lc3MsIHN3ZWxsaW5nLCBhbmQgd3Jpc3QgcGFpbi4KCkVsZW5hIFJleWVzIGlzIGEgMzMteWVhci1vbGQgd29tYW4gcHJlc2VudGluZyB3aXRoIDItMyBtb250aHMgb2YgcHJvZ3Jlc3NpdmUgYmlsYXRlcmFsIGhhbmQgYW5kIHdyaXN0IHBhaW4gYW5kIHN0aWZmbmVzcy4gU2hlIHJlcG9ydHMgbW9ybmluZyBzdGlmZm5lc3MgbGFzdGluZyBhcHByb3hpbWF0ZWx5IDkwIG1pbnV0ZXMgYW5kIGluY3JlYXNpbmcgZGlmZmljdWx0eSB3aXRoIGdyaXAtZGVwZW5kZW50IHRhc2tzIHN1Y2ggYXMgb3BlbmluZyBqYXJzLiBTeW1wdG9tcyBhcmUgcHJlc2VudCBpbiBib3RoIGhhbmRzLCB3aXRoIHRoZSByaWdodCBzZWVtaW5nIHdvcnNlLiBTaGUgaGFzIG5vdGljZWQgc3dlbGxpbmcgYXJvdW5kIHRoZSBrbnVja2xlcywgZXNwZWNpYWxseSBpbiB0aGUgbW9ybmluZ3MuIE5vIHByZWNlZGluZyBpbmp1cnkuIE5vIGFzc29jaWF0ZWQgcmFzaCwgbmFpbCBjaGFuZ2VzLCBvciBvdGhlciBza2luIGZpbmRpbmdzIHJlcG9ydGVkLiBNb29kIHNjcmVlbiBuZWdhdGl2ZTsgUEhRLTIgc2NvcmUgMC4KClJlbGV2YW50IGhpc3RvcnkgaW5jbHVkZXMgc2Vhc29uYWwgYWxsZXJnaWMgcmhpbml0aXMgYW5kIHByaW9yIGdlc3RhdGlvbmFsIGRpYWJldGVzLCBkaWV0LWNvbnRyb2xsZWQsIHdpdGggcG9zdHBhcnR1bSBnbHVjb3NlIG5vcm1hbGl6YXRpb24uIFNoZSBlc3RhYmxpc2hlZCBjYXJlIGFmdGVyIG1vdmluZyBmcm9tIFRleGFzIGluIGxhdGUgMjAyMi4gTm8gY2hyb25pYyBkYWlseSBtZWRpY2F0aW9ucyBub3RlZCBmb3IgdGhpcyBpc3N1ZS4gU2hlIGhhcyBiZWVuIHVzaW5nIG92ZXItdGhlLWNvdW50ZXIgYW5hbGdlc2ljcyBpbnRlcm1pdHRlbnRseS4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMTgvNzggbW1IZywgSFIgNzYgYnBtLCBUZW1wIDk4LjQgRiwgUlIgMTQsIFNwTzIgOTglLCBXdCAxNDkgbGIsIEJNSSAyNC44CkdlbmVyYWw6IEFsZXJ0LCB3ZWxsIGFwcGVhcmluZywgaW4gbm8gYWN1dGUgZGlzdHJlc3MuCk1TSzogVGVuZGVybmVzcyBhbmQgbWlsZCBzb2Z0LXRpc3N1ZSBzd2VsbGluZyBvZiBiaWxhdGVyYWwgTUNQIGFuZCBQSVAgam9pbnRzLCB3b3JzZSBvbiB0aGUgcmlnaHQuIFJlZHVjZWQgZ3JpcCBzdHJlbmd0aCBiaWxhdGVyYWxseS4gV3Jpc3QgcGFpbiByZXBvcnRlZCB3aXRoIGhhbmQgdXNlLgpTa2luOiBObyByYXNoLiBObyBuYWlsIGNoYW5nZXMuClBzeWNoOiBOb3JtYWwgYWZmZWN0LgpQSFEtMjogMAoKTGFiczoKUmhldW1hdG9pZCBmYWN0b3IgODQgSVUvbUwKQW50aS1DQ1AgYW50aWJvZHkgMTEyIHVuaXRzCkVTUiA1MiBtbS9ocgpDUlAgMTggbWcvTApBTkEgbmVnYXRpdmUKQ0JDIHVucmVtYXJrYWJsZQpDTVAgdW5yZW1hcmthYmxlCgpBU1NFU1NNRU5UOgoxLiBJbmZsYW1tYXRvcnkgcG9seWFydGhyaXRpcywgaGlnaGx5IGNvbmNlcm5pbmcgZm9yIHNlcm9wb3NpdGl2ZSByaGV1bWF0b2lkIGFydGhyaXRpcy4gQ2xpbmljYWwgcHJlc2VudGF0aW9uIGlzIG5vdGFibGUgZm9yIHN5bW1ldHJpYyBzbWFsbC1qb2ludCBwYWluIGFuZCBzd2VsbGluZyBpbnZvbHZpbmcgTUNQL1BJUCBqb2ludHMsIHByb2xvbmdlZCBtb3JuaW5nIHN0aWZmbmVzcywgcmVkdWNlZCBncmlwIHN0cmVuZ3RoLCBhbmQgZWxldmF0ZWQgaW5mbGFtbWF0b3J5IG1hcmtlcnMuIFBvc2l0aXZlIFJGIGFuZCBzdHJvbmdseSBwb3NpdGl2ZSBhbnRpLUNDUCBmdXJ0aGVyIHN1cHBvcnQgbGlrZWx5IGVhcmx5IHNlcm9wb3NpdGl2ZSBSQS4KMi4gQmlsYXRlcmFsIGhhbmQgYW5kIHdyaXN0IHBhaW4vc3RpZmZuZXNzIHNlY29uZGFyeSB0byBpbmZsYW1tYXRvcnkgYXJ0aHJpdGlzLgozLiBIaXN0b3J5IG9mIGdlc3RhdGlvbmFsIGRpYWJldGVzLCByZXNvbHZlZCBwb3N0cGFydHVtLgoKUExBTjoKMS4gRXhwZWRpdGVkIHJlZmVycmFsIHBsYWNlZCB0byBCYXkgQXJlYSBSaGV1bWF0b2xvZ3kgQXNzb2NpYXRlcyBmb3IgZnVydGhlciBldmFsdWF0aW9uIGFuZCBpbml0aWF0aW9uIG9mIGRpc2Vhc2UtbW9kaWZ5aW5nIHRoZXJhcHkgZ2l2ZW4gY29uY2VybiBmb3IgZWFybHkgc2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzIGFuZCByaXNrIG9mIHByb2dyZXNzaXZlIGpvaW50IGRhbWFnZSBpZiB1bnRyZWF0ZWQuCjIuIFJldmlld2VkIGxhYiByZXN1bHRzIHdpdGggcGF0aWVudCwgaW5jbHVkaW5nIHBvc2l0aXZlIFJGIDg0IElVL21MLCBhbnRpLUNDUCAxMTIgdW5pdHMsIEVTUiA1MiBtbS9ociwgQ1JQIDE4IG1nL0wsIGFuZCBuZWdhdGl2ZSBBTkEuCjMuIFJlY29tbWVuZCBhY2V0YW1pbm9waGVuIGFzIG5lZWRlZCBmb3IgcGFpbi4KNC4gQWR2aXNlZCBtaW5pbWl6aW5nIGhpZ2gtZG9zZSBOU0FJRCB1c2UgdW50aWwgc3BlY2lhbGlzdCByZXZpZXcuCjUuIERvY3VtZW50ZWQgcmVmZXJyYWwgbGV0dGVyIGFuZCB0b2RheSdzIGpvaW50IGV4YW0gZmluZGluZ3MsIHNlcm9sb2dpYyByZXN1bHRzLCBhbmQgcmF0aW9uYWxlIGZvciB1cmdlbnQgcmhldW1hdG9sb2d5IGV2YWx1YXRpb24uCjYuIFJldHVybiBwcmVjYXV0aW9ucyByZXZpZXdlZCBmb3Igd29yc2VuaW5nIHBhaW4vc3dlbGxpbmcsIG5ldyBzeXN0ZW1pYyBzeW1wdG9tcywgb3IgZnVuY3Rpb25hbCBkZWNsaW5lLgo3LiBGb2xsb3cgdXAgd2l0aCBQQ1AgYWZ0ZXIgcmhldW1hdG9sb2d5IGNvbnN1bHRhdGlvbiBhcyBuZWVkZWQu",
+        "title": "Office Visit Progress Note - 2023-03-17"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-005"
+      }
+    ],
+    "period": {
+      "start": "2023-03-17T09:00:00-07:00",
+      "end": "2023-03-17T10:00:00-07:00"
+    }
+  }
+}

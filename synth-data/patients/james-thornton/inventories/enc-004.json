@@ -1,0 +1,248 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "nebraska-medicine",
+  "encounter": {
+    "class": "emergency",
+    "type": "Emergency department visit",
+    "reason": "Readmission for post-operative surgical site infection at laparoscopic appendectomy port site",
+    "period_start": "2026-01-22T18:15:00-06:00",
+    "period_end": "2026-01-22T21:14:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Samuel Kerr, DO",
+        "role": "Emergency Medicine Attending"
+      }
+    ],
+    "service_provider": "Nebraska Medicine",
+    "location": "Nebraska Medicine Emergency Department"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": "101.4 °F (38.6 °C)",
+        "method": "oral",
+        "effective": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "heart rate",
+        "value": "98 /min",
+        "effective": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": "140 mmHg",
+        "diastolic": "86 mmHg",
+        "effective": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "16 /min",
+        "effective": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "98 %",
+        "supplemental_oxygen": "none (room air)",
+        "effective": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "pain severity",
+        "value": "5/10",
+        "location": "right lower quadrant wound site",
+        "effective": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "body weight",
+        "value": "206 lb (93.4 kg)",
+        "effective": "2026-01-22T18:15:00-06:00"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "14,600 /μL",
+        "flag": "high",
+        "reference_range": "4,500–11,000 /μL"
+      },
+      {
+        "name": "neutrophils, percentage",
+        "value": "78 %",
+        "flag": "high"
+      },
+      {
+        "name": "band neutrophils, percentage",
+        "value": "8 %",
+        "flag": "high"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "13.6 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": "262,000 /μL",
+        "flag": "normal"
+      },
+      {
+        "name": "sodium, serum",
+        "value": "140 mEq/L",
+        "flag": "normal",
+        "reference_range": "136–145 mEq/L"
+      },
+      {
+        "name": "potassium, serum",
+        "value": "3.9 mEq/L",
+        "flag": "normal",
+        "reference_range": "3.5–5.1 mEq/L"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": "1.0 mg/dL",
+        "flag": "normal",
+        "reference_range": "0.7–1.3 mg/dL"
+      },
+      {
+        "name": "glucose, serum",
+        "value": "108 mg/dL",
+        "flag": "normal",
+        "reference_range": "70–100 mg/dL"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": "11.2 mg/dL",
+        "flag": "high",
+        "reference_range": "0.0–0.5 mg/dL"
+      },
+      {
+        "name": "lactate",
+        "value": "1.2 mmol/L",
+        "flag": "normal",
+        "reference_range": "0.5–2.0 mmol/L"
+      },
+      {
+        "name": "procalcitonin",
+        "value": "0.8 ng/mL",
+        "flag": "high",
+        "reference_range": "<0.05 ng/mL"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "post-operative surgical site infection, laparoscopic appendectomy port site",
+      "clinical_status": "active",
+      "onset_date": "2026-01-19",
+      "category": "encounter-diagnosis",
+      "body_site": "right lower quadrant, 12 mm port incision site",
+      "action": "create"
+    },
+    {
+      "name": "perforated gangrenous appendicitis, status post laparoscopic appendectomy",
+      "clinical_status": "resolved",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "piperacillin-tazobactam 4.5 g intravenous injection",
+      "sig": "4.5 g IV, single dose administered in ED at 19:30; continued per admission orders every 8 hours",
+      "status": "active",
+      "reason": "post-operative surgical site infection",
+      "action": "create"
+    },
+    {
+      "name": "acetaminophen 1000 mg intravenous injection",
+      "sig": "1000 mg IV, single dose for fever",
+      "status": "completed",
+      "reason": "fever",
+      "action": "create"
+    },
+    {
+      "name": "normal saline 1000 mL intravenous infusion",
+      "sig": "1000 mL IV bolus",
+      "status": "completed",
+      "reason": "volume resuscitation in setting of fever",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Emergency department note",
+      "author": "Dr. Samuel Kerr, DO",
+      "date": "2026-01-22",
+      "description": "Comprehensive ED note documenting evaluation and management of a 47-year-old male presenting with post-operative surgical site infection 10 days after laparoscopic appendectomy for perforated appendicitis. Includes HPI, triage vitals with fever and tachycardia, physical exam with purulent port site drainage, lab results showing leukocytosis with left shift and elevated CRP, medical decision-making regarding empiric IV antibiotics, and disposition to inpatient admission."
+    },
+    {
+      "type": "Nursing assessment note",
+      "author": "ED triage nurse",
+      "date": "2026-01-22",
+      "description": "Initial nursing triage assessment documenting chief complaint of surgical site infection on referral from surgeon's office, triage vitals, pain assessment, allergy verification (NKDA), and acuity assignment."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "neutrophils, percentage",
+        "band neutrophils, percentage",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "basic metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sodium, serum",
+        "potassium, serum",
+        "creatinine, serum",
+        "glucose, serum"
+      ]
+    },
+    {
+      "type": "C-reactive protein",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein"
+      ]
+    },
+    {
+      "type": "blood culture",
+      "report_state": "ordered-not-resulted",
+      "description": "Two sets of blood cultures (aerobic and anaerobic bottles) drawn in the ED. Results pending at time of ED encounter."
+    },
+    {
+      "type": "wound culture, surgical site",
+      "report_state": "ordered-not-resulted",
+      "description": "Purulent drainage swab collected from RLQ port site incision. Results pending at time of ED encounter."
+    },
+    {
+      "type": "lactate, serum",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lactate"
+      ]
+    },
+    {
+      "type": "procalcitonin",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "procalcitonin"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergies (NKDA)",
+      "action": "reference-existing"
+    }
+  ]
+}

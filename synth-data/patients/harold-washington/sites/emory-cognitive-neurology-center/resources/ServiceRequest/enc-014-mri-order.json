@@ -1,0 +1,39 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-014-mri-order",
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "816077007",
+        "display": "Magnetic resonance imaging of brain (procedure)"
+      }
+    ],
+    "text": "Repeat brain MRI for comparison to 2022 baseline imaging"
+  },
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "authoredOn": "2025-01-22",
+  "requester": {
+    "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+    "display": "Dr. Lisa Nakamura"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-alzheimers",
+      "display": "Alzheimer's disease, moderate stage"
+    }
+  ],
+  "note": [
+    {
+      "text": "To be obtained prior to next follow-up visit in 3 months for comparison to 2022 imaging to assess interval change."
+    }
+  ]
+}

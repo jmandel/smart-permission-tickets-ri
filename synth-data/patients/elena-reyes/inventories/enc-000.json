@@ -1,0 +1,188 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "central-austin-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Annual wellness and preventive care",
+    "period_start": "2021-10-12",
+    "participants": [],
+    "service_provider": "Central Austin Family Medicine",
+    "location": "Central Austin Family Medicine, Austin, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "Blood Pressure",
+        "value": "112/72",
+        "unit": "mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "Heart Rate",
+        "value": "68",
+        "unit": "bpm",
+        "flag": "normal"
+      },
+      {
+        "name": "Body Temperature",
+        "value": "98.2",
+        "unit": "°F",
+        "flag": "normal"
+      },
+      {
+        "name": "Respiratory Rate",
+        "value": "14",
+        "unit": "breaths/min",
+        "flag": "normal"
+      },
+      {
+        "name": "Oxygen Saturation",
+        "value": "99",
+        "unit": "%",
+        "flag": "normal",
+        "note": "On room air"
+      },
+      {
+        "name": "Body Weight",
+        "value": "146",
+        "unit": "lb",
+        "flag": "normal"
+      },
+      {
+        "name": "Height",
+        "value": "65",
+        "unit": "in",
+        "flag": "normal"
+      },
+      {
+        "name": "Body Mass Index",
+        "value": "24.3",
+        "unit": "kg/m²",
+        "reference_range": "18.5–24.9",
+        "flag": "normal"
+      }
+    ],
+    "labs": [
+      {
+        "name": "Thyroid Stimulating Hormone",
+        "value": "1.78",
+        "unit": "uIU/mL",
+        "reference_range": "0.4–4.0",
+        "flag": "normal"
+      },
+      {
+        "name": "Fasting Glucose",
+        "value": "86",
+        "unit": "mg/dL",
+        "reference_range": "70–100",
+        "flag": "normal"
+      },
+      {
+        "name": "Total Cholesterol",
+        "value": "172",
+        "unit": "mg/dL",
+        "reference_range": "<200",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL Cholesterol",
+        "value": "96",
+        "unit": "mg/dL",
+        "reference_range": "<100",
+        "flag": "normal"
+      },
+      {
+        "name": "HDL Cholesterol",
+        "value": "58",
+        "unit": "mg/dL",
+        "reference_range": ">50",
+        "flag": "normal"
+      },
+      {
+        "name": "Triglycerides",
+        "value": "88",
+        "unit": "mg/dL",
+        "reference_range": "<150",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 Depression Screening",
+        "value": "0",
+        "interpretation": "Negative for depression",
+        "flag": "normal"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Seasonal Allergic Rhinitis",
+      "clinical_status": "stable",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Loratadine 10 mg oral tablet",
+      "sig": "as needed for seasonal allergies",
+      "status": "active",
+      "reason": "Seasonal allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "Prenatal Vitamin",
+      "sig": "daily",
+      "status": "active",
+      "reason": "Pregnancy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "Influenza vaccine, inactivated",
+      "date": "2021-10-12",
+      "route": "Intramuscular"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "document_title": "Office Visit Progress Note",
+      "encounter_date": "2021-10-12",
+      "created_by": "Dr. Patricia Nguyen"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Complete Blood Count",
+      "report_state": "summary-only",
+      "description": "CBC ordered as part of preventive screening; reported as 'within normal limits' without specific component values provided in the narrative"
+    },
+    {
+      "type": "Comprehensive Metabolic Panel",
+      "report_state": "summary-only",
+      "description": "CMP ordered as part of preventive screening; reported as 'within normal limits' without specific component values provided in the narrative"
+    },
+    {
+      "type": "Lipid Panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Total Cholesterol",
+        "LDL Cholesterol",
+        "HDL Cholesterol",
+        "Triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Amoxicillin",
+      "reaction": "Rash (hives)",
+      "action": "reference-existing"
+    }
+  ]
+}

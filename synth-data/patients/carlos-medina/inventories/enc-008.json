@@ -1,0 +1,255 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "follow-up office visit, rheumatology",
+    "reason": "3-month methotrexate follow-up for rheumatoid arthritis, disease activity reassessment",
+    "period_start": "2021-06-14T09:00:00-05:00",
+    "period_end": "2021-06-14T09:45:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Alejandro Fuentes",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 128,
+        "value_diastolic": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 196,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.1,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6,
+        "unit": "x10^3/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.7,
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 245,
+        "unit": "x10^3/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": 95,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 26,
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 24,
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": 4,
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "erythrocyte sedimentation rate",
+        "value": 32,
+        "unit": "mm/hr",
+        "flag": "high"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": 1.8,
+        "unit": "mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "DAS28-CRP score",
+        "value": 4.2,
+        "interpretation": "moderate disease activity"
+      },
+      {
+        "name": "health assessment questionnaire disability index (HAQ-DI)",
+        "value": 1,
+        "interpretation": "moderate functional impairment"
+      },
+      {
+        "name": "patient global assessment of disease activity",
+        "value": 48,
+        "unit": "/100"
+      },
+      {
+        "name": "physician global assessment of disease activity",
+        "value": 44,
+        "unit": "/100"
+      },
+      {
+        "name": "28-joint tender joint count",
+        "value": 8,
+        "description": "bilateral 2nd and 3rd MCPs, bilateral wrists, bilateral 2nd PIPs"
+      },
+      {
+        "name": "28-joint swollen joint count",
+        "value": 5,
+        "description": "bilateral 2nd MCPs, bilateral wrists, right 2nd PIP"
+      },
+      {
+        "name": "grip strength, right hand",
+        "value": 30,
+        "unit": "kg"
+      },
+      {
+        "name": "grip strength, left hand",
+        "value": 26,
+        "unit": "kg"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2020",
+      "action": "update-existing",
+      "update_note": "disease activity documented as partial response to methotrexate — DAS28-CRP improved from 5.1 to 4.2 but remains in moderate disease activity range; residual active synovitis in MCPs and wrists; inflammatory markers trending down; functional status modestly improved; dose escalation planned"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 20 mg oral tablet",
+      "sig": "Take 20 mg by mouth once weekly",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "update-existing",
+      "change_note": "dose increased from 15 mg to 20 mg weekly due to persistent moderate disease activity (DAS28-CRP 4.2, not at target)"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "Take 1 mg by mouth once daily",
+      "status": "active",
+      "reason": "methotrexate folate supplementation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "Take 500 mg by mouth twice daily",
+      "status": "active",
+      "reason": "symptomatic relief for rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "Take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "seasonal allergies",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Follow-up rheumatology office visit note documenting 3-month methotrexate efficacy assessment, with comprehensive disease activity scoring (DAS28-CRP 4.2, HAQ-DI 1.0), joint examination findings showing residual synovitis, lab monitoring results (normal CBC, CMP, LFTs; improving ESR and CRP), assessment of partial treatment response, and plan for methotrexate dose escalation from 15 mg to 20 mg weekly."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "albumin"
+      ]
+    },
+    {
+      "type": "erythrocyte sedimentation rate",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate"
+      ]
+    },
+    {
+      "type": "C-reactive protein",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "maculopapular rash",
+      "action": "reference-existing"
+    }
+  ]
+}

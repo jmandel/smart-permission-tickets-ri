@@ -1,0 +1,351 @@
+{
+  "encounter_id": "enc-018",
+  "encounter_index": 18,
+  "site_slug": "dekalb-primary-care",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "laboratory encounter",
+    "reason": "fasting laboratory studies for chronic disease monitoring and vitamin D assessment",
+    "period_start": "2025-03-13",
+    "period_end": "2025-03-13",
+    "participants": [],
+    "service_provider": "DeKalb Primary Care",
+    "location": "DeKalb Primary Care, 2701 North Decatur Road, Suite 300, Decatur, GA 30033"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6.9,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 116,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "sodium, serum",
+        "value": 140,
+        "unit": "mEq/L",
+        "reference_range": "136–145 mEq/L",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "potassium, serum",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "reference_range": "3.5–5.0 mEq/L",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "chloride, serum",
+        "value": 101,
+        "unit": "mEq/L",
+        "reference_range": "98–106 mEq/L",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "carbon dioxide, total, serum",
+        "value": 26,
+        "unit": "mEq/L",
+        "reference_range": "23–29 mEq/L",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "blood urea nitrogen",
+        "value": 24,
+        "unit": "mg/dL",
+        "reference_range": "7–20 mg/dL",
+        "flag": "high",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 1.2,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": 71,
+        "unit": "mL/min/1.73m2",
+        "reference_range": "≥60 mL/min/1.73m2",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "calcium, serum",
+        "value": 9.2,
+        "unit": "mg/dL",
+        "reference_range": "8.5–10.5 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "total protein, serum",
+        "value": 6.8,
+        "unit": "g/dL",
+        "reference_range": "6.0–8.3 g/dL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "albumin, serum",
+        "value": 3.8,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5 g/dL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": 20,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": 22,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 6,
+        "unit": "x10^3/uL",
+        "reference_range": "4.5–11.0 x10^3/uL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "hemoglobin, blood",
+        "value": 13.4,
+        "unit": "g/dL",
+        "reference_range": "13.0–17.5 g/dL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "hematocrit",
+        "value": 40.2,
+        "unit": "%",
+        "reference_range": "38.3–48.6%",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "platelet count",
+        "value": 210,
+        "unit": "x10^3/uL",
+        "reference_range": "150–400 x10^3/uL",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "total cholesterol, fasting",
+        "value": 198,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL desirable",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "low-density lipoprotein cholesterol, fasting",
+        "value": 100,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL optimal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "high-density lipoprotein cholesterol",
+        "value": 43,
+        "unit": "mg/dL",
+        "reference_range": "≥40 mg/dL acceptable, ≥60 mg/dL optimal",
+        "flag": "low",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "triglycerides, fasting",
+        "value": 160,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL normal",
+        "flag": "high",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "25-hydroxyvitamin D, total",
+        "value": 18,
+        "unit": "ng/mL",
+        "reference_range": "30–100 ng/mL",
+        "flag": "low",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "protein, urine qualitative",
+        "value": "trace",
+        "unit": "qualitative",
+        "reference_range": "negative",
+        "flag": "abnormal",
+        "specimen": "urine"
+      },
+      {
+        "name": "microalbumin, urine qualitative",
+        "value": "negative",
+        "unit": "qualitative",
+        "reference_range": "negative",
+        "flag": "normal",
+        "specimen": "urine"
+      },
+      {
+        "name": "glucose, urine qualitative",
+        "value": "negative",
+        "unit": "qualitative",
+        "reference_range": "negative",
+        "flag": "normal",
+        "specimen": "urine"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chronic kidney disease, stage 2",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "vitamin D deficiency",
+      "clinical_status": "active",
+      "onset_date": "2025-03-13",
+      "action": "create"
+    },
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "laboratory results note",
+      "description": "Laboratory results note for fasting blood draw ordered at the March 6, 2025 follow-up visit. Includes interpretation of hemoglobin A1c (6.9%, improved), comprehensive metabolic panel (stable renal and hepatic function), CBC (within normal limits), fasting lipid panel (LDL at goal, HDL low, triglycerides mildly elevated), 25-hydroxyvitamin D (18 ng/mL, deficient — new diagnosis), and urinalysis (trace protein, no microalbumin). Vitamin D supplementation planned for next office visit. Results reviewed by Dr. Desai and daughter Margaret notified."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sodium, serum",
+        "potassium, serum",
+        "chloride, serum",
+        "carbon dioxide, total, serum",
+        "blood urea nitrogen",
+        "creatinine, serum",
+        "estimated glomerular filtration rate",
+        "calcium, serum",
+        "total protein, serum",
+        "albumin, serum",
+        "alanine aminotransferase",
+        "aspartate aminotransferase",
+        "fasting glucose"
+      ]
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin, blood",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "fasting lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol, fasting",
+        "low-density lipoprotein cholesterol, fasting",
+        "high-density lipoprotein cholesterol",
+        "triglycerides, fasting"
+      ]
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "25-hydroxyvitamin D level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "25-hydroxyvitamin D, total"
+      ]
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "protein, urine qualitative",
+        "microalbumin, urine qualitative",
+        "glucose, urine qualitative"
+      ]
+    }
+  ],
+  "allergies": []
+}

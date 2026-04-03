@@ -1,0 +1,64 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-007-cytogenetics-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE",
+          "display": "Genetics"
+        }
+      ],
+      "text": "Genetics"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "55228-1",
+        "display": "Cytogenetics study"
+      }
+    ],
+    "text": "Cytogenetic karyotype analysis of products of conception"
+  },
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2025-03-12",
+  "issued": "2025-04-01T12:00:00-06:00",
+  "performer": [
+    {
+      "reference": "Organization/04dc74ab-8c5a-470f-8a15-bc7cbba4408e",
+      "type": "Organization",
+      "display": "Rocky Mountain Women's Health"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-007-poc-karyotype",
+      "display": "Karyotype analysis of products of conception: 46,XX"
+    }
+  ],
+  "conclusion": "Normal female karyotype (46,XX). Pivotal finding eliminating embryonic aneuploidy as the cause of this loss, shifting clinical suspicion toward a maternal factor.",
+  "conclusionCode": [
+    {
+      "text": "Normal female karyotype (46,XX)"
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

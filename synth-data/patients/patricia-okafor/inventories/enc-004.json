@@ -1,0 +1,263 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness, routine chronic disease monitoring",
+    "period_start": "2024-03-12",
+    "period_end": "2024-03-12",
+    "participants": [
+      {
+        "name": "Dr. Adebayo Olatunde, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 128,
+        "value_diastolic": 78,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "body weight",
+        "value": 164,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.3,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.9,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high",
+        "specimen": "blood"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 104,
+        "unit": "mg/dL",
+        "reference_range": "70–99 mg/dL",
+        "flag": "high",
+        "specimen": "blood"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 6.2,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.1,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "platelet count",
+        "value": 228,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "creatinine (serum)",
+        "value": 0.84,
+        "unit": "mg/dL",
+        "reference_range": "0.6–1.2 mg/dL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "estimated glomerular filtration rate (eGFR)",
+        "value": ">60",
+        "unit": "mL/min/1.73m²",
+        "reference_range": "≥60 mL/min/1.73m²",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 210,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "borderline high",
+        "specimen": "blood"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 128,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL optimal, 100–129 near optimal",
+        "flag": "borderline high",
+        "specimen": "blood"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 56,
+        "unit": "mg/dL",
+        "reference_range": ">50 mg/dL for women",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "triglycerides",
+        "value": 130,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "normal",
+        "specimen": "blood"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "unit": "score",
+        "interpretation": "negative screen"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing",
+      "note": "well-controlled on current regimen, BP at goal 128/78 mmHg"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing",
+      "note": "HbA1c 5.9%, slight improvement from 6.0% in 2023, dietary modifications effective"
+    },
+    {
+      "name": "dyslipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "LDL improved from 138 to 128 mg/dL with dietary changes, continuing lifestyle management"
+    },
+    {
+      "name": "bilateral knee osteoarthritis",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "reference-existing",
+      "note": "intermittent symptoms managed with PRN naproxen, no functional limitation"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "Take 1 tablet by mouth as needed for knee pain",
+      "status": "active",
+      "reason": "bilateral knee osteoarthritis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated (seasonal)",
+      "date": "2023-10",
+      "note": "administered at pharmacy, documented from pharmacy record at this wellness visit"
+    },
+    {
+      "name": "COVID-19 vaccine, mRNA, bivalent (2023–2024 formulation), booster dose",
+      "date": "2023-11",
+      "note": "administered at pharmacy, documented from pharmacy record at this wellness visit"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Annual wellness visit note for a 60-year-old woman presenting for routine preventive care and chronic disease monitoring. Documents stable/well-controlled hypertension, improved prediabetes (HbA1c 5.9%), improved dyslipidemia (LDL 128, down from 138), and intermittent bilateral knee osteoarthritis. Includes complete vitals, fasting lab results, negative depression screening, immunization review, and plan for continued lifestyle management with 12-month follow-up."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP performed with results described as unremarkable. Only creatinine (0.84 mg/dL) and eGFR (>60) individually reported; remainder of panel noted as unremarkable without specific values."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-007-hypertriglyceridemia",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "302870006",
+        "display": "Hypertriglyceridemia (disorder)"
+      }
+    ],
+    "text": "Hypertriglyceridemia"
+  },
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "recordedDate": "2022-11-14",
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "Observation/enc-007-triglycerides",
+          "display": "Triglycerides 178 mg/dL"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Triglycerides elevated to 178 mg/dL, up from 148 mg/dL at prior check. Likely quetiapine-related metabolic effect, though increased alcohol intake could also be contributing. Will continue metabolic monitoring."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

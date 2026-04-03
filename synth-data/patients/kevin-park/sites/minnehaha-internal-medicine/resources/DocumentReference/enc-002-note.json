@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-002-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2019-04-15T09:45:00-05:00",
+  "author": [
+    {
+      "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+      "display": "Dr. Angela Whitfield, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "display": "Dr. Angela Whitfield, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TUlOTkVIQUhBIElOVEVSTkFMIE1FRElDSU5FCjM1MDEgRWFzdCBMYWtlIFN0cmVldCwgTWlubmVhcG9saXMsIE1OIDU1NDA2Ck5QSTogMTIzNDU2Nzg5MAoKQU5OVUFMIFdFTExORVNTIEVYQU0gLyBQUk9HUkVTUyBOT1RFCgpQYXRpZW50OiBLZXZpbiBKdW5naHdhbiBQYXJrCkRPQjogMDkvMTQvMTk2OCAgIEFnZTogNTAKRGF0ZSBvZiBTZXJ2aWNlOiAwNC8xNS8yMDE5ClByb3ZpZGVyOiBEci4gQW5nZWxhIFdoaXRmaWVsZCwgTUQgKE5QSTogMTUyODM3NDY1MCkKVmlzaXQgVHlwZTogQW5udWFsIFdlbGxuZXNzIEV4YW0gKFByZXZlbnRpdmUpCgpTVUJKRUNUSVZFOgpLZXZpbiBwcmVzZW50cyBmb3IgaGlzIGZpcnN0IGFubnVhbCB3ZWxsbmVzcyBleGFtIGF0IHRoaXMgcHJhY3RpY2UuIEhlIGVzdGFibGlzaGVkIGNhcmUgaW4gSnVuZSAyMDE4IGZvciBoeXBlcnRlbnNpb24sIHdoaWNoIHdhcyBpbml0aWFsbHkgbWFuYWdlZCB3aXRoIGxpZmVzdHlsZSBtb2RpZmljYXRpb24gYW5kIHN1YnNlcXVlbnRseSBzdGFydGVkIG9uIGxpc2lub3ByaWwgMTAgbWcgZGFpbHkgYWZ0ZXIgcGVyc2lzdGVudCBlbGV2YXRpb25zLiBIZSByZXBvcnRzIGZlZWxpbmcgd2VsbCB0b2RheS4gSGUgaGFzIGJlZW4gYWRoZXJlbnQgdG8gbGlzaW5vcHJpbCAxMCBtZyBkYWlseSB3aXRoIG5vIHNpZGUgZWZmZWN0cy4gSGUgYWxzbyB0YWtlcyBhbiBvdmVyLXRoZS1jb3VudGVyIGZpc2ggb2lsIDEwMDAgbWcgZGFpbHkgc3VwcGxlbWVudC4gSGUgZGVuaWVzIGNoZXN0IHBhaW4sIHBhbHBpdGF0aW9ucywgc2hvcnRuZXNzIG9mIGJyZWF0aCwgZHlzcG5lYSBvbiBleGVydGlvbiwgb3IgZXhlcmNpc2UgaW50b2xlcmFuY2UuIEhlIHJlbWFpbnMgcGh5c2ljYWxseSBhY3RpdmUg4oCUIGdvbGZpbmcgcmVndWxhcmx5IGluIHNlYXNvbiBhbmQgd2Fsa2luZyBkYWlseS4gRGlldCBpcyBnZW5lcmFsbHkgYmFsYW5jZWQ7IGhlIGNvbnN1bWVzIDItMyBnbGFzc2VzIG9mIHJlZCB3aW5lIHBlciB3ZWVrLiBOZXZlciBzbW9rZXIuIE5vIG5ldyBjb21wbGFpbnRzLgoKUk9TOiBDb25zdGl0dXRpb25hbCDigJQgbm8gZmV2ZXIsIGNoaWxscywgd2VpZ2h0IGNoYW5nZSwgb3IgZmF0aWd1ZS4gQ2FyZGlvdmFzY3VsYXIg4oCUIG5vIGNoZXN0IHBhaW4sIHBhbHBpdGF0aW9ucywgb3IgZWRlbWEuIFJlc3BpcmF0b3J5IOKAlCBubyBjb3VnaCwgd2hlZXppbmcsIG9yIFNPQi4gR0kg4oCUIG5vIG5hdXNlYSwgdm9taXRpbmcsIGFiZG9taW5hbCBwYWluLCBvciBjaGFuZ2UgaW4gYm93ZWwgaGFiaXRzLiBNU0sg4oCUIG5vIGpvaW50IHBhaW4uIE5ldXJvbG9naWMg4oCUIG5vIGhlYWRhY2hlcywgZGl6emluZXNzLCBvciBmb2NhbCBkZWZpY2l0cy4gUHN5Y2hpYXRyaWMg4oCUIGRlbmllcyBkZXByZXNzZWQgbW9vZCBvciBhbmhlZG9uaWEuIEFsbCBvdGhlciBzeXN0ZW1zIHJldmlld2VkIGFuZCBuZWdhdGl2ZS4KClBNSDogRXNzZW50aWFsIGh5cGVydGVuc2lvbiAoZHggMjAxOCksIG1hbmFnZWQgd2l0aCBsaXNpbm9wcmlsLgpTdXJnaWNhbCBIeDogTm9uZS4KRmFtaWx5IEh4OiBSZXZpZXdlZCwgbm8gc2lnbmlmaWNhbnQgdXBkYXRlcy4KU29jaWFsIEh4OiBNYXJyaWVkLCBvd25zIGRyeSBjbGVhbmluZyBidXNpbmVzcy4gQWN0aXZlIGxpZmVzdHlsZS4gTW9kZXJhdGUgYWxjb2hvbCB1c2UuIE5ldmVyIHNtb2tlci4KQWxsZXJnaWVzL0ludG9sZXJhbmNlczogSWJ1cHJvZmVuIOKAlCBHSSB1cHNldCAoaW50b2xlcmFuY2UpLgpNZWRpY2F0aW9uczogTGlzaW5vcHJpbCAxMCBtZyBkYWlseSwgZmlzaCBvaWwgMTAwMCBtZyBkYWlseSAoT1RDKS4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMzAvODIgbW1IZywgSFIgNzYgYnBtIChyZWd1bGFyKSwgV2VpZ2h0IDE3OC4wIGxicyAoODAuNyBrZyksIEhlaWdodCA2OS4wIGluICgxNzUuMyBjbSksIEJNSSAyNi4yLCBUZW1wIDk4LjQgRiAoMzYuOSBDKSwgUlIgMTYsIFNwTzIgOTglLgoKUEhRLTIgU2NyZWVuaW5nOiBTY29yZSAwLzYg4oCUIG5lZ2F0aXZlIGZvciBkZXByZXNzaXZlIHN5bXB0b21zLgoKUGh5c2ljYWwgRXhhbToKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcgbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KSEVFTlQ6IE5vcm1vY2VwaGFsaWMsIGF0cmF1bWF0aWMuIE9yb3BoYXJ5bnggY2xlYXIuCk5lY2s6IFN1cHBsZSwgbm8gdGh5cm9tZWdhbHkgb3IgbHltcGhhZGVub3BhdGh5LgpDYXJkaW92YXNjdWxhcjogUmVndWxhciByYXRlIGFuZCByaHl0aG0sIG5vIG11cm11cnMsIHJ1YnMsIG9yIGdhbGxvcHMuIE5vIHBlcmlwaGVyYWwgZWRlbWEuClJlc3BpcmF0b3J5OiBDbGVhciB0byBhdXNjdWx0YXRpb24gYmlsYXRlcmFsbHksIG5vIHdoZWV6ZXMgb3IgY3JhY2tsZXMuCkFiZG9tZW46IFNvZnQsIG5vbi10ZW5kZXIsIG5vbi1kaXN0ZW5kZWQsIG5vcm1vYWN0aXZlIGJvd2VsIHNvdW5kcy4KU2tpbjogTm8gc3VzcGljaW91cyBsZXNpb25zIG5vdGVkIG9uIHNjcmVlbmluZyBleGFtLgpFeHRyZW1pdGllczogTm8gY2x1YmJpbmcsIGN5YW5vc2lzLCBvciBlZGVtYS4KCkxhYnMgKGZhc3RpbmcsIGRyYXduIGF0IHZpc2l0KToKICBMaXBpZCBQYW5lbDoKICAgIFRvdGFsIGNob2xlc3Rlcm9sOiAyMTggbWcvZEwgKEgpCiAgICBMREwgY2hvbGVzdGVyb2w6IDEzOCBtZy9kTCAoSCkKICAgIEhETCBjaG9sZXN0ZXJvbDogNTIgbWcvZEwKICAgIFRyaWdseWNlcmlkZXM6IDE0MCBtZy9kTAogIEhlbW9nbG9iaW4gQTFjOiA1LjMlCiAgRmFzdGluZyBnbHVjb3NlOiA5MiBtZy9kTAogIENNUDogQ3JlYXRpbmluZSAwLjkwIG1nL2RMLCBQb3Rhc3NpdW0gNC4wIG1FcS9MLCBlR0ZSID45MCBtTC9taW4vMS43M20yLCBvdGhlcndpc2UgdW5yZW1hcmthYmxlLgoKQVNTRVNTTUVOVDoKMS4gRXNzZW50aWFsIGh5cGVydGVuc2lvbiAoSTEwKSDigJQgd2VsbCBjb250cm9sbGVkIG9uIGxpc2lub3ByaWwgMTAgbWcgZGFpbHkuIEJQIDEzMC84MiB0b2RheSwgYXQgZ29hbC4gTm8gZXZpZGVuY2Ugb2YgZW5kLW9yZ2FuIGRhbWFnZS4gUmVuYWwgZnVuY3Rpb24gbm9ybWFsIHdpdGggZUdGUiA+OTAuIENvbnRpbnVlIGN1cnJlbnQgcmVnaW1lbi4KCjIuIEh5cGVybGlwaWRlbWlhLCBuZXdseSBpZGVudGlmaWVkIChFNzguNSkg4oCUIEZhc3RpbmcgbGlwaWQgcGFuZWwgcmV2ZWFscyBMREwgMTM4IG1nL2RMLCBleGNlZWRpbmcgZGVzaXJhYmxlIHJhbmdlICg8MTMwIG1nL2RMKS4gVG90YWwgY2hvbGVzdGVyb2wgMjE4IG1nL2RMLiBIREwgNTIgbWcvZEwsIHRyaWdseWNlcmlkZXMgMTQwIG1nL2RMLiBDYWxjdWxhdGVkIDEwLXllYXIgQVNDVkQgcmlzayBhcHByb3hpbWF0ZWx5IDUuMiUsIHdoaWNoIGlzIGJvcmRlcmxpbmUuIERpc2N1c3NlZCBzdGF0aW4gdGhlcmFweSB3aXRoIHBhdGllbnQuIEtldmluIHVuZGVyc3RhbmRzIHRoZSByaXNrcyBhbmQgYmVuZWZpdHMgYnV0IHByZWZlcnMgYSB0cmlhbCBvZiBkaWV0YXJ5IG1hbmFnZW1lbnQgZmlyc3QuIEhlIGFncmVlcyB0byByZWR1Y2UgcmVkIG1lYXQgaW50YWtlLCBpbmNyZWFzZSBmaXNoIGNvbnN1bXB0aW9uLCBhbmQgbWFpbnRhaW4gZGFpbHkgMzAtbWludXRlIHdhbGtzLiBUaGlzIGlzIGEgcmVhc29uYWJsZSBhcHByb2FjaCBnaXZlbiBoaXMgYm9yZGVybGluZSByaXNrIHNjb3JlLiBXaWxsIHJlYXNzZXNzIGxpcGlkcyBhdCBuZXh0IGFubnVhbCBleGFtIHRvIGV2YWx1YXRlIHJlc3BvbnNlIHRvIGxpZmVzdHlsZSBtb2RpZmljYXRpb25zLgoKMy4gUHJldmVudGl2ZSBjYXJlIOKAlCBBZ2UtYXBwcm9wcmlhdGUgY2FuY2VyIHNjcmVlbmluZyByZXZpZXdlZC4gUGF0aWVudCBpcyB0dXJuaW5nIDUxOyBzY3JlZW5pbmcgY29sb25vc2NvcHkgaXMgZHVlIGFuZCBoYXMgYmVlbiBvcmRlcmVkLiBXaWxsIGFycmFuZ2UgZm9yIGxhdGVyIHRoaXMgeWVhci4gSW5mbHVlbnphIHZhY2NpbmUg4oCUIHBhdGllbnQgcmVwb3J0cyByZWNlaXZpbmcgYW5udWFsbHkgaW4gdGhlIGZhbGwsIHVwIHRvIGRhdGUuIEExYyA1LjMlIGFuZCBmYXN0aW5nIGdsdWNvc2UgOTIgbWcvZEwg4oCUIG5vIGV2aWRlbmNlIG9mIGRpYWJldGVzIG9yIHByZWRpYWJldGVzLgoKUExBTjoKMS4gQ29udGludWUgbGlzaW5vcHJpbCAxMCBtZyBkYWlseSBmb3IgaHlwZXJ0ZW5zaW9uLgoyLiBDb250aW51ZSBmaXNoIG9pbCAxMDAwIG1nIGRhaWx5IChPVEMpLgozLiBEaWV0YXJ5IGNvdW5zZWxpbmcgcHJvdmlkZWQgZm9yIGxpcGlkIG1hbmFnZW1lbnQg4oCUIHJlZHVjZSBzYXR1cmF0ZWQgZmF0IGFuZCByZWQgbWVhdCwgaW5jcmVhc2Ugb21lZ2EtMyByaWNoIGZpc2gsIG1haW50YWluIHJlZ3VsYXIgZXhlcmNpc2Ugd2l0aCBkYWlseSAzMC1taW51dGUgd2Fsa3MuCjQuIFNjcmVlbmluZyBjb2xvbm9zY29weSBvcmRlcmVkIOKAlCBzY2hlZHVsZSBmb3IgbGF0ZXIgdGhpcyB5ZWFyIChhZ2UtYXBwcm9wcmlhdGUgZmlyc3Qgc2NyZWVuaW5nKS4KNS4gUmVjaGVjayBmYXN0aW5nIGxpcGlkIHBhbmVsIGF0IG5leHQgYW5udWFsIGV4YW0gdG8gYXNzZXNzIHJlc3BvbnNlIHRvIGxpZmVzdHlsZSBjaGFuZ2VzLiBJZiBMREwgcmVtYWlucyBlbGV2YXRlZCBvciBBU0NWRCByaXNrIGluY3JlYXNlcywgd2lsbCByZXZpc2l0IGRpc2N1c3Npb24gb2Ygc3RhdGluIHRoZXJhcHkuCjYuIEZvbGxvdyB1cCBpbiAxMiBtb250aHMgZm9yIGFubnVhbCB3ZWxsbmVzcyBleGFtLCBvciBzb29uZXIgaWYgbmV3IHN5bXB0b21zIGFyaXNlLgo3LiBQYXRpZW50IGVkdWNhdGlvbiBwcm92aWRlZCBvbiBjaG9sZXN0ZXJvbCBtYW5hZ2VtZW50LCBkaWV0YXJ5IG1vZGlmaWNhdGlvbnMsIGFuZCBpbXBvcnRhbmNlIG9mIHJlZ3VsYXIgcGh5c2ljYWwgYWN0aXZpdHkuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6CkFuZ2VsYSBXaGl0ZmllbGQsIE1ECk1pbm5laGFoYSBJbnRlcm5hbCBNZWRpY2luZQowNC8xNS8yMDE5Cg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-002"
+      }
+    ],
+    "period": {
+      "start": "2019-04-15T09:00:00-05:00",
+      "end": "2019-04-15T09:45:00-05:00"
+    }
+  }
+}

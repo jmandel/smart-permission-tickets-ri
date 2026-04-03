@@ -1,0 +1,64 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-000-morphine",
+  "status": "completed",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1732006",
+        "display": "morphine sulfate 4 MG in 1 ML Injection"
+      }
+    ],
+    "text": "Morphine sulfate 4 mg IV injection"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "authoredOn": "2026-01-12",
+  "requester": {
+    "reference": "Practitioner/97b199c6-1b9f-4a71-ad7f-09b019ec7024",
+    "display": "Dr. Emily Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-perf-appendicitis",
+      "display": "Acute perforated appendicitis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "4 mg IV, once",
+      "timing": {
+        "repeat": {
+          "count": 1
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 4,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

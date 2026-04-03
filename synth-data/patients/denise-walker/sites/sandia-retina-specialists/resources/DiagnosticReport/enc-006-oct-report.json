@@ -1,0 +1,50 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-006-oct-report",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "87674-8",
+        "display": "Optical coherence tomography study"
+      }
+    ],
+    "text": "OCT macula report"
+  },
+  "subject": {
+    "reference": "Patient/7b1188a2-28ef-4d17-b783-2866c438f117",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2025-03-06",
+  "performer": [
+    {
+      "reference": "Practitioner/a8476b2a-db72-4d0b-a5e5-b39505f711f4",
+      "type": "Practitioner",
+      "display": "Isaac Feldman, OD"
+    },
+    {
+      "reference": "Practitioner/9df59e52-8c87-4bb4-9452-2ed6d4fef96d",
+      "type": "Practitioner",
+      "display": "Dr. Neha Kapur, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-006-oct-thickness-od",
+      "display": "Central macular thickness, right eye"
+    },
+    {
+      "reference": "Observation/enc-006-oct-thickness-os",
+      "display": "Central subfield thickness, left eye"
+    }
+  ],
+  "conclusion": "Right eye central macular thickness 289 microns without center-involving edema. Left eye center-involving diabetic macular edema with central subfield thickness 412 microns, supporting same-day intravitreal treatment.",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>DiagnosticReport enc-006-oct-report</p></div>"
+  }
+}

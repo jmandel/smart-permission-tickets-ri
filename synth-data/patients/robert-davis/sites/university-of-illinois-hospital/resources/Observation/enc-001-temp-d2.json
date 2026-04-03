@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-001-temp-d2",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Body temperature"
+  },
+  "subject": {
+    "reference": "Patient/bb4f5104-f2ac-492e-8745-681517f118b4",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "effectiveDateTime": "2026-01-23T08:00:00-06:00",
+  "valueQuantity": {
+    "value": 99.8,
+    "unit": "[degF]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[degF]"
+  }
+}

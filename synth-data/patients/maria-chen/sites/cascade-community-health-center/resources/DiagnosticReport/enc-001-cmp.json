@@ -1,0 +1,100 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-001-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "effectiveDateTime": "2019-01-24",
+  "issued": "2019-01-24T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-001-fasting-glucose",
+      "display": "Fasting Glucose"
+    },
+    {
+      "reference": "Observation/enc-001-bun",
+      "display": "BUN"
+    },
+    {
+      "reference": "Observation/enc-001-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-001-sodium",
+      "display": "Sodium"
+    },
+    {
+      "reference": "Observation/enc-001-potassium",
+      "display": "Potassium"
+    },
+    {
+      "reference": "Observation/enc-001-chloride",
+      "display": "Chloride"
+    },
+    {
+      "reference": "Observation/enc-001-co2",
+      "display": "CO2"
+    },
+    {
+      "reference": "Observation/enc-001-calcium",
+      "display": "Calcium"
+    },
+    {
+      "reference": "Observation/enc-001-albumin",
+      "display": "Albumin"
+    },
+    {
+      "reference": "Observation/enc-001-total-protein",
+      "display": "Total Protein"
+    },
+    {
+      "reference": "Observation/enc-001-alp",
+      "display": "Alkaline Phosphatase"
+    },
+    {
+      "reference": "Observation/enc-001-ast",
+      "display": "AST"
+    },
+    {
+      "reference": "Observation/enc-001-alt",
+      "display": "ALT"
+    },
+    {
+      "reference": "Observation/enc-001-total-bilirubin",
+      "display": "Total Bilirubin"
+    }
+  ]
+}

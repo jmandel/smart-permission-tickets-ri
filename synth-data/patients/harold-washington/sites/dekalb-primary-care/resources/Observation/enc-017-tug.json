@@ -1,0 +1,46 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-017-tug",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "89422-0",
+        "display": "Timed Up and Go test and physical findings of gait panel CDC"
+      }
+    ],
+    "text": "Timed Up and Go (TUG) test"
+  },
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2025-03-06",
+  "valueQuantity": {
+    "value": 14,
+    "unit": "s",
+    "system": "http://unitsofmeasure.org",
+    "code": "s"
+  },
+  "interpretation": [
+    {
+      "text": "Mildly increased for age, within acceptable range"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Scheduled 8-week follow-up ultrasound in third pregnancy; resulted in diagnosis of missed abortion and subsequent D&C",
+    "period_start": "2025-03-10",
+    "period_end": "2025-03-10",
+    "participants": [
+      {
+        "name": "Dr. Megan Forsythe",
+        "role": "OB/GYN"
+      }
+    ],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "118/74",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 118,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 74,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 130,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "beta-hCG, quantitative",
+        "value": "<5",
+        "unit": "mIU/mL",
+        "reference_range": "<5 mIU/mL (non-pregnant)",
+        "flag": "normal",
+        "specimen": "serum",
+        "date": "2025-03-24"
+      },
+      {
+        "name": "karyotype analysis of products of conception",
+        "value": "46,XX (normal female karyotype)",
+        "specimen": "products of conception tissue",
+        "date": "2025-04-01"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "missed abortion",
+      "clinical_status": "active",
+      "onset_date": "2025-03-10",
+      "action": "create",
+      "description": "Missed abortion at 8 weeks gestation — embryonic demise with fetal pole growth arrest at approximately 7 weeks 1 day, absent cardiac activity on transvaginal ultrasound"
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "description": "Three consecutive first-trimester losses, including one with confirmed euploid conceptus (46,XX). Prior RPL workup unrevealing."
+    }
+  ],
+  "medications": [
+    {
+      "name": "micronized progesterone 200 mg vaginal capsule",
+      "sig": "Insert 200 mg vaginally at bedtime nightly",
+      "status": "stopped",
+      "reason": "Progesterone supplementation for pregnancy support; discontinued following diagnosis of missed abortion",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "dilation and curettage of uterus",
+      "date": "2025-03-12",
+      "reason": "Missed abortion at 8 weeks — to expedite physical recovery and obtain products of conception for cytogenetic analysis",
+      "outcome": "Uncomplicated. Products of conception obtained and sent for histopathology and cytogenetic karyotype analysis.",
+      "location": "Rocky Mountain Women's Health affiliated ambulatory surgery center",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "description": "Documents scheduled 8-week follow-up ultrasound, vitals, transvaginal ultrasound findings showing absent cardiac activity and growth arrest, diagnosis of missed abortion (third consecutive first-trimester loss), counseling and decision for D&C. Includes addenda for D&C performed 03/12/2025 (uncomplicated), histopathology results, cytogenetic results (46,XX normal female karyotype — pivotal euploid finding), and follow-up beta-hCG confirming resolution. Notes clinical suspicion for antiphospholipid syndrome and plan for APS antibody panel."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Transvaginal pelvic ultrasound, obstetric (8-week follow-up)",
+      "report_state": "summary-only",
+      "description": "Intrauterine gestational sac present. Fetal pole measuring 7 weeks 1 day with no interval growth from expected 8-week trajectory. Absent cardiac activity. Findings consistent with missed abortion; embryonic demise estimated to have occurred 1–2 weeks prior."
+    },
+    {
+      "type": "Histopathology examination of products of conception",
+      "report_state": "summary-only",
+      "description": "Confirmed products of conception with chorionic villi identified. No molar changes. Specimen obtained via D&C performed 2025-03-12."
+    },
+    {
+      "type": "Cytogenetic karyotype analysis of products of conception",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "karyotype analysis of products of conception"
+      ],
+      "description": "Normal female karyotype (46,XX). Pivotal finding eliminating embryonic aneuploidy as the cause of this loss, shifting clinical suspicion toward a maternal factor."
+    }
+  ],
+  "allergies": []
+}

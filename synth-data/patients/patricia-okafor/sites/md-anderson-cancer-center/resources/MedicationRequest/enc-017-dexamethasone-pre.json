@@ -1,0 +1,83 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-017-dexamethasone-pre",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197582",
+        "display": "dexamethasone 4 MG Oral Tablet"
+      }
+    ],
+    "text": "dexamethasone 4 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "authoredOn": "2025-01-06",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonCode": [
+    {
+      "text": "Chemotherapy pre-medication per protocol"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "4 mg by mouth, morning of infusion (chemotherapy pre-medication)",
+      "patientInstruction": "Take 4 mg by mouth the morning of infusion.",
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 4,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

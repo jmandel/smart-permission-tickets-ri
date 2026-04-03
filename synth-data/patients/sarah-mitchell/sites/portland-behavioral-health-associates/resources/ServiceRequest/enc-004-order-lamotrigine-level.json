@@ -1,0 +1,61 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-004-order-lamotrigine-level",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "108252007",
+          "display": "Laboratory procedure (procedure)"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "6948-4",
+        "display": "lamoTRIgine [Mass/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "Lamotrigine serum level"
+  },
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "authoredOn": "2020-12-14",
+  "requester": {
+    "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+    "type": "Practitioner",
+    "display": "Dr. James Okafor"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-002-bipolar2",
+      "display": "Bipolar II disorder"
+    }
+  ],
+  "note": [
+    {
+      "text": "Ordered for next in-person visit to monitor therapeutic drug level."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

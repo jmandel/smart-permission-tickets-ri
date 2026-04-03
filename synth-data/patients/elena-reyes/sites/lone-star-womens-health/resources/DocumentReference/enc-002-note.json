@@ -1,0 +1,87 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-002-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "100494-4",
+        "display": "Obstetrics Outpatient Progress note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Prenatal Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2022-01-28T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+      "type": "Practitioner",
+      "display": "Dr. Carmen Villanueva"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+    "type": "Practitioner",
+    "display": "Dr. Carmen Villanueva"
+  },
+  "custodian": {
+    "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+    "display": "Lone Star Women's Health"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKRWxlbmEgTWFyaXNvbCBSZXllcyBpcyBhIDMyLXllYXItb2xkIEczUDEwMTEgYXQgMjggd2Vla3MnIGdlc3RhdGlvbiBwcmVzZW50aW5nIGZvciByb3V0aW5lIHByZW5hdGFsIGZvbGxvdy11cCBhZnRlciBhYm5vcm1hbCBnbHVjb3NlIHNjcmVlbmluZy4gU2hlIHJlcG9ydHMgZmVlbGluZyB3ZWxsIG92ZXJhbGwgYW5kIG5vdGVzIG5vcm1hbCBmZXRhbCBtb3ZlbWVudC4gU2hlIGRlbmllcyBjb250cmFjdGlvbnMsIHZhZ2luYWwgYmxlZWRpbmcsIG9yIGxlYWthZ2Ugb2YgZmx1aWQuIFJlY2VudCBwcmVuYXRhbCBjb3Vyc2Ugbm90YWJsZSBmb3IgZWxldmF0ZWQgMS1ob3VyIDUwIGcgZ2x1Y29zZSBjaGFsbGVuZ2UgdGVzdCBhdCAxNjIgbWcvZEwsIGZvbGxvd2VkIGJ5IGFibm9ybWFsIGRpYWdub3N0aWMgMTAwIGcgMy1ob3VyIGdsdWNvc2UgdG9sZXJhbmNlIHRlc3Qgd2l0aCBmYXN0aW5nIDkyIG1nL2RMLCAxLWhvdXIgMTg4IG1nL2RMLCAyLWhvdXIgMTcxIG1nL2RMLCBhbmQgMy1ob3VyIDE0NiBtZy9kTCwgY29uc2lzdGVudCB3aXRoIGdlc3RhdGlvbmFsIGRpYWJldGVzIG1lbGxpdHVzLiBTaGUgaGFzIG5vIHByaW9yIGhpc3Rvcnkgb2YgcHJlZ2VzdGF0aW9uYWwgZGlhYmV0ZXMuIFByZWduYW5jeSBoaXN0b3J5IHJldmlld2VkOyB0aGlzIGlzIGhlciB0aGlyZCBwcmVnbmFuY3kgd2l0aCBwcmlvciB0ZXJtIHZhZ2luYWwgZGVsaXZlcnkgYW5kIHByaW9yIGVhcmx5IHByZWduYW5jeSBsb3NzLiBDdXJyZW50IG1lZGljYXRpb25zIGluY2x1ZGUgcHJlbmF0YWwgdml0YW1pbi4gTm8gb3RoZXIgbmV3IGNvbXBsYWludHMgdG9kYXkuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTE0LzY4IG1tSGcsIEhSIDgyIGJwbSwgVGVtcCA5OC4xIEYsIFJSIDE0LCBTcE8yIDk5JSwgV3QgMTY4IGxiCk9ic3RldHJpYyBleGFtOiBGdW5kYWwgaGVpZ2h0IDI4IGNtLiBGZXRhbCBoZWFydCByYXRlIDE0NiBicG0uCkdlbmVyYWw6IEFsZXJ0LCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KQWJkb21lbjogR3JhdmlkLCBub250ZW5kZXIuCkV4dHJlbWl0aWVzOiBObyBlZGVtYSBub3RlZC4KTGFiczogMS1ob3VyIDUwIGcgZ2x1Y29zZSBjaGFsbGVuZ2UgdGVzdCAxNjIgbWcvZEwuIERpYWdub3N0aWMgMTAwIGcgMy1ob3VyIEdUVCBhYm5vcm1hbDogZmFzdGluZyA5MiBtZy9kTCwgMS1ob3VyIDE4OCBtZy9kTCwgMi1ob3VyIDE3MSBtZy9kTCwgMy1ob3VyIDE0NiBtZy9kTC4gSGVtb2dsb2JpbiBBMWMgNS4zJS4gVXJpbmUgcHJvdGVpbiBuZWdhdGl2ZS4gQ0JDIHdpdGggbWlsZCBwaHlzaW9sb2dpYyBhbmVtaWEgb2YgcHJlZ25hbmN5LCBoZW1vZ2xvYmluIDExLjQgZy9kTC4KCkFTU0VTU01FTlQ6CjEuIEdlc3RhdGlvbmFsIGRpYWJldGVzIG1lbGxpdHVzLCBkaWV0IGNvbnRyb2xsZWQgKEExR0RNKSwgbmV3bHkgZGlhZ25vc2VkIGF0IDI4IHdlZWtzLiBBYm5vcm1hbCAzLWhvdXIgR1RUIGNvbmZpcm1zIEdETS4gQTFjIHJlbWFpbnMgbm9ybWFsIGF0IDUuMyUsIHN1Z2dlc3Rpbmcgbm8gcHJlZ2VzdGF0aW9uYWwgZGlhYmV0ZXMgYW5kIGxpa2VseSBnb29kIGJhc2VsaW5lIGdseWNlbWljIGNvbnRyb2wuIEFwcHJvcHJpYXRlIGZvciBpbml0aWFsIG1hbmFnZW1lbnQgd2l0aCBkaWV0LCBleGVyY2lzZSwgYW5kIGhvbWUgZ2x1Y29zZSBtb25pdG9yaW5nLgoyLiBJbnRyYXV0ZXJpbmUgcHJlZ25hbmN5IGF0IDI4IHdlZWtzLCByb3V0aW5lIHByZW5hdGFsIGZvbGxvdy11cC4gRnVuZGFsIGhlaWdodCBhcHByb3ByaWF0ZSBmb3IgZGF0ZXMgYW5kIGZldGFsIGhlYXJ0IHRvbmVzIHJlYXNzdXJpbmcuCjMuIE1pbGQgcGh5c2lvbG9naWMgYW5lbWlhIG9mIHByZWduYW5jeS4gSGVtb2dsb2JpbiAxMS40IGcvZEwsIG5vIHN5bXB0b21zIHJlcG9ydGVkLgo0LiBObyBldmlkZW5jZSBvZiBwcmVlY2xhbXBzaWEgYXQgdGhpcyB2aXNpdC4gQlAgbm9ybWFsIGFuZCB1cmluZSBwcm90ZWluIG5lZ2F0aXZlLgoKUExBTjoKMS4gUmV2aWV3ZWQgZGlhZ25vc2lzIG9mIGdlc3RhdGlvbmFsIGRpYWJldGVzIGluIGRldGFpbC4KMi4gU3RhcnQgaG9tZSBnbHVjb3NlIG1vbml0b3Jpbmcgd2l0aCBmYXN0aW5nIGFuZCAxLWhvdXIgcG9zdHByYW5kaWFsIGJsb29kIGdsdWNvc2UgY2hlY2tzOyBnbHVjb3NlIGxvZyB0byBiZSByZXZpZXdlZCBhdCBuZXh0IHZpc2l0LgozLiBDb3Vuc2VsZWQgb24gdGFyZ2V0IGdsdWNvc2UgZ29hbHMsIGNhcmJvaHlkcmF0ZSBjb250cm9sLCBtZWFsIHBsYW5uaW5nLCBhbmQgaW1wb3J0YW5jZSBvZiBhdm9pZGluZyBleGNlc3NpdmUgc2ltcGxlIGNhcmJvaHlkcmF0ZXMuCjQuIFJlZmVycmFsIHBsYWNlZCB0byBSRCBKZW5uaWZlciBDYXN0aWxsbyBmb3IgZGlhYmV0aWMgZGlldCBlZHVjYXRpb24gYW5kIGNhcmJvaHlkcmF0ZS1jb3VudGluZyBjb3Vuc2VsaW5nLgo1LiBBZHZpc2VkIHJlZ3VsYXIgd2Fsa2luZyBhZnRlciBtZWFscyB0byBpbXByb3ZlIHBvc3RwcmFuZGlhbCBnbHVjb3NlIGNvbnRyb2wuCjYuIENvbnRpbnVlIHJvdXRpbmUgcHJlbmF0YWwgY2FyZSB3aXRoIGdyb3d0aCBzdXJ2ZWlsbGFuY2UgZ2l2ZW4gR0RNIGRpYWdub3Npcy4KNy4gQ29udGludWUgcHJlbmF0YWwgdml0YW1pbi4gTW9uaXRvciBtaWxkIGFuZW1pYSBjbGluaWNhbGx5Lgo4LiBSZXR1cm4gYXQgbmV4dCBwcmVuYXRhbCB2aXNpdCB3aXRoIGdsdWNvc2UgbG9nczsgc29vbmVyIGZvciBoeXBlcmdseWNlbWlhIGNvbmNlcm5zLCBjb250cmFjdGlvbnMsIHZhZ2luYWwgYmxlZWRpbmcsIGxlYWthZ2Ugb2YgZmx1aWQsIG9yIGRlY3JlYXNlZCBmZXRhbCBtb3ZlbWVudC4K",
+        "title": "Prenatal Progress Note — 2022-01-28"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-002"
+      }
+    ],
+    "period": {
+      "start": "2022-01-28T00:00:00Z"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

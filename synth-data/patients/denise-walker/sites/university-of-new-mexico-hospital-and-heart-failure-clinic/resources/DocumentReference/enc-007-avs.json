@@ -1,0 +1,48 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-007-avs",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "69730-0",
+        "display": "Instructions"
+      }
+    ],
+    "text": "After-visit instructions"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "date": "2025-09-18T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/fe1e7ca5-8689-4050-b749-644133a5d6f7",
+      "display": "Dr. Thomas Baca, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QWZ0ZXItVmlzaXQgSW5zdHJ1Y3Rpb25zOgotIENvbnRpbnVlIGNhcnZlZGlsb2wgMTIuNSBtZyBieSBtb3V0aCB0d2ljZSBkYWlseS4KLSBDb250aW51ZSBzYWN1Yml0cmlsL3ZhbHNhcnRhbiAyNC8yNiBtZyBieSBtb3V0aCB0d2ljZSBkYWlseS4KLSBDb250aW51ZSBmdXJvc2VtaWRlIDQwIG1nIGJ5IG1vdXRoIGVhY2ggbW9ybmluZy4KLSBDb250aW51ZSBlbXBhZ2xpZmxvemluIDEwIG1nIGJ5IG1vdXRoIGRhaWx5LgotIENvbnRpbnVlIGFwaXhhYmFuIDUgbWcgYnkgbW91dGggdHdpY2UgZGFpbHkuCi0gQ29udGludWUgYXRvcnZhc3RhdGluIDQwIG1nIGJ5IG1vdXRoIG5pZ2h0bHkuCi0gQ29udGludWUgaW5zdWxpbiBnbGFyZ2luZSBhcyBkaXJlY3RlZCBieSB5b3VyIG90aGVyIHRyZWF0aW5nIGNsaW5pY2lhbnMuCi0gRm9sbG93IGEgbG93LXNvZGl1bSBkaWV0LgotIFdlaWdoIHlvdXJzZWxmIGV2ZXJ5IG1vcm5pbmcgYW5kIHJlY29yZCB5b3VyIHdlaWdodHMuCi0gQ2FsbCB0aGUgaGVhcnQgZmFpbHVyZSBjbGluaWMgZm9yIHdlaWdodCBnYWluIGdyZWF0ZXIgdGhhbiAzIGxiIGluIDI0IGhvdXJzLCB3b3JzZW5pbmcgc2hvcnRuZXNzIG9mIGJyZWF0aCwgaW5jcmVhc2luZyBzd2VsbGluZywgY2hlc3QgcGFpbiwgb3IgcGVyc2lzdGVudCBwYWxwaXRhdGlvbnMuCi0gRm9sbG93IHVwIGluIGhlYXJ0IGZhaWx1cmUgY2xpbmljIGluIDYgbW9udGhzLCBvciBzb29uZXIgaWYgc3ltcHRvbXMgY2hhbmdlLgo=",
+        "title": "After-visit instructions"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-007",
+        "display": "Office Visit"
+      }
+    ],
+    "period": {
+      "start": "2025-09-18",
+      "end": "2025-09-18"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Preconception counseling, oral contraceptive discontinuation",
+    "period_start": "2024-01-11T09:00:00-07:00",
+    "period_end": "2024-01-11T09:45:00-07:00",
+    "participants": [
+      {
+        "name": "Dr. Megan Forsythe",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 110,
+        "value_diastolic": 68,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 66,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 130,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.6,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative screen for depression",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "preconception care",
+      "clinical_status": "active",
+      "onset_date": "2024-01-11",
+      "action": "create"
+    },
+    {
+      "name": "contraceptive discontinuation",
+      "clinical_status": "active",
+      "onset_date": "2024-01-11",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "norgestimate-ethinyl estradiol, one tablet by mouth daily",
+      "status": "stopped",
+      "reason": "contraceptive discontinuation in preparation for conception",
+      "action": "create"
+    },
+    {
+      "name": "prenatal vitamins with folic acid 800 mcg, one tablet by mouth daily",
+      "sig": "take one tablet by mouth daily",
+      "status": "active",
+      "reason": "preconception folate supplementation for neural tube defect prevention",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, 2023-2024 seasonal quadrivalent",
+      "date": "2024-01-11",
+      "route": "intramuscular injection"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note documenting preconception counseling for a 34-year-old G0P0 woman and her husband. Includes vitals, negative PHQ-2 screening, review of rubella immunity from prior records, counseling on cycle tracking, folate supplementation, alcohol and NSAID avoidance, OCP discontinuation, prenatal vitamin initiation, and influenza vaccination. Follow-up plan for return in 6 months if no conception or sooner if concerns arise."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

@@ -1,0 +1,61 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-017-spo2",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2708-6",
+        "display": "Oxygen saturation in Arterial blood"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "59408-5",
+        "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+      }
+    ],
+    "text": "Oxygen Saturation (Pulse Oximetry)"
+  },
+  "subject": {
+    "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+  "performer": [
+    {
+      "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+      "display": "Dr. Anita Patel"
+    }
+  ],
+  "valueQuantity": {
+    "value": 99,
+    "unit": "%",
+    "system": "http://unitsofmeasure.org",
+    "code": "%"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-014-alzheimers",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "severity": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6736007",
+        "display": "Moderate (severity modifier) (qualifier value)"
+      }
+    ],
+    "text": "Moderate"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "26929004",
+        "display": "Alzheimer's disease (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "G30.9",
+        "display": "Alzheimer's disease, unspecified"
+      }
+    ],
+    "text": "Alzheimer's disease, moderate stage"
+  },
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "onsetDateTime": "2022-04",
+  "recordedDate": "2025-01-22",
+  "note": [
+    {
+      "text": "Staging updated from mild to moderate based on MMSE 17/30, MoCA 13/30, and documented functional decline in multiple instrumental and basic ADLs. Five-point MMSE decline over 10 months, accelerated by bereavement and relocation."
+    }
+  ]
+}

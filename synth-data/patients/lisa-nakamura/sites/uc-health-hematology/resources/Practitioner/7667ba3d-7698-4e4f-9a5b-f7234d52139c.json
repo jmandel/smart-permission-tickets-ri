@@ -1,0 +1,37 @@
+{
+  "resourceType": "Practitioner",
+  "id": "7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1234567893"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Okafor",
+      "given": [
+        "James"
+      ],
+      "prefix": [
+        "Dr."
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "MD, Hematology"
+      }
+    }
+  ]
+}

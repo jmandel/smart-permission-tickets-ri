@@ -1,0 +1,56 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-012-temp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Body temperature"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "effectiveDateTime": "2024-03-19T09:00:00-07:00",
+  "performer": [
+    {
+      "reference": "Practitioner/068c5e0f-43b2-455f-9e7e-b06ff391ca35",
+      "display": "David Kim, MA"
+    }
+  ],
+  "valueQuantity": {
+    "value": 98.2,
+    "unit": "[degF]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[degF]"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

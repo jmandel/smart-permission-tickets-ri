@@ -1,0 +1,83 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-010-mild-depression",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "192367002",
+        "display": "Mild depressive episode (disorder)"
+      }
+    ],
+    "text": "Depressive symptoms, mild"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "onsetDateTime": "2023-04-24",
+  "recordedDate": "2023-04-24",
+  "recorder": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "Observation/enc-010-phq9",
+          "display": "PHQ-9 score: 8 (mild depression)"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "PHQ-9 of 8 indicating mild depression, improved. Likely related to both underlying bipolar II depressive component and psychosocial adjustment in recovery. To be monitored."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

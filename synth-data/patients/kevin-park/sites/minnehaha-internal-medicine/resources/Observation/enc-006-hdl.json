@@ -1,0 +1,59 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-006-hdl",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2085-9",
+        "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "HDL cholesterol"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2024-04-15",
+  "issued": "2024-04-16T12:00:00-05:00",
+  "performer": [
+    {
+      "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+      "display": "Dr. Angela Whitfield, MD"
+    }
+  ],
+  "valueQuantity": {
+    "value": 53,
+    "unit": "mg/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mg/dL"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "value": 40,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "text": ">= 40 mg/dL"
+    }
+  ]
+}

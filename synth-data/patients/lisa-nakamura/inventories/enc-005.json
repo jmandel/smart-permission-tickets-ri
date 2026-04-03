@@ -1,0 +1,201 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Recurrent pregnancy loss workup — blood draw and results counseling",
+    "period_start": "2024-12-09T10:00:00-07:00",
+    "period_end": "2024-12-09T10:45:00-07:00",
+    "participants": [],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 110,
+        "value_diastolic": 70,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (SpO2)",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 129,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 21.5,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": 2.1,
+        "unit": "mIU/L",
+        "reference_range": "0.4–4.0 mIU/L",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.2,
+        "unit": "%",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "prothrombin time (PT)",
+        "value": 12.4,
+        "unit": "seconds",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "partial thromboplastin time (PTT)",
+        "value": 28,
+        "unit": "seconds",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "fibrinogen",
+        "value": 285,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "antinuclear antibody (ANA)",
+        "value": "negative (titer <1:40)",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "white blood cell count (WBC)",
+        "value": 5.8,
+        "unit": "x10³/µL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.1,
+        "unit": "g/dL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "hematocrit",
+        "value": 39.2,
+        "unit": "%",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": 245,
+        "unit": "x10³/µL",
+        "flag": "normal",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "recurrent pregnancy loss, unexplained",
+      "clinical_status": "active",
+      "onset_date": "2024",
+      "action": "update-existing",
+      "note": "Complete RPL workup returned entirely normal results. No identifiable etiology found. Counseled that unexplained RPL carries a favorable 60–75% live birth prognosis on next attempt."
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamins with folate",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "preconception supplementation / desired future fertility",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note documenting the recurrent pregnancy loss workup results for Lisa Nakamura and her husband Ryan Cooper. All studies (parental karyotyping, TSH, HbA1c, coagulation panel, ANA, CBC) returned normal. Dr. Forsythe counseled the couple that no identifiable cause was found, discussed the favorable prognosis for unexplained RPL (60–75% success rate on next attempt), and encouraged them to try again when emotionally ready. Follow-up as needed or upon next positive pregnancy test.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "karyotype analysis — Lisa Nakamura",
+      "report_state": "summary-only",
+      "description": "Chromosome analysis of Lisa Nakamura showing 46,XX (normal female karyotype). No balanced translocations detected. Result rules out maternal chromosomal rearrangement as a cause of recurrent pregnancy loss."
+    },
+    {
+      "type": "karyotype analysis — Ryan Cooper (partner)",
+      "report_state": "summary-only",
+      "description": "Chromosome analysis of Ryan Cooper (patient's husband) showing 46,XY (normal male karyotype). No balanced translocations detected. Result rules out paternal chromosomal rearrangement as a cause of recurrent pregnancy loss. Note: this is a related person's test ordered in the context of the patient's RPL workup."
+    },
+    {
+      "type": "basic coagulation panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "prothrombin time (PT)",
+        "partial thromboplastin time (PTT)",
+        "fibrinogen"
+      ]
+    },
+    {
+      "type": "antinuclear antibody (ANA) test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "antinuclear antibody (ANA)"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count (WBC)",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    }
+  ],
+  "allergies": []
+}

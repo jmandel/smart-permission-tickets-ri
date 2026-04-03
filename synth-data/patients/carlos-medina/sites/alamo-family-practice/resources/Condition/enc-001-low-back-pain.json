@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-001-low-back-pain",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "279040009",
+        "display": "Mechanical low back pain (finding)"
+      }
+    ],
+    "text": "Mechanical low back pain"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "onsetDateTime": "2017-09-18",
+  "recordedDate": "2017-09-18",
+  "note": [
+    {
+      "text": "Occasional low back pain after long days in the shop, managed with stretching. No red flag symptoms. Likely occupational."
+    }
+  ]
+}

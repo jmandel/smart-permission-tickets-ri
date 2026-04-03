@@ -1,0 +1,79 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-017-bp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "85354-9",
+        "display": "Blood pressure panel with all children optional"
+      }
+    ],
+    "text": "Blood Pressure"
+  },
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+  "performer": [
+    {
+      "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+      "display": "Maria Torres, RN"
+    }
+  ],
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "Systolic blood pressure"
+          }
+        ],
+        "text": "Systolic blood pressure"
+      },
+      "valueQuantity": {
+        "value": 128,
+        "unit": "mm[Hg]",
+        "system": "http://unitsofmeasure.org",
+        "code": "mm[Hg]"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Diastolic blood pressure"
+          }
+        ],
+        "text": "Diastolic blood pressure"
+      },
+      "valueQuantity": {
+        "value": 78,
+        "unit": "mm[Hg]",
+        "system": "http://unitsofmeasure.org",
+        "code": "mm[Hg]"
+      }
+    }
+  ]
+}

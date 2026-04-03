@@ -1,0 +1,32 @@
+{
+  "resourceType": "Location",
+  "id": "3b3ae2bd-a67c-471c-879d-8b1279cc9815",
+  "status": "active",
+  "name": "First Coast Neurology Associates",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "836 Prudential Drive",
+      "Suite 1400"
+    ],
+    "city": "Jacksonville",
+    "state": "FL",
+    "postalCode": "32207"
+  },
+  "managingOrganization": {
+    "reference": "Organization/2377f598-6590-4511-ba0c-3a9011179b51",
+    "display": "First Coast Neurology Associates"
+  }
+}

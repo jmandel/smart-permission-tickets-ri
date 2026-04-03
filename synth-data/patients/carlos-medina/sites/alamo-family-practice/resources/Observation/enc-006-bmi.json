@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-006-bmi",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "39156-5",
+        "display": "Body mass index (BMI) [Ratio]"
+      }
+    ],
+    "text": "Body mass index"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2021-04-05",
+  "valueQuantity": {
+    "value": 28.3,
+    "unit": "kg/m2",
+    "system": "http://unitsofmeasure.org",
+    "code": "kg/m2"
+  }
+}

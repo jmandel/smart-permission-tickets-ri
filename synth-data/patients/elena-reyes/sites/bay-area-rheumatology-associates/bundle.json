@@ -1,0 +1,5120 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T01:45:02.208Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:7c9e6679-7425-40de-944b-e07fc1f90ae7",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2131-1",
+                  "display": "Other Race"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Other Race"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino"
+                }
+              },
+              {
+                "url": "detailed",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2148-5",
+                  "display": "Mexican"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino, Mexican-American"
+              }
+            ]
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "Mid-30s Latina woman. Lived in Austin, TX through 2022, then moved to Oakland, CA.\n\nTexas chapter: Reproductive history managed by an OB/GYN practice in Austin. First pregnancy (2019) was uncomplicated — vaginal delivery, healthy baby. In early 2020 she had a spontaneous abortion (miscarriage) at ~10 weeks — managed expectantly, emotionally difficult but no surgical intervention needed. Second successful pregnancy (2021) had mild gestational diabetes (diet-controlled, resolved postpartum), vaginal delivery. Also saw a PCP in Austin for routine care — annual wellness exams, immunizations, a couple of URIs. The miscarriage is particularly sensitive data — in a post-Dobbs environment, records of pregnancy loss could be misinterpreted or weaponized, making the case for granular data sharing controls viscerally concrete.\n\nCalifornia chapter: Established with a new PCP in Oakland in late 2022. In early 2023, started having bilateral hand and wrist pain, morning stiffness lasting over an hour. PCP ordered initial labs (RF, anti-CCP, ESR, CRP — all elevated). Referred to rheumatology. Diagnosed with rheumatoid arthritis, seropositive. Started methotrexate 15mg weekly + folic acid. Required regular monitoring (CBC, LFTs every 8-12 weeks). Partial response to methotrexate — added adalimumab (Humira) in late 2023. Good response by 2024. Ongoing monitoring, quarterly rheumatology visits, regular labs."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Reyes",
+            "given": [
+              "Elena",
+              "Marisol"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "510-555-0182",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "1427 Fruitvale Avenue"
+            ],
+            "city": "Oakland",
+            "state": "CA",
+            "postalCode": "94601",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          },
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "es",
+                  "display": "Spanish"
+                }
+              ],
+              "text": "Spanish"
+            },
+            "preferred": false
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-3b4d924f1bbc870106629acc"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1673910284"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Bay Area Rheumatology Associates",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "510-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "city": "Oakland",
+            "state": "CA",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+        "name": [
+          {
+            "use": "official",
+            "family": "Tran",
+            "given": [
+              "James"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "394810000",
+                  "display": "Rheumatology (specialty)"
+                }
+              ],
+              "text": "Rheumatology"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d4e5f6a7-b8c9-4d0e-a1b2-c3d4e5f6a7b8",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d4e5f6a7-b8c9-4d0e-a1b2-c3d4e5f6a7b8",
+        "name": [
+          {
+            "use": "official",
+            "family": "Kapoor",
+            "given": [
+              "Priya"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "RN",
+                  "display": "Registered Nurse"
+                }
+              ],
+              "text": "Registered Nurse"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e7f8a9b0-c1d2-4e3f-a4b5-c6d7e8f9a0b1",
+      "resource": {
+        "resourceType": "Location",
+        "id": "e7f8a9b0-c1d2-4e3f-a4b5-c6d7e8f9a0b1",
+        "status": "active",
+        "name": "Bay Area Rheumatology Associates",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "RHEUM",
+                "display": "Rheumatology clinic"
+              }
+            ],
+            "text": "Rheumatology clinic"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "510-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "city": "Oakland",
+          "state": "CA",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "display": "Bay Area Rheumatology Associates"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-albumin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-albumin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1751-7",
+              "display": "Albumin [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Albumin"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 4.3,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 3.5,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 5,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "text": "3.5 - 5.0 g/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 17,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 7,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 56,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "7 - 56 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 19,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 10,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 40,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "10 - 40 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 122,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 0.71,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.6,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 1.2,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "0.6 - 1.2 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1988-5",
+              "display": "C reactive protein [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "C-reactive protein"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          ],
+          "text": "Numeric value not recorded"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-das28crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-das28crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "Disease Activity Score 28-CRP (DAS28-CRP)"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 5.1,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "Moderate-to-high disease activity"
+          }
+        ],
+        "note": [
+          {
+            "text": "Composite disease activity score combining tender joint count, swollen joint count, C-reactive protein level, and patient global assessment. Score >5.1 indicates high disease activity."
+          }
+        ],
+        "derivedFrom": [
+          {
+            "reference": "Observation/enc-006-tjc",
+            "display": "Tender joint count"
+          },
+          {
+            "reference": "Observation/enc-006-sjc",
+            "display": "Swollen joint count"
+          },
+          {
+            "reference": "Observation/enc-006-crp",
+            "display": "C-reactive protein"
+          },
+          {
+            "reference": "Observation/enc-006-pga",
+            "display": "Patient global assessment"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-hbcab",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-hbcab",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "16933-4",
+              "display": "Hepatitis B virus core Ab [Presence] in Serum"
+            }
+          ],
+          "text": "Hepatitis B core antibody"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "260385009",
+              "display": "Negative (qualifier value)"
+            }
+          ],
+          "text": "Negative"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-hbsag",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-hbsag",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "5196-1",
+              "display": "Hepatitis B virus surface Ag [Presence] in Serum or Plasma by Immunoassay"
+            }
+          ],
+          "text": "Hepatitis B surface antigen"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "260385009",
+              "display": "Negative (qualifier value)"
+            }
+          ],
+          "text": "Negative"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-hemoglobin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-hemoglobin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 12.8,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 16,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "text": "12.0 - 16.0 g/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 78,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-pga",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-pga",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75844-1",
+              "display": "Patient global assessment of disease activity - 0-10 numeric rating [Reported]"
+            }
+          ],
+          "text": "Patient global assessment of disease activity"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 58,
+          "unit": "mm",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm"
+        },
+        "note": [
+          {
+            "text": "Patient-reported global assessment of disease activity on 0-100 mm visual analog scale; moderate-to-high patient-perceived disease activity"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-platelets",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-platelets",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 302,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 400,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "150 - 400 K/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-sjc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-sjc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam",
+                "display": "Exam"
+              }
+            ],
+            "text": "Exam"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "88980-8",
+              "display": "Swollen joint #"
+            }
+          ],
+          "text": "Swollen joint count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 6,
+          "unit": "{joints}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{joints}"
+        },
+        "note": [
+          {
+            "text": "Metacarpophalangeal joints, proximal interphalangeal joints, both wrists"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 98.1,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-tjc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-tjc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam",
+                "display": "Exam"
+              }
+            ],
+            "text": "Exam"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "88981-6",
+              "display": "Tender joint #"
+            }
+          ],
+          "text": "Tender joint count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 8,
+          "unit": "{joints}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{joints}"
+        },
+        "note": [
+          {
+            "text": "Metacarpophalangeal joints, proximal interphalangeal joints, both wrists"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "White blood cell count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 6.9,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4.5,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 11,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "4.5 - 11.0 K/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-006-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06T09:00:00-07:00",
+        "valueQuantity": {
+          "value": 148,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 20,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 7,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 56,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "7-56 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 21,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 10,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 40,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "10-40 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 118,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 74,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 0.74,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.6,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 1.2,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "0.6-1.2 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1988-5",
+              "display": "C reactive protein [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "C-Reactive Protein"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 9,
+          "unit": "mg/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 3,
+              "unit": "mg/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/L"
+            },
+            "text": "<3 mg/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-das28crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-das28crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "Disease Activity Score 28-CRP (DAS28-CRP)"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 4.3,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "Moderate disease activity"
+          }
+        ],
+        "note": [
+          {
+            "text": "Composite disease activity score combining tender joint count, swollen joint count, C-reactive protein level, and patient global assessment. Score 3.2-5.1 indicates moderate disease activity."
+          }
+        ],
+        "derivedFrom": [
+          {
+            "reference": "Observation/enc-007-tjc",
+            "display": "Tender joint count"
+          },
+          {
+            "reference": "Observation/enc-007-sjc",
+            "display": "Swollen joint count"
+          },
+          {
+            "reference": "Observation/enc-007-crp",
+            "display": "C-reactive protein"
+          },
+          {
+            "reference": "Observation/enc-007-pga",
+            "display": "Patient global assessment"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-esr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-esr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4537-7",
+              "display": "Erythrocyte sedimentation rate by Westergren method"
+            }
+          ],
+          "text": "Erythrocyte Sedimentation Rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 31,
+          "unit": "mm/h",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm/h"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0,
+              "unit": "mm/h",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm/h"
+            },
+            "high": {
+              "value": 20,
+              "unit": "mm/h",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm/h"
+            },
+            "text": "0-20 mm/hr"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-hemoglobin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-hemoglobin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 12.5,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 16,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "text": "12.0-16.0 g/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 74,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-pga",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-pga",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75844-1",
+              "display": "Patient global assessment of disease activity - 0-10 numeric rating [Reported]"
+            }
+          ],
+          "text": "Patient global assessment of disease activity"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 42,
+          "unit": "mm",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm"
+        },
+        "note": [
+          {
+            "text": "Patient-reported global assessment of disease activity on 0-100 mm visual analog scale; moderate patient-perceived disease activity"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-platelets",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-platelets",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 286,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 400,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "150-400 K/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-qtb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-qtb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "71773-6",
+              "display": "Mycobacterium tuberculosis stimulated gamma interferon [Interpretation] in Blood Qualitative"
+            }
+          ],
+          "text": "QuantiFERON-TB Gold"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueString": "Negative"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-sjc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-sjc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam",
+                "display": "Exam"
+              }
+            ],
+            "text": "Exam"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "88980-8",
+              "display": "Swollen joint #"
+            }
+          ],
+          "text": "Swollen joint count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 4,
+          "unit": "{joints}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{joints}"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0
+            },
+            "high": {
+              "value": 28
+            },
+            "text": "0-28 (28-joint assessment)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 98.2,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-tjc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-tjc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam",
+                "display": "Exam"
+              }
+            ],
+            "text": "Exam"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "88981-6",
+              "display": "Tender joint #"
+            }
+          ],
+          "text": "Tender joint count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 6,
+          "unit": "{joints}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{joints}"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0
+            },
+            "high": {
+              "value": 28
+            },
+            "text": "0-28 (28-joint assessment)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "White blood cell count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "valueQuantity": {
+          "value": 6.1,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4.5,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 11,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "text": "4.5-11.0 K/uL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-007-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 147,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-a1c",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-a1c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ],
+          "text": "Hemoglobin A1c"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 5.2,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "text": "4.0-5.6%",
+            "low": {
+              "value": 4,
+              "unit": "%",
+              "system": "http://unitsofmeasure.org",
+              "code": "%"
+            },
+            "high": {
+              "value": 5.6,
+              "unit": "%",
+              "system": "http://unitsofmeasure.org",
+              "code": "%"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-albumin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-albumin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1751-7",
+              "display": "Albumin [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Albumin"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 4.4,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "3.5-5.5 g/dL",
+            "low": {
+              "value": 3.5,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 5.5,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 18,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "text": "7-56 U/L",
+            "low": {
+              "value": 7,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 56,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 20,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "text": "10-40 U/L",
+            "low": {
+              "value": 10,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 40,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 114,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 72,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 0.73,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "0.6-1.2 mg/dL",
+            "low": {
+              "value": 0.6,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "high": {
+              "value": 1.2,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1988-5",
+              "display": "C reactive protein [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "C-Reactive Protein"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 2.8,
+          "unit": "mg/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/L"
+        },
+        "referenceRange": [
+          {
+            "text": "<3.0 mg/L",
+            "high": {
+              "value": 3,
+              "unit": "mg/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-das28crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-das28crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "Disease Activity Score 28-CRP (DAS28-CRP)"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 2.4,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low disease activity"
+          }
+        ],
+        "note": [
+          {
+            "text": "Composite disease activity score combining tender joint count, swollen joint count, C-reactive protein level, and patient global assessment. Score <2.6 indicates remission, 2.6-3.2 indicates low disease activity."
+          }
+        ],
+        "derivedFrom": [
+          {
+            "reference": "Observation/enc-009-tjc",
+            "display": "Tender joint count"
+          },
+          {
+            "reference": "Observation/enc-009-sjc",
+            "display": "Swollen joint count"
+          },
+          {
+            "reference": "Observation/enc-009-crp",
+            "display": "C-reactive protein"
+          },
+          {
+            "reference": "Observation/enc-009-pga",
+            "display": "Patient global assessment"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-esr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-esr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4537-7",
+              "display": "Erythrocyte sedimentation rate by Westergren method"
+            }
+          ],
+          "text": "Erythrocyte Sedimentation Rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "mm/h",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm/h"
+        },
+        "referenceRange": [
+          {
+            "text": "0-20 mm/hr",
+            "low": {
+              "value": 0,
+              "unit": "mm/h",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm/h"
+            },
+            "high": {
+              "value": 20,
+              "unit": "mm/h",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm/h"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hemoglobin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hemoglobin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 12.9,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "12.0-16.0 g/dL",
+            "low": {
+              "value": 12,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            },
+            "high": {
+              "value": 16,
+              "unit": "g/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "g/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 68,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-pga",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-pga",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75844-1",
+              "display": "Patient global assessment of disease activity - 0-10 numeric rating [Reported]"
+            }
+          ],
+          "text": "Patient global assessment of disease activity"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 12,
+          "unit": "mm",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm"
+        },
+        "note": [
+          {
+            "text": "Patient-reported global assessment of disease activity on 0-100 mm visual analog scale; low patient-perceived disease activity"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-platelets",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-platelets",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 274,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "text": "150-400 K/uL",
+            "low": {
+              "value": 150,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 400,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-sjc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-sjc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam",
+                "display": "Exam"
+              }
+            ],
+            "text": "Exam"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "88980-8",
+              "display": "Swollen joint #"
+            }
+          ],
+          "text": "Swollen joint count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 0,
+          "unit": "{joints}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{joints}"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0
+            },
+            "high": {
+              "value": 28
+            },
+            "text": "0-28 (28-joint assessment)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-tjc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-tjc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "exam",
+                "display": "Exam"
+              }
+            ],
+            "text": "Exam"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "88981-6",
+              "display": "Tender joint #"
+            }
+          ],
+          "text": "Tender joint count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 1,
+          "unit": "{joints}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{joints}"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0
+            },
+            "high": {
+              "value": 28
+            },
+            "text": "0-28 (28-joint assessment)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "White blood cell count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "valueQuantity": {
+          "value": 5.8,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "referenceRange": [
+          {
+            "text": "4.5-11.0 K/uL",
+            "low": {
+              "value": 4.5,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            },
+            "high": {
+              "value": 11,
+              "unit": "10*3/uL",
+              "system": "http://unitsofmeasure.org",
+              "code": "10*3/uL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12T09:00:00-08:00",
+        "valueQuantity": {
+          "value": 151,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-006-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-006-hemoglobin",
+            "display": "Hemoglobin"
+          },
+          {
+            "reference": "Observation/enc-006-wbc",
+            "display": "White blood cell count"
+          },
+          {
+            "reference": "Observation/enc-006-platelets",
+            "display": "Platelet count"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-006-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-006-creatinine",
+            "display": "Creatinine"
+          },
+          {
+            "reference": "Observation/enc-006-ast",
+            "display": "AST"
+          },
+          {
+            "reference": "Observation/enc-006-alt",
+            "display": "ALT"
+          },
+          {
+            "reference": "Observation/enc-006-albumin",
+            "display": "Albumin"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-hepb",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-006-hepb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "MB",
+                "display": "Microbiology"
+              }
+            ],
+            "text": "Microbiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "77190-7",
+              "display": "Hepatitis B virus core and surface Ab and surface Ag panel - Serum"
+            }
+          ],
+          "text": "Hepatitis B Serology Panel"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "effectiveDateTime": "2023-04-06",
+        "issued": "2023-04-06T12:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-006-hbsag",
+            "display": "Hepatitis B surface antigen"
+          },
+          {
+            "reference": "Observation/enc-006-hbcab",
+            "display": "Hepatitis B core antibody"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-007-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "issued": "2023-11-09T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-007-hemoglobin",
+            "display": "Hemoglobin"
+          },
+          {
+            "reference": "Observation/enc-007-wbc",
+            "display": "White blood cell count"
+          },
+          {
+            "reference": "Observation/enc-007-platelets",
+            "display": "Platelet count"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-007-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "issued": "2023-11-09T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-007-creatinine",
+            "display": "Creatinine"
+          },
+          {
+            "reference": "Observation/enc-007-ast",
+            "display": "Aspartate Aminotransferase"
+          },
+          {
+            "reference": "Observation/enc-007-alt",
+            "display": "Alanine Aminotransferase"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-cxr",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-007-cxr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "36643-5",
+              "display": "XR Chest 2 Views"
+            }
+          ],
+          "text": "Chest Radiograph"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "issued": "2023-11-09T12:00:00-08:00",
+        "conclusion": "Normal"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-hepb",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-007-hepb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "SR",
+                "display": "Serology"
+              }
+            ],
+            "text": "Serology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "77190-7",
+              "display": "Hepatitis B virus core and surface Ab and surface Ag panel - Serum"
+            }
+          ],
+          "text": "Hepatitis B Infection Screening Serology"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "issued": "2023-11-09T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "conclusion": "Without evidence of active hepatitis B infection"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-inflammatory",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-007-inflammatory",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "text": "Inflammatory Markers Panel"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "issued": "2023-11-09T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-007-crp",
+            "display": "C-Reactive Protein"
+          },
+          {
+            "reference": "Observation/enc-007-esr",
+            "display": "Erythrocyte Sedimentation Rate"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-tb",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-007-tb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "MB",
+                "display": "Microbiology"
+              }
+            ],
+            "text": "Microbiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "71775-1",
+              "display": "Mycobacterium tuberculosis stimulated gamma interferon panel - Blood"
+            }
+          ],
+          "text": "Tuberculosis Infection Screening Assay"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "effectiveDateTime": "2023-11-09",
+        "issued": "2023-11-09T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-007-qtb",
+            "display": "QuantiFERON-TB Gold"
+          }
+        ],
+        "conclusion": "Negative for tuberculosis infection"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-monitoring-panel",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-009-monitoring-panel",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "text": "Rheumatology Monitoring Lab Panel"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2026-02-12",
+        "issued": "2026-02-12T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "display": "Bay Area Rheumatology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-009-hemoglobin",
+            "display": "Hemoglobin"
+          },
+          {
+            "reference": "Observation/enc-009-wbc",
+            "display": "White blood cell count"
+          },
+          {
+            "reference": "Observation/enc-009-platelets",
+            "display": "Platelet count"
+          },
+          {
+            "reference": "Observation/enc-009-creatinine",
+            "display": "Creatinine"
+          },
+          {
+            "reference": "Observation/enc-009-ast",
+            "display": "AST"
+          },
+          {
+            "reference": "Observation/enc-009-alt",
+            "display": "ALT"
+          },
+          {
+            "reference": "Observation/enc-009-albumin",
+            "display": "Albumin"
+          },
+          {
+            "reference": "Observation/enc-009-crp",
+            "display": "C-Reactive Protein"
+          },
+          {
+            "reference": "Observation/enc-009-esr",
+            "display": "Erythrocyte Sedimentation Rate"
+          },
+          {
+            "reference": "Observation/enc-009-a1c",
+            "display": "Hemoglobin A1c"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-folic-acid",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-006-folic-acid",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "310410",
+              "display": "folic acid 1 MG Oral Tablet"
+            }
+          ],
+          "text": "folic acid 1 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "authoredOn": "2023-04-06",
+        "requester": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "type": "Practitioner",
+          "display": "Dr. James Tran"
+        },
+        "reasonCode": [
+          {
+            "text": "Co-therapy with methotrexate to reduce methotrexate side effects including hematologic and gastrointestinal toxicity"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 1 mg by mouth daily",
+            "patientInstruction": "Take 1 mg by mouth daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              },
+              "code": {
+                "text": "Daily"
+              }
+            },
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 1,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-methotrexate",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-006-methotrexate",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "283510",
+              "display": "methotrexate 15 MG Oral Tablet"
+            }
+          ],
+          "text": "methotrexate 15 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-006"
+        },
+        "authoredOn": "2023-04-06",
+        "requester": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "type": "Practitioner",
+          "display": "Dr. James Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-006-ra",
+            "display": "Seropositive rheumatoid arthritis"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 15 mg by mouth once weekly",
+            "patientInstruction": "Take 15 mg by mouth once weekly. Avoid alcohol. Use reliable contraception while taking this medication.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "wk"
+              },
+              "code": {
+                "text": "Once weekly"
+              }
+            },
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 15,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-adalimumab",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-007-adalimumab",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "727703",
+              "display": "adalimumab 40 MG in 0.8 ML Prefilled Syringe"
+            }
+          ],
+          "text": "adalimumab 40 mg prefilled syringe"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "authoredOn": "2023-11-09",
+        "requester": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "type": "Practitioner",
+          "display": "Dr. James Tran"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-006-ra",
+            "display": "Seropositive rheumatoid arthritis"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Inject 40 mg subcutaneously every 2 weeks",
+            "patientInstruction": "Inject 40 mg subcutaneously every 2 weeks. Store in refrigerator. Allow to reach room temperature before injecting.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "wk"
+              },
+              "code": {
+                "text": "Every 2 weeks"
+              }
+            },
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "34206005",
+                  "display": "Subcutaneous route (qualifier value)"
+                }
+              ],
+              "text": "Subcutaneous"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 40,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Added for inadequate response to methotrexate monotherapy. Prior authorization to be submitted. Infection-risk precautions reviewed with patient."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-006-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34839-1",
+              "display": "Rheumatology Consult note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11488-4",
+              "display": "Consult note"
+            }
+          ],
+          "text": "Rheumatology Consultation Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2023-04-06T10:30:00-07:00",
+        "author": [
+          {
+            "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+            "type": "Practitioner",
+            "display": "Dr. James Tran"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "type": "Practitioner",
+          "display": "Dr. James Tran"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgTWFyaXNvbCBSZXllcyBpcyBhIDMzLXllYXItb2xkIHdvbWFuIHNlZW4gZm9yIGluaXRpYWwgcmhldW1hdG9sb2d5IGNvbnN1bHRhdGlvbiBhZnRlciBQQ1AgcmVmZXJyYWwgZm9yIGluZmxhbW1hdG9yeSBwb2x5YXJ0aHJpdGlzIHdpdGggcG9zaXRpdmUgc2Vyb2xvZ2llcy4gU2hlIHJlcG9ydHMgc2V2ZXJhbCBtb250aHMgb2YgYmlsYXRlcmFsIGhhbmQgYW5kIHdyaXN0IHBhaW4sIG1vcm5pbmcgc3RpZmZuZXNzLCBhbmQgc3dlbGxpbmcgaW52b2x2aW5nIHRoZSBrbnVja2xlcyBhbmQgd3Jpc3RzLCB3aXRoIGZ1bmN0aW9uYWwgZGlmZmljdWx0eSB1c2luZyBoZXIgaGFuZHMuIE91dHNpZGUgd29ya3VwIGZyb20gcHJpbWFyeSBjYXJlIHdhcyByZXZpZXdlZCBhbmQgbm90YWJsZSBmb3IgcG9zaXRpdmUgcmhldW1hdG9pZCBmYWN0b3IgYW5kIHN0cm9uZ2x5IHBvc2l0aXZlIGFudGktQ0NQIGFudGlib2R5IHdpdGggZWxldmF0ZWQgaW5mbGFtbWF0b3J5IG1hcmtlcnMsIGNvbnNpc3RlbnQgd2l0aCByaGV1bWF0b2lkIGFydGhyaXRpcy4gUGF0aWVudCBnbG9iYWwgYXNzZXNzbWVudCB0b2RheSBpcyA1OC8xMDAuIFNoZSByZWNlbnRseSByZWxvY2F0ZWQgdG8gQ2FsaWZvcm5pYSBhbmQgaXMgZXN0YWJsaXNoaW5nIHNwZWNpYWx0eSBjYXJlLiBSZWxldmFudCBoaXN0b3J5IHJldmlld2VkLiBObyBwcmlvciBETUFSRCB0aGVyYXB5LiBSaXNrcyBhbmQgYmVuZWZpdHMgb2YgdHJlYXRtZW50IG9wdGlvbnMgd2VyZSBkaXNjdXNzZWQgaW4gZGV0YWlsLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEyMi84MCBtbUhnLCBIUiA3OCBicG0sIFRlbXAgOTguMSBGLCBSUiAxNCwgU3BPMiA5OSUsIFd0IDE0OCBsYgpHZW5lcmFsOiBBbGVydCwgaW4gbm8gYWN1dGUgZGlzdHJlc3MuCk11c2N1bG9za2VsZXRhbDogU3lub3ZpdGlzIGFuZCB0ZW5kZXJuZXNzIGludm9sdmluZyBNQ1BzLCBQSVBzLCBhbmQgYm90aCB3cmlzdHMuIEpvaW50IGNvdW50IHRvZGF5IG5vdGFibGUgZm9yIDggdGVuZGVyIGpvaW50cyBhbmQgNiBzd29sbGVuIGpvaW50cy4KRGlzZWFzZSBhY3Rpdml0eTogREFTMjgtQ1JQIDUuMSwgY29uc2lzdGVudCB3aXRoIG1vZGVyYXRlLXRvLWhpZ2ggZGlzZWFzZSBhY3Rpdml0eS4KTGFiczogQmFzZWxpbmUgc2FmZXR5IG1vbml0b3Jpbmcgb2J0YWluZWQgdG9kYXkgc2hvd2VkIGhlbW9nbG9iaW4gMTIuOCBnL2RMLCBXQkMgNi45IEsvdUwsIHBsYXRlbGV0cyAzMDIgSy91TCwgY3JlYXRpbmluZSAwLjcxIG1nL2RMLCBBU1QgMTkgVS9MLCBBTFQgMTcgVS9MLCBhbGJ1bWluIDQuMyBnL2RMLiBIZXBhdGl0aXMgQiBzdXJmYWNlIGFudGlnZW4gbmVnYXRpdmUgYW5kIGhlcGF0aXRpcyBCIGNvcmUgYW50aWJvZHkgbmVnYXRpdmUuCk91dHNpZGUgbGFicyByZXZpZXdlZDogcG9zaXRpdmUgcmhldW1hdG9pZCBmYWN0b3IsIHN0cm9uZ2x5IHBvc2l0aXZlIGFudGktQ0NQLCBlbGV2YXRlZCBFU1IvQ1JQLgoKQVNTRVNTTUVOVDoKMS4gU2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzLCBuZXdseSBjb25maXJtZWQuIENsaW5pY2FsIHByZXNlbnRhdGlvbiwgb3V0c2lkZSBzZXJvbG9naWVzLCBpbmZsYW1tYXRvcnkgbWFya2VycywgYW5kIGV4YW0gZmluZGluZ3MgYXJlIGFsbCBjb25zaXN0ZW50IHdpdGggUkEuIERpc2Vhc2UgYWN0aXZpdHkgaXMgbW9kZXJhdGUtdG8taGlnaCBiYXNlZCBvbiBEQVMyOC1DUlAgNS4xIHdpdGggYWN0aXZlIHN5bm92aXRpcyBpbiB0aGUgaGFuZHMgYW5kIHdyaXN0cy4gR2l2ZW4gYWN0aXZlIGRpc2Vhc2UgYW5kIHJpc2sgb2YgcHJvZ3Jlc3NpdmUgZXJvc2l2ZSBqb2ludCBkYW1hZ2UsIGVhcmx5IGluaXRpYXRpb24gb2YgRE1BUkQgdGhlcmFweSBpcyBpbmRpY2F0ZWQuCjIuIEhpZ2gtcmlzayBtZWRpY2F0aW9uIGluaXRpYXRpb24uIEJhc2VsaW5lIENCQywgcmVuYWwgZnVuY3Rpb24sIGxpdmVyIGVuenltZXMsIGFsYnVtaW4sIGFuZCBoZXBhdGl0aXMgQiBzY3JlZW5pbmcgYXJlIGFjY2VwdGFibGUgZm9yIG1ldGhvdHJleGF0ZSBzdGFydC4KClBMQU46CjEuIFN0YXJ0IG1ldGhvdHJleGF0ZSAxNSBtZyBvcmFsbHkgb25jZSB3ZWVrbHkuCjIuIFN0YXJ0IGZvbGljIGFjaWQgMSBtZyBvcmFsbHkgZGFpbHkuCjMuIFJldmlld2VkIG1ldGhvdHJleGF0ZSByaXNrcy9iZW5lZml0cyBhbmQgbW9uaXRvcmluZyByZXF1aXJlbWVudHMsIGluY2x1ZGluZyBoZXBhdG90b3hpY2l0eSwgY3l0b3BlbmlhcywgR0kgc2lkZSBlZmZlY3RzLCBpbmZlY3Rpb24gcHJlY2F1dGlvbnMsIGFuZCBuZWVkIGZvciBDQkMvQ01QIG1vbml0b3JpbmcgZXZlcnkgOC0xMiB3ZWVrcy4KNC4gQ291bnNlbGVkIHJlZ2FyZGluZyBhbGNvaG9sIGxpbWl0YXRpb24uCjUuIFJldmlld2VkIHRlcmF0b2dlbmljaXR5IGFuZCBkaXNjdXNzZWQgbmVlZCBmb3IgcmVsaWFibGUgY29udHJhY2VwdGlvbiB3aGlsZSB0YWtpbmcgbWV0aG90cmV4YXRlLgo2LiBCYXNlbGluZSBsYWJzIHJldmlld2VkIGFzIGFib3ZlOyBjb250aW51ZSByb3V0aW5lIHNhZmV0eSBtb25pdG9yaW5nLgo3LiBGb2xsb3cgdXAgaW4gYXBwcm94aW1hdGVseSA4IHdlZWtzIGZvciByZWFzc2Vzc21lbnQgb2Ygc3ltcHRvbXMsIGpvaW50IGNvdW50cywgYW5kIG1lZGljYXRpb24gdG9sZXJhbmNlLg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-006"
+            }
+          ],
+          "period": {
+            "start": "2023-04-06T09:00:00-07:00",
+            "end": "2023-04-06T10:30:00-07:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-007-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34840-9",
+              "display": "Rheumatology Note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Rheumatology Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2023-11-09T10:00:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+            "type": "Practitioner",
+            "display": "Dr. James Tran"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "type": "Practitioner",
+          "display": "Dr. James Tran"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgaXMgYSAzNC15ZWFyLW9sZCB3b21hbiB3aXRoIHNlcm9wb3NpdGl2ZSByaGV1bWF0b2lkIGFydGhyaXRpcyBzZWVuIGZvciByaGV1bWF0b2xvZ3kgZm9sbG93LXVwIG9uIDExLzA5LzIwMjMuIFNoZSByZXBvcnRzIHBhcnRpYWwgaW1wcm92ZW1lbnQgc2luY2Ugc3RhcnRpbmcgbWV0aG90cmV4YXRlIDE1IG1nIHdlZWtseSBpbiBBcHJpbCAyMDIzLCB3aXRoIHNvbWUgcmVkdWN0aW9uIGluIG1vcm5pbmcgc3RpZmZuZXNzIGZyb20gcHJpb3IgYmFzZWxpbmUsIGJ1dCBjb250aW51ZXMgdG8gaGF2ZSBzaWduaWZpY2FudCBzeW1wdG9tcyBpbmNsdWRpbmcgbW9ybmluZyBzdGlmZm5lc3MgbGFzdGluZyA0NS02MCBtaW51dGVzLCBwZXJzaXN0ZW50IGhhbmQgc3dlbGxpbmcsIGFuZCBvbmdvaW5nIGhhbmQvd3Jpc3QgZGlzY29tZm9ydC4gU2hlIHJlcG9ydHMgYWRoZXJlbmNlIHRvIG1ldGhvdHJleGF0ZSBhbmQgZm9saWMgYWNpZCB3aXRob3V0IG1pc3NlZCBkb3Nlcy4gTm8gbmV3IG1lZGljYXRpb24gaW50b2xlcmFuY2UgcmVwb3J0ZWQuIEdpdmVuIHBlcnNpc3RlbnQgc3ltcHRvbXMgZGVzcGl0ZSBzZXZlcmFsIG1vbnRocyBvZiBtZXRob3RyZXhhdGUgbW9ub3RoZXJhcHksIHZpc2l0IGZvY3VzZWQgb24gcmVhc3Nlc3NtZW50IG9mIGRpc2Vhc2UgYWN0aXZpdHkgYW5kIGRpc2N1c3Npb24gb2YgdHJlYXRtZW50IGVzY2FsYXRpb24uIEJpb2xvZ2ljIHNjcmVlbmluZyB3b3JrdXAgd2FzIHJldmlld2VkIHdpdGggcGF0aWVudCB0b2RheSwgaW5jbHVkaW5nIG5lZ2F0aXZlIFF1YW50aUZFUk9OLVRCIEdvbGQsIGhlcGF0aXRpcyBCIHNlcm9sb2dpZXMgd2l0aG91dCBldmlkZW5jZSBvZiBhY3RpdmUgaW5mZWN0aW9uLCBhbmQgbm9ybWFsIGNoZXN0IFgtcmF5IGZyb20gb3V0c2lkZSBpbWFnaW5nLiBJbmZlY3Rpb24gcmlzayBhbmQgdmFjY2luYXRpb24gbmVlZHMgd2VyZSBkaXNjdXNzZWQgaW4gYW50aWNpcGF0aW9uIG9mIGJpb2xvZ2ljIHRoZXJhcHkuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTE4Lzc0IG1tSGcsIEhSIDc0IGJwbSwgVGVtcCA5OC4yIEYsIFJSIDE0LCBTcE8yIDk4JSwgV3QgMTQ3IGxiCgpQaHlzaWNhbCBleGFtOgpHZW5lcmFsOiBObyBhY3V0ZSBkaXN0cmVzcy4KTXVzY3Vsb3NrZWxldGFsOiBTeW5vdml0aXMgYW5kIHRlbmRlcm5lc3MgaW52b2x2aW5nIHNtYWxsIGpvaW50cyBvZiB0aGUgaGFuZHMvd3Jpc3RzLiBUb3RhbCBqb2ludCBjb3VudCBub3RhYmxlIGZvciA2IHRlbmRlciBqb2ludHMgYW5kIDQgc3dvbGxlbiBqb2ludHMuCkRpc2Vhc2UgYWN0aXZpdHk6IFBhdGllbnQgZ2xvYmFsIGFzc2Vzc21lbnQgNDIvMTAwLiBEQVMyOC1DUlAgNC4zLCBjb25zaXN0ZW50IHdpdGggcGVyc2lzdGVudCBtb2RlcmF0ZSBkaXNlYXNlIGFjdGl2aXR5LgoKTGFicyByZXZpZXdlZDoKSGVtb2dsb2JpbiAxMi41IGcvZEwKV0JDIDYuMSBLL3VMClBsYXRlbGV0cyAyODYgSy91TApDcmVhdGluaW5lIDAuNzQgbWcvZEwKQVNUIDIxIFUvTApBTFQgMjAgVS9MCkNSUCA5IG1nL0wKRVNSIDMxIG1tL2hyCgpCaW9sb2dpYyBzYWZldHkgd29ya3VwIHJldmlld2VkOgpRdWFudGlGRVJPTi1UQiBHb2xkIG5lZ2F0aXZlCkhlcGF0aXRpcyBCIHNlcm9sb2dpZXMgd2l0aG91dCBhY3RpdmUgaW5mZWN0aW9uCkNoZXN0IFgtcmF5IG5vcm1hbAoKQVNTRVNTTUVOVDoKMS4gU2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzIHdpdGggcGVyc2lzdGVudCBtb2RlcmF0ZSBkaXNlYXNlIGFjdGl2aXR5IGRlc3BpdGUgYWRoZXJlbmNlIHRvIG1ldGhvdHJleGF0ZSBtb25vdGhlcmFweS4gUGF0aWVudCBoYXMgaGFkIG9ubHkgcGFydGlhbCBjbGluaWNhbCByZXNwb25zZSwgd2l0aCBvbmdvaW5nIHByb2xvbmdlZCBtb3JuaW5nIHN0aWZmbmVzcywgcGVyc2lzdGVudCBoYW5kIHN3ZWxsaW5nLCA2IHRlbmRlciBhbmQgNCBzd29sbGVuIGpvaW50cywgYW5kIERBUzI4LUNSUCA0LjMuIEN1cnJlbnQgbGFicyBzaG93IG9uZ29pbmcgaW5mbGFtbWF0b3J5IGFjdGl2aXR5IGJ1dCBubyBjeXRvcGVuaWFzLCB0cmFuc2FtaW5pdGlzLCBvciByZW5hbCBpbXBhaXJtZW50IGxpbWl0aW5nIHRoZXJhcHkgZXNjYWxhdGlvbi4KMi4gSW1tdW5vc3VwcHJlc3Npb24vbWVkaWNhdGlvbiBtb25pdG9yaW5nLiBNZXRob3RyZXhhdGUgbW9uaXRvcmluZyBsYWJzIHJlbWFpbiBhY2NlcHRhYmxlLiBCaW9sb2dpYyBwcmV0cmVhdG1lbnQgc2NyZWVuaW5nIGNvbXBsZXRlZCBhbmQgcmVhc3N1cmluZy4KMy4gUHJldmVudGl2ZSBjYXJlIHByaW9yIHRvIGJpb2xvZ2ljIHRoZXJhcHkuIFZhY2NpbmF0aW9uIHVwZGF0ZWQgZ2l2ZW4gcGxhbm5lZCBUTkYtaW5oaWJpdG9yIGluaXRpYXRpb24uCgpQTEFOOgoxLiBTdGFydCBhZGFsaW11bWFiIDQwIG1nIHN1YmN1dGFuZW91c2x5IGV2ZXJ5IDIgd2Vla3MgZm9yIGluYWRlcXVhdGUgcmVzcG9uc2UgdG8gbWV0aG90cmV4YXRlIGFsb25lLgoyLiBDb250aW51ZSBtZXRob3RyZXhhdGUgMTUgbWcgUE8gd2Vla2x5LgozLiBDb250aW51ZSBmb2xpYyBhY2lkIDEgbWcgUE8gZGFpbHkuCjQuIFBDVjE1IGFkbWluaXN0ZXJlZCBpbiBjbGluaWMgdG9kYXkgcHJpb3IgdG8gYmlvbG9naWMgdGhlcmFweS4KNS4gUmV2aWV3ZWQgaW5mZWN0aW9uLXJpc2sgcHJlY2F1dGlvbnMsIGluY2x1ZGluZyBuZWVkIHRvIGhvbGQgYmlvbG9naWMgYW5kIGNvbnRhY3QgY2xpbmljIGZvciBzaWduaWZpY2FudCBpbmZlY3Rpb24gc3ltcHRvbXMuCjYuIEFycmFuZ2UgaW5qZWN0aW9uIHRlYWNoaW5nIHdpdGggUHJpeWEgS2Fwb29yLCBSTi4KNy4gU3VibWl0IHByaW9yIGF1dGhvcml6YXRpb24gZm9yIGFkYWxpbXVtYWIuCjguIENvbnRpbnVlIHJvdXRpbmUgQ0JDLCBDTVAvTEZUcywgY3JlYXRpbmluZSwgQ1JQLCBhbmQgRVNSIG1vbml0b3JpbmcuCjkuIEZvbGxvdyB1cCB3aXRoIHJoZXVtYXRvbG9neSBhZnRlciBiaW9sb2dpYyBpbml0aWF0aW9uIHRvIHJlYXNzZXNzIHJlc3BvbnNlIGFuZCB0b2xlcmFuY2UuCg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-007"
+            }
+          ],
+          "period": {
+            "start": "2023-11-09T09:00:00-08:00",
+            "end": "2023-11-09T10:00:00-08:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-009-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34840-9",
+              "display": "Rheumatology Note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Rheumatology Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2026-02-12T09:45:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+            "type": "Practitioner",
+            "display": "Dr. James Tran"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "type": "Practitioner",
+          "display": "Dr. James Tran"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgaXMgYSAzNi15ZWFyLW9sZCB3b21hbiB3aXRoIHNlcm9wb3NpdGl2ZSByaGV1bWF0b2lkIGFydGhyaXRpcyBwcmVzZW50aW5nIGZvciByb3V0aW5lIHJoZXVtYXRvbG9neSBmb2xsb3ctdXAuIFNoZSByZW1haW5zIG9uIG1ldGhvdHJleGF0ZSAxNSBtZyBQTyB3ZWVrbHksIGZvbGljIGFjaWQgMSBtZyBQTyBkYWlseSwgYW5kIGFkYWxpbXVtYWIgNDAgbWcgU0MgZXZlcnkgMiB3ZWVrcy4gU2hlIHJlcG9ydHMgb3ZlcmFsbCBnb29kIGNvbnRyb2wgb2Ygc3ltcHRvbXMgd2l0aCBtb3JuaW5nIHN0aWZmbmVzcyB1bmRlciAxNSBtaW51dGVzLCBubyByZWNlbnQgZmxhcmVzLCBhbmQgb25seSBvY2Nhc2lvbmFsIG1pbGQgaGFuZCBhY2hpbmVzcyBhZnRlciBoZWF2eSBhY3Rpdml0eS4gU2hlIGhhcyBiZWVuIGFibGUgdG8gcmVzdW1lIHlvZ2EuIFNoZSBkZW5pZXMgYW55IHNpZ25pZmljYW50IG1lZGljYXRpb24gc2lkZSBlZmZlY3RzIGFuZCBoYXMgdG9sZXJhdGVkIG1ldGhvdHJleGF0ZSBhbmQgYWRhbGltdW1hYiB3ZWxsLiBObyBpbnRlcnZhbCBpbmZlY3Rpb3VzIHN5bXB0b21zIHdlcmUgcmVwb3J0ZWQuIEdpdmVuIHByaW9yIGhpc3Rvcnkgb2YgZ2VzdGF0aW9uYWwgZGlhYmV0ZXMsIGFubnVhbCBnbHljZW1pYyBtb25pdG9yaW5nIGlzIGJlaW5nIGZvbGxvd2VkLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDExNC83MiBtbUhnLCBIUiA2OCBicG0sIFRlbXAgOTguMCBGLCBSUiAxNCwgU3BPMiA5OSUsIFd0IDE1MSBsYgoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcsIGluIG5vIGFjdXRlIGRpc3RyZXNzLgpNU0s6IDEgdGVuZGVyIGpvaW50LCAwIHN3b2xsZW4gam9pbnRzLiBObyBhY3RpdmUgc3lub3ZpdGlzIGFwcHJlY2lhdGVkIGJleW9uZCBtaW5pbWFsIHRlbmRlcm5lc3MuIEZ1bmN0aW9uYWwgc3RhdHVzIGltcHJvdmVkLgpEaXNlYXNlIGFjdGl2aXR5OiBQYXRpZW50IGdsb2JhbCBhc3Nlc3NtZW50IDEyLzEwMC4gREFTMjgtQ1JQIDIuNCwgY29uc2lzdGVudCB3aXRoIGxvdyBkaXNlYXNlIGFjdGl2aXR5LgoKTGFiczoKSGVtb2dsb2JpbiAxMi45IGcvZEwKV0JDIDUuOCBLL3VMClBsYXRlbGV0cyAyNzQgSy91TApDcmVhdGluaW5lIDAuNzMgbWcvZEwKQVNUIDIwIFUvTApBTFQgMTggVS9MCkFsYnVtaW4gNC40IGcvZEwKQ1JQIDIuOCBtZy9MCkVTUiAxNCBtbS9ocgpBMWMgNS4yJQoKQVNTRVNTTUVOVDoKMS4gU2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzLCBjdXJyZW50bHkgd2l0aCBsb3cgZGlzZWFzZSBhY3Rpdml0eS4gUGF0aWVudCBjb250aW51ZXMgdG8gZG8gd2VsbCBvbiBjb21iaW5hdGlvbiB0aGVyYXB5IHdpdGggbWV0aG90cmV4YXRlIGFuZCBhZGFsaW11bWFiLCB3aXRoIG1pbmltYWwgbW9ybmluZyBzdGlmZm5lc3MsIG5vIHJlY2VudCBmbGFyZXMsIGltcHJvdmVkIGFjdGl2aXR5IGxldmVsLCBhbmQgREFTMjgtQ1JQIDIuNC4gQ3VycmVudCByZWdpbWVuIGFwcGVhcnMgZWZmZWN0aXZlLgoyLiBIaWdoLXJpc2sgbWVkaWNhdGlvbiB1c2UvaW1tdW5vc3VwcHJlc3NpdmUgdGhlcmFweS4gVG9sZXJhdGluZyBtZXRob3RyZXhhdGUgYW5kIGFkYWxpbXVtYWIgd2l0aG91dCByZXBvcnRlZCBhZHZlcnNlIGVmZmVjdHMuIENCQywgcmVuYWwgZnVuY3Rpb24sIGxpdmVyIGVuenltZXMsIGFsYnVtaW4sIGFuZCBpbmZsYW1tYXRvcnkgbWFya2VycyBhcmUgc3RhYmxlIGFuZCBkbyBub3Qgc2hvdyBldmlkZW5jZSBvZiBtZWRpY2F0aW9uIHRveGljaXR5LgozLiBIaXN0b3J5IG9mIGdlc3RhdGlvbmFsIGRpYWJldGVzLiBBMWMgY2hlY2tlZCBhcyBwYXJ0IG9mIG9uZ29pbmcgc3VydmVpbGxhbmNlIGFuZCByZW1haW5zIG5vcm1hbCBhdCA1LjIlLgoKUExBTjoKMS4gQ29udGludWUgbWV0aG90cmV4YXRlIDE1IG1nIFBPIHdlZWtseS4KMi4gQ29udGludWUgZm9saWMgYWNpZCAxIG1nIFBPIGRhaWx5LgozLiBDb250aW51ZSBhZGFsaW11bWFiIDQwIG1nIFNDIGV2ZXJ5IDIgd2Vla3MuCjQuIE5vIGRvc2UgY2hhbmdlcyB0b2RheSBnaXZlbiBzdXN0YWluZWQgbG93IGRpc2Vhc2UgYWN0aXZpdHkgYW5kIGdvb2QgbWVkaWNhdGlvbiB0b2xlcmFuY2UuCjUuIFJldmlld2VkIHRoYXQgdGFwZXJpbmcgYmlvbG9naWMgdGhlcmFweSB3b3VsZCBvbmx5IGJlIGNvbnNpZGVyZWQgaWYgcmVtaXNzaW9uIGlzIHN1c3RhaW5lZCBmb3IgYW5vdGhlciAxMiBtb250aHM7IG5vdCBhcHByb3ByaWF0ZSBhdCB0aGlzIHRpbWUuCjYuIENvbnRpbnVlIHJvdXRpbmUgc2FmZXR5IG1vbml0b3Jpbmcgd2l0aCBDQkMsIGNyZWF0aW5pbmUsIGxpdmVyIGVuenltZXMsIGFsYnVtaW4sIENSUCwgYW5kIEVTUi4KNy4gQ29udGludWUgcXVhcnRlcmx5IHJoZXVtYXRvbG9neSBmb2xsb3ctdXAuCjguIENvbnRpbnVlIGFubnVhbCBBMWMgbW9uaXRvcmluZyB0aHJvdWdoIFBDUC9yb3V0aW5lIGNhcmUgZ2l2ZW4gaGlzdG9yeSBvZiBnZXN0YXRpb25hbCBkaWFiZXRlcy4K"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-009"
+            }
+          ],
+          "period": {
+            "start": "2026-02-12T09:00:00-08:00",
+            "end": "2026-02-12T09:45:00-08:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006-ra",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-006-ra",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239791005",
+              "display": "Seropositive rheumatoid arthritis (disorder)"
+            }
+          ],
+          "text": "Seropositive rheumatoid arthritis"
+        },
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "onsetDateTime": "2023-04-06",
+        "recordedDate": "2023-04-06",
+        "recorder": {
+          "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+          "display": "Dr. James Tran"
+        },
+        "note": [
+          {
+            "text": "Persistent moderate disease activity despite methotrexate monotherapy. DAS28-CRP 4.3, 6 tender and 4 swollen joints, patient global assessment 42/100. Adalimumab added for inadequate response."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-006",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-006",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11429006",
+                "display": "Consultation (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attender"
+              }
+            ],
+            "period": {
+              "start": "2023-04-06T09:00:00-07:00",
+              "end": "2023-04-06T10:30:00-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+              "type": "Practitioner",
+              "display": "Dr. James Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-04-06T09:00:00-07:00",
+          "end": "2023-04-06T10:30:00-07:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Initial rheumatology consultation, RA confirmed and methotrexate started"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/e7f8a9b0-c1d2-4e3f-a4b5-c6d7e8f9a0b1",
+              "display": "Bay Area Rheumatology Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "display": "Bay Area Rheumatology Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena was seen in person by Dr. James Tran at Bay Area Rheumatology Associates for initial consultation after PCP referral."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-007",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185389009",
+                "display": "Follow-up visit (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attender"
+              }
+            ],
+            "period": {
+              "start": "2023-11-09T09:00:00-08:00",
+              "end": "2023-11-09T10:00:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+              "type": "Practitioner",
+              "display": "Dr. James Tran"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "period": {
+              "start": "2023-11-09T09:00:00-08:00",
+              "end": "2023-11-09T10:00:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/d4e5f6a7-b8c9-4d0e-a1b2-c3d4e5f6a7b8",
+              "type": "Practitioner",
+              "display": "Priya Kapoor"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-11-09T09:00:00-08:00",
+          "end": "2023-11-09T10:00:00-08:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Persistent moderate disease activity, adalimumab added"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/e7f8a9b0-c1d2-4e3f-a4b5-c6d7e8f9a0b1",
+              "display": "Bay Area Rheumatology Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "display": "Bay Area Rheumatology Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "At follow-up with Dr. James Tran, Elena reported partial improvement on methotrexate but ongoing morning stiffness for 45-60 minutes and persistent hand swelling."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-009",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185389009",
+                "display": "Follow-up visit (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attender"
+              }
+            ],
+            "period": {
+              "start": "2026-02-12T09:00:00-08:00",
+              "end": "2026-02-12T09:45:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+              "type": "Practitioner",
+              "display": "Dr. James Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-02-12T09:00:00-08:00",
+          "end": "2026-02-12T09:45:00-08:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Low disease activity on methotrexate and adalimumab"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/e7f8a9b0-c1d2-4e3f-a4b5-c6d7e8f9a0b1",
+              "display": "Bay Area Rheumatology Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "display": "Bay Area Rheumatology Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena returned for routine rheumatology reassessment with Dr. James Tran, now on long-term methotrexate plus adalimumab with good control."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-007-pcv15",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "enc-007-pcv15",
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "215",
+              "display": "Pneumococcal conjugate PCV15, polysaccharide CRM197 conjugate, adjuvant, PF"
+            }
+          ],
+          "text": "Pneumococcal Conjugate Vaccine (PCV15)"
+        },
+        "patient": {
+          "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-007"
+        },
+        "occurrenceDateTime": "2023-11-09",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/e7f8a9b0-c1d2-4e3f-a4b5-c6d7e8f9a0b1",
+          "display": "Bay Area Rheumatology Associates"
+        },
+        "route": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+              "code": "IM",
+              "display": "Injection, intramuscular"
+            }
+          ],
+          "text": "Intramuscular"
+        },
+        "performer": [
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "AP",
+                  "display": "Administering Provider"
+                }
+              ],
+              "text": "Administering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/d4e5f6a7-b8c9-4d0e-a1b2-c3d4e5f6a7b8",
+              "type": "Practitioner",
+              "display": "Priya Kapoor"
+            }
+          },
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "OP",
+                  "display": "Ordering Provider"
+                }
+              ],
+              "text": "Ordering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+              "type": "Practitioner",
+              "display": "Dr. James Tran"
+            }
+          }
+        ],
+        "note": [
+          {
+            "text": "Administered in clinic prior to biologic therapy initiation with adalimumab"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-006-advair",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "896231",
+        "display": "fluticasone propionate/salmeterol 45/21 MCG/INHAL Metered Dose Inhaler, 60 Actuations"
+      }
+    ],
+    "text": "Fluticasone/salmeterol 45 mcg/21 mcg inhaler (Advair HFA 45/21)"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-03-15",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-persistent-asthma",
+      "display": "Severe persistent asthma"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "1 puff inhaled twice daily via spacer with mouthpiece",
+      "patientInstruction": "Inhale 1 puff twice daily using spacer with mouthpiece.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 12,
+          "periodUnit": "h"
+        },
+        "code": {
+          "text": "twice daily"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "447694001",
+            "display": "Respiratory tract route (qualifier value)"
+          }
+        ],
+        "text": "Inhalation"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 1,
+            "unit": "puff",
+            "system": "http://unitsofmeasure.org",
+            "code": "{puff}"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Step-up from low-dose ICS monotherapy to medium-dose ICS/LABA combination for moderate persistent asthma. Transitioned from mask to mouthpiece as patient can now coordinate inhalation technique."
+    },
+    {
+      "text": "Stopped 2025-01-16: Dose inadequate for severe persistent asthma. Stepped up to Advair HFA 115/21."
+    }
+  ]
+}

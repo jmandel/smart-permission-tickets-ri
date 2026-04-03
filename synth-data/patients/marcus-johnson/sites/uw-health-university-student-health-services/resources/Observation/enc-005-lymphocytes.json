@@ -1,0 +1,64 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-005-lymphocytes",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "736-9",
+        "display": "Lymphocytes/100 leukocytes in Blood by Automated count"
+      }
+    ],
+    "text": "Lymphocytes, percentage"
+  },
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2026-03-30",
+  "issued": "2026-03-30T00:00:00Z",
+  "valueQuantity": {
+    "value": 30,
+    "unit": "%",
+    "system": "http://unitsofmeasure.org",
+    "code": "%"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "value": 20,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      },
+      "high": {
+        "value": 40,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      },
+      "text": "20 - 40 %"
+    }
+  ],
+  "note": [
+    {
+      "text": "Resolved from prior lymphopenia"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-000-temp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Body temperature"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "effectiveDateTime": "2015-09-14",
+  "valueQuantity": {
+    "value": 98.4,
+    "unit": "[degF]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[degF]"
+  }
+}

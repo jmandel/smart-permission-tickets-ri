@@ -1,0 +1,109 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-008",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "17436001",
+          "display": "Medical consultation with outpatient (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+        "display": "Omar Siddiqui, PA-C"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Participation"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+        "display": "Rachel Montoya, RN"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Supervising nephrologist"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+        "display": "Dr. Helena Ortiz, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-02-11",
+    "end": "2026-02-11"
+  },
+  "reasonCode": [
+    {
+      "text": "CKD follow-up with potassium and blood-pressure review"
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+    "display": "Rio Grande Nephrology Associates"
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/194d4df3-20ac-42b3-9b2f-305834567e18",
+        "display": "Rio Grande Nephrology Associates, Albuquerque, New Mexico"
+      }
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Denise Walker followed up at Rio Grande Nephrology Associates in Albuquerque, New Mexico with Omar Siddiqui, PA-C, for ongoing CKD management under Dr. Helena Ortiz's supervision."
+    }
+  ]
+}

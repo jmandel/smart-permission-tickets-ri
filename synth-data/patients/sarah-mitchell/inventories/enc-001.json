@@ -1,0 +1,246 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "hawthorne-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Depression follow-up, medication management",
+    "period_start": "2019-04-16T09:00:00-07:00",
+    "period_end": "2019-04-16T09:30:00-07:00",
+    "participants": [
+      {
+        "name": "Dr. Emily Nakamura",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Hawthorne Health Center",
+    "location": "Hawthorne Health Center, 3847 SE Hawthorne Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "118/74",
+        "unit": "mmHg",
+        "date": "2019-04-16",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 118,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 74,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm",
+        "date": "2019-04-16"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F",
+        "date": "2019-04-16"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "date": "2019-04-16"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "date": "2019-04-16"
+      },
+      {
+        "name": "body weight",
+        "value": 136,
+        "unit": "lbs",
+        "date": "2019-04-16"
+      },
+      {
+        "name": "body mass index",
+        "value": 22,
+        "unit": "kg/m²",
+        "date": "2019-04-16"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6.2,
+        "unit": "x10³/µL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.8,
+        "unit": "g/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "platelet count",
+        "value": 245,
+        "unit": "x10³/µL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "glucose",
+        "value": 88,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.8,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "sodium",
+        "value": 140,
+        "unit": "mEq/L",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "potassium",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "thyroid-stimulating hormone",
+        "value": 2.1,
+        "unit": "mIU/L",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 182,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 102,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 58,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      },
+      {
+        "name": "triglycerides",
+        "value": 110,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2019-02-01"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening",
+        "value": 12,
+        "interpretation": "moderate depression, improved from 17 at initial visit (2019-03-05)",
+        "date": "2019-04-16"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "major depressive disorder, single episode, moderate",
+      "clinical_status": "active",
+      "onset_date": "2019-01-01",
+      "action": "reference-existing",
+      "note": "Diagnosed at initial visit 2019-03-05; reassessed as partially responsive to treatment (PHQ-9 improved from 17 to 12)"
+    }
+  ],
+  "medications": [
+    {
+      "name": "sertraline 100 mg oral tablet",
+      "sig": "Take 100 mg by mouth once daily",
+      "status": "active",
+      "reason": "major depressive disorder",
+      "action": "update-existing",
+      "note": "Dose increased from 50 mg daily (started 2019-03-05) to 100 mg daily due to incomplete response; patient tolerated 50 mg without significant side effects"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Depression follow-up visit documenting partial response to sertraline 50 mg (PHQ-9 improved from 17 to 12, moderate), medication titration to sertraline 100 mg daily, review of February 2019 labs (CBC, CMP, TSH, lipid panel all normal — thyroid dysfunction excluded as contributing factor), safety planning, and follow-up plan in 6–8 weeks with contingency for psychiatry referral if inadequate response.",
+      "date": "2019-04-16"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "sodium",
+        "potassium"
+      ]
+    },
+    {
+      "type": "thyroid-stimulating hormone",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing",
+      "note": "Known from childhood, carried forward in chart"
+    }
+  ]
+}

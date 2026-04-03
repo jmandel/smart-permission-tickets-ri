@@ -1,0 +1,136 @@
+{
+  "encounter_id": "enc-017",
+  "encounter_index": 17,
+  "site_slug": "university-of-minnesota-cardiac-electrophysiology-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office visit, follow-up consultation — cardiac electrophysiology",
+    "reason": "Holter monitor results review, catheter ablation candidacy discussion for persistent atrial fibrillation",
+    "period_start": "2026-03-09",
+    "participants": [],
+    "service_provider": "University of Minnesota Cardiac Electrophysiology Clinic",
+    "location": "University of Minnesota Cardiac Electrophysiology Clinic, 420 Delaware Street SE, MMC 508, Minneapolis, MN 55455"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 128,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 78,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm",
+        "note": "irregularly irregular rhythm"
+      },
+      {
+        "name": "body weight",
+        "value": 179,
+        "unit": "lbs",
+        "note": "81.2 kg"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.4,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF",
+        "note": "36.8 C"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "persistent atrial fibrillation",
+      "clinical_status": "active",
+      "onset_date": "2026-01",
+      "action": "update-existing",
+      "note": "Refined from atrial fibrillation to persistent atrial fibrillation based on 48-hour Holter monitor confirming 100% AF burden with no periods of sinus rhythm. Symptomatic despite adequate rate control. Decision made to pursue rhythm-control strategy via catheter ablation."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metoprolol succinate 50 mg oral extended-release tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "atrial fibrillation rate control",
+      "action": "reference-existing"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "anticoagulation for atrial fibrillation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "dietary supplement",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Detailed follow-up consultation note documenting review of 48-hour Holter monitor results confirming persistent atrial fibrillation with 100% AF burden. Includes comprehensive shared decision-making discussion with patient and wife regarding pulmonary vein isolation via catheter ablation, covering success rates, risks, alternatives, recovery expectations. Documents patient's decision to proceed with ablation and pre-procedure planning steps initiated."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "pre-operative laboratory panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Pre-operative labs ordered in preparation for planned pulmonary vein isolation procedure. To be drawn prior to the procedure date."
+    },
+    {
+      "type": "transesophageal echocardiogram or cardiac CT of left atrium",
+      "report_state": "ordered-not-resulted",
+      "description": "Repeat TEE or cardiac CT ordered for left atrial anatomy mapping and thrombus exclusion prior to catheter ablation procedure. To be arranged before the procedure date."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "action": "reference-existing"
+    }
+  ]
+}

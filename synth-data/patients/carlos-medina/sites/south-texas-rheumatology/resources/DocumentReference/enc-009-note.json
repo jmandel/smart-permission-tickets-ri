@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-009-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Laboratory Results Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "date": "2021-09-14T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+    "display": "Dr. Alejandro Fuentes"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCT1JBVE9SWSBSRVNVTFRTIE5PVEUKClBhdGllbnQ6IENhcmxvcyBSb2JlcnRvIE1lZGluYQpET0I6IDA4LzE0LzE5NzQKRGF0ZSBvZiBTZXJ2aWNlOiAwOS8xMy8yMDIxClJlc3VsdHMgUmV2aWV3ZWQ6IDA5LzE0LzIwMjEKT3JkZXJpbmcvUmV2aWV3aW5nIFByb3ZpZGVyOiBBbGVqYW5kcm8gRnVlbnRlcywgTUQKU2l0ZTogU291dGggVGV4YXMgUmhldW1hdG9sb2d5LCBTYW4gQW50b25pbywgVFgKCklORElDQVRJT046ClJvdXRpbmUgbWV0aG90cmV4YXRlIG1vbml0b3JpbmcuIFBhdGllbnQgb24gbWV0aG90cmV4YXRlIDIwIG1nIFBPIHdlZWtseSBmb3Igc2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzIChNMDUuNzkpLCBkb3NlIGluY3JlYXNlZCBmcm9tIDE1IG1nIHRvIDIwIG1nIGluIEp1bmUgMjAyMS4gQ3VycmVudGx5IDMgbW9udGhzIG9uIGhpZ2hlciBkb3NlLiBGb2xpYyBhY2lkIDEgbWcgZGFpbHkgc3VwcGxlbWVudGF0aW9uIGNvbnRpbnVlZC4KCkxBQk9SQVRPUlkgUkVTVUxUUzoKCkNCQyB3aXRoIERpZmZlcmVudGlhbDoKLSBXQkM6IDUuOCB4MTBeMy91TCAobm9ybWFsKQotIEhlbW9nbG9iaW46IDE0LjYgZy9kTCAobm9ybWFsKQotIFBsYXRlbGV0czogMjUwIHgxMF4zL3VMIChub3JtYWwpCk5vIGxldWtvcGVuaWEsIGFuZW1pYSwgb3IgdGhyb21ib2N5dG9wZW5pYS4gTm8gZXZpZGVuY2Ugb2YgYm9uZSBtYXJyb3cgc3VwcHJlc3Npb24uCgpDb21wcmVoZW5zaXZlIE1ldGFib2xpYyBQYW5lbDoKLSBHbHVjb3NlOiA5OCBtZy9kTCAobm9ybWFsKQotIENyZWF0aW5pbmU6IDAuOSBtZy9kTCAobm9ybWFsKQotIEFMVDogNTIgVS9MIChlbGV2YXRlZDsgVUxOIDQwIGF0IHRoaXMgbGFiLCBhcHByb3hpbWF0ZWx5IDEuM3ggVUxOKQotIEFTVDogNDggVS9MIChlbGV2YXRlZDsgVUxOIDQwIGF0IHRoaXMgbGFiLCBhcHByb3hpbWF0ZWx5IDEuMnggVUxOKQotIEFsYnVtaW46IDMuOSBnL2RMIChub3JtYWwpCi0gVG90YWwgQmlsaXJ1YmluOiAwLjcgbWcvZEwgKG5vcm1hbCkKCkluZmxhbW1hdG9yeSBNYXJrZXJzOgotIEVTUjogMzQgbW0vaHIgKGVsZXZhdGVkKQotIENSUDogMi4wIG1nL2RMIChlbGV2YXRlZCkKCklOVEVSUFJFVEFUSU9OOgoxLiBNaWxkIHRyYW5zYW1pbmFzZSBlbGV2YXRpb24g4oCUIEFMVCA1MiBhbmQgQVNUIDQ4IHJlcHJlc2VudCBtaWxkIGhlcGF0b3RveGljaXR5IGluIHRoZSBzZXR0aW5nIG9mIG1ldGhvdHJleGF0ZSB0aGVyYXB5LCBib3RoIGxlc3MgdGhhbiAyeCBVTE4uIFBlciBBQ1IgbW9uaXRvcmluZyBndWlkZWxpbmVzLCBtaWxkIGVsZXZhdGlvbiBiZWxvdyAyeCBVTE4gd2FycmFudHMgY2xvc2Ugc3VydmVpbGxhbmNlIGJ1dCBkb2VzIG5vdCBuZWNlc3NpdGF0ZSBkb3NlIHJlZHVjdGlvbiBvciBkaXNjb250aW51YXRpb24gYXQgdGhpcyB0aW1lLiBCYXNlbGluZSBMRlRzIHdlcmUgbm9ybWFsIHByaW9yIHRvIG1ldGhvdHJleGF0ZSBpbml0aWF0aW9uIChBTFQgMjQsIEFTVCAyMiBpbiBGZWJydWFyeSAyMDIxKS4gT3RoZXIgaGVwYXRpYyBtYXJrZXJzIChhbGJ1bWluLCB0b3RhbCBiaWxpcnViaW4pIHJlbWFpbiBub3JtYWwsIGFuZCBwcmlvciBoZXBhdGl0aXMgQiBhbmQgQyBzZXJvbG9naWVzIHdlcmUgbmVnYXRpdmUuCgoyLiBQZXJzaXN0ZW50IGluZmxhbW1hdG9yeSBtYXJrZXIgZWxldmF0aW9uIOKAlCBFU1IgMzQgbW0vaHIgYW5kIENSUCAyLjAgbWcvZEwgcmVtYWluIGFib3ZlIG5vcm1hbCwgY29uc2lzdGVudCB3aXRoIG9uZ29pbmcgUkEgZGlzZWFzZSBhY3Rpdml0eSBkZXNwaXRlIDMgbW9udGhzIG9uIHRoZSBpbmNyZWFzZWQgbWV0aG90cmV4YXRlIGRvc2UuCgozLiBDQkMgd2l0aGluIG5vcm1hbCBsaW1pdHMg4oCUIE5vIGN5dG9wZW5pYXMuIE5vIG15ZWxvc3VwcHJlc3NpdmUgZWZmZWN0IGlkZW50aWZpZWQuCgo0LiBSZW5hbCBmdW5jdGlvbiBub3JtYWwg4oCUIENyZWF0aW5pbmUgMC45IG1nL2RMLCBubyBjb25jZXJuIGZvciByZW5hbCB0b3hpY2l0eS4KClBMQU46CjEuIENvbnRpbnVlIG1ldGhvdHJleGF0ZSAyMCBtZyBQTyB3ZWVrbHkuIE1pbGQgTEZUIGVsZXZhdGlvbiBkb2VzIG5vdCBtZWV0IHRocmVzaG9sZCBmb3IgZG9zZSBhZGp1c3RtZW50IG9yIGRpc2NvbnRpbnVhdGlvbiBwZXIgQUNSIGd1aWRlbGluZXMuCjIuIENvbnRpbnVlIGZvbGljIGFjaWQgMSBtZyBkYWlseS4KMy4gUGF0aWVudCBhZHZpc2VkIHRvIHN0cmljdGx5IGF2b2lkIGFsY29ob2wgY29uc3VtcHRpb24gZ2l2ZW4gdHJhbnNhbWluYXNlIGVsZXZhdGlvbiBvbiBoZXBhdG90b3hpYyBETUFSRCB0aGVyYXB5Lgo0LiBSZXBlYXQgQ0JDLCBDTVAgKHdpdGggaGVwYXRpYyBwYW5lbCksIEVTUiwgYW5kIENSUCBpbiA2LTggd2Vla3MgdG8gbW9uaXRvciBMRlQgdHJlbmQgYW5kIGRpc2Vhc2UgYWN0aXZpdHkgbWFya2Vycy4KNS4gSWYgQUxUL0FTVCByaXNlIGFib3ZlIDJ4IFVMTiBvbiByZXBlYXQgdGVzdGluZywgd2lsbCBjb25zaWRlciBkb3NlIHJlZHVjdGlvbiBvciBkaXNjb250aW51YXRpb24gb2YgbWV0aG90cmV4YXRlLgo2LiBQYXRpZW50IG5vdGlmaWVkIG9mIHJlc3VsdHMgYW5kIHBsYW4gdmlhIHRlbGVwaG9uZSBtZXNzYWdlLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpBbGVqYW5kcm8gRnVlbnRlcywgTUQKU291dGggVGV4YXMgUmhldW1hdG9sb2d5CjA5LzE0LzIwMjEK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-009"
+      }
+    ],
+    "period": {
+      "start": "2021-09-13",
+      "end": "2021-09-14"
+    }
+  }
+}

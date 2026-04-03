@@ -1,0 +1,157 @@
+{
+  "encounter_id": "enc-017",
+  "encounter_index": 17,
+  "site_slug": "puget-sound-psychiatry",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "psychiatric follow-up visit",
+    "reason": "quarterly follow-up, continued mood stability assessment",
+    "period_start": "2024-11-18T09:00:00-08:00",
+    "period_end": "2024-11-18T09:30:00-08:00",
+    "participants": [],
+    "service_provider": "Puget Sound Psychiatry",
+    "location": "Puget Sound Psychiatry, 1001 4th Ave, Suite 820, Seattle, WA 98154"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 116,
+        "value_diastolic": 74,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 140,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "lamotrigine serum level",
+        "value": 5.8,
+        "unit": "mcg/mL",
+        "reference_range": "3–14 mcg/mL",
+        "flag": "normal"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 86,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 155,
+        "unit": "mg/dL",
+        "flag": "borderline elevated"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening",
+        "value": 5,
+        "interpretation": "mild depressive symptoms"
+      },
+      {
+        "name": "GAD-7 anxiety screening",
+        "value": 2,
+        "interpretation": "minimal anxiety"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate severity, in sustained remission",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Quarterly psychiatric follow-up note documenting continued euthymia on lamotrigine 200 mg and quetiapine 50 mg, therapeutic lamotrigine serum level (5.8 mcg/mL), stable metabolic parameters, PHQ-9 of 5 and GAD-7 of 2, seasonal mood monitoring plan discussion, and continued sobriety with AA attendance. Follow-up in 3 months."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lamotrigine serum level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lamotrigine serum level"
+      ]
+    },
+    {
+      "type": "metabolic panel (quetiapine metabolic monitoring)",
+      "report_state": "summary-only",
+      "description": "Fasting glucose (86 mg/dL, normal) and triglycerides (155 mg/dL, borderline elevated, stable) were the only individually reported values from metabolic monitoring. Glucose within normal limits; no evidence of metabolic syndrome. Insufficient individual component values to constitute a full metabolic panel report."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

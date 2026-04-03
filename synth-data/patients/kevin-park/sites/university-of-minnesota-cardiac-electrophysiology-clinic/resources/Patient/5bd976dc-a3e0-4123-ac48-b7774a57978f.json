@@ -1,0 +1,135 @@
+{
+  "resourceType": "Patient",
+  "id": "5bd976dc-a3e0-4123-ac48-b7774a57978f",
+  "extension": [
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2028-9",
+            "display": "Asian"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2040-4",
+            "display": "Korean"
+          },
+          "url": "detailed"
+        },
+        {
+          "valueString": "Korean-American",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "Not Hispanic or Latino",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "His PCP starts workup: TTE (echocardiogram) shows mild left atrial dilation (4.3 cm), preserved LVEF (58%), no valvular disease. TSH is normal. CBC and metabolic panel are normal. CHA₂DS₂-VASc score is 1 (hypertension). His PCP initiates rate control (metoprolol succinate 50mg daily) and anticoagulation (apixaban 5mg BID), then refers Kevin to an electrophysiologist at the University of Minnesota for evaluation of catheter ablation.\n\nThe EP specialist at U of M issues a Permission Ticket to access Kevin's records from his PCP, including the ECG, echocardiogram, labs, and medication history relevant to the consult.\n\nTwo sites, one state (MN). Tests Permission Ticket constraints on scopes (specialist needs cardiac-relevant data: ECG, echo, labs, medications — not unrelated history) and organizations (community PCP → academic specialist)."
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "urn:oid:1.2.840.114350.1.13.0.1.7.5.737384.14",
+      "value": "UMN-EP-900471"
+    },
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-d78ea2c16bb7050d18470a96"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Park",
+      "given": [
+        "Kevin",
+        "Junghwan"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "612-555-0148",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kevin.park@example.com",
+      "use": "home"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-09-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "2841 Bloomington Avenue"
+      ],
+      "city": "Minneapolis",
+      "state": "MN",
+      "postalCode": "55406",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "M",
+        "display": "Married"
+      }
+    ],
+    "text": "Married"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}

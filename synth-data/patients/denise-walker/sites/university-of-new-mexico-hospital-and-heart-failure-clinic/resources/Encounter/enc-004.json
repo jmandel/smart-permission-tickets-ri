@@ -1,0 +1,128 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-004",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "151885005",
+          "display": "Follow-up in outpatient clinic (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending clinician"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/4c66cae8-c1d9-46e7-848d-5e712680e66b",
+        "display": "Marisol Chavez, NP"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Pharmacist medication review support"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/f97dd136-a15f-4a2c-b48f-4cf40aba00ef",
+        "display": "Kevin Romero, PharmD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-05-03",
+    "end": "2024-05-03"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185389009",
+          "display": "Follow-up visit (procedure)"
+        }
+      ],
+      "text": "Post-discharge heart-failure follow-up and medication reconciliation"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-003-cond-hf",
+        "display": "Heart failure with reduced ejection fraction"
+      },
+      "rank": 1
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-004-cond-nyha-ii",
+        "display": "New York Heart Association class II functional limitation due to heart failure"
+      },
+      "rank": 2
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-003-cond-afib-rvr",
+        "display": "Paroxysmal atrial fibrillation"
+      },
+      "rank": 3
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-003-cond-ckd3b",
+        "display": "Chronic kidney disease stage 3b"
+      },
+      "rank": 4
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/c92eed19-77ce-4f60-98e1-e6f67264c010",
+        "display": "UNM Heart Failure Clinic, Albuquerque, New Mexico"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
+    "display": "University of New Mexico Hospital and Heart Failure Clinic"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Denise Walker was seen at the UNM Heart Failure Clinic in Albuquerque, New Mexico by Marisol Chavez, NP, with medication review support from Kevin Romero, PharmD, 8 days after hospital discharge. Clinic vitals were BP 118/72 mmHg, HR 68 bpm, RR 16/min, Temp 97.8 F, SpO2 98% on room air, weight 194 lb, height 64 in, BMI 33.3 kg/m2."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-004-covid",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "229",
+        "display": "COVID-19, mRNA, LNP-S, bivalent, PF, 50 mcg/0.5 mL or 25mcg/0.25 mL dose"
+      }
+    ],
+    "text": "COVID-19 vaccine booster, Moderna bivalent (Original/Omicron BA.4/BA.5)"
+  },
+  "patient": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "occurrenceDateTime": "2022-11-18",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+    "display": "Eastbay Primary Care Associates"
+  },
+  "manufacturer": {
+    "display": "Moderna"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78421000",
+        "display": "Intramuscular route"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "AP",
+            "display": "Administering Provider"
+          }
+        ],
+        "text": "Administering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+        "type": "Practitioner",
+        "display": "Dr. Anita Okonkwo"
+      }
+    },
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+        "type": "Practitioner",
+        "display": "Dr. Anita Okonkwo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "resourceType": "Observation",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "91077-8",
+        "display": "Measles virus RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+      }
+    ],
+    "text": "Measles virus RNA by PCR, nasopharyngeal specimen"
+  },
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2026-03-25",
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "260373001",
+        "display": "Detected (qualifier value)"
+      }
+    ],
+    "text": "Positive"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "A",
+          "display": "Abnormal"
+        }
+      ],
+      "text": "Abnormal"
+    }
+  ],
+  "id": "enc-003-measles-pcr"
+}

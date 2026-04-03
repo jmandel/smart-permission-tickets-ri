@@ -1,0 +1,107 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Hypertension follow-up",
+    "period_start": "2018-09-10T09:00:00-05:00",
+    "period_end": "2018-09-10T09:30:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending/primary performer"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 142,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 88,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 180,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.5,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2018-06",
+      "action": "update-existing",
+      "note": "Blood pressure remains elevated at 142/88 despite 3 months of lifestyle modification. Escalating from lifestyle modification alone to pharmacotherapy with lisinopril."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take one tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "create",
+      "dispense_quantity": 90,
+      "number_of_refills": 3
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Focused follow-up note for hypertension documenting persistent blood pressure elevation (142/88) after 3 months of lifestyle modification, clinical decision to initiate pharmacotherapy with lisinopril 10 mg daily, and medication counseling including ACE inhibitor side effects and angioedema precautions."
+    },
+    {
+      "type": "patient education / instructions document",
+      "description": "Written patient instructions for ACE inhibitor (lisinopril) therapy, including information on potential side effects (dry cough, dizziness, hyperkalemia) and warning signs requiring immediate contact (persistent cough, facial/lip/tongue swelling, difficulty breathing)."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "type": "intolerance",
+      "action": "reference-existing"
+    }
+  ]
+}

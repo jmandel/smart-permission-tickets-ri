@@ -1,0 +1,58 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-019-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2025-01-21T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+      "type": "Practitioner",
+      "display": "Dr. Kevin Tran"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMS8yMS8yMDI1ClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsIChET0I6IDExLzE0LzE5OTMpClByb3ZpZGVyOiBEci4gS2V2aW4gVHJhbiwgTUQKU2l0ZTogQmFsbGFyZCBGYW1pbHkgTWVkaWNpbmUsIDU0MTIgMjJuZCBBdmUgTlcsIFNlYXR0bGUsIFdBIDk4MTA3CgpSZWFzb24gZm9yIENhbGw6IEFubnVhbCBsYWIgcmVzdWx0cyByZXZpZXcKCkRyLiBUcmFuIGNvbnRhY3RlZCB0aGUgcGF0aWVudCBieSB0ZWxlcGhvbmUgdG8gcmV2aWV3IGhlciBhbm51YWwgbGFib3JhdG9yeSByZXN1bHRzLiBDQkMsIENNUCwgYW5kIGxpcGlkIHBhbmVsIHdlcmUgcmV2aWV3ZWQuIEFsbCB2YWx1ZXMgd2VyZSB3aXRoaW4gbm9ybWFsIGxpbWl0cyB3aXRoIHRoZSBleGNlcHRpb24gb2YgdHJpZ2x5Y2VyaWRlcyBhdCAxNTIgbWcvZEwgKG1pbGRseSBlbGV2YXRlZCksIHdoaWNoIGlzIHN0YWJsZSBjb21wYXJlZCB0byBwcmlvciB2YWx1ZXMgYW5kIGNvbnNpc3RlbnQgd2l0aCBvbmdvaW5nIHF1ZXRpYXBpbmUgNTBtZyBuaWdodGx5IHVzZS4gTm8gcGhhcm1hY29sb2dpYyBpbnRlcnZlbnRpb24gd2FycmFudGVkIGF0IHRoaXMgdGltZS4gRGlldGFyeSBjb3Vuc2VsaW5nIHdhcyByZWluZm9yY2VkOiByZWR1Y2UgcmVmaW5lZCBjYXJib2h5ZHJhdGVzIGFuZCBpbmNyZWFzZSBvbWVnYS0zIGZhdHR5IGFjaWQgaW50YWtlLiBDb250aW51ZWQgbW9uaXRvcmluZyBwbGFubmVkIGF0IG5leHQgYW5udWFsIHdlbGxuZXNzIHZpc2l0LgoKVGhlIHBhdGllbnQgaW5xdWlyZWQgYWJvdXQgYSBuYWx0cmV4b25lIHJlZmlsbC4gU2hlIGhhcyBiZWVuIG1haW50YWluZWQgb24gbmFsdHJleG9uZSA1MG1nIGRhaWx5IGZvciBhbGNvaG9sIHVzZSBkaXNvcmRlciBpbiBzdXN0YWluZWQgcmVtaXNzaW9uIChzb2JlciBzaW5jZSBBcHJpbCAyMDIzKS4gRHIuIFRyYW4gY29uZmlybWVkIGhlIGNhbiBwcmVzY3JpYmUgbmFsdHJleG9uZSBnb2luZyBmb3J3YXJkIGluIGNvb3JkaW5hdGlvbiB3aXRoIGhlciBwc3ljaGlhdHJpc3QsIERyLiBBbml0YSBQYXRlbCBhdCBQdWdldCBTb3VuZCBQc3ljaGlhdHJ5LCBpZiBuZWVkZWQuIEEgOTAtZGF5IHJlZmlsbCBvZiBuYWx0cmV4b25lIDUwbWcgUE8gZGFpbHkgd2FzIHByb3ZpZGVkLgoKUGxhbjoKMS4gQ29udGludWUgY3VycmVudCBtZWRpY2F0aW9uczogbGFtb3RyaWdpbmUgMjAwbWcgUE8gZGFpbHksIHF1ZXRpYXBpbmUgNTBtZyBQTyBhdCBiZWR0aW1lLCBuYWx0cmV4b25lIDUwbWcgUE8gZGFpbHkgKDkwLWRheSByZWZpbGwgcHJvdmlkZWQgdG9kYXkpCjIuIERpZXRhcnkgbW9kaWZpY2F0aW9ucyBmb3IgbWlsZCBoeXBlcnRyaWdseWNlcmlkZW1pYSDigJQgcmVkdWNlIHJlZmluZWQgY2FyYm9oeWRyYXRlcywgaW5jcmVhc2Ugb21lZ2EtMyBpbnRha2UKMy4gUmVjaGVjayBsaXBpZCBwYW5lbCBhdCBuZXh0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdAo0LiBGb2xsb3ctdXA6IEFubnVhbCB3ZWxsbmVzcyB2aXNpdCwgc3ByaW5nIDIwMjUK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-019"
+      }
+    ],
+    "period": {
+      "start": "2025-01-21"
+    }
+  }
+}

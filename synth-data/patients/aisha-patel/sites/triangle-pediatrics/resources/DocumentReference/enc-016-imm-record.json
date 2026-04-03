@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-016-imm-record",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "87273-9",
+        "display": "Immunization note"
+      }
+    ],
+    "text": "Immunization Administration Record"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "date": "2025-10-14T00:00:00-04:00",
+  "author": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "type": "Practitioner",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "SU1NVU5JWkFUSU9OIEFETUlOSVNUUkFUSU9OIFJFQ09SRAoKRGF0ZTogMTAvMTQvMjAyNQpQYXRpZW50OiBBaXNoYSBQcml5YSBQYXRlbApET0I6IDAzLzE1LzIwMjAgKEFnZSA1IHllYXJzKQpNUk46IFRQLTIwMjAtMDQxODIKClZhY2NpbmU6IEluZmx1ZW56YSwgcXVhZHJpdmFsZW50IGluYWN0aXZhdGVkIChJSVY0KQpDVlggQ29kZTogMTUwCkRvc2U6IDAuNSBtTApSb3V0ZTogSW50cmFtdXNjdWxhciBpbmplY3Rpb24KU2l0ZTogTGVmdCBkZWx0b2lkCkxvdCBOdW1iZXI6IERvY3VtZW50ZWQgaW4gcGhhcm1hY3kgcmVjb3JkCk1hbnVmYWN0dXJlcjogT24gZmlsZQpWSVMgRGF0ZTogQ3VycmVudCBzZWFzb24gVklTIHByb3ZpZGVkIGFuZCByZXZpZXdlZCB3aXRoIHBhcmVudApDb25zZW50OiBPYnRhaW5lZCBmcm9tIG1vdGhlciwgUHJpeWEgUGF0ZWwKCkFkbWluaXN0ZXJpbmcgUHJvdmlkZXI6IERyLiBNZWdhbiBIYXJsb3csIE1EIChOUEk6IDExODQ2Mjc1MzApCkxvY2F0aW9uOiBUcmlhbmdsZSBQZWRpYXRyaWNzLCA0MjAxIExha2UgQm9vbmUgVHJhaWwsIFN1aXRlIDIwMCwgUmFsZWlnaCwgTkMgMjc2MDcKClBvc3QtQWRtaW5pc3RyYXRpb24gT2JzZXJ2YXRpb246IDE1LW1pbnV0ZSBvYnNlcnZhdGlvbiBjb21wbGV0ZWQuIE5vIGFkdmVyc2UgcmVhY3Rpb24uCgpVUERBVEVEIElNTVVOSVpBVElPTiBISVNUT1JZOgpUaGlzIGluZmx1ZW56YSBkb3NlIGhhcyBiZWVuIGFkZGVkIHRvIHRoZSBwYXRpZW50J3MgaW1tdW5pemF0aW9uIHJlY29yZCBmb3IgdGhlIDIwMjUtMjAyNiBpbmZsdWVuemEgc2Vhc29uLgoKU2lnbmVkOiBEci4gTWVnYW4gSGFybG93LCBNRApUcmlhbmdsZSBQZWRpYXRyaWNzCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-016"
+      }
+    ],
+    "period": {
+      "start": "2025-10-14"
+    }
+  }
+}

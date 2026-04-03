@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-012-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "75425-9",
+        "display": "Cardiology Diagnostic study note"
+      }
+    ],
+    "text": "Transthoracic Echocardiogram Report"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2026-01-19T00:00:00Z",
+  "author": [
+    {
+      "display": "Affiliated Cardiologist"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VFJBTlNUSE9SQUNJQyBFQ0hPQ0FSRElPR1JBTSBSRVBPUlQKCkRhdGUgb2YgU3R1ZHk6IDAxLzE5LzIwMjYKUGF0aWVudDogS2V2aW4gSnVuZ2h3YW4gUGFyawpET0I6IDA5LzE0LzE5NjgKQWdlOiA1NyB5ZWFycwpTZXg6IE1hbGUKCk9yZGVyaW5nIFBoeXNpY2lhbjogRHIuIEFuZ2VsYSBXaGl0ZmllbGQsIE1EIChNaW5uZWhhaGEgSW50ZXJuYWwgTWVkaWNpbmUpClBlcmZvcm1lZCBieTogQ2FyZGlhYyBTb25vZ3JhcGhlcgpJbnRlcnByZXRlZCBieTogQWZmaWxpYXRlZCBDYXJkaW9sb2dpc3QKRmFjaWxpdHk6IEFmZmlsaWF0ZWQgSW1hZ2luZyBDZW50ZXIsIE1pbm5lYXBvbGlzLCBNTgoKSU5ESUNBVElPTjoKTmV3LW9uc2V0IGF0cmlhbCBmaWJyaWxsYXRpb24gZGlhZ25vc2VkIDAxLzEyLzIwMjYuIEV2YWx1YXRlIGNhcmRpYWMgc3RydWN0dXJlIGFuZCBmdW5jdGlvbiwgYXNzZXNzIGZvciB2YWx2dWxhciBkaXNlYXNlLCBsZWZ0IGF0cmlhbCBzaXplLCBhbmQgdmVudHJpY3VsYXIgZnVuY3Rpb24uCgpURUNITklRVUU6CkNvbXBsZXRlIHR3by1kaW1lbnNpb25hbCB0cmFuc3Rob3JhY2ljIGVjaG9jYXJkaW9ncmFtIHdpdGggTS1tb2RlLCBzcGVjdHJhbCBEb3BwbGVyLCBhbmQgY29sb3IgZmxvdyBEb3BwbGVyIGltYWdpbmcuIFN0YW5kYXJkIHBhcmFzdGVybmFsIGxvbmctYXhpcywgc2hvcnQtYXhpcywgYXBpY2FsIGZvdXItY2hhbWJlciwgYXBpY2FsIHR3by1jaGFtYmVyLCBhbmQgc3ViY29zdGFsIHZpZXdzIG9idGFpbmVkLiBJbWFnZSBxdWFsaXR5IGFkZXF1YXRlIGZvciBpbnRlcnByZXRhdGlvbi4KCkZJTkRJTkdTOgoKTGVmdCBWZW50cmljbGU6Ci0gTGVmdCB2ZW50cmljdWxhciBlamVjdGlvbiBmcmFjdGlvbiAoTFZFRik6IDU4JSAocHJlc2VydmVkOyBub3JtYWwgPj01NSUpCi0gTGVmdCB2ZW50cmljdWxhciBkaW1lbnNpb25zIHdpdGhpbiBub3JtYWwgbGltaXRzCi0gTm8gbGVmdCB2ZW50cmljdWxhciBoeXBlcnRyb3BoeQotIE5vcm1hbCB3YWxsIHRoaWNrbmVzcwotIE5vIHJlZ2lvbmFsIHdhbGwgbW90aW9uIGFibm9ybWFsaXRpZXMKCkxlZnQgQXRyaXVtOgotIExlZnQgYXRyaWFsIGRpYW1ldGVyOiA0LjMgY20gKG1pbGQgZGlsYXRpb247IG5vcm1hbCA8NC4wIGNtIGluIG1hbGVzKQotIExlZnQgYXRyaWFsIHZvbHVtZSBpbmRleDogMzIgbUwvbTIgKG1pbGRseSBlbGV2YXRlZCkKClJpZ2h0IFZlbnRyaWNsZToKLSBOb3JtYWwgc2l6ZSBhbmQgc3lzdG9saWMgZnVuY3Rpb24KLSBUQVBTRTogMi4xIGNtIChub3JtYWwpCgpSaWdodCBBdHJpdW06Ci0gTm9ybWFsIHNpemUKClZhbHZ1bGFyIEFzc2Vzc21lbnQ6Ci0gTWl0cmFsIHZhbHZlOiBUcmFjZSBtaXRyYWwgcmVndXJnaXRhdGlvbiAocGh5c2lvbG9naWMpLiBObyBzdGVub3Npcy4KLSBBb3J0aWMgdmFsdmU6IE5vIGFvcnRpYyBzdGVub3NpcyBvciByZWd1cmdpdGF0aW9uLgotIFRyaWN1c3BpZCB2YWx2ZTogTm9ybWFsIG1vcnBob2xvZ3kgYW5kIGZ1bmN0aW9uLgotIFB1bG1vbmljIHZhbHZlOiBOb3JtYWwgbW9ycGhvbG9neSBhbmQgZnVuY3Rpb24uCgpIZW1vZHluYW1pY3M6Ci0gRXN0aW1hdGVkIHJpZ2h0IHZlbnRyaWN1bGFyIHN5c3RvbGljIHByZXNzdXJlIChSVlNQKTogMjggbW1IZyAobm9ybWFsKQoKUGVyaWNhcmRpdW06Ci0gTm8gcGVyaWNhcmRpYWwgZWZmdXNpb24uCgpPdGhlcjoKLSBBb3J0aWMgcm9vdDogTm9ybWFsICgzLjIgY20pCi0gTm8gaW50cmFjYXJkaWFjIHRocm9tYnVzIGlkZW50aWZpZWQgKG5vdGU6IGxpbWl0ZWQgZXZhbHVhdGlvbiBieSBUVEU7IHRyYW5zZXNvcGhhZ2VhbCBlY2hvY2FyZGlvZ3JhcGh5IHdvdWxkIGJlIG1vcmUgc2Vuc2l0aXZlIGlmIHRocm9tYnVzIGV4Y2x1c2lvbiBpcyBjbGluaWNhbGx5IHJlcXVpcmVkKQoKSU1QUkVTU0lPTjoKMS4gUHJlc2VydmVkIGxlZnQgdmVudHJpY3VsYXIgc3lzdG9saWMgZnVuY3Rpb24gd2l0aCBMVkVGIG9mIDU4JS4KMi4gTWlsZCBsZWZ0IGF0cmlhbCBkaWxhdGlvbiAoNC4zIGNtLCBMQVZJIDMyIG1ML20yKSwgY29uc2lzdGVudCB3aXRoIGF0cmlhbCBmaWJyaWxsYXRpb24uCjMuIE5vIHNpZ25pZmljYW50IHZhbHZ1bGFyIGRpc2Vhc2UuIFRyYWNlIG1pdHJhbCByZWd1cmdpdGF0aW9uIGlzIHBoeXNpb2xvZ2ljLgo0LiBOb3JtYWwgcmlnaHQgdmVudHJpY3VsYXIgc2l6ZSBhbmQgZnVuY3Rpb24uIE5vcm1hbCBlc3RpbWF0ZWQgUlZTUC4KNS4gTm8gcGVyaWNhcmRpYWwgZWZmdXNpb24uCjYuIE5vIGludHJhY2FyZGlhYyB0aHJvbWJ1cyBpZGVudGlmaWVkIGJ5IHRyYW5zdGhvcmFjaWMgaW1hZ2luZy4KCkNMSU5JQ0FMIENPUlJFTEFUSU9OOgpGaW5kaW5ncyBhcmUgY29uc2lzdGVudCB3aXRoIG1pbGQgbGVmdCBhdHJpYWwgcmVtb2RlbGluZyBpbiB0aGUgc2V0dGluZyBvZiByZWNlbnRseSBkaWFnbm9zZWQgYXRyaWFsIGZpYnJpbGxhdGlvbi4gUHJlc2VydmVkIGJpdmVudHJpY3VsYXIgZnVuY3Rpb24gYW5kIGFic2VuY2Ugb2Ygc2lnbmlmaWNhbnQgdmFsdnVsYXIgZGlzZWFzZSBhcmUgZmF2b3JhYmxlIHByb2dub3N0aWMgZmVhdHVyZXMuIFJlc3VsdHMgaGF2ZSBiZWVuIGZvcndhcmRlZCB0byB0aGUgb3JkZXJpbmcgcHJvdmlkZXIsIERyLiBBbmdlbGEgV2hpdGZpZWxkLCBmb3IgY2xpbmljYWwgY29ycmVsYXRpb24gYW5kIG1hbmFnZW1lbnQgZGVjaXNpb25zIHJlZ2FyZGluZyByYXRlL3JoeXRobSBjb250cm9sIGFuZCBhbnRpY29hZ3VsYXRpb24uCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-012"
+      }
+    ],
+    "period": {
+      "start": "2026-01-19",
+      "end": "2026-01-19"
+    }
+  }
+}

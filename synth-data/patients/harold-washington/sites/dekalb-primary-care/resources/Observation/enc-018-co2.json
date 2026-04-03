@@ -1,0 +1,65 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-018-co2",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2028-9",
+        "display": "Carbon dioxide, total [Moles/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "Carbon Dioxide, Total"
+  },
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-018"
+  },
+  "effectiveDateTime": "2025-03-13",
+  "issued": "2025-03-13T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+      "display": "Dr. Anita Desai"
+    }
+  ],
+  "valueQuantity": {
+    "value": 26,
+    "unit": "mEq/L",
+    "system": "http://unitsofmeasure.org",
+    "code": "meq/L"
+  },
+  "referenceRange": [
+    {
+      "text": "23 - 29 mEq/L",
+      "low": {
+        "value": 23,
+        "unit": "mEq/L",
+        "system": "http://unitsofmeasure.org",
+        "code": "meq/L"
+      },
+      "high": {
+        "value": 29,
+        "unit": "mEq/L",
+        "system": "http://unitsofmeasure.org",
+        "code": "meq/L"
+      }
+    }
+  ]
+}

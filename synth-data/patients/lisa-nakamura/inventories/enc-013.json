@@ -1,0 +1,174 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "uc-health-hematology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Confirmatory APS antibody testing and thrombophilia panel",
+    "period_start": "2025-07-08",
+    "period_end": "2025-07-08",
+    "participants": [],
+    "service_provider": "UC Health Hematology",
+    "location": "UC Health Hematology, Aurora, CO"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "anticardiolipin IgG antibody",
+        "value": 52,
+        "unit": "GPL units",
+        "reference_range": "negative <40 GPL",
+        "flag": "high",
+        "action": "create"
+      },
+      {
+        "name": "anticardiolipin IgM antibody",
+        "value": 10,
+        "unit": "MPL units",
+        "reference_range": "negative <20 MPL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "anti-beta-2 glycoprotein I IgG antibody",
+        "value": 22,
+        "unit": "units",
+        "reference_range": "negative <20",
+        "flag": "high",
+        "action": "create"
+      },
+      {
+        "name": "anti-beta-2 glycoprotein I IgM antibody",
+        "value": 7,
+        "unit": "units",
+        "reference_range": "negative <20",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "lupus anticoagulant, dilute Russell viper venom time (dRVVT) screen-to-confirm ratio",
+        "value": 1.35,
+        "unit": "ratio",
+        "reference_range": "positive >1.20",
+        "flag": "high",
+        "note": "Positive on dRVVT with confirmatory mixing study",
+        "action": "create"
+      },
+      {
+        "name": "lupus anticoagulant interpretation",
+        "value": "Positive",
+        "note": "Qualitative result — positive on dRVVT with confirmatory mixing study; more clearly positive than initial weakly positive result",
+        "action": "create"
+      },
+      {
+        "name": "Factor V Leiden mutation analysis",
+        "value": "Not detected (wild type)",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "prothrombin gene mutation G20210A analysis",
+        "value": "Not detected (wild type)",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "protein C activity",
+        "value": 98,
+        "unit": "%",
+        "reference_range": "70–140%",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "protein S activity, free",
+        "value": 72,
+        "unit": "%",
+        "reference_range": "60–150%",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "protein S activity, total",
+        "value": 88,
+        "unit": "%",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "antithrombin activity",
+        "value": 104,
+        "unit": "%",
+        "reference_range": "80–120%",
+        "flag": "normal",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "antiphospholipid syndrome, obstetric subtype",
+      "clinical_status": "active",
+      "onset_date": "2025-07-08",
+      "action": "create",
+      "note": "Formally confirmed at this encounter. Patient meets revised Sapporo (Sydney) classification criteria: laboratory criteria (persistently positive anticardiolipin IgG at medium titer on two occasions ≥12 weeks apart, persistent lupus anticoagulant positivity, now-positive anti-beta-2 glycoprotein I IgG) and clinical criteria (three consecutive early pregnancy losses)."
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "lab visit note",
+      "description": "Lab-only visit for confirmatory APS antibody testing at 12+ weeks post initial positive results and thrombophilia panel blood draw. Documents all lab results including repeat APS antibody panel (anticardiolipin IgG persistently elevated at 52 GPL, anti-beta-2 glycoprotein I IgG now positive at 22), persistent lupus anticoagulant positivity, and negative thrombophilia screening. Notes that patient now meets revised Sapporo (Sydney) classification criteria for antiphospholipid syndrome, obstetric subtype. Results transmitted to Dr. Okafor, Dr. Whitfield (Colorado MFM), and Dr. Forsythe (RMWH).",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "repeat antiphospholipid antibody panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "anticardiolipin IgG antibody",
+        "anticardiolipin IgM antibody",
+        "anti-beta-2 glycoprotein I IgG antibody",
+        "anti-beta-2 glycoprotein I IgM antibody"
+      ]
+    },
+    {
+      "type": "lupus anticoagulant assay",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lupus anticoagulant, dilute Russell viper venom time (dRVVT) screen-to-confirm ratio",
+        "lupus anticoagulant interpretation"
+      ]
+    },
+    {
+      "type": "thrombophilia genetic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Factor V Leiden mutation analysis",
+        "prothrombin gene mutation G20210A analysis"
+      ]
+    },
+    {
+      "type": "thrombophilia functional panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "protein C activity",
+        "protein S activity, free",
+        "protein S activity, total",
+        "antithrombin activity"
+      ]
+    }
+  ],
+  "allergies": []
+}

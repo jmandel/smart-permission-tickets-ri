@@ -1,0 +1,121 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "urgent office visit",
+    "reason": "First pregnancy loss — vaginal bleeding and cramping at approximately 6 weeks gestation",
+    "period_start": "2024-06-03",
+    "period_end": "2024-06-03",
+    "participants": [
+      {
+        "name": "Dr. Megan Forsythe",
+        "role": "OB/GYN"
+      }
+    ],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 114,
+        "value_diastolic": 70,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 130,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "human chorionic gonadotropin (beta-hCG), quantitative, serum",
+        "value": "4,120",
+        "unit": "mIU/mL",
+        "date": "2024-06-03",
+        "flag": "abnormal",
+        "note": "Stat draw at initial urgent visit; lower than expected for 6 weeks gestation"
+      },
+      {
+        "name": "human chorionic gonadotropin (beta-hCG), quantitative, serum",
+        "value": "3,480",
+        "unit": "mIU/mL",
+        "date": "2024-06-05",
+        "flag": "abnormal",
+        "note": "48-hour follow-up draw; declining, confirming non-viable pregnancy"
+      },
+      {
+        "name": "human chorionic gonadotropin (beta-hCG), quantitative, serum",
+        "value": "<5",
+        "unit": "mIU/mL",
+        "date": "2024-06-14",
+        "flag": "normal",
+        "note": "Follow-up draw confirming complete resolution of pregnancy"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "spontaneous abortion (missed miscarriage), first trimester",
+      "clinical_status": "resolved",
+      "onset_date": "2024-06-03",
+      "action": "create",
+      "note": "Confirmed by declining serial beta-hCG levels and transvaginal ultrasound showing gestational sac without embryonic structures at 6 weeks gestation. First pregnancy loss. Complete resolution confirmed by beta-hCG <5 mIU/mL on 2024-06-14."
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin with folate, oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "preconception supplementation / early pregnancy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents the urgent office visit for first-trimester pregnancy loss at 6 weeks gestation, including transvaginal ultrasound findings, serial beta-hCG results confirming non-viable pregnancy, diagnosis of spontaneous abortion (missed miscarriage), expectant management plan, extensive patient counseling regarding prognosis for future pregnancies, and follow-up beta-hCG on 2024-06-14 confirming complete resolution."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "transvaginal pelvic ultrasound",
+      "report_state": "summary-only",
+      "description": "Gestational sac identified measuring consistent with 5 weeks and 6 days. No yolk sac or fetal pole visualized. No adnexal masses. No free fluid in pelvis. Findings concerning for early pregnancy failure."
+    }
+  ],
+  "allergies": []
+}

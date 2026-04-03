@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-005-ptglobal",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "75844-1",
+        "display": "Patient global assessment of disease activity - 0-10 numeric rating [Reported]"
+      }
+    ],
+    "text": "Patient global assessment of disease activity (visual analog scale)"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2021-03-15",
+  "valueQuantity": {
+    "value": 62,
+    "unit": "mm",
+    "system": "http://unitsofmeasure.org",
+    "code": "mm"
+  }
+}

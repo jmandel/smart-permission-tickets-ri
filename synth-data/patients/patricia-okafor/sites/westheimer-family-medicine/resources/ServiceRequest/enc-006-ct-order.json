@@ -1,0 +1,40 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-006-ct-order",
+  "status": "active",
+  "intent": "order",
+  "priority": "urgent",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75385009",
+        "display": "Computed tomography of thorax with contrast (procedure)"
+      }
+    ],
+    "text": "CT chest with contrast"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-08-01",
+  "requester": {
+    "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+    "display": "Dr. Adebayo Olatunde, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-006-rul-opacity",
+      "display": "Right upper lobe pulmonary opacity"
+    }
+  ],
+  "note": [
+    {
+      "text": "Ordered for further characterization of the right upper lobe opacity identified on chest X-ray. To be completed prior to pulmonology appointment."
+    }
+  ]
+}

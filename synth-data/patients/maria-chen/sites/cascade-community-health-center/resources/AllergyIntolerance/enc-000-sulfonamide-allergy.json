@@ -1,0 +1,70 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "enc-000-sulfonamide-allergy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91939003",
+        "display": "Allergy to sulfonamide (finding)"
+      }
+    ],
+    "text": "Sulfonamide antibiotics"
+  },
+  "patient": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "onsetDateTime": "2012",
+  "recordedDate": "2019-01-22",
+  "recorder": {
+    "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+    "display": "Dr. Angela Morales, MD"
+  },
+  "note": [
+    {
+      "text": "Rash in 2012 after Bactrim prescribed for UTI. No other known drug, food, or environmental allergies."
+    }
+  ],
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271807003",
+              "display": "Eruption of skin (disorder)"
+            }
+          ],
+          "text": "Rash"
+        }
+      ],
+      "description": "Rash after Bactrim (sulfamethoxazole/trimethoprim) prescribed for UTI in 2012"
+    }
+  ]
+}

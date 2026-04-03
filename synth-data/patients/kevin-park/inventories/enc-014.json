@@ -1,0 +1,79 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone Encounter",
+    "reason": "New medication tolerance check (2-week follow-up for metoprolol and apixaban initiated 2026-01-26 for atrial fibrillation)",
+    "period_start": "2026-02-10",
+    "participants": [],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine (telephone), Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "atrial fibrillation, persistent",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metoprolol succinate 50 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "atrial fibrillation rate control",
+      "action": "reference-existing"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "anticoagulation for atrial fibrillation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "dietary supplement",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents the 2-week medication tolerance assessment for metoprolol succinate and apixaban following initiation on 2026-01-26 for persistent atrial fibrillation. Records patient-reported outcomes including resolution of initial metoprolol fatigue, home heart rate readings of 68–72 bpm, absence of bleeding complications on apixaban, full medication adherence, current medication list review, and confirmation of upcoming EP consultation on 2026-02-16. No medication changes made.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "GI upset",
+      "severity": "intolerance",
+      "action": "reference-existing"
+    }
+  ]
+}

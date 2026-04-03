@@ -1,0 +1,37 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-008-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "effectiveDateTime": "2024-08-01",
+  "issued": "2024-08-12T00:00:00Z",
+  "conclusion": "Albumin 3.4 g/dL (mildly low); remainder unremarkable. Performed at referring office (Westheimer Family Medicine), reviewed at this encounter."
+}

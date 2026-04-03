@@ -1,0 +1,60 @@
+{
+  "resourceType": "Practitioner",
+  "id": "663ff2b7-1929-7235-9f29-43f7391e3e5e",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "National Provider Identifier"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1891034265"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Okafor",
+      "given": [
+        "Priscilla"
+      ],
+      "prefix": [
+        "Dr."
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Doctor of Medicine"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://nucc.org/provider-taxonomy",
+            "code": "207PP0204X",
+            "display": "Pediatric Emergency Medicine"
+          }
+        ],
+        "text": "Pediatric Emergency Medicine"
+      }
+    }
+  ]
+}

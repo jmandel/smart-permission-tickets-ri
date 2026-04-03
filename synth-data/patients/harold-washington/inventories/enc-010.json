@@ -1,0 +1,272 @@
+{
+  "encounter_id": "enc-010",
+  "encounter_index": 10,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Transfer of care; influenza immunization",
+    "period_start": "2024-10-03",
+    "period_end": "2024-10-03",
+    "participants": [
+      {
+        "name": "Dr. Cynthia Okafor",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 138,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 84,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "138/84",
+        "unit": "mmHg",
+        "components": [
+          "systolic blood pressure",
+          "diastolic blood pressure"
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 190,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.3,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 7.1,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 134,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "creatinine (serum)",
+        "value": 1.1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "estimated glomerular filtration rate (eGFR)",
+        "value": 74,
+        "unit": "mL/min/1.73m²",
+        "reference_range": "≥60 mL/min/1.73m²",
+        "flag": "normal",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 108,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL",
+        "flag": "high",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 210,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "high",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 43,
+        "unit": "mg/dL",
+        "reference_range": "≥40 mg/dL",
+        "flag": "normal",
+        "date": "2024-09-26"
+      },
+      {
+        "name": "triglycerides",
+        "value": 168,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "high",
+        "date": "2024-09-26"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "status": "not-performed",
+        "reason_not_performed": "cognitive impairment",
+        "note": "Not formally administered due to cognitive status. Collateral from daughter: positive for depressed mood, negative for suicidal ideation."
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "Alzheimer's disease, mild stage",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    },
+    {
+      "name": "bereavement",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated (2024-2025 seasonal)",
+      "date": "2024-10-03",
+      "site": "left deltoid",
+      "route": "intramuscular injection"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note for transfer-of-care visit documenting vitals, lab review (drawn 2024-09-26), assessment of hypertension, type 2 diabetes, hyperlipidemia, and Alzheimer's disease with clinical progression. Documents influenza vaccination, medication reconciliation, bereavement concerns, and recommendations for the new PCP including consideration of second antihypertensive and close diabetes monitoring."
+    },
+    {
+      "type": "transfer of care summary",
+      "description": "Comprehensive transfer-of-care summary prepared by Dr. Okafor including 9.5-year medication history, laboratory trend data, complete immunization records, problem list, allergy documentation, care coordination notes, and neurology referral information for Dr. Raymond Patel at First Coast Neurology Associates."
+    },
+    {
+      "type": "medication reconciliation document",
+      "description": "Reconciled medication list at time of transfer documenting active medications (lisinopril 20 mg daily, metformin 500 mg BID, atorvastatin 20 mg daily, donepezil 10 mg daily), medication adherence concerns due to cognitive decline, and recommendations for caregiver-supervised administration."
+    },
+    {
+      "type": "immunization record",
+      "description": "Complete immunization history provided as part of transfer documentation, including today's influenza vaccine (2024-2025 season) and historical immunizations."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "LDL cholesterol",
+        "total cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "renal function panel",
+      "report_state": "summary-only",
+      "description": "Creatinine 1.1 mg/dL and eGFR 74 mL/min/1.73m² reported along with fasting glucose 134 mg/dL. Only three components explicitly enumerated (creatinine, eGFR, fasting glucose), insufficient for a full basic metabolic panel. Individual observations for creatinine, eGFR, and fasting glucose are captured separately."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

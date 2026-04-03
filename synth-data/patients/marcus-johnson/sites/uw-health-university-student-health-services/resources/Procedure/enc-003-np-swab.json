@@ -1,0 +1,55 @@
+{
+  "resourceType": "Procedure",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "17636008",
+        "display": "Specimen collection (procedure)"
+      }
+    ],
+    "text": "Nasopharyngeal swab collection"
+  },
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "performedDateTime": "2026-03-23",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+        "type": "Practitioner",
+        "display": "Dr. Rachel Okonkwo, MD"
+      }
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "71836000",
+          "display": "Nasopharyngeal structure (body structure)"
+        }
+      ],
+      "text": "Nasopharynx"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-003-measles",
+      "display": "Measles (rubeola)"
+    }
+  ],
+  "note": [
+    {
+      "text": "Collection of nasopharyngeal specimen for measles RNA PCR testing."
+    }
+  ],
+  "id": "enc-003-np-swab"
+}

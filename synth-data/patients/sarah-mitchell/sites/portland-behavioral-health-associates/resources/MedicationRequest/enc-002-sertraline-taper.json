@@ -1,0 +1,91 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-002-sertraline-taper",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "312938",
+        "display": "sertraline HCl 100 MG Oral Tablet"
+      }
+    ],
+    "text": "sertraline 100 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2019-07-15",
+  "requester": {
+    "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+    "type": "Practitioner",
+    "display": "Dr. James Okafor"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "83225003",
+          "display": "Bipolar II disorder (disorder)"
+        }
+      ],
+      "text": "Identified as precipitant of medication-induced hypomania in context of bipolar II disorder; antidepressant monotherapy contraindicated in bipolar disorder"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Taper: 100 mg daily to 50 mg daily x 2 weeks, then 25 mg daily x 2 weeks, then discontinue",
+      "patientInstruction": "Taper: Take 50 mg daily for 2 weeks, then 25 mg daily for 2 weeks, then stop.",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2019-07-15",
+            "end": "2019-08-12"
+          }
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Taper sertraline over 4 weeks: 100 mg → 50 mg daily × 2 weeks → 25 mg daily × 2 weeks → discontinue. Sertraline identified as precipitant of medication-induced hypomanic episode. Taper completed successfully by 2019-10-07 without significant withdrawal symptoms."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

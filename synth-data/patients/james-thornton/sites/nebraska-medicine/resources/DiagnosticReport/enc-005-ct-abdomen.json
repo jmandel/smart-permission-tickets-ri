@@ -1,0 +1,37 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-005-ct-abdomen",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "36813-4",
+        "display": "CT Abdomen and Pelvis W contrast IV"
+      }
+    ],
+    "text": "CT Abdomen and Pelvis with IV Contrast"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2026-01-23",
+  "issued": "2026-01-23T12:00:00-06:00",
+  "conclusion": "Small 1.8 cm residual fluid collection in the right lower quadrant near prior appendiceal bed, decreased from initial 2.3 cm. No new or drainable abscess identified. No free fluid. Post-surgical changes only. Interventional radiology not indicated."
+}

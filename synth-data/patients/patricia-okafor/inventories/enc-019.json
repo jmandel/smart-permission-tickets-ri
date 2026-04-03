@@ -1,0 +1,327 @@
+{
+  "encounter_id": "enc-019",
+  "encounter_index": 19,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "chemotherapy infusion encounter",
+    "reason": "Cycle 3 chemo-immunotherapy administration; carboplatin dose reduction for cumulative toxicity; neuropathy management",
+    "period_start": "2025-02-17",
+    "period_end": "2025-02-17",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending physician",
+        "specialty": "Thoracic Oncology"
+      },
+      {
+        "name": "Dr. Amy Pham, PharmD",
+        "role": "pharmacist",
+        "specialty": "Oncology Pharmacy"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 126,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 76,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "126/76",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 126,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 76,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 80,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body weight",
+        "value": 145,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 24.1,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%",
+        "text": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 4.8,
+        "unit": "K/uL"
+      },
+      {
+        "name": "absolute neutrophil count",
+        "value": 2.1,
+        "unit": "K/uL"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 10.6,
+        "unit": "g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "platelet count",
+        "value": 148,
+        "unit": "K/uL"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 0.94,
+        "unit": "mg/dL"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 24,
+        "unit": "U/L"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 26,
+        "unit": "U/L"
+      },
+      {
+        "name": "albumin, serum",
+        "value": 3,
+        "unit": "g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "lactate dehydrogenase (LDH)",
+        "value": 180,
+        "unit": "U/L"
+      },
+      {
+        "name": "thyroid stimulating hormone (TSH)",
+        "value": 2.6,
+        "unit": "mIU/L"
+      }
+    ],
+    "screening": [
+      {
+        "name": "ECOG performance status",
+        "value": 1,
+        "text": "restricted in physically strenuous activity but ambulatory and able to carry out light work"
+      },
+      {
+        "name": "CTCAE fatigue toxicity grade",
+        "value": 2,
+        "text": "limiting instrumental activities of daily living"
+      },
+      {
+        "name": "CTCAE peripheral neuropathy toxicity grade",
+        "value": 1,
+        "text": "new onset, bilateral fingertip numbness/tingling"
+      },
+      {
+        "name": "CTCAE nausea toxicity grade",
+        "value": 1,
+        "text": "mild intermittent nausea"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA, adenocarcinoma, right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing",
+      "text": "known condition under active treatment; cough improvement noted as encouraging possible early tumor response"
+    },
+    {
+      "name": "chemotherapy-induced peripheral neuropathy",
+      "clinical_status": "active",
+      "onset_date": "2025-02-17",
+      "action": "create",
+      "text": "grade 1, bilateral fingertip numbness and tingling, no motor component; attributed to cumulative carboplatin toxicity"
+    },
+    {
+      "name": "anemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "text": "hemoglobin 10.6 g/dL, grade 1, multifactorial (chemotherapy myelosuppression, chronic disease); no transfusion indicated"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing",
+      "text": "well controlled on lisinopril 10 mg daily; BP 126/76 today"
+    },
+    {
+      "name": "chemotherapy-related fatigue",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "text": "fatigue worsened from grade 1 to grade 2, now limiting instrumental ADLs"
+    }
+  ],
+  "medications": [
+    {
+      "name": "pembrolizumab 200 mg intravenous",
+      "sig": "200 mg IV over 30 minutes every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pemetrexed 500 mg/m² intravenous",
+      "sig": "500 mg/m² IV over 10 minutes every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer",
+      "action": "reference-existing"
+    },
+    {
+      "name": "carboplatin AUC 3.75 (338 mg) intravenous",
+      "sig": "AUC 3.75 (338 mg) IV over 30 minutes every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer",
+      "action": "update-existing",
+      "text": "dose reduced 25% from AUC 5 to AUC 3.75 (calculated 338 mg) due to cumulative toxicity (grade 2 fatigue, grade 1 peripheral neuropathy)"
+    },
+    {
+      "name": "gabapentin 300 mg oral tablet",
+      "sig": "300 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "chemotherapy-induced peripheral neuropathy",
+      "action": "create",
+      "text": "new medication started at this encounter for neuropathy management; pharmacist counseling provided by Dr. Pham"
+    },
+    {
+      "name": "ondansetron 8 mg oral tablet",
+      "sig": "8 mg PO q8h PRN nausea",
+      "status": "active",
+      "reason": "chemotherapy-induced nausea",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "1 mg PO daily",
+      "status": "active",
+      "reason": "pemetrexed supplementation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "10 mg PO daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "dexamethasone 4 mg intravenous",
+      "sig": "4 mg IV, given as pre-medication prior to chemotherapy infusion",
+      "status": "completed",
+      "reason": "chemotherapy pre-medication",
+      "action": "create"
+    },
+    {
+      "name": "ondansetron 8 mg intravenous",
+      "sig": "8 mg IV, given as pre-medication prior to chemotherapy infusion",
+      "status": "completed",
+      "reason": "chemotherapy pre-medication / antiemetic",
+      "action": "create"
+    },
+    {
+      "name": "diphenhydramine 25 mg intravenous",
+      "sig": "25 mg IV, given as pre-medication prior to chemotherapy infusion",
+      "status": "completed",
+      "reason": "chemotherapy pre-medication / antihistamine prophylaxis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note / infusion encounter note",
+      "description": "Comprehensive infusion encounter note for Cycle 3 of pembrolizumab/carboplatin/pemetrexed chemo-immunotherapy. Documents pre-treatment assessment including subjective toxicity report (grade 2 fatigue, grade 1 neuropathy, grade 1 nausea, improved cough), pre-treatment labs and vitals, the decision to reduce carboplatin by 25% for cumulative toxicity, new diagnosis of chemotherapy-induced peripheral neuropathy with gabapentin initiation, treatment administration details, and follow-up plan for Cycle 4 on March 10."
+    },
+    {
+      "type": "medication administration record",
+      "description": "Documents administration of pre-medications (dexamethasone, ondansetron, diphenhydramine) and chemotherapy agents (pembrolizumab 200 mg IV, pemetrexed 500 mg/m² IV, carboplatin AUC 3.75/338 mg IV — dose reduced 25%), including infusion times, tolerability, and post-infusion monitoring."
+    },
+    {
+      "type": "adverse event report / clinical trial adverse event form",
+      "description": "Documents new chemotherapy-induced peripheral neuropathy (grade 1) and worsened fatigue (grade 2, increased from grade 1), carboplatin dose modification per protocol dose reduction algorithm. Reported to research coordinator per clinical trial protocol requirements."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "absolute neutrophil count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Pre-treatment CMP performed; creatinine 0.94, ALT 24, AST 26, albumin 3.0 reported individually. Full CMP panel components (glucose, BUN, sodium, potassium, chloride, CO2, calcium) are not enumerated in the narrative. Renal and hepatic function within acceptable limits for treatment per clinician assessment."
+    },
+    {
+      "type": "lactate dehydrogenase (LDH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lactate dehydrogenase (LDH)"
+      ]
+    },
+    {
+      "type": "thyroid stimulating hormone (TSH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid stimulating hormone (TSH)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

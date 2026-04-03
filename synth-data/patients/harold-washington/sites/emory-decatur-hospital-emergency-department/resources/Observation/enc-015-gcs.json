@@ -1,0 +1,102 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-015-gcs",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "9269-2",
+        "display": "Glasgow coma score total"
+      }
+    ],
+    "text": "Glasgow Coma Scale total score"
+  },
+  "subject": {
+    "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+  "valueQuantity": {
+    "value": 14,
+    "unit": "{score}",
+    "system": "http://unitsofmeasure.org",
+    "code": "{score}"
+  },
+  "note": [
+    {
+      "text": "Verbal score reduced from baseline cognitive impairment (Alzheimer's disease), not acute change per collateral historian."
+    }
+  ],
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "9267-6",
+            "display": "Glasgow coma score eye opening"
+          }
+        ],
+        "text": "Glasgow Coma Scale eye opening"
+      },
+      "valueQuantity": {
+        "value": 4,
+        "unit": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "code": "{score}"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "9270-0",
+            "display": "Glasgow coma score verbal"
+          }
+        ],
+        "text": "Glasgow Coma Scale verbal response"
+      },
+      "valueQuantity": {
+        "value": 4,
+        "unit": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "code": "{score}"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "9268-4",
+            "display": "Glasgow coma score motor"
+          }
+        ],
+        "text": "Glasgow Coma Scale motor response"
+      },
+      "valueQuantity": {
+        "value": 6,
+        "unit": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "code": "{score}"
+      }
+    }
+  ]
+}

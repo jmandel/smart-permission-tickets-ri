@@ -1,0 +1,61 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-020-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel (CMP)"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-020"
+  },
+  "effectiveDateTime": "2025-03-10",
+  "issued": "2025-03-10T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+      "display": "The University of Texas MD Anderson Cancer Center"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-020-creat",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-020-alt",
+      "display": "ALT"
+    },
+    {
+      "reference": "Observation/enc-020-ast",
+      "display": "AST"
+    },
+    {
+      "reference": "Observation/enc-020-albumin",
+      "display": "Albumin"
+    }
+  ],
+  "conclusion": "Renal and hepatic function within acceptable limits for chemotherapy treatment. Albumin mildly low at 3.1 g/dL."
+}

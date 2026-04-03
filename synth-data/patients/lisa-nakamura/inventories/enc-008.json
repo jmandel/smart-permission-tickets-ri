@@ -1,0 +1,175 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Antiphospholipid syndrome antibody panel results review, counseling, and specialist referrals",
+    "period_start": "2025-04-14",
+    "period_end": "2025-04-14",
+    "participants": [],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 114,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 72,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "component": [
+          {
+            "name": "systolic blood pressure",
+            "value": 114,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 72,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.3,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 128,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.3,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "anticardiolipin antibody IgG",
+        "value": 48,
+        "unit": "GPL units",
+        "reference_range": "negative <40 GPL",
+        "flag": "high"
+      },
+      {
+        "name": "anticardiolipin antibody IgM",
+        "value": 8,
+        "unit": "MPL units",
+        "reference_range": "negative <20 MPL",
+        "flag": "normal"
+      },
+      {
+        "name": "lupus anticoagulant screen (dilute Russell viper venom time, dRVVT)",
+        "value": "weakly positive (with confirmatory mixing study positive)",
+        "flag": "abnormal"
+      },
+      {
+        "name": "anti-beta-2 glycoprotein I antibody IgG",
+        "value": 14,
+        "unit": "units",
+        "reference_range": "negative <20 units",
+        "flag": "normal (borderline)"
+      },
+      {
+        "name": "anti-beta-2 glycoprotein I antibody IgM",
+        "value": 6,
+        "unit": "units",
+        "reference_range": "negative <20 units",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 4,
+        "interpretation": "positive screen (threshold ≥3); patient endorses depressed mood and anhedonia related to recurrent pregnancy losses, significant anxiety"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "suspected antiphospholipid syndrome",
+      "clinical_status": "active",
+      "onset_date": "2025-04-14",
+      "action": "create",
+      "verification_status": "provisional",
+      "note": "Based on elevated anticardiolipin IgG (48 GPL) and weakly positive lupus anticoagulant. Definitive diagnosis deferred pending confirmatory repeat testing approximately July 2025 per revised Sapporo (Sydney) criteria."
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "positive depression screening",
+      "clinical_status": "active",
+      "onset_date": "2025-04-14",
+      "action": "create",
+      "note": "Positive PHQ-2 screen (score 4). Significant anxiety and depressed mood related to recurrent losses. Currently engaged in therapy through EAP. Recommended continuation of therapy and formal mental health referral if symptoms worsen."
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin, oral, once daily",
+      "sig": "once daily, oral",
+      "status": "active",
+      "reason": "preconception health / recurrent pregnancy loss",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note documenting APS antibody panel results (elevated anticardiolipin IgG, weakly positive lupus anticoagulant, borderline anti-beta-2 glycoprotein I IgG), clinical reasoning linking three consecutive first-trimester losses with chromosomally normal third conceptus to suspected antiphospholipid syndrome, extensive counseling provided to patient and spouse regarding APS implications and treatment options, positive PHQ-2 screening results, specialist referral plan to maternal-fetal medicine and hematology, and mental health follow-up recommendations."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "antiphospholipid antibody panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "anticardiolipin antibody IgG",
+        "anticardiolipin antibody IgM",
+        "anti-beta-2 glycoprotein I antibody IgG",
+        "anti-beta-2 glycoprotein I antibody IgM"
+      ]
+    },
+    {
+      "type": "lupus anticoagulant assay (dilute Russell viper venom time with confirmatory mixing study)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lupus anticoagulant screen (dilute Russell viper venom time, dRVVT)"
+      ]
+    }
+  ],
+  "allergies": []
+}

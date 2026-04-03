@@ -1,0 +1,58 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-004-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "date": "2021-02-16T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/35af736a-6111-44d6-8586-79bb01e530b4",
+      "display": "Dr. Linda Tran"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMi8xNi8yMDIxClBhdGllbnQ6IENhcmxvcyBNZWRpbmEKRE9COiAwOC8xNC8xOTc0ClByb3ZpZGVyOiBEci4gTGluZGEgVHJhbiwgTUQKTG9jYXRpb246IEFsYW1vIEZhbWlseSBQcmFjdGljZSwgU2FuIEFudG9uaW8sIFRYCgpSRUFTT04gRk9SIENBTEw6IExhYiByZXN1bHRzIHJldmlldyBhbmQgcmhldW1hdG9sb2d5IHJlZmVycmFsIGNvbmZpcm1hdGlvbi4KCkNhbGxlZCBwYXRpZW50IHRvIGRpc2N1c3MgcmVzdWx0cyBmcm9tIGxhYnMgZHJhd24gMDIvMDgvMjAyMS4gUkYgc2lnbmlmaWNhbnRseSBlbGV2YXRlZCBhdCA3OCBJVS9tTCAobm9ybWFsIDwxNCksIGFudGktQ0NQIHN0cm9uZ2x5IHBvc2l0aXZlIGF0ID4yNTAgVS9tTCwgRVNSIDQyIG1tL2hyLCBDUlAgMi44IG1nL2RMLiBDQkMgYW5kIEJNUCB3aXRoaW4gbm9ybWFsIGxpbWl0cy4gTEZUcyBhdCBiYXNlbGluZSAoQUxUIDI0LCBBU1QgMjIpLiBFeHBsYWluZWQgdGhhdCB0aGVzZSByZXN1bHRzLCBjb21iaW5lZCB3aXRoIGhpcyBiaWxhdGVyYWwgTUNQL1BJUCBqb2ludCBzd2VsbGluZyBhbmQgZWxldmF0ZWQgaW5mbGFtbWF0b3J5IG1hcmtlcnMsIGFyZSBzdHJvbmdseSBzdWdnZXN0aXZlIG9mIHJoZXVtYXRvaWQgYXJ0aHJpdGlzLiBFbXBoYXNpemVkIHRoZSBpbXBvcnRhbmNlIG9mIHByb21wdCByaGV1bWF0b2xvZ3kgZXZhbHVhdGlvbiBmb3IgZGVmaW5pdGl2ZSBkaWFnbm9zaXMgYW5kIGVhcmx5IERNQVJEIGluaXRpYXRpb24uCgpQYXRpZW50IGV4cHJlc3NlZCBjb25jZXJuIGFib3V0IHRoZSBpbXBhY3Qgb24gaGlzIHdvcmsgYXMgYSBzaG9wIHRlYWNoZXIgYW5kIGJhc2ViYWxsIGNvYWNoLiBSZWFzc3VyZWQgaGltIHRoYXQgZWFybHkgdHJlYXRtZW50IGNhbiBzaWduaWZpY2FudGx5IHNsb3cgZGlzZWFzZSBwcm9ncmVzc2lvbiBhbmQgcHJlc2VydmUgam9pbnQgZnVuY3Rpb24uCgpQTEFOOgoxLiBSZWZlcnJhbCB0byBTb3V0aCBUZXhhcyBSaGV1bWF0b2xvZ3kgKERyLiBBbGVqYW5kcm8gRnVlbnRlcykgY29uZmlybWVkIOKAlCBhcHBvaW50bWVudCBzY2hlZHVsZWQgMDMvMTUvMjAyMS4KMi4gQ29udGludWUgaWJ1cHJvZmVuIDQwMCBtZyBQTyBQUk4gZm9yIGpvaW50IHBhaW4gYW5kIHN0aWZmbmVzcy4KMy4gUGF0aWVudCBhZHZpc2VkIHRvIGNhbGwgaWYgc3ltcHRvbXMgd29yc2VuIHNpZ25pZmljYW50bHkgYmVmb3JlIHJoZXVtYXRvbG9neSBhcHBvaW50bWVudC4KNC4gUGF0aWVudCB2ZXJiYWxpemVkIHVuZGVyc3RhbmRpbmcgYW5kIGFncmVlbWVudCB3aXRoIHBsYW4uCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6IExpbmRhIFRyYW4sIE1ECkRhdGU6IDAyLzE2LzIwMjEK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-004"
+      }
+    ],
+    "period": {
+      "start": "2021-02-16",
+      "end": "2021-02-16"
+    }
+  }
+}

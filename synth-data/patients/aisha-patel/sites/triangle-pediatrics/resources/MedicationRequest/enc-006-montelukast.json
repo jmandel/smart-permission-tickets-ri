@@ -1,0 +1,102 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-006-montelukast",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "311759",
+        "display": "montelukast sodium 4 MG Chewable Tablet"
+      }
+    ],
+    "text": "Montelukast 4 mg chewable tablet"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-03-15",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-persistent-asthma",
+      "display": "Moderate persistent asthma"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Chew 1 tablet (4 mg) once daily at bedtime",
+      "patientInstruction": "Chew 1 tablet once daily at bedtime.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "once daily at bedtime"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 4,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Add-on controller therapy for moderate persistent asthma, in addition to ICS/LABA combination."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "lone-star-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office visit, postpartum follow-up",
+    "reason": "Six-week postpartum routine assessment following April 2022 vaginal delivery",
+    "participants": [],
+    "service_provider": "Lone Star Women's Health",
+    "location": "Lone Star Women's Health, Austin, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "110/74",
+        "unit": "mmHg",
+        "reference_range": "<120/80 mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "heart rate",
+        "value": "70",
+        "unit": "bpm",
+        "reference_range": "60-100 bpm",
+        "flag": "normal"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.0",
+        "unit": "F",
+        "reference_range": "97-99 F",
+        "flag": "normal"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14",
+        "unit": "breaths/min",
+        "reference_range": "12-20 breaths/min",
+        "flag": "normal"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "98",
+        "unit": "%",
+        "reference_range": ">95% on room air",
+        "flag": "normal"
+      },
+      {
+        "name": "body weight",
+        "value": "154",
+        "unit": "lb",
+        "notes": "Postpartum weight at 6 weeks post-delivery"
+      }
+    ],
+    "labs": [
+      {
+        "name": "fasting glucose",
+        "value": "88",
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL (normal fasting)",
+        "flag": "normal",
+        "notes": "Confirms normalization of glucose metabolism postpartum"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.4",
+        "unit": "%",
+        "reference_range": "4.0-5.6% (normal, non-diabetic)",
+        "flag": "normal",
+        "notes": "Consistent with resolution of gestational diabetes after delivery"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": "1",
+        "reference_range": "0-6",
+        "notes": "Normal, negative for depression. Fatigue appears related to newborn care demands rather than mood disorder."
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "gestational diabetes mellitus",
+      "clinical_status": "resolved",
+      "onset_date": "early third trimester 2021",
+      "action": "update-existing",
+      "notes": "Status changed from active to resolved postpartum. Managed during pregnancy with dietary modification. Confirmation based on normal fasting glucose (88 mg/dL) and normal A1c (5.4%) at 6 weeks postpartum, indicating complete metabolic normalization."
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Clinical progress note, postpartum follow-up",
+      "description": "Comprehensive 6-week postpartum assessment documenting normal recovery and resolution of gestational diabetes. Note documents vaginal delivery of healthy female infant (Sofia) in April 2022, current vital signs (BP 110/74, HR 70, temp 98.0°F, RR 14, SpO2 98%), and review of postpartum symptoms (breastfeeding well-established, lochia resolved, minimal perineal discomfort). Postpartum metabolic follow-up confirms resolution of gestational diabetes with normal fasting glucose and A1c. PHQ-2 screening reassuring for mood. Exam confirms normal postpartum recovery without hemorrhage, infection, or other complications. Assessment and plan address annual diabetes screening recommendation due to elevated lifetime type 2 risk from gestational diabetes history, counseling on contraception and future reproductive planning, and safety-net instructions for return precautions."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Metabolic panel, postpartum diabetes screening",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fasting glucose",
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "penicillin/amoxicillin",
+      "reaction": "rash/hives",
+      "action": "reference-existing"
+    }
+  ]
+}

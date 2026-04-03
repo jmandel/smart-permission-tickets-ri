@@ -1,0 +1,120 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "houston-pulmonary-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "pulmonary function testing visit",
+    "reason": "baseline spirometry and diffusion capacity assessment",
+    "period_start": "2024-08-19",
+    "period_end": "2024-08-19",
+    "participants": [
+      {
+        "name": "Dr. Nisha Ramaswamy, MD",
+        "role": "ordering and interpreting physician"
+      }
+    ],
+    "service_provider": "Houston Pulmonary Associates",
+    "location": "6624 Fannin St, Suite 1540, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "forced expiratory volume in 1 second (FEV1)",
+        "value": 2.08,
+        "unit": "L",
+        "percent_predicted": 78,
+        "flag": "low",
+        "action": "create"
+      },
+      {
+        "name": "forced vital capacity (FVC)",
+        "value": 2.72,
+        "unit": "L",
+        "percent_predicted": 82,
+        "flag": "low",
+        "action": "create"
+      },
+      {
+        "name": "FEV1/FVC ratio",
+        "value": 0.76,
+        "unit": "ratio",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "total lung capacity (TLC)",
+        "value": 4.1,
+        "unit": "L",
+        "percent_predicted": 80,
+        "flag": "low",
+        "action": "create"
+      },
+      {
+        "name": "diffusing capacity of the lung for carbon monoxide (DLCO)",
+        "value": 16.2,
+        "unit": "mL/min/mmHg",
+        "percent_predicted": 71,
+        "flag": "low",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "suspected lung malignancy (right upper lobe mass)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "pulmonary function test report",
+      "description": "Formal PFT interpretation report by Dr. Ramaswamy documenting indication, test results (spirometry, lung volumes, DLCO), quality assessment, interpretation (mild restrictive defect with reduced diffusion capacity suggesting parenchymal disease/early lymphangitic involvement, no bronchodilator response), and clinical correlation noting importance of pre-treatment baseline for monitoring treatment-related pneumonitis.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "pulmonary function test report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "forced expiratory volume in 1 second (FEV1)",
+        "forced vital capacity (FVC)",
+        "FEV1/FVC ratio",
+        "total lung capacity (TLC)",
+        "diffusing capacity of the lung for carbon monoxide (DLCO)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "portland-behavioral-health-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "initial psychiatric evaluation (90 minutes)",
+    "reason": "mood instability on sertraline, evaluate for bipolar spectrum disorder",
+    "period_start": "2019-07-15",
+    "period_end": "2019-07-15",
+    "participants": [
+      {
+        "name": "Dr. James Okafor",
+        "role": "Psychiatry"
+      }
+    ],
+    "service_provider": "Portland Behavioral Health Associates",
+    "location": "Portland Behavioral Health Associates, 1520 NW 18th Ave, Suite 304, Portland, OR 97209"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 122,
+        "value_diastolic": 78,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 80,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 137,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.1,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening",
+        "value": 8,
+        "interpretation": "mild depression (patient currently in hypomanic phase; score is artificially low and does not reflect baseline depressive burden)",
+        "action": "create"
+      },
+      {
+        "name": "GAD-7 anxiety screening",
+        "value": 4,
+        "interpretation": "minimal anxiety",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019-07-15",
+      "action": "create",
+      "note": "Newly diagnosed at this encounter. Historical pattern of recurrent hypomanic episodes dating to college years. Current episode hypomanic, medication-induced (sertraline)."
+    },
+    {
+      "name": "major depressive disorder",
+      "clinical_status": "resolved",
+      "action": "update-existing",
+      "note": "Reclassified as the depressive component of bipolar II disorder; resolved as an independent diagnosis."
+    }
+  ],
+  "medications": [
+    {
+      "name": "sertraline 100 mg oral tablet",
+      "sig": "taper: 100 mg daily → 50 mg daily × 2 weeks → 25 mg daily × 2 weeks → discontinue",
+      "status": "stopped",
+      "reason": "identified as precipitant of medication-induced hypomania in context of bipolar II disorder; antidepressant monotherapy contraindicated in bipolar disorder",
+      "action": "update-existing"
+    },
+    {
+      "name": "lamotrigine 25 mg oral tablet",
+      "sig": "25 mg daily × 2 weeks, then titrate: 50 mg daily × 2 weeks → 100 mg daily × 2 weeks → 150 mg daily × 2 weeks → 200 mg daily target dose",
+      "status": "active",
+      "reason": "bipolar II disorder — mood stabilization",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "psychiatric evaluation note",
+      "description": "Initial 90-minute psychiatric evaluation documenting reason for referral from Dr. Nakamura, detailed mood history identifying recurrent hypomanic episodes since college, mental status examination, DSM-5 diagnostic formulation for bipolar II disorder, reclassification of prior major depressive disorder diagnosis, medication plan (sertraline taper and lamotrigine cross-titration with Stevens-Johnson risk counseling), baseline lab orders, and psychoeducation provided regarding bipolar II disorder, sleep hygiene, and mood monitoring.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count with differential",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline CBC ordered as part of pre-treatment laboratory workup prior to lamotrigine titration. No results available at this encounter."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline CMP ordered for metabolic monitoring prior to mood stabilizer initiation. No results available at this encounter."
+    },
+    {
+      "type": "thyroid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline thyroid function testing ordered to rule out thyroid dysfunction as contributor to mood symptoms. No results available at this encounter."
+    },
+    {
+      "type": "lamotrigine serum level",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered to be drawn after patient reaches target dose of 200 mg daily. Not yet collected at this encounter."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "severity": "documented from childhood",
+      "action": "reference-existing"
+    }
+  ]
+}

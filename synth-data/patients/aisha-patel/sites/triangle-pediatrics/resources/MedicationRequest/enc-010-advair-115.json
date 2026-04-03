@@ -1,0 +1,103 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-010-advair-115",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "896243",
+        "display": "ADVAIR HFA 115/21 MCG/INHAL Metered Dose Inhaler, 60 Actuations"
+      }
+    ],
+    "text": "Fluticasone/salmeterol 115 mcg/21 mcg inhaler (Advair HFA 115/21)"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "authoredOn": "2025-01-16",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-persistent-asthma",
+      "display": "Severe persistent asthma"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Inhale 1 puff by mouth twice daily using spacer with mask",
+      "patientInstruction": "Inhale 1 puff by mouth twice daily using spacer with mask.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 12,
+          "periodUnit": "h"
+        },
+        "code": {
+          "text": "twice daily"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "447694001",
+            "display": "Respiratory tract route (qualifier value)"
+          }
+        ],
+        "text": "Inhalation"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 1,
+            "unit": "puff",
+            "system": "http://unitsofmeasure.org",
+            "code": "{puff}"
+          }
+        }
+      ]
+    }
+  ],
+  "priorPrescription": {
+    "reference": "MedicationRequest/enc-006-advair",
+    "display": "Advair HFA 45/21"
+  },
+  "note": [
+    {
+      "text": "Step-up from Advair HFA 45/21 to Advair HFA 115/21 for severe persistent asthma. Asthma reclassified from moderate persistent after ED-level exacerbation despite adherence to prior regimen. Spacer technique reviewed with mother — good technique demonstrated."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-003-spo2-ed-room-air",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "59410-1",
+        "display": "Oxygen saturation in Arterial blood by Pulse oximetry --on room air"
+      }
+    ],
+    "text": "Oxygen saturation"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2024-04-22",
+  "valueQuantity": {
+    "value": 91,
+    "unit": "%",
+    "system": "http://unitsofmeasure.org",
+    "code": "%"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-007-dr-ecg",
+  "status": "final",
+  "category": [
+    {
+      "text": "Cardiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34534-8",
+        "display": "12 lead EKG panel"
+      }
+    ],
+    "text": "12-lead electrocardiogram"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2025-09-18",
+  "performer": [
+    {
+      "reference": "Practitioner/fe1e7ca5-8689-4050-b749-644133a5d6f7",
+      "display": "Dr. Thomas Baca, MD"
+    }
+  ],
+  "conclusion": "Normal sinus rhythm at 64 bpm with left ventricular hypertrophy and occasional premature atrial complexes."
+}

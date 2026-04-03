@@ -1,0 +1,44 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-005-dr-cbc",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "HM",
+          "display": "Hematology"
+        }
+      ],
+      "text": "Hematology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "CBC panel - Blood by Automated count"
+      }
+    ],
+    "text": "Complete Blood Count"
+  },
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+  "issued": "2023-03-17T11:00:00-07:00",
+  "performer": [
+    {
+      "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "type": "Practitioner",
+      "display": "Dr. Anita Okonkwo"
+    }
+  ],
+  "conclusion": "Unremarkable; no acute hematologic abnormality identified."
+}

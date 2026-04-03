@@ -1,0 +1,349 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "nebraska-medicine",
+  "encounter": {
+    "class": "emergency",
+    "type": "Emergency department visit",
+    "reason": "Acute abdominal pain",
+    "period_start": "2026-01-12T15:40:00-06:00",
+    "period_end": "2026-01-12T18:30:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Emily Tran",
+        "role": "Emergency Medicine Attending",
+        "type": "primary"
+      },
+      {
+        "name": "Dr. Marcus Okonkwo",
+        "role": "Acute Care Surgeon",
+        "type": "consultant"
+      }
+    ],
+    "service_provider": "Nebraska Medicine",
+    "location": "Nebraska Medicine, 4350 Dewey Avenue, Omaha, NE 68105"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 100.9,
+        "unit": "°F",
+        "flag": "high"
+      },
+      {
+        "name": "heart rate",
+        "value": 102,
+        "unit": "bpm",
+        "flag": "high"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 142,
+        "diastolic": 88,
+        "unit": "mmHg"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "/min",
+        "flag": "normal"
+      },
+      {
+        "name": "oxygen saturation (SpO2)",
+        "value": 98,
+        "unit": "%",
+        "flag": "normal"
+      },
+      {
+        "name": "pain severity (numeric rating scale 0-10)",
+        "value": 7,
+        "unit": "{score}"
+      },
+      {
+        "name": "body weight",
+        "value": 208,
+        "unit": "lb",
+        "note": "patient-reported"
+      },
+      {
+        "name": "body height",
+        "value": 71,
+        "unit": "in",
+        "note": "patient-reported"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 29,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 16800,
+        "unit": "/μL",
+        "reference_range": "4,500–11,000 /μL",
+        "flag": "high"
+      },
+      {
+        "name": "neutrophils percentage",
+        "value": 82,
+        "unit": "%",
+        "reference_range": "40–70 %",
+        "flag": "high"
+      },
+      {
+        "name": "lymphocytes percentage",
+        "value": 12,
+        "unit": "%",
+        "reference_range": "20–40 %",
+        "flag": "low"
+      },
+      {
+        "name": "monocytes percentage",
+        "value": 4,
+        "unit": "%",
+        "reference_range": "2–8 %",
+        "flag": "normal"
+      },
+      {
+        "name": "band neutrophils percentage",
+        "value": 2,
+        "unit": "%",
+        "reference_range": "0–5 %",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.2,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hematocrit",
+        "value": 42.6,
+        "unit": "%",
+        "reference_range": "38.3–48.6 %",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 238000,
+        "unit": "/μL",
+        "reference_range": "150,000–400,000 /μL",
+        "flag": "normal"
+      },
+      {
+        "name": "sodium",
+        "value": 139,
+        "unit": "mEq/L",
+        "reference_range": "136–145 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "reference_range": "3.5–5.0 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "chloride",
+        "value": 102,
+        "unit": "mEq/L",
+        "reference_range": "98–106 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "bicarbonate (CO2)",
+        "value": 24,
+        "unit": "mEq/L",
+        "reference_range": "23–29 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "blood urea nitrogen (BUN)",
+        "value": 16,
+        "unit": "mg/dL",
+        "reference_range": "7–20 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": 118,
+        "unit": "mg/dL",
+        "reference_range": "70–140 mg/dL (non-fasting)",
+        "flag": "normal",
+        "note": "non-fasting"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": 14.8,
+        "unit": "mg/dL",
+        "reference_range": "0.0–0.5 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "lipase",
+        "value": 32,
+        "unit": "U/L",
+        "reference_range": "0–160 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "urine appearance",
+        "value": "clear",
+        "flag": "normal"
+      },
+      {
+        "name": "urine white blood cells",
+        "value": "negative",
+        "flag": "normal"
+      },
+      {
+        "name": "urine nitrites",
+        "value": "negative",
+        "flag": "normal"
+      },
+      {
+        "name": "urine blood",
+        "value": "negative",
+        "flag": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute perforated appendicitis",
+      "clinical_status": "active",
+      "onset_date": "2026-01-12",
+      "action": "create"
+    },
+    {
+      "name": "periappendiceal abscess",
+      "clinical_status": "active",
+      "onset_date": "2026-01-12",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "normal saline 0.9% 1000 mL intravenous bolus",
+      "sig": "1000 mL IV bolus, once",
+      "status": "completed",
+      "reason": "volume resuscitation / acute illness",
+      "action": "create"
+    },
+    {
+      "name": "morphine sulfate 4 mg intravenous injection",
+      "sig": "4 mg IV, once",
+      "status": "completed",
+      "reason": "acute abdominal pain (7/10)",
+      "action": "create"
+    },
+    {
+      "name": "ondansetron 4 mg intravenous injection",
+      "sig": "4 mg IV, once",
+      "status": "completed",
+      "reason": "nausea",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Emergency department note",
+      "author": "Dr. Emily Tran",
+      "description": "Documents a 47-year-old male presenting with 6 hours of progressive periumbilical-to-RLQ abdominal pain, found to have perforated appendicitis with localized abscess on CT. Resuscitated with IV fluids and pain management; admitted for emergent laparoscopic appendectomy."
+    },
+    {
+      "type": "Triage assessment note",
+      "description": "Nursing triage documentation including initial vital signs, chief complaint of RLQ abdominal pain, pain assessment 7/10, allergy verification (NKDA), and patient-reported weight and height."
+    },
+    {
+      "type": "Radiology report",
+      "author": "Dr. A. Patel (Radiology)",
+      "description": "CT abdomen/pelvis with IV contrast performed at 16:45 showing dilated 13 mm appendix with periappendiceal fat stranding, extraluminal gas at appendiceal tip, and 2.3 cm rim-enhancing periappendiceal abscess. Impression: perforated appendicitis with localized abscess."
+    },
+    {
+      "type": "Consultation note",
+      "author": "Dr. Marcus Okonkwo (Acute Care Surgery)",
+      "description": "Bedside surgical consultation at approximately 17:30 for perforated appendicitis with contained abscess. Recommends emergent laparoscopic appendectomy. Informed consent obtained from patient with wife Karen Thornton present."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "neutrophils percentage",
+        "lymphocytes percentage",
+        "monocytes percentage",
+        "band neutrophils percentage",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "basic metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sodium",
+        "potassium",
+        "chloride",
+        "bicarbonate (CO2)",
+        "blood urea nitrogen (BUN)",
+        "creatinine",
+        "glucose"
+      ]
+    },
+    {
+      "type": "C-reactive protein",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein (CRP)"
+      ]
+    },
+    {
+      "type": "lipase",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lipase"
+      ]
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "urine appearance",
+        "urine white blood cells",
+        "urine nitrites",
+        "urine blood"
+      ]
+    },
+    {
+      "type": "CT abdomen and pelvis with intravenous contrast",
+      "report_state": "summary-only",
+      "description": "Dilated non-opacified appendix measuring 13 mm with periappendiceal fat stranding, extraluminal gas at appendiceal tip, and 2.3 cm rim-enhancing fluid collection adjacent to cecum consistent with localized periappendiceal abscess. No free intraperitoneal air. No bowel obstruction. Read by Dr. A. Patel, performed at 16:45 on 2026-01-12."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergy (NKDA)",
+      "action": "create"
+    }
+  ]
+}

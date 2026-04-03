@@ -1,0 +1,1841 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T01:45:02.187Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "White"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino"
+                }
+              },
+              {
+                "url": "detailed",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2148-5",
+                  "display": "Mexican"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino - Mexican"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+            "valueCode": "F"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "Mid-30s Latina woman. Lived in Austin, TX through 2022, then moved to Oakland, CA.\n\nTexas chapter: Reproductive history managed by an OB/GYN practice in Austin. First pregnancy (2019) was uncomplicated — vaginal delivery, healthy baby. In early 2020 she had a spontaneous abortion (miscarriage) at ~10 weeks — managed expectantly, emotionally difficult but no surgical intervention needed. Second successful pregnancy (2021) had mild gestational diabetes (diet-controlled, resolved postpartum), vaginal delivery. Also saw a PCP in Austin for routine care — annual wellness exams, immunizations, a couple of URIs. The miscarriage is particularly sensitive data — in a post-Dobbs environment, records of pregnancy loss could be misinterpreted or weaponized, making the case for granular data sharing controls viscerally concrete.\n\nCalifornia chapter: Established with a new PCP in Oakland in late 2022. In early 2023, started having bilateral hand and wrist pain, morning stiffness lasting over an hour. PCP ordered initial labs (RF, anti-CCP, ESR, CRP — all elevated). Referred to rheumatology. Diagnosed with rheumatoid arthritis, seropositive. Started methotrexate 15mg weekly + folic acid. Required regular monitoring (CBC, LFTs every 8-12 weeks). Partial response to methotrexate — added adalimumab (Humira) in late 2023. Good response by 2024. Ongoing monitoring, quarterly rheumatology visits, regular labs."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Reyes",
+            "given": [
+              "Elena",
+              "Marisol"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "512-555-0183",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "2847 Guadalupe St"
+            ],
+            "city": "Austin",
+            "state": "TX",
+            "postalCode": "78705",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          },
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "es",
+                  "display": "Spanish"
+                }
+              ],
+              "text": "Spanish"
+            },
+            "preferred": false
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-3b4d924f1bbc870106629acc"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2b4d6f8a-0c2e-4a6c-8e0b-4d6f8a0c2e4d",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "2b4d6f8a-0c2e-4a6c-8e0b-4d6f8a0c2e4d",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1437826095"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Central Austin Family Medicine",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "512-555-0142",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "city": "Austin",
+            "state": "TX",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Patricia"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8a0c2e4f-6b8d-4c0e-a2f4-8c0e2a4f6b8d",
+      "resource": {
+        "resourceType": "Location",
+        "id": "8a0c2e4f-6b8d-4c0e-a2f4-8c0e2a4f6b8d",
+        "status": "active",
+        "name": "Central Austin Family Medicine",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "PROFF",
+                "display": "Provider's Office"
+              }
+            ],
+            "text": "Provider's Office"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "512-555-0142",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "city": "Austin",
+          "state": "TX",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/2b4d6f8a-0c2e-4a6c-8e0b-4d6f8a0c2e4d",
+          "display": "Central Austin Family Medicine"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-000",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "78318003",
+                "display": "History and physical examination, annual for health maintenance (procedure)"
+              }
+            ],
+            "text": "Annual Wellness Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary Performer"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+              "type": "Practitioner",
+              "display": "Dr. Patricia Nguyen"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-12",
+          "end": "2021-10-12"
+        },
+        "reasonCode": [
+          {
+            "text": "Annual wellness and preventive care"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/8a0c2e4f-6b8d-4c0e-a2f4-8c0e2a4f6b8d",
+              "display": "Central Austin Family Medicine"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/2b4d6f8a-0c2e-4a6c-8e0b-4d6f8a0c2e4d",
+          "display": "Central Austin Family Medicine"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena was seen in person by Dr. Patricia Nguyen at Central Austin Family Medicine in Austin for her annual preventive visit during her Texas primary-care period."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood pressure systolic and diastolic"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 112,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 72,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 68,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body Temperature"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.2,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory Rate"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ],
+          "text": "Oxygen Saturation"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "On room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body Weight"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 146,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body Height"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 65,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body Mass Index"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 24.3,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 18.5,
+              "unit": "kg/m2"
+            },
+            "high": {
+              "value": 24.9,
+              "unit": "kg/m2"
+            },
+            "text": "18.5-24.9 kg/m2"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-phq2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-phq2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55758-7",
+              "display": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-2 Depression Screening"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Negative for depression"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-tsh",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-tsh",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3016-3",
+              "display": "Thyrotropin [Units/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Thyroid Stimulating Hormone (TSH)"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.78,
+          "unit": "mIU/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mIU/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.4,
+              "unit": "mIU/L"
+            },
+            "high": {
+              "value": 4,
+              "unit": "mIU/L"
+            },
+            "text": "0.4-4.0 mIU/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1558-6",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting Glucose"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 86,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 70,
+              "unit": "mg/dL"
+            },
+            "high": {
+              "value": 100,
+              "unit": "mg/dL"
+            },
+            "text": "70-100 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-cholesterol-total",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-cholesterol-total",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Cholesterol [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Total Cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 172,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 200,
+              "unit": "mg/dL"
+            },
+            "text": "<200 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-cholesterol-ldl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-cholesterol-ldl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2089-1",
+              "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "LDL Cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 96,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 100,
+              "unit": "mg/dL"
+            },
+            "text": "<100 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-cholesterol-hdl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-cholesterol-hdl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "HDL Cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 58,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 50,
+              "unit": "mg/dL"
+            },
+            "text": ">50 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglycerides"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 150,
+              "unit": "mg/dL"
+            },
+            "text": "<150 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-lipid-panel",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-000-lipid-panel",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ],
+          "text": "Lipid Panel"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "type": "Practitioner",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-000-cholesterol-total",
+            "display": "Total Cholesterol"
+          },
+          {
+            "reference": "Observation/enc-000-cholesterol-ldl",
+            "display": "LDL Cholesterol"
+          },
+          {
+            "reference": "Observation/enc-000-cholesterol-hdl",
+            "display": "HDL Cholesterol"
+          },
+          {
+            "reference": "Observation/enc-000-triglycerides",
+            "display": "Triglycerides"
+          }
+        ],
+        "conclusion": "Lipid panel within normal limits. Total cholesterol 172 mg/dL, LDL 96 mg/dL, HDL 58 mg/dL, triglycerides 88 mg/dL. No lipid disorder identified."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-000-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "type": "Practitioner",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "conclusion": "Complete blood count within normal limits."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-000-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "issued": "2021-10-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "type": "Practitioner",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "conclusion": "Comprehensive metabolic panel within normal limits. No renal, hepatic, or electrolyte abnormalities identified."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-flu-vaccine",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "enc-000-flu-vaccine",
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "150",
+              "display": "Influenza, split virus, quadrivalent, PF"
+            }
+          ],
+          "text": "Influenza vaccine, inactivated quadrivalent (2021-2022 season)"
+        },
+        "patient": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "occurrenceDateTime": "2021-10-12",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/8a0c2e4f-6b8d-4c0e-a2f4-8c0e2a4f6b8d",
+          "display": "Central Austin Family Medicine"
+        },
+        "route": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+              "code": "IM",
+              "display": "Injection, intramuscular"
+            }
+          ],
+          "text": "Intramuscular"
+        },
+        "performer": [
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "AP",
+                  "display": "Administering Provider"
+                }
+              ],
+              "text": "Administering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+              "type": "Practitioner",
+              "display": "Dr. Patricia Nguyen"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-seasonal-rhinitis",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-000-seasonal-rhinitis",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ],
+            "text": "Problem List Item"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "367498001",
+              "display": "Seasonal allergic rhinitis (disorder)"
+            }
+          ],
+          "text": "Seasonal Allergic Rhinitis"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "note": [
+          {
+            "text": "Symptoms well controlled with loratadine 10 mg PO as needed."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-loratadine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-loratadine",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "311372",
+              "display": "loratadine 10 MG 24HR Oral Tablet"
+            }
+          ],
+          "text": "Loratadine 10 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2021-10-12",
+        "requester": {
+          "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+          "type": "Practitioner",
+          "display": "Dr. Patricia Nguyen"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "367498001",
+                "display": "Seasonal allergic rhinitis (disorder)"
+              }
+            ],
+            "text": "Seasonal Allergic Rhinitis"
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "seasonal",
+              "display": "Seasonal"
+            }
+          ],
+          "text": "Seasonal"
+        },
+        "dosageInstruction": [
+          {
+            "text": "Take 1 tablet (10 mg) by mouth as needed for seasonal allergy symptoms.",
+            "asNeededBoolean": true,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "method": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "419652001",
+                  "display": "Take"
+                }
+              ],
+              "text": "Take"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-prenatal-vitamin",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-prenatal-vitamin",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "text": "Prenatal Vitamin"
+        },
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2021-10-12",
+        "requester": {
+          "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+          "type": "Practitioner",
+          "display": "Dr. Patricia Nguyen"
+        },
+        "reasonCode": [
+          {
+            "text": "Pregnancy"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 1 tablet by mouth daily.",
+            "asNeededBoolean": false,
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              },
+              "code": {
+                "text": "daily"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "method": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "419652001",
+                  "display": "Take"
+                }
+              ],
+              "text": "Take"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-amoxicillin-allergy",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "enc-000-amoxicillin-allergy",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "criticality": "low",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "723",
+              "display": "amoxicillin"
+            }
+          ],
+          "text": "Amoxicillin"
+        },
+        "patient": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "recordedDate": "2021-10-12",
+        "recorder": {
+          "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+          "type": "Practitioner",
+          "display": "Dr. Patricia Nguyen"
+        },
+        "note": [
+          {
+            "text": "Allergy history reviewed and confirmed at annual wellness visit 2021-10-12. Patient reports hives with amoxicillin."
+          }
+        ],
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "text": "Hives (urticaria)"
+              }
+            ],
+            "description": "Hives (urticaria) with amoxicillin exposure",
+            "severity": "mild"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-000-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note",
+              "userSelected": true
+            }
+          ],
+          "text": "Office Visit Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2021-10-12T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+            "type": "Practitioner",
+            "display": "Dr. Patricia Nguyen"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+          "type": "Practitioner",
+          "display": "Dr. Patricia Nguyen"
+        },
+        "custodian": {
+          "reference": "Organization/2b4d6f8a-0c2e-4a6c-8e0b-4d6f8a0c2e4d",
+          "display": "Central Austin Family Medicine"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKQ2hpZWYgY29tcGxhaW50OiBBbm51YWwgd2VsbG5lc3MgYW5kIHByZXZlbnRpdmUgY2FyZSB2aXNpdC4KCkVsZW5hIFJleWVzIGlzIGEgMzIteWVhci1vbGQgd29tYW4gc2VlbiBpbiBvZmZpY2UgZm9yIHJvdXRpbmUgYW5udWFsIHByZXZlbnRpdmUgZXhhbWluYXRpb24uIFNoZSByZXBvcnRzIGZlZWxpbmcgd2VsbCBvdmVyYWxsIGFuZCBoYXMgbm8gYWN1dGUgY29tcGxhaW50cyB0b2RheS4gUk9TIGlzIG5lZ2F0aXZlIGZvciBmZXZlciwgY2hpbGxzLCB3ZWlnaHQgY2hhbmdlLCBmYXRpZ3VlLCBjaGVzdCBwYWluLCBwYWxwaXRhdGlvbnMsIGR5c3BuZWEsIGNvdWdoLCBhYmRvbWluYWwgcGFpbiwgbmF1c2VhLCB2b21pdGluZywgYm93ZWwgb3IgdXJpbmFyeSBjaGFuZ2VzLCBoZWFkYWNoZXMsIGRpenppbmVzcywgZGVwcmVzc2lvbiwgb3IgYW54aWV0eS4gU2Vhc29uYWwgYWxsZXJnaWMgcmhpbml0aXMgcmVtYWlucyB3ZWxsIGNvbnRyb2xsZWQgd2l0aCBsb3JhdGFkaW5lIDEwIG1nIFBPIGFzIG5lZWRlZC4gUEhRLTIgc2NvcmUgMC4gU2hlIGlzIGN1cnJlbnRseSB0YWtpbmcgbG9yYXRhZGluZSBhcyBuZWVkZWQgYW5kIGEgcHJlbmF0YWwgdml0YW1pbiBkdXJpbmcgY3VycmVudCBwcmVnbmFuY3kgaW50ZXJ2YWwuIEFsbGVyZ3kgaGlzdG9yeSByZXZpZXdlZCBhbmQgdXBkYXRlZDsgYW1veGljaWxsaW4gY2F1c2VzIGhpdmVzLiBObyBoaXN0b3J5IG9mIGh5cGVydGVuc2lvbiwgZGlhYmV0ZXMsIHRoeXJvaWQgZGlzZWFzZSwgb3IgaHlwZXJsaXBpZGVtaWEuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTEyLzcyIG1tSGcsIEhSIDY4IGJwbSwgVGVtcCA5OC4yIEYsIFJSIDE0LCBTcE8yIDk5JSBvbiByb29tIGFpciwgV3QgMTQ2IGxiLCBIdCA2NSBpbiwgQk1JIDI0LjMKCkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nIGZlbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KSEVFTlQ6IE5vcm1vY2VwaGFsaWMsIGF0cmF1bWF0aWMuIE5hc2FsIG11Y29zYSBtaWxkbHkgYm9nZ3kgd2l0aG91dCBhY3V0ZSBjb25nZXN0aW9uLiBPcm9waGFyeW54IGNsZWFyLgpOZWNrOiBTdXBwbGUsIG5vIHRoeXJvbWVnYWx5IG9yIGNlcnZpY2FsIExBRC4KQ2FyZGlvdmFzY3VsYXI6IFJlZ3VsYXIgcmF0ZSBhbmQgcmh5dGhtLCBubyBtdXJtdXJzLgpSZXNwaXJhdG9yeTogTHVuZ3MgQ1RBQiwgbm8gd2hlZXplcy9yYWxlcy9yaG9uY2hpLgpBYmRvbWVuOiBTb2Z0LCBub250ZW5kZXIsIG5vbmRpc3RlbmRlZC4KRXh0cmVtaXRpZXM6IE5vIGVkZW1hLgpTa2luOiBXYXJtLCBkcnksIG5vIHJhc2guCk5ldXJvOiBBbGVydCBhbmQgb3JpZW50ZWQsIG5vIGZvY2FsIGRlZmljaXRzLgpQc3ljaDogTm9ybWFsIG1vb2QgYW5kIGFmZmVjdC4KCkxhYnMgcmV2aWV3ZWQvb3JkZXJlZCBmb3IgcHJldmVudGl2ZSBzY3JlZW5pbmc6CkNCQyB3aXRoaW4gbm9ybWFsIGxpbWl0cwpDTVAgd2l0aGluIG5vcm1hbCBsaW1pdHMKVFNIIDEuNzggdUlVL21MCkZhc3RpbmcgZ2x1Y29zZSA4NiBtZy9kTApUb3RhbCBjaG9sZXN0ZXJvbCAxNzIgbWcvZEwKTERMIDk2IG1nL2RMCkhETCA1OCBtZy9kTApUcmlnbHljZXJpZGVzIDg4IG1nL2RMCgpJbW11bml6YXRpb25zOiBJbmZsdWVuemEgdmFjY2luZSBhZG1pbmlzdGVyZWQgdG9kYXkgZm9yIDIwMjEtMjAyMiBzZWFzb24uCgpBU1NFU1NNRU5UOgoxLiBIZWFsdGh5IGFkdWx0IHdlbGxuZXNzIGV4YW0uIE92ZXJhbGwgZG9pbmcgd2VsbCB3aXRoIG5vcm1hbCB2aXRhbHMsIG5vcm1hbCBCTUksIG5lZ2F0aXZlIGRlcHJlc3Npb24gc2NyZWVuLCBhbmQgcmVhc3N1cmluZyBwcmV2ZW50aXZlIGxhYiByZXN1bHRzLgoyLiBTZWFzb25hbCBhbGxlcmdpYyByaGluaXRpcywgc3RhYmxlLiBTeW1wdG9tcyBjb250cm9sbGVkIHdpdGggUFJOIGxvcmF0YWRpbmUuCjMuIE1lZGljYXRpb24gYW5kIGFsbGVyZ3kgcmVjb25jaWxpYXRpb24gY29tcGxldGVkLiBBbW94aWNpbGxpbiBhbGxlcmd5IGNvbmZpcm1lZCBhcyBoaXZlcy4KNC4gUHJldmVudGl2ZSBpbW11bml6YXRpb24gdXBkYXRlLiBJbmZsdWVuemEgdmFjY2luZSBnaXZlbiB0b2RheS4KClBMQU46CjEuIENvbnRpbnVlIGxvcmF0YWRpbmUgMTAgbWcgUE8gYXMgbmVlZGVkIGZvciBzZWFzb25hbCBhbGxlcmdpZXMuCjIuIENvbnRpbnVlIHByZW5hdGFsIHZpdGFtaW4uCjMuIFJldmlld2VkIHByZXZlbnRpdmUgY291bnNlbGluZyBpbmNsdWRpbmcgbnV0cml0aW9uLCByZWd1bGFyIGV4ZXJjaXNlLCBzbGVlcCwgc3RyZXNzIG1hbmFnZW1lbnQsIGFuZCByb3V0aW5lIGhlYWx0aCBtYWludGVuYW5jZS4KNC4gUmV2aWV3ZWQgbGFib3JhdG9yeSByZXN1bHRzOyBubyBldmlkZW5jZSBvZiBkaWFiZXRlcywgdGh5cm9pZCBkaXNvcmRlciwgYW5lbWlhLCByZW5hbC9oZXBhdGljIGR5c2Z1bmN0aW9uLCBvciBsaXBpZCBkaXNvcmRlciBhdCB0aGlzIHRpbWUuCjUuIEluZmx1ZW56YSB2YWNjaW5lIGFkbWluaXN0ZXJlZCB0b2RheTsgdG9sZXJhdGVkIHdlbGwuCjYuIFVwZGF0ZWQgbWVkaWNhdGlvbiBhbmQgYWxsZXJneSBsaXN0IGluIGNoYXJ0Lgo3LiBGb2xsb3cgdXAgYW5udWFsbHkgZm9yIHdlbGxuZXNzIGNhcmUgb3Igc29vbmVyIGFzIG5lZWRlZCBmb3IgbmV3IGNvbmNlcm5zLgo=",
+              "title": "Office Visit Progress Note - 2021-10-12"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-000"
+            }
+          ],
+          "period": {
+            "start": "2021-10-12T00:00:00Z"
+          }
+        }
+      }
+    }
+  ]
+}

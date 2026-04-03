@@ -1,0 +1,194 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "uc-health-hematology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "APS confirmed, anticoagulation planning",
+    "period_start": "2025-07-23",
+    "period_end": "2025-07-23",
+    "participants": [
+      {
+        "name": "Dr. James Okafor",
+        "role": "Hematology"
+      }
+    ],
+    "service_provider": "UC Health Hematology",
+    "location": "UC Health Hematology, Aurora, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 108,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 66,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 64,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 128,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.3,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "anticardiolipin antibody IgG",
+        "value": 52,
+        "unit": "GPL",
+        "reference_range": "<40 GPL",
+        "flag": "high",
+        "note": "positive; increased from 48 GPL on initial testing"
+      },
+      {
+        "name": "anticardiolipin antibody IgM",
+        "value": 9,
+        "unit": "MPL",
+        "reference_range": "<20 MPL",
+        "flag": "normal",
+        "note": "negative"
+      },
+      {
+        "name": "lupus anticoagulant by dilute Russell viper venom time (dRVVT)",
+        "value": "positive",
+        "flag": "abnormal",
+        "note": "more clearly positive than initial testing"
+      },
+      {
+        "name": "anti-beta-2 glycoprotein I antibody IgG",
+        "value": 22,
+        "unit": "units",
+        "reference_range": "<20 units",
+        "flag": "high",
+        "note": "positive; increased from 14 units, now above positivity threshold"
+      },
+      {
+        "name": "anti-beta-2 glycoprotein I antibody IgM",
+        "value": 5,
+        "unit": "units",
+        "reference_range": "<20 units",
+        "flag": "normal",
+        "note": "negative"
+      },
+      {
+        "name": "Factor V Leiden mutation analysis",
+        "value": "not detected",
+        "flag": "normal"
+      },
+      {
+        "name": "prothrombin gene G20210A mutation analysis",
+        "value": "not detected",
+        "flag": "normal"
+      },
+      {
+        "name": "protein C activity",
+        "value": "normal",
+        "flag": "normal"
+      },
+      {
+        "name": "protein S activity",
+        "value": "normal",
+        "flag": "normal"
+      },
+      {
+        "name": "antithrombin III activity",
+        "value": "normal",
+        "flag": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "antiphospholipid syndrome, obstetric subtype",
+      "clinical_status": "active",
+      "onset_date": "2025-07-23",
+      "action": "create",
+      "note": "Meets revised Sapporo (Sydney) classification criteria based on three consecutive unexplained early pregnancy losses before 10 weeks gestation combined with persistently positive anticardiolipin IgG at moderate titer, persistently positive lupus anticoagulant, and now-positive anti-beta-2 glycoprotein I IgG confirmed at greater than 12 weeks from initial testing. Risk stratification: medium risk (not triple-positive at high titer)."
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Known condition from prior encounters. Now attributed to antiphospholipid syndrome."
+    }
+  ],
+  "medications": [
+    {
+      "name": "aspirin 81 mg oral tablet",
+      "sig": "Take 81 mg by mouth once daily, to begin preconception when patient is ready to attempt conception",
+      "status": "active",
+      "reason": "antiphospholipid syndrome, obstetric subtype — preconception thromboprophylaxis",
+      "action": "create"
+    },
+    {
+      "name": "enoxaparin 40 mg subcutaneous injection",
+      "sig": "Inject 40 mg subcutaneously once daily, to initiate upon positive pregnancy test (prophylactic dose)",
+      "status": "active",
+      "reason": "antiphospholipid syndrome, obstetric subtype — pregnancy anticoagulation prophylaxis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "consultation note (follow-up)",
+      "description": "Comprehensive hematology follow-up note documenting formal confirmation of antiphospholipid syndrome (obstetric subtype) based on confirmatory 12-week repeat antibody testing meeting revised Sapporo/Sydney criteria. Includes detailed risk stratification (medium risk, not triple-positive, thrombophilia screening negative), complete anticoagulation protocol for future pregnancy (preconception aspirin, enoxaparin upon pregnancy, peripartum management, postpartum anticoagulation), long-term APS management recommendations, patient counseling on prognosis, and coordination plan with Dr. Whitfield (MFM) and Dr. Forsythe (OB/GYN)."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "antiphospholipid antibody panel, confirmatory (12-week repeat)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "anticardiolipin antibody IgG",
+        "anticardiolipin antibody IgM",
+        "lupus anticoagulant by dilute Russell viper venom time (dRVVT)",
+        "anti-beta-2 glycoprotein I antibody IgG",
+        "anti-beta-2 glycoprotein I antibody IgM"
+      ]
+    },
+    {
+      "type": "thrombophilia panel (inherited thrombophilia screening)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Factor V Leiden mutation analysis",
+        "prothrombin gene G20210A mutation analysis",
+        "protein C activity",
+        "protein S activity",
+        "antithrombin III activity"
+      ]
+    }
+  ],
+  "allergies": []
+}

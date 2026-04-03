@@ -1,0 +1,59 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-014-dot-log",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "DOT Adherence Log Summary"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "date": "2026-04-16T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c0d62614-7dd5-453f-83c3-0514edb2270d",
+      "type": "Practitioner",
+      "display": "RN Patricia Gomez"
+    }
+  ],
+  "description": "DOT adherence log summary confirming 100% compliance with directly observed therapy throughout the treatment course, covering both intensive and early continuation phases.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "RE9UIEFkaGVyZW5jZSBMb2cgU3VtbWFyeQoKUGF0aWVudDogUm9iZXJ0IEphbWVzIERhdmlzCkRhdGU6IDA0LzE2LzIwMjYKUHJlcGFyZWQgYnk6IFJOIFBhdHJpY2lhIEdvbWV6CgpUcmVhdG1lbnQgUGVyaW9kOiAwMi8wNS8yMDI2IOKAkyBwcmVzZW50IChvbmdvaW5nKQoKSW50ZW5zaXZlIFBoYXNlICgwMi8wNS8yMDI2IOKAkyAwNC8wMS8yMDI2KToKLSBTY2hlZHVsZTogRGFpbHkgRE9UICg1IGRheXMvd2VlaykKLSBDb21wbGlhbmNlOiAxMDAlCi0gTWlzc2VkIGRvc2VzOiAwCi0gU2VsZi1hZG1pbmlzdGVyZWQgd2Vla2VuZCBkb3NlczogMTAwJSBjb21wbGlhbnQgcGVyIHBpbGwgY291bnRzCgpDb250aW51YXRpb24gUGhhc2UgKDA0LzAyLzIwMjYg4oCTIHByZXNlbnQpOgotIFNjaGVkdWxlOiBUaHJlZS10aW1lcy13ZWVrbHkgRE9UIChNb24vV2VkL0ZyaSkKLSBDb21wbGlhbmNlOiAxMDAlCi0gTWlzc2VkIGRvc2VzOiAwCi0gU2VsZi1hZG1pbmlzdGVyZWQgb2ZmLWRheSBkb3NlczogMTAwJSBjb21wbGlhbnQgcGVyIHBpbGwgY291bnRzCgpPdmVyYWxsIENvbXBsaWFuY2U6IDEwMCUgdGhyb3VnaG91dCB0cmVhdG1lbnQgY291cnNlLg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-014"
+      }
+    ],
+    "period": {
+      "start": "2026-04-16"
+    }
+  }
+}

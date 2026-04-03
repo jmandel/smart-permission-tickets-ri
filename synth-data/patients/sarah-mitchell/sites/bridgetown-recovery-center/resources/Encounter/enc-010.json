@@ -1,0 +1,108 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-010",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185347001",
+          "display": "Encounter for problem (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending Provider"
+        }
+      ],
+      "period": {
+        "start": "2023-04-24T09:00:00-07:00",
+        "end": "2023-04-24T09:45:00-07:00"
+      },
+      "individual": {
+        "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+        "display": "Dr. Rosa Delgado"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Counselor"
+        }
+      ],
+      "period": {
+        "start": "2023-04-24T09:00:00-07:00",
+        "end": "2023-04-24T09:45:00-07:00"
+      },
+      "individual": {
+        "reference": "Practitioner/713234df-e5d2-45ae-b717-b7d26cc81d11",
+        "display": "Lisa Huang, LCSW"
+      }
+    }
+  ],
+  "period": {
+    "start": "2023-04-24T09:00:00-07:00",
+    "end": "2023-04-24T09:45:00-07:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Intensive outpatient program completion, sustained sobriety achieved"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/a4805a39-6988-49ae-a2ae-3cda19be388d",
+        "display": "Bridgetown Recovery Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+    "display": "Bridgetown Recovery Center"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Sarah met with Dr. Delgado for her IOP completion visit."
+    }
+  ]
+}

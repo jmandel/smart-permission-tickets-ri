@@ -1,0 +1,66 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "bridgetown-recovery-center",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone aftercare follow-up",
+    "reason": "aftercare follow-up, sustained sobriety confirmed",
+    "period_start": "2023-07-17",
+    "participants": [],
+    "service_provider": "Bridgetown Recovery Center",
+    "location": "Bridgetown Recovery Center, 920 SE Sandy Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "alcohol use disorder, moderate, in early sustained remission",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "update-existing"
+    },
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "take 1 tablet by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder, moderate",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "take 1 tablet by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "take 1 tablet by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Telephone aftercare follow-up note documenting 3-month post-IOP sustained sobriety, patient self-report of regular AA attendance and stable mood, continued tolerability of naltrexone without side effects, relapse prevention counseling, advice to establish addiction medicine or psychiatry care at new location prior to planned geographic relocation, and conclusion of care at Bridgetown Recovery Center."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

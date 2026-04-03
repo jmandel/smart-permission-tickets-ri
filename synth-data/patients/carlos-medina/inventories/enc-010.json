@@ -1,0 +1,178 @@
+{
+  "encounter_id": "enc-010",
+  "encounter_index": 10,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "DMARD monitoring labs",
+    "period_start": "2021-09-20",
+    "participants": [
+      {
+        "name": "Dr. Linda Tran",
+        "role": "ordering provider / supervising"
+      }
+    ],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "5.9",
+        "unit": "x10^3/uL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "14.6",
+        "unit": "g/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "platelet count",
+        "value": "248",
+        "unit": "x10^3/uL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "glucose",
+        "value": "96",
+        "unit": "mg/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "creatinine",
+        "value": "0.9",
+        "unit": "mg/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "44",
+        "unit": "U/L",
+        "reference_range": "normal upper limit typically ~40-55 U/L",
+        "flag": "high",
+        "interpretation": "mildly elevated; previously normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "40",
+        "unit": "U/L",
+        "reference_range": "normal upper limit typically ~40 U/L",
+        "flag": "high",
+        "interpretation": "mildly elevated; previously normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "albumin",
+        "value": "3.9",
+        "unit": "g/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "erythrocyte sedimentation rate (ESR)",
+        "value": "36",
+        "unit": "mm/hr",
+        "reference_range": "normal typically 0-20 mm/hr for males",
+        "flag": "high",
+        "interpretation": "elevated",
+        "specimen": "blood"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": "2.2",
+        "unit": "mg/dL",
+        "reference_range": "normal typically <0.5 mg/dL",
+        "flag": "high",
+        "interpretation": "elevated",
+        "specimen": "blood (serum)"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "late 2020",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 20 mg oral tablet",
+      "sig": "once weekly",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "methotrexate supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "lab results note",
+      "description": "Documents routine DMARD monitoring lab draw for seropositive RA patient on methotrexate 20 mg weekly. Reports CBC with differential (normal), CMP with mildly elevated LFTs (ALT 44, AST 40 — new finding), and elevated inflammatory markers (ESR 36, CRP 2.2). Results forwarded to South Texas Rheumatology per standing coordination agreement; no PCP-level follow-up action taken per rheumatology guidance."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "albumin"
+      ]
+    },
+    {
+      "type": "erythrocyte sedimentation rate (ESR)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate (ESR)"
+      ]
+    },
+    {
+      "type": "C-reactive protein (CRP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein (CRP)"
+      ]
+    }
+  ],
+  "allergies": []
+}

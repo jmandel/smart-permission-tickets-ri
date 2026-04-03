@@ -1,0 +1,119 @@
+{
+  "encounter_id": "enc-010",
+  "encounter_index": 10,
+  "site_slug": "colorado-maternal-fetal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "maternal-fetal medicine consultation, initial visit",
+    "reason": "high-risk pregnancy planning in the setting of recurrent pregnancy loss and suspected antiphospholipid syndrome",
+    "period_start": "2025-05-19",
+    "period_end": "2025-05-19",
+    "participants": [
+      {
+        "name": "Dr. Sarah Whitfield",
+        "role": "attending MFM specialist"
+      }
+    ],
+    "service_provider": "Colorado Maternal-Fetal Medicine",
+    "location": "Colorado Maternal-Fetal Medicine, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 110,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 70,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 129,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 65,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.5,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "reference-existing"
+    },
+    {
+      "name": "suspected antiphospholipid syndrome, obstetric type",
+      "clinical_status": "active",
+      "onset_date": "2025-04",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "aspirin 81 mg oral tablet",
+      "sig": "Take 81 mg by mouth once daily, to be initiated once decision to conceive is made (ideally 1 month prior to conception)",
+      "status": "draft",
+      "intent": "plan",
+      "reason": "suspected antiphospholipid syndrome; preconception thromboprophylaxis for recurrent pregnancy loss",
+      "action": "create"
+    },
+    {
+      "name": "enoxaparin 40 mg subcutaneous injection",
+      "sig": "Inject 40 mg subcutaneously once daily, to be initiated upon confirmed positive pregnancy test",
+      "status": "draft",
+      "intent": "plan",
+      "reason": "suspected antiphospholipid syndrome; prophylactic-dose low-molecular-weight heparin for APS-associated recurrent pregnancy loss",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "maternal-fetal medicine consultation note",
+      "description": "Comprehensive initial MFM consultation note documenting review of the patient's complete obstetric history (G3P0030 with three consecutive first-trimester losses), recurrent pregnancy loss workup results, APS antibody panel findings, physical examination, and a provisional high-risk pregnancy management plan including preconception aspirin, prophylactic-dose enoxaparin upon pregnancy confirmation, serial ultrasound surveillance protocol, fetal monitoring schedule, planned delivery timing, and postpartum anticoagulation. Notes that plan is contingent on confirmatory APS testing and hematology coordination with Dr. Okafor at UC Health.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

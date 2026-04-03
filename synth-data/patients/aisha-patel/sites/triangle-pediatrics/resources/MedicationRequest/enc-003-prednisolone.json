@@ -1,0 +1,121 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-003-prednisolone",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "283077",
+        "display": "prednisoLONE sodium phosphate 15 MG in 5 mL Oral Solution"
+      }
+    ],
+    "text": "Prednisolone 15 mg/5 mL oral solution"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2023-02-08",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-003-recurrent-wheezing",
+      "display": "Recurrent viral-induced wheezing"
+    }
+  ],
+  "courseOfTherapyType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+        "code": "acute",
+        "display": "Short course (acute) therapy"
+      }
+    ],
+    "text": "Short course (acute) therapy"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Prednisolone 12 mg (1 mg/kg/day) by mouth once daily for 3 days",
+      "patientInstruction": "Give 4 mL (12 mg) by mouth once daily for 3 days.",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2023-02-08",
+            "end": "2023-02-10"
+          },
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 12,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2023-02-08",
+      "end": "2023-02-10"
+    },
+    "quantity": {
+      "value": 12,
+      "unit": "mL"
+    },
+    "expectedSupplyDuration": {
+      "value": 3,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "encounter_id": "enc-010",
+  "encounter_index": 10,
+  "site_slug": "houston-pulmonary-associates",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "MD Anderson referral confirmation, cough management",
+    "period_start": "2024-09-03",
+    "participants": [
+      {
+        "name": "Dr. Nisha Ramaswamy, MD",
+        "role": "Pulmonary Medicine"
+      }
+    ],
+    "service_provider": "Houston Pulmonary Associates",
+    "location": "6624 Fannin St, Suite 1540, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "chronic cough",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "description": "worsening nighttime nonproductive cough interfering with sleep, not associated with fever, hemoptysis, or acute dyspnea; benzonatate inadequate for nocturnal symptom control"
+    },
+    {
+      "name": "non-small cell lung cancer, suspected (right upper lobe mass with mediastinal lymphadenopathy)",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "description": "suspected lung malignancy based on CT findings from prior workup; referral to MD Anderson for staging and tissue diagnosis is being coordinated at this encounter"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "guaifenesin with codeine oral solution 10 mL (100 mg guaifenesin / 10 mg codeine)",
+      "sig": "Take 10 mL by mouth at bedtime as needed for cough. Avoid driving or operating machinery after taking medication.",
+      "status": "active",
+      "reason": "worsening nighttime cough",
+      "action": "create",
+      "note": "patient counseled on potential sedation and constipation"
+    },
+    {
+      "name": "benzonatate",
+      "status": "active",
+      "action": "reference-existing",
+      "note": "continued but noted as inadequate for nocturnal symptoms"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents the telephone call with Patricia confirming the MD Anderson referral to Dr. Carlos Menendez (Thoracic Oncology) for September 16, 2024. Addresses worsening nighttime cough with new prescription for guaifenesin with codeine. Notes plan to send all pertinent records (CT chest interpretation, PFT results, consultation notes) to MD Anderson prior to the appointment. Discusses anticipated transition of primary oncologic care to MD Anderson."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

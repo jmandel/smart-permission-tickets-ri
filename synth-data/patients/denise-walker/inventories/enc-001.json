@@ -1,0 +1,202 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "valley-heart-institute",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "HFrEF and paroxysmal atrial fibrillation follow-up",
+    "participants": [],
+    "service_provider": "Valley Heart Institute",
+    "location": "Valley Heart Institute, Phoenix, Arizona"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "132/80 mmHg"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": "132 mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": "80 mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": "74 beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "18 breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": "97.9 F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "97% on room air"
+      },
+      {
+        "name": "body weight",
+        "value": "201 lb"
+      },
+      {
+        "name": "body height",
+        "value": "64 in"
+      },
+      {
+        "name": "body mass index",
+        "value": "34.5 kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "B-type natriuretic peptide",
+        "value": "412 pg/mL",
+        "interpretation": "high"
+      },
+      {
+        "name": "creatinine",
+        "value": "1.31 mg/dL",
+        "interpretation": "high/borderline elevated"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": "about 46 mL/min/1.73 m2",
+        "interpretation": "low"
+      },
+      {
+        "name": "potassium",
+        "value": "4.5 mmol/L",
+        "interpretation": "normal"
+      },
+      {
+        "name": "magnesium",
+        "value": "1.9 mg/dL",
+        "interpretation": "normal"
+      },
+      {
+        "name": "thyroid stimulating hormone",
+        "value": "1.7 uIU/mL",
+        "interpretation": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "heart failure with reduced ejection fraction, NYHA class II to III",
+      "clinical_status": "active",
+      "onset_date": "earlier in 2022",
+      "action": "update-existing"
+    },
+    {
+      "name": "paroxysmal atrial fibrillation",
+      "clinical_status": "active",
+      "onset_date": "earlier in 2022",
+      "action": "update-existing"
+    },
+    {
+      "name": "chronic kidney disease",
+      "clinical_status": "active",
+      "onset_date": "before 2022-06-08",
+      "action": "update-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "carvedilol 6.25 mg oral tablet",
+      "sig": "take 6.25 mg by mouth twice daily",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "furosemide 20 mg oral tablet",
+      "sig": "take 20 mg by mouth every morning",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction / volume management",
+      "action": "reference-existing"
+    },
+    {
+      "name": "losartan oral therapy",
+      "sig": "discontinue losartan",
+      "status": "stopped",
+      "reason": "replaced by sacubitril/valsartan for guideline-directed therapy in symptomatic HFrEF",
+      "action": "update-existing"
+    },
+    {
+      "name": "sacubitril/valsartan 24/26 mg oral tablet",
+      "sig": "start 24/26 mg by mouth twice daily after appropriate washout",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction",
+      "action": "create"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "take 5 mg by mouth twice daily",
+      "status": "active",
+      "reason": "stroke prevention in paroxysmal atrial fibrillation",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "name": "Progress note",
+      "description": "Cardiology follow-up note documenting symptomatic HFrEF with exertional dyspnea and paroxysmal atrial fibrillation with intermittent palpitations. The note should summarize reviewed echocardiogram, ECG, medication changes including losartan discontinuation, sacubitril/valsartan initiation, apixaban initiation, and follow-up planning."
+    },
+    {
+      "name": "Patient instructions",
+      "description": "Counseling document covering sodium restriction, fluid restriction, symptom monitoring, and return precautions for worsening dyspnea, edema, bleeding, or sustained palpitations. It should also reinforce medication changes and planned reassessment in 3 to 4 weeks."
+    },
+    {
+      "name": "ECG interpretation note",
+      "description": "Separate interpretation documenting same-day ECG findings of sinus rhythm at 72 bpm with premature atrial complexes, contrasted with irregular intake rhythm and prior atrial fibrillation history. The note should make clear that no acute ischemic symptoms were reported."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Transthoracic echocardiogram",
+      "report_state": "summary-only",
+      "description": "echocardiogram was reviewed at this visit and showed left ventricular ejection fraction 35%, mild left ventricular dilation, global hypokinesis, grade II diastolic dysfunction, and mild left atrial enlargement. This encounter narrative does not provide a full structured echocardiography result set beyond the summarized findings."
+    },
+    {
+      "type": "12-lead electrocardiogram",
+      "report_state": "summary-only",
+      "description": "same-day ECG interpretation documented sinus rhythm at 72 bpm with premature atrial complexes. Narrative provides interpretive findings rather than a full waveform-derived structured result set."
+    },
+    {
+      "type": "Ambulatory rhythm monitor report from earlier 2022",
+      "report_state": "summary-only",
+      "description": "prior report was reviewed during this encounter and had captured brief atrial fibrillation runs up to 140 bpm. This was referenced to support assessment of paroxysmal atrial fibrillation and anticoagulation planning; it was not newly resulted at this visit."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "ACE inhibitor",
+      "reaction": "cough",
+      "action": "reference-existing"
+    }
+  ]
+}

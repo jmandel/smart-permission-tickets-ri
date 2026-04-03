@@ -1,0 +1,40 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-008-pft-order",
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "23426006",
+        "display": "Measurement of respiratory function (procedure)"
+      }
+    ],
+    "text": "Pulmonary function testing (full spirometry, lung volumes, and DLCO)"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "authoredOn": "2024-08-12",
+  "requester": {
+    "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+    "display": "Dr. Nisha Ramaswamy, MD"
+  },
+  "occurrenceDateTime": "2024-08-19",
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-008-lung-mass",
+      "display": "Suspected primary lung neoplasm of right upper lobe"
+    }
+  ],
+  "note": [
+    {
+      "text": "Baseline pulmonary function testing prior to potential surgical or oncologic intervention. Full spirometry, lung volumes, and DLCO."
+    }
+  ]
+}

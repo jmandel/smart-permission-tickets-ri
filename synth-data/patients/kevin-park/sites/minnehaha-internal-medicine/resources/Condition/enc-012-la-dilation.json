@@ -1,0 +1,76 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-012-la-dilation",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "253361002",
+        "display": "Left atrial dilatation (disorder)"
+      }
+    ],
+    "text": "Mild left atrial dilation"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "onsetDateTime": "2026-01-19",
+  "recordedDate": "2026-01-19",
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "433236007",
+              "display": "Transthoracic echocardiography (procedure)"
+            }
+          ],
+          "text": "Diagnosed on transthoracic echocardiogram: LA diameter 4.3 cm, LAVI 32 mL/m2"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Mild left atrial dilation identified on transthoracic echocardiogram. LA diameter 4.3 cm (normal <4.0 cm in males), LAVI 32 mL/m2 (mildly elevated). Consistent with atrial fibrillation-related remodeling."
+    }
+  ]
+}

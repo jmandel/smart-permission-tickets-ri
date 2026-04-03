@@ -1,0 +1,78 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-005-acetaminophen",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "161",
+        "display": "acetaminophen"
+      }
+    ],
+    "text": "acetaminophen"
+  },
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "authoredOn": "2023-03-17",
+  "requester": {
+    "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+    "type": "Practitioner",
+    "display": "Dr. Anita Okonkwo"
+  },
+  "recorder": {
+    "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+    "type": "Practitioner",
+    "display": "Dr. Anita Okonkwo"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-005-ra",
+      "display": "Seropositive rheumatoid arthritis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take as needed for pain.",
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419652001",
+            "display": "Take"
+          }
+        ],
+        "text": "Take"
+      }
+    }
+  ]
+}

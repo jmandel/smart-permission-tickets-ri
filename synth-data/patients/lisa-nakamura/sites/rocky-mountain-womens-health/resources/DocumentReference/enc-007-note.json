@@ -1,0 +1,76 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-007-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "date": "2025-03-10T10:00:00-06:00",
+  "author": [
+    {
+      "reference": "Practitioner/bf9b0a0e-0ef0-40df-9eb6-72d51439701b",
+      "display": "Dr. Megan Forsythe"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/bf9b0a0e-0ef0-40df-9eb6-72d51439701b",
+    "display": "Dr. Megan Forsythe"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "Uk9DS1kgTU9VTlRBSU4gV09NRU4nUyBIRUFMVEgKRGVudmVyLCBDTwpQcm92aWRlcjogTWVnYW4gRm9yc3l0aGUsIE1ELCBPQi9HWU4KClBST0dSRVNTIE5PVEUKClBhdGllbnQ6IExpc2EgTmFrYW11cmEKRGF0ZSBvZiBTZXJ2aWNlOiAwMy8xMC8yMDI1ClZpc2l0IFR5cGU6IE9mZmljZSBWaXNpdCDigJQgU2NoZWR1bGVkIDgtd2VlayBmb2xsb3ctdXAgdWx0cmFzb3VuZAoKU1VCSkVDVElWRToKTGlzYSBOYWthbXVyYSBpcyBhIDM2LXllYXItb2xkIEczUDAwMzAgd29tYW4gd2hvIHByZXNlbnRzIGZvciBoZXIgc2NoZWR1bGVkIDgtd2VlayBmb2xsb3ctdXAgdWx0cmFzb3VuZCBpbiBoZXIgdGhpcmQgcHJlZ25hbmN5LiBTaGUgcmVwb3J0cyB0aGF0IGhlciBuYXVzZWEgYW5kIGJyZWFzdCB0ZW5kZXJuZXNzIGhhdmUgZGltaW5pc2hlZCBvdmVyIHRoZSBwYXN0IHdlZWssIHdoaWNoIGhhcyByYWlzZWQgaGVyIGNvbmNlcm4uIFNoZSBoYXMgYmVlbiBjb21wbGlhbnQgd2l0aCB2YWdpbmFsIG1pY3Jvbml6ZWQgcHJvZ2VzdGVyb25lIDIwMCBtZyBuaWdodGx5IGFzIHByZXNjcmliZWQgYXQgaGVyIDYtd2VlayB2aXNpdC4gU2hlIGRlbmllcyB2YWdpbmFsIGJsZWVkaW5nLCBjcmFtcGluZywgZmV2ZXIsIG9yIG90aGVyIGFjdXRlIGNvbXBsYWludHMuIFNoZSBhbmQgaGVyIGh1c2JhbmQgUnlhbiBjb250aW51ZSB0byBiZSBob3BlZnVsIGJ1dCB1bmRlcnN0YW5kYWJseSBhbnhpb3VzIGdpdmVuIHRoZWlyIGhpc3Rvcnkgb2YgdHdvIHByaW9yIGZpcnN0LXRyaW1lc3RlciBsb3NzZXMuCgpQZXJ0aW5lbnQgT0IgaGlzdG9yeTogRzNQMDAzMC4gRmlyc3QgbG9zcyBhdCA2IHdlZWtzIChKdW5lIDIwMjQsIHNwb250YW5lb3VzIGFib3J0aW9uLCBleHBlY3RhbnQgbWFuYWdlbWVudCkuIFNlY29uZCBsb3NzIGF0IDcgd2Vla3MgKE5vdmVtYmVyIDIwMjQsIG1pc3NlZCBhYm9ydGlvbiwgZXhwZWN0YW50IG1hbmFnZW1lbnQpLiBSUEwgd29ya3VwIHBlcmZvcm1lZCBEZWNlbWJlciAyMDI0OiBwYXJlbnRhbCBrYXJ5b3R5cGVzIG5vcm1hbCAoTGlzYSA0NixYWDsgUnlhbiA0NixYWSksIFRTSCAyLjEgbUlVL0wsIEhiQTFjIDUuMiUsIGNvYWd1bGF0aW9uIHBhbmVsIG5vcm1hbCwgQU5BIG5lZ2F0aXZlLiBUaGlyZCBwcmVnbmFuY3kgY29uZmlybWVkIEphbnVhcnkgMjAyNSB3aXRoIGVuY291cmFnaW5nIDYtd2VlayB1bHRyYXNvdW5kIHNob3dpbmcgZmV0YWwgY2FyZGlhYyBhY3Rpdml0eSBhdCAxMTIgYnBtLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDExOC83NCBtbUhnLCBIUiA3NiBicG0sIFRlbXAgOTguNCBGLCBSUiAxNiwgU3BPMiA5OSUsIFdlaWdodCAxMzAgbGJzLCBCTUkgMjEuNi4KCkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nIHdvbWFuIGluIG5vIGFjdXRlIGRpc3RyZXNzLiBBcHBlYXJzIGFueGlvdXMuCkFiZG9tZW46IFNvZnQsIG5vbnRlbmRlciwgbm9uZGlzdGVuZGVkLgpQZWx2aWM6IEV4dGVybmFsIGdlbml0YWxpYSBub3JtYWwuIENlcnZpeCBjbG9zZWQsIG5vIGFjdGl2ZSBibGVlZGluZyBub3RlZC4KClRyYW5zdmFnaW5hbCBVbHRyYXNvdW5kICg4LXdlZWspOgotIEludHJhdXRlcmluZSBnZXN0YXRpb25hbCBzYWMgcHJlc2VudAotIEZldGFsIHBvbGUgbWVhc3VyaW5nIDcgd2Vla3MgMSBkYXkgKG5vIGludGVydmFsIGdyb3d0aCBmcm9tIGV4cGVjdGVkIDgtd2VlayB0cmFqZWN0b3J5KQotIEFic2VudCBjYXJkaWFjIGFjdGl2aXR5Ci0gRmluZGluZ3MgY29uc2lzdGVudCB3aXRoIG1pc3NlZCBhYm9ydGlvbjsgZW1icnlvbmljIGRlbWlzZSBlc3RpbWF0ZWQgdG8gaGF2ZSBvY2N1cnJlZCAxLTIgd2Vla3MgcHJpb3IKCkFTU0VTU01FTlQ6CjEuIE1pc3NlZCBhYm9ydGlvbiBhdCA4IHdlZWtzIGdlc3RhdGlvbiDigJQgdGhpcmQgY29uc2VjdXRpdmUgZmlyc3QtdHJpbWVzdGVyIHByZWduYW5jeSBsb3NzLiBGZXRhbCBwb2xlIGdyb3d0aCBhcnJlc3QgYXQgYXBwcm94aW1hdGVseSA3dzFkIHdpdGggYWJzZW50IGNhcmRpYWMgYWN0aXZpdHkuCjIuIFJlY3VycmVudCBwcmVnbmFuY3kgbG9zcyAoUlBMKSDigJQgbm93IG1lZXRpbmcgY2xhc3NpYyBjcml0ZXJpYSBvZiB0aHJlZSBvciBtb3JlIGNvbnNlY3V0aXZlIGZpcnN0LXRyaW1lc3RlciBsb3NzZXMuIFByaW9yIFJQTCB3b3JrdXAgKGthcnlvdHlwZXMsIHRoeXJvaWQsIEhiQTFjLCBjb2FndWxhdGlvbiwgQU5BKSB1bnJldmVhbGluZy4KMy4gSGlzdG9yeSBvZiB2YWdpbmFsIHByb2dlc3Rlcm9uZSBzdXBwbGVtZW50YXRpb24gdGhpcyBwcmVnbmFuY3kg4oCUIHRvIGJlIGRpc2NvbnRpbnVlZC4KClBMQU46CjEuIERpbGF0aW9uIGFuZCBjdXJldHRhZ2UgKEQmQykgcmVjb21tZW5kZWQgcmF0aGVyIHRoYW4gZXhwZWN0YW50IG1hbmFnZW1lbnQgZm9yIHR3byByZWFzb25zOiAoYSkgdG8gZXhwZWRpdGUgcGh5c2ljYWwgcmVjb3ZlcnkgZ2l2ZW4gdGhlIGVtb3Rpb25hbCB0b2xsIG9mIHRocmVlIGNvbnNlY3V0aXZlIGxvc3NlcywgYW5kIChiKSB0byBvYnRhaW4gcHJvZHVjdHMgb2YgY29uY2VwdGlvbiAoUE9DKSBmb3IgY3l0b2dlbmV0aWMgYW5hbHlzaXMsIHdoaWNoIG1heSBwcm92aWRlIGNyaXRpY2FsIGRpYWdub3N0aWMgaW5mb3JtYXRpb24gcmVnYXJkaW5nIHRoZSBldGlvbG9neSBvZiBoZXIgcmVjdXJyZW50IGxvc3Nlcy4KMi4gRCZDIHNjaGVkdWxlZCBmb3IgMDMvMTIvMjAyNSBhdCBSb2NreSBNb3VudGFpbiBXb21lbidzIEhlYWx0aCBhZmZpbGlhdGVkIGFtYnVsYXRvcnkgc3VyZ2VyeSBjZW50ZXIuIFJpc2tzLCBiZW5lZml0cywgYW5kIGFsdGVybmF0aXZlcyBkaXNjdXNzZWQgYXQgbGVuZ3RoLiBQYXRpZW50IHVuZGVyc3RhbmRzIGFuZCBjb25zZW50cy4KMy4gUE9DIHRvIGJlIHNlbnQgZm9yIGhpc3RvcGF0aG9sb2d5IGFuZCBjeXRvZ2VuZXRpYyBrYXJ5b3R5cGUgYW5hbHlzaXMuCjQuIERpc2NvbnRpbnVlIHZhZ2luYWwgcHJvZ2VzdGVyb25lIDIwMCBtZyBuaWdodGx5Lgo1LiBGb2xsb3ctdXAgYmV0YS1oQ0cgdG8gYmUgZHJhd24gYXBwcm94aW1hdGVseSAyIHdlZWtzIHBvc3QtcHJvY2VkdXJlIHRvIGNvbmZpcm0gY29tcGxldGUgcmVzb2x1dGlvbi4KNi4gRW1vdGlvbmFsIHN1cHBvcnQgcHJvdmlkZWQuIFBhdGllbnQgdGVhcmZ1bCBidXQgY29tcG9zZWQuIEVuY291cmFnZWQgY29udGludWF0aW9uIG9mIHRoZXJhcHkgdGhyb3VnaCBFQVAuIEh1c2JhbmQgUnlhbiBwcmVzZW50IGFuZCBzdXBwb3J0aXZlLgoKQURERU5EVU0g4oCUIDAzLzEyLzIwMjU6CkQmQyBwZXJmb3JtZWQgYXQgYWZmaWxpYXRlZCBhbWJ1bGF0b3J5IHN1cmdlcnkgY2VudGVyLiBQcm9jZWR1cmUgdW5jb21wbGljYXRlZC4gUHJvZHVjdHMgb2YgY29uY2VwdGlvbiBvYnRhaW5lZCBhbmQgc2VudCB0byBwYXRob2xvZ3kgZm9yIGhpc3RvcGF0aG9sb2d5IGFuZCB0byBjeXRvZ2VuZXRpY3MgbGFib3JhdG9yeSBmb3Iga2FyeW90eXBlIGFuYWx5c2lzLgoKQURERU5EVU0g4oCUIFJlc3VsdHMgKHJlY2VpdmVkIGFwcHJveGltYXRlbHkgMDQvMDEvMjAyNSk6Ckhpc3RvcGF0aG9sb2d5OiBDb25maXJtZWQgcHJvZHVjdHMgb2YgY29uY2VwdGlvbiB3aXRoIGNob3Jpb25pYyB2aWxsaSBpZGVudGlmaWVkLiBObyBtb2xhciBjaGFuZ2VzLgpDeXRvZ2VuZXRpYyBhbmFseXNpcyBvZiBQT0M6IE5vcm1hbCBmZW1hbGUga2FyeW90eXBlICg0NixYWCkuCgpUaGlzIGlzIGEgcGl2b3RhbCBmaW5kaW5nLiBBIGNocm9tb3NvbWFsbHkgbm9ybWFsIChldXBsb2lkKSBjb25jZXB0dXMgZWxpbWluYXRlcyBlbWJyeW9uaWMgYW5ldXBsb2lkeSDigJQgdGhlIG1vc3QgY29tbW9uIGNhdXNlIG9mIHNwb3JhZGljIGVhcmx5IG1pc2NhcnJpYWdlIOKAlCBhcyB0aGUgZXhwbGFuYXRpb24gZm9yIHRoaXMgbG9zcy4gQ29tYmluZWQgd2l0aCB0aGUgcHJpb3Igbm9ybWFsIFJQTCB3b3JrdXAgKG5vcm1hbCBwYXJlbnRhbCBrYXJ5b3R5cGVzLCBub3JtYWwgdGh5cm9pZCwgbm9ybWFsIEhiQTFjLCBub3JtYWwgY29hZ3VsYXRpb24sIG5lZ2F0aXZlIEFOQSksIHRoaXMgc2hpZnRzIGNsaW5pY2FsIHN1c3BpY2lvbiB0b3dhcmQgYSBtYXRlcm5hbCBmYWN0b3IsIHBhcnRpY3VsYXJseSBhbnRpcGhvc3Bob2xpcGlkIHN5bmRyb21lIChBUFMpLgoKRm9sbG93LXVwIGJldGEtaENHIG9uIDAzLzI0LzIwMjU6IDw1IG1JVS9tTCwgY29uZmlybWluZyBjb21wbGV0ZSByZXNvbHV0aW9uLgoKVXBkYXRlZCBwcm9ibGVtIGxpc3Q6IFJlY3VycmVudCBwcmVnbmFuY3kgbG9zcyDigJQgdGhyZWUgY29uc2VjdXRpdmUgZmlyc3QtdHJpbWVzdGVyIGxvc3Nlcywgb25lIHdpdGggY29uZmlybWVkIGV1cGxvaWQgY29uY2VwdHVzLgoKTmV4dCBzdGVwczogQVBTIGFudGlib2R5IHBhbmVsIHRvIGJlIG9yZGVyZWQgYXQgbmV4dCB2aXNpdC4gUGxhbiB0byBldmFsdWF0ZSBhbnRpY2FyZGlvbGlwaW4gYW50aWJvZGllcyAoSWdHIGFuZCBJZ00pLCBsdXB1cyBhbnRpY29hZ3VsYW50LCBhbmQgYW50aS1iZXRhLTIgZ2x5Y29wcm90ZWluIEkgYW50aWJvZGllcy4gSWYgcG9zaXRpdmUsIGNvbmZpcm1hdG9yeSB0ZXN0aW5nIGF0IDEyIHdlZWtzIHBlciByZXZpc2VkIFNhcHBvcm8gY3JpdGVyaWEgd2lsbCBiZSByZXF1aXJlZC4gU3BlY2lhbGlzdCByZWZlcnJhbHMgdG8gTUZNIGFuZCBoZW1hdG9sb2d5IGFudGljaXBhdGVkIHBlbmRpbmcgcmVzdWx0cy4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKTWVnYW4gRm9yc3l0aGUsIE1ECk9CL0dZTgpSb2NreSBNb3VudGFpbiBXb21lbidzIEhlYWx0aApOUEk6IDE1OTgyMzQwNzYK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-007"
+      }
+    ],
+    "period": {
+      "start": "2025-03-10T09:00:00-06:00",
+      "end": "2025-03-10T10:00:00-06:00"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

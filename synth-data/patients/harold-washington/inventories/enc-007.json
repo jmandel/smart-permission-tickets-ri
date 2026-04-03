@@ -1,0 +1,58 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "first-coast-neurology-associates",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone follow-up encounter",
+    "reason": "Donepezil titration follow-up — assess tolerance of donepezil 5 mg daily initiated four weeks prior",
+    "period_start": "2022-05-17",
+    "participants": [
+      {
+        "name": "Dr. Raymond Patel, MD",
+        "role": "neurologist"
+      }
+    ],
+    "service_provider": "First Coast Neurology Associates",
+    "location": "First Coast Neurology Associates, 836 Prudential Drive, Suite 1400, Jacksonville, FL 32207"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, early onset, mild stage",
+      "clinical_status": "active",
+      "onset_date": "2022-04",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 5 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily at bedtime",
+      "status": "stopped",
+      "reason": "Alzheimer's disease",
+      "action": "update-existing"
+    },
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily at bedtime, starting tonight (2022-05-17)",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Telephone encounter note",
+      "description": "Telephone follow-up documenting assessment of donepezil 5 mg tolerance four weeks after initiation for Alzheimer's disease. Caregiver reports good tolerance with only mild transient nausea. Plan to titrate donepezil to 10 mg daily at bedtime effective tonight, with continued monitoring and office follow-up scheduled for October 2022."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

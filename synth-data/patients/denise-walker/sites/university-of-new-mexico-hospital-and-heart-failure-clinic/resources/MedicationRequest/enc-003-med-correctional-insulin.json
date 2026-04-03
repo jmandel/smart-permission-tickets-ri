@@ -1,0 +1,58 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-003-med-correctional-insulin",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "242120",
+        "display": "insulin lispro 100 UNT/ML Injectable Solution"
+      }
+    ],
+    "text": "Correctional insulin"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2024-04-25",
+  "requester": {
+    "reference": "Practitioner/4115ec43-6d5d-4ad2-ba16-21e45e8c35a4",
+    "display": "Dr. Priya Nanduri, MD"
+  },
+  "recorder": {
+    "reference": "Practitioner/4115ec43-6d5d-4ad2-ba16-21e45e8c35a4",
+    "display": "Dr. Priya Nanduri, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-003-cond-t2dm-hyperglycemia",
+      "display": "Type 2 diabetes mellitus with hyperglycemia"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Administer correctional insulin as instructed for glycemic management.",
+      "route": {
+        "text": "Subcutaneous"
+      }
+    }
+  ]
+}

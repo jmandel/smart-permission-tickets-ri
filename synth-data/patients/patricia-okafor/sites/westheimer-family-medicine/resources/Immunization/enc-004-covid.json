@@ -1,0 +1,39 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-004-covid",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "309",
+        "display": "COVID-19, mRNA, LNP-S, PF, tris-sucrose, 30 mcg/0.3 mL"
+      }
+    ],
+    "text": "COVID-19 vaccine, mRNA, 2023-2024 formulation, booster dose"
+  },
+  "patient": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "occurrenceDateTime": "2023-11",
+  "primarySource": false,
+  "reportOrigin": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/immunization-origin",
+        "code": "record",
+        "display": "Written Record"
+      }
+    ],
+    "text": "Pharmacy record"
+  },
+  "note": [
+    {
+      "text": "Administered at pharmacy November 2023, documented at annual wellness visit 03/12/2024"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-014-neurocog-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP248729-8",
+          "display": "Neuropsychology"
+        }
+      ],
+      "text": "Neuropsychology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "85877-9",
+        "display": "Neuropsychology Initial evaluation note"
+      }
+    ],
+    "text": "Neurocognitive testing battery report"
+  },
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "effectiveDateTime": "2025-01-22",
+  "issued": "2025-01-22T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+      "display": "Dr. Lisa Nakamura"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-014-mmse",
+      "display": "MMSE total score 17/30"
+    },
+    {
+      "reference": "Observation/enc-014-mmse-orientation",
+      "display": "MMSE orientation subscore 2/10"
+    },
+    {
+      "reference": "Observation/enc-014-mmse-registration",
+      "display": "MMSE registration subscore 3/3"
+    },
+    {
+      "reference": "Observation/enc-014-mmse-attention",
+      "display": "MMSE attention and calculation subscore 3/5"
+    },
+    {
+      "reference": "Observation/enc-014-mmse-recall",
+      "display": "MMSE recall subscore 0/3"
+    },
+    {
+      "reference": "Observation/enc-014-mmse-language",
+      "display": "MMSE language and praxis subscore 9/9"
+    },
+    {
+      "reference": "Observation/enc-014-moca",
+      "display": "MoCA total score 13/30"
+    },
+    {
+      "reference": "Observation/enc-014-moca-recall",
+      "display": "MoCA delayed recall subscore 0/5"
+    },
+    {
+      "reference": "Observation/enc-014-moca-orientation",
+      "display": "MoCA orientation subscore 2/6"
+    },
+    {
+      "reference": "Observation/enc-014-moca-visuospatial",
+      "display": "MoCA visuospatial/executive subscore 1/5"
+    },
+    {
+      "reference": "Observation/enc-014-moca-naming",
+      "display": "MoCA naming subscore 2/3"
+    }
+  ],
+  "conclusion": "MMSE 17/30, MoCA 13/30. Cognitive profile consistent with moderate-stage Alzheimer's disease. Prominent deficits in delayed recall, orientation, and visuospatial/executive function with relative preservation of language fluency and motor function."
+}

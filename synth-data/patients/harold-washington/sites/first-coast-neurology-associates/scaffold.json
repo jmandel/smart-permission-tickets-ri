@@ -1,0 +1,205 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "9abd3fa2-00e3-443d-b159-a6b73cd80082",
+    "extension": [
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2054-5",
+              "display": "Black or African American"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Black or African American",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Not Hispanic or Latino",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "family": "Washington",
+        "given": [
+          "Harold",
+          "James"
+        ]
+      }
+    ],
+    "gender": "male",
+    "birthDate": "1946-09-14",
+    "address": [
+      {
+        "use": "home",
+        "line": [
+          "1847 Candler Road"
+        ],
+        "city": "Decatur",
+        "state": "GA",
+        "postalCode": "30034"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "W",
+          "display": "Widowed"
+        }
+      ],
+      "text": "Widowed"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "2377f598-6590-4511-ba0c-3a9011179b51",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "NPI"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1578934260"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Healthcare Provider"
+      }
+    ],
+    "name": "First Coast Neurology Associates",
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "line": [
+          "836 Prudential Drive",
+          "Suite 1400"
+        ],
+        "city": "Jacksonville",
+        "state": "FL",
+        "postalCode": "32207"
+      }
+    ]
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+    "name": [
+      {
+        "use": "official",
+        "family": "Patel",
+        "given": [
+          "Raymond"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Neurologist"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Location",
+    "id": "3b3ae2bd-a67c-471c-879d-8b1279cc9815",
+    "status": "active",
+    "name": "First Coast Neurology Associates",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "OF",
+            "display": "Outpatient Facility"
+          }
+        ],
+        "text": "Outpatient Facility"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "line": [
+        "836 Prudential Drive",
+        "Suite 1400"
+      ],
+      "city": "Jacksonville",
+      "state": "FL",
+      "postalCode": "32207"
+    },
+    "managingOrganization": {
+      "reference": "Organization/2377f598-6590-4511-ba0c-3a9011179b51",
+      "display": "First Coast Neurology Associates"
+    }
+  }
+]

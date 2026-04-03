@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "f97dd136-a15f-4a2c-b48f-4cf40aba00ef",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Kevin Romero, PharmD",
+      "family": "Romero",
+      "given": [
+        "Kevin"
+      ],
+      "suffix": [
+        "PharmD"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "PharmD",
+            "display": "Doctor of Pharmacy"
+          }
+        ],
+        "text": "Medication reconciliation and affordability support"
+      }
+    }
+  ]
+}

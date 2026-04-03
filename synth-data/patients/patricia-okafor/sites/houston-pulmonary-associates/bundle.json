@@ -1,0 +1,1960 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T10:26:23.427Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2054-5",
+                  "display": "Black or African American"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Black / Nigerian-American",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "She was enrolled in a Phase III clinical trial (NCT05820295 — a real-ish trial ID) comparing pembrolizumab + carboplatin/pemetrexed vs standard chemo alone for first-line treatment of stage III NSCLC. She signed informed consent in December 2024 and began treatment in January 2025. She has completed 4 cycles of chemo-immunotherapy with partial response on interim imaging. She continues maintenance pembrolizumab with regular monitoring.\n\nThe research institute (MD Anderson) uses a Permission Ticket to access Patricia's historical medical records from her community PCP and pulmonologist, covering the 3 years prior to enrollment through the present, to correlate treatment response with prior health status.\n\nThree sites, one state (TX). Tests Permission Ticket constraints on periods (research needs 2022–present, not her full medical history) and scopes (research needs Condition, Observation, DiagnosticReport, MedicationRequest, Procedure — broad but defined by study protocol)."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.houston-pulmonary-associates",
+            "value": "HPA-200481"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-190bdb79160b5ea0ea721891"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Okafor",
+            "given": [
+              "Patricia",
+              "Chidinma"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "713-555-0147",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "patricia.okafor@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1963-08-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "4821 Westheimer Rd"
+            ],
+            "city": "Houston",
+            "state": "TX",
+            "postalCode": "77042",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b3038360-2804-4469-921c-a842836dd49a",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "b3038360-2804-4469-921c-a842836dd49a",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1548273016"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Houston Pulmonary Associates",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "713-555-0190",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "713-555-0191",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "6624 Fannin St",
+              "Suite 1540"
+            ],
+            "city": "Houston",
+            "state": "TX",
+            "postalCode": "77030",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:26ca612e-5f99-46e7-bdc7-af0451a8a524",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "26ca612e-5f99-46e7-bdc7-af0451a8a524",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Ramaswamy",
+            "given": [
+              "Nisha"
+            ],
+            "prefix": [
+              "Dr."
+            ],
+            "suffix": [
+              "MD"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "41672002",
+                  "display": "Pulmonologist"
+                }
+              ],
+              "text": "Pulmonary Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+      "resource": {
+        "resourceType": "Location",
+        "id": "08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+        "status": "active",
+        "name": "Houston Pulmonary Associates",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient Facility"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "713-555-0190",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "713-555-0191",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "6624 Fannin St",
+            "Suite 1540"
+          ],
+          "city": "Houston",
+          "state": "TX",
+          "postalCode": "77030",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+          "display": "Houston Pulmonary Associates"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "valueQuantity": {
+          "value": 25.8,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 138,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 84,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "valueQuantity": {
+          "value": 80,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "valueQuantity": {
+          "value": 16,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "valueQuantity": {
+          "value": 96,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "valueQuantity": {
+          "value": 155,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-dlco",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-dlco",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-pft-order",
+            "display": "Pulmonary function testing"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19911-7",
+              "display": "Diffusion capacity.carbon monoxide"
+            }
+          ],
+          "text": "Diffusing capacity of the lung for carbon monoxide (DLCO)"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2024-08-19",
+        "issued": "2024-08-19T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 16.2,
+          "unit": "mL/min/mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/mm[Hg]"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low (71% predicted)"
+          }
+        ],
+        "note": [
+          {
+            "text": "71% predicted. Single-breath method. Reduced diffusion capacity suggesting impairment in gas exchange at the alveolar-capillary level."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-fev1-fvc-ratio",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-fev1-fvc-ratio",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-pft-order",
+            "display": "Pulmonary function testing"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19926-5",
+              "display": "FEV1/FVC"
+            }
+          ],
+          "text": "FEV1/FVC ratio"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2024-08-19",
+        "issued": "2024-08-19T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.76,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-fev1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-fev1",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-pft-order",
+            "display": "Pulmonary function testing"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20150-9",
+              "display": "FEV1"
+            }
+          ],
+          "text": "Forced expiratory volume in 1 second (FEV1)"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2024-08-19",
+        "issued": "2024-08-19T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.08,
+          "unit": "L",
+          "system": "http://unitsofmeasure.org",
+          "code": "L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low (78% predicted)"
+          }
+        ],
+        "note": [
+          {
+            "text": "78% predicted. No significant bronchodilator response."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-fvc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-fvc",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-pft-order",
+            "display": "Pulmonary function testing"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19870-5",
+              "display": "Forced vital capacity [Volume] Respiratory system"
+            }
+          ],
+          "text": "Forced vital capacity (FVC)"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2024-08-19",
+        "issued": "2024-08-19T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2.72,
+          "unit": "L",
+          "system": "http://unitsofmeasure.org",
+          "code": "L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low (82% predicted)"
+          }
+        ],
+        "note": [
+          {
+            "text": "82% predicted."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-tlc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-tlc",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-pft-order",
+            "display": "Pulmonary function testing"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19862-2",
+              "display": "Total lung capacity"
+            }
+          ],
+          "text": "Total lung capacity (TLC)"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2024-08-19",
+        "issued": "2024-08-19T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.1,
+          "unit": "L",
+          "system": "http://unitsofmeasure.org",
+          "code": "L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low (80% predicted)"
+          }
+        ],
+        "note": [
+          {
+            "text": "80% predicted. Measured by plethysmography."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-01",
+        "issued": "2024-08-12T00:00:00Z",
+        "conclusion": "Hemoglobin 11.8 g/dL (mildly low); otherwise unremarkable. Performed at referring office (Westheimer Family Medicine), reviewed at this encounter."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-01",
+        "issued": "2024-08-12T00:00:00Z",
+        "conclusion": "Albumin 3.4 g/dL (mildly low); remainder unremarkable. Performed at referring office (Westheimer Family Medicine), reviewed at this encounter."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-ct-chest",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-ct-chest",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24628-0",
+              "display": "CT Chest W contrast IV"
+            }
+          ],
+          "text": "CT Chest with Contrast"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2024-08-08",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "conclusion": "4.2 cm spiculated mass in the right upper lobe. Ipsilateral mediastinal lymphadenopathy at station 4R (largest node 2.1 cm) and station 7 (1.4 cm). No pleural effusion. No contralateral mediastinal or hilar lymphadenopathy. No osseous abnormalities. Highly suspicious for primary lung malignancy.",
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "162573006",
+                "display": "Suspected lung cancer (situation)"
+              }
+            ],
+            "text": "Suspected lung cancer"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-pft",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-009-pft",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-pft-order",
+            "display": "Pulmonary function testing"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "LP99358-1",
+                "display": "Pulmonary function"
+              }
+            ],
+            "text": "Pulmonary function"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58477-1",
+              "display": "Pulmonary function study"
+            }
+          ],
+          "text": "Pulmonary Function Test Report"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2024-08-19",
+        "issued": "2024-08-19T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "type": "Practitioner",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          },
+          {
+            "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+            "type": "Organization",
+            "display": "Houston Pulmonary Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-009-fev1",
+            "display": "FEV1"
+          },
+          {
+            "reference": "Observation/enc-009-fvc",
+            "display": "FVC"
+          },
+          {
+            "reference": "Observation/enc-009-fev1-fvc-ratio",
+            "display": "FEV1/FVC ratio"
+          },
+          {
+            "reference": "Observation/enc-009-tlc",
+            "display": "TLC"
+          },
+          {
+            "reference": "Observation/enc-009-dlco",
+            "display": "DLCO"
+          }
+        ],
+        "conclusion": "Mild restrictive ventilatory defect with reduced diffusion capacity, consistent with parenchymal disease and/or early lymphangitic involvement. No significant bronchodilator response."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-lung-mass",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-008-lung-mass",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "provisional",
+              "display": "Provisional"
+            }
+          ],
+          "text": "Provisional"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162573006",
+              "display": "Suspected lung cancer (situation)"
+            }
+          ],
+          "text": "Suspected primary lung neoplasm of right upper lobe"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "onsetDateTime": "2024-08-12",
+        "recordedDate": "2024-08-12",
+        "recorder": {
+          "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+          "display": "Dr. Nisha Ramaswamy, MD"
+        },
+        "note": [
+          {
+            "text": "4.2 cm spiculated mass in the right upper lobe with ipsilateral mediastinal lymphadenopathy (stations 4R and 7), highly suspicious for non-small cell lung cancer. Tissue diagnosis not yet obtained. Radiographic staging suggests at least N2 disease."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-mda-referral",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-008-mda-referral",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "3457005",
+                "display": "Patient referral (procedure)"
+              }
+            ],
+            "text": "Referral"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "183529009",
+              "display": "Referral to oncologist (procedure)"
+            }
+          ],
+          "text": "Urgent referral to MD Anderson Cancer Center, Thoracic Oncology (Dr. Carlos Menendez) for staging workup and tissue diagnosis"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "authoredOn": "2024-08-12",
+        "requester": {
+          "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+          "display": "Dr. Nisha Ramaswamy, MD"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-008-lung-mass",
+            "display": "Suspected primary lung neoplasm of right upper lobe"
+          }
+        ],
+        "note": [
+          {
+            "text": "Urgent referral to MD Anderson Cancer Center, Thoracic Oncology, Dr. Carlos Menendez, for staging workup and tissue diagnosis. Will include CT images and consultation note."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-pft-order",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-008-pft-order",
+        "status": "completed",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "23426006",
+              "display": "Measurement of respiratory function (procedure)"
+            }
+          ],
+          "text": "Pulmonary function testing (full spirometry, lung volumes, and DLCO)"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "authoredOn": "2024-08-12",
+        "requester": {
+          "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+          "display": "Dr. Nisha Ramaswamy, MD"
+        },
+        "occurrenceDateTime": "2024-08-19",
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-008-lung-mass",
+            "display": "Suspected primary lung neoplasm of right upper lobe"
+          }
+        ],
+        "note": [
+          {
+            "text": "Baseline pulmonary function testing prior to potential surgical or oncologic intervention. Full spirometry, lung volumes, and DLCO."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-008-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34103-2",
+              "display": "Pulmonary Consult note"
+            }
+          ],
+          "text": "Pulmonary Consultation Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "date": "2024-08-12T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UFVMTU9OQVJZIENPTlNVTFRBVElPTiBOT1RFCgpEYXRlOiAwOC8xMi8yMDI0ClByb3ZpZGVyOiBOaXNoYSBSYW1hc3dhbXksIE1EIOKAlCBQdWxtb25hcnkgTWVkaWNpbmUKTG9jYXRpb246IEhvdXN0b24gUHVsbW9uYXJ5IEFzc29jaWF0ZXMsIDY2MjQgRmFubmluIFN0LCBTdWl0ZSAxNTQwLCBIb3VzdG9uLCBUWCA3NzAzMApOUEk6IDE1NDgyNzMwMTYKUGF0aWVudDogUGF0cmljaWEgT2thZm9yClZpc2l0IFR5cGU6IEluaXRpYWwgUHVsbW9uYXJ5IENvbnN1bHRhdGlvbgpSZWZlcnJpbmcgUGh5c2ljaWFuOiBEci4gQWRlYmF5byBPbGF0dW5kZSwgTUQg4oCUIFdlc3RoZWltZXIgRmFtaWx5IE1lZGljaW5lCgpTVUJKRUNUSVZFOgpNcnMuIE9rYWZvciBpcyBhIDYwLXllYXItb2xkIE5pZ2VyaWFuLUFtZXJpY2FuIHdvbWFuIHJlZmVycmVkIGJ5IERyLiBPbGF0dW5kZSBmb3IgZXZhbHVhdGlvbiBvZiBwZXJzaXN0ZW50IGNvdWdoLCB1bmludGVudGlvbmFsIHdlaWdodCBsb3NzLCBhbmQgYSByaWdodCB1cHBlciBsb2JlIG9wYWNpdHkgaWRlbnRpZmllZCBvbiBjaGVzdCBYLXJheS4gU2hlIHJlcG9ydHMgYSBkcnksIG5vbnByb2R1Y3RpdmUgY291Z2ggdGhhdCBiZWdhbiBhcHByb3hpbWF0ZWx5IDEwIHdlZWtzIGFnbywgaW5pdGlhbGx5IGF0dHJpYnV0ZWQgdG8gc2Vhc29uYWwgYWxsZXJnaWVzLiBUaGUgY291Z2ggZGlkIG5vdCByZXNwb25kIHRvIE9UQyBhbnRpaGlzdGFtaW5lcyBvciBhIHRyaWFsIG9mIGJlbnpvbmF0YXRlIHByZXNjcmliZWQgYnkgaGVyIFBDUC4gU2hlIGFsc28gcmVwb3J0cyBhbiB1bmludGVudGlvbmFsIHdlaWdodCBsb3NzIG9mIGFwcHJveGltYXRlbHkgOCBwb3VuZHMgb3ZlciB0aGUgcGFzdCAyLTMgbW9udGhzLCB3aGljaCBzaGUgaW5pdGlhbGx5IGF0dHJpYnV0ZWQgdG8gZmFtaWx5IHN0cmVzcy4gU2hlIGRlbmllcyBoZW1vcHR5c2lzLCBjaGVzdCBwYWluLCBkeXNwbmVhIGF0IHJlc3QsIG9ydGhvcG5lYSwgZmV2ZXIsIG9yIG5pZ2h0IHN3ZWF0cy4gU2hlIGRvZXMgcmVwb3J0IG1pbGQgZXhlcnRpb25hbCBkeXNwbmVhIHdoZW4gY2xpbWJpbmcgc3RhaXJzLCB3aGljaCBzaGUgZmVlbHMgaXMgbmV3IG92ZXIgdGhlIHBhc3QgbW9udGguCgpUb2JhY2NvIGhpc3Rvcnk6IE5ldmVyLXNtb2tlci4gU2lnbmlmaWNhbnQgc2Vjb25kaGFuZCBzbW9rZSBleHBvc3VyZSDigJQgaHVzYmFuZCBzbW9rZWQgb25lIHBhY2sgcGVyIGRheSBmcm9tIDIwMDAgdG8gMjAxNSAoMTUgeWVhcnMgb2YgaG91c2Vob2xkIGV4cG9zdXJlKS4KClBNSDogRXNzZW50aWFsIGh5cGVydGVuc2lvbiAod2VsbC1jb250cm9sbGVkIG9uIGxpc2lub3ByaWwgMTAgbWcgZGFpbHkpLCBwcmVkaWFiZXRlcyAoZGlldC9leGVyY2lzZSBtYW5hZ2VkLCBsYXN0IEhiQTFjIDYuMCUpLCBtaWxkIGJpbGF0ZXJhbCBrbmVlIG9zdGVvYXJ0aHJpdGlzLgpBbGxlcmdpZXM6IFN1bGZvbmFtaWRlIGFudGliaW90aWNzIChyYXNoKS4KQ3VycmVudCBNZWRpY2F0aW9uczogTGlzaW5vcHJpbCAxMCBtZyBQTyBkYWlseSwgbmFwcm94ZW4gMjUwIG1nIFBPIFBSTi4KRmFtaWx5IEhpc3Rvcnk6IE5vIGtub3duIGZhbWlseSBoaXN0b3J5IG9mIGx1bmcgY2FuY2VyLiBGYXRoZXIgZGVjZWFzZWQgYWdlIDc4LCBzdHJva2UuIE1vdGhlciBhbGl2ZSBhZ2UgODQsIGh5cGVydGVuc2lvbi4KU29jaWFsIEhpc3Rvcnk6IFJldGlyZWQgaGlnaCBzY2hvb2wgYmlvbG9neSB0ZWFjaGVyLiBNYXJyaWVkLCBodXNiYW5kIEVtZWthIHByZXNlbnQgYXQgdmlzaXQuIFR3byBhZHVsdCBjaGlsZHJlbiBvdXQgb2Ygc3RhdGUuIEFjdGl2ZSBwYXJpc2hpb25lciwgd2Fsa3MgMiBtaWxlcyBkYWlseS4gTm8gYWxjb2hvbCBvciBpbGxpY2l0IGRydWcgdXNlLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEzOC84NCBtbUhnLCBIUiA4MCBicG0sIFJSIDE2LCBUZW1wIDk4LjQgRiwgU3BPMiA5NiUgb24gcm9vbSBhaXIsIFdlaWdodCAxNTUgbGJzLCBCTUkgMjUuOAoKR2VuZXJhbDogQWxlcnQsIHdlbGwtYXBwZWFyaW5nIHdvbWFuIGluIG5vIGFjdXRlIGRpc3RyZXNzLiBBcHBlYXJzIHN0YXRlZCBhZ2UuCkhFRU5UOiBPcm9waGFyeW54IGNsZWFyLCBubyBseW1waGFkZW5vcGF0aHkgaW4gY2VydmljYWwgb3Igc3VwcmFjbGF2aWN1bGFyIHJlZ2lvbnMuCkNhcmRpb3Zhc2N1bGFyOiBSZWd1bGFyIHJhdGUgYW5kIHJoeXRobSwgbm8gbXVybXVycywgcnVicywgb3IgZ2FsbG9wcy4KUHVsbW9uYXJ5OiBEaW1pbmlzaGVkIGJyZWF0aCBzb3VuZHMgaW4gdGhlIHJpZ2h0IGFwZXguIE5vIHdoZWV6ZXMsIGNyYWNrbGVzLCBvciByaG9uY2hpLiBObyBlZ29waG9ueS4gU3ltbWV0cmljIGNoZXN0IGV4cGFuc2lvbi4KRXh0cmVtaXRpZXM6IE5vIGNsdWJiaW5nLCBjeWFub3Npcywgb3IgZWRlbWEuCgpDVCBDaGVzdCB3aXRoIENvbnRyYXN0IChwZXJmb3JtZWQgMDgvMDgvMjAyNCwgcmV2aWV3ZWQgdG9kYXkpOgotIDQuMiBjbSBzcGljdWxhdGVkIG1hc3MgaW4gdGhlIHJpZ2h0IHVwcGVyIGxvYmUKLSBJcHNpbGF0ZXJhbCBtZWRpYXN0aW5hbCBseW1waGFkZW5vcGF0aHk6IHN0YXRpb24gNFIgd2l0aCBsYXJnZXN0IG5vZGUgbWVhc3VyaW5nIDIuMSBjbSwgc3RhdGlvbiA3IHdpdGggbm9kZSBtZWFzdXJpbmcgMS40IGNtCi0gTm8gcGxldXJhbCBlZmZ1c2lvbgotIE5vIGNvbnRyYWxhdGVyYWwgbWVkaWFzdGluYWwgb3IgaGlsYXIgbHltcGhhZGVub3BhdGh5Ci0gTm8gb3NzZW91cyBhYm5vcm1hbGl0aWVzIGlkZW50aWZpZWQgb24gdGhpcyBzdHVkeQoKTGFicyAob2J0YWluZWQgMDgvMDEvMjAyNCBhdCByZWZlcnJpbmcgb2ZmaWNlLCByZXZpZXdlZCk6Ci0gQ0JDOiBIZ2IgMTEuOCBnL2RMIChtaWxkbHkgbG93KSwgb3RoZXJ3aXNlIHVucmVtYXJrYWJsZQotIENNUDogQWxidW1pbiAzLjQgZy9kTCAobWlsZGx5IGxvdyksIHJlbWFpbmRlciB1bnJlbWFya2FibGUKCkFTU0VTU01FTlQ6CjEuIFJpZ2h0IHVwcGVyIGxvYmUgbWFzcywgNC4yIGNtLCBzcGljdWxhdGVkLCB3aXRoIGlwc2lsYXRlcmFsIG1lZGlhc3RpbmFsIGx5bXBoYWRlbm9wYXRoeSDigJQgaGlnaGx5IHN1c3BpY2lvdXMgZm9yIHByaW1hcnkgbHVuZyBtYWxpZ25hbmN5LiBUaGUgc3BpY3VsYXRlZCBtb3JwaG9sb2d5LCBtZWRpYXN0aW5hbCBub2RhbCBpbnZvbHZlbWVudCBhdCBzdGF0aW9ucyA0UiBhbmQgNywgYW5kIHRoZSBjbGluaWNhbCBjb250ZXh0IG9mIHBlcnNpc3RlbnQgY291Z2ggYW5kIHVuaW50ZW50aW9uYWwgd2VpZ2h0IGxvc3MgaW4gYSBwYXRpZW50IHdpdGggc2lnbmlmaWNhbnQgc2Vjb25kaGFuZCBzbW9rZSBleHBvc3VyZSBhcmUgY29sbGVjdGl2ZWx5IGNvbmNlcm5pbmcgZm9yIG5vbi1zbWFsbCBjZWxsIGx1bmcgY2FuY2VyLiBSYWRpb2dyYXBoaWMgc3RhZ2luZyBzdWdnZXN0cyBhdCBsZWFzdCBOMiBkaXNlYXNlLiBUaXNzdWUgZGlhZ25vc2lzIGFuZCBmb3JtYWwgc3RhZ2luZyBhcmUgcmVxdWlyZWQuCjIuIFBlcnNpc3RlbnQgY291Z2gg4oCUIGxpa2VseSBzZWNvbmRhcnkgdG8gdGhlIHJpZ2h0IHVwcGVyIGxvYmUgbWFzcy4KMy4gVW5pbnRlbnRpb25hbCB3ZWlnaHQgbG9zcyBvZiA4IGxicyDigJQgY29uY2VybmluZyBmb3IgbWFsaWduYW5jeS1yZWxhdGVkIGNhY2hleGlhIHZzIGNvbnN0aXR1dGlvbmFsIHN5bXB0b20gb2YgdW5kZXJseWluZyBtYWxpZ25hbmN5Lgo0LiBNaWxkIGFuZW1pYSAoSGdiIDExLjgpIGFuZCBtaWxkIGh5cG9hbGJ1bWluZW1pYSAoMy40KSDigJQgbWF5IGJlIHJlbGF0ZWQgdG8gdW5kZXJseWluZyBtYWxpZ25hbmN5Lgo1LiBFc3NlbnRpYWwgaHlwZXJ0ZW5zaW9uIOKAlCB3ZWxsIGNvbnRyb2xsZWQgb24gY3VycmVudCByZWdpbWVuLgoKUExBTjoKMS4gUHVsbW9uYXJ5IGZ1bmN0aW9uIHRlc3Rpbmcgb3JkZXJlZCBmb3IgMDgvMTkvMjAyNCB0byBlc3RhYmxpc2ggYmFzZWxpbmUgbHVuZyBmdW5jdGlvbiBwcmlvciB0byBhbnkgcG90ZW50aWFsIHN1cmdpY2FsIG9yIG9uY29sb2dpYyBpbnRlcnZlbnRpb24uIFdpbGwgb2J0YWluIGZ1bGwgc3Bpcm9tZXRyeSwgbHVuZyB2b2x1bWVzLCBhbmQgRExDTy4KMi4gVXJnZW50IHJlZmVycmFsIHRvIE1EIEFuZGVyc29uIENhbmNlciBDZW50ZXIsIFRob3JhY2ljIE9uY29sb2d5IOKAlCBEci4gQ2FybG9zIE1lbmVuZGV6IOKAlCBmb3Igc3RhZ2luZyB3b3JrdXAgYW5kIHRpc3N1ZSBkaWFnbm9zaXMuIFJlZmVycmFsIGluaXRpYXRlZCB0b2RheS4gV2lsbCBpbmNsdWRlIENUIGltYWdlcyBhbmQgdGhpcyBjb25zdWx0YXRpb24gbm90ZS4KMy4gRGlzY3Vzc2VkIGZpbmRpbmdzIGluIGRldGFpbCB3aXRoIHBhdGllbnQgYW5kIGhlciBodXNiYW5kIEVtZWthLiBFeHBsYWluZWQgdGhlIENUIGZpbmRpbmdzLCBpbmNsdWRpbmcgdGhlIHNwaWN1bGF0ZWQgbWFzcyBhbmQgbHltcGhhZGVub3BhdGh5LiBDb252ZXllZCBoaWdoIGNsaW5pY2FsIHN1c3BpY2lvbiBmb3IgbHVuZyBtYWxpZ25hbmN5LiBEaXNjdXNzZWQgdGhlIG5lZWQgZm9yIGZ1cnRoZXIgd29ya3VwIGluY2x1ZGluZyBQRVQvQ1QsIHBvc3NpYmxlIGJpb3BzeSwgYW5kIG1vbGVjdWxhciB0ZXN0aW5nIHRoYXQgd2lsbCBiZSBjb29yZGluYXRlZCBieSB0aGUgb25jb2xvZ3kgdGVhbS4gUGF0aWVudCBleHByZXNzZWQgdW5kZXJzdGFuZGluZyBhbmQgYXNrZWQgYXBwcm9wcmlhdGUgcXVlc3Rpb25zLiBTaGUgaXMgYW54aW91cyBidXQgd2lzaGVzIHRvIHByb2NlZWQgZXhwZWRpdGlvdXNseSB3aXRoIGV2YWx1YXRpb24uCjQuIEFkdmlzZWQgcGF0aWVudCB0byBjb250YWN0IG91ciBvZmZpY2UgaWYgc2hlIGRldmVsb3BzIHdvcnNlbmluZyBkeXNwbmVhLCBoZW1vcHR5c2lzLCBmZXZlciwgb3IgY2hlc3QgcGFpbiBwcmlvciB0byBmb2xsb3ctdXAuCjUuIEZvbGxvdy11cDogUEZUIHZpc2l0IHNjaGVkdWxlZCAwOC8xOS8yMDI0LiBXaWxsIGNvbW11bmljYXRlIHJlc3VsdHMgdG8gcGF0aWVudCBhbmQgdG8gTUQgQW5kZXJzb24uCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ck5pc2hhIFJhbWFzd2FteSwgTUQKUHVsbW9uYXJ5IE1lZGljaW5lCkhvdXN0b24gUHVsbW9uYXJ5IEFzc29jaWF0ZXMK"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-008"
+            }
+          ],
+          "period": {
+            "start": "2024-08-12"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-009-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58477-1",
+              "display": "Pulmonary function study"
+            }
+          ],
+          "text": "Pulmonary Function Test Report"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "date": "2024-08-19T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "type": "Practitioner",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+          "type": "Practitioner",
+          "display": "Dr. Nisha Ramaswamy, MD"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UFVMTU9OQVJZIEZVTkNUSU9OIFRFU1QgUkVQT1JUCgpEYXRlOiAwOC8xOS8yMDI0CkZhY2lsaXR5OiBIb3VzdG9uIFB1bG1vbmFyeSBBc3NvY2lhdGVzCkFkZHJlc3M6IDY2MjQgRmFubmluIFN0LCBTdWl0ZSAxNTQwLCBIb3VzdG9uLCBUWCA3NzAzMApPcmRlcmluZy9JbnRlcnByZXRpbmcgUGh5c2ljaWFuOiBOaXNoYSBSYW1hc3dhbXksIE1EClBhdGllbnQ6IFBhdHJpY2lhIE9rYWZvcgpET0I6IDA4LzE0LzE5NjMKQWdlOiA2MSB5ZWFycwpTZXg6IEZlbWFsZQoKSU5ESUNBVElPTjoKQmFzZWxpbmUgcHVsbW9uYXJ5IGZ1bmN0aW9uIGFzc2Vzc21lbnQgaW4gYSA2MS15ZWFyLW9sZCB3b21hbiB3aXRoIHJlY2VudGx5IGlkZW50aWZpZWQgNC4yIGNtIHNwaWN1bGF0ZWQgcmlnaHQgdXBwZXIgbG9iZSBtYXNzIHdpdGggaXBzaWxhdGVyYWwgbWVkaWFzdGluYWwgbHltcGhhZGVub3BhdGh5LCBoaWdobHkgc3VzcGljaW91cyBmb3IgbHVuZyBtYWxpZ25hbmN5LiBQRlRzIG9yZGVyZWQgdG8gZXN0YWJsaXNoIHByZS10cmVhdG1lbnQgYmFzZWxpbmUgZm9yIHNwaXJvbWV0cnkgYW5kIGRpZmZ1c2lvbiBjYXBhY2l0eSwgcGFydGljdWxhcmx5IGdpdmVuIHBvdGVudGlhbCBuZWVkIGZvciBjaGVtb3RoZXJhcHkgYW5kL29yIGltbXVub3RoZXJhcHkgd2l0aCBhc3NvY2lhdGVkIHJpc2sgb2YgdHJlYXRtZW50LXJlbGF0ZWQgcG5ldW1vbml0aXMuCgpDTElOSUNBTCBISVNUT1JZOgpNcy4gT2thZm9yIGlzIGEgbmV2ZXItc21va2VyIHdpdGggc2lnbmlmaWNhbnQgc2Vjb25kaGFuZCBzbW9rZSBleHBvc3VyZSAoaHVzYmFuZCBzbW9rZWQgMSBQUEQgeCAxNSB5ZWFycywgcXVpdCAyMDE1KS4gU2hlIHByZXNlbnRlZCB0byBoZXIgUENQIGluIEp1bHkgMjAyNCB3aXRoIGEgcGVyc2lzdGVudCBkcnkgY291Z2ggYW5kIHVuaW50ZW50aW9uYWwgd2VpZ2h0IGxvc3MuIENoZXN0IFgtcmF5IHJldmVhbGVkIGEgcmlnaHQgdXBwZXIgbG9iZSBvcGFjaXR5LCBhbmQgc3Vic2VxdWVudCBDVCBjaGVzdCB3aXRoIGNvbnRyYXN0ICgwOC8wOC8yMDI0KSBkZW1vbnN0cmF0ZWQgYSA0LjIgY20gc3BpY3VsYXRlZCBSVUwgbWFzcyB3aXRoIG1lZGlhc3RpbmFsIGx5bXBoYWRlbm9wYXRoeSBhdCBzdGF0aW9ucyA0UiBhbmQgNy4gU2hlIHdhcyBzZWVuIGluIG91ciBvZmZpY2UgZm9yIGluaXRpYWwgY29uc3VsdGF0aW9uIG9uIDA4LzEyLzIwMjQgYW5kIHJlZmVycmVkIGZvciBQRlRzIHRvZGF5LiBQTUggbm90YWJsZSBmb3IgZXNzZW50aWFsIGh5cGVydGVuc2lvbiAoY29udHJvbGxlZCBvbiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5KSBhbmQgcHJlZGlhYmV0ZXMgKGRpZXQvZXhlcmNpc2UgbWFuYWdlZCkuIEFsbGVyZ3kgdG8gc3VsZm9uYW1pZGUgYW50aWJpb3RpY3MgKHJhc2gpLgoKVEVTVFMgUEVSRk9STUVEOgotIFNwaXJvbWV0cnkgKHByZS0gYW5kIHBvc3QtYnJvbmNob2RpbGF0b3IpCi0gTHVuZyB2b2x1bWVzIChwbGV0aHlzbW9ncmFwaHkpCi0gRGlmZnVzaW5nIGNhcGFjaXR5IChETENPLCBzaW5nbGUtYnJlYXRoIG1ldGhvZCkKClJFU1VMVFM6CgpTcGlyb21ldHJ5OgogIEZFVjE6ICAgICAgICAgIDIuMDggTCAgICAoNzglIHByZWRpY3RlZCkKICBGVkM6ICAgICAgICAgICAyLjcyIEwgICAgKDgyJSBwcmVkaWN0ZWQpCiAgRkVWMS9GVkM6ICAgICAgMC43NiAgICAgIChub3JtYWwpCgpQb3N0LUJyb25jaG9kaWxhdG9yOgogIE5vIHNpZ25pZmljYW50IGJyb25jaG9kaWxhdG9yIHJlc3BvbnNlIChjaGFuZ2UgaW4gRkVWMSA8IDIwMCBtTCBhbmQgPCAxMiUpCgpMdW5nIFZvbHVtZXM6CiAgVExDOiAgICAgICAgICAgNC4xIEwgICAgICg4MCUgcHJlZGljdGVkKQoKRGlmZnVzaW9uIENhcGFjaXR5OgogIERMQ086ICAgICAgICAgIDE2LjIgbUwvbWluL21tSGcgICAoNzElIHByZWRpY3RlZCkKClFVQUxJVFk6ClRlc3RpbmcgbWV0IEFUUy9FUlMgYWNjZXB0YWJpbGl0eSBhbmQgcmVwcm9kdWNpYmlsaXR5IGNyaXRlcmlhLiBQYXRpZW50IGVmZm9ydCB3YXMgZ29vZCB0aHJvdWdob3V0LgoKSU5URVJQUkVUQVRJT046CjEuIE1pbGQgcmVzdHJpY3RpdmUgdmVudGlsYXRvcnkgZGVmZWN0IGFzIGV2aWRlbmNlZCBieSByZWR1Y2VkIFRMQyAoODAlIHByZWRpY3RlZCkgd2l0aCBwcm9wb3J0aW9uYWxseSByZWR1Y2VkIEZFVjEgYW5kIEZWQyBhbmQgYSBwcmVzZXJ2ZWQgRkVWMS9GVkMgcmF0aW8uCjIuIFJlZHVjZWQgZGlmZnVzaW9uIGNhcGFjaXR5IChETENPIDcxJSBwcmVkaWN0ZWQpLCBzdWdnZXN0aW5nIGltcGFpcm1lbnQgaW4gZ2FzIGV4Y2hhbmdlIGF0IHRoZSBhbHZlb2xhci1jYXBpbGxhcnkgbGV2ZWwuCjMuIE5vIHNpZ25pZmljYW50IGJyb25jaG9kaWxhdG9yIHJlc3BvbnNlLCBpbmRpY2F0aW5nIG5vIHJldmVyc2libGUgb2JzdHJ1Y3RpdmUgY29tcG9uZW50Lgo0LiBUaGUgY29tYmluYXRpb24gb2YgbWlsZCByZXN0cmljdGlvbiB3aXRoIHJlZHVjZWQgZGlmZnVzaW9uIGNhcGFjaXR5IGlzIGNvbnNpc3RlbnQgd2l0aCBwYXJlbmNoeW1hbCBkaXNlYXNlIGFuZC9vciBlYXJseSBseW1waGFuZ2l0aWMgaW52b2x2ZW1lbnQgaW4gdGhlIGNvbnRleHQgb2YgdGhlIGtub3duIHJpZ2h0IHVwcGVyIGxvYmUgbWFzcyB3aXRoIG1lZGlhc3RpbmFsIGx5bXBoYWRlbm9wYXRoeS4KCkNMSU5JQ0FMIENPUlJFTEFUSU9OOgpUaGVzZSByZXN1bHRzIGVzdGFibGlzaCBhIGNyaXRpY2FsIHByZS10cmVhdG1lbnQgYmFzZWxpbmUuIE1vbml0b3Jpbmcgb2YgcHVsbW9uYXJ5IGZ1bmN0aW9uIHdpbGwgYmUgaW1wb3J0YW50IGR1cmluZyBhbnkgc3Vic2VxdWVudCBjaGVtb3RoZXJhcHkgb3IgaW1tdW5vdGhlcmFweSByZWdpbWVuLCBwYXJ0aWN1bGFybHkgZ2l2ZW4gdGhlIHJpc2sgb2YgdHJlYXRtZW50LXJlbGF0ZWQgcG5ldW1vbml0aXMgd2l0aCBjaGVja3BvaW50IGluaGliaXRvcnMuIEFueSBkZWNsaW5lIGZyb20gdGhlc2UgYmFzZWxpbmUgdmFsdWVzIGR1cmluZyB0cmVhdG1lbnQgc2hvdWxkIHByb21wdCBmdXJ0aGVyIGV2YWx1YXRpb24gZm9yIGRydWctaW5kdWNlZCBsdW5nIHRveGljaXR5LgoKTm8gdml0YWxzIG9idGFpbmVkIHRvZGF5IGFzIHRoaXMgd2FzIGEgUEZULW9ubHkgdmlzaXQuCgpQTEFOOgoxLiBSZXN1bHRzIGNvbW11bmljYXRlZCB0byBwYXRpZW50IGFuZCBoZXIgaHVzYmFuZC4KMi4gUEZUIHJlcG9ydCBmb3J3YXJkZWQgdG8gcmVmZXJyaW5nIG9uY29sb2d5IHRlYW0gYXQgTUQgQW5kZXJzb24gQ2FuY2VyIENlbnRlci4KMy4gUmVjb21tZW5kIHJlcGVhdCBQRlRzIGFzIGNsaW5pY2FsbHkgaW5kaWNhdGVkIGR1cmluZyB0cmVhdG1lbnQgY291cnNlIHRvIG1vbml0b3IgZm9yIHB1bG1vbmFyeSB0b3hpY2l0eS4KNC4gVXJnZW50IHJlZmVycmFsIHRvIE1EIEFuZGVyc29uIENhbmNlciBDZW50ZXIgZm9yIHN0YWdpbmcgYW5kIHRpc3N1ZSBkaWFnbm9zaXMgaXMgaW4gcHJvY2Vzcy4KCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ck5pc2hhIFJhbWFzd2FteSwgTUQKUHVsbW9uYXJ5IE1lZGljaW5lCkhvdXN0b24gUHVsbW9uYXJ5IEFzc29jaWF0ZXMKRGF0ZTogMDgvMTkvMjAyNAo="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-009"
+            }
+          ],
+          "period": {
+            "start": "2024-08-19",
+            "end": "2024-08-19"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-010-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34748-4",
+              "display": "Telephone encounter Note"
+            }
+          ],
+          "text": "Telephone Encounter Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "date": "2024-09-03T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+            "type": "Practitioner",
+            "display": "Dr. Nisha Ramaswamy, MD"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+          "type": "Practitioner",
+          "display": "Dr. Nisha Ramaswamy, MD"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwOS8wMy8yMDI0ClByb3ZpZGVyOiBOaXNoYSBSYW1hc3dhbXksIE1EClBhdGllbnQ6IFBhdHJpY2lhIE9rYWZvcgpET0I6IDA4LzE0LzE5NjMKU2l0ZTogSG91c3RvbiBQdWxtb25hcnkgQXNzb2NpYXRlcwpMb2NhdGlvbjogNjYyNCBGYW5uaW4gU3QsIFN1aXRlIDE1NDAsIEhvdXN0b24sIFRYIDc3MDMwCgpSRUFTT04gRk9SIENBTEw6IE1EIEFuZGVyc29uIHJlZmVycmFsIGNvbmZpcm1hdGlvbiBhbmQgY291Z2ggbWFuYWdlbWVudC4KCkRJU0NVU1NJT046CkNhbGxlZCBwYXRpZW50IHRvIGNvbmZpcm0gdGhhdCB0aGUgcmVmZXJyYWwgdG8gTUQgQW5kZXJzb24gQ2FuY2VyIENlbnRlciBoYXMgYmVlbiBwcm9jZXNzZWQuIE5ldyBwYXRpZW50IGNvbnN1bHRhdGlvbiB3aXRoIERyLiBDYXJsb3MgTWVuZW5kZXogKFRob3JhY2ljIE9uY29sb2d5KSBpcyBzY2hlZHVsZWQgZm9yIFNlcHRlbWJlciAxNiwgMjAyNC4gUGF0aWVudCB2ZXJiYWxpemVkIHVuZGVyc3RhbmRpbmcuCgpQYXRpZW50IHJlcG9ydHMgd29yc2VuaW5nIG5pZ2h0dGltZSBjb3VnaCB0aGF0IGlzIG5vdyBpbnRlcmZlcmluZyB3aXRoIHNsZWVwLiBDb3VnaCBpcyBub25wcm9kdWN0aXZlIGFuZCBub3QgYXNzb2NpYXRlZCB3aXRoIGZldmVyLCBoZW1vcHR5c2lzLCBvciBhY3V0ZSBkeXNwbmVhLiBDdXJyZW50IGJlbnpvbmF0YXRlIGhhcyBiZWVuIGluYWRlcXVhdGUgZm9yIG5vY3R1cm5hbCBzeW1wdG9tIGNvbnRyb2wuCgpQTEFOOgoxLiBQcmVzY3JpYmVkIGd1YWlmZW5lc2luIHdpdGggY29kZWluZSAxMCBtTCAoMTAwIG1nIGd1YWlmZW5lc2luIC8gMTAgbWcgY29kZWluZSkgUE8gYXQgYmVkdGltZSBQUk4gZm9yIGNvdWdoIHN1cHByZXNzaW9uLiBDb3Vuc2VsZWQgcGF0aWVudCBvbiBwb3RlbnRpYWwgc2lkZSBlZmZlY3RzIGluY2x1ZGluZyBzZWRhdGlvbiBhbmQgY29uc3RpcGF0aW9uLiBQYXRpZW50IHRvIGF2b2lkIGRyaXZpbmcgb3Igb3BlcmF0aW5nIG1hY2hpbmVyeSBhZnRlciB0YWtpbmcgbWVkaWNhdGlvbi4KMi4gV2lsbCBzZW5kIGFsbCBwZXJ0aW5lbnQgcmVjb3JkcyB0byBNRCBBbmRlcnNvbiBwcmlvciB0byBTZXB0ZW1iZXIgMTYgYXBwb2ludG1lbnQsIGluY2x1ZGluZyBDVCBjaGVzdCB3aXRoIGNvbnRyYXN0IGludGVycHJldGF0aW9uLCBQRlQgcmVzdWx0cyAoRkVWMSA3OCUgcHJlZGljdGVkLCBGVkMgODIlIHByZWRpY3RlZCwgRExDTyA3MSUgcHJlZGljdGVkKSwgYW5kIGNvbnN1bHRhdGlvbiBub3Rlcy4KMy4gRm9sbG93LXVwIHdpdGggRHIuIE1lbmVuZGV6IGF0IE1EIEFuZGVyc29uIG9uIDA5LzE2LzIwMjQgZm9yIHN0YWdpbmcgd29ya3VwIGFuZCB0aXNzdWUgZGlhZ25vc2lzLgo0LiBJIHdpbGwgcmVtYWluIGF2YWlsYWJsZSBmb3IgcHVsbW9uYXJ5IHF1ZXN0aW9ucyBidXQgYW50aWNpcGF0ZSB0cmFuc2l0aW9uIG9mIHByaW1hcnkgb25jb2xvZ2ljIGNhcmUgdG8gTUQgQW5kZXJzb24uCgpObyB2aXRhbHMgb2J0YWluZWQuIE5vIGxhYnMgb3JkZXJlZC4KCk5pc2hhIFJhbWFzd2FteSwgTUQKSG91c3RvbiBQdWxtb25hcnkgQXNzb2NpYXRlcwpOUEk6IDE1NDgyNzMwMTYK"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-010"
+            }
+          ],
+          "period": {
+            "start": "2024-09-03"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-008",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11429006",
+                "display": "Consultation (procedure)"
+              }
+            ],
+            "text": "Initial Pulmonary Consultation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attender"
+              }
+            ],
+            "period": {
+              "start": "2024-08-12",
+              "end": "2024-08-12"
+            },
+            "individual": {
+              "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+              "display": "Dr. Nisha Ramaswamy, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-08-12",
+          "end": "2024-08-12"
+        },
+        "reasonCode": [
+          {
+            "text": "Evaluation of persistent cough, unintentional weight loss, and right upper lobe opacity; CT chest review"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+              "display": "Houston Pulmonary Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+          "display": "Houston Pulmonary Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Patricia was seen by Dr. Nisha Ramaswamy for initial pulmonary consultation, referred by Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-009",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "23426006",
+                "display": "Measurement of respiratory function (procedure)"
+              }
+            ],
+            "text": "Pulmonary Function Testing"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attender"
+              }
+            ],
+            "period": {
+              "start": "2024-08-19",
+              "end": "2024-08-19"
+            },
+            "individual": {
+              "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+              "display": "Dr. Nisha Ramaswamy, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-08-19",
+          "end": "2024-08-19"
+        },
+        "reasonCode": [
+          {
+            "text": "Baseline spirometry and diffusion capacity assessment"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+              "display": "Houston Pulmonary Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+          "display": "Houston Pulmonary Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Patricia returned to Houston Pulmonary Associates for pulmonary function testing. Full PFTs performed: FEV1 2.08 L (78% predicted), FVC 2.72 L (82% predicted), FEV1/FVC ratio 0.76 (normal), TLC 4.1 L (80% predicted), DLCO 16.2 mL/min/mmHg (71% predicted)."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-010",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "386472008",
+                "display": "Telephone consultation (procedure)"
+              }
+            ],
+            "text": "Telephone"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "primary performer"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+              "display": "Dr. Nisha Ramaswamy, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-09-03",
+          "end": "2024-09-03"
+        },
+        "reasonCode": [
+          {
+            "text": "MD Anderson referral confirmation, cough management"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+              "display": "Houston Pulmonary Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+          "display": "Houston Pulmonary Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Dr. Ramaswamy called Patricia to confirm that the MD Anderson referral had been processed and her new patient consultation with Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-guaifenesin-codeine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-010-guaifenesin-codeine",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "995868",
+              "display": "codeine phosphate 10 MG / guaiFENesin 100 MG in 5 mL Oral Solution"
+            }
+          ],
+          "text": "guaifenesin with codeine oral solution"
+        },
+        "subject": {
+          "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+          "display": "Patricia Okafor"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "authoredOn": "2024-09-03",
+        "requester": {
+          "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+          "type": "Practitioner",
+          "display": "Dr. Nisha Ramaswamy, MD"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "68154008",
+                "display": "Chronic cough (finding)"
+              }
+            ],
+            "text": "Worsening nighttime cough"
+          }
+        ],
+        "note": [
+          {
+            "text": "Patient counseled on potential sedation and constipation. Avoid driving or operating machinery after taking medication."
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 10 mL by mouth at bedtime as needed for cough. Avoid driving or operating machinery after taking medication.",
+            "patientInstruction": "Take 10 mL by mouth at bedtime as needed for cough. Avoid driving or operating machinery after taking medication.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d",
+                "timeOfDay": [
+                  "21:00:00"
+                ]
+              },
+              "code": {
+                "text": "at bedtime"
+              }
+            },
+            "asNeededBoolean": true,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "method": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "419652001",
+                  "display": "Take"
+                }
+              ],
+              "text": "Take"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mL",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mL"
+                }
+              }
+            ]
+          }
+        ],
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2024-09-03"
+          }
+        }
+      }
+    }
+  ]
+}

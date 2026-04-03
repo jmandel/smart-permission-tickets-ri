@@ -1,0 +1,79 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-003-med-furosemide-iv",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1719291",
+        "display": "furosemide 40 MG in 4 ML Injection"
+      }
+    ],
+    "text": "Furosemide 40 mg IV"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2024-04-22",
+  "requester": {
+    "reference": "Practitioner/4115ec43-6d5d-4ad2-ba16-21e45e8c35a4",
+    "display": "Dr. Priya Nanduri, MD"
+  },
+  "recorder": {
+    "reference": "Practitioner/4115ec43-6d5d-4ad2-ba16-21e45e8c35a4",
+    "display": "Dr. Priya Nanduri, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-003-cond-hf",
+      "display": "Acute decompensated heart failure with reduced ejection fraction due to medication lapse after relocation"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "40 mg intravenously twice daily during hospitalization",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-04-22",
+            "end": "2024-04-25"
+          },
+          "frequency": 2,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 40,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

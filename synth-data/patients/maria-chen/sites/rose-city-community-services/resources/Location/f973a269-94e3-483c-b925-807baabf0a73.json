@@ -1,0 +1,39 @@
+{
+  "resourceType": "Location",
+  "id": "f973a269-94e3-483c-b925-807baabf0a73",
+  "status": "active",
+  "name": "Rose City Community Services",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "CSC",
+          "display": "community service center"
+        }
+      ],
+      "text": "Community-Based Organization"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "503-555-0200",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "6530 SE 82nd Avenue"
+    ],
+    "city": "Portland",
+    "state": "OR",
+    "postalCode": "97266",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/1b23faf8-f4f6-4713-b468-ec835df27b08",
+    "display": "Rose City Community Services"
+  }
+}

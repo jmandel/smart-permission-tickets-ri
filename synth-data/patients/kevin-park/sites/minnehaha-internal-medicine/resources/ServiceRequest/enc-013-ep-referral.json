@@ -1,0 +1,56 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-013-ep-referral",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "3457005",
+          "display": "Patient referral (procedure)"
+        }
+      ],
+      "text": "Patient Referral"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183519002",
+        "display": "Referral to cardiology service (procedure)"
+      }
+    ],
+    "text": "Referral to cardiac electrophysiology for catheter ablation evaluation"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "authoredOn": "2026-01-26",
+  "requester": {
+    "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "display": "Dr. Angela Whitfield, MD"
+  },
+  "performer": [
+    {
+      "display": "Dr. James Lindgren, MD, FHRS — University of Minnesota Cardiac Electrophysiology Clinic"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-010-afib",
+      "display": "Atrial fibrillation, new onset"
+    }
+  ],
+  "note": [
+    {
+      "text": "57-year-old male with new-onset atrial fibrillation, mild LA dilation (4.3 cm), preserved EF (58%), CHA2DS2-VASc 1, started on metoprolol and apixaban. Please evaluate for catheter ablation candidacy. Referral includes patient demographics, active problem list, current medication list, ECG report, echocardiogram report, and recent lab results."
+    }
+  ]
+}

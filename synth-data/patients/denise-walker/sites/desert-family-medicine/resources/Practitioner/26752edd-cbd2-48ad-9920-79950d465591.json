@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "26752edd-cbd2-48ad-9920-79950d465591",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Elena Brooks, RN",
+      "family": "Brooks",
+      "given": [
+        "Elena"
+      ],
+      "suffix": [
+        "RN"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+            "code": "RN",
+            "display": "Registered Nurse"
+          }
+        ],
+        "text": "RN"
+      }
+    }
+  ]
+}

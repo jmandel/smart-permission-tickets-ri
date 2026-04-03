@@ -1,0 +1,169 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "puget-sound-psychiatry",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "new patient psychiatric evaluation (60 minutes)",
+    "reason": "new patient psychiatric evaluation for continuity of care; bipolar II disorder and alcohol use disorder management",
+    "period_start": "2024-08-12",
+    "period_end": "2024-08-12",
+    "participants": [
+      {
+        "name": "Dr. Anita Patel",
+        "role": "Psychiatry"
+      }
+    ],
+    "service_provider": "Puget Sound Psychiatry",
+    "location": "Puget Sound Psychiatry, 1001 4th Ave, Suite 820, Seattle, WA 98154"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 118,
+        "value_diastolic": 76,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 141,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.8,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "lamotrigine serum level",
+        "value": 5.4,
+        "unit": "mcg/mL",
+        "reference_range": "3–14 mcg/mL",
+        "flag": "normal (therapeutic)"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 88,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 158,
+        "unit": "mg/dL",
+        "flag": "mildly elevated (consistent with prior trend on quetiapine)"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening",
+        "value": 4,
+        "interpretation": "minimal depression"
+      },
+      {
+        "name": "GAD-7 anxiety screening",
+        "value": 3,
+        "interpretation": "minimal anxiety"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder, currently euthymic",
+      "clinical_status": "active",
+      "onset_date": "2019-07",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate severity, in sustained remission",
+      "clinical_status": "active (in sustained remission)",
+      "onset_date": "2023-01",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "take 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "take 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder (mood/sleep)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "take 50 mg by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "psychiatric evaluation note (progress note)",
+      "description": "Comprehensive 60-minute new patient psychiatric evaluation documenting full psychiatric history (bipolar II diagnosis, medication journey from sertraline to lamotrigine/quetiapine, alcohol use disorder treatment and recovery), mental status examination (euthymic, linear thought process, no SI/HI), risk assessment (low acute risk), medication reconciliation, screening results (PHQ-9 4, GAD-7 3), baseline lab results, diagnostic formulation, and treatment plan with 3-month follow-up."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lamotrigine serum drug level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lamotrigine serum level"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "summary-only",
+      "description": "Lipid panel ordered for baseline metabolic monitoring; only triglycerides value (158 mg/dL, mildly elevated) is individually reported in the narrative. Other lipid panel components (total cholesterol, LDL, HDL) are not enumerated. Triglycerides consistent with prior trend on quetiapine."
+    },
+    {
+      "type": "metabolic panel",
+      "report_state": "summary-only",
+      "description": "Metabolic panel ordered for baseline monitoring; only fasting glucose (88 mg/dL, normal) is individually reported. Remaining metabolic panel components are not enumerated in the narrative."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

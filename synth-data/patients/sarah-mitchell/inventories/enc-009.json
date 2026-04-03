@@ -1,0 +1,121 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "bridgetown-recovery-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Treatment monitoring labs and hepatic ultrasound results review",
+    "period_start": "2023-02-13",
+    "period_end": "2023-02-13",
+    "participants": [],
+    "service_provider": "Bridgetown Recovery Center",
+    "location": "Bridgetown Recovery Center, 920 SE Sandy Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "aspartate aminotransferase",
+        "value": "38",
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "note": "improved from 52 U/L"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": "44",
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "note": "improved from 61 U/L"
+      },
+      {
+        "name": "gamma-glutamyl transferase",
+        "value": "62",
+        "unit": "U/L",
+        "reference_range": "9-48 U/L",
+        "flag": "high",
+        "specimen": "blood/serum",
+        "note": "improved from 89 U/L"
+      },
+      {
+        "name": "urine drug screen, qualitative",
+        "value": "negative",
+        "flag": "normal",
+        "specimen": "urine"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "alcohol use disorder, moderate severity",
+      "clinical_status": "active",
+      "onset_date": "2023-01",
+      "action": "reference-existing",
+      "note": "patient making progress with reduced consumption and reduced cravings on naltrexone but has not yet achieved complete abstinence"
+    },
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing",
+      "note": "managed by outpatient psychiatry (Dr. Okafor), stable on lamotrigine and quetiapine"
+    }
+  ],
+  "medications": [
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "take one 50 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "take one 200 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "take one 50 mg tablet by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "results note",
+      "description": "Lab visit results review documenting CMP with liver enzymes and GGT results showing improving liver enzyme trend (AST 38 from 52, ALT 44 from 61, GGT 62 from 89), negative urine drug screen, review of unremarkable hepatic ultrasound from 01/23/2023, and clinical update on patient's progress in IOP with reduced alcohol consumption on naltrexone though not yet fully abstinent. Plan to continue naltrexone and IOP, repeat liver enzymes at program completion."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "comprehensive metabolic panel with liver enzymes and GGT",
+      "report_state": "summary-only",
+      "description": "CMP with majority of components (sodium, potassium, chloride, CO2, BUN, creatinine, glucose, calcium, total protein, albumin, total bilirubin, alkaline phosphatase) reported as WNL without discrete numeric values. AST, ALT, and GGT have discrete values but three values alone are insufficient to constitute a credible CMP panel with results. Report documents overall improving hepatic function trend during alcohol use disorder treatment."
+    },
+    {
+      "type": "hepatic ultrasound",
+      "report_state": "summary-only",
+      "description": "Hepatic ultrasound performed 01/23/2023, results reviewed at this encounter. Findings: liver parenchyma normal, no hepatic steatosis, no focal lesions identified, no biliary dilation. Impression: unremarkable study."
+    },
+    {
+      "type": "urine drug screen",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "urine drug screen, qualitative"
+      ]
+    }
+  ],
+  "allergies": []
+}

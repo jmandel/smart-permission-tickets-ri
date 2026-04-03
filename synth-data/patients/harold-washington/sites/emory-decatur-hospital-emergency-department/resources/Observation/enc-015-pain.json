@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-015-pain",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "72514-3",
+        "display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+      }
+    ],
+    "text": "Pain severity (verbal numeric rating scale)"
+  },
+  "subject": {
+    "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+  "valueInteger": 4,
+  "note": [
+    {
+      "text": "Pain location: forehead and right wrist"
+    }
+  ]
+}

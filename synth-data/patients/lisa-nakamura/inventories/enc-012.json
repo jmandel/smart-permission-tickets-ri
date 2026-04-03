@@ -1,0 +1,130 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "uc-health-hematology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Initial hematology consultation for antiphospholipid syndrome evaluation and thrombophilia screening",
+    "period_start": "2025-05-28",
+    "period_end": "2025-05-28",
+    "participants": [
+      {
+        "name": "Dr. James Okafor",
+        "role": "Hematology"
+      }
+    ],
+    "service_provider": "UC Health Hematology",
+    "location": "UC Health Hematology, Aurora, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 112,
+        "value_diastolic": 68,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 66,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.3,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 129,
+        "unit": "lb",
+        "action": "create"
+      },
+      {
+        "name": "body height",
+        "value": 65,
+        "unit": "in",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 21.5,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "suspected antiphospholipid syndrome, obstetric subtype",
+      "clinical_status": "active",
+      "verification_status": "unconfirmed",
+      "action": "create"
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin, oral, once daily",
+      "sig": "once daily by mouth",
+      "status": "active",
+      "reason": "preconception health / general supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "consultation note",
+      "description": "Initial hematology consultation documenting comprehensive evaluation for suspected antiphospholipid syndrome in the setting of recurrent pregnancy loss. Includes detailed review of prior OB/GYN records and APS antibody results, independent clinical assessment noting the obstetric versus thrombotic APS distinction, discussion of weakly positive lupus anticoagulant and borderline anti-beta-2 glycoprotein I, the plan for confirmatory APS antibody testing and thrombophilia panel at 12 weeks, long-term management implications, and coordination plan with maternal-fetal medicine.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "anticardiolipin antibodies panel (IgG and IgM), repeat",
+      "report_state": "ordered-not-resulted",
+      "description": "Repeat anticardiolipin antibodies (IgG and IgM) ordered for confirmatory APS testing. To be drawn on or after 2025-07-07 (12 weeks from initial positive on 2025-04-14). No results available at this encounter."
+    },
+    {
+      "type": "lupus anticoagulant panel (dilute Russell viper venom time with mixing study), repeat",
+      "report_state": "ordered-not-resulted",
+      "description": "Repeat lupus anticoagulant testing via dRVVT with confirmatory mixing study ordered for APS confirmation. To be drawn on or after 2025-07-07. No results available at this encounter."
+    },
+    {
+      "type": "anti-beta-2 glycoprotein I antibodies panel (IgG and IgM), repeat",
+      "report_state": "ordered-not-resulted",
+      "description": "Repeat anti-beta-2 glycoprotein I antibodies (IgG and IgM) ordered for APS confirmation. Borderline IgG on initial testing warrants repeat. To be drawn on or after 2025-07-07. No results available at this encounter."
+    },
+    {
+      "type": "thrombophilia panel (comprehensive)",
+      "report_state": "ordered-not-resulted",
+      "description": "Complete inherited thrombophilia screening panel ordered to rule out concurrent inherited thrombophilia. Includes Factor V Leiden mutation analysis, prothrombin gene mutation (G20210A) analysis, protein C activity, protein S activity (free and total), and antithrombin activity. To be drawn on or after 2025-07-07. No results available at this encounter."
+    }
+  ],
+  "allergies": []
+}

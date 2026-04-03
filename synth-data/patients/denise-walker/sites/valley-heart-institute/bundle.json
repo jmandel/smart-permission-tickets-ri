@@ -1,0 +1,1676 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T01:45:02.211Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2054-5",
+                  "display": "Black or African American"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Black"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Non-Hispanic"
+              }
+            ]
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In Arizona she had primary care and cardiology follow-up that established the chronic disease baseline: diabetes requiring intensification, CKD emerging, atrial fibrillation managed with anticoagulation, and HFrEF treated medically. After moving to New Mexico she had an acute decompensated heart-failure hospitalization, then longitudinal follow-up with a heart-failure clinic, nephrology, and retina specialists for diabetic retinopathy with macular edema."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Denise Walker",
+            "family": "Walker",
+            "given": [
+              "Denise"
+            ]
+          }
+        ],
+        "gender": "female",
+        "_birthDate": {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+              "valueCode": "unknown"
+            }
+          ]
+        },
+        "address": [
+          {
+            "use": "home",
+            "city": "Albuquerque",
+            "state": "NM",
+            "country": "US",
+            "text": "Lives in Albuquerque, New Mexico, after relocating from Phoenix, Arizona in early 2024 to be closer to her adult daughter and grandchildren."
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "home",
+            "_value": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                  "valueCode": "unknown"
+                }
+              ]
+            }
+          }
+        ],
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                    "code": "C",
+                    "display": "Emergency Contact"
+                  }
+                ],
+                "text": "Emergency Contact"
+              },
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                    "code": "CHILD",
+                    "display": "child"
+                  }
+                ],
+                "text": "Adult daughter"
+              }
+            ],
+            "name": {
+              "text": "Adult daughter"
+            },
+            "address": {
+              "city": "Albuquerque",
+              "state": "NM",
+              "country": "US",
+              "text": "Adult daughter in Albuquerque, New Mexico"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "use": "mobile",
+                "_value": {
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                      "valueCode": "unknown"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "W",
+              "display": "Widowed"
+            }
+          ],
+          "text": "Widowed"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-e91cc755383ff5c44b700b01"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4450878e-25f2-4491-8594-1b519b0371ff",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "4450878e-25f2-4491-8594-1b519b0371ff",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1730248652"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Cardiology specialty practice"
+          }
+        ],
+        "name": "Valley Heart Institute",
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "work",
+            "_value": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                  "valueCode": "unknown"
+                }
+              ]
+            }
+          }
+        ],
+        "address": [
+          {
+            "city": "Phoenix",
+            "state": "AZ",
+            "country": "US",
+            "text": "Phoenix, Arizona"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+        "active": true,
+        "name": [
+          {
+            "text": "Dr. Aaron Patel, MD",
+            "family": "Patel",
+            "given": [
+              "Aaron"
+            ],
+            "prefix": [
+              "Dr."
+            ],
+            "suffix": [
+              "MD"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "text": "MD"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:86de17f8-4c2f-49f7-aaf0-cc09da94cc4e",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "86de17f8-4c2f-49f7-aaf0-cc09da94cc4e",
+        "active": true,
+        "name": [
+          {
+            "text": "Lisa Nguyen, PA-C",
+            "family": "Nguyen",
+            "given": [
+              "Lisa"
+            ],
+            "suffix": [
+              "PA-C"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "text": "PA-C"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:36e1fa18-41bb-4b3e-a025-8b5c233a5c87",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "36e1fa18-41bb-4b3e-a025-8b5c233a5c87",
+        "active": true,
+        "name": [
+          {
+            "text": "Jeffrey Cole, RN",
+            "family": "Cole",
+            "given": [
+              "Jeffrey"
+            ],
+            "suffix": [
+              "RN"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "text": "RN"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:369aa6be-d5d8-4538-8c06-fe8414866c2d",
+      "resource": {
+        "resourceType": "Location",
+        "id": "369aa6be-d5d8-4538-8c06-fe8414866c2d",
+        "status": "active",
+        "name": "Valley Heart Institute",
+        "description": "Main clinical location for Valley Heart Institute encounters during the active period.",
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "work",
+            "_value": {
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                  "valueCode": "unknown"
+                }
+              ]
+            }
+          }
+        ],
+        "address": {
+          "city": "Phoenix",
+          "state": "AZ",
+          "country": "US",
+          "text": "Valley Heart Institute, Phoenix, Arizona"
+        },
+        "managingOrganization": {
+          "reference": "Organization/4450878e-25f2-4491-8594-1b519b0371ff",
+          "display": "Valley Heart Institute"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-apixaban",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-001-apixaban",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1364445",
+              "display": "apixaban 5 MG Oral Tablet"
+            }
+          ],
+          "text": "apixaban 5 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "authoredOn": "2022-06-08",
+        "requester": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "recorder": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-001-paroxysmal-af",
+            "display": "Paroxysmal atrial fibrillation"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 1 tablet by mouth twice daily.",
+            "patientInstruction": "Take apixaban 5 mg by mouth twice daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 2,
+                "period": 1,
+                "periodUnit": "d"
+              },
+              "code": {
+                "text": "twice daily"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route"
+                }
+              ],
+              "text": "Oral"
+            },
+            "method": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "419652001",
+                  "display": "Take"
+                }
+              ],
+              "text": "Take"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1,
+                  "unit": "tablet",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{tbl}"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-losartan",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-001-losartan",
+        "status": "stopped",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "372651",
+              "display": "losartan Oral Tablet"
+            }
+          ],
+          "text": "losartan oral therapy"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "authoredOn": "2022-06-08",
+        "requester": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "recorder": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-001-hfref",
+            "display": "Heart failure with reduced ejection fraction"
+          }
+        ],
+        "note": [
+          {
+            "text": "Losartan stopped in favor of sacubitril/valsartan for guideline-directed therapy in symptomatic HFrEF."
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Discontinue losartan."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-sacubitril-valsartan",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-001-sacubitril-valsartan",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1656340",
+              "display": "sacubitril 24 MG / valsartan 26 MG Oral Tablet"
+            }
+          ],
+          "text": "sacubitril/valsartan 24/26 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "authoredOn": "2022-06-08",
+        "requester": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "recorder": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-001-hfref",
+            "display": "Heart failure with reduced ejection fraction"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 1 tablet by mouth twice daily after appropriate washout.",
+            "patientInstruction": "Start sacubitril/valsartan 24/26 mg by mouth twice daily after appropriate washout.",
+            "timing": {
+              "repeat": {
+                "frequency": 2,
+                "period": 1,
+                "periodUnit": "d"
+              },
+              "code": {
+                "text": "twice daily"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route"
+                }
+              ],
+              "text": "Oral"
+            },
+            "method": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "419652001",
+                  "display": "Take"
+                }
+              ],
+              "text": "Take"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1,
+                  "unit": "tablet",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{tbl}"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 34.5,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-bnp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-bnp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "30934-4",
+              "display": "Natriuretic peptide B [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "B-type natriuretic peptide"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 412,
+          "unit": "pg/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "pg/mL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood pressure systolic and diastolic"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 132,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 1.31,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High/borderline elevated"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-egfr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-egfr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "62238-1",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI)"
+            }
+          ],
+          "text": "Estimated glomerular filtration rate"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 46,
+          "unit": "mL/min/{1.73_m2}",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-heart-rate",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-heart-rate",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 74,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 64,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-magnesium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-magnesium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "19123-9",
+              "display": "Magnesium [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Magnesium"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 1.9,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-potassium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-potassium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2823-3",
+              "display": "Potassium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Potassium"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 4.5,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-respiratory-rate",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-respiratory-rate",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 18,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59410-1",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry --on room air"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 97,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-temperature",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-temperature",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 97.9,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-tsh",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-tsh",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3016-3",
+              "display": "Thyrotropin [Units/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Thyroid stimulating hormone"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 1.7,
+          "unit": "u[IU]/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "u[IU]/mL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2022-06-08",
+        "valueQuantity": {
+          "value": 201,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-ckd",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-001-ckd",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "709044004",
+              "display": "Chronic kidney disease (disorder)"
+            }
+          ],
+          "text": "Chronic kidney disease"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "recordedDate": "2022-06-08",
+        "note": [
+          {
+            "text": "Stable for medication planning today with creatinine 1.31 mg/dL and estimated GFR about 46 mL/min/1.73 m2."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-hfref",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-001-hfref",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "703272007",
+              "display": "Heart failure with reduced ejection fraction (disorder)"
+            }
+          ],
+          "text": "Heart failure with reduced ejection fraction, NYHA class II to III"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "onsetDateTime": "2022",
+        "recordedDate": "2022-06-08",
+        "note": [
+          {
+            "text": "EF 35% with mild LV dilation, global hypokinesis, grade II diastolic dysfunction, mild left atrial enlargement, and exertional dyspnea consistent with NYHA class II to III symptoms."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-paroxysmal-af",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-001-paroxysmal-af",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "282825002",
+              "display": "Paroxysmal atrial fibrillation (disorder)"
+            }
+          ],
+          "text": "Paroxysmal atrial fibrillation"
+        },
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "onsetDateTime": "2022",
+        "recordedDate": "2022-06-08",
+        "note": [
+          {
+            "text": "Prior ambulatory monitor documented brief atrial fibrillation runs up to 140 bpm; same-day ECG showed sinus rhythm with premature atrial complexes."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-001-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34753-4",
+              "display": "Cardiology Outpatient Note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "34131-3",
+              "display": "Outpatient Progress note"
+            }
+          ],
+          "text": "Progress note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "date": "2022-06-08T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+            "type": "Practitioner",
+            "display": "Dr. Aaron Patel, MD"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+          "type": "Practitioner",
+          "display": "Dr. Aaron Patel, MD"
+        },
+        "custodian": {
+          "reference": "Organization/4450878e-25f2-4491-8594-1b519b0371ff",
+          "display": "Valley Heart Institute"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgd29tYW4gc2VlbiBpbiBjYXJkaW9sb2d5IGZvbGxvdy11cCBmb3IgcmVjZW50bHkgZXN0YWJsaXNoZWQgaGVhcnQgZmFpbHVyZSB3aXRoIHJlZHVjZWQgZWplY3Rpb24gZnJhY3Rpb24gYW5kIHBhcm94eXNtYWwgYXRyaWFsIGZpYnJpbGxhdGlvbi4gU2hlIHJlcG9ydHMgcGVyc2lzdGVudCBleGVydGlvbmFsIGR5c3BuZWEsIGJlY29taW5nIHNob3J0IG9mIGJyZWF0aCBhZnRlciBjbGltYmluZyAxIGZsaWdodCBvZiBzdGFpcnMsIGFuZCBpbnRlcm1pdHRlbnQgcGFscGl0YXRpb25zLiBTaGUgZGVuaWVzIHN5bmNvcGUsIGNoZXN0IHBhaW4sIG9yIG90aGVyIGFjdXRlIGlzY2hlbWljIHN5bXB0b21zLiBSZWNlbnQgd29ya3VwIGVhcmxpZXIgaW4gMjAyMiBjb25maXJtZWQgSEZyRUYgYW5kIGludGVybWl0dGVudCBBRi4gUmVsZXZhbnQgaGlzdG9yeSBpbmNsdWRlcyBoeXBlcnRlbnNpb24sIHR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cywgaHlwZXJsaXBpZGVtaWEsIGNocm9uaWMga2lkbmV5IGRpc2Vhc2UsIGFuZCBwcmlvciBBQ0UgaW5oaWJpdG9yIGludG9sZXJhbmNlIHdpdGggY291Z2guCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTMyLzgwIG1tSGcsIEhSIDc0IGJwbSwgaXJyZWd1bGFybHkgaXJyZWd1bGFyIGF0IGludGFrZSB0aGVuIHJlZ3VsYXIgb24gcmVwZWF0IEVDRywgUlIgMTgvbWluLCBUZW1wIDk3LjkgRiwgU3BPMiA5NyUgb24gcm9vbSBhaXIsIFd0IDIwMSBsYiwgSHQgNjQgaW4sIEJNSSAzNC41IGtnL20yCkdlbmVyYWw6IEFsZXJ0LCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KQ2FyZGlvdmFzY3VsYXI6IFJoeXRobSBpcnJlZ3VsYXIgYXQgaW50YWtlOyByZXBlYXQgRUNHIHdpdGggc2ludXMgcmh5dGhtLiBObyBzeW5jb3BlIHJlcG9ydGVkLiBDbGluaWNhbCBzeW1wdG9tcyBjb25zaXN0ZW50IHdpdGggc3ltcHRvbWF0aWMgY2FyZGlvbXlvcGF0aHkgYW5kIHBhcm94eXNtYWwgYXRyaWFsIGFycmh5dGhtaWEuClJlc3BpcmF0b3J5OiBObyByZXNwaXJhdG9yeSBkaXN0cmVzcyBhdCByZXN0OyBleGVydGlvbmFsIGR5c3BuZWEgcHJlc2VudC4KRXh0cmVtaXRpZXM6IE5vIHNpZ25pZmljYW50IGFjdXRlIGZpbmRpbmdzIGRvY3VtZW50ZWQgdG9kYXkuClN0dWRpZXMvTGFiczoKVHJhbnN0aG9yYWNpYyBlY2hvY2FyZGlvZ3JhbSByZXZpZXdlZDogTFZFRiAzNSUsIG1pbGQgTFYgZGlsYXRpb24sIGdsb2JhbCBoeXBva2luZXNpcywgZ3JhZGUgSUkgZGlhc3RvbGljIGR5c2Z1bmN0aW9uLCBtaWxkIGxlZnQgYXRyaWFsIGVubGFyZ2VtZW50LgpFQ0cgdG9kYXk6IHNpbnVzIHJoeXRobSBhdCA3MiBicG0gd2l0aCBwcmVtYXR1cmUgYXRyaWFsIGNvbXBsZXhlcy4KUHJpb3IgYW1idWxhdG9yeSBtb25pdG9yOiBicmllZiBhdHJpYWwgZmlicmlsbGF0aW9uIHJ1bnMgdXAgdG8gMTQwIGJwbS4KQk5QIDQxMiBwZy9tTCwgY3JlYXRpbmluZSAxLjMxIG1nL2RMLCBlR0ZSIGFwcHJveGltYXRlbHkgNDYgbUwvbWluLzEuNzMgbTIsIHBvdGFzc2l1bSA0LjUgbW1vbC9MLCBtYWduZXNpdW0gMS45IG1nL2RMLCBUU0ggMS43IHVJVS9tTC4KCkFTU0VTU01FTlQ6CjEuIEhlYXJ0IGZhaWx1cmUgd2l0aCByZWR1Y2VkIGVqZWN0aW9uIGZyYWN0aW9uLCBFRiAzNSUsIE5ZSEEgY2xhc3MgSUktSUlJLiBTeW1wdG9tYXRpYyB3aXRoIGV4ZXJ0aW9uYWwgZHlzcG5lYS4gRWNobyBzaG93cyBtaWxkIExWIGRpbGF0aW9uLCBnbG9iYWwgaHlwb2tpbmVzaXMsIGdyYWRlIElJIGRpYXN0b2xpYyBkeXNmdW5jdGlvbiwgYW5kIG1pbGQgTEEgZW5sYXJnZW1lbnQuIFJlbmFsIGZ1bmN0aW9uIGFuZCBwb3Rhc3NpdW0gYWNjZXB0YWJsZSBmb3IgaW5pdGlhdGlvbiBvZiBBUk5JIHRoZXJhcHkuCjIuIFBhcm94eXNtYWwgYXRyaWFsIGZpYnJpbGxhdGlvbi4gUHJpb3IgYW1idWxhdG9yeSBtb25pdG9yIGRvY3VtZW50ZWQgQUYgd2l0aCByYXRlcyB1cCB0byAxNDAgYnBtLiBFQ0cgdG9kYXkgc2hvd3Mgc2ludXMgcmh5dGhtIHdpdGggUEFDcy4gR2l2ZW4gSEYgYW5kIG90aGVyIHN0cm9rZSByaXNrIGZhY3RvcnMsIENIQTJEUzItVkFTYyBzY29yZSBzdXBwb3J0cyBjaHJvbmljIGFudGljb2FndWxhdGlvbi4KMy4gQ2hyb25pYyBraWRuZXkgZGlzZWFzZSwgc3RhYmxlIGZvciBtZWRpY2F0aW9uIHBsYW5uaW5nIHRvZGF5IHdpdGggY3JlYXRpbmluZSAxLjMxIGFuZCBlR0ZSIGFib3V0IDQ2OyB3aWxsIG5lZWQgbW9uaXRvcmluZyB3aXRoIEhGIHJlZ2ltZW4gYWRqdXN0bWVudHMuCjQuIEhpc3Rvcnkgb2YgQUNFIGluaGliaXRvciBpbnRvbGVyYW5jZSAoY291Z2gpLCByZWxldmFudCB0byBHRE1UIHNlbGVjdGlvbi4KClBMQU46CjEuIENvbnRpbnVlIGNhcnZlZGlsb2wgNi4yNSBtZyBQTyBCSUQuCjIuIENvbnRpbnVlIGZ1cm9zZW1pZGUgMjAgbWcgUE8gZWFjaCBtb3JuaW5nLgozLiBTdG9wIGxvc2FydGFuIGFuZCBzdGFydCBzYWN1Yml0cmlsL3ZhbHNhcnRhbiAyNC8yNiBtZyBQTyBCSUQgYWZ0ZXIgYXBwcm9wcmlhdGUgd2FzaG91dCwgZ2l2ZW4gc3ltcHRvbWF0aWMgSEZyRUYgYW5kIHByaW9yIEFDRSBpbnRvbGVyYW5jZSBoaXN0b3J5Lgo0LiBTdGFydCBhcGl4YWJhbiA1IG1nIFBPIEJJRCBmb3Igc3Ryb2tlIHByZXZlbnRpb24gaW4gcGFyb3h5c21hbCBhdHJpYWwgZmlicmlsbGF0aW9uLgo1LiBSZXZpZXdlZCBFQ0cgYW5kIGVjaG9jYXJkaW9ncmFtIGZpbmRpbmdzIHdpdGggcGF0aWVudCBhbmQgdXBkYXRlZCBtZWRpY2F0aW9uIGxpc3QuCjYuIFJlaW5mb3JjZWQgc29kaXVtIHJlc3RyaWN0aW9uIGFuZCBmbHVpZCByZXN0cmljdGlvbiBpbnN0cnVjdGlvbnMsIHdpdGggY291bnNlbGluZyBvbiBzeW1wdG9tIG1vbml0b3JpbmcgYW5kIHdoZW4gdG8gc2VlayBjYXJlIGZvciB3b3JzZW5pbmcgZHlzcG5lYSwgZWRlbWEsIGJsZWVkaW5nLCBvciByZWN1cnJlbnQgc3VzdGFpbmVkIHBhbHBpdGF0aW9ucy4KNy4gRm9sbG93IHVwIHdpdGggTGlzYSBOZ3V5ZW4sIFBBLUMsIGluIDMtNCB3ZWVrcyB0byByZWFzc2VzcyB0b2xlcmFuY2UsIHJlbmFsIGZ1bmN0aW9uL2VsZWN0cm9seXRlcyBhcyBuZWVkZWQsIGFuZCBjb25zaWRlciBtZWRpY2F0aW9uIHRpdHJhdGlvbi4K"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-001",
+              "display": "Office Visit"
+            }
+          ],
+          "period": {
+            "start": "2022-06-08",
+            "end": "2022-06-08"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-001",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "390906007",
+                "display": "Follow-up encounter (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+          "display": "Denise Walker"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+              "display": "Dr. Aaron Patel, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-06-08",
+          "end": "2022-06-08"
+        },
+        "reasonCode": [
+          {
+            "text": "HFrEF and paroxysmal atrial fibrillation follow-up"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/369aa6be-d5d8-4538-8c06-fe8414866c2d",
+              "display": "Valley Heart Institute"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/4450878e-25f2-4491-8594-1b519b0371ff",
+          "display": "Valley Heart Institute"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Denise Walker saw Dr. Aaron Patel, MD, at Valley Heart Institute in Phoenix, Arizona for cardiology follow-up after workup earlier in 2022 had established heart failure with reduced ejection fraction and paroxysmal atrial fibrillation."
+          }
+        ]
+      }
+    }
+  ]
+}

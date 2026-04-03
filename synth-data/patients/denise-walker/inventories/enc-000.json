@@ -1,0 +1,294 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "desert-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Annual wellness, diabetes and hypertension follow-up",
+    "participants": [],
+    "service_provider": "Desert Family Medicine",
+    "location": "Desert Family Medicine, Phoenix, Arizona"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "148/88",
+        "unit": "mmHg",
+        "systolic": "148 mmHg",
+        "diastolic": "88 mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "supporting_text": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 198,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 64,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 34,
+        "unit": "kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 7.8,
+        "unit": "%",
+        "reference_range": "4.0-5.6%",
+        "flag": "high"
+      },
+      {
+        "name": "serum glucose, fasting",
+        "value": 156,
+        "unit": "mg/dL",
+        "reference_range": "70-99 mg/dL",
+        "flag": "high",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "serum creatinine",
+        "value": 1.18,
+        "unit": "mg/dL",
+        "reference_range": "0.57-1.00 mg/dL",
+        "flag": "high",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": "approximately 53",
+        "unit": "mL/min/1.73 m2",
+        "reference_range": "60 mL/min/1.73 m2 or greater",
+        "flag": "low"
+      },
+      {
+        "name": "urine albumin-creatinine ratio",
+        "value": 68,
+        "unit": "mg/g",
+        "reference_range": "less than 30 mg/g",
+        "flag": "high",
+        "specimen_type": "urine"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 194,
+        "unit": "mg/dL",
+        "reference_range": "less than 200 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 112,
+        "unit": "mg/dL",
+        "reference_range": "less than 100 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 46,
+        "unit": "mg/dL",
+        "reference_range": "50 mg/dL or greater for adult women",
+        "flag": "low"
+      },
+      {
+        "name": "triglycerides",
+        "value": 181,
+        "unit": "mg/dL",
+        "reference_range": "less than 150 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "potassium",
+        "value": 4.3,
+        "unit": "mmol/L",
+        "reference_range": "3.5-5.1 mmol/L",
+        "flag": "normal",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": 19,
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": 22,
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal",
+        "specimen_type": "serum"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": "1/6",
+        "interpretation": "negative for major depression"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "prior to this encounter",
+      "action": "update-existing"
+    },
+    {
+      "name": "diabetic chronic kidney disease with albuminuria",
+      "clinical_status": "active",
+      "onset_date": "prior to this encounter",
+      "action": "update-existing"
+    },
+    {
+      "name": "diabetic peripheral neuropathy of the feet",
+      "clinical_status": "active",
+      "onset_date": "prior to this encounter",
+      "action": "update-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "onset_date": "prior to this encounter",
+      "action": "update-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "prior to this encounter",
+      "action": "update-existing"
+    },
+    {
+      "name": "obesity",
+      "clinical_status": "active",
+      "onset_date": "prior to this encounter",
+      "action": "update-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metformin 1000 mg oral tablet",
+      "sig": "take 1000 mg by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 10 mg oral tablet",
+      "sig": "take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hydrochlorothiazide 25 mg oral tablet",
+      "sig": "take 25 mg by mouth once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 40 mg oral tablet",
+      "sig": "take 40 mg by mouth nightly",
+      "status": "active",
+      "reason": "hyperlipidemia in the setting of diabetes",
+      "action": "update-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "take 10 mg by mouth once daily; stop and contact clinic if cough recurs",
+      "status": "active",
+      "reason": "hypertension and renal protection for diabetic kidney disease with albuminuria",
+      "action": "create"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "diabetic foot exam",
+      "status": "completed",
+      "findings": [
+        "intact skin of both feet, no ulcers",
+        "dorsalis pedis pulses 2+ bilaterally",
+        "mildly reduced monofilament sensation at the plantar forefeet bilaterally"
+      ]
+    }
+  ],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated",
+      "date": "2021-09-14"
+    }
+  ],
+  "document_references": [
+    {
+      "name": "Progress note",
+      "description": "Primary care office note for annual wellness and chronic disease follow-up. Should summarize vitals, negative PHQ-2 screening, diabetic foot exam findings, fasting laboratory review, assessment of diabetes, hypertension, diabetic kidney disease, hyperlipidemia, and obesity, and the medication plan including atorvastatin increase and lisinopril retrial.",
+      "action": "create"
+    },
+    {
+      "name": "Preventive care update",
+      "description": "Preventive care documentation tied to the annual wellness visit. Should summarize depression screening result, vaccination status reviewed during the visit, counseling on diet, weight management, foot care, and home blood pressure monitoring, and planned follow-up in 4 months.",
+      "action": "create"
+    },
+    {
+      "name": "Vaccine record",
+      "description": "Immunization documentation for influenza vaccine administered during this encounter. Should include administration date and link the vaccine event to the office visit; prior COVID-19 primary series is historical background only.",
+      "action": "create"
+    },
+    {
+      "name": "Patient instructions",
+      "description": "After-visit instructions covering continued metformin, amlodipine, and hydrochlorothiazide use, atorvastatin dose increase, lisinopril restart precautions related to recurrent cough, diabetic diet and weight counseling, foot care guidance, home blood pressure monitoring, and return/follow-up plan.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Fasting diabetes, kidney, liver, and lipid laboratory studies",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c",
+        "serum glucose, fasting",
+        "serum creatinine",
+        "estimated glomerular filtration rate",
+        "urine albumin-creatinine ratio",
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides",
+        "potassium",
+        "aspartate aminotransferase",
+        "alanine aminotransferase"
+      ]
+    }
+  ],
+  "allergies": []
+}

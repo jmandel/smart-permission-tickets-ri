@@ -1,0 +1,85 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "portland-behavioral-health-associates",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone Encounter",
+    "reason": "Pre-move planning, care transition coordination",
+    "period_start": "2024-03-18",
+    "period_end": "2024-03-18",
+    "participants": [
+      {
+        "name": "Dr. James Okafor",
+        "role": "Psychiatry"
+      }
+    ],
+    "service_provider": "Portland Behavioral Health Associates",
+    "location": "Portland Behavioral Health Associates, 1520 NW 18th Ave, Suite 304, Portland, OR 97209"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening score",
+        "value": 5,
+        "interpretation": "mild depressive symptoms",
+        "note": "self-reported by patient during telephone call",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate, in sustained remission",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "Take 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "create"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "Take 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "create"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "Take 50 mg by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents pre-move care transition planning for patient relocating from Portland to Seattle. Covers mood stability assessment (PHQ-9 score 5, mild), medication reconciliation and confirmation of lamotrigine 200 mg daily, quetiapine 50 mg nightly, and naltrexone 50 mg daily. Details 90-day bridge prescriptions for lamotrigine and quetiapine, provision of recommended Seattle-area psychiatrist list, plan for comprehensive psychiatric summary and records transfer, and conclusion of active psychiatric care at Portland Behavioral Health Associates.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

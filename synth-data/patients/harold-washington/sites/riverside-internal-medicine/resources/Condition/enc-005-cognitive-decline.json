@@ -1,0 +1,82 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-cognitive-decline",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "386806002",
+        "display": "Impaired cognition (finding)"
+      }
+    ],
+    "text": "Cognitive decline, new onset"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "onsetDateTime": "2022-03-22",
+  "recordedDate": "2022-03-22",
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72107-6",
+              "display": "Mini-Mental State Examination [MMSE]"
+            }
+          ],
+          "text": "MMSE 24/30 with deficits in recall and orientation"
+        }
+      ],
+      "detail": [
+        {
+          "reference": "Observation/enc-005-mmse",
+          "display": "MMSE score 24/30"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "MMSE 24/30 with deficits in recall (0/3 objects at 5 minutes), orientation to date (lost 2 points), serial sevens (lost 1 point), and mildly impaired clock drawing. Suspected early neurodegenerative process. Reversible metabolic causes (TSH, B12) ruled out. Depression screen negative. Referred to neurology for comprehensive evaluation."
+    }
+  ]
+}

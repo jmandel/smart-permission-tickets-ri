@@ -1,0 +1,108 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-017-pemetrexed",
+  "status": "stopped",
+  "statusReason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "182840001",
+        "display": "Drug treatment stopped - medical advice (situation)"
+      }
+    ],
+    "text": "Induction chemotherapy completed per protocol (4 cycles); transitioning to maintenance pembrolizumab monotherapy"
+  },
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1728072",
+        "display": "PEMEtrexed 500 MG Injection"
+      }
+    ],
+    "text": "pemetrexed 500 mg/m² intravenous infusion (BSA 1.72 m², calculated dose 860 mg)"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-021"
+  },
+  "authoredOn": "2025-01-06",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-013-adenocarcinoma",
+      "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "500 mg/m² IV over 10 minutes, every 3 weeks (BSA 1.72 m², calculated dose 860 mg)",
+      "patientInstruction": "Pemetrexed 860 mg IV infusion over 10 minutes every 3 weeks.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 3,
+          "periodUnit": "wk"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 860,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Cycle 1 administered 2025-01-06. No infusion reactions. Patient on folic acid and B12 supplementation per pemetrexed protocol requirements."
+    },
+    {
+      "text": "Discontinued 2025-03-24: 4 induction cycles completed per clinical trial NCT05820295 protocol. Interim restaging CT shows partial response (RECIST 1.1). Transitioning to maintenance pembrolizumab monotherapy."
+    }
+  ]
+}

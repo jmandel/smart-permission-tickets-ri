@@ -1,0 +1,229 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Well-Child Visit",
+    "reason": "4-year well-child examination, asthma step-up evaluation, immunizations",
+    "period_start": "2024-03-15T09:00:00-04:00",
+    "period_end": "2024-03-15T09:35:00-04:00",
+    "participants": [
+      {
+        "name": "Dr. Megan Harlow",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 96,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 20,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 90,
+        "diastolic": 58,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.9,
+        "unit": "°C",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 16.2,
+        "unit": "kg",
+        "percentile": "50th percentile for age",
+        "action": "create"
+      },
+      {
+        "name": "body height",
+        "value": 102,
+        "unit": "cm",
+        "percentile": "55th percentile for age",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 15.6,
+        "unit": "kg/m²",
+        "percentile": "55th percentile for age",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening (caregiver-reported)",
+        "value": 0,
+        "interpretation": "negative, no depressive symptoms indicated",
+        "action": "create"
+      },
+      {
+        "name": "visual acuity screening (Lea symbols)",
+        "value": "20/30 bilaterally",
+        "interpretation": "age-appropriate, passed",
+        "action": "create"
+      },
+      {
+        "name": "hearing screening (pure tone audiometry)",
+        "value": "passed bilaterally",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "moderate persistent asthma",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "update-existing",
+      "note": "Reclassified from mild persistent to moderate persistent based on symptom frequency: daytime symptoms 3–4 times/week, nighttime symptoms 2–3 times/month, rescue inhaler use ~3 times/week"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis, mild intermittent",
+      "clinical_status": "active",
+      "onset_date": "2021",
+      "action": "reference-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    },
+    {
+      "name": "well-child visit, age 4 years",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone propionate 44 mcg inhaler",
+      "sig": "1 puff inhaled twice daily",
+      "status": "stopped",
+      "reason": "moderate persistent asthma — discontinued as monotherapy insufficient",
+      "action": "update-existing"
+    },
+    {
+      "name": "fluticasone/salmeterol 45 mcg/21 mcg inhaler (Advair HFA 45/21)",
+      "sig": "1 puff inhaled twice daily via spacer with mouthpiece",
+      "status": "active",
+      "reason": "moderate persistent asthma — step-up from low-dose ICS monotherapy to medium-dose ICS/LABA combination",
+      "action": "create"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "moderate persistent asthma — add-on controller therapy",
+      "action": "create"
+    },
+    {
+      "name": "albuterol 90 mcg inhaler",
+      "sig": "2 puffs inhaled as needed for wheezing or shortness of breath via spacer",
+      "status": "active",
+      "reason": "asthma rescue therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 5 mg oral tablet",
+      "sig": "once daily by mouth",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "update-existing",
+      "note": "Dose increased from 2.5 mg to 5 mg daily based on current weight and ongoing symptoms"
+    },
+    {
+      "name": "epinephrine auto-injector 0.15 mg (EpiPen Jr) two-pack",
+      "sig": "as needed for anaphylaxis",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis; tree nut allergy",
+      "action": "create"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "apply to eczema flares twice daily as needed",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ceramide-based moisturizer (CeraVe)",
+      "sig": "apply to affected areas daily",
+      "status": "active",
+      "reason": "atopic dermatitis maintenance",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "DTaP vaccine (diphtheria, tetanus, acellular pertussis), 5th dose",
+      "date": "2024-03-15",
+      "route": "intramuscular injection"
+    },
+    {
+      "name": "IPV vaccine (inactivated poliovirus), 4th dose",
+      "date": "2024-03-15",
+      "route": "intramuscular injection"
+    },
+    {
+      "name": "MMR vaccine (measles, mumps, rubella), 2nd dose",
+      "date": "2024-03-15",
+      "route": "subcutaneous injection"
+    },
+    {
+      "name": "varicella vaccine, 2nd dose",
+      "date": "2024-03-15",
+      "route": "subcutaneous injection"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive 4-year well-child visit note documenting subjective history of suboptimal asthma control, physical examination findings, developmental screening, vision and hearing screening results, immunization administration, asthma reclassification to moderate persistent with therapy step-up plan, and anticipatory guidance. 35-minute visit with >50% counseling/coordination.",
+      "action": "create"
+    },
+    {
+      "type": "care plan document (asthma action plan)",
+      "description": "Revised asthma action plan reflecting step-up to fluticasone/salmeterol 45/21 with spacer mouthpiece, addition of montelukast, continued albuterol PRN rescue therapy, and updated green/yellow/red zone criteria.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

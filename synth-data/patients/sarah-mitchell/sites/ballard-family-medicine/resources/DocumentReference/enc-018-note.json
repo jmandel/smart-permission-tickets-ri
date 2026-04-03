@@ -1,0 +1,58 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-018-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Laboratory Results Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2025-01-14T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+      "type": "Practitioner",
+      "display": "Dr. Kevin Tran"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCT1JBVE9SWSBSRVNVTFRTIE5PVEUKCkRhdGU6IDAxLzE0LzIwMjUKUGF0aWVudDogU2FyYWggTWl0Y2hlbGwgKERPQjogMTEvMTQvMTk5MykKT3JkZXJpbmcgUHJvdmlkZXI6IERyLiBLZXZpbiBUcmFuLCBNRApTaXRlOiBCYWxsYXJkIEZhbWlseSBNZWRpY2luZSwgNTQxMiAyMm5kIEF2ZSBOVywgU2VhdHRsZSwgV0EgOTgxMDcKCklORElDQVRJT046CkFubnVhbCBzY3JlZW5pbmcgbGFib3JhdG9yeSBzdHVkaWVzIHBlciByb3V0aW5lIHByZXZlbnRpdmUgY2FyZSBwcm90b2NvbC4KCk5vIHZpdGFscyBvYnRhaW5lZCAobGFiLW9ubHkgdmlzaXQpLgoKUkVTVUxUUzoKCkNCQzoKICBXQkMgNS42IHgxMF4zL3VMIChub3JtYWwpCiAgSGVtb2dsb2JpbiAxNC4wIGcvZEwgKG5vcm1hbCkKICBQbGF0ZWxldHMgMjUwIHgxMF4zL3VMIChub3JtYWwpCgpDb21wcmVoZW5zaXZlIE1ldGFib2xpYyBQYW5lbDoKICBHbHVjb3NlIDg4IG1nL2RMIChub3JtYWwpCiAgQ3JlYXRpbmluZSAwLjggbWcvZEwgKG5vcm1hbCkKICBBU1QgMjAgVS9MIChub3JtYWwpCiAgQUxUIDI0IFUvTCAobm9ybWFsKQoKSGVtb2dsb2JpbiBBMWM6CiAgNS4xJSAobm9ybWFsLCBubyBldmlkZW5jZSBvZiBwcmVkaWFiZXRlcyBvciBkaWFiZXRlcykKClRoeXJvaWQgRnVuY3Rpb246CiAgVFNIIDIuNCBtSVUvTCAobm9ybWFsKQoKTGlwaWQgUGFuZWw6CiAgVG90YWwgY2hvbGVzdGVyb2wgMTg2IG1nL2RMCiAgTERMIDEwNCBtZy9kTAogIEhETCA1OCBtZy9kTAogIFRyaWdseWNlcmlkZXMgMTUyIG1nL2RMIChtaWxkbHkgZWxldmF0ZWQpCgpJTlRFUlBSRVRBVElPTjoKQ0JDLCBDTVAsIEExYywgYW5kIFRTSCBhcmUgYWxsIHdpdGhpbiBub3JtYWwgbGltaXRzLiBMaXZlciBlbnp5bWVzIChBU1QgMjAsIEFMVCAyNCkgYXJlIHdlbGwgd2l0aGluIG5vcm1hbCByYW5nZSwgcmVhc3N1cmluZyBpbiB0aGUgY29udGV4dCBvZiBoZXIgaGlzdG9yeSBvZiBhbGNvaG9sIHVzZSBkaXNvcmRlciBpbiBzdXN0YWluZWQgcmVtaXNzaW9uIGFuZCBjdXJyZW50IG5hbHRyZXhvbmUgdXNlLiBMaXBpZCBwYW5lbCBzaG93cyBtaWxkbHkgZWxldmF0ZWQgdHJpZ2x5Y2VyaWRlcyBhdCAxNTIgbWcvZEwsIGltcHJvdmVkIGZyb20gMTYyIG1nL2RMIG9uIHByaW9yIHRlc3RpbmcgaW4gSnVseSAyMDI0LCByZWZsZWN0aW5nIGEgc3RhYmxlIGRvd253YXJkIHRyZW5kLiBUaGlzIG1pbGQgaHlwZXJ0cmlnbHljZXJpZGVtaWEgaXMgbGlrZWx5IHJlbGF0ZWQgdG8gcXVldGlhcGluZSA1MG1nIG5pZ2h0bHksIHdoaWNoIHNoZSB0YWtlcyBmb3IgYmlwb2xhciBJSSBkaXNvcmRlciBtYW5hZ2VtZW50LiBMREwgYXQgMTA0IG1nL2RMIGlzIGFjY2VwdGFibGUgZm9yIGhlciByaXNrIHByb2ZpbGUuIEhETCBhdCA1OCBtZy9kTCBpcyB3aXRoaW4gbm9ybWFsIHJhbmdlLgoKUExBTjoKMS4gUmVzdWx0cyByb3V0ZWQgdG8gRHIuIFRyYW4gZm9yIGZpbmFsIHJldmlldy4KMi4gQ29udGludWUgbW9uaXRvcmluZyB0cmlnbHljZXJpZGVzIGF0IG5leHQgYW5udWFsIGxhYnM7IGN1cnJlbnQgdHJlbmQgaXMgZW5jb3VyYWdpbmcuCjMuIE5vIG1lZGljYXRpb24gY2hhbmdlcyBpbmRpY2F0ZWQgYmFzZWQgb24gdGhlc2UgcmVzdWx0cy4KNC4gQ29udGludWUgY3VycmVudCBtZWRpY2F0aW9uczogbGFtb3RyaWdpbmUgMjAwbWcgZGFpbHksIHF1ZXRpYXBpbmUgNTBtZyBhdCBiZWR0aW1lLCBuYWx0cmV4b25lIDUwbWcgZGFpbHkuCjUuIEZvbGxvdy11cCB3aXRoIERyLiBUcmFuIGFzIHByZXZpb3VzbHkgc2NoZWR1bGVkLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OiBEci4gS2V2aW4gVHJhbiwgTUQKRGF0ZTogMDEvMTQvMjAyNQo="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-018"
+      }
+    ],
+    "period": {
+      "start": "2025-01-14"
+    }
+  }
+}

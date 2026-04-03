@@ -1,0 +1,177 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Review of annual fasting laboratory results and cervical cytology (Pap smear)",
+    "period_start": "2024-03-22",
+    "period_end": "2024-03-22",
+    "participants": [],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "fasting glucose",
+        "value": "92",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.4",
+        "unit": "%",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "total cholesterol",
+        "value": "198",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": "118",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": "51",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "triglycerides",
+        "value": "145",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "white blood cell count",
+        "value": "6.9",
+        "unit": "x10^3/uL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "13.1",
+        "unit": "g/dL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "hematocrit",
+        "value": "39.2",
+        "unit": "%",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": "248",
+        "unit": "x10^3/uL",
+        "flag": "normal",
+        "specimen_collected": "2024-03-21",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs inhaled as needed for asthma symptoms",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "results note",
+      "description": "Documents review of annual fasting laboratory results (lipid panel, CBC, CMP, HbA1c, fasting glucose) and cervical cytology (Pap smear). All labs within normal limits. Pap smear NILM. Patient notified via portal. No medication changes. Next Pap due 2027; repeat annual labs at next wellness visit.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP reported as within normal limits. No individual component values provided beyond fasting glucose."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "cervical cytology (Pap smear)",
+      "report_state": "summary-only",
+      "description": "Pap smear result returned 2024-03-25. Result: negative for intraepithelial lesion or malignancy (NILM). Specimen adequacy: satisfactory for evaluation. Next cervical cytology due 2027."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

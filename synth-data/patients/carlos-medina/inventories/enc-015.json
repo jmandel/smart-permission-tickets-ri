@@ -1,0 +1,247 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telemedicine follow-up visit",
+    "reason": "3-month leflunomide efficacy assessment for rheumatoid arthritis",
+    "period_start": "2022-04-04",
+    "period_end": "2022-04-04",
+    "participants": [],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body weight",
+        "value": "200",
+        "unit": "lb",
+        "note": "Self-reported during telemedicine visit; not measured in clinic",
+        "action": "create"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "5.9",
+        "unit": "x10^3/uL",
+        "reference_range": "4.0-11.0 x10^3/uL",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "14.6",
+        "unit": "g/dL",
+        "reference_range": "13.5-17.5 g/dL",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": "246",
+        "unit": "x10^3/uL",
+        "reference_range": "150-400 x10^3/uL",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "glucose",
+        "value": "100",
+        "unit": "mg/dL",
+        "reference_range": "70-100 mg/dL",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "creatinine",
+        "value": "0.9",
+        "unit": "mg/dL",
+        "reference_range": "0.7-1.3 mg/dL",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": "28",
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": "26",
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "albumin",
+        "value": "3.9",
+        "unit": "g/dL",
+        "reference_range": "3.5-5.5 g/dL",
+        "flag": "normal",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "erythrocyte sedimentation rate",
+        "value": "36",
+        "unit": "mm/hr",
+        "reference_range": "0-22 mm/hr",
+        "flag": "high",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": "2.2",
+        "unit": "mg/dL",
+        "reference_range": "0.0-0.5 mg/dL",
+        "flag": "high",
+        "note": "Modestly improved from prior value of 2.8 mg/dL",
+        "effective_date": "2022-04-01",
+        "action": "create"
+      }
+    ],
+    "screening": [
+      {
+        "name": "DAS28-CRP",
+        "value": "4.4",
+        "interpretation": "moderate disease activity, improved from 4.9",
+        "action": "create"
+      },
+      {
+        "name": "HAQ-DI",
+        "value": "1.2",
+        "interpretation": "moderate functional impairment, slight improvement from 1.3",
+        "action": "create"
+      },
+      {
+        "name": "patient global assessment of disease activity",
+        "value": "52",
+        "unit": "/100",
+        "interpretation": "moderate patient-perceived disease activity",
+        "action": "create"
+      },
+      {
+        "name": "grip strength — right hand",
+        "value": "22",
+        "unit": "kg",
+        "note": "Self-reported using home dynamometer; declining from earlier measurements, concerning for progressive functional loss",
+        "action": "create"
+      },
+      {
+        "name": "grip strength — left hand",
+        "value": "18",
+        "unit": "kg",
+        "note": "Self-reported using home dynamometer; declining from earlier measurements, concerning for progressive functional loss",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2021-03",
+      "action": "reference-existing"
+    },
+    {
+      "name": "NSAID gastropathy",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "leflunomide 20 mg oral tablet",
+      "sig": "Take one 20 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "Take one 500 mg tablet by mouth twice daily as needed for joint pain",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "Take one 1 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "supplementation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "Take one 10 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "seasonal allergies",
+      "action": "reference-existing"
+    },
+    {
+      "name": "omeprazole 20 mg oral capsule",
+      "sig": "Take one 20 mg capsule by mouth once daily, 30 minutes before breakfast",
+      "status": "active",
+      "reason": "NSAID gastropathy",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Telemedicine follow-up note documenting 3-month leflunomide efficacy assessment for seropositive rheumatoid arthritis. Documents partial DMARD response (DAS28-CRP 4.4, improved from 4.9 but still moderate disease activity), declining grip strength despite modest symptom improvement, new NSAID gastropathy diagnosis, omeprazole initiation for gastroprotection, and plan to continue leflunomide for full 6-month trial with labs in 6 weeks and full reassessment in July 2022.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "CBC drawn 2022-04-01 at external lab. WBC 5.9, hemoglobin 14.6, platelets 246 — within normal limits. Hematocrit not individually reported."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP drawn 2022-04-01 at external lab. Only 5 of 14 components individually reported: glucose 100, creatinine 0.9, ALT 28, AST 26, albumin 3.9. LFTs stable and within normal limits. Overall assessment: normal."
+    },
+    {
+      "type": "erythrocyte sedimentation rate",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate"
+      ]
+    },
+    {
+      "type": "C-reactive protein",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "maculopapular rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "Organization",
+  "id": "e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "3456789012"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Addiction medicine / intensive outpatient program (IOP)"
+    }
+  ],
+  "name": "Bridgetown Recovery Center",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "503-555-0192",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "503-555-0193",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "920 SE Sandy Blvd"
+      ],
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97214",
+      "country": "US"
+    }
+  ]
+}

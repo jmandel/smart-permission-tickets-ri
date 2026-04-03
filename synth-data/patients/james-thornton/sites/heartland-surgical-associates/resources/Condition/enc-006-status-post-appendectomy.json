@@ -1,0 +1,70 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-006-status-post-appendectomy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1156321000",
+        "display": "History of laparoscopic appendectomy (situation)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "Z87.09",
+        "display": "Personal history of other diseases of the digestive system"
+      }
+    ],
+    "text": "Status post laparoscopic appendectomy for perforated appendicitis, recovered"
+  },
+  "subject": {
+    "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "onsetDateTime": "2026-01-12",
+  "abatementDateTime": "2026-02-05",
+  "recordedDate": "2026-02-05",
+  "recorder": {
+    "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+    "display": "Dr. Marcus Okonkwo"
+  },
+  "note": [
+    {
+      "text": "Original laparoscopic appendectomy performed January 12, 2026 at Nebraska Medicine for acute gangrenous appendicitis with transmural necrosis and perforation. Course complicated by surgical site infection requiring readmission. Now fully recovered with all port site incisions healed and no hernia defects."
+    }
+  ]
+}

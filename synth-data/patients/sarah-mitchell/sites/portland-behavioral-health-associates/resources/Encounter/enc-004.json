@@ -1,0 +1,87 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-004",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "448337001",
+          "display": "Telemedicine consultation with patient (procedure)"
+        }
+      ],
+      "text": "Psychiatric follow-up via telemedicine"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "attender"
+        }
+      ],
+      "period": {
+        "start": "2020-12-14",
+        "end": "2020-12-14"
+      },
+      "individual": {
+        "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+        "type": "Practitioner",
+        "display": "Dr. James Okafor"
+      }
+    }
+  ],
+  "period": {
+    "start": "2020-12-14",
+    "end": "2020-12-14"
+  },
+  "reasonCode": [
+    {
+      "text": "Pandemic follow-up; worsening depressive episode; quetiapine added for insomnia and mood stabilization"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/3dee2667-27f0-4f4d-b1cc-0af54bb8be42",
+        "display": "Portland Behavioral Health Associates"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/3601e30e-19fa-4e51-b964-bac8e73581df",
+    "display": "Portland Behavioral Health Associates"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Sarah was seen via telemedicine by Dr. Okafor."
+    }
+  ]
+}

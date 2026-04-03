@@ -1,0 +1,864 @@
+{
+  "patients": [
+    {
+      "slug": "elena-reyes",
+      "sites": [
+        {
+          "name": "central-austin-family-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Encounter": 1,
+            "Observation": 15,
+            "DiagnosticReport": 3,
+            "Immunization": 1,
+            "Condition": 1,
+            "MedicationRequest": 2,
+            "AllergyIntolerance": 1,
+            "DocumentReference": 1
+          },
+          "totalResources": 29
+        },
+        {
+          "name": "lone-star-womens-health",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Encounter": 3,
+            "Observation": 37,
+            "DiagnosticReport": 4,
+            "Condition": 3,
+            "DocumentReference": 4
+          },
+          "totalResources": 57
+        },
+        {
+          "name": "eastbay-primary-care-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Encounter": 2,
+            "DocumentReference": 2,
+            "Observation": 32,
+            "DiagnosticReport": 6,
+            "Immunization": 2,
+            "Condition": 1,
+            "MedicationRequest": 1
+          },
+          "totalResources": 50
+        },
+        {
+          "name": "bay-area-rheumatology-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "Observation": 59,
+            "DiagnosticReport": 10,
+            "MedicationRequest": 3,
+            "DocumentReference": 3,
+            "Condition": 1,
+            "Encounter": 3,
+            "Immunization": 1
+          },
+          "totalResources": 85
+        },
+        {
+          "name": "bay-area-urgent-care-telegraph-ave-location",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Condition": 1,
+            "DiagnosticReport": 1,
+            "Observation": 6,
+            "MedicationRequest": 1,
+            "DocumentReference": 1,
+            "Encounter": 1
+          },
+          "totalResources": 15
+        }
+      ],
+      "validation": {
+        "totalCodes": 608,
+        "validCodes": 608,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "robert-davis",
+      "sites": [
+        {
+          "name": "university-of-illinois-hospital",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "DiagnosticReport": 17,
+            "Observation": 71,
+            "AllergyIntolerance": 2,
+            "Condition": 3,
+            "DocumentReference": 2,
+            "Encounter": 2,
+            "MedicationRequest": 7
+          },
+          "totalResources": 110
+        },
+        {
+          "name": "ui-health-ambulatory-tb-clinic",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "DocumentReference": 15,
+            "Encounter": 13,
+            "DiagnosticReport": 36,
+            "Observation": 138,
+            "Condition": 4,
+            "MedicationRequest": 2
+          },
+          "totalResources": 214
+        }
+      ],
+      "validation": {
+        "totalCodes": 787,
+        "validCodes": 787,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "denise-walker",
+      "sites": [
+        {
+          "name": "desert-family-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Observation": 40,
+            "Condition": 7,
+            "Immunization": 1,
+            "Procedure": 2,
+            "DiagnosticReport": 4,
+            "DocumentReference": 2,
+            "MedicationRequest": 7,
+            "Encounter": 2,
+            "ServiceRequest": 2
+          },
+          "totalResources": 73
+        },
+        {
+          "name": "valley-heart-institute",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "MedicationRequest": 3,
+            "Observation": 14,
+            "Condition": 3,
+            "DocumentReference": 1,
+            "Encounter": 1
+          },
+          "totalResources": 28
+        },
+        {
+          "name": "university-of-new-mexico-hospital-and-heart-failure-clinic",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 4,
+            "Location": 2,
+            "Observation": 56,
+            "Condition": 6,
+            "DiagnosticReport": 11,
+            "MedicationRequest": 7,
+            "DocumentReference": 4,
+            "Encounter": 3
+          },
+          "totalResources": 95
+        },
+        {
+          "name": "rio-grande-nephrology-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Observation": 43,
+            "Condition": 8,
+            "DiagnosticReport": 6,
+            "DocumentReference": 2,
+            "Encounter": 2,
+            "ServiceRequest": 3
+          },
+          "totalResources": 70
+        },
+        {
+          "name": "sandia-retina-specialists",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Observation": 11,
+            "Condition": 3,
+            "DiagnosticReport": 2,
+            "MedicationRequest": 1,
+            "DocumentReference": 1,
+            "Procedure": 1,
+            "Encounter": 1
+          },
+          "totalResources": 26
+        }
+      ],
+      "validation": {
+        "totalCodes": 684,
+        "validCodes": 684,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "maria-chen",
+      "sites": [
+        {
+          "name": "cascade-community-health-center",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Observation": 178,
+            "MedicationRequest": 7,
+            "Condition": 9,
+            "DocumentReference": 20,
+            "AllergyIntolerance": 1,
+            "Encounter": 20,
+            "DiagnosticReport": 24,
+            "Immunization": 4,
+            "Procedure": 1,
+            "ServiceRequest": 1
+          },
+          "totalResources": 271
+        },
+        {
+          "name": "rose-city-community-services",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "DocumentReference": 3,
+            "Encounter": 3
+          },
+          "totalResources": 11
+        }
+      ],
+      "validation": {
+        "totalCodes": 704,
+        "validCodes": 704,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "harold-washington",
+      "sites": [
+        {
+          "name": "riverside-internal-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Observation": 104,
+            "Condition": 10,
+            "MedicationRequest": 3,
+            "DocumentReference": 8,
+            "AllergyIntolerance": 1,
+            "Encounter": 8,
+            "DiagnosticReport": 23,
+            "ServiceRequest": 2,
+            "Immunization": 5
+          },
+          "totalResources": 168
+        },
+        {
+          "name": "first-coast-neurology-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Condition": 1,
+            "DiagnosticReport": 6,
+            "Observation": 26,
+            "MedicationRequest": 2,
+            "DocumentReference": 4,
+            "Encounter": 4,
+            "ServiceRequest": 1
+          },
+          "totalResources": 48
+        },
+        {
+          "name": "dekalb-primary-care",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "AllergyIntolerance": 1,
+            "Condition": 8,
+            "MedicationRequest": 6,
+            "Observation": 83,
+            "Immunization": 1,
+            "DocumentReference": 6,
+            "ServiceRequest": 2,
+            "Encounter": 6,
+            "DiagnosticReport": 12
+          },
+          "totalResources": 129
+        },
+        {
+          "name": "emory-cognitive-neurology-center",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "DocumentReference": 4,
+            "Condition": 1,
+            "Observation": 28,
+            "MedicationRequest": 2,
+            "ServiceRequest": 2,
+            "DiagnosticReport": 2,
+            "Encounter": 3,
+            "Procedure": 1
+          },
+          "totalResources": 47
+        },
+        {
+          "name": "emory-decatur-hospital-emergency-department",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "MedicationRequest": 1,
+            "Observation": 9,
+            "DiagnosticReport": 2,
+            "Condition": 3,
+            "Procedure": 2,
+            "DocumentReference": 1,
+            "Encounter": 1
+          },
+          "totalResources": 23
+        }
+      ],
+      "validation": {
+        "totalCodes": 993,
+        "validCodes": 992,
+        "unknownCodes": 1,
+        "unknownCodeDetails": [
+          {
+            "resource": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+            "system": "http://snomed.info/sct",
+            "code": "39288007",
+            "display": "Internist"
+          }
+        ],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "aisha-patel",
+      "sites": [
+        {
+          "name": "wakemed-childrens-emergency-department",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "AllergyIntolerance": 1,
+            "Condition": 6,
+            "Observation": 51,
+            "DiagnosticReport": 3,
+            "MedicationRequest": 12,
+            "DocumentReference": 2,
+            "Encounter": 2
+          },
+          "totalResources": 82
+        },
+        {
+          "name": "triangle-pediatrics",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "ServiceRequest": 3,
+            "DocumentReference": 17,
+            "AllergyIntolerance": 1,
+            "Condition": 7,
+            "Encounter": 10,
+            "Observation": 63,
+            "MedicationRequest": 9,
+            "Immunization": 5
+          },
+          "totalResources": 119
+        },
+        {
+          "name": "unc-pediatric-allergy-immunology",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Condition": 6,
+            "AllergyIntolerance": 4,
+            "Observation": 71,
+            "MedicationRequest": 3,
+            "DiagnosticReport": 10,
+            "DocumentReference": 7,
+            "Encounter": 7
+          },
+          "totalResources": 112
+        }
+      ],
+      "validation": {
+        "totalCodes": 814,
+        "validCodes": 814,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "james-thornton",
+      "sites": [
+        {
+          "name": "nebraska-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 4,
+            "Location": 1,
+            "Observation": 93,
+            "DiagnosticReport": 19,
+            "MedicationRequest": 19,
+            "AllergyIntolerance": 1,
+            "DocumentReference": 5,
+            "Condition": 4,
+            "Encounter": 5,
+            "Procedure": 4
+          },
+          "totalResources": 157
+        },
+        {
+          "name": "heartland-surgical-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "MedicationRequest": 1,
+            "Observation": 12,
+            "DocumentReference": 2,
+            "Condition": 2,
+            "Encounter": 2
+          },
+          "totalResources": 23
+        }
+      ],
+      "validation": {
+        "totalCodes": 447,
+        "validCodes": 447,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "patricia-okafor",
+      "sites": [
+        {
+          "name": "westheimer-family-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Observation": 83,
+            "AllergyIntolerance": 1,
+            "DiagnosticReport": 14,
+            "Condition": 10,
+            "Immunization": 3,
+            "MedicationRequest": 3,
+            "ServiceRequest": 3,
+            "DocumentReference": 8,
+            "Encounter": 8
+          },
+          "totalResources": 137
+        },
+        {
+          "name": "houston-pulmonary-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Observation": 12,
+            "DiagnosticReport": 4,
+            "Condition": 1,
+            "ServiceRequest": 2,
+            "DocumentReference": 3,
+            "Encounter": 3,
+            "MedicationRequest": 1
+          },
+          "totalResources": 30
+        },
+        {
+          "name": "md-anderson-cancer-center",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Observation": 154,
+            "Condition": 6,
+            "DiagnosticReport": 32,
+            "DocumentReference": 16,
+            "AllergyIntolerance": 1,
+            "Encounter": 11,
+            "Procedure": 1,
+            "MedicationRequest": 19,
+            "Immunization": 1
+          },
+          "totalResources": 247
+        }
+      ],
+      "validation": {
+        "totalCodes": 1022,
+        "validCodes": 1022,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "kevin-park",
+      "sites": [
+        {
+          "name": "minnehaha-internal-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "Observation": 143,
+            "DiagnosticReport": 17,
+            "Condition": 5,
+            "AllergyIntolerance": 1,
+            "DocumentReference": 16,
+            "Encounter": 15,
+            "MedicationRequest": 5,
+            "Immunization": 3,
+            "ServiceRequest": 5
+          },
+          "totalResources": 215
+        },
+        {
+          "name": "university-of-minnesota-cardiac-electrophysiology-clinic",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Condition": 1,
+            "Observation": 24,
+            "ServiceRequest": 4,
+            "DocumentReference": 3,
+            "Encounter": 3,
+            "DiagnosticReport": 1
+          },
+          "totalResources": 42
+        }
+      ],
+      "validation": {
+        "totalCodes": 624,
+        "validCodes": 624,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "marcus-johnson",
+      "sites": [
+        {
+          "name": "uw-health-university-student-health-services",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "Condition": 6,
+            "Observation": 71,
+            "MedicationRequest": 3,
+            "AllergyIntolerance": 1,
+            "DocumentReference": 10,
+            "Encounter": 6,
+            "DiagnosticReport": 8,
+            "Procedure": 1
+          },
+          "totalResources": 111
+        }
+      ],
+      "validation": {
+        "totalCodes": 304,
+        "validCodes": 304,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "sarah-mitchell",
+      "sites": [
+        {
+          "name": "hawthorne-health-center",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Observation": 66,
+            "Condition": 1,
+            "DocumentReference": 6,
+            "MedicationRequest": 4,
+            "AllergyIntolerance": 1,
+            "Encounter": 5,
+            "DiagnosticReport": 12,
+            "Immunization": 3
+          },
+          "totalResources": 102
+        },
+        {
+          "name": "portland-behavioral-health-associates",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Condition": 7,
+            "Observation": 34,
+            "MedicationRequest": 5,
+            "DocumentReference": 5,
+            "Encounter": 5,
+            "DiagnosticReport": 4,
+            "ServiceRequest": 3
+          },
+          "totalResources": 67
+        },
+        {
+          "name": "bridgetown-recovery-center",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "Observation": 30,
+            "Condition": 3,
+            "DiagnosticReport": 10,
+            "ServiceRequest": 1,
+            "MedicationRequest": 2,
+            "DocumentReference": 4,
+            "Encounter": 4
+          },
+          "totalResources": 59
+        },
+        {
+          "name": "ballard-family-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Observation": 42,
+            "Condition": 3,
+            "DiagnosticReport": 9,
+            "Immunization": 2,
+            "MedicationRequest": 4,
+            "DocumentReference": 4,
+            "ServiceRequest": 1,
+            "AllergyIntolerance": 1,
+            "Encounter": 4
+          },
+          "totalResources": 74
+        },
+        {
+          "name": "puget-sound-psychiatry",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "AllergyIntolerance": 1,
+            "Condition": 3,
+            "Observation": 26,
+            "DiagnosticReport": 4,
+            "MedicationRequest": 3,
+            "DocumentReference": 3,
+            "Encounter": 3
+          },
+          "totalResources": 47
+        }
+      ],
+      "validation": {
+        "totalCodes": 1072,
+        "validCodes": 1071,
+        "unknownCodes": 1,
+        "unknownCodeDetails": [
+          {
+            "resource": "Practitioner/713234df-e5d2-45ae-b717-b7d26cc81d11",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "SW",
+            "display": "Social Worker"
+          }
+        ],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "carlos-medina",
+      "sites": [
+        {
+          "name": "alamo-family-practice",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 2,
+            "Location": 1,
+            "Observation": 136,
+            "DiagnosticReport": 30,
+            "MedicationRequest": 2,
+            "Condition": 8,
+            "Immunization": 5,
+            "DocumentReference": 9,
+            "AllergyIntolerance": 1,
+            "Encounter": 9,
+            "ServiceRequest": 1
+          },
+          "totalResources": 206
+        },
+        {
+          "name": "south-texas-rheumatology",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 3,
+            "Location": 1,
+            "Observation": 180,
+            "DiagnosticReport": 40,
+            "MedicationRequest": 7,
+            "DocumentReference": 13,
+            "Condition": 6,
+            "Encounter": 13,
+            "ServiceRequest": 1
+          },
+          "totalResources": 266
+        }
+      ],
+      "validation": {
+        "totalCodes": 1102,
+        "validCodes": 1102,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    },
+    {
+      "slug": "lisa-nakamura",
+      "sites": [
+        {
+          "name": "rocky-mountain-womens-health",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Observation": 116,
+            "DiagnosticReport": 22,
+            "Immunization": 3,
+            "AllergyIntolerance": 1,
+            "DocumentReference": 10,
+            "Condition": 13,
+            "MedicationRequest": 3,
+            "Encounter": 10,
+            "Procedure": 1,
+            "ServiceRequest": 2
+          },
+          "totalResources": 185
+        },
+        {
+          "name": "colorado-maternal-fetal-medicine",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "MedicationRequest": 2,
+            "Observation": 8,
+            "DocumentReference": 2,
+            "Condition": 2,
+            "Encounter": 2
+          },
+          "totalResources": 20
+        },
+        {
+          "name": "uc-health-hematology",
+          "resourceCounts": {
+            "Patient": 1,
+            "Organization": 1,
+            "Practitioner": 1,
+            "Location": 1,
+            "Condition": 2,
+            "Observation": 37,
+            "DocumentReference": 3,
+            "ServiceRequest": 4,
+            "Encounter": 3,
+            "DiagnosticReport": 6,
+            "MedicationRequest": 2
+          },
+          "totalResources": 61
+        }
+      ],
+      "validation": {
+        "totalCodes": 935,
+        "validCodes": 935,
+        "unknownCodes": 0,
+        "unknownCodeDetails": [],
+        "referenceErrors": []
+      }
+    }
+  ]
+}

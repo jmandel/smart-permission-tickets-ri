@@ -1,0 +1,43 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-013-cxr",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "36554-4",
+        "display": "XR Chest Single view"
+      }
+    ],
+    "text": "Portable chest radiograph, post-procedure"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "effectiveDateTime": "2024-10-02",
+  "issued": "2024-10-02T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+      "display": "The University of Texas MD Anderson Cancer Center"
+    }
+  ],
+  "conclusion": "No pneumothorax, no new pleural effusion, stable appearance of known right upper lobe mass."
+}

@@ -1,0 +1,69 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-004-persistent-asthma",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "426656000",
+        "display": "Severe persistent asthma (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.50",
+        "display": "Severe persistent asthma, uncomplicated"
+      }
+    ],
+    "text": "Severe persistent asthma"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "onsetDateTime": "2023-03-15",
+  "recordedDate": "2025-01-16",
+  "note": [
+    {
+      "text": "Reclassified from moderate persistent to severe persistent at post-ED follow-up visit (January 2025). Despite adherence to Advair HFA 45/21 BID and montelukast 4 mg daily, patient had an ED-level exacerbation requiring IV steroids and continuous nebulization, baseline rescue inhaler use 3-4 times/week, frequent nighttime symptoms, and multiple school absences. These findings meet NAEPP criteria for severe persistent asthma. ICS/LABA stepped up from Advair HFA 45/21 to Advair HFA 115/21."
+    },
+    {
+      "time": "2025-03-17",
+      "text": "5-year well-child visit: Improved on current step-up regimen (Advair HFA 115/21). Rescue inhaler use decreased to approximately once per week. Nighttime symptoms rare (approximately once per month). No ED visits or hospitalizations since January 2025 exacerbation. No school absences for respiratory symptoms in past 6 weeks. No step-down warranted at this time given recent exacerbation history and only two months on current regimen."
+    }
+  ]
+}

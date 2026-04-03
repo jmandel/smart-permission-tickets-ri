@@ -1,0 +1,235 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "new patient office visit",
+    "reason": "establishing primary care; hypertension diagnosed",
+    "period_start": "2018-06-11",
+    "period_end": "2018-06-11",
+    "participants": [],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure (systolic component)",
+        "value": "148",
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": "92",
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": "74",
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": "182.0",
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": "69.0",
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": "26.9",
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.2",
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "16",
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": "98",
+        "unit": "%"
+      }
+    ],
+    "labs": [
+      {
+        "name": "creatinine (serum)",
+        "value": "0.88",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "blood urea nitrogen (BUN)",
+        "value": "14",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "potassium (serum)",
+        "value": "4.2",
+        "unit": "mEq/L",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "sodium (serum)",
+        "value": "140",
+        "unit": "mEq/L",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "fasting glucose (serum)",
+        "value": "94",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "calcium (serum)",
+        "value": "9.4",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "total protein (serum)",
+        "value": "7.1",
+        "unit": "g/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "albumin (serum)",
+        "value": "4.3",
+        "unit": "g/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "22",
+        "unit": "U/L",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "19",
+        "unit": "U/L",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "alkaline phosphatase",
+        "value": "62",
+        "unit": "U/L",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "total bilirubin",
+        "value": "0.8",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "estimated glomerular filtration rate (eGFR)",
+        "value": ">90",
+        "unit": "mL/min/1.73m²",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "urinalysis — protein (urine)",
+        "value": "negative",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "urinalysis — glucose (urine)",
+        "value": "negative",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      },
+      {
+        "name": "urinalysis — casts (urine microscopy)",
+        "value": "none seen",
+        "flag": "normal",
+        "effective_date": "2018-06-13"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2018-06-11",
+      "action": "create"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "New patient H&P for a 49-year-old Korean-American male establishing care. Documents complete medical, social, and family history; review of systems; physical exam with elevated blood pressure findings (148/92 on repeat measurement); assessment of newly diagnosed stage 1 essential hypertension; plan for lifestyle modification including sodium reduction, DASH diet, and increased exercise; baseline labs ordered; ibuprofen intolerance documented; follow-up in 3 months."
+    },
+    {
+      "type": "patient education",
+      "description": "Educational material provided to the patient on hypertension management, dietary sodium reduction strategies, and DASH-style dietary approach."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "creatinine (serum)",
+        "blood urea nitrogen (BUN)",
+        "potassium (serum)",
+        "sodium (serum)",
+        "fasting glucose (serum)",
+        "calcium (serum)",
+        "total protein (serum)",
+        "albumin (serum)",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "alkaline phosphatase",
+        "total bilirubin",
+        "estimated glomerular filtration rate (eGFR)"
+      ]
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "urinalysis — protein (urine)",
+        "urinalysis — glucose (urine)",
+        "urinalysis — casts (urine microscopy)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "severity": "mild",
+      "action": "create"
+    }
+  ]
+}

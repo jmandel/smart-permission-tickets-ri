@@ -1,0 +1,62 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-017-hand-xray",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-016-hand-xray-order",
+      "display": "Bilateral hand X-rays order"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP29684-5",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "26388-9",
+        "display": "XR Hand - bilateral 2 Views"
+      }
+    ],
+    "text": "Bilateral hand radiographs, PA and oblique views"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2022-08-15",
+  "issued": "2022-08-15T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/b69f2069-cae7-4a3f-9426-ab17df92715e",
+      "type": "Practitioner",
+      "display": "Dr. Patricia Vega, MD"
+    }
+  ],
+  "conclusion": "1. Interval progression of erosive rheumatoid arthritis with new marginal erosions bilaterally (right 4th MCP, left 2nd MCP) and worsening of previously documented erosions at the right 2nd and 3rd MCP joints, compared to March 15, 2021 baseline study. 2. New joint space narrowing at the right 2nd MCP joint and bilateral radiocarpal joints, indicating cartilage loss. 3. Persistent periarticular osteopenia and soft tissue swelling bilaterally. 4. Findings indicate inadequate disease control with structural progression despite current DMARD therapy.",
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "239791005",
+          "display": "Seropositive rheumatoid arthritis (disorder)"
+        }
+      ],
+      "text": "Seropositive rheumatoid arthritis"
+    }
+  ]
+}

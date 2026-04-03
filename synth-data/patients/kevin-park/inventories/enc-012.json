@@ -1,0 +1,59 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Transthoracic echocardiogram",
+    "reason": "Evaluation of new-onset atrial fibrillation",
+    "period_start": "2026-01-19",
+    "period_end": "2026-01-19",
+    "participants": [
+      {
+        "role": "performer",
+        "name": "Cardiac sonographer"
+      },
+      {
+        "role": "interpreter",
+        "name": "Affiliated cardiologist"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Affiliated imaging center, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "atrial fibrillation",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild left atrial dilation",
+      "clinical_status": "active",
+      "onset_date": "2026-01-19",
+      "action": "create"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "diagnostic imaging report",
+      "description": "Complete transthoracic echocardiogram report including technique (2D, M-mode, spectral Doppler, color flow Doppler), detailed findings for left ventricle, left atrium, right ventricle, valvular assessment, hemodynamics, pericardium, and aortic root. Impression describes mild LA dilation consistent with AF, preserved LVEF, no significant valvular disease, and no thrombus. Clinical correlation note references forwarding results to ordering provider Dr. Angela Whitfield."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "transthoracic echocardiogram",
+      "report_state": "summary-only",
+      "description": "Mild left atrial dilation consistent with atrial fibrillation. Preserved left ventricular systolic function (LVEF 58%). No significant valvular disease. No pericardial effusion. Normal right heart pressures. No intracardiac thrombus identified by transthoracic imaging."
+    }
+  ],
+  "allergies": []
+}

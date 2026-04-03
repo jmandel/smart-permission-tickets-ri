@@ -1,0 +1,69 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-measles",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "14189004",
+        "display": "Measles (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "B05.9",
+        "display": "Measles without complication"
+      }
+    ],
+    "text": "Measles (rubeola)"
+  },
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "onsetDateTime": "2026-03-20",
+  "abatementDateTime": "2026-03-30",
+  "recordedDate": "2026-03-23",
+  "note": [
+    {
+      "text": "Confirmed by positive IgM serology and positive RNA PCR. Classic presentation with Koplik spots, cough-coryza-conjunctivitis prodrome, and cephalocaudal maculopapular rash. Exposure likely during travel to Manila, Philippines (March 7-15, 2026). Patient had incomplete MMR vaccination (single dose at 12 months). State case ID: WI-MEAS-2026-0047."
+    },
+    {
+      "text": "2026-03-30: Clinical and laboratory recovery confirmed. No complications identified. Patient cleared to return to normal activities. Case reported as resolved to Wisconsin DHS."
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "bay-area-rheumatology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Low disease activity reassessment on established methotrexate and adalimumab combination therapy",
+    "period_start": "2026-02-12T09:00:00-08:00",
+    "period_end": "2026-02-12T09:45:00-08:00",
+    "participants": [
+      {
+        "name": "Dr. James Tran",
+        "role": "performer"
+      }
+    ],
+    "service_provider": "Bay Area Rheumatology Associates",
+    "location": "Bay Area Rheumatology Associates, Oakland, CA"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "114/72",
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "beats per minute"
+      },
+      {
+        "name": "body temperature",
+        "value": 98,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths per minute"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 151,
+        "unit": "lb"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": 12.9,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0",
+        "flag": "normal"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 5.8,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 274,
+        "unit": "K/uL",
+        "reference_range": "150–400",
+        "flag": "normal"
+      },
+      {
+        "name": "serum creatinine",
+        "value": 0.73,
+        "unit": "mg/dL",
+        "reference_range": "0.6–1.2",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": 20,
+        "unit": "U/L",
+        "reference_range": "10–40",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": 18,
+        "unit": "U/L",
+        "reference_range": "7–56",
+        "flag": "normal"
+      },
+      {
+        "name": "serum albumin",
+        "value": 4.4,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5",
+        "flag": "normal"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": 2.8,
+        "unit": "mg/L",
+        "reference_range": "<3.0",
+        "flag": "normal"
+      },
+      {
+        "name": "erythrocyte sedimentation rate",
+        "value": 14,
+        "unit": "mm/hr",
+        "reference_range": "<20",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.2,
+        "unit": "%",
+        "reference_range": "4.0–5.6",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "patient global assessment",
+        "value": 12,
+        "unit": "/100"
+      },
+      {
+        "name": "tender joint count",
+        "value": 1
+      },
+      {
+        "name": "swollen joint count",
+        "value": 0
+      },
+      {
+        "name": "DAS28-CRP",
+        "value": 2.4
+      },
+      {
+        "name": "morning stiffness duration",
+        "value": "<15 minutes"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2023-01",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 15 mg oral tablet",
+      "sig": "once weekly",
+      "status": "active",
+      "reason": "disease-modifying antirheumatic drug for seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "adjunctive therapy to reduce methotrexate side effects",
+      "action": "reference-existing"
+    },
+    {
+      "name": "adalimumab 40 mg subcutaneous injection",
+      "sig": "every 2 weeks",
+      "status": "active",
+      "reason": "TNF-alpha inhibitor biologic for inadequate response to methotrexate monotherapy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "office visit progress note",
+      "date": "2026-02-12",
+      "author": "Dr. James Tran",
+      "content_summary": "Routine quarterly follow-up documentation of disease control on combination DMARD therapy, including subjective symptom assessment, physical examination findings, complete laboratory monitoring panel, calculated disease activity scores, and plan for continued therapy without dose adjustment"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "rheumatology monitoring lab panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "platelet count",
+        "serum creatinine",
+        "aspartate aminotransferase",
+        "alanine aminotransferase",
+        "serum albumin",
+        "C-reactive protein",
+        "erythrocyte sedimentation rate",
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": []
+}

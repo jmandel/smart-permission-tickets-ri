@@ -1,0 +1,162 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "portland-behavioral-health-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "psychiatric follow-up, medication management",
+    "reason": "Lamotrigine titration complete, mood stabilizing",
+    "period_start": "2019-10-07",
+    "period_end": "2019-10-07",
+    "participants": [
+      {
+        "name": "Dr. James Okafor",
+        "role": "Psychiatry"
+      }
+    ],
+    "service_provider": "Portland Behavioral Health Associates",
+    "location": "Portland Behavioral Health Associates, 1520 NW 18th Ave, Suite 304, Portland, OR 97209"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 118,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 74,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 118,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 74,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 139,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.4,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "lamotrigine serum level (trough)",
+        "value": 5.2,
+        "unit": "mcg/mL",
+        "reference_range": "3–14 mcg/mL",
+        "flag": "normal",
+        "specimen_type": "serum/blood"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening total score",
+        "value": 6,
+        "interpretation": "mild depressive symptoms"
+      },
+      {
+        "name": "GAD-7 anxiety screening total score",
+        "value": 3,
+        "interpretation": "minimal anxiety"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "update-existing",
+      "note": "Responding to treatment. Lamotrigine titration complete at 200 mg daily. Therapeutic drug level confirmed. PHQ-9 improved from 17 at initial presentation to 6. No hypomanic symptoms. Patient tolerating medication well."
+    },
+    {
+      "name": "insomnia, secondary to mood disorder",
+      "clinical_status": "resolved",
+      "onset_date": "2019",
+      "action": "update-existing",
+      "note": "Previously active. Sleep normalized at 7–8 hours nightly on current lamotrigine regimen."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "take 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "sertraline 100 mg oral tablet",
+      "sig": "discontinued",
+      "status": "stopped",
+      "reason": "bipolar II disorder",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Psychiatric medication management follow-up note documenting completion of lamotrigine titration to 200 mg daily, confirmation of therapeutic drug level (5.2 mcg/mL), successful discontinuation of sertraline, mood stabilization with PHQ-9 of 6 and GAD-7 of 3, resolution of insomnia, and plan to continue current regimen with 3-month follow-up."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lamotrigine serum drug level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lamotrigine serum level (trough)"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP resulted within normal limits. No individual component values were provided. Ordered as part of routine metabolic monitoring for psychiatric medication management."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

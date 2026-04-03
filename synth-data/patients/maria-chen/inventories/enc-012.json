@@ -1,0 +1,180 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Annual wellness exam; cervical cancer screening (Pap smear)",
+    "period_start": "2024-03-19",
+    "period_end": "2024-03-19",
+    "participants": [
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "attender"
+      },
+      {
+        "name": "David Kim, MA",
+        "role": "participant"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 120,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 76,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 120,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 76,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body weight",
+        "value": 155,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.4,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 1,
+        "interpretation": "negative"
+      },
+      {
+        "name": "Asthma Control Test (ACT) score",
+        "value": 22,
+        "interpretation": "well-controlled asthma"
+      },
+      {
+        "name": "AHC HRSN screening — food insecurity domain",
+        "item": "Within the past 12 months, the food you bought just didn't last and you didn't have money to get more",
+        "response": "sometimes true",
+        "interpretation": "near-positive on food insecurity"
+      },
+      {
+        "name": "AHC HRSN screening — overall result",
+        "value": "negative",
+        "interpretation": "below referral threshold",
+        "note": "Near-positive on food insecurity domain (1 item endorsed); negative on housing instability, utilities, transportation, and interpersonal safety domains"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA metered-dose inhaler",
+      "sig": "inhale 2 puffs by mouth as needed for shortness of breath or wheezing",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "create"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "Pap smear specimen collection (cervical cytology)",
+      "performed_by": "Dr. Angela Morales, MD",
+      "date": "2024-03-19",
+      "body_site": "cervix",
+      "reason": "cervical cancer screening; overdue since 2018"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents annual wellness exam for 42-year-old female including vitals, PHQ-2 screening (negative), ACT score (well controlled asthma), AHC HRSN screening (near-positive food insecurity, below referral threshold), physical exam findings, Pap smear collection (overdue since 2018), breast cancer screening discussion deferred to age 42-44, albuterol refill, and lab orders for CBC, CMP, lipid panel, and HbA1c."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered as part of routine metabolic risk assessment given BMI and family history of diabetes. Patient to complete fasting labs at clinic lab. Results not yet available."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered as part of routine metabolic risk assessment. Patient to complete fasting labs at clinic lab. Results not yet available."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered as part of routine metabolic risk assessment. Patient to complete fasting labs at clinic lab. Results not yet available."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered to screen for prediabetes/diabetes given BMI in overweight range and family history of type 2 diabetes (mother). Results not yet available."
+    },
+    {
+      "type": "cervical cytology (Pap smear)",
+      "report_state": "ordered-not-resulted",
+      "description": "Pap smear collected at this encounter. Last cervical cytology screening was 2018; patient was overdue. Cervix appeared normal on visual inspection. Specimen sent to lab. Results pending."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

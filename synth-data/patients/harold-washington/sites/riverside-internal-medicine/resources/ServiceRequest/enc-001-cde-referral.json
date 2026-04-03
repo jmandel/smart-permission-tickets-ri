@@ -1,0 +1,35 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-001-cde-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "6143009",
+        "display": "Diabetic education (procedure)"
+      }
+    ],
+    "text": "Referral to Certified Diabetes Educator for dietary counseling and glucose monitoring instruction"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2015-06-12",
+  "requester": {
+    "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+    "type": "Practitioner",
+    "display": "Dr. Cynthia Okafor"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-001-diabetes",
+      "display": "Type 2 diabetes mellitus without complications"
+    }
+  ]
+}

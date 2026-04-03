@@ -1,0 +1,265 @@
+{
+  "encounter_id": "enc-017",
+  "encounter_index": 17,
+  "site_slug": "dekalb-primary-care",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Follow-up, chronic disease management, fall prevention",
+    "period_start": "2025-03-06",
+    "period_end": "2025-03-06",
+    "participants": [
+      {
+        "name": "Dr. Anita Desai, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "DeKalb Primary Care",
+    "location": "DeKalb Primary Care, 2701 North Decatur Road, Suite 300, Decatur, GA 30033"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 132,
+        "value_diastolic": 78,
+        "unit": "mmHg",
+        "note": "sitting position"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 186,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.7,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "blood pressure (standing, 1 minute)",
+        "value_systolic": 128,
+        "value_diastolic": 76,
+        "unit": "mmHg",
+        "note": "orthostatic assessment"
+      },
+      {
+        "name": "blood pressure (standing, 3 minutes)",
+        "value_systolic": 126,
+        "value_diastolic": 74,
+        "unit": "mmHg",
+        "note": "orthostatic assessment"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 2,
+        "unit": "score",
+        "interpretation": "below positive screen threshold (negative)",
+        "note": "improved from 3/6 at November 2024 visit"
+      },
+      {
+        "name": "timed up and go (TUG) test",
+        "value": 14,
+        "unit": "seconds",
+        "interpretation": "mildly increased for age, within acceptable range"
+      },
+      {
+        "name": "bathing self-care ability",
+        "value": "requires assistance",
+        "note": "caregiver helps with shower safety"
+      },
+      {
+        "name": "dressing self-care ability",
+        "value": "requires assistance",
+        "note": "needs help with buttons and shoe-tying"
+      },
+      {
+        "name": "medication management ability",
+        "value": "dependent",
+        "note": "caregiver fills weekly pill organizer and supervises administration"
+      },
+      {
+        "name": "feeding self-care ability",
+        "value": "independent",
+        "note": "can feed self; does not cook"
+      },
+      {
+        "name": "bowel and bladder continence",
+        "value": "continent of bowel and bladder"
+      },
+      {
+        "name": "ambulation ability",
+        "value": "independent",
+        "note": "steady gait, no assistive device required"
+      },
+      {
+        "name": "financial management ability",
+        "value": "cannot manage independently"
+      },
+      {
+        "name": "supervision needs",
+        "value": "cannot be left alone for more than a few hours"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    },
+    {
+      "name": "history of mechanical fall",
+      "clinical_status": "active",
+      "onset_date": "2025-02",
+      "action": "update-existing",
+      "note": "Reassessed at this visit. Low risk for recurrence with home modifications in place. No orthostatic hypotension. TUG 14 seconds."
+    },
+    {
+      "name": "gradual weight loss",
+      "clinical_status": "active",
+      "onset_date": "2025-03-06",
+      "action": "create",
+      "note": "Weight 186 lbs, down from 190 lbs five months ago and 198 lbs over past decade. BMI 26.7. Monitor nutritional status in setting of Alzheimer's disease."
+    },
+    {
+      "name": "depressive symptoms",
+      "clinical_status": "active",
+      "onset_date": "2024-11",
+      "action": "update-existing",
+      "note": "PHQ-2 improved to 2/6, below threshold. Previously 3/6 at November 2024 visit."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Namzaric (donepezil 10 mg / memantine 28 mg extended-release) oral capsule",
+      "sig": "one capsule by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "Alzheimer's disease, moderate stage",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "one tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "sig": "one tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "one tablet by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "one tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Follow-up office visit note for 78-year-old male with essential hypertension, type 2 diabetes, hyperlipidemia, moderate Alzheimer's disease, and history of mechanical fall. Documents post-ED fall follow-up with orthostatic blood pressure testing and Timed Up and Go assessment, detailed functional status assessment including ADL capabilities, chronic disease management review, fall prevention counseling, nutritional support discussion, and lab orders for hemoglobin A1c, CMP, lipid panel, CBC, vitamin D, and urinalysis with microalbumin."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "ordered-not-resulted",
+      "description": "Hemoglobin A1c ordered for interval diabetes monitoring. Last A1c was 6.9% in January 2025. Results pending."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "ordered-not-resulted",
+      "description": "CMP ordered for routine chronic disease monitoring including renal function and electrolytes. Results pending."
+    },
+    {
+      "type": "fasting lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Fasting lipid panel ordered for interval hyperlipidemia reassessment on atorvastatin therapy. Results pending."
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC ordered for routine monitoring. Results pending."
+    },
+    {
+      "type": "vitamin D 25-hydroxy level",
+      "report_state": "ordered-not-resulted",
+      "description": "Vitamin D 25-hydroxy ordered to assess vitamin D status, particularly in context of fall history and gradual weight loss. Results pending."
+    },
+    {
+      "type": "urinalysis with microalbumin-to-creatinine ratio",
+      "report_state": "ordered-not-resulted",
+      "description": "Urinalysis with microalbumin/creatinine ratio ordered for diabetic nephropathy screening. Results pending."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

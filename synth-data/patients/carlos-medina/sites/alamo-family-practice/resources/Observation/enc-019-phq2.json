@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-019-phq2",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "55758-7",
+        "display": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]"
+      }
+    ],
+    "text": "PHQ-2 depression screening total score"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-019"
+  },
+  "effectiveDateTime": "2022-10-17T09:00:00-05:00",
+  "valueQuantity": {
+    "value": 2
+  },
+  "interpretation": [
+    {
+      "text": "Subthreshold; below cutoff for full PHQ-9 screening. Patient endorses some low mood related to functional limitations from rheumatoid arthritis. Documented for ongoing monitoring."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

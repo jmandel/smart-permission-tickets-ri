@@ -1,0 +1,39 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-016-hand-xray-order",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "49345004",
+        "display": "Radiography of hand (procedure)"
+      }
+    ],
+    "text": "Bilateral hand X-rays (PA and oblique views, comparison to March 2021 baseline)"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "authoredOn": "2022-07-11",
+  "requester": {
+    "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+    "display": "Dr. Alejandro Fuentes"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-005-ra",
+      "display": "Seropositive rheumatoid arthritis"
+    }
+  ],
+  "note": [
+    {
+      "text": "Comparison to March 2021 baseline study to document interval radiographic progression. Scheduled for August 2022. Results needed for biologic prior authorization submission."
+    }
+  ]
+}

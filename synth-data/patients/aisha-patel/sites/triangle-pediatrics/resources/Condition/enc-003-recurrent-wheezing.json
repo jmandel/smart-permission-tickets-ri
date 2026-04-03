@@ -1,0 +1,68 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-recurrent-wheezing",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "inactive",
+        "display": "Inactive"
+      }
+    ],
+    "text": "Inactive"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "56018004",
+        "display": "Wheezing (finding)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "R06.2",
+        "display": "Wheezing"
+      }
+    ],
+    "text": "Recurrent viral-induced wheezing"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "onsetDateTime": "2022-12",
+  "recordedDate": "2023-02-08",
+  "note": [
+    {
+      "text": "Third wheezing episode in 8 weeks. Prior episodes managed with PRN albuterol; this episode more severe with incomplete response to home albuterol and overnight symptoms. Likely trajectory toward persistent asthma diagnosis; formal diagnosis deferred to upcoming 3-year well-child visit."
+    },
+    {
+      "text": "2023-03-15: Reclassified as mild persistent asthma (J45.30) at 3-year well-child visit. Condition superseded by formal asthma diagnosis."
+    }
+  ]
+}

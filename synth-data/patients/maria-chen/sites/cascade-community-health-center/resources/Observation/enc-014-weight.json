@@ -1,0 +1,47 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-014-weight",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "29463-7",
+        "display": "Body weight"
+      }
+    ],
+    "text": "Body weight"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "effectiveDateTime": "2025-03-11T09:00:00-07:00",
+  "performer": [
+    {
+      "reference": "Practitioner/068c5e0f-43b2-455f-9e7e-b06ff391ca35",
+      "display": "David Kim, MA"
+    }
+  ],
+  "valueQuantity": {
+    "value": 156,
+    "unit": "[lb_av]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[lb_av]"
+  }
+}

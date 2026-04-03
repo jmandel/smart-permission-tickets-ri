@@ -1,0 +1,46 @@
+{
+  "resourceType": "Organization",
+  "id": "c95ca234-4a78-4460-9f8c-998d12bf5730",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1962548074"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Academic hospital and specialty heart-failure clinic"
+    }
+  ],
+  "name": "University of New Mexico Hospital and Heart Failure Clinic",
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work",
+      "_value": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+            "valueCode": "unknown"
+          }
+        ]
+      }
+    }
+  ],
+  "address": [
+    {
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "text": "Albuquerque, New Mexico"
+    }
+  ]
+}

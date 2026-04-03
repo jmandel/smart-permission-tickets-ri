@@ -1,0 +1,72 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "URI symptoms, asthma management",
+    "period_start": "2020-11-09",
+    "participants": [
+      {
+        "name": "Priya Nair, RN",
+        "role": "triage nurse"
+      },
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "consulting physician"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute viral upper respiratory infection",
+      "clinical_status": "active",
+      "onset_date": "2020-11-05",
+      "action": "create"
+    },
+    {
+      "name": "mild asthma exacerbation",
+      "clinical_status": "active",
+      "onset_date": "2020-11-05",
+      "action": "create"
+    },
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler, 2 puffs as needed",
+      "sig": "2 puffs inhaled as needed; may increase frequency to every 4-6 hours as needed for wheezing or cough",
+      "status": "active",
+      "reason": "mild intermittent asthma; mild asthma exacerbation",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents a nurse-triaged telephone call for URI symptoms and increased albuterol use. Includes clinical assessment of likely viral URI with mild asthma exacerbation, plan for symptomatic care and increased albuterol frequency, return precautions, and recommendation for COVID-19 testing."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

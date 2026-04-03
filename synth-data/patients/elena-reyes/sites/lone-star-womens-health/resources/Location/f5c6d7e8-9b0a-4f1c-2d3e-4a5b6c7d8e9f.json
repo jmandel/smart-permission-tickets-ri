@@ -1,0 +1,35 @@
+{
+  "resourceType": "Location",
+  "id": "f5c6d7e8-9b0a-4f1c-2d3e-4a5b6c7d8e9f",
+  "status": "active",
+  "name": "Lone Star Women's Health",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient OB/GYN Clinic"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "512-555-0200",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "city": "Austin",
+    "state": "TX",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+    "display": "Lone Star Women's Health"
+  }
+}

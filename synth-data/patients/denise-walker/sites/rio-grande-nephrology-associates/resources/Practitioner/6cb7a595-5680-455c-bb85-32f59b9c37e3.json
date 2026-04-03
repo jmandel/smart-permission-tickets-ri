@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "6cb7a595-5680-455c-bb85-32f59b9c37e3",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Omar Siddiqui, PA-C",
+      "family": "Siddiqui",
+      "given": [
+        "Omar"
+      ],
+      "suffix": [
+        "PA-C"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+            "code": "PA",
+            "display": "Physician Assistant"
+          }
+        ],
+        "text": "Physician Assistant-Certified"
+      }
+    }
+  ]
+}

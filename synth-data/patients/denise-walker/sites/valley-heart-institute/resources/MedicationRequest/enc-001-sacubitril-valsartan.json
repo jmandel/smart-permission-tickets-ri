@@ -1,0 +1,98 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-001-sacubitril-valsartan",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1656340",
+        "display": "sacubitril 24 MG / valsartan 26 MG Oral Tablet"
+      }
+    ],
+    "text": "sacubitril/valsartan 24/26 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2022-06-08",
+  "requester": {
+    "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+    "type": "Practitioner",
+    "display": "Dr. Aaron Patel, MD"
+  },
+  "recorder": {
+    "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+    "type": "Practitioner",
+    "display": "Dr. Aaron Patel, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-001-hfref",
+      "display": "Heart failure with reduced ejection fraction"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 1 tablet by mouth twice daily after appropriate washout.",
+      "patientInstruction": "Start sacubitril/valsartan 24/26 mg by mouth twice daily after appropriate washout.",
+      "timing": {
+        "repeat": {
+          "frequency": 2,
+          "period": 1,
+          "periodUnit": "d"
+        },
+        "code": {
+          "text": "twice daily"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral route"
+          }
+        ],
+        "text": "Oral"
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419652001",
+            "display": "Take"
+          }
+        ],
+        "text": "Take"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 1,
+            "unit": "tablet",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tbl}"
+          }
+        }
+      ]
+    }
+  ]
+}

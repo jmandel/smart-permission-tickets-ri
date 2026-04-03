@@ -1,0 +1,74 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-000-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note",
+        "userSelected": true
+      }
+    ],
+    "text": "Office Visit Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2021-10-12T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+      "type": "Practitioner",
+      "display": "Dr. Patricia Nguyen"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+    "type": "Practitioner",
+    "display": "Dr. Patricia Nguyen"
+  },
+  "custodian": {
+    "reference": "Organization/2b4d6f8a-0c2e-4a6c-8e0b-4d6f8a0c2e4d",
+    "display": "Central Austin Family Medicine"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKQ2hpZWYgY29tcGxhaW50OiBBbm51YWwgd2VsbG5lc3MgYW5kIHByZXZlbnRpdmUgY2FyZSB2aXNpdC4KCkVsZW5hIFJleWVzIGlzIGEgMzIteWVhci1vbGQgd29tYW4gc2VlbiBpbiBvZmZpY2UgZm9yIHJvdXRpbmUgYW5udWFsIHByZXZlbnRpdmUgZXhhbWluYXRpb24uIFNoZSByZXBvcnRzIGZlZWxpbmcgd2VsbCBvdmVyYWxsIGFuZCBoYXMgbm8gYWN1dGUgY29tcGxhaW50cyB0b2RheS4gUk9TIGlzIG5lZ2F0aXZlIGZvciBmZXZlciwgY2hpbGxzLCB3ZWlnaHQgY2hhbmdlLCBmYXRpZ3VlLCBjaGVzdCBwYWluLCBwYWxwaXRhdGlvbnMsIGR5c3BuZWEsIGNvdWdoLCBhYmRvbWluYWwgcGFpbiwgbmF1c2VhLCB2b21pdGluZywgYm93ZWwgb3IgdXJpbmFyeSBjaGFuZ2VzLCBoZWFkYWNoZXMsIGRpenppbmVzcywgZGVwcmVzc2lvbiwgb3IgYW54aWV0eS4gU2Vhc29uYWwgYWxsZXJnaWMgcmhpbml0aXMgcmVtYWlucyB3ZWxsIGNvbnRyb2xsZWQgd2l0aCBsb3JhdGFkaW5lIDEwIG1nIFBPIGFzIG5lZWRlZC4gUEhRLTIgc2NvcmUgMC4gU2hlIGlzIGN1cnJlbnRseSB0YWtpbmcgbG9yYXRhZGluZSBhcyBuZWVkZWQgYW5kIGEgcHJlbmF0YWwgdml0YW1pbiBkdXJpbmcgY3VycmVudCBwcmVnbmFuY3kgaW50ZXJ2YWwuIEFsbGVyZ3kgaGlzdG9yeSByZXZpZXdlZCBhbmQgdXBkYXRlZDsgYW1veGljaWxsaW4gY2F1c2VzIGhpdmVzLiBObyBoaXN0b3J5IG9mIGh5cGVydGVuc2lvbiwgZGlhYmV0ZXMsIHRoeXJvaWQgZGlzZWFzZSwgb3IgaHlwZXJsaXBpZGVtaWEuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTEyLzcyIG1tSGcsIEhSIDY4IGJwbSwgVGVtcCA5OC4yIEYsIFJSIDE0LCBTcE8yIDk5JSBvbiByb29tIGFpciwgV3QgMTQ2IGxiLCBIdCA2NSBpbiwgQk1JIDI0LjMKCkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nIGZlbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KSEVFTlQ6IE5vcm1vY2VwaGFsaWMsIGF0cmF1bWF0aWMuIE5hc2FsIG11Y29zYSBtaWxkbHkgYm9nZ3kgd2l0aG91dCBhY3V0ZSBjb25nZXN0aW9uLiBPcm9waGFyeW54IGNsZWFyLgpOZWNrOiBTdXBwbGUsIG5vIHRoeXJvbWVnYWx5IG9yIGNlcnZpY2FsIExBRC4KQ2FyZGlvdmFzY3VsYXI6IFJlZ3VsYXIgcmF0ZSBhbmQgcmh5dGhtLCBubyBtdXJtdXJzLgpSZXNwaXJhdG9yeTogTHVuZ3MgQ1RBQiwgbm8gd2hlZXplcy9yYWxlcy9yaG9uY2hpLgpBYmRvbWVuOiBTb2Z0LCBub250ZW5kZXIsIG5vbmRpc3RlbmRlZC4KRXh0cmVtaXRpZXM6IE5vIGVkZW1hLgpTa2luOiBXYXJtLCBkcnksIG5vIHJhc2guCk5ldXJvOiBBbGVydCBhbmQgb3JpZW50ZWQsIG5vIGZvY2FsIGRlZmljaXRzLgpQc3ljaDogTm9ybWFsIG1vb2QgYW5kIGFmZmVjdC4KCkxhYnMgcmV2aWV3ZWQvb3JkZXJlZCBmb3IgcHJldmVudGl2ZSBzY3JlZW5pbmc6CkNCQyB3aXRoaW4gbm9ybWFsIGxpbWl0cwpDTVAgd2l0aGluIG5vcm1hbCBsaW1pdHMKVFNIIDEuNzggdUlVL21MCkZhc3RpbmcgZ2x1Y29zZSA4NiBtZy9kTApUb3RhbCBjaG9sZXN0ZXJvbCAxNzIgbWcvZEwKTERMIDk2IG1nL2RMCkhETCA1OCBtZy9kTApUcmlnbHljZXJpZGVzIDg4IG1nL2RMCgpJbW11bml6YXRpb25zOiBJbmZsdWVuemEgdmFjY2luZSBhZG1pbmlzdGVyZWQgdG9kYXkgZm9yIDIwMjEtMjAyMiBzZWFzb24uCgpBU1NFU1NNRU5UOgoxLiBIZWFsdGh5IGFkdWx0IHdlbGxuZXNzIGV4YW0uIE92ZXJhbGwgZG9pbmcgd2VsbCB3aXRoIG5vcm1hbCB2aXRhbHMsIG5vcm1hbCBCTUksIG5lZ2F0aXZlIGRlcHJlc3Npb24gc2NyZWVuLCBhbmQgcmVhc3N1cmluZyBwcmV2ZW50aXZlIGxhYiByZXN1bHRzLgoyLiBTZWFzb25hbCBhbGxlcmdpYyByaGluaXRpcywgc3RhYmxlLiBTeW1wdG9tcyBjb250cm9sbGVkIHdpdGggUFJOIGxvcmF0YWRpbmUuCjMuIE1lZGljYXRpb24gYW5kIGFsbGVyZ3kgcmVjb25jaWxpYXRpb24gY29tcGxldGVkLiBBbW94aWNpbGxpbiBhbGxlcmd5IGNvbmZpcm1lZCBhcyBoaXZlcy4KNC4gUHJldmVudGl2ZSBpbW11bml6YXRpb24gdXBkYXRlLiBJbmZsdWVuemEgdmFjY2luZSBnaXZlbiB0b2RheS4KClBMQU46CjEuIENvbnRpbnVlIGxvcmF0YWRpbmUgMTAgbWcgUE8gYXMgbmVlZGVkIGZvciBzZWFzb25hbCBhbGxlcmdpZXMuCjIuIENvbnRpbnVlIHByZW5hdGFsIHZpdGFtaW4uCjMuIFJldmlld2VkIHByZXZlbnRpdmUgY291bnNlbGluZyBpbmNsdWRpbmcgbnV0cml0aW9uLCByZWd1bGFyIGV4ZXJjaXNlLCBzbGVlcCwgc3RyZXNzIG1hbmFnZW1lbnQsIGFuZCByb3V0aW5lIGhlYWx0aCBtYWludGVuYW5jZS4KNC4gUmV2aWV3ZWQgbGFib3JhdG9yeSByZXN1bHRzOyBubyBldmlkZW5jZSBvZiBkaWFiZXRlcywgdGh5cm9pZCBkaXNvcmRlciwgYW5lbWlhLCByZW5hbC9oZXBhdGljIGR5c2Z1bmN0aW9uLCBvciBsaXBpZCBkaXNvcmRlciBhdCB0aGlzIHRpbWUuCjUuIEluZmx1ZW56YSB2YWNjaW5lIGFkbWluaXN0ZXJlZCB0b2RheTsgdG9sZXJhdGVkIHdlbGwuCjYuIFVwZGF0ZWQgbWVkaWNhdGlvbiBhbmQgYWxsZXJneSBsaXN0IGluIGNoYXJ0Lgo3LiBGb2xsb3cgdXAgYW5udWFsbHkgZm9yIHdlbGxuZXNzIGNhcmUgb3Igc29vbmVyIGFzIG5lZWRlZCBmb3IgbmV3IGNvbmNlcm5zLgo=",
+        "title": "Office Visit Progress Note - 2021-10-12"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-000"
+      }
+    ],
+    "period": {
+      "start": "2021-10-12T00:00:00Z"
+    }
+  }
+}

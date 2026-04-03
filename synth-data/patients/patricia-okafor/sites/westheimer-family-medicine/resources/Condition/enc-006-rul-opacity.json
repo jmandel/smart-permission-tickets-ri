@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-006-rul-opacity",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "provisional",
+        "display": "Provisional"
+      }
+    ],
+    "text": "Provisional"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "427359005",
+        "display": "Solitary nodule of lung (finding)"
+      }
+    ],
+    "text": "Right upper lobe pulmonary opacity, 3 cm with irregular borders"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "onsetDateTime": "2024-08-01",
+  "recordedDate": "2024-08-01",
+  "note": [
+    {
+      "text": "3-cm opacity in the right upper lobe with irregular borders, identified on chest X-ray. In context of persistent cough, unintentional weight loss, declining hemoglobin, and mildly low albumin, lung malignancy must be excluded. CT chest with contrast ordered and urgent pulmonology referral placed."
+    }
+  ]
+}

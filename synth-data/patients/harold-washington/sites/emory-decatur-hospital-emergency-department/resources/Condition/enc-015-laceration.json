@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-015-laceration",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "283359004",
+        "display": "Laceration of forehead (disorder)"
+      }
+    ],
+    "text": "Laceration of forehead"
+  },
+  "subject": {
+    "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "onsetDateTime": "2025-02-08",
+  "recordedDate": "2025-02-08",
+  "note": [
+    {
+      "text": "2.5 cm superficial laceration to the right forehead. Repaired with dermabond tissue adhesive."
+    }
+  ]
+}

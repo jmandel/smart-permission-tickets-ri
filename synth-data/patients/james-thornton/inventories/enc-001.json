@@ -1,0 +1,142 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "nebraska-medicine",
+  "encounter": {
+    "class": "surgical",
+    "type": "Operative/Procedural",
+    "reason": "Acute perforated appendicitis with periappendiceal abscess",
+    "period_start": "2026-01-12T19:15:00-06:00",
+    "period_end": "2026-01-12T20:23:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Marcus Okonkwo",
+        "role": "Acute Care Surgeon"
+      }
+    ],
+    "service_provider": "Nebraska Medicine",
+    "location": "Nebraska Medicine, Operating Room 7, 4350 Dewey Avenue, Omaha, NE 68105"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute gangrenous appendicitis with perforation",
+      "clinical_status": "active",
+      "onset_date": "2026-01-12",
+      "action": "update-existing",
+      "note": "Preoperative diagnosis of acute perforated appendicitis established during preceding ED encounter based on CT findings. Operative findings refined diagnosis — appendix visually confirmed gangrenous with transmural involvement and visible perforation at distal tip."
+    },
+    {
+      "name": "periappendiceal abscess",
+      "clinical_status": "active",
+      "onset_date": "2026-01-12",
+      "action": "update-existing",
+      "note": "Initially identified on CT during ED encounter as 2.3 cm rim-enhancing fluid collection. Operatively confirmed as 2.5 cm abscess cavity adjacent to cecum base containing approximately 30 mL purulent fluid. Abscess drained and irrigated intraoperatively."
+    }
+  ],
+  "medications": [
+    {
+      "name": "piperacillin-tazobactam 3.375 g IV",
+      "sig": "piperacillin-tazobactam 3.375 g intravenous, once, administered at 18:50 on 2026-01-12 as pre-operative antibiotic prophylaxis",
+      "status": "completed",
+      "reason": "pre-operative antibiotic prophylaxis for perforated appendicitis",
+      "action": "create"
+    },
+    {
+      "name": "piperacillin-tazobactam 3.375 g IV every 6 hours",
+      "sig": "piperacillin-tazobactam 3.375 g intravenous every 6 hours",
+      "status": "active",
+      "reason": "post-operative antibiotic therapy for perforated appendicitis with periappendiceal abscess",
+      "action": "create"
+    },
+    {
+      "name": "acetaminophen 1000 mg IV every 6 hours",
+      "sig": "acetaminophen 1000 mg intravenous every 6 hours, scheduled",
+      "status": "active",
+      "reason": "post-operative pain management",
+      "action": "create"
+    },
+    {
+      "name": "morphine sulfate 2-4 mg IV every 4 hours PRN",
+      "sig": "morphine sulfate 2 to 4 mg intravenous every 4 hours as needed for pain",
+      "status": "active",
+      "reason": "post-operative breakthrough pain management",
+      "action": "create"
+    },
+    {
+      "name": "heparin 5,000 units subcutaneous every 8 hours",
+      "sig": "heparin 5,000 units subcutaneous injection every 8 hours",
+      "status": "active",
+      "reason": "DVT prophylaxis, post-operative",
+      "action": "create"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "laparoscopic appendectomy",
+      "status": "completed",
+      "performed_date": "2026-01-12",
+      "performer": "Dr. Marcus Okonkwo",
+      "body_site": "appendix",
+      "technique": "three-port laparoscopic approach (umbilical 12 mm, suprapubic 5 mm, left lower quadrant 5 mm); Veress needle insufflation to 15 mmHg; mesoappendix divided with vascular endoscopic stapler; appendiceal base secured and transected with endoscopic stapler; specimen removed in endoscopic retrieval bag through umbilical port",
+      "reason": "acute gangrenous appendicitis with perforation",
+      "action": "create"
+    },
+    {
+      "name": "drainage of periappendiceal abscess",
+      "status": "completed",
+      "performed_date": "2026-01-12",
+      "performer": "Dr. Marcus Okonkwo",
+      "body_site": "right lower quadrant, periappendiceal space adjacent to cecum base",
+      "description": "aspiration of approximately 30 mL purulent fluid from right paracolic gutter; thorough irrigation of abscess cavity with 500 mL warm normal saline until effluent returned clear",
+      "reason": "periappendiceal abscess",
+      "action": "create"
+    },
+    {
+      "name": "placement of Jackson-Pratt drain, right lower quadrant",
+      "status": "completed",
+      "performed_date": "2026-01-12",
+      "performer": "Dr. Marcus Okonkwo",
+      "body_site": "right lower quadrant",
+      "description": "10-French Jackson-Pratt drain placed into the right lower quadrant through the right-sided 5 mm port site and secured to skin",
+      "reason": "post-drainage monitoring of abscess cavity",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "operative report",
+      "description": "Detailed operative report by Dr. Marcus Okonkwo documenting emergent laparoscopic appendectomy with abscess drainage and JP drain placement. Covers preoperative and postoperative diagnoses, three-port laparoscopic technique, operative findings of gangrenous perforated appendix with 2.5 cm periappendiceal abscess, 50 mL EBL, specimen disposition, drain placement, and post-operative orders."
+    },
+    {
+      "type": "anesthesia record",
+      "description": "Record of general endotracheal anesthesia for emergent laparoscopic appendectomy. Documents anesthesia induction, intraoperative monitoring, IV fluid administration, and patient recovery/transfer to PACU in stable condition."
+    },
+    {
+      "type": "pre-operative history and physical examination",
+      "description": "Pre-operative evaluation documenting the patient's presenting symptoms, ED workup findings, relevant medical history, informed consent discussion, and surgical risk assessment."
+    },
+    {
+      "type": "nursing intraoperative record",
+      "description": "Nursing documentation of intraoperative care including patient positioning, surgical prep, sponge/needle/instrument counts (correct x2), specimen handling and labeling, drain placement documentation, and patient transfer to PACU in stable condition."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "surgical pathology examination of appendix specimen",
+      "report_state": "ordered-not-resulted",
+      "description": "Appendix specimen sent to surgical pathology (accession SP-2026-00412) at time of surgery. Specimen placed in endoscopic retrieval bag and removed through umbilical port site. Results not yet available; pathology report expected on subsequent date."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergies (NKDA)",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "desert-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Diabetes, CKD, and neuropathy worsening during caregiving stress",
+    "participants": [],
+    "service_provider": "Desert Family Medicine",
+    "location": "Desert Family Medicine, Phoenix, Arizona"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "154/92 mmHg"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 154,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 92,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 84,
+        "unit": "beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 192,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 64,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 33,
+        "unit": "kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 9.4,
+        "unit": "%",
+        "interpretation": "high"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 214,
+        "unit": "mg/dL",
+        "interpretation": "high"
+      },
+      {
+        "name": "creatinine",
+        "value": 1.56,
+        "unit": "mg/dL",
+        "interpretation": "high"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": 38,
+        "unit": "mL/min/1.73 m2",
+        "interpretation": "low",
+        "note": "value documented as about 38 mL/min/1.73 m2"
+      },
+      {
+        "name": "blood urea nitrogen",
+        "value": 29,
+        "unit": "mg/dL",
+        "interpretation": "high"
+      },
+      {
+        "name": "potassium",
+        "value": 4.7,
+        "unit": "mmol/L",
+        "interpretation": "normal"
+      },
+      {
+        "name": "bicarbonate",
+        "value": 23,
+        "unit": "mmol/L",
+        "interpretation": "normal"
+      },
+      {
+        "name": "urine albumin-creatinine ratio",
+        "value": 342,
+        "unit": "mg/g",
+        "interpretation": "high",
+        "specimen": "urine"
+      },
+      {
+        "name": "low-density lipoprotein cholesterol",
+        "value": 92,
+        "unit": "mg/dL",
+        "interpretation": "borderline / above ideal for diabetes and CKD"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 12.1,
+        "unit": "g/dL",
+        "interpretation": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": "2/6",
+        "interpretation": "positive brief depression screen with grief/stress symptoms discussed; patient denied self-harm thoughts"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "type 2 diabetes mellitus with hyperglycemia",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "note": "glycemic control documented as worsening / poorly controlled with A1c 9.4% and fasting glucose 214 mg/dL in the setting of missed meals and inconsistent medication timing"
+    },
+    {
+      "name": "diabetic peripheral neuropathy of both feet",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "note": "worsening burning foot pain, increased toe numbness, and objective sensory loss on foot exam led to treatment escalation"
+    },
+    {
+      "name": "diabetic kidney disease",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "note": "significant albuminuria documented with urine albumin-creatinine ratio 342 mg/g and worsening renal reserve influencing medication decisions"
+    },
+    {
+      "name": "chronic kidney disease stage 3b",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "note": "CKD stage 3b was explicitly documented by trend with creatinine 1.56 mg/dL and eGFR about 38 mL/min/1.73 m2"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "note": "blood pressure remained above goal at 154/92 mmHg, increasing concern in the setting of diabetes and CKD"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "LDL remained 92 mg/dL and statin therapy was renewed without a new diagnosis or dose change"
+    },
+    {
+      "name": "heart failure with reduced ejection fraction",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "no direct status change documented during this office visit"
+    },
+    {
+      "name": "paroxysmal atrial fibrillation",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "no direct rhythm or anticoagulation change documented during this office visit"
+    },
+    {
+      "name": "caregiver stress / grief reaction",
+      "clinical_status": "active",
+      "action": "create",
+      "note": "psychosocial stress and grief symptoms were documented, PHQ-2 was 2/6, and patient denied self-harm thoughts"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metformin oral medication",
+      "sig": "previously taken for diabetes management",
+      "status": "stopped",
+      "reason": "type 2 diabetes mellitus with hyperglycemia and worsening renal function / gastrointestinal intolerance",
+      "action": "update-existing"
+    },
+    {
+      "name": "insulin glargine 24 units subcutaneous nightly",
+      "sig": "inject 24 units nightly and increase by 2 units every 3 nights until fasting glucose is under 140 mg/dL",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus with hyperglycemia",
+      "action": "update-existing"
+    },
+    {
+      "name": "empagliflozin 10 mg oral tablet daily",
+      "sig": "take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus with diabetic kidney disease and heart-failure benefit",
+      "action": "reference-existing"
+    },
+    {
+      "name": "gabapentin 300 mg oral capsule nightly",
+      "sig": "take 300 mg by mouth at bedtime for burning neuropathic foot pain",
+      "status": "active",
+      "reason": "diabetic peripheral neuropathy",
+      "action": "create"
+    },
+    {
+      "name": "atorvastatin 40 mg oral tablet nightly",
+      "sig": "take 40 mg by mouth nightly",
+      "status": "active",
+      "reason": "hyperlipidemia / cardiovascular risk reduction in diabetes and CKD",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "description": "outpatient primary care follow-up note documenting worsening diabetes control, CKD stage 3b with albuminuria, worsening diabetic neuropathy, hypertension above goal, and caregiving-related stress. The note should summarize symptoms, vital signs, foot exam findings, reviewed laboratory results, medication changes, counseling, follow-up planning, and referral rationale."
+    },
+    {
+      "type": "Patient instructions",
+      "description": "medication and self-management instructions covering metformin discontinuation, insulin glargine titration steps, gabapentin precautions, daily foot checks, skin care, regular meals, medication adherence, stress effects on glucose, and return precautions. The document should also note planned repeat labs in about 3 months and possible disruption from the upcoming move."
+    },
+    {
+      "type": "Diabetic foot exam documentation",
+      "description": "focused foot exam record describing diminished monofilament sensation, reduced vibration sense, callus formation, and absence of ulcers bilaterally. The document should support diabetic neuropathy reassessment and foot-care counseling."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Hemoglobin A1c laboratory report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "Renal function / metabolic laboratory report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fasting glucose",
+        "creatinine",
+        "estimated glomerular filtration rate",
+        "blood urea nitrogen",
+        "potassium",
+        "bicarbonate"
+      ]
+    },
+    {
+      "type": "Urine albumin assessment",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "urine albumin-creatinine ratio"
+      ]
+    },
+    {
+      "type": "Lipid monitoring report",
+      "report_state": "summary-only",
+      "description": "LDL cholesterol was reviewed at 92 mg/dL, but the note does not provide a credible set of lipid panel components"
+    },
+    {
+      "type": "Anemia screening / hematology report",
+      "report_state": "summary-only",
+      "description": "hemoglobin was reviewed at 12.1 g/dL, but the note does not provide enough individual hematology components to support a complete blood count report-with-results"
+    },
+    {
+      "type": "Repeat diabetes and renal monitoring labs planned in about 3 months",
+      "report_state": "ordered-not-resulted",
+      "description": "follow-up laboratory plan includes repeat hemoglobin A1c, repeat metabolic / renal function testing, and repeat urine albumin assessment; no future results available yet"
+    }
+  ],
+  "allergies": []
+}

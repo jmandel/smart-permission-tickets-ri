@@ -1,0 +1,61 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-006-lipid-panel",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "57698-3",
+        "display": "Lipid panel with direct LDL - Serum or Plasma"
+      }
+    ],
+    "text": "Lipid Panel"
+  },
+  "subject": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2022-09-20",
+  "issued": "2022-09-20T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+      "display": "Dr. Emily Nakamura"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-006-cholesterol-total",
+      "display": "Total cholesterol"
+    },
+    {
+      "reference": "Observation/enc-006-ldl",
+      "display": "LDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-006-hdl",
+      "display": "HDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-006-triglycerides",
+      "display": "Triglycerides"
+    }
+  ],
+  "conclusion": "Mildly elevated triglycerides at 155 mg/dL (borderline high, uptrending). Recognized metabolic effect of quetiapine. Total cholesterol and LDL within acceptable range."
+}

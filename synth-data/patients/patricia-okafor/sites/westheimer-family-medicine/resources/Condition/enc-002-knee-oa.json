@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-knee-oa",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "239873007",
+        "display": "Osteoarthritis of knee (disorder)"
+      }
+    ],
+    "text": "Mild bilateral knee osteoarthritis"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "onsetDateTime": "2023-03",
+  "recordedDate": "2023-06-12",
+  "note": [
+    {
+      "text": "Bilateral knee pain worsening over 2-3 months, mechanical pattern. Exam: mild crepitus bilaterally, no effusion, full extension, flexion to 120 degrees, stable ligaments, non-antalgic gait. Consistent with early degenerative osteoarthritis. Started naproxen 250 mg BID PRN. Counseled on weight management and low-impact exercise."
+    }
+  ]
+}

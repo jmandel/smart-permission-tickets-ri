@@ -1,0 +1,66 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-012-petct",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "81555-5",
+        "display": "PET+CT Guidance for localization of tumor of Whole body-- W 18F-FDG IV"
+      }
+    ],
+    "text": "PET/CT Whole Body with FDG"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "effectiveDateTime": "2024-09-23",
+  "issued": "2024-09-23T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+      "type": "Practitioner",
+      "display": "Dr. Carlos Menendez, MD"
+    }
+  ],
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "309529002",
+          "display": "Lung mass (finding)"
+        }
+      ],
+      "text": "FDG-avid right upper lobe mass highly suspicious for primary lung malignancy"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "52324001",
+          "display": "Mediastinal lymphadenopathy (disorder)"
+        }
+      ],
+      "text": "FDG-avid ipsilateral mediastinal lymphadenopathy (stations 4R and 7)"
+    }
+  ],
+  "conclusion": "Metabolically active right upper lobe mass (4.3 x 3.8 cm, SUVmax 12.4) with ipsilateral mediastinal lymphadenopathy (station 4R: 2.1 cm, SUVmax 8.1; station 7: 1.5 cm, SUVmax 6.3), consistent with clinical stage III lung malignancy. No distant metastases identified."
+}

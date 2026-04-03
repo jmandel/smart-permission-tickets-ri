@@ -1,0 +1,78 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-001-edu-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34107-3",
+        "display": "Patient's home Education note"
+      }
+    ],
+    "text": "Patient Education Handout"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2020-02-07T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+      "type": "Practitioner",
+      "display": "Dr. Carmen Villanueva"
+    }
+  ],
+  "custodian": {
+    "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+    "display": "Lone Star Women's Health"
+  },
+  "description": "Written discharge instructions for expectant management of missed abortion, including expected course, warning signs requiring urgent/emergency evaluation, self-care guidance, and follow-up plan.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "RElTQ0hBUkdFIElOU1RSVUNUSU9OUyDigJQgRVhQRUNUQU5UIE1BTkFHRU1FTlQgT0YgTUlTU0VEIEFCT1JUSU9OCgpXaGF0IHRvIGV4cGVjdDoKLSBPdmVyIHRoZSBuZXh0IDEtMiB3ZWVrcyB5b3UgbWF5IGV4cGVyaWVuY2UgdmFnaW5hbCBibGVlZGluZyBhbmQgY3JhbXBpbmcgYXMgdGhlIHByZWduYW5jeSB0aXNzdWUgcGFzc2VzIG5hdHVyYWxseS4KLSBCbGVlZGluZyBtYXkgYmUgaGVhdmllciB0aGFuIGEgbm9ybWFsIHBlcmlvZCBhbmQgeW91IG1heSBwYXNzIGNsb3RzLgoKQ0FMTCA5MTEgb3IgZ28gdG8gdGhlIEVtZXJnZW5jeSBSb29tIGltbWVkaWF0ZWx5IGlmIHlvdSBleHBlcmllbmNlOgotIFNvYWtpbmcgbW9yZSB0aGFuIDIgbWVuc3RydWFsIHBhZHMgcGVyIGhvdXIgZm9yIDIgb3IgbW9yZSBob3VycwotIFNldmVyZSBhYmRvbWluYWwgb3IgcGVsdmljIHBhaW4gbm90IHJlbGlldmVkIGJ5IGlidXByb2ZlbgotIEZldmVyIG9mIDEwMC40wrBGICgzOMKwQykgb3IgaGlnaGVyCi0gRm91bC1zbWVsbGluZyB2YWdpbmFsIGRpc2NoYXJnZQotIERpenppbmVzcywgZmFpbnRpbmcsIG9yIGZlZWxpbmcgbGlrZSB5b3UgbWlnaHQgcGFzcyBvdXQKClNlbGYtY2FyZSBndWlkYW5jZToKLSBSZXN0IGFzIG5lZWRlZDsgbGlnaHQgYWN0aXZpdHkgaXMgYWNjZXB0YWJsZS4KLSBZb3UgbWF5IHVzZSBpYnVwcm9mZW4gKDYwMOKAkzgwMCBtZyBldmVyeSA24oCTOCBob3VycyB3aXRoIGZvb2QpIGZvciBjcmFtcGluZyB1bmxlc3MgY29udHJhaW5kaWNhdGVkLgotIEF2b2lkIGludGVyY291cnNlLCB0YW1wb25zLCBvciBhbnl0aGluZyBwbGFjZWQgaW4gdGhlIHZhZ2luYSB1bnRpbCBibGVlZGluZyBoYXMgc3RvcHBlZC4KLSBFbW90aW9uYWwgc3VwcG9ydDogcmVhY2hpbmcgb3V0IHRvIGxvdmVkIG9uZXMgb3IgYSBjb3Vuc2Vsb3IgaXMgZW5jb3VyYWdlZC4KCkZvbGxvdy11cDoKLSBSZXR1cm4gdG8gY2xpbmljIGluIDEtMiB3ZWVrcyBmb3IgcmVhc3Nlc3NtZW50IGFuZCB0byBjb25maXJtIGNvbXBsZXRpb24gb2YgdGhlIHByb2Nlc3MuCi0gQ29udGFjdCB0aGUgb2ZmaWNlIHNvb25lciBpZiB5b3UgaGF2ZSBjb25jZXJucyBvciB3b3JzZW5pbmcgc3ltcHRvbXMuCi0gT2ZmaWNlIHBob25lOiA1MTItNTU1LTAyMDAKCllvdSBhcmUgbm90IGFsb25lLiBQbGVhc2UgY2FsbCB0aGUgb2ZmaWNlIGlmIHlvdSBoYXZlIGFueSBxdWVzdGlvbnMgb3IgY29uY2VybnMuCg==",
+        "title": "Patient Instructions — Expectant Management of Missed Abortion"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-001"
+      }
+    ],
+    "period": {
+      "start": "2020-02-07T00:00:00Z"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

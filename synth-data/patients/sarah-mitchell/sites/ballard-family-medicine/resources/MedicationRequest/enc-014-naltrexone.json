@@ -1,0 +1,90 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-014-naltrexone",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1483744",
+        "display": "naltrexone HCl 50 MG Oral Tablet"
+      }
+    ],
+    "text": "naltrexone 50 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "authoredOn": "2024-07-15",
+  "requester": {
+    "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+    "type": "Practitioner",
+    "display": "Dr. Kevin Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-aud",
+      "display": "Alcohol use disorder, moderate, in sustained remission"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "naltrexone 50 mg by mouth once daily",
+      "patientInstruction": "Take 1 tablet (50 mg) by mouth once daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 50,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

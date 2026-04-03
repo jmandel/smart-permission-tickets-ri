@@ -1,0 +1,144 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "hawthorne-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "new patient office visit, establishment of primary care",
+    "reason": "new patient evaluation, depression screening and treatment initiation",
+    "period_start": "2019-02-12",
+    "participants": [
+      {
+        "name": "Dr. Emily Nakamura",
+        "role": "primary performer",
+        "specialty": "Family Medicine"
+      }
+    ],
+    "service_provider": "Hawthorne Health Center",
+    "location": "Hawthorne Health Center, 3847 SE Hawthorne Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 120,
+        "value_diastolic": 76,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 138,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body height",
+        "value": 66,
+        "unit": "in",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.3,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 5,
+        "interpretation": "positive screen (score ≥ 3)",
+        "action": "create"
+      },
+      {
+        "name": "PHQ-9 depression screening",
+        "value": 17,
+        "interpretation": "moderately severe depression",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "major depressive disorder, single episode, moderate to severe",
+      "clinical_status": "active",
+      "onset_date": "2019-01",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "sertraline 50 mg oral tablet",
+      "sig": "Take one 50 mg tablet by mouth once daily in the morning with food",
+      "status": "active",
+      "reason": "major depressive disorder, single episode, moderate to severe",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents new patient establishment of care visit for a 25-year-old woman. Covers chief complaint of persistent low mood for six weeks, depression screening results (PHQ-2: 5, PHQ-9: 17), diagnosis of major depressive disorder (single episode, moderate to severe), initiation of sertraline 50 mg daily, routine new patient lab orders (CBC, CMP, TSH, lipid panel), allergy documentation (sulfa antibiotics), and follow-up plan in 4–6 weeks.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "ordered-not-resulted",
+      "description": "Routine new patient baseline lab. Ordered at this visit; results not yet available."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "ordered-not-resulted",
+      "description": "Routine new patient baseline lab. Ordered at this visit; results not yet available."
+    },
+    {
+      "type": "thyroid-stimulating hormone (TSH)",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered to rule out thyroid dysfunction as a contributing factor to mood symptoms. Results not yet available."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Routine new patient baseline lab. Ordered at this visit; results not yet available."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "severity": "mild",
+      "action": "create"
+    }
+  ]
+}

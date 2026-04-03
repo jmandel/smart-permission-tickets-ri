@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-020-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+    "display": "Maria Chen"
+  },
+  "date": "2026-03-18T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+      "display": "Janet Flores"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMy8xOC8yMDI2ClNpdGU6IFJvc2UgQ2l0eSBDb21tdW5pdHkgU2VydmljZXMsIDY1MzAgU0UgODJuZCBBdmVudWUsIFBvcnRsYW5kLCBPUiA5NzI2NgpFbmNvdW50ZXIgVHlwZTogVGVsZXBob25lIOKAlCBSZWZlcnJhbCBJbnRha2UgQ2FsbApTdGFmZjogSmFuZXQgRmxvcmVzLCBDSFcvQ2FzZSBXb3JrZXI7IFJvYmVydCBUcmFuLCBQcm9ncmFtIENvb3JkaW5hdG9yIChyZWZlcnJhbCBwcm9jZXNzaW5nKQpQYXRpZW50OiBNYXJpYSBDaGVuCgpSRUFTT04gRk9SIENBTEw6CkludGFrZSBjYWxsIGZvbGxvd2luZyBlbGVjdHJvbmljIHJlZmVycmFsIHJlY2VpdmVkIGZyb20gQ2FzY2FkZSBDb21tdW5pdHkgSGVhbHRoIENlbnRlciAoRHIuIEFuZ2VsYSBNb3JhbGVzLCByZWZlcnJpbmcgcHJvdmlkZXIpLiBSZWZlcnJhbCBnZW5lcmF0ZWQgZnJvbSBBSEMgSFJTTiBzY3JlZW5pbmcgYWRtaW5pc3RlcmVkIGF0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdCBpZGVudGlmeWluZyBmb29kIGluc2VjdXJpdHkgYW5kIHRyYW5zcG9ydGF0aW9uIGJhcnJpZXJzIHRvIG1lZGljYWwgYXBwb2ludG1lbnRzLiBSb2JlcnQgVHJhbiBwcm9jZXNzZWQgaW5jb21pbmcgcmVmZXJyYWwgYW5kIGFzc2lnbmVkIGNhc2UgdG8gSmFuZXQgRmxvcmVzIGZvciBvdXRyZWFjaC4KCkRJU0NVU1NJT046CkNvbnRhY3RlZCBjbGllbnQgYnkgdGVsZXBob25lIHdpdGhpbiBmaXZlIGJ1c2luZXNzIGRheXMgb2YgcmVmZXJyYWwgcmVjZWlwdC4gUmV2aWV3ZWQgaWRlbnRpZmllZCBuZWVkcyBmcm9tIEFIQyBIUlNOIHNjcmVlbmluZyByZXN1bHRzOiBmb29kIGluc2VjdXJpdHkgKHBvc2l0aXZlIG9uIGJvdGggSHVuZ2VyIFZpdGFsIFNpZ24gcXVlc3Rpb25zKSBhbmQgdHJhbnNwb3J0YXRpb24gYmFycmllcnMgYWZmZWN0aW5nIGFjY2VzcyB0byBtZWRpY2FsIGFwcG9pbnRtZW50cy4KCkNsaWVudCBjb25maXJtZWQgYm90aCBuZWVkcyBhbmQgcHJvdmlkZWQgYWRkaXRpb25hbCBjb250ZXh0LiBTaGUgaXMgYSBzaW5nbGUgbW90aGVyIG9mIHR3byBjaGlsZHJlbiAoYWdlcyAxMSBhbmQgOCksIHdvcmtzIHBhcnQtdGltZSBhcHByb3hpbWF0ZWx5IDI1IGhvdXJzL3dlZWssIGFuZCByZXBvcnRzIG1vbnRobHkgZm9vZCBidWRnZXQgYXMgcHJpbWFyeSBhcmVhIG9mIGZpbmFuY2lhbCBzdHJhaW4uIFNoZSBoYXMgbm90IHByZXZpb3VzbHkgYXBwbGllZCBmb3IgU05BUCBiZW5lZml0cy4gQ2xpZW50IHJlbGllcyBvbiBUcmlNZXQgcHVibGljIHRyYW5zaXQgZm9yIGFsbCB0cmFuc3BvcnRhdGlvbiBhbmQgcmVwb3J0cyBhIHJlY2VudCBidXMgcm91dGUgY2hhbmdlIGhhcyBzaWduaWZpY2FudGx5IGluY3JlYXNlZCB0cmF2ZWwgdGltZSB0byBzb21lIG1lZGljYWwgYXBwb2ludG1lbnRzLCBtYWtpbmcgYXR0ZW5kYW5jZSB2ZXJ5IGRpZmZpY3VsdC4KClNlcnZpY2VzIGRpc2N1c3NlZCBhbmQgb2ZmZXJlZDoKMS4gRm9vZCBwYW50cnkgZW5yb2xsbWVudCDigJQgUm9zZSBDaXR5IFNFIFBvcnRsYW5kIGRpc3RyaWJ1dGlvbiBzaXRlLCB3ZWVrbHkgcGlja3VwIHNjaGVkdWxlCjIuIFNOQVAgYXBwbGljYXRpb24gYXNzaXN0YW5jZSDigJQgaGFuZHMtb24gc3VwcG9ydCBpbmNsdWRpbmcgaGVscCBnYXRoZXJpbmcgcmVxdWlyZWQgZG9jdW1lbnRhdGlvbgozLiBUcmlNZXQgSE9QIGNhcmQgdHJhbnNpdCB2b3VjaGVycyDigJQgZGVzaWduYXRlZCBmb3IgbWVkaWNhbCBhcHBvaW50bWVudCB0cmFuc3BvcnRhdGlvbgoKQ2xpZW50IGV4cHJlc3NlZCBpbnRlcmVzdCBpbiBhbmQgYWdyZWVkIHRvIHByb2NlZWQgd2l0aCBhbGwgdGhyZWUgc2VydmljZXMuCgpQTEFOOgotIEVucm9sbCBjbGllbnQgaW4gZm9vZCBwYW50cnkgcHJvZ3JhbSBhdCBTRSBQb3J0bGFuZCBkaXN0cmlidXRpb24gc2l0ZQotIFNjaGVkdWxlIGZvbGxvdy11cCBjYWxsIGZvciB0aGUgZm9sbG93aW5nIHdlZWsgdG8gYmVnaW4gU05BUCBhcHBsaWNhdGlvbiBwcm9jZXNzCi0gQXJyYW5nZSB0cmFuc2l0IHZvdWNoZXIgZGlzdHJpYnV0aW9uIGZvciBtZWRpY2FsIGFwcG9pbnRtZW50cwotIENvbnRpbnVlIGNhc2UgbWFuYWdlbWVudCBhbmQgc2VydmljZSBjb29yZGluYXRpb24KClJlZmVycmFsIHN0YXR1cyB1cGRhdGVkOiByZXF1ZXN0ZWQg4oaSIGFjY2VwdGVkIOKGkiBpbi1wcm9ncmVzcy4KCkphbmV0IEZsb3JlcywgQ0hXClJvc2UgQ2l0eSBDb21tdW5pdHkgU2VydmljZXMK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-020"
+      }
+    ],
+    "period": {
+      "start": "2026-03-18"
+    }
+  }
+}

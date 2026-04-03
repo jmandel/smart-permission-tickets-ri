@@ -1,0 +1,153 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "lone-star-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Gestational diabetes diagnosed in third pregnancy",
+    "period_start": "2022-01-28",
+    "period_end": "2022-01-28",
+    "participants": [],
+    "service_provider": "Lone Star Women's Health",
+    "location": "Lone Star Women's Health, Austin, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "114/68 mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "heart rate",
+        "value": "82 beats per minute",
+        "flag": "normal"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.1 degrees Fahrenheit",
+        "flag": "normal"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14 breaths per minute",
+        "flag": "normal"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "99%",
+        "flag": "normal"
+      },
+      {
+        "name": "body weight",
+        "value": "168 pounds",
+        "clinical_context": "Pregnancy at 28 weeks gestation"
+      },
+      {
+        "name": "fundal height",
+        "value": "28 centimeters",
+        "clinical_context": "Obstetric measurement; appropriate for 28 weeks gestation"
+      },
+      {
+        "name": "fetal heart rate",
+        "value": "146 beats per minute",
+        "flag": "normal, reassuring"
+      }
+    ],
+    "labs": [
+      {
+        "name": "glucose challenge test",
+        "value": "162 mg/dL",
+        "flag": "high",
+        "clinical_context": "Initial screening test, abnormal result prompting diagnostic testing"
+      },
+      {
+        "name": "fasting glucose",
+        "value": "92 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose at 1 hour post-load",
+        "value": "188 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "glucose at 2 hours post-load",
+        "value": "171 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "glucose at 3 hours post-load",
+        "value": "146 mg/dL",
+        "flag": "high",
+        "clinical_context": "Three of four time-point values abnormal, diagnostic of gestational diabetes mellitus"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.3%",
+        "flag": "normal",
+        "clinical_context": "Normal A1c indicates no pregestational diabetes; supports diagnosis of gestational diabetes mellitus (new-onset at this pregnancy)"
+      },
+      {
+        "name": "urine protein screening",
+        "value": "negative",
+        "flag": "normal",
+        "clinical_context": "Excludes proteinuria; no evidence of preeclampsia at this visit"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "11.4 g/dL",
+        "flag": "low",
+        "clinical_context": "Mild physiologic anemia of pregnancy; asymptomatic; no intervention required at this visit"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "gestational diabetes mellitus, diet-controlled",
+      "clinical_status": "newly diagnosed, active",
+      "onset_date": "2022-01-28",
+      "action": "create"
+    },
+    {
+      "name": "intrauterine pregnancy at 28 weeks gestation",
+      "clinical_status": "active, ongoing",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild physiologic anemia of pregnancy",
+      "clinical_status": "active, mild",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "prenatal progress note",
+      "date": "2022-01-28",
+      "author": "Dr. Carmen Villanueva, MD"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "100 g 3-hour glucose tolerance test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fasting glucose",
+        "glucose at 1 hour post-load",
+        "glucose at 2 hours post-load",
+        "glucose at 3 hours post-load"
+      ]
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Mild physiologic anemia of pregnancy. Hemoglobin 11.4 g/dL (low-normal for pregnancy). Consistent with expected physiologic anemia of pregnancy; no clinical intervention required at this time."
+    }
+  ],
+  "allergies": []
+}

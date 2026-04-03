@@ -1,0 +1,59 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-006-cond-npdr-od",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "769185003",
+        "display": "Moderate nonproliferative retinopathy of right eye due to diabetes mellitus (disorder)"
+      }
+    ],
+    "text": "Moderate nonproliferative diabetic retinopathy, right eye"
+  },
+  "subject": {
+    "reference": "Patient/7b1188a2-28ef-4d17-b783-2866c438f117",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "onsetDateTime": "2025-03-06",
+  "recordedDate": "2025-03-06",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Condition enc-006-cond-npdr-od</p></div>"
+  }
+}

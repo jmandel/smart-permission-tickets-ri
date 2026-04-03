@@ -1,0 +1,77 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-000-rx-amlodipine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "308135",
+        "display": "amLODIPine besylate 10 MG Oral Tablet"
+      }
+    ],
+    "text": "Amlodipine 10 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "authoredOn": "2021-09-14",
+  "requester": {
+    "reference": "Practitioner/20124955-3cbb-4fad-a63f-2ff51581c668",
+    "display": "Dr. Monica Reyes, MD"
+  },
+  "recorder": {
+    "reference": "Practitioner/20124955-3cbb-4fad-a63f-2ff51581c668",
+    "display": "Dr. Monica Reyes, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-cond-htn",
+      "display": "Hypertension"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 10 mg by mouth once daily.",
+      "patientInstruction": "Take 10 mg by mouth once daily.",
+      "timing": {
+        "code": {
+          "text": "once daily"
+        }
+      },
+      "route": {
+        "text": "Oral"
+      },
+      "method": {
+        "text": "Take"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 10,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "Daughter reports wandering and driving incidents",
+    "period_start": "2024-09-18",
+    "period_end": "2024-09-18",
+    "participants": [],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease",
+      "clinical_status": "active",
+      "onset_date": "2022-04",
+      "action": "reference-existing"
+    },
+    {
+      "name": "wandering due to dementia",
+      "clinical_status": "active",
+      "onset_date": "2024-09",
+      "action": "create"
+    },
+    {
+      "name": "impaired driving ability",
+      "clinical_status": "active",
+      "onset_date": "2024-09",
+      "action": "create"
+    },
+    {
+      "name": "medication non-adherence",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Telephone call from authorized representative Margaret Washington-Clarke (daughter, DPOA) reporting two safety incidents — patient found wandering and disoriented by a neighbor, and a motor vehicle incident (backed into mailbox). Dr. Okafor documented clinical impression of accelerating Alzheimer's-related cognitive decline following wife's death, recommended patient is no longer safe for independent living or driving, advised voluntary license surrender and supervised living arrangement, and recommended scheduling an in-office reassessment visit."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

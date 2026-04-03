@@ -1,0 +1,108 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-012",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "444971000124105",
+          "display": "Annual wellness visit (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "period": {
+        "start": "2024-03-19T09:00:00-07:00",
+        "end": "2024-03-19T09:45:00-07:00"
+      },
+      "individual": {
+        "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+        "display": "Dr. Angela Morales, MD"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Participation"
+        }
+      ],
+      "period": {
+        "start": "2024-03-19T09:00:00-07:00",
+        "end": "2024-03-19T09:45:00-07:00"
+      },
+      "individual": {
+        "reference": "Practitioner/068c5e0f-43b2-455f-9e7e-b06ff391ca35",
+        "display": "David Kim, MA"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-03-19T09:00:00-07:00",
+    "end": "2024-03-19T09:45:00-07:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Annual wellness exam; cervical cancer screening (Pap smear)"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/47540de6-680b-41bd-9e2c-3903b02dc52d",
+        "display": "Cascade Community Health Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/f0f6cfeb-5a2e-4ed7-b223-e1aee4d4ec12",
+    "display": "Cascade Community Health Center"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "David Kim, MA, performs intake: BP 120/76, HR 74, weight 155 lbs (BMI 27.4), temperature 98.2°F, respirations 14, SpO2 98%. PHQ-2 score 1 (negative)."
+    }
+  ]
+}

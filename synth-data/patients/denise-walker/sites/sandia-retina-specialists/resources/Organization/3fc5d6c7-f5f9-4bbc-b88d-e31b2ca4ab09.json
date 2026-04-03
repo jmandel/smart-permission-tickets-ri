@@ -1,0 +1,39 @@
+{
+  "resourceType": "Organization",
+  "id": "3fc5d6c7-f5f9-4bbc-b88d-e31b2ca4ab09",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1093865217"
+    }
+  ],
+  "active": true,
+  "name": "Sandia Retina Specialists",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Retina specialty practice"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(505) 555-0147",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "text": "Albuquerque, NM"
+    }
+  ]
+}

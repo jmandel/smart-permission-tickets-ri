@@ -1,0 +1,90 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-013-ln-mets",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "94409002",
+        "display": "Metastatic malignant neoplasm to mediastinum (disorder)"
+      }
+    ],
+    "text": "Mediastinal lymph node metastasis"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "onsetDateTime": "2024-10-02",
+  "recordedDate": "2024-10-07",
+  "recorder": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "35917007",
+              "display": "Adenocarcinoma, no subtype (morphologic abnormality)"
+            }
+          ],
+          "text": "Adenocarcinoma on cytopathology"
+        }
+      ],
+      "detail": [
+        {
+          "reference": "Observation/enc-013-cytopath-4r",
+          "display": "Cytopathology interpretation, station 4R lymph node"
+        },
+        {
+          "reference": "Observation/enc-013-cytopath-7",
+          "display": "Cytopathology interpretation, station 7 lymph node"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Adenocarcinoma confirmed in both station 4R (right lower paratracheal) and station 7 (subcarinal) lymph nodes, establishing N2 disease."
+    }
+  ]
+}

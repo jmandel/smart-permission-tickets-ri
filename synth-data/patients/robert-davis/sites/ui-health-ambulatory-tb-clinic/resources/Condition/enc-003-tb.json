@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-tb",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "154283005",
+        "display": "Pulmonary tuberculosis (disorder)"
+      }
+    ],
+    "text": "Pulmonary tuberculosis, active"
+  },
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "onsetDateTime": "2026-01-22",
+  "recordedDate": "2026-02-05",
+  "note": [
+    {
+      "text": "12-week follow-up (04/16/2026): Continuation phase, 2 weeks in. Clinically well, sputum AFB smear negative. Prior sputum culture conversion confirmed. Weight recovered to 170 lbs (from 162 lbs nadir). LFTs normalized after PZA discontinuation. Continuing rifampin 600 mg + isoniazid 300 mg three times weekly with pyridoxine. 100% DOT compliance. Anticipated treatment completion late July 2026."
+    }
+  ]
+}

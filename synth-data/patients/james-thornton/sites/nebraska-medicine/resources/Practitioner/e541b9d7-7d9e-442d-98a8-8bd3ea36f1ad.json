@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "e541b9d7-7d9e-442d-98a8-8bd3ea36f1ad",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Kerr",
+      "given": [
+        "Samuel"
+      ],
+      "prefix": [
+        "Dr."
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Emergency Medicine Attending"
+      }
+    }
+  ]
+}

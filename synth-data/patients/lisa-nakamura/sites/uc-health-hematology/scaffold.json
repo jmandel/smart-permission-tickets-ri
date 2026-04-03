@@ -1,0 +1,198 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "extension": [
+      {
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2028-9",
+              "display": "Asian"
+            }
+          },
+          {
+            "url": "detailed",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2039-6",
+              "display": "Japanese"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Japanese-American"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Not Hispanic or Latino"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "family": "Nakamura",
+        "given": [
+          "Lisa"
+        ]
+      }
+    ],
+    "gender": "female",
+    "birthDate": "1989-08-14",
+    "address": [
+      {
+        "use": "home",
+        "city": "Denver",
+        "state": "CO",
+        "country": "US"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "M",
+          "display": "Married"
+        }
+      ],
+      "text": "Married"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "ade8ba5c-4f94-4fb5-a45a-c0518657d3df",
+    "identifier": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1623478905"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Healthcare Provider"
+      }
+    ],
+    "name": "UC Health Hematology",
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "city": "Aurora",
+        "state": "CO",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+    "identifier": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1234567893"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Okafor",
+        "given": [
+          "James"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "MD, Hematology"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Location",
+    "id": "956a95a9-1922-4673-8b77-5e5629132274",
+    "status": "active",
+    "name": "UC Health Hematology",
+    "mode": "instance",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "OF",
+            "display": "Outpatient Facility"
+          }
+        ],
+        "text": "Outpatient Facility"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "city": "Aurora",
+      "state": "CO",
+      "country": "US"
+    },
+    "managingOrganization": {
+      "reference": "Organization/ade8ba5c-4f94-4fb5-a45a-c0518657d3df",
+      "display": "UC Health Hematology"
+    }
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-009-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58477-1",
+        "display": "Pulmonary function study"
+      }
+    ],
+    "text": "Pulmonary Function Test Report"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "date": "2024-08-19T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+      "type": "Practitioner",
+      "display": "Dr. Nisha Ramaswamy, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+    "type": "Practitioner",
+    "display": "Dr. Nisha Ramaswamy, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UFVMTU9OQVJZIEZVTkNUSU9OIFRFU1QgUkVQT1JUCgpEYXRlOiAwOC8xOS8yMDI0CkZhY2lsaXR5OiBIb3VzdG9uIFB1bG1vbmFyeSBBc3NvY2lhdGVzCkFkZHJlc3M6IDY2MjQgRmFubmluIFN0LCBTdWl0ZSAxNTQwLCBIb3VzdG9uLCBUWCA3NzAzMApPcmRlcmluZy9JbnRlcnByZXRpbmcgUGh5c2ljaWFuOiBOaXNoYSBSYW1hc3dhbXksIE1EClBhdGllbnQ6IFBhdHJpY2lhIE9rYWZvcgpET0I6IDA4LzE0LzE5NjMKQWdlOiA2MSB5ZWFycwpTZXg6IEZlbWFsZQoKSU5ESUNBVElPTjoKQmFzZWxpbmUgcHVsbW9uYXJ5IGZ1bmN0aW9uIGFzc2Vzc21lbnQgaW4gYSA2MS15ZWFyLW9sZCB3b21hbiB3aXRoIHJlY2VudGx5IGlkZW50aWZpZWQgNC4yIGNtIHNwaWN1bGF0ZWQgcmlnaHQgdXBwZXIgbG9iZSBtYXNzIHdpdGggaXBzaWxhdGVyYWwgbWVkaWFzdGluYWwgbHltcGhhZGVub3BhdGh5LCBoaWdobHkgc3VzcGljaW91cyBmb3IgbHVuZyBtYWxpZ25hbmN5LiBQRlRzIG9yZGVyZWQgdG8gZXN0YWJsaXNoIHByZS10cmVhdG1lbnQgYmFzZWxpbmUgZm9yIHNwaXJvbWV0cnkgYW5kIGRpZmZ1c2lvbiBjYXBhY2l0eSwgcGFydGljdWxhcmx5IGdpdmVuIHBvdGVudGlhbCBuZWVkIGZvciBjaGVtb3RoZXJhcHkgYW5kL29yIGltbXVub3RoZXJhcHkgd2l0aCBhc3NvY2lhdGVkIHJpc2sgb2YgdHJlYXRtZW50LXJlbGF0ZWQgcG5ldW1vbml0aXMuCgpDTElOSUNBTCBISVNUT1JZOgpNcy4gT2thZm9yIGlzIGEgbmV2ZXItc21va2VyIHdpdGggc2lnbmlmaWNhbnQgc2Vjb25kaGFuZCBzbW9rZSBleHBvc3VyZSAoaHVzYmFuZCBzbW9rZWQgMSBQUEQgeCAxNSB5ZWFycywgcXVpdCAyMDE1KS4gU2hlIHByZXNlbnRlZCB0byBoZXIgUENQIGluIEp1bHkgMjAyNCB3aXRoIGEgcGVyc2lzdGVudCBkcnkgY291Z2ggYW5kIHVuaW50ZW50aW9uYWwgd2VpZ2h0IGxvc3MuIENoZXN0IFgtcmF5IHJldmVhbGVkIGEgcmlnaHQgdXBwZXIgbG9iZSBvcGFjaXR5LCBhbmQgc3Vic2VxdWVudCBDVCBjaGVzdCB3aXRoIGNvbnRyYXN0ICgwOC8wOC8yMDI0KSBkZW1vbnN0cmF0ZWQgYSA0LjIgY20gc3BpY3VsYXRlZCBSVUwgbWFzcyB3aXRoIG1lZGlhc3RpbmFsIGx5bXBoYWRlbm9wYXRoeSBhdCBzdGF0aW9ucyA0UiBhbmQgNy4gU2hlIHdhcyBzZWVuIGluIG91ciBvZmZpY2UgZm9yIGluaXRpYWwgY29uc3VsdGF0aW9uIG9uIDA4LzEyLzIwMjQgYW5kIHJlZmVycmVkIGZvciBQRlRzIHRvZGF5LiBQTUggbm90YWJsZSBmb3IgZXNzZW50aWFsIGh5cGVydGVuc2lvbiAoY29udHJvbGxlZCBvbiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5KSBhbmQgcHJlZGlhYmV0ZXMgKGRpZXQvZXhlcmNpc2UgbWFuYWdlZCkuIEFsbGVyZ3kgdG8gc3VsZm9uYW1pZGUgYW50aWJpb3RpY3MgKHJhc2gpLgoKVEVTVFMgUEVSRk9STUVEOgotIFNwaXJvbWV0cnkgKHByZS0gYW5kIHBvc3QtYnJvbmNob2RpbGF0b3IpCi0gTHVuZyB2b2x1bWVzIChwbGV0aHlzbW9ncmFwaHkpCi0gRGlmZnVzaW5nIGNhcGFjaXR5IChETENPLCBzaW5nbGUtYnJlYXRoIG1ldGhvZCkKClJFU1VMVFM6CgpTcGlyb21ldHJ5OgogIEZFVjE6ICAgICAgICAgIDIuMDggTCAgICAoNzglIHByZWRpY3RlZCkKICBGVkM6ICAgICAgICAgICAyLjcyIEwgICAgKDgyJSBwcmVkaWN0ZWQpCiAgRkVWMS9GVkM6ICAgICAgMC43NiAgICAgIChub3JtYWwpCgpQb3N0LUJyb25jaG9kaWxhdG9yOgogIE5vIHNpZ25pZmljYW50IGJyb25jaG9kaWxhdG9yIHJlc3BvbnNlIChjaGFuZ2UgaW4gRkVWMSA8IDIwMCBtTCBhbmQgPCAxMiUpCgpMdW5nIFZvbHVtZXM6CiAgVExDOiAgICAgICAgICAgNC4xIEwgICAgICg4MCUgcHJlZGljdGVkKQoKRGlmZnVzaW9uIENhcGFjaXR5OgogIERMQ086ICAgICAgICAgIDE2LjIgbUwvbWluL21tSGcgICAoNzElIHByZWRpY3RlZCkKClFVQUxJVFk6ClRlc3RpbmcgbWV0IEFUUy9FUlMgYWNjZXB0YWJpbGl0eSBhbmQgcmVwcm9kdWNpYmlsaXR5IGNyaXRlcmlhLiBQYXRpZW50IGVmZm9ydCB3YXMgZ29vZCB0aHJvdWdob3V0LgoKSU5URVJQUkVUQVRJT046CjEuIE1pbGQgcmVzdHJpY3RpdmUgdmVudGlsYXRvcnkgZGVmZWN0IGFzIGV2aWRlbmNlZCBieSByZWR1Y2VkIFRMQyAoODAlIHByZWRpY3RlZCkgd2l0aCBwcm9wb3J0aW9uYWxseSByZWR1Y2VkIEZFVjEgYW5kIEZWQyBhbmQgYSBwcmVzZXJ2ZWQgRkVWMS9GVkMgcmF0aW8uCjIuIFJlZHVjZWQgZGlmZnVzaW9uIGNhcGFjaXR5IChETENPIDcxJSBwcmVkaWN0ZWQpLCBzdWdnZXN0aW5nIGltcGFpcm1lbnQgaW4gZ2FzIGV4Y2hhbmdlIGF0IHRoZSBhbHZlb2xhci1jYXBpbGxhcnkgbGV2ZWwuCjMuIE5vIHNpZ25pZmljYW50IGJyb25jaG9kaWxhdG9yIHJlc3BvbnNlLCBpbmRpY2F0aW5nIG5vIHJldmVyc2libGUgb2JzdHJ1Y3RpdmUgY29tcG9uZW50Lgo0LiBUaGUgY29tYmluYXRpb24gb2YgbWlsZCByZXN0cmljdGlvbiB3aXRoIHJlZHVjZWQgZGlmZnVzaW9uIGNhcGFjaXR5IGlzIGNvbnNpc3RlbnQgd2l0aCBwYXJlbmNoeW1hbCBkaXNlYXNlIGFuZC9vciBlYXJseSBseW1waGFuZ2l0aWMgaW52b2x2ZW1lbnQgaW4gdGhlIGNvbnRleHQgb2YgdGhlIGtub3duIHJpZ2h0IHVwcGVyIGxvYmUgbWFzcyB3aXRoIG1lZGlhc3RpbmFsIGx5bXBoYWRlbm9wYXRoeS4KCkNMSU5JQ0FMIENPUlJFTEFUSU9OOgpUaGVzZSByZXN1bHRzIGVzdGFibGlzaCBhIGNyaXRpY2FsIHByZS10cmVhdG1lbnQgYmFzZWxpbmUuIE1vbml0b3Jpbmcgb2YgcHVsbW9uYXJ5IGZ1bmN0aW9uIHdpbGwgYmUgaW1wb3J0YW50IGR1cmluZyBhbnkgc3Vic2VxdWVudCBjaGVtb3RoZXJhcHkgb3IgaW1tdW5vdGhlcmFweSByZWdpbWVuLCBwYXJ0aWN1bGFybHkgZ2l2ZW4gdGhlIHJpc2sgb2YgdHJlYXRtZW50LXJlbGF0ZWQgcG5ldW1vbml0aXMgd2l0aCBjaGVja3BvaW50IGluaGliaXRvcnMuIEFueSBkZWNsaW5lIGZyb20gdGhlc2UgYmFzZWxpbmUgdmFsdWVzIGR1cmluZyB0cmVhdG1lbnQgc2hvdWxkIHByb21wdCBmdXJ0aGVyIGV2YWx1YXRpb24gZm9yIGRydWctaW5kdWNlZCBsdW5nIHRveGljaXR5LgoKTm8gdml0YWxzIG9idGFpbmVkIHRvZGF5IGFzIHRoaXMgd2FzIGEgUEZULW9ubHkgdmlzaXQuCgpQTEFOOgoxLiBSZXN1bHRzIGNvbW11bmljYXRlZCB0byBwYXRpZW50IGFuZCBoZXIgaHVzYmFuZC4KMi4gUEZUIHJlcG9ydCBmb3J3YXJkZWQgdG8gcmVmZXJyaW5nIG9uY29sb2d5IHRlYW0gYXQgTUQgQW5kZXJzb24gQ2FuY2VyIENlbnRlci4KMy4gUmVjb21tZW5kIHJlcGVhdCBQRlRzIGFzIGNsaW5pY2FsbHkgaW5kaWNhdGVkIGR1cmluZyB0cmVhdG1lbnQgY291cnNlIHRvIG1vbml0b3IgZm9yIHB1bG1vbmFyeSB0b3hpY2l0eS4KNC4gVXJnZW50IHJlZmVycmFsIHRvIE1EIEFuZGVyc29uIENhbmNlciBDZW50ZXIgZm9yIHN0YWdpbmcgYW5kIHRpc3N1ZSBkaWFnbm9zaXMgaXMgaW4gcHJvY2Vzcy4KCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ck5pc2hhIFJhbWFzd2FteSwgTUQKUHVsbW9uYXJ5IE1lZGljaW5lCkhvdXN0b24gUHVsbW9uYXJ5IEFzc29jaWF0ZXMKRGF0ZTogMDgvMTkvMjAyNAo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-009"
+      }
+    ],
+    "period": {
+      "start": "2024-08-19",
+      "end": "2024-08-19"
+    }
+  }
+}

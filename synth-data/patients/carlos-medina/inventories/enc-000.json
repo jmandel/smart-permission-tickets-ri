@@ -1,0 +1,284 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "New patient, establish care",
+    "period_start": "2015-09-14",
+    "period_end": "2015-09-14",
+    "participants": [
+      {
+        "name": "Dr. Linda Tran",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 126,
+        "value_diastolic": 80,
+        "unit": "mmHg",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 192,
+        "unit": "lb",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in",
+        "date": "2015-09-14",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.5,
+        "unit": "kg/m²",
+        "date": "2015-09-14",
+        "action": "create"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6.2,
+        "unit": "x10³/µL",
+        "reference_range": "4.5–11.0 x10³/µL",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 15.1,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": 228,
+        "unit": "x10³/µL",
+        "reference_range": "150–400 x10³/µL",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "glucose, serum",
+        "value": 94,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 22,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 20,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 198,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "borderline",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 118,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL optimal / <130 near optimal",
+        "flag": "borderline (near optimal)",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 48,
+        "unit": "mg/dL",
+        "reference_range": "≥40 mg/dL (≥60 desirable for males)",
+        "flag": "borderline low",
+        "date": "2015-09-17",
+        "action": "create"
+      },
+      {
+        "name": "triglycerides",
+        "value": 160,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "borderline high",
+        "date": "2015-09-17",
+        "action": "create"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative",
+        "date": "2015-09-14",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "onset_date": "2015-09-14",
+      "action": "create"
+    },
+    {
+      "name": "borderline dyslipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015-09-14",
+      "action": "create"
+    },
+    {
+      "name": "seasonal allergic rhinitis",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily as needed for seasonal allergy symptoms",
+      "status": "active",
+      "reason": "seasonal allergic rhinitis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, quadrivalent, 2015-2016 seasonal",
+      "date": "2015-09-14",
+      "route": "intramuscular injection",
+      "site": "left deltoid",
+      "lot_number": "FJ4821"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "date": "2015-09-14",
+      "description": "Comprehensive new patient H&P for a 40-year-old male establishing care. Documents complete ROS, physical exam, vital signs, lab orders and results, assessment of overweight and borderline dyslipidemia, seasonal allergy and sulfonamide allergy documentation, influenza immunization, and preventive care plan with diet/exercise counseling and 12-month follow-up.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose, serum",
+        "creatinine, serum",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "summary-only",
+      "description": "Urinalysis normal — no protein, no glucose, no blood detected. No individual component values reported in structured form."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "diffuse maculopapular rash",
+      "severity": "moderate",
+      "clinical_status": "active",
+      "verification_status": "confirmed",
+      "onset": "2003",
+      "action": "create"
+    }
+  ]
+}

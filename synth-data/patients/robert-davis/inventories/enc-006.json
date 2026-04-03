@@ -1,0 +1,153 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "lab results review, inpatient sputum culture and drug susceptibility results communication",
+    "period_start": "2026-02-25",
+    "period_end": "2026-02-25",
+    "participants": [
+      {
+        "name": "RN Patricia Gomez",
+        "role": "DOT nurse coordinator",
+        "note": "primary caller"
+      },
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "infectious disease physician",
+        "note": "results reviewer"
+      }
+    ],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic (telephone), 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "sputum mycobacterial culture",
+        "value": "positive for Mycobacterium tuberculosis",
+        "note": "growth detected at 18 days of incubation; specimen collected 2026-01-22 to 2026-01-23",
+        "action": "create"
+      },
+      {
+        "name": "rifampin susceptibility",
+        "value": "susceptible",
+        "note": "culture-based method; organism: Mycobacterium tuberculosis; sputum isolate",
+        "action": "create"
+      },
+      {
+        "name": "isoniazid susceptibility",
+        "value": "susceptible",
+        "note": "culture-based method; organism: Mycobacterium tuberculosis; sputum isolate",
+        "action": "create"
+      },
+      {
+        "name": "pyrazinamide susceptibility",
+        "value": "susceptible",
+        "note": "culture-based method; organism: Mycobacterium tuberculosis; sputum isolate",
+        "action": "create"
+      },
+      {
+        "name": "ethambutol susceptibility",
+        "value": "susceptible",
+        "note": "culture-based method; organism: Mycobacterium tuberculosis; sputum isolate",
+        "action": "create"
+      },
+      {
+        "name": "streptomycin susceptibility",
+        "value": "susceptible",
+        "note": "culture-based method; organism: Mycobacterium tuberculosis; sputum isolate",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "DST results confirm pan-susceptibility to first-line agents, supporting continuation of current RIPE regimen"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral tablet",
+      "sig": "600 mg oral, once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral tablet",
+      "sig": "300 mg oral, once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine 50 mg oral tablet",
+      "sig": "50 mg oral, once daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis during isoniazid therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral tablet",
+      "sig": "1500 mg oral, once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing",
+      "note": "continued despite mildly elevated uric acid; patient asymptomatic; monitoring to continue"
+    },
+    {
+      "name": "ethambutol 1200 mg oral tablet",
+      "sig": "1200 mg oral, once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents RN Gomez's phone call with Robert Davis to review February 19 lab results (LFTs stable, uric acid mildly elevated) and communicate finalized inpatient sputum culture and drug susceptibility results (M. tuberculosis, pan-susceptible to all first-line agents). Plan to continue RIPE therapy with next in-person visit March 5.",
+      "action": "create"
+    },
+    {
+      "type": "lab results communication note",
+      "description": "Documents the communication of culture and DST results to the patient, including that the sputum mycobacterial culture was positive for M. tuberculosis and that drug susceptibility testing confirmed susceptibility to rifampin, isoniazid, pyrazinamide, ethambutol, and streptomycin. Patient verbalized understanding.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "mycobacterial culture and drug susceptibility testing, sputum",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum mycobacterial culture",
+        "rifampin susceptibility",
+        "isoniazid susceptibility",
+        "pyrazinamide susceptibility",
+        "ethambutol susceptibility",
+        "streptomycin susceptibility"
+      ]
+    }
+  ],
+  "allergies": []
+}

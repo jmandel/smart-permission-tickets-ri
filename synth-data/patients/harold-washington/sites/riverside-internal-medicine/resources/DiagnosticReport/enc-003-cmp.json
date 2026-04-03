@@ -1,0 +1,54 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-003-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive metabolic panel (CMP)"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2018-03-14",
+  "issued": "2018-03-14T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+      "type": "Practitioner",
+      "display": "Dr. Cynthia Okafor"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-003-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-003-egfr",
+      "display": "Estimated glomerular filtration rate (eGFR)"
+    }
+  ],
+  "conclusion": "CMP within normal limits. Creatinine 1.0 mg/dL, eGFR 80 mL/min/1.73m2."
+}

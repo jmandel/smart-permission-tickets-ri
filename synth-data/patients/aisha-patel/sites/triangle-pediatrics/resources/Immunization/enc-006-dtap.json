@@ -1,0 +1,62 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-006-dtap",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "20",
+        "display": "DTaP"
+      }
+    ],
+    "text": "DTaP (diphtheria, tetanus, acellular pertussis), 5th dose"
+  },
+  "patient": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "occurrenceDateTime": "2024-03-15",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/b975c904-df4e-4d64-a7d3-793b906dc500",
+    "display": "Triangle Pediatrics"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+        "type": "Practitioner",
+        "display": "Dr. Megan Harlow"
+      }
+    }
+  ],
+  "protocolApplied": [
+    {
+      "doseNumberPositiveInt": 5
+    }
+  ]
+}

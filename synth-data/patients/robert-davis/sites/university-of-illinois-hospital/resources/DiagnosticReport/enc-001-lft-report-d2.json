@@ -1,0 +1,52 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-001-lft-report-d2",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24325-3",
+        "display": "Hepatic function 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Liver Function Tests"
+  },
+  "subject": {
+    "reference": "Patient/bb4f5104-f2ac-492e-8745-681517f118b4",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "effectiveDateTime": "2026-01-23T12:00:00-06:00",
+  "issued": "2026-01-23T12:00:00-06:00",
+  "performer": [
+    {
+      "reference": "Practitioner/6340603d-b075-4470-9336-8d48a0514f58",
+      "type": "Practitioner",
+      "display": "Dr. Marcus Thompson"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-001-ast-d2"
+    },
+    {
+      "reference": "Observation/enc-001-alt-d2"
+    }
+  ],
+  "conclusion": "AST 30, ALT 34 — stable, within acceptable limits"
+}

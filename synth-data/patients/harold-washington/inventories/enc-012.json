@@ -1,0 +1,224 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "dekalb-primary-care",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "New patient establishment of care",
+    "period_start": "2024-11-14",
+    "participants": [],
+    "service_provider": "DeKalb Primary Care",
+    "location": "DeKalb Primary Care, 2701 North Decatur Road, Suite 300, Decatur, GA 30033"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 142,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 86,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 142,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 86,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 80,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 188,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 27,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 3,
+        "unit": "{score}",
+        "interpretation": "positive screen"
+      },
+      {
+        "name": "PHQ-2 item: little interest or pleasure in doing things",
+        "value": 1,
+        "interpretation": "several days"
+      },
+      {
+        "name": "PHQ-2 item: feeling down, depressed, or hopeless",
+        "value": 2,
+        "interpretation": "more than half the days"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "create"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "create"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "create"
+    },
+    {
+      "name": "Alzheimer's disease, mild to moderate stage",
+      "clinical_status": "active",
+      "onset_date": "2022-04",
+      "action": "create"
+    },
+    {
+      "name": "positive depression screening",
+      "clinical_status": "active",
+      "onset_date": "2024-11-14",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "create"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "create"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "create"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "create"
+    },
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "COVID-19 vaccine, mRNA, bivalent booster (2024-2025 formulation)",
+      "date": "2024-11-14",
+      "route": "intramuscular injection",
+      "site": "right deltoid"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "New patient comprehensive evaluation note documenting full history, review of transfer records, physical exam including diabetic foot exam and cognitive screening, assessment of five active problems, medication reconciliation, and plan including medication changes, lab orders, immunization, and referrals."
+    },
+    {
+      "type": "medication reconciliation",
+      "description": "Reconciliation of medications transferred from prior care in Jacksonville. Five medications confirmed and continued or initiated: lisinopril, amlodipine (new), metformin, atorvastatin, and donepezil. Verified against transfer-of-care summary from Dr. Cynthia Okafor."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline CMP ordered at new patient visit. Results pending."
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline CBC ordered at new patient visit. Results pending."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline hemoglobin A1c ordered to reassess glycemic control after relocation and reported medication non-adherence. Results pending."
+    },
+    {
+      "type": "fasting lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline fasting lipid panel ordered to reassess LDL. Results pending."
+    },
+    {
+      "type": "thyroid-stimulating hormone",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline TSH ordered as part of new patient workup. Results pending."
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "ordered-not-resulted",
+      "description": "Baseline urinalysis ordered as part of new patient workup for a diabetic patient. Results pending."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "create"
+    }
+  ]
+}

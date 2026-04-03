@@ -1,0 +1,41 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-003-va-od",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "exam",
+          "display": "Exam"
+        }
+      ],
+      "text": "Exam"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "98499-7",
+        "display": "Visual acuity uncorrected Right eye"
+      }
+    ],
+    "text": "Visual Acuity, Right Eye (Snellen)"
+  },
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2026-02-05",
+  "valueString": "20/25",
+  "note": [
+    {
+      "text": "Baseline for ethambutol monitoring"
+    }
+  ]
+}

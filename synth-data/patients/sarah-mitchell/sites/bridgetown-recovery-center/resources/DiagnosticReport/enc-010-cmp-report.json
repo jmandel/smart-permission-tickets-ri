@@ -1,0 +1,62 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-010-cmp-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel (CMP) with Liver Enzymes"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "effectiveDateTime": "2023-04-24",
+  "issued": "2023-04-24T12:00:00-07:00",
+  "performer": [
+    {
+      "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "display": "Dr. Rosa Delgado"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-010-ast",
+      "display": "AST 24 U/L"
+    },
+    {
+      "reference": "Observation/enc-010-alt",
+      "display": "ALT 28 U/L"
+    }
+  ],
+  "conclusion": "CMP within normal limits. Liver enzymes fully normalized: AST 24 U/L, ALT 28 U/L (previously AST 52, ALT 61 at intake January 2023). Consistent with cessation of alcohol use.",
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

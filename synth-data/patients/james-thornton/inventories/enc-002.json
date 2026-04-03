@@ -1,0 +1,356 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "nebraska-medicine",
+  "encounter": {
+    "class": "inpatient",
+    "type": "inpatient encounter (surgical admission through discharge)",
+    "reason": "acute gangrenous perforated appendicitis, status post laparoscopic appendectomy",
+    "period_start": "2026-01-12T21:00:00-06:00",
+    "period_end": "2026-01-15",
+    "participants": [
+      {
+        "name": "Dr. Priya Nair",
+        "role": "Hospitalist, co-managing physician"
+      },
+      {
+        "name": "Dr. Marcus Okonkwo",
+        "role": "Surgeon of record"
+      }
+    ],
+    "service_provider": "Nebraska Medicine",
+    "location": "Nebraska Medicine surgical floor, 4350 Dewey Avenue, Omaha, NE 68105"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 99.1,
+        "unit": "°F",
+        "effective_date": "2026-01-12T21:00:00-06:00"
+      },
+      {
+        "name": "heart rate",
+        "value": 88,
+        "unit": "beats/min",
+        "effective_date": "2026-01-12T21:00:00-06:00"
+      },
+      {
+        "name": "blood pressure",
+        "value": "132/80",
+        "unit": "mmHg",
+        "component": {
+          "systolic": 132,
+          "diastolic": 80
+        },
+        "effective_date": "2026-01-12T21:00:00-06:00"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "effective_date": "2026-01-12T21:00:00-06:00"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "effective_date": "2026-01-12T21:00:00-06:00"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/min",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "blood pressure",
+        "value": "128/76",
+        "unit": "mmHg",
+        "component": {
+          "systolic": 128,
+          "diastolic": 76
+        },
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "effective_date": "2026-01-14"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/min",
+        "effective_date": "2026-01-14"
+      },
+      {
+        "name": "blood pressure",
+        "value": "126/78",
+        "unit": "mmHg",
+        "component": {
+          "systolic": 126,
+          "diastolic": 78
+        },
+        "effective_date": "2026-01-14"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "effective_date": "2026-01-14"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "effective_date": "2026-01-14"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F",
+        "effective_date": "2026-01-15"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min",
+        "effective_date": "2026-01-15"
+      },
+      {
+        "name": "blood pressure",
+        "value": "124/76",
+        "unit": "mmHg",
+        "component": {
+          "systolic": 124,
+          "diastolic": 76
+        },
+        "effective_date": "2026-01-15"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "effective_date": "2026-01-15"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "effective_date": "2026-01-15"
+      },
+      {
+        "name": "body weight",
+        "value": 205,
+        "unit": "lbs",
+        "effective_date": "2026-01-15"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 13400,
+        "unit": "/μL",
+        "reference_range": "4,500–11,000",
+        "flag": "high",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.8,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5",
+        "flag": "normal",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3",
+        "flag": "normal",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "glucose",
+        "value": 102,
+        "unit": "mg/dL",
+        "reference_range": "70–100",
+        "flag": "normal-high",
+        "effective_date": "2026-01-13"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 11200,
+        "unit": "/μL",
+        "reference_range": "4,500–11,000",
+        "flag": "high",
+        "effective_date": "2026-01-14"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": 6.2,
+        "unit": "mg/dL",
+        "reference_range": "0–0.5",
+        "flag": "high",
+        "effective_date": "2026-01-14"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute gangrenous perforated appendicitis",
+      "clinical_status": "active",
+      "onset_date": "2026-01-12",
+      "action": "update-existing",
+      "note": "Diagnosed clinically at ED encounter; updated with pathological confirmation (transmural necrosis, perforation, acute serositis with fibrinopurulent exudate). Documented as discharge diagnosis status post laparoscopic appendectomy."
+    },
+    {
+      "name": "periappendiceal abscess",
+      "clinical_status": "active",
+      "onset_date": "2026-01-12",
+      "action": "update-existing",
+      "note": "Identified on CT at ED encounter; drained intraoperatively during this admission. Documented as discharge diagnosis."
+    }
+  ],
+  "medications": [
+    {
+      "name": "piperacillin-tazobactam 3.375 g intravenous",
+      "sig": "3.375 g IV every 6 hours for perioperative infection coverage",
+      "status": "completed",
+      "reason": "perioperative infection coverage for perforated appendicitis and periappendiceal abscess",
+      "action": "create"
+    },
+    {
+      "name": "morphine intravenous",
+      "sig": "IV morphine PRN for post-operative pain",
+      "status": "stopped",
+      "reason": "post-operative pain management",
+      "action": "create"
+    },
+    {
+      "name": "acetaminophen intravenous",
+      "sig": "IV acetaminophen for scheduled pain management",
+      "status": "stopped",
+      "reason": "post-operative pain management",
+      "action": "create"
+    },
+    {
+      "name": "amoxicillin-clavulanate 875/125 mg oral tablet",
+      "sig": "Take one 875/125 mg tablet by mouth twice daily for 7 days; complete course by January 22, 2026",
+      "status": "active",
+      "reason": "post-operative antibiotic course for perforated appendicitis with abscess",
+      "action": "create"
+    },
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "Take 500 mg by mouth every 6 hours as needed for pain",
+      "status": "active",
+      "reason": "post-operative pain management",
+      "action": "create"
+    },
+    {
+      "name": "oxycodone 5 mg oral tablet",
+      "sig": "Take 5 mg by mouth every 4–6 hours as needed for breakthrough pain; dispensed #20 tablets",
+      "status": "active",
+      "reason": "post-operative breakthrough pain management",
+      "action": "create"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "laparoscopic appendectomy with drainage of periappendiceal abscess",
+      "date": "2026-01-12T19:15:00-06:00",
+      "performer": "Dr. Marcus Okonkwo",
+      "findings": "gangrenous appendix with visible perforation at the tip, ~30 mL purulent fluid in the right paracolic gutter",
+      "details": "Abscess cavity irrigated, 10-French Jackson-Pratt drain placed in the right lower quadrant. Operative time 68 minutes. EBL 50 mL. Specimen sent to pathology.",
+      "action": "create"
+    },
+    {
+      "name": "removal of Jackson-Pratt drain",
+      "date": "2026-01-14T10:00:00-06:00",
+      "performer": "Dr. Marcus Okonkwo",
+      "details": "JP drain removed from RLQ; site clean, no leakage",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "discharge summary",
+      "author": "Dr. Priya Nair",
+      "description": "Comprehensive discharge summary covering the 3-day inpatient surgical admission for acute gangrenous perforated appendicitis. Documents the hospital course from post-operative arrival through discharge on POD3, including operative summary, daily progress (vitals, diet advancement, drain management, pain control, lab trends), pathology results, discharge diagnoses, medications, wound care instructions, activity restrictions, and follow-up plan."
+    },
+    {
+      "type": "medication reconciliation document",
+      "description": "Reconciliation of inpatient medications to discharge prescriptions, documenting transition from IV piperacillin-tazobactam to oral amoxicillin-clavulanate, and from IV to oral analgesics. Lists three active discharge medications."
+    },
+    {
+      "type": "patient instructions",
+      "description": "Patient-facing discharge instructions covering wound care for laparoscopic port sites (Steri-Strip care, showering after 48 hours, no water submersion for 2 weeks), drain site monitoring, return-to-ED precautions (fever >101°F, worsening pain, wound changes, inability to tolerate PO), activity restrictions (light activity 2 weeks, no heavy lifting >15 lbs for 4 weeks, desk work in 1 week, full construction duties pending surgeon clearance), and antibiotic completion instructions."
+    },
+    {
+      "type": "pathology report",
+      "accession": "SP-2026-00412",
+      "date": "2026-01-14",
+      "description": "Pathology report on the appendectomy specimen confirming acute gangrenous appendicitis with transmural necrosis and perforation, acute serositis with fibrinopurulent exudate, no neoplasm identified, margins uninvolved."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Only WBC (13,400/μL) and hemoglobin (13.8 g/dL) values are documented from this CBC. WBC trending down from admission value of 16,800. Insufficient components for a full report-with-results (missing hematocrit, platelets at minimum). Remaining CBC components presumably unremarkable."
+    },
+    {
+      "type": "basic metabolic panel",
+      "report_state": "summary-only",
+      "description": "Described as unremarkable with only creatinine (0.9 mg/dL) and glucose (102 mg/dL) specifically documented. Insufficient components for a full report-with-results (missing sodium, potassium, chloride, CO2, BUN, calcium at minimum)."
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Only WBC (11,200/μL) documented from this CBC draw, showing continued downtrend. Remaining components not reported."
+    },
+    {
+      "type": "C-reactive protein",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein"
+      ]
+    },
+    {
+      "type": "surgical pathology — appendectomy specimen",
+      "report_state": "summary-only",
+      "description": "Pathology report on appendectomy specimen. Findings: acute gangrenous appendicitis with transmural necrosis and perforation, acute serositis with fibrinopurulent exudate, no neoplasm identified, margins uninvolved. Findings discussed with patient by Dr. Nair on POD2."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergies",
+      "type": "no known allergy assertion",
+      "action": "create"
+    }
+  ]
+}

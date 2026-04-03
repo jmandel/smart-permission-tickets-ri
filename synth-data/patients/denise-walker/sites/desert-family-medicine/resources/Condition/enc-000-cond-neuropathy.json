@@ -1,0 +1,59 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-cond-neuropathy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item",
+          "display": "Problem List Item"
+        }
+      ],
+      "text": "Problem List Item"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "424736006",
+        "display": "Peripheral neuropathy due to diabetes mellitus (disorder)"
+      }
+    ],
+    "text": "Diabetic peripheral neuropathy of both feet"
+  },
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "recordedDate": "2023-11-16",
+  "note": [
+    {
+      "text": "Burning foot pain, increasing toe numbness, diminished monofilament sensation at 6/10 points bilaterally, and reduced vibration sense were documented at this visit."
+    }
+  ]
+}

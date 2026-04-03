@@ -1,0 +1,53 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "HbA1c counseling, dietary guidance",
+    "period_start": "2022-02-14",
+    "period_end": "2022-02-14",
+    "participants": [],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Brief note documenting a telephone call with Patricia to review her HbA1c result of 6.0% from the January 2022 wellness visit. Covers dietary counseling discussion (reducing refined carbohydrates, increasing fiber, maintaining exercise), patient's reported adherence to daily walking regimen, willingness to reduce portion sizes, and plan to continue current management without pharmacotherapy. Follow-up at next annual wellness visit."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

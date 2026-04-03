@@ -1,0 +1,34 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-014-ot-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306166004",
+        "display": "Referral to occupational therapy service (procedure)"
+      }
+    ],
+    "text": "Referral for occupational therapy — home safety evaluation and adaptive strategies for ADL support"
+  },
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "authoredOn": "2025-01-22",
+  "requester": {
+    "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+    "display": "Dr. Lisa Nakamura"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-alzheimers",
+      "display": "Alzheimer's disease, moderate stage"
+    }
+  ]
+}

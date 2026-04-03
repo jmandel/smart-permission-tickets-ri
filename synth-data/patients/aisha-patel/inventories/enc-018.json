@@ -1,0 +1,202 @@
+{
+  "encounter_id": "enc-018",
+  "encounter_index": 18,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Well-Child Visit",
+    "reason": "6-year well-child visit, annual wellness",
+    "period_start": "2026-03-16",
+    "period_end": "2026-03-16",
+    "participants": [
+      {
+        "name": "Dr. Megan Harlow",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 88,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 96,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 62,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "note": "room air"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.8,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 21,
+        "unit": "kg",
+        "percentile": "55th percentile for age"
+      },
+      {
+        "name": "body height",
+        "value": 116,
+        "unit": "cm",
+        "percentile": "60th percentile for age"
+      },
+      {
+        "name": "body mass index",
+        "value": 15.6,
+        "unit": "kg/m²",
+        "percentile": "50th percentile for age"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening (caregiver-reported)",
+        "value": 0,
+        "interpretation": "negative"
+      },
+      {
+        "name": "visual acuity screening — left eye (Snellen)",
+        "value": "20/25",
+        "interpretation": "passed"
+      },
+      {
+        "name": "visual acuity screening — right eye (Snellen)",
+        "value": "20/25",
+        "interpretation": "passed"
+      },
+      {
+        "name": "hearing screening (pure tone audiometry)",
+        "value": "passed",
+        "interpretation": "normal hearing bilaterally"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21) inhaler",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "1 tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg) inhaler",
+      "sig": "2 puffs inhaled as needed for wheezing or shortness of breath, via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma (rescue inhaler)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr 0.15 mg), two-pack",
+      "sig": "0.15 mg intramuscular injection as needed for anaphylaxis; carry at all times",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis, tree nut allergy",
+      "action": "create"
+    },
+    {
+      "name": "cetirizine 5 mg oral",
+      "sig": "5 mg by mouth once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "apply to affected areas twice daily as needed for eczema flares",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ceramide-based moisturizer (CeraVe)",
+      "sig": "apply to affected areas daily",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive 6-year well-child visit note documenting interval history, complete physical exam findings, developmental screening results, vision and hearing screening results, immunization review, reassessment of all five active conditions, medication management, growth assessment, anticipatory guidance, and follow-up plan."
+    },
+    {
+      "type": "administrative/school health form",
+      "description": "Updated 504 plan renewal documentation and updated asthma action plan for provision to the school nurse, documenting current asthma medications, rescue inhaler instructions, epinephrine auto-injector availability, and activity modifications."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "tree nuts (cashew, almond, walnut)",
+      "action": "reference-existing"
+    }
+  ]
+}

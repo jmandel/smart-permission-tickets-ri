@@ -1,0 +1,71 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-015-holter",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "108252007",
+          "display": "Laboratory procedure"
+        }
+      ],
+      "text": "Cardiac Diagnostics"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "427446001",
+        "display": "48 hour ambulatory electrocardiographic monitoring (procedure)"
+      }
+    ],
+    "text": "48-hour Holter monitor"
+  },
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "occurrencePeriod": {
+    "start": "2026-02-18",
+    "end": "2026-02-20"
+  },
+  "authoredOn": "2026-02-16",
+  "requester": {
+    "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+    "type": "Practitioner",
+    "display": "Dr. James Lindgren, MD, FHRS"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "440059007",
+          "display": "Persistent atrial fibrillation (disorder)"
+        }
+      ],
+      "text": "Atrial fibrillation, likely persistent"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-015-afib",
+      "display": "Persistent atrial fibrillation"
+    }
+  ],
+  "note": [
+    {
+      "text": "48-hour Holter monitor to quantify AF burden, assess rate control adequacy during daily activities, and confirm persistent vs. paroxysmal AF pattern. Maria Torres, RN coordinated device logistics and patient education."
+    },
+    {
+      "text": "Completed 2026-02-20. Results interpreted 2026-02-22: persistent AF confirmed with 100% AF burden."
+    }
+  ]
+}

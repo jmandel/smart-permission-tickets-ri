@@ -1,0 +1,3132 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T01:45:02.201Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2131-1",
+                  "display": "Other Race"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Other Race"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino"
+                }
+              },
+              {
+                "url": "detailed",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2148-5",
+                  "display": "Mexican"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino - Mexican"
+              }
+            ]
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "Mid-30s Latina woman. Lived in Austin, TX through 2022, then moved to Oakland, CA.\n\nTexas chapter: Reproductive history managed by an OB/GYN practice in Austin. First pregnancy (2019) was uncomplicated — vaginal delivery, healthy baby. In early 2020 she had a spontaneous abortion (miscarriage) at ~10 weeks — managed expectantly, emotionally difficult but no surgical intervention needed. Second successful pregnancy (2021) had mild gestational diabetes (diet-controlled, resolved postpartum), vaginal delivery. Also saw a PCP in Austin for routine care — annual wellness exams, immunizations, a couple of URIs. The miscarriage is particularly sensitive data — in a post-Dobbs environment, records of pregnancy loss could be misinterpreted or weaponized, making the case for granular data sharing controls viscerally concrete.\n\nCalifornia chapter: Established with a new PCP in Oakland in late 2022. In early 2023, started having bilateral hand and wrist pain, morning stiffness lasting over an hour. PCP ordered initial labs (RF, anti-CCP, ESR, CRP — all elevated). Referred to rheumatology. Diagnosed with rheumatoid arthritis, seropositive. Started methotrexate 15mg weekly + folic acid. Required regular monitoring (CBC, LFTs every 8-12 weeks). Partial response to methotrexate — added adalimumab (Humira) in late 2023. Good response by 2024. Ongoing monitoring, quarterly rheumatology visits, regular labs."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Reyes",
+            "given": [
+              "Elena",
+              "Marisol"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "510-555-0142",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-09-14",
+        "address": [
+          {
+            "use": "home",
+            "city": "Oakland",
+            "state": "CA",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          },
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "es",
+                  "display": "Spanish"
+                }
+              ],
+              "text": "Spanish"
+            },
+            "preferred": false
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-3b4d924f1bbc870106629acc"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1902847536"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Primary Care / Internal Medicine"
+          }
+        ],
+        "name": "Eastbay Primary Care Associates",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "510-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "city": "Oakland",
+            "state": "CA",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Okonkwo",
+            "given": [
+              "Anita"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "resource": {
+        "resourceType": "Location",
+        "id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+        "status": "active",
+        "name": "Eastbay Primary Care Associates",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "PC",
+                "display": "Primary Care Clinic"
+              }
+            ],
+            "text": "Primary Care Clinic"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "510-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "city": "Oakland",
+          "state": "CA",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+          "display": "Eastbay Primary Care Associates"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-004",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0276",
+                "code": "ROUTINE",
+                "display": "Routine appointment - default if not valued"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "primary performer"
+              }
+            ],
+            "period": {
+              "start": "2022-11-18T09:00:00-08:00",
+              "end": "2022-11-18T10:00:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+              "type": "Practitioner",
+              "display": "Dr. Anita Okonkwo"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-11-18T09:00:00-08:00",
+          "end": "2022-11-18T10:00:00-08:00"
+        },
+        "reasonCode": [
+          {
+            "text": "New-patient wellness after move to California"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+              "display": "Eastbay Primary Care Associates"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+          "display": "Eastbay Primary Care Associates"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena established care with Dr. Anita Okonkwo at Eastbay Primary Care Associates in Oakland after moving from Austin."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-005",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11429006",
+                "display": "Consultation"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "Primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "period": {
+              "start": "2023-03-17T09:00:00-07:00",
+              "end": "2023-03-17T10:00:00-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+              "type": "Practitioner",
+              "display": "Dr. Anita Okonkwo"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-03-17T09:00:00-07:00",
+          "end": "2023-03-17T10:00:00-07:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Bilateral hand stiffness and swelling, rheumatology workup"
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+          "display": "Eastbay Primary Care Associates"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+              "display": "Eastbay Primary Care Associates"
+            }
+          }
+        ],
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena presented to Dr. Anita Okonkwo with 2-3 months of progressive bilateral hand and wrist pain, morning stiffness lasting about 90 minutes, and difficulty opening jars."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-004-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34117-2",
+              "display": "History and physical note"
+            }
+          ],
+          "text": "History and Physical Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2022-11-18T10:00:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+          "type": "Practitioner",
+          "display": "Dr. Anita Okonkwo"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgaXMgYSAzMy15ZWFyLW9sZCB3b21hbiBwcmVzZW50aW5nIHRvIGVzdGFibGlzaCBjYXJlIGZvciBhIG5ldy1wYXRpZW50IHdlbGxuZXNzIHZpc2l0IGFmdGVyIG1vdmluZyBmcm9tIEF1c3RpbiwgVFggdG8gT2FrbGFuZCwgQ0EgaW4gT2N0b2JlciAyMDIyLiBTaGUgcmVwb3J0cyBubyBhY3V0ZSBjb21wbGFpbnRzIHRvZGF5LiBIaXN0b3J5IHJldmlld2VkIGluIGRldGFpbCwgaW5jbHVkaW5nIHByaW9yIHByZWduYW5jaWVzIHdpdGggaGlzdG9yeSBvZiBnZXN0YXRpb25hbCBkaWFiZXRlcyBkdXJpbmcgaGVyIG1vc3QgcmVjZW50IHByZWduYW5jeSwgd2l0aCBwb3N0cGFydHVtIGdsdWNvc2Ugbm9ybWFsaXphdGlvbi4gU2hlIGRlbmllcyBrbm93biBjdXJyZW50IGRpYWJldGVzIGFuZCBoYXMgbm90IGhhZCBoeXBlcmdseWNlbWljIHN5bXB0b21zLiBBbHNvIHJlcG9ydHMgc2Vhc29uYWwgYWxsZXJnaWMgcmhpbml0aXMsIHN0YWJsZSwgdHlwaWNhbGx5IG1hbmFnZWQgd2l0aCBsb3JhdGFkaW5lIGFzIG5lZWRlZC4gTWVkaWNhdGlvbiBhbmQgYWxsZXJneSByZWNvbmNpbGlhdGlvbiBjb21wbGV0ZWQuIEFsbGVyZ3kgbm90ZWQgdG8gYW1veGljaWxsaW4sIHdoaWNoIGNhdXNlZCBoaXZlcyBpbiBjaGlsZGhvb2QuIFBIUS0yIHNjcmVlbmluZyBjb21wbGV0ZWQgdG9kYXksIHNjb3JlIDAuIE5vIG1vb2QgY29uY2VybnMgcmVwb3J0ZWQuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTE2Lzc2IG1tSGcsIEhSIDcyIGJwbSwgUlIgMTQsIFRlbXAgOTguMyBGLCBTcE8yIDk5JSwgV3QgMTUwIGxiLCBIdCA2NSBpbiwgQk1JIDI1LjAKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcgd29tYW4gaW4gbm8gYWN1dGUgZGlzdHJlc3MuCkhFRU5UOiBObyBhY3V0ZSBhYm5vcm1hbGl0aWVzIG5vdGVkIG9uIHJvdXRpbmUgd2VsbG5lc3MgZXhhbS4KQ1Y6IFJlZ3VsYXIgcmF0ZSBhbmQgcmh5dGhtLgpSZXNwOiBCcmVhdGhpbmcgY29tZm9ydGFibHksIGx1bmdzIGNsZWFyIHRvIGF1c2N1bHRhdGlvbiBiaWxhdGVyYWxseS4KQWJkb21lbjogU29mdCwgbm9uZGlzdGVuZGVkLCBub250ZW5kZXIuCkV4dHJlbWl0aWVzOiBObyBlZGVtYS4KTmV1cm86IEFsZXJ0IGFuZCBvcmllbnRlZCwgbm8gZm9jYWwgZGVmaWNpdHMuClBzeWNoOiBOb3JtYWwgbW9vZCBhbmQgYWZmZWN0LgoKTGFicyByZXZpZXdlZC9vcmRlcmVkIGFzIHByZXZlbnRpdmUgYmFzZWxpbmU6CkNCQyBub3JtYWwKQ01QIG5vcm1hbApDcmVhdGluaW5lIDAuNzIgbWcvZEwKQVNUIDE4IFUvTApBTFQgMTYgVS9MClRTSCAxLjYxIHVJVS9tTApBMWMgNS4zJQpGYXN0aW5nIGdsdWNvc2UgODkgbWcvZEwKVG90YWwgY2hvbGVzdGVyb2wgMTgxIG1nL2RMCkxETCAxMDEgbWcvZEwKSERMIDYwIG1nL2RMClRyaWdseWNlcmlkZXMgOTIgbWcvZEwKCkltbXVuaXphdGlvbnMgYWRtaW5pc3RlcmVkIHRvZGF5OiBpbmZsdWVuemEgdmFjY2luZSBhbmQgTW9kZXJuYSBiaXZhbGVudCBDT1ZJRC0xOSBib29zdGVyLgoKQVNTRVNTTUVOVDoKMS4gUm91dGluZSBhZHVsdCB3ZWxsbmVzcy9uZXctcGF0aWVudCB0cmFuc2Zlci1vZi1jYXJlIGV4YW0uIFJlY2VudGx5IG1vdmVkIHRvIENhbGlmb3JuaWEgYW5kIGVzdGFibGlzaGluZyBwcmltYXJ5IGNhcmUuIE5vIGFjdXRlIG1lZGljYWwgY29uY2VybnMgaWRlbnRpZmllZCB0b2RheS4KMi4gSGlzdG9yeSBvZiBnZXN0YXRpb25hbCBkaWFiZXRlcy4gUHJpb3IgcHJlZ25hbmN5LWFzc29jaWF0ZWQgZGlhYmV0ZXMgb25seTsgY3VycmVudCBmYXN0aW5nIGdsdWNvc2UgYW5kIEExYyBhcmUgbm9ybWFsIHdpdGggbm8gZXZpZGVuY2Ugb2YgcGVyc2lzdGVudCBkaWFiZXRlcy4gR2l2ZW4gaW5jcmVhc2VkIGxvbmctdGVybSByaXNrIGZvciB0eXBlIDIgZGlhYmV0ZXMsIG9uZ29pbmcgYW5udWFsIEExYyBtb25pdG9yaW5nIGlzIGFwcHJvcHJpYXRlLgozLiBTZWFzb25hbCBhbGxlcmdpYyByaGluaXRpcywgc3RhYmxlLiBObyBjdXJyZW50IGZsYXJlLgo0LiBBbW94aWNpbGxpbiBhbGxlcmd5LiBDaGlsZGhvb2QgaGl2ZXMgcmVwb3J0ZWQ7IGRvY3VtZW50ZWQgYW5kIHJldmlld2VkLgoKUExBTjoKMS4gRXN0YWJsaXNoZWQgY2FyZSB0b2RheTsgcHJpb3IgbWVkaWNhbCwgb2JzdGV0cmljLCBtZWRpY2F0aW9uLCBhbGxlcmd5LCBhbmQgaW1tdW5pemF0aW9uIGhpc3RvcnkgcmV2aWV3ZWQgYW5kIHJlY29uY2lsZWQuCjIuIENvbnRpbnVlIGN1cnJlbnQgYWxsZXJneSBtYW5hZ2VtZW50IHdpdGggbG9yYXRhZGluZSBhcyBuZWVkZWQgZm9yIHNlYXNvbmFsIHN5bXB0b21zLgozLiBDb3Vuc2VsZWQgb24gcm91dGluZSBwcmV2ZW50aXZlIGNhcmUsIGhlYWx0aHkgZGlldCwgcmVndWxhciBleGVyY2lzZSwgYW5kIG9uZ29pbmcgd2VpZ2h0IG1haW50ZW5hbmNlLgo0LiBSZXZpZXdlZCBub3JtYWwgYmFzZWxpbmUgcHJldmVudGl2ZSBsYWJzIGFzIGFib3ZlOyBubyBhZGRpdGlvbmFsIHdvcmt1cCBuZWVkZWQgYXQgdGhpcyB0aW1lLgo1LiBBbm51YWwgQTFjIHNjcmVlbmluZyByZWNvbW1lbmRlZCBnaXZlbiBwcmlvciBnZXN0YXRpb25hbCBkaWFiZXRlcyBoaXN0b3J5Lgo2LiBJbmZsdWVuemEgdmFjY2luZSBhbmQgTW9kZXJuYSBiaXZhbGVudCBDT1ZJRC0xOSBib29zdGVyIGdpdmVuIHRvZGF5Lgo3LiBGb2xsb3cgdXAgYW5udWFsbHkgZm9yIHdlbGxuZXNzIGNhcmUgb3Igc29vbmVyIGFzIG5lZWRlZCBmb3IgbmV3IGNvbmNlcm5zLg==",
+              "title": "New-patient comprehensive wellness evaluation"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-004"
+            }
+          ],
+          "period": {
+            "start": "2022-11-18T09:00:00-08:00",
+            "end": "2022-11-18T10:00:00-08:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-005-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "34109-9",
+              "display": "Note"
+            }
+          ],
+          "text": "Office Visit Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2023-03-17T10:00:00-07:00",
+        "author": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+          "type": "Practitioner",
+          "display": "Dr. Anita Okonkwo"
+        },
+        "custodian": {
+          "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+          "display": "Eastbay Primary Care Associates"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKQ2hpZWYgY29tcGxhaW50OiBCaWxhdGVyYWwgaGFuZCBzdGlmZm5lc3MsIHN3ZWxsaW5nLCBhbmQgd3Jpc3QgcGFpbi4KCkVsZW5hIFJleWVzIGlzIGEgMzMteWVhci1vbGQgd29tYW4gcHJlc2VudGluZyB3aXRoIDItMyBtb250aHMgb2YgcHJvZ3Jlc3NpdmUgYmlsYXRlcmFsIGhhbmQgYW5kIHdyaXN0IHBhaW4gYW5kIHN0aWZmbmVzcy4gU2hlIHJlcG9ydHMgbW9ybmluZyBzdGlmZm5lc3MgbGFzdGluZyBhcHByb3hpbWF0ZWx5IDkwIG1pbnV0ZXMgYW5kIGluY3JlYXNpbmcgZGlmZmljdWx0eSB3aXRoIGdyaXAtZGVwZW5kZW50IHRhc2tzIHN1Y2ggYXMgb3BlbmluZyBqYXJzLiBTeW1wdG9tcyBhcmUgcHJlc2VudCBpbiBib3RoIGhhbmRzLCB3aXRoIHRoZSByaWdodCBzZWVtaW5nIHdvcnNlLiBTaGUgaGFzIG5vdGljZWQgc3dlbGxpbmcgYXJvdW5kIHRoZSBrbnVja2xlcywgZXNwZWNpYWxseSBpbiB0aGUgbW9ybmluZ3MuIE5vIHByZWNlZGluZyBpbmp1cnkuIE5vIGFzc29jaWF0ZWQgcmFzaCwgbmFpbCBjaGFuZ2VzLCBvciBvdGhlciBza2luIGZpbmRpbmdzIHJlcG9ydGVkLiBNb29kIHNjcmVlbiBuZWdhdGl2ZTsgUEhRLTIgc2NvcmUgMC4KClJlbGV2YW50IGhpc3RvcnkgaW5jbHVkZXMgc2Vhc29uYWwgYWxsZXJnaWMgcmhpbml0aXMgYW5kIHByaW9yIGdlc3RhdGlvbmFsIGRpYWJldGVzLCBkaWV0LWNvbnRyb2xsZWQsIHdpdGggcG9zdHBhcnR1bSBnbHVjb3NlIG5vcm1hbGl6YXRpb24uIFNoZSBlc3RhYmxpc2hlZCBjYXJlIGFmdGVyIG1vdmluZyBmcm9tIFRleGFzIGluIGxhdGUgMjAyMi4gTm8gY2hyb25pYyBkYWlseSBtZWRpY2F0aW9ucyBub3RlZCBmb3IgdGhpcyBpc3N1ZS4gU2hlIGhhcyBiZWVuIHVzaW5nIG92ZXItdGhlLWNvdW50ZXIgYW5hbGdlc2ljcyBpbnRlcm1pdHRlbnRseS4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMTgvNzggbW1IZywgSFIgNzYgYnBtLCBUZW1wIDk4LjQgRiwgUlIgMTQsIFNwTzIgOTglLCBXdCAxNDkgbGIsIEJNSSAyNC44CkdlbmVyYWw6IEFsZXJ0LCB3ZWxsIGFwcGVhcmluZywgaW4gbm8gYWN1dGUgZGlzdHJlc3MuCk1TSzogVGVuZGVybmVzcyBhbmQgbWlsZCBzb2Z0LXRpc3N1ZSBzd2VsbGluZyBvZiBiaWxhdGVyYWwgTUNQIGFuZCBQSVAgam9pbnRzLCB3b3JzZSBvbiB0aGUgcmlnaHQuIFJlZHVjZWQgZ3JpcCBzdHJlbmd0aCBiaWxhdGVyYWxseS4gV3Jpc3QgcGFpbiByZXBvcnRlZCB3aXRoIGhhbmQgdXNlLgpTa2luOiBObyByYXNoLiBObyBuYWlsIGNoYW5nZXMuClBzeWNoOiBOb3JtYWwgYWZmZWN0LgpQSFEtMjogMAoKTGFiczoKUmhldW1hdG9pZCBmYWN0b3IgODQgSVUvbUwKQW50aS1DQ1AgYW50aWJvZHkgMTEyIHVuaXRzCkVTUiA1MiBtbS9ocgpDUlAgMTggbWcvTApBTkEgbmVnYXRpdmUKQ0JDIHVucmVtYXJrYWJsZQpDTVAgdW5yZW1hcmthYmxlCgpBU1NFU1NNRU5UOgoxLiBJbmZsYW1tYXRvcnkgcG9seWFydGhyaXRpcywgaGlnaGx5IGNvbmNlcm5pbmcgZm9yIHNlcm9wb3NpdGl2ZSByaGV1bWF0b2lkIGFydGhyaXRpcy4gQ2xpbmljYWwgcHJlc2VudGF0aW9uIGlzIG5vdGFibGUgZm9yIHN5bW1ldHJpYyBzbWFsbC1qb2ludCBwYWluIGFuZCBzd2VsbGluZyBpbnZvbHZpbmcgTUNQL1BJUCBqb2ludHMsIHByb2xvbmdlZCBtb3JuaW5nIHN0aWZmbmVzcywgcmVkdWNlZCBncmlwIHN0cmVuZ3RoLCBhbmQgZWxldmF0ZWQgaW5mbGFtbWF0b3J5IG1hcmtlcnMuIFBvc2l0aXZlIFJGIGFuZCBzdHJvbmdseSBwb3NpdGl2ZSBhbnRpLUNDUCBmdXJ0aGVyIHN1cHBvcnQgbGlrZWx5IGVhcmx5IHNlcm9wb3NpdGl2ZSBSQS4KMi4gQmlsYXRlcmFsIGhhbmQgYW5kIHdyaXN0IHBhaW4vc3RpZmZuZXNzIHNlY29uZGFyeSB0byBpbmZsYW1tYXRvcnkgYXJ0aHJpdGlzLgozLiBIaXN0b3J5IG9mIGdlc3RhdGlvbmFsIGRpYWJldGVzLCByZXNvbHZlZCBwb3N0cGFydHVtLgoKUExBTjoKMS4gRXhwZWRpdGVkIHJlZmVycmFsIHBsYWNlZCB0byBCYXkgQXJlYSBSaGV1bWF0b2xvZ3kgQXNzb2NpYXRlcyBmb3IgZnVydGhlciBldmFsdWF0aW9uIGFuZCBpbml0aWF0aW9uIG9mIGRpc2Vhc2UtbW9kaWZ5aW5nIHRoZXJhcHkgZ2l2ZW4gY29uY2VybiBmb3IgZWFybHkgc2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzIGFuZCByaXNrIG9mIHByb2dyZXNzaXZlIGpvaW50IGRhbWFnZSBpZiB1bnRyZWF0ZWQuCjIuIFJldmlld2VkIGxhYiByZXN1bHRzIHdpdGggcGF0aWVudCwgaW5jbHVkaW5nIHBvc2l0aXZlIFJGIDg0IElVL21MLCBhbnRpLUNDUCAxMTIgdW5pdHMsIEVTUiA1MiBtbS9ociwgQ1JQIDE4IG1nL0wsIGFuZCBuZWdhdGl2ZSBBTkEuCjMuIFJlY29tbWVuZCBhY2V0YW1pbm9waGVuIGFzIG5lZWRlZCBmb3IgcGFpbi4KNC4gQWR2aXNlZCBtaW5pbWl6aW5nIGhpZ2gtZG9zZSBOU0FJRCB1c2UgdW50aWwgc3BlY2lhbGlzdCByZXZpZXcuCjUuIERvY3VtZW50ZWQgcmVmZXJyYWwgbGV0dGVyIGFuZCB0b2RheSdzIGpvaW50IGV4YW0gZmluZGluZ3MsIHNlcm9sb2dpYyByZXN1bHRzLCBhbmQgcmF0aW9uYWxlIGZvciB1cmdlbnQgcmhldW1hdG9sb2d5IGV2YWx1YXRpb24uCjYuIFJldHVybiBwcmVjYXV0aW9ucyByZXZpZXdlZCBmb3Igd29yc2VuaW5nIHBhaW4vc3dlbGxpbmcsIG5ldyBzeXN0ZW1pYyBzeW1wdG9tcywgb3IgZnVuY3Rpb25hbCBkZWNsaW5lLgo3LiBGb2xsb3cgdXAgd2l0aCBQQ1AgYWZ0ZXIgcmhldW1hdG9sb2d5IGNvbnN1bHRhdGlvbiBhcyBuZWVkZWQu",
+              "title": "Office Visit Progress Note - 2023-03-17"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-005"
+            }
+          ],
+          "period": {
+            "start": "2023-03-17T09:00:00-07:00",
+            "end": "2023-03-17T10:00:00-07:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood pressure systolic and diastolic"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 116,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 76,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 72,
+          "unit": "beats/minute",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "breaths/minute",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.3,
+          "unit": "°F",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 150,
+          "unit": "lb",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 65,
+          "unit": "in",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index (BMI) [Ratio]"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 25,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.72,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.6
+            },
+            "high": {
+              "value": 1.2
+            },
+            "text": "0.6-1.2 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 18,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 10
+            },
+            "high": {
+              "value": 40
+            },
+            "text": "10-40 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 16,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 7
+            },
+            "high": {
+              "value": 56
+            },
+            "text": "7-56 U/L"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1558-6",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting glucose [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 89,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "<100 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-tsh",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-tsh",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3016-3",
+              "display": "Thyrotropin [Units/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Thyrotropin [Units/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.61,
+          "unit": "uIU/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "u[IU]/mL"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0.4
+            },
+            "high": {
+              "value": 4
+            },
+            "text": "0.4-4.0 uIU/mL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-a1c",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-a1c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ],
+          "text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.3,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4
+            },
+            "high": {
+              "value": 5.6
+            },
+            "text": "4.0-5.6%"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-total-cholesterol",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-total-cholesterol",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2093-3",
+              "display": "Cholesterol [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Cholesterol [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 181,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "<200 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-ldl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-ldl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2089-1",
+              "display": "Cholesterol in LDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Cholesterol in LDL [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 101,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "<100 mg/dL optimal"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-hdl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-hdl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2085-9",
+              "display": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Cholesterol in HDL [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 60,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "text": ">40 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglyceride [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 92,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "text": "<150 mg/dL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-phq2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-004-phq2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55757-9",
+              "display": "Patient Health Questionnaire 2 item (PHQ-2) [Reported]"
+            }
+          ],
+          "text": "PHQ-2 Depression Screening"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0,
+          "unit": "score",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 0
+            },
+            "high": {
+              "value": 6
+            },
+            "text": "0-6"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood pressure systolic and diastolic"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:05:00-07:00",
+        "issued": "2023-03-17T09:07:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 118,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 78,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:00:00-07:00",
+        "issued": "2023-03-17T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 76,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:00:00-07:00",
+        "issued": "2023-03-17T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 36.9,
+          "unit": "Cel",
+          "system": "http://unitsofmeasure.org",
+          "code": "Cel"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:00:00-07:00",
+        "issued": "2023-03-17T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:00:00-07:00",
+        "issued": "2023-03-17T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:00:00-07:00",
+        "issued": "2023-03-17T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 67.6,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index (BMI) [Ratio]"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:00:00-07:00",
+        "issued": "2023-03-17T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 24.8,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-phq2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-phq2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55757-9",
+              "display": "Patient Health Questionnaire 2 item (PHQ-2) [Reported]"
+            }
+          ],
+          "text": "PHQ-2 Total Score"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:05:00-07:00",
+        "issued": "2023-03-17T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "No significant depressive symptoms; negative screen for depression"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-rf",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-rf",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11573-3",
+              "display": "Rheumatoid factor IgM [Units/volume] in Serum"
+            }
+          ],
+          "text": "Rheumatoid factor IgM [Units/volume] in Serum"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+            "display": "Eastbay Primary Care Associates"
+          }
+        ],
+        "valueQuantity": {
+          "value": 84,
+          "unit": "IU/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "[IU]/mL"
+        },
+        "referenceRange": [
+          {
+            "text": "0 - 14 IU/mL",
+            "high": {
+              "value": 14
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-anti-ccp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-anti-ccp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "33935-8",
+              "display": "Cyclic citrullinated peptide IgG Ab [Units/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Cyclic citrullinated peptide IgG Ab [Units/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+            "display": "Eastbay Primary Care Associates"
+          }
+        ],
+        "valueQuantity": {
+          "value": 112,
+          "unit": "units",
+          "system": "http://unitsofmeasure.org",
+          "code": "{titer}"
+        },
+        "referenceRange": [
+          {
+            "text": "< 20 units",
+            "high": {
+              "value": 20
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-esr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-esr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "30341-2",
+              "display": "Erythrocyte sedimentation rate"
+            }
+          ],
+          "text": "Erythrocyte sedimentation rate"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+            "display": "Eastbay Primary Care Associates"
+          }
+        ],
+        "valueQuantity": {
+          "value": 52,
+          "unit": "mm/h",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm/h"
+        },
+        "referenceRange": [
+          {
+            "text": "0 - 20 mm/h",
+            "low": {
+              "value": 0
+            },
+            "high": {
+              "value": 20
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-crp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-crp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1988-5",
+              "display": "C reactive protein [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "C reactive protein [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+            "display": "Eastbay Primary Care Associates"
+          }
+        ],
+        "valueQuantity": {
+          "value": 18,
+          "unit": "mg/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/L"
+        },
+        "referenceRange": [
+          {
+            "text": "< 10 mg/L",
+            "high": {
+              "value": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-ana",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-ana",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8061-4",
+              "display": "Nuclear Ab [Presence] in Serum"
+            }
+          ],
+          "text": "Antinuclear Antibody (ANA)"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+            "display": "Eastbay Primary Care Associates"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "260385009",
+              "display": "Negative"
+            }
+          ],
+          "text": "Negative"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-dr-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-004-dr-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "conclusion": "All CBC components within normal limits."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-dr-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-004-dr-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-004-creatinine",
+            "display": "Creatinine"
+          },
+          {
+            "reference": "Observation/enc-004-ast",
+            "display": "Aspartate Aminotransferase"
+          },
+          {
+            "reference": "Observation/enc-004-alt",
+            "display": "Alanine Aminotransferase"
+          },
+          {
+            "reference": "Observation/enc-004-glucose",
+            "display": "Fasting Glucose"
+          }
+        ],
+        "conclusion": "CMP normal. All values within reference range."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-dr-lipid",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-004-dr-lipid",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ],
+          "text": "Lipid Panel"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+        "issued": "2022-11-18T11:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-004-total-cholesterol",
+            "display": "Total Cholesterol"
+          },
+          {
+            "reference": "Observation/enc-004-ldl",
+            "display": "LDL Cholesterol"
+          },
+          {
+            "reference": "Observation/enc-004-hdl",
+            "display": "HDL Cholesterol"
+          },
+          {
+            "reference": "Observation/enc-004-triglycerides",
+            "display": "Triglycerides"
+          }
+        ],
+        "conclusion": "Total cholesterol 181 mg/dL (normal). LDL 101 mg/dL (near optimal). HDL 60 mg/dL (good). Triglycerides 92 mg/dL (normal)."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-dr-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-dr-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "conclusion": "Unremarkable; no acute hematologic abnormality identified."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-dr-cmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-dr-cmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "conclusion": "Unremarkable; no abnormality in renal function, liver function, or electrolytes."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-dr-rheum",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-dr-rheum",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "46437-0",
+              "display": "Rheumatoid Factor and Cyclic Citrullinated Peptide IgG panel [Units/volume] - Serum"
+            }
+          ],
+          "text": "Rheumatologic Workup Panel"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2023-03-17T09:30:00-07:00",
+        "issued": "2023-03-17T11:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+            "type": "Practitioner",
+            "display": "Dr. Anita Okonkwo"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-005-rf",
+            "display": "Rheumatoid Factor"
+          },
+          {
+            "reference": "Observation/enc-005-anti-ccp",
+            "display": "Anti-CCP Antibody"
+          },
+          {
+            "reference": "Observation/enc-005-esr",
+            "display": "Erythrocyte Sedimentation Rate"
+          },
+          {
+            "reference": "Observation/enc-005-crp",
+            "display": "C-Reactive Protein"
+          },
+          {
+            "reference": "Observation/enc-005-ana",
+            "display": "Antinuclear Antibody"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-flu",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "enc-004-flu",
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "150",
+              "display": "Influenza, split virus, quadrivalent, PF"
+            }
+          ],
+          "text": "Influenza vaccine, quadrivalent, inactivated"
+        },
+        "patient": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "occurrenceDateTime": "2022-11-18",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+          "display": "Eastbay Primary Care Associates"
+        },
+        "route": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "78421000",
+              "display": "Intramuscular route"
+            }
+          ],
+          "text": "Intramuscular"
+        },
+        "performer": [
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "AP",
+                  "display": "Administering Provider"
+                }
+              ],
+              "text": "Administering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+              "type": "Practitioner",
+              "display": "Dr. Anita Okonkwo"
+            }
+          },
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "OP",
+                  "display": "Ordering Provider"
+                }
+              ],
+              "text": "Ordering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+              "type": "Practitioner",
+              "display": "Dr. Anita Okonkwo"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-004-covid",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "enc-004-covid",
+        "status": "completed",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/cvx",
+              "code": "229",
+              "display": "COVID-19, mRNA, LNP-S, bivalent, PF, 50 mcg/0.5 mL or 25mcg/0.25 mL dose"
+            }
+          ],
+          "text": "COVID-19 vaccine booster, Moderna bivalent (Original/Omicron BA.4/BA.5)"
+        },
+        "patient": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-004"
+        },
+        "occurrenceDateTime": "2022-11-18",
+        "primarySource": true,
+        "location": {
+          "reference": "Location/4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+          "display": "Eastbay Primary Care Associates"
+        },
+        "manufacturer": {
+          "display": "Moderna"
+        },
+        "route": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "78421000",
+              "display": "Intramuscular route"
+            }
+          ],
+          "text": "Intramuscular"
+        },
+        "performer": [
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "AP",
+                  "display": "Administering Provider"
+                }
+              ],
+              "text": "Administering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+              "type": "Practitioner",
+              "display": "Dr. Anita Okonkwo"
+            }
+          },
+          {
+            "function": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+                  "code": "OP",
+                  "display": "Ordering Provider"
+                }
+              ],
+              "text": "Ordering Provider"
+            },
+            "actor": {
+              "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+              "type": "Practitioner",
+              "display": "Dr. Anita Okonkwo"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-ra",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-ra",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "provisional",
+              "display": "Provisional"
+            }
+          ],
+          "text": "Provisional"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ],
+            "text": "Problem List Item"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239791005",
+              "display": "Seropositive rheumatoid arthritis (disorder)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "M05.79",
+              "display": "Rheumatoid arthritis with rheumatoid factor of multiple sites without organ or systems involvement"
+            }
+          ],
+          "text": "Seropositive rheumatoid arthritis"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "onsetDateTime": "2023-01-01",
+        "recordedDate": "2023-03-17",
+        "note": [
+          {
+            "text": "Inflammatory polyarthritis affecting bilateral MCP and PIP joints, more severe on the right hand. Characterized by morning stiffness lasting approximately 90 minutes, pain with joint movement, reduced grip strength, and mild soft-tissue swelling on examination. Positive RF 84 IU/mL, anti-CCP 112 units, ESR 52 mm/hr, CRP 18 mg/L, negative ANA."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-acetaminophen",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-005-acetaminophen",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "161",
+              "display": "acetaminophen"
+            }
+          ],
+          "text": "acetaminophen"
+        },
+        "subject": {
+          "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "authoredOn": "2023-03-17",
+        "requester": {
+          "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+          "type": "Practitioner",
+          "display": "Dr. Anita Okonkwo"
+        },
+        "recorder": {
+          "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+          "type": "Practitioner",
+          "display": "Dr. Anita Okonkwo"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-005-ra",
+            "display": "Seropositive rheumatoid arthritis"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take as needed for pain.",
+            "asNeededBoolean": true,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "method": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "419652001",
+                  "display": "Take"
+                }
+              ],
+              "text": "Take"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

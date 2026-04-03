@@ -1,0 +1,102 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-019-gabapentin",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "310431",
+        "display": "gabapentin 300 MG Oral Capsule"
+      }
+    ],
+    "text": "gabapentin 300 mg oral capsule"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-019"
+  },
+  "authoredOn": "2025-02-17",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-019-cipn",
+      "display": "Chemotherapy-induced peripheral neuropathy"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 1 capsule (300 mg) by mouth at bedtime",
+      "patientInstruction": "Take 1 capsule (300 mg) by mouth at bedtime. May cause drowsiness; do not drive until tolerance is established.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "at bedtime"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 300,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "New start for chemotherapy-induced peripheral neuropathy management. Dr. Amy Pham provided medication counseling. Dose escalation planned if symptoms persist or worsen."
+    }
+  ]
+}

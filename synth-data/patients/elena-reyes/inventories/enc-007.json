@@ -1,0 +1,248 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "bay-area-rheumatology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Persistent moderate disease activity, adalimumab added",
+    "participants": [],
+    "service_provider": "Bay Area Rheumatology Associates",
+    "location": "Bay Area Rheumatology Associates, Oakland, CA"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "Blood Pressure",
+        "value": "118/74",
+        "unit": "mmHg",
+        "reference_range": "<130/80 mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "Heart Rate",
+        "value": 74,
+        "unit": "beats per minute",
+        "reference_range": "60-100 bpm",
+        "flag": "normal"
+      },
+      {
+        "name": "Body Temperature",
+        "value": 98.2,
+        "unit": "°F",
+        "reference_range": "98.6 ± 1 °F",
+        "flag": "normal"
+      },
+      {
+        "name": "Respiratory Rate",
+        "value": 14,
+        "unit": "breaths per minute",
+        "reference_range": "12-20 breaths/min",
+        "flag": "normal"
+      },
+      {
+        "name": "Oxygen Saturation",
+        "value": 98,
+        "unit": "% on room air",
+        "reference_range": "≥95% on room air",
+        "flag": "normal"
+      },
+      {
+        "name": "Body Weight",
+        "value": 147,
+        "unit": "lb"
+      },
+      {
+        "name": "Tender Joint Count (28-joint assessment)",
+        "value": 6,
+        "unit": "joints",
+        "reference_range": "0-28"
+      },
+      {
+        "name": "Swollen Joint Count (28-joint assessment)",
+        "value": 4,
+        "unit": "joints",
+        "reference_range": "0-28"
+      },
+      {
+        "name": "Patient Global Assessment",
+        "value": 42,
+        "unit": "on 0-100 scale"
+      },
+      {
+        "name": "Disease Activity Score 28 with C-Reactive Protein (DAS28-CRP)",
+        "value": 4.3
+      }
+    ],
+    "labs": [
+      {
+        "name": "Hemoglobin",
+        "value": 12.5,
+        "unit": "g/dL",
+        "reference_range": "12.0-16.0 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "White Blood Cell Count",
+        "value": 6.1,
+        "unit": "K/uL",
+        "reference_range": "4.5-11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "Platelet Count",
+        "value": 286,
+        "unit": "K/uL",
+        "reference_range": "150-400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "Creatinine",
+        "value": 0.74,
+        "unit": "mg/dL",
+        "reference_range": "0.6-1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "Aspartate Aminotransferase",
+        "value": 21,
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "Alanine Aminotransferase",
+        "value": 20,
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "C-Reactive Protein",
+        "value": 9,
+        "unit": "mg/L",
+        "reference_range": "<3 mg/L",
+        "flag": "high"
+      },
+      {
+        "name": "Erythrocyte Sedimentation Rate",
+        "value": 31,
+        "unit": "mm/hr",
+        "reference_range": "0-20 mm/hr",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "QuantiFERON-TB Gold",
+        "value": "Negative",
+        "flag": "normal"
+      },
+      {
+        "name": "Hepatitis B Serologies",
+        "value": "without active infection",
+        "flag": "normal"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Seropositive Rheumatoid Arthritis",
+      "clinical_status": "active",
+      "onset_date": "2023-04-01",
+      "action": "update-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 15 mg oral tablet",
+      "sig": "once weekly",
+      "status": "active",
+      "reason": "disease-modifying antirheumatic drug for seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "methotrexate side effect mitigation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "adalimumab 40 mg prefilled syringe",
+      "sig": "subcutaneously every 2 weeks",
+      "status": "active",
+      "reason": "inadequate response to methotrexate monotherapy for seropositive rheumatoid arthritis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "pneumococcal conjugate vaccine 15",
+      "date": "2023-11-09",
+      "route": "intramuscular",
+      "action": "create"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "rheumatology progress note",
+      "date": "2023-11-09",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "creatinine",
+        "aspartate aminotransferase",
+        "alanine aminotransferase"
+      ]
+    },
+    {
+      "type": "inflammatory markers panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "c-reactive protein",
+        "erythrocyte sedimentation rate"
+      ]
+    },
+    {
+      "type": "tuberculosis infection screening assay",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "quantiferon-tb gold"
+      ]
+    },
+    {
+      "type": "hepatitis b infection screening serology",
+      "report_state": "summary-only",
+      "description": "without evidence of active hepatitis B infection"
+    },
+    {
+      "type": "chest radiograph",
+      "report_state": "summary-only",
+      "description": "normal"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "amoxicillin",
+      "reaction": "rash/hives",
+      "severity": "mild",
+      "action": "reference-existing"
+    }
+  ]
+}

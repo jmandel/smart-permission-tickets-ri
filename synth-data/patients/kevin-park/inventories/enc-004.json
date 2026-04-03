@@ -1,0 +1,77 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone encounter",
+    "reason": "Acute sinusitis, amoxicillin prescribed",
+    "period_start": "2023-01-30",
+    "period_end": "2023-01-30",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending physician"
+      },
+      {
+        "name": "Rachel Andersen, RN",
+        "role": "triage nurse"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine (telephone), Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute bacterial sinusitis",
+      "clinical_status": "active",
+      "onset_date": "2023-01-18",
+      "action": "create"
+    },
+    {
+      "name": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "amoxicillin 500 mg oral capsule",
+      "sig": "Take one 500 mg capsule by mouth three times daily for 10 days",
+      "status": "active",
+      "dispense_quantity": 30,
+      "refills": 0,
+      "reason": "acute bacterial sinusitis",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg daily",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents Kevin's 12-day history of nasal congestion, purulent discharge, and facial pressure; clinical diagnosis of acute bacterial sinusitis by Dr. Whitfield based on telephone history; and prescription of amoxicillin 500 mg TID for 10 days with return precautions discussed. Notes ibuprofen avoidance per documented intolerance."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "severity": "intolerance",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "university-of-new-mexico-hospital-and-heart-failure-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Chronic heart-failure and atrial fibrillation maintenance follow-up",
+    "participants": [],
+    "service_provider": "University of New Mexico Hospital and Heart Failure Clinic",
+    "location": "UNM Heart Failure Clinic, Albuquerque, New Mexico"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "122/74 mmHg",
+        "components": {
+          "systolic": "122 mmHg",
+          "diastolic": "74 mmHg"
+        }
+      },
+      {
+        "name": "heart rate",
+        "value": "66 beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "16 breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.1 F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "97%",
+        "context": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": "189 lb"
+      },
+      {
+        "name": "body height",
+        "value": "64 in"
+      },
+      {
+        "name": "body mass index",
+        "value": "32.4 kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "serum creatinine",
+        "value": "1.67 mg/dL",
+        "reference_range": "approximately 0.6-1.1 mg/dL",
+        "flag": "high",
+        "specimen_type": "blood / serum"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": "approximately 35 mL/min/1.73 m2",
+        "reference_range": "greater than or equal to 60 mL/min/1.73 m2",
+        "flag": "low"
+      },
+      {
+        "name": "blood urea nitrogen",
+        "value": "30 mg/dL",
+        "reference_range": "approximately 7-20 mg/dL",
+        "flag": "high",
+        "specimen_type": "blood / serum"
+      },
+      {
+        "name": "serum potassium",
+        "value": "4.9 mmol/L",
+        "reference_range": "approximately 3.5-5.1 mmol/L",
+        "flag": "normal",
+        "specimen_type": "blood / serum"
+      },
+      {
+        "name": "serum sodium",
+        "value": "138 mmol/L",
+        "reference_range": "approximately 135-145 mmol/L",
+        "flag": "normal",
+        "specimen_type": "blood / serum"
+      },
+      {
+        "name": "serum bicarbonate",
+        "value": "24 mmol/L",
+        "reference_range": "approximately 22-29 mmol/L",
+        "flag": "normal",
+        "specimen_type": "blood / serum"
+      },
+      {
+        "name": "NT-proBNP",
+        "value": "356 pg/mL",
+        "reference_range": "lab-specific adult reference threshold; above typical normal range",
+        "flag": "high",
+        "specimen_type": "blood / plasma"
+      },
+      {
+        "name": "glucose",
+        "value": "154 mg/dL",
+        "reference_range": "lab-specific; above typical normal fasting range",
+        "flag": "high",
+        "specimen_type": "blood / serum"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "11.8 g/dL",
+        "reference_range": "approximately 12.0-15.5 g/dL",
+        "flag": "low",
+        "specimen_type": "blood"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "chronic heart failure with reduced ejection fraction, NYHA class II",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "encounter_role": "known condition reassessed",
+      "what_changed": "documented as clinically stable on guideline-directed medical therapy with stable home weights, mild exertional fatigue, trace ankle edema only, modest NT-proBNP elevation, and no medication escalation because renal function and potassium remain limiting"
+    },
+    {
+      "name": "paroxysmal atrial fibrillation",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "encounter_role": "known condition reassessed",
+      "what_changed": "documented as controlled on anticoagulation; ECG showed sinus rhythm with occasional premature atrial complexes; symptoms limited to rare brief palpitations without syncope or known thromboembolism"
+    },
+    {
+      "name": "chronic kidney disease stage 3b",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "encounter_role": "known condition reassessed",
+      "what_changed": "renal function reviewed with creatinine 1.67 mg/dL and eGFR about 35 mL/min/1.73 m2; kidney function explicitly cited as limiting further heart-failure therapy escalation"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "encounter_role": "known condition referenced in cardiology follow-up",
+      "what_changed": "no diabetes regimen change by cardiology; glucose of 154 mg/dL noted and existing insulin glargine management deferred to other clinicians"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "encounter_role": "known condition referenced",
+      "what_changed": "no change; continued atorvastatin documented"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "encounter_role": "known condition referenced in problem context",
+      "what_changed": "no separate assessment or medication change beyond routine blood pressure measurement showing controlled office blood pressure"
+    }
+  ],
+  "medications": [
+    {
+      "name": "carvedilol 12.5 mg oral tablet",
+      "sig": "take 12.5 mg by mouth twice daily",
+      "status": "active",
+      "reason": "chronic heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "sacubitril/valsartan 24/26 mg oral tablet",
+      "sig": "take 24/26 mg by mouth twice daily",
+      "status": "active",
+      "reason": "chronic heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "furosemide 40 mg oral tablet",
+      "sig": "take 40 mg by mouth every morning",
+      "status": "active",
+      "reason": "chronic heart failure with reduced ejection fraction / volume management",
+      "action": "reference-existing"
+    },
+    {
+      "name": "empagliflozin 10 mg oral tablet",
+      "sig": "take 10 mg by mouth daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus and chronic heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "take 5 mg by mouth twice daily",
+      "status": "active",
+      "reason": "paroxysmal atrial fibrillation for stroke prevention",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 40 mg oral tablet",
+      "sig": "take 40 mg by mouth every night",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "insulin glargine subcutaneous injection",
+      "sig": "continue current insulin glargine regimen managed by other clinicians",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "document_type": "cardiology progress note",
+      "description": "Longitudinal heart-failure clinic follow-up documenting stable chronic HFrEF NYHA class II and controlled paroxysmal atrial fibrillation. The note should summarize symptoms, exam, reviewed renal and cardiac labs, ECG findings, medication continuation without change, renal limitations on therapy escalation, and counseling on sodium restriction, daily weights, and return precautions."
+    },
+    {
+      "document_type": "after-visit instructions / heart-failure self-management instructions",
+      "description": "Reinforcement of low-sodium diet, daily morning weight monitoring, medication adherence, and clear call/return precautions for weight gain greater than 3 lb in 24 hours, worsening dyspnea, increasing edema, chest pain, or persistent palpitations. Should also include follow-up timing of 6 months or sooner for symptom change."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "basic metabolic / renal function panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "serum creatinine",
+        "estimated glomerular filtration rate",
+        "blood urea nitrogen",
+        "serum potassium",
+        "serum sodium",
+        "serum bicarbonate",
+        "glucose"
+      ]
+    },
+    {
+      "type": "NT-proBNP lab report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "NT-proBNP"
+      ]
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Hemoglobin value was reviewed, but there are not enough named CBC components in this encounter narrative to support a full report-with-results CBC manifest."
+    },
+    {
+      "type": "12-lead electrocardiogram",
+      "report_state": "summary-only",
+      "description": "ECG interpretation documented normal sinus rhythm at 64 bpm with left ventricular hypertrophy and occasional premature atrial complexes; no separate structured waveform measurements were provided."
+    }
+  ],
+  "allergies": []
+}

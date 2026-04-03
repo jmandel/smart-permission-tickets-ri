@@ -1,0 +1,70 @@
+{
+  "resourceType": "DocumentReference",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "55751-2",
+        "display": "Public health Case report"
+      }
+    ],
+    "text": "Public Health Case Report"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "date": "2026-03-23T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+      "type": "Practitioner",
+      "display": "Dr. Rachel Okonkwo, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+    "type": "Practitioner",
+    "display": "Dr. Rachel Okonkwo, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UkVQT1JUQUJMRSBESVNFQVNFIE5PVElGSUNBVElPTiDigJQgTUVBU0xFUwoKRmlsZWQ6IDAzLzIzLzIwMjYKUmVwb3J0aW5nIEZhY2lsaXR5OiBVVyBIZWFsdGggVW5pdmVyc2l0eSBTdHVkZW50IEhlYWx0aCBTZXJ2aWNlcywgMzMzIEVhc3QgQ2FtcHVzIE1hbGwsIEZsb29yIDUsIE1hZGlzb24sIFdJIDUzNzE1ClJlcG9ydGluZyBDbGluaWNpYW46IFJhY2hlbCBPa29ua3dvLCBNRCAoTlBJIDE5MjM0NTY3ODApCgpQYXRpZW50OiBNYXJjdXMgRC4gSm9obnNvbgpET0I6IDA2LzE0LzIwMDQKQWdlOiAyMSB5ZWFycwpTZXg6IE1hbGUKQWRkcmVzczogVW5pdmVyc2l0eSBvZiBXaXNjb25zaW4tTWFkaXNvbiwgU2VsbGVyeSBSZXNpZGVuY2UgSGFsbCwgTWFkaXNvbiwgV0kgNTM3MDYKUGhvbmU6IDYwOC01NTUtMDE0NwoKU3RhdGUgQ2FzZSBJRDogV0ktTUVBUy0yMDI2LTAwNDcKCkNMSU5JQ0FMIElORk9STUFUSU9OOgpEaWFnbm9zaXM6IE1lYXNsZXMgKHJ1YmVvbGEpLCBjb25maXJtZWQKT25zZXQgRGF0ZTogTWFyY2ggMjAsIDIwMjYgKHByb2Ryb21hbCBzeW1wdG9tcykKUmFzaCBPbnNldDogTWFyY2ggMjItMjMsIDIwMjYKQ2xpbmljYWwgUHJlc2VudGF0aW9uOiBDbGFzc2ljIGNvdWdoLWNvcnl6YS1jb25qdW5jdGl2aXRpcyBwcm9kcm9tZSBmb2xsb3dlZCBieSBoaWdoIGZldmVyICgxMDQuMcKwRikgYW5kIGNlcGhhbG9jYXVkYWwgbWFjdWxvcGFwdWxhciByYXNoLiBLb3BsaWsgc3BvdHMgaWRlbnRpZmllZCBvbiBidWNjYWwgbXVjb3NhLgoKTEFCT1JBVE9SWSBDT05GSVJNQVRJT046Ci0gTWVhc2xlcyBJZ00gYW50aWJvZHkgKHNlcnVtKTogUE9TSVRJVkUgKGNvbGxlY3RlZCAwMy8yMy8yMDI2LCByZXN1bHRlZCAwMy8yNC8yMDI2KQotIE1lYXNsZXMgdmlydXMgUk5BIFBDUiAobmFzb3BoYXJ5bmdlYWwgc3dhYik6IFBPU0lUSVZFIChjb2xsZWN0ZWQgMDMvMjMvMjAyNiwgcmVzdWx0ZWQgMDMvMjUvMjAyNikKCklNTVVOSVpBVElPTiBISVNUT1JZOgotIE1NUiBkb3NlIDE6IEp1bmUgMjAwNSAoYWdlIDEyIG1vbnRocykKLSBNTVIgZG9zZSAyOiBOb3QgcmVjZWl2ZWQgKGluY29tcGxldGUgc2VyaWVzKQoKVFJBVkVMIEhJU1RPUlk6Ci0gTWFuaWxhLCBQaGlsaXBwaW5lczogTWFyY2ggNy0xNSwgMjAyNgotIFBoaWxpcHBpbmVzIGhhcyBhY3RpdmUgbWVhc2xlcyBvdXRicmVhayBhY3Rpdml0eQotIE5vIHByZS10cmF2ZWwgbWVkaWNhbCBjb25zdWx0YXRpb24gb2J0YWluZWQKCkVTVElNQVRFRCBJTkZFQ1RJT1VTIFBFUklPRDogTWFyY2ggMTkgdGhyb3VnaCBNYXJjaCAyNywgMjAyNgoKRVhQT1NVUkUgTE9DQVRJT05TIERVUklORyBJTkZFQ1RJT1VTIFBFUklPRCAoTWFyY2ggMTktMjMsIDIwMjYpOgoxLiBDUyA0MDAgbGVjdHVyZSBoYWxsIOKAlCBhcHByb3hpbWF0ZWx5IDI1MCBzdHVkZW50cwoyLiBNYXRoIDM0MCBsZWN0dXJlIGhhbGwg4oCUIGFwcHJveGltYXRlbHkgMTgwIHN0dWRlbnRzCjMuIEdvcmRvbiBEaW5pbmcgSGFsbAo0LiBOaWNrIFJlY3JlYXRpb24gQ2VudGVyCjUuIFNlbGxlcnkgUmVzaWRlbmNlIEhhbGwgKHBhdGllbnQgcmVzaWRlbmNlKQo2LiBVVyBIZWFsdGggVW5pdmVyc2l0eSBTdHVkZW50IEhlYWx0aCBTZXJ2aWNlcyAodmlzaXQgb24gMDMvMjMvMjAyNikKCklTT0xBVElPTiBTVEFUVVM6IFBhdGllbnQgcGxhY2VkIGluIGFpcmJvcm5lIGlzb2xhdGlvbiBpbiBkZXNpZ25hdGVkIFVuaXZlcnNpdHkgSG91c2luZyBpc29sYXRpb24gcm9vbSBlZmZlY3RpdmUgMDMvMjMvMjAyNi4KClJlcG9ydGVkIHRvOgotIFB1YmxpYyBIZWFsdGggTWFkaXNvbiAmIERhbmUgQ291bnR5Ci0gV2lzY29uc2luIERlcGFydG1lbnQgb2YgSGVhbHRoIFNlcnZpY2VzClBlciBXaXNjb25zaW4gU3RhdHV0ZSDCpyAyNTIKCkVsZWN0cm9uaWNhbGx5IHN1Ym1pdHRlZCBieToKUmFjaGVsIE9rb25rd28sIE1EClVXIEhlYWx0aCBVbml2ZXJzaXR5IFN0dWRlbnQgSGVhbHRoIFNlcnZpY2VzCjAzLzIzLzIwMjYK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-003"
+      }
+    ],
+    "period": {
+      "start": "2026-03-23",
+      "end": "2026-03-23"
+    }
+  },
+  "description": "Mandatory reportable disease notification to Public Health Madison & Dane County and Wisconsin DHS. State case ID: WI-MEAS-2026-0047.",
+  "id": "enc-003-ph-report"
+}

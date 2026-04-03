@@ -1,0 +1,66 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone Encounter",
+    "reason": "One-week post-exacerbation check-in",
+    "period_start": "2025-01-23",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21) 1 puff inhaled twice daily",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "4 mg chewable tablet by mouth once daily",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg) 2 puffs inhaled as needed",
+      "sig": "2 puffs inhaled every 4-6 hours as needed for wheezing or shortness of breath, via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prednisolone oral 5-day burst",
+      "sig": "oral prednisolone burst, 5-day course (1 mg/kg/day)",
+      "status": "completed",
+      "reason": "severe asthma exacerbation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents one-week post-ED follow-up call with mother. Records completion of prednisolone burst, one week on stepped-up Advair 115/21 with significant improvement, no rescue inhaler use in 3 days, resolution of nighttime cough, return to school. Plan to continue current regimen without changes, confirmed upcoming UNC Allergy appointment in February, and encouraged symptom diary."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

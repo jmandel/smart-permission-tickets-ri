@@ -1,0 +1,56 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-urticaria",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "126485001",
+        "display": "Urticaria (disorder)"
+      }
+    ],
+    "text": "Urticaria, generalized"
+  },
+  "subject": {
+    "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2022-10-22",
+  "recordedDate": "2022-10-22",
+  "abatementDateTime": "2022-10-22"
+}

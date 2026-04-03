@@ -1,0 +1,94 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-002-cetirizine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1014673",
+        "display": "cetirizine HCl 5 MG in 5 mL Oral Solution"
+      }
+    ],
+    "text": "Cetirizine 2.5 mg oral solution"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "authoredOn": "2022-11-14",
+  "requester": {
+    "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+    "display": "Dr. Sunita Krishnamurthy",
+    "type": "Practitioner"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-002-allergic-rhinitis",
+      "display": "Allergic rhinitis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 2.5 mg (2.5 mL) by mouth once daily",
+      "patientInstruction": "Give 2.5 mL (2.5 mg) by mouth once daily",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        },
+        "code": {
+          "text": "once daily"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 2.5,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

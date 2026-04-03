@@ -1,0 +1,84 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-013",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "103693007",
+          "display": "Diagnostic procedure (procedure)"
+        }
+      ],
+      "text": "Procedure"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending Physician"
+        }
+      ],
+      "period": {
+        "start": "2024-10-02",
+        "end": "2024-10-02"
+      },
+      "individual": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-10-02",
+    "end": "2024-10-02"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "1137699004",
+          "display": "Transbronchial needle aspiration of mediastinal lymph node using endoscopic endobronchial ultrasonography guidance (procedure)"
+        }
+      ],
+      "text": "EBUS-guided transbronchial needle aspiration biopsy"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+        "display": "The University of Texas MD Anderson Cancer Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia underwent endobronchial ultrasound-guided transbronchial needle aspiration (EBUS-TBNA) under moderate sedation at MD Anderson. Pre-procedure vitals: BP 144/88 mmHg, HR 86 bpm, temperature 98.4°F, respiratory rate 18, SpO2 95% on room air."
+    }
+  ]
+}

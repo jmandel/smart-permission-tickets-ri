@@ -1,0 +1,64 @@
+{
+  "resourceType": "Organization",
+  "id": "c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "National Provider Identifier"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1238574960"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "282NC2000X",
+          "display": "Children's Hospital"
+        }
+      ],
+      "text": "Pediatric Emergency Department"
+    }
+  ],
+  "name": "WakeMed Children's Emergency Department",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(919) 350-8000",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "3000 New Bern Avenue"
+      ],
+      "city": "Raleigh",
+      "state": "NC",
+      "postalCode": "27610",
+      "country": "US"
+    }
+  ]
+}

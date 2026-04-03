@@ -1,0 +1,75 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-006-tsh",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "3016-3",
+        "display": "Thyrotropin [Units/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "Thyroid-stimulating hormone (TSH)"
+  },
+  "subject": {
+    "reference": "Patient/9abd3fa2-00e3-443d-b159-a6b73cd80082",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2022-04-19",
+  "valueQuantity": {
+    "value": 2.4,
+    "unit": "mIU/L",
+    "system": "http://unitsofmeasure.org",
+    "code": "m[IU]/L"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "N",
+          "display": "Normal"
+        }
+      ],
+      "text": "Normal"
+    }
+  ],
+  "referenceRange": [
+    {
+      "low": {
+        "value": 0.4,
+        "unit": "mIU/L",
+        "system": "http://unitsofmeasure.org",
+        "code": "m[IU]/L"
+      },
+      "high": {
+        "value": 4,
+        "unit": "mIU/L",
+        "system": "http://unitsofmeasure.org",
+        "code": "m[IU]/L"
+      },
+      "text": "0.4 - 4.0 mIU/L"
+    }
+  ],
+  "note": [
+    {
+      "text": "Drawn by PCP, reviewed at this encounter"
+    }
+  ]
+}

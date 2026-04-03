@@ -1,0 +1,101 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-005",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "308335008",
+          "display": "Patient encounter procedure (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "period": {
+        "start": "2024-12-09T10:00:00-07:00",
+        "end": "2024-12-09T10:45:00-07:00"
+      },
+      "individual": {
+        "reference": "Practitioner/bf9b0a0e-0ef0-40df-9eb6-72d51439701b",
+        "display": "Dr. Megan Forsythe"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-12-09T10:00:00-07:00",
+    "end": "2024-12-09T10:45:00-07:00"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "102878001",
+          "display": "Recurrent miscarriage (disorder)"
+        }
+      ],
+      "text": "Recurrent pregnancy loss workup - blood draw and results counseling"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-004-rpl",
+        "display": "Recurrent pregnancy loss, unexplained"
+      }
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/90e595d2-13a6-4c1e-84f6-0556300ebf59",
+        "display": "Rocky Mountain Women's Health"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/04dc74ab-8c5a-470f-8a15-bc7cbba4408e",
+    "display": "Rocky Mountain Women's Health"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Lisa presented for blood draw and counseling related to the recurrent pregnancy loss workup. Ryan accompanied her for parental karyotyping."
+    }
+  ]
+}

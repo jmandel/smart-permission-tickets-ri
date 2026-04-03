@@ -1,0 +1,80 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-009-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34857-3",
+        "display": "Addiction medicine Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Results Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2023-02-13T12:00:00-08:00",
+  "author": [
+    {
+      "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "display": "Dr. Rosa Delgado"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UkVTVUxUUyBOT1RFCgpEYXRlOiAwMi8xMy8yMDIzClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsCkRPQjogMTEvMTQvMTk5MwpQcm92aWRlcjogRHIuIFJvc2EgRGVsZ2FkbywgTUQgKEFkZGljdGlvbiBNZWRpY2luZSkKRmFjaWxpdHk6IEJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyLCA5MjAgU0UgU2FuZHkgQmx2ZCwgUG9ydGxhbmQsIE9SIDk3MjE0ClZpc2l0IFR5cGU6IExhYiBWaXNpdCAvIFJlc3VsdHMgUmV2aWV3CgpSRUFTT04gRk9SIFZJU0lUOgpUcmVhdG1lbnQgbW9uaXRvcmluZyBsYWJzIGFuZCBoZXBhdGljIHVsdHJhc291bmQgcmVzdWx0cyByZXZpZXcuIFBhdGllbnQgaXMgNSB3ZWVrcyBpbnRvIDEyLXdlZWsgaW50ZW5zaXZlIG91dHBhdGllbnQgcHJvZ3JhbSAoSU9QKSBmb3IgYWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIHNldmVyaXR5LgoKQ0xJTklDQUwgVVBEQVRFOgpTYXJhaCByZXBvcnRzIHJlZHVjZWQgY3JhdmluZ3Mgc2luY2Ugc3RhcnRpbmcgbmFsdHJleG9uZSA1MG1nIGRhaWx5LiBTaGUgaGFzIHNpZ25pZmljYW50bHkgZGVjcmVhc2VkIGhlciBhbGNvaG9sIGNvbnN1bXB0aW9uIGJ1dCBoYXMgbm90IHlldCBhY2hpZXZlZCBjb21wbGV0ZSBhYnN0aW5lbmNlOyBzaGUgcmVwb3J0cyAyLTMgZHJpbmtzIG9uIG9uZSBvY2Nhc2lvbiBvdmVyIHRoZSBwcmlvciB3ZWVrZW5kLiBTaGUgY29udGludWVzIHRvIGF0dGVuZCBJT1AgZ3JvdXAgc2Vzc2lvbnMgM3gvd2VlayBhbmQgaW5kaXZpZHVhbCBjb3Vuc2VsaW5nLiBObyB2aXRhbHMgb2J0YWluZWQgdG9kYXkgKGxhYi1vbmx5IHZpc2l0KS4KCkxBQk9SQVRPUlkgUkVTVUxUUzoKQ29tcHJlaGVuc2l2ZSBNZXRhYm9saWMgUGFuZWwgd2l0aCBMaXZlciBFbnp5bWVzIGFuZCBHR1Q6CiAgU29kaXVtOiBXTkwKICBQb3Rhc3NpdW06IFdOTAogIENobG9yaWRlOiBXTkwKICBDTzI6IFdOTAogIEJVTjogV05MCiAgQ3JlYXRpbmluZTogV05MCiAgR2x1Y29zZTogV05MCiAgQ2FsY2l1bTogV05MCiAgVG90YWwgUHJvdGVpbjogV05MCiAgQWxidW1pbjogV05MCiAgVG90YWwgQmlsaXJ1YmluOiBXTkwKICBBbGthbGluZSBQaG9zcGhhdGFzZTogV05MCiAgQVNUOiAzOCBVL0wgKGltcHJvdmVkIGZyb20gNTIgVS9MIGF0IGludGFrZSkKICBBTFQ6IDQ0IFUvTCAoaW1wcm92ZWQgZnJvbSA2MSBVL0wgYXQgaW50YWtlKQogIEdHVDogNjIgVS9MIChpbXByb3ZlZCBmcm9tIDg5IFUvTCBhdCBpbnRha2UpCgpVcmluZSBEcnVnIFNjcmVlbjogTmVnYXRpdmUKCklNQUdJTkcgUkVTVUxUUyBSRVZJRVdFRDoKSGVwYXRpYyBVbHRyYXNvdW5kIChwZXJmb3JtZWQgMDEvMjMvMjAyMyk6CiAgTGl2ZXIgcGFyZW5jaHltYSBub3JtYWwuIE5vIGhlcGF0aWMgc3RlYXRvc2lzLiBObyBmb2NhbCBsZXNpb25zIGlkZW50aWZpZWQuIE5vIGJpbGlhcnkgZGlsYXRpb24uIFVucmVtYXJrYWJsZSBzdHVkeS4KCkFTU0VTU01FTlQ6CjEuIEFsY29ob2wgdXNlIGRpc29yZGVyLCBtb2RlcmF0ZSBzZXZlcml0eSDigJQgcGF0aWVudCBpcyBtYWtpbmcgcHJvZ3Jlc3MgaW4gSU9QIHdpdGggcmVkdWNlZCBjb25zdW1wdGlvbiBhbmQgcmVkdWNlZCBjcmF2aW5ncyBvbiBuYWx0cmV4b25lLCB0aG91Z2ggY29tcGxldGUgYWJzdGluZW5jZSBub3QgeWV0IGFjaGlldmVkLiBMaXZlciBlbnp5bWVzIHRyZW5kaW5nIGZhdm9yYWJseTogQVNUIGRlY3JlYXNlZCBmcm9tIDUyIHRvIDM4IFUvTCwgQUxUIGZyb20gNjEgdG8gNDQgVS9MLCBHR1QgZnJvbSA4OSB0byA2MiBVL0wuIEhlcGF0aWMgdWx0cmFzb3VuZCB1bnJlbWFya2FibGUsIHdoaWNoIGlzIHJlYXNzdXJpbmcuCjIuIEJpcG9sYXIgSUkgZGlzb3JkZXIg4oCUIHN0YWJsZSBvbiBsYW1vdHJpZ2luZSAyMDBtZyBkYWlseSBhbmQgcXVldGlhcGluZSA1MG1nIG5pZ2h0bHksIG1hbmFnZWQgYnkgb3V0cGF0aWVudCBwc3ljaGlhdHJ5IChEci4gT2thZm9yKS4gTm8gY2hhbmdlcyBpbmRpY2F0ZWQgZnJvbSBhZGRpY3Rpb24gbWVkaWNpbmUgc3RhbmRwb2ludC4KClBMQU46CjEuIENvbnRpbnVlIG5hbHRyZXhvbmUgNTBtZyBQTyBkYWlseS4KMi4gQ29udGludWUgSU9QIGFzIHNjaGVkdWxlZDsgZW5jb3VyYWdlIHBhdGllbnQgdG93YXJkIGdvYWwgb2YgY29tcGxldGUgYWJzdGluZW5jZS4KMy4gUmVwZWF0IGxpdmVyIGVuenltZSBwYW5lbCBhdCBJT1AgY29tcGxldGlvbiBvciBzb29uZXIgaWYgY2xpbmljYWxseSBpbmRpY2F0ZWQuCjQuIFVyaW5lIGRydWcgc2NyZWVuIHRvIGJlIHJlcGVhdGVkIHBlciBJT1AgcHJvdG9jb2wuCjUuIFJlc3VsdHMgcmV2aWV3ZWQgYW5kIGRvY3VtZW50ZWQgaW4gZWxlY3Ryb25pYyByZWNvcmQuIFBhdGllbnQgdG8gYmUgaW5mb3JtZWQgb2YgaW1wcm92aW5nIGxhYiB0cmVuZHMgYW5kIG5vcm1hbCB1bHRyYXNvdW5kIGZpbmRpbmdzIGF0IG5leHQgSU9QIHZpc2l0IHdpdGggRHIuIERlbGdhZG8uCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6ClJvc2EgRGVsZ2FkbywgTUQKQWRkaWN0aW9uIE1lZGljaW5lCkJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-009"
+      }
+    ],
+    "period": {
+      "start": "2023-02-13"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

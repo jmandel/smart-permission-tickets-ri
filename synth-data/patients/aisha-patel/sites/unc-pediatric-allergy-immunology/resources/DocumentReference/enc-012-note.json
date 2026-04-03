@@ -1,0 +1,66 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-012-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Priya Patel"
+  },
+  "date": "2025-02-10T12:00:00-05:00",
+  "author": [
+    {
+      "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+      "display": "Dr. Sunita Krishnamurthy"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+    "display": "Dr. Sunita Krishnamurthy"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMi8xMC8yMDI1ClBhdGllbnQ6IEFpc2hhIFByaXlhIFBhdGVsCkRPQjogMDMvMTUvMjAyMCAoQWdlIDQgeWVhcnMpCk1STjogVU5DLTc4MzE5MjQKQ2xpbmljaWFuOiBTdW5pdGEgS3Jpc2huYW11cnRoeSwgTUQg4oCUIFBlZGlhdHJpYyBBbGxlcmd5ICYgSW1tdW5vbG9neQpTaXRlOiBVTkMgTWVkaWNhbCBDZW50ZXIsIDEwMSBNYW5uaW5nIERyaXZlLCBDaGFwZWwgSGlsbCwgTkMgMjc1MTQKQ29udGFjdDogUHJpeWEgUGF0ZWwgKG1vdGhlci9hdXRob3JpemVkIHJlcHJlc2VudGF0aXZlKQoKUkVBU09OIEZPUiBDQUxMOiBQb3N0LWV4YWNlcmJhdGlvbiBmb2xsb3ctdXAgZGlzY3Vzc2lvbiBhbmQgYmlvbG9naWMgdGhlcmFweSBjb25zaWRlcmF0aW9uLCBwZXIgcmUtcmVmZXJyYWwgZnJvbSBEci4gTWVnYW4gSGFybG93IChUcmlhbmdsZSBQZWRpYXRyaWNzKSBmb2xsb3dpbmcgc2V2ZXJlIGFzdGhtYSBleGFjZXJiYXRpb24gYW5kIFdha2VNZWQgRUQgdmlzaXQgaW4gSmFudWFyeSAyMDI1LgoKRElTQ1VTU0lPTjoKSSBjYWxsZWQgUHJpeWEgUGF0ZWwgdG9kYXkgdG8gZGlzY3VzcyBBaXNoYSdzIHJlY2VudCBjbGluaWNhbCBjb3Vyc2UuIEkgaGF2ZSByZXZpZXdlZCB0aGUgV2FrZU1lZCBFRCBub3RlIGZyb20gRHIuIE9rYWZvciBkb2N1bWVudGluZyB0aGUgSmFudWFyeSAyMDI1IHNldmVyZSBhc3RobWEgZXhhY2VyYmF0aW9uIChTcE8yIDg5JSBvbiBSQSwgUlIgMzgsIHJlcXVpcmluZyBjb250aW51b3VzIGFsYnV0ZXJvbCBuZWJ1bGl6YXRpb24sIGlwcmF0cm9waXVtLCBJViBtZXRoeWxwcmVkbmlzb2xvbmUsIGFuZCBzdXBwbGVtZW50YWwgTzIpIGFzIHdlbGwgYXMgRHIuIEhhcmxvdydzIHBvc3QtRUQgZm9sbG93LXVwIG5vdGUgaW4gd2hpY2ggYXN0aG1hIHdhcyByZWNsYXNzaWZpZWQgYXMgc2V2ZXJlIHBlcnNpc3RlbnQgYW5kIHRoZXJhcHkgd2FzIHN0ZXBwZWQgdXAgdG8gQWR2YWlyIEhGQSAxMTUvMjEgbWNnIDEgcHVmZiBCSUQgdmlhIHNwYWNlciwgY29udGludWluZyBtb250ZWx1a2FzdCA0IG1nIGRhaWx5LgoKTW90aGVyIHJlcG9ydHMgdGhhdCBBaXNoYSBoYXMgc3RhYmlsaXplZCB3ZWxsIG9uIHRoZSBoaWdoZXItZG9zZSBjb21iaW5hdGlvbiBpbmhhbGVyLiBUaGVyZSBoYXZlIGJlZW4gbm8gZnVydGhlciBleGFjZXJiYXRpb25zIHNpbmNlIHRoZSBKYW51YXJ5IEVEIHZpc2l0LiBSZXNjdWUgYWxidXRlcm9sIHVzZSBoYXMgZGVjcmVhc2VkIHRvIGFwcHJveGltYXRlbHkgdHdpY2Ugd2Vla2x5LiBTaGUgaGFzIHJldHVybmVkIHRvIHNjaG9vbCBhbmQgaXMgdG9sZXJhdGluZyBoZXIgdXN1YWwgYWN0aXZpdGllcy4gSG93ZXZlciwgUHJpeWEgZXhwcmVzc2VkIGNvbmNlcm4gYWJvdXQgdGhlIGVzY2FsYXRpbmcgc2V2ZXJpdHkgb2YgQWlzaGEncyBhc3RobWEgb3ZlciB0aGUgcGFzdCB5ZWFyIGFuZCBpbnF1aXJlZCBhYm91dCBhZGRpdGlvbmFsIHRoZXJhcGV1dGljIG9wdGlvbnMuCgpJIGRpc2N1c3NlZCB0aGUgcG90ZW50aWFsIGZvciBhZGQtb24gYmlvbG9naWMgdGhlcmFweSwgc3BlY2lmaWNhbGx5IG9tYWxpenVtYWIgKFhvbGFpciksIGFuIGFudGktSWdFIG1vbm9jbG9uYWwgYW50aWJvZHkgaW5kaWNhdGVkIGZvciBtb2RlcmF0ZS10by1zZXZlcmUgcGVyc2lzdGVudCBhbGxlcmdpYyBhc3RobWEuIEkgbm90ZWQgdGhhdCB0aGUgRkRBLWFwcHJvdmVkIGFnZSBpbmRpY2F0aW9uIGlzIGZvciBjaGlsZHJlbiA2IHllYXJzIGFuZCBvbGRlciwgYW5kIEFpc2hhIHdpbGwgdHVybiA1IGluIE1hcmNoIDIwMjUsIG1ha2luZyBoZXIgYXBwcm94aW1hdGVseSBvbmUgeWVhciBmcm9tIGFnZSBlbGlnaWJpbGl0eS4gSSByZXZpZXdlZCB0aGF0IGhlciBjbGluaWNhbCBwcm9maWxlIOKAlCBoaWdobHkgZWxldmF0ZWQgdG90YWwgSWdFICgzOTggSVUvbUwsIGxhc3QgbWVhc3VyZWQpLCBkb2N1bWVudGVkIG11bHRpLWFsbGVyZ2VuIHNlbnNpdGl6YXRpb24sIGFuZCBwZXJzaXN0ZW50IHN5bXB0b21zIGRlc3BpdGUgc3RlcCA0IHRoZXJhcHkg4oCUIHdvdWxkIG1ha2UgaGVyIGEgc3Ryb25nIGNhbmRpZGF0ZSBmb3Igb21hbGl6dW1hYiB3aGVuIHNoZSByZWFjaGVzIHRoZSBhcHByb3ByaWF0ZSBhZ2UuIE9mZi1sYWJlbCB1c2UgYXQgYWdlIDUgY291bGQgYmUgY29uc2lkZXJlZCBpZiBhc3RobWEgYmVjb21lcyB1bmNvbnRyb2xsZWQgb24gY3VycmVudCBtYXhpbWFsIHRoZXJhcHkuCgpJIGFsc28gcmV2aXNpdGVkIHRoZSBkaXNjdXNzaW9uIG9mIHBlYW51dCBvcmFsIGltbXVub3RoZXJhcHkgKE9JVCkuIFByaXlhIHJlcG9ydGVkIHRoYXQgc2hlIGFuZCBSYWogaGF2ZSBiZWVuIHJlc2VhcmNoaW5nIE9JVCBhbmQgYXJlIGludGVyZXN0ZWQgYnV0IHJlbWFpbiBhcHByZWhlbnNpdmUgYWJvdXQgdGhlIHJpc2sgb2YgYWxsZXJnaWMgcmVhY3Rpb25zIGR1cmluZyB0aGUgdXAtZG9zaW5nIHBoYXNlLCBnaXZlbiBBaXNoYSdzIGhpc3Rvcnkgb2YgcGVhbnV0IGFuYXBoeWxheGlzIChPY3RvYmVyIDIwMjIpIGFuZCBoaWdobHkgZWxldmF0ZWQgcGVhbnV0LXNwZWNpZmljIElnRSAoNDguMiBrVS9MKS4gSSBhY2tub3dsZWRnZWQgdGhlaXIgY29uY2VybiBhcyBhcHByb3ByaWF0ZSBhbmQgc3VnZ2VzdGVkIHdlIHBsYW4gdG8gZGlzY3VzcyBPSVQgaW4gZnVydGhlciBkZXRhaWwgYXQgdGhlIG5leHQgaW4tcGVyc29uIHZpc2l0LCBpbmNsdWRpbmcgYSB0aG9yb3VnaCByZXZpZXcgb2Ygcmlzay1iZW5lZml0IGNvbnNpZGVyYXRpb25zLCB0aGUgY2xpbmljYWwgcHJvdG9jb2wsIGFuZCBtb25pdG9yaW5nIHJlcXVpcmVtZW50cy4KClBMQU46CjEuIENvbnRpbnVlIGN1cnJlbnQgYXN0aG1hIHJlZ2ltZW46IEFkdmFpciBIRkEgMTE1LzIxIG1jZyAxIHB1ZmYgQklELCBtb250ZWx1a2FzdCA0IG1nIGRhaWx5LCBhbGJ1dGVyb2wgUFJOLgoyLiBDb250aW51ZSBFcGlQZW4gSnIgMC4xNSBtZyB0d28tcGFjayBjYXJyaWVkIGF0IGFsbCB0aW1lczsgc3RyaWN0IHBlYW51dCBhbmQgdHJlZSBudXQgYXZvaWRhbmNlLgozLiBPbWFsaXp1bWFiIChYb2xhaXIpIHRvIGJlIHJlY29uc2lkZXJlZCB3aGVuIEFpc2hhIHJlYWNoZXMgYWdlIDYgKE1hcmNoIDIwMjYpIG9yIHNvb25lciBpZiBhc3RobWEgYmVjb21lcyB1bmNvbnRyb2xsZWQuCjQuIFBlYW51dCBPSVQgZGlzY3Vzc2lvbiBkZWZlcnJlZCB0byBuZXh0IGluLXBlcnNvbiB2aXNpdC4KNS4gU2NoZWR1bGUgaW4tcGVyc29uIGZvbGxvdy11cCB2aXNpdCBmb3IgbGF0ZSBzdW1tZXIvZWFybHkgZmFsbCAyMDI1IGZvciBjb21wcmVoZW5zaXZlIHJlYXNzZXNzbWVudCBpbmNsdWRpbmcgcmVwZWF0IEZlTk8sIGFsbGVyZ3kgcmV2aWV3LCBhbmQgZGV0YWlsZWQgT0lUIGNvdW5zZWxpbmcuCjYuIE1vdGhlciB0byBjb250YWN0IG91ciBvZmZpY2Ugb3IgRHIuIEhhcmxvdyBpZiBzeW1wdG9tcyB3b3JzZW4sIHJlc2N1ZSBpbmhhbGVyIHVzZSBpbmNyZWFzZXMsIG9yIGFueSBhY3V0ZSBleGFjZXJiYXRpb24gb2NjdXJzIHByaW9yIHRvIHNjaGVkdWxlZCB2aXNpdC4KClN1bml0YSBLcmlzaG5hbXVydGh5LCBNRApQZWRpYXRyaWMgQWxsZXJneSAmIEltbXVub2xvZ3kKVU5DIE1lZGljYWwgQ2VudGVyCk5QSTogMTY3MjkzNTQ4MQo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-012"
+      }
+    ],
+    "period": {
+      "start": "2025-02-10"
+    }
+  }
+}

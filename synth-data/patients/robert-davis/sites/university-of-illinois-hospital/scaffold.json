@@ -1,0 +1,355 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "bb4f5104-f2ac-492e-8745-681517f118b4",
+    "extension": [
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2054-5",
+              "display": "Black or African American"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Black or African American",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Not Hispanic or Latino",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "family": "Davis",
+        "given": [
+          "Robert",
+          "James"
+        ]
+      }
+    ],
+    "gender": "male",
+    "birthDate": "1960-09-14",
+    "address": [
+      {
+        "use": "home",
+        "line": [
+          "6321 S Halsted St"
+        ],
+        "city": "Chicago",
+        "state": "IL",
+        "postalCode": "60621",
+        "country": "US"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "773-555-0148",
+        "use": "home"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "D",
+          "display": "Divorced"
+        }
+      ],
+      "text": "Divorced"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1346287905",
+          "display": "Source Organization NPI 1346287905"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "IL",
+          "display": "IL"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Organization",
+    "id": "d2aeab73-b835-482a-bbb0-5b8f66d24069",
+    "identifier": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1346287905"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Healthcare Provider"
+      }
+    ],
+    "name": "University of Illinois Hospital",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "866-600-2273",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "line": [
+          "1740 W Taylor St"
+        ],
+        "city": "Chicago",
+        "state": "IL",
+        "postalCode": "60612",
+        "country": "US"
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1346287905",
+          "display": "Source Organization NPI 1346287905"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "IL",
+          "display": "IL"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "86539a25-bbaa-42c0-b704-415716a07c5a",
+    "name": [
+      {
+        "use": "official",
+        "family": "Anand",
+        "given": [
+          "Priya"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "ED Attending"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1346287905",
+          "display": "Source Organization NPI 1346287905"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "IL",
+          "display": "IL"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "6340603d-b075-4470-9336-8d48a0514f58",
+    "name": [
+      {
+        "use": "official",
+        "family": "Thompson",
+        "given": [
+          "Marcus"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Hospitalist/Admitting"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1346287905",
+          "display": "Source Organization NPI 1346287905"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "IL",
+          "display": "IL"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "23106dda-bc49-44b6-9579-2853e652a159",
+    "name": [
+      {
+        "use": "official",
+        "family": "Okafor",
+        "given": [
+          "Lena"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Infectious Disease Consult"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1346287905",
+          "display": "Source Organization NPI 1346287905"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "IL",
+          "display": "IL"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Location",
+    "id": "bf27a19c-b1d1-42b6-8bae-e38c3d2b10fd",
+    "status": "active",
+    "name": "University of Illinois Hospital",
+    "mode": "instance",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "HOSP",
+            "display": "Hospital"
+          }
+        ],
+        "text": "Hospital"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "866-600-2273",
+        "use": "work"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "line": [
+        "1740 W Taylor St"
+      ],
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60612",
+      "country": "US"
+    },
+    "managingOrganization": {
+      "reference": "Organization/d2aeab73-b835-482a-bbb0-5b8f66d24069",
+      "display": "University of Illinois Hospital"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1346287905",
+          "display": "Source Organization NPI 1346287905"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "IL",
+          "display": "IL"
+        }
+      ]
+    }
+  }
+]

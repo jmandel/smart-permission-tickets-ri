@@ -1,0 +1,80 @@
+{
+  "encounter_id": "enc-020",
+  "encounter_index": 20,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone encounter",
+    "reason": "Prior authorization status update for Hadlima (adalimumab-bwwd), continued rheumatoid arthritis management",
+    "period_start": "2022-12-05",
+    "participants": [
+      {
+        "name": "Dr. Alejandro Fuentes, MD",
+        "role": "attending/responsible provider",
+        "specialty": "Rheumatology"
+      }
+    ],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2021-03",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "leflunomide 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "once daily (uses most days)",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis — symptomatic pain/inflammation control",
+      "action": "reference-existing"
+    },
+    {
+      "name": "omeprazole 20 mg oral capsule",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "NSAID gastroprotection",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "supplementation (continued from prior methotrexate therapy)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "seasonal allergic rhinitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents a telephone call from Dr. Fuentes's office to patient regarding the status of the Aetna prior authorization for Hadlima (adalimumab-bwwd). The prior authorization remains under review; supplemental documentation including imaging reports and full medication history was submitted in October 2022. Patient reports stable but unimproved symptoms, tolerating current medications without side effects. Plan is to continue current regimen and follow up on prior authorization, with next office visit in March 2023 or sooner if authorization is obtained."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

@@ -1,0 +1,131 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "ballard-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Routine follow-up, influenza vaccine",
+    "period_start": "2024-10-08",
+    "participants": [
+      {
+        "name": "Dr. Kevin Tran",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Ballard Family Medicine",
+    "location": "Ballard Family Medicine, 5412 22nd Ave NW, Seattle, WA 98107"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 118,
+        "value_diastolic": 74,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 140,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative screen"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate, in sustained remission",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "take 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "take 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "take 50 mg by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, 2024-2025 seasonal formulation",
+      "date": "2024-10-08",
+      "route": "intramuscular injection",
+      "site": "left deltoid"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note for routine follow-up on 2024-10-08. Documents stable bipolar II disorder and alcohol use disorder in sustained remission, normal vitals, negative PHQ-2 depression screen, medication review with continuation of lamotrigine/quetiapine/naltrexone, administration of 2024-2025 influenza vaccine, and plan for annual wellness visit in January 2025.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

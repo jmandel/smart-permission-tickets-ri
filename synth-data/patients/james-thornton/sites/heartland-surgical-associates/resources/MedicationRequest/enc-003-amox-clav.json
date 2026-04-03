@@ -1,0 +1,111 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-003-amox-clav",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "562508",
+        "display": "amoxicillin 875 MG / clavulanate potassium 125 MG Oral Tablet"
+      }
+    ],
+    "text": "amoxicillin-clavulanate 875 mg / 125 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2026-01-22",
+  "requester": {
+    "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+    "type": "Practitioner",
+    "display": "Dr. Marcus Okonkwo"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "433202001",
+          "display": "Surgical site infection (disorder)"
+        }
+      ],
+      "text": "Post-operative infection prophylaxis following laparoscopic appendectomy; discontinued due to clinical failure"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take one tablet by mouth twice daily for 14 days. Discontinued on day 9 due to clinical failure (progressive surgical site infection).",
+      "patientInstruction": "Take one tablet by mouth twice daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 2,
+          "period": 1,
+          "periodUnit": "d",
+          "boundsPeriod": {
+            "start": "2026-01-12",
+            "end": "2026-01-22"
+          }
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 1,
+            "unit": "tablet",
+            "system": "http://unitsofmeasure.org",
+            "code": "{tbl}"
+          }
+        }
+      ]
+    }
+  ],
+  "statusReason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "182840001",
+        "display": "Drug treatment stopped - medical advice (situation)"
+      }
+    ],
+    "text": "Discontinued due to clinical failure; progressive surgical site infection despite 9 of 14 days of therapy"
+  }
+}

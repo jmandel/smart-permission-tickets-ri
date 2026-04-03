@@ -1,0 +1,60 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-005-lipid-panel",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "57698-3",
+        "display": "Lipid panel with direct LDL - Serum or Plasma"
+      }
+    ],
+    "text": "Lipid Panel"
+  },
+  "subject": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2021-03-10",
+  "issued": "2021-03-10T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+      "display": "Dr. Emily Nakamura"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-005-cholesterol-total",
+      "display": "Total cholesterol"
+    },
+    {
+      "reference": "Observation/enc-005-ldl",
+      "display": "LDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-005-hdl",
+      "display": "HDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-005-triglycerides",
+      "display": "Triglycerides"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Annual Wellness Visit",
+    "reason": "Annual wellness, statin discussion",
+    "period_start": "2023-01-24T09:00:00-06:00",
+    "period_end": "2023-01-24T09:45:00-06:00",
+    "participants": [],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "systolic": 130,
+        "diastolic": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 166,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.6,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "supplemental_oxygen": "room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6,
+        "unit": "%",
+        "reference_range": "4.0–5.6 %",
+        "flag": "high"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 106,
+        "unit": "mg/dL",
+        "reference_range": "70–99 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 5.8,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 241,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 224,
+        "unit": "mg/dL",
+        "reference_range": "< 200 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 138,
+        "unit": "mg/dL",
+        "reference_range": "< 100 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 52,
+        "unit": "mg/dL",
+        "reference_range": "> 40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 170,
+        "unit": "mg/dL",
+        "reference_range": "< 150 mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 0,
+        "interpretation": "negative for depression"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2023-01-24",
+      "action": "create"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild bilateral knee osteoarthritis",
+      "clinical_status": "active",
+      "onset_date": "2023-01-24",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Annual wellness visit note for 59-year-old woman documenting stable chronic conditions (hypertension controlled, prediabetes stable), new diagnosis of hyperlipidemia with shared decision-making discussion regarding statin therapy (patient elected dietary modification trial), new assessment of mild bilateral knee osteoarthritis, review of lab results (HbA1c, CBC, CMP, lipid panel, fasting glucose), vitals, PHQ-2 screening, and immunization review. Plan includes 6-month follow-up for lipid recheck."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP reported as unremarkable. No individual component values provided in the clinical narrative."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

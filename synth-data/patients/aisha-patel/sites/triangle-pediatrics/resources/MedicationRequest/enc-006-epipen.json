@@ -1,0 +1,95 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-006-epipen",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "727316",
+        "display": "EPINEPHrine (generic for EpiPen Jr) 0.15 MG in 0.3 ML Auto-Injector"
+      }
+    ],
+    "text": "Epinephrine auto-injector 0.15 mg (EpiPen Jr) two-pack"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-03-15",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "AllergyIntolerance/enc-001-peanut-allergy",
+      "display": "Peanut allergy"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Inject 0.15 mg intramuscularly into outer thigh as needed for anaphylaxis",
+      "patientInstruction": "Use as directed for signs of anaphylaxis. Inject into outer thigh. Call 911 immediately after use.",
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "78421000",
+            "display": "Intramuscular route (qualifier value)"
+          }
+        ],
+        "text": "Intramuscular"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 0.15,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "quantity": {
+      "value": 2,
+      "unit": "auto-injector"
+    }
+  },
+  "note": [
+    {
+      "text": "Prescription renewed at 4-year well-child visit. Indications for use and anaphylaxis emergency action plan reviewed with mother."
+    }
+  ]
+}

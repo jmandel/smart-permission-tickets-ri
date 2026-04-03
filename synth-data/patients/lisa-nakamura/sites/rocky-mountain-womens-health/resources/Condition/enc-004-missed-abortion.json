@@ -1,0 +1,70 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-004-missed-abortion",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "16607004",
+        "display": "Missed abortion (disorder)"
+      }
+    ],
+    "text": "Missed abortion (embryonic demise)"
+  },
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "onsetDateTime": "2024-10-21",
+  "abatementDateTime": "2024-11-04",
+  "recordedDate": "2024-10-21",
+  "note": [
+    {
+      "text": "Second consecutive first-trimester pregnancy loss. Embryonic demise confirmed by absent growth and absent cardiac activity on serial transvaginal ultrasounds (6-week and 7-week scans). CRL consistent with growth arrest at approximately 6 weeks 2 days. Patient elected expectant management; miscarriage completed spontaneously over approximately 10 days. Beta-hCG confirmed complete resolution (<5 mIU/mL) on 2024-11-04."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

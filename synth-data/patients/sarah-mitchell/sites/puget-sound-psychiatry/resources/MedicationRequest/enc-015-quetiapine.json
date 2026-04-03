@@ -1,0 +1,105 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-015-quetiapine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "616487",
+        "display": "QUEtiapine fumarate 50 MG Oral Tablet"
+      }
+    ],
+    "text": "Quetiapine 50 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "authoredOn": "2024-08-12",
+  "requester": {
+    "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+    "type": "Practitioner",
+    "display": "Dr. Anita Patel"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-015-bipolar-ii",
+      "display": "Bipolar II disorder"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 50 mg by mouth at bedtime",
+      "patientInstruction": "Take 50 mg by mouth at bedtime.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "at bedtime"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 50,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-020",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "7396004",
+          "display": "Diagnostic imaging (procedure)"
+        }
+      ],
+      "text": "Imaging"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "REF",
+              "display": "referrer"
+            }
+          ],
+          "text": "Ordering Physician"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+        "display": "Dr. Lisa Nakamura"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-04-02",
+    "end": "2025-04-02"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "26929004",
+          "display": "Alzheimer's disease (disorder)"
+        }
+      ],
+      "text": "Brain MRI for Alzheimer's disease monitoring"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+        "display": "Emory Cognitive Neurology Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+    "display": "Emory Cognitive Neurology Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Harold presented to Emory Imaging for a brain MRI without and with contrast, ordered by Dr. Nakamura for comparison to the April 2022 MRI from Jacksonville."
+    }
+  ]
+}

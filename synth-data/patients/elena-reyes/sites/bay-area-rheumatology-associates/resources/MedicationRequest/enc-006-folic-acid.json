@@ -1,0 +1,93 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-006-folic-acid",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "310410",
+        "display": "folic acid 1 MG Oral Tablet"
+      }
+    ],
+    "text": "folic acid 1 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2023-04-06",
+  "requester": {
+    "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+    "type": "Practitioner",
+    "display": "Dr. James Tran"
+  },
+  "reasonCode": [
+    {
+      "text": "Co-therapy with methotrexate to reduce methotrexate side effects including hematologic and gastrointestinal toxicity"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 1 mg by mouth daily",
+      "patientInstruction": "Take 1 mg by mouth daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        },
+        "code": {
+          "text": "Daily"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 1,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

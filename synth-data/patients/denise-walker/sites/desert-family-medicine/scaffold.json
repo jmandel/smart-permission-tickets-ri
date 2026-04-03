@@ -1,0 +1,402 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2054-5",
+              "display": "Black or African American"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Black"
+          }
+        ]
+      },
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Non-Hispanic"
+          }
+        ]
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "text": "Denise Walker",
+        "family": "Walker",
+        "given": [
+          "Denise"
+        ]
+      }
+    ],
+    "gender": "female",
+    "birthDate": "1958-07-22",
+    "address": [
+      {
+        "use": "home",
+        "city": "Albuquerque",
+        "state": "NM",
+        "country": "US",
+        "text": "Albuquerque, NM"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "505-555-0142",
+        "use": "home"
+      }
+    ],
+    "contact": [
+      {
+        "relationship": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                "code": "C",
+                "display": "Emergency Contact"
+              }
+            ],
+            "text": "Emergency Contact"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "DAU",
+                "display": "daughter"
+              }
+            ],
+            "text": "Daughter"
+          }
+        ],
+        "name": {
+          "text": "Angela Walker",
+          "family": "Walker",
+          "given": [
+            "Angela"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "505-555-0177",
+            "use": "mobile"
+          }
+        ],
+        "address": {
+          "city": "Albuquerque",
+          "state": "NM",
+          "country": "US",
+          "text": "Albuquerque, NM"
+        }
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "W",
+          "display": "Widowed"
+        }
+      ],
+      "text": "Widowed"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ],
+    "generalPractitioner": [
+      {
+        "reference": "Practitioner/20124955-3cbb-4fad-a63f-2ff51581c668",
+        "display": "Dr. Monica Reyes, MD"
+      }
+    ],
+    "managingOrganization": {
+      "reference": "Organization/dbd558a3-303a-4216-9b3c-2b3e233ef600",
+      "display": "Desert Family Medicine"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1487624310",
+          "display": "Source Organization NPI 1487624310"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Organization",
+    "id": "dbd558a3-303a-4216-9b3c-2b3e233ef600",
+    "identifier": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1487624310"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Primary care"
+      }
+    ],
+    "name": "Desert Family Medicine",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "602-555-0110",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "city": "Phoenix",
+        "state": "AZ",
+        "country": "US",
+        "text": "Phoenix, AZ"
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1487624310",
+          "display": "Source Organization NPI 1487624310"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "20124955-3cbb-4fad-a63f-2ff51581c668",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "text": "Dr. Monica Reyes, MD",
+        "family": "Reyes",
+        "given": [
+          "Monica"
+        ],
+        "prefix": [
+          "Dr."
+        ],
+        "suffix": [
+          "MD"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "MD"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1487624310",
+          "display": "Source Organization NPI 1487624310"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "18f66d93-d6fd-42d0-b445-64c6dd55f7eb",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "text": "Samuel Hart, FNP-C",
+        "family": "Hart",
+        "given": [
+          "Samuel"
+        ],
+        "suffix": [
+          "FNP-C"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "text": "Family Nurse Practitioner-Certified"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1487624310",
+          "display": "Source Organization NPI 1487624310"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "26752edd-cbd2-48ad-9920-79950d465591",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "text": "Elena Brooks, RN",
+        "family": "Brooks",
+        "given": [
+          "Elena"
+        ],
+        "suffix": [
+          "RN"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+              "code": "RN",
+              "display": "Registered Nurse"
+            }
+          ],
+          "text": "RN"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1487624310",
+          "display": "Source Organization NPI 1487624310"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Location",
+    "id": "8116aec9-563a-4f4a-ac13-7da7bf3619db",
+    "status": "active",
+    "name": "Desert Family Medicine",
+    "description": "Main clinical site for Desert Family Medicine in Phoenix, Arizona",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "OF",
+            "display": "Office"
+          }
+        ],
+        "text": "Primary care clinic"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "602-555-0110",
+        "use": "work"
+      }
+    ],
+    "address": {
+      "city": "Phoenix",
+      "state": "AZ",
+      "country": "US",
+      "text": "Phoenix, AZ"
+    },
+    "managingOrganization": {
+      "reference": "Organization/dbd558a3-303a-4216-9b3c-2b3e233ef600",
+      "display": "Desert Family Medicine"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1487624310",
+          "display": "Source Organization NPI 1487624310"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "AZ",
+          "display": "AZ"
+        }
+      ]
+    }
+  }
+]

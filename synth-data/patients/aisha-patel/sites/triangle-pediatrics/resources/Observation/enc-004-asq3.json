@@ -1,0 +1,59 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-004-asq3",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "71954-2",
+        "display": "Ages and Stages Questionnaires [ASQ]"
+      }
+    ],
+    "text": "ASQ-3 (Ages and Stages Questionnaire, Third Edition)"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "effectiveDateTime": "2023-03-15",
+  "performer": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "valueString": "All domains within normal limits",
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "N",
+          "display": "Normal"
+        }
+      ],
+      "text": "No developmental concerns"
+    }
+  ],
+  "note": [
+    {
+      "text": "All domains within normal limits: communication, gross motor, fine motor, problem-solving, personal-social. Speaking in 3-4 word sentences, running well, climbing stairs alternating feet, engaging in pretend play."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-003-naproxen",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "198013",
+        "display": "naproxen 250 MG Oral Tablet"
+      }
+    ],
+    "text": "naproxen 250 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2023-06-12",
+  "requester": {
+    "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+    "display": "Dr. Adebayo Olatunde, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-002-knee-oa",
+      "display": "Mild bilateral knee osteoarthritis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 1 tablet (250 mg) by mouth twice daily as needed for knee pain",
+      "patientInstruction": "Take 1 tablet (250 mg) by mouth twice daily as needed for knee pain.",
+      "timing": {
+        "repeat": {
+          "frequency": 2,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 250,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

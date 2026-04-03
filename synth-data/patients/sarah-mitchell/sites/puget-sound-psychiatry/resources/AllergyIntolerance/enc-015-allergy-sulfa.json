@@ -1,0 +1,67 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "enc-015-allergy-sulfa",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "10831",
+        "display": "sulfamethoxazole / trimethoprim"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91939003",
+        "display": "Allergy to sulfonamide (finding)"
+      }
+    ],
+    "text": "Sulfa antibiotics (trimethoprim-sulfamethoxazole)"
+  },
+  "patient": {
+    "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "recordedDate": "2024-08-12",
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "text": "Rash"
+        }
+      ],
+      "description": "Rash"
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

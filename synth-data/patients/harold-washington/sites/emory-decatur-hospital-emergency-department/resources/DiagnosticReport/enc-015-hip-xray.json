@@ -1,0 +1,43 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-015-hip-xray",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24762-7",
+        "display": "XR Hip Views"
+      }
+    ],
+    "text": "Right hip X-ray (AP and lateral)"
+  },
+  "subject": {
+    "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "effectiveDateTime": "2025-02-08",
+  "issued": "2025-02-08T05:00:00-05:00",
+  "performer": [
+    {
+      "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+      "display": "Dr. Marcus Williams"
+    }
+  ],
+  "conclusion": "No fracture. No dislocation. Mild degenerative changes noted."
+}

@@ -1,0 +1,73 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-008-transaminase",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707724006",
+        "display": "Liver enzymes level above reference range (finding)"
+      }
+    ],
+    "text": "Mild transaminase elevation, likely alcohol-related"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "onsetDateTime": "2023-01-09",
+  "recordedDate": "2023-01-09",
+  "recorder": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "note": [
+    {
+      "text": "Likely alcohol-related given pattern and GGT elevation. Hepatic ultrasound pending to evaluate for hepatic steatosis or other structural disease."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-001-bnp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "30934-4",
+        "display": "Natriuretic peptide B [Mass/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "B-type natriuretic peptide"
+  },
+  "subject": {
+    "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "effectiveDateTime": "2022-06-08",
+  "valueQuantity": {
+    "value": 412,
+    "unit": "pg/mL",
+    "system": "http://unitsofmeasure.org",
+    "code": "pg/mL"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "H",
+          "display": "High"
+        }
+      ],
+      "text": "High"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "coordination of pulmonary workup, patient reassurance regarding chest X-ray findings",
+    "period_start": "2024-08-05",
+    "participants": [],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "right upper lobe lung opacity, under investigation",
+      "clinical_status": "active",
+      "onset_date": "2024-08-01",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Brief telephone note documenting Dr. Olatunde's call to Patricia confirming scheduling of CT chest with contrast (August 8 at Houston Medical Center Imaging) and pulmonology consultation with Dr. Ramaswamy (August 12 at Houston Pulmonary Associates). Documents patient's anxiety about right upper lobe opacity on recent chest X-ray, reassurance provided, and plan for CT imaging followed by pulmonology review. No vitals, labs, or medication changes."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

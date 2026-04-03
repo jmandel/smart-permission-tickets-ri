@@ -1,0 +1,51 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-009-spo2-2315",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2708-6",
+        "display": "Oxygen saturation in Arterial blood"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "59408-5",
+        "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+      }
+    ],
+    "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+  },
+  "subject": {
+    "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "effectiveDateTime": "2025-01-14T23:15:00-05:00",
+  "valueQuantity": {
+    "value": 96,
+    "unit": "%",
+    "system": "http://unitsofmeasure.org",
+    "code": "%"
+  },
+  "note": [
+    {
+      "text": "on room air"
+    }
+  ]
+}

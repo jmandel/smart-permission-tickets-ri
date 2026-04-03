@@ -1,0 +1,95 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-014",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185389009",
+          "display": "Follow-up visit (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "period": {
+        "start": "2022-01-10T09:00:00-06:00",
+        "end": "2022-01-10T09:45:00-06:00"
+      },
+      "individual": {
+        "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+        "display": "Dr. Alejandro Fuentes"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-01-10T09:00:00-06:00",
+    "end": "2022-01-10T09:45:00-06:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Initiation of leflunomide as second-line conventional DMARD therapy"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-005-ra",
+        "display": "Seropositive rheumatoid arthritis"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "billing",
+            "display": "Billing"
+          }
+        ]
+      },
+      "rank": 1
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/a064bab9-f6d3-42ba-885b-acc55bff9f6a",
+        "display": "South Texas Rheumatology"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/061c9f2e-511c-42cd-976c-06a822d42c27",
+    "display": "South Texas Rheumatology"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Carlos presented for initiation of leflunomide as second-line conventional DMARD therapy after methotrexate failure due to hepatotoxicity. He reported continued joint stiffness and pain, using naproxen daily."
+    }
+  ]
+}

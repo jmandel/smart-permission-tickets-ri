@@ -1,0 +1,63 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-010-ecg",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP29708-2",
+          "display": "Cardiology"
+        }
+      ],
+      "text": "Cardiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34534-8",
+        "display": "12 lead EKG panel"
+      }
+    ],
+    "text": "12-Lead Electrocardiogram"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "effectiveDateTime": "2026-01-12T09:15:00-06:00",
+  "issued": "2026-01-12T09:20:00-06:00",
+  "performer": [
+    {
+      "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+      "type": "Practitioner",
+      "display": "Dr. Angela Whitfield, MD"
+    }
+  ],
+  "conclusion": "Atrial fibrillation with ventricular rate of 92 bpm. Normal axis. No ST-segment changes. No pathologic Q waves. No bundle branch block. Normal QTc interval. No prior ECG on file for comparison.",
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "49436004",
+          "display": "Atrial fibrillation (disorder)"
+        }
+      ],
+      "text": "Atrial fibrillation"
+    }
+  ],
+  "presentedForm": [
+    {
+      "contentType": "text/plain",
+      "title": "ECG Interpretation",
+      "data": "MTItTGVhZCBFQ0cgSW50ZXJwcmV0YXRpb246ClJoeXRobTogQXRyaWFsIGZpYnJpbGxhdGlvbgpWZW50cmljdWxhciByYXRlOiA5MiBicG0KQXhpczogTm9ybWFsClNUIHNlZ21lbnRzOiBObyBTVC1zZWdtZW50IGNoYW5nZXMKUSB3YXZlczogTm8gcGF0aG9sb2dpYyBRIHdhdmVzCkNvbmR1Y3Rpb246IE5vIGJ1bmRsZSBicmFuY2ggYmxvY2sKUVRjOiBOb3JtYWwKTm8gcHJpb3IgRUNHIG9uIGZpbGUgZm9yIGNvbXBhcmlzb24u"
+    }
+  ]
+}

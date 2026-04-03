@@ -1,0 +1,66 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-000-flu-vaccine",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "150",
+        "display": "Influenza, split virus, quadrivalent, PF"
+      }
+    ],
+    "text": "Influenza vaccine, inactivated, quadrivalent (2021-2022 season)"
+  },
+  "patient": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "occurrenceDateTime": "2022-01-18",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/d99bf491-0419-49c3-a8af-4962be6c1cbd",
+    "display": "Westheimer Family Medicine"
+  },
+  "site": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+        "code": "LD",
+        "display": "Left Deltoid"
+      }
+    ],
+    "text": "Left Deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+        "display": "Dr. Adebayo Olatunde, MD"
+      }
+    }
+  ]
+}

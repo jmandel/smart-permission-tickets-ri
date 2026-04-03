@@ -1,0 +1,41 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-002-jp-drain-removal",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "241031001",
+        "display": "Removal of drain (procedure)"
+      }
+    ],
+    "text": "Removal of Jackson-Pratt drain, right lower quadrant"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "performedDateTime": "2026-01-14T10:00:00-06:00",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/a21fabab-5da7-4eea-aec8-26e9136e6d81",
+        "type": "Practitioner",
+        "display": "Dr. Marcus Okonkwo"
+      }
+    }
+  ],
+  "location": {
+    "reference": "Location/c4fcb878-6df4-455b-afc1-5205ef1ed63e",
+    "display": "Nebraska Medicine"
+  },
+  "note": [
+    {
+      "text": "JP drain removed from RLQ on POD2; site clean, no leakage."
+    }
+  ]
+}

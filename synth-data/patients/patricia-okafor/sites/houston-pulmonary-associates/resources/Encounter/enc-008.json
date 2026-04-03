@@ -1,0 +1,77 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-008",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "11429006",
+          "display": "Consultation (procedure)"
+        }
+      ],
+      "text": "Initial Pulmonary Consultation"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "period": {
+        "start": "2024-08-12",
+        "end": "2024-08-12"
+      },
+      "individual": {
+        "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+        "display": "Dr. Nisha Ramaswamy, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-08-12",
+    "end": "2024-08-12"
+  },
+  "reasonCode": [
+    {
+      "text": "Evaluation of persistent cough, unintentional weight loss, and right upper lobe opacity; CT chest review"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/08fdf5a6-1e44-4193-90ad-ba4f511e694b",
+        "display": "Houston Pulmonary Associates"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+    "display": "Houston Pulmonary Associates"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia was seen by Dr. Nisha Ramaswamy for initial pulmonary consultation, referred by Dr."
+    }
+  ]
+}

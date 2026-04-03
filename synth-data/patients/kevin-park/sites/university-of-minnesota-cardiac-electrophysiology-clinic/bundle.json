@@ -1,0 +1,2748 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T12:12:36.601Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:5bd976dc-a3e0-4123-ac48-b7774a57978f",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "5bd976dc-a3e0-4123-ac48-b7774a57978f",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2028-9",
+                  "display": "Asian"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2040-4",
+                  "display": "Korean"
+                },
+                "url": "detailed"
+              },
+              {
+                "valueString": "Korean-American",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "His PCP starts workup: TTE (echocardiogram) shows mild left atrial dilation (4.3 cm), preserved LVEF (58%), no valvular disease. TSH is normal. CBC and metabolic panel are normal. CHA₂DS₂-VASc score is 1 (hypertension). His PCP initiates rate control (metoprolol succinate 50mg daily) and anticoagulation (apixaban 5mg BID), then refers Kevin to an electrophysiologist at the University of Minnesota for evaluation of catheter ablation.\n\nThe EP specialist at U of M issues a Permission Ticket to access Kevin's records from his PCP, including the ECG, echocardiogram, labs, and medication history relevant to the consult.\n\nTwo sites, one state (MN). Tests Permission Ticket constraints on scopes (specialist needs cardiac-relevant data: ECG, echo, labs, medications — not unrelated history) and organizations (community PCP → academic specialist)."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.0.1.7.5.737384.14",
+            "value": "UMN-EP-900471"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-d78ea2c16bb7050d18470a96"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Park",
+            "given": [
+              "Kevin",
+              "Junghwan"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "612-555-0148",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "kevin.park@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1968-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "2841 Bloomington Avenue"
+            ],
+            "city": "Minneapolis",
+            "state": "MN",
+            "postalCode": "55406",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cd04802f-d135-4320-a74a-428b4b29d64b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "cd04802f-d135-4320-a74a-428b4b29d64b",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1987654321"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "University of Minnesota Cardiac Electrophysiology Clinic",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "612-625-8999",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "612-625-4401",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "420 Delaware Street SE",
+              "MMC 508"
+            ],
+            "city": "Minneapolis",
+            "state": "MN",
+            "postalCode": "55455",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1345678902"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Lindgren",
+            "given": [
+              "James"
+            ],
+            "prefix": [
+              "Dr."
+            ],
+            "suffix": [
+              "MD",
+              "FHRS"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "207RC0200X",
+                  "display": "Clinical Cardiac Electrophysiology"
+                }
+              ],
+              "text": "Cardiac Electrophysiologist, FHRS"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:72b83535-9536-4b6b-8af9-060de6f94e56",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "72b83535-9536-4b6b-8af9-060de6f94e56",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Okonkwo",
+            "given": [
+              "Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ],
+            "suffix": [
+              "MD"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "207RC0200X",
+                  "display": "Clinical Cardiac Electrophysiology"
+                }
+              ],
+              "text": "Electrophysiology Fellow"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Torres",
+            "given": [
+              "Maria"
+            ],
+            "suffix": [
+              "RN",
+              "CCRN"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "RN",
+                  "display": "Registered Nurse"
+                }
+              ],
+              "text": "Registered Nurse, CCRN"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+      "resource": {
+        "resourceType": "Location",
+        "id": "01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+        "status": "active",
+        "name": "University of Minnesota Cardiac Electrophysiology Clinic",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient Facility"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "612-625-8999",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "420 Delaware Street SE",
+            "MMC 508"
+          ],
+          "city": "Minneapolis",
+          "state": "MN",
+          "postalCode": "55455",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+          "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-afib",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-afib",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440059007",
+              "display": "Persistent atrial fibrillation (disorder)"
+            }
+          ],
+          "text": "Persistent atrial fibrillation"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "onsetDateTime": "2025-11",
+        "recordedDate": "2026-02-16",
+        "note": [
+          {
+            "text": "Refined characterization at EP consultation: AF classified as likely persistent based on continuous AF on ECG and approximately 3 months of ongoing symptoms. EHRA symptom class IIb (symptoms affecting daily activity). Ablation candidacy assessment initiated. Mild LA dilation (4.3 cm), preserved LVEF (58%). Rate controlled on metoprolol succinate 50 mg daily. CHA2DS2-VASc 1, on apixaban 5 mg BID."
+          },
+          {
+            "text": "2026-02-22: 48-hour Holter monitor confirms persistent atrial fibrillation with 100% AF burden. No periods of sinus rhythm identified over the entire recording. Reclassification from 'likely persistent' to confirmed persistent AF. Adequate rate control (avg 72 bpm), no significant pauses, minimal PVC burden (0.3%)."
+          },
+          {
+            "text": "2026-03-09: Follow-up consultation reviewing Holter results with patient and spouse. Symptomatic despite adequate rate control (exertional dyspnea, reduced exercise tolerance). Shared decision-making discussion regarding catheter ablation with pulmonary vein isolation (PVI). Patient elects to proceed with ablation as rhythm-control strategy. Pre-procedure workup initiated (pre-op labs, TEE/cardiac CT for LA anatomy and thrombus exclusion, anesthesia clearance)."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 26.5,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 130,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 80,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 69,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 68,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "note": [
+          {
+            "text": "Irregularly irregular rhythm"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2026-02-16T09:10:00-06:00",
+        "valueQuantity": {
+          "value": 180,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-af-burden",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-af-burden",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "text": "Atrial fibrillation burden"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 100,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "A",
+                "display": "Abnormal"
+              }
+            ],
+            "text": "Persistent atrial fibrillation confirmed; no periods of sinus rhythm identified"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-avg-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-avg-hr",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "41924-2",
+              "display": "Heart rate 24 hour mean"
+            }
+          ],
+          "text": "Average ventricular rate during Holter monitoring"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 72,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Adequate rate control at rest"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-events",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-events",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "text": "Number of patient-reported cardiac events during Holter monitoring"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4,
+          "unit": "{events}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{events}"
+        },
+        "note": [
+          {
+            "text": "All correlated with periods of higher ventricular rate (88-118 bpm) during atrial fibrillation; no associated bradycardia, pauses, or ventricular ectopy at event times."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-longest-pause",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-longest-pause",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8637-1",
+              "display": "R-R interval by EKG"
+            }
+          ],
+          "text": "Longest R-R interval (longest pause)"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.8,
+          "unit": "s",
+          "system": "http://unitsofmeasure.org",
+          "code": "s"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "No pauses greater than 2.0 seconds; not clinically significant"
+          }
+        ],
+        "note": [
+          {
+            "text": "Occurred during sleep."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-max-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-max-hr",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8873-2",
+              "display": "Heart rate 24 hour maximum"
+            }
+          ],
+          "text": "Maximum ventricular rate during Holter monitoring"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 118,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "note": [
+          {
+            "text": "Occurred during brisk walking at 10:42 on 2026-02-19. Brisk exertional response but within acceptable limits."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-min-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-min-hr",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8883-1",
+              "display": "Heart rate 24 hour minimum"
+            }
+          ],
+          "text": "Minimum ventricular rate during Holter monitoring"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 52,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "note": [
+          {
+            "text": "Occurred during sleep at 03:14 on 2026-02-19. No clinically significant bradycardia."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-pvc-burden",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-pvc-burden",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8616-5",
+              "display": "Premature ventricular contractions"
+            }
+          ],
+          "text": "Premature ventricular complex (PVC) burden"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 0.3,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Rare isolated PVCs, no couplets, no ventricular tachycardia runs; low arrhythmic risk"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-recording-duration",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-recording-duration",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8618-1",
+              "display": "Recording duration by EKG"
+            }
+          ],
+          "text": "Total Holter recording duration"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueQuantity": {
+          "value": 47.7,
+          "unit": "h",
+          "system": "http://unitsofmeasure.org",
+          "code": "h"
+        },
+        "note": [
+          {
+            "text": "47 hours 42 minutes. Adequate recording duration, signal quality adequate throughout."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-rhythm",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-016-rhythm",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "procedure",
+                "display": "Procedure"
+              }
+            ],
+            "text": "Procedure"
+          }
+        ],
+        "code": {
+          "text": "Predominant cardiac rhythm on Holter monitoring"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440059007",
+              "display": "Persistent atrial fibrillation (disorder)"
+            }
+          ],
+          "text": "Atrial fibrillation (continuous, no sinus rhythm identified)"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 26.4,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 128,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 78,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 72,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "note": [
+          {
+            "text": "Irregularly irregular rhythm"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 36.8,
+          "unit": "Cel",
+          "system": "http://unitsofmeasure.org",
+          "code": "Cel"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2026-03-09T09:10:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+            "display": "Maria Torres, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 81.2,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-holter",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-015-holter",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "108252007",
+                "display": "Laboratory procedure"
+              }
+            ],
+            "text": "Cardiac Diagnostics"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "427446001",
+              "display": "48 hour ambulatory electrocardiographic monitoring (procedure)"
+            }
+          ],
+          "text": "48-hour Holter monitor"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "occurrencePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "authoredOn": "2026-02-16",
+        "requester": {
+          "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+          "type": "Practitioner",
+          "display": "Dr. James Lindgren, MD, FHRS"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "440059007",
+                "display": "Persistent atrial fibrillation (disorder)"
+              }
+            ],
+            "text": "Atrial fibrillation, likely persistent"
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-afib",
+            "display": "Persistent atrial fibrillation"
+          }
+        ],
+        "note": [
+          {
+            "text": "48-hour Holter monitor to quantify AF burden, assess rate control adequacy during daily activities, and confirm persistent vs. paroxysmal AF pattern. Maria Torres, RN coordinated device logistics and patient education."
+          },
+          {
+            "text": "Completed 2026-02-20. Results interpreted 2026-02-22: persistent AF confirmed with 100% AF burden."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-cardiac-imaging",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-017-cardiac-imaging",
+        "status": "active",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "105376000",
+              "display": "Transesophageal echocardiography (procedure)"
+            }
+          ],
+          "text": "Transesophageal echocardiogram or cardiac CT for left atrial anatomy and thrombus exclusion"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "authoredOn": "2026-03-09",
+        "requester": {
+          "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+          "display": "Dr. James Lindgren, MD, FHRS"
+        },
+        "reasonReference": [
+          {
+            "reference": "ServiceRequest/enc-017-pvi",
+            "display": "Pulmonary vein isolation via catheter ablation"
+          }
+        ],
+        "note": [
+          {
+            "text": "Repeat TEE or cardiac CT for left atrial anatomy mapping and thrombus exclusion prior to planned catheter ablation procedure."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-preop-labs",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-017-preop-labs",
+        "status": "active",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "15220000",
+              "display": "Laboratory test (procedure)"
+            }
+          ],
+          "text": "Pre-operative laboratory panel"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "authoredOn": "2026-03-09",
+        "requester": {
+          "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+          "display": "Dr. James Lindgren, MD, FHRS"
+        },
+        "reasonReference": [
+          {
+            "reference": "ServiceRequest/enc-017-pvi",
+            "display": "Pulmonary vein isolation via catheter ablation"
+          }
+        ],
+        "note": [
+          {
+            "text": "Pre-operative labs to be drawn prior to planned pulmonary vein isolation procedure date."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-pvi",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-017-pvi",
+        "status": "active",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "18286008",
+              "display": "Catheter ablation of tissue of heart (procedure)"
+            }
+          ],
+          "text": "Pulmonary vein isolation via catheter ablation"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "authoredOn": "2026-03-09",
+        "requester": {
+          "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+          "display": "Dr. James Lindgren, MD, FHRS"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-afib",
+            "display": "Persistent atrial fibrillation"
+          }
+        ],
+        "note": [
+          {
+            "text": "PVI for persistent AF with 100% AF burden on Holter. Symptomatic despite adequate rate control. Shared decision-making with patient and spouse; patient elects to proceed. Procedure to be scheduled in coming weeks."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-015-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34099-2",
+              "display": "Cardiology Consult note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11488-4",
+              "display": "Consult note"
+            }
+          ],
+          "text": "Cardiology Consultation Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "date": "2026-02-16T10:00:00-06:00",
+        "author": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          },
+          {
+            "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+            "type": "Practitioner",
+            "display": "Dr. Sarah Okonkwo, MD"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VU5JVkVSU0lUWSBPRiBNSU5ORVNPVEEgQ0FSRElBQyBFTEVDVFJPUEhZU0lPTE9HWSBDTElOSUMKNDIwIERlbGF3YXJlIFN0cmVldCBTRSwgTU1DIDUwOCwgTWlubmVhcG9saXMsIE1OIDU1NDU1Ck5QSTogMTk4NzY1NDMyMQoKQ09OU1VMVEFUSU9OIE5PVEUg4oCUIE5FVyBQQVRJRU5UCgpEYXRlIG9mIFNlcnZpY2U6IDAyLzE2LzIwMjYKUGF0aWVudDogS2V2aW4gSnVuZ2h3YW4gUGFyayAoRE9COiAwOS8xNC8xOTY4KQpSZWZlcnJpbmcgUGh5c2ljaWFuOiBEci4gQW5nZWxhIFdoaXRmaWVsZCwgTUQsIE1pbm5laGFoYSBJbnRlcm5hbCBNZWRpY2luZQpBdHRlbmRpbmc6IERyLiBKYW1lcyBMaW5kZ3JlbiwgTUQsIEZIUlMKRmVsbG93OiBEci4gU2FyYWggT2tvbmt3bywgTUQKRW5jb3VudGVyIFR5cGU6IE9mZmljZSBWaXNpdCDigJQgSW5pdGlhbCBFbGVjdHJvcGh5c2lvbG9neSBDb25zdWx0YXRpb24KClNVQkpFQ1RJVkU6CgpDaGllZiBDb21wbGFpbnQ6IEV2YWx1YXRpb24gb2YgbmV3LW9uc2V0IGF0cmlhbCBmaWJyaWxsYXRpb24gYW5kIGNhdGhldGVyIGFibGF0aW9uIGNhbmRpZGFjeS4KCkhQSTogTXIuIFBhcmsgaXMgYSA1Ny15ZWFyLW9sZCBLb3JlYW4tQW1lcmljYW4gbWFsZSByZWZlcnJlZCBieSBEci4gQW5nZWxhIFdoaXRmaWVsZCBhdCBNaW5uZWhhaGEgSW50ZXJuYWwgTWVkaWNpbmUgZm9yIGV2YWx1YXRpb24gb2YgbmV3LW9uc2V0IGF0cmlhbCBmaWJyaWxsYXRpb24uIEhlIGlzIGFjY29tcGFuaWVkIGJ5IGhpcyB3aWZlLCBTb29uLVlpIFBhcmsuIE91dHNpZGUgcmVjb3JkcyB3ZXJlIHJldmlld2VkIGluY2x1ZGluZyAxMi1sZWFkIEVDRyBjb25maXJtaW5nIEFGLCB0cmFuc3Rob3JhY2ljIGVjaG9jYXJkaW9ncmFtIHJlcG9ydCwgbGFib3JhdG9yeSByZXN1bHRzIChUU0gsIENCQywgQ01QKSwgY3VycmVudCBtZWRpY2F0aW9uIGxpc3QsIGFuZCByZWZlcnJhbCBTZXJ2aWNlUmVxdWVzdC4KClBhdGllbnQgcmVwb3J0cyBvbnNldCBvZiBpbnRlcm1pdHRlbnQgcGFscGl0YXRpb25zIGJlZ2lubmluZyBhcHByb3hpbWF0ZWx5IE5vdmVtYmVyIDIwMjUsIGRlc2NyaWJlZCBhcyBhIGZsdXR0ZXJpbmcgc2Vuc2F0aW9uIGluIHRoZSBjaGVzdCwgaW5pdGlhbGx5IG5vdGVkIGR1cmluZyBwaHlzaWNhbCBleGVydGlvbiBpbmNsdWRpbmcgZ29sZiBhbmQgdXBoaWxsIHdhbGtpbmcuIEhlIGFsc28gcmVwb3J0cyBwcm9ncmVzc2l2ZSBleGVydGlvbmFsIGR5c3BuZWEgb3ZlciB0aGUgc2FtZSBwZXJpb2QuIEFGIHdhcyBjb25maXJtZWQgb24gRUNHIGF0IGhpcyBQQ1Agb2ZmaWNlIG9uIDAxLzEyLzIwMjYgd2l0aCB2ZW50cmljdWxhciByYXRlIG9mIDkyIGJwbS4gRWNob2NhcmRpb2dyYW0gb24gMDEvMTkvMjAyNiBzaG93ZWQgbWlsZCBMQSBkaWxhdGlvbiAoNC4zIGNtKSwgcHJlc2VydmVkIExWRUYgKDU4JSksIG5vIHNpZ25pZmljYW50IHZhbHZ1bGFyIGRpc2Vhc2UuCgpIZSB3YXMgc3RhcnRlZCBvbiBtZXRvcHJvbG9sIHN1Y2NpbmF0ZSA1MCBtZyBkYWlseSBhbmQgYXBpeGFiYW4gNSBtZyBCSUQgb24gMDEvMjYvMjAyNi4gSGUgcmVwb3J0cyBtZXRvcHJvbG9sIGhhcyByZWR1Y2VkIHRoZSBpbnRlbnNpdHkgb2YgcGFscGl0YXRpb25zIGJ1dCBoYXMgbm90IGVsaW1pbmF0ZWQgdGhlbS4gSGUgY29udGludWVzIHRvIGV4cGVyaWVuY2UgZmx1dHRlcmluZyBlcGlzb2RlcyAyLTMgdGltZXMgcGVyIHdlZWsuIEhlIG5vdGVzIHJlZHVjZWQgZXhlcmNpc2UgdG9sZXJhbmNlIGNvbXBhcmVkIHRvIGJhc2VsaW5lIOKAlCBoZSBjYW4gd2FsayAyIG1pbGVzIGJ1dCBtdXN0IHNsb3cgaGlzIHBhY2Ugb24gaW5jbGluZXMsIHdoaWNoIGlzIG5ldyBmb3IgaGltLiBFSFJBIHN5bXB0b20gY2xhc3MgSUliLgoKUE1IOiBFc3NlbnRpYWwgaHlwZXJ0ZW5zaW9uIChkaWFnbm9zZWQgMjAxOCwgd2VsbCBjb250cm9sbGVkIG9uIGxpc2lub3ByaWwgMTAgbWcgZGFpbHkpLCBib3JkZXJsaW5lIGh5cGVybGlwaWRlbWlhIChkaWV0LW1hbmFnZWQsIExETCAxMTgtMTMyIHJhbmdlKSwgc2NyZWVuaW5nIGNvbG9ub3Njb3B5IDIwMTkgKG5vcm1hbCkuIE5vIGRpYWJldGVzLCBubyBwcmlvciBzdHJva2Ugb3IgVElBLCBubyBoZWFydCBmYWlsdXJlLCBubyB2YXNjdWxhciBkaXNlYXNlLgoKTWVkaWNhdGlvbnM6CjEuIExpc2lub3ByaWwgMTAgbWcgZGFpbHkKMi4gTWV0b3Byb2xvbCBzdWNjaW5hdGUgNTAgbWcgZGFpbHkKMy4gQXBpeGFiYW4gNSBtZyBCSUQKNC4gRmlzaCBvaWwgMTAwMCBtZyBkYWlseSAoT1RDKQoKQWxsZXJnaWVzL0ludG9sZXJhbmNlczogSWJ1cHJvZmVuIOKAlCBHSSB1cHNldCAoaW50b2xlcmFuY2UpCgpTb2NpYWwgSGlzdG9yeTogTWFycmllZCwgb3ducyBhIGRyeSBjbGVhbmluZyBidXNpbmVzcy4gQXZpZCBnb2xmZXIgYW5kIHJlZ3VsYXIgd2Fsa2VyLiBNb2RlcmF0ZSBhbGNvaG9sIHVzZSAoMi0zIGdsYXNzZXMgb2YgcmVkIHdpbmUgcGVyIHdlZWspLiBOZXZlciBzbW9rZXIuCgpGYW1pbHkgSGlzdG9yeTogUmV2aWV3ZWQsIG5vbmNvbnRyaWJ1dG9yeSBmb3Igc3VkZGVuIGNhcmRpYWMgZGVhdGggb3IgaW5oZXJpdGVkIGFycmh5dGhtaWEgc3luZHJvbWVzLgoKUk9TOiBQb3NpdGl2ZSBmb3IgcGFscGl0YXRpb25zIGFuZCBleGVydGlvbmFsIGR5c3BuZWEgYXMgbm90ZWQgYWJvdmUuIE5lZ2F0aXZlIGZvciBjaGVzdCBwYWluLCBzeW5jb3BlLCBwcmVzeW5jb3BlLCBvcnRob3BuZWEsIFBORCwgbG93ZXIgZXh0cmVtaXR5IGVkZW1hLCB3ZWlnaHQgZ2FpbiwgZmV2ZXIsIG9yIGJsZWVkaW5nIHN5bXB0b21zIG9uIGFudGljb2FndWxhdGlvbi4KCk9CSkVDVElWRToKClZpdGFsczogQlAgMTMwLzgwIG1tSGcsIEhSIDY4IGJwbSAoaXJyZWd1bGFybHkgaXJyZWd1bGFyKSwgV2VpZ2h0IDE4MC4wIGxicyAoODEuNiBrZyksIEhlaWdodCA2OS4wIGluICgxNzUuMyBjbSksIEJNSSAyNi41LCBUZW1wIDk4LjAgRiAoMzYuNyBDKSwgUlIgMTQsIFNwTzIgOTklLgoKUGh5c2ljYWwgRXhhbWluYXRpb246CkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nIG1hbGUgaW4gbm8gYWN1dGUgZGlzdHJlc3MuCkhFRU5UOiBObyBjYXJvdGlkIGJydWl0cyBiaWxhdGVyYWxseS4KQ2FyZGlvdmFzY3VsYXI6IElycmVndWxhcmx5IGlycmVndWxhciByaHl0aG0sIHJhdGUgd2VsbCBjb250cm9sbGVkLiBOb3JtYWwgUzEgYW5kIFMyLiBObyBtdXJtdXJzLCBydWJzLCBvciBnYWxsb3BzLiBKVlAgbm9ybWFsLCBlc3RpbWF0ZWQgYXQgNyBjbSBIMk8uClB1bG1vbmFyeTogTHVuZ3MgY2xlYXIgdG8gYXVzY3VsdGF0aW9uIGJpbGF0ZXJhbGx5LiBObyB3aGVlemVzLCByYWxlcywgb3IgcmhvbmNoaS4KRXh0cmVtaXRpZXM6IE5vIHBlcmlwaGVyYWwgZWRlbWEuIFB1bHNlcyAyKyBiaWxhdGVyYWxseS4KTmV1cm9sb2dpYzogQWxlcnQgYW5kIG9yaWVudGVkLCBubyBmb2NhbCBkZWZpY2l0cy4KClJldmlldyBvZiBPdXRzaWRlIFJlY29yZHM6Ci0gRUNHICgwMS8xMi8yMDI2KTogQXRyaWFsIGZpYnJpbGxhdGlvbiwgdmVudHJpY3VsYXIgcmF0ZSA5MiBicG0sIG5vcm1hbCBheGlzLCBubyBTVC1zZWdtZW50IGNoYW5nZXMuCi0gVFRFICgwMS8xOS8yMDI2KTogTWlsZCBMQSBkaWxhdGlvbiAoNC4zIGNtKSwgTFZFRiA1OCUsIG5vIHNpZ25pZmljYW50IHZhbHZ1bGFyIGRpc2Vhc2UsIG5vIHBlcmljYXJkaWFsIGVmZnVzaW9uLCBub3JtYWwgZXN0aW1hdGVkIFJWU1AuCi0gTGFicyAoMDEvMTIvMjAyNik6IFRTSCAyLjEgbUlVL0wgKG5vcm1hbCksIEhnYiAxNC44IGcvZEwsIFdCQyA2LjIgSy91TCwgUGxhdGVsZXRzIDIzNCBLL3VMLCBDcmVhdGluaW5lIDAuOTQgbWcvZEwsIFBvdGFzc2l1bSA0LjEgbUVxL0wsIEdsdWNvc2UgOTggbWcvZEwuIEFsbCB3aXRoaW4gbm9ybWFsIGxpbWl0cy4KCkFTU0VTU01FTlQ6CgoxLiBBdHJpYWwgZmlicmlsbGF0aW9uLCBsaWtlbHkgcGVyc2lzdGVudCDigJQgTmV3IG9uc2V0IGRpYWdub3NlZCBKYW51YXJ5IDIwMjYgd2l0aCBzeW1wdG9tIG9uc2V0IE5vdmVtYmVyIDIwMjUuIENvbnRpbnVvdXMgQUYgb24gRUNHIGFuZCBvbmdvaW5nIHN5bXB0b21zIG92ZXIgYXBwcm94aW1hdGVseSAzIG1vbnRocyBzdWdnZXN0IHBlcnNpc3RlbnQgcmF0aGVyIHRoYW4gcGFyb3h5c21hbCBwYXR0ZXJuLiBSYXRlIGlzIHJlYXNvbmFibHkgY29udHJvbGxlZCBvbiBtZXRvcHJvbG9sIHN1Y2NpbmF0ZSA1MCBtZyBkYWlseSAocmVzdGluZyBIUiA2OCBicG0gdG9kYXkpLiBIb3dldmVyLCBwYXRpZW50IHJlbWFpbnMgc3ltcHRvbWF0aWMgd2l0aCBleGVydGlvbmFsIGR5c3BuZWEgYW5kIGludGVybWl0dGVudCBwYWxwaXRhdGlvbnMgYWZmZWN0aW5nIGRhaWx5IGFjdGl2aXR5IGFuZCBleGVyY2lzZSBjYXBhY2l0eS4gRUhSQSBzeW1wdG9tIGNsYXNzIElJYi4KCjIuIEVzc2VudGlhbCBoeXBlcnRlbnNpb24g4oCUIFdlbGwgY29udHJvbGxlZCBvbiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5LiBCUCAxMzAvODAgdG9kYXkuIE5vIGNoYW5nZXMgaW5kaWNhdGVkIGZvciBBRiBtYW5hZ2VtZW50LgoKMy4gU3RydWN0dXJhbCBhc3Nlc3NtZW50IOKAlCBFY2hvY2FyZGlvZ3JhbSBkZW1vbnN0cmF0ZXMgbWlsZCBMQSBkaWxhdGlvbiAoNC4zIGNtKSBjb25zaXN0ZW50IHdpdGggQUYtcmVsYXRlZCBhdHJpYWwgcmVtb2RlbGluZy4gUHJlc2VydmVkIExWRUYgKDU4JSkgd2l0aCBubyBzaWduaWZpY2FudCB2YWx2dWxhciBkaXNlYXNlLiBObyBzdHJ1Y3R1cmFsIGNvbnRyYWluZGljYXRpb24gdG8gY2F0aGV0ZXIgYWJsYXRpb24uCgo0LiBTdHJva2UgcmlzayDigJQgQ0hBMkRTMi1WQVNjIHNjb3JlIDEgKGh5cGVydGVuc2lvbikuIEN1cnJlbnRseSBvbiBhcGl4YWJhbiA1IG1nIEJJRCwgd2hpY2ggaXMgYXBwcm9wcmlhdGUuIE5vIGJsZWVkaW5nIGNvbXBsaWNhdGlvbnMgcmVwb3J0ZWQuCgpQTEFOOgoKMS4gT3JkZXIgNDgtaG91ciBIb2x0ZXIgbW9uaXRvciB0byBxdWFudGlmeSBBRiBidXJkZW4sIGFzc2VzcyByYXRlIGNvbnRyb2wgYWRlcXVhY3kgZHVyaW5nIGRhaWx5IGFjdGl2aXRpZXMsIGFuZCBjb25maXJtIHBlcnNpc3RlbnQgdnMuIHBhcm94eXNtYWwgQUYgcGF0dGVybi4gU2NoZWR1bGVkIGZvciAwMi8xOC0wMi8yMC8yMDI2LgoKMi4gRGlzY3Vzc2VkIGNhdGhldGVyIGFibGF0aW9uIGNhbmRpZGFjeSB3aXRoIHBhdGllbnQgYW5kIHdpZmUuIEdpdmVuIGhpcyBhZ2UgKDU3KSwgYWN0aXZlIGxpZmVzdHlsZSwgcGVyc2lzdGVudCBzeW1wdG9tcyBkZXNwaXRlIGFkZXF1YXRlIHJhdGUgY29udHJvbCwgcHJlc2VydmVkIExWIGZ1bmN0aW9uLCBhbmQgbWlsZCBMQSBkaWxhdGlvbiwgaGUgaXMgYSByZWFzb25hYmxlIGNhbmRpZGF0ZSBmb3IgcHVsbW9uYXJ5IHZlaW4gaXNvbGF0aW9uIGlmIHBlcnNpc3RlbnQgQUYgaXMgY29uZmlybWVkIG9uIEhvbHRlciBtb25pdG9yaW5nLiBEZXRhaWxlZCBkaXNjdXNzaW9uIG9mIGFibGF0aW9uIHJpc2tzLCBiZW5lZml0cywgYWx0ZXJuYXRpdmVzLCBhbmQgcHJvY2VkdXJlIHBsYW5uaW5nIHdpbGwgdGFrZSBwbGFjZSBhdCBmb2xsb3ctdXAgdmlzaXQgYWZ0ZXIgSG9sdGVyIHJlc3VsdHMgYXJlIGF2YWlsYWJsZS4KCjMuIENvbnRpbnVlIGN1cnJlbnQgbWVkaWNhdGlvbnM6CiAgIC0gTWV0b3Byb2xvbCBzdWNjaW5hdGUgNTAgbWcgZGFpbHkKICAgLSBBcGl4YWJhbiA1IG1nIEJJRAogICAtIExpc2lub3ByaWwgMTAgbWcgZGFpbHkKCjQuIE1hcmlhIFRvcnJlcywgUk4gY29vcmRpbmF0ZWQgSG9sdGVyIG1vbml0b3IgZGV2aWNlIGxvZ2lzdGljcyBhbmQgcHJvdmlkZWQgcGF0aWVudCBlZHVjYXRpb24gcmVnYXJkaW5nIHdlYXJpbmcgdGhlIG1vbml0b3IsIG1haW50YWluaW5nIGEgc3ltcHRvbSBkaWFyeSwgYW5kIGFjdGl2aXR5IGd1aWRlbGluZXMgZHVyaW5nIHRoZSBtb25pdG9yaW5nIHBlcmlvZC4KCjUuIEZvbGxvdy11cCBhcHBvaW50bWVudCB0byBiZSBzY2hlZHVsZWQgYWZ0ZXIgSG9sdGVyIG1vbml0b3IgcmVzdWx0cyBhcmUgYXZhaWxhYmxlIGZvciByZXZpZXcgb2YgZmluZGluZ3MgYW5kIGZ1cnRoZXIgdHJlYXRtZW50IHBsYW5uaW5nLgoKCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKSmFtZXMgTGluZGdyZW4sIE1ELCBGSFJTCkNhcmRpYWMgRWxlY3Ryb3BoeXNpb2xvZ3kKVW5pdmVyc2l0eSBvZiBNaW5uZXNvdGEKClNhcmFoIE9rb25rd28sIE1ECkVsZWN0cm9waHlzaW9sb2d5IEZlbGxvdwpVbml2ZXJzaXR5IG9mIE1pbm5lc290YQo="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-015"
+            }
+          ],
+          "period": {
+            "start": "2026-02-16T09:00:00-06:00",
+            "end": "2026-02-16T10:00:00-06:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-016-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75425-9",
+              "display": "Cardiology Diagnostic study note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "34109-9",
+              "display": "Note"
+            }
+          ],
+          "text": "Holter Monitor Study Report"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "date": "2026-02-22T12:00:00-06:00",
+        "author": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+          "type": "Practitioner",
+          "display": "Dr. James Lindgren, MD, FHRS"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "SE9MVEVSIE1PTklUT1IgU1RVRFkgUkVQT1JUCgpQYXRpZW50OiBLZXZpbiBKdW5naHdhbiBQYXJrCkRPQjogMDkvMTQvMTk2OCB8IEFnZTogNTcgfCBTZXg6IE1hbGUKTVJOOiBbVSBvZiBNIEVQIENsaW5pY10KUmVjb3JkaW5nIERhdGU6IDAyLzE4LzIwMjYgdG8gMDIvMjAvMjAyNgpJbnRlcnByZXRhdGlvbiBEYXRlOiAwMi8yMi8yMDI2Ck9yZGVyaW5nIFBoeXNpY2lhbjogSmFtZXMgTGluZGdyZW4sIE1ELCBGSFJTClByZWxpbWluYXJ5IFJlYWQ6IFNhcmFoIE9rb25rd28sIE1ECkZpbmFsIEludGVycHJldGF0aW9uOiBKYW1lcyBMaW5kZ3JlbiwgTUQsIEZIUlMKRGV2aWNlIEFwcGxpY2F0aW9uL1JlbW92YWw6IE1hcmlhIFRvcnJlcywgUk4sIENDUk4KTG9jYXRpb246IFVuaXZlcnNpdHkgb2YgTWlubmVzb3RhIENhcmRpYWMgRWxlY3Ryb3BoeXNpb2xvZ3kgQ2xpbmljLCBNaW5uZWFwb2xpcywgTU4KCklORElDQVRJT046CjU3LXllYXItb2xkIG1hbGUgd2l0aCByZWNlbnRseSBkaWFnbm9zZWQgYXRyaWFsIGZpYnJpbGxhdGlvbiAoSmFudWFyeSAyMDI2KSwgcmVmZXJyZWQgZnJvbSBNaW5uZWhhaGEgSW50ZXJuYWwgTWVkaWNpbmUgZm9yIEVQIGV2YWx1YXRpb24uIEhvbHRlciBtb25pdG9yIG9yZGVyZWQgdG8gYXNzZXNzIEFGIGJ1cmRlbiwgYWRlcXVhY3kgb2YgcmF0ZSBjb250cm9sIG9uIG1ldG9wcm9sb2wgc3VjY2luYXRlIDUwIG1nIGRhaWx5LCBhbmQgcHJlc2VuY2Ugb2YgYW55IHBhdXNlcyBvciB2ZW50cmljdWxhciBlY3RvcHkuIFBhdGllbnQgcmVwb3J0cyBpbnRlcm1pdHRlbnQgcGFscGl0YXRpb25zIHdpdGggZXhlcnRpb24uCgpDVVJSRU5UIE1FRElDQVRJT05TOgoxLiBNZXRvcHJvbG9sIHN1Y2NpbmF0ZSA1MCBtZyBkYWlseQoyLiBBcGl4YWJhbiA1IG1nIEJJRAozLiBMaXNpbm9wcmlsIDEwIG1nIGRhaWx5CjQuIEZpc2ggb2lsIDEwMDAgbWcgZGFpbHkgKE9UQykKClJFTEVWQU5UIEhJU1RPUlk6Ci0gQXRyaWFsIGZpYnJpbGxhdGlvbiwgZGlhZ25vc2VkIDAxLzEyLzIwMjYgb24gaW4tb2ZmaWNlIEVDRyAodmVudHJpY3VsYXIgcmF0ZSA5MiBicG0pCi0gRXNzZW50aWFsIGh5cGVydGVuc2lvbiwgd2VsbC1jb250cm9sbGVkIG9uIGxpc2lub3ByaWwKLSBUVEUgKDAxLzE5LzIwMjYpOiBNaWxkIExBIGRpbGF0aW9uICg0LjMgY20pLCBMVkVGIDU4JSwgbm8gc2lnbmlmaWNhbnQgdmFsdnVsYXIgZGlzZWFzZQotIENIQTJEUzItVkFTYyBzY29yZTogMSAoaHlwZXJ0ZW5zaW9uKQotIEJvcmRlcmxpbmUgaHlwZXJsaXBpZGVtaWEsIGRpZXQtbWFuYWdlZAoKREVWSUNFIEFQUExJQ0FUSU9OICgwMi8xOC8yMDI2KToKNDgtaG91ciBjb250aW51b3VzIEhvbHRlciBtb25pdG9yIGFwcGxpZWQgYnkgTWFyaWEgVG9ycmVzLCBSTiwgQ0NSTi4gMy1jaGFubmVsLCA3LWxlYWQgY29uZmlndXJhdGlvbi4gRWxlY3Ryb2RlIHBsYWNlbWVudCB2ZXJpZmllZCB3aXRoIGFkZXF1YXRlIHNpZ25hbCBxdWFsaXR5IG9uIGFsbCBjaGFubmVscy4gUGF0aWVudCBpbnN0cnVjdGVkIG9uIHN5bXB0b20gZGlhcnkgdXNlIGFuZCBldmVudCBtYXJrZXIgYnV0dG9uLiBBZHZpc2VkIHRvIG1haW50YWluIG5vcm1hbCBkYWlseSBhY3Rpdml0aWVzIGluY2x1ZGluZyB3YWxraW5nLCBhdm9pZCBzdWJtZXJnaW5nIGRldmljZSBpbiB3YXRlci4gUmV0dXJuIGFwcG9pbnRtZW50IHNjaGVkdWxlZCBmb3IgMDIvMjAvMjAyNiBmb3IgZGV2aWNlIHJlbW92YWwuCgpERVZJQ0UgUkVNT1ZBTCAoMDIvMjAvMjAyNik6CkRldmljZSByZW1vdmVkIGFmdGVyIDQ4LWhvdXIgcmVjb3JkaW5nIHBlcmlvZC4gUGF0aWVudCByZXBvcnRzIHByZXNzaW5nIHRoZSBldmVudCBidXR0b24gNCB0aW1lcyBkdXJpbmcgdGhlIG1vbml0b3JpbmcgcGVyaW9kIC0tIHR3aWNlIGR1cmluZyB3YWxrcyBhbmQgdHdpY2UgZHVyaW5nIGhvdXNlaG9sZCBhY3Rpdml0aWVzLiBBbGwgZXBpc29kZXMgYXNzb2NpYXRlZCB3aXRoIHN1YmplY3RpdmUgcGFscGl0YXRpb25zLiBObyBkZXZpY2UgbWFsZnVuY3Rpb24gb3Igc2tpbiBpcnJpdGF0aW9uIG5vdGVkLgoKSE9MVEVSIE1PTklUT1IgUkVTVUxUUzoKClRvdGFsIFJlY29yZGluZyBUaW1lOiA0NyBob3VycyA0MiBtaW51dGVzClNpZ25hbCBRdWFsaXR5OiBBZGVxdWF0ZSB0aHJvdWdob3V0IHJlY29yZGluZwoKUHJlZG9taW5hbnQgUmh5dGhtOiBBdHJpYWwgZmlicmlsbGF0aW9uIHRocm91Z2hvdXQgdGhlIGVudGlyZSA0OC1ob3VyIHJlY29yZGluZyBwZXJpb2QuIE5vIHBlcmlvZHMgb2Ygc2ludXMgcmh5dGhtIGlkZW50aWZpZWQuCgpBRiBCdXJkZW46IDEwMCUgKHBlcnNpc3RlbnQgYXRyaWFsIGZpYnJpbGxhdGlvbiBjb25maXJtZWQpCgpWZW50cmljdWxhciBSYXRlIFN1bW1hcnk6CiAgQXZlcmFnZSB2ZW50cmljdWxhciByYXRlOiA3MiBicG0KICBNaW5pbXVtIHZlbnRyaWN1bGFyIHJhdGU6IDUyIGJwbSAoZHVyaW5nIHNsZWVwLCAwMzoxNCBvbiAwMi8xOS8yMDI2KQogIE1heGltdW0gdmVudHJpY3VsYXIgcmF0ZTogMTE4IGJwbSAoZHVyaW5nIGJyaXNrIHdhbGtpbmcsIDEwOjQyIG9uIDAyLzE5LzIwMjYpCgpQYXVzZXM6IE5vIHBhdXNlcyA+Mi4wIHNlY29uZHMgaWRlbnRpZmllZC4gTG9uZ2VzdCBSLVIgaW50ZXJ2YWwgMS44IHNlY29uZHMgZHVyaW5nIHNsZWVwLgoKVmVudHJpY3VsYXIgRWN0b3B5OgogIC0gSXNvbGF0ZWQgUFZDczogMC4zJSBvZiB0b3RhbCBiZWF0cwogIC0gUFZDIGNvdXBsZXRzOiBOb25lCiAgLSBWZW50cmljdWxhciB0YWNoeWNhcmRpYSBydW5zOiBOb25lCgpTdXByYXZlbnRyaWN1bGFyIEVjdG9weTogTm90IGFwcGxpY2FibGUgZ2l2ZW4gY29udGludW91cyBBRiByaHl0aG0uCgpQYXRpZW50LVJlcG9ydGVkIEV2ZW50czogNCBldmVudCBtYXJrZXJzIHJlY29yZGVkLiBBbGwgY29ycmVsYXRlZCB3aXRoIHBlcmlvZHMgb2YgaGlnaGVyIHZlbnRyaWN1bGFyIHJhdGUgKHJhbmdlIDg4LTExOCBicG0pIGR1cmluZyBhdHJpYWwgZmlicmlsbGF0aW9uLiBObyBhc3NvY2lhdGVkIGJyYWR5Y2FyZGlhLCBwYXVzZXMsIG9yIHZlbnRyaWN1bGFyIGVjdG9weSBhdCB0aGUgdGltZSBvZiBldmVudHMuCgpTVCBTZWdtZW50IEFuYWx5c2lzOiBObyBzaWduaWZpY2FudCBTVC1zZWdtZW50IGNoYW5nZXMgaWRlbnRpZmllZC4KCklNUFJFU1NJT046CjEuIFBlcnNpc3RlbnQgYXRyaWFsIGZpYnJpbGxhdGlvbiB3aXRoIDEwMCUgQUYgYnVyZGVuIG92ZXIgdGhlIDQ4LWhvdXIgcmVjb3JkaW5nIHBlcmlvZC4gTm8gcGVyaW9kcyBvZiBzaW51cyByaHl0aG0gaWRlbnRpZmllZCwgY29uZmlybWluZyBjbGFzc2lmaWNhdGlvbiBhcyBwZXJzaXN0ZW50IEFGIHJhdGhlciB0aGFuIHBhcm94eXNtYWwuCjIuIEFkZXF1YXRlIHJhdGUgY29udHJvbCBhdCByZXN0IG9uIG1ldG9wcm9sb2wgc3VjY2luYXRlIDUwIG1nIGRhaWx5LCB3aXRoIGF2ZXJhZ2UgdmVudHJpY3VsYXIgcmF0ZSBvZiA3MiBicG0uCjMuIEV4ZXJ0aW9uYWwgcmF0ZSByZXNwb25zZSBpcyBicmlzayAobWF4IDExOCBicG0gZHVyaW5nIHdhbGtpbmcpIGJ1dCB3aXRoaW4gYWNjZXB0YWJsZSBsaW1pdHMuCjQuIE5vIGNsaW5pY2FsbHkgc2lnbmlmaWNhbnQgYnJhZHljYXJkaWEuIE1pbmltdW0gcmF0ZSBvZiA1MiBicG0gZHVyaW5nIHNsZWVwIGlzIGFwcHJvcHJpYXRlIGFuZCBubyBwYXVzZXMgPjIuMCBzZWNvbmRzIHdlcmUgb2JzZXJ2ZWQuCjUuIE1pbmltYWwgdmVudHJpY3VsYXIgZWN0b3B5IChQVkMgYnVyZGVuIDAuMyUpLCBubyBjb3VwbGV0cyBvciB2ZW50cmljdWxhciB0YWNoeWNhcmRpYS4gTG93IGFycmh5dGhtaWMgcmlzay4KNi4gUGF0aWVudC1yZXBvcnRlZCBzeW1wdG9tcyBvZiBwYWxwaXRhdGlvbnMgY29ycmVsYXRlIHdpdGggcGVyaW9kcyBvZiBmYXN0ZXIgdmVudHJpY3VsYXIgcmF0ZSBkdXJpbmcgQUYsIGNvbnNpc3RlbnQgd2l0aCByYXRlLXJlbGF0ZWQgc3ltcHRvbSBwZXJjZXB0aW9uLgoKRmluZGluZ3MgYXJlIGNvbnNpc3RlbnQgd2l0aCB0aGUgcGF0aWVudCdzIHN5bXB0b20gcHJvZmlsZSBhbmQgc3VwcG9ydCBvbmdvaW5nIGV2YWx1YXRpb24gZm9yIGNhdGhldGVyIGFibGF0aW9uIGNhbmRpZGFjeS4gUmVzdWx0cyB3aWxsIGJlIHJldmlld2VkIHdpdGggdGhlIHBhdGllbnQgYXQgaGlzIHNjaGVkdWxlZCBmb2xsb3ctdXAgdmlzaXQgb24gMDMvMDkvMjAyNi4KCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6CkphbWVzIExpbmRncmVuLCBNRCwgRkhSUwpDYXJkaWFjIEVsZWN0cm9waHlzaW9sb2d5ClVuaXZlcnNpdHkgb2YgTWlubmVzb3RhCkRhdGU6IDAyLzIyLzIwMjY="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-016"
+            }
+          ],
+          "period": {
+            "start": "2026-02-18",
+            "end": "2026-02-20"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-017-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "78710-1",
+              "display": "Cardiology Progress note"
+            }
+          ],
+          "text": "Cardiology Progress Note — Follow-up Consultation"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "date": "2026-03-09T09:45:00-05:00",
+        "author": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          },
+          {
+            "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+            "display": "Dr. Sarah Okonkwo, MD"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+          "display": "Dr. James Lindgren, MD, FHRS"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VU5JVkVSU0lUWSBPRiBNSU5ORVNPVEEgQ0FSRElBQyBFTEVDVFJPUEhZU0lPTE9HWSBDTElOSUMKNDIwIERlbGF3YXJlIFN0cmVldCBTRSwgTU1DIDUwOCwgTWlubmVhcG9saXMsIE1OIDU1NDU1Ck5QSTogMTk4NzY1NDMyMQoKUFJPR1JFU1MgTk9URSDigJQgRk9MTE9XLVVQIENPTlNVTFRBVElPTgoKRGF0ZSBvZiBTZXJ2aWNlOiAwMy8wOS8yMDI2ClBhdGllbnQ6IEtldmluIEp1bmdod2FuIFBhcmsKRE9COiAwOS8xNC8xOTY4IChBZ2UgNTcpCkF0dGVuZGluZzogSmFtZXMgTGluZGdyZW4sIE1ELCBGSFJTCkZlbGxvdzogU2FyYWggT2tvbmt3bywgTUQKUmVmZXJyaW5nIFByb3ZpZGVyOiBBbmdlbGEgV2hpdGZpZWxkLCBNRCAoTWlubmVoYWhhIEludGVybmFsIE1lZGljaW5lKQoKVmlzaXQgVHlwZTogT2ZmaWNlIHZpc2l0LCBmb2xsb3ctdXAgRVAgY29uc3VsdGF0aW9uClJlYXNvbiBmb3IgVmlzaXQ6IEhvbHRlciBtb25pdG9yIHJlc3VsdHMgcmV2aWV3LCBjYXRoZXRlciBhYmxhdGlvbiBjYW5kaWRhY3kgZGlzY3Vzc2lvbgoKU1VCSkVDVElWRToKTXIuIFBhcmsgcmV0dXJucyB0byB0aGUgRVAgY2xpbmljIGFjY29tcGFuaWVkIGJ5IGhpcyB3aWZlLCBTb29uLVlpLCBmb3IgcmV2aWV3IG9mIGhpcyA0OC1ob3VyIEhvbHRlciBtb25pdG9yIHJlc3VsdHMgYW5kIHNoYXJlZCBkZWNpc2lvbi1tYWtpbmcgcmVnYXJkaW5nIGNhdGhldGVyIGFibGF0aW9uIGZvciBwZXJzaXN0ZW50IGF0cmlhbCBmaWJyaWxsYXRpb24uIEhlIGNvbnRpbnVlcyB0byByZXBvcnQgZXhlcnRpb25hbCBzeW1wdG9tcyBpbmNsdWRpbmcgZHlzcG5lYSBhbmQgcmVkdWNlZCBleGVyY2lzZSB0b2xlcmFuY2UsIHBhcnRpY3VsYXJseSB3aGlsZSBnb2xmaW5nIGFuZCB3YWxraW5nIHVwaGlsbC4gSGUgbm90ZXMgdGhhdCBoaXMgcmVzdGluZyBzeW1wdG9tcyBoYXZlIGltcHJvdmVkIHNpbmNlIHN0YXJ0aW5nIG1ldG9wcm9sb2wgc3VjY2luYXRlIDUwIG1nIGRhaWx5IGJ1dCBoZSByZW1haW5zIGxpbWl0ZWQgd2l0aCBhY3Rpdml0eS4gSGUgZGVuaWVzIGNoZXN0IHBhaW4sIHN5bmNvcGUsIHByZXN5bmNvcGUsIG9yIHBlcmlwaGVyYWwgZWRlbWEuIE5vIGJsZWVkaW5nIGVwaXNvZGVzIG9yIGJydWlzaW5nIG9uIGFwaXhhYmFuLiBUb2xlcmF0aW5nIGFsbCBjdXJyZW50IG1lZGljYXRpb25zIHdpdGhvdXQgYWR2ZXJzZSBlZmZlY3RzLgoKQ3VycmVudCBNZWRpY2F0aW9uczoKMS4gTGlzaW5vcHJpbCAxMCBtZyBQTyBkYWlseQoyLiBNZXRvcHJvbG9sIHN1Y2NpbmF0ZSA1MCBtZyBQTyBkYWlseQozLiBBcGl4YWJhbiA1IG1nIFBPIEJJRAo0LiBGaXNoIG9pbCAxMDAwIG1nIFBPIGRhaWx5IChPVEMpCgpBbGxlcmdpZXMvSW50b2xlcmFuY2VzOiBJYnVwcm9mZW4gKEdJIHVwc2V0IOKAlCBpbnRvbGVyYW5jZSkKCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMjgvNzggbW1IZywgSFIgNzIgYnBtIChpcnJlZ3VsYXJseSBpcnJlZ3VsYXIpLCBXZWlnaHQgMTc5LjAgbGJzICg4MS4yIGtnKSwgQk1JIDI2LjQsIFRlbXAgOTguMkYgKDM2LjhDKSwgUlIgMTQsIFNwTzIgOTglIG9uIHJvb20gYWlyLgoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcgbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4gQWxlcnQsIG9yaWVudGVkLCBjb252ZXJzYW50LgpIRUVOVDogQW5pY3RlcmljLCBvcm9waGFyeW54IGNsZWFyLgpOZWNrOiBObyBKVkQuIE5vIGNhcm90aWQgYnJ1aXRzLgpDYXJkaW92YXNjdWxhcjogSXJyZWd1bGFybHkgaXJyZWd1bGFyIHJoeXRobSwgcmF0ZSBhcHByb3hpbWF0ZWx5IDcyIGJwbS4gTm9ybWFsIFMxLCBTMi4gTm8gbXVybXVycywgZ2FsbG9wcywgb3IgcnVicy4gTm8gZGlzcGxhY2VkIFBNSS4KTHVuZ3M6IENsZWFyIHRvIGF1c2N1bHRhdGlvbiBiaWxhdGVyYWxseS4gTm8gd2hlZXplcywgcmFsZXMsIG9yIHJob25jaGkuCkV4dHJlbWl0aWVzOiBObyBwZXJpcGhlcmFsIGVkZW1hLiBCaWxhdGVyYWwgZmVtb3JhbCBhbmQgcGVkYWwgcHVsc2VzIGludGFjdC4KQWJkb21lbjogU29mdCwgbm9udGVuZGVyLCBub25kaXN0ZW5kZWQuCgpIb2x0ZXIgTW9uaXRvciBSZXN1bHRzICg0OC1ob3VyIHJlY29yZGluZywgMDIvMTgtMDIvMjAvMjAyNik6Ci0gUmh5dGhtOiBBdHJpYWwgZmlicmlsbGF0aW9uIHByZXNlbnQgdGhyb3VnaG91dCBlbnRpcmUgNDgtaG91ciByZWNvcmRpbmcgcGVyaW9kLiBObyBwZXJpb2RzIG9mIHNpbnVzIHJoeXRobSBpZGVudGlmaWVkLiBBRiBidXJkZW4gMTAwJS4KLSBBdmVyYWdlIHZlbnRyaWN1bGFyIHJhdGU6IDcyIGJwbS4gUmF0ZSB3ZWxsIGNvbnRyb2xsZWQgb24gbWV0b3Byb2xvbCBzdWNjaW5hdGUgNTAgbWcgZGFpbHkuCi0gTm8gcGF1c2VzIGdyZWF0ZXIgdGhhbiAyLjAgc2Vjb25kcy4KLSBObyBzaWduaWZpY2FudCB2ZW50cmljdWxhciBlY3RvcHkuCgpQcmlvciBTdHVkaWVzIChyZXZpZXdlZCk6Ci0gVFRFICgwMS8xOS8yMDI2KTogTWlsZCBsZWZ0IGF0cmlhbCBkaWxhdGlvbiAoNC4zIGNtKSwgTFZFRiA1OCUsIG5vIHNpZ25pZmljYW50IHZhbHZ1bGFyIGRpc2Vhc2UsIG5vIHBlcmljYXJkaWFsIGVmZnVzaW9uLCBub3JtYWwgZXN0aW1hdGVkIFJWU1AuCi0gRUNHICgwMS8xMi8yMDI2KTogQXRyaWFsIGZpYnJpbGxhdGlvbiwgdmVudHJpY3VsYXIgcmF0ZSA5MiBicG0sIG5vcm1hbCBheGlzLCBubyBTVC1zZWdtZW50IGNoYW5nZXMuCi0gTGFicyAoMDEvMTIvMjAyNik6IFRTSCAyLjEgbUlVL0wgKG5vcm1hbCksIEhnYiAxNC44LCBXQkMgNi4yLCBQbHQgMjM0LCBDciAwLjk0LCBLIDQuMSwgZ2x1Y29zZSA5OC4KCkFTU0VTU01FTlQ6CjEuIFBlcnNpc3RlbnQgYXRyaWFsIGZpYnJpbGxhdGlvbiDigJQgQ29uZmlybWVkIGJ5IDQ4LWhvdXIgSG9sdGVyIG1vbml0b3IgZGVtb25zdHJhdGluZyAxMDAlIEFGIGJ1cmRlbiB3aXRoIG5vIHBlcmlvZHMgb2Ygc2ludXMgcmh5dGhtLiBWZW50cmljdWxhciByYXRlIGlzIHdlbGwgY29udHJvbGxlZCBhdCByZXN0IG9uIG1ldG9wcm9sb2wgc3VjY2luYXRlIDUwIG1nIGRhaWx5IChhdmVyYWdlIHJhdGUgNzIgYnBtKS4gSG93ZXZlciwgcGF0aWVudCByZW1haW5zIHN5bXB0b21hdGljIHdpdGggZXhlcnRpb25hbCBkeXNwbmVhIGFuZCByZWR1Y2VkIGV4ZXJjaXNlIHRvbGVyYW5jZS4gR2l2ZW4gaGlzIGFnZSAoNTcpLCBhY3RpdmUgbGlmZXN0eWxlLCBzeW1wdG9tYXRpYyBwZXJzaXN0ZW50IEFGIGRlc3BpdGUgYWRlcXVhdGUgcmF0ZSBjb250cm9sLCBwcmVzZXJ2ZWQgTFZFRiAoNTglKSwgYW5kIG1pbGQgTEEgZGlsYXRpb24gKDQuMyBjbSksIGhlIGlzIGEgcmVhc29uYWJsZSBjYW5kaWRhdGUgZm9yIGNhdGhldGVyIGFibGF0aW9uIHdpdGggcHVsbW9uYXJ5IHZlaW4gaXNvbGF0aW9uIChQVkkpIGFzIGEgcmh5dGhtLWNvbnRyb2wgc3RyYXRlZ3kuCjIuIEVzc2VudGlhbCBoeXBlcnRlbnNpb24g4oCUIFdlbGwgY29udHJvbGxlZCBvbiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5LiBCUCAxMjgvNzggdG9kYXkuCjMuIEFudGljb2FndWxhdGlvbiBmb3IgYXRyaWFsIGZpYnJpbGxhdGlvbiDigJQgQ0hBMkRTMi1WQVNjIHNjb3JlIDEgKGh5cGVydGVuc2lvbikuIEFwaXhhYmFuIDUgbWcgQklEIG9uZ29pbmcsIHdlbGwgdG9sZXJhdGVkLiBXaWxsIGNvbnRpbnVlIGFuZCBtYW5hZ2UgcGVyaS1wcm9jZWR1cmFsbHkuCgpTSEFSRUQgREVDSVNJT04tTUFLSU5HIERJU0NVU1NJT046CkV4dGVuc2l2ZSBkaXNjdXNzaW9uIGNvbmR1Y3RlZCB3aXRoIE1yLiBQYXJrIGFuZCBoaXMgd2lmZSByZWdhcmRpbmcgY2F0aGV0ZXIgYWJsYXRpb24gZm9yIHBlcnNpc3RlbnQgYXRyaWFsIGZpYnJpbGxhdGlvbi4gVGhlIGZvbGxvd2luZyB0b3BpY3Mgd2VyZSBhZGRyZXNzZWQgaW4gZGV0YWlsOgoKUHJvY2VkdXJlOiBQdWxtb25hcnkgdmVpbiBpc29sYXRpb24gdmlhIGNhdGhldGVyIGFibGF0aW9uLCBwZXJmb3JtZWQgdW5kZXIgZ2VuZXJhbCBhbmVzdGhlc2lhLCB0eXBpY2FsbHkgMi0zIGhvdXJzIGluIGR1cmF0aW9uLiBUcmFuc3NlcHRhbCBhY2Nlc3MgdG8gdGhlIGxlZnQgYXRyaXVtIHdpdGggcmFkaW9mcmVxdWVuY3kgb3IgY3J5b2FibGF0aW9uIGVuZXJneSB0byBhY2hpZXZlIGVsZWN0cmljYWwgaXNvbGF0aW9uIG9mIHRoZSBwdWxtb25hcnkgdmVpbnMuCgpTdWNjZXNzIHJhdGVzOiBBcHByb3hpbWF0ZWx5IDcwLTgwJSBjaGFuY2Ugb2YgZnJlZWRvbSBmcm9tIEFGIGF0IDEgeWVhciB3aXRoIGEgc2luZ2xlIHByb2NlZHVyZSBmb3IgcGVyc2lzdGVudCBBRi4gQXBwcm94aW1hdGVseSAxMC0yMCUgb2YgcGF0aWVudHMgcmVxdWlyZSBhIHNlY29uZCAocmVkbykgcHJvY2VkdXJlLgoKUmlza3M6IENhcmRpYWMgdGFtcG9uYWRlICg8MSUpLCBwdWxtb25hcnkgdmVpbiBzdGVub3NpcyAoPDElKSwgcGhyZW5pYyBuZXJ2ZSBpbmp1cnkgKDwxJSksIHZhc2N1bGFyIGFjY2VzcyBjb21wbGljYXRpb25zICgxLTIlKSwgc3Ryb2tlL1RJQSAoPDAuNSUpLCBlc29waGFnZWFsIGluanVyeSAocmFyZSkuIE92ZXJhbGwgc2VyaW91cyBjb21wbGljYXRpb24gcmF0ZSBhcHByb3hpbWF0ZWx5IDItNCUuIFJpc2tzIG9mIGdlbmVyYWwgYW5lc3RoZXNpYSBhbHNvIHJldmlld2VkLgoKUmVjb3Zlcnk6IFR5cGljYWxseSBvbmUgb3Zlcm5pZ2h0IGhvc3BpdGFsIHN0YXkuIEFjdGl2aXR5IHJlc3RyaWN0aW9uIGZvciAxLTIgd2Vla3MuIEFudGljb2FndWxhdGlvbiBjb250aW51ZXMgZm9yIG1pbmltdW0gMyBtb250aHMgcG9zdC1hYmxhdGlvbi4gQW50aWFycmh5dGhtaWMgbWVkaWNhdGlvbiBtYXkgYmUgdXNlZCBkdXJpbmcgdGhlIDMtbW9udGggYmxhbmtpbmcgcGVyaW9kLiBFeHBlY3RlZCByZXR1cm4gdG8gZnVsbCBnb2xmIGFjdGl2aXR5IHdpdGhpbiA0LTYgd2Vla3MgcG9zdC1wcm9jZWR1cmUuCgpBbHRlcm5hdGl2ZXMgZGlzY3Vzc2VkOiBDb250aW51ZSByYXRlIGNvbnRyb2wgYWxvbmUgd2l0aCBtZXRvcHJvbG9sOyB0cmlhbCBvZiBhbnRpYXJyaHl0aG1pYyBkcnVnIHRoZXJhcHkgKGZsZWNhaW5pZGUsIGFtaW9kYXJvbmUpIGFzIGFsdGVybmF0aXZlcyB0byBhYmxhdGlvbi4KClBhdGllbnQgYW5kIHdpZmUgYXNrZWQgYXBwcm9wcmlhdGUgcXVlc3Rpb25zIHJlZ2FyZGluZyBpbXBhY3Qgb24gZGFpbHkgYWN0aXZpdGllcyBhbmQgYW5lc3RoZXNpYSByaXNrcy4gQWZ0ZXIgdGhvcm91Z2ggZGlzY3Vzc2lvbiwgTXIuIFBhcmsgZXhwcmVzc2VkIHN0cm9uZyBwcmVmZXJlbmNlIHRvIHByb2NlZWQgd2l0aCBjYXRoZXRlciBhYmxhdGlvbiBnaXZlbiBoaXMgb25nb2luZyBleGVydGlvbmFsIHN5bXB0b21zIGFuZCBkZXNpcmUgdG8gbWFpbnRhaW4gaGlzIGFjdGl2ZSBsaWZlc3R5bGUuIERlY2lzaW9uIHRvIHByb2NlZWQgd2FzIG1hZGUgY29sbGFib3JhdGl2ZWx5LgoKUExBTjoKMS4gUHJvY2VlZCB3aXRoIHB1bG1vbmFyeSB2ZWluIGlzb2xhdGlvbiAoY2F0aGV0ZXIgYWJsYXRpb24pIOKAlCBzY2hlZHVsZSBwcm9jZWR1cmUgaW4gdGhlIGNvbWluZyB3ZWVrcy4KMi4gUHJlLXByb2NlZHVyZSBjaGVja2xpc3QgaW5pdGlhdGVkOgogICBhLiBQcmUtb3BlcmF0aXZlIGxhYnMgdG8gYmUgZHJhd24gcHJpb3IgdG8gcHJvY2VkdXJlIGRhdGUuCiAgIGIuIEFuZXN0aGVzaWEgY2xlYXJhbmNlIHRvIGJlIGFycmFuZ2VkLgogICBjLiBSZXBlYXQgVEVFIG9yIGNhcmRpYWMgQ1QgZm9yIGxlZnQgYXRyaWFsIGFuYXRvbXkgbWFwcGluZyBhbmQgdGhyb21idXMgZXhjbHVzaW9uIHByaW9yIHRvIHByb2NlZHVyZS4KMy4gQ29udGludWUgY3VycmVudCBtZWRpY2F0aW9uczogbGlzaW5vcHJpbCAxMCBtZyBkYWlseSwgbWV0b3Byb2xvbCBzdWNjaW5hdGUgNTAgbWcgZGFpbHksIGFwaXhhYmFuIDUgbWcgQklELCBmaXNoIG9pbCAxMDAwIG1nIGRhaWx5Lgo0LiBBcGl4YWJhbiB0byBiZSBjb250aW51ZWQgd2l0aG91dCBpbnRlcnJ1cHRpb24gcGVyaS1wcm9jZWR1cmFsbHkgcGVyIGN1cnJlbnQgZ3VpZGVsaW5lcyBmb3IgQUYgYWJsYXRpb24uIE1hcmlhIFRvcnJlcywgUk4sIHRvIHByb3ZpZGUgZGV0YWlsZWQgcHJlLXByb2NlZHVyZSBpbnN0cnVjdGlvbnMgaW5jbHVkaW5nIG1lZGljYXRpb24gbWFuYWdlbWVudC4KNS4gUGF0aWVudCBpbnN0cnVjdGVkIHRvIGNvbnRhY3QgRVAgY2xpbmljIGltbWVkaWF0ZWx5IGlmIHN5bXB0b21zIHdvcnNlbiwgbmV3IGNoZXN0IHBhaW4sIHN5bmNvcGUsIG9yIGJsZWVkaW5nIHByaW9yIHRvIHByb2NlZHVyZSBkYXRlLgo2LiBVcGRhdGVkIENhcmVQbGFuOiBUcmFuc2l0aW9uaW5nIGZyb20gcmF0ZS1jb250cm9sLW9ubHkgc3RyYXRlZ3kgdG8gcGxhbm5lZCByaHl0aG0gY29udHJvbCB2aWEgY2F0aGV0ZXIgYWJsYXRpb24uCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6CkphbWVzIExpbmRncmVuLCBNRCwgRkhSUwpDYXJkaWFjIEVsZWN0cm9waHlzaW9sb2d5ClVuaXZlcnNpdHkgb2YgTWlubmVzb3RhCgpDby1zaWduZWQgYnk6ClNhcmFoIE9rb25rd28sIE1ECkVsZWN0cm9waHlzaW9sb2d5IEZlbGxvdwpVbml2ZXJzaXR5IG9mIE1pbm5lc290YQo="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-017"
+            }
+          ],
+          "period": {
+            "start": "2026-03-09T09:00:00-05:00",
+            "end": "2026-03-09T09:45:00-05:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-015",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "11429006",
+                "display": "Consultation (procedure)"
+              }
+            ],
+            "text": "Office Visit — Initial Electrophysiology Consultation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending Electrophysiologist"
+              }
+            ],
+            "period": {
+              "start": "2026-02-16T09:00:00-06:00",
+              "end": "2026-02-16T10:00:00-06:00"
+            },
+            "individual": {
+              "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+              "type": "Practitioner",
+              "display": "Dr. James Lindgren, MD, FHRS"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Electrophysiology Fellow"
+              }
+            ],
+            "period": {
+              "start": "2026-02-16T09:00:00-06:00",
+              "end": "2026-02-16T10:00:00-06:00"
+            },
+            "individual": {
+              "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+              "type": "Practitioner",
+              "display": "Dr. Sarah Okonkwo, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-02-16T09:00:00-06:00",
+          "end": "2026-02-16T10:00:00-06:00"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "49436004",
+                "display": "Atrial fibrillation (disorder)"
+              }
+            ],
+            "text": "Initial EP consultation for atrial fibrillation"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+              "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+          "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Encounter type: Office visit (new patient consultation) Clinician: Dr. James Lindgren, MD, FHRS (with Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-016",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "164850009",
+                "display": "Ambulatory electrocardiogram (procedure)"
+              }
+            ],
+            "text": "48-hour Holter Monitor Study"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Device Application and Removal"
+              }
+            ],
+            "period": {
+              "start": "2026-02-18",
+              "end": "2026-02-20"
+            },
+            "individual": {
+              "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+              "display": "Maria Torres, RN, CCRN"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Preliminary Interpretation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+              "display": "Dr. Sarah Okonkwo, MD"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Ordering Physician / Final Interpretation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+              "display": "Dr. James Lindgren, MD, FHRS"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "440059007",
+                "display": "Persistent atrial fibrillation (disorder)"
+              }
+            ],
+            "text": "48-hour Holter monitor study to assess atrial fibrillation burden, rate control adequacy, and ventricular ectopy"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+              "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+          "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Encounter type: Diagnostic / ambulatory monitoring (device issued 2026-02-18, returned 2026-02-20) Clinician: Maria Torres, RN, CCRN (device application); Dr. Sarah Okonkwo, MD (preliminary read); Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-017",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185389009",
+                "display": "Follow-up visit (procedure)"
+              }
+            ],
+            "text": "Office Visit — Follow-up EP Consultation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attender"
+              }
+            ],
+            "period": {
+              "start": "2026-03-09T09:00:00-05:00",
+              "end": "2026-03-09T09:45:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+              "display": "Dr. James Lindgren, MD, FHRS"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "period": {
+              "start": "2026-03-09T09:00:00-05:00",
+              "end": "2026-03-09T09:45:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+              "display": "Dr. Sarah Okonkwo, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-03-09T09:00:00-05:00",
+          "end": "2026-03-09T09:45:00-05:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Holter monitor results review, catheter ablation candidacy discussion"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+              "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+          "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Encounter type: Office visit (follow-up consultation) Clinician: Dr. James Lindgren, MD, FHRS (with Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-016-holter",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-016-holter",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-015-holter",
+            "display": "48-hour Holter monitor"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CUS",
+                "display": "Cardiac Ultrasound"
+              }
+            ],
+            "text": "Cardiology"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "LP29708-2",
+                "display": "Cardiology"
+              }
+            ],
+            "text": "Cardiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18754-2",
+              "display": "Ambulatory cardiac rhythm monitor (Holter) study"
+            }
+          ],
+          "text": "48-hour Holter Monitor Study"
+        },
+        "subject": {
+          "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+          "display": "Kevin Junghwan Park"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-016"
+        },
+        "effectivePeriod": {
+          "start": "2026-02-18",
+          "end": "2026-02-20"
+        },
+        "issued": "2026-02-22T12:00:00-06:00",
+        "performer": [
+          {
+            "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+            "type": "Practitioner",
+            "display": "Dr. James Lindgren, MD, FHRS"
+          },
+          {
+            "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+            "type": "Practitioner",
+            "display": "Dr. Sarah Okonkwo, MD"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-016-avg-hr",
+            "display": "Average ventricular rate 72 bpm"
+          },
+          {
+            "reference": "Observation/enc-016-min-hr",
+            "display": "Minimum ventricular rate 52 bpm"
+          },
+          {
+            "reference": "Observation/enc-016-max-hr",
+            "display": "Maximum ventricular rate 118 bpm"
+          },
+          {
+            "reference": "Observation/enc-016-af-burden",
+            "display": "AF burden 100%"
+          },
+          {
+            "reference": "Observation/enc-016-longest-pause",
+            "display": "Longest R-R interval 1.8 s"
+          },
+          {
+            "reference": "Observation/enc-016-pvc-burden",
+            "display": "PVC burden 0.3%"
+          },
+          {
+            "reference": "Observation/enc-016-recording-duration",
+            "display": "Recording duration 47h 42min"
+          },
+          {
+            "reference": "Observation/enc-016-rhythm",
+            "display": "Predominant rhythm: persistent atrial fibrillation"
+          },
+          {
+            "reference": "Observation/enc-016-events",
+            "display": "Patient-reported events: 4"
+          }
+        ],
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "440059007",
+                "display": "Persistent atrial fibrillation (disorder)"
+              }
+            ],
+            "text": "Persistent atrial fibrillation"
+          }
+        ],
+        "conclusion": "Persistent atrial fibrillation with 100% AF burden. Adequate rate control at rest (avg 72 bpm) on metoprolol succinate 50 mg daily. No clinically significant bradycardia or pauses. Minimal ventricular ectopy (PVC burden 0.3%). Findings support classification as persistent AF and are consistent with patient's symptom profile."
+      }
+    }
+  ]
+}

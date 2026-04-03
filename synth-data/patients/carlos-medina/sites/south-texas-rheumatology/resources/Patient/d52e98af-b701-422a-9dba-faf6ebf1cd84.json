@@ -1,0 +1,127 @@
+{
+  "resourceType": "Patient",
+  "id": "d52e98af-b701-422a-9dba-faf6ebf1cd84",
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2131-1",
+            "display": "Other Race"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Other"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2135-2",
+            "display": "Hispanic or Latino"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Hispanic or Latino"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "He was started on methotrexate 15mg weekly with folic acid. After 4 months of adequate dosing, his DAS28-CRP remained elevated at 4.2 (moderate disease activity). Methotrexate was increased to 20mg weekly. At 6 months on 20mg, he developed elevated liver enzymes (ALT 98, AST 82) — methotrexate was discontinued for hepatotoxicity.\n\nHe was switched to leflunomide 20mg daily. After 6 months on leflunomide, his DAS28-CRP was 4.8 (moderate-high), with worsening hand grip strength and new wrist erosions on follow-up imaging. Leflunomide was deemed an inadequate response.\n\nHis rheumatologist recommends initiating adalimumab (Humira biosimilar — Hadlima) as step-up biologic therapy. The prior authorization requires documentation of: RA diagnosis, failed conventional DMARDs (methotrexate — hepatotoxicity; leflunomide — inadequate response), disease activity scores, functional status, and imaging showing progression."
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "urn:oid:1.2.840.114350.1.13.0.1.7.5.737384.14",
+      "value": "STR-800142"
+    },
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-0ab6fa5fbbd26e1093e42f02"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Medina",
+      "given": [
+        "Carlos",
+        "Antonio"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "210-555-0147",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlos.medina@example.com",
+      "use": "home"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-11-08",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "4821 Walnut Ridge Dr"
+      ],
+      "city": "San Antonio",
+      "state": "TX",
+      "postalCode": "78229",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "M",
+        "display": "Married"
+      }
+    ],
+    "text": "Married"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}

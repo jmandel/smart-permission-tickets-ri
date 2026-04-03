@@ -1,0 +1,204 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "initial rheumatology consultation",
+    "reason": "evaluation of symmetric inflammatory polyarthritis with positive serologies; suspected rheumatoid arthritis",
+    "period_start": "2021-03-15",
+    "participants": [
+      {
+        "name": "Dr. Alejandro Fuentes",
+        "role": "attending physician",
+        "specialty": "Rheumatology"
+      }
+    ],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 130,
+        "value_diastolic": 84,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 198,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 28.4,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hepatitis B surface antigen",
+        "value": "negative",
+        "flag": "normal"
+      },
+      {
+        "name": "hepatitis B core antibody",
+        "value": "negative",
+        "flag": "normal"
+      },
+      {
+        "name": "hepatitis C antibody",
+        "value": "negative",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "DAS28-CRP (Disease Activity Score, 28 joints, using CRP)",
+        "value": 5.1,
+        "interpretation": "high disease activity"
+      },
+      {
+        "name": "tender joint count (28-joint assessment)",
+        "value": 12,
+        "unit": "joints"
+      },
+      {
+        "name": "swollen joint count (28-joint assessment)",
+        "value": 8,
+        "unit": "joints"
+      },
+      {
+        "name": "patient global assessment of disease activity (visual analog scale)",
+        "value": 62,
+        "unit": "mm"
+      },
+      {
+        "name": "physician global assessment of disease activity (visual analog scale)",
+        "value": 58,
+        "unit": "mm"
+      },
+      {
+        "name": "HAQ-DI (Health Assessment Questionnaire Disability Index)",
+        "value": 1.2,
+        "interpretation": "moderate functional impairment"
+      },
+      {
+        "name": "grip strength, right hand (dynamometer)",
+        "value": 32,
+        "unit": "kg"
+      },
+      {
+        "name": "grip strength, left hand (dynamometer)",
+        "value": 28,
+        "unit": "kg"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "approximately late 2020",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 15 mg oral tablet",
+      "sig": "Take 15 mg by mouth once weekly on Mondays",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "create"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "Take 1 mg by mouth once daily",
+      "status": "active",
+      "reason": "folate supplementation for methotrexate therapy",
+      "action": "create"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "Take 500 mg by mouth twice daily",
+      "status": "active",
+      "reason": "bridge NSAID therapy for symptomatic relief of rheumatoid arthritis",
+      "action": "create"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "status": "active",
+      "reason": "seasonal allergies",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive initial rheumatology consultation documenting detailed 28-joint examination with tender and swollen joint counts, grip strength measurements, disease activity scoring (DAS28-CRP 5.1, HAQ-DI 1.2), review of referring PCP labs and serologies, same-day imaging results showing early erosive disease, new diagnosis of seropositive rheumatoid arthritis per 2010 ACR/EULAR criteria, and treatment initiation plan including methotrexate, folic acid, and naproxen with counseling on medication risks and monitoring schedule."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "bilateral hand X-ray (radiograph)",
+      "report_state": "summary-only",
+      "description": "Periarticular osteopenia at MCPs bilaterally. Early marginal erosions at 2nd and 3rd MCP joints of the right hand. No joint space narrowing. Soft tissue swelling at bilateral MCPs and wrists. Findings consistent with early erosive rheumatoid arthritis."
+    },
+    {
+      "type": "bilateral foot X-ray (radiograph)",
+      "report_state": "summary-only",
+      "description": "Periarticular osteopenia at MTPs. No erosions identified. Mild soft tissue swelling. No acute osseous abnormality."
+    },
+    {
+      "type": "chest X-ray (radiograph)",
+      "report_state": "summary-only",
+      "description": "Clear lungs. No infiltrates or nodules. Ordered as pre-treatment screening prior to methotrexate initiation."
+    },
+    {
+      "type": "hepatitis B and C screening panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis B surface antigen",
+        "hepatitis B core antibody",
+        "hepatitis C antibody"
+      ],
+      "description": "Pre-DMARD infectious disease screening. All results negative. Patient cleared for methotrexate initiation."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "diffuse maculopapular rash",
+      "severity": "moderate",
+      "action": "reference-existing"
+    }
+  ]
+}

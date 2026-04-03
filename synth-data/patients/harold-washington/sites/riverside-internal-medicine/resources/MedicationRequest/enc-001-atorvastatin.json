@@ -1,0 +1,93 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-001-atorvastatin",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "617310",
+        "display": "atorvastatin calcium 20 MG Oral Tablet"
+      }
+    ],
+    "text": "atorvastatin 20 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2015-06-12",
+  "requester": {
+    "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+    "type": "Practitioner",
+    "display": "Dr. Cynthia Okafor"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-001-hyperlipidemia",
+      "display": "Hyperlipidemia"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 20 mg by mouth once daily at bedtime",
+      "patientInstruction": "Take 20 mg by mouth once daily at bedtime",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 20,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

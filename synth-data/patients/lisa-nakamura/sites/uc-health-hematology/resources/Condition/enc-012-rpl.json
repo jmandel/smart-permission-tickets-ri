@@ -1,0 +1,73 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-012-rpl",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "102878001",
+        "display": "Recurrent miscarriage (disorder)"
+      }
+    ],
+    "text": "Recurrent pregnancy loss"
+  },
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "onsetDateTime": "2024-06",
+  "recordedDate": "2025-05-28",
+  "recorder": {
+    "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+    "display": "Dr. James Okafor"
+  },
+  "note": [
+    {
+      "text": "Three consecutive early pregnancy losses: spontaneous abortion at 6 weeks (June 2024), missed abortion at 7 weeks (November 2024), and embryonic demise at 8 weeks (March 2025). Third loss had normal female karyotype (46,XX). APS is the leading suspected cause."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

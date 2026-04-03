@@ -1,0 +1,40 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-005-neuro-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183521007",
+        "display": "Referral to neurology service (procedure)"
+      }
+    ],
+    "text": "Referral to Dr. Raymond Patel at First Coast Neurology Associates for comprehensive cognitive evaluation including brain imaging and neuropsychological testing"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "authoredOn": "2022-03-22",
+  "requester": {
+    "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+    "type": "Practitioner",
+    "display": "Dr. Cynthia Okafor"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-005-cognitive-decline",
+      "display": "Cognitive decline, new onset"
+    }
+  ],
+  "note": [
+    {
+      "text": "Referral to Dr. Raymond Patel at First Coast Neurology Associates (836 Prudential Drive, Suite 1400, Jacksonville, FL 32207) for comprehensive cognitive evaluation including brain imaging and neuropsychological testing."
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "resourceType": "Patient",
+  "id": "bc606317-8b86-4886-9e03-d6a159f57952",
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2028-9",
+            "display": "Asian"
+          }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2034-7",
+            "display": "Chinese"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Chinese American"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "The PCP addresses her mild asthma (well controlled on PRN albuterol), does routine preventive care, and then discusses the screening results. Maria is receptive to help. The PCP creates a closed-loop referral to Rose City Community Services, a local community-based organization that provides food pantry access, SNAP application assistance, and transit vouchers.\n\nThe CBO receives the referral, a case worker contacts Maria, and over the following weeks connects her with food pantry enrollment and helps her apply for SNAP benefits. The Task is updated as milestones are reached, and eventually marked completed when services are delivered.\n\nTwo sites, one state (OR), one city. This tests Permission Ticket constraints on scopes — the CBO needs access only to the referral (ServiceRequest), tracking (Task), and screening results (Observation), not the patient's clinical records."
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Chen",
+      "given": [
+        "Maria",
+        "Yee-Ling"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "503-555-0148",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maria.chen@example.com",
+      "use": "home"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-09-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "4721 SE 82nd Avenue"
+      ],
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97266",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "S",
+        "display": "Never Married"
+      }
+    ],
+    "text": "Single (never married)"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ],
+  "identifier": [
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-fa977290ff474ac87d97e3a0"
+    }
+  ]
+}

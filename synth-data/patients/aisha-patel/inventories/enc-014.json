@@ -1,0 +1,101 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telemedicine Visit",
+    "reason": "Routine asthma and allergy follow-up",
+    "period_start": "2025-09-15T09:00:00-04:00",
+    "period_end": "2025-09-15T09:25:00-04:00",
+    "participants": [],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21 mcg) inhaler",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg) inhaler",
+      "sig": "2 puffs inhaled PRN for wheezing or shortness of breath via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 5 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr 0.15 mg) two-pack",
+      "sig": "carried at all times, PRN for anaphylaxis",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "apply to eczema flares twice daily as needed",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telemedicine visit progress note",
+      "description": "Routine asthma and allergy follow-up via synchronous audio-video telemedicine. Documents subjective report from mother regarding asthma control (improved but not fully controlled with weekly rescue inhaler use for exercise-induced symptoms), food allergy status (no accidental exposures, tolerating baked egg), eczema and rhinitis status (well-controlled). Assessment of five active conditions with plan to continue current regimen and schedule in-person visit February 2026 for FeNO, spirometry, and specific IgE retesting. Notes age eligibility for omalizumab at age 6 in March 2026 if needed."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

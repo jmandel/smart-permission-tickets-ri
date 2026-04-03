@@ -1,0 +1,58 @@
+{
+  "resourceType": "Organization",
+  "id": "f0f6cfeb-5a2e-4ed7-b223-e1aee4d4ec12",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1346782901"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "261QF0400X",
+          "display": "Federally Qualified Health Center"
+        }
+      ],
+      "text": "Federally Qualified Health Center (FQHC)"
+    }
+  ],
+  "name": "Cascade Community Health Center",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "503-555-0200",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "503-555-0201",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "8205 SE Foster Road"
+      ],
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "97206",
+      "country": "US"
+    }
+  ]
+}

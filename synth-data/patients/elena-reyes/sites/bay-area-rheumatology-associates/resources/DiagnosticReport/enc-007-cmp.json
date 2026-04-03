@@ -1,0 +1,56 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-007-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2023-11-09",
+  "issued": "2023-11-09T12:00:00-08:00",
+  "performer": [
+    {
+      "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "display": "Bay Area Rheumatology Associates"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-007-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-007-ast",
+      "display": "Aspartate Aminotransferase"
+    },
+    {
+      "reference": "Observation/enc-007-alt",
+      "display": "Alanine Aminotransferase"
+    }
+  ]
+}

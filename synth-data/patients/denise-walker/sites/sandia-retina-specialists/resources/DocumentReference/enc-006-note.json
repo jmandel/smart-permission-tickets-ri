@@ -1,0 +1,78 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34807-8",
+        "display": "Ophthalmology Consult note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Retina consultation note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7b1188a2-28ef-4d17-b783-2866c438f117",
+    "display": "Denise Walker"
+  },
+  "date": "2025-03-06T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/9df59e52-8c87-4bb4-9452-2ed6d4fef96d",
+      "type": "Practitioner",
+      "display": "Dr. Neha Kapur, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/9df59e52-8c87-4bb4-9452-2ed6d4fef96d",
+    "type": "Practitioner",
+    "display": "Dr. Neha Kapur, MD"
+  },
+  "custodian": {
+    "reference": "Organization/3fc5d6c7-f5f9-4bbc-b88d-e31b2ca4ab09",
+    "display": "Sandia Retina Specialists"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "title": "Retina consultation note",
+        "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgd29tYW4gd2l0aCBsb25nc3RhbmRpbmcgdHlwZSAyIGRpYWJldGVzIG1lbGxpdHVzIGNvbXBsaWNhdGVkIGJ5IHBlcmlwaGVyYWwgbmV1cm9wYXRoeSwgQ0tEIHN0YWdlIDNiLCBhbmQgZGlhYmV0aWMgZXllIGRpc2Vhc2UsIHJlZmVycmVkIHRvIHJldGluYSBjbGluaWMgYWZ0ZXIgYWJub3JtYWwgZGlhYmV0aWMgZXllIHNjcmVlbmluZy4gU2hlIHJlcG9ydHMgYmx1cnJlZCBjZW50cmFsIHZpc2lvbiBpbiB0aGUgbGVmdCBleWUuIE5vIHN5bXB0b21zIHN1Z2dlc3RpdmUgb2YgcmV0aW5hbCB0ZWFyIG9yIGRldGFjaG1lbnQgd2VyZSByZXBvcnRlZC4gTW9ybmluZyBnbHVjb3NlIGZyb20gcGF0aWVudCBsb2cgd2FzIDE2MiBtZy9kTC4gSGlzdG9yeSBpcyBub3RhYmxlIGZvciBjaHJvbmljIHN1Ym9wdGltYWwgZ2x5Y2VtaWMgY29udHJvbCBhbmQgaHlwZXJ0ZW5zaW9uLCBib3RoIGRpc2N1c3NlZCBhcyBjb250cmlidXRpbmcgZmFjdG9ycyB0byBjdXJyZW50IHJldGluYWwgZmluZGluZ3MuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTI2Lzc4IG1tSGcsIEhSIDcxIGJwbSwgV3QgMTkwIGxiLCBnbHVjb3NlIDE2MiBtZy9kTCB0aGlzIG1vcm5pbmcgcGVyIHBhdGllbnQgbG9nClZpc3VhbCBhY3VpdHkgd2l0aCBjb3JyZWN0aW9uOiAyMC8yNSBPRCwgMjAvNTAgT1MuCklPUDogMTYgbW1IZyBPRCwgMTcgbW1IZyBPUy4KRGlsYXRlZCBmdW5kdXMgZXhhbS9mdW5kdXMgcGhvdG9ncmFwaHk6IHNjYXR0ZXJlZCBtaWNyb2FuZXVyeXNtcywgZG90LWJsb3QgaGVtb3JyaGFnZXMsIGFuZCBoYXJkIGV4dWRhdGVzOyBubyByZXRpbmFsIHRlYXIgb3IgZGV0YWNobWVudC4KT0NUIG1hY3VsYTogT0QgY2VudHJhbCBtYWN1bGFyIHRoaWNrbmVzcyAyODkgbWljcm9ucyB3aXRob3V0IGNlbnRlci1pbnZvbHZpbmcgZWRlbWEuIE9TIGNlbnRlci1pbnZvbHZpbmcgZGlhYmV0aWMgbWFjdWxhciBlZGVtYSB3aXRoIGNlbnRyYWwgc3ViZmllbGQgdGhpY2tuZXNzIDQxMiBtaWNyb25zLgpBc3Nlc3NtZW50IG9mIHJldGlub3BhdGh5IHNldmVyaXR5OiBtb2RlcmF0ZSBOUERSIE9ELCBzZXZlcmUgTlBEUiBPUy4KUHJvY2VkdXJlOiBJbnRyYXZpdHJlYWwgYmV2YWNpenVtYWIgMS4yNSBtZy8wLjA1IG1MIGluamVjdGVkIE9TIHRvZGF5IGJ5IERyLiBOZWhhIEthcHVyIGFmdGVyIHRvcGljYWwgYW5lc3RoZXNpYSBhbmQgcG92aWRvbmUtaW9kaW5lIHByZXAuIFByb2NlZHVyZSBzdXBwb3J0IHByb3ZpZGVkIGJ5IFRlcmVzYSBMdWNlcm8sIFJOLgoKQVNTRVNTTUVOVDoKMS4gRGlhYmV0aWMgcmV0aW5vcGF0aHksIGJpbGF0ZXJhbCwgd2l0aCBhc3ltbWV0cmljIHNldmVyaXR5OiBtb2RlcmF0ZSBOUERSIE9EIGFuZCBzZXZlcmUgTlBEUiBPUy4KMi4gQ2VudGVyLWludm9sdmluZyBkaWFiZXRpYyBtYWN1bGFyIGVkZW1hLCBsZWZ0IGV5ZSwgY2F1c2luZyBibHVycmVkIGNlbnRyYWwgdmlzaW9uIGFuZCByZWR1Y2VkIHZpc3VhbCBhY3VpdHkgT1MuIE9DVCBzaG93cyBjZW50cmFsIHN1YmZpZWxkIHRoaWNrbmVzcyA0MTIgbWljcm9ucywgc3VwcG9ydGluZyB0cmVhdG1lbnQgdG9kYXkuCjMuIFR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cyB3aXRoIGNocm9uaWMgaHlwZXJnbHljZW1pYSwgY29udHJpYnV0aW5nIHRvIHByb2dyZXNzaW9uIG9mIHJldGluYWwgZGlzZWFzZS4KNC4gSHlwZXJ0ZW5zaW9uLCBjdXJyZW50bHkgY29udHJvbGxlZCBieSBpbnRha2UgQlAgdG9kYXksIGJ1dCBvbmdvaW5nIEJQIGNvbnRyb2wgcmVtYWlucyBpbXBvcnRhbnQgZm9yIGxpbWl0aW5nIHJldGlub3BhdGh5IHByb2dyZXNzaW9uLgoKUExBTjoKMS4gSW50cmF2aXRyZWFsIGJldmFjaXp1bWFiIDEuMjUgbWcvMC4wNSBtTCBPUyBwZXJmb3JtZWQgdG9kYXkgZm9yIGNlbnRlci1pbnZvbHZpbmcgRE1FLgoyLiBSZXZpZXdlZCByZWxhdGlvbnNoaXAgb2YgZGlhYmV0aWMgcmV0aW5vcGF0aHkvbWFjdWxhciBlZGVtYSB0byBsb25nc3RhbmRpbmcgaHlwZXJnbHljZW1pYSBhbmQgQlAgY29udHJvbDsgYWR2aXNlZCBjb250aW51ZWQgY2xvc2Ugc3lzdGVtaWMgZGlhYmV0ZXMgYW5kIGJsb29kLXByZXNzdXJlIG1hbmFnZW1lbnQgd2l0aCB0cmVhdGluZyBjbGluaWNpYW5zLgozLiBQb3N0LWluamVjdGlvbiBwcmVjYXV0aW9ucyBhbmQgcmV0dXJuIHByZWNhdXRpb25zIHJldmlld2VkLCBpbmNsdWRpbmcgd29yc2VuaW5nIHBhaW4sIHZpc2lvbiBsb3NzLCBpbmNyZWFzaW5nIHJlZG5lc3MsIGZsYXNoZXMsIGZsb2F0ZXJzLCBvciBjdXJ0YWluLWxpa2UgdmlzaW9uIGNoYW5nZS4KNC4gUmV0aW5hIGZvbGxvdy11cCBpbiA0LTYgd2Vla3MgZm9yIHJlcGVhdCBkaWxhdGVkIGV4YW0gYW5kIE9DVCwgd2l0aCBjb25zaWRlcmF0aW9uIG9mIGFkZGl0aW9uYWwgYW50aS1WRUdGIGluamVjdGlvbiBkZXBlbmRpbmcgb24gcmVzcG9uc2UuCjUuIFJldGluYSBjb25zdWx0YXRpb24gbm90ZSwgT0NUIHJlcG9ydCwgZnVuZHVzIGltYWdpbmcgcmVwb3J0LCBwcm9jZWR1cmUgbm90ZSwgYW5kIHBvc3QtaW5qZWN0aW9uIGluc3RydWN0aW9ucyBnZW5lcmF0ZWQgdG9kYXkuCg=="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006",
+        "display": "Office Visit"
+      }
+    ],
+    "period": {
+      "start": "2025-03-06"
+    }
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>DocumentReference enc-006-note</p></div>"
+  }
+}

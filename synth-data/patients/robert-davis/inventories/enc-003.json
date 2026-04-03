@@ -1,0 +1,327 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "2-week follow-up after RIPE therapy initiation; DOT enrollment; baseline visual acuity for ethambutol monitoring",
+    "period_start": "2026-02-05",
+    "participants": [
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "Infectious Disease physician (attending)"
+      },
+      {
+        "name": "RN Patricia Gomez",
+        "role": "DOT nurse coordinator"
+      }
+    ],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic, 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/min"
+      },
+      {
+        "name": "blood pressure (systolic component)",
+        "value": 136,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry, room air)",
+        "value": 96,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 162,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 23.3,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 35,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal",
+        "notes": "Mildly elevated from baseline of 28 at admission; within acceptable limits for RIPE therapy, less than 3× ULN"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 38,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal",
+        "notes": "Mildly elevated from baseline of 32 at admission; within acceptable limits for RIPE therapy, less than 3× ULN"
+      },
+      {
+        "name": "white blood cell count (WBC)",
+        "value": 8.4,
+        "unit": "× 10³/µL",
+        "reference_range": "4.5–11.0 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 11.5,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL (male)",
+        "flag": "low",
+        "notes": "Mild normocytic anemia; slightly improved from 11.2 at admission"
+      },
+      {
+        "name": "hematocrit",
+        "value": 34.6,
+        "unit": "%",
+        "reference_range": "38.3–48.6% (male)",
+        "flag": "low"
+      },
+      {
+        "name": "platelet count",
+        "value": 312,
+        "unit": "× 10³/µL",
+        "reference_range": "150–400 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose, fasting",
+        "value": 172,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high",
+        "notes": "Elevated; reflects diabetes management concern with rifampin-metformin interaction"
+      },
+      {
+        "name": "albumin",
+        "value": 3.1,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5 g/dL",
+        "flag": "low",
+        "notes": "Mildly low; likely related to chronic infection/inflammation"
+      },
+      {
+        "name": "uric acid",
+        "value": 7.8,
+        "unit": "mg/dL",
+        "reference_range": "3.5–7.2 mg/dL",
+        "flag": "high",
+        "notes": "Upper normal to mildly elevated; baseline for pyrazinamide monitoring"
+      },
+      {
+        "name": "sputum AFB smear",
+        "value": "Positive, 1+",
+        "unit": "semi-quantitative",
+        "flag": "abnormal",
+        "notes": "Positive but decreased from 2+ at admission — fewer organisms on smear",
+        "specimen": "sputum"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 1,
+        "interpretation": "Low risk; no further screening indicated. Patient endorsed \"little interest or pleasure in doing things\" as \"several days,\" attributed to isolation at home during infectious period."
+      },
+      {
+        "name": "visual acuity, right eye (Snellen)",
+        "value": "20/25",
+        "notes": "Baseline for ethambutol monitoring"
+      },
+      {
+        "name": "visual acuity, left eye (Snellen)",
+        "value": "20/25",
+        "notes": "Baseline for ethambutol monitoring"
+      },
+      {
+        "name": "color vision screening (Ishihara plate test)",
+        "value": "Intact",
+        "notes": "Baseline for ethambutol monitoring"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis, active",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "update-existing",
+      "notes": "Clinically improving — cough less productive, afebrile, AFB smear burden decreasing from 2+ to 1+. LFTs mildly elevated but acceptable. Continuing RIPE therapy."
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing",
+      "notes": "Fasting glucose 172 mg/dL (elevated). Rifampin may reduce metformin efficacy via CYP enzyme induction. Close glucose monitoring recommended."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing",
+      "notes": "BP 136/82 mmHg, controlled on current lisinopril regimen."
+    },
+    {
+      "name": "chronic obstructive pulmonary disease (COPD), mild",
+      "clinical_status": "active",
+      "onset_date": "2017",
+      "action": "reference-existing",
+      "notes": "Stable, no exacerbation, not requiring increased rescue inhaler use."
+    },
+    {
+      "name": "mild normocytic anemia",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "reference-existing",
+      "notes": "First identified at admission (Hgb 11.2). At this encounter Hgb 11.5 — slightly improved. Likely anemia of chronic disease/infection."
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral, once daily",
+      "sig": "600 mg by mouth once daily",
+      "status": "active",
+      "reason": "Pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral, once daily",
+      "sig": "300 mg by mouth once daily",
+      "status": "active",
+      "reason": "Pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine (vitamin B6) 50 mg oral, once daily",
+      "sig": "50 mg by mouth once daily",
+      "status": "active",
+      "reason": "Neuropathy prophylaxis (with isoniazid)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral, once daily",
+      "sig": "1500 mg by mouth once daily",
+      "status": "active",
+      "reason": "Pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral, once daily",
+      "sig": "1200 mg by mouth once daily",
+      "status": "active",
+      "reason": "Pulmonary tuberculosis",
+      "action": "reference-existing",
+      "notes": "Baseline visual acuity documented at this visit for monitoring."
+    },
+    {
+      "name": "lisinopril 20 mg oral, once daily",
+      "sig": "20 mg by mouth once daily",
+      "status": "active",
+      "reason": "Essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral, twice daily",
+      "sig": "1000 mg by mouth twice daily",
+      "status": "active",
+      "reason": "Type 2 diabetes mellitus",
+      "action": "reference-existing",
+      "notes": "PharmD David Chen flagged rifampin-metformin interaction (rifampin may reduce metformin efficacy via CYP enzyme induction); close glucose monitoring recommended."
+    },
+    {
+      "name": "albuterol HFA metered-dose inhaler, as needed",
+      "sig": "Inhale 1–2 puffs by mouth as needed for shortness of breath",
+      "status": "active",
+      "reason": "COPD",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "description": "Outpatient infectious disease follow-up note by Dr. Lena Okafor documenting 2-week post-discharge assessment of pulmonary TB on RIPE therapy, clinical improvement, lab review, AFB smear results, DOT enrollment, and plan for continued monitoring with 2-week return visit."
+    },
+    {
+      "type": "DOT enrollment documentation",
+      "description": "Documentation of Robert's enrollment in the directly observed therapy (DOT) program at UI Health Ambulatory TB Clinic. Monday–Friday observed administration at clinic; weekend self-administration with pill counts and medication diary reviewed on Mondays."
+    },
+    {
+      "type": "Visual acuity baseline record",
+      "description": "Baseline visual acuity documentation for ethambutol ocular toxicity monitoring: 20/25 OD, 20/25 OS by Snellen chart; color vision intact on Ishihara plate testing. Established as reference for future comparison."
+    },
+    {
+      "type": "Patient education materials",
+      "description": "Education materials provided covering TB treatment expectations, medication side effects (GI upset, orange secretions from rifampin, hepatotoxicity warning signs, visual changes with ethambutol), and respiratory isolation guidance during infectious period."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count (WBC)",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "Hepatic function panel",
+      "report_state": "summary-only",
+      "description": "Only AST and ALT values reported from this panel (2 of ~7 typical components). LFTs mildly elevated from admission baseline (AST 35 vs 28, ALT 38 vs 32) but within acceptable limits for continued RIPE therapy (less than 3× ULN)."
+    },
+    {
+      "type": "Comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Only selected values reported: creatinine 1.0 mg/dL (normal), fasting glucose 172 mg/dL (elevated), albumin 3.1 g/dL (mildly low). Only 3 of ~14 typical CMP components provided."
+    },
+    {
+      "type": "Sputum acid-fast bacilli (AFB) smear",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum AFB smear"
+      ]
+    },
+    {
+      "type": "Sputum mycobacterial culture",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum specimen collected at this visit and sent to mycobacteriology lab. Culture results pending (expected ~3 weeks). Inpatient sputum cultures from admission also still pending."
+    }
+  ],
+  "allergies": []
+}

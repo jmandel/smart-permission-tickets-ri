@@ -1,0 +1,49 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "Referral coordination and emotional check-in",
+    "period_start": "2025-04-21",
+    "participants": [],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "suspected antiphospholipid syndrome",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin, oral, once daily",
+      "status": "active",
+      "reason": "preconception health / reproductive planning",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Brief telephone encounter note documenting Dr. Forsythe's call to Lisa confirming scheduling of MFM consultation with Dr. Whitfield (05/19/2025) and hematology consultation with Dr. Okafor (05/28/2025). Documents emotional check-in — patient coping but struggling, continuing weekly EAP therapy. Counseled on timeline for attempting pregnancy (await confirmatory APS testing ~July 2025 and specialist input). Plan to follow up after specialist consultations."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

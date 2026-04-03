@@ -1,0 +1,186 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness exam, SDOH screening positive, social care referral created",
+    "period_start": "2026-03-10T09:00:00-08:00",
+    "period_end": "2026-03-10T09:45:00-08:00",
+    "participants": [],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 120,
+        "value_diastolic": 76,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 154,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.2,
+        "unit": "kg/m2",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 1,
+        "interpretation": "negative (below threshold of 3)",
+        "action": "create"
+      },
+      {
+        "name": "AHC HRSN screening — food insecurity item 1",
+        "question": "Within the past 12 months, you worried that your food would run out before you got money to buy more",
+        "value": "Often true",
+        "action": "create"
+      },
+      {
+        "name": "AHC HRSN screening — food insecurity item 2",
+        "question": "Within the past 12 months, the food you bought just didn't last and you didn't have money to get more",
+        "value": "Sometimes true",
+        "action": "create"
+      },
+      {
+        "name": "AHC HRSN screening — transportation barrier item",
+        "question": "In the past 12 months, has lack of reliable transportation kept you from medical appointments, meetings, work, or from getting things needed for daily living?",
+        "value": "Yes",
+        "action": "create"
+      },
+      {
+        "name": "AHC HRSN screening — housing instability domain",
+        "value": "Negative",
+        "action": "create"
+      },
+      {
+        "name": "AHC HRSN screening — utility needs domain",
+        "value": "Negative",
+        "action": "create"
+      },
+      {
+        "name": "AHC HRSN screening — interpersonal safety domain",
+        "value": "Negative",
+        "action": "create"
+      },
+      {
+        "name": "Asthma Control Test score",
+        "value": 22,
+        "interpretation": "well controlled (threshold ≥20)",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "food insecurity",
+      "clinical_status": "active",
+      "onset_date": "2026-03-10",
+      "action": "create"
+    },
+    {
+      "name": "transportation insecurity",
+      "clinical_status": "active",
+      "onset_date": "2026-03-10",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA metered-dose inhaler",
+      "sig": "Inhale 2 puffs by mouth every 4 to 6 hours as needed for shortness of breath or wheezing",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents the annual wellness exam including vitals, asthma assessment (well controlled, ACT 22), positive AHC HRSN screening results (food insecurity and transportation barriers), PHQ-2 negative screening, clinical discussion of social needs with patient, creation of social care referral to Rose City Community Services, preventive care review (influenza current, Pap not due until 2027, mammogram scheduling discussion), albuterol refill, and lab orders (CBC, CMP, lipid panel, HbA1c pending results).",
+      "action": "create"
+    },
+    {
+      "type": "patient instructions",
+      "description": "Instructions provided to patient regarding the referral to Rose City Community Services. Patient informed that a case worker will contact her within one week to assist with food assistance navigation and transportation support for medical appointments.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC ordered as part of annual wellness labs. Results not yet available at time of this encounter."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "CMP ordered as part of annual wellness labs. Results not yet available at time of this encounter."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Lipid panel ordered as part of annual wellness labs. Results not yet available at time of this encounter."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "ordered-not-resulted",
+      "description": "HbA1c ordered given BMI in overweight range and family history of diabetes. Results not yet available at time of this encounter."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

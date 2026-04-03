@@ -1,0 +1,35 @@
+{
+  "resourceType": "Practitioner",
+  "id": "9df59e52-8c87-4bb4-9452-2ed6d4fef96d",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Dr. Neha Kapur, MD",
+      "family": "Kapur",
+      "given": [
+        "Neha"
+      ],
+      "prefix": [
+        "Dr."
+      ],
+      "suffix": [
+        "MD"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Doctor of Medicine"
+      }
+    }
+  ]
+}

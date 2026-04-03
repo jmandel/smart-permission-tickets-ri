@@ -1,0 +1,70 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-004-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telehealth Visit Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "date": "2026-03-26T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/e02a3bc3-c2e9-4eb5-b29c-e99b5041980a",
+      "type": "Practitioner",
+      "display": "Amy Liu, NP"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/e02a3bc3-c2e9-4eb5-b29c-e99b5041980a",
+    "type": "Practitioner",
+    "display": "Amy Liu, NP"
+  },
+  "description": "Telehealth visit note for measles isolation follow-up, day 6 of illness.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRUhFQUxUSCBWSVNJVCBOT1RFCgpQYXRpZW50OiBNYXJjdXMgRC4gSm9obnNvbgpET0I6IDA2LzE0LzIwMDQKRGF0ZSBvZiBTZXJ2aWNlOiAwMy8yNi8yMDI2ClZpc2l0IFR5cGU6IFNjaGVkdWxlZCB0ZWxlaGVhbHRoIHZpZGVvIHZpc2l0CkNsaW5pY2lhbjogQW15IExpdSwgTlAKTG9jYXRpb246IFRlbGVtZWRpY2luZSDigJQgcGF0aWVudCBpbiB1bml2ZXJzaXR5IGlzb2xhdGlvbiBob3VzaW5nLCBNYWRpc29uLCBXSTsgY2xpbmljaWFuIGF0IFVXIEhlYWx0aCBVbml2ZXJzaXR5IFN0dWRlbnQgSGVhbHRoIFNlcnZpY2VzLCBNYWRpc29uLCBXSQoKU1VCSkVDVElWRToKTWFyY3VzIGlzIGEgMjEteWVhci1vbGQgbWFsZSB3aXRoIGNvbmZpcm1lZCBtZWFzbGVzIChkaWFnbm9zZWQgMDMvMjMvMjAyNiwgbWVhc2xlcyBJZ00gcG9zaXRpdmUsIG1lYXNsZXMgUk5BIFBDUiBwb3NpdGl2ZSkgY3VycmVudGx5IGluIGhpcyB1bml2ZXJzaXR5IGlzb2xhdGlvbiBob3VzaW5nLCBkYXkgNiBvZiBpbGxuZXNzIGFuZCBkYXkgMyBwb3N0LXJhc2ggb25zZXQuIEhlIGpvaW5lZCB0aGUgdmlkZW8gY2FsbCBmcm9tIGhpcyBpc29sYXRpb24gcm9vbSBhbmQgYXBwZWFyZWQgYWxlcnQgYW5kIGNvbWZvcnRhYmxlLgoKSGUgcmVwb3J0cyBoaXMgZmV2ZXIgaGFzIGRlY3JlYXNlZCBmcm9tIGEgcGVhayBvZiAxMDQuMSBGIG9uIE1hcmNoIDIzIHRvIGFwcHJveGltYXRlbHkgMTAxIEYgdGhpcyBtb3JuaW5nLCB0YWtlbiBieSBwZXJzb25hbCB0aGVybW9tZXRlci4gVGhlIHJhc2ggaGFzIHNwcmVhZCB0byBoaXMgYXJtcyBhbmQgbGVncyBidXQgaXMgYmVnaW5uaW5nIHRvIGZhZGUgb24gaGlzIGZhY2UsIHRyYW5zaXRpb25pbmcgdG8gYnJvd25pc2ggZGlzY29sb3JhdGlvbi4gSGlzIGNvdWdoIGlzIHBlcnNpc3RpbmcgYnV0IHN1YmplY3RpdmVseSBpbXByb3ZpbmcuIEhlIGlzIHRvbGVyYXRpbmcgY2xlYXIgZmx1aWRzIGFuZCBzb2Z0IGZvb2RzIGluY2x1ZGluZyBzb3VwLCBjcmFja2VycywgYW5kIGFwcGxlc2F1Y2UuIEFwcGV0aXRlIHJlbWFpbnMgZGVjcmVhc2VkIGJ1dCBpbXByb3ZlZCBmcm9tIGVhcmxpZXIgaW4gdGhlIHdlZWsuCgpIZSBkZW5pZXMgc2hvcnRuZXNzIG9mIGJyZWF0aCwgcGxldXJpdGljIGNoZXN0IHBhaW4sIGhlYWRhY2hlLCBuZWNrIHN0aWZmbmVzcywgY29uZnVzaW9uLCBzZWl6dXJlcywgZWFyIHBhaW4sIGhlYXJpbmcgY2hhbmdlcywgb3IgdmlzdWFsIGRpc3R1cmJhbmNlcy4KCk1lZGljYXRpb25zOiBBY2V0YW1pbm9waGVuIDUwMCBtZyBQTyBxNmggUFJOIGZldmVyLiBWaXRhbWluIEEgMjAwLDAwMCBJVSB4IDIgZG9zZXMgYWRtaW5pc3RlcmVkIChkb3NlIDEgb24gMDMvMjMsIGRvc2UgMiBvbiAwMy8yNCDigJQgY29uZmlybWVkIGJ5IHBhdGllbnQpLgoKT0JKRUNUSVZFOgpWaXRhbHM6IE5vdCBvYnRhaW5hYmxlICh0ZWxlbWVkaWNpbmUgZW5jb3VudGVyKS4gUGF0aWVudCBzZWxmLXJlcG9ydGVkIHRlbXBlcmF0dXJlIGFwcHJveGltYXRlbHkgMTAxIEYuCkdlbmVyYWw6IFBhdGllbnQgdmlzaWJsZSBvbiB2aWRlbywgYWxlcnQsIG9yaWVudGVkLCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4gQXBwZWFycyBtaWxkbHkgZmF0aWd1ZWQuIFZvaWNlIGlzIGNsZWFyIHRob3VnaCB3aXRoIG9jY2FzaW9uYWwgZHJ5IGNvdWdoIG5vdGVkIGR1cmluZyB0aGUgY2FsbC4KU2tpbiAobGltaXRlZCB2aWRlbyBhc3Nlc3NtZW50KTogTWFjdWxvcGFwdWxhciByYXNoIHZpc2libGUgb24gZm9yZWFybXMgYW5kIGhhbmRzLiBGYWNpYWwgcmFzaCBhcHBlYXJzIHRvIGJlIGZhZGluZyB3aXRoIGJyb3duaXNoIGRpc2NvbG9yYXRpb24gbm90ZWQuIE5vIHBldGVjaGlhZSBhcHByZWNpYXRlZCBvbiB2aXNpYmxlIGFyZWFzLgpIRUVOVCAobGltaXRlZCk6IENvbmp1bmN0aXZhbCBpbmplY3Rpb24gYXBwZWFycyBpbXByb3ZlZCBjb21wYXJlZCB0byBpbmRleCB2aXNpdC4gTm8gdmlzaWJsZSBvcmFsIGxlc2lvbnMuClJlc3BpcmF0b3J5OiBTcGVha2luZyBpbiBmdWxsIHNlbnRlbmNlcyB3aXRob3V0IGR5c3BuZWEuIE9jY2FzaW9uYWwgbm9ucHJvZHVjdGl2ZSBjb3VnaC4gTm8gYXVkaWJsZSBzdHJpZG9yIG9yIHdoZWV6aW5nLgpOZXVybzogQWxlcnQsIG9yaWVudGVkLCBjb252ZXJzYXRpb25hbCBhbmQgYXBwcm9wcmlhdGUuIE5vIGNvbmZ1c2lvbiBvciBhbHRlcmVkIG1lbnRhbCBzdGF0dXMuCgpBU1NFU1NNRU5UOgoxLiBNZWFzbGVzIChjb25maXJtZWQsIFNOT01FRCAxNDE4OTAwNCksIGRheSA2IG9mIGlsbG5lc3MsIGRheSAzIHBvc3QtcmFzaCBvbnNldCDigJQgaW1wcm92aW5nIGNsaW5pY2FsIGNvdXJzZS4gRmV2ZXIgdHJlbmRpbmcgZG93biwgcmFzaCBwcm9ncmVzc2luZyBpbiBleHBlY3RlZCBjZXBoYWxvY2F1ZGFsIHBhdHRlcm4gd2l0aCBlYXJseSByZXNvbHV0aW9uIG9uIHRoZSBmYWNlLiBObyBldmlkZW5jZSBvZiBjb21wbGljYXRpb25zIGF0IHRoaXMgdGltZS4KMi4gTm8gY2xpbmljYWwgc2lnbnMgb2YgbWVhc2xlcy1hc3NvY2lhdGVkIGNvbXBsaWNhdGlvbnM6CiAgIC0gTm8gcG5ldW1vbmlhIChubyBkeXNwbmVhLCBubyBwbGV1cml0aWMgcGFpbiwgU3BPMiBub3Qgb2J0YWluYWJsZSBidXQgbm8gc3ViamVjdGl2ZSByZXNwaXJhdG9yeSBkaXN0cmVzcykKICAgLSBObyBlbmNlcGhhbGl0aXMgKG5vIGhlYWRhY2hlLCBubyBjb25mdXNpb24sIG5vIHNlaXp1cmVzLCBubyBuZWNrIHN0aWZmbmVzcykKICAgLSBObyBvdGl0aXMgbWVkaWEgKG5vIGVhciBwYWluLCBubyBoZWFyaW5nIGNoYW5nZXMpCgpQTEFOOgoxLiBDb250aW51ZSBpc29sYXRpb24gdGhyb3VnaCBNYXJjaCAyNywgMjAyNiAoNCBmdWxsIGRheXMgYWZ0ZXIgcmFzaCBvbnNldCBwZXIgQ0RDIGd1aWRhbmNlKS4gUGF0aWVudCBjb3Vuc2VsZWQgb24gbWFpbnRhaW5pbmcgaXNvbGF0aW9uIGZyb20gcm9vbW1hdGVzIGFuZCBhdm9pZGluZyBjb21tb24gYXJlYXMgdW50aWwgY2xlYXJlZC4KMi4gQ29udGludWUgYWNldGFtaW5vcGhlbiA1MDAgbWcgUE8gcTZoIFBSTiBmb3IgZmV2ZXIgYW5kIGRpc2NvbWZvcnQuCjMuIFZpdGFtaW4gQSBzdXBwbGVtZW50YXRpb24gY29tcGxldGUgKDIgZG9zZXMgYWRtaW5pc3RlcmVkIDAzLzIzIGFuZCAwMy8yNCkuCjQuIEVuY291cmFnZWQgY29udGludWVkIG9yYWwgaHlkcmF0aW9uIHdpdGggY2xlYXIgZmx1aWRzIGFuZCBhZHZhbmNlbWVudCBvZiBkaWV0IGFzIHRvbGVyYXRlZC4KNS4gQW50aWNpcGF0b3J5IGd1aWRhbmNlIHByb3ZpZGVkOiByYXNoIHdpbGwgY29udGludWUgdG8gZmFkZSB3aXRoIHBvc3NpYmxlIGZpbmUgZGVzcXVhbWF0aW9uIG92ZXIgY29taW5nIGRheXMuIENvdWdoIG1heSBwZXJzaXN0IGZvciAxLTIgd2Vla3MuCjYuIFJldHVybiBwcmVjYXV0aW9ucyBkaXNjdXNzZWQ6IHNlZWsgaW1tZWRpYXRlIGNhcmUgKGNhbGwgY2xpbmljIG9yIHByZXNlbnQgdG8gRUQpIGlmIGZldmVyIHNwaWtlcyBhYm92ZSAxMDMgRiwgbmV3IG9yIHdvcnNlbmluZyBzaG9ydG5lc3Mgb2YgYnJlYXRoLCBzZXZlcmUgaGVhZGFjaGUsIGNvbmZ1c2lvbiwgbmVjayBzdGlmZm5lc3MsIGVhciBwYWluLCBvciBhbnkgb3RoZXIgY29uY2VybmluZyBzeW1wdG9tcy4KNy4gSW4tcGVyc29uIGNsZWFyYW5jZSB2aXNpdCBzY2hlZHVsZWQgZm9yIE1hcmNoIDMwLCAyMDI2IGF0IFVXIEhlYWx0aCBVbml2ZXJzaXR5IFN0dWRlbnQgSGVhbHRoIFNlcnZpY2VzLgoKQW15IExpdSwgTlAKVVcgSGVhbHRoIFVuaXZlcnNpdHkgU3R1ZGVudCBIZWFsdGggU2VydmljZXMKTlBJOiAxNTY3MjM0ODkwCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-004"
+      }
+    ],
+    "period": {
+      "start": "2026-03-26",
+      "end": "2026-03-26"
+    }
+  }
+}

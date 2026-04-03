@@ -1,0 +1,233 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness exam, Tdap immunization",
+    "period_start": "2018-03-14",
+    "period_end": "2018-03-14",
+    "participants": [
+      {
+        "name": "Dr. Cynthia Okafor",
+        "role": "internist"
+      }
+    ],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 134,
+        "value_diastolic": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 196,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 28.1,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6.7,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 112,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "creatinine (serum)",
+        "value": 1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "estimated glomerular filtration rate (eGFR)",
+        "value": 80,
+        "unit": "mL/min/1.73m²",
+        "reference_range": "≥60 mL/min/1.73m²",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 92,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 45,
+        "unit": "mg/dL",
+        "reference_range": "≥40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 192,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 154,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "urine microalbumin",
+        "value": "not detected",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": "0/6",
+        "interpretation": "negative screen"
+      },
+      {
+        "name": "timed up and go fall risk screening",
+        "value": "10 seconds",
+        "interpretation": "low fall risk"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "take one tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "take one tablet by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "take one tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "tetanus, diphtheria, and acellular pertussis vaccine (Tdap) booster",
+      "date": "2018-03-14",
+      "site": "left deltoid",
+      "route": "intramuscular injection"
+    },
+    {
+      "name": "influenza vaccine, inactivated (2017–2018 season)",
+      "date": "2018-03-14",
+      "site": "right deltoid",
+      "route": "intramuscular injection"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive annual wellness visit note documenting subjective report of stable health and active lifestyle, full physical exam including diabetic foot exam, vital signs, lab review (A1c, CMP, lipids, urinalysis), PHQ-2 depression screening, fall risk assessment, home safety review, immunizations administered (Tdap and influenza), and plan to continue current medications with 6-month follow-up."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP reported as within normal limits. Only creatinine (1.0 mg/dL) and eGFR (80 mL/min/1.73m²) were explicitly documented; remaining components not individually reported."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "total cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "summary-only",
+      "description": "Urinalysis performed as part of diabetic nephropathy screening. No microalbuminuria detected. Individual urinalysis components not reported."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-005",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "11429006",
+          "display": "Consultation"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "Primary performer"
+            }
+          ],
+          "text": "Primary performer"
+        }
+      ],
+      "period": {
+        "start": "2023-03-17T09:00:00-07:00",
+        "end": "2023-03-17T10:00:00-07:00"
+      },
+      "individual": {
+        "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+        "type": "Practitioner",
+        "display": "Dr. Anita Okonkwo"
+      }
+    }
+  ],
+  "period": {
+    "start": "2023-03-17T09:00:00-07:00",
+    "end": "2023-03-17T10:00:00-07:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Bilateral hand stiffness and swelling, rheumatology workup"
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+    "display": "Eastbay Primary Care Associates"
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+        "display": "Eastbay Primary Care Associates"
+      }
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Elena presented to Dr. Anita Okonkwo with 2-3 months of progressive bilateral hand and wrist pain, morning stiffness lasting about 90 minutes, and difficulty opening jars."
+    }
+  ]
+}

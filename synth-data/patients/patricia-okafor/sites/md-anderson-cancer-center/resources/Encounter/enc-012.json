@@ -1,0 +1,80 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-012",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "373205008",
+          "display": "Nuclear medicine imaging procedure (procedure)"
+        }
+      ],
+      "text": "PET/CT Whole Body with FDG"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary Performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-09-23",
+    "end": "2024-09-23"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "309529002",
+          "display": "Lung mass (finding)"
+        }
+      ],
+      "text": "PET/CT staging of suspected lung malignancy"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+        "display": "The University of Texas MD Anderson Cancer Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia underwent whole-body FDG PET/CT at MD Anderson. She fasted for 6 hours prior."
+    }
+  ]
+}

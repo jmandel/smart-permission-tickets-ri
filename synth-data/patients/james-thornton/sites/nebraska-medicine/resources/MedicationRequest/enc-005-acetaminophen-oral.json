@@ -1,0 +1,80 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-005-acetaminophen-oral",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "198440",
+        "display": "acetaminophen 500 MG Oral Tablet"
+      }
+    ],
+    "text": "Acetaminophen 500 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "authoredOn": "2026-01-26",
+  "requester": {
+    "reference": "Practitioner/d71350cc-eff8-48b3-a0ce-93e1e91d0e6b",
+    "type": "Practitioner",
+    "display": "Dr. Priya Nair"
+  },
+  "reasonCode": [
+    {
+      "text": "Post-operative pain management"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "500 mg by mouth every 6 hours as needed for pain",
+      "patientInstruction": "Take one tablet by mouth every 6 hours as needed for pain.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 6,
+          "periodUnit": "h"
+        }
+      },
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

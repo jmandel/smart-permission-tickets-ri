@@ -1,0 +1,61 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-012-order-thrombophilia",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "108252007",
+          "display": "Laboratory procedure"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "252285003",
+        "display": "Thrombophilia screening (procedure)"
+      }
+    ],
+    "text": "Complete thrombophilia panel (Factor V Leiden, prothrombin G20210A, protein C, protein S, antithrombin)"
+  },
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "authoredOn": "2025-05-28",
+  "requester": {
+    "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+    "type": "Practitioner",
+    "display": "Dr. James Okafor"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-012-aps",
+      "display": "Suspected antiphospholipid syndrome, obstetric subtype"
+    }
+  ],
+  "note": [
+    {
+      "text": "Complete inherited thrombophilia screening to rule out concurrent inherited thrombophilia. Includes Factor V Leiden mutation analysis, prothrombin gene mutation (G20210A) analysis, protein C activity, protein S activity (free and total), and antithrombin activity. To be drawn on or after 2025-07-07."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

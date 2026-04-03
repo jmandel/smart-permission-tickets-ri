@@ -1,0 +1,92 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-001-morphine",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1732006",
+        "display": "morphine sulfate 4 MG in 1 ML Injection"
+      }
+    ],
+    "text": "Morphine sulfate 2-4 mg IV every 4 hours PRN"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2026-01-12",
+  "requester": {
+    "reference": "Practitioner/a21fabab-5da7-4eea-aec8-26e9136e6d81",
+    "type": "Practitioner",
+    "display": "Dr. Marcus Okonkwo"
+  },
+  "reasonCode": [
+    {
+      "text": "Post-operative breakthrough pain management"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Morphine sulfate 2-4 mg IV every 4 hours as needed for pain",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 4,
+          "periodUnit": "h"
+        }
+      },
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseRange": {
+            "low": {
+              "value": 2,
+              "unit": "mg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg"
+            },
+            "high": {
+              "value": 4,
+              "unit": "mg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Discontinued at discharge on 2026-01-15. Transitioned to oral oxycodone 5 mg PRN for breakthrough pain."
+    }
+  ]
+}

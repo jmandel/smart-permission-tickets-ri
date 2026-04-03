@@ -1,0 +1,207 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "bridgetown-recovery-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Addiction medicine intake evaluation for alcohol use concerns",
+    "period_start": "2023-01-09",
+    "participants": [
+      {
+        "name": "Dr. Rosa Delgado",
+        "role": "primary provider"
+      },
+      {
+        "name": "Lisa Huang",
+        "role": "individual counselor"
+      }
+    ],
+    "service_provider": "Bridgetown Recovery Center",
+    "location": "Bridgetown Recovery Center, 920 SE Sandy Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 132,
+        "value_diastolic": 84,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 86,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.8,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (SpO2)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 146,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 66,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 23.6,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 52,
+        "unit": "U/L",
+        "reference_range": "<35 U/L",
+        "flag": "high"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 61,
+        "unit": "U/L",
+        "reference_range": "<35 U/L",
+        "flag": "high"
+      },
+      {
+        "name": "gamma-glutamyl transferase (GGT)",
+        "value": 89,
+        "unit": "U/L",
+        "reference_range": "<65 U/L",
+        "flag": "high"
+      },
+      {
+        "name": "phosphatidylethanol (PEth) level",
+        "value": 284,
+        "unit": "ng/mL",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "AUDIT (Alcohol Use Disorders Identification Test)",
+        "value": 28,
+        "interpretation": "high risk, zone IV"
+      },
+      {
+        "name": "CIWA-Ar (Clinical Institute Withdrawal Assessment for Alcohol, revised)",
+        "value": 6,
+        "interpretation": "mild withdrawal symptoms present at time of evaluation"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "alcohol use disorder, moderate severity",
+      "clinical_status": "active",
+      "onset_date": "2022-07",
+      "action": "create"
+    },
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild transaminase elevation, likely alcohol-related",
+      "clinical_status": "active",
+      "onset_date": "2023-01-09",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "take one 50 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder — craving reduction and relapse prevention",
+      "action": "create"
+    },
+    {
+      "name": "thiamine 100 mg oral tablet",
+      "sig": "take one 100 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "nutritional support given chronic heavy alcohol use and risk of thiamine deficiency",
+      "action": "create"
+    },
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "status": "active",
+      "reason": "bipolar II disorder — mood stabilization",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "status": "active",
+      "reason": "bipolar II disorder — sleep and mood stabilization",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive new-patient intake evaluation for alcohol use concerns at Bridgetown Recovery Center. Documents detailed alcohol use history, psychiatric history, AUDIT and CIWA-Ar screening scores, physical examination findings, lab results, new diagnosis of alcohol use disorder moderate severity, initiation of naltrexone and thiamine, enrollment in 12-week IOP, and care coordination with psychiatrist Dr. Okafor."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "comprehensive metabolic panel (CMP) with liver enzymes",
+      "report_state": "summary-only",
+      "description": "CMP ordered as part of addiction medicine intake workup. AST and ALT are reported as individual observations (elevated). The remainder of the CMP was within normal limits."
+    },
+    {
+      "type": "gamma-glutamyl transferase (GGT)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "gamma-glutamyl transferase (GGT)"
+      ]
+    },
+    {
+      "type": "phosphatidylethanol (PEth) level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "phosphatidylethanol (PEth) level"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "summary-only",
+      "description": "CBC ordered as part of intake workup. Result was within normal limits."
+    },
+    {
+      "type": "urine drug screen",
+      "report_state": "summary-only",
+      "description": "Urine drug screen ordered to confirm absence of illicit substance use prior to naltrexone initiation. Result negative for illicit substances."
+    },
+    {
+      "type": "hepatic ultrasound",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered to evaluate for alcohol-related liver disease given elevated liver enzymes and history of chronic heavy alcohol use. Pending scheduling at time of visit."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "trimethoprim-sulfamethoxazole",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "ballard-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "new patient comprehensive office visit",
+    "reason": "new patient comprehensive visit, medication reconciliation",
+    "period_start": "2024-07-15",
+    "period_end": "2024-07-15",
+    "participants": [
+      {
+        "name": "Dr. Kevin Tran, MD",
+        "specialty": "Family Medicine",
+        "role": "attending/primary performer"
+      }
+    ],
+    "service_provider": "Ballard Family Medicine",
+    "location": "Ballard Family Medicine, 5412 22nd Ave NW, Seattle, WA 98107"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 116,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 72,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "116/72",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 116,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 72,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 142,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 66,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 22.9,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6,
+        "unit": "K/uL",
+        "reference_range": "4.0–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.9,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 242,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose (fasting or random, serum)",
+        "value": 90,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 0.8,
+        "unit": "mg/dL",
+        "reference_range": "0.6–1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 22,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 26,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 190,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 108,
+        "unit": "mg/dL",
+        "reference_range": "<130 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 56,
+        "unit": "mg/dL",
+        "reference_range": ">40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 162,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 1,
+        "interpretation": "negative screen (below threshold of 3)"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019-07",
+      "action": "create"
+    },
+    {
+      "name": "alcohol use disorder, moderate, in sustained remission",
+      "clinical_status": "active",
+      "onset_date": "2023-01",
+      "action": "create"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "lamotrigine 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "create"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "quetiapine 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "create"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "naltrexone 50 mg by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "COVID-19 vaccine, mRNA (Pfizer-BioNTech), 2024-2025 updated formulation",
+      "date": "2024-07-15",
+      "site": "left deltoid",
+      "route": "intramuscular injection"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "New patient comprehensive progress note documenting comprehensive new patient visit including full medical history intake, review of transferred records from three prior Portland providers, medication reconciliation of three active psychiatric/addiction medications, physical examination, review of same-day lab results, assessment of three active conditions, COVID-19 vaccination administration, psychiatry referral placement, and 3-month follow-up plan."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP reported as normal. Four of the typical 14 CMP components are individually enumerated (glucose, creatinine, AST, ALT) with all values within normal limits."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "severity": "mild/moderate",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ]
+}

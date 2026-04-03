@@ -1,0 +1,87 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-020-b12",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "In-office Administration"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "309594",
+        "display": "cyanocobalamin 1000 MCG/ML Injectable Solution"
+      }
+    ],
+    "text": "vitamin B12 (cyanocobalamin) 1000 mcg intramuscular injection"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-020"
+  },
+  "authoredOn": "2025-03-10",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonCode": [
+    {
+      "text": "Pemetrexed supplementation protocol (every 9 weeks)"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-013-adenocarcinoma",
+      "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "1000 mcg intramuscular, administered in office on 2025-03-10. Per pemetrexed supplementation protocol, every 9 weeks. Next due approximately May 2025.",
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "78421000",
+            "display": "Intramuscular route (qualifier value)"
+          }
+        ],
+        "text": "Intramuscular"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 1000,
+            "unit": "mcg",
+            "system": "http://unitsofmeasure.org",
+            "code": "ug"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-014-medrq-donepezil-stop",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "997223",
+        "display": "donepezil HCl 10 MG Oral Tablet"
+      }
+    ],
+    "text": "donepezil 10 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "authoredOn": "2025-01-22",
+  "requester": {
+    "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+    "type": "Practitioner",
+    "display": "Dr. Lisa Nakamura"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "26929004",
+          "display": "Alzheimer's disease (disorder)"
+        }
+      ],
+      "text": "Alzheimer's disease"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-alzheimers",
+      "display": "Alzheimer's disease, moderate stage"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "10 mg once daily — discontinued, replaced by Namzaric",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 10,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Discontinued at this encounter. Patient progressed to moderate-stage Alzheimer's disease; switched to donepezil/memantine combination (Namzaric)."
+    }
+  ]
+}

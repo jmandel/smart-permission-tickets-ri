@@ -1,0 +1,110 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-019-naltrexone",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1483744",
+        "display": "naltrexone HCl 50 MG Oral Tablet"
+      }
+    ],
+    "text": "naltrexone 50 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-019"
+  },
+  "authoredOn": "2025-01-21",
+  "requester": {
+    "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+    "type": "Practitioner",
+    "display": "Dr. Kevin Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-aud",
+      "display": "Alcohol use disorder, moderate, in sustained remission"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take one 50 mg tablet by mouth once daily",
+      "patientInstruction": "Take 1 tablet (50 mg) by mouth once daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 50,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2025-01-21",
+      "end": "2025-04-21"
+    },
+    "quantity": {
+      "value": 90,
+      "unit": "tablet"
+    },
+    "expectedSupplyDuration": {
+      "value": 90,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  },
+  "priorPrescription": {
+    "reference": "MedicationRequest/enc-014-naltrexone",
+    "display": "naltrexone 50 mg oral tablet"
+  }
+}

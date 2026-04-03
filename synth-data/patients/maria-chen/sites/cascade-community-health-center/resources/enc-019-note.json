@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-019-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "date": "2026-04-29T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNC8yOS8yMDI2ClBhdGllbnQ6IE1hcmlhIFllZS1MaW5nIENoZW4gKERPQjogMDkvMTQvMTk4MykKUHJvdmlkZXI6IERyLiBBbmdlbGEgTW9yYWxlcywgTUQKU2l0ZTogQ2FzY2FkZSBDb21tdW5pdHkgSGVhbHRoIENlbnRlciwgODIwNSBTRSBGb3N0ZXIgUm9hZCwgUG9ydGxhbmQsIE9SIDk3MjA2CgpSRUFTT04gRk9SIENBTEw6IFNvY2lhbCBjYXJlIHJlZmVycmFsIGNsb3N1cmUg4oCUIGNvbmZpcm1pbmcgb3V0Y29tZXMgb2YgcmVmZXJyYWwgdG8gUm9zZSBDaXR5IENvbW11bml0eSBTZXJ2aWNlcy4KCkRJU0NVU1NJT046ClNwb2tlIHdpdGggTWFyaWEgYnkgcGhvbmUgdG8gZm9sbG93IHVwIG9uIHRoZSBjbG9zZWQtbG9vcCBzb2NpYWwgY2FyZSByZWZlcnJhbCBpbml0aWF0ZWQgTWFyY2ggMjAyNiBmb3IgZm9vZCBpbnNlY3VyaXR5IGFuZCB0cmFuc3BvcnRhdGlvbiBiYXJyaWVycyBpZGVudGlmaWVkIG9uIEFIQyBIUlNOIHNjcmVlbmluZy4gTWFyaWEgcmVwb3J0cyB0aGUgZm9sbG93aW5nIG91dGNvbWVzOgoKMS4gU05BUCBiZW5lZml0cyBhcHByb3ZlZCBtaWQtQXByaWwgMjAyNiwgcmVjZWl2aW5nICQ0MzAvbW9udGggZm9yIGhvdXNlaG9sZCBvZiB0aHJlZS4KMi4gRW5yb2xsZWQgaW4gd2Vla2x5IGZvb2QgcGlja3VwIGF0IFJvc2UgQ2l0eSBwYW50cnkgc2l0ZSBzaW5jZSBlYXJseSBBcHJpbDsgYXR0ZW5kaW5nIHJlZ3VsYXJseS4KMy4gUmVjZWl2ZWQgVHJpTWV0IEhPUCBjYXJkIHZvdWNoZXJzIGZvciBtZWRpY2FsIGFwcG9pbnRtZW50czsgdXNlZCBvbmUgdm91Y2hlciBmb3IgbWFtbW9ncmFtIHNjaGVkdWxpbmcgYXBwb2ludG1lbnQuCgpNYXJpYSBzdGF0ZXMgc2hlIGlzIGZlZWxpbmcgbGVzcyBzdHJlc3NlZCBhYm91dCBlbmQtb2YtbW9udGggZm9vZCBidWRnZXRzIGFuZCByZXBvcnRzIGltcHJvdmVkIGFiaWxpdHkgdG8gZmVlZCBoZXIgZmFtaWx5IGNvbnNpc3RlbnRseS4KCkNMSU5JQ0FMIFNUQVRVUzogQ29uZGl0aW9ucyBhbmQgbWVkaWNhdGlvbnMgdW5jaGFuZ2VkLiBNaWxkIGludGVybWl0dGVudCBhc3RobWEgcmVtYWlucyB3ZWxsIGNvbnRyb2xsZWQgb24gUFJOIGFsYnV0ZXJvbC4gTm8gbmV3IGNvbXBsYWludHMgb3IgY29uY2VybnMuCgpBQ1RJT05TIFRBS0VOOgotIENoYXJ0IHVwZGF0ZWQgdG8gcmVmbGVjdCBzdWNjZXNzZnVsIHNvY2lhbCBjYXJlIG91dGNvbWVzLgotIFJlZmVycmFsIFRhc2sgbWFya2VkIGFzIGNvbXBsZXRlZCDigJQgYWxsIG1pbGVzdG9uZXMgbWV0OiBmb29kIHBhbnRyeSBlbnJvbGxtZW50IGFjdGl2ZSwgU05BUCBhcHByb3ZlZCwgdHJhbnNpdCB2b3VjaGVycyBkaXN0cmlidXRlZC4KCkZPTExPVy1VUDogTmV4dCByb3V0aW5lIHZpc2l0IOKAlCBhbm51YWwgd2VsbG5lc3MgZXhhbSwgTWFyY2ggMjAyNy4gUGF0aWVudCB0byBjYWxsIHNvb25lciBpZiBuZXcgbmVlZHMgYXJpc2UuCgpEci4gQW5nZWxhIE1vcmFsZXMsIE1ECkNhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-019"
+      }
+    ],
+    "period": {
+      "start": "2026-04-29"
+    }
+  }
+}

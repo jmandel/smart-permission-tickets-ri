@@ -1,0 +1,63 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-004-ns-bolus",
+  "status": "completed",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1807639",
+        "display": "sodium chloride 0.9 % in 1000 ML Injection"
+      }
+    ],
+    "text": "Normal saline 0.9% 1000 mL IV bolus"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "authoredOn": "2026-01-22",
+  "requester": {
+    "reference": "Practitioner/e541b9d7-7d9e-442d-98a8-8bd3ea36f1ad",
+    "display": "Dr. Samuel Kerr"
+  },
+  "reasonCode": [
+    {
+      "text": "Volume resuscitation in setting of fever"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "1000 mL IV bolus, once",
+      "timing": {
+        "repeat": {
+          "count": 1
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 1000,
+            "unit": "mL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mL"
+          }
+        }
+      ]
+    }
+  ]
+}

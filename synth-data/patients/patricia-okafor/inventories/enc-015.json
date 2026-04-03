@@ -1,0 +1,273 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Clinical trial screening and baseline assessments for NCT05820295",
+    "period_start": "2024-11-04",
+    "period_end": "2024-11-04",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending physician"
+      },
+      {
+        "name": "Jennifer Liu, RN",
+        "role": "research coordinator"
+      },
+      {
+        "name": "Dr. Amy Pham, PharmD",
+        "role": "oncology pharmacist"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 132,
+        "value_diastolic": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 150,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 25,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": 11.4,
+        "unit": "g/dL",
+        "flag": "within acceptable range for trial enrollment"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 6.5,
+        "unit": "x10³/µL",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "absolute neutrophil count (ANC)",
+        "value": 3.9,
+        "unit": "x10³/µL",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "platelet count",
+        "value": 222,
+        "unit": "x10³/µL",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.86,
+        "unit": "mg/dL",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 20,
+        "unit": "U/L",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 18,
+        "unit": "U/L",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "albumin",
+        "value": 3.3,
+        "unit": "g/dL",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "total bilirubin",
+        "value": 0.6,
+        "unit": "mg/dL",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "lactate dehydrogenase (LDH)",
+        "value": 204,
+        "unit": "U/L",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "thyroid stimulating hormone (TSH)",
+        "value": 2.1,
+        "unit": "mIU/L",
+        "flag": "within acceptable range"
+      },
+      {
+        "name": "free thyroxine (free T4)",
+        "value": 1.2,
+        "unit": "ng/dL",
+        "flag": "within acceptable range"
+      }
+    ],
+    "screening": [
+      {
+        "name": "ECOG performance status",
+        "value": 1,
+        "note": "restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature"
+      },
+      {
+        "name": "EORTC QLQ-C30 global health status score",
+        "value": 58,
+        "unit": "out of 100",
+        "note": "baseline quality-of-life assessment for clinical trial"
+      },
+      {
+        "name": "EORTC QLQ-LC13 cough symptom score",
+        "value": 44,
+        "unit": "out of 100",
+        "note": "baseline lung-cancer-specific quality-of-life assessment"
+      },
+      {
+        "name": "EORTC QLQ-LC13 dyspnea score",
+        "value": 22,
+        "unit": "out of 100",
+        "note": "baseline lung-cancer-specific quality-of-life assessment"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA, adenocarcinoma of right upper lobe (T2b N2 M0), KRAS G12C positive, PD-L1 TPS 60%",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild bilateral knee osteoarthritis",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "as needed for knee pain; patient counseled to minimize NSAID use during chemotherapy and use acetaminophen as first-line analgesic",
+      "status": "active",
+      "reason": "knee osteoarthritis",
+      "action": "update-existing",
+      "note": "pharmacist Dr. Amy Pham flagged potential nephrotoxicity interaction with carboplatin; medication not discontinued but usage guidance updated"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents the clinical trial screening visit for NCT05820295 including vital signs, physical examination findings, screening lab results, ECG and echocardiogram results, ECOG performance status assessment, quality-of-life baseline assessments (EORTC QLQ-C30, QLQ-LC13), medication interaction review by oncology pharmacist, eligibility determination confirming all inclusion criteria met and no exclusion criteria identified, and plan for consent visit on December 2, 2024."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "absolute neutrophil count (ANC)",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP drawn as part of trial screening; only creatinine, ALT, AST, albumin, and total bilirubin values are individually documented. The narrative does not provide glucose, BUN, sodium, potassium, chloride, CO2, or calcium results. Reported values all within acceptable ranges for trial enrollment."
+    },
+    {
+      "type": "lactate dehydrogenase (LDH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lactate dehydrogenase (LDH)"
+      ]
+    },
+    {
+      "type": "thyroid function panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid stimulating hormone (TSH)",
+        "free thyroxine (free T4)"
+      ]
+    },
+    {
+      "type": "electrocardiogram (ECG)",
+      "report_state": "summary-only",
+      "description": "Normal sinus rhythm, rate 72 bpm, normal axis, no ST-T wave abnormalities, QTc interval 412 ms. No concerning findings for trial enrollment."
+    },
+    {
+      "type": "transthoracic echocardiogram",
+      "report_state": "summary-only",
+      "description": "Left ventricular ejection fraction (LVEF) 62%, normal wall motion, no valvular abnormalities, no pericardial effusion. Cardiac function adequate for trial enrollment (LVEF >50% required)."
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "summary-only",
+      "description": "No proteinuria identified. Result acceptable for trial enrollment."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

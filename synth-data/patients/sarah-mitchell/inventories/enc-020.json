@@ -1,0 +1,94 @@
+{
+  "encounter_id": "enc-020",
+  "encounter_index": 20,
+  "site_slug": "puget-sound-psychiatry",
+  "encounter": {
+    "class": "virtual",
+    "type": "psychiatric follow-up visit",
+    "reason": "quarterly follow-up, winter seasonal mood assessment",
+    "period_start": "2025-02-24T10:00:00-08:00",
+    "period_end": "2025-02-24T10:25:00-08:00",
+    "participants": [],
+    "service_provider": "Puget Sound Psychiatry",
+    "location": "Puget Sound Psychiatry, 1001 4th Ave, Suite 820, Seattle, WA 98154"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening",
+        "value": 6,
+        "interpretation": "mild depressive symptoms",
+        "date": "2025-02-24",
+        "action": "create"
+      },
+      {
+        "name": "GAD-7 anxiety screening",
+        "value": 4,
+        "interpretation": "minimal anxiety",
+        "date": "2025-02-24",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate severity, in sustained remission",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia (quetiapine-related)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "Take 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "Take 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder (sleep and mood stabilization)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "Take 50 mg by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder maintenance",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "psychiatric telemedicine progress note",
+      "description": "Quarterly psychiatric follow-up note documenting winter seasonal mood assessment for patient with bipolar II disorder. Reports brief self-limited low motivation episode in January that did not meet depressive episode criteria, continued use of light therapy and seasonal coping strategies, stable mood on current regimen, sustained sobriety approaching 2 years, and PHQ-9/GAD-7 screening scores at baseline. No medication changes; plan for lamotrigine level and metabolic panel at next visit.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics (trimethoprim-sulfamethoxazole)",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

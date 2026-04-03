@@ -1,0 +1,82 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-013",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "28520004",
+          "display": "Venipuncture for blood test (procedure)"
+        }
+      ],
+      "text": "Lab Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+        "display": "Dr. Angela Morales, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-03-22",
+    "end": "2024-03-22"
+  },
+  "reasonCode": [
+    {
+      "text": "Annual labs and Pap result"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/47540de6-680b-41bd-9e2c-3903b02dc52d",
+        "display": "Cascade Community Health Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/f0f6cfeb-5a2e-4ed7-b223-e1aee4d4ec12",
+    "display": "Cascade Community Health Center"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Fasting labs drawn on 3/21; results returned 3/22. Lab results: fasting glucose 92 mg/dL, HbA1c 5.4%, total cholesterol 198, LDL 118, HDL 51, triglycerides 145, CBC unremarkable (WBC 6.9, Hgb 13.1, Hct 39.2%, Plt 248)."
+    }
+  ]
+}

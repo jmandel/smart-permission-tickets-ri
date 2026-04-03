@@ -1,0 +1,384 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2054-5",
+              "display": "Black or African American"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Black"
+          }
+        ]
+      },
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "non-Hispanic"
+          }
+        ]
+      }
+    ],
+    "identifier": [
+      {
+        "use": "usual",
+        "system": "http://example.org/fhir/identifier/patient-local",
+        "value": "rio-grande-nephrology-associates-denise-walker"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Walker",
+        "given": [
+          "Denise"
+        ],
+        "text": "Denise Walker"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "home",
+        "value": "505-555-0184"
+      }
+    ],
+    "gender": "female",
+    "birthDate": "1961-04-22",
+    "address": [
+      {
+        "use": "home",
+        "city": "Albuquerque",
+        "state": "NM",
+        "country": "US",
+        "text": "Albuquerque, NM"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "W",
+          "display": "Widowed"
+        }
+      ],
+      "text": "Widowed"
+    },
+    "contact": [
+      {
+        "relationship": [
+          {
+            "text": "Adult daughter"
+          }
+        ],
+        "name": {
+          "text": "Adult daughter"
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "mobile",
+            "value": "505-555-0147"
+          }
+        ],
+        "address": {
+          "city": "Albuquerque",
+          "state": "NM",
+          "country": "US",
+          "text": "Albuquerque, NM"
+        }
+      }
+    ],
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ],
+    "managingOrganization": {
+      "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+      "display": "Rio Grande Nephrology Associates"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1215079346",
+          "display": "Source Organization NPI 1215079346"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "NM",
+          "display": "NM"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Organization",
+    "id": "88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+    "identifier": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1215079346"
+      }
+    ],
+    "active": true,
+    "name": "Rio Grande Nephrology Associates",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Nephrology specialty practice"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "work",
+        "value": "505-555-0129"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "city": "Albuquerque",
+        "state": "NM",
+        "country": "US",
+        "text": "Albuquerque, NM"
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1215079346",
+          "display": "Source Organization NPI 1215079346"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "NM",
+          "display": "NM"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "text": "Dr. Helena Ortiz, MD",
+        "family": "Ortiz",
+        "given": [
+          "Helena"
+        ],
+        "prefix": [
+          "Dr."
+        ],
+        "suffix": [
+          "MD"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Doctor of Medicine"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1215079346",
+          "display": "Source Organization NPI 1215079346"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "NM",
+          "display": "NM"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "6cb7a595-5680-455c-bb85-32f59b9c37e3",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "text": "Omar Siddiqui, PA-C",
+        "family": "Siddiqui",
+        "given": [
+          "Omar"
+        ],
+        "suffix": [
+          "PA-C"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+              "code": "PA",
+              "display": "Physician Assistant"
+            }
+          ],
+          "text": "Physician Assistant-Certified"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1215079346",
+          "display": "Source Organization NPI 1215079346"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "NM",
+          "display": "NM"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "text": "Rachel Montoya, RN",
+        "family": "Montoya",
+        "given": [
+          "Rachel"
+        ],
+        "suffix": [
+          "RN"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+              "code": "RN",
+              "display": "Registered Nurse"
+            }
+          ],
+          "text": "Registered Nurse"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1215079346",
+          "display": "Source Organization NPI 1215079346"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "NM",
+          "display": "NM"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Location",
+    "id": "194d4df3-20ac-42b3-9b2f-305834567e18",
+    "status": "active",
+    "name": "Rio Grande Nephrology Associates, Albuquerque, New Mexico",
+    "description": "Main clinical location for Rio Grande Nephrology Associates encounters in Albuquerque.",
+    "type": [
+      {
+        "text": "Nephrology specialty practice"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "use": "work",
+        "value": "505-555-0129"
+      }
+    ],
+    "address": {
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "text": "Albuquerque, NM"
+    },
+    "managingOrganization": {
+      "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+      "display": "Rio Grande Nephrology Associates"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1215079346",
+          "display": "Source Organization NPI 1215079346"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "NM",
+          "display": "NM"
+        }
+      ]
+    }
+  }
+]

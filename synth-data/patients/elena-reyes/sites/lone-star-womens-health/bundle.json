@@ -1,0 +1,4060 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T01:45:02.192Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "White"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino"
+                }
+              },
+              {
+                "url": "detailed",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2148-5",
+                  "display": "Mexican"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino, Mexican-American"
+              }
+            ]
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "Mid-30s Latina woman. Lived in Austin, TX through 2022, then moved to Oakland, CA.\n\nTexas chapter: Reproductive history managed by an OB/GYN practice in Austin. First pregnancy (2019) was uncomplicated — vaginal delivery, healthy baby. In early 2020 she had a spontaneous abortion (miscarriage) at ~10 weeks — managed expectantly, emotionally difficult but no surgical intervention needed. Second successful pregnancy (2021) had mild gestational diabetes (diet-controlled, resolved postpartum), vaginal delivery. Also saw a PCP in Austin for routine care — annual wellness exams, immunizations, a couple of URIs. The miscarriage is particularly sensitive data — in a post-Dobbs environment, records of pregnancy loss could be misinterpreted or weaponized, making the case for granular data sharing controls viscerally concrete.\n\nCalifornia chapter: Established with a new PCP in Oakland in late 2022. In early 2023, started having bilateral hand and wrist pain, morning stiffness lasting over an hour. PCP ordered initial labs (RF, anti-CCP, ESR, CRP — all elevated). Referred to rheumatology. Diagnosed with rheumatoid arthritis, seropositive. Started methotrexate 15mg weekly + folic acid. Required regular monitoring (CBC, LFTs every 8-12 weeks). Partial response to methotrexate — added adalimumab (Humira) in late 2023. Good response by 2024. Ongoing monitoring, quarterly rheumatology visits, regular labs."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Reyes",
+            "given": [
+              "Elena",
+              "Marisol"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "512-555-0147",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "4521 South Congress Ave"
+            ],
+            "city": "Austin",
+            "state": "TX",
+            "postalCode": "78745",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "Married"
+            }
+          ],
+          "text": "Married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-3b4d924f1bbc870106629acc"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1589043712"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "OB/GYN Specialty Practice"
+          }
+        ],
+        "name": "Lone Star Women's Health",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "512-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "city": "Austin",
+            "state": "TX",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+        "name": [
+          {
+            "use": "official",
+            "family": "Villanueva",
+            "given": [
+              "Carmen"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "207V00000X",
+                  "display": "Obstetrics & Gynecology"
+                }
+              ],
+              "text": "OB/GYN"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d3a4b5c6-7f8e-4d9a-0b1c-2e3f4a5b6c7d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d3a4b5c6-7f8e-4d9a-0b1c-2e3f4a5b6c7d",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Amara"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "176B00000X",
+                  "display": "Midwife"
+                }
+              ],
+              "text": "Certified Nurse-Midwife"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e4b5c6d7-8a9f-4e0b-1c2d-3f4a5b6c7d8e",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "e4b5c6d7-8a9f-4e0b-1c2d-3f4a5b6c7d8e",
+        "name": [
+          {
+            "use": "official",
+            "family": "Castillo",
+            "given": [
+              "Jennifer"
+            ],
+            "prefix": [
+              "RD"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "133V00000X",
+                  "display": "Dietitian, Registered"
+                }
+              ],
+              "text": "Registered Dietitian"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f5c6d7e8-9b0a-4f1c-2d3e-4a5b6c7d8e9f",
+      "resource": {
+        "resourceType": "Location",
+        "id": "f5c6d7e8-9b0a-4f1c-2d3e-4a5b6c7d8e9f",
+        "status": "active",
+        "name": "Lone Star Women's Health",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient OB/GYN Clinic"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "512-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "city": "Austin",
+          "state": "TX",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-001",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                "code": "AMB",
+                "display": "ambulatory"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "Primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "period": {
+              "start": "2020-02-07T00:00:00Z",
+              "end": "2020-02-07T23:59:00Z"
+            },
+            "individual": {
+              "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+              "type": "Practitioner",
+              "display": "Dr. Carmen Villanueva"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-02-07",
+          "end": "2020-02-07"
+        },
+        "reasonCode": [
+          {
+            "text": "Missed abortion diagnosed, expectant management counseling"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f5c6d7e8-9b0a-4f1c-2d3e-4a5b6c7d8e9f",
+              "display": "Lone Star Women's Health"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena was evaluated in person by Dr. Carmen Villanueva at Lone Star Women's Health after first-trimester ultrasound showed pregnancy loss."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-002",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "424619006",
+                "display": "Prenatal visit (regime/therapy)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "Primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "period": {
+              "start": "2022-01-28",
+              "end": "2022-01-28"
+            },
+            "individual": {
+              "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+              "type": "Practitioner",
+              "display": "Dr. Carmen Villanueva"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "period": {
+              "start": "2022-01-28",
+              "end": "2022-01-28"
+            },
+            "individual": {
+              "reference": "Practitioner/e4b5c6d7-8a9f-4e0b-1c2d-3f4a5b6c7d8e",
+              "type": "Practitioner",
+              "display": "RD Jennifer Castillo"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-01-28",
+          "end": "2022-01-28"
+        },
+        "reasonCode": [
+          {
+            "text": "Gestational diabetes diagnosed in third pregnancy"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f5c6d7e8-9b0a-4f1c-2d3e-4a5b6c7d8e9f",
+              "display": "Lone Star Women's Health"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "At 28 weeks gestation in her third pregnancy, Elena saw Dr. Carmen Villanueva in Austin for routine prenatal follow-up after abnormal glucose screening."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-003",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "384633003",
+                "display": "Postpartum examination and care of mother (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "Primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "period": {
+              "start": "2022-06-10",
+              "end": "2022-06-10"
+            },
+            "individual": {
+              "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+              "type": "Practitioner",
+              "display": "Dr. Carmen Villanueva"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-06-10",
+          "end": "2022-06-10"
+        },
+        "reasonCode": [
+          {
+            "text": "Six-week postpartum follow-up, gestational diabetes resolved"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f5c6d7e8-9b0a-4f1c-2d3e-4a5b6c7d8e9f",
+              "display": "Lone Star Women's Health"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Elena returned to Lone Star Women's Health for her six-week postpartum visit after April 2022 vaginal delivery of Sofia, seen by Dr. Carmen Villanueva."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood pressure systolic and diastolic"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 108,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 70,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 74,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 60,
+              "unit": "/min"
+            },
+            "high": {
+              "value": 100,
+              "unit": "/min"
+            },
+            "text": "60-100 bpm"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "referenceRange": [
+          {
+            "text": "97-99°F"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "/min"
+            },
+            "high": {
+              "value": 20,
+              "unit": "/min"
+            },
+            "text": "12-20"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 95,
+              "unit": "%"
+            },
+            "text": "≥ 95%"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-wt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-wt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 138,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-hgb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 12.6,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12,
+              "unit": "g/dL"
+            },
+            "high": {
+              "value": 16,
+              "unit": "g/dL"
+            },
+            "text": "12.0-16.0 g/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "26464-8",
+              "display": "Leukocytes [#/volume] in Blood"
+            }
+          ],
+          "text": "White blood cell count"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 7.8,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4.5,
+              "unit": "10*3/uL"
+            },
+            "high": {
+              "value": 11,
+              "unit": "10*3/uL"
+            },
+            "text": "4.5-11.0 K/uL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-plt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-plt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelet count"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 248,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150,
+              "unit": "10*3/uL"
+            },
+            "high": {
+              "value": 400,
+              "unit": "10*3/uL"
+            },
+            "text": "150-400 K/uL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-bloodtype",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-bloodtype",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "883-9",
+              "display": "ABO group [Type] in Blood"
+            }
+          ],
+          "text": "Blood type ABO and Rh"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "278149003",
+              "display": "Blood group A Rh(D) positive (finding)"
+            }
+          ],
+          "text": "A positive"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-crl",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-crl",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ],
+            "text": "Imaging"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11909-9",
+              "display": "Gestational age estimated from Crown rump length on US"
+            }
+          ],
+          "text": "Gestational age by crown-rump length"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueString": "9 weeks 4 days",
+        "note": [
+          {
+            "text": "Intrauterine pregnancy with crown-rump length consistent with 9 weeks 4 days gestational age on transvaginal ultrasound."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-fetal-heart",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-001-fetal-heart",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ],
+            "text": "Imaging"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11615-2",
+              "display": "Fetal Heart Activity US"
+            }
+          ],
+          "text": "Fetal cardiac activity"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "289446001",
+              "display": "Fetal heart sounds absent (situation)"
+            }
+          ],
+          "text": "Absent"
+        },
+        "note": [
+          {
+            "text": "No fetal cardiac activity detected on transvaginal ultrasound, confirming fetal demise (missed abortion)."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-a1c",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-a1c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ],
+          "text": "Hemoglobin A1c"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.3,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4
+            },
+            "high": {
+              "value": 5.6
+            },
+            "text": "4.0 - 5.6 %"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 114,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 68,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-fhr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-fhr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55283-6",
+              "display": "Fetal Heart rate"
+            }
+          ],
+          "text": "Fetal heart rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 146,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-fundal-ht",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-fundal-ht",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11881-0",
+              "display": "Uterus Fundal height Tape measure"
+            }
+          ],
+          "text": "Fundal height"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28,
+          "unit": "cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "cm"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gct",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-gct",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1504-0",
+              "display": "Glucose [Mass/volume] in Serum or Plasma --1 hour post 50 g glucose PO"
+            }
+          ],
+          "text": "Glucose challenge test (1-hour, 50 g)"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 162,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 140,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "< 140 mg/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gtt-1hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-gtt-1hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1501-6",
+              "display": "Glucose [Mass/volume] in Serum or Plasma --1 hour post 100 g glucose PO"
+            }
+          ],
+          "text": "Glucose, 1 hour post 100 g glucose"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 188,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 180,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "< 180 mg/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gtt-2hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-gtt-2hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1514-9",
+              "display": "Glucose [Mass/volume] in Serum or Plasma --2 hours post 100 g glucose PO"
+            }
+          ],
+          "text": "Glucose, 2 hours post 100 g glucose"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 171,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 155,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "< 155 mg/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gtt-3hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-gtt-3hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1530-5",
+              "display": "Glucose [Mass/volume] in Serum or Plasma --3 hours post 100 g glucose PO"
+            }
+          ],
+          "text": "Glucose, 3 hours post 100 g glucose"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 146,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 140,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "< 140 mg/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gtt-fasting",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-gtt-fasting",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1558-6",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting glucose"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 92,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 95,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "< 95 mg/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-hgb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 11.4,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12
+            },
+            "high": {
+              "value": 16
+            },
+            "text": "12.0 - 16.0 g/dL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 82,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.1,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-urine-protein",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-urine-protein",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "20454-5",
+              "display": "Protein [Presence] in Urine by Test strip"
+            }
+          ],
+          "text": "Urine protein screening"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueString": "Negative",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-wt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-002-wt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 168,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-a1c",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-a1c",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4548-4",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ],
+          "text": "Hemoglobin A1c"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.4,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4
+            },
+            "high": {
+              "value": 5.6
+            },
+            "text": "4.0 - 5.6 %"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 110,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 74,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-fasting-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-fasting-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1558-6",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting glucose"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+            "type": "Organization",
+            "display": "Lone Star Women's Health"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "referenceRange": [
+          {
+            "high": {
+              "value": 100,
+              "unit": "mg/dL",
+              "system": "http://unitsofmeasure.org",
+              "code": "mg/dL"
+            },
+            "text": "< 100 mg/dL (normal fasting)"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-phq2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-phq2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "55757-9",
+              "display": "Patient Health Questionnaire 2 item (PHQ-2) [Reported]"
+            }
+          ],
+          "text": "PHQ-2 depression screening"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Negative for depression"
+          }
+        ],
+        "note": [
+          {
+            "text": "Normal, negative for depression. Fatigue appears related to newborn care demands rather than mood disorder."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            },
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-wt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-003-wt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "valueQuantity": {
+          "value": 154,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-cbc-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-002-cbc-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete blood count"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "conclusion": "Mild physiologic anemia of pregnancy. Hemoglobin 11.4 g/dL (low-normal for pregnancy). Consistent with expected physiologic anemia of pregnancy; no clinical intervention required at this time.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gtt-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-002-gtt-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "50608-9",
+              "display": "Glucose tolerance 3 hours gestational panel - Serum or Plasma"
+            }
+          ],
+          "text": "100 g 3-hour glucose tolerance test"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "effectiveDateTime": "2022-01-28",
+        "issued": "2022-01-28T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-002-gtt-fasting",
+            "display": "Fasting glucose"
+          },
+          {
+            "reference": "Observation/enc-002-gtt-1hr",
+            "display": "Glucose, 1 hour post 100 g glucose"
+          },
+          {
+            "reference": "Observation/enc-002-gtt-2hr",
+            "display": "Glucose, 2 hours post 100 g glucose"
+          },
+          {
+            "reference": "Observation/enc-002-gtt-3hr",
+            "display": "Glucose, 3 hours post 100 g glucose"
+          }
+        ],
+        "conclusion": "Abnormal 3-hour glucose tolerance test. Three of four values abnormal, confirming gestational diabetes mellitus.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-metabolic-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-003-metabolic-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "text": "Metabolic panel, postpartum diabetes screening"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-003"
+        },
+        "effectiveDateTime": "2022-06-10",
+        "issued": "2022-06-10T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-003-fasting-glucose",
+            "display": "Fasting glucose"
+          },
+          {
+            "reference": "Observation/enc-003-a1c",
+            "display": "Hemoglobin A1c"
+          }
+        ],
+        "conclusion": "Fasting glucose 88 mg/dL and A1c 5.4% are within normal range, consistent with resolution of gestational diabetes postpartum.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-us",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-001-us",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "IMG",
+                "display": "Diagnostic Imaging"
+              }
+            ],
+            "text": "Obstetric Imaging"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "80865-9",
+              "display": "US transvaginal for pregnancy"
+            }
+          ],
+          "text": "Transvaginal obstetric ultrasound"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "effectiveDateTime": "2020-02-07T00:00:00Z",
+        "issued": "2020-02-07T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "conclusion": "Transvaginal ultrasound demonstrates intrauterine pregnancy with crown-rump length consistent with 9 weeks 4 days gestation. No fetal cardiac activity detected, confirming fetal demise (missed abortion). No adnexal mass or free fluid identified. Findings rule out ectopic pregnancy and hemorrhagic complication; patient is clinically stable.",
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "16607004",
+                "display": "Missed abortion (disorder)"
+              }
+            ],
+            "text": "Missed abortion"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-cond-missed-abortion",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-001-cond-missed-abortion",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "16607004",
+              "display": "Missed abortion (disorder)"
+            }
+          ],
+          "text": "Missed abortion"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "onsetDateTime": "2020-02-07",
+        "recordedDate": "2020-02-07",
+        "note": [
+          {
+            "text": "First trimester intrauterine pregnancy measuring 9 weeks 4 days by crown-rump length on transvaginal ultrasound with no fetal cardiac activity. Patient is clinically stable with light spotting only. No adnexal mass or free fluid. Expectant management chosen after full counseling."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-cond-grief",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-001-cond-grief",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "192047002",
+              "display": "Grief reaction (disorder)"
+            }
+          ],
+          "text": "Emotional distress related to pregnancy loss"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-001"
+        },
+        "onsetDateTime": "2020-02-07",
+        "recordedDate": "2020-02-07",
+        "note": [
+          {
+            "text": "Patient tearful but appropriate at time of diagnosis of missed abortion. Emotional support and counseling provided during visit. Patient encouraged to reach out for additional support as needed."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            },
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-gdm",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-002-gdm",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002",
+              "display": "Gestational diabetes mellitus (disorder)"
+            }
+          ],
+          "text": "Gestational diabetes mellitus, diet controlled"
+        },
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-002"
+        },
+        "onsetDateTime": "2022-01-28",
+        "abatementDateTime": "2022-06-10",
+        "recordedDate": "2022-01-28",
+        "recorder": {
+          "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+          "display": "Dr. Carmen Villanueva"
+        },
+        "note": [
+          {
+            "text": "Diagnosed at 28 weeks gestation in third pregnancy. Abnormal 100 g 3-hour glucose tolerance test with 3 of 4 values abnormal. A1c 5.3% excludes pregestational diabetes. Initial management with diet, exercise, and home glucose monitoring."
+          },
+          {
+            "text": "Resolved postpartum. Six-week postpartum follow-up on 2022-06-10 confirmed normal fasting glucose (88 mg/dL) and A1c (5.4%), consistent with complete metabolic normalization after delivery. Patient counseled on elevated lifetime type 2 diabetes risk and recommended annual screening."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-001-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34778-1",
+              "display": "Obstetrics and Gynecology Note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Obstetrics and Gynecology Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2020-02-07T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+          "type": "Practitioner",
+          "display": "Dr. Carmen Villanueva"
+        },
+        "custodian": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgcHJlc2VudHMgZm9yIGluLW9mZmljZSBmb2xsb3ctdXAgd2l0aCBEci4gQ2FybWVuIFZpbGxhbnVldmEgYWZ0ZXIgZmlyc3QtdHJpbWVzdGVyIHVsdHJhc291bmQgZGVtb25zdHJhdGVkIHByZWduYW5jeSBsb3NzLiBTaGUgcmVwb3J0cyBsaWdodCB2YWdpbmFsIHNwb3R0aW5nIG9ubHkuIERlbmllcyBoZWF2eSBibGVlZGluZywgc2V2ZXJlIGFiZG9taW5hbC9wZWx2aWMgcGFpbiwgZmV2ZXIsIGNoaWxscywgZGl6emluZXNzLCBvciBzeW5jb3BlLiBFbW90aW9uYWwgZGlzdHJlc3MgcmVsYXRlZCB0byBwcmVnbmFuY3kgbG9zcyB3YXMgYWNrbm93bGVkZ2VkIGFuZCBzdXBwb3J0IHdhcyBwcm92aWRlZC4gTWFuYWdlbWVudCBvcHRpb25zIGZvciBtaXNzZWQgYWJvcnRpb24sIGluY2x1ZGluZyBleHBlY3RhbnQsIG1lZGljYWwsIGFuZCBwcm9jZWR1cmFsIG1hbmFnZW1lbnQsIHdlcmUgcmV2aWV3ZWQgaW4gZGV0YWlsLiBQYXRpZW50IGVsZWN0cyBleHBlY3RhbnQgbWFuYWdlbWVudCBhdCB0aGlzIHRpbWUuIFJlbGV2YW50IE9CIGhpc3RvcnkgaW5jbHVkZXMgcHJpb3IgdGVybSB2YWdpbmFsIGRlbGl2ZXJ5IGluIE5vdmVtYmVyIDIwMTkuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTA4LzcwIG1tSGcsIEhSIDc0IGJwbSwgVGVtcCA5OC40IEYsIFJSIDE0LCBTcE8yIDk5JSwgV3QgMTM4IGxiCgpHZW5lcmFsOiBBbGVydCwgdGVhcmZ1bCBidXQgYXBwcm9wcmlhdGUsIG5vIGFjdXRlIGRpc3RyZXNzLgpBYmRvbWVuOiBObyBzaWduaWZpY2FudCB0ZW5kZXJuZXNzIHJlcG9ydGVkOyBubyBzaWducyBvZiBhY3V0ZSBhYmRvbWVuLgpQZWx2aWMvT0I6IExpZ2h0IHNwb3R0aW5nIGJ5IGhpc3Rvcnk7IG5vIHJlcG9ydCBvZiBoZWF2eSBibGVlZGluZy4KVWx0cmFzb3VuZDogVHJhbnN2YWdpbmFsIHVsdHJhc291bmQgc2hvd3MgaW50cmF1dGVyaW5lIHByZWduYW5jeSB3aXRoIGNyb3duLXJ1bXAgbGVuZ3RoIGNvbnNpc3RlbnQgd2l0aCA5IHdlZWtzIDQgZGF5cyBhbmQgbm8gZmV0YWwgY2FyZGlhYyBhY3Rpdml0eSwgY29uZmlybWluZyBtaXNzZWQgYWJvcnRpb24uIE5vIGFkbmV4YWwgbWFzcyBvciBmcmVlIGZsdWlkLgpMYWJzOiBDQkMgd2l0aGluIG5vcm1hbCBsaW1pdHMvc3RhYmxlOiBoZW1vZ2xvYmluIDEyLjYgZy9kTCwgV0JDIDcuOCBLL3VMLCBwbGF0ZWxldHMgMjQ4IEsvdUwuIEJsb29kIHR5cGUgQSBwb3NpdGl2ZS4gUmggaW1tdW5lIGdsb2J1bGluIG5vdCBpbmRpY2F0ZWQuCgpBU1NFU1NNRU5UOgoxLiBNaXNzZWQgYWJvcnRpb24gLyBzcG9udGFuZW91cyBhYm9ydGlvbiwgZmlyc3QgdHJpbWVzdGVyLCBjbGluaWNhbGx5IHN0YWJsZS4gVWx0cmFzb3VuZCBjb25maXJtcyBpbnRyYXV0ZXJpbmUgcHJlZ25hbmN5IG1lYXN1cmluZyA5IHdlZWtzIDQgZGF5cyB3aXRob3V0IGZldGFsIGNhcmRpYWMgYWN0aXZpdHkuIFBhdGllbnQgaGFzIG9ubHkgbGlnaHQgc3BvdHRpbmcgYW5kIG5vIGV2aWRlbmNlIG9mIGhlbW9keW5hbWljIGluc3RhYmlsaXR5LCBoZW1vcnJoYWdlLCBlY3RvcGljIHByb2Nlc3MsIG9yIGluZmVjdGlvbi4KMi4gRW1vdGlvbmFsIGRpc3RyZXNzL2dyaWVmIHJlYWN0aW9uIHJlbGF0ZWQgdG8gcHJlZ25hbmN5IGxvc3MuIENvdW5zZWxpbmcgYW5kIHN1cHBvcnQgcHJvdmlkZWQgZHVyaW5nIHZpc2l0LgoKUExBTjoKMS4gUHJvY2VlZCB3aXRoIGV4cGVjdGFudCBtYW5hZ2VtZW50IHBlciBwYXRpZW50IHByZWZlcmVuY2UgYWZ0ZXIgY291bnNlbGluZyBvbiBhbGwgbWFuYWdlbWVudCBvcHRpb25zLgoyLiBSZXZpZXdlZCB3YXJuaW5nIHNpZ25zIGFuZCBzdHJpY3QgcmV0dXJuIHByZWNhdXRpb25zOiBzb2FraW5nIG1vcmUgdGhhbiAyIHBhZHMgcGVyIGhvdXIsIHNldmVyZSBwYWluLCBmZXZlciwgZm91bCBkaXNjaGFyZ2UsIGRpenppbmVzcywgb3Igc3luY29wZS4KMy4gUmhvZ2FtIG5vdCBpbmRpY2F0ZWQgZ2l2ZW4gQSBwb3NpdGl2ZSBibG9vZCB0eXBlLgo0LiBQcm92aWRlZCB3cml0dGVuIHBhdGllbnQgaW5zdHJ1Y3Rpb25zIHJlZ2FyZGluZyBleHBlY3RlZCBibGVlZGluZy9jcmFtcGluZyBjb3Vyc2UgYW5kIHdoZW4gdG8gc2VlayB1cmdlbnQgZXZhbHVhdGlvbi4KNS4gRm9sbG93IHVwIGluIDEtMiB3ZWVrcyBmb3IgcmVhc3Nlc3NtZW50IGFuZCB0byBjb25maXJtIGNvbXBsZXRpb24sIHNvb25lciBmb3IgYW55IHdvcnNlbmluZyBzeW1wdG9tcyBvciBjb25jZXJucy4KNi4gRW1vdGlvbmFsIHN1cHBvcnQgb2ZmZXJlZDsgcGF0aWVudCBlbmNvdXJhZ2VkIHRvIHJlYWNoIG91dCBmb3IgYWRkaXRpb25hbCBzdXBwb3J0IGFzIG5lZWRlZC4K",
+              "title": "OB/GYN Progress Note — 2020-02-07"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-001"
+            }
+          ],
+          "period": {
+            "start": "2020-02-07T00:00:00Z"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-001-edu-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-001-edu-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34107-3",
+              "display": "Patient's home Education note"
+            }
+          ],
+          "text": "Patient Education Handout"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2020-02-07T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "custodian": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "description": "Written discharge instructions for expectant management of missed abortion, including expected course, warning signs requiring urgent/emergency evaluation, self-care guidance, and follow-up plan.",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "RElTQ0hBUkdFIElOU1RSVUNUSU9OUyDigJQgRVhQRUNUQU5UIE1BTkFHRU1FTlQgT0YgTUlTU0VEIEFCT1JUSU9OCgpXaGF0IHRvIGV4cGVjdDoKLSBPdmVyIHRoZSBuZXh0IDEtMiB3ZWVrcyB5b3UgbWF5IGV4cGVyaWVuY2UgdmFnaW5hbCBibGVlZGluZyBhbmQgY3JhbXBpbmcgYXMgdGhlIHByZWduYW5jeSB0aXNzdWUgcGFzc2VzIG5hdHVyYWxseS4KLSBCbGVlZGluZyBtYXkgYmUgaGVhdmllciB0aGFuIGEgbm9ybWFsIHBlcmlvZCBhbmQgeW91IG1heSBwYXNzIGNsb3RzLgoKQ0FMTCA5MTEgb3IgZ28gdG8gdGhlIEVtZXJnZW5jeSBSb29tIGltbWVkaWF0ZWx5IGlmIHlvdSBleHBlcmllbmNlOgotIFNvYWtpbmcgbW9yZSB0aGFuIDIgbWVuc3RydWFsIHBhZHMgcGVyIGhvdXIgZm9yIDIgb3IgbW9yZSBob3VycwotIFNldmVyZSBhYmRvbWluYWwgb3IgcGVsdmljIHBhaW4gbm90IHJlbGlldmVkIGJ5IGlidXByb2ZlbgotIEZldmVyIG9mIDEwMC40wrBGICgzOMKwQykgb3IgaGlnaGVyCi0gRm91bC1zbWVsbGluZyB2YWdpbmFsIGRpc2NoYXJnZQotIERpenppbmVzcywgZmFpbnRpbmcsIG9yIGZlZWxpbmcgbGlrZSB5b3UgbWlnaHQgcGFzcyBvdXQKClNlbGYtY2FyZSBndWlkYW5jZToKLSBSZXN0IGFzIG5lZWRlZDsgbGlnaHQgYWN0aXZpdHkgaXMgYWNjZXB0YWJsZS4KLSBZb3UgbWF5IHVzZSBpYnVwcm9mZW4gKDYwMOKAkzgwMCBtZyBldmVyeSA24oCTOCBob3VycyB3aXRoIGZvb2QpIGZvciBjcmFtcGluZyB1bmxlc3MgY29udHJhaW5kaWNhdGVkLgotIEF2b2lkIGludGVyY291cnNlLCB0YW1wb25zLCBvciBhbnl0aGluZyBwbGFjZWQgaW4gdGhlIHZhZ2luYSB1bnRpbCBibGVlZGluZyBoYXMgc3RvcHBlZC4KLSBFbW90aW9uYWwgc3VwcG9ydDogcmVhY2hpbmcgb3V0IHRvIGxvdmVkIG9uZXMgb3IgYSBjb3Vuc2Vsb3IgaXMgZW5jb3VyYWdlZC4KCkZvbGxvdy11cDoKLSBSZXR1cm4gdG8gY2xpbmljIGluIDEtMiB3ZWVrcyBmb3IgcmVhc3Nlc3NtZW50IGFuZCB0byBjb25maXJtIGNvbXBsZXRpb24gb2YgdGhlIHByb2Nlc3MuCi0gQ29udGFjdCB0aGUgb2ZmaWNlIHNvb25lciBpZiB5b3UgaGF2ZSBjb25jZXJucyBvciB3b3JzZW5pbmcgc3ltcHRvbXMuCi0gT2ZmaWNlIHBob25lOiA1MTItNTU1LTAyMDAKCllvdSBhcmUgbm90IGFsb25lLiBQbGVhc2UgY2FsbCB0aGUgb2ZmaWNlIGlmIHlvdSBoYXZlIGFueSBxdWVzdGlvbnMgb3IgY29uY2VybnMuCg==",
+              "title": "Patient Instructions — Expectant Management of Missed Abortion"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-001"
+            }
+          ],
+          "period": {
+            "start": "2020-02-07T00:00:00Z"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-002-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-002-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "100494-4",
+              "display": "Obstetrics Outpatient Progress note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Prenatal Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2022-01-28T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+          "type": "Practitioner",
+          "display": "Dr. Carmen Villanueva"
+        },
+        "custodian": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgTWFyaXNvbCBSZXllcyBpcyBhIDMyLXllYXItb2xkIEczUDEwMTEgYXQgMjggd2Vla3MnIGdlc3RhdGlvbiBwcmVzZW50aW5nIGZvciByb3V0aW5lIHByZW5hdGFsIGZvbGxvdy11cCBhZnRlciBhYm5vcm1hbCBnbHVjb3NlIHNjcmVlbmluZy4gU2hlIHJlcG9ydHMgZmVlbGluZyB3ZWxsIG92ZXJhbGwgYW5kIG5vdGVzIG5vcm1hbCBmZXRhbCBtb3ZlbWVudC4gU2hlIGRlbmllcyBjb250cmFjdGlvbnMsIHZhZ2luYWwgYmxlZWRpbmcsIG9yIGxlYWthZ2Ugb2YgZmx1aWQuIFJlY2VudCBwcmVuYXRhbCBjb3Vyc2Ugbm90YWJsZSBmb3IgZWxldmF0ZWQgMS1ob3VyIDUwIGcgZ2x1Y29zZSBjaGFsbGVuZ2UgdGVzdCBhdCAxNjIgbWcvZEwsIGZvbGxvd2VkIGJ5IGFibm9ybWFsIGRpYWdub3N0aWMgMTAwIGcgMy1ob3VyIGdsdWNvc2UgdG9sZXJhbmNlIHRlc3Qgd2l0aCBmYXN0aW5nIDkyIG1nL2RMLCAxLWhvdXIgMTg4IG1nL2RMLCAyLWhvdXIgMTcxIG1nL2RMLCBhbmQgMy1ob3VyIDE0NiBtZy9kTCwgY29uc2lzdGVudCB3aXRoIGdlc3RhdGlvbmFsIGRpYWJldGVzIG1lbGxpdHVzLiBTaGUgaGFzIG5vIHByaW9yIGhpc3Rvcnkgb2YgcHJlZ2VzdGF0aW9uYWwgZGlhYmV0ZXMuIFByZWduYW5jeSBoaXN0b3J5IHJldmlld2VkOyB0aGlzIGlzIGhlciB0aGlyZCBwcmVnbmFuY3kgd2l0aCBwcmlvciB0ZXJtIHZhZ2luYWwgZGVsaXZlcnkgYW5kIHByaW9yIGVhcmx5IHByZWduYW5jeSBsb3NzLiBDdXJyZW50IG1lZGljYXRpb25zIGluY2x1ZGUgcHJlbmF0YWwgdml0YW1pbi4gTm8gb3RoZXIgbmV3IGNvbXBsYWludHMgdG9kYXkuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTE0LzY4IG1tSGcsIEhSIDgyIGJwbSwgVGVtcCA5OC4xIEYsIFJSIDE0LCBTcE8yIDk5JSwgV3QgMTY4IGxiCk9ic3RldHJpYyBleGFtOiBGdW5kYWwgaGVpZ2h0IDI4IGNtLiBGZXRhbCBoZWFydCByYXRlIDE0NiBicG0uCkdlbmVyYWw6IEFsZXJ0LCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KQWJkb21lbjogR3JhdmlkLCBub250ZW5kZXIuCkV4dHJlbWl0aWVzOiBObyBlZGVtYSBub3RlZC4KTGFiczogMS1ob3VyIDUwIGcgZ2x1Y29zZSBjaGFsbGVuZ2UgdGVzdCAxNjIgbWcvZEwuIERpYWdub3N0aWMgMTAwIGcgMy1ob3VyIEdUVCBhYm5vcm1hbDogZmFzdGluZyA5MiBtZy9kTCwgMS1ob3VyIDE4OCBtZy9kTCwgMi1ob3VyIDE3MSBtZy9kTCwgMy1ob3VyIDE0NiBtZy9kTC4gSGVtb2dsb2JpbiBBMWMgNS4zJS4gVXJpbmUgcHJvdGVpbiBuZWdhdGl2ZS4gQ0JDIHdpdGggbWlsZCBwaHlzaW9sb2dpYyBhbmVtaWEgb2YgcHJlZ25hbmN5LCBoZW1vZ2xvYmluIDExLjQgZy9kTC4KCkFTU0VTU01FTlQ6CjEuIEdlc3RhdGlvbmFsIGRpYWJldGVzIG1lbGxpdHVzLCBkaWV0IGNvbnRyb2xsZWQgKEExR0RNKSwgbmV3bHkgZGlhZ25vc2VkIGF0IDI4IHdlZWtzLiBBYm5vcm1hbCAzLWhvdXIgR1RUIGNvbmZpcm1zIEdETS4gQTFjIHJlbWFpbnMgbm9ybWFsIGF0IDUuMyUsIHN1Z2dlc3Rpbmcgbm8gcHJlZ2VzdGF0aW9uYWwgZGlhYmV0ZXMgYW5kIGxpa2VseSBnb29kIGJhc2VsaW5lIGdseWNlbWljIGNvbnRyb2wuIEFwcHJvcHJpYXRlIGZvciBpbml0aWFsIG1hbmFnZW1lbnQgd2l0aCBkaWV0LCBleGVyY2lzZSwgYW5kIGhvbWUgZ2x1Y29zZSBtb25pdG9yaW5nLgoyLiBJbnRyYXV0ZXJpbmUgcHJlZ25hbmN5IGF0IDI4IHdlZWtzLCByb3V0aW5lIHByZW5hdGFsIGZvbGxvdy11cC4gRnVuZGFsIGhlaWdodCBhcHByb3ByaWF0ZSBmb3IgZGF0ZXMgYW5kIGZldGFsIGhlYXJ0IHRvbmVzIHJlYXNzdXJpbmcuCjMuIE1pbGQgcGh5c2lvbG9naWMgYW5lbWlhIG9mIHByZWduYW5jeS4gSGVtb2dsb2JpbiAxMS40IGcvZEwsIG5vIHN5bXB0b21zIHJlcG9ydGVkLgo0LiBObyBldmlkZW5jZSBvZiBwcmVlY2xhbXBzaWEgYXQgdGhpcyB2aXNpdC4gQlAgbm9ybWFsIGFuZCB1cmluZSBwcm90ZWluIG5lZ2F0aXZlLgoKUExBTjoKMS4gUmV2aWV3ZWQgZGlhZ25vc2lzIG9mIGdlc3RhdGlvbmFsIGRpYWJldGVzIGluIGRldGFpbC4KMi4gU3RhcnQgaG9tZSBnbHVjb3NlIG1vbml0b3Jpbmcgd2l0aCBmYXN0aW5nIGFuZCAxLWhvdXIgcG9zdHByYW5kaWFsIGJsb29kIGdsdWNvc2UgY2hlY2tzOyBnbHVjb3NlIGxvZyB0byBiZSByZXZpZXdlZCBhdCBuZXh0IHZpc2l0LgozLiBDb3Vuc2VsZWQgb24gdGFyZ2V0IGdsdWNvc2UgZ29hbHMsIGNhcmJvaHlkcmF0ZSBjb250cm9sLCBtZWFsIHBsYW5uaW5nLCBhbmQgaW1wb3J0YW5jZSBvZiBhdm9pZGluZyBleGNlc3NpdmUgc2ltcGxlIGNhcmJvaHlkcmF0ZXMuCjQuIFJlZmVycmFsIHBsYWNlZCB0byBSRCBKZW5uaWZlciBDYXN0aWxsbyBmb3IgZGlhYmV0aWMgZGlldCBlZHVjYXRpb24gYW5kIGNhcmJvaHlkcmF0ZS1jb3VudGluZyBjb3Vuc2VsaW5nLgo1LiBBZHZpc2VkIHJlZ3VsYXIgd2Fsa2luZyBhZnRlciBtZWFscyB0byBpbXByb3ZlIHBvc3RwcmFuZGlhbCBnbHVjb3NlIGNvbnRyb2wuCjYuIENvbnRpbnVlIHJvdXRpbmUgcHJlbmF0YWwgY2FyZSB3aXRoIGdyb3d0aCBzdXJ2ZWlsbGFuY2UgZ2l2ZW4gR0RNIGRpYWdub3Npcy4KNy4gQ29udGludWUgcHJlbmF0YWwgdml0YW1pbi4gTW9uaXRvciBtaWxkIGFuZW1pYSBjbGluaWNhbGx5Lgo4LiBSZXR1cm4gYXQgbmV4dCBwcmVuYXRhbCB2aXNpdCB3aXRoIGdsdWNvc2UgbG9nczsgc29vbmVyIGZvciBoeXBlcmdseWNlbWlhIGNvbmNlcm5zLCBjb250cmFjdGlvbnMsIHZhZ2luYWwgYmxlZWRpbmcsIGxlYWthZ2Ugb2YgZmx1aWQsIG9yIGRlY3JlYXNlZCBmZXRhbCBtb3ZlbWVudC4K",
+              "title": "Prenatal Progress Note — 2022-01-28"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-002"
+            }
+          ],
+          "period": {
+            "start": "2022-01-28T00:00:00Z"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-003-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-003-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "100493-6",
+              "display": "Obstetrics and Gynecology Outpatient Progress note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Postpartum Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+          "display": "Elena Marisol Reyes"
+        },
+        "date": "2022-06-10T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+            "type": "Practitioner",
+            "display": "Dr. Carmen Villanueva"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+          "type": "Practitioner",
+          "display": "Dr. Carmen Villanueva"
+        },
+        "custodian": {
+          "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+          "display": "Lone Star Women's Health"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgcHJlc2VudHMgZm9yIHJvdXRpbmUgNi13ZWVrIHBvc3RwYXJ0dW0gZm9sbG93LXVwIGFmdGVyIEFwcmlsIDIwMjIgdmFnaW5hbCBkZWxpdmVyeSBvZiBhIGhlYWx0aHkgZmVtYWxlIGluZmFudCwgU29maWEuIFNoZSByZXBvcnRzIGJyZWFzdGZlZWRpbmcgaXMgZ29pbmcgd2VsbC4gTG9jaGlhIGhhcyByZXNvbHZlZC4gUGVyaW5lYWwgZGlzY29tZm9ydCBpcyBtaW5pbWFsLiBEZW5pZXMgaGVhdnkgYmxlZWRpbmcsIGZldmVyLCBjaGlsbHMsIGZvdWwtc21lbGxpbmcgZGlzY2hhcmdlLCBwZWx2aWMgcGFpbiwgb3Igb3RoZXIgc2lnbnMgb2YgaW5mZWN0aW9uLiBNb29kIGlzIG1vc3RseSBnb29kLCB3aXRoIGV4cGVjdGVkIGZhdGlndWUgcmVsYXRlZCB0byBuZXdib3JuIGNhcmU7IFBIUS0yIHNjb3JlIDEuIFNoZSBoYXMgYSByZWNlbnQgaGlzdG9yeSBvZiBnZXN0YXRpb25hbCBkaWFiZXRlcyBpbiB0aGlzIHByZWduYW5jeSBtYW5hZ2VkIHdpdGhvdXQgaW5zdWxpbi4gUG9zdHBhcnR1bSBnbHVjb3NlIGZvbGxvdy11cCBjb21wbGV0ZWQgdG9kYXkgc2hvd3Mgbm9ybWFsaXphdGlvbi4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMTAvNzQgbW1IZywgSFIgNzAgYnBtLCBUZW1wIDk4LjAgRiwgUlIgMTQsIFNwTzIgOTglLCBXdCAxNTQgbGIKR2VuZXJhbDogQWxlcnQsIGluIG5vIGFjdXRlIGRpc3RyZXNzLgpQb3N0cGFydHVtIGV4YW06IE5vcm1hbCBwb3N0cGFydHVtIHJlY292ZXJ5LiBObyBldmlkZW5jZSBvZiBoZW1vcnJoYWdlIG9yIGluZmVjdGlvbi4gUGVyaW5lYWwgaGVhbGluZyBhcHByb3ByaWF0ZS4gTm8gYWJub3JtYWwgYmxlZWRpbmcgcmVwb3J0ZWQuClBzeWNoOiBNb29kIGFuZCBhZmZlY3QgYXBwcm9wcmlhdGUuCkxhYnM6IEZhc3RpbmcgZ2x1Y29zZSA4OCBtZy9kTCwgQTFjIDUuNCUKCkFTU0VTU01FTlQ6CjEuIFJvdXRpbmUgcG9zdHBhcnR1bSBmb2xsb3ctdXAsIDYgd2Vla3Mgc3RhdHVzIHBvc3QgdmFnaW5hbCBkZWxpdmVyeS4gUmVjb3ZlcmluZyB3ZWxsIHdpdGhvdXQgcG9zdHBhcnR1bSBjb21wbGljYXRpb25zLiBMb2NoaWEgcmVzb2x2ZWQsIG1pbmltYWwgcGVyaW5lYWwgZGlzY29tZm9ydCwgYnJlYXN0ZmVlZGluZyBzdWNjZXNzZnVsbHkuCjIuIEhpc3Rvcnkgb2YgZ2VzdGF0aW9uYWwgZGlhYmV0ZXMgbWVsbGl0dXMsIG5vdyByZXNvbHZlZCBwb3N0cGFydHVtLiBGYXN0aW5nIGdsdWNvc2UgODggbWcvZEwgYW5kIEExYyA1LjQlIGFyZSB3aXRoaW4gbm9ybWFsIHJhbmdlLCBjb25zaXN0ZW50IHdpdGggcmVzb2x1dGlvbiBhZnRlciBkZWxpdmVyeS4KMy4gUG9zdHBhcnR1bSBtb29kIHNjcmVlbiBuZWdhdGl2ZSBmb3IgZGVwcmVzc2lvbi4gUEhRLTIgc2NvcmUgMSwgZmF0aWd1ZSBhcHBlYXJzIHJlbGF0ZWQgdG8gbmV3Ym9ybiBjYXJlIHJhdGhlciB0aGFuIG1vb2QgZGlzb3JkZXIuCgpQTEFOOgoxLiBDb250aW51ZSByb3V0aW5lIHBvc3RwYXJ0dW0gY2FyZS4gUmVhc3N1cmVkIHBhdGllbnQgdGhhdCByZWNvdmVyeSBpcyBwcm9ncmVzc2luZyBub3JtYWxseS4KMi4gUmV2aWV3ZWQgcG9zdHBhcnR1bSBnbHVjb3NlIHJlc3VsdHMgYW5kIHJlc29sdXRpb24gb2YgZ2VzdGF0aW9uYWwgZGlhYmV0ZXMuCjMuIENvdW5zZWxlZCB0aGF0IHByaW9yIGdlc3RhdGlvbmFsIGRpYWJldGVzIGluY3JlYXNlcyBsaWZldGltZSByaXNrIG9mIHR5cGUgMiBkaWFiZXRlczsgcmVjb21tZW5kIG9uZ29pbmcgYW5udWFsIGRpYWJldGVzIHNjcmVlbmluZyB3aXRoIGZhc3RpbmcgZ2x1Y29zZSBhbmQvb3IgQTFjIHRocm91Z2ggcHJpbWFyeSBjYXJlLgo0LiBEaXNjdXNzZWQgY29udHJhY2VwdGlvbiBvcHRpb25zIGFuZCBmdXR1cmUgcmVwcm9kdWN0aXZlIHBsYW5uaW5nLgo1LiBDb250aW51ZSBicmVhc3RmZWVkaW5nIHN1cHBvcnQgYXMgbmVlZGVkLgo2LiBSZXR1cm4gZm9yIHJvdXRpbmUgZ3luZWNvbG9naWMgZm9sbG93LXVwIG9yIHNvb25lciBmb3IgaGVhdnkgYmxlZWRpbmcsIGZldmVyLCB3b3JzZW5pbmcgcGVsdmljIHBhaW4sIG1vb2QgY29uY2VybnMsIG9yIG90aGVyIG5ldyBzeW1wdG9tcy4=",
+              "title": "Postpartum Progress Note — 2022-06-10"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-003"
+            }
+          ],
+          "period": {
+            "start": "2022-06-10T00:00:00Z"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "SEX",
+              "display": "sexuality and reproductive health information sensitivity"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

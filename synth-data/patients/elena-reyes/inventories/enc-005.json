@@ -1,0 +1,137 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "eastbay-primary-care-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Bilateral hand stiffness and swelling, rheumatology workup",
+    "participants": [
+      {
+        "name": "Dr. Anita Okonkwo, MD",
+        "role": "provider"
+      }
+    ],
+    "service_provider": "Eastbay Primary Care Associates",
+    "location": "Eastbay Primary Care Associates, Oakland, CA"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "118/78 mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": "76 beats per minute"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.4 degrees Fahrenheit"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14 breaths per minute"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "98%"
+      },
+      {
+        "name": "body weight",
+        "value": "149 pounds"
+      },
+      {
+        "name": "body mass index",
+        "value": "24.8 kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "rheumatoid factor",
+        "value": "84 IU/mL"
+      },
+      {
+        "name": "anti-CCP antibody",
+        "value": "112 units"
+      },
+      {
+        "name": "erythrocyte sedimentation rate",
+        "value": "52 mm/hr"
+      },
+      {
+        "name": "C-reactive protein",
+        "value": "18 mg/L"
+      },
+      {
+        "name": "antinuclear antibody",
+        "value": "negative"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2",
+        "score": 0,
+        "interpretation": "No significant depressive symptoms; negative screen for depression"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "approximately January 2023",
+      "action": "create",
+      "description": "Inflammatory polyarthritis affecting bilateral metacarpophalangeal (MCP) and proximal interphalangeal (PIP) joints, more severe on the right hand. Characterized by morning stiffness lasting approximately 90 minutes, pain with joint movement, reduced grip strength, and mild soft-tissue swelling on examination."
+    },
+    {
+      "name": "gestational diabetes mellitus",
+      "clinical_status": "resolved",
+      "onset_date": "2021",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "acetaminophen",
+      "sig": "as needed for pain",
+      "route": "oral",
+      "status": "active",
+      "reason": "inflammatory arthritis pain associated with seropositive rheumatoid arthritis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "clinical progress note",
+      "title": "Office Visit Progress Note",
+      "description": "Comprehensive documentation of 2023-03-17 office visit including detailed history of 2–3 months of progressive bilateral hand and wrist pain with morning stiffness and functional limitation (difficulty opening jars); physical examination findings including bilateral MCP and PIP joint tenderness with mild soft-tissue swelling (worse on right), reduced grip strength, and normal skin/nails; complete vital signs (BP, HR, temperature, RR, SpO₂, weight, BMI) and PHQ-2 screening; laboratory results with interpretation (positive RF, positive anti-CCP, elevated inflammatory markers); clinical assessment of inflammatory polyarthritis highly suspicious for seropositive rheumatoid arthritis based on clinical presentation and serology; treatment plan including acetaminophen recommendation, NSAID caution, and expedited rheumatology referral with detailed rationale for urgent specialist evaluation; discussion of results with patient and return precautions for worsening pain, swelling, or new systemic symptoms."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "rheumatologic workup",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "rheumatoid factor",
+        "anti-CCP antibody",
+        "erythrocyte sedimentation rate",
+        "C-reactive protein",
+        "antinuclear antibody"
+      ]
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Unremarkable; no acute hematologic abnormality identified."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "Unremarkable; no abnormality in renal function, liver function, or electrolytes."
+    }
+  ],
+  "allergies": []
+}

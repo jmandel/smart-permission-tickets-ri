@@ -1,0 +1,76 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-012-tte",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-010-tte-order",
+      "display": "Transthoracic echocardiogram (TTE)"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP29708-2",
+          "display": "Cardiology"
+        }
+      ],
+      "text": "Cardiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34552-0",
+        "display": "Cardiac 2D echo panel"
+      }
+    ],
+    "text": "Transthoracic echocardiogram"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "effectiveDateTime": "2026-01-19",
+  "issued": "2026-01-19T00:00:00Z",
+  "performer": [
+    {
+      "display": "Affiliated Cardiologist"
+    }
+  ],
+  "conclusion": "Mild left atrial dilation (4.3 cm, LAVI 32 mL/m2) consistent with atrial fibrillation. Preserved left ventricular systolic function (LVEF 58%). No significant valvular disease. Trace mitral regurgitation is physiologic. Normal right ventricular size and function. Normal estimated RVSP (28 mmHg). No pericardial effusion. No intracardiac thrombus identified by transthoracic imaging.",
+  "conclusionCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "253361002",
+          "display": "Left atrial dilatation (disorder)"
+        }
+      ],
+      "text": "Mild left atrial dilation"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "49436004",
+          "display": "Atrial fibrillation (disorder)"
+        }
+      ],
+      "text": "Atrial fibrillation"
+    }
+  ],
+  "presentedForm": [
+    {
+      "contentType": "text/plain",
+      "title": "Transthoracic Echocardiogram Report"
+    }
+  ]
+}

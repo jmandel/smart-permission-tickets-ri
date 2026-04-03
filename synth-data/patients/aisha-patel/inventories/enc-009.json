@@ -1,0 +1,273 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "wakemed-childrens-emergency-department",
+  "encounter": {
+    "class": "emergency",
+    "type": "Emergency department visit",
+    "reason": "Severe asthma exacerbation",
+    "period_start": "2025-01-14T19:12:00-05:00",
+    "period_end": "2025-01-14T23:15:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Priscilla Okafor",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "WakeMed Children's Emergency Department",
+    "location": "WakeMed Raleigh Campus, 3000 New Bern Avenue, Raleigh, NC 27610"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 142,
+        "unit": "bpm",
+        "date": "2025-01-14T19:12:00-05:00",
+        "context": "triage"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 38,
+        "unit": "breaths/min",
+        "date": "2025-01-14T19:12:00-05:00",
+        "context": "triage"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 102,
+        "diastolic": 64,
+        "unit": "mmHg",
+        "date": "2025-01-14T19:12:00-05:00",
+        "context": "triage"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 89,
+        "unit": "%",
+        "date": "2025-01-14T19:12:00-05:00",
+        "context": "triage, on room air"
+      },
+      {
+        "name": "body temperature",
+        "value": 38.1,
+        "unit": "°C",
+        "date": "2025-01-14T19:12:00-05:00",
+        "context": "triage"
+      },
+      {
+        "name": "body weight",
+        "value": 18.6,
+        "unit": "kg",
+        "date": "2025-01-14T19:12:00-05:00",
+        "context": "triage"
+      },
+      {
+        "name": "heart rate",
+        "value": 134,
+        "unit": "bpm",
+        "date": "2025-01-14T19:45:00-05:00",
+        "context": "post-initial treatment"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 32,
+        "unit": "breaths/min",
+        "date": "2025-01-14T19:45:00-05:00",
+        "context": "post-initial treatment"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 92,
+        "unit": "%",
+        "date": "2025-01-14T19:45:00-05:00",
+        "context": "post-initial treatment, on 2 L/min nasal cannula"
+      },
+      {
+        "name": "heart rate",
+        "value": 126,
+        "unit": "bpm",
+        "date": "2025-01-14T20:15:00-05:00",
+        "context": "repeat vitals"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 28,
+        "unit": "breaths/min",
+        "date": "2025-01-14T20:15:00-05:00",
+        "context": "repeat vitals"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 94,
+        "unit": "%",
+        "date": "2025-01-14T20:15:00-05:00",
+        "context": "repeat vitals, on 2 L/min nasal cannula"
+      },
+      {
+        "name": "heart rate",
+        "value": 118,
+        "unit": "bpm",
+        "date": "2025-01-14T21:00:00-05:00",
+        "context": "repeat vitals"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 24,
+        "unit": "breaths/min",
+        "date": "2025-01-14T21:00:00-05:00",
+        "context": "repeat vitals"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%",
+        "date": "2025-01-14T21:00:00-05:00",
+        "context": "repeat vitals, on room air"
+      },
+      {
+        "name": "heart rate",
+        "value": 108,
+        "unit": "bpm",
+        "date": "2025-01-14T23:15:00-05:00",
+        "context": "discharge"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 22,
+        "unit": "breaths/min",
+        "date": "2025-01-14T23:15:00-05:00",
+        "context": "discharge"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 98,
+        "diastolic": 62,
+        "unit": "mmHg",
+        "date": "2025-01-14T23:15:00-05:00",
+        "context": "discharge"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%",
+        "date": "2025-01-14T23:15:00-05:00",
+        "context": "discharge, on room air"
+      },
+      {
+        "name": "body temperature",
+        "value": 37.4,
+        "unit": "°C",
+        "date": "2025-01-14T23:15:00-05:00",
+        "context": "discharge"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute severe asthma exacerbation",
+      "clinical_status": "resolved",
+      "onset_date": "2025-01-12",
+      "action": "create"
+    },
+    {
+      "name": "viral upper respiratory infection",
+      "clinical_status": "active",
+      "onset_date": "2025-01-12",
+      "action": "create"
+    },
+    {
+      "name": "moderate persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol 2.5 mg nebulizer solution",
+      "sig": "2.5 mg continuous nebulization, 3 doses over 1 hour",
+      "status": "completed",
+      "reason": "acute severe asthma exacerbation",
+      "action": "create"
+    },
+    {
+      "name": "ipratropium bromide 0.5 mg nebulizer solution",
+      "sig": "0.5 mg nebulized, 2 doses",
+      "status": "completed",
+      "reason": "acute severe asthma exacerbation",
+      "action": "create"
+    },
+    {
+      "name": "methylprednisolone 18 mg intravenous injection",
+      "sig": "18 mg (1 mg/kg) IV single dose",
+      "status": "completed",
+      "reason": "acute severe asthma exacerbation",
+      "action": "create"
+    },
+    {
+      "name": "prednisolone 18 mg oral solution",
+      "sig": "Take 18 mg by mouth once daily for 5 days",
+      "status": "active",
+      "reason": "acute severe asthma exacerbation",
+      "action": "create"
+    },
+    {
+      "name": "albuterol 90 mcg metered-dose inhaler",
+      "sig": "Inhale 2 puffs via spacer every 4 hours for the next 24 hours, then as needed for wheezing",
+      "status": "active",
+      "reason": "acute severe asthma exacerbation",
+      "action": "create"
+    },
+    {
+      "name": "fluticasone/salmeterol 45/21 mcg metered-dose inhaler",
+      "status": "active",
+      "reason": "moderate persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "status": "active",
+      "reason": "moderate persistent asthma",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Emergency department note",
+      "author": "Dr. Priscilla Okafor",
+      "description": "Complete emergency department physician documentation for a 4-year-10-month-old female presenting with acute severe asthma exacerbation triggered by viral URI. Documents ESI Level 2 triage, HPI, physical examination showing moderate-to-severe respiratory distress with intercostal/subcostal retractions and bilateral wheezing, ED treatment course with continuous albuterol nebulization, ipratropium, IV methylprednisolone, and supplemental oxygen, serial respiratory assessments showing progressive improvement over 4 hours, medical decision-making regarding discharge vs. admission, and discharge plan including prednisolone burst and 48-hour pediatrician follow-up."
+    },
+    {
+      "type": "Triage assessment note",
+      "description": "Initial triage assessment documenting ESI Level 2 assignment, arrival by private vehicle with mother, vital signs, and moderate-to-severe respiratory distress on initial evaluation."
+    },
+    {
+      "type": "Nursing flowsheet",
+      "description": "Serial nursing documentation of vital signs at 5 time points (19:12, 19:45, 20:15, 21:00, 23:15), respiratory assessment including accessory muscle use, wheezing severity, oxygen delivery method and flow rate, and clinical response to bronchodilator therapy."
+    },
+    {
+      "type": "Medication administration record",
+      "description": "Detailed timestamps and documentation of all medications administered during ED stay: albuterol nebulization × 3 doses, ipratropium bromide × 2 doses, methylprednisolone IV × 1 dose, and supplemental oxygen delivery with start/stop times."
+    },
+    {
+      "type": "Discharge summary / patient instructions",
+      "description": "Discharge instructions including prednisolone burst dosing for 5 days, modified albuterol rescue schedule (q4h × 24 hours then PRN), continuation of controller medications, return-to-ED criteria (worsening distress, SpO2 <92%, inability to speak in sentences), 48-hour follow-up with Dr. Harlow at Triangle Pediatrics, and reviewed asthma action plan with mother who demonstrated appropriate spacer technique."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis (urticaria, angioedema, wheezing)",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "tree nuts (cashew, almond, walnut)",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Well-Child Visit",
+    "reason": "5-year well-child visit",
+    "period_start": "2025-03-17T09:00:00-04:00",
+    "period_end": "2025-03-17T09:45:00-04:00",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 92,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 94,
+        "diastolic": 60,
+        "unit": "mmHg"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "note": "on room air"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.7,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 19.4,
+        "unit": "kg",
+        "percentile": "52nd"
+      },
+      {
+        "name": "body height",
+        "value": 110,
+        "unit": "cm",
+        "percentile": "58th"
+      },
+      {
+        "name": "body mass index",
+        "value": 16,
+        "unit": "kg/m²",
+        "percentile": "56th"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening (caregiver-reported)",
+        "value": 0,
+        "interpretation": "negative"
+      },
+      {
+        "name": "vision screening (Snellen)",
+        "value": "20/25 bilaterally",
+        "interpretation": "passed"
+      },
+      {
+        "name": "hearing screening (pure tone audiometry)",
+        "interpretation": "passed"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "update-existing",
+      "note": "Improved on current step-up regimen (Advair HFA 115/21). Rescue inhaler use decreased to approximately once per week. No ED visits or hospitalizations since January 2025 exacerbation. No step-down warranted at this time."
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "onset_date": "2021-09",
+      "action": "update-existing",
+      "note": "Well controlled. Mild dry patches on bilateral forearms only, no active excoriation or lichenification."
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "update-existing",
+      "note": "Controlled on cetirizine 5 mg daily. Mild seasonal exacerbation expected with spring pollen."
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21) inhaler",
+      "sig": "Inhale 1 puff by mouth twice daily using spacer device",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "Chew 1 tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg) inhaler",
+      "sig": "Inhale 2 puffs by mouth every 4-6 hours as needed for wheezing or shortness of breath, using spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr 0.15 mg) two-pack",
+      "sig": "Inject 0.15 mg intramuscularly into outer thigh as needed for signs of anaphylaxis; carry at all times",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis, tree nut allergy",
+      "action": "create"
+    },
+    {
+      "name": "cetirizine 5 mg oral tablet",
+      "sig": "Take 5 mg by mouth once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "Apply thin layer to affected areas twice daily as needed for flares",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ceramide-based moisturizer (CeraVe)",
+      "sig": "Apply to affected areas daily",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive 5-year well-child visit note documenting vitals, developmental screening confirming kindergarten readiness, vision and hearing screening results (both passed), physical examination findings, reassessment of severe persistent asthma (improved on Advair HFA 115/21), food allergies (stable, EpiPen Jr renewed), atopic dermatitis (well controlled), allergic rhinitis (controlled), and growth/development assessment. Plan includes continuation of current asthma, allergy, and eczema regimens with follow-up in 3 months."
+    },
+    {
+      "type": "administrative/school health documentation",
+      "description": "Updated 504 plan documentation prepared for kindergarten entry, accommodating severe persistent asthma (rescue inhaler access, activity modifications) and food allergies (peanut and tree nut avoidance, anaphylaxis action plan, EpiPen availability at school)."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

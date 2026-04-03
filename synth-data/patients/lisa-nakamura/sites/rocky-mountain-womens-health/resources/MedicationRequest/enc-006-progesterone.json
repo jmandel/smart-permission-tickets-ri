@@ -1,0 +1,115 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-006-progesterone",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "312641",
+        "display": "progesterone 200 MG Oral Capsule"
+      }
+    ],
+    "text": "Micronized progesterone 200 mg capsule (used vaginally)"
+  },
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2025-01-27",
+  "requester": {
+    "reference": "Practitioner/bf9b0a0e-0ef0-40df-9eb6-72d51439701b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Forsythe"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-rpl",
+      "display": "Recurrent pregnancy loss"
+    },
+    {
+      "reference": "Condition/enc-006-pregnancy",
+      "display": "Intrauterine pregnancy, early first trimester"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Insert 200 mg vaginally every night at bedtime",
+      "patientInstruction": "Insert one capsule (200 mg) vaginally every night at bedtime.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "nightly"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "16857009",
+            "display": "Vaginal structure (body structure)"
+          }
+        ],
+        "text": "Vaginal"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 200,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Vaginal micronized progesterone initiated as precautionary supplementation for recurrent early pregnancy loss. Discontinued 2025-03-10 following diagnosis of missed abortion at 8-week follow-up ultrasound."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

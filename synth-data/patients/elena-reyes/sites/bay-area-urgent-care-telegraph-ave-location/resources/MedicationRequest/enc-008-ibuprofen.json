@@ -1,0 +1,138 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-008-ibuprofen",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197805",
+        "display": "ibuprofen 400 MG Oral Tablet"
+      }
+    ],
+    "text": "ibuprofen 400 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/a3f7c2e1-8b4d-4f9a-b6e5-2c1d0e9f3a7b",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "authoredOn": "2024-08-17",
+  "requester": {
+    "reference": "Practitioner/e5f6a7b8-2c3d-4e9f-a0b1-3c4d5e6f7a8b",
+    "type": "Practitioner",
+    "display": "Dr. Marcus Webb"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "263133002",
+          "display": "Sprain of lateral ligament of ankle joint (disorder)"
+        }
+      ],
+      "text": "Acute ankle sprain pain management"
+    }
+  ],
+  "courseOfTherapyType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+        "code": "acute",
+        "display": "Short course (acute) therapy"
+      }
+    ],
+    "text": "Short course (acute) therapy"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Take 1 tablet (400 mg) by mouth every 8 hours as needed for pain for up to 5 days. Short-course use only given concurrent RA medications.",
+      "patientInstruction": "Take 1 tablet (400 mg) by mouth every 8 hours as needed for pain for up to 5 days.",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-08-17",
+            "end": "2024-08-22"
+          },
+          "frequency": 1,
+          "period": 8,
+          "periodUnit": "h"
+        }
+      },
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419652001",
+            "display": "Take - dosing instruction imperative (qualifier value)"
+          }
+        ],
+        "text": "Take"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 400,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2024-08-17",
+      "end": "2024-08-22"
+    },
+    "expectedSupplyDuration": {
+      "value": 5,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  },
+  "note": [
+    {
+      "text": "Clinician explicitly counseled patient on short-course use only given concurrent rheumatoid arthritis medications (methotrexate, adalimumab)."
+    }
+  ]
+}

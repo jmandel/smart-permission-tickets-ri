@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-dyslipidemia",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "370992007",
+        "display": "Dyslipidemia (disorder)"
+      }
+    ],
+    "text": "Dyslipidemia"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-019"
+  },
+  "onsetDateTime": "2020-10-19",
+  "recordedDate": "2020-10-19",
+  "note": [
+    {
+      "text": "Worsening lipid profile at 2022-10-17: LDL 132 mg/dL, HDL 42 mg/dL, TG 188 mg/dL. 10-year ASCVD risk 6.8%. Lifestyle modifications discussed; statin deferred pending further risk stratification."
+    }
+  ]
+}

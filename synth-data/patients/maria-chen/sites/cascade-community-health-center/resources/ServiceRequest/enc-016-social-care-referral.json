@@ -1,0 +1,64 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-016-social-care-referral",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-category",
+          "code": "sdoh",
+          "display": "SDOH"
+        }
+      ],
+      "text": "Social Determinants of Health"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306238000",
+        "display": "Referral to Social Services (procedure)"
+      }
+    ],
+    "text": "Referral to Rose City Community Services for food assistance navigation and transportation support"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "authoredOn": "2026-03-10",
+  "requester": {
+    "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+    "display": "Dr. Angela Morales, MD"
+  },
+  "performer": [
+    {
+      "display": "Rose City Community Services"
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Observation/enc-016-food-insecurity-1",
+      "display": "Food insecurity screening — Often true"
+    },
+    {
+      "reference": "Observation/enc-016-food-insecurity-2",
+      "display": "Food insecurity screening — Sometimes true"
+    },
+    {
+      "reference": "Observation/enc-016-transportation-screen",
+      "display": "Transportation barrier screening — Yes"
+    }
+  ],
+  "note": [
+    {
+      "text": "Closed-loop social care referral to Rose City Community Services (CBO partner) for: (1) food assistance navigation including food pantry enrollment and SNAP application assistance, (2) transportation support for medical appointments including transit vouchers. Case worker expected to contact patient within one week."
+    }
+  ]
+}

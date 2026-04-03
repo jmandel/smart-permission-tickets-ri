@@ -1,0 +1,132 @@
+{
+  "resourceType": "Patient",
+  "id": "7b1188a2-28ef-4d17-b783-2866c438f117",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2054-5",
+            "display": "Black or African American"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Black"
+        }
+      ]
+    },
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Non-Hispanic"
+        }
+      ]
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "In Arizona she had primary care and cardiology follow-up that established the chronic disease baseline: diabetes requiring intensification, CKD emerging, atrial fibrillation managed with anticoagulation, and HFrEF treated medically. After moving to New Mexico she had an acute decompensated heart-failure hospitalization, then longitudinal follow-up with a heart-failure clinic, nephrology, and retina specialists for diabetic retinopathy with macular edema."
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Walker",
+      "given": [
+        "Denise"
+      ],
+      "text": "Denise Walker"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1957-09-14",
+  "address": [
+    {
+      "use": "home",
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "text": "Albuquerque, NM"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(505) 555-0184",
+      "use": "home"
+    }
+  ],
+  "contact": [
+    {
+      "relationship": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+              "code": "C",
+              "display": "Emergency Contact"
+            }
+          ],
+          "text": "Adult daughter"
+        }
+      ],
+      "name": {
+        "text": "Adult daughter"
+      },
+      "address": {
+        "city": "Albuquerque",
+        "state": "NM",
+        "country": "US",
+        "text": "Albuquerque, NM"
+      }
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "W",
+        "display": "Widowed"
+      }
+    ],
+    "text": "Widowed"
+  },
+  "managingOrganization": {
+    "reference": "Organization/3fc5d6c7-f5f9-4bbc-b88d-e31b2ca4ab09",
+    "display": "Sandia Retina Specialists"
+  },
+  "identifier": [
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-e91cc755383ff5c44b700b01"
+    }
+  ]
+}

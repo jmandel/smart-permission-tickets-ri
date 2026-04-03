@@ -1,0 +1,66 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-007-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note",
+        "userSelected": true
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Cardiology progress note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "date": "2025-09-18T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/fe1e7ca5-8689-4050-b749-644133a5d6f7",
+      "display": "Dr. Thomas Baca, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgd29tYW4gd2l0aCBjaHJvbmljIEhGckVGLCBwYXJveHlzbWFsIGF0cmlhbCBmaWJyaWxsYXRpb24sIENLRCBzdGFnZSAzYiwgdHlwZSAyIGRpYWJldGVzIG1lbGxpdHVzLCBoeXBlcnRlbnNpb24sIGFuZCBoeXBlcmxpcGlkZW1pYSBzZWVuIGZvciBsb25naXR1ZGluYWwgY2FyZGlvbG9neSBmb2xsb3ctdXAgYXQgdGhlIFVOTSBIZWFydCBGYWlsdXJlIENsaW5pYy4gU2hlIHJlcG9ydHMgc3RhYmxlIGhvbWUgbW9ybmluZyB3ZWlnaHRzIGJldHdlZW4gMTg4IGFuZCAxOTAgbGIgYW5kIGJyb3VnaHQgaGVyIHdlaWdodCBsb2cgdG8gcmV2aWV3LiBTaGUgbm90ZXMgbWlsZCBleGVydGlvbmFsIGZhdGlndWUgYW5kIHJhcmUgYnJpZWYgcGFscGl0YXRpb25zLCBidXQgZGVuaWVzIHN5bmNvcGUsIGNoZXN0IHBhaW4sIG9ydGhvcG5lYSwgcmVjZW50IGVkZW1hIGZsYXJlLCBvciBvdGhlciBzaWducyBvZiBkZWNvbXBlbnNhdGlvbi4gU2hlIHJlbWFpbnMgb24gZ3VpZGVsaW5lLWRpcmVjdGVkIG1lZGljYWwgdGhlcmFweSBmb3IgSEZyRUYgYW5kIGNvbnRpbnVlcyBhcGl4YWJhbiBmb3IgYXRyaWFsIGZpYnJpbGxhdGlvbiB3aXRob3V0IGFueSBrbm93biB0aHJvbWJvZW1ib2xpYyBldmVudC4gU2hlIGlzIGFsc28gb24gaW5zdWxpbiBnbGFyZ2luZSBtYW5hZ2VkIGJ5IGhlciBvdGhlciBjbGluaWNpYW5zLiBST1Mgb3RoZXJ3aXNlIG5lZ2F0aXZlIGZvciBhY3V0ZSBjYXJkaW9wdWxtb25hcnkgY29tcGxhaW50cy4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMjIvNzQgbW1IZywgSFIgNjYgYnBtLCBSUiAxNi9taW4sIFRlbXAgOTguMSBGLCBTcE8yIDk3JSBvbiByb29tIGFpciwgd3QgMTg5IGxiLCBodCA2NCBpbiwgQk1JIDMyLjQga2cvbTIKR2VuZXJhbDogQWxlcnQsIGluIG5vIGFjdXRlIGRpc3RyZXNzLgpOZWNrOiBObyBKVkQuCkx1bmdzOiBDbGVhciB0byBhdXNjdWx0YXRpb24gYmlsYXRlcmFsbHkuCkNWOiBSZWd1bGFyIHJhdGUgYW5kIHJoeXRobS4gUmFyZSBwYWxwaXRhdGlvbnMgYnkgaGlzdG9yeS4gVHJhY2UgYW5rbGUgZWRlbWEuCkV4dHJlbWl0aWVzOiBUcmFjZSBhbmtsZSBlZGVtYSBvbmx5LgpMYWJzIHJldmlld2VkIGZyb20gdGhpcyB3ZWVrOiBjcmVhdGluaW5lIDEuNjcgbWcvZEwsIGVHRlIgYXBwcm94aW1hdGVseSAzNSBtTC9taW4vMS43MyBtMiwgQlVOIDMwIG1nL2RMLCBwb3Rhc3NpdW0gNC45IG1tb2wvTCwgc29kaXVtIDEzOCBtbW9sL0wsIGJpY2FyYm9uYXRlIDI0IG1tb2wvTCwgTlQtcHJvQk5QIDM1NiBwZy9tTCwgZ2x1Y29zZSAxNTQgbWcvZEwsIGhlbW9nbG9iaW4gMTEuOCBnL2RMLgpFQ0c6IE5vcm1hbCBzaW51cyByaHl0aG0gYXQgNjQgYnBtIHdpdGggTFZIIGFuZCBvY2Nhc2lvbmFsIFBBQ3MuCgpBU1NFU1NNRU5UOgoxLiBDaHJvbmljIEhGckVGLCBOWUhBIGNsYXNzIElJLCBjdXJyZW50bHkgc3RhYmxlIG9uIGd1aWRlbGluZS1kaXJlY3RlZCBtZWRpY2FsIHRoZXJhcHkuIFN5bXB0b21zIGFyZSBjb250cm9sbGVkIHdpdGggc3RhYmxlIGhvbWUgd2VpZ2h0cyBhbmQgbm8gZXZpZGVuY2Ugb2Ygc2lnbmlmaWNhbnQgdm9sdW1lIG92ZXJsb2FkIG9uIGV4YW0gYXNpZGUgZnJvbSB0cmFjZSBhbmtsZSBlZGVtYS4gTlQtcHJvQk5QIHJlbWFpbnMgbW9kZXN0bHkgZWxldmF0ZWQgYnV0IG92ZXJhbGwgY2xpbmljYWwgc3RhdHVzIGlzIHN0YWJsZS4gUmVuYWwgZnVuY3Rpb24gYW5kIHBvdGFzc2l1bSByZW1haW4gbGltaXRpbmcgZmFjdG9ycyBmb3IgZnVydGhlciBtZWRpY2F0aW9uIGVzY2FsYXRpb24gYXQgdGhpcyB0aW1lLgoyLiBQYXJveHlzbWFsIGF0cmlhbCBmaWJyaWxsYXRpb24sIGN1cnJlbnRseSBjb250cm9sbGVkLiBFQ0cgdG9kYXkgc2hvd3Mgc2ludXMgcmh5dGhtIHdpdGggb2NjYXNpb25hbCBQQUNzLiBTaGUgcmVwb3J0cyBvbmx5IHJhcmUgYnJpZWYgcGFscGl0YXRpb25zIGFuZCBubyBzeW5jb3BlLiBTaGUgcmVtYWlucyBhbnRpY29hZ3VsYXRlZCB3aXRoIGFwaXhhYmFuIGZvciBzdHJva2UgcHJldmVudGlvbiB3aXRob3V0IGtub3duIHRocm9tYm9lbWJvbGlzbS4KMy4gQ0tEIHN0YWdlIDNiLiBDcmVhdGluaW5lIDEuNjcgd2l0aCBlR0ZSIGFib3V0IDM1OyByZW5hbCBmdW5jdGlvbiByZXZpZXdlZCBpbiB0aGUgY29udGV4dCBvZiBoZWFydC1mYWlsdXJlIHRoZXJhcHkgYW5kIGNvbnRpbnVlZCBuZWVkIHRvIGF2b2lkIG92ZXJseSBhZ2dyZXNzaXZlIHVwdGl0cmF0aW9uLgo0LiBUeXBlIDIgZGlhYmV0ZXMgbWVsbGl0dXMsIG9uIGVtcGFnbGlmbG96aW4gYW5kIGluc3VsaW4gZ2xhcmdpbmUgbWFuYWdlZCB3aXRoIGhlciBvdGhlciBjbGluaWNpYW5zLiBHbHVjb3NlIDE1NCBtZy9kTCBvbiByZWNlbnQgbGFicy4KNS4gSHlwZXJsaXBpZGVtaWEsIG9uIGF0b3J2YXN0YXRpbi4KClBMQU46CjEuIENvbnRpbnVlIGNhcnZlZGlsb2wgMTIuNSBtZyBQTyBCSUQuCjIuIENvbnRpbnVlIHNhY3ViaXRyaWwvdmFsc2FydGFuIDI0LzI2IG1nIFBPIEJJRC4KMy4gQ29udGludWUgZnVyb3NlbWlkZSA0MCBtZyBQTyBlYWNoIG1vcm5pbmcuCjQuIENvbnRpbnVlIGVtcGFnbGlmbG96aW4gMTAgbWcgUE8gZGFpbHkuCjUuIENvbnRpbnVlIGFwaXhhYmFuIDUgbWcgUE8gQklELgo2LiBDb250aW51ZSBhdG9ydmFzdGF0aW4gNDAgbWcgUE8gbmlnaHRseS4KNy4gQ29udGludWUgaW5zdWxpbiBnbGFyZ2luZSBwZXIgY3VycmVudCBkaWFiZXRlcyBtYW5hZ2VtZW50IHBsYW4gd2l0aCBvdGhlciB0cmVhdGluZyBjbGluaWNpYW5zLgo4LiBSZXZpZXdlZCByZW5hbCBmdW5jdGlvbiBhbmQgcG90YXNzaXVtIHRyZW5kczsgbm8gbWVkaWNhdGlvbiBjaGFuZ2VzIHRvZGF5IGdpdmVuIHN0YWJsZSBOWUhBIGNsYXNzIElJIHN5bXB0b21zIGFuZCByZW5hbCBsaW1pdHMgb24gZnVydGhlciBHRE1UIGVzY2FsYXRpb24uCjkuIFJlaW5mb3JjZWQgbG93LXNvZGl1bSBkaWV0LCBkYWlseSBtb3JuaW5nIHdlaWdodHMsIG1lZGljYXRpb24gYWRoZXJlbmNlLCBhbmQgcmV0dXJuL2NhbGwgcHJlY2F1dGlvbnMgZm9yIHdlaWdodCBnYWluIGdyZWF0ZXIgdGhhbiAzIGxiIGluIDI0IGhvdXJzLCB3b3JzZW5pbmcgZHlzcG5lYSwgaW5jcmVhc2luZyBlZGVtYSwgY2hlc3QgcGFpbiwgb3IgcGVyc2lzdGVudCBwYWxwaXRhdGlvbnMuCjEwLiBGb2xsb3cgdXAgaW4gaGVhcnQgZmFpbHVyZSBjbGluaWMgaW4gNiBtb250aHMsIHNvb25lciBmb3Igc3ltcHRvbSBjaGFuZ2UuCg==",
+        "title": "Cardiology progress note"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-007",
+        "display": "Office Visit"
+      }
+    ],
+    "period": {
+      "start": "2025-09-18",
+      "end": "2025-09-18"
+    }
+  }
+}

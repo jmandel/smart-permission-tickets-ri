@@ -1,0 +1,49 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-004-bmi",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "39156-5",
+        "display": "Body mass index (BMI) [Ratio]"
+      }
+    ],
+    "text": "Body mass index (BMI) [Ratio]"
+  },
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "effectiveDateTime": "2022-11-18T09:00:00-08:00",
+  "issued": "2022-11-18T09:00:00-08:00",
+  "performer": [
+    {
+      "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "type": "Practitioner",
+      "display": "Dr. Anita Okonkwo"
+    }
+  ],
+  "valueQuantity": {
+    "value": 25,
+    "unit": "kg/m2",
+    "system": "http://unitsofmeasure.org",
+    "code": "kg/m2"
+  }
+}

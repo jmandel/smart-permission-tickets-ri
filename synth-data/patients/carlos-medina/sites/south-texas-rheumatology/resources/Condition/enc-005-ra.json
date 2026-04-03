@@ -1,0 +1,73 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-ra",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "239791005",
+        "display": "Seropositive rheumatoid arthritis (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "M05.79",
+        "display": "Rheumatoid arthritis with rheumatoid factor of multiple sites without organ or systems involvement"
+      }
+    ],
+    "text": "Seropositive rheumatoid arthritis"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "onsetDateTime": "2020-11",
+  "recordedDate": "2021-03-15",
+  "recorder": {
+    "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+    "display": "Dr. Alejandro Fuentes"
+  },
+  "note": [
+    {
+      "text": "Diagnosed per 2010 ACR/EULAR classification criteria. Score >=6 based on: joint involvement (>10 small joints), serology (high-positive RF 78 IU/mL and anti-CCP >250 U/mL), elevated acute phase reactants (ESR 42, CRP 2.8), symptom duration >6 weeks. Early erosive disease on baseline imaging."
+    },
+    {
+      "time": "2021-06-14",
+      "text": "3-month methotrexate follow-up: Partial response — DAS28-CRP improved from 5.1 to 4.2 (moderate disease activity range). Inflammatory markers trending down (ESR 42→32, CRP 2.8→1.8). Residual active synovitis in MCPs and wrists. Functional status modestly improved (HAQ-DI 1.2→1.0). Methotrexate dose increased from 15 mg to 20 mg weekly."
+    }
+  ]
+}

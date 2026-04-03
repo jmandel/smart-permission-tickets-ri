@@ -1,0 +1,56 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-007-weight",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "29463-7",
+        "display": "Body weight"
+      }
+    ],
+    "text": "Body Weight"
+  },
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2022-11-14",
+  "performer": [
+    {
+      "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "valueQuantity": {
+    "value": 144,
+    "unit": "[lb_av]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[lb_av]"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

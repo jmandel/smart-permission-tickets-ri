@@ -1,0 +1,3414 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T14:05:46.046Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "White",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In 2022, during a depressive episode and work stress, Sarah developed problematic alcohol use that escalated to alcohol use disorder (moderate severity). She self-referred to an outpatient addiction medicine program in Portland in early 2023. She completed a 12-week intensive outpatient program (IOP), began attending AA meetings, and was prescribed naltrexone 50mg daily. She achieved sobriety in April 2023 and has maintained it.\n\nIn mid-2024, Sarah moved to Seattle. She established with a new psychiatrist for bipolar management and a new PCP for general care. Her alcohol use disorder is in sustained remission (>12 months). She continues lamotrigine, quetiapine, and naltrexone.\n\nSarah uses a patient-facing app to access her health records across her Portland and Seattle providers. The behavioral health and substance use disorder data is subject to heightened sensitivity protections (42 CFR Part 2 for SUD records)."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.puget-sound-psychiatry",
+            "value": "PSP-100001"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-240ccb706aa0c92a0b715d26"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Mitchell",
+            "given": [
+              "Sarah",
+              "Elizabeth"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0147",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sarah.mitchell@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1993-11-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "2418 NW 62nd St"
+            ],
+            "city": "Seattle",
+            "district": "King",
+            "state": "WA",
+            "postalCode": "98107",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "S",
+              "display": "Never Married"
+            }
+          ],
+          "text": "Single, never married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "5678901234"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Puget Sound Psychiatry",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0200",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "206-555-0201",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "1001 4th Ave",
+              "Suite 820"
+            ],
+            "city": "Seattle",
+            "state": "WA",
+            "postalCode": "98154",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e556db50-23dc-4996-a212-fcf38b3563c1",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "e556db50-23dc-4996-a212-fcf38b3563c1",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Patel",
+            "given": [
+              "Anita"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "394587001",
+                  "display": "Psychiatry"
+                }
+              ],
+              "text": "Psychiatry"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:eebb992f-0f17-4e95-b464-4dbc97cef472",
+      "resource": {
+        "resourceType": "Location",
+        "id": "eebb992f-0f17-4e95-b464-4dbc97cef472",
+        "status": "active",
+        "name": "Puget Sound Psychiatry",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Outpatient Facility"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "1001 4th Ave",
+            "Suite 820"
+          ],
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98154",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+          "display": "Puget Sound Psychiatry"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-allergy-sulfa",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "enc-015-allergy-sulfa",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "10831",
+              "display": "sulfamethoxazole / trimethoprim"
+            },
+            {
+              "system": "http://snomed.info/sct",
+              "code": "91939003",
+              "display": "Allergy to sulfonamide (finding)"
+            }
+          ],
+          "text": "Sulfa antibiotics (trimethoprim-sulfamethoxazole)"
+        },
+        "patient": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "recordedDate": "2024-08-12",
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "text": "Rash"
+              }
+            ],
+            "description": "Rash"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-aud",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-aud",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active (in sustained remission)"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "714829008",
+              "display": "Moderate alcohol dependence (disorder)"
+            }
+          ],
+          "text": "Alcohol use disorder, moderate severity, in sustained remission"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "onsetDateTime": "2023-01",
+        "recordedDate": "2024-08-12",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-bipolar-ii",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-bipolar-ii",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "83225003",
+              "display": "Bipolar II disorder (disorder)"
+            }
+          ],
+          "text": "Bipolar II disorder, currently euthymic"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "onsetDateTime": "2019-07",
+        "recordedDate": "2024-08-12",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-hypertriglyceridemia",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-hypertriglyceridemia",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "302870006",
+              "display": "Hypertriglyceridemia (disorder)"
+            }
+          ],
+          "text": "Hypertriglyceridemia, mild"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "recordedDate": "2024-08-12",
+        "note": [
+          {
+            "text": "Likely quetiapine-related. Stable and consistent with prior values."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body Mass Index"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 22.8,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 118,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 76,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-fasting-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-fasting-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1558-6",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting Glucose"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-gad7",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-gad7",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "70274-6",
+              "display": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]"
+            }
+          ],
+          "text": "GAD-7 Anxiety Screening"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Minimal anxiety"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-lamotrigine-level",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-lamotrigine-level",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6948-4",
+              "display": "lamoTRIgine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Lamotrigine Serum Level"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.4,
+          "unit": "ug/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ug/mL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Therapeutic"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 3,
+              "unit": "ug/mL",
+              "system": "http://unitsofmeasure.org",
+              "code": "ug/mL"
+            },
+            "high": {
+              "value": 14,
+              "unit": "ug/mL",
+              "system": "http://unitsofmeasure.org",
+              "code": "ug/mL"
+            },
+            "text": "3-14 mcg/mL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-phq9",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-phq9",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "44261-6",
+              "display": "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-9 Depression Screening"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Minimal depression"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory Rate"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen Saturation (Pulse Oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body Temperature"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglycerides"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 158,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "Mildly elevated"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body Weight"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 141,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body Mass Index"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 22.6,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 116,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 74,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-fasting-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-fasting-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1558-6",
+              "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Fasting Glucose"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18",
+        "issued": "2024-11-18T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 86,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-gad7",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-gad7",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "70274-6",
+              "display": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]"
+            }
+          ],
+          "text": "GAD-7 Anxiety Screening"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 2,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Minimal anxiety"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart Rate"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 68,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-lamotrigine-level",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-lamotrigine-level",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6948-4",
+              "display": "lamoTRIgine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Lamotrigine Serum Level"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18",
+        "issued": "2024-11-18T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.8,
+          "unit": "ug/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ug/mL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Therapeutic"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 3,
+              "unit": "ug/mL",
+              "system": "http://unitsofmeasure.org",
+              "code": "ug/mL"
+            },
+            "high": {
+              "value": 14,
+              "unit": "ug/mL",
+              "system": "http://unitsofmeasure.org",
+              "code": "ug/mL"
+            },
+            "text": "3-14 mcg/mL"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-phq9",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-phq9",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "44261-6",
+              "display": "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-9 Depression Screening"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Mild depressive symptoms"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory Rate"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen Saturation (Pulse Oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body Temperature"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.6,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-triglycerides",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-triglycerides",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2571-8",
+              "display": "Triglyceride [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Triglycerides"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18",
+        "issued": "2024-11-18T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 155,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "Borderline elevated, stable"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-017-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body Weight"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18T09:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 140,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-gad7",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-020-gad7",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "70274-6",
+              "display": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]"
+            }
+          ],
+          "text": "GAD-7 Anxiety Screening"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-020"
+        },
+        "effectiveDateTime": "2025-02-24T10:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Minimal anxiety"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-phq9",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-020-phq9",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "44261-6",
+              "display": "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-9 Depression Screening"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-020"
+        },
+        "effectiveDateTime": "2025-02-24T10:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "valueQuantity": {
+          "value": 6,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Mild depressive symptoms"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-dr-lamotrigine",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-015-dr-lamotrigine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6948-4",
+              "display": "lamoTRIgine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Lamotrigine Serum Drug Level"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-015-lamotrigine-level",
+            "display": "Lamotrigine Serum Level"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-dr-lipid",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-015-dr-lipid",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57698-3",
+              "display": "Lipid panel with direct LDL - Serum or Plasma"
+            }
+          ],
+          "text": "Lipid Panel"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-015-triglycerides",
+            "display": "Triglycerides"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-dr-metabolic",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-015-dr-metabolic",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic metabolic panel - Blood"
+            }
+          ],
+          "text": "Metabolic Panel"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2024-08-12",
+        "issued": "2024-08-12T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-015-fasting-glucose",
+            "display": "Fasting Glucose"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-dr-lamotrigine",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-017-dr-lamotrigine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6948-4",
+              "display": "lamoTRIgine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Lamotrigine Serum Drug Level"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-017"
+        },
+        "effectiveDateTime": "2024-11-18",
+        "issued": "2024-11-18T00:00:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-017-lamotrigine-level",
+            "display": "Lamotrigine Serum Level"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-lamotrigine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-015-lamotrigine",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "198429",
+              "display": "lamoTRIgine 200 MG Oral Tablet"
+            }
+          ],
+          "text": "Lamotrigine 200 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "authoredOn": "2024-08-12",
+        "requester": {
+          "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+          "type": "Practitioner",
+          "display": "Dr. Anita Patel"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-bipolar-ii",
+            "display": "Bipolar II disorder"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 200 mg by mouth once daily",
+            "patientInstruction": "Take 200 mg by mouth once daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 200,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-naltrexone",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-015-naltrexone",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1483744",
+              "display": "naltrexone HCl 50 MG Oral Tablet"
+            }
+          ],
+          "text": "Naltrexone 50 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "authoredOn": "2024-08-12",
+        "requester": {
+          "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+          "type": "Practitioner",
+          "display": "Dr. Anita Patel"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-aud",
+            "display": "Alcohol use disorder, moderate severity, in sustained remission"
+          }
+        ],
+        "note": [
+          {
+            "text": "Managed by PCP Dr. Kevin Tran at Ballard Family Medicine; documented during psychiatric evaluation for medication reconciliation."
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 50 mg by mouth once daily",
+            "patientInstruction": "Take 50 mg by mouth once daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 50,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-quetiapine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-015-quetiapine",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "616487",
+              "display": "QUEtiapine fumarate 50 MG Oral Tablet"
+            }
+          ],
+          "text": "Quetiapine 50 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "authoredOn": "2024-08-12",
+        "requester": {
+          "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+          "type": "Practitioner",
+          "display": "Dr. Anita Patel"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-bipolar-ii",
+            "display": "Bipolar II disorder"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 50 mg by mouth at bedtime",
+            "patientInstruction": "Take 50 mg by mouth at bedtime.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d",
+                "timeOfDay": [
+                  "21:00:00"
+                ]
+              },
+              "code": {
+                "text": "at bedtime"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                      "code": "ordered",
+                      "display": "Ordered"
+                    }
+                  ],
+                  "text": "Ordered"
+                },
+                "doseQuantity": {
+                  "value": 50,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-015-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "28635-1",
+              "display": "Psychiatry Initial evaluation note"
+            }
+          ],
+          "text": "Psychiatry Initial Evaluation Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2024-08-12T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UFVHRVQgU09VTkQgUFNZQ0hJQVRSWQoxMDAxIDR0aCBBdmUsIFN1aXRlIDgyMCwgU2VhdHRsZSwgV0EgOTgxNTQKTlBJOiA1Njc4OTAxMjM0CgpQU1lDSElBVFJJQyBFVkFMVUFUSU9OIOKAlCBORVcgUEFUSUVOVApEYXRlIG9mIFNlcnZpY2U6IDA4LzEyLzIwMjQKUGF0aWVudDogU2FyYWggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzClByb3ZpZGVyOiBBbml0YSBQYXRlbCwgTUQgKFBzeWNoaWF0cnkpClZpc2l0IER1cmF0aW9uOiA2MCBtaW51dGVzClJlZmVycmFsIFNvdXJjZTogRHIuIEtldmluIFRyYW4sIEJhbGxhcmQgRmFtaWx5IE1lZGljaW5lCgpJREVOVElGWUlORyBJTkZPUk1BVElPTjoKMzEteWVhci1vbGQgd2hpdGUgZmVtYWxlLCBmcmVlbGFuY2UgZ3JhcGhpYyBkZXNpZ25lciwgcmVjZW50bHkgcmVsb2NhdGVkIGZyb20gUG9ydGxhbmQsIE9SIHRvIFNlYXR0bGUsIFdBIGluIEp1bmUgMjAyNC4gU2luZ2xlLCBsaXZlcyBhbG9uZS4gUmVmZXJyZWQgYnkgUENQIERyLiBUcmFuIGZvciBlc3RhYmxpc2htZW50IG9mIHBzeWNoaWF0cmljIGNhcmUgZm9sbG93aW5nIGludGVyc3RhdGUgbW92ZS4KCkNISUVGIENPTVBMQUlOVDoKTmV3IHBhdGllbnQgcHN5Y2hpYXRyaWMgZXZhbHVhdGlvbiBmb3IgY29udGludWl0eSBvZiBjYXJlOyBiaXBvbGFyIElJIGRpc29yZGVyIGFuZCBhbGNvaG9sIHVzZSBkaXNvcmRlciBtYW5hZ2VtZW50LgoKSElTVE9SWSBPRiBQUkVTRU5UIElMTE5FU1M6Ck1zLiBNaXRjaGVsbCBwcmVzZW50cyBmb3IgY29tcHJlaGVuc2l2ZSBwc3ljaGlhdHJpYyBldmFsdWF0aW9uIGZvbGxvd2luZyByZWxvY2F0aW9uIGZyb20gUG9ydGxhbmQgdG8gU2VhdHRsZS4gU2hlIHdhcyBwcmV2aW91c2x5IG1hbmFnZWQgYnkgRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzIGZyb20gMjAxOSB0aHJvdWdoIE1heSAyMDI0LiBUcmFuc2ZlcnJlZCByZWNvcmRzIGZyb20gRHIuIE9rYWZvciBhbmQgdGhlIEJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyIGNhcmUgc3VtbWFyeSB3ZXJlIHJldmlld2VkIGluIGZ1bGwgcHJpb3IgdG8gdGhpcyB2aXNpdC4KClBhdGllbnQgcHJvdmlkZWQgYSBkZXRhaWxlZCBoaXN0b3J5IG9mIGhlciBwc3ljaGlhdHJpYyBjb3Vyc2UuIFNoZSB3YXMgaW5pdGlhbGx5IGRpYWdub3NlZCB3aXRoIG1ham9yIGRlcHJlc3NpdmUgZGlzb3JkZXIgaW4gZWFybHkgMjAxOSBieSBoZXIgUENQIERyLiBOYWthbXVyYSBhbmQgc3RhcnRlZCBvbiBzZXJ0cmFsaW5lIDUwIG1nLCB0aXRyYXRlZCB0byAxMDAgbWcuIFNoZSBzdWJzZXF1ZW50bHkgZGV2ZWxvcGVkIGh5cG9tYW5pYyBzeW1wdG9tcyAoZGVjcmVhc2VkIHNsZWVwIG5lZWQsIGluY3JlYXNlZCBnb2FsLWRpcmVjdGVkIGFjdGl2aXR5LCBpbXB1bHNpdmUgc3BlbmRpbmcpIHByb21wdGluZyBwc3ljaGlhdHJ5IHJlZmVycmFsLiBEci4gT2thZm9yIGRpYWdub3NlZCBiaXBvbGFyIElJIGRpc29yZGVyIGluIEp1bHkgMjAxOSBiYXNlZCBvbiBsb25naXR1ZGluYWwgaGlzdG9yeSBvZiBoeXBvbWFuaWMgZXBpc29kZXMgZGF0aW5nIHRvIGNvbGxlZ2UgeWVhcnMgaW50ZXJzcGVyc2VkIHdpdGggZGVwcmVzc2l2ZSBlcGlzb2Rlcy4gU2VydHJhbGluZSB3YXMgdGFwZXJlZCBhbmQgY3Jvc3MtdGl0cmF0ZWQgdG8gbGFtb3RyaWdpbmUsIHJlYWNoaW5nIHRhcmdldCBkb3NlIG9mIDIwMCBtZyBkYWlseSBieSBmYWxsIDIwMTkuIFF1ZXRpYXBpbmUgNTAgbWcgYXQgYmVkdGltZSB3YXMgYWRkZWQgaW4gMjAyMCBkdXJpbmcgYSBtaWxkIGRlcHJlc3NpdmUgZXBpc29kZSBjb25jdXJyZW50IHdpdGggQ09WSUQtMTkgcGFuZGVtaWMgaXNvbGF0aW9uLiBUaGlzIGNvbWJpbmF0aW9uIGhhcyBiZWVuIGhlciBzdGFibGUgcmVnaW1lbiBzaW5jZS4KClJlZ2FyZGluZyBzdWJzdGFuY2UgdXNlIGhpc3RvcnksIHBhdGllbnQgZGV2ZWxvcGVkIGFsY29ob2wgdXNlIGRpc29yZGVyIGluIDIwMjIgaW4gdGhlIGNvbnRleHQgb2YgZmluYW5jaWFsIHN0cmVzc29ycyBhbmQgZGVwcmVzc2l2ZSBzeW1wdG9tcy4gU2hlIHdhcyBkcmlua2luZyBhcHByb3hpbWF0ZWx5IG9uZSBib3R0bGUgb2Ygd2luZSBuaWdodGx5IHdpdGggZmFpbGVkIGF0dGVtcHRzIHRvIGN1dCBkb3duIGFuZCBtaWxkIHdpdGhkcmF3YWwgc3ltcHRvbXMuIFNoZSBzZWxmLXJlZmVycmVkIHRvIEJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyIGluIEphbnVhcnkgMjAyMywgd2FzIGRpYWdub3NlZCB3aXRoIEFVRCBtb2RlcmF0ZSBzZXZlcml0eSAoQVVESVQgMjgpLCBzdGFydGVkIG5hbHRyZXhvbmUgNTAgbWcgZGFpbHksIGFuZCBjb21wbGV0ZWQgYSAxMi13ZWVrIGludGVuc2l2ZSBvdXRwYXRpZW50IHByb2dyYW0uIFNoZSBhY2hpZXZlZCBzb2JyaWV0eSBpbiBBcHJpbCAyMDIzIGFuZCBoYXMgbWFpbnRhaW5lZCBzdXN0YWluZWQgcmVtaXNzaW9uIHNpbmNlLiBOYWx0cmV4b25lIGlzIGN1cnJlbnRseSBtYW5hZ2VkIGJ5IGhlciBQQ1AgRHIuIFRyYW4uCgpDdXJyZW50IHN0YXR1czogUGF0aWVudCBkZXNjcmliZXMgaGVyIG1vb2QgYXMgInRoZSBtb3N0IGV2ZW4gSSd2ZSBiZWVuIGluIHllYXJzLiIgU2hlIHJlcG9ydHMgc2xlZXBpbmcgNy04IGhvdXJzIG5pZ2h0bHkgd2l0aCBnb29kIHNsZWVwIHF1YWxpdHkuIFNoZSBpcyB3b3JraW5nIHByb2R1Y3RpdmVseSBvbiBmcmVlbGFuY2UgZGVzaWduIHByb2plY3RzLiBTaGUgYXR0ZW5kcyBBQSBtZWV0aW5ncyB3ZWVrbHkuIFNoZSBkZW5pZXMgY3VycmVudCBkZXByZXNzaXZlIHN5bXB0b21zIGluY2x1ZGluZyBsb3cgbW9vZCwgYW5oZWRvbmlhLCBndWlsdCwgcG9vciBjb25jZW50cmF0aW9uLCBvciBzdWljaWRhbCBpZGVhdGlvbi4gU2hlIGRlbmllcyBoeXBvbWFuaWMgc3ltcHRvbXMgaW5jbHVkaW5nIGVsZXZhdGVkIG1vb2QsIGRlY3JlYXNlZCBzbGVlcCBuZWVkLCBncmFuZGlvc2l0eSwgcHJlc3N1cmVkIHNwZWVjaCwgb3IgaW1wdWxzaXZlIGJlaGF2aW9yLiBTaGUgZGVuaWVzIGFueSBhbGNvaG9sIHVzZSBvciBjcmF2aW5ncy4KClBBU1QgUFNZQ0hJQVRSSUMgSElTVE9SWToKLSBCaXBvbGFyIElJIGRpc29yZGVyLCBkaWFnbm9zZWQgSnVseSAyMDE5Ci0gTWFqb3IgZGVwcmVzc2l2ZSBkaXNvcmRlciAoaW5pdGlhbCBkaWFnbm9zaXMgMjAxOSwgcmVjbGFzc2lmaWVkIGFzIGJpcG9sYXIgSUkpCi0gQWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIHNldmVyaXR5LCBkaWFnbm9zZWQgSmFudWFyeSAyMDIzLCBpbiBzdXN0YWluZWQgcmVtaXNzaW9uIHNpbmNlIEFwcmlsIDIwMjMKLSBObyBwcmlvciBwc3ljaGlhdHJpYyBob3NwaXRhbGl6YXRpb25zCi0gTm8gaGlzdG9yeSBvZiBzdWljaWRlIGF0dGVtcHRzIG9yIHNlbGYtaGFybQotIFByaW9yIG1lZGljYXRpb25zOiBzZXJ0cmFsaW5lIDUwLTEwMCBtZyAoMjAxOSwgZGlzY29udGludWVkIGR1ZSB0byBiaXBvbGFyIGRpYWdub3NpcykKClNVQlNUQU5DRSBVU0UgSElTVE9SWToKLSBBbGNvaG9sOiBJbiBzdXN0YWluZWQgcmVtaXNzaW9uIHNpbmNlIEFwcmlsIDIwMjMuIFNlZSBIUEkgYWJvdmUuCi0gVG9iYWNjbzogRGVuaWVzCi0gQ2FubmFiaXM6IERlbmllcyBjdXJyZW50IHVzZQotIE90aGVyIHN1YnN0YW5jZXM6IERlbmllcwoKRkFNSUxZIFBTWUNISUFUUklDIEhJU1RPUlk6ClJldmlld2VkIHBlciB0cmFuc2ZlcnJlZCByZWNvcmRzLgoKU09DSUFMIEhJU1RPUlk6ClNpbmdsZSwgbmV2ZXIgbWFycmllZCwgbm8gY2hpbGRyZW4uIExpdmVzIGFsb25lIHdpdGggcGV0IGNhdCBpbiBCYWxsYXJkIG5laWdoYm9yaG9vZCwgU2VhdHRsZS4gRnJlZWxhbmNlIGdyYXBoaWMgZGVzaWduZXIsIHNlbGYtZW1wbG95ZWQuIFJlbG9jYXRlZCBmcm9tIFBvcnRsYW5kIEp1bmUgMjAyNC4gRW1lcmdlbmN5IGNvbnRhY3Q6IFJhY2hlbCBNaXRjaGVsbCAobW90aGVyKSwgQmVuZCwgT1IuIEFjdGl2ZSBpbiBBQSAod2Vla2x5IG1lZXRpbmdzKS4gSW5zdXJhbmNlOiBQcmVtZXJhIEJsdWUgQ3Jvc3MuCgpBTExFUkdJRVM6ClN1bGZhIGFudGliaW90aWNzICh0cmltZXRob3ByaW0tc3VsZmFtZXRob3hhem9sZSkg4oCUIHJhc2gKCkNVUlJFTlQgTUVESUNBVElPTlM6CjEuIExhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSAobW9vZCBzdGFiaWxpemVyKQoyLiBRdWV0aWFwaW5lIDUwIG1nIFBPIGF0IGJlZHRpbWUgKG1vb2Qvc2xlZXApCjMuIE5hbHRyZXhvbmUgNTAgbWcgUE8gZGFpbHkgKG1hbmFnZWQgYnkgUENQIERyLiBUcmFuKQoKUkVWSUVXIE9GIFNZU1RFTVM6CkdlbmVyYWw6IERlbmllcyBmYXRpZ3VlLCB3ZWlnaHQgY2hhbmdlcywgZmV2ZXIuCk5ldXJvbG9naWM6IERlbmllcyBoZWFkYWNoZSwgdHJlbW9yLCBkaXp6aW5lc3MuClBzeWNoaWF0cmljOiBEZW5pZXMgZGVwcmVzc2lvbiwgbWFuaWEvaHlwb21hbmlhLCBhbnhpZXR5LCBwc3ljaG9zaXMsIFNJL0hJLiBTZWUgSFBJLgpTbGVlcDogNy04IGhvdXJzIG5pZ2h0bHksIG5vIGNvbXBsYWludHMuCkdJOiBEZW5pZXMgbmF1c2VhLCBhYmRvbWluYWwgcGFpbi4KQWxsIG90aGVyIHN5c3RlbXMgcmV2aWV3ZWQgYW5kIG5lZ2F0aXZlLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDExOC83NiBtbUhnLCBIUiA3MCBicG0sIFRlbXAgOTguNEYsIFJSIDE0LCBTcE8yIDk5JSwgV2VpZ2h0IDE0MSBsYnMsIEJNSSAyMi44CgpNZW50YWwgU3RhdHVzIEV4YW1pbmF0aW9uOgpBcHBlYXJhbmNlOiBXZWxsLWdyb29tZWQsIGNhc3VhbGx5IGRyZXNzZWQsIGFwcGVhcnMgc3RhdGVkIGFnZS4KQmVoYXZpb3I6IENvb3BlcmF0aXZlLCBlbmdhZ2VkLCBnb29kIGV5ZSBjb250YWN0LiBQbGVhc2FudCBhbmQgZm9ydGhjb21pbmcuClBzeWNob21vdG9yOiBObyBhZ2l0YXRpb24gb3IgcmV0YXJkYXRpb24uClNwZWVjaDogTm9ybWFsIHJhdGUsIHJoeXRobSwgYW5kIHZvbHVtZS4gTm90IHByZXNzdXJlZC4KTW9vZDogIlRoZSBtb3N0IGV2ZW4gSSd2ZSBiZWVuIGluIHllYXJzLiIKQWZmZWN0OiBFdXRoeW1pYywgbW9vZC1jb25ncnVlbnQsIGZ1bGwgcmFuZ2UsIGFwcHJvcHJpYXRlLgpUaG91Z2h0IHByb2Nlc3M6IExpbmVhciwgbG9naWNhbCwgZ29hbC1kaXJlY3RlZC4KVGhvdWdodCBjb250ZW50OiBObyBzdWljaWRhbCBpZGVhdGlvbiwgaG9taWNpZGFsIGlkZWF0aW9uLCBvciBwYXJhbm9pYS4gTm8gb2JzZXNzaW9ucyBvciBjb21wdWxzaW9ucy4KUGVyY2VwdGlvbnM6IE5vIGF1ZGl0b3J5IG9yIHZpc3VhbCBoYWxsdWNpbmF0aW9ucy4KQ29nbml0aW9uOiBBbGVydCBhbmQgb3JpZW50ZWQgeDQuIEF0dGVudGlvbiBhbmQgY29uY2VudHJhdGlvbiBpbnRhY3QuCkluc2lnaHQ6IEdvb2Qg4oCUIGRlbW9uc3RyYXRlcyB1bmRlcnN0YW5kaW5nIG9mIGRpYWdub3NlcyBhbmQgdHJlYXRtZW50IHJhdGlvbmFsZS4KSnVkZ21lbnQ6IEdvb2Qg4oCUIGFwcHJvcHJpYXRlIGRlY2lzaW9uLW1ha2luZywgZW5nYWdlZCBpbiByZWNvdmVyeS4KClNjcmVlbmluZyBJbnN0cnVtZW50czoKUEhRLTk6IDQgKG1pbmltYWwgZGVwcmVzc2lvbikKR0FELTc6IDMgKG1pbmltYWwgYW54aWV0eSkKCkxhYnMgKGRyYXduIHRvZGF5KToKLSBMYW1vdHJpZ2luZSBzZXJ1bSBsZXZlbDogNS40IG1jZy9tTCAodGhlcmFwZXV0aWMgcmFuZ2UgMy0xNCBtY2cvbUwpCi0gRmFzdGluZyBnbHVjb3NlOiA4OCBtZy9kTAotIExpcGlkIHBhbmVsOiBUcmlnbHljZXJpZGVzIDE1OCBtZy9kTCAobWlsZGx5IGVsZXZhdGVkLCBjb25zaXN0ZW50IHdpdGggcHJpb3IgdHJlbmQgb24gcXVldGlhcGluZSkKClJJU0sgQVNTRVNTTUVOVDoKQWN1dGUgcmlzazogTG93LiBObyBzdWljaWRhbCBvciBob21pY2lkYWwgaWRlYXRpb24uIE5vIHBzeWNob3RpYyBzeW1wdG9tcy4gTW9vZCBzdGFibGUuIFN1YnN0YW5jZSB1c2UgaW4gc3VzdGFpbmVkIHJlbWlzc2lvbi4gRW5nYWdlZCBpbiB0cmVhdG1lbnQgYW5kIHJlY292ZXJ5IHN1cHBvcnRzLgpDaHJvbmljIHJpc2sgZmFjdG9yczogSGlzdG9yeSBvZiBiaXBvbGFyIElJIHdpdGggZGVwcmVzc2l2ZSBlcGlzb2RlcywgaGlzdG9yeSBvZiBBVUQuClByb3RlY3RpdmUgZmFjdG9yczogTWVkaWNhdGlvbiBhZGhlcmVuY2UsIGFjdGl2ZSBBQSBwYXJ0aWNpcGF0aW9uLCBzdGFibGUgaG91c2luZywgZW1wbG95bWVudCwgZXN0YWJsaXNoZWQgdGhlcmFwZXV0aWMgYWxsaWFuY2Ugd2l0aCBwcmlvciBwcm92aWRlcnMsIGhlYWx0aCBsaXRlcmFjeSwgZW5nYWdlbWVudCBpbiBjYXJlLgoKQVNTRVNTTUVOVDoKMS4gQmlwb2xhciBJSSBkaXNvcmRlciDigJQgY3VycmVudGx5IGV1dGh5bWljIG9uIHN0YWJsZSByZWdpbWVuIG9mIGxhbW90cmlnaW5lIDIwMCBtZyBkYWlseSBhbmQgcXVldGlhcGluZSA1MCBtZyBuaWdodGx5LiBQSFEtOSA0LCBHQUQtNyAzLiBMYW1vdHJpZ2luZSBsZXZlbCB0aGVyYXBldXRpYyBhdCA1LjQgbWNnL21MLiBObyBtZWRpY2F0aW9uIGNoYW5nZXMgaW5kaWNhdGVkIGF0IHRoaXMgdGltZS4KMi4gQWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIHNldmVyaXR5LCBpbiBzdXN0YWluZWQgcmVtaXNzaW9uIOKAlCBzb2JlciBzaW5jZSBBcHJpbCAyMDIzIChhcHByb3hpbWF0ZWx5IDE2IG1vbnRocykuIENvbnRpbnVlcyBuYWx0cmV4b25lIHZpYSBQQ1AgYW5kIHdlZWtseSBBQSBhdHRlbmRhbmNlLiBObyBjcmF2aW5ncyByZXBvcnRlZC4KMy4gSHlwZXJ0cmlnbHljZXJpZGVtaWEsIG1pbGQg4oCUIHRyaWdseWNlcmlkZXMgMTU4IG1nL2RMLCBsaWtlbHkgcXVldGlhcGluZS1yZWxhdGVkLiBTdGFibGUgYW5kIGNvbnNpc3RlbnQgd2l0aCBwcmlvciB2YWx1ZXMuIFdpbGwgY29udGludWUgdG8gbW9uaXRvciB3aXRoIG1ldGFib2xpYyBsYWJzLgoKUExBTjoKMS4gQ29udGludWUgbGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5IOKAlCBubyBjaGFuZ2VzLgoyLiBDb250aW51ZSBxdWV0aWFwaW5lIDUwIG1nIFBPIGF0IGJlZHRpbWUg4oCUIG5vIGNoYW5nZXMuCjMuIE5hbHRyZXhvbmUgNTAgbWcgZGFpbHkg4oCUIGNvbnRpbnVlIHBlciBQQ1AgRHIuIFRyYW4gbWFuYWdlbWVudC4KNC4gQmFzZWxpbmUgbGFicyBvYnRhaW5lZCB0b2RheTogbGFtb3RyaWdpbmUgbGV2ZWwgdGhlcmFwZXV0aWMsIGZhc3RpbmcgZ2x1Y29zZSBub3JtYWwsIHRyaWdseWNlcmlkZXMgbWlsZGx5IGVsZXZhdGVkIGFuZCBzdGFibGUuCjUuIENvbnRpbnVlIEFBIGF0dGVuZGFuY2UgYW5kIHJlY292ZXJ5IHN1cHBvcnRzLgo2LiBQYXRpZW50IGVkdWNhdGVkIG9uIGltcG9ydGFuY2Ugb2YgbWVkaWNhdGlvbiBhZGhlcmVuY2UsIHJlY29nbml6aW5nIGVhcmx5IHdhcm5pbmcgc2lnbnMgb2YgbW9vZCBlcGlzb2RlcywgYW5kIGF2b2lkaW5nIGFsY29ob2wuCjcuIENvb3JkaW5hdGUgY2FyZSB3aXRoIFBDUCBEci4gVHJhbiBhdCBCYWxsYXJkIEZhbWlseSBNZWRpY2luZSBhcyBuZWVkZWQuCjguIEZvbGxvdy11cCBpbiAzIG1vbnRocyBmb3Igcm91dGluZSBwc3ljaGlhdHJpYyBtb25pdG9yaW5nLgo5LiBQYXRpZW50IHRvIGNvbnRhY3Qgb2ZmaWNlIGlmIG1vb2Qgc3ltcHRvbXMgd29yc2VuIG9yIGlmIGFueSBjb25jZXJucyBhcmlzZSBiZWZvcmUgbmV4dCBhcHBvaW50bWVudC4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKQW5pdGEgUGF0ZWwsIE1EClBzeWNoaWF0cnkKUHVnZXQgU291bmQgUHN5Y2hpYXRyeQpEYXRlOiAwOC8xMi8yMDI0Cg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-015"
+            }
+          ],
+          "period": {
+            "start": "2024-08-12"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-017-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "28627-8",
+              "display": "Psychiatry Progress note"
+            }
+          ],
+          "text": "Psychiatry Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2024-11-18T09:30:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UFVHRVQgU09VTkQgUFNZQ0hJQVRSWQoxMDAxIDR0aCBBdmUsIFN1aXRlIDgyMCwgU2VhdHRsZSwgV0EgOTgxNTQKTlBJOiA1Njc4OTAxMjM0CgpQU1lDSElBVFJJQyBQUk9HUkVTUyBOT1RFCgpQYXRpZW50OiBTYXJhaCBFbGl6YWJldGggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzCkRhdGUgb2YgU2VydmljZTogMTEvMTgvMjAyNApQcm92aWRlcjogQW5pdGEgUGF0ZWwsIE1EIChQc3ljaGlhdHJ5KQpWaXNpdCBUeXBlOiBRdWFydGVybHkgRm9sbG93LVVwCgpTVUJKRUNUSVZFOgpNcy4gTWl0Y2hlbGwgcHJlc2VudHMgZm9yIHNjaGVkdWxlZCBxdWFydGVybHkgcHN5Y2hpYXRyaWMgZm9sbG93LXVwLiBTaGUgcmVwb3J0cyBjb250aW51ZWQgbW9vZCBzdGFiaWxpdHkgd2l0aCBubyBoeXBvbWFuaWMgb3IgZGVwcmVzc2l2ZSBlcGlzb2RlcyBzaW5jZSBlc3RhYmxpc2hpbmcgY2FyZSBhdCB0aGlzIHByYWN0aWNlIGluIEF1Z3VzdCAyMDI0LiBTbGVlcCBoYXMgYmVlbiByZXN0ZnVsIGFuZCBjb25zaXN0ZW50LiBTaGUgaXMgd29ya2luZyBzdGVhZGlseSBvbiBmcmVlbGFuY2UgZ3JhcGhpYyBkZXNpZ24gcHJvamVjdHMgYW5kIHJlcG9ydHMgZ29vZCBvY2N1cGF0aW9uYWwgZnVuY3Rpb25pbmcuIFNoZSBjb250aW51ZXMgdG8gYXR0ZW5kIEFBIG1lZXRpbmdzIHdlZWtseSBhbmQgZGVuaWVzIGFueSBhbGNvaG9sIGNyYXZpbmdzIG9yIHVzZS4gU29icmlldHkgbWFpbnRhaW5lZCBzaW5jZSBBcHJpbCAyMDIzLgoKU2hlIG5vdGVkIHRoZSBzZWFzb25hbCByZWR1Y3Rpb24gaW4gZGF5bGlnaHQgaG91cnMgaW4gU2VhdHRsZSBhbmQgaXMgcHJvYWN0aXZlbHkgdXNpbmcgYSBsaWdodCB0aGVyYXB5IGxhbXAgZ2l2ZW4gaGVyIGhpc3Rvcnkgb2Ygd2ludGVyIGRlcHJlc3NpdmUgZXBpc29kZXMuIFNoZSBkZW5pZXMgY3VycmVudCBsb3cgbW9vZCwgYW5oZWRvbmlhLCBob3BlbGVzc25lc3MsIG9yIGNoYW5nZXMgaW4gYXBwZXRpdGUuIE5vIGlycml0YWJpbGl0eSwgcmFjaW5nIHRob3VnaHRzLCBkZWNyZWFzZWQgbmVlZCBmb3Igc2xlZXAsIG9yIGltcHVsc2l2ZSBiZWhhdmlvcnMuIE5vIHN1aWNpZGFsIG9yIGhvbWljaWRhbCBpZGVhdGlvbi4gTm8gcHN5Y2hvdGljIHN5bXB0b21zLgoKQ3VycmVudCBNZWRpY2F0aW9uczoKMS4gTGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5CjIuIFF1ZXRpYXBpbmUgNTAgbWcgUE8gYXQgYmVkdGltZQozLiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5IChtYW5hZ2VkIGJ5IFBDUCkKCkFsbGVyZ2llczogU3VsZmEgYW50aWJpb3RpY3MgKFRNUC1TTVgpIC0gcmFzaAoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDExNi83NCwgSFIgNjgsIFRlbXAgOTguNkYsIFJSIDE0LCBTcE8yIDk5JSwgV2VpZ2h0IDE0MCBsYnMsIEJNSSAyMi42CkFwcGVhcmFuY2U6IFdlbGwtZ3Jvb21lZCwgYXBwcm9wcmlhdGVseSBkcmVzc2VkLCBnb29kIGh5Z2llbmUKQmVoYXZpb3I6IENvb3BlcmF0aXZlLCBlbmdhZ2VkLCBnb29kIGV5ZSBjb250YWN0ClNwZWVjaDogTm9ybWFsIHJhdGUsIHJoeXRobSwgYW5kIHZvbHVtZQpNb29kOiAiU3RhYmxlIiAvICJHb29kIgpBZmZlY3Q6IEV1dGh5bWljLCBjb25ncnVlbnQsIGZ1bGwgcmFuZ2UKVGhvdWdodCBQcm9jZXNzOiBMaW5lYXIsIGdvYWwtZGlyZWN0ZWQsIG5vIGxvb3NlbmVzcyBvZiBhc3NvY2lhdGlvbnMKVGhvdWdodCBDb250ZW50OiBObyBzdWljaWRhbCBpZGVhdGlvbiwgbm8gaG9taWNpZGFsIGlkZWF0aW9uLCBubyBwYXJhbm9pYSwgbm8gZGVsdXNpb25zClBlcmNlcHRpb246IE5vIGF1ZGl0b3J5IG9yIHZpc3VhbCBoYWxsdWNpbmF0aW9ucwpDb2duaXRpb246IEFsZXJ0IGFuZCBvcmllbnRlZCB4NCwgYXR0ZW50aW9uIGFuZCBjb25jZW50cmF0aW9uIGludGFjdApJbnNpZ2h0OiBHb29kCkp1ZGdtZW50OiBHb29kCgpTY3JlZW5pbmcgSW5zdHJ1bWVudHM6Ci0gUEhRLTk6IDUgKG1pbGQgZGVwcmVzc2l2ZSBzeW1wdG9tcykKLSBHQUQtNzogMiAobWluaW1hbCBhbnhpZXR5KQoKTGFicyBSZXZpZXdlZDoKLSBMYW1vdHJpZ2luZSBzZXJ1bSBsZXZlbDogNS44IG1jZy9tTCAodGhlcmFwZXV0aWMgcmFuZ2UgMy0xNCBtY2cvbUwpCi0gRmFzdGluZyBnbHVjb3NlOiA4NiBtZy9kTCAobm9ybWFsKQotIFRyaWdseWNlcmlkZXM6IDE1NSBtZy9kTCAoYm9yZGVybGluZSBlbGV2YXRlZCwgc3RhYmxlIGZyb20gcHJpb3IpCgpBU1NFU1NNRU5UOgoxLiBCaXBvbGFyIElJIGRpc29yZGVyIC0gY29udGludWVkIGV1dGh5bWlhIG9uIGN1cnJlbnQgcmVnaW1lbi4gTGFtb3RyaWdpbmUgbGV2ZWwgdGhlcmFwZXV0aWMgYXQgNS44IG1jZy9tTC4gUEhRLTkgYW5kIEdBRC03IHNjb3JlcyBjb25zaXN0ZW50IHdpdGggY2xpbmljYWwgc3RhYmlsaXR5LiBObyBoeXBvbWFuaWMgb3IgZGVwcmVzc2l2ZSBlcGlzb2RlcyByZXBvcnRlZC4gUGF0aWVudCBpcyBwcm9hY3RpdmVseSBtYW5hZ2luZyBzZWFzb25hbCByaXNrIGZhY3RvcnMgd2l0aCBsaWdodCB0aGVyYXB5LgoyLiBBbGNvaG9sIHVzZSBkaXNvcmRlciwgbW9kZXJhdGUgc2V2ZXJpdHksIGluIHN1c3RhaW5lZCByZW1pc3Npb24gLSBwYXRpZW50IG1haW50YWluaW5nIHNvYnJpZXR5IHNpbmNlIEFwcmlsIDIwMjMsIGNvbnRpbnVlcyB3ZWVrbHkgQUEgYXR0ZW5kYW5jZSBhbmQgbmFsdHJleG9uZSAobWFuYWdlZCBieSBEci4gVHJhbiBhdCBCYWxsYXJkIEZhbWlseSBNZWRpY2luZSkuCjMuIEh5cGVydHJpZ2x5Y2VyaWRlbWlhLCBtaWxkIC0gdHJpZ2x5Y2VyaWRlcyAxNTUgbWcvZEwsIHN0YWJsZS4gTGlrZWx5IHF1ZXRpYXBpbmUtcmVsYXRlZC4gV2lsbCBjb250aW51ZSB0byBtb25pdG9yIGF0IGZ1dHVyZSB2aXNpdHMuIEdsdWNvc2Ugd2l0aGluIG5vcm1hbCBsaW1pdHMgYXQgODYgbWcvZEwsIG5vIGV2aWRlbmNlIG9mIG1ldGFib2xpYyBzeW5kcm9tZS4KClBMQU46CjEuIENvbnRpbnVlIGxhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSAtIG5vIGRvc2UgYWRqdXN0bWVudCBpbmRpY2F0ZWQgZ2l2ZW4gdGhlcmFwZXV0aWMgbGV2ZWwgYW5kIGNsaW5pY2FsIHN0YWJpbGl0eS4KMi4gQ29udGludWUgcXVldGlhcGluZSA1MCBtZyBQTyBhdCBiZWR0aW1lIC0gdG9sZXJhdGluZyB3ZWxsLCBubyBhZHZlcnNlIGVmZmVjdHMgcmVwb3J0ZWQsIG1ldGFib2xpYyBwYXJhbWV0ZXJzIHN0YWJsZS4KMy4gRGlzY3Vzc2VkIHNlYXNvbmFsIG1vb2QgbW9uaXRvcmluZyBwbGFuOiBwYXRpZW50IHRvIHRyYWNrIG1vb2QgZGFpbHkgdGhyb3VnaCB3aW50ZXIgbW9udGhzLCBjb250aW51ZSBsaWdodCB0aGVyYXB5IGxhbXAgdXNlLCBhbmQgY29udGFjdCBvZmZpY2UgaWYgc2hlIG5vdGljZXMgc3VzdGFpbmVkIGxvdyBtb29kLCBzbGVlcCBjaGFuZ2VzLCBvciBsb3NzIG9mIGludGVyZXN0IGxhc3RpbmcgbW9yZSB0aGFuIG9uZSB3ZWVrLgo0LiBSZXZpZXdlZCB3YXJuaW5nIHNpZ25zIG9mIGRlcHJlc3NpdmUgcmVsYXBzZSBhbmQgaW1wb3J0YW5jZSBvZiBtYWludGFpbmluZyBzbGVlcCBoeWdpZW5lIGFuZCBzb2NpYWwgc3VwcG9ydHMgdGhyb3VnaCB3aW50ZXIgc2Vhc29uLgo1LiBGb2xsb3ctdXAgaW4gMyBtb250aHMgKGFwcHJveGltYXRlbHkgRmVicnVhcnkgMjAyNSkgZm9yIG5leHQgcXVhcnRlcmx5IHZpc2l0LiBXaWxsIHJlYXNzZXNzIG1vb2QsIHJlcGVhdCBQSFEtOS9HQUQtNywgYW5kIGNoZWNrIG1ldGFib2xpYyBwYW5lbC4KNi4gUGF0aWVudCB0byBjb250aW51ZSBmb2xsb3ctdXAgd2l0aCBEci4gVHJhbiBhdCBCYWxsYXJkIEZhbWlseSBNZWRpY2luZSBmb3IgcHJpbWFyeSBjYXJlIGFuZCBuYWx0cmV4b25lIG1hbmFnZW1lbnQuCgpUaW1lIHNwZW50OiAzMCBtaW51dGVzLCBncmVhdGVyIHRoYW4gNTAlIGluIGNvdW5zZWxpbmcgYW5kIGNvb3JkaW5hdGlvbiBvZiBjYXJlLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpBbml0YSBQYXRlbCwgTUQKUHN5Y2hpYXRyeQpQdWdldCBTb3VuZCBQc3ljaGlhdHJ5CkRhdGU6IDExLzE4LzIwMjQK"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-017"
+            }
+          ],
+          "period": {
+            "start": "2024-11-18T09:00:00-08:00"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-020-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "28627-8",
+              "display": "Psychiatry Progress note"
+            }
+          ],
+          "text": "Psychiatry Telemedicine Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2025-02-24T10:25:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+            "type": "Practitioner",
+            "display": "Dr. Anita Patel"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRU1FRElDSU5FIFBST0dSRVNTIE5PVEUKClBhdGllbnQ6IFNhcmFoIEVsaXphYmV0aCBNaXRjaGVsbApET0I6IDExLzE0LzE5OTMgKEFnZSAzMSkKRGF0ZSBvZiBTZXJ2aWNlOiAwMi8yNC8yMDI1ClByb3ZpZGVyOiBBbml0YSBQYXRlbCwgTUQgKFBzeWNoaWF0cnkpClNpdGU6IFB1Z2V0IFNvdW5kIFBzeWNoaWF0cnksIDEwMDEgNHRoIEF2ZSwgU3VpdGUgODIwLCBTZWF0dGxlLCBXQSA5ODE1NApWaXNpdCBUeXBlOiBUZWxlbWVkaWNpbmUg4oCUIFNjaGVkdWxlZCBRdWFydGVybHkgRm9sbG93LVVwClJlYXNvbiBmb3IgVmlzaXQ6IFF1YXJ0ZXJseSBmb2xsb3ctdXAsIHdpbnRlciBzZWFzb25hbCBtb29kIGFzc2Vzc21lbnQKClNVQkpFQ1RJVkU6Ck1zLiBNaXRjaGVsbCBwcmVzZW50cyB2aWEgdGVsZW1lZGljaW5lIGZvciBoZXIgc2NoZWR1bGVkIHF1YXJ0ZXJseSBwc3ljaGlhdHJpYyBmb2xsb3ctdXAuIFRoaXMgdmlzaXQgd2FzIHNwZWNpZmljYWxseSB0aW1lZCB0byBhc3Nlc3MgZm9yIHdpbnRlciBzZWFzb25hbCBtb29kIGNoYW5nZXMgZ2l2ZW4gaGVyIGhpc3Rvcnkgb2YgbW9vZCB2dWxuZXJhYmlsaXR5IGR1cmluZyB3aW50ZXIgbW9udGhzLgoKU2hlIHJlcG9ydHMgZG9pbmcgd2VsbCBvdmVyYWxsLiBTaGUgZW5kb3JzZXMgYSBicmllZiAzLWRheSBwZXJpb2Qgb2YgbG93IG1vdGl2YXRpb24gYW5kIGh5cGVyc29tbmlhIGluIGxhdGUgSmFudWFyeSAyMDI1LCB3aGljaCBzaGUgYXR0cmlidXRlcyB0byBzZWFzb25hbCBmYWN0b3JzLiBUaGlzIGVwaXNvZGUgcmVzb2x2ZWQgc3BvbnRhbmVvdXNseSBhbmQgZGlkIG5vdCBtZWV0IGNyaXRlcmlhIGZvciBhIG1ham9yIGRlcHJlc3NpdmUgZXBpc29kZSDigJQgc2hlIG1haW50YWluZWQgZnVuY3Rpb25hbCBjYXBhY2l0eSBhbmQgdGhlIHN5bXB0b21zIHdlcmUgc2VsZi1saW1pdGVkLiBTaGUgaGFzIGJlZW4gdXNpbmcgaGVyIGxpZ2h0IHRoZXJhcHkgbGFtcCByZWd1bGFybHkgdGhyb3VnaG91dCB0aGUgd2ludGVyIHNlYXNvbiBhbmQgcmVwb3J0cyB0aGlzIGhhcyBiZWVuIGhlbHBmdWwuCgpTaGUgZGVuaWVzIGFueSBoeXBvbWFuaWMgb3IgbWFuaWMgc3ltcHRvbXMgaW5jbHVkaW5nIGRlY3JlYXNlZCBuZWVkIGZvciBzbGVlcCwgcHJlc3N1cmVkIHNwZWVjaCwgZ3JhbmRpb3NpdHksIGltcHVsc2l2ZSBzcGVuZGluZywgb3IgaW5jcmVhc2VkIGdvYWwtZGlyZWN0ZWQgYWN0aXZpdHkuCgpTb2NpYWwgaGlzdG9yeSB1cGRhdGU6IFNoZSBjb250aW51ZXMgdG8gbWFpbnRhaW4gc29jaWFsIGNvbm5lY3Rpb25zIGluIFNlYXR0bGUuIEFBIGF0dGVuZGFuY2UgY29udGludWVzIGF0IHdlZWtseSBtZWV0aW5ncy4gU29icmlldHkgaXMgbWFpbnRhaW5lZCDigJQgc2hlIGlzIGFwcHJvYWNoaW5nIGhlciAyLXllYXIgc29icmlldHkgbWFyayBpbiBBcHJpbCAyMDI1LiBTaGUgZGVuaWVzIGFueSBjcmF2aW5ncyBvciB1cmdlcyB0byBkcmluay4KCkN1cnJlbnQgbWVkaWNhdGlvbnMgKGNvbmZpcm1lZCk6CjEuIExhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseQoyLiBRdWV0aWFwaW5lIDUwIG1nIFBPIGF0IGJlZHRpbWUKMy4gTmFsdHJleG9uZSA1MCBtZyBQTyBkYWlseQoKQWxsZXJnaWVzOiBTdWxmYSBhbnRpYmlvdGljcyAoVE1QLVNNWCkg4oCUIHJhc2gKClNoZSByZXBvcnRzIGFkaGVyZW5jZSB0byBhbGwgbWVkaWNhdGlvbnMgd2l0aG91dCBzaWRlIGVmZmVjdHMuCgpPQkpFQ1RJVkU6ClZpdGFsczogTm90IG9idGFpbmVkICh0ZWxlbWVkaWNpbmUgdmlzaXQpLgoKTWVudGFsIFN0YXR1cyBFeGFtOgpBcHBlYXJhbmNlOiBXZWxsLWdyb29tZWQsIGFwcHJvcHJpYXRlbHkgZHJlc3NlZCwgdmlzaWJsZSB2aWEgdmlkZW8KQmVoYXZpb3I6IENvb3BlcmF0aXZlLCBnb29kIGV5ZSBjb250YWN0IHdpdGggY2FtZXJhLCBubyBwc3ljaG9tb3RvciBhZ2l0YXRpb24gb3IgcmV0YXJkYXRpb24KU3BlZWNoOiBOb3JtYWwgcmF0ZSwgcmh5dGhtLCBhbmQgdm9sdW1lCk1vb2Q6ICJHb29kIgpBZmZlY3Q6IEV1dGh5bWljLCBjb25ncnVlbnQsIGZ1bGwgcmFuZ2UKVGhvdWdodCBwcm9jZXNzOiBMaW5lYXIsIGdvYWwtZGlyZWN0ZWQsIG9yZ2FuaXplZApUaG91Z2h0IGNvbnRlbnQ6IE5vIHN1aWNpZGFsIG9yIGhvbWljaWRhbCBpZGVhdGlvbiwgbm8gZGVsdXNpb25zClBlcmNlcHRpb25zOiBObyBoYWxsdWNpbmF0aW9ucyByZXBvcnRlZApDb2duaXRpb246IEFsZXJ0IGFuZCBvcmllbnRlZCwgYXR0ZW50aW9uIGFuZCBjb25jZW50cmF0aW9uIGludGFjdApJbnNpZ2h0L0p1ZGdtZW50OiBHb29kCgpTY3JlZW5pbmcgaW5zdHJ1bWVudHM6ClBIUS05OiA2IChtaWxkIGRlcHJlc3NpdmUgc3ltcHRvbXMpCkdBRC03OiA0IChtaW5pbWFsIGFueGlldHkpCgpBU1NFU1NNRU5UOgoxLiBCaXBvbGFyIElJIGRpc29yZGVyIOKAlCBzdGFibGUuIEN1cnJlbnQgcmVnaW1lbiBvZiBsYW1vdHJpZ2luZSAyMDAgbWcgZGFpbHkgYW5kIHF1ZXRpYXBpbmUgNTAgbWcgbmlnaHRseSBjb250aW51ZXMgdG8gcHJvdmlkZSBlZmZlY3RpdmUgbW9vZCBzdGFiaWxpemF0aW9uLiBUaGUgYnJpZWYgcGVyaW9kIG9mIGxvdyBtb3RpdmF0aW9uIGluIEphbnVhcnkgZGlkIG5vdCBtZWV0IHRocmVzaG9sZCBmb3IgYSBkZXByZXNzaXZlIGVwaXNvZGUgYW5kIHJlc29sdmVkIHdpdGggaGVyIGVzdGFibGlzaGVkIHNlYXNvbmFsIGNvcGluZyBzdHJhdGVnaWVzIChsaWdodCB0aGVyYXB5LCBzb2NpYWwgZW5nYWdlbWVudCkuIE5vIGh5cG9tYW5pYyBzeW1wdG9tcy4gUEhRLTkgYW5kIEdBRC03IHNjb3JlcyBhcmUgYXQgYmFzZWxpbmUgbGV2ZWxzLgoyLiBBbGNvaG9sIHVzZSBkaXNvcmRlciwgbW9kZXJhdGUgc2V2ZXJpdHksIGluIHN1c3RhaW5lZCByZW1pc3Npb24g4oCUIGNvbnRpbnVlcyBuYWx0cmV4b25lIDUwIG1nIGRhaWx5IGFuZCB3ZWVrbHkgQUEgYXR0ZW5kYW5jZS4gQXBwcm9hY2hpbmcgMi15ZWFyIHNvYnJpZXR5IG1pbGVzdG9uZS4gTm8gY3JhdmluZ3Mgb3IgcmVsYXBzZSBjb25jZXJucy4KMy4gSHlwZXJ0cmlnbHljZXJpZGVtaWEgKHF1ZXRpYXBpbmUtcmVsYXRlZCkg4oCUIHRvIGJlIG1vbml0b3JlZCBhdCBuZXh0IHZpc2l0IHdpdGggbWV0YWJvbGljIHBhbmVsLgoKUExBTjoKMS4gQ29udGludWUgbGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5IOKAlCBubyBkb3NlIGFkanVzdG1lbnQgaW5kaWNhdGVkLgoyLiBDb250aW51ZSBxdWV0aWFwaW5lIDUwIG1nIFBPIGF0IGJlZHRpbWUg4oCUIG5vIGRvc2UgYWRqdXN0bWVudCBpbmRpY2F0ZWQuCjMuIENvbnRpbnVlIG5hbHRyZXhvbmUgNTAgbWcgUE8gZGFpbHkgZm9yIEFVRCBtYWludGVuYW5jZS4KNC4gQ29udGludWUgbGlnaHQgdGhlcmFweSBhbmQgc2Vhc29uYWwgY29waW5nIHN0cmF0ZWdpZXMgdGhyb3VnaCByZW1haW5kZXIgb2Ygd2ludGVyLgo1LiBDb250aW51ZSB3ZWVrbHkgQUEgYXR0ZW5kYW5jZS4KNi4gQXQgbmV4dCB2aXNpdDogb3JkZXIgbGFtb3RyaWdpbmUgc2VydW0gbGV2ZWwgYW5kIGNvbXByZWhlbnNpdmUgbWV0YWJvbGljIHBhbmVsIGZvciByb3V0aW5lIG1vbml0b3JpbmcuCjcuIEZvbGxvdy11cDogVGVsZW1lZGljaW5lIHZpc2l0IGluIDMgbW9udGhzIChNYXkgMjAyNSkgZm9yIHF1YXJ0ZXJseSBwc3ljaGlhdHJpYyBmb2xsb3ctdXAuCjguIFBhdGllbnQgaW5zdHJ1Y3RlZCB0byBjb250YWN0IGNsaW5pYyBzb29uZXIgaWYgbW9vZCBzeW1wdG9tcyB3b3JzZW4sIGFueSBoeXBvbWFuaWMgc3ltcHRvbXMgZW1lcmdlLCBvciBhbnkgY29uY2VybnMgYXJpc2UuCgpUaW1lIHNwZW50OiAyNSBtaW51dGVzICh0ZWxlbWVkaWNpbmUgdmlkZW8gdmlzaXQsIGluY2x1ZGluZyBkb2N1bWVudGF0aW9uKS4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKQW5pdGEgUGF0ZWwsIE1EClB1Z2V0IFNvdW5kIFBzeWNoaWF0cnkKTlBJOiA1Njc4OTAxMjM0CkRhdGU6IDAyLzI0LzIwMjUK"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-020"
+            }
+          ],
+          "period": {
+            "start": "2025-02-24T10:00:00-08:00"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-015",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "165171009",
+                "display": "Initial psychiatric evaluation (procedure)"
+              }
+            ],
+            "text": "New Patient Psychiatric Evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "primary performer"
+              }
+            ],
+            "period": {
+              "start": "2024-08-12",
+              "end": "2024-08-12"
+            },
+            "individual": {
+              "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+              "type": "Practitioner",
+              "display": "Dr. Anita Patel"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-08-12",
+          "end": "2024-08-12"
+        },
+        "reasonCode": [
+          {
+            "text": "New patient psychiatric evaluation for continuity of care; bipolar II disorder and alcohol use disorder management"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/eebb992f-0f17-4e95-b464-4dbc97cef472",
+              "display": "Puget Sound Psychiatry"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+          "display": "Puget Sound Psychiatry"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah was seen by Dr. Anita Patel for a comprehensive new patient psychiatric evaluation following her move to Seattle and referral from Dr."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-017",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-017",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "88848003",
+                "display": "Psychiatric follow-up (procedure)"
+              }
+            ],
+            "text": "Quarterly Psychiatric Follow-Up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "primary performer"
+              }
+            ],
+            "period": {
+              "start": "2024-11-18T09:00:00-08:00",
+              "end": "2024-11-18T09:30:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+              "type": "Practitioner",
+              "display": "Dr. Anita Patel"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-11-18T09:00:00-08:00",
+          "end": "2024-11-18T09:30:00-08:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Quarterly follow-up, continued mood stability assessment"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/eebb992f-0f17-4e95-b464-4dbc97cef472",
+              "display": "Puget Sound Psychiatry"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+          "display": "Puget Sound Psychiatry"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah presented for quarterly psychiatric follow-up with Dr. Patel."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-020",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "448337001",
+                "display": "Telemedicine consultation with patient (procedure)"
+              }
+            ],
+            "text": "Telemedicine — Quarterly Psychiatric Follow-Up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "primary performer"
+              }
+            ],
+            "period": {
+              "start": "2025-02-24T10:00:00-08:00",
+              "end": "2025-02-24T10:25:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+              "type": "Practitioner",
+              "display": "Dr. Anita Patel"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-02-24T10:00:00-08:00",
+          "end": "2025-02-24T10:25:00-08:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Quarterly follow-up, winter seasonal mood assessment"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/eebb992f-0f17-4e95-b464-4dbc97cef472",
+              "display": "Puget Sound Psychiatry"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/efd5e797-d45d-4ece-8a7f-0a2f16da581e",
+          "display": "Puget Sound Psychiatry"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah was seen via telemedicine by Dr. Patel for quarterly follow-up, specifically timed to assess for any winter seasonal mood changes."
+          }
+        ]
+      }
+    }
+  ]
+}

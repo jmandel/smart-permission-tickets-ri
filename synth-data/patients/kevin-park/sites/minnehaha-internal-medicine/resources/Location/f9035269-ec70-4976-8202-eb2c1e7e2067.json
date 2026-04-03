@@ -1,0 +1,40 @@
+{
+  "resourceType": "Location",
+  "id": "f9035269-ec70-4976-8202-eb2c1e7e2067",
+  "status": "active",
+  "name": "Minnehaha Internal Medicine",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "612-555-0200",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "3501 East Lake Street"
+    ],
+    "city": "Minneapolis",
+    "state": "MN",
+    "postalCode": "55406",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/7fe430e0-4f5a-4448-952c-ce35b3b6e2d5",
+    "display": "Minnehaha Internal Medicine"
+  }
+}

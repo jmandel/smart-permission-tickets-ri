@@ -1,0 +1,188 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Procedure",
+    "reason": "tissue diagnosis of mediastinal lymphadenopathy for suspected lung malignancy staging",
+    "period_start": "2024-10-02",
+    "period_end": "2024-10-02",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending physician",
+        "specialty": "Thoracic Oncology"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 144,
+        "value_diastolic": 88,
+        "unit": "mmHg",
+        "context": "pre-procedure"
+      },
+      {
+        "name": "heart rate",
+        "value": 86,
+        "unit": "bpm",
+        "context": "pre-procedure"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "context": "pre-procedure"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min",
+        "context": "pre-procedure"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 95,
+        "unit": "%",
+        "context": "pre-procedure, room air"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 96,
+        "unit": "%",
+        "context": "post-procedure, room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "TTF-1 immunohistochemistry",
+        "value": "positive",
+        "specimen": "mediastinal lymph node biopsy (stations 4R and 7)"
+      },
+      {
+        "name": "CK7 immunohistochemistry",
+        "value": "positive",
+        "specimen": "mediastinal lymph node biopsy (stations 4R and 7)"
+      },
+      {
+        "name": "CK20 immunohistochemistry",
+        "value": "negative",
+        "specimen": "mediastinal lymph node biopsy (stations 4R and 7)"
+      },
+      {
+        "name": "p40 immunohistochemistry",
+        "value": "negative",
+        "specimen": "mediastinal lymph node biopsy (stations 4R and 7)"
+      },
+      {
+        "name": "cytopathology interpretation, station 4R lymph node",
+        "value": "adenocarcinoma identified",
+        "specimen": "right lower paratracheal lymph node (station 4R) needle aspirate"
+      },
+      {
+        "name": "cytopathology interpretation, station 7 lymph node",
+        "value": "adenocarcinoma identified",
+        "specimen": "subcarinal lymph node (station 7) needle aspirate"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "primary pulmonary adenocarcinoma",
+      "clinical_status": "active",
+      "onset_date": "2024-10-02",
+      "action": "create",
+      "note": "Confirmed by cytopathology and immunohistochemistry of EBUS-TBNA specimens. Immunophenotype (TTF-1+, CK7+, CK20−, p40−) consistent with primary pulmonary origin."
+    },
+    {
+      "name": "mediastinal lymph node metastasis",
+      "clinical_status": "active",
+      "onset_date": "2024-10-02",
+      "action": "create",
+      "note": "Adenocarcinoma confirmed in both station 4R and station 7 lymph nodes, establishing N2 disease."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "suspected lung malignancy",
+      "clinical_status": "resolved",
+      "action": "update-existing",
+      "note": "Confirmed as adenocarcinoma by tissue diagnosis at this encounter."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "knee pain (osteoarthritis)",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "endobronchial ultrasound-guided transbronchial needle aspiration",
+      "body_site": "mediastinal lymph nodes, stations 4R (right lower paratracheal) and 7 (subcarinal)",
+      "date": "2024-10-02",
+      "technique": "flexible bronchoscope with integrated ultrasound transducer, oral approach, 22-gauge aspiration needle, real-time EBUS visualization",
+      "details": "3 passes at station 4R, 3 passes at station 7; rapid on-site cytology evaluation confirmed adequate tissue at both sites",
+      "sedation": "moderate sedation per institutional protocol",
+      "complications": "none",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "procedure note",
+      "description": "Detailed procedure note for EBUS-TBNA of mediastinal lymph node stations 4R and 7, including indication, pre-procedure assessment, sedation, procedure technique with EBUS guidance, ROSE results, post-procedure course, chest X-ray findings, and disposition."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "cytopathology and immunohistochemistry report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "TTF-1 immunohistochemistry",
+        "CK7 immunohistochemistry",
+        "CK20 immunohistochemistry",
+        "p40 immunohistochemistry",
+        "cytopathology interpretation, station 4R lymph node",
+        "cytopathology interpretation, station 7 lymph node"
+      ]
+    },
+    {
+      "type": "portable chest radiograph, post-procedure",
+      "report_state": "summary-only",
+      "description": "Post-procedure portable chest X-ray obtained to evaluate for pneumothorax. No pneumothorax, no new pleural effusion, stable appearance of known right upper lobe mass."
+    },
+    {
+      "type": "molecular/genomic testing panel on biopsy tissue",
+      "report_state": "ordered-not-resulted",
+      "description": "Molecular testing ordered on EBUS-TBNA biopsy tissue for next-generation sequencing panel and PD-L1 expression testing. Results not yet available at time of this encounter."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

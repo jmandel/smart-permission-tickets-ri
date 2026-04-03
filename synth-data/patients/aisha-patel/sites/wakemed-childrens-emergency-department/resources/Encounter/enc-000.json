@@ -1,0 +1,84 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-000",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "4525004",
+          "display": "Emergency department patient visit (procedure)"
+        }
+      ],
+      "text": "Emergency Department Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+    "display": "Aisha Patel"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending"
+        }
+      ],
+      "period": {
+        "start": "2022-10-22T15:42:00-04:00",
+        "end": "2022-10-22T21:30:00-04:00"
+      },
+      "individual": {
+        "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+        "display": "Dr. Jason Trammell"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-10-22T15:42:00-04:00",
+    "end": "2022-10-22T21:30:00-04:00"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "241933001",
+          "display": "Peanut-induced anaphylaxis (disorder)"
+        }
+      ],
+      "text": "Anaphylaxis due to accidental peanut ingestion"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/c4f297f9-0dd6-8d0d-d8d1-7241d2749885",
+        "display": "WakeMed Raleigh Campus"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+    "display": "WakeMed Children's Emergency Department"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Aisha, age 2 years 7 months, was brought in by EMS after accidental peanut ingestion at a family Diwali gathering. She had eaten a cookie containing peanut butter approximately 20 minutes prior to symptom onset."
+    }
+  ]
+}

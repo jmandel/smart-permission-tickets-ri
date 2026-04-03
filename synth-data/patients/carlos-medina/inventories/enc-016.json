@@ -1,0 +1,275 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "6-month leflunomide efficacy assessment, inadequate response documented",
+    "period_start": "2022-07-11T09:00:00-05:00",
+    "period_end": "2022-07-11T09:45:00-05:00",
+    "participants": [],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 134,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 86,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 134,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 86,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 201,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.8,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6.1,
+        "unit": "K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.5,
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 252,
+        "unit": "K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose (serum)",
+        "value": 101,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine (serum)",
+        "value": 1,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 30,
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 28,
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin (serum)",
+        "value": 3.9,
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "erythrocyte sedimentation rate (ESR)",
+        "value": 40,
+        "unit": "mm/hr",
+        "flag": "high"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": 2.6,
+        "unit": "mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": [
+      {
+        "name": "Disease Activity Score 28-joint count using C-reactive protein (DAS28-CRP)",
+        "value": 4.8,
+        "interpretation": "moderate-to-high disease activity (worsened from 4.4 at 3-month assessment)"
+      },
+      {
+        "name": "Health Assessment Questionnaire Disability Index (HAQ-DI)",
+        "value": 1.5,
+        "interpretation": "significant functional impairment (worsened from 1.2)"
+      },
+      {
+        "name": "patient global assessment of disease activity (visual analog scale)",
+        "value": 68,
+        "unit": "/100"
+      },
+      {
+        "name": "physician global assessment of disease activity (visual analog scale)",
+        "value": 62,
+        "unit": "/100"
+      },
+      {
+        "name": "28-joint tender joint count",
+        "value": 10,
+        "text": "bilateral 2nd–4th MCPs, bilateral wrists, bilateral 2nd PIPs"
+      },
+      {
+        "name": "28-joint swollen joint count",
+        "value": 6,
+        "text": "bilateral 2nd–3rd MCPs, bilateral wrists, right 2nd PIP, left 3rd PIP"
+      },
+      {
+        "name": "grip strength, right hand (dynamometer)",
+        "value": 22,
+        "unit": "kg"
+      },
+      {
+        "name": "grip strength, left hand (dynamometer)",
+        "value": 18,
+        "unit": "kg"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2021-03",
+      "action": "reference-existing"
+    },
+    {
+      "name": "functional impairment due to rheumatoid arthritis",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "text": "worsening documented — HAQ-DI increased from 1.2 to 1.5, patient unable to perform essential occupational tasks, grip strength severely diminished bilaterally"
+    }
+  ],
+  "medications": [
+    {
+      "name": "leflunomide 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "rheumatoid arthritis pain and inflammation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "omeprazole 20 mg oral capsule",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "NSAID gastroprotection",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "folate supplementation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "seasonal allergic rhinitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive 6-month leflunomide efficacy assessment documenting inadequate response to second conventional DMARD. Includes detailed disease activity scoring (DAS28-CRP 4.8), functional status decline (HAQ-DI 1.5), joint examination findings (10/28 tender, 6/28 swollen), lab results with rising inflammatory markers, grip strength measurements, and complete DMARD failure history. Documents rationale for escalation to biologic therapy and serves as key supporting documentation for upcoming prior authorization submission."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP drawn for leflunomide monitoring. Glucose 101, creatinine 1.0, ALT 30, AST 28, albumin 3.9 individually reported; remaining CMP components not individually enumerated. LFTs normal on leflunomide."
+    },
+    {
+      "type": "erythrocyte sedimentation rate (ESR)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate (ESR)"
+      ]
+    },
+    {
+      "type": "C-reactive protein (CRP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein (CRP)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "diffuse maculopapular rash",
+      "severity": "moderate",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-013-ebus-tbna",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1137699004",
+        "display": "Transbronchial needle aspiration of mediastinal lymph node using endoscopic endobronchial ultrasonography guidance (procedure)"
+      }
+    ],
+    "text": "Endobronchial ultrasound-guided transbronchial needle aspiration (EBUS-TBNA)"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "performedDateTime": "2024-10-02",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    }
+  ],
+  "location": {
+    "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "bodySite": [
+    {
+      "text": "Mediastinal lymph node station 4R (right lower paratracheal)"
+    },
+    {
+      "text": "Mediastinal lymph node station 7 (subcarinal)"
+    }
+  ],
+  "complication": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "260413007",
+          "display": "None (qualifier value)"
+        }
+      ],
+      "text": "None"
+    }
+  ],
+  "note": [
+    {
+      "text": "Flexible bronchoscope with integrated ultrasound transducer, oral approach, 22-gauge aspiration needle under real-time EBUS visualization. 3 passes at station 4R, 3 passes at station 7. Rapid on-site cytology evaluation (ROSE) confirmed adequate tissue at both sites. Moderate sedation per institutional protocol. Estimated blood loss: minimal."
+    }
+  ]
+}

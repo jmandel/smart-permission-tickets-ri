@@ -1,0 +1,39 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-017-pvi",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "18286008",
+        "display": "Catheter ablation of tissue of heart (procedure)"
+      }
+    ],
+    "text": "Pulmonary vein isolation via catheter ablation"
+  },
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "authoredOn": "2026-03-09",
+  "requester": {
+    "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+    "display": "Dr. James Lindgren, MD, FHRS"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-015-afib",
+      "display": "Persistent atrial fibrillation"
+    }
+  ],
+  "note": [
+    {
+      "text": "PVI for persistent AF with 100% AF burden on Holter. Symptomatic despite adequate rate control. Shared decision-making with patient and spouse; patient elects to proceed. Procedure to be scheduled in coming weeks."
+    }
+  ]
+}

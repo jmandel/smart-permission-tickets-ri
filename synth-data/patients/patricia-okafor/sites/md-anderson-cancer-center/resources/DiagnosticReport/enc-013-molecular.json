@@ -1,0 +1,36 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-013-molecular",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "GE",
+          "display": "Genetics"
+        }
+      ],
+      "text": "Molecular Genetics"
+    }
+  ],
+  "code": {
+    "text": "Molecular/genomic testing panel (NGS and PD-L1)"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "effectiveDateTime": "2024-10-02",
+  "issued": "2024-10-10T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+      "display": "The University of Texas MD Anderson Cancer Center"
+    }
+  ],
+  "conclusion": "Next-generation sequencing panel (finalized 2024-10-10): EGFR wild-type, ALK rearrangement negative, ROS1 rearrangement negative, BRAF V600E negative, KRAS G12C POSITIVE, MET amplification negative. PD-L1 expression by 22C3 immunohistochemistry: Tumor Proportion Score (TPS) 60% (high expression). No actionable driver mutations identified for first-line targeted therapy. KRAS G12C mutation identified."
+}

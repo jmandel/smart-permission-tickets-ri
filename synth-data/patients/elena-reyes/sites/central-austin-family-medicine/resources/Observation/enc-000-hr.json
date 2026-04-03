@@ -1,0 +1,47 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-000-hr",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8867-4",
+        "display": "Heart rate"
+      }
+    ],
+    "text": "Heart Rate"
+  },
+  "subject": {
+    "reference": "Patient/7f3a1c5e-9b2d-4e8f-a6c0-1d3e5a7b9c2f",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "effectiveDateTime": "2021-10-12",
+  "performer": [
+    {
+      "reference": "Practitioner/5c7e9a1b-3d5f-4a7c-9e1b-5d7f9a1c3e5d",
+      "display": "Dr. Patricia Nguyen"
+    }
+  ],
+  "valueQuantity": {
+    "value": 68,
+    "unit": "/min",
+    "system": "http://unitsofmeasure.org",
+    "code": "/min"
+  }
+}

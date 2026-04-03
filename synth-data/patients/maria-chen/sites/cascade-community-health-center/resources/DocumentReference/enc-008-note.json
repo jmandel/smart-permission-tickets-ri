@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-008-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "75497-8",
+        "display": "Telehealth Progress note"
+      }
+    ],
+    "text": "Telemedicine Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "date": "2022-11-14T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRU1FRElDSU5FIFBST0dSRVNTIE5PVEUKCkRhdGU6IDExLzE0LzIwMjIKUGF0aWVudDogTWFyaWEgQ2hlbgpET0I6IDA5LzE0LzE5ODMKUHJvdmlkZXI6IERyLiBBbmdlbGEgTW9yYWxlcywgTUQKU2l0ZTogQ2FzY2FkZSBDb21tdW5pdHkgSGVhbHRoIENlbnRlciwgODIwNSBTRSBGb3N0ZXIgUm9hZCwgUG9ydGxhbmQsIE9SIDk3MjA2ClZpc2l0IFR5cGU6IFRlbGVtZWRpY2luZSAoVmlkZW8pCgpTVUJKRUNUSVZFOgpDQzogSW5jcmVhc2VkIGFsYnV0ZXJvbCB1c2Ugb3ZlciB0aGUgcGFzdCAxMCBkYXlzLgoKSFBJOiBNcy4gQ2hlbiBpcyBhIDM5LXllYXItb2xkIGZlbWFsZSB3aXRoIGEgaGlzdG9yeSBvZiBtaWxkIGludGVybWl0dGVudCBhc3RobWEgd2hvIHJlcXVlc3RzIGEgdGVsZW1lZGljaW5lIHZpc2l0IHZpYSB0aGUgcGF0aWVudCBwb3J0YWwgcmVwb3J0aW5nIHdvcnNlbmluZyBhc3RobWEgc3ltcHRvbXMgb3ZlciB0aGUgcGFzdCAxMCBkYXlzLiBTaGUgcmVwb3J0cyBkYWlseSBhbGJ1dGVyb2wgdXNlLCBzb21ldGltZXMgdHdpY2UgZGFpbHksIHVwIGZyb20gaGVyIGJhc2VsaW5lIG9mIG9uY2Ugb3IgdHdpY2UgbW9udGhseS4gU3ltcHRvbXMgY29pbmNpZGUgd2l0aCBhIHJlY2VudCBjb2xkIHNuYXAgYW5kIGluY3JlYXNlZCBkdXN0IGV4cG9zdXJlIGF0IGEgY2xpZW50J3MgaG9tZSBkdXJpbmcgaGVyIHdvcmsgYXMgYSBob21lIGhlYWx0aCBhaWRlLiBTaGUgZGVuaWVzIGZldmVyLCBwdXJ1bGVudCBzcHV0dW0sIGFuZCBub2N0dXJuYWwgYXdha2VuaW5ncy4gTm8gY2hlc3QgdGlnaHRuZXNzIGF0IHJlc3QuIE5vIHJlY2VudCBVUkkgc3ltcHRvbXMuCgpQTUg6IE1pbGQgaW50ZXJtaXR0ZW50IGFzdGhtYSAoZHggMjAwOCkuIE5vIHByaW9yIEVEIHZpc2l0cyBvciBob3NwaXRhbGl6YXRpb25zIGZvciBhc3RobWEuIE5vIHByaW9yIG9yYWwgY29ydGljb3N0ZXJvaWQgdXNlLgpNZWRpY2F0aW9uczogQWxidXRlcm9sIHN1bGZhdGUgOTAgbWNnL2FjdHVhdGlvbiBIRkEgaW5oYWxlciwgMiBwdWZmcyBQUk4uCkFsbGVyZ2llczogU3VsZm9uYW1pZGUgYW50aWJpb3RpY3MgKHJhc2gpLgpTb2NpYWwgSHg6IFdvcmtzIHBhcnQtdGltZSBhcyBob21lIGhlYWx0aCBhaWRlICh+MjUgaHJzL3drKS4gU2luZ2xlIG1vdGhlciBvZiB0d28uIE5vbi1zbW9rZXIuCgpPQkpFQ1RJVkU6ClZpZGVvIHZpc2l0IGNvbmR1Y3RlZC4gUGF0aWVudCBhcHBlYXJzIGNvbWZvcnRhYmxlLCBzcGVha2luZyBpbiBmdWxsIHNlbnRlbmNlcyB3aXRob3V0IHZpc2libGUgcmVzcGlyYXRvcnkgZGlzdHJlc3MuIE5vIGFjY2Vzc29yeSBtdXNjbGUgdXNlIG5vdGVkLiBObyBhdWRpYmxlIHdoZWV6ZSBkdXJpbmcgY29udmVyc2F0aW9uLiBQYXRpZW50IGlzIGFsZXJ0IGFuZCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KCkFzdGhtYSBDb250cm9sIFRlc3QgKEFDVCkgc2NvcmUgcmV2aWV3ZWQgcmV0cm9zcGVjdGl2ZWx5IGZvciB0aGUgcGFzdCAyIHdlZWtzOiBlc3RpbWF0ZWQgMTggKG5vdCB3ZWxsIGNvbnRyb2xsZWQ7IG5vcm1hbCA+PTIwKS4KCkFTU0VTU01FTlQ6CjEuIE1pbGQgYXN0aG1hIGV4YWNlcmJhdGlvbiDigJQgdHJpZ2dlcmVkIGJ5IGNvbGQgYWlyIGV4cG9zdXJlIGFuZCBvY2N1cGF0aW9uYWwgZHVzdCBleHBvc3VyZS4gQUNUIHNjb3JlIDE4LCBpbmRpY2F0aW5nIHN1Ym9wdGltYWwgY29udHJvbCBvdmVyIHRoZSBwYXN0IDIgd2Vla3MuIE5vIHNpZ25zIG9mIG1vZGVyYXRlLXNldmVyZSBleGFjZXJiYXRpb24uIE5vIGV2aWRlbmNlIG9mIHJlc3BpcmF0b3J5IGluZmVjdGlvbi4KClBMQU46CjEuIENvbnRpbnVlIGFsYnV0ZXJvbCBIRkEgOTAgbWNnL2FjdHVhdGlvbiwgMiBwdWZmcyBpbmhhbGVkIGV2ZXJ5IDQtNiBob3VycyBQUk4gZm9yIHdoZWV6aW5nIG9yIHNob3J0bmVzcyBvZiBicmVhdGguIFJldmlld2VkIHByb3BlciBpbmhhbGVyIHRlY2huaXF1ZS4KMi4gRW52aXJvbm1lbnRhbCBtb2RpZmljYXRpb24gY291bnNlbGluZyBwcm92aWRlZDoKICAgLSBXZWFyIGEgc2NhcmYgb3IgbWFzayBvdmVyIG5vc2UgYW5kIG1vdXRoIHdoZW4gZXhwb3NlZCB0byBjb2xkIGFpciB0byB3YXJtIGluc3BpcmVkIGFpci4KICAgLSBEaXNjdXNzZWQgZHVzdCBtaXRpZ2F0aW9uIHN0cmF0ZWdpZXMgZm9yIG9jY3VwYXRpb25hbCBleHBvc3VyZTogdXNlIG9mIE45NSBvciBzdXJnaWNhbCBtYXNrIHdoaWxlIGNsZWFuaW5nIGF0IGNsaWVudCBob21lcywgbGltaXQgZGlyZWN0IGNvbnRhY3Qgd2l0aCBkdXN0LWdlbmVyYXRpbmcgYWN0aXZpdGllcyB3aGVuIHBvc3NpYmxlLgozLiBJZiBzeW1wdG9tcyBkbyBub3QgaW1wcm92ZSB3aXRoaW4gNyBkYXlzIG9yIHdvcnNlbiAoaW5jcmVhc2VkIG5vY3R1cm5hbCBzeW1wdG9tcywgYWxidXRlcm9sIHVzZSA+NCB0aW1lcyBkYWlseSwgZGlmZmljdWx0eSBzcGVha2luZyBpbiBmdWxsIHNlbnRlbmNlcyksIHBhdGllbnQgaW5zdHJ1Y3RlZCB0byBjYWxsIHRoZSBvZmZpY2UuIFdpbGwgY29uc2lkZXIgc2hvcnQgY291cnNlIG9mIG9yYWwgcHJlZG5pc29uZSBvciBzdGVwLXVwIHRoZXJhcHkgdG8gbG93LWRvc2UgaW5oYWxlZCBjb3J0aWNvc3Rlcm9pZCAoSUNTKS4KNC4gRm9sbG93LXVwIHRlbGVwaG9uZSB2aXNpdCBzY2hlZHVsZWQgaW4gNyBkYXlzIHRvIHJlYXNzZXNzIHN5bXB0b20gY29udHJvbC4KNS4gUGF0aWVudCB2ZXJiYWxpemVkIHVuZGVyc3RhbmRpbmcgb2YgYWN0aW9uIHBsYW4gYW5kIHJldHVybiBwcmVjYXV0aW9ucy4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKRHIuIEFuZ2VsYSBNb3JhbGVzLCBNRAoxMS8xNC8yMDIyCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-008"
+      }
+    ],
+    "period": {
+      "start": "2022-11-14"
+    }
+  }
+}

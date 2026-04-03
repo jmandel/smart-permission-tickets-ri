@@ -1,0 +1,109 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone encounter",
+    "reason": "Post-discharge follow-up call, 2 days after hospital discharge",
+    "period_start": "2026-01-29",
+    "participants": [],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic (telephone), 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chronic obstructive pulmonary disease, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral tablet",
+      "sig": "600 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral tablet",
+      "sig": "300 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine 50 mg oral tablet",
+      "sig": "50 mg oral once daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis with isoniazid",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral tablet",
+      "sig": "1500 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral tablet",
+      "sig": "1200 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "20 mg oral once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral tablet",
+      "sig": "1000 mg oral twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol HFA inhaler",
+      "sig": "inhale as needed",
+      "status": "active",
+      "reason": "chronic obstructive pulmonary disease",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Post-discharge follow-up telephone call by DOT nurse coordinator. Documents patient tolerating RIPE therapy, expected rifampin side effect (orange urine), denies fever/worsening cough/hemoptysis/visual changes/neuropathy symptoms, confirmed home isolation compliance, and confirmed follow-up appointment on February 5, 2026."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

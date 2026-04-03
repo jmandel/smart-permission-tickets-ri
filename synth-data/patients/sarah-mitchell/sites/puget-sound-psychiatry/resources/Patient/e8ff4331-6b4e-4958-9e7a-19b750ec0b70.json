@@ -1,0 +1,128 @@
+{
+  "resourceType": "Patient",
+  "id": "e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+  "extension": [
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "White",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "Not Hispanic or Latino",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "In 2022, during a depressive episode and work stress, Sarah developed problematic alcohol use that escalated to alcohol use disorder (moderate severity). She self-referred to an outpatient addiction medicine program in Portland in early 2023. She completed a 12-week intensive outpatient program (IOP), began attending AA meetings, and was prescribed naltrexone 50mg daily. She achieved sobriety in April 2023 and has maintained it.\n\nIn mid-2024, Sarah moved to Seattle. She established with a new psychiatrist for bipolar management and a new PCP for general care. Her alcohol use disorder is in sustained remission (>12 months). She continues lamotrigine, quetiapine, and naltrexone.\n\nSarah uses a patient-facing app to access her health records across her Portland and Seattle providers. The behavioral health and substance use disorder data is subject to heightened sensitivity protections (42 CFR Part 2 for SUD records)."
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "urn:oid:1.2.840.114350.1.13.puget-sound-psychiatry",
+      "value": "PSP-100001"
+    },
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-240ccb706aa0c92a0b715d26"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Mitchell",
+      "given": [
+        "Sarah",
+        "Elizabeth"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "206-555-0147",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sarah.mitchell@example.com",
+      "use": "home"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-11-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "2418 NW 62nd St"
+      ],
+      "city": "Seattle",
+      "district": "King",
+      "state": "WA",
+      "postalCode": "98107",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "S",
+        "display": "Never Married"
+      }
+    ],
+    "text": "Single, never married"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}

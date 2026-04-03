@@ -1,0 +1,93 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-010",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "11429006",
+          "display": "Consultation (procedure)"
+        }
+      ],
+      "text": "Maternal-Fetal Medicine Consultation"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ba7d7892-4ea6-4151-bb74-13db30b6c361",
+    "display": "Lisa Nakamura"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "attender"
+        }
+      ],
+      "period": {
+        "start": "2025-05-19",
+        "end": "2025-05-19"
+      },
+      "individual": {
+        "reference": "Practitioner/ca48b072-2f9f-4b8b-8c97-8ca62b8100dd",
+        "display": "Dr. Sarah Whitfield"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-05-19",
+    "end": "2025-05-19"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "102878001",
+          "display": "Recurrent miscarriage (disorder)"
+        }
+      ],
+      "text": "High-risk pregnancy planning in the setting of recurrent pregnancy loss and suspected antiphospholipid syndrome"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/089e8b6e-7d7e-4122-bdec-bef22698936b",
+        "display": "Colorado Maternal-Fetal Medicine"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/1a3fb3a3-ca3d-4127-9ac7-c7b318aaf411",
+    "display": "Colorado Maternal-Fetal Medicine"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Lisa presented for her initial MFM consultation, referred by Dr. Forsythe at Rocky Mountain Women's Health."
+    }
+  ]
+}

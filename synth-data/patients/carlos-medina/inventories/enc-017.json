@@ -1,0 +1,57 @@
+{
+  "encounter_id": "enc-017",
+  "encounter_index": 17,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "radiology imaging encounter",
+    "reason": "Follow-up bilateral hand radiographs to assess for radiographic progression of rheumatoid arthritis",
+    "period_start": "2022-08-15",
+    "period_end": "2022-08-15",
+    "participants": [
+      {
+        "name": "Dr. Patricia Vega, MD",
+        "role": "interpreting radiologist"
+      }
+    ],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2021-03",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "leflunomide 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "radiology report",
+      "description": "Formal radiologist interpretation by Dr. Patricia Vega of bilateral hand X-rays (PA and oblique views) performed on 2022-08-15. The report compares current findings to the March 15, 2021 baseline study and documents interval progression of erosive rheumatoid arthritis including new marginal erosions bilaterally, worsening of previously documented erosions, joint space narrowing at right 2nd MCP and bilateral radiocarpal joints, persistent periarticular osteopenia, and soft tissue swelling. The impression concludes findings indicate inadequate disease control with structural progression despite current DMARD therapy."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "bilateral hand radiographs, PA and oblique views",
+      "report_state": "summary-only",
+      "description": "Imaging study comparing to March 15, 2021 baseline. Findings: Right hand — worsening marginal erosions at 2nd and 3rd MCP joints, new erosion at 4th MCP, periarticular osteopenia, early joint space narrowing at 2nd MCP, soft tissue swelling at MCPs and wrist. Left hand — new marginal erosion at 2nd MCP (not present on baseline), periarticular osteopenia, mild soft tissue swelling. Bilateral wrists — interval joint space narrowing at radiocarpal joints, no erosions at wrists. Impression: interval progression of erosive rheumatoid arthritis with new erosions bilaterally and joint space narrowing, indicating inadequate disease control with structural progression."
+    }
+  ],
+  "allergies": []
+}

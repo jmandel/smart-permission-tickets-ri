@@ -1,0 +1,74 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone encounter",
+    "reason": "Sputum culture results from 2-week visit",
+    "period_start": "2026-03-10",
+    "participants": [],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic (telephone), 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine (vitamin B6) 50 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Telephone encounter note",
+      "description": "Documents Dr. Okafor's phone call with Robert Davis to discuss the negative sputum mycobacterial culture result from the February 5 specimen. Includes discussion of significance (first of two negative cultures needed for conversion), current medication continuation (RIPE regimen unchanged), and plan to await March 5 culture result with next in-person visit on March 19."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Sputum mycobacterial culture",
+      "report_state": "summary-only",
+      "description": "Sputum mycobacterial culture (specimen collected 2026-02-05) returned negative — no growth of Mycobacterium tuberculosis after 42 days of incubation. This is the first of two consecutive negative cultures needed to document sputum culture conversion."
+    }
+  ],
+  "allergies": []
+}

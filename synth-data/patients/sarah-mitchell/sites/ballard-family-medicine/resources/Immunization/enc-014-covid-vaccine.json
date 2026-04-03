@@ -1,0 +1,84 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-014-covid-vaccine",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "309",
+        "display": "COVID-19, mRNA, LNP-S, PF, tris-sucrose, 30 mcg/0.3 mL"
+      }
+    ],
+    "text": "COVID-19 vaccine, mRNA (Pfizer-BioNTech), 2024-2025 updated formulation"
+  },
+  "patient": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "occurrenceDateTime": "2024-07-15",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+    "display": "Ballard Family Medicine"
+  },
+  "site": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+        "code": "LD",
+        "display": "left deltoid"
+      }
+    ],
+    "text": "Left deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+        "type": "Practitioner",
+        "display": "Dr. Kevin Tran"
+      }
+    },
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "AP",
+            "display": "Administering Provider"
+          }
+        ],
+        "text": "Administering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+        "type": "Practitioner",
+        "display": "Dr. Kevin Tran"
+      }
+    }
+  ]
+}

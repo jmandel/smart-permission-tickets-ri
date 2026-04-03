@@ -1,0 +1,120 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-005-benzonatate",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197397",
+        "display": "benzonatate 100 MG Oral Capsule"
+      }
+    ],
+    "text": "benzonatate 100 mg oral capsule"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "authoredOn": "2024-07-18",
+  "requester": {
+    "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+    "display": "Dr. Adebayo Olatunde, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-005-cough",
+      "display": "Persistent dry cough"
+    }
+  ],
+  "courseOfTherapyType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+        "code": "acute",
+        "display": "Short course (acute) therapy"
+      }
+    ],
+    "text": "Short course (acute) therapy"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Take 1 capsule (100 mg) by mouth three times daily with water; swallow capsules whole. 14-day course.",
+      "patientInstruction": "Take 1 capsule (100 mg) by mouth three times daily with water. Swallow capsules whole — do not chew or dissolve.",
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2024-07-18",
+            "end": "2024-08-01"
+          },
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 100,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2024-07-18",
+      "end": "2024-08-01"
+    },
+    "quantity": {
+      "value": 42,
+      "unit": "capsule"
+    },
+    "expectedSupplyDuration": {
+      "value": 14,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

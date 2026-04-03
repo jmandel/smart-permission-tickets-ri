@@ -1,0 +1,94 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-020",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "38216008",
+          "display": "Infusion chemotherapy for malignant neoplasm (procedure)"
+        }
+      ],
+      "text": "Chemotherapy Infusion"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending Physician"
+        }
+      ],
+      "period": {
+        "start": "2025-03-10T08:00:00-05:00",
+        "end": "2025-03-10T11:00:00-05:00"
+      },
+      "individual": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-03-10T08:00:00-05:00",
+    "end": "2025-03-10T11:00:00-05:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Cycle 4 of 4 (final induction cycle) — pembrolizumab + carboplatin + pemetrexed per clinical trial NCT05820295"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-013-adenocarcinoma",
+        "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      }
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+        "display": "The University of Texas MD Anderson Cancer Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia presented for Cycle 4, the final planned induction cycle before transition to maintenance. She reported neuropathy had improved with gabapentin — numbness limited to fingertip tips, not interfering with daily activities."
+    }
+  ]
+}

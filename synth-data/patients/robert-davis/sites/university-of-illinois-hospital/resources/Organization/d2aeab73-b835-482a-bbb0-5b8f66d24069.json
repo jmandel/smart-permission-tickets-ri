@@ -1,0 +1,43 @@
+{
+  "resourceType": "Organization",
+  "id": "d2aeab73-b835-482a-bbb0-5b8f66d24069",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1346287905"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "University of Illinois Hospital",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "866-600-2273",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "1740 W Taylor St"
+      ],
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60612",
+      "country": "US"
+    }
+  ]
+}

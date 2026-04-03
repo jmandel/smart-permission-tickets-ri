@@ -1,0 +1,56 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-002-cbc",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "HM",
+          "display": "Hematology"
+        }
+      ],
+      "text": "Hematology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "CBC panel - Blood by Automated count"
+      }
+    ],
+    "text": "Complete Blood Count (CBC)"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "effectiveDateTime": "2020-10-22",
+  "issued": "2020-10-22T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/35af736a-6111-44d6-8586-79bb01e530b4",
+      "display": "Dr. Linda Tran"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-002-wbc",
+      "display": "White blood cell count"
+    },
+    {
+      "reference": "Observation/enc-002-hgb",
+      "display": "Hemoglobin"
+    },
+    {
+      "reference": "Observation/enc-002-plt",
+      "display": "Platelet count"
+    }
+  ]
+}

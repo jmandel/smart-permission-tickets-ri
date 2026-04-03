@@ -1,0 +1,171 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office visit, established patient, results review and treatment initiation",
+    "reason": "Atrial fibrillation results review, medication initiation, electrophysiology referral",
+    "period_start": "2026-01-26T09:00:00-06:00",
+    "period_end": "2026-01-26T09:40:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending/primary performer"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, 3501 East Lake Street, Minneapolis, MN 55406"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 132,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 82,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 88,
+        "unit": "/min",
+        "note": "irregularly irregular",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 180,
+        "unit": "lb",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.5,
+        "unit": "kg/m2",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "note": "on room air",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "atrial fibrillation, new-onset",
+      "clinical_status": "active",
+      "onset_date": "2026-01",
+      "action": "update-existing",
+      "note": "Workup reviewed confirming diagnosis: ECG shows AF rate 92, echo shows preserved EF 58%, mild LA dilation 4.3 cm, no valvular disease, labs normal, no reversible cause. CHA2DS2-VASc score 1. Treatment initiated with rate control and anticoagulation. Now further characterized as new-onset AF with preserved cardiac function, mild left atrial dilation, and no identified reversible etiology."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    },
+    {
+      "name": "borderline hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metoprolol succinate 50 mg extended-release tablet",
+      "sig": "Take one 50 mg extended-release tablet by mouth once daily for ventricular rate control",
+      "status": "active",
+      "reason": "atrial fibrillation (rate control)",
+      "dispense": "90 tablets, 3 refills",
+      "action": "create"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "Take one 5 mg tablet by mouth twice daily for stroke prevention",
+      "status": "active",
+      "reason": "atrial fibrillation (anticoagulation for stroke prevention); dose based on age <80, weight >60 kg, creatinine <1.5",
+      "dispense": "60 tablets, 3 refills",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "status": "active",
+      "reason": "OTC supplement",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "description": "Detailed office visit note documenting comprehensive review of atrial fibrillation workup results (ECG, echocardiogram, labs), CHA2DS2-VASc score calculation (score of 1), shared decision-making discussion regarding anticoagulation with patient and wife, initiation of metoprolol succinate for rate control and apixaban for stroke prevention, counseling on medication side effects and precautions, and referral to cardiac electrophysiology for catheter ablation evaluation. 40-minute visit with greater than 50% in counseling and coordination of care.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Electrocardiogram (12-lead ECG)",
+      "report_state": "summary-only",
+      "description": "Atrial fibrillation, ventricular rate 92 bpm, normal axis, no ST-segment changes. Reviewed at this visit."
+    },
+    {
+      "type": "Complete blood count (CBC)",
+      "report_state": "summary-only",
+      "description": "Unremarkable — hemoglobin 14.8 g/dL, WBC 6.2 × 10³/µL, platelets 234 × 10³/µL. Reviewed at this visit."
+    },
+    {
+      "type": "Comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Normal — creatinine 0.94 mg/dL, potassium 4.1 mEq/L, glucose 98 mg/dL. Reviewed at this visit."
+    },
+    {
+      "type": "Thyroid-stimulating hormone (TSH)",
+      "report_state": "summary-only",
+      "description": "TSH 2.1 mIU/L, normal. No thyroid disease identified. Reviewed at this visit."
+    },
+    {
+      "type": "Transthoracic echocardiogram",
+      "report_state": "summary-only",
+      "description": "Mild left atrial dilation (4.3 cm), preserved left ventricular ejection fraction 58%, no significant valvular disease, no pericardial effusion, estimated RVSP normal. Reviewed at this visit."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "severity": "intolerance",
+      "action": "reference-existing"
+    }
+  ]
+}

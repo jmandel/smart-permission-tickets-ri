@@ -1,0 +1,61 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-013-dx-thrombophilia-genetic",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-012-order-thrombophilia",
+      "display": "Complete thrombophilia panel"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "text": "Thrombophilia genetic panel"
+  },
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "effectiveDateTime": "2025-07-08",
+  "issued": "2025-07-08T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-013-fvl",
+      "display": "Factor V Leiden mutation analysis"
+    },
+    {
+      "reference": "Observation/enc-013-ptm",
+      "display": "Prothrombin gene mutation G20210A analysis"
+    }
+  ],
+  "conclusion": "Factor V Leiden mutation and prothrombin gene mutation G20210A both not detected (wild type). No inherited genetic thrombophilia identified.",
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-018-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-018"
+  },
+  "effectiveDateTime": "2025-03-13",
+  "issued": "2025-03-13T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+      "display": "Dr. Anita Desai"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-018-sodium"
+    },
+    {
+      "reference": "Observation/enc-018-potassium"
+    },
+    {
+      "reference": "Observation/enc-018-chloride"
+    },
+    {
+      "reference": "Observation/enc-018-co2"
+    },
+    {
+      "reference": "Observation/enc-018-bun"
+    },
+    {
+      "reference": "Observation/enc-018-creatinine"
+    },
+    {
+      "reference": "Observation/enc-018-egfr"
+    },
+    {
+      "reference": "Observation/enc-018-glucose"
+    },
+    {
+      "reference": "Observation/enc-018-calcium"
+    },
+    {
+      "reference": "Observation/enc-018-total-protein"
+    },
+    {
+      "reference": "Observation/enc-018-albumin"
+    },
+    {
+      "reference": "Observation/enc-018-alt"
+    },
+    {
+      "reference": "Observation/enc-018-ast"
+    }
+  ]
+}

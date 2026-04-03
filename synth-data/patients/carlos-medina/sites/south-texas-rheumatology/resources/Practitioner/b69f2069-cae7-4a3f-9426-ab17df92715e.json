@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "b69f2069-cae7-4a3f-9426-ab17df92715e",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Vega",
+      "given": [
+        "Patricia"
+      ],
+      "prefix": [
+        "Dr."
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Radiologist"
+      }
+    }
+  ]
+}

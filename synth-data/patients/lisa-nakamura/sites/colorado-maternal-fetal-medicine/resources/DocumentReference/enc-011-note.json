@@ -1,0 +1,82 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-011-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ba7d7892-4ea6-4151-bb74-13db30b6c361",
+    "display": "Lisa Nakamura"
+  },
+  "date": "2025-05-27T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/ca48b072-2f9f-4b8b-8c97-8ca62b8100dd",
+      "type": "Practitioner",
+      "display": "Dr. Sarah Whitfield"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/ca48b072-2f9f-4b8b-8c97-8ca62b8100dd",
+    "type": "Practitioner",
+    "display": "Dr. Sarah Whitfield"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNS8yNy8yMDI1ClByb3ZpZGVyOiBEci4gU2FyYWggV2hpdGZpZWxkLCBNRCwgTUZNClBhdGllbnQ6IExpc2EgTmFrYW11cmEKRE9COiAwOC8xNC8xOTg5ClNpdGU6IENvbG9yYWRvIE1hdGVybmFsLUZldGFsIE1lZGljaW5lLCBEZW52ZXIsIENPCgpSRUFTT04gRk9SIENBTEw6IEZvbGxvdy11cCBhZnRlciBpbml0aWFsIE1GTSBjb25zdWx0YXRpb247IHBhdGllbnQgcXVlc3Rpb25zIHJlZ2FyZGluZyBlbm94YXBhcmluOyBjb29yZGluYXRpb24gd2l0aCBoZW1hdG9sb2d5LgoKRElTQ1VTU0lPTjoKQ2FsbGVkIHBhdGllbnQgdG8gZm9sbG93IHVwIGFmdGVyIGhlciBpbml0aWFsIE1GTSBjb25zdWx0YXRpb24gYW5kIGFoZWFkIG9mIGhlciB1cGNvbWluZyBoZW1hdG9sb2d5IGFwcG9pbnRtZW50IHdpdGggRHIuIEphbWVzIE9rYWZvciBhdCBVQyBIZWFsdGggSGVtYXRvbG9neS4gUGF0aWVudCBoYWQgc2V2ZXJhbCBxdWVzdGlvbnMgcmVnYXJkaW5nIGVub3hhcGFyaW4gc2VsZi1pbmplY3Rpb24gdGVjaG5pcXVlLCBhbnRpY2lwYXRlZCBzaWRlIGVmZmVjdHMgaW5jbHVkaW5nIGJydWlzaW5nIGFuZCBpbmplY3Rpb24gc2l0ZSByZWFjdGlvbnMsIGFuZCB3aGV0aGVyIGRhaWx5IHNlbGYtaW5qZWN0aW9uIHdvdWxkIGJlIHJlcXVpcmVkLiBJIGV4cGxhaW5lZCB0aGUgc3ViY3V0YW5lb3VzIGluamVjdGlvbiBwcm9jZXNzIGFuZCByZWFzc3VyZWQgaGVyIHRoYXQgbW9zdCBwYXRpZW50cyBiZWNvbWUgY29tZm9ydGFibGUgd2l0aCBzZWxmLWFkbWluaXN0cmF0aW9uIHdpdGhpbiBhIGZldyBkYXlzLiBJbmZvcm1lZCBwYXRpZW50IHRoYXQgb3VyIG9mZmljZSB3aWxsIHByb3ZpZGUgaW4tcGVyc29uIGluamVjdGlvbiB0cmFpbmluZyB3aGVuIHRoZSB0aW1lIGNvbWVzLgoKQ29vcmRpbmF0ZWQgd2l0aCBEci4gT2thZm9yJ3Mgb2ZmaWNlIHRvIGVuc3VyZSBhbGlnbm1lbnQgb24gdGhlIGFudGljb2FndWxhdGlvbiBwcm90b2NvbCBmb3IgZnV0dXJlIHByZWduYW5jeSBtYW5hZ2VtZW50LiBUaGUgaGVtYXRvbG9naXN0IHdpbGwgZGV0ZXJtaW5lIHRoZSBzcGVjaWZpYyBlbm94YXBhcmluIGRvc2luZyBhbmQgbW9uaXRvcmluZyBzY2hlZHVsZSBmb2xsb3dpbmcgY29uZmlybWF0b3J5IEFQUyB0ZXN0aW5nLCBleHBlY3RlZCBpbiBKdWx5IDIwMjUuCgpQYXRpZW50IHJlcG9ydHMgbW9vZCBpcyBzb21ld2hhdCBpbXByb3ZlZCBzaW5jZSBsYXN0IHZpc2l0LiBTaGUgYXBwcmVjaWF0ZXMgaGF2aW5nIGEgY29uY3JldGUgcGxhbiwgZXZlbiBpZiBwcm92aXNpb25hbCBhdCB0aGlzIHN0YWdlLiBTaGUgY29udGludWVzIHdlZWtseSB0aGVyYXB5IHNlc3Npb25zIHRocm91Z2ggaGVyIEVBUCByZWZlcnJhbC4KCk5vIHZpdGFscyBvYnRhaW5lZC4gTm8gbGFicyBvcmRlcmVkIG9yIHJldmlld2VkLgoKUExBTjoKMS4gQXdhaXQgY29uZmlybWF0b3J5IEFQUyBhbnRpYm9keSByZXN1bHRzIChyZXBlYXQgYW50aWNhcmRpb2xpcGluLCBsdXB1cyBhbnRpY29hZ3VsYW50LCBhbnRpLWJldGEtMiBnbHljb3Byb3RlaW4gSSkgYXQgMTIgd2Vla3MgcG9zdCBpbml0aWFsIHBvc2l0aXZlLCBhcHByb3hpbWF0ZWx5IEp1bHkgMjAyNS4KMi4gQ29udGludWUgY29vcmRpbmF0aW9uIHdpdGggRHIuIE9rYWZvciByZWdhcmRpbmcgYW50aWNvYWd1bGF0aW9uIHByb3RvY29sIGFuZCBlbm94YXBhcmluIGRvc2luZy4KMy4gSW4tcGVyc29uIGluamVjdGlvbiB0cmFpbmluZyB0byBiZSBzY2hlZHVsZWQgb25jZSBhbnRpY29hZ3VsYXRpb24gcGxhbiBpcyBmaW5hbGl6ZWQuCjQuIFBhdGllbnQgdG8gY29udGludWUgcHJlbmF0YWwgdml0YW1pbiBkYWlseS4KNS4gTmV4dCBpbi1wZXJzb24gTUZNIHZpc2l0IHBsYW5uZWQgYWZ0ZXIgY29uZmlybWF0b3J5IEFQUyByZXN1bHRzIGFyZSBhdmFpbGFibGUuCjYuIFBhdGllbnQgZW5jb3VyYWdlZCB0byBjb250aW51ZSB3ZWVrbHkgdGhlcmFweSBhbmQgdG8gY2FsbCB3aXRoIGFueSBhZGRpdGlvbmFsIHF1ZXN0aW9ucy4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKU2FyYWggV2hpdGZpZWxkLCBNRApNYXRlcm5hbC1GZXRhbCBNZWRpY2luZQpDb2xvcmFkbyBNYXRlcm5hbC1GZXRhbCBNZWRpY2luZSwgRGVudmVyLCBDTwpOUEk6IDE0Njc4MjMxNTkK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-011"
+      }
+    ],
+    "period": {
+      "start": "2025-05-27"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

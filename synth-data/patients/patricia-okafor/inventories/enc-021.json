@@ -1,0 +1,100 @@
+{
+  "encounter_id": "enc-021",
+  "encounter_index": 21,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "diagnostic imaging encounter",
+    "reason": "Interim restaging CT chest/abdomen/pelvis for non-small cell lung cancer on clinical trial",
+    "period_start": "2025-03-24",
+    "period_end": "2025-03-24",
+    "participants": [],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA, adenocarcinoma, right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chemotherapy-induced peripheral neuropathy",
+      "clinical_status": "active",
+      "onset_date": "2025-02",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "pembrolizumab 200 mg intravenous infusion",
+      "sig": "200 mg intravenous infusion every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer (maintenance therapy per clinical trial protocol)",
+      "action": "update-existing"
+    },
+    {
+      "name": "carboplatin AUC 5 intravenous",
+      "sig": "AUC 5 intravenous every 3 weeks",
+      "status": "stopped",
+      "reason": "non-small cell lung cancer (induction chemotherapy, completed 4 cycles per protocol)",
+      "action": "update-existing"
+    },
+    {
+      "name": "pemetrexed 500 mg/m² intravenous",
+      "sig": "500 mg/m² intravenous every 3 weeks",
+      "status": "stopped",
+      "reason": "non-small cell lung cancer (induction chemotherapy, completed 4 cycles per protocol)",
+      "action": "update-existing"
+    },
+    {
+      "name": "gabapentin 300 mg oral tablet",
+      "sig": "take 300 mg by mouth at bedtime for neuropathy",
+      "status": "active",
+      "reason": "chemotherapy-induced peripheral neuropathy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "take 1 mg by mouth once daily",
+      "status": "active",
+      "reason": "pemetrexed supplementation protocol",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cyanocobalamin 1000 mcg intramuscular injection",
+      "sig": "1000 mcg intramuscular injection every 9 weeks per supplementation protocol",
+      "status": "active",
+      "reason": "pemetrexed supplementation protocol",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "diagnostic imaging report",
+      "description": "CT chest/abdomen/pelvis with IV contrast for interim restaging of stage IIIA NSCLC. Right upper lobe mass decreased from 4.2 cm to 2.8 cm (33% reduction), decreased mediastinal lymphadenopathy, no new lesions or distant metastases. RECIST 1.1 assessment: partial response."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "CT chest/abdomen/pelvis with intravenous contrast",
+      "report_state": "summary-only",
+      "description": "Interim restaging CT for stage IIIA non-small cell lung cancer performed with IV contrast. RECIST 1.1 assessment shows partial response — right upper lobe target lesion decreased from 4.2 cm to 2.8 cm (33% reduction from baseline, meeting ≥30% threshold). Right paratracheal (station 4R) node decreased from 2.1 cm to 1.2 cm; subcarinal (station 7) node decreased from 1.5 cm to 0.8 cm. No new pulmonary nodules, no pleural effusion, no hepatic lesions, normal adrenals, no osseous metastases. Comparison to baseline CT September 2024."
+    }
+  ],
+  "allergies": []
+}

@@ -1,0 +1,233 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "bay-area-rheumatology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Initial rheumatology consultation, RA confirmed and methotrexate started",
+    "period_start": "2023-04-06T09:00:00-07:00",
+    "period_end": "2023-04-06T10:30:00-07:00",
+    "participants": [],
+    "service_provider": "Bay Area Rheumatology Associates",
+    "location": "Bay Area Rheumatology Associates, Oakland, CA"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 122,
+        "unit": "mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "bpm",
+        "flag": "normal"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.1,
+        "unit": "°F",
+        "flag": "normal"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths per minute",
+        "flag": "normal"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "flag": "normal"
+      },
+      {
+        "name": "body weight",
+        "value": 148,
+        "unit": "pounds",
+        "flag": "normal"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": 12.8,
+        "unit": "g/dL",
+        "reference_range": "12.0-16.0",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 6.9,
+        "unit": "K/uL",
+        "reference_range": "4.5-11.0",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": 302,
+        "unit": "K/uL",
+        "reference_range": "150-400",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.71,
+        "unit": "mg/dL",
+        "reference_range": "0.6-1.2",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": 19,
+        "unit": "U/L",
+        "reference_range": "10-40",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": 17,
+        "unit": "U/L",
+        "reference_range": "7-56",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "albumin",
+        "value": 4.3,
+        "unit": "g/dL",
+        "reference_range": "3.5-5.0",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "hepatitis B surface antigen",
+        "value": "negative",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "hepatitis B core antibody",
+        "value": "negative",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "C-reactive protein",
+        "flag": "high",
+        "action": "create"
+      }
+    ],
+    "screening": [
+      {
+        "name": "tender joint count",
+        "value": 8,
+        "description": "Metacarpophalangeal joints, proximal interphalangeal joints, both wrists",
+        "action": "create"
+      },
+      {
+        "name": "swollen joint count",
+        "value": 6,
+        "description": "Metacarpophalangeal joints, proximal interphalangeal joints, both wrists",
+        "action": "create"
+      },
+      {
+        "name": "patient global assessment",
+        "value": 58,
+        "unit": "points on 0-100 scale",
+        "description": "Patient-reported global assessment of disease activity; moderate-to-high patient-perceived disease activity indicating significant functional impairment and symptoms",
+        "action": "create"
+      },
+      {
+        "name": "disease activity score 28-CRP",
+        "value": 5.1,
+        "unit": "points (0-10 scale)",
+        "description": "Composite disease activity score combining tender joint count, swollen joint count, C-reactive protein level, and patient global assessment; moderate-to-high disease activity indicating active synovitis and need for DMARD initiation",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "description": "Bilateral hands and wrists (MCPs, PIPs, both wrists involved on exam). Positive rheumatoid factor (84 IU/mL), strongly positive anti-CCP (112 units). Moderate-to-high disease activity with DAS28-CRP 5.1, 8 tender joints, 6 swollen joints, patient global assessment 58/100. Clinical presentation, positive serologies, inflammatory markers, and physical exam findings consistent with active synovitis and new diagnosis at this encounter.",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 15 mg oral tablet",
+      "sig": "15 mg orally once weekly",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis; early DMARD therapy to reduce risk of permanent erosive joint damage",
+      "action": "create"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "1 mg orally daily",
+      "status": "active",
+      "reason": "co-therapy with methotrexate to reduce methotrexate side effects including hematologic and gastrointestinal toxicity",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "rheumatology consultation note",
+      "description": "Initial rheumatology consultation documenting chief complaint and history of present illness (bilateral hand and wrist pain, morning stiffness >90 minutes, functional difficulty, several months of symptoms), review of outside workup (positive rheumatoid factor, strongly positive anti-CCP, elevated inflammatory markers from March 2023 PCP labs), vital signs, physical examination (alert and in no acute distress; bilateral MCP/PIP/wrist synovitis with tenderness; 8 tender joints, 6 swollen joints), disease activity assessment (patient global assessment 58/100, DAS28-CRP 5.1), baseline safety monitoring labs (CBC, renal function, liver function, hepatitis B screening), assessment of seropositive rheumatoid arthritis newly confirmed with moderate-to-high disease activity, and plan including methotrexate 15 mg once weekly and folic acid 1 mg daily with counseling on risks/benefits, monitoring requirements, alcohol limitation, teratogenicity and contraception discussion, and follow-up in approximately 8 weeks.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "creatinine",
+        "aspartate aminotransferase",
+        "alanine aminotransferase",
+        "albumin"
+      ]
+    },
+    {
+      "type": "hepatitis B serology panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis B surface antigen",
+        "hepatitis B core antibody"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "amoxicillin",
+      "reaction": "rash/hives",
+      "action": "reference-existing"
+    }
+  ]
+}

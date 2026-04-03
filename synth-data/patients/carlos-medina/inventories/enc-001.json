@@ -1,0 +1,259 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Annual wellness examination, Tdap booster immunization",
+    "period_start": "2017-09-18",
+    "period_end": "2017-09-18",
+    "participants": [
+      {
+        "name": "Dr. Linda Tran, MD",
+        "role": "primary performer"
+      }
+    ],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 130,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 84,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 195,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 28,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 5.8,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.9,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 241,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": 98,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": 20,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": 19,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 205,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL desirable",
+        "flag": "high"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 122,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL optimal",
+        "flag": "high"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 46,
+        "unit": "mg/dL",
+        "reference_range": ">40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 172,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.4,
+        "unit": "%",
+        "reference_range": "4.0–5.6 %",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 0,
+        "interpretation": "negative screen for depression"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "create",
+      "note": "BMI 28.0. Lifestyle modification recommended."
+    },
+    {
+      "name": "dyslipidemia",
+      "clinical_status": "active",
+      "onset_date": "2017-09-18",
+      "action": "create",
+      "note": "LDL 122, HDL 46, triglycerides 172. 10-year ASCVD risk 4.2%. No statin indicated. Lifestyle modification recommended."
+    },
+    {
+      "name": "seasonal allergic rhinitis",
+      "clinical_status": "active",
+      "action": "create",
+      "note": "Well controlled on PRN cetirizine."
+    },
+    {
+      "name": "mechanical low back pain",
+      "clinical_status": "active",
+      "action": "create",
+      "note": "Occasional low back pain after long days in the shop, managed with stretching. No red flag symptoms. Likely occupational."
+    }
+  ],
+  "medications": [
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "Take 10 mg by mouth once daily as needed for seasonal allergies",
+      "status": "active",
+      "reason": "seasonal allergic rhinitis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "Tdap vaccine",
+      "date": "2017-09-18",
+      "route": "intramuscular injection",
+      "site": "right deltoid",
+      "lot_number": "AC14B56",
+      "note": "Adacel. Booster administered; last Td was >10 years prior."
+    },
+    {
+      "name": "influenza vaccine, inactivated, quadrivalent",
+      "date": "2017-09-18",
+      "route": "intramuscular injection",
+      "site": "left deltoid",
+      "lot_number": "FN7834",
+      "note": "2017–2018 season. Annual influenza vaccination."
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive annual wellness examination note documenting subjective review, complete vitals and physical exam, same-day lab results (CBC, CMP, lipid panel, HbA1c), assessment of overweight and mild dyslipidemia with low ASCVD risk, depression screening, immunization administration (Tdap booster and influenza vaccine), and plan for lifestyle modification."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "CBC overall normal. WBC 5.8 K/uL, hemoglobin 14.9 g/dL, platelet count 241 K/uL. Hematocrit not separately enumerated in the narrative."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP overall normal. Selected values reported individually as observations (glucose, creatinine, ALT, AST). Full panel electrolytes, BUN, calcium, protein, albumin, bilirubin, and alkaline phosphatase not individually enumerated."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "diffuse maculopapular rash",
+      "severity": "moderate",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ]
+}

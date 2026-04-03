@@ -1,0 +1,213 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "hawthorne-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "annual screening laboratory studies",
+    "period_start": "2022-09-20T08:00:00-07:00",
+    "period_end": "2022-09-20T08:30:00-07:00",
+    "participants": [
+      {
+        "name": "Dr. Emily Nakamura",
+        "role": "ordering provider"
+      }
+    ],
+    "service_provider": "Hawthorne Health Center",
+    "location": "Hawthorne Health Center, 3847 SE Hawthorne Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 5.8,
+        "unit": "x10^3/uL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.6,
+        "unit": "g/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "platelet count",
+        "value": 238,
+        "unit": "x10^3/uL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "glucose",
+        "value": 92,
+        "unit": "mg/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.8,
+        "unit": "mg/dL",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "sodium",
+        "value": 141,
+        "unit": "mEq/L",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "potassium",
+        "value": 4,
+        "unit": "mEq/L",
+        "reference_range": "normal",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 28,
+        "unit": "U/L",
+        "reference_range": "normal",
+        "flag": "normal",
+        "note": "previously elevated, now normalized",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 32,
+        "unit": "U/L",
+        "reference_range": "normal",
+        "flag": "normal",
+        "note": "previously elevated, now normalized",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.2,
+        "unit": "%",
+        "reference_range": "normal (below 5.7%)",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 195,
+        "unit": "mg/dL",
+        "reference_range": "desirable (below 200 mg/dL)",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 112,
+        "unit": "mg/dL",
+        "reference_range": "near optimal (100-129 mg/dL)",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 52,
+        "unit": "mg/dL",
+        "reference_range": "normal (above 40 mg/dL for women)",
+        "flag": "normal",
+        "specimen": "venous blood"
+      },
+      {
+        "name": "triglycerides",
+        "value": 155,
+        "unit": "mg/dL",
+        "reference_range": "normal below 150 mg/dL; 150-199 borderline high",
+        "flag": "high",
+        "note": "mildly elevated, borderline high, uptrending, likely quetiapine effect",
+        "specimen": "venous blood"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "laboratory results note",
+      "description": "Lab results note for annual screening labs ordered by Dr. Nakamura. Documents CBC, CMP, lipid panel, and A1c results — all within normal limits except mildly elevated triglycerides at 155 mg/dL (borderline high, uptrending, attributed to quetiapine). Liver enzymes noted as normalized from previously elevated values. Patient contacted via portal message regarding dietary modifications for triglyceride management.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "sodium",
+        "potassium",
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": []
+}

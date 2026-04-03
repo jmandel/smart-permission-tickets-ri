@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-016-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2024-10-08T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+      "type": "Practitioner",
+      "display": "Dr. Kevin Tran"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+    "type": "Practitioner",
+    "display": "Dr. Kevin Tran"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QkFMTEFSRCBGQU1JTFkgTUVESUNJTkUKNTQxMiAyMm5kIEF2ZSBOVywgU2VhdHRsZSwgV0EgOTgxMDcKTlBJOiA0NTY3ODkwMTIzCgpQUk9HUkVTUyBOT1RFCgpQYXRpZW50OiBTYXJhaCBFbGl6YWJldGggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzCkRhdGUgb2YgU2VydmljZTogMTAvMDgvMjAyNApQcm92aWRlcjogS2V2aW4gVHJhbiwgTUQKVmlzaXQgVHlwZTogT2ZmaWNlIFZpc2l0IOKAlCBSb3V0aW5lIEZvbGxvdy11cCwgSW5mbHVlbnphIFZhY2NpbmUKClNVQkpFQ1RJVkU6Ck1zLiBNaXRjaGVsbCBpcyBhIDMwLXllYXItb2xkIHdvbWFuIHByZXNlbnRpbmcgZm9yIHJvdXRpbmUgZm9sbG93LXVwLiBTaGUgcmVwb3J0cyBmZWVsaW5nIHdlbGwgb3ZlcmFsbC4gTW9vZCBpcyBzdGFibGUgb24gY3VycmVudCBwc3ljaGlhdHJpYyByZWdpbWVuLiBTaGUgY29uZmlybXMgY29udGludWVkIHNvYnJpZXR5LCBub3cgMTggbW9udGhzIHNpbmNlIGxhc3QgYWxjb2hvbCB1c2UgKHNvYmVyIHNpbmNlIEFwcmlsIDIwMjMpLiBTaGUgc3RhdGVzIHNoZSBpcyBhZGp1c3Rpbmcgd2VsbCB0byBTZWF0dGxlIGFuZCBoYXMgc3VjY2Vzc2Z1bGx5IGVzdGFibGlzaGVkIHBzeWNoaWF0cmljIGNhcmUgd2l0aCBEci4gQW5pdGEgUGF0ZWwgYXQgUHVnZXQgU291bmQgUHN5Y2hpYXRyeS4gTm8gbmV3IG1lZGljYWwgY29tcGxhaW50cy4gTm8gbWVkaWNhdGlvbiBzaWRlIGVmZmVjdHMgcmVwb3J0ZWQuIE5vIGNoYW5nZXMgaW4gc2xlZXAsIGFwcGV0aXRlLCBvciBlbmVyZ3kgbGV2ZWwuIFNoZSBjb250aW51ZXMgdG8gYXR0ZW5kIEFBIG1lZXRpbmdzIHJlZ3VsYXJseS4KClJPUzogTmVnYXRpdmUgZm9yIGZldmVyLCBjaGlsbHMsIGNoZXN0IHBhaW4sIHNob3J0bmVzcyBvZiBicmVhdGgsIGFiZG9taW5hbCBwYWluLCBoZWFkYWNoZSwgb3IgbW9vZCBjaGFuZ2VzLiBObyBzdWljaWRhbCBpZGVhdGlvbi4gTm8gYWxjb2hvbCBjcmF2aW5ncy4KCk9CSkVDVElWRToKVml0YWxzOgogIEJQOiAxMTgvNzQgbW1IZwogIEhSOiA3MCBicG0KICBUZW1wOiA5OC4ywrBGICgzNi44wrBDKQogIFJSOiAxNC9taW4KICBTcE8yOiA5OSUgb24gcm9vbSBhaXIKICBXZWlnaHQ6IDE0MCBsYnMgKDYzLjUga2cpCiAgQk1JOiAyMi42IGtnL23CsgoKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcsIHdlbGwtbm91cmlzaGVkIGZlbWFsZSBpbiBubyBhY3V0ZSBkaXN0cmVzcy4gQWZmZWN0IGlzIGJyaWdodCBhbmQgYXBwcm9wcmlhdGUuCkhFRU5UOiBOb3Jtb2NlcGhhbGljLCBhdHJhdW1hdGljLiBPcm9waGFyeW54IGNsZWFyLgpDYXJkaW92YXNjdWxhcjogUmVndWxhciByYXRlIGFuZCByaHl0aG0sIG5vIG11cm11cnMuCkx1bmdzOiBDbGVhciB0byBhdXNjdWx0YXRpb24gYmlsYXRlcmFsbHkuCkFiZG9tZW46IFNvZnQsIG5vbnRlbmRlciwgbm9uZGlzdGVuZGVkLgpFeHRyZW1pdGllczogTm8gZWRlbWEuClBzeWNoaWF0cmljOiBBbGVydCBhbmQgb3JpZW50ZWQgeDMuIE1vb2QgZXV0aHltaWMuIFRob3VnaHQgcHJvY2VzcyBsaW5lYXIgYW5kIGdvYWwtZGlyZWN0ZWQuCgpTY3JlZW5pbmc6CiAgUEhRLTI6IDAvNiAobmVnYXRpdmUgc2NyZWVuIOKAlCBubyBmdXJ0aGVyIGRlcHJlc3Npb24gc2NyZWVuaW5nIGluZGljYXRlZCkKCk1lZGljYXRpb25zIFJldmlld2VkOgogIDEuIExhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSAobW9vZCBzdGFiaWxpemVyIOKAlCBiaXBvbGFyIElJKQogIDIuIFF1ZXRpYXBpbmUgNTAgbWcgUE8gYXQgYmVkdGltZSAobW9vZC9zbGVlcCDigJQgYmlwb2xhciBJSSkKICAzLiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5IChhbnRpLWNyYXZpbmcg4oCUIGFsY29ob2wgdXNlIGRpc29yZGVyKQpBbGwgbWVkaWNhdGlvbnMgY29udGludWVkIHdpdGhvdXQgY2hhbmdlcy4gUGF0aWVudCByZXBvcnRzIGFkaGVyZW5jZS4KCkFsbGVyZ2llczogU3VsZmEgYW50aWJpb3RpY3MgKFRNUC1TTVgpIOKAlCByYXNoCgpMYWJzOiBOb25lIG9yZGVyZWQgdGhpcyB2aXNpdC4KCkltbXVuaXphdGlvbiBBZG1pbmlzdGVyZWQ6CiAgSW5mbHVlbnphIHZhY2NpbmUsIDIwMjQtMjAyNSBmb3JtdWxhdGlvbiwgMC41IG1MIElNLCBsZWZ0IGRlbHRvaWQuIExvdCBhbmQgZXhwaXJhdGlvbiBkb2N1bWVudGVkIGluIE1BUi4gUGF0aWVudCB0b2xlcmF0ZWQgaW5qZWN0aW9uIHdpdGhvdXQgYWR2ZXJzZSByZWFjdGlvbi4gT2JzZXJ2ZWQgMTUgbWludXRlcyBwb3N0LWFkbWluaXN0cmF0aW9uOyBubyBpbW1lZGlhdGUgcmVhY3Rpb24gbm90ZWQuCgpBU1NFU1NNRU5UOgoxLiBCaXBvbGFyIElJIGRpc29yZGVyIOKAlCBzdGFibGUgb24gbGFtb3RyaWdpbmUgMjAwIG1nIGRhaWx5IGFuZCBxdWV0aWFwaW5lIDUwIG1nIG5pZ2h0bHkuIE1vb2QgZXV0aHltaWMsIFBIUS0yIG5lZ2F0aXZlLiBQc3ljaGlhdHJpYyBjYXJlIGVzdGFibGlzaGVkIHdpdGggRHIuIFBhdGVsIGluIFNlYXR0bGUuIE5vIG1lZGljYXRpb24gYWRqdXN0bWVudHMgbmVlZGVkLgoyLiBBbGNvaG9sIHVzZSBkaXNvcmRlciwgbW9kZXJhdGUsIGluIHN1c3RhaW5lZCByZW1pc3Npb24g4oCUIDE4IG1vbnRocyBzb2Jlci4gQ29udGludWVzIG5hbHRyZXhvbmUgNTAgbWcgZGFpbHkgYW5kIHJlZ3VsYXIgQUEgYXR0ZW5kYW5jZS4gTm8gY3JhdmluZ3MgcmVwb3J0ZWQuCjMuIEh5cGVydHJpZ2x5Y2VyaWRlbWlhLCBtaWxkIOKAlCBtb25pdG9yaW5nOyB3aWxsIHJlY2hlY2sgbGlwaWQgcGFuZWwgYXQgYW5udWFsIHdlbGxuZXNzIHZpc2l0Lgo0LiBJbmZsdWVuemEgaW1tdW5pemF0aW9uIOKAlCAyMDI0LTIwMjUgdmFjY2luZSBhZG1pbmlzdGVyZWQgdG9kYXkuCjUuIEhlYWx0aCBtYWludGVuYW5jZSDigJQgdXAgdG8gZGF0ZS4gRHVlIGZvciBhbm51YWwgd2VsbG5lc3MgZXhhbSBKYW51YXJ5IDIwMjUuCgpQTEFOOgoxLiBDb250aW51ZSBjdXJyZW50IG1lZGljYXRpb25zOiBsYW1vdHJpZ2luZSAyMDAgbWcgZGFpbHksIHF1ZXRpYXBpbmUgNTAgbWcgbmlnaHRseSwgbmFsdHJleG9uZSA1MCBtZyBkYWlseS4KMi4gQ29udGludWUgZm9sbG93LXVwIHdpdGggRHIuIFBhdGVsIGF0IFB1Z2V0IFNvdW5kIFBzeWNoaWF0cnkgZm9yIHBzeWNoaWF0cmljIG1lZGljYXRpb24gbWFuYWdlbWVudC4KMy4gQ29udGludWUgc29icmlldHkgc3VwcG9ydCDigJQgQUEgbWVldGluZ3MsIG5hbHRyZXhvbmUuCjQuIEluZmx1ZW56YSB2YWNjaW5lIGFkbWluaXN0ZXJlZCB0b2RheTsgcGF0aWVudCBjb3Vuc2VsZWQgb24gZXhwZWN0ZWQgbWlsZCBzb3JlbmVzcyBhdCBpbmplY3Rpb24gc2l0ZSBhbmQgdG8gcmVwb3J0IGFueSBhZHZlcnNlIHJlYWN0aW9ucy4KNS4gTm8gbGFicyBpbmRpY2F0ZWQgdG9kYXkuIFdpbGwgb3JkZXIgQ0JDLCBDTVAsIGFuZCBsaXBpZCBwYW5lbCBhdCBuZXh0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdC4KNi4gUmV0dXJuIGZvciBhbm51YWwgd2VsbG5lc3MgdmlzaXQgaW4gSmFudWFyeSAyMDI1LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpLZXZpbiBUcmFuLCBNRApCYWxsYXJkIEZhbWlseSBNZWRpY2luZQoxMC8wOC8yMDI0Cg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-016"
+      }
+    ],
+    "period": {
+      "start": "2024-10-08"
+    }
+  }
+}

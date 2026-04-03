@@ -1,0 +1,56 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-014-cbc",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "HM",
+          "display": "Hematology"
+        }
+      ],
+      "text": "Hematology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "CBC panel - Blood by Automated count"
+      }
+    ],
+    "text": "Complete Blood Count (CBC)"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "effectiveDateTime": "2022-01-10",
+  "issued": "2022-01-10T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-014-wbc",
+      "display": "Leukocytes [#/volume] in Blood"
+    },
+    {
+      "reference": "Observation/enc-014-hgb",
+      "display": "Hemoglobin [Mass/volume] in Blood"
+    },
+    {
+      "reference": "Observation/enc-014-plt",
+      "display": "Platelets [#/volume] in Blood"
+    }
+  ]
+}

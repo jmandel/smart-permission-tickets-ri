@@ -1,0 +1,135 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "uw-health-university-student-health-services",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Routine STI screening",
+    "period_start": "2025-10-08T09:00:00-05:00",
+    "period_end": "2025-10-08T09:45:00-05:00",
+    "participants": [
+      {
+        "name": "Amy Liu",
+        "role": "NP"
+      }
+    ],
+    "service_provider": "UW Health University Student Health Services",
+    "location": "UW Health University Student Health Services, Madison, WI"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure (systolic component)",
+        "value": 116,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": 70,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 64,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 180,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 25.1,
+        "unit": "kg/m²",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "action": "create"
+      }
+    ],
+    "labs": [
+      {
+        "name": "chlamydia trachomatis nucleic acid amplification test, urine",
+        "value": "Negative",
+        "flag": "normal",
+        "specimen": "urine",
+        "action": "create"
+      },
+      {
+        "name": "neisseria gonorrhoeae nucleic acid amplification test, urine",
+        "value": "Negative",
+        "flag": "normal",
+        "specimen": "urine",
+        "action": "create"
+      },
+      {
+        "name": "HIV 4th-generation antigen/antibody combination screen, serum",
+        "value": "Non-reactive (Negative)",
+        "flag": "normal",
+        "specimen": "serum",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "encounter for routine screening for sexually transmitted infections",
+      "clinical_status": null,
+      "action": "create"
+    },
+    {
+      "name": "incomplete MMR vaccination series",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents a routine STI screening office visit for a 21-year-old male. Reports one new sexual partner in 6 months with consistent condom use, no urinary or genital symptoms. All STI tests (chlamydia, gonorrhea, HIV) returned negative. Sexual health counseling provided including condom use reinforcement, PrEP awareness, and annual screening recommendation. Incomplete MMR series noted but not addressed at this visit.",
+      "action": "create"
+    },
+    {
+      "type": "patient notification letter",
+      "description": "Letter sent to patient portal notifying patient of negative STI screening results (chlamydia NAAT, gonorrhea NAAT, and HIV antigen/antibody screen all negative).",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "STI screening panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "chlamydia trachomatis nucleic acid amplification test, urine",
+        "neisseria gonorrhoeae nucleic acid amplification test, urine",
+        "HIV 4th-generation antigen/antibody combination screen, serum"
+      ]
+    }
+  ],
+  "allergies": []
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "c3fe1f89-a375-4be8-97ab-1bb887bd2e0f",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Teresa Lucero, RN",
+      "family": "Lucero",
+      "given": [
+        "Teresa"
+      ],
+      "suffix": [
+        "RN"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+            "code": "RN",
+            "display": "Registered Nurse"
+          }
+        ],
+        "text": "Registered Nurse"
+      }
+    }
+  ]
+}

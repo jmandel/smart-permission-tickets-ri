@@ -1,0 +1,83 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-003-ibuprofen",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197805",
+        "display": "ibuprofen 400 MG Oral Tablet"
+      }
+    ],
+    "text": "ibuprofen 400 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2021-02-08",
+  "requester": {
+    "reference": "Practitioner/35af736a-6111-44d6-8586-79bb01e530b4",
+    "display": "Dr. Linda Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-003-polyarthritis",
+      "display": "Symmetric inflammatory polyarthritis, suspected rheumatoid arthritis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take by mouth as needed for joint pain and stiffness, with food. Avoid prolonged daily use without gastroprotection.",
+      "patientInstruction": "Take by mouth as needed for joint pain and stiffness, with food. Avoid prolonged daily use without gastroprotection.",
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 400,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ]
+}

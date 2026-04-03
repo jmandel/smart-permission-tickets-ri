@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-peanut-allergy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91935009",
+        "display": "Allergy to peanut (finding)"
+      }
+    ],
+    "text": "IgE-mediated peanut allergy with history of anaphylaxis"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "onsetDateTime": "2022-10",
+  "recordedDate": "2022-11-14",
+  "note": [
+    {
+      "text": "Peanut-specific IgE remains very high at 41.6 kU/L (Class 5, slight decline from 45.3). Supervised oral food challenge not appropriate at this level. Peanut oral immunotherapy (Palforzia protocol) discussed in detail with family. Decision pending."
+    }
+  ]
+}

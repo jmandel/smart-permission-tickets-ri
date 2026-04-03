@@ -1,0 +1,97 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-013",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "410620009",
+          "display": "Well child visit (procedure)"
+        }
+      ],
+      "text": "Well-Child Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+        "type": "Practitioner",
+        "display": "Dr. Megan Harlow"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-03-17T09:00:00-04:00",
+    "end": "2025-03-17T09:45:00-04:00"
+  },
+  "reasonCode": [
+    {
+      "text": "5-year well-child visit"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-004-persistent-asthma",
+        "display": "Severe persistent asthma"
+      },
+      "rank": 1
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-013-atopic-dermatitis",
+        "display": "Atopic dermatitis"
+      },
+      "rank": 2
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-013-allergic-rhinitis",
+        "display": "Allergic rhinitis"
+      },
+      "rank": 3
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/b975c904-df4e-4d64-a7d3-793b906dc500",
+        "display": "Triangle Pediatrics"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/61e4fff9-645e-42cb-9c0d-840a3ef27819",
+    "display": "Triangle Pediatrics"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Aisha presented for her 5-year well-child visit, two months after her severe asthma exacerbation. Priya reported that on the higher-dose Advair 115/21, asthma control had been significantly better — rescue inhaler use was down to about once per week, nighttime symptoms were rare (approximately once per month), and Aisha had not missed any school for respiratory symptoms in the past 6 weeks."
+    }
+  ]
+}

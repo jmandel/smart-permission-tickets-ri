@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-005-dhs-letter",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "51851-4",
+        "display": "Administrative note"
+      }
+    ],
+    "text": "Administrative Communication — DHS Case Resolution"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "date": "2026-03-30T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+      "display": "Dr. Rachel Okonkwo, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VE86IFdpc2NvbnNpbiBEZXBhcnRtZW50IG9mIEhlYWx0aCBTZXJ2aWNlcyDigJQgQ29tbXVuaWNhYmxlIERpc2Vhc2UgRXBpZGVtaW9sb2d5CkZST006IFJhY2hlbCBPa29ua3dvLCBNRCDigJQgVVcgSGVhbHRoIFVuaXZlcnNpdHkgU3R1ZGVudCBIZWFsdGggU2VydmljZXMKREFURTogMDMvMzAvMjAyNgpSRTogQ2FzZSBSZXNvbHV0aW9uIE5vdGlmaWNhdGlvbiDigJQgTWVhc2xlcyAoUnViZW9sYSkKU3RhdGUgQ2FzZSBJRDogV0ktTUVBUy0yMDI2LTAwNDcKCkRlYXIgREhTIENvbW11bmljYWJsZSBEaXNlYXNlIFRlYW0sCgpUaGlzIGxldHRlciBzZXJ2ZXMgYXMgZm9ybWFsIG5vdGlmaWNhdGlvbiB0aGF0IHRoZSBtZWFzbGVzIGNhc2UgcmVmZXJlbmNlZCBhYm92ZSBoYXMgcmVhY2hlZCBjbGluaWNhbCByZXNvbHV0aW9uLgoKUGF0aWVudDogTWFyY3VzIEQuIEpvaG5zb24sIERPQiAwNi8xNC8yMDA0CkRpYWdub3NpcyBEYXRlOiAwMy8yMy8yMDI2Cklzb2xhdGlvbiBQZXJpb2Q6IDAzLzIzLzIwMjYgdGhyb3VnaCAwMy8yOS8yMDI2CkNsZWFyYW5jZSBEYXRlOiAwMy8zMC8yMDI2CgpDbGluaWNhbCBTdW1tYXJ5OgpNci4gSm9obnNvbiBwcmVzZW50ZWQgb24gMDMvMjMvMjAyNiB3aXRoIGNvbmZpcm1lZCBtZWFzbGVzLCB2ZXJpZmllZCBieSBwb3NpdGl2ZSBtZWFzbGVzIElnTSBhbnRpYm9keSBzZXJvbG9neSBhbmQgcG9zaXRpdmUgbWVhc2xlcyBSTkEgUENSIGZyb20gbmFzb3BoYXJ5bmdlYWwgc3BlY2ltZW4uIEhlIHdhcyBpbW1lZGlhdGVseSBwbGFjZWQgdW5kZXIgaXNvbGF0aW9uIHByZWNhdXRpb25zIHBlciBDREMgYW5kIFdESFMgZ3VpZGVsaW5lcy4KCkFzIG9mIHRvZGF5J3MgaW4tcGVyc29uIGV2YWx1YXRpb24gKDAzLzMwLzIwMjYpLCB0aGUgcGF0aWVudCBkZW1vbnN0cmF0ZXMgZnVsbCBjbGluaWNhbCBhbmQgbGFib3JhdG9yeSByZWNvdmVyeToKLSBGZXZlciByZXNvbHZlZCAwMy8yOC8yMDI2Ci0gUmFzaCByZXNvbHZlZCB0byBwb3N0LWluZmxhbW1hdG9yeSBkZXNxdWFtYXRpb24KLSBDQkMgd2l0aCBkaWZmZXJlbnRpYWw6IFdCQyA1LjggeCAxMF4zL3VMIChyZWNvdmVyZWQgZnJvbSAzLjIpLCBseW1waG9jeXRlcyAzMCUgKGx5bXBob3BlbmlhIHJlc29sdmVkKQotIENSUDogOCBtZy9MIChtYXJrZWRseSBpbXByb3ZlZCBmcm9tIDQ4IG1nL0wgYXQgZGlhZ25vc2lzKQoKTm8gY29tcGxpY2F0aW9ucyB3ZXJlIGlkZW50aWZpZWQgZHVyaW5nIHRoZSBpbGxuZXNzIGNvdXJzZSAobm8gcG5ldW1vbmlhLCBvdGl0aXMgbWVkaWEsIG9yIGVuY2VwaGFsaXRpcykuCgpUaGUgcGF0aWVudCBoYXMgYmVlbiBjbGVhcmVkIHRvIHJldHVybiB0byB1bml2ZXJzaXR5IGNsYXNzZXMsIGNvbW11bmFsIGRpbmluZywgYW5kIHJlc2lkZW50aWFsIGxpdmluZyBlZmZlY3RpdmUgaW1tZWRpYXRlbHkuIE5vIHNlY29uZGFyeSBjYXNlcyBoYXZlIGJlZW4gYXR0cmlidXRhYmxlIHRvIHRoaXMgcGF0aWVudCBiYXNlZCBvbiBhdmFpbGFibGUgY29udGFjdCB0cmFjaW5nIGRhdGEuCgpOYXR1cmFsIG1lYXNsZXMgaW1tdW5pdHkgaGFzIGJlZW4gZG9jdW1lbnRlZCBpbiB0aGUgcGF0aWVudCdzIGltbXVuaXphdGlvbiByZWNvcmQuIFRoZSBwcmV2aW91c2x5IGluY29tcGxldGUgTU1SIHNlcmllcyAoc2luZ2xlIGRvc2UgYXQgYWdlIDEyIG1vbnRocykgaXMgbm93IGNvbnNpZGVyZWQgcmVzb2x2ZWQgd2l0aCByZXNwZWN0IHRvIG1lYXNsZXMgdGhyb3VnaCBuYXR1cmFsIGluZmVjdGlvbi4KClRoaXMgY2FzZSBpcyBjb25zaWRlcmVkIGNsb3NlZCBmcm9tIGEgY2xpbmljYWwgc3RhbmRwb2ludC4gUGxlYXNlIHVwZGF0ZSBzdGF0ZSByZWNvcmRzIGFjY29yZGluZ2x5LgoKUmVzcGVjdGZ1bGx5LApSYWNoZWwgT2tvbmt3bywgTUQKVVcgSGVhbHRoIFVuaXZlcnNpdHkgU3R1ZGVudCBIZWFsdGggU2VydmljZXMKMzMzIEVhc3QgQ2FtcHVzIE1hbGwsIEZsb29yIDUsIE1hZGlzb24sIFdJIDUzNzE1ClBob25lOiA2MDgtMjY1LTU2MDAKTlBJOiAxOTIzNDU2NzgwCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-005"
+      }
+    ],
+    "period": {
+      "start": "2026-03-30T00:00:00Z"
+    }
+  }
+}

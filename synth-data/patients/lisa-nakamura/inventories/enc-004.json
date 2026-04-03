@@ -1,0 +1,146 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Second pregnancy confirmation, early pregnancy monitoring, and pregnancy loss (missed abortion)",
+    "period_start": "2024-10-07",
+    "period_end": "2024-11-04",
+    "participants": [],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": "116 mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": "72 mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "116/72 mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": "116 mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": "72 mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": "74 beats/minute"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.3 °F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14 breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": "99 %"
+      },
+      {
+        "name": "body weight",
+        "value": "131 lb"
+      },
+      {
+        "name": "body mass index",
+        "value": "21.8 kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "serum beta-hCG (quantitative human chorionic gonadotropin)",
+        "value": "2,890 mIU/mL",
+        "date": "2024-10-07",
+        "specimen": "serum",
+        "interpretation": "approximately 5 weeks gestation, within expected range"
+      },
+      {
+        "name": "serum beta-hCG (quantitative human chorionic gonadotropin), 48-hour repeat",
+        "value": "6,210 mIU/mL",
+        "date": "2024-10-09",
+        "specimen": "serum",
+        "interpretation": "appropriate doubling (doubling time approximately 38 hours, normal)"
+      },
+      {
+        "name": "serum beta-hCG (quantitative human chorionic gonadotropin), follow-up",
+        "value": "<5 mIU/mL",
+        "date": "2024-11-04",
+        "specimen": "serum",
+        "interpretation": "confirms complete resolution of pregnancy"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": "2",
+        "interpretation": "mild, subthreshold; patient endorsed feeling down occasionally; below threshold for positive screen"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "missed abortion (embryonic demise)",
+      "clinical_status": "resolved",
+      "onset_date": "2024-10-21",
+      "abatement_date": "2024-11-04",
+      "action": "create",
+      "note": "Second consecutive first-trimester pregnancy loss. Embryonic demise confirmed by absent growth and absent cardiac activity on serial transvaginal ultrasounds. Patient chose expectant management; miscarriage completed spontaneously over approximately 10 days."
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "onset_date": "2024-10-21",
+      "action": "create",
+      "note": "Two consecutive first-trimester losses. While classically defined as three or more losses, many specialists now initiate evaluation after two consecutive losses, particularly given patient age (35) and emotional distress. Basic RPL workup recommended."
+    },
+    {
+      "name": "early pregnancy loss (spontaneous abortion), first trimester",
+      "action": "reference-existing",
+      "note": "Prior loss June 2024. Referenced as context for recurrent pregnancy loss diagnosis. No changes at this encounter."
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin, oral, once daily",
+      "status": "active",
+      "reason": "preconception/pregnancy supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents the second pregnancy confirmation at 5 weeks gestation, serial beta-hCG monitoring showing appropriate initial doubling, 6-week and 7-week transvaginal ultrasound findings confirming embryonic demise, diagnosis of missed abortion managed expectantly, follow-up beta-hCG confirming complete resolution, new diagnosis of recurrent pregnancy loss after two consecutive first-trimester losses, counseling regarding RPL workup rationale, plan for basic RPL panel at follow-up in 6-8 weeks, and emotional support discussion."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "transvaginal ultrasound, obstetric (6-week scan)",
+      "report_state": "summary-only",
+      "description": "Intrauterine gestational sac identified with yolk sac present. Fetal pole small for dates. No cardiac activity detected. No adnexal masses or free fluid. Findings concerning for possible early embryonic demise versus early dating; repeat scan recommended in one week."
+    },
+    {
+      "type": "transvaginal ultrasound, obstetric (7-week scan)",
+      "report_state": "summary-only",
+      "description": "Fetal pole has not grown since prior scan (2024-10-14). Crown-rump length consistent with 6 weeks 2 days, indicating growth arrest. No cardiac activity detected. Findings consistent with embryonic demise (missed abortion)."
+    }
+  ],
+  "allergies": []
+}

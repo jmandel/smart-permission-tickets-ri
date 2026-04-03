@@ -1,0 +1,141 @@
+{
+  "encounter_id": "enc-010",
+  "encounter_index": 10,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Post-ED follow-up, asthma reclassified severe persistent",
+    "period_start": "2025-01-16",
+    "period_end": "2025-01-16",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 102,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 22,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 96,
+        "diastolic": 60,
+        "unit": "mmHg"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body temperature",
+        "value": 37,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 18.8,
+        "unit": "kg"
+      },
+      {
+        "name": "body height",
+        "value": 108,
+        "unit": "cm"
+      },
+      {
+        "name": "body mass index",
+        "value": 16.1,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "asthma, severe persistent",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "update-existing",
+      "note": "Previously classified as moderate persistent. Reclassified to severe persistent based on ED-level exacerbation despite adherence to Advair HFA 45/21 BID and montelukast, rescue inhaler use 3–4 times/week at baseline, frequent nighttime symptoms, and multiple school absences."
+    },
+    {
+      "name": "acute asthma exacerbation, resolving",
+      "clinical_status": "active",
+      "onset_date": "2025-01",
+      "action": "create"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21) 1 puff inhaled twice daily",
+      "sig": "Inhale 1 puff by mouth twice daily using spacer with mask",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "create"
+    },
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 45/21) 1 puff inhaled twice daily",
+      "status": "stopped",
+      "reason": "severe persistent asthma — dose inadequate, stepped up to 115/21",
+      "action": "update-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "Take 1 chewable tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg) 2 puffs inhaled",
+      "sig": "Inhale 2 puffs by mouth every 4–6 hours as needed for wheezing or shortness of breath, using spacer",
+      "status": "active",
+      "reason": "asthma rescue therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prednisolone 18 mg oral",
+      "sig": "Take 18 mg by mouth once daily; complete remaining 2 days of 5-day course",
+      "status": "active",
+      "reason": "acute asthma exacerbation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Acute visit progress note for post-ED follow-up. Documents subjective improvement since ED discharge for severe asthma exacerbation, vitals with SpO2 97% on room air, exam showing scattered end-expiratory wheezes without distress, reclassification of asthma from moderate persistent to severe persistent, step-up of ICS/LABA therapy to Advair HFA 115/21, continuation of prednisolone burst, re-referral to pediatric allergy for biologic therapy consideration, and follow-up plan."
+    },
+    {
+      "type": "patient instructions / care plan document",
+      "description": "Updated asthma action plan reflecting the change from Advair HFA 45/21 to Advair HFA 115/21 as the daily controller medication, with green/yellow/red zone instructions and emergency guidance for severe persistent asthma classification."
+    },
+    {
+      "type": "administrative health form",
+      "description": "Updated 504 plan documentation and school nurse notification reflecting the change in asthma classification to severe persistent and the new controller medication (Advair HFA 115/21)."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

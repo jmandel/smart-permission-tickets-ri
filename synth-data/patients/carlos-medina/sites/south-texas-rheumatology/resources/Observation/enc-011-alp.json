@@ -1,0 +1,76 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-011-alp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "6768-6",
+        "display": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-011"
+  },
+  "effectiveDateTime": "2021-11-01",
+  "issued": "2021-11-02T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "valueQuantity": {
+    "value": 78,
+    "unit": "U/L",
+    "system": "http://unitsofmeasure.org",
+    "code": "U/L"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "N",
+          "display": "Normal"
+        }
+      ],
+      "text": "Normal"
+    }
+  ],
+  "referenceRange": [
+    {
+      "low": {
+        "value": 44,
+        "unit": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "code": "U/L"
+      },
+      "high": {
+        "value": 147,
+        "unit": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "code": "U/L"
+      }
+    }
+  ]
+}

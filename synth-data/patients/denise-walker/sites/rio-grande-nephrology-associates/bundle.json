@@ -1,0 +1,3993 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T01:45:02.221Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:ec17a69b-2588-458c-ab5d-aa485bd48663",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "ec17a69b-2588-458c-ab5d-aa485bd48663",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2054-5",
+                  "display": "Black or African American"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Black"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "non-Hispanic"
+              }
+            ]
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In Arizona she had primary care and cardiology follow-up that established the chronic disease baseline: diabetes requiring intensification, CKD emerging, atrial fibrillation managed with anticoagulation, and HFrEF treated medically. After moving to New Mexico she had an acute decompensated heart-failure hospitalization, then longitudinal follow-up with a heart-failure clinic, nephrology, and retina specialists for diabetic retinopathy with macular edema."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "system": "http://example.org/fhir/identifier/patient-local",
+            "value": "rio-grande-nephrology-associates-denise-walker"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-e91cc755383ff5c44b700b01"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Walker",
+            "given": [
+              "Denise"
+            ],
+            "text": "Denise Walker"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "home",
+            "value": "505-555-0184"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1961-04-22",
+        "address": [
+          {
+            "use": "home",
+            "city": "Albuquerque",
+            "state": "NM",
+            "country": "US",
+            "text": "Albuquerque, NM"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "W",
+              "display": "Widowed"
+            }
+          ],
+          "text": "Widowed"
+        },
+        "contact": [
+          {
+            "relationship": [
+              {
+                "text": "Adult daughter"
+              }
+            ],
+            "name": {
+              "text": "Adult daughter"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "use": "mobile",
+                "value": "505-555-0147"
+              }
+            ],
+            "address": {
+              "city": "Albuquerque",
+              "state": "NM",
+              "country": "US",
+              "text": "Albuquerque, NM"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+          "display": "Rio Grande Nephrology Associates"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1215079346"
+          }
+        ],
+        "active": true,
+        "name": "Rio Grande Nephrology Associates",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Nephrology specialty practice"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "work",
+            "value": "505-555-0129"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "city": "Albuquerque",
+            "state": "NM",
+            "country": "US",
+            "text": "Albuquerque, NM"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "text": "Dr. Helena Ortiz, MD",
+            "family": "Ortiz",
+            "given": [
+              "Helena"
+            ],
+            "prefix": [
+              "Dr."
+            ],
+            "suffix": [
+              "MD"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6cb7a595-5680-455c-bb85-32f59b9c37e3",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6cb7a595-5680-455c-bb85-32f59b9c37e3",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "text": "Omar Siddiqui, PA-C",
+            "family": "Siddiqui",
+            "given": [
+              "Omar"
+            ],
+            "suffix": [
+              "PA-C"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+                  "code": "PA",
+                  "display": "Physician Assistant"
+                }
+              ],
+              "text": "Physician Assistant-Certified"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "text": "Rachel Montoya, RN",
+            "family": "Montoya",
+            "given": [
+              "Rachel"
+            ],
+            "suffix": [
+              "RN"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+                  "code": "RN",
+                  "display": "Registered Nurse"
+                }
+              ],
+              "text": "Registered Nurse"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:194d4df3-20ac-42b3-9b2f-305834567e18",
+      "resource": {
+        "resourceType": "Location",
+        "id": "194d4df3-20ac-42b3-9b2f-305834567e18",
+        "status": "active",
+        "name": "Rio Grande Nephrology Associates, Albuquerque, New Mexico",
+        "description": "Main clinical location for Rio Grande Nephrology Associates encounters in Albuquerque.",
+        "type": [
+          {
+            "text": "Nephrology specialty practice"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "use": "work",
+            "value": "505-555-0129"
+          }
+        ],
+        "address": {
+          "city": "Albuquerque",
+          "state": "NM",
+          "country": "US",
+          "text": "Albuquerque, NM"
+        },
+        "managingOrganization": {
+          "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+          "display": "Rio Grande Nephrology Associates"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-albumin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-albumin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1751-7",
+              "display": "Albumin [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Albumin"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3.8,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bicarbonate",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-bicarbonate",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1963-8",
+              "display": "Bicarbonate [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Bicarbonate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 23,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 33.1,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood pressure"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "performer": [
+          {
+            "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+            "display": "Dr. Helena Ortiz, MD"
+          }
+        ],
+        "bodySite": {
+          "text": "Seated"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 136,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 84,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bun",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-bun",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3094-0",
+              "display": "Urea nitrogen [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Blood urea nitrogen"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 1.61,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-egfr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-egfr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "98979-8",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI 2021)"
+            }
+          ],
+          "text": "Estimated glomerular filtration rate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ],
+        "valueQuantity": {
+          "value": 37,
+          "unit": "mL/min/{1.73_m2}",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-ferritin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-ferritin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2276-4",
+              "display": "Ferritin [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Ferritin"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 118,
+          "unit": "ng/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ng/mL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 64,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-hemoglobin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-hemoglobin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ],
+        "valueQuantity": {
+          "value": 11.6,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 72,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-phosphorus",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-phosphorus",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2777-1",
+              "display": "Phosphate [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Phosphorus"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3.9,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-potassium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-potassium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2823-3",
+              "display": "Potassium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Potassium"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.7,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-pth",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-pth",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2731-8",
+              "display": "Parathyrin.intact [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Parathyroid hormone, intact"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 74,
+          "unit": "pg/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "pg/mL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 16,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-sodium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-sodium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2951-2",
+              "display": "Sodium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Sodium"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 140,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 97.7,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-transferrin-sat",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-transferrin-sat",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2502-3",
+              "display": "Iron saturation [Mass Fraction] in Serum or Plasma"
+            }
+          ],
+          "text": "Transferrin saturation"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueQuantity": {
+          "value": 24,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-uacr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-uacr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9318-7",
+              "display": "Albumin/Creatinine [Mass Ratio] in Urine"
+            }
+          ],
+          "text": "Urine albumin-creatinine ratio"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 286,
+          "unit": "mg/g",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/g"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-urine-sediment",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-urine-sediment",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "text": "Urine sediment microscopic assessment"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "valueString": "Bland urine sediment / no active sediment"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-vitamin-d-25oh",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-vitamin-d-25oh",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "62292-8",
+              "display": "25-Hydroxyvitamin D3+25-Hydroxyvitamin D2 [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "25-hydroxy vitamin D"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28,
+          "unit": "ng/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ng/mL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-005-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "valueQuantity": {
+          "value": 193,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-albumin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-albumin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1751-7",
+              "display": "Albumin [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Albumin"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "valueQuantity": {
+          "value": 3.9,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bicarbonate",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bicarbonate",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1963-8",
+              "display": "Bicarbonate [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Bicarbonate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "valueQuantity": {
+          "value": 22,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 32.1,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood pressure"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "bodySite": {
+          "text": "Seated"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 128,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 76,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bun",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bun",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3094-0",
+              "display": "Urea nitrogen [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Blood urea nitrogen"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 33,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-calcium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-calcium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "17861-6",
+              "display": "Calcium [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Calcium"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "valueQuantity": {
+          "value": 9.1,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-creatinine",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-creatinine",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Creatinine"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "valueQuantity": {
+          "value": 1.74,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-egfr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-egfr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "98979-8",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI 2021)"
+            }
+          ],
+          "text": "Estimated glomerular filtration rate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ],
+        "valueQuantity": {
+          "value": 33,
+          "unit": "mL/min/{1.73_m2}",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2345-7",
+              "display": "Glucose [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Glucose"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 148,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 64,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-hemoglobin",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-hemoglobin",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Low"
+          }
+        ],
+        "valueQuantity": {
+          "value": 11.4,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 70,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-phosphorus",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-phosphorus",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2777-1",
+              "display": "Phosphate [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Phosphorus"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.1,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-potassium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-potassium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2823-3",
+              "display": "Potassium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Potassium"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 5.1,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 16,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-sodium",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-sodium",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2951-2",
+              "display": "Sodium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Sodium"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "valueQuantity": {
+          "value": 139,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 97.9,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-uacr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-uacr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9318-7",
+              "display": "Albumin/Creatinine [Mass Ratio] in Urine"
+            }
+          ],
+          "text": "Urine albumin-creatinine ratio"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "valueQuantity": {
+          "value": 248,
+          "unit": "mg/g",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/g"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+            "display": "Rachel Montoya, RN"
+          }
+        ],
+        "valueQuantity": {
+          "value": 187,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-albuminuria-condition",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-albuminuria-condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "274769005",
+              "display": "Albuminuria (finding)"
+            }
+          ],
+          "text": "Persistent albuminuria"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "recordedDate": "2026-02-11",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-008-uacr",
+                "display": "Urine albumin-creatinine ratio"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Persistent albuminuria remained clinically significant at urine albumin-creatinine ratio 248 mg/g and was explicitly incorporated into the decision to continue sacubitril/valsartan."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-anemia-ckd",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-anemia-ckd",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "707323002",
+              "display": "Anemia co-occurrent and due to chronic kidney disease (disorder)"
+            }
+          ],
+          "text": "Mild anemia of chronic kidney disease / chronic disease pattern"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "onsetDateTime": "2024-06-17",
+        "recordedDate": "2026-02-11",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-008-hemoglobin",
+                "display": "Hemoglobin"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Mild anemia of chronic kidney disease remained stable with hemoglobin 11.4 g/dL and continued outpatient monitoring was planned."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-ckd-mbd",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-ckd-mbd",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "31298003",
+              "display": "Secondary hyperparathyroidism of renal origin (disorder)"
+            }
+          ],
+          "text": "Chronic kidney disease mineral and bone disorder with mild secondary hyperparathyroidism"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "onsetDateTime": "2024-06-17",
+        "recordedDate": "2024-06-17",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-005-pth",
+                "display": "Parathyroid hormone, intact"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-ckd3b",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-ckd3b",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "700379002",
+              "display": "Chronic kidney disease stage 3B (disorder)"
+            }
+          ],
+          "text": "Chronic kidney disease stage 3b due to diabetic kidney disease and hypertensive kidney disease"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "recordedDate": "2026-02-11",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-008-creatinine",
+                "display": "Creatinine"
+              },
+              {
+                "reference": "Observation/enc-008-egfr",
+                "display": "Estimated glomerular filtration rate"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Nephrology follow-up documented CKD stage 3b with persistent albuminuria as slowly progressive but outpatient-stable, with creatinine 1.74 mg/dL and estimated glomerular filtration rate about 33 mL/min/1.73 m2."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-hfref-condition",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-hfref-condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "703272007",
+              "display": "Heart failure with reduced ejection fraction (disorder)"
+            }
+          ],
+          "text": "Heart failure with reduced ejection fraction / cardiorenal physiology affecting renal hemodynamics"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "recordedDate": "2024-06-17",
+        "note": [
+          {
+            "text": "Recent heart-failure hospitalization and ongoing diuretic therapy were recognized as contributors to renal hemodynamics, with continued monitoring planned."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-hypertension-condition",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-hypertension-condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertensive disorder, systemic arterial (disorder)"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "recordedDate": "2026-02-11",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-008-bp",
+                "display": "Blood pressure"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Blood pressure was well controlled, with office blood pressure 128/76 mmHg and home readings generally between 118/70 and 132/78 mmHg."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-vitamin-d-insufficiency",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-005-vitamin-d-insufficiency",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "text": "Vitamin D insufficiency"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "onsetDateTime": "2024-06-17",
+        "recordedDate": "2024-06-17",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-005-vitamin-d-25oh",
+                "display": "25-hydroxy vitamin D"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-hyperkalemia-condition",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-008-hyperkalemia-condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "14140009",
+              "display": "Hyperkalemia (disorder)"
+            }
+          ],
+          "text": "Mild hyperkalemia"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "onsetDateTime": "2026-02-11",
+        "recordedDate": "2026-02-11",
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-008-potassium",
+                "display": "Potassium"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Potassium 5.1 mmol/L was assessed as a mild elevation related in part to ongoing RAAS-neprilysin inhibition, prompting diet counseling and short-interval repeat basic metabolic panel."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-anemia-iron-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-anemia-iron-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "HM",
+                "display": "Hematology"
+              }
+            ],
+            "text": "Hematology"
+          }
+        ],
+        "code": {
+          "text": "Anemia / iron studies report"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "performer": [
+          {
+            "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+            "display": "Rio Grande Nephrology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-005-hemoglobin",
+            "display": "Hemoglobin"
+          },
+          {
+            "reference": "Observation/enc-005-ferritin",
+            "display": "Ferritin"
+          },
+          {
+            "reference": "Observation/enc-005-transferrin-sat",
+            "display": "Transferrin saturation"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-bmp-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-bmp-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic metabolic panel - Blood"
+            }
+          ],
+          "text": "Basic metabolic panel"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "performer": [
+          {
+            "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+            "display": "Rio Grande Nephrology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-005-creatinine",
+            "display": "Creatinine"
+          },
+          {
+            "reference": "Observation/enc-005-bun",
+            "display": "Blood urea nitrogen"
+          },
+          {
+            "reference": "Observation/enc-005-sodium",
+            "display": "Sodium"
+          },
+          {
+            "reference": "Observation/enc-005-potassium",
+            "display": "Potassium"
+          },
+          {
+            "reference": "Observation/enc-005-bicarbonate",
+            "display": "Bicarbonate"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-renal-monitoring-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-renal-monitoring-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "text": "Chronic kidney disease / renal monitoring laboratory report"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "performer": [
+          {
+            "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+            "display": "Rio Grande Nephrology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-005-egfr",
+            "display": "Estimated glomerular filtration rate"
+          },
+          {
+            "reference": "Observation/enc-005-phosphorus",
+            "display": "Phosphorus"
+          },
+          {
+            "reference": "Observation/enc-005-albumin",
+            "display": "Albumin"
+          },
+          {
+            "reference": "Observation/enc-005-pth",
+            "display": "Parathyroid hormone, intact"
+          },
+          {
+            "reference": "Observation/enc-005-vitamin-d-25oh",
+            "display": "25-hydroxy vitamin D"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-urine-albumin-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-005-urine-albumin-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "text": "Urine albumin assessment"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-005"
+        },
+        "effectiveDateTime": "2024-06-17",
+        "performer": [
+          {
+            "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+            "display": "Rio Grande Nephrology Associates"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-005-uacr",
+            "display": "Urine albumin-creatinine ratio"
+          },
+          {
+            "reference": "Observation/enc-005-urine-sediment",
+            "display": "Urine sediment microscopic assessment"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bmp-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-bmp-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic metabolic panel - Blood"
+            }
+          ],
+          "text": "Basic metabolic panel"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+            "display": "Rio Grande Nephrology Associates"
+          }
+        ],
+        "conclusion": "Reviewed laboratory summary included creatinine 1.74 mg/dL, blood urea nitrogen 33 mg/dL, sodium 139 mmol/L, potassium 5.1 mmol/L, bicarbonate 22 mmol/L, and glucose 148 mg/dL to guide outpatient potassium and renal-function management."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-renal-monitoring-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-renal-monitoring-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "CH",
+                "display": "Chemistry"
+              }
+            ],
+            "text": "Chemistry"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24362-6",
+              "display": "Renal function 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Renal function panel / chronic kidney disease monitoring labs"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2026-02-11",
+        "performer": [
+          {
+            "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+            "display": "Rio Grande Nephrology Associates"
+          }
+        ],
+        "conclusion": "Reviewed nephrology laboratory trend summary showed CKD stage 3b with creatinine 1.74 mg/dL, estimated glomerular filtration rate about 33 mL/min/1.73 m2, phosphorus 4.1 mg/dL, calcium 9.1 mg/dL, albumin 3.9 g/dL, hemoglobin 11.4 g/dL, and urine albumin-creatinine ratio 248 mg/g."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-005-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11488-4",
+              "display": "Consult note"
+            }
+          ],
+          "text": "Nephrology consultation note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "date": "2024-06-17T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+            "type": "Practitioner",
+            "display": "Dr. Helena Ortiz, MD"
+          }
+        ],
+        "custodian": {
+          "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+          "display": "Rio Grande Nephrology Associates"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgQmxhY2sgd29tYW4gd2l0aCBoaXN0b3J5IG9mIHR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cywgaHlwZXJ0ZW5zaW9uLCBIRnJFRiwgcGFyb3h5c21hbCBhdHJpYWwgZmlicmlsbGF0aW9uLCBhbmQgQ0tEIHJlZmVycmVkIGZvciBuZXcgbmVwaHJvbG9neSBjb25zdWx0YXRpb24gZm9yIENLRCBzdGFnZSAzYiB3aXRoIGFsYnVtaW51cmlhIGFmdGVyIHJlY2VudCBoZWFydC1mYWlsdXJlIGhvc3BpdGFsaXphdGlvbi4gU2hlIHJlY2VudGx5IHJlbG9jYXRlZCB0byBBbGJ1cXVlcnF1ZSBhbmQgaXMgcmUtZXN0YWJsaXNoaW5nIHNwZWNpYWx0eSBjYXJlLiBTaGUgcmVwb3J0cyBob21lIEJQIHJlYWRpbmdzIG1vc3RseSBpbiB0aGUgMTIwcyB0byAxMzBzIHN5c3RvbGljLiBTaGUgZGVuaWVzIE5TQUlEIHVzZSwgZ3Jvc3MgaGVtYXR1cmlhLCBvciBhbnkgbmV3IGZvYW15IHVyaW5lIGJleW9uZCB3aGF0IHNoZSBoYXMgbm90ZWQgb3ZlciB0aGUgeWVhcnMgd2l0aCBkaWFiZXRlcy4gTm8gaW50ZXJ2YWwgc3ltcHRvbXMgc3VnZ2VzdGluZyBhbiBhY3V0ZSBuZXBocml0aWMgb3Igb2JzdHJ1Y3RpdmUgcHJvY2VzcyB3ZXJlIHJlcG9ydGVkLiBSZWNlbnQgY291cnNlIG5vdGFibGUgZm9yIGhlYXJ0LWZhaWx1cmUgYWRtaXNzaW9uIHdpdGggb25nb2luZyBkaXVyZXRpYyB0aGVyYXB5LCByYWlzaW5nIGNvbmNlcm4gZm9yIG1peGVkIGRpYWJldGljIGtpZG5leSBkaXNlYXNlIGFuZCBjYXJkaW9yZW5hbCBjb250cmlidXRpb24gdG8gcmVuYWwgZHlzZnVuY3Rpb24uCgpSZWxldmFudCByZW5hbCByaXNrIGZhY3RvcnMgaW5jbHVkZSBsb25nc3RhbmRpbmcgZGlhYmV0ZXMgYW5kIGh5cGVydGVuc2lvbi4gQ3VycmVudCBraWRuZXktcHJvdGVjdGl2ZS9jYXJkaWFjIG1lZGljYXRpb25zIGluY2x1ZGUgc2FjdWJpdHJpbC92YWxzYXJ0YW4gYW5kIGVtcGFnbGlmbG96aW4uIE1lZGljYXRpb24gc2FmZXR5IGFuZCBuZXBocm90b3hpbiBhdm9pZGFuY2UgcmV2aWV3ZWQgaW4gZGV0YWlsLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEzNi84NCBtbUhnIHNlYXRlZCwgSFIgNzIgYnBtLCBSUiAxNi9taW4sIFRlbXAgOTcuNyBGLCBTcE8yIDk4JSwgd2VpZ2h0IDE5MyBsYiwgaGVpZ2h0IDY0IGluLCBCTUkgMzMuMSBrZy9tMgoKR2VuZXJhbDogQWxlcnQsIG9yaWVudGVkLCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KQ1Y6IEhlYXJ0IHJhdGUgY29udHJvbGxlZC4KUmVzcDogQnJlYXRoaW5nIGNvbWZvcnRhYmx5LCBubyByZXNwaXJhdG9yeSBkaXN0cmVzcy4KRXh0cmVtaXRpZXM6IE5vIGV4YW0gZmluZGluZ3Mgc3VnZ2VzdGluZyBhY3V0ZSB2b2x1bWUgb3ZlcmxvYWQgZG9jdW1lbnRlZCBhdCB0aGlzIHZpc2l0LgoKTGFiczogQ3JlYXRpbmluZSAxLjYxIG1nL2RMLCBlR0ZSIDM3IG1ML21pbi8xLjczIG0yLCBCVU4gMjggbWcvZEwsIHBvdGFzc2l1bSA0LjcgbW1vbC9MLCBzb2RpdW0gMTQwIG1tb2wvTCwgYmljYXJib25hdGUgMjMgbW1vbC9MLCBwaG9zcGhvcnVzIDMuOSBtZy9kTCwgYWxidW1pbiAzLjggZy9kTCwgaW50YWN0IFBUSCA3NCBwZy9tTCwgMjUtaHlkcm94eSB2aXRhbWluIEQgMjggbmcvbUwsIGhlbW9nbG9iaW4gMTEuNiBnL2RMLCBmZXJyaXRpbiAxMTggbmcvbUwsIHRyYW5zZmVycmluIHNhdHVyYXRpb24gMjQlLCB1cmluZSBhbGJ1bWluLWNyZWF0aW5pbmUgcmF0aW8gMjg2IG1nL2cuIFVyaW5lIHNlZGltZW50IGJsYW5kLgoKQVNTRVNTTUVOVDoKMS4gQ0tEIHN0YWdlIDNiIHdpdGggcGVyc2lzdGVudCBhbGJ1bWludXJpYSwgbW9zdCBjb25zaXN0ZW50IHdpdGggZGlhYmV0aWMga2lkbmV5IGRpc2Vhc2UgYW5kIGh5cGVydGVuc2l2ZSBraWRuZXkgZGlzZWFzZS4gQ3VycmVudCByZW5hbCBmdW5jdGlvbiB3aXRoIGNyZWF0aW5pbmUgMS42MSBhbmQgZUdGUiAzNyBpcyBzdGFibGUgZW5vdWdoIGZvciBvdXRwYXRpZW50IG1hbmFnZW1lbnQuIEJsYW5kIHVyaW5lIHNlZGltZW50LCBhYnNlbmNlIG9mIGdyb3NzIGhlbWF0dXJpYSwgYW5kIG92ZXJhbGwgY2hyb25pYyBjb3Vyc2UgZG8gbm90IHN1Z2dlc3QgYW4gYWx0ZXJuYXRpdmUgZ2xvbWVydWxhciBwcm9jZXNzOyBubyBiaW9wc3kgb3IgYWN1dGUgbmVwaHJvbG9naWMgd29ya3VwIGluZGljYXRlZCBhdCB0aGlzIHRpbWUuCjIuIEFsYnVtaW51cmlhLCBVQUNSIDI4NiBtZy9nLCBwZXJzaXN0ZW50IGFuZCBjbGluaWNhbGx5IHNpZ25pZmljYW50LiBPbmdvaW5nIFJBQVMtYmFzZWQgdGhlcmFweSBhbmQgU0dMVDIgaW5oaWJpdG9yIGFyZSBhcHByb3ByaWF0ZSBmb3IgcmVuYWwgcHJvdGVjdGlvbi4KMy4gSHlwZXJ0ZW5zaW9uLCByZWFzb25hYmx5IGNvbnRyb2xsZWQgaW4gY2xpbmljIGFuZCBieSBob21lIHJlYWRpbmdzLCB3aXRoIHN5c3RvbGljIHByZXNzdXJlcyBtb3N0bHkgaW4gdGhlIDEyMHMgdG8gMTMwcy4KNC4gQ2FyZGlvcmVuYWwgcGh5c2lvbG9neS9IRnJFRiBvbiBkaXVyZXRpYyB0aGVyYXB5IGNvbnRyaWJ1dGluZyB0byByZW5hbCBoZW1vZHluYW1pY3MgYW5kIHJlcXVpcmluZyBjb250aW51ZWQgbW9uaXRvcmluZyBvZiBjcmVhdGluaW5lLCBwb3Rhc3NpdW0sIGFuZCB2b2x1bWUgc3RhdHVzLgo1LiBNaWxkIENLRC1hc3NvY2lhdGVkIG1pbmVyYWwgYm9uZSBkaXNlYXNlIHBhcmFtZXRlcnMgd2l0aCBQVEggNzQgcGcvbUwgYW5kIHZpdGFtaW4gRCBpbnN1ZmZpY2llbmN5IGF0IDI4IG5nL21MLgo2LiBNaWxkIGFuZW1pYSBvZiBDS0QvY2hyb25pYyBkaXNlYXNlIHBhdHRlcm4gd2l0aCBoZW1vZ2xvYmluIDExLjYgZy9kTCwgZmVycml0aW4gMTE4IG5nL21MLCBhbmQgdHJhbnNmZXJyaW4gc2F0dXJhdGlvbiAyNCUsIG5vdCByZXF1aXJpbmcgYWN1dGUgaW50ZXJ2ZW50aW9uLgoKUExBTjoKMS4gQ29udGludWUgc2FjdWJpdHJpbC92YWxzYXJ0YW4gYW5kIGVtcGFnbGlmbG96aW4gZm9yIGJvdGggcmVuYWwgYW5kIGNhcmRpYWMgYmVuZWZpdC4KMi4gTm8ga2lkbmV5IGJpb3BzeSBvciBhZGRpdGlvbmFsIGFjdXRlIHdvcmt1cCBhdCB0aGlzIHRpbWUgZ2l2ZW4gc3RhYmxlIGNocm9uaWMgcGF0dGVybiBhbmQgYmxhbmQgdXJpbmUgc2VkaW1lbnQuCjMuIFJlaW5mb3JjZWQgc3RyaWN0IG5lcGhyb3RveGluIGF2b2lkYW5jZS4gUGF0aWVudCBpbnN0cnVjdGVkIHRvIGF2b2lkIG92ZXItdGhlLWNvdW50ZXIgTlNBSURzIGFuZCB0byBub3RpZnkgY2xpbmljaWFucyBiZWZvcmUgYW55IGNvbnRyYXN0IHN0dWRpZXMuCjQuIFJldmlld2VkIENLRCBlZHVjYXRpb24gYW5kIG1lZGljYXRpb24gc2FmZXR5LCBpbmNsdWRpbmcgaW1wb3J0YW5jZSBvZiBCUCBjb250cm9sLCBkaWFiZXRlcyBjb250cm9sLCBhbmQgY29vcmRpbmF0aW9uIHdpdGggY2FyZGlvbG9neSB3aGlsZSBvbiBkaXVyZXRpYyB0aGVyYXB5Lgo1LiBSZXBlYXQgQk1QIGFuZCB1cmluZSBhbGJ1bWluIHRlc3RpbmcgcHJpb3IgdG8gZm9sbG93LXVwLgo2LiBDb250aW51ZSBob21lIEJQIGxvZyBhbmQgYnJpbmcgcmVhZGluZ3MgdG8gbmV4dCB2aXNpdCBmb3IgcmV2aWV3Lgo3LiBGb2xsb3cgdXAgd2l0aCBuZXBocm9sb2d5IGluIGFwcHJveGltYXRlbHkgNCBtb250aHMsIHNvb25lciBmb3Igd29yc2VuaW5nIGVkZW1hLCBkZWNyZWFzZWQgdXJpbmUgb3V0cHV0LCByaXNpbmcgaG9tZSBCUCwgb3Igb3RoZXIgaW50ZXJ2YWwgY29uY2VybnMuCg==",
+              "title": "Clinical note"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-005",
+              "display": "Office Visit"
+            }
+          ],
+          "period": {
+            "start": "2024-06-17"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-008-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Progress note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "date": "2026-02-11T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+            "type": "Practitioner",
+            "display": "Omar Siddiqui, PA-C"
+          }
+        ],
+        "custodian": {
+          "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+          "display": "Rio Grande Nephrology Associates"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "U1VCSkVDVElWRToKRGVuaXNlIFdhbGtlciBpcyBhIDU4LXllYXItb2xkIHdvbWFuIHdpdGggQ0tEIHN0YWdlIDNiIHdpdGggcGVyc2lzdGVudCBhbGJ1bWludXJpYSBpbiB0aGUgc2V0dGluZyBvZiB0eXBlIDIgZGlhYmV0ZXMgbWVsbGl0dXMsIGh5cGVydGVuc2lvbiwgYW5kIEhGckVGLCBzZWVuIGZvciBuZXBocm9sb2d5IGZvbGxvdy11cCBmb2N1c2VkIG9uIHJlbmFsIGZ1bmN0aW9uLCBwb3Rhc3NpdW0sIGFuZCBibG9vZC1wcmVzc3VyZSByZXZpZXcuIFNoZSByZXBvcnRzIG92ZXJhbGwgc3RhYmlsaXR5IHNpbmNlIGhlciBsYXN0IHZpc2l0IGFuZCBicmluZ3MgYSBob21lIEJQIGxvZyBmb3IgcmV2aWV3LiBIb21lIHJlYWRpbmdzIGFyZSBnZW5lcmFsbHkgYmV0d2VlbiAxMTgvNzAgYW5kIDEzMi83OCBtbUhnLiBTaGUgcmVwb3J0cyBhZGhlcmVuY2UgdG8gc29kaXVtIHJlc3RyaWN0aW9uIGFuZCBjb250aW51ZXMgdG8gYXZvaWQgTlNBSURzLiBTaGUgcmVtYWlucyBvbiBndWlkZWxpbmUtZGlyZWN0ZWQgaGVhcnQtZmFpbHVyZSB0aGVyYXB5IGluY2x1ZGluZyBzYWN1Yml0cmlsL3ZhbHNhcnRhbi4gTm8gaW50ZXJ2YWwgY29uY2VybnMgcHJvbXB0aW5nIHVyZ2VudCBldmFsdWF0aW9uIHdlcmUgbm90ZWQuIFJPUyBub3RhYmxlIGZvciBubyBuZXcgdm9sdW1lLXJlbGF0ZWQgY29tcGxhaW50cyByZXBvcnRlZCB0b2RheS4gTm8gZGlhbHlzaXMgcGxhbm5pbmcgY29uY2VybnMgYXQgdGhpcyB0aW1lLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEyOC83NiBtbUhnLCBIUiA3MCBicG0sIFJSIDE2L21pbiwgVGVtcCA5Ny45IEYsIFNwTzIgOTglLCBXdCAxODcgbGIsIEh0IDY0IGluLCBCTUkgMzIuMSBrZy9tMgpHZW5lcmFsOiBBbGVydCwgY29vcGVyYXRpdmUsIGluIG5vIGFjdXRlIGRpc3RyZXNzLgpDYXJkaW9wdWxtb25hcnk6IEJyZWF0aGluZyBjb21mb3J0YWJseSBhdCByZXN0OyBoZW1vZHluYW1pY2FsbHkgc3RhYmxlLgpFeHRyZW1pdGllczogTm8gYWN1dGUgZWRlbWEgY29uY2VybnMgZG9jdW1lbnRlZCB0b2RheS4KTGFiczogQ3JlYXRpbmluZSAxLjc0IG1nL2RMLCBlR0ZSIGFwcHJveGltYXRlbHkgMzMgbUwvbWluLzEuNzMgbTIsIEJVTiAzMyBtZy9kTCwgcG90YXNzaXVtIDUuMSBtbW9sL0wsIHNvZGl1bSAxMzkgbW1vbC9MLCBiaWNhcmJvbmF0ZSAyMiBtbW9sL0wsIHBob3NwaG9ydXMgNC4xIG1nL2RMLCBjYWxjaXVtIDkuMSBtZy9kTCwgYWxidW1pbiAzLjkgZy9kTCwgaGVtb2dsb2JpbiAxMS40IGcvZEwsIHVyaW5lIGFsYnVtaW4tY3JlYXRpbmluZSByYXRpbyAyNDggbWcvZywgZ2x1Y29zZSAxNDggbWcvZEwuCgpBU1NFU1NNRU5UOgoxLiBDS0Qgc3RhZ2UgM2Igd2l0aCBhbGJ1bWludXJpYSwgc2xvd2x5IHByb2dyZXNzaXZlIGJ1dCBvdXRwYXRpZW50LXN0YWJsZS4gUmVuYWwgZnVuY3Rpb24gcmVtYWlucyByZWR1Y2VkIHdpdGggY3JlYXRpbmluZSAxLjc0IGFuZCBlR0ZSIGFib3V0IDMzLCB3aXRoIHBlcnNpc3RlbnQgYWxidW1pbnVyaWEgKFVBQ1IgMjQ4IG1nL2cpLCBjb25zaXN0ZW50IHdpdGggb25nb2luZyBkaWFiZXRpYyBraWRuZXkgZGlzZWFzZS9jYXJkaW9yZW5hbCByaXNrLgoyLiBNaWxkIGh5cGVya2FsZW1pYSByaXNrLCBwb3Rhc3NpdW0gNS4xIG1tb2wvTC4gVGhpcyBpcyBsaWtlbHkgcmVsYXRlZCBpbiBwYXJ0IHRvIG9uZ29pbmcgUkFBUy9uZXByaWx5c2luIGluaGliaXRpb24gdXNlZCBmb3IgaGVhcnQtZmFpbHVyZSBtYW5hZ2VtZW50LiBBdCBwcmVzZW50IHRoZSBwb3Rhc3NpdW0gZWxldmF0aW9uIGlzIG1pbGQgYW5kIGRvZXMgbm90IG91dHdlaWdoIHRoZSByZW5hbCBhbmQgY2FyZGlvdmFzY3VsYXIgYmVuZWZpdCBvZiB0aGVyYXB5LgozLiBIeXBlcnRlbnNpb24sIHdlbGwgY29udHJvbGxlZC4gT2ZmaWNlIEJQIGlzIDEyOC83NiBhbmQgaG9tZSBsb2cgaXMgY29uc2lzdGVudGx5IGF0IGdvYWwuCjQuIEhGckVGIG9uIGd1aWRlbGluZS1kaXJlY3RlZCBtZWRpY2FsIHRoZXJhcHkuIFNhY3ViaXRyaWwvdmFsc2FydGFuIHByb3ZpZGVzIEJQIGFuZCBhbGJ1bWludXJpYSBiZW5lZml0IGFuZCByZW1haW5zIGNsaW5pY2FsbHkgYXBwcm9wcmlhdGUgdG8gY29udGludWUuCjUuIE1pbGQgYW5lbWlhIG9mIENLRC9jaHJvbmljIGRpc2Vhc2UgcGF0dGVybiwgaGVtb2dsb2JpbiAxMS40IGcvZEwsIHN0YWJsZSBmb3Igb3V0cGF0aWVudCBtb25pdG9yaW5nLgoKUExBTjoKMS4gQ29udGludWUgY3VycmVudCByZW5hbC1wcm90ZWN0aXZlIGFuZCBoZWFydC1mYWlsdXJlIHJlZ2ltZW4sIGluY2x1ZGluZyBzYWN1Yml0cmlsL3ZhbHNhcnRhbiwgYXMgQlAgYW5kIGFsYnVtaW51cmlhIGJlbmVmaXQgY3VycmVudGx5IG91dHdlaWdoIG1pbGQgcG90YXNzaXVtIGNvbmNlcm4uCjIuIENvdW5zZWwgb24gbW9kZXJhdGlvbiBvZiBoaWdoLXBvdGFzc2l1bSBmb29kcyBhbmQgbWFpbnRhaW5pbmcgY29uc2lzdGVudCBoeWRyYXRpb24uCjMuIENvbnRpbnVlIHNvZGl1bSByZXN0cmljdGlvbiBhbmQgc3RyaWN0IE5TQUlEIGF2b2lkYW5jZS4KNC4gUmVwZWF0IEJNUCBpbiAyIHRvIDMgd2Vla3MgdG8gcmVhc3Nlc3MgcG90YXNzaXVtIGFuZCByZW5hbCBmdW5jdGlvbi4KNS4gUGxhY2Ugc3RhbmRpbmcgb3JkZXIgZm9yIHJlcGVhdCByZW5hbCBwYW5lbCBhbmQgdXJpbmUgYWxidW1pbiB0ZXN0aW5nIHByaW9yIHRvIG5leHQgbmVwaHJvbG9neSBmb2xsb3ctdXAuCjYuIEZvbGxvdyB1cCB3aXRoIG5lcGhyb2xvZ3kgaW4gNiBtb250aHMsIHNvb25lciBmb3Igd29yc2VuaW5nIEJQIGNvbnRyb2wsIGRlY3JlYXNlZCB1cmluZSBvdXRwdXQsIHByb2dyZXNzaXZlIGVkZW1hLCBkeXNwbmVhLCBvciBvdGhlciBjaGFuZ2UgaW4gY2xpbmljYWwgc3RhdHVzLgo3LiBObyBkaWFseXNpcyBwbGFubmluZyBpbmRpY2F0ZWQgYXQgdGhpcyB0aW1lIGdpdmVuIGN1cnJlbnQgb3V0cGF0aWVudCBzdGFiaWxpdHkuCg==",
+              "title": "Clinical note"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-008",
+              "display": "Office Visit"
+            }
+          ],
+          "period": {
+            "start": "2026-02-11"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-005",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-005",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "17436001",
+                "display": "Medical consultation with outpatient (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+              "display": "Dr. Helena Ortiz, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2024-06-17",
+          "end": "2024-06-17"
+        },
+        "reasonCode": [
+          {
+            "text": "New nephrology consult for CKD stage 3b with albuminuria"
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+          "display": "Rio Grande Nephrology Associates"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/194d4df3-20ac-42b3-9b2f-305834567e18",
+              "display": "Rio Grande Nephrology Associates, Albuquerque, New Mexico"
+            }
+          }
+        ],
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Denise Walker established care at Rio Grande Nephrology Associates in Albuquerque, New Mexico with Dr. Helena Ortiz, MD, for evaluation of diabetic kidney disease after her recent heart-failure hospitalization."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-008",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "17436001",
+                "display": "Medical consultation with outpatient (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary performer"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+              "display": "Omar Siddiqui, PA-C"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+              "display": "Rachel Montoya, RN"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Supervising nephrologist"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+              "display": "Dr. Helena Ortiz, MD"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-02-11",
+          "end": "2026-02-11"
+        },
+        "reasonCode": [
+          {
+            "text": "CKD follow-up with potassium and blood-pressure review"
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+          "display": "Rio Grande Nephrology Associates"
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/194d4df3-20ac-42b3-9b2f-305834567e18",
+              "display": "Rio Grande Nephrology Associates, Albuquerque, New Mexico"
+            }
+          }
+        ],
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Denise Walker followed up at Rio Grande Nephrology Associates in Albuquerque, New Mexico with Omar Siddiqui, PA-C, for ongoing CKD management under Dr. Helena Ortiz's supervision."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bmp-order",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-008-bmp-order",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "text": "Laboratory procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "866146005",
+              "display": "Serum metabolic panel (procedure)"
+            }
+          ],
+          "text": "Basic metabolic panel"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "authoredOn": "2026-02-11",
+        "requester": {
+          "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+          "display": "Omar Siddiqui, PA-C"
+        },
+        "occurrenceTiming": {
+          "repeat": {
+            "boundsPeriod": {
+              "start": "2026-02-25",
+              "end": "2026-03-04"
+            }
+          },
+          "code": {
+            "text": "Repeat in 2 to 3 weeks"
+          }
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-008-hyperkalemia-condition",
+            "display": "Mild hyperkalemia"
+          },
+          {
+            "reference": "Condition/enc-005-ckd3b",
+            "display": "Chronic kidney disease stage 3b"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-renal-panel-order",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-008-renal-panel-order",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "text": "Laboratory procedure"
+          }
+        ],
+        "code": {
+          "text": "Renal panel"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "authoredOn": "2026-02-11",
+        "requester": {
+          "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+          "display": "Omar Siddiqui, PA-C"
+        },
+        "occurrenceTiming": {
+          "code": {
+            "text": "Before next nephrology follow-up in 6 months"
+          }
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-005-ckd3b",
+            "display": "Chronic kidney disease stage 3b"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-urine-albumin-order",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-008-urine-albumin-order",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "text": "Laboratory procedure"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271075006",
+              "display": "Urine albumin/creatinine ratio measurement (procedure)"
+            }
+          ],
+          "text": "Urine albumin testing"
+        },
+        "subject": {
+          "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+          "display": "Denise Walker"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "authoredOn": "2026-02-11",
+        "requester": {
+          "reference": "Practitioner/6cb7a595-5680-455c-bb85-32f59b9c37e3",
+          "display": "Omar Siddiqui, PA-C"
+        },
+        "occurrenceTiming": {
+          "code": {
+            "text": "Before next nephrology follow-up in 6 months"
+          }
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-005-albuminuria-condition",
+            "display": "Persistent albuminuria"
+          }
+        ]
+      }
+    }
+  ]
+}

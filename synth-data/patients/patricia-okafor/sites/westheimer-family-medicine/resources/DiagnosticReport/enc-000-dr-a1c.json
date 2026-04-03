@@ -1,0 +1,48 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-000-dr-a1c",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "4548-4",
+        "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+      }
+    ],
+    "text": "Hemoglobin A1c"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "effectiveDateTime": "2022-01-18",
+  "issued": "2022-01-18T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+      "display": "Dr. Adebayo Olatunde, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-000-a1c",
+      "display": "Hemoglobin A1c"
+    }
+  ]
+}

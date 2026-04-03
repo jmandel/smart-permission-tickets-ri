@@ -1,0 +1,94 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-008-aud",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "remission",
+        "display": "Remission"
+      }
+    ],
+    "text": "In Early Sustained Remission"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "714829008",
+        "display": "Moderate alcohol dependence (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "F10.20",
+        "display": "Alcohol dependence, uncomplicated"
+      }
+    ],
+    "text": "Alcohol use disorder, moderate — in early sustained remission"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-011"
+  },
+  "onsetDateTime": "2022-07",
+  "recordedDate": "2023-01-09",
+  "recorder": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "note": [
+    {
+      "text": "Patient meets 5 of 11 DSM-5 criteria: drinking in larger amounts or for longer than intended, persistent desire or unsuccessful efforts to cut down, craving, continued use despite recurrent interpersonal problems, and tolerance."
+    },
+    {
+      "authorReference": {
+        "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+        "display": "Dr. Rosa Delgado"
+      },
+      "time": "2023-04-24",
+      "text": "Updated to early remission at IOP completion visit. Patient achieved sustained sobriety (sobriety date April 14, 2023), completed 12-week IOP (~36 group sessions, 12 individual counseling sessions), AUDIT score improved from 28 to 4, liver enzymes fully normalized (AST 24, ALT 28, GGT 38 — all normal). Continue naltrexone indefinitely."
+    },
+    {
+      "authorReference": {
+        "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+        "display": "Dr. Rosa Delgado"
+      },
+      "time": "2023-07-17",
+      "text": "Telephone aftercare follow-up. Patient reports sustained sobriety for 3 months (sober since mid-April 2023), regular AA attendance (2-3 meetings/week), stable mood, and no naltrexone side effects. Updated clinical status to early sustained remission. Reinforced relapse prevention strategies. Advised establishing addiction medicine or psychiatry follow-up at new location due to planned geographic relocation. Care at Bridgetown Recovery Center concluded."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

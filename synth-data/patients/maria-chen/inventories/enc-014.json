@@ -1,0 +1,163 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Annual wellness visit",
+    "period_start": "2025-03-11T09:00:00-07:00",
+    "period_end": "2025-03-11T09:45:00-07:00",
+    "participants": [
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "attender"
+      },
+      {
+        "name": "David Kim, MA",
+        "role": "participant"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 122,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 78,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 156,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.6,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 97,
+        "unit": "%",
+        "qualifier": "on room air"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 1,
+        "interpretation": "negative"
+      },
+      {
+        "name": "asthma control test total score",
+        "value": 22,
+        "interpretation": "well-controlled asthma"
+      },
+      {
+        "name": "AHC HRSN screening food insecurity: food didn't last",
+        "value": "Sometimes true"
+      },
+      {
+        "name": "AHC HRSN screening housing instability",
+        "interpretation": "negative"
+      },
+      {
+        "name": "AHC HRSN screening utility needs",
+        "interpretation": "negative"
+      },
+      {
+        "name": "AHC HRSN screening interpersonal safety",
+        "interpretation": "negative"
+      },
+      {
+        "name": "AHC HRSN screening overall score",
+        "interpretation": "below flagging threshold"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Well controlled (ACT 22). Albuterol use 1-2 times/month. No exacerbations since 2022 episode. Lungs clear on exam."
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Slow upward weight trend noted (BMI now 27.6, previously 27.0-27.2). Lifestyle counseling provided. Patient identifies barriers related to being a single working parent."
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs every 4-6 hours as needed for asthma symptoms",
+      "dispense": "1 inhaler, 2 refills",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents annual wellness exam including vital signs, physical examination (lungs clear, no acute findings), asthma review (well controlled, ACT 22), weight trend discussion with lifestyle counseling and barrier identification, PHQ-2 negative screen, AHC HRSN screening with borderline food insecurity finding below threshold, mammography shared decision-making discussion (patient defers at age 41), lab orders (CBC, CMP, lipid panel, HbA1c), and albuterol refill."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC ordered as part of annual wellness screening labs. Results not yet available at time of encounter documentation."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "CMP ordered as part of annual wellness screening labs. Results not yet available at time of encounter documentation."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Lipid panel ordered as part of annual wellness screening labs. Results not yet available at time of encounter documentation."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "ordered-not-resulted",
+      "description": "HbA1c ordered for screening given BMI in overweight range and family history of diabetes (mother). Results not yet available at time of encounter documentation."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness visit, routine preventive care for 36-year-old female",
+    "period_start": "2020-03-03",
+    "period_end": "2020-03-03",
+    "participants": [
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "primary care physician (attending/primary)"
+      },
+      {
+        "name": "David Kim, MA",
+        "role": "medical assistant (intake/support staff)"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure (systolic component)",
+        "value": 120,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": 76,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 150,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.6,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 0,
+        "interpretation": "negative (below threshold of 3)"
+      },
+      {
+        "name": "asthma control test (ACT) total score",
+        "value": 23,
+        "interpretation": "well controlled (score ≥20 indicates well-controlled asthma)"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "onset_date": "2008",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs every 4-6 hours as needed for wheezing",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated",
+      "date": "2019-10",
+      "primary_source": false,
+      "note": "Recorded as historical immunization from external pharmacy record. Not administered at this encounter."
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Annual wellness exam for 36-year-old female. Documents chief complaint, ROS, vitals, physical exam (lungs clear, cardiovascular normal, abdomen benign), PHQ-2 depression screen (negative), asthma assessment (ACT 23, well controlled), preventive care review (influenza vaccine current, Pap smear not yet due), medication reconciliation (albuterol refill), lab orders (CBC, CMP, lipid panel, HbA1c), and social note regarding food affordability concern declined for intervention. Plan includes continued asthma management, labs pending review, and follow-up in one year."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC ordered for routine annual wellness screening. Results pending; patient will be contacted if abnormalities found."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "ordered-not-resulted",
+      "description": "CMP ordered for routine annual wellness screening. Results pending; patient will be contacted if abnormalities found."
+    },
+    {
+      "type": "lipid panel (fasting)",
+      "report_state": "ordered-not-resulted",
+      "description": "Fasting lipid panel ordered for routine annual wellness screening. Results pending; patient will be contacted if abnormalities found."
+    },
+    {
+      "type": "hemoglobin A1c (HbA1c)",
+      "report_state": "ordered-not-resulted",
+      "description": "HbA1c ordered for diabetes screening given BMI in overweight range and family history of diabetes. Results pending; patient will be contacted if abnormalities found."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

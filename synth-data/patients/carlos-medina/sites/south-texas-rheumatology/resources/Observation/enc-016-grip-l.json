@@ -1,0 +1,49 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-016-grip-l",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "83173-5",
+        "display": "Grip strength Hand - left Dynamometer"
+      }
+    ],
+    "text": "Grip strength, left hand (dynamometer)"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "effectiveDateTime": "2022-07-11",
+  "valueQuantity": {
+    "value": 18,
+    "unit": "kg",
+    "system": "http://unitsofmeasure.org",
+    "code": "kg"
+  },
+  "bodySite": {
+    "text": "Left hand"
+  },
+  "note": [
+    {
+      "text": "Significantly reduced from pre-disease estimated baseline of 40+ kg"
+    }
+  ]
+}

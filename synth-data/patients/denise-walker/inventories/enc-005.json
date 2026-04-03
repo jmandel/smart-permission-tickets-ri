@@ -1,0 +1,272 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "rio-grande-nephrology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "New nephrology consult for CKD stage 3b with albuminuria",
+    "participants": [],
+    "service_provider": "Rio Grande Nephrology Associates",
+    "location": "Rio Grande Nephrology Associates, Albuquerque, New Mexico"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "136/84 mmHg",
+        "position": "seated",
+        "systolic": "136 mmHg",
+        "diastolic": "84 mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": "72 beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "16 breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": "97.7 F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": "98%"
+      },
+      {
+        "name": "body weight",
+        "value": "193 lb"
+      },
+      {
+        "name": "body height",
+        "value": "64 in"
+      },
+      {
+        "name": "body mass index",
+        "value": "33.1 kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "creatinine",
+        "value": "1.61 mg/dL"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": "37 mL/min/1.73 m2",
+        "interpretation": "low"
+      },
+      {
+        "name": "blood urea nitrogen",
+        "value": "28 mg/dL",
+        "interpretation": "high"
+      },
+      {
+        "name": "potassium",
+        "value": "4.7 mmol/L",
+        "interpretation": "normal"
+      },
+      {
+        "name": "sodium",
+        "value": "140 mmol/L",
+        "interpretation": "normal"
+      },
+      {
+        "name": "bicarbonate",
+        "value": "23 mmol/L",
+        "interpretation": "normal"
+      },
+      {
+        "name": "phosphorus",
+        "value": "3.9 mg/dL",
+        "interpretation": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": "3.8 g/dL",
+        "interpretation": "normal"
+      },
+      {
+        "name": "parathyroid hormone, intact",
+        "value": "74 pg/mL",
+        "interpretation": "high"
+      },
+      {
+        "name": "25-hydroxy vitamin D",
+        "value": "28 ng/mL",
+        "interpretation": "low"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "11.6 g/dL",
+        "interpretation": "low"
+      },
+      {
+        "name": "ferritin",
+        "value": "118 ng/mL",
+        "interpretation": "normal"
+      },
+      {
+        "name": "transferrin saturation",
+        "value": "24%",
+        "interpretation": "normal"
+      },
+      {
+        "name": "urine albumin-creatinine ratio",
+        "value": "286 mg/g",
+        "interpretation": "high"
+      },
+      {
+        "name": "urine sediment microscopic assessment",
+        "value": "bland urine sediment / no active sediment",
+        "specimen_type": "urine",
+        "interpretation": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "chronic kidney disease stage 3b due to diabetic kidney disease and hypertensive kidney disease",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "what_changed": "Nephrology specialty evaluation established care, confirmed stage 3b chronic kidney disease as stable for outpatient management, documented diabetic and hypertensive etiology, and documented no indication for biopsy or acute nephrologic workup."
+    },
+    {
+      "name": "persistent albuminuria",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "what_changed": "Persistence documented with urine albumin-creatinine ratio 286 mg/g; continued kidney-protective therapy affirmed."
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "what_changed": "Blood pressure documented as reasonably controlled in clinic and by home readings, with ongoing home BP log review plan."
+    },
+    {
+      "name": "heart failure with reduced ejection fraction / cardiorenal physiology affecting renal hemodynamics",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "what_changed": "Renal dysfunction explicitly interpreted in the context of recent heart-failure hospitalization and ongoing diuretic therapy; continued monitoring of creatinine, potassium, and volume status planned."
+    },
+    {
+      "name": "paroxysmal atrial fibrillation",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chronic kidney disease mineral and bone disorder with mild secondary hyperparathyroidism and vitamin D insufficiency",
+      "clinical_status": "active",
+      "onset_date": "2024-06-17",
+      "action": "create"
+    },
+    {
+      "name": "vitamin D insufficiency",
+      "clinical_status": "active",
+      "onset_date": "2024-06-17",
+      "action": "create"
+    },
+    {
+      "name": "mild anemia of chronic kidney disease / chronic disease pattern",
+      "clinical_status": "active",
+      "onset_date": "2024-06-17",
+      "action": "create",
+      "what_changed": "Mild anemia documented with hemoglobin 11.6 g/dL, ferritin 118 ng/mL, and transferrin saturation 24%; no acute intervention required."
+    }
+  ],
+  "medications": [
+    {
+      "name": "sacubitril/valsartan",
+      "sig": "continue current regimen for renal and cardiac benefit",
+      "status": "active",
+      "reason": "chronic kidney disease with albuminuria; heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "empagliflozin",
+      "sig": "continue current regimen for renal and cardiac benefit",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus; chronic kidney disease with albuminuria; heart failure with reduced ejection fraction",
+      "action": "reference-existing"
+    },
+    {
+      "name": "diuretic therapy",
+      "sig": "continue existing heart-failure diuretic regimen managed with other clinicians",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction / volume management",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "name": "Progress note / nephrology consultation note",
+      "description": "New nephrology consultation documenting establishment of care for chronic kidney disease stage 3b with persistent albuminuria after recent heart-failure hospitalization. The note summarizes renal risk factors from diabetes and hypertension, reviewed renal and anemia/mineral bone disease labs, continued kidney-protective medications, documented no indication for biopsy or acute workup, and outlined follow-up monitoring."
+    },
+    {
+      "name": "Patient instructions / CKD education handout and medication safety review",
+      "description": "Education document covering chronic kidney disease self-management, importance of blood pressure and diabetes control, and coordination with cardiology while on diuretic therapy. Includes nephrotoxin avoidance instructions, specifically avoiding over-the-counter NSAIDs and notifying clinicians before contrast exposure, plus instructions to keep a home BP log and obtain repeat labs before follow-up."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Basic metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "creatinine",
+        "blood urea nitrogen",
+        "sodium",
+        "potassium",
+        "bicarbonate"
+      ]
+    },
+    {
+      "type": "Chronic kidney disease / renal monitoring laboratory report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "estimated glomerular filtration rate",
+        "phosphorus",
+        "albumin",
+        "parathyroid hormone, intact",
+        "25-hydroxy vitamin D"
+      ]
+    },
+    {
+      "type": "Anemia / iron studies report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "ferritin",
+        "transferrin saturation"
+      ]
+    },
+    {
+      "type": "Urine albumin assessment",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "urine albumin-creatinine ratio",
+        "urine sediment microscopic assessment"
+      ]
+    },
+    {
+      "type": "Repeat basic metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered for follow-up monitoring before the next nephrology visit; no repeat results available yet."
+    },
+    {
+      "type": "Repeat urine albumin testing",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered for follow-up monitoring of persistent albuminuria before the next nephrology visit; no repeat results available yet."
+    }
+  ],
+  "allergies": []
+}

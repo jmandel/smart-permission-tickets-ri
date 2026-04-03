@@ -1,0 +1,108 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-015",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "11429006",
+          "display": "Consultation (procedure)"
+        }
+      ],
+      "text": "Office Visit — Initial Electrophysiology Consultation"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending Electrophysiologist"
+        }
+      ],
+      "period": {
+        "start": "2026-02-16T09:00:00-06:00",
+        "end": "2026-02-16T10:00:00-06:00"
+      },
+      "individual": {
+        "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+        "type": "Practitioner",
+        "display": "Dr. James Lindgren, MD, FHRS"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Electrophysiology Fellow"
+        }
+      ],
+      "period": {
+        "start": "2026-02-16T09:00:00-06:00",
+        "end": "2026-02-16T10:00:00-06:00"
+      },
+      "individual": {
+        "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+        "type": "Practitioner",
+        "display": "Dr. Sarah Okonkwo, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-02-16T09:00:00-06:00",
+    "end": "2026-02-16T10:00:00-06:00"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "49436004",
+          "display": "Atrial fibrillation (disorder)"
+        }
+      ],
+      "text": "Initial EP consultation for atrial fibrillation"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+        "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+    "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Encounter type: Office visit (new patient consultation) Clinician: Dr. James Lindgren, MD, FHRS (with Dr."
+    }
+  ]
+}

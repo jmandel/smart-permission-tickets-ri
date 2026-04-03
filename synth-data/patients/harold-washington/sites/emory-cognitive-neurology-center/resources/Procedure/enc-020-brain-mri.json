@@ -1,0 +1,53 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-020-brain-mri",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-014-mri-order",
+      "display": "Repeat brain MRI for comparison to 2022 baseline imaging"
+    }
+  ],
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "816077007",
+        "display": "Magnetic resonance imaging of brain (procedure)"
+      }
+    ],
+    "text": "MRI of brain without and with intravenous gadolinium contrast"
+  },
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-020"
+  },
+  "performedDateTime": "2025-04-02",
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-alzheimers",
+      "display": "Alzheimer's disease, moderate stage"
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "12738006",
+          "display": "Brain structure (body structure)"
+        }
+      ],
+      "text": "Brain"
+    }
+  ],
+  "report": [
+    {
+      "reference": "DiagnosticReport/enc-020-mri-report",
+      "display": "MRI Brain without and with contrast report"
+    }
+  ]
+}

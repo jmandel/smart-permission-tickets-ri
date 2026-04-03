@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-005",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "17436001",
+          "display": "Medical consultation with outpatient (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+        "display": "Dr. Helena Ortiz, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-06-17",
+    "end": "2024-06-17"
+  },
+  "reasonCode": [
+    {
+      "text": "New nephrology consult for CKD stage 3b with albuminuria"
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+    "display": "Rio Grande Nephrology Associates"
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/194d4df3-20ac-42b3-9b2f-305834567e18",
+        "display": "Rio Grande Nephrology Associates, Albuquerque, New Mexico"
+      }
+    }
+  ],
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Denise Walker established care at Rio Grande Nephrology Associates in Albuquerque, New Mexico with Dr. Helena Ortiz, MD, for evaluation of diabetic kidney disease after her recent heart-failure hospitalization."
+    }
+  ]
+}

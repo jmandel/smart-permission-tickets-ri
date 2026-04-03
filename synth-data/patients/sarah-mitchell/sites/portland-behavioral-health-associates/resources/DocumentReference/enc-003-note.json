@@ -1,0 +1,72 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-003-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "28627-8",
+        "display": "Psychiatry Progress note"
+      }
+    ],
+    "text": "Psychiatry Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3c765566-f300-408d-b107-933d3a5fb6e8",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2019-10-07T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/62848ef5-e3df-40f4-b1c8-891d3c8932e7",
+      "type": "Practitioner",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UE9SVExBTkQgQkVIQVZJT1JBTCBIRUFMVEggQVNTT0NJQVRFUwoxNTIwIE5XIDE4dGggQXZlLCBTdWl0ZSAzMDQsIFBvcnRsYW5kLCBPUiA5NzIwOQpOUEk6IDIzNDU2Nzg5MDEKClBTWUNISUFUUklDIFBST0dSRVNTIE5PVEUKClBhdGllbnQ6IFNhcmFoIEVsaXphYmV0aCBNaXRjaGVsbApET0I6IDExLzE0LzE5OTMKRGF0ZSBvZiBTZXJ2aWNlOiAxMC8wNy8yMDE5ClByb3ZpZGVyOiBKYW1lcyBPa2Fmb3IsIE1EIChQc3ljaGlhdHJ5KQpWaXNpdCBUeXBlOiBGb2xsb3ctdXAsIE1lZGljYXRpb24gTWFuYWdlbWVudAoKU1VCSkVDVElWRToKTXMuIE1pdGNoZWxsIHByZXNlbnRzIGZvciBmb2xsb3ctdXAgcmVnYXJkaW5nIGxhbW90cmlnaW5lIHRpdHJhdGlvbiBmb3IgYmlwb2xhciBJSSBkaXNvcmRlci4gU2hlIHJlcG9ydHMgY29tcGxldGluZyB0aGUgc2VydHJhbGluZSB0YXBlciB3aXRob3V0IHNpZ25pZmljYW50IHdpdGhkcmF3YWwgc3ltcHRvbXMuIFNoZSByZWFjaGVkIHRoZSB0YXJnZXQgZG9zZSBvZiBsYW1vdHJpZ2luZSAyMDAgbWcgZGFpbHkgYXBwcm94aW1hdGVseSB0d28gd2Vla3MgYWdvLiBTaGUgc3RhdGVzIGhlciBtb29kIGhhcyAiZXZlbmVkIG91dC4iIFNoZSBhY2tub3dsZWRnZXMgbWlzc2luZyB0aGUgcHJvZHVjdGl2aXR5IGFzc29jaWF0ZWQgd2l0aCBoeXBvbWFuaWMgcGVyaW9kcyBidXQgcmVjb2duaXplcyB0aGF0IHRoZSBkZXByZXNzaXZlIGNyYXNoZXMgd2VyZSBkZXZhc3RhdGluZyBhbmQgdW5zdXN0YWluYWJsZS4gU2hlIGRlbmllcyBjdXJyZW50IHN1aWNpZGFsIGlkZWF0aW9uLCBzZWxmLWhhcm0gdXJnZXMsIG9yIGhvbWljaWRhbCBpZGVhdGlvbi4gU2xlZXAgaGFzIGltcHJvdmVkIHNpZ25pZmljYW50bHkgdG8gNy04IGhvdXJzIG5pZ2h0bHksIHVwIGZyb20gdGhlIGRpc3J1cHRlZCBwYXR0ZXJuIG5vdGVkIGF0IHByaW9yIHZpc2l0cy4gTm8gbWFuaWMgb3IgaHlwb21hbmljIHN5bXB0b21zIHJlcG9ydGVkLiBObyBkZXByZXNzaXZlIGVwaXNvZGVzIHNpbmNlIHJlYWNoaW5nIHRhcmdldCBkb3NlLiBTaGUgZGVuaWVzIHJhc2gsIG11Y29zYWwgbGVzaW9ucywgb3Igb3RoZXIgYWR2ZXJzZSBlZmZlY3RzIGZyb20gbGFtb3RyaWdpbmUuCgpBbGxlcmdpZXM6IFN1bGZhIGFudGliaW90aWNzIChUTVAtU01YKSAtIHJhc2gKCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMTgvNzQsIEhSIDcyLCBUZW1wIDk4LjYgRiwgUlIgMTQsIFNwTzIgOTklLCBXZWlnaHQgMTM5IGxicywgQk1JIDIyLjQKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcsIGFwcHJvcHJpYXRlbHkgZHJlc3NlZCBhbmQgZ3Jvb21lZC4gQ2FsbSwgY29vcGVyYXRpdmUuCk1lbnRhbCBTdGF0dXMgRXhhbTogQWxlcnQgYW5kIG9yaWVudGVkIHg0LiBTcGVlY2ggbm9ybWFsIHJhdGUsIHJoeXRobSwgYW5kIHZvbHVtZS4gTW9vZDogImV2ZW5lZCBvdXQuIiBBZmZlY3Q6IGV1dGh5bWljLCByZWFjdGl2ZSwgY29uZ3J1ZW50LiBUaG91Z2h0IHByb2Nlc3M6IGxpbmVhciwgZ29hbC1kaXJlY3RlZC4gVGhvdWdodCBjb250ZW50OiBubyBTSS9ISSwgbm8gZGVsdXNpb25zLCBubyBvYnNlc3Npb25zLiBQZXJjZXB0aW9uOiBubyBoYWxsdWNpbmF0aW9ucyByZXBvcnRlZC4gSW5zaWdodDogZ29vZCDigJQgcGF0aWVudCBkZW1vbnN0cmF0ZXMgdW5kZXJzdGFuZGluZyBvZiBiaXBvbGFyIElJIGRpYWdub3NpcyBhbmQgcmF0aW9uYWxlIGZvciBtZWRpY2F0aW9uIGNoYW5nZS4gSnVkZ21lbnQ6IGdvb2QuCgpTY3JlZW5pbmcgTWVhc3VyZXM6CiAgUEhRLTk6IDYgKG1pbGQgZGVwcmVzc2l2ZSBzeW1wdG9tcykKICBHQUQtNzogMyAobWluaW1hbCBhbnhpZXR5KQoKTGFiczoKICBMYW1vdHJpZ2luZSBzZXJ1bSBsZXZlbDogNS4yIG1jZy9tTCAodGhlcmFwZXV0aWMgcmFuZ2UgMy0xNCBtY2cvbUwpCiAgQ01QOiBXaXRoaW4gbm9ybWFsIGxpbWl0cwoKQVNTRVNTTUVOVDoKMS4gQmlwb2xhciBJSSBkaXNvcmRlciDigJQgcmVzcG9uZGluZyB0byB0cmVhdG1lbnQuIExhbW90cmlnaW5lIHRpdHJhdGlvbiBub3cgY29tcGxldGUgYXQgMjAwIG1nIGRhaWx5LiBTZXJ0cmFsaW5lIHN1Y2Nlc3NmdWxseSBkaXNjb250aW51ZWQuIFRoZXJhcGV1dGljIGRydWcgbGV2ZWwgY29uZmlybWVkIGF0IDUuMiBtY2cvbUwuIFBIUS05IGltcHJvdmVkIGZyb20gMTcgYXQgaW5pdGlhbCBQQ1AgcHJlc2VudGF0aW9uIHRvIDYgdG9kYXksIHJlZmxlY3Rpbmcgc2lnbmlmaWNhbnQgcmVkdWN0aW9uIGluIGRlcHJlc3NpdmUgc3ltcHRvbSBidXJkZW4uIE5vIGh5cG9tYW5pYyBzeW1wdG9tcy4gUGF0aWVudCB0b2xlcmF0aW5nIG1lZGljYXRpb24gd2l0aG91dCBhZHZlcnNlIGVmZmVjdHMsIHNwZWNpZmljYWxseSBubyByYXNoIG9yIFN0ZXZlbnMtSm9obnNvbiBzeW5kcm9tZSBjb25jZXJucy4KCjIuIEluc29tbmlhLCBzZWNvbmRhcnkgdG8gbW9vZCBkaXNvcmRlciDigJQgcmVzb2x2ZWQuIFNsZWVwIG5vcm1hbGl6ZWQgYXQgNy04IGhvdXJzIG5pZ2h0bHkgb24gY3VycmVudCByZWdpbWVuLgoKUExBTjoKMS4gQ29udGludWUgbGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5LiBUaXRyYXRpb24gY29tcGxldGUuIFRoZXJhcGV1dGljIGxldmVsIGNvbmZpcm1lZC4KMi4gTm8gbWVkaWNhdGlvbiBjaGFuZ2VzIGluZGljYXRlZCBhdCB0aGlzIHRpbWUuIFBhdGllbnQgaXMgY2xpbmljYWxseSBzdGFibGUuCjMuIE1vbml0b3IgZm9yIGFueSBlbWVyZ2VuY2Ugb2YgcmFzaCBvciBvdGhlciBsYW1vdHJpZ2luZSBhZHZlcnNlIGVmZmVjdHM7IHBhdGllbnQgY291bnNlbGVkIHRvIHNlZWsgaW1tZWRpYXRlIGNhcmUgaWYgcmFzaCBkZXZlbG9wcy4KNC4gUmVjaGVjayBsYW1vdHJpZ2luZSBsZXZlbCBhbmQgQ01QIGF0IG5leHQgdmlzaXQuCjUuIENvbnRpbnVlIFBIUS05IGFuZCBHQUQtNyBtb25pdG9yaW5nIGF0IGVhY2ggdmlzaXQuCjYuIEZvbGxvdyB1cCBpbiAzIG1vbnRocyBmb3Igcm91dGluZSBwc3ljaGlhdHJpYyBtZWRpY2F0aW9uIG1hbmFnZW1lbnQuCjcuIFBhdGllbnQgdG8gY29udGFjdCBvZmZpY2Ugc29vbmVyIGlmIG1vb2QgZGVzdGFiaWxpemF0aW9uLCBzbGVlcCBkaXNydXB0aW9uLCBTSSwgb3IgbWVkaWNhdGlvbiBzaWRlIGVmZmVjdHMgb2NjdXIuCgpKYW1lcyBPa2Fmb3IsIE1EClBzeWNoaWF0cnkKUG9ydGxhbmQgQmVoYXZpb3JhbCBIZWFsdGggQXNzb2NpYXRlcwpEYXRlIHNpZ25lZDogMTAvMDcvMjAxOQo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-003"
+      }
+    ],
+    "period": {
+      "start": "2019-10-07"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

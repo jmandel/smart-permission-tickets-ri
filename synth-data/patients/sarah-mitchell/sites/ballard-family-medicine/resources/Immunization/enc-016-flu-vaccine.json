@@ -1,0 +1,90 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-016-flu-vaccine",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "158",
+        "display": "Influenza, split virus, quadrivalent, preservative"
+      }
+    ],
+    "text": "Influenza vaccine, inactivated, 2024-2025 seasonal formulation"
+  },
+  "patient": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-016"
+  },
+  "occurrenceDateTime": "2024-10-08",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/55dcdcfa-a8e1-471f-aa13-104b433f7f78",
+    "display": "Ballard Family Medicine"
+  },
+  "site": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+        "code": "LD",
+        "display": "Left Deltoid"
+      }
+    ],
+    "text": "Left Deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "doseQuantity": {
+    "value": 0.5,
+    "unit": "mL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mL"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+        "type": "Practitioner",
+        "display": "Dr. Kevin Tran"
+      }
+    },
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "AP",
+            "display": "Administering Provider"
+          }
+        ],
+        "text": "Administering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+        "type": "Practitioner",
+        "display": "Dr. Kevin Tran"
+      }
+    }
+  ]
+}

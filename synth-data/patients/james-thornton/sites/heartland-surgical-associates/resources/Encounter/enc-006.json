@@ -1,0 +1,117 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-006",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "439740005",
+          "display": "Postoperative follow-up visit (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/537091c6-acfe-41e2-bf58-03bff451519d",
+    "display": "James Robert Thornton"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary Performer"
+        }
+      ],
+      "period": {
+        "start": "2026-02-05",
+        "end": "2026-02-05"
+      },
+      "individual": {
+        "reference": "Practitioner/de209106-04bd-4d20-ac3b-f6ba0ca100f4",
+        "type": "Practitioner",
+        "display": "Dr. Marcus Okonkwo"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-02-05",
+    "end": "2026-02-05"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "183644000",
+          "display": "Surgical follow-up (finding)"
+        }
+      ],
+      "text": "Post-readmission follow-up, wound clearance"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-003-ssi",
+        "display": "Surgical site infection, resolved"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      }
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-006-status-post-appendectomy",
+        "display": "Status post laparoscopic appendectomy for perforated appendicitis"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      }
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/87a967df-98a1-44c1-a0e1-24890c8c75d1",
+        "display": "Heartland Surgical Associates"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/f27c97af-3cd4-4e41-bf05-31a0763bd751",
+    "display": "Heartland Surgical Associates"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Encounter type: Office visit (scheduled follow-up) Clinician: Dr. Marcus Okonkwo (Acute Care Surgeon, NPI: 1285634701), Heartland Surgical Associates"
+    }
+  ]
+}

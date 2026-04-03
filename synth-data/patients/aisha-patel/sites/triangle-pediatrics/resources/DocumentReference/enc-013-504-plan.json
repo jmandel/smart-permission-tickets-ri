@@ -1,0 +1,64 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-013-504-plan",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "51851-4",
+        "display": "Administrative note"
+      }
+    ],
+    "text": "504 Plan Documentation for School Entry"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "date": "2025-03-17T09:00:00-04:00",
+  "author": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "type": "Practitioner",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "description": "Updated 504 plan documentation prepared for kindergarten entry, accommodating severe persistent asthma (rescue inhaler access, activity modifications) and food allergies (peanut and tree nut avoidance, anaphylaxis action plan, EpiPen availability at school).",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "title": "504 Plan Documentation — Kindergarten Entry"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-013"
+      }
+    ],
+    "period": {
+      "start": "2025-03-17T09:00:00-04:00"
+    }
+  }
+}

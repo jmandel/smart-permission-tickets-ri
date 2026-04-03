@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-014-aud",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "714829008",
+        "display": "Moderate alcohol dependence (disorder)"
+      }
+    ],
+    "text": "Alcohol use disorder, moderate, in sustained remission"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "onsetDateTime": "2023-01",
+  "recordedDate": "2024-07-15",
+  "note": [
+    {
+      "text": "Diagnosed January 2023. Completed 12-week IOP at Bridgetown Recovery Center. Sober since April 2023 with sustained remission >15 months. Continues naltrexone 50 mg daily and weekly AA attendance."
+    }
+  ]
+}

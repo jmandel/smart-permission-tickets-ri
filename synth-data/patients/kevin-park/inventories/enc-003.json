@@ -1,0 +1,153 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "Annual wellness visit via telemedicine",
+    "reason": "Annual wellness exam, COVID-era telehealth visit",
+    "period_start": "2020-06-08",
+    "period_end": "2020-06-08",
+    "participants": [],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine (patient at home), Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 132,
+        "unit": "mmHg",
+        "note": "average of recent home readings, patient-reported via wrist cuff"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 84,
+        "unit": "mmHg",
+        "note": "average of recent home readings, patient-reported via wrist cuff"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm",
+        "note": "patient-reported"
+      },
+      {
+        "name": "body weight",
+        "value": 183,
+        "unit": "lbs",
+        "note": "patient-reported, self-weighed"
+      }
+    ],
+    "labs": [
+      {
+        "name": "total cholesterol",
+        "value": 205,
+        "unit": "mg/dL",
+        "flag": "borderline high"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 124,
+        "unit": "mg/dL",
+        "flag": "borderline high",
+        "note": "improved from 138 mg/dL at prior visit"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 54,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 135,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.4,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.91,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "flag": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Well controlled on lisinopril per home BP readings (128–134 systolic range). No change in status or management."
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "LDL improved from 138 to 124 mg/dL with dietary changes. Still borderline. Statin not yet warranted per shared decision-making."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "Take 1 capsule by mouth once daily",
+      "status": "active",
+      "reason": "lipid management / dietary supplement",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Telemedicine annual wellness visit note documenting video visit format, patient-reported vitals (home BP, HR, weight), review of pre-visit lab results (lipid panel, A1c, CMP), assessment of controlled hypertension and improving hyperlipidemia, preventive care review (colonoscopy 2019 normal, COVID vaccination discussion), and plan to continue current regimen with follow-up in 12 months."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP drawn at affiliated lab prior to visit. Only creatinine (0.91 mg/dL) and potassium (4.1 mEq/L) are individually reported in the narrative. The full panel was reviewed but individual values for glucose, BUN, sodium, chloride, CO2, calcium, total protein, albumin, bilirubin, alkaline phosphatase, AST, and ALT are not documented."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": []
+}

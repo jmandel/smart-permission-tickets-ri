@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-overweight",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "238131007",
+        "display": "Overweight (finding)"
+      }
+    ],
+    "text": "Overweight"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-019"
+  },
+  "onsetDateTime": "2015-09-14",
+  "recordedDate": "2015-09-14",
+  "note": [
+    {
+      "text": "BMI 28.8 at annual wellness 2022-10-17. Weight trending up (201 lbs), likely related to decreased physical activity secondary to RA functional limitations. Counseled on dietary modifications and low-impact exercise."
+    }
+  ]
+}

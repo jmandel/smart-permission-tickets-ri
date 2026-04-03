@@ -1,0 +1,70 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-cond-afib-rvr",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item",
+          "display": "Problem List Item"
+        }
+      ],
+      "text": "Problem List Item"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "282825002",
+        "display": "Paroxysmal atrial fibrillation (disorder)"
+      }
+    ],
+    "text": "Paroxysmal atrial fibrillation"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "onsetDateTime": "2024-04-22",
+  "recordedDate": "2025-09-18",
+  "note": [
+    {
+      "text": "Paroxysmal atrial fibrillation remained controlled on apixaban. ECG showed sinus rhythm with occasional premature atrial complexes, and symptoms were limited to rare brief palpitations without syncope or known thromboembolism."
+    }
+  ]
+}

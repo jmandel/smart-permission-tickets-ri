@@ -1,0 +1,51 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-008-mda-referral",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "3457005",
+          "display": "Patient referral (procedure)"
+        }
+      ],
+      "text": "Referral"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183529009",
+        "display": "Referral to oncologist (procedure)"
+      }
+    ],
+    "text": "Urgent referral to MD Anderson Cancer Center, Thoracic Oncology (Dr. Carlos Menendez) for staging workup and tissue diagnosis"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "authoredOn": "2024-08-12",
+  "requester": {
+    "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+    "display": "Dr. Nisha Ramaswamy, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-008-lung-mass",
+      "display": "Suspected primary lung neoplasm of right upper lobe"
+    }
+  ],
+  "note": [
+    {
+      "text": "Urgent referral to MD Anderson Cancer Center, Thoracic Oncology, Dr. Carlos Menendez, for staging workup and tissue diagnosis. Will include CT images and consultation note."
+    }
+  ]
+}

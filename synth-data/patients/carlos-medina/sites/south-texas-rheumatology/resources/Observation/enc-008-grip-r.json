@@ -1,0 +1,44 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-008-grip-r",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "83174-3",
+        "display": "Grip strength Hand - right Dynamometer"
+      }
+    ],
+    "text": "Grip strength, right hand (dynamometer)"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "effectiveDateTime": "2021-06-14",
+  "valueQuantity": {
+    "value": 30,
+    "unit": "kg",
+    "system": "http://unitsofmeasure.org",
+    "code": "kg"
+  },
+  "bodySite": {
+    "text": "Right hand"
+  }
+}

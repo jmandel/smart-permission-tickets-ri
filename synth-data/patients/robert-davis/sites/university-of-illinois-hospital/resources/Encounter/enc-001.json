@@ -1,0 +1,133 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-001",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "inpatient encounter"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "32485007",
+          "display": "Hospital admission (procedure)"
+        }
+      ],
+      "text": "Inpatient Admission"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bb4f5104-f2ac-492e-8745-681517f118b4",
+    "display": "Robert James Davis"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/6340603d-b075-4470-9336-8d48a0514f58",
+        "type": "Practitioner",
+        "display": "Dr. Marcus Thompson"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "CON",
+              "display": "consultant"
+            }
+          ],
+          "text": "Consultant"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/23106dda-bc49-44b6-9579-2853e652a159",
+        "type": "Practitioner",
+        "display": "Dr. Lena Okafor"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-01-22T18:00:00-06:00",
+    "end": "2026-01-27T11:00:00-06:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Pulmonary tuberculosis, active — diagnosis confirmation and RIPE therapy initiation"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-000-tb",
+        "display": "Pulmonary tuberculosis, active"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      },
+      "rank": 1
+    }
+  ],
+  "hospitalization": {
+    "admitSource": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/admit-source",
+          "code": "emd",
+          "display": "From accident/emergency department"
+        }
+      ],
+      "text": "Emergency Department"
+    },
+    "dischargeDisposition": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+          "code": "home",
+          "display": "Home"
+        }
+      ],
+      "text": "Home with outpatient DOT follow-up"
+    }
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/bf27a19c-b1d1-42b6-8bae-e38c3d2b10fd",
+        "display": "University of Illinois Hospital"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/d2aeab73-b835-482a-bbb0-5b8f66d24069",
+    "display": "University of Illinois Hospital"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Robert was admitted directly from the ED to a negative-pressure isolation room on the inpatient medicine service at approximately 18:00 on January 22, 2026. The admission encompassed a 5-day hospital stay through discharge on January 27, 2026."
+    }
+  ]
+}

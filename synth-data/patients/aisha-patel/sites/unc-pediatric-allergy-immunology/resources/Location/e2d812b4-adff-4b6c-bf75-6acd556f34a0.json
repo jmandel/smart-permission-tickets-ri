@@ -1,0 +1,39 @@
+{
+  "resourceType": "Location",
+  "id": "e2d812b4-adff-4b6c-bf75-6acd556f34a0",
+  "status": "active",
+  "name": "UNC Medical Center",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(984) 974-1401",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "101 Manning Drive"
+    ],
+    "city": "Chapel Hill",
+    "state": "NC",
+    "postalCode": "27514",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/fd2a0035-eecf-4f79-99c0-77e5840535cd",
+    "display": "UNC Pediatric Allergy & Immunology"
+  }
+}

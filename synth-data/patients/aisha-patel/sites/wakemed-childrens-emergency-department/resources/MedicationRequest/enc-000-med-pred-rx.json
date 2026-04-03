@@ -1,0 +1,80 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-000-med-pred-rx",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "283077",
+        "display": "prednisoLONE sodium phosphate 15 MG in 5 mL Oral Solution"
+      }
+    ],
+    "text": "Prednisolone 12 mg oral, daily for 5 days"
+  },
+  "subject": {
+    "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "authoredOn": "2022-10-22",
+  "requester": {
+    "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+    "display": "Dr. Jason Trammell"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "241933001",
+          "display": "Peanut-induced anaphylaxis (disorder)"
+        }
+      ],
+      "text": "Anaphylaxis due to peanut ingestion (post-anaphylaxis corticosteroid taper)"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "12 mg (1 mg/kg/day) by mouth once daily for 5 days",
+      "asNeededBoolean": false
+    }
+  ],
+  "courseOfTherapyType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+        "code": "acute",
+        "display": "Short course (acute) therapy"
+      }
+    ],
+    "text": "Short course (acute) therapy"
+  },
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2022-10-22",
+      "end": "2022-10-27"
+    },
+    "expectedSupplyDuration": {
+      "value": 5,
+      "unit": "Day",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

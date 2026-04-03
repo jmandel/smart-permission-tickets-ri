@@ -1,0 +1,62 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "Post-anaphylaxis follow-up, allergy referral placed",
+    "period_start": "2022-10-28",
+    "period_end": "2022-10-28",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "peanut anaphylaxis",
+      "clinical_status": "resolved",
+      "onset_date": "2022-10-22",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "prednisolone oral solution",
+      "sig": "complete remaining 2 days of oral prednisolone as prescribed at discharge",
+      "status": "active",
+      "reason": "post-anaphylaxis treatment",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr) 0.15 mg intramuscular injection",
+      "sig": "administer intramuscularly as needed for signs of anaphylaxis; carry two-pack at all times",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents the post-anaphylaxis follow-up phone call with mother Priya Patel, 6 days after Aisha's ED visit at WakeMed for peanut-induced anaphylaxis. Covers recovery status, EpiPen Jr training confirmation, addition of peanut allergy to allergy list, anaphylaxis event added to problem list, and referral to UNC Pediatric Allergy & Immunology. Includes counseling on strict peanut and tree nut avoidance and daycare notification recommendations."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis",
+      "severity": "severe",
+      "criticality": "high",
+      "action": "create"
+    }
+  ]
+}

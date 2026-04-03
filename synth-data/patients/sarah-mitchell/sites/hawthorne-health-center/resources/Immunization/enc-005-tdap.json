@@ -1,0 +1,61 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-005-tdap",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "115",
+        "display": "Tdap"
+      }
+    ],
+    "text": "Tdap (tetanus, diphtheria, and acellular pertussis) vaccine, booster"
+  },
+  "patient": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "occurrenceDateTime": "2021-03-10",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/419deae8-b86b-47c9-a78a-ef5d3d36b9a0",
+    "display": "Hawthorne Health Center"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+        "display": "Dr. Emily Nakamura"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Tdap booster administered. Last dose in adolescence, overdue per adult immunization schedule."
+    }
+  ]
+}

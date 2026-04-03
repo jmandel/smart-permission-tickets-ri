@@ -1,0 +1,24 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-003-dr-tte",
+  "status": "final",
+  "code": {
+    "text": "Transthoracic echocardiogram"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2024-04-23",
+  "issued": "2024-04-23T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
+      "display": "University of New Mexico Hospital and Heart Failure Clinic"
+    }
+  ],
+  "conclusion": "Repeat transthoracic echocardiogram documented LVEF 33%, global left ventricular hypokinesis, mildly reduced right ventricular function, moderate left atrial enlargement, and no left ventricular thrombus."
+}

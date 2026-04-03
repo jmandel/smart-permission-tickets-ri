@@ -1,0 +1,126 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "university-of-minnesota-cardiac-electrophysiology-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office visit — new patient consultation (initial electrophysiology consultation)",
+    "reason": "Initial EP consultation for atrial fibrillation; evaluation of catheter ablation candidacy",
+    "period_start": "2026-02-16T09:00:00-06:00",
+    "period_end": "2026-02-16T10:00:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. James Lindgren, MD, FHRS",
+        "role": "attending electrophysiologist"
+      },
+      {
+        "name": "Dr. Sarah Okonkwo, MD",
+        "role": "electrophysiology fellow"
+      }
+    ],
+    "service_provider": "University of Minnesota Cardiac Electrophysiology Clinic",
+    "location": "University of Minnesota Cardiac Electrophysiology Clinic, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 130,
+        "value_diastolic": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "bpm",
+        "note": "irregularly irregular rhythm"
+      },
+      {
+        "name": "body weight",
+        "value": 180,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 69,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.5,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "atrial fibrillation, likely persistent",
+      "clinical_status": "active",
+      "onset_date": "2025-11",
+      "action": "update-existing",
+      "note": "Refined characterization at EP consultation: AF classified as likely persistent based on continuous AF on ECG and approximately 3 months of ongoing symptoms. EHRA symptom class IIb (symptoms affecting daily activity). Ablation candidacy assessment initiated."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metoprolol succinate 50 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "atrial fibrillation (rate control)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "apixaban 5 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "anticoagulation for atrial fibrillation (stroke prevention)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "consultation note",
+      "description": "Comprehensive electrophysiology consultation documenting referral from Dr. Angela Whitfield at Minnehaha Internal Medicine, detailed cardiac history including symptom onset in November 2025, review of outside records (ECG confirming AF, echocardiogram showing mild LA dilation and preserved LVEF, normal labs), physical examination confirming AF with controlled rate, assessment characterizing AF as likely persistent with EHRA class IIb symptoms, discussion of catheter ablation candidacy with patient and wife, and order for 48-hour Holter monitor to quantify AF burden."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "severity": "intolerance",
+      "action": "reference-existing"
+    }
+  ]
+}

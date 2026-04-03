@@ -1,0 +1,63 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-001-ondansetron",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1740467",
+        "display": "ondansetron 4 MG in 2 ML Injection"
+      }
+    ],
+    "text": "ondansetron 4 mg IV"
+  },
+  "subject": {
+    "reference": "Patient/bb4f5104-f2ac-492e-8745-681517f118b4",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2026-01-23",
+  "requester": {
+    "reference": "Practitioner/6340603d-b075-4470-9336-8d48a0514f58",
+    "type": "Practitioner",
+    "display": "Dr. Marcus Thompson"
+  },
+  "dosageInstruction": [
+    {
+      "text": "4 mg IV as needed for nausea"
+    }
+  ],
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "422587007",
+          "display": "Nausea (finding)"
+        }
+      ],
+      "text": "Nausea from RIPE therapy"
+    }
+  ],
+  "note": [
+    {
+      "text": "Administered twice on hospital day 2 (01/23/2026) with relief"
+    }
+  ]
+}

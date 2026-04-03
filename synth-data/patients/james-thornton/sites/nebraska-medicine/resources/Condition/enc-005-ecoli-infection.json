@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-ecoli-infection",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "71057007",
+        "display": "Infection caused by Escherichia coli (disorder)"
+      }
+    ],
+    "text": "Escherichia coli wound infection with mixed anaerobes"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "onsetDateTime": "2026-01-24",
+  "recordedDate": "2026-01-24",
+  "note": [
+    {
+      "text": "Wound culture from RLQ port site drainage grew Escherichia coli (pan-sensitive) and mixed anaerobes. Culture obtained at ED readmission on 01/22/2026, finalized 01/24/2026. Guided antibiotic step-down from IV piperacillin-tazobactam to oral ciprofloxacin plus metronidazole."
+    }
+  ]
+}

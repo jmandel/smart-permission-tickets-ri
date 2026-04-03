@@ -1,0 +1,82 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone Encounter",
+    "reason": "Asthma check-in, influenza vaccine scheduling",
+    "period_start": "2025-10-06",
+    "period_end": "2025-10-06",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21)",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 5 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg)",
+      "sig": "2 puffs inhaled PRN via spacer for wheezing/shortness of breath",
+      "status": "active",
+      "reason": "severe persistent asthma (rescue inhaler)",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents routine fall telephone check-in with mother Priya Patel regarding Aisha's asthma management. Covers asthma stability over summer, mild increase in morning cough with fall allergen season and school re-entry, medication adherence review, plan to continue current regimen unchanged, and scheduling of influenza vaccine nurse visit for the following week."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

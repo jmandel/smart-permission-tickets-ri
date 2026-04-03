@@ -1,0 +1,47 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-002-bmp-pod1",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "51990-0",
+        "display": "Basic metabolic panel - Blood"
+      }
+    ],
+    "text": "Basic Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "effectiveDateTime": "2026-01-13",
+  "issued": "2026-01-13T12:00:00-06:00",
+  "result": [
+    {
+      "reference": "Observation/enc-002-creatinine-pod1",
+      "display": "Creatinine 0.9 mg/dL"
+    },
+    {
+      "reference": "Observation/enc-002-glucose-pod1",
+      "display": "Glucose 102 mg/dL"
+    }
+  ],
+  "conclusion": "BMP unremarkable. Creatinine 0.9 mg/dL, glucose 102 mg/dL."
+}

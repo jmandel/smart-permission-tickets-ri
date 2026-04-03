@@ -1,0 +1,72 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-000-bmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "51990-0",
+        "display": "Basic metabolic panel - Blood"
+      }
+    ],
+    "text": "Basic Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "effectiveDateTime": "2026-01-12T22:00:00Z",
+  "issued": "2026-01-12T22:45:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/97b199c6-1b9f-4a71-ad7f-09b019ec7024",
+      "display": "Dr. Emily Tran"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-000-sodium",
+      "display": "Sodium"
+    },
+    {
+      "reference": "Observation/enc-000-potassium",
+      "display": "Potassium"
+    },
+    {
+      "reference": "Observation/enc-000-chloride",
+      "display": "Chloride"
+    },
+    {
+      "reference": "Observation/enc-000-bicarb",
+      "display": "Bicarbonate (CO2)"
+    },
+    {
+      "reference": "Observation/enc-000-bun",
+      "display": "Blood Urea Nitrogen (BUN)"
+    },
+    {
+      "reference": "Observation/enc-000-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-000-glucose",
+      "display": "Glucose"
+    }
+  ]
+}

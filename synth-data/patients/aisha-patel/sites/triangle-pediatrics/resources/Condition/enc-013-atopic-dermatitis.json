@@ -1,0 +1,65 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-013-atopic-dermatitis",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "24079001",
+        "display": "Atopic dermatitis (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "L20.9",
+        "display": "Atopic dermatitis, unspecified"
+      }
+    ],
+    "text": "Atopic dermatitis"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "onsetDateTime": "2021-09",
+  "recordedDate": "2025-03-17",
+  "note": [
+    {
+      "text": "Well controlled. Mild dry patches on bilateral forearms only, no active excoriation or lichenification. Continue ceramide moisturizer daily, triamcinolone 0.1% ointment PRN for flares."
+    }
+  ]
+}

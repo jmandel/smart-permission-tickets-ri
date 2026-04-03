@@ -1,0 +1,48 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "Lab results review, rheumatology referral confirmation",
+    "period_start": "2021-02-16",
+    "period_end": "2021-02-16",
+    "participants": [],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "suspected seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "verification_status": "provisional",
+      "onset_date": "late 2020",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "ibuprofen 400 mg oral tablet",
+      "sig": "take 400 mg by mouth as needed for joint pain and stiffness",
+      "status": "active",
+      "reason": "suspected rheumatoid arthritis — joint pain and stiffness",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documentation of Dr. Tran's telephone call with Carlos Medina to review laboratory results from 2021-02-08 (significantly elevated RF, strongly positive anti-CCP, elevated ESR and CRP, normal CBC/BMP/LFTs), explain their clinical significance as strongly suggestive of rheumatoid arthritis, confirm the rheumatology referral to South Texas Rheumatology with appointment scheduled for 2021-03-15, and advise continuation of ibuprofen PRN with instructions to call if symptoms worsen."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

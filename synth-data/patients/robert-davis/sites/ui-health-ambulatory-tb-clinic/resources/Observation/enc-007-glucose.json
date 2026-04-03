@@ -1,0 +1,75 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-007-glucose",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "1558-6",
+        "display": "Fasting glucose [Mass/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "Fasting Glucose"
+  },
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2026-03-05",
+  "valueQuantity": {
+    "value": 156,
+    "unit": "mg/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mg/dL"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "H",
+          "display": "High"
+        }
+      ],
+      "text": "High"
+    }
+  ],
+  "referenceRange": [
+    {
+      "low": {
+        "value": 70,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "high": {
+        "value": 100,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "text": "70–100 mg/dL"
+    }
+  ],
+  "note": [
+    {
+      "text": "Improved from 172 at 2-week visit; rifampin-metformin interaction may affect glycemic control"
+    }
+  ]
+}

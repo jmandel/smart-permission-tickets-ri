@@ -1,0 +1,127 @@
+{
+  "resourceType": "Patient",
+  "id": "32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+  "extension": [
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2054-5",
+            "display": "Black or African American"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "Black / Nigerian-American",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "Not Hispanic or Latino",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "She was enrolled in a Phase III clinical trial (NCT05820295 — a real-ish trial ID) comparing pembrolizumab + carboplatin/pemetrexed vs standard chemo alone for first-line treatment of stage III NSCLC. She signed informed consent in December 2024 and began treatment in January 2025. She has completed 4 cycles of chemo-immunotherapy with partial response on interim imaging. She continues maintenance pembrolizumab with regular monitoring.\n\nThe research institute (MD Anderson) uses a Permission Ticket to access Patricia's historical medical records from her community PCP and pulmonologist, covering the 3 years prior to enrollment through the present, to correlate treatment response with prior health status.\n\nThree sites, one state (TX). Tests Permission Ticket constraints on periods (research needs 2022–present, not her full medical history) and scopes (research needs Condition, Observation, DiagnosticReport, MedicationRequest, Procedure — broad but defined by study protocol)."
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "urn:oid:1.2.840.114350.1.13.houston-pulmonary-associates",
+      "value": "HPA-200481"
+    },
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-190bdb79160b5ea0ea721891"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Okafor",
+      "given": [
+        "Patricia",
+        "Chidinma"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "713-555-0147",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patricia.okafor@example.com",
+      "use": "home"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-08-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "4821 Westheimer Rd"
+      ],
+      "city": "Houston",
+      "state": "TX",
+      "postalCode": "77042",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "M",
+        "display": "Married"
+      }
+    ],
+    "text": "Married"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}

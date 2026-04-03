@@ -1,0 +1,82 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-013",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "82078001",
+          "display": "Collection of blood specimen for laboratory (procedure)"
+        }
+      ],
+      "text": "Lab Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+        "display": "Dr. James Okafor"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-07-08",
+    "end": "2025-07-08"
+  },
+  "reasonCode": [
+    {
+      "text": "Confirmatory APS antibody testing and thrombophilia panel"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/956a95a9-1922-4673-8b77-5e5629132274",
+        "display": "UC Health Hematology"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/ade8ba5c-4f94-4fb5-a45a-c0518657d3df",
+    "display": "UC Health Hematology"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Lisa presented for the scheduled confirmatory blood draw, 12 weeks and 2 days after the initial positive APS antibody results on April 14, 2025. No vitals were taken for this lab-only visit."
+    }
+  ]
+}

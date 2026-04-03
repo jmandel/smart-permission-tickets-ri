@@ -1,0 +1,34 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-012-referral-socialwork",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "308440001",
+        "display": "Referral to social worker (procedure)"
+      }
+    ],
+    "text": "Referral to social work for bereavement support and caregiver resources"
+  },
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "authoredOn": "2024-11-14",
+  "requester": {
+    "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+    "display": "Dr. Anita Desai"
+  },
+  "reasonReference": [
+    {
+      "reference": "Observation/enc-012-phq2-total",
+      "display": "PHQ-2 total score: 3 (positive screen)"
+    }
+  ]
+}

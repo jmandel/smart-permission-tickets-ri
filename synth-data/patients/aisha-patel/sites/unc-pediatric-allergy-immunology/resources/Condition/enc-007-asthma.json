@@ -1,0 +1,65 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-007-asthma",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "426656000",
+        "display": "Severe persistent asthma (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.50",
+        "display": "Severe persistent asthma, uncomplicated"
+      }
+    ],
+    "text": "Severe persistent asthma"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "onsetDateTime": "2023",
+  "recordedDate": "2024-05-20",
+  "note": [
+    {
+      "text": "Upgraded from moderate persistent to severe persistent asthma. Improved on Advair HFA 115/21 BID plus montelukast. FeNO improved from 38 to 24 ppb. Spirometry shows mild obstruction with borderline bronchodilator response. Rescue inhaler use approximately twice weekly. Omalizumab discussed as potential next step once patient turns 6 in March 2026."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-ra",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "provisional",
+        "display": "Provisional"
+      }
+    ],
+    "text": "Provisional"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item",
+          "display": "Problem List Item"
+        }
+      ],
+      "text": "Problem List Item"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "239791005",
+        "display": "Seropositive rheumatoid arthritis (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "M05.79",
+        "display": "Rheumatoid arthritis with rheumatoid factor of multiple sites without organ or systems involvement"
+      }
+    ],
+    "text": "Seropositive rheumatoid arthritis"
+  },
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "onsetDateTime": "2023-01-01",
+  "recordedDate": "2023-03-17",
+  "note": [
+    {
+      "text": "Inflammatory polyarthritis affecting bilateral MCP and PIP joints, more severe on the right hand. Characterized by morning stiffness lasting approximately 90 minutes, pain with joint movement, reduced grip strength, and mild soft-tissue swelling on examination. Positive RF 84 IU/mL, anti-CCP 112 units, ESR 52 mm/hr, CRP 18 mg/L, negative ANA."
+    }
+  ]
+}

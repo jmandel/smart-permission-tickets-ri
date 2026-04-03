@@ -1,0 +1,286 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "1bda4140-96af-46b5-8d23-53fe5163e756",
+    "extension": [
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2028-9",
+              "display": "Asian"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2029-7",
+              "display": "Asian Indian"
+            },
+            "url": "detailed"
+          },
+          {
+            "valueString": "Indian-American (Asian Indian)",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Not Hispanic or Latino",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      }
+    ],
+    "identifier": [
+      {
+        "use": "usual",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "MR",
+              "display": "Medical Record Number"
+            }
+          ],
+          "text": "Medical Record Number"
+        },
+        "system": "urn:oid:1.2.840.114350.1.13.861.2.7.5.737384.14",
+        "value": "UNC-PAI-20221114"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Patel",
+        "given": [
+          "Aisha",
+          "Priya"
+        ]
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "(919) 555-0142",
+        "use": "home"
+      }
+    ],
+    "gender": "female",
+    "birthDate": "2020-03-15",
+    "address": [
+      {
+        "use": "home",
+        "line": [
+          "Raleigh, Wake County"
+        ],
+        "city": "Raleigh",
+        "state": "NC",
+        "postalCode": "27601",
+        "country": "US"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+          "code": "UNK",
+          "display": "Unknown"
+        }
+      ],
+      "text": "N/A (minor child)"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ],
+    "managingOrganization": {
+      "reference": "Organization/fd2a0035-eecf-4f79-99c0-77e5840535cd",
+      "display": "UNC Pediatric Allergy & Immunology"
+    }
+  },
+  {
+    "resourceType": "Organization",
+    "id": "fd2a0035-eecf-4f79-99c0-77e5840535cd",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "National Provider Identifier"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1356482079"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Healthcare Provider"
+      }
+    ],
+    "name": "UNC Pediatric Allergy & Immunology",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "(984) 974-1401",
+        "use": "work"
+      },
+      {
+        "system": "fax",
+        "value": "(984) 974-1402",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "line": [
+          "101 Manning Drive"
+        ],
+        "city": "Chapel Hill",
+        "state": "NC",
+        "postalCode": "27514",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "National Provider Identifier"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1672935481"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Krishnamurthy",
+        "given": [
+          "Sunita"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360|2.7",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Doctor of Medicine"
+        }
+      },
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://nucc.org/provider-taxonomy",
+              "code": "207KA0200X",
+              "display": "Allergy & Immunology"
+            }
+          ],
+          "text": "Pediatric Allergist/Immunologist"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Location",
+    "id": "e2d812b4-adff-4b6c-bf75-6acd556f34a0",
+    "status": "active",
+    "name": "UNC Medical Center",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "OF",
+            "display": "Outpatient Facility"
+          }
+        ],
+        "text": "Outpatient Facility"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "(984) 974-1401",
+        "use": "work"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "line": [
+        "101 Manning Drive"
+      ],
+      "city": "Chapel Hill",
+      "state": "NC",
+      "postalCode": "27514",
+      "country": "US"
+    },
+    "managingOrganization": {
+      "reference": "Organization/fd2a0035-eecf-4f79-99c0-77e5840535cd",
+      "display": "UNC Pediatric Allergy & Immunology"
+    }
+  }
+]

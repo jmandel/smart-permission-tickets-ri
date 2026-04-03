@@ -1,0 +1,80 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-011-lung-mass",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "309529002",
+        "display": "Lung mass (finding)"
+      }
+    ],
+    "text": "Right upper lobe lung mass, suspicious for malignancy"
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "42400003",
+          "display": "Structure of upper lobe of right lung (body structure)"
+        }
+      ],
+      "text": "Right upper lobe of lung"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-011"
+  },
+  "onsetDateTime": "2024-08",
+  "abatementDateTime": "2024-10-02",
+  "recordedDate": "2024-09-16",
+  "recorder": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "note": [
+    {
+      "text": "4.2 cm spiculated mass with ipsilateral mediastinal lymphadenopathy (stations 4R and 7). Clinical stage at minimum IIIA (T2b N2). Tissue diagnosis pending. First identified on chest X-ray August 1, 2024; CT characterization August 8, 2024."
+    },
+    {
+      "text": "Resolved: Confirmed as primary pulmonary adenocarcinoma by EBUS-TBNA tissue diagnosis on 2024-10-02. See Condition/enc-013-adenocarcinoma for definitive diagnosis."
+    }
+  ]
+}

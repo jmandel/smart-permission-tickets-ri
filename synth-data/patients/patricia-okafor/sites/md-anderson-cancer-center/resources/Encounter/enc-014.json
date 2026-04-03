@@ -1,0 +1,99 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-014",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185389009",
+          "display": "Follow-up visit (procedure)"
+        }
+      ],
+      "text": "Office Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending Physician"
+        }
+      ],
+      "period": {
+        "start": "2024-10-15T09:00:00-05:00",
+        "end": "2024-10-15T09:55:00-05:00"
+      },
+      "individual": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Participation"
+        }
+      ],
+      "period": {
+        "start": "2024-10-15T09:00:00-05:00",
+        "end": "2024-10-15T09:55:00-05:00"
+      },
+      "individual": {
+        "reference": "Practitioner/f96088a6-9ff1-45de-8305-83d81938237c",
+        "display": "Jennifer Liu, RN"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-10-15T09:00:00-05:00",
+    "end": "2024-10-15T09:55:00-05:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Pathology review, molecular results review, goals-of-care discussion, treatment planning for non-small cell lung cancer"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+        "display": "The University of Texas MD Anderson Cancer Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia and Emeka returned to Dr. Menendez for a dedicated goals-of-care and treatment planning visit."
+    }
+  ]
+}

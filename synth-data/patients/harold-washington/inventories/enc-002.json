@@ -1,0 +1,167 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab",
+    "reason": "Follow-up diabetes and lipid labs",
+    "period_start": "2015-10-08T08:00:00-04:00",
+    "period_end": "2015-10-08T08:30:00-04:00",
+    "participants": [
+      {
+        "name": "Dr. Cynthia Okafor",
+        "role": "reviewing/ordering provider"
+      }
+    ],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6.8,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high",
+        "action": "create"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 118,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high",
+        "action": "create"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 198,
+        "unit": "mg/dL",
+        "reference_range": "< 200 mg/dL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 98,
+        "unit": "mg/dL",
+        "reference_range": "< 100 mg/dL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 44,
+        "unit": "mg/dL",
+        "reference_range": "> 40 mg/dL",
+        "flag": "low",
+        "action": "create"
+      },
+      {
+        "name": "triglycerides",
+        "value": 162,
+        "unit": "mg/dL",
+        "reference_range": "< 150 mg/dL",
+        "flag": "high",
+        "action": "create"
+      },
+      {
+        "name": "creatinine",
+        "value": 1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal",
+        "action": "create"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": 82,
+        "unit": "mL/min/1.73m²",
+        "reference_range": "≥ 60 mL/min/1.73m²",
+        "flag": "normal",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "results note",
+      "description": "Lab results review note for follow-up diabetes and lipid labs. Documents hemoglobin A1c improvement to 6.8%, LDL improvement to 98 mg/dL, stable renal function, and mildly elevated triglycerides. Dr. Okafor reviewed results, confirmed both diabetes and hyperlipidemia responding well to therapy, no medication changes, and scheduled next annual wellness visit for early 2016.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "basic metabolic panel",
+      "report_state": "summary-only",
+      "description": "BMP was ordered as part of the lab bundle. Only fasting glucose, creatinine, and eGFR values are individually documented in the narrative. The remaining BMP components (BUN, sodium, potassium, chloride, CO2, calcium) are not individually reported. Renal function noted as stable; results support continued metformin use."
+    }
+  ],
+  "allergies": []
+}

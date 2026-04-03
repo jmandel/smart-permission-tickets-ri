@@ -1,0 +1,346 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "uw-health-university-student-health-services",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Fever and rash, measles diagnosed",
+    "period_start": "2026-03-23",
+    "period_end": "2026-03-23",
+    "participants": [
+      {
+        "name": "Dr. Rachel Okonkwo",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "UW Health University Student Health Services",
+    "location": "UW Health University Student Health Services, Madison, WI"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 110,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 68,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 108,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 104.1,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 20,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "body weight",
+        "value": 175,
+        "unit": "lbs"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%"
+      }
+    ],
+    "labs": [
+      {
+        "name": "measles virus IgM antibody, serum",
+        "value": "Positive",
+        "flag": "abnormal",
+        "specimen": "serum",
+        "effective_date": "2026-03-24"
+      },
+      {
+        "name": "measles virus RNA by PCR, nasopharyngeal specimen",
+        "value": "Positive",
+        "flag": "abnormal",
+        "specimen": "nasopharyngeal swab",
+        "effective_date": "2026-03-25"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 3.2,
+        "unit": "10³/µL",
+        "reference_range": "4.5–11.0 × 10³/µL",
+        "flag": "low"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.8,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hematocrit",
+        "value": 43.5,
+        "unit": "%",
+        "reference_range": "38.3–48.6 %",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 195,
+        "unit": "10³/µL",
+        "reference_range": "150–400 × 10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "neutrophils, percentage",
+        "value": 58,
+        "unit": "%",
+        "reference_range": "40–70 %",
+        "flag": "normal"
+      },
+      {
+        "name": "lymphocytes, percentage",
+        "value": 18,
+        "unit": "%",
+        "reference_range": "20–40 %",
+        "flag": "low"
+      },
+      {
+        "name": "monocytes, percentage",
+        "value": 12,
+        "unit": "%",
+        "reference_range": "2–8 %",
+        "flag": "high"
+      },
+      {
+        "name": "sodium, serum",
+        "value": 138,
+        "unit": "mEq/L",
+        "reference_range": "136–145 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium, serum",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "reference_range": "3.5–5.1 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "chloride, serum",
+        "value": 101,
+        "unit": "mEq/L",
+        "reference_range": "98–106 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "carbon dioxide (bicarbonate), serum",
+        "value": 24,
+        "unit": "mEq/L",
+        "reference_range": "23–29 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "blood urea nitrogen (BUN)",
+        "value": 14,
+        "unit": "mg/dL",
+        "reference_range": "6–20 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 0.95,
+        "unit": "mg/dL",
+        "reference_range": "0.74–1.35 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose, serum",
+        "value": 92,
+        "unit": "mg/dL",
+        "reference_range": "74–106 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "calcium, serum",
+        "value": 9.2,
+        "unit": "mg/dL",
+        "reference_range": "8.5–10.5 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "total protein, serum",
+        "value": 7,
+        "unit": "g/dL",
+        "reference_range": "6.0–8.3 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin, serum",
+        "value": 4,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 52,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "high"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 38,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "alkaline phosphatase",
+        "value": 68,
+        "unit": "U/L",
+        "reference_range": "44–147 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "total bilirubin",
+        "value": 0.8,
+        "unit": "mg/dL",
+        "reference_range": "0.1–1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": 48,
+        "unit": "mg/L",
+        "reference_range": "< 3.0 mg/L",
+        "flag": "high"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "measles (rubeola)",
+      "clinical_status": "active",
+      "verification_status": "confirmed",
+      "onset_date": "2026-03-20",
+      "action": "create"
+    },
+    {
+      "name": "incomplete immunization status against measles",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild dehydration",
+      "clinical_status": "active",
+      "onset_date": "2026-03-20",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "500 mg by mouth every 6 hours as needed for fever and discomfort",
+      "status": "active",
+      "reason": "measles — fever and discomfort",
+      "action": "create"
+    },
+    {
+      "name": "vitamin A 200,000 international units oral",
+      "sig": "200,000 IU by mouth, one dose on day 1 (March 23) and one dose on day 2 (March 24)",
+      "status": "active",
+      "reason": "measles — WHO-recommended supplementation to reduce morbidity in young adults",
+      "action": "create"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "nasopharyngeal swab collection",
+      "description": "collection of nasopharyngeal specimen for measles RNA PCR testing",
+      "date": "2026-03-23",
+      "body_site": "nasopharynx",
+      "reason": "suspected measles — viral confirmation testing",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents urgent office visit for 21-year-old male presenting with classic measles prodrome (cough, coryza, conjunctivitis) followed by high fever and cephalocaudal maculopapular rash. Koplik spots identified. Airborne isolation initiated. Labs ordered including measles IgM, measles PCR, CBC, CMP, CRP. Diagnosis of measles confirmed. Supportive care with acetaminophen and vitamin A prescribed. Reportable disease notification filed."
+    },
+    {
+      "type": "public health case report",
+      "description": "Mandatory reportable disease notification filed same day to Public Health Madison & Dane County and Wisconsin Department of Health Services per Wisconsin Statute § 252. Includes patient demographics, clinical presentation, lab confirmatory results, travel history (Manila, Philippines, March 7–15), estimated infectious period (March 19–27, 2026), and campus exposure locations. State case ID: WI-MEAS-2026-0047."
+    },
+    {
+      "type": "patient instructions",
+      "description": "Written instructions provided to patient regarding airborne isolation requirements, expected clinical course of measles, oral rehydration guidance, and return precautions (worsening respiratory distress, altered mental status, persistent high fever beyond day 4 of rash). Includes isolation duration through March 27, 2026 and telehealth follow-up scheduled for March 26."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "measles IgM antibody serology",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "measles virus IgM antibody, serum"
+      ]
+    },
+    {
+      "type": "measles RNA PCR (molecular)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "measles virus RNA by PCR, nasopharyngeal specimen"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count",
+        "neutrophils, percentage",
+        "lymphocytes, percentage",
+        "monocytes, percentage"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sodium, serum",
+        "potassium, serum",
+        "chloride, serum",
+        "carbon dioxide (bicarbonate), serum",
+        "blood urea nitrogen (BUN)",
+        "creatinine, serum",
+        "glucose, serum",
+        "calcium, serum",
+        "total protein, serum",
+        "albumin, serum",
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)",
+        "alkaline phosphatase",
+        "total bilirubin"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergy (NKDA)",
+      "action": "reference-existing"
+    }
+  ]
+}

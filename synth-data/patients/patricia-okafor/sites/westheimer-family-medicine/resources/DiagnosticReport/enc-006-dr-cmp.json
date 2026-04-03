@@ -1,0 +1,49 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-006-dr-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive metabolic panel"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2024-08-01",
+  "issued": "2024-08-01T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+      "display": "Dr. Adebayo Olatunde, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-006-albumin",
+      "display": "Albumin"
+    }
+  ],
+  "conclusion": "Albumin 3.4 g/dL (mildly low); remainder unremarkable including normal renal and hepatic function"
+}

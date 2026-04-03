@@ -1,0 +1,50 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-010-temp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Body Temperature"
+  },
+  "subject": {
+    "reference": "Patient/ba7d7892-4ea6-4151-bb74-13db30b6c361",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "effectiveDateTime": "2025-05-19",
+  "valueQuantity": {
+    "value": 98.4,
+    "unit": "[degF]",
+    "system": "http://unitsofmeasure.org",
+    "code": "[degF]"
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

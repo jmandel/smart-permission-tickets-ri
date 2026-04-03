@@ -1,0 +1,195 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "virtual",
+    "type": "Annual wellness visit (telemedicine)",
+    "reason": "Annual wellness visit",
+    "period_start": "2020-10-19",
+    "period_end": "2020-10-19",
+    "participants": [],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body weight",
+        "value": "198 lb",
+        "note": "Self-reported by patient during telemedicine visit; not measured in office"
+      },
+      {
+        "name": "body mass index",
+        "value": "28.4 kg/m²",
+        "note": "Estimated from self-reported weight and chart height; not directly measured"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": "6.0 x10³/µL",
+        "reference_range": "4.5–11.0 x10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "15.0 g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": "235 x10³/µL",
+        "reference_range": "150–400 x10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": "101 mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": "1.0 mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase",
+        "value": "24 U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase",
+        "value": "22 U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": "210 mg/dL",
+        "reference_range": "<200 mg/dL desirable",
+        "flag": "borderline high"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": "128 mg/dL",
+        "reference_range": "<100 mg/dL optimal",
+        "flag": "borderline high"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": "44 mg/dL",
+        "reference_range": ">40 mg/dL for men",
+        "flag": "borderline low"
+      },
+      {
+        "name": "triglycerides",
+        "value": "178 mg/dL",
+        "reference_range": "<150 mg/dL normal",
+        "flag": "borderline high"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.5%",
+        "reference_range": "4.0–5.6%",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": "1",
+        "interpretation": "Negative; does not meet threshold for further screening with PHQ-9",
+        "note": "Administered verbally via telemedicine"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Stable. Estimated BMI ~28.4. Counseled on diet and exercise."
+    },
+    {
+      "name": "dyslipidemia, borderline",
+      "clinical_status": "active",
+      "onset_date": "2020-10-19",
+      "action": "create",
+      "note": "New diagnosis. LDL 128, HDL 44, triglycerides 178, total cholesterol 210. 10-year ASCVD risk below statin threshold. Plan is lifestyle modification with dietary counseling."
+    },
+    {
+      "name": "morning finger stiffness, bilateral, new onset",
+      "clinical_status": "active",
+      "onset_date": "2020-09",
+      "action": "create",
+      "note": "Bilateral morning finger stiffness lasting 15–20 minutes, resolving with activity. No objective joint swelling. Attributed by patient to occupational use and cooler weather. Plan to monitor; return for in-office evaluation if duration exceeds 30 minutes, worsens, or swelling develops."
+    },
+    {
+      "name": "seasonal allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "seasonal allergic rhinitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Telemedicine annual wellness visit progress note documenting video-based annual wellness visit during COVID-19 pandemic, including review of systems, verbal PHQ-2 screening, self-reported vitals, musculoskeletal complaint, lab orders and results, assessment, and plan. Addendum dated 2020-10-22 documents review of lab results and communication to patient via portal."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP resulted 2020-10-22 and reported as within normal limits. Only four individual component values explicitly stated (glucose 101, creatinine 1.0, ALT 24, AST 22). Remaining standard CMP components not individually reported."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "maculopapular rash",
+      "action": "reference-existing"
+    }
+  ]
+}

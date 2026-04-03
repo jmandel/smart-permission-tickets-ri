@@ -1,0 +1,99 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-004-fluticasone",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "895994",
+        "display": "fluticasone propionate 44 MCG/INHAL Metered Dose Inhaler, 120 Actuations"
+      }
+    ],
+    "text": "Fluticasone propionate 44 mcg metered-dose inhaler"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "authoredOn": "2023-03-15",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-persistent-asthma",
+      "display": "Mild persistent asthma"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "1 puff inhaled twice daily via spacer with mask",
+      "patientInstruction": "Inhale 1 puff (44 mcg) twice daily using spacer with mask.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 12,
+          "periodUnit": "h"
+        },
+        "code": {
+          "text": "twice daily"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "447694001",
+            "display": "Respiratory tract route (qualifier value)"
+          }
+        ],
+        "text": "Inhalation"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 44,
+            "unit": "mcg",
+            "system": "http://unitsofmeasure.org",
+            "code": "ug"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Discontinued 2024-03-15. Low-dose ICS monotherapy insufficient for moderate persistent asthma control. Replaced with fluticasone/salmeterol (Advair HFA 45/21) combination therapy."
+    }
+  ]
+}

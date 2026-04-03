@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-021-prediabetes",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "15777000",
+        "display": "Prediabetes (disorder)"
+      }
+    ],
+    "text": "Prediabetes"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-021"
+  },
+  "onsetDateTime": "2023-10-09",
+  "recordedDate": "2023-10-09",
+  "note": [
+    {
+      "text": "New diagnosis. A1c 5.7% (prediabetes range 5.7-6.4%), fasting glucose 104 mg/dL. Counseled on dietary modifications and increased physical activity as tolerated given RA limitations. Will monitor A1c in 6 months."
+    }
+  ]
+}

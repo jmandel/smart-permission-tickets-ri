@@ -1,0 +1,48 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-013-vision",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "exam",
+          "display": "Exam"
+        }
+      ],
+      "text": "Exam"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "28631-0",
+        "display": "Visual acuity study"
+      }
+    ],
+    "text": "Vision screening (Snellen)"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "effectiveDateTime": "2025-03-17T09:00:00-04:00",
+  "valueString": "20/25 bilaterally",
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "N",
+          "display": "Normal"
+        }
+      ],
+      "text": "Passed"
+    }
+  ]
+}

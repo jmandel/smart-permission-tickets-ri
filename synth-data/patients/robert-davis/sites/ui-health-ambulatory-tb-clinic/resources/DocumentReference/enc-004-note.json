@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-004-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Telemedicine Visit Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "date": "2026-02-13T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/fca1b37a-0004-4c92-8717-54842b25df2a",
+      "type": "Practitioner",
+      "display": "Dr. Lena Okafor"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/fca1b37a-0004-4c92-8717-54842b25df2a",
+    "type": "Practitioner",
+    "display": "Dr. Lena Okafor"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRU1FRElDSU5FIFZJU0lUIE5PVEUKCkRhdGU6IDAyLzEzLzIwMjYKUGF0aWVudDogUm9iZXJ0IEphbWVzIERhdmlzIChET0I6IDA5LzE0LzE5NjApCkNsaW5pY2lhbjogRHIuIExlbmEgT2thZm9yLCBJbmZlY3Rpb3VzIERpc2Vhc2UKU2l0ZTogVUkgSGVhbHRoIEFtYnVsYXRvcnkgVEIgQ2xpbmljICh0ZWxlbWVkaWNpbmUgdmlhIFVJIEhlYWx0aCB2aWRlbyBwbGF0Zm9ybSkKVmlzaXQgVHlwZTogVGVsZW1lZGljaW5lIOKAlCBET1QgYWRoZXJlbmNlIHJldmlldywgbWVkaWNhdGlvbiB0b2xlcmFuY2UgY2hlY2sKClNVQkpFQ1RJVkU6Ck1yLiBEYXZpcyB3YXMgc2VlbiB2aWEgdGVsZW1lZGljaW5lIGZyb20gaGlzIGhvbWUuIEhlIHJlcG9ydHMgZ29vZCBhZGhlcmVuY2Ugd2l0aCB3ZWVrZGF5IGRpcmVjdGx5IG9ic2VydmVkIHRoZXJhcHkgYW5kIHNlbGYtYWRtaW5pc3RlcmVkIHdlZWtlbmQgZG9zZXMuIEhlIGVuZG9yc2VzIG1pbGQgcGVyc2lzdGVudCBsb29zZSBzdG9vbHMsIHdoaWNoIGhlIGRlc2NyaWJlcyBhcyBtYW5hZ2VhYmxlLiBIZSBkZW5pZXMgbmF1c2VhLCB2b21pdGluZywgZmV2ZXIsIG5pZ2h0IHN3ZWF0cywgdmlzdWFsIGNoYW5nZXMsIGV4dHJlbWl0eSBudW1ibmVzcyBvciB0aW5nbGluZywgZGFyay1jb2xvcmVkIHN0b29sLCBvciBhYmRvbWluYWwgcGFpbi4gSGUgbWVudGlvbnMgZmVlbGluZyBzb21ld2hhdCBpc29sYXRlZCBhbmQgYm9yZWQgc3RheWluZyBob21lIGJ1dCBkZW5pZXMgZGVwcmVzc2VkIG1vb2Qgb3IgaG9wZWxlc3NuZXNzLiBIZSBoYXMgYmVlbiBpbiByZWd1bGFyIHBob25lIGNvbnRhY3Qgd2l0aCBoaXMgZGF1Z2h0ZXIgaW4gTWlsd2F1a2VlLgoKT0JKRUNUSVZFOgpWaXRhbHM6IE5vdCBvYnRhaW5lZCAodGVsZW1lZGljaW5lIGVuY291bnRlcikuCkdlbmVyYWw6IFBhdGllbnQgYXBwZWFyZWQgd2VsbCBvbiB2aWRlby4gTm8gcmVzcGlyYXRvcnkgZGlzdHJlc3Mgb2JzZXJ2ZWQuIENvbWZvcnRhYmxlIGF0IGhvbWUuCkxhYnM6IE5vbmUgZHJhd24gYXQgdGhpcyBlbmNvdW50ZXIuCgpDdXJyZW50IE1lZGljYXRpb25zOgotIFJpZmFtcGluIDYwMCBtZyBkYWlseQotIElzb25pYXppZCAzMDAgbWcgZGFpbHkKLSBQeXJpZG94aW5lIDUwIG1nIGRhaWx5Ci0gUHlyYXppbmFtaWRlIDE1MDAgbWcgZGFpbHkKLSBFdGhhbWJ1dG9sIDEyMDAgbWcgZGFpbHkKLSBMaXNpbm9wcmlsIDIwIG1nIGRhaWx5Ci0gTWV0Zm9ybWluIDEwMDAgbWcgQklECi0gQWxidXRlcm9sIEhGQSBpbmhhbGVyIFBSTgotIEFjZXRhbWlub3BoZW4gNTAwIG1nIFBSTgoKQVNTRVNTTUVOVDoKMS4gUHVsbW9uYXJ5IHR1YmVyY3Vsb3NpcywgYWN0aXZlIOKAlCBvbiBpbnRlbnNpdmUgcGhhc2UgUklQRSB0aGVyYXB5ICh3ZWVrIDMpLiBBZGhlcmVuY2UgY29uZmlybWVkIHZpYSBET1QgbG9nIGFuZCBwYXRpZW50IHJlcG9ydC4gTm8gc2lnbnMgb2YgZHJ1ZyB0b3hpY2l0eSBvciBjbGluaWNhbCBkZXRlcmlvcmF0aW9uIG9uIHRlbGVtZWRpY2luZSBhc3Nlc3NtZW50LiBNaWxkIEdJIHNpZGUgZWZmZWN0cyAobG9vc2Ugc3Rvb2xzKSBhcmUgdG9sZXJhYmxlIGFuZCBkbyBub3Qgd2FycmFudCBtZWRpY2F0aW9uIGFkanVzdG1lbnQgYXQgdGhpcyB0aW1lLgoyLiBTb2NpYWwgaXNvbGF0aW9uIOKAlCBwYXRpZW50IHJlcG9ydHMgYm9yZWRvbSBhbmQgaXNvbGF0aW9uIGR1cmluZyBob21lIGNvbmZpbmVtZW50OyBob3dldmVyLCBoZSBkZW5pZXMgZGVwcmVzc2VkIG1vb2QgYW5kIG1haW50YWlucyBmYW1pbHkgY29udGFjdC4gV2lsbCBjb250aW51ZSB0byBtb25pdG9yLgoKUExBTjoKMS4gQ29udGludWUgY3VycmVudCBSSVBFIHRoZXJhcHkgYW5kIGFsbCBob21lIG1lZGljYXRpb25zIHdpdGhvdXQgY2hhbmdlcy4KMi4gTGFiIGRyYXcgc2NoZWR1bGVkIGZvciAwMi8xOS8yMDI2OiBMRlRzIChBU1QsIEFMVCwgdG90YWwgYmlsaXJ1YmluLCBhbGthbGluZSBwaG9zcGhhdGFzZSksIENCQyB3aXRoIGRpZmZlcmVudGlhbCDigJQgdG8gbW9uaXRvciBmb3IgaGVwYXRvdG94aWNpdHkgYW5kIGhlbWF0b2xvZ2ljIGVmZmVjdHMgb2YgVEIgbWVkaWNhdGlvbnMuCjMuIE5leHQgaW4tcGVyc29uIHZpc2l0IHNjaGVkdWxlZCAwMy8wNS8yMDI2IGZvciA2LXdlZWsgZm9sbG93LXVwIHdpdGggcmVwZWF0IHNwdXR1bSBBRkIgc21lYXIvY3VsdHVyZSBhbmQgY2hlc3QgWC1yYXkgdG8gYXNzZXNzIHRyZWF0bWVudCByZXNwb25zZS4KNC4gUGF0aWVudCBhZHZpc2VkIHRvIGNvbnRhY3QgY2xpbmljIGltbWVkaWF0ZWx5IGlmIGhlIGRldmVsb3BzIHdvcnNlbmluZyBHSSBzeW1wdG9tcywgamF1bmRpY2UsIGRhcmsgdXJpbmUsIHZpc3VhbCBjaGFuZ2VzLCBudW1ibmVzcy90aW5nbGluZywgb3IgZmV2ZXIuCjUuIENvbnRpbnVlIHRvIGFzc2VzcyBtb29kIGFuZCBzb2NpYWwgc3VwcG9ydCBhdCBmdXR1cmUgdmlzaXRzLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpMZW5hIE9rYWZvciwgTUQKSW5mZWN0aW91cyBEaXNlYXNlClVJIEhlYWx0aCBBbWJ1bGF0b3J5IFRCIENsaW5pYwo="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-004"
+      }
+    ],
+    "period": {
+      "start": "2026-02-13"
+    }
+  }
+}

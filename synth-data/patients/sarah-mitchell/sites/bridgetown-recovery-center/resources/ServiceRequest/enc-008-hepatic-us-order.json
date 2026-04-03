@@ -1,0 +1,48 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-008-hepatic-us-order",
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "105377009",
+        "display": "Ultrasonography of liver (procedure)"
+      }
+    ],
+    "text": "Hepatic ultrasound"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "authoredOn": "2023-01-09",
+  "requester": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-008-transaminase",
+      "display": "Mild transaminase elevation, likely alcohol-related"
+    }
+  ],
+  "note": [
+    {
+      "text": "Ordered to evaluate for alcohol-related liver disease given elevated liver enzymes and history of chronic heavy alcohol use. Performed 01/23/2023; results reviewed 02/13/2023 — unremarkable study."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

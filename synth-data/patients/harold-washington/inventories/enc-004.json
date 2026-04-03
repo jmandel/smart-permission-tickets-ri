@@ -1,0 +1,293 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness exam, Shingrix vaccine dose 1 administration",
+    "period_start": "2019-10-16",
+    "period_end": "2019-10-16",
+    "participants": [
+      {
+        "name": "Dr. Cynthia Okafor",
+        "role": "attending",
+        "specialty": "internal medicine"
+      }
+    ],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 132,
+        "unit": "mmHg",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "date": "2019-10-16",
+        "note": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 197,
+        "unit": "lb",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in",
+        "date": "2019-10-16"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.3,
+        "unit": "kg/m2",
+        "date": "2019-10-16"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6.8,
+        "unit": "%",
+        "reference_range": "4.0–5.6 %",
+        "flag": "high",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 116,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "creatinine",
+        "value": 1.1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": 78,
+        "unit": "mL/min/1.73m2",
+        "reference_range": "≥60 mL/min/1.73m2",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 194,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 96,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 44,
+        "unit": "mg/dL",
+        "reference_range": "≥40 mg/dL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "triglycerides",
+        "value": 158,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "high",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 6.2,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.1,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5 g/dL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      },
+      {
+        "name": "platelet count",
+        "value": 224,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal",
+        "specimen": "blood",
+        "date": "2019-10-09"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "unit": "score",
+        "interpretation": "negative screen",
+        "date": "2019-10-16"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "Take one 20 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "Take one 500 mg tablet by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "Take one 20 mg tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "recombinant zoster vaccine (Shingrix), dose 1 of 2",
+      "date": "2019-10-16",
+      "dose": "0.5 mL",
+      "route": "intramuscular injection",
+      "site": "left deltoid",
+      "note": "Dose 2 due in 2–6 months. Patient counseled on common side effects including injection site soreness, fatigue, and myalgia."
+    },
+    {
+      "name": "influenza vaccine, inactivated (2019–2020 season)",
+      "date": "2019-10-16",
+      "dose": "0.5 mL",
+      "route": "intramuscular injection",
+      "site": "right deltoid"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "date": "2019-10-16",
+      "description": "Annual wellness visit note for 73-year-old male with stable hypertension, type 2 diabetes, and hyperlipidemia. Documents review of chronic conditions (all well controlled on current regimen), vitals, lab review, PHQ-2 depression screening (negative), fall risk screening (low risk), diabetic foot exam (normal), administration of Shingrix dose 1 and influenza vaccine, and continuation plan for all current medications."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

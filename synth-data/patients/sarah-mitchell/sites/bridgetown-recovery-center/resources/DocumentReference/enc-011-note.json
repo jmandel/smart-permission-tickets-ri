@@ -1,0 +1,75 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-011-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2023-07-17T00:00:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "display": "Dr. Rosa Delgado"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNy8xNy8yMDIzClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsIChET0I6IDExLzE0LzE5OTMpClByb3ZpZGVyOiBEci4gUm9zYSBEZWxnYWRvLCBNRCAoQWRkaWN0aW9uIE1lZGljaW5lKQpTaXRlOiBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlciwgOTIwIFNFIFNhbmR5IEJsdmQsIFBvcnRsYW5kLCBPUiA5NzIxNApOUEk6IDM0NTY3ODkwMTIKVmlzaXQgVHlwZTogVGVsZXBob25lIGFmdGVyY2FyZSBmb2xsb3ctdXAKClJFQVNPTiBGT1IgQ0FMTDoKU2NoZWR1bGVkIGFmdGVyY2FyZSBmb2xsb3ctdXAsIGFwcHJveGltYXRlbHkgMyBtb250aHMgcG9zdC1JT1AgY29tcGxldGlvbi4KCkRJU0NVU1NJT046ClBhdGllbnQgcmVwb3J0cyBzdXN0YWluZWQgc29icmlldHkgd2l0aCAzIG1vbnRocyBzaW5jZSBsYXN0IGFsY29ob2xpYyBkcmluayAoc29iZXIgc2luY2UgbWlkLUFwcmlsIDIwMjMpLiBTaGUgaXMgYXR0ZW5kaW5nIEFBIG1lZXRpbmdzIHJlZ3VsYXJseSwgMi0zIHRpbWVzIHBlciB3ZWVrLCBhbmQgZGVzY3JpYmVzIHN0YWJsZSBtb29kIHRocm91Z2hvdXQuIFNoZSBjb250aW51ZXMgbmFsdHJleG9uZSA1MG1nIFBPIGRhaWx5IGFuZCBkZW5pZXMgYW55IHNpZGUgZWZmZWN0cyBpbmNsdWRpbmcgbmF1c2VhLCBoZWFkYWNoZSwgb3IgaGVwYXRvdG94aWNpdHkgc3ltcHRvbXMuIFBhdGllbnQgcmVwb3J0cyBmZWVsaW5nIG1vdGl2YXRlZCBhbmQgb3B0aW1pc3RpYyBhYm91dCBoZXIgcmVjb3ZlcnkuIFNoZSBpcyBjb25zaWRlcmluZyBhIGdlb2dyYXBoaWMgcmVsb2NhdGlvbiBmb3IgYSBmcmVzaCBzdGFydCBhbmQgaW5xdWlyZWQgYWJvdXQgY29udGludWl0eSBvZiBjYXJlIHBsYW5uaW5nLgoKUmV2aWV3ZWQgcmVsYXBzZSBwcmV2ZW50aW9uIHN0cmF0ZWdpZXMgaW5jbHVkaW5nIGlkZW50aWZpY2F0aW9uIG9mIHRyaWdnZXJzLCBjb3Bpbmcgc2tpbGxzLCBpbXBvcnRhbmNlIG9mIG1haW50YWluaW5nIEFBIGF0dGVuZGFuY2UsIGFuZCBoYXZpbmcgYSBzcG9uc29yIG9yIHN1cHBvcnQgc3lzdGVtIGluIHBsYWNlIGVzcGVjaWFsbHkgZHVyaW5nIHRoZSBzdHJlc3Mgb2YgcmVsb2NhdGlvbi4gQWZmaXJtZWQgaGVyIHByb2dyZXNzIGFuZCByZWluZm9yY2VkIHRoZSBpbXBvcnRhbmNlIG9mIGNvbnRpbnVpbmcgbmFsdHJleG9uZSBpbmRlZmluaXRlbHkgZ2l2ZW4gaGVyIGhpc3Rvcnkgb2YgbW9kZXJhdGUgQVVELgoKQVNTRVNTTUVOVDoKMS4gQWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIOKAlCBpbiBlYXJseSBzdXN0YWluZWQgcmVtaXNzaW9uLiBQYXRpZW50IGhhcyBtYWludGFpbmVkIHNvYnJpZXR5IGZvciAzIG1vbnRocyBwb3N0LUlPUCBjb21wbGV0aW9uLiBBVURJVCBub3QgZm9ybWFsbHkgcmUtYWRtaW5pc3RlcmVkIHZpYSB0ZWxlcGhvbmUgYnV0IHNlbGYtcmVwb3J0IGNvbnNpc3RlbnQgd2l0aCBjb250aW51ZWQgYWJzdGluZW5jZS4gVG9sZXJhdGluZyBuYWx0cmV4b25lIHdpdGhvdXQgYWR2ZXJzZSBlZmZlY3RzLgoyLiBCaXBvbGFyIElJIGRpc29yZGVyIChtYW5hZ2VkIGJ5IERyLiBPa2Fmb3IgYXQgUG9ydGxhbmQgQmVoYXZpb3JhbCBIZWFsdGggQXNzb2NpYXRlcykg4oCUIHN0YWJsZSBwZXIgcGF0aWVudCByZXBvcnQuIENvbnRpbnVlcyBsYW1vdHJpZ2luZSAyMDBtZyBkYWlseSBhbmQgcXVldGlhcGluZSA1MG1nIGF0IGJlZHRpbWUuCgpQTEFOOgoxLiBDb250aW51ZSBuYWx0cmV4b25lIDUwbWcgUE8gZGFpbHkgaW5kZWZpbml0ZWx5LgoyLiBDb250aW51ZSBBQSBhdHRlbmRhbmNlIGF0IGN1cnJlbnQgZnJlcXVlbmN5ICgyLTMgbWVldGluZ3Mvd2Vlayk7IGluY3JlYXNlIGlmIG5lZWRlZCBkdXJpbmcgcmVsb2NhdGlvbiB0cmFuc2l0aW9uLgozLiBBZHZpc2VkIHBhdGllbnQgdG8gZXN0YWJsaXNoIGNhcmUgd2l0aCBhbiBhZGRpY3Rpb24gbWVkaWNpbmUgb3IgcHN5Y2hpYXRyeSBwcm92aWRlciBhdCBoZXIgbmV3IGxvY2F0aW9uIHRvIGVuc3VyZSBjb250aW51aXR5IG9mIG5hbHRyZXhvbmUgcHJlc2NyaWJpbmcgYW5kIEFVRCBtb25pdG9yaW5nLgo0LiBSZWluZm9yY2VkIHJlbGFwc2UgcHJldmVudGlvbiBzdHJhdGVnaWVzLCBwYXJ0aWN1bGFybHkgYXJvdW5kIHRoZSBzdHJlc3Mgb2YgYSBnZW9ncmFwaGljIG1vdmUuCjUuIE5vIGZ1cnRoZXIgdmlzaXRzIHNjaGVkdWxlZCBhdCBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlci4gQ2FyZSBhdCB0aGlzIGZhY2lsaXR5IGNvbmNsdWRlZCBhcyBwYXRpZW50IHRyYW5zaXRpb25zIHdpdGggcGxhbm5lZCByZWxvY2F0aW9uLgo2LiBQYXRpZW50IGluc3RydWN0ZWQgdG8gY29udGFjdCBCcmlkZ2V0b3duIG9yIHByZXNlbnQgdG8gbG9jYWwgRUQgaWYgcmVsYXBzZSBvY2N1cnMgcHJpb3IgdG8gZXN0YWJsaXNoaW5nIG5ldyBwcm92aWRlci4KCkRyLiBSb3NhIERlbGdhZG8sIE1ECkFkZGljdGlvbiBNZWRpY2luZQpCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlcgo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-011"
+      }
+    ],
+    "period": {
+      "start": "2023-07-17"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

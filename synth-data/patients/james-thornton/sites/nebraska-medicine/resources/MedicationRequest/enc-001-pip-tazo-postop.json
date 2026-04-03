@@ -1,0 +1,88 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-001-pip-tazo-postop",
+  "status": "stopped",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1659137",
+        "display": "piperacillin / tazobactam 3.375 GM Injection"
+      }
+    ],
+    "text": "Piperacillin-tazobactam 3.375 g IV every 6 hours"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2026-01-12",
+  "requester": {
+    "reference": "Practitioner/a21fabab-5da7-4eea-aec8-26e9136e6d81",
+    "type": "Practitioner",
+    "display": "Dr. Marcus Okonkwo"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-perf-appendicitis",
+      "display": "Acute gangrenous appendicitis with perforation"
+    },
+    {
+      "reference": "Condition/enc-000-periappendiceal-abscess",
+      "display": "Periappendiceal abscess"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Piperacillin-tazobactam 3.375 g IV every 6 hours",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 6,
+          "periodUnit": "h"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 3.375,
+            "unit": "g",
+            "system": "http://unitsofmeasure.org",
+            "code": "g"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Discontinued at discharge on 2026-01-15. Transitioned to oral amoxicillin-clavulanate 875/125 mg for 7-day course."
+    }
+  ]
+}

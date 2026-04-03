@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Lab Visit Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2024-04-15T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/e5c09f84-0a65-4621-90f7-d4e8c349cc20",
+      "display": "Rachel Andersen, RN"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCIFZJU0lUIE5PVEUKCkRhdGU6IDA0LzE1LzIwMjQKUGF0aWVudDogS2V2aW4gSnVuZ2h3YW4gUGFyayAoRE9COiAwOS8xNC8xOTY4KQpWaXNpdCBUeXBlOiBTcGVjaW1lbiBjb2xsZWN0aW9uIOKAlCBmYXN0aW5nIGxhYiB3b3JrCk9yZGVyaW5nIFByb3ZpZGVyOiBBbmdlbGEgV2hpdGZpZWxkLCBNRApQZXJmb3JtaW5nIENsaW5pY2lhbjogUmFjaGVsIEFuZGVyc2VuLCBSTgpMb2NhdGlvbjogTWlubmVoYWhhIEludGVybmFsIE1lZGljaW5lLCBNaW5uZWFwb2xpcywgTU4KClJFQVNPTiBGT1IgVklTSVQ6ClNjaGVkdWxlZCBmYXN0aW5nIGJsb29kIGRyYXcgcGVyIERyLiBXaGl0ZmllbGQncyBzdGFuZGluZyBhbm51YWwgbGFiIG9yZGVyLCBvbmUgd2VlayBwcmlvciB0byBhbm51YWwgd2VsbG5lc3MgZXhhbS4KClBST0NFRFVSRToKVmVuaXB1bmN0dXJlIHBlcmZvcm1lZCBmb3IgZmFzdGluZyBzcGVjaW1lbiBjb2xsZWN0aW9uLiBQYXRpZW50IGNvbmZpcm1lZCBmYXN0aW5nIHN0YXR1cy4gTm8gYWR2ZXJzZSByZWFjdGlvbiB0byBibG9vZCBkcmF3LiBObyBjbGluaWNhbCBhc3Nlc3NtZW50IHBlcmZvcm1lZCBhdCB0aGlzIHZpc2l0LgoKTEFCIFJFU1VMVFMgKHJlc3VsdGVkIDA0LzE2LzIwMjQpOgoKTGlwaWQgUGFuZWwgKGZhc3RpbmcpOgogIFRvdGFsIGNob2xlc3Rlcm9sOiAyMDIgbWcvZEwKICBMREwgY2hvbGVzdGVyb2w6IDEyMiBtZy9kTAogIEhETCBjaG9sZXN0ZXJvbDogNTMgbWcvZEwKICBUcmlnbHljZXJpZGVzOiAxMzUgbWcvZEwKCkhlbW9nbG9iaW4gQTFjOiA1LjUlCgpGYXN0aW5nIEdsdWNvc2U6IDk4IG1nL2RMCgpDb21wcmVoZW5zaXZlIE1ldGFib2xpYyBQYW5lbDoKICBHbHVjb3NlOiA5OCBtZy9kTAogIEJVTjogMTUgbWcvZEwKICBDcmVhdGluaW5lOiAwLjkyIG1nL2RMCiAgZUdGUjogPjkwIG1ML21pbi8xLjczbTIKICBTb2RpdW06IDE0MSBtRXEvTAogIFBvdGFzc2l1bTogNC4wIG1FcS9MCiAgQ2FsY2l1bTogOS41IG1nL2RMCiAgQUxUOiAyNCBVL0wKICBBU1Q6IDIwIFUvTAoKU1VNTUFSWToKQWxsIHJlc3VsdHMgd2l0aGluIG5vcm1hbCBsaW1pdHMgb3IgYXQgYmFzZWxpbmUgZm9yIHRoaXMgcGF0aWVudC4gTGlwaWQgcGFuZWwgc2hvd3MgdG90YWwgY2hvbGVzdGVyb2wgMjAyIGFuZCBMREwgMTIyLCBjb25zaXN0ZW50IHdpdGggaGlzIGtub3duIGJvcmRlcmxpbmUgaHlwZXJsaXBpZGVtaWEgbWFuYWdlZCB3aXRoIGRpZXQgYW5kIGV4ZXJjaXNlLiBBMWMgNS41JSBpbmRpY2F0ZXMgbm8gZXZpZGVuY2Ugb2YgZGlhYmV0ZXMgb3IgcHJlZGlhYmV0ZXMuIFJlbmFsIGZ1bmN0aW9uLCBlbGVjdHJvbHl0ZXMsIGFuZCBsaXZlciBlbnp5bWVzIGFyZSBub3JtYWwuIFJlc3VsdHMgcm91dGVkIHRvIERyLiBXaGl0ZmllbGQncyBpbmJveCBmb3IgcmV2aWV3IGF0IHRoZSB1cGNvbWluZyBhbm51YWwgd2VsbG5lc3MgdmlzaXQuCgpSYWNoZWwgQW5kZXJzZW4sIFJOCk1pbm5laGFoYSBJbnRlcm5hbCBNZWRpY2luZQo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006"
+      }
+    ],
+    "period": {
+      "start": "2024-04-15",
+      "end": "2024-04-15"
+    }
+  }
+}

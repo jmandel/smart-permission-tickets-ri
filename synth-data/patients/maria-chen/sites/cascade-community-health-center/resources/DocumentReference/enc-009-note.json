@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-009-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "date": "2022-11-22T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/da2d0ec0-017a-4bc6-a178-2fa0338be62e",
+      "display": "Priya Nair, RN"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAxMS8yMi8yMDIyClBhdGllbnQ6IE1hcmlhIENoZW4KRE9COiAwOS8xNC8xOTgzCkNsaW5pY2lhbjogUHJpeWEgTmFpciwgUk4KU2l0ZTogQ2FzY2FkZSBDb21tdW5pdHkgSGVhbHRoIENlbnRlciwgODIwNSBTRSBGb3N0ZXIgUm9hZCwgUG9ydGxhbmQsIE9SIDk3MjA2CgpSZWFzb24gZm9yIENhbGw6IFNjaGVkdWxlZCBhc3RobWEgZm9sbG93LXVwCgpNYXJpYSB3YXMgY29udGFjdGVkIGJ5IHRlbGVwaG9uZSBmb3Igcm91dGluZSBhc3RobWEgZm9sbG93LXVwIHBlciBjYXJlIGNvb3JkaW5hdGlvbiBwcm90b2NvbC4gUGF0aWVudCByZXBvcnRzIHNpZ25pZmljYW50IGltcHJvdmVtZW50IGluIHN5bXB0b21zIHNpbmNlIGxhc3QgYXNzZXNzbWVudC4gQWxidXRlcm9sIGluaGFsZXIgKDkwIG1jZy9hY3R1YXRpb24gSEZBLCAyIHB1ZmZzIFBSTikgdXNlIGhhcyBkZWNyZWFzZWQgdG8gYXBwcm94aW1hdGVseSBldmVyeSBvdGhlciBkYXksIGRvd24gZnJvbSBwcmlvciBmcmVxdWVuY3kuIE1hcmlhIHN0YXRlcyBzaGUgaGFzIGJlZW4gaW1wbGVtZW50aW5nIGVudmlyb25tZW50YWwgdHJpZ2dlciBhdm9pZGFuY2Ugc3RyYXRlZ2llcywgaW5jbHVkaW5nIHdlYXJpbmcgYSBtYXNrIGR1cmluZyBjb2xkIHdlYXRoZXIgZXhwb3N1cmUgYW5kIHdoZW4gd29ya2luZyBhdCBhIGNsaWVudCdzIGhvbWUgd2l0aCBub3RhYmxlIGR1c3QgZXhwb3N1cmUgKGhvbWUgaGVhbHRoIGFpZGUgb2NjdXBhdGlvbikuCgpObyBub2N0dXJuYWwgc3ltcHRvbXMsIG5vIGV4ZXJjaXNlIGxpbWl0YXRpb24sIG5vIEVEIHZpc2l0cyBvciB1cmdlbnQgY2FyZSBuZWVkcyBmb3IgYXN0aG1hLiBObyBvcmFsIGNvcnRpY29zdGVyb2lkIHVzZS4gUGF0aWVudCBkZW5pZXMgYW55IG5ldyByZXNwaXJhdG9yeSBjb21wbGFpbnRzLgoKQXNzZXNzbWVudDogTWlsZCBpbnRlcm1pdHRlbnQgYXN0aG1hLCB3ZWxsIGNvbnRyb2xsZWQgb24gY3VycmVudCBQUk4gcmVnaW1lbi4gTm8gZXNjYWxhdGlvbiB0byBzdGVwLXVwIHRoZXJhcHkgaW5kaWNhdGVkIGF0IHRoaXMgdGltZS4KClBsYW46CjEuIENvbnRpbnVlIGFsYnV0ZXJvbCBzdWxmYXRlIDkwIG1jZy9hY3R1YXRpb24gSEZBIGluaGFsZXIsIDIgcHVmZnMgUFJOIGZvciB3aGVlemluZy9zaG9ydG5lc3Mgb2YgYnJlYXRoCjIuIE5vIGluaXRpYXRpb24gb2YgY29udHJvbGxlciB0aGVyYXB5IHdhcnJhbnRlZAozLiBSZWluZm9yY2UgZW52aXJvbm1lbnRhbCBhdm9pZGFuY2UgbWVhc3VyZXMgKG1hc2sgdXNlIGluIGNvbGQvZHVzdHkgZW52aXJvbm1lbnRzKQo0LiBSZXR1cm4gdG8gY2xpbmljIGZvciBuZXh0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdCBmb3Igcm91dGluZSBmb2xsb3ctdXAKNS4gUGF0aWVudCB0byBjYWxsIGlmIHN5bXB0b21zIHdvcnNlbiBvciByZXNjdWUgaW5oYWxlciB1c2UgaW5jcmVhc2VzCgpFbmNvdW50ZXIgZG9jdW1lbnRlZCBpbiBFSFIuIE5vIGZ1cnRoZXIgZm9sbG93LXVwIHNjaGVkdWxlZCBhdCB0aGlzIHRpbWUuCgpQcml5YSBOYWlyLCBSTgpDYXJlIENvb3JkaW5hdG9yCkNhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-009"
+      }
+    ],
+    "period": {
+      "start": "2022-11-22"
+    }
+  }
+}

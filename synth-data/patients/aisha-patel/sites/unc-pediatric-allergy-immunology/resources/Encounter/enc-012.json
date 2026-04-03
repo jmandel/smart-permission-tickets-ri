@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-012",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386472008",
+          "display": "Telephone consultation (procedure)"
+        }
+      ],
+      "text": "Telephone Encounter"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Priya Patel"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+        "display": "Dr. Sunita Krishnamurthy"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-02-10",
+    "end": "2025-02-10"
+  },
+  "reasonCode": [
+    {
+      "text": "Post-exacerbation follow-up discussion and biologic therapy consideration"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/e2d812b4-adff-4b6c-bf75-6acd556f34a0",
+        "display": "UNC Medical Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/fd2a0035-eecf-4f79-99c0-77e5840535cd",
+    "display": "UNC Pediatric Allergy & Immunology"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Dr. Krishnamurthy called Priya following Dr."
+    }
+  ]
+}

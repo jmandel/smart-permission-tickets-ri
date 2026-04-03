@@ -1,0 +1,159 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Annual wellness labs",
+    "period_start": "2023-04-06",
+    "period_end": "2023-04-06",
+    "participants": [],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "fasting glucose",
+        "value": 94,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.3,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 200,
+        "unit": "mg/dL",
+        "reference_range": "< 200 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 120,
+        "unit": "mg/dL",
+        "reference_range": "100–129 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 50,
+        "unit": "mg/dL",
+        "reference_range": "≥ 40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 150,
+        "unit": "mg/dL",
+        "reference_range": "< 150 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 7,
+        "unit": "x10^3/uL",
+        "reference_range": "4.5–11.0 x10^3/uL",
+        "flag": "normal",
+        "specimen_type": "blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 12.9,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal",
+        "specimen_type": "blood"
+      },
+      {
+        "name": "hematocrit",
+        "value": 38.8,
+        "unit": "%",
+        "reference_range": "36.0–46.0%",
+        "flag": "normal",
+        "specimen_type": "blood"
+      },
+      {
+        "name": "platelet count",
+        "value": 240,
+        "unit": "x10^3/uL",
+        "reference_range": "150–400 x10^3/uL",
+        "flag": "normal",
+        "specimen_type": "blood"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs inhaled as needed for asthma symptoms",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "laboratory results note",
+      "description": "Lab results note for annual wellness fasting labs drawn on 2023-04-06. Documents fasting glucose, HbA1c, lipid panel, CBC, and CMP results, all within normal limits. Includes clinical interpretation noting mild upward lipid trend and plan to reinforce dietary counseling via patient portal message with no medication changes indicated."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP reported as within normal limits. No individual component values provided beyond fasting glucose (which is reported as a standalone observation). No actionable findings."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    }
+  ],
+  "allergies": []
+}

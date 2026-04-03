@@ -1,0 +1,59 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-013-care-summary",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34133-9",
+        "display": "Summary of episode note"
+      }
+    ],
+    "text": "Care Summary Letter"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c1068aea-0dbe-41f7-8758-f67730282e54",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2024-04-22T09:30:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/2efc0eee-6c7e-4d58-a098-391353e81fc8",
+      "display": "Dr. Emily Nakamura"
+    }
+  ],
+  "description": "Comprehensive care summary prepared for patient's new primary care provider in Seattle, including active problem list, medication history, psychiatric treatment course, and substance use disorder recovery history.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "title": "Care Summary Letter for New PCP"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-013"
+      }
+    ],
+    "period": {
+      "start": "2024-04-22T09:00:00-07:00",
+      "end": "2024-04-22T09:30:00-07:00"
+    }
+  }
+}

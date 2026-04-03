@@ -1,0 +1,109 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "bilateral knee pain",
+    "period_start": "2023-06-12",
+    "period_end": "2023-06-12",
+    "participants": [],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 134,
+        "value_diastolic": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats per minute"
+      },
+      {
+        "name": "body weight",
+        "value": 165,
+        "unit": "pounds"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.4,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "degrees Fahrenheit"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths per minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "mild bilateral knee osteoarthritis",
+      "clinical_status": "active",
+      "onset_date": "2023-03",
+      "action": "create"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "Take 250 mg by mouth twice daily as needed for knee pain",
+      "status": "active",
+      "reason": "mild bilateral knee osteoarthritis",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note for bilateral knee pain evaluation. Documents subjective complaint of worsening bilateral knee pain over 2-3 months with mechanical pattern, musculoskeletal examination findings (bilateral crepitus, no effusion, full extension, flexion to 120 degrees, stable ligaments, non-antalgic gait), new diagnosis of mild bilateral knee osteoarthritis, initiation of naproxen, patient counseling on weight management and low-impact exercise, and reassessment of stable hypertension and prediabetes with lipid recheck deferred per patient preference. Follow-up as needed or at next annual wellness visit."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

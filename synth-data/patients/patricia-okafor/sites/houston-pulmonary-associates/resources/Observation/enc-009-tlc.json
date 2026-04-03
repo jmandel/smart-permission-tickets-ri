@@ -1,0 +1,71 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-009-tlc",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-008-pft-order",
+      "display": "Pulmonary function testing"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "procedure",
+          "display": "Procedure"
+        }
+      ],
+      "text": "Procedure"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "19862-2",
+        "display": "Total lung capacity"
+      }
+    ],
+    "text": "Total lung capacity (TLC)"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "effectiveDateTime": "2024-08-19",
+  "issued": "2024-08-19T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+      "display": "Dr. Nisha Ramaswamy, MD"
+    }
+  ],
+  "valueQuantity": {
+    "value": 4.1,
+    "unit": "L",
+    "system": "http://unitsofmeasure.org",
+    "code": "L"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "L",
+          "display": "Low"
+        }
+      ],
+      "text": "Low (80% predicted)"
+    }
+  ],
+  "note": [
+    {
+      "text": "80% predicted. Measured by plethysmography."
+    }
+  ]
+}

@@ -1,0 +1,750 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T03:52:27.595Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:b838bed3-9811-46c9-9ff1-cce96db07c59",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "b838bed3-9811-46c9-9ff1-cce96db07c59",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2028-9",
+                  "display": "Asian"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2034-7",
+                  "display": "Chinese"
+                },
+                "url": "detailed"
+              },
+              {
+                "valueString": "Chinese American",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "The PCP addresses her mild asthma (well controlled on PRN albuterol), does routine preventive care, and then discusses the screening results. Maria is receptive to help. The PCP creates a closed-loop referral to Rose City Community Services, a local community-based organization that provides food pantry access, SNAP application assistance, and transit vouchers.\n\nThe CBO receives the referral, a case worker contacts Maria, and over the following weeks connects her with food pantry enrollment and helps her apply for SNAP benefits. The Task is updated as milestones are reached, and eventually marked completed when services are delivered.\n\nTwo sites, one state (OR), one city. This tests Permission Ticket constraints on scopes — the CBO needs access only to the referral (ServiceRequest), tracking (Task), and screening results (Observation), not the patient's clinical records."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.0.1.7.5.737384.14",
+            "value": "RCCS-MRN-90481"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-fa977290ff474ac87d97e3a0"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Chen",
+            "given": [
+              "Maria",
+              "Yee-Ling"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "503-555-0147",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1983-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "Outer SE Portland"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "S",
+              "display": "Never Married"
+            }
+          ],
+          "text": "Single (never married)"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1b23faf8-f4f6-4713-b468-ec835df27b08",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "1b23faf8-f4f6-4713-b468-ec835df27b08",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1578234610"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "cg",
+                "display": "Community Group"
+              }
+            ],
+            "text": "Community-Based Organization (CBO) — Social Care Navigation"
+          }
+        ],
+        "name": "Rose City Community Services",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "503-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "6530 SE 82nd Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Flores",
+            "given": [
+              "Janet"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "768820003",
+                  "display": "Community health worker"
+                }
+              ],
+              "text": "Community health worker / case worker"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c7daa50e-91ec-487e-90d3-783041f9b230",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "c7daa50e-91ec-487e-90d3-783041f9b230",
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Tran",
+            "given": [
+              "Robert"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "text": "Program coordinator"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f973a269-94e3-483c-b925-807baabf0a73",
+      "resource": {
+        "resourceType": "Location",
+        "id": "f973a269-94e3-483c-b925-807baabf0a73",
+        "status": "active",
+        "name": "Rose City Community Services",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "CSC",
+                "display": "community service center"
+              }
+            ],
+            "text": "Community-Based Organization"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "503-555-0200",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "6530 SE 82nd Avenue"
+          ],
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97266",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/1b23faf8-f4f6-4713-b468-ec835df27b08",
+          "display": "Rose City Community Services"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-020-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34748-4",
+              "display": "Telephone encounter Note"
+            }
+          ],
+          "text": "Telephone Encounter Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+          "display": "Maria Chen"
+        },
+        "date": "2026-03-18T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+            "display": "Janet Flores"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMy8xOC8yMDI2ClNpdGU6IFJvc2UgQ2l0eSBDb21tdW5pdHkgU2VydmljZXMsIDY1MzAgU0UgODJuZCBBdmVudWUsIFBvcnRsYW5kLCBPUiA5NzI2NgpFbmNvdW50ZXIgVHlwZTogVGVsZXBob25lIOKAlCBSZWZlcnJhbCBJbnRha2UgQ2FsbApTdGFmZjogSmFuZXQgRmxvcmVzLCBDSFcvQ2FzZSBXb3JrZXI7IFJvYmVydCBUcmFuLCBQcm9ncmFtIENvb3JkaW5hdG9yIChyZWZlcnJhbCBwcm9jZXNzaW5nKQpQYXRpZW50OiBNYXJpYSBDaGVuCgpSRUFTT04gRk9SIENBTEw6CkludGFrZSBjYWxsIGZvbGxvd2luZyBlbGVjdHJvbmljIHJlZmVycmFsIHJlY2VpdmVkIGZyb20gQ2FzY2FkZSBDb21tdW5pdHkgSGVhbHRoIENlbnRlciAoRHIuIEFuZ2VsYSBNb3JhbGVzLCByZWZlcnJpbmcgcHJvdmlkZXIpLiBSZWZlcnJhbCBnZW5lcmF0ZWQgZnJvbSBBSEMgSFJTTiBzY3JlZW5pbmcgYWRtaW5pc3RlcmVkIGF0IGFubnVhbCB3ZWxsbmVzcyB2aXNpdCBpZGVudGlmeWluZyBmb29kIGluc2VjdXJpdHkgYW5kIHRyYW5zcG9ydGF0aW9uIGJhcnJpZXJzIHRvIG1lZGljYWwgYXBwb2ludG1lbnRzLiBSb2JlcnQgVHJhbiBwcm9jZXNzZWQgaW5jb21pbmcgcmVmZXJyYWwgYW5kIGFzc2lnbmVkIGNhc2UgdG8gSmFuZXQgRmxvcmVzIGZvciBvdXRyZWFjaC4KCkRJU0NVU1NJT046CkNvbnRhY3RlZCBjbGllbnQgYnkgdGVsZXBob25lIHdpdGhpbiBmaXZlIGJ1c2luZXNzIGRheXMgb2YgcmVmZXJyYWwgcmVjZWlwdC4gUmV2aWV3ZWQgaWRlbnRpZmllZCBuZWVkcyBmcm9tIEFIQyBIUlNOIHNjcmVlbmluZyByZXN1bHRzOiBmb29kIGluc2VjdXJpdHkgKHBvc2l0aXZlIG9uIGJvdGggSHVuZ2VyIFZpdGFsIFNpZ24gcXVlc3Rpb25zKSBhbmQgdHJhbnNwb3J0YXRpb24gYmFycmllcnMgYWZmZWN0aW5nIGFjY2VzcyB0byBtZWRpY2FsIGFwcG9pbnRtZW50cy4KCkNsaWVudCBjb25maXJtZWQgYm90aCBuZWVkcyBhbmQgcHJvdmlkZWQgYWRkaXRpb25hbCBjb250ZXh0LiBTaGUgaXMgYSBzaW5nbGUgbW90aGVyIG9mIHR3byBjaGlsZHJlbiAoYWdlcyAxMSBhbmQgOCksIHdvcmtzIHBhcnQtdGltZSBhcHByb3hpbWF0ZWx5IDI1IGhvdXJzL3dlZWssIGFuZCByZXBvcnRzIG1vbnRobHkgZm9vZCBidWRnZXQgYXMgcHJpbWFyeSBhcmVhIG9mIGZpbmFuY2lhbCBzdHJhaW4uIFNoZSBoYXMgbm90IHByZXZpb3VzbHkgYXBwbGllZCBmb3IgU05BUCBiZW5lZml0cy4gQ2xpZW50IHJlbGllcyBvbiBUcmlNZXQgcHVibGljIHRyYW5zaXQgZm9yIGFsbCB0cmFuc3BvcnRhdGlvbiBhbmQgcmVwb3J0cyBhIHJlY2VudCBidXMgcm91dGUgY2hhbmdlIGhhcyBzaWduaWZpY2FudGx5IGluY3JlYXNlZCB0cmF2ZWwgdGltZSB0byBzb21lIG1lZGljYWwgYXBwb2ludG1lbnRzLCBtYWtpbmcgYXR0ZW5kYW5jZSB2ZXJ5IGRpZmZpY3VsdC4KClNlcnZpY2VzIGRpc2N1c3NlZCBhbmQgb2ZmZXJlZDoKMS4gRm9vZCBwYW50cnkgZW5yb2xsbWVudCDigJQgUm9zZSBDaXR5IFNFIFBvcnRsYW5kIGRpc3RyaWJ1dGlvbiBzaXRlLCB3ZWVrbHkgcGlja3VwIHNjaGVkdWxlCjIuIFNOQVAgYXBwbGljYXRpb24gYXNzaXN0YW5jZSDigJQgaGFuZHMtb24gc3VwcG9ydCBpbmNsdWRpbmcgaGVscCBnYXRoZXJpbmcgcmVxdWlyZWQgZG9jdW1lbnRhdGlvbgozLiBUcmlNZXQgSE9QIGNhcmQgdHJhbnNpdCB2b3VjaGVycyDigJQgZGVzaWduYXRlZCBmb3IgbWVkaWNhbCBhcHBvaW50bWVudCB0cmFuc3BvcnRhdGlvbgoKQ2xpZW50IGV4cHJlc3NlZCBpbnRlcmVzdCBpbiBhbmQgYWdyZWVkIHRvIHByb2NlZWQgd2l0aCBhbGwgdGhyZWUgc2VydmljZXMuCgpQTEFOOgotIEVucm9sbCBjbGllbnQgaW4gZm9vZCBwYW50cnkgcHJvZ3JhbSBhdCBTRSBQb3J0bGFuZCBkaXN0cmlidXRpb24gc2l0ZQotIFNjaGVkdWxlIGZvbGxvdy11cCBjYWxsIGZvciB0aGUgZm9sbG93aW5nIHdlZWsgdG8gYmVnaW4gU05BUCBhcHBsaWNhdGlvbiBwcm9jZXNzCi0gQXJyYW5nZSB0cmFuc2l0IHZvdWNoZXIgZGlzdHJpYnV0aW9uIGZvciBtZWRpY2FsIGFwcG9pbnRtZW50cwotIENvbnRpbnVlIGNhc2UgbWFuYWdlbWVudCBhbmQgc2VydmljZSBjb29yZGluYXRpb24KClJlZmVycmFsIHN0YXR1cyB1cGRhdGVkOiByZXF1ZXN0ZWQg4oaSIGFjY2VwdGVkIOKGkiBpbi1wcm9ncmVzcy4KCkphbmV0IEZsb3JlcywgQ0hXClJvc2UgQ2l0eSBDb21tdW5pdHkgU2VydmljZXMK"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-020"
+            }
+          ],
+          "period": {
+            "start": "2026-03-18"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-021-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34748-4",
+              "display": "Telephone encounter Note"
+            }
+          ],
+          "text": "Telephone Encounter Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+          "display": "Maria Chen"
+        },
+        "date": "2026-04-02T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+            "display": "Janet Flores"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNC8wMi8yMDI2ClNpdGU6IFJvc2UgQ2l0eSBDb21tdW5pdHkgU2VydmljZXMsIDY1MzAgU0UgODJuZCBBdmVudWUsIFBvcnRsYW5kLCBPUiA5NzI2NgpQcm92aWRlcjogSmFuZXQgRmxvcmVzLCBDb21tdW5pdHkgSGVhbHRoIFdvcmtlcgpQYXRpZW50OiBNYXJpYSBDaGVuCkRPQjogMDkvMTQvMTk4MwpJbnN1cmFuY2U6IE9yZWdvbiBIZWFsdGggUGxhbiAoTWVkaWNhaWQpCgpSZWFzb24gZm9yIENhbGw6IFNjaGVkdWxlZCBmb2xsb3ctdXAgZm9yIFNOQVAgYXBwbGljYXRpb24gYXNzaXN0YW5jZSBhbmQgZm9vZCBwYW50cnkgZW5yb2xsbWVudCBjb25maXJtYXRpb24uCgpESVNDVVNTSU9OOgpDYWxsZWQgcGF0aWVudCBmb3Igc2NoZWR1bGVkIGZvbGxvdy11cCBwZXIgb3BlbiBzb2NpYWwgY2FyZSByZWZlcnJhbCBmcm9tIENhc2NhZGUgQ29tbXVuaXR5IEhlYWx0aCBDZW50ZXIgKERyLiBBbmdlbGEgTW9yYWxlcywgcmVmZXJyaW5nKS4gUGF0aWVudCB3YXMgc2NyZWVuZWQgcG9zaXRpdmUgZm9yIGZvb2QgaW5zZWN1cml0eSBhbmQgdHJhbnNwb3J0YXRpb24gYmFycmllcnMgb24gQUhDIEhSU04gc2NyZWVuaW5nIGF0IGhlciBhbm51YWwgd2VsbG5lc3MgdmlzaXQgaW4gTWFyY2ggMjAyNi4KCkNvbXBsZXRlZCBTTkFQIGFwcGxpY2F0aW9uIG9ubGluZSB3aXRoIHBhdGllbnQgZHVyaW5nIHRoZSBjYWxsLiBXYWxrZWQgcGF0aWVudCB0aHJvdWdoIGVsaWdpYmlsaXR5IHF1ZXN0aW9ucyBhbmQgYXNzaXN0ZWQgd2l0aCBnYXRoZXJpbmcgcmVxdWlyZWQgaW5jb21lIGRvY3VtZW50YXRpb24gKHBheSBzdHVicyBmcm9tIGN1cnJlbnQgZW1wbG95ZXIsIENvbWZvcnQgS2VlcGVycyBIb21lIENhcmU7IHBhcnQtdGltZSwgYXBwcm94aW1hdGVseSAyNSBocnMvd2VlaykuIEFwcGxpY2F0aW9uIHN1Ym1pdHRlZCBlbGVjdHJvbmljYWxseSB0byB0aGUgT3JlZ29uIERlcGFydG1lbnQgb2YgSHVtYW4gU2VydmljZXMuIFBlbmRpbmcgYXBwcm92YWwgZGV0ZXJtaW5hdGlvbi4KCkNvbmZpcm1lZCBmb29kIHBhbnRyeSBlbnJvbGxtZW50IGhhcyBiZWVuIHByb2Nlc3NlZC4gRmlyc3QgcGlja3VwIHNjaGVkdWxlZCBmb3IgMDQvMDUvMjAyNiBhdCB0aGUgUm9zZSBDaXR5IHBhbnRyeSBzaXRlLCBTRSBQb3J0bGFuZCAoU2F0dXJkYXlzLCA5IEFNIHRvIDEyIFBNLCB3ZWVrbHkpLgoKUHJvdmlkZWQgcGF0aWVudCB3aXRoIDEwIFRyaU1ldCBIT1AgY2FyZCB0cmFuc2l0IHZvdWNoZXJzIHByZS1sb2FkZWQgZm9yIG1lZGljYWwgYXBwb2ludG1lbnQgdHJpcHMgdG8gYWRkcmVzcyBkb2N1bWVudGVkIHRyYW5zcG9ydGF0aW9uIGJhcnJpZXIuCgpTRVJWSUNFUyBERUxJVkVSRUQ6CjEuIEZvb2QgcGFudHJ5IGVucm9sbG1lbnQg4oCUIGNvbXBsZXRlZCAwNC8wMi8yMDI2LCBmaXJzdCBwaWNrdXAgMDQvMDUvMjAyNgoyLiBTTkFQIGFwcGxpY2F0aW9uIOKAlCBzdWJtaXR0ZWQgMDQvMDIvMjAyNiwgcGVuZGluZyBhcHByb3ZhbAozLiBUcmFuc2l0IHZvdWNoZXJzIOKAlCAxMCBUcmlNZXQgSE9QIGNhcmQgdm91Y2hlcnMgZGlzdHJpYnV0ZWQgMDQvMDIvMjAyNgoKUExBTjoKLSBGb2xsb3cgdXAgb24gU05BUCBhcHBsaWNhdGlvbiBzdGF0dXMgdXBvbiByZWNlaXB0IG9mIGRldGVybWluYXRpb24gZnJvbSBPcmVnb24gREhTIChleHBlY3RlZCB3aXRoaW4gMzAgZGF5cykKLSBQYXRpZW50IHRvIGJlZ2luIHdlZWtseSBmb29kIHBhbnRyeSBwaWNrdXBzIHN0YXJ0aW5nIDA0LzA1LzIwMjYKLSBSZWZlcnJhbCB0YXNrIHJlbWFpbnMgaW4tcHJvZ3Jlc3MgcGVuZGluZyBTTkFQIGFwcHJvdmFsIGNvbmZpcm1hdGlvbgotIFdpbGwgdXBkYXRlIHJlZmVycmluZyBwcm92aWRlciBvbmNlIGFsbCBtaWxlc3RvbmVzIGNvbXBsZXRlZAoKSmFuZXQgRmxvcmVzLCBDSFcKUm9zZSBDaXR5IENvbW11bml0eSBTZXJ2aWNlcwo="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-021"
+            }
+          ],
+          "period": {
+            "start": "2026-04-02"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-022-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-022-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34748-4",
+              "display": "Telephone encounter Note"
+            }
+          ],
+          "text": "Telephone Encounter Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+          "display": "Maria Chen"
+        },
+        "date": "2026-04-20T00:00:00Z",
+        "author": [
+          {
+            "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+            "display": "Janet Flores"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiBBcHJpbCAyMCwgMjAyNgpTaXRlOiBSb3NlIENpdHkgQ29tbXVuaXR5IFNlcnZpY2VzLCA2NTMwIFNFIDgybmQgQXZlbnVlLCBQb3J0bGFuZCwgT1IgOTcyNjYKUGF0aWVudDogTWFyaWEgQ2hlbgpET0I6IDA5LzE0LzE5ODMKU3RhZmY6IEphbmV0IEZsb3JlcywgQ29tbXVuaXR5IEhlYWx0aCBXb3JrZXI7IFJvYmVydCBUcmFuLCBQcm9ncmFtIENvb3JkaW5hdG9yCkVuY291bnRlciBUeXBlOiBUZWxlcGhvbmUKUmVhc29uIGZvciBDYWxsOiBTTkFQIGFwcHJvdmFsIGNvbmZpcm1hdGlvbiBhbmQgcmVmZXJyYWwgY2FzZSBjbG9zdXJlCgpDT05UQUNUIE5PVEU6CgpKYW5ldCBGbG9yZXMgY29udGFjdGVkIE1hcmlhIENoZW4gYnkgdGVsZXBob25lIHRvIGNvbmZpcm0gdGhhdCBoZXIgU3VwcGxlbWVudGFsIE51dHJpdGlvbiBBc3Npc3RhbmNlIFByb2dyYW0gKFNOQVApIGFwcGxpY2F0aW9uIGhhcyBiZWVuIGFwcHJvdmVkLiBNYXJpYSB3aWxsIHJlY2VpdmUgJDQzMC9tb250aCBpbiBTTkFQIGJlbmVmaXRzIGZvciBhIGhvdXNlaG9sZCBvZiB0aHJlZSwgZWZmZWN0aXZlIEFwcmlsIDE1LCAyMDI2LiBNYXJpYSBjb25maXJtZWQgc2hlIGhhcyBzdWNjZXNzZnVsbHkgY29tcGxldGVkIHR3byB3ZWVrbHkgZm9vZCBwYW50cnkgcGlja3VwcyBhdCB0aGUgUm9zZSBDaXR5IGRpc3RyaWJ1dGlvbiBzaXRlIHNpbmNlIGVucm9sbG1lbnQgaW4gZWFybHkgQXByaWwuIFNoZSBhbHNvIHJlcG9ydGVkIHVzaW5nIG9uZSBUcmlNZXQgdHJhbnNpdCB2b3VjaGVyIGZvciBhIG1lZGljYWwgYXBwb2ludG1lbnQuCgpKYW5ldCByZXZpZXdlZCB3aGV0aGVyIE1hcmlhIGhhcyBhbnkgYWRkaXRpb25hbCB1bm1ldCBzb2NpYWwgbmVlZHMgYXQgdGhpcyB0aW1lLiBNYXJpYSByZXBvcnRzIHNoZSBmZWVscyB0aGUgY3VycmVudCBzdXBwb3J0cyBhcmUgc3VmZmljaWVudCBhbmQgdGhhdCBoZXIgZm9vZCBzaXR1YXRpb24gaGFzIGltcHJvdmVkIHNpZ25pZmljYW50bHkgc2luY2Ugc2VydmljZXMgYmVnYW4uCgpTRVJWSUNFIE1JTEVTVE9ORVMg4oCUIEFMTCBDT01QTEVURToKMS4gRm9vZCBwYW50cnkgZW5yb2xsbWVudCDigJQgYWN0aXZlLCB3ZWVrbHkgcGlja3VwcyBvbmdvaW5nCjIuIFNOQVAgYmVuZWZpdHMg4oCUIGFwcHJvdmVkIGFuZCBhY3RpdmUgKCQ0MzAvbW9udGgsIGVmZmVjdGl2ZSAwNC8xNS8yMDI2KQozLiBUcmFuc2l0IHZvdWNoZXJzIOKAlCBkaXN0cmlidXRlZCBhbmQgaW4gdXNlCgpESVNQT1NJVElPTjoKCkFsbCByZWZlcnJhbCBtaWxlc3RvbmVzIGhhdmUgYmVlbiBtZXQuIFJlZmVycmFsIFRhc2sgc3RhdHVzIHVwZGF0ZWQgdG8gY29tcGxldGVkIHdpdGggY29tcGxldGlvbiBkYXRlIG9mIEFwcmlsIDIwLCAyMDI2LiBPdXRwdXQgcmVmZXJlbmNlcyBkb2N1bWVudGluZyBlYWNoIG1pbGVzdG9uZSBhdHRhY2hlZCB0byBUYXNrIHJlc291cmNlLiBSb2JlcnQgVHJhbiByZXZpZXdlZCBhbmQgY2xvc2VkIHRoZSBjYXNlIGluIHRoZSBDQk8gc3lzdGVtLiBNYXJpYSB3YXMgcHJvdmlkZWQgd2l0aCBSb3NlIENpdHkgQ29tbXVuaXR5IFNlcnZpY2VzIGRpcmVjdCBjb250YWN0IGluZm9ybWF0aW9uICg1MDMtWFhYLVhYWFgpIHNob3VsZCBmdXR1cmUgc29jaWFsIHNlcnZpY2UgbmVlZHMgYXJpc2UuCgpDbGllbnQgZXhwcmVzc2VkIHNhdGlzZmFjdGlvbiB3aXRoIHNlcnZpY2VzIHJlY2VpdmVkLiBObyBhZGRpdGlvbmFsIHVubWV0IG5lZWRzIGlkZW50aWZpZWQgYXQgdGhpcyB0aW1lLiBDYXNlIGNsb3NlZC4K"
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-022"
+            }
+          ],
+          "period": {
+            "start": "2026-04-20"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-020",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-020",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "386472008",
+                "display": "Telephone consultation (procedure)"
+              }
+            ],
+            "text": "Telephone"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+          "display": "Maria Chen"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+              "display": "Janet Flores"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/c7daa50e-91ec-487e-90d3-783041f9b230",
+              "display": "Robert Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-03-18"
+        },
+        "reasonCode": [
+          {
+            "text": "Intake assessment following electronic social care referral from Cascade Community Health Center for food insecurity and transportation barriers identified on AHC HRSN screening"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f973a269-94e3-483c-b925-807baabf0a73",
+              "display": "Rose City Community Services"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/1b23faf8-f4f6-4713-b468-ec835df27b08",
+          "display": "Rose City Community Services"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Janet Flores (community health worker / case worker) contacts Maria by telephone within five business days of receiving the electronic referral from Cascade Community Health Center. Robert Tran (program coordinator) processed the incoming referral and assigned it to Janet."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-021",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-021",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "386472008",
+                "display": "Telephone consultation (procedure)"
+              }
+            ],
+            "text": "Telephone"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+          "display": "Maria Chen"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+              "display": "Janet Flores"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-04-02"
+        },
+        "reasonCode": [
+          {
+            "text": "SNAP application assistance, food pantry enrollment confirmed"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f973a269-94e3-483c-b925-807baabf0a73",
+              "display": "Rose City Community Services"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/1b23faf8-f4f6-4713-b468-ec835df27b08",
+          "display": "Rose City Community Services"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Janet Flores calls Maria for a scheduled follow-up. They complete the SNAP application online together during the call — Janet walks Maria through the eligibility questions, helps her gather income documentation (pay stubs from Comfort Keepers), and submits the application to the Oregon Department of Human Services."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-022",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-022",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "386472008",
+                "display": "Telephone consultation (procedure)"
+              }
+            ],
+            "text": "Telephone"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b838bed3-9811-46c9-9ff1-cce96db07c59",
+          "display": "Maria Chen"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/d829bb0a-f4f5-4e8e-b7ba-5621a5cca8d9",
+              "display": "Janet Flores"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Participation"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/c7daa50e-91ec-487e-90d3-783041f9b230",
+              "display": "Robert Tran"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-04-20"
+        },
+        "reasonCode": [
+          {
+            "text": "SNAP approved, referral completion"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/f973a269-94e3-483c-b925-807baabf0a73",
+              "display": "Rose City Community Services"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/1b23faf8-f4f6-4713-b468-ec835df27b08",
+          "display": "Rose City Community Services"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Janet Flores calls Maria to confirm that her SNAP application has been approved. Maria will receive $430/month in SNAP benefits for a household of three, effective April 15, 2026."
+          }
+        ]
+      }
+    }
+  ]
+}

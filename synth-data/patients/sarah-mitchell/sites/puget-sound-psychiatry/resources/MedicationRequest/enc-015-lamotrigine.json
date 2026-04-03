@@ -1,0 +1,99 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-015-lamotrigine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "198429",
+        "display": "lamoTRIgine 200 MG Oral Tablet"
+      }
+    ],
+    "text": "Lamotrigine 200 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/e8ff4331-6b4e-4958-9e7a-19b750ec0b70",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "authoredOn": "2024-08-12",
+  "requester": {
+    "reference": "Practitioner/e556db50-23dc-4996-a212-fcf38b3563c1",
+    "type": "Practitioner",
+    "display": "Dr. Anita Patel"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-015-bipolar-ii",
+      "display": "Bipolar II disorder"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 200 mg by mouth once daily",
+      "patientInstruction": "Take 200 mg by mouth once daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 200,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "MH",
+        "display": "mental health information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Well-Child Visit",
+    "reason": "3-year well-child examination, persistent asthma diagnosed, inhaled corticosteroid therapy initiated",
+    "period_start": "2023-03-15",
+    "period_end": "2023-03-15",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 100,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 22,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "value": "86/54",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 86,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 54,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.8,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 13.8,
+        "unit": "kg",
+        "interpretation": "48th percentile for age"
+      },
+      {
+        "name": "body height",
+        "value": 94,
+        "unit": "cm",
+        "interpretation": "55th percentile for age"
+      },
+      {
+        "name": "body mass index",
+        "value": 15.6,
+        "unit": "kg/m²",
+        "interpretation": "62nd percentile for age"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "ASQ-3 (Ages and Stages Questionnaire, Third Edition)",
+        "value": "all domains within normal limits",
+        "interpretation": "no developmental concerns"
+      },
+      {
+        "name": "PHQ-2 depression screening (modified for caregiver)",
+        "value": 0,
+        "interpretation": "negative, no concerns"
+      },
+      {
+        "name": "vision screening (Lea symbols)",
+        "value": "passed",
+        "interpretation": "bilateral 20/40, age-appropriate for 3-year-old"
+      },
+      {
+        "name": "hearing screening (conditioned play audiometry)",
+        "value": "passed"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild persistent asthma",
+      "clinical_status": "active",
+      "onset_date": "2023-03-15",
+      "action": "create"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone propionate 44 mcg metered-dose inhaler",
+      "sig": "1 puff inhaled twice daily via spacer with mask",
+      "status": "active",
+      "reason": "mild persistent asthma",
+      "action": "create"
+    },
+    {
+      "name": "albuterol sulfate 90 mcg metered-dose inhaler",
+      "sig": "2 puffs inhaled as needed for wheezing or shortness of breath via spacer",
+      "status": "active",
+      "reason": "asthma rescue therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector 0.15 mg intramuscular",
+      "sig": "as needed for anaphylaxis",
+      "status": "active",
+      "reason": "peanut and tree nut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone acetonide 0.1% topical ointment",
+      "sig": "apply to affected areas twice daily as needed for eczema flares",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 2.5 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "3-year well-child visit note documenting interval history of persistent respiratory symptoms, complete physical exam, vital signs, developmental screening (ASQ-3 normal, PHQ-2 score 0), vision and hearing screening (both passed), new diagnosis of mild persistent asthma with initiation of inhaled corticosteroid therapy, review of atopic conditions, and follow-up plan for asthma reassessment in 4–6 weeks."
+    },
+    {
+      "type": "patient instructions / care plan document",
+      "description": "Written asthma action plan reviewed with caregiver and provided as PDF for family and daycare. Defines green zone (fluticasone BID, no rescue inhaler needed), yellow zone (albuterol every 4 hours, call office if >3 uses in 24 hours), and red zone (albuterol every 20 minutes ×3, call 911 if no improvement)."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

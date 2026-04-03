@@ -1,0 +1,94 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-006-proc-bevacizumab-os",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1004045004",
+        "display": "Intravitreal injection of anti-vascular endothelial growth factor (procedure)"
+      }
+    ],
+    "text": "Intravitreal injection of bevacizumab into the left eye"
+  },
+  "subject": {
+    "reference": "Patient/7b1188a2-28ef-4d17-b783-2866c438f117",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "performedDateTime": "2025-03-06",
+  "recorder": {
+    "reference": "Practitioner/9df59e52-8c87-4bb4-9452-2ed6d4fef96d",
+    "display": "Dr. Neha Kapur, MD"
+  },
+  "performer": [
+    {
+      "function": {
+        "text": "Proceduralist"
+      },
+      "actor": {
+        "reference": "Practitioner/9df59e52-8c87-4bb4-9452-2ed6d4fef96d",
+        "display": "Dr. Neha Kapur, MD"
+      }
+    },
+    {
+      "function": {
+        "text": "Procedure support"
+      },
+      "actor": {
+        "reference": "Practitioner/c3fe1f89-a375-4be8-97ab-1bb887bd2e0f",
+        "display": "Teresa Lucero, RN"
+      }
+    }
+  ],
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-006-cond-dme-os",
+      "display": "Center-involving diabetic macular edema, left eye"
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "8966001",
+          "display": "Left eye structure (body structure)"
+        }
+      ],
+      "text": "Left eye"
+    }
+  ],
+  "outcome": {
+    "text": "Tolerated well"
+  },
+  "usedCode": [
+    {
+      "coding": [
+        {
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code": "1657065",
+          "display": "bevacizumab Injection"
+        }
+      ],
+      "text": "bevacizumab 1.25 mg/0.05 mL intravitreal injection"
+    }
+  ],
+  "followUp": [
+    {
+      "text": "Retina follow-up in 4 to 6 weeks for repeat OCT and consideration of additional anti-VEGF injection depending on response."
+    }
+  ],
+  "note": [
+    {
+      "text": "Topical anesthesia and povidone-iodine prep were used. Bevacizumab 1.25 mg/0.05 mL was injected intravitreally into the left eye, and post-injection precautions were reviewed."
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Procedure enc-006-proc-bevacizumab-os</p></div>"
+  }
+}

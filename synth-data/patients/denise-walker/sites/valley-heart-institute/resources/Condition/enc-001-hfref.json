@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-001-hfref",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "703272007",
+        "display": "Heart failure with reduced ejection fraction (disorder)"
+      }
+    ],
+    "text": "Heart failure with reduced ejection fraction, NYHA class II to III"
+  },
+  "subject": {
+    "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "onsetDateTime": "2022",
+  "recordedDate": "2022-06-08",
+  "note": [
+    {
+      "text": "EF 35% with mild LV dilation, global hypokinesis, grade II diastolic dysfunction, mild left atrial enlargement, and exertional dyspnea consistent with NYHA class II to III symptoms."
+    }
+  ]
+}

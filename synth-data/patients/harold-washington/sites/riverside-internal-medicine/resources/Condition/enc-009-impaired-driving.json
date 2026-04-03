@@ -1,0 +1,69 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-009-impaired-driving",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "300638003",
+        "display": "Difficulty driving a car (finding)"
+      }
+    ],
+    "text": "Impaired driving ability"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "onsetDateTime": "2024-09",
+  "recordedDate": "2024-09-18",
+  "evidence": [
+    {
+      "code": [
+        {
+          "text": "Backed car into mailbox while pulling out of driveway"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Reported by daughter Margaret Washington-Clarke. Harold backed his car into a mailbox while pulling out of the driveway. Dr. Okafor recommended patient no longer safe for driving and advised voluntary license surrender via Florida DHSMV."
+    }
+  ]
+}

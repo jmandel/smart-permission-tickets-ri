@@ -1,0 +1,97 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-010-aspirin",
+  "status": "draft",
+  "intent": "plan",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "243670",
+        "display": "aspirin 81 MG Oral Tablet"
+      }
+    ],
+    "text": "aspirin 81 mg oral tablet"
+  },
+  "subject": {
+    "reference": "Patient/ba7d7892-4ea6-4151-bb74-13db30b6c361",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "authoredOn": "2025-05-19",
+  "requester": {
+    "reference": "Practitioner/ca48b072-2f9f-4b8b-8c97-8ca62b8100dd",
+    "display": "Dr. Sarah Whitfield"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-010-suspected-aps",
+      "display": "Suspected antiphospholipid syndrome, obstetric type"
+    },
+    {
+      "reference": "Condition/enc-010-recurrent-pregnancy-loss",
+      "display": "Recurrent pregnancy loss"
+    }
+  ],
+  "note": [
+    {
+      "text": "To be initiated once decision to conceive is made, ideally 1 month prior to conception. Provisional plan contingent on confirmatory APS testing."
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 81 mg by mouth once daily, to be initiated once decision to conceive is made (ideally 1 month prior to conception)",
+      "patientInstruction": "Take 1 tablet (81 mg) by mouth once daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 81,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

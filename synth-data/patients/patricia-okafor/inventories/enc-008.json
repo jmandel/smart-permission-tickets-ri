@@ -1,0 +1,165 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "houston-pulmonary-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "initial pulmonary consultation",
+    "reason": "evaluation of persistent cough, unintentional weight loss, and right upper lobe opacity; CT chest review",
+    "period_start": "2024-08-12",
+    "period_end": "2024-08-12",
+    "participants": [
+      {
+        "name": "Dr. Nisha Ramaswamy, MD",
+        "role": "Pulmonary Medicine"
+      },
+      {
+        "name": "Dr. Adebayo Olatunde, MD",
+        "role": "referring physician",
+        "specialty": "Westheimer Family Medicine"
+      }
+    ],
+    "service_provider": "Houston Pulmonary Associates",
+    "location": "6624 Fannin St, Suite 1540, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "138/84",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 138,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 84,
+            "unit": "mmHg"
+          }
+        ],
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 80,
+        "unit": "beats/min",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 96,
+        "unit": "%",
+        "method": "pulse oximetry, on room air",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 155,
+        "unit": "lb",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 25.8,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "suspected primary lung neoplasm of right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-08-12",
+      "action": "create",
+      "note": "4.2 cm spiculated mass with ipsilateral mediastinal lymphadenopathy (stations 4R and 7), highly suspicious for non-small cell lung cancer. Tissue diagnosis not yet obtained. Radiographic staging suggests at least N2 disease."
+    },
+    {
+      "name": "persistent cough, nonproductive",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "reference-existing",
+      "note": "10 weeks duration, not responsive to antihistamines or benzonatate. Assessed as likely secondary to right upper lobe mass."
+    },
+    {
+      "name": "unintentional weight loss",
+      "clinical_status": "active",
+      "onset_date": "2024-05",
+      "action": "reference-existing",
+      "note": "Approximately 8 pounds over 2-3 months. Assessed as concerning for malignancy-related cachexia."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing",
+      "note": "Well-controlled on lisinopril 10 mg daily. No change in management."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 250 mg oral tablet",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "knee osteoarthritis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "pulmonary consultation note",
+      "description": "Initial pulmonary consultation documenting review of CT chest with contrast findings (4.2 cm spiculated right upper lobe mass with mediastinal lymphadenopathy), clinical assessment of high suspicion for primary lung malignancy, detailed physical examination findings including diminished right apical breath sounds, plan for pulmonary function testing and urgent referral to MD Anderson Cancer Center for staging workup and tissue diagnosis. Includes discussion with patient and husband regarding findings and next steps.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "CT chest with contrast",
+      "report_state": "summary-only",
+      "description": "Imaging performed 2024-08-08 at an external facility; reviewed and interpreted by Dr. Ramaswamy at this encounter. Findings: 4.2 cm spiculated mass in the right upper lobe; ipsilateral mediastinal lymphadenopathy at station 4R (largest node 2.1 cm) and station 7 (1.4 cm); no pleural effusion; no contralateral mediastinal or hilar lymphadenopathy; no osseous abnormalities. Interpreted as highly suspicious for primary lung malignancy."
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "Performed 2024-08-01 at referring office (Westheimer Family Medicine), reviewed at this encounter. Hemoglobin 11.8 g/dL noted as mildly low; otherwise described as unremarkable."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "Performed 2024-08-01 at referring office (Westheimer Family Medicine), reviewed at this encounter. Albumin 3.4 g/dL noted as mildly low; remainder unremarkable."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

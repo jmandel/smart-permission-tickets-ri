@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-020-mar",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "80565-5",
+        "display": "Medication administration record"
+      }
+    ],
+    "text": "Medication Administration Record"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "date": "2025-03-10T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+      "type": "Practitioner",
+      "display": "Dr. Carlos Menendez, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TWVkaWNhdGlvbiBBZG1pbmlzdHJhdGlvbiBSZWNvcmQgLSBFbmNvdW50ZXIgMDMvMTAvMjAyNQoKUGF0aWVudDogUGF0cmljaWEgQ2hpZGlubWEgT2thZm9yCkRPQjogMDgvMTQvMTk2MwpUcmVhdG1lbnQgQ3ljbGU6IDQgb2YgNCAoRmluYWwgSW5kdWN0aW9uIEN5Y2xlKQpQcm90b2NvbDogTkNUMDU4MjAyOTUKCkNoZW1vdGhlcmFweSBBZG1pbmlzdHJhdGlvbjoKMS4gUGVtYnJvbGl6dW1hYiAyMDAgbWcgSVYgb3ZlciAzMCBtaW51dGVzIC0gTm8gcmVhY3Rpb24KMi4gUGVtZXRyZXhlZCA4NjAgbWcgSVYgKDUwMCBtZy9twrIsIEJTQSAxLjcyIG3Csikgb3ZlciAxMCBtaW51dGVzIC0gTm8gcmVhY3Rpb24KMy4gQ2FyYm9wbGF0aW4gMzM4IG1nIElWIChBVUMgMy43NSwgY29udGludWVkIGF0IDI1JSBkb3NlIHJlZHVjdGlvbiBmcm9tIGN5Y2xlIDMpIG92ZXIgMzAgbWludXRlcyAtIE5vIHJlYWN0aW9uCgpTdXBwbGVtZW50YXRpb246CjQuIFZpdGFtaW4gQjEyIChjeWFub2NvYmFsYW1pbikgMTAwMCBtY2cgSU0gLSBQZXIgcGVtZXRyZXhlZCBzdXBwbGVtZW50YXRpb24gcHJvdG9jb2wsIGV2ZXJ5IDkgd2Vla3MgKGxhc3QgZG9zZSBhcHByb3hpbWF0ZWx5IEphbnVhcnkgMjAyNSwgZHVlIHRoaXMgdmlzaXQpCgpOb3RlOiBDYXJib3BsYXRpbiBkb3NlIHJlZHVjdGlvbiBmcm9tIEFVQyA1IHRvIEFVQyAzLjc1IHdhcyBpbml0aWF0ZWQgYXQgQ3ljbGUgMyBmb3IgY3VtdWxhdGl2ZSB0b3hpY2l0eSAoZ3JhZGUgMiBmYXRpZ3VlLCBncmFkZSAxIHBlcmlwaGVyYWwgbmV1cm9wYXRoeSkgYW5kIG1haW50YWluZWQgZm9yIHRoaXMgZmluYWwgaW5kdWN0aW9uIGN5Y2xlLgoKUG9zdC1pbmZ1c2lvbiBvYnNlcnZhdGlvbiBwZXJpb2Q6IFBhdGllbnQgaGVtb2R5bmFtaWNhbGx5IHN0YWJsZSB0aHJvdWdob3V0LiBObyBpbmZ1c2lvbiByZWFjdGlvbnMgb2JzZXJ2ZWQuIFZpdGFsIHNpZ25zIHN0YWJsZSBwb3N0LWluZnVzaW9uLgoKVmVyaWZpZWQgYnk6IERyLiBDYXJsb3MgTWVuZW5kZXosIE1ECg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-020"
+      }
+    ],
+    "period": {
+      "start": "2025-03-10"
+    }
+  }
+}

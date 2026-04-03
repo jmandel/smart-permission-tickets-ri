@@ -1,0 +1,187 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "repeat specific IgE panel and CBC for ongoing monitoring of IgE-mediated peanut allergy and tree nut allergies",
+    "period_start": "2024-11-18",
+    "period_end": "2024-11-18",
+    "participants": [
+      {
+        "name": "Dr. Sunita Krishnamurthy",
+        "role": "ordering physician"
+      }
+    ],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "peanut-specific IgE",
+        "value": 45.3,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum",
+        "action": "create"
+      },
+      {
+        "name": "cashew-specific IgE",
+        "value": 17.2,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum",
+        "action": "create"
+      },
+      {
+        "name": "walnut-specific IgE",
+        "value": 11.4,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum",
+        "action": "create"
+      },
+      {
+        "name": "almond-specific IgE",
+        "value": 6,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum",
+        "action": "create"
+      },
+      {
+        "name": "total IgE",
+        "value": 398,
+        "unit": "IU/mL",
+        "flag": "high",
+        "specimen_type": "serum",
+        "action": "create"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 8.4,
+        "unit": "10³/µL",
+        "flag": "normal",
+        "specimen_type": "whole blood",
+        "action": "create"
+      },
+      {
+        "name": "eosinophils, percentage in blood",
+        "value": 6,
+        "unit": "%",
+        "flag": "high",
+        "specimen_type": "whole blood",
+        "action": "create"
+      },
+      {
+        "name": "eosinophils, absolute count in blood",
+        "value": 480,
+        "unit": "/µL",
+        "flag": "high",
+        "specimen_type": "whole blood",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 12.4,
+        "unit": "g/dL",
+        "flag": "normal",
+        "specimen_type": "whole blood",
+        "action": "create"
+      },
+      {
+        "name": "platelet count",
+        "value": 312,
+        "unit": "10³/µL",
+        "flag": "normal",
+        "specimen_type": "whole blood",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "IgE-mediated peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy — cashew",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy — walnut",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy — almond",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    },
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis, moderate",
+      "clinical_status": "active",
+      "onset_date": "2021-09",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr) 0.15 mg",
+      "sig": "intramuscular, as needed for anaphylaxis",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "laboratory results note",
+      "description": "Laboratory results report for repeat allergen-specific IgE panel (peanut, cashew, walnut, almond, total IgE) and CBC with differential drawn on 2024-11-18 at UNC outpatient lab. Results processed by LabCorp. Includes interpretation noting modest downward trends in all specific IgE values with peanut remaining Class 5, mild peripheral eosinophilia consistent with atopic disease, and plan for results review at next office visit.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "allergen-specific IgE panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "peanut-specific IgE",
+        "cashew-specific IgE",
+        "walnut-specific IgE",
+        "almond-specific IgE",
+        "total IgE"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "summary-only",
+      "description": "CBC with differential resulted. WBC 8.4 × 10³/µL (normal), eosinophils 6% (480/µL, mildly elevated consistent with atopic disease), hemoglobin 12.4 g/dL (normal), platelets 312 × 10³/µL (normal). Full panel components (RBC, hematocrit, MCV, MCH, MCHC, RDW, neutrophils, lymphocytes, monocytes, basophils) not individually reported. CBC otherwise unremarkable; mild eosinophilia consistent with known atopic disease."
+    }
+  ],
+  "allergies": []
+}

@@ -1,0 +1,188 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Initiation of leflunomide as second-line conventional DMARD therapy",
+    "period_start": "2022-01-10T09:00:00-06:00",
+    "period_end": "2022-01-10T09:45:00-06:00",
+    "participants": [],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 130,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 200,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.7,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6,
+        "unit": "x10^3/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.8,
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 248,
+        "unit": "x10^3/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": 97,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 28,
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 26,
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": 4,
+        "unit": "g/dL",
+        "flag": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2021-03",
+      "action": "reference-existing",
+      "note": "Persistent moderate synovitis in hands and wrists bilaterally; initiating second-line DMARD."
+    },
+    {
+      "name": "history of methotrexate-induced hepatotoxicity",
+      "clinical_status": "resolved",
+      "onset_date": "2021-11",
+      "action": "reference-existing",
+      "note": "Referenced as clinical rationale for skipping leflunomide loading dose. LFTs confirmed normalized at this visit."
+    }
+  ],
+  "medications": [
+    {
+      "name": "leflunomide 20 mg oral tablet",
+      "sig": "Take one 20 mg tablet by mouth once daily. No loading dose.",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "create",
+      "note": "Loading dose intentionally omitted due to recent methotrexate-induced hepatotoxicity and to reduce GI side effect risk."
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "Take one 1 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "supplementation (continued from methotrexate era)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "Take one 500 mg tablet by mouth as needed for joint pain",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis — symptom control",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "Take one 10 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "seasonal allergies",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Visit note documenting leflunomide 20 mg daily initiation as second-line conventional DMARD for seropositive rheumatoid arthritis, with pre-treatment baseline labs (CBC and CMP normal, LFTs normalized), clinical rationale for omitting the loading dose given prior methotrexate hepatotoxicity, patient counseling on side effects and monitoring plan, and step therapy documentation noting this is the second conventional DMARD trial with biologic escalation as next step if inadequate."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "albumin"
+      ]
+    }
+  ],
+  "allergies": []
+}

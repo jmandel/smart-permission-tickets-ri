@@ -1,0 +1,307 @@
+{
+  "encounter_id": "enc-017",
+  "encounter_index": 17,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "chemotherapy infusion encounter",
+    "reason": "Cycle 1 chemo-immunotherapy for stage IIIA non-small cell lung cancer (pembrolizumab + carboplatin/pemetrexed protocol)",
+    "period_start": "2025-01-06",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending oncologist"
+      },
+      {
+        "name": "Dr. Amy Pham, PharmD",
+        "role": "oncology pharmacist"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030 (Infusion Center)"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "134/82 mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": "134",
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": "82",
+            "unit": "mmHg"
+          }
+        ],
+        "context": "pre-infusion"
+      },
+      {
+        "name": "heart rate",
+        "value": "76",
+        "unit": "bpm",
+        "context": "pre-infusion"
+      },
+      {
+        "name": "body weight",
+        "value": "148",
+        "unit": "lbs",
+        "context": "pre-infusion"
+      },
+      {
+        "name": "body mass index",
+        "value": "24.6",
+        "unit": "kg/m²",
+        "context": "pre-infusion"
+      },
+      {
+        "name": "body temperature",
+        "value": "98.6",
+        "unit": "°F",
+        "context": "pre-infusion"
+      },
+      {
+        "name": "respiratory rate",
+        "value": "14",
+        "unit": "breaths/min",
+        "context": "pre-infusion"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": "96",
+        "unit": "%",
+        "text": "on room air",
+        "context": "pre-infusion"
+      },
+      {
+        "name": "blood pressure",
+        "value": "128/76 mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": "128",
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": "76",
+            "unit": "mmHg"
+          }
+        ],
+        "context": "post-infusion"
+      },
+      {
+        "name": "heart rate",
+        "value": "80",
+        "unit": "bpm",
+        "context": "post-infusion"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": "97",
+        "unit": "%",
+        "text": "on room air",
+        "context": "post-infusion"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": "11.2",
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "white blood cell count (WBC)",
+        "value": "6.1",
+        "unit": "x10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "absolute neutrophil count (ANC)",
+        "value": "3.6",
+        "unit": "x10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": "216",
+        "unit": "x10³/µL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": "0.88",
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "18",
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "20",
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": "3.2",
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "lactate dehydrogenase (LDH)",
+        "value": "192",
+        "unit": "U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": "2.3",
+        "unit": "mIU/L",
+        "flag": "normal"
+      },
+      {
+        "name": "glomerular filtration rate (GFR), estimated",
+        "value": "68",
+        "unit": "mL/min",
+        "flag": "normal",
+        "text": "used for carboplatin dose calculation via Calvert formula"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA, adenocarcinoma subtype, right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "pembrolizumab 200 mg intravenous infusion",
+      "sig": "200 mg IV over 30 minutes, every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer, stage IIIA",
+      "action": "create"
+    },
+    {
+      "name": "carboplatin AUC 5 intravenous infusion (calculated dose 450 mg)",
+      "sig": "AUC 5 IV over 30 minutes, every 3 weeks (dose calculated per Calvert formula based on GFR 68 mL/min)",
+      "status": "active",
+      "reason": "non-small cell lung cancer, stage IIIA",
+      "action": "create"
+    },
+    {
+      "name": "pemetrexed 500 mg/m² intravenous infusion (BSA 1.72 m², calculated dose 860 mg)",
+      "sig": "500 mg/m² IV over 10 minutes, every 3 weeks",
+      "status": "active",
+      "reason": "non-small cell lung cancer, stage IIIA",
+      "action": "create"
+    },
+    {
+      "name": "dexamethasone 4 mg oral tablet",
+      "sig": "4 mg by mouth, morning of infusion (chemotherapy pre-medication)",
+      "status": "completed",
+      "reason": "chemotherapy pre-medication per protocol",
+      "action": "create"
+    },
+    {
+      "name": "ondansetron 8 mg intravenous injection",
+      "sig": "8 mg IV prior to chemotherapy",
+      "status": "completed",
+      "reason": "chemotherapy-induced nausea prophylaxis (pre-medication)",
+      "action": "create"
+    },
+    {
+      "name": "ondansetron 8 mg oral tablet",
+      "sig": "8 mg by mouth every 8 hours as needed for nausea/vomiting for 5 days",
+      "status": "active",
+      "reason": "chemotherapy-induced nausea/vomiting prophylaxis",
+      "action": "create"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "1 mg by mouth once daily",
+      "status": "active",
+      "reason": "pemetrexed supplementation per protocol",
+      "action": "reference-existing"
+    },
+    {
+      "name": "vitamin B12 1000 mcg intramuscular injection",
+      "status": "active",
+      "reason": "pemetrexed supplementation per protocol",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "10 mg by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "description": "Chemotherapy infusion note (progress note) — Cycle 1 chemo-immunotherapy infusion note documenting pre-treatment labs, pre-infusion vitals, pre-medications, administration of pembrolizumab/carboplatin/pemetrexed per clinical trial protocol, infusion course without reactions, post-infusion vitals, assessment of tolerance, and discharge instructions including anti-emetic prescription and precaution counseling. Signed by Dr. Carlos Menendez, MD."
+    },
+    {
+      "description": "Medication administration record — Record of all medications administered during infusion encounter: dexamethasone 4 mg PO, ondansetron 8 mg IV, pembrolizumab 200 mg IV, carboplatin 450 mg IV, pemetrexed 860 mg IV — including start/stop times, infusion rates, and observation for adverse reactions."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count (WBC)",
+        "absolute neutrophil count (ANC)",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP drawn as part of pre-treatment labs. Only protocol-relevant components reported (creatinine, ALT, AST, albumin) — all within acceptable limits for treatment. Full panel component values not individually enumerated in the encounter documentation."
+    },
+    {
+      "type": "lactate dehydrogenase (LDH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lactate dehydrogenase (LDH)"
+      ]
+    },
+    {
+      "type": "thyroid-stimulating hormone (TSH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone (TSH)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

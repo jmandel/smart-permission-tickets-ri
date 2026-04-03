@@ -1,0 +1,66 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-elevated-glucose",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "inactive",
+        "display": "Inactive"
+      }
+    ],
+    "text": "Inactive"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "390951007",
+        "display": "Impaired fasting glycemia (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "R73.01",
+        "display": "Impaired fasting glucose"
+      }
+    ],
+    "text": "Elevated fasting glucose (impaired fasting glucose)"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2015-03-18",
+  "abatementDateTime": "2015-06-12",
+  "recordedDate": "2015-03-18",
+  "note": [
+    {
+      "text": "Superseded by diagnosis of type 2 diabetes mellitus (Condition/enc-001-diabetes) on 2015-06-12."
+    }
+  ]
+}

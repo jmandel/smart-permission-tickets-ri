@@ -1,0 +1,58 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-009-hepatic-us-report",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-008-hepatic-us-order",
+      "display": "Hepatic ultrasound"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "28614-6",
+        "display": "US Liver"
+      }
+    ],
+    "text": "Hepatic Ultrasound"
+  },
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "effectiveDateTime": "2023-01-23",
+  "issued": "2023-02-13T12:00:00-08:00",
+  "performer": [
+    {
+      "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "display": "Dr. Rosa Delgado"
+    }
+  ],
+  "conclusion": "Liver parenchyma normal. No hepatic steatosis. No focal lesions identified. No biliary dilation. Unremarkable study.",
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

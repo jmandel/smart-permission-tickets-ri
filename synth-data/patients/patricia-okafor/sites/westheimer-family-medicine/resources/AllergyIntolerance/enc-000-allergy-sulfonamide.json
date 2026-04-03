@@ -1,0 +1,53 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "enc-000-allergy-sulfonamide",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "387406002",
+        "display": "Sulfonamide (substance)"
+      }
+    ],
+    "text": "Sulfonamide antibiotics"
+  },
+  "patient": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "recordedDate": "2022-01-18",
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "text": "Rash"
+        }
+      ],
+      "description": "Rash"
+    }
+  ]
+}

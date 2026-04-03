@@ -1,0 +1,75 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-005-mmse",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "72107-6",
+        "display": "Mini-Mental State Examination [MMSE]"
+      }
+    ],
+    "text": "Mini-Mental State Examination (MMSE)"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2022-03-22",
+  "valueQuantity": {
+    "value": 24,
+    "unit": "{score}",
+    "system": "http://unitsofmeasure.org",
+    "code": "{score}"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "L",
+          "display": "Low"
+        }
+      ],
+      "text": "Mild cognitive impairment range"
+    }
+  ],
+  "note": [
+    {
+      "text": "Score 24/30. Deficits in short-term recall (0/3 objects at 5 minutes), orientation to date (lost 2 points), serial sevens (lost 1 point). Clock drawing mildly impaired — numbers correctly placed but hands pointing to wrong time. Fully oriented to place and person."
+    }
+  ],
+  "referenceRange": [
+    {
+      "text": "24-30 normal; 18-23 mild impairment; 0-17 severe impairment",
+      "low": {
+        "value": 24,
+        "unit": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "code": "{score}"
+      },
+      "high": {
+        "value": 30,
+        "unit": "{score}",
+        "system": "http://unitsofmeasure.org",
+        "code": "{score}"
+      }
+    }
+  ]
+}

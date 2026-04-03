@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-lab-comm",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Lab Results Communication Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "date": "2026-02-25T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c0d62614-7dd5-453f-83c3-0514edb2270d",
+      "type": "Practitioner",
+      "display": "RN Patricia Gomez"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/fca1b37a-0004-4c92-8717-54842b25df2a",
+    "type": "Practitioner",
+    "display": "Dr. Lena Okafor"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCIFJFU1VMVFMgQ09NTVVOSUNBVElPTiBOT1RFCgpEYXRlOiAwMi8yNS8yMDI2ClBhdGllbnQ6IFJvYmVydCBEYXZpcyAoRE9COiAwOS8xNC8xOTYwKQpDbGluaWNpYW46IFJOIFBhdHJpY2lhIEdvbWV6OyByZXZpZXdlZCBieSBEci4gTGVuYSBPa2Fmb3IKTG9jYXRpb246IFVJIEhlYWx0aCBBbWJ1bGF0b3J5IFRCIENsaW5pYyAodGVsZXBob25lKQoKQ09NTVVOSUNBVElPTiBPRiBDVUxUVVJFIEFORCBEUlVHIFNVU0NFUFRJQklMSVRZIFJFU1VMVFM6CgpSTiBHb21leiBjb250YWN0ZWQgcGF0aWVudCBieSB0ZWxlcGhvbmUgdG8gY29tbXVuaWNhdGUgdGhlIGZvbGxvd2luZyBmaW5hbGl6ZWQgcmVzdWx0czoKClNwdXR1bSBNeWNvYmFjdGVyaWFsIEN1bHR1cmUgKHNwZWNpbWVucyBjb2xsZWN0ZWQgMDEvMjItMDEvMjMvMjAyNik6Ci0gUG9zaXRpdmUgZm9yIE15Y29iYWN0ZXJpdW0gdHViZXJjdWxvc2lzLCBncm93dGggZGV0ZWN0ZWQgYXQgMTggZGF5cyBvZiBpbmN1YmF0aW9uLgoKRHJ1ZyBTdXNjZXB0aWJpbGl0eSBUZXN0aW5nIChEU1QpOgotIFJpZmFtcGluOiBTdXNjZXB0aWJsZQotIElzb25pYXppZDogU3VzY2VwdGlibGUKLSBQeXJhemluYW1pZGU6IFN1c2NlcHRpYmxlCi0gRXRoYW1idXRvbDogU3VzY2VwdGlibGUKLSBTdHJlcHRvbXljaW46IFN1c2NlcHRpYmxlCgpUaGUgaXNvbGF0ZSBpcyBwYW4tc3VzY2VwdGlibGUgdG8gYWxsIGZpcnN0LWxpbmUgYW50aS10dWJlcmN1bG9zaXMgYWdlbnRzLiBUaGlzIGNvbmZpcm1zIHRoZSBpbml0aWFsIEdlbmVYcGVydCBNVEIvUklGIHJlc3VsdCBhbmQgc3VwcG9ydHMgY29udGludWF0aW9uIG9mIHRoZSBjdXJyZW50IFJJUEUgcmVnaW1lbiB3aXRob3V0IG1vZGlmaWNhdGlvbi4KClBhdGllbnQgdmVyYmFsaXplZCB1bmRlcnN0YW5kaW5nIG9mIHJlc3VsdHMgYW5kIHRoZWlyIGltcGxpY2F0aW9ucyBmb3Igb25nb2luZyB0cmVhdG1lbnQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6ClBhdHJpY2lhIEdvbWV6LCBSTiDigJQgRE9UIE51cnNlIENvb3JkaW5hdG9yClJldmlld2VkIGJ5OiBMZW5hIE9rYWZvciwgTUQg4oCUIEluZmVjdGlvdXMgRGlzZWFzZQpVSSBIZWFsdGggQW1idWxhdG9yeSBUQiBDbGluaWMK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006"
+      }
+    ],
+    "period": {
+      "start": "2026-02-25"
+    }
+  }
+}

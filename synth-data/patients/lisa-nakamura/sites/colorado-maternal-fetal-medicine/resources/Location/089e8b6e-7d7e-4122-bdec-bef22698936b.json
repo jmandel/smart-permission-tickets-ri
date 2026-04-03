@@ -1,0 +1,46 @@
+{
+  "resourceType": "Location",
+  "id": "089e8b6e-7d7e-4122-bdec-bef22698936b",
+  "status": "active",
+  "name": "Colorado Maternal-Fetal Medicine",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "303-555-0200",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "303-555-0201",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "1635 Aurora Court",
+      "Suite 400"
+    ],
+    "city": "Denver",
+    "state": "CO",
+    "postalCode": "80045",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/1a3fb3a3-ca3d-4127-9ac7-c7b318aaf411",
+    "display": "Colorado Maternal-Fetal Medicine"
+  }
+}

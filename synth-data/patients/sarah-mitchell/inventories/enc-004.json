@@ -1,0 +1,92 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "portland-behavioral-health-associates",
+  "encounter": {
+    "class": "virtual",
+    "type": "Psychiatric follow-up via telemedicine",
+    "reason": "Pandemic follow-up; worsening depressive episode; quetiapine added for insomnia and mood stabilization",
+    "period_start": "2020-12-14",
+    "participants": [],
+    "service_provider": "Portland Behavioral Health Associates",
+    "location": "Portland Behavioral Health Associates, 1520 NW 18th Ave, Suite 304, Portland, OR 97209"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-9 depression screening score",
+        "value": 16,
+        "interpretation": "moderately severe depression"
+      },
+      {
+        "name": "GAD-7 anxiety screening score",
+        "value": 10,
+        "interpretation": "moderate anxiety"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder, current episode depressed, moderate to severe",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "update-existing",
+      "note": "Current depressive episode worsening over prior 4-6 weeks, exacerbated by pandemic-related psychosocial stressors. PHQ-9 worsened to 16. Passive suicidal ideation without plan or intent. Quetiapine added as adjunct treatment."
+    },
+    {
+      "name": "insomnia",
+      "clinical_status": "active",
+      "onset_date": "2020-11",
+      "action": "create"
+    },
+    {
+      "name": "generalized anxiety disorder",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "Take 50 mg by mouth at bedtime",
+      "status": "active",
+      "reason": "insomnia and mood stabilization as adjunct to lamotrigine for bipolar II depressive episode",
+      "action": "create"
+    },
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "Take 200 mg by mouth once daily",
+      "status": "active",
+      "reason": "mood stabilizer for bipolar II disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "psychiatric telemedicine progress note",
+      "description": "Documents the 40-minute telemedicine follow-up for worsening bipolar II depressive episode during COVID-19 pandemic. Covers subjective report of insomnia, social isolation, passive suicidal ideation without plan/intent, mental status exam findings, PHQ-9 and GAD-7 scores, assessment of bipolar II depressive episode and insomnia, initiation of quetiapine 50 mg at bedtime, continuation of lamotrigine 200 mg, safety plan review, and lab orders for next in-person visit."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lamotrigine serum level",
+      "report_state": "ordered-not-resulted",
+      "description": "Lamotrigine serum level ordered for next in-person visit to monitor therapeutic drug level."
+    },
+    {
+      "type": "fasting glucose",
+      "report_state": "ordered-not-resulted",
+      "description": "Fasting glucose ordered for next in-person visit as baseline metabolic monitoring for quetiapine initiation."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Lipid panel ordered for next in-person visit as baseline metabolic monitoring for quetiapine initiation."
+    }
+  ],
+  "allergies": []
+}

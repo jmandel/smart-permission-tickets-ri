@@ -1,0 +1,112 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telemedicine visit",
+    "reason": "DOT adherence review, medication tolerance assessment for active pulmonary tuberculosis on intensive-phase RIPE therapy",
+    "period_start": "2026-02-13",
+    "participants": [
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "attending clinician",
+        "specialty": "Infectious Disease"
+      }
+    ],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic (telemedicine), 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis, active",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "social isolation during home confinement",
+      "clinical_status": "active",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis, active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis, active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine (vitamin B6) 50 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis during isoniazid therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis, active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis, active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol HFA inhaler",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "chronic obstructive pulmonary disease",
+      "action": "reference-existing"
+    },
+    {
+      "name": "acetaminophen 500 mg oral",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "pain (knee osteoarthritis)",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telemedicine progress note",
+      "description": "Telemedicine DOT adherence review by Dr. Okafor documenting good medication adherence with weekday DOT and self-administered weekend doses, persistent mild loose stools that are manageable, absence of hepatotoxicity warning signs or other drug side effects, social isolation concern without depressed mood, and plan to continue current RIPE regimen with labs scheduled for February 19 and next in-person visit March 5."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

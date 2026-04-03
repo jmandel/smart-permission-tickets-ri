@@ -1,0 +1,68 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-014-dx-aps-panel",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "text": "Antiphospholipid antibody panel, confirmatory (12-week repeat)"
+  },
+  "subject": {
+    "reference": "Patient/8ce01a70-400d-4b62-8feb-7311fb2eaec2",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "effectiveDateTime": "2025-07-23",
+  "issued": "2025-07-23T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/7667ba3d-7698-4e4f-9a5b-f7234d52139c",
+      "type": "Practitioner",
+      "display": "Dr. James Okafor"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-014-acl-igg",
+      "display": "Anticardiolipin IgG antibody"
+    },
+    {
+      "reference": "Observation/enc-014-acl-igm",
+      "display": "Anticardiolipin IgM antibody"
+    },
+    {
+      "reference": "Observation/enc-014-la",
+      "display": "Lupus anticoagulant (dRVVT)"
+    },
+    {
+      "reference": "Observation/enc-014-b2gp1-igg",
+      "display": "Anti-beta-2 glycoprotein I IgG antibody"
+    },
+    {
+      "reference": "Observation/enc-014-b2gp1-igm",
+      "display": "Anti-beta-2 glycoprotein I IgM antibody"
+    }
+  ],
+  "conclusion": "Confirmatory antiphospholipid antibody panel positive. Anticardiolipin IgG persistently positive at moderate titer (52 GPL), lupus anticoagulant persistently positive, anti-beta-2 glycoprotein I IgG now positive (22 units). Antibody profile has strengthened on 12-week repeat testing. Meets revised Sapporo (Sydney) laboratory criteria for antiphospholipid syndrome.",
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

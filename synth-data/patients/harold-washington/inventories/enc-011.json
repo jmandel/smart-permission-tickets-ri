@@ -1,0 +1,155 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "first-coast-neurology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "neurology office visit",
+    "reason": "final visit prior to relocation, transition of care referral to Georgia neurology",
+    "period_start": "2024-10-10",
+    "participants": [
+      {
+        "name": "Dr. Raymond Patel",
+        "role": "neurologist"
+      }
+    ],
+    "service_provider": "First Coast Neurology Associates",
+    "location": "First Coast Neurology Associates, 836 Prudential Drive, Suite 1400, Jacksonville, FL 32207"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 140,
+        "value_diastolic": 86,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 190,
+        "unit": "lbs"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "Mini-Mental State Examination (MMSE)",
+        "value": "19/30",
+        "interpretation": "decline of 4 points from 23/30 approximately 18 months prior; consistent with progression from mild to mild-moderate stage Alzheimer's disease",
+        "components": [
+          {
+            "name": "recall",
+            "value": "0/3"
+          },
+          {
+            "name": "orientation",
+            "value": "lost 4 points (missed day, date, month, floor)"
+          },
+          {
+            "name": "attention/serial sevens",
+            "value": "2/5"
+          },
+          {
+            "name": "three-step command",
+            "value": "lost 1 point"
+          }
+        ]
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, progressing from mild to moderate stage",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "update-existing",
+      "note": "Disease stage updated from mild to moderate based on MMSE decline from 23/30 to 19/30 over 18 months. Accelerated decline temporally associated with loss of spouse and disruption of daily routines."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "take one tablet by mouth once daily",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "take one tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "take one tablet by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "take one tablet by mouth once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "neurology progress note",
+      "description": "Final office visit note documenting Harold's cognitive reassessment (MMSE 19/30, decline from 23/30), updated Alzheimer's staging from mild to moderate, continued donepezil therapy, and comprehensive neurological exam findings. Includes assessment of contributing factors (spousal death, routine disruption) and plan for transition of care."
+    },
+    {
+      "type": "referral letter",
+      "description": "Detailed referral letter addressed to a geriatric neurologist in the Atlanta/Decatur area recommending re-evaluation with full neurocognitive battery within 3 months, consideration of memantine addition or combination therapy, continued MMSE monitoring every 3–4 months, and advance care planning discussion."
+    },
+    {
+      "type": "care summary",
+      "description": "Comprehensive care summary package including all prior brain MRI reports, cognitive testing history with MMSE and MoCA score trajectory, complete medication records, and neurology consultation notes from First Coast Neurology Associates. Provided to patient and daughter for continuity of care."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

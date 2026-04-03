@@ -1,0 +1,52 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-014-psych-referral",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386053000",
+          "display": "Evaluation procedure (procedure)"
+        }
+      ],
+      "text": "Evaluation"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183524004",
+        "display": "Referral to psychiatry service (procedure)"
+      }
+    ],
+    "text": "Referral to psychiatry for ongoing medication management"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "authoredOn": "2024-07-15",
+  "requester": {
+    "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+    "type": "Practitioner",
+    "display": "Dr. Kevin Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-014-bipolar-ii",
+      "display": "Bipolar II disorder"
+    }
+  ],
+  "note": [
+    {
+      "text": "Referral to Puget Sound Psychiatry (Dr. Anita Patel) for ongoing psychiatric medication management and monitoring. Records to be forwarded."
+    }
+  ]
+}

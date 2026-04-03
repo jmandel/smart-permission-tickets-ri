@@ -1,0 +1,129 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "COVID-19 vaccination, first dose",
+    "period_start": "2021-04-05",
+    "participants": [],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 128,
+        "value_diastolic": 82,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 197,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.3,
+        "unit": "kg/m²",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 15 mg oral tablet",
+      "sig": "once weekly",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "methotrexate supplementation",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "twice daily as needed",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "seasonal allergies",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "Pfizer-BioNTech COVID-19 mRNA vaccine",
+      "date": "2021-04-05",
+      "route": "intramuscular injection",
+      "site": "left deltoid",
+      "dose": "0.3 mL",
+      "lot_number": "EW0150",
+      "dose_number": 1,
+      "series_doses": 2,
+      "action": "create"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "Office visit note",
+      "description": "Brief vaccination visit note documenting administration of first dose Pfizer-BioNTech COVID-19 vaccine, 0.3 mL IM left deltoid, Lot #EW0150. Vitals within normal limits. No immediate adverse reaction during 15-minute observation. Counseling provided regarding common post-vaccination side effects and ACR guidance on holding methotrexate 1–2 weeks post-vaccination; patient advised to coordinate with rheumatologist Dr. Fuentes. Second dose scheduled for April 26, 2021.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "maculopapular rash",
+      "action": "reference-existing"
+    }
+  ]
+}

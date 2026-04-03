@@ -1,0 +1,61 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-cond-acute-hypoxemic-rf",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "709111008",
+        "display": "Acute hypoxemic respiratory failure (disorder)"
+      }
+    ],
+    "text": "Acute hypoxemic respiratory failure secondary to heart-failure-related volume overload"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "onsetDateTime": "2024-04-22",
+  "abatementDateTime": "2024-04-25",
+  "recordedDate": "2024-04-25",
+  "note": [
+    {
+      "text": "Required supplemental oxygen on presentation for hypoxemia caused by heart-failure-related volume overload and was weaned off oxygen before discharge."
+    }
+  ]
+}

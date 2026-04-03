@@ -1,0 +1,106 @@
+{
+  "resourceType": "Patient",
+  "id": "bb4f5104-f2ac-492e-8745-681517f118b4",
+  "extension": [
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2054-5",
+            "display": "Black or African American"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "Black or African American",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          },
+          "url": "ombCategory"
+        },
+        {
+          "valueString": "Not Hispanic or Latino",
+          "url": "text"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "Public health is notified. Contact investigation initiated. Robert is started on RIPE therapy (rifampin, isoniazid, pyrazinamide, ethambutol). After clinical improvement he's discharged to outpatient directly observed therapy (DOT) at the affiliated TB clinic.\n\nTwo sites, one health system, one state (IL). This tests Permission Ticket constraints on period (only the investigation window) and scopes (public health may only need specific resource types like Condition, DiagnosticReport, Observation for lab results)."
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Davis",
+      "given": [
+        "Robert",
+        "James"
+      ]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-09-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "6321 S Halsted St"
+      ],
+      "city": "Chicago",
+      "state": "IL",
+      "postalCode": "60621",
+      "country": "US"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "773-555-0148",
+      "use": "home"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "D",
+        "display": "Divorced"
+      }
+    ],
+    "text": "Divorced"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ],
+  "identifier": [
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-6fe9159adc6cb369be301246"
+    }
+  ]
+}

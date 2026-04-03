@@ -1,0 +1,66 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-013-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "Results Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "date": "2024-03-22T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UkVTVUxUUyBOT1RFCgpQYXRpZW50OiBNYXJpYSBZZWUtTGluZyBDaGVuCkRPQjogMDkvMTQvMTk4MwpEYXRlIG9mIFNlcnZpY2U6IDAzLzIyLzIwMjQKRW5jb3VudGVyIFR5cGU6IExhYiBSZXN1bHRzIFJldmlldwpPcmRlcmluZy9SZXZpZXdpbmcgUHJvdmlkZXI6IERyLiBBbmdlbGEgTW9yYWxlcywgTUQKU2l0ZTogQ2FzY2FkZSBDb21tdW5pdHkgSGVhbHRoIENlbnRlciwgODIwNSBTRSBGb3N0ZXIgUm9hZCwgUG9ydGxhbmQsIE9SIDk3MjA2CgpSRUFTT04gRk9SIEVOQ09VTlRFUjoKUmV2aWV3IG9mIGFubnVhbCBmYXN0aW5nIGxhYm9yYXRvcnkgcmVzdWx0cyBhbmQgY2VydmljYWwgY3l0b2xvZ3kgKFBhcCBzbWVhcikuCgpMQUJPUkFUT1JZIFJFU1VMVFMgKGZhc3RpbmcgbGFicyBkcmF3biAwMy8yMS8yMDI0LCByZXN1bHRlZCAwMy8yMi8yMDI0KToKCk1ldGFib2xpYzoKLSBGYXN0aW5nIGdsdWNvc2U6IDkyIG1nL2RMIChub3JtYWwpCi0gSGJBMWM6IDUuNCUgKG5vcm1hbCwgbm8gZXZpZGVuY2Ugb2YgcHJlZGlhYmV0ZXMgb3IgZGlhYmV0ZXMpCgpMaXBpZCBQYW5lbDoKLSBUb3RhbCBjaG9sZXN0ZXJvbDogMTk4IG1nL2RMCi0gTERMOiAxMTggbWcvZEwKLSBIREw6IDUxIG1nL2RMCi0gVHJpZ2x5Y2VyaWRlczogMTQ1IG1nL2RMCgpDQkM6Ci0gV0JDOiA2LjkgeDEwXjMvdUwgKG5vcm1hbCkKLSBIZW1vZ2xvYmluOiAxMy4xIGcvZEwgKG5vcm1hbCkKLSBIZW1hdG9jcml0OiAzOS4yJSAobm9ybWFsKQotIFBsYXRlbGV0czogMjQ4IHgxMF4zL3VMIChub3JtYWwpCgpDTVA6IFdpdGhpbiBub3JtYWwgbGltaXRzLgoKQ0VSVklDQUwgQ1lUT0xPR1kgKFBhcCBzbWVhciBjb2xsZWN0ZWQgYXQgcHJpb3IgdmlzaXQsIHJlc3VsdGVkIDAzLzI1LzIwMjQpOgotIFJlc3VsdDogTmVnYXRpdmUgZm9yIGludHJhZXBpdGhlbGlhbCBsZXNpb24gb3IgbWFsaWduYW5jeSAoTklMTSkKLSBTcGVjaW1lbiBhZGVxdWFjeTogU2F0aXNmYWN0b3J5IGZvciBldmFsdWF0aW9uCgpBU1NFU1NNRU5UOgoxLiBBbm51YWwgbGFib3JhdG9yeSBzY3JlZW5pbmcg4oCUIGFsbCByZXN1bHRzIHdpdGhpbiBub3JtYWwgbGltaXRzLiBGYXN0aW5nIGdsdWNvc2UgYW5kIEhiQTFjIG5vcm1hbDsgcmVhc3N1cmluZyBnaXZlbiBmYW1pbHkgaGlzdG9yeSBvZiBkaWFiZXRlcyAobWF0ZXJuYWwpLiBMaXBpZCBwYW5lbCBib3JkZXJsaW5lIGJ1dCBhY2NlcHRhYmxlOyBMREwgMTE4LCBubyBpbmRpY2F0aW9uIGZvciBwaGFybWFjb3RoZXJhcHkgYXQgdGhpcyB0aW1lIHBlciBjdXJyZW50IGd1aWRlbGluZXMgZ2l2ZW4gbG93IGNhcmRpb3Zhc2N1bGFyIHJpc2sgcHJvZmlsZS4KMi4gQ2VydmljYWwgY2FuY2VyIHNjcmVlbmluZyDigJQgUGFwIHNtZWFyIE5JTE0sIHNhdGlzZmFjdG9yeSBzcGVjaW1lbi4gUGVyIFVTUFNURiBndWlkZWxpbmVzLCBuZXh0IGNlcnZpY2FsIGN5dG9sb2d5IGR1ZSBpbiAzIHllYXJzICgyMDI3KS4KClBMQU46CjEuIFBhdGllbnQgbm90aWZpZWQgb2YgYWxsIHJlc3VsdHMgdmlhIHBhdGllbnQgcG9ydGFsIG9uIDAzLzIyLzIwMjQuCjIuIEFsbCBsYWJzIG5vcm1hbCDigJQgbm8gbWVkaWNhdGlvbiBjaGFuZ2VzIGluZGljYXRlZC4KMy4gQ29udGludWUgY3VycmVudCBwcmV2ZW50aXZlIGNhcmUgc2NoZWR1bGUuCjQuIE5leHQgUGFwIHNtZWFyIGR1ZSAyMDI3Lgo1LiBSZXBlYXQgYW5udWFsIGZhc3RpbmcgbGFicyBhdCBuZXh0IHdlbGxuZXNzIHZpc2l0LgoKUmV2aWV3ZWQgYnk6IERyLiBBbmdlbGEgTW9yYWxlcywgTUQK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-013"
+      }
+    ],
+    "period": {
+      "start": "2024-03-22"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

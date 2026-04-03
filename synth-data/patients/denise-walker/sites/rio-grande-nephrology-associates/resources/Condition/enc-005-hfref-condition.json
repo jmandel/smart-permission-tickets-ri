@@ -1,0 +1,59 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-hfref-condition",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "703272007",
+        "display": "Heart failure with reduced ejection fraction (disorder)"
+      }
+    ],
+    "text": "Heart failure with reduced ejection fraction / cardiorenal physiology affecting renal hemodynamics"
+  },
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "recordedDate": "2024-06-17",
+  "note": [
+    {
+      "text": "Recent heart-failure hospitalization and ongoing diuretic therapy were recognized as contributors to renal hemodynamics, with continued monitoring planned."
+    }
+  ]
+}

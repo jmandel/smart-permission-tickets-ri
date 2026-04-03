@@ -1,0 +1,59 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-014-acp-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "75320-2",
+        "display": "Advance directive"
+      }
+    ],
+    "text": "Advance care planning documentation"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/35be9654-3b7f-4027-93a0-64a00b703c82",
+    "display": "Harold James Washington"
+  },
+  "date": "2025-01-22T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/5a9f09a9-1266-4f2c-a28a-292e8e6c6983",
+      "display": "Dr. Lisa Nakamura"
+    }
+  ],
+  "description": "Documents goals-of-care discussion with patient and daughter/authorized representative. Patient expressed preference for comfort-focused care and stated he does not want intubation or mechanical ventilation. Authorized representative confirmed consistency with patient's long-standing wishes. Recommendation for formal legal documentation update in Georgia noted.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QURWQU5DRSBDQVJFIFBMQU5OSU5HIERPQ1VNRU5UQVRJT04KCkRhdGU6IDAxLzIyLzIwMjUKUHJvdmlkZXI6IExpc2EgTmFrYW11cmEsIE1ELCBQaEQKTG9jYXRpb246IEVtb3J5IENvZ25pdGl2ZSBOZXVyb2xvZ3kgQ2VudGVyLCAxMiBFeGVjdXRpdmUgUGFyayBEcml2ZSBORSwgU3VpdGUgMjAwLCBBdGxhbnRhLCBHQSAzMDMyOQpQYXRpZW50OiBIYXJvbGQgSi4gV2FzaGluZ3RvbgpET0I6IDA5LzE0LzE5NDYgICBBZ2U6IDc4ICAgU2V4OiBNYWxlCgpHb2Fscy1vZi1jYXJlIGRpc2N1c3Npb24gY29uZHVjdGVkIHdpdGggcGF0aWVudCBIYXJvbGQgV2FzaGluZ3RvbiAodG8gdGhlIGV4dGVudCBoZSBjb3VsZCBwYXJ0aWNpcGF0ZSBnaXZlbiBtb2RlcmF0ZS1zdGFnZSBBbHpoZWltZXIncyBkaXNlYXNlLCBNTVNFIDE3LzMwKSBhbmQgaGlzIGRhdWdodGVyL2F1dGhvcml6ZWQgcmVwcmVzZW50YXRpdmUgTWFyZ2FyZXQgV2FzaGluZ3Rvbi1DbGFya2UuCgpQQVRJRU5UIFBSRUZFUkVOQ0VTOgotIE1yLiBXYXNoaW5ndG9uIGV4cHJlc3NlZCBhIGNsZWFyIHByZWZlcmVuY2UgZm9yIGNvbWZvcnQtZm9jdXNlZCBjYXJlLgotIEhlIHN0YXRlZCBoZSBkb2VzIG5vdCB3YW50IHRvIGJlIGludHViYXRlZCBvciBwbGFjZWQgb24gYSB2ZW50aWxhdG9yLgotIEhlIGV4cHJlc3NlZCBhIGRlc2lyZSB0byByZW1haW4gYXQgaG9tZSB3aXRoIGhpcyBkYXVnaHRlciBhcyBsb25nIGFzIHBvc3NpYmxlLgoKQVVUSE9SSVpFRCBSRVBSRVNFTlRBVElWRSBDT05GSVJNQVRJT046Ci0gTWFyZ2FyZXQgV2FzaGluZ3Rvbi1DbGFya2UgY29uZmlybWVkIHRoZXNlIHByZWZlcmVuY2VzIGFyZSBjb25zaXN0ZW50IHdpdGggaGVyIHVuZGVyc3RhbmRpbmcgb2YgaGVyIGZhdGhlcidzIGxvbmctc3RhbmRpbmcgd2lzaGVzLgotIE1hcmdhcmV0IGhhcyBzZXJ2ZWQgYXMgTXIuIFdhc2hpbmd0b24ncyBwcmltYXJ5IGRlY2lzaW9uLW1ha2VyIHNpbmNlIGhpcyByZWxvY2F0aW9uIHRvIEdlb3JnaWEgaW4gT2N0b2JlciAyMDI0LgoKUkVDT01NRU5EQVRJT05TOgotIEZvcm1hbCBsZWdhbCBkb2N1bWVudGF0aW9uIHVwZGF0ZSByZWNvbW1lbmRlZCBpbiB0aGUgc3RhdGUgb2YgR2VvcmdpYSwgaW5jbHVkaW5nOgogIC0gR2VvcmdpYSBBZHZhbmNlIERpcmVjdGl2ZSBmb3IgSGVhbHRoIENhcmUKICAtIER1cmFibGUgUG93ZXIgb2YgQXR0b3JuZXkgZm9yIEhlYWx0aGNhcmUgbmFtaW5nIE1hcmdhcmV0IFdhc2hpbmd0b24tQ2xhcmtlCi0gUGF0aWVudCBhbmQgZmFtaWx5IHdlcmUgY291bnNlbGVkIHRoYXQgdGhlc2UgZG9jdW1lbnRzIHNob3VsZCBiZSBjb21wbGV0ZWQgd2hpbGUgdGhlIHBhdGllbnQgcmV0YWlucyBzb21lIGRlY2lzaW9uLW1ha2luZyBjYXBhY2l0eS4KCkFkdmFuY2UgZGlyZWN0aXZlIHByZWZlcmVuY2VzIGRvY3VtZW50ZWQgaW4gdGhlIG1lZGljYWwgY2hhcnQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ckxpc2EgTmFrYW11cmEsIE1ELCBQaEQKRW1vcnkgQ29nbml0aXZlIE5ldXJvbG9neSBDZW50ZXI="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-014"
+      }
+    ],
+    "period": {
+      "start": "2025-01-22",
+      "end": "2025-01-22"
+    }
+  }
+}

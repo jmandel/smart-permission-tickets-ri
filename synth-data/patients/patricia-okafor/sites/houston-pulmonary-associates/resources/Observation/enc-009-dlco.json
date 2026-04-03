@@ -1,0 +1,71 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-009-dlco",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-008-pft-order",
+      "display": "Pulmonary function testing"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "procedure",
+          "display": "Procedure"
+        }
+      ],
+      "text": "Procedure"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "19911-7",
+        "display": "Diffusion capacity.carbon monoxide"
+      }
+    ],
+    "text": "Diffusing capacity of the lung for carbon monoxide (DLCO)"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "effectiveDateTime": "2024-08-19",
+  "issued": "2024-08-19T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+      "display": "Dr. Nisha Ramaswamy, MD"
+    }
+  ],
+  "valueQuantity": {
+    "value": 16.2,
+    "unit": "mL/min/mmHg",
+    "system": "http://unitsofmeasure.org",
+    "code": "mL/min/mm[Hg]"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "L",
+          "display": "Low"
+        }
+      ],
+      "text": "Low (71% predicted)"
+    }
+  ],
+  "note": [
+    {
+      "text": "71% predicted. Single-breath method. Reduced diffusion capacity suggesting impairment in gas exchange at the alveolar-capillary level."
+    }
+  ]
+}

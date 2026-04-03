@@ -1,0 +1,74 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-001-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34753-4",
+        "display": "Cardiology Outpatient Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34131-3",
+        "display": "Outpatient Progress note"
+      }
+    ],
+    "text": "Progress note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/4af9de6b-7354-4fe4-ad70-1eff517f8e39",
+    "display": "Denise Walker"
+  },
+  "date": "2022-06-08T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+      "type": "Practitioner",
+      "display": "Dr. Aaron Patel, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/6e0aa110-b92d-4bb4-91d9-33a0088677b0",
+    "type": "Practitioner",
+    "display": "Dr. Aaron Patel, MD"
+  },
+  "custodian": {
+    "reference": "Organization/4450878e-25f2-4491-8594-1b519b0371ff",
+    "display": "Valley Heart Institute"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgd29tYW4gc2VlbiBpbiBjYXJkaW9sb2d5IGZvbGxvdy11cCBmb3IgcmVjZW50bHkgZXN0YWJsaXNoZWQgaGVhcnQgZmFpbHVyZSB3aXRoIHJlZHVjZWQgZWplY3Rpb24gZnJhY3Rpb24gYW5kIHBhcm94eXNtYWwgYXRyaWFsIGZpYnJpbGxhdGlvbi4gU2hlIHJlcG9ydHMgcGVyc2lzdGVudCBleGVydGlvbmFsIGR5c3BuZWEsIGJlY29taW5nIHNob3J0IG9mIGJyZWF0aCBhZnRlciBjbGltYmluZyAxIGZsaWdodCBvZiBzdGFpcnMsIGFuZCBpbnRlcm1pdHRlbnQgcGFscGl0YXRpb25zLiBTaGUgZGVuaWVzIHN5bmNvcGUsIGNoZXN0IHBhaW4sIG9yIG90aGVyIGFjdXRlIGlzY2hlbWljIHN5bXB0b21zLiBSZWNlbnQgd29ya3VwIGVhcmxpZXIgaW4gMjAyMiBjb25maXJtZWQgSEZyRUYgYW5kIGludGVybWl0dGVudCBBRi4gUmVsZXZhbnQgaGlzdG9yeSBpbmNsdWRlcyBoeXBlcnRlbnNpb24sIHR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cywgaHlwZXJsaXBpZGVtaWEsIGNocm9uaWMga2lkbmV5IGRpc2Vhc2UsIGFuZCBwcmlvciBBQ0UgaW5oaWJpdG9yIGludG9sZXJhbmNlIHdpdGggY291Z2guCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTMyLzgwIG1tSGcsIEhSIDc0IGJwbSwgaXJyZWd1bGFybHkgaXJyZWd1bGFyIGF0IGludGFrZSB0aGVuIHJlZ3VsYXIgb24gcmVwZWF0IEVDRywgUlIgMTgvbWluLCBUZW1wIDk3LjkgRiwgU3BPMiA5NyUgb24gcm9vbSBhaXIsIFd0IDIwMSBsYiwgSHQgNjQgaW4sIEJNSSAzNC41IGtnL20yCkdlbmVyYWw6IEFsZXJ0LCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KQ2FyZGlvdmFzY3VsYXI6IFJoeXRobSBpcnJlZ3VsYXIgYXQgaW50YWtlOyByZXBlYXQgRUNHIHdpdGggc2ludXMgcmh5dGhtLiBObyBzeW5jb3BlIHJlcG9ydGVkLiBDbGluaWNhbCBzeW1wdG9tcyBjb25zaXN0ZW50IHdpdGggc3ltcHRvbWF0aWMgY2FyZGlvbXlvcGF0aHkgYW5kIHBhcm94eXNtYWwgYXRyaWFsIGFycmh5dGhtaWEuClJlc3BpcmF0b3J5OiBObyByZXNwaXJhdG9yeSBkaXN0cmVzcyBhdCByZXN0OyBleGVydGlvbmFsIGR5c3BuZWEgcHJlc2VudC4KRXh0cmVtaXRpZXM6IE5vIHNpZ25pZmljYW50IGFjdXRlIGZpbmRpbmdzIGRvY3VtZW50ZWQgdG9kYXkuClN0dWRpZXMvTGFiczoKVHJhbnN0aG9yYWNpYyBlY2hvY2FyZGlvZ3JhbSByZXZpZXdlZDogTFZFRiAzNSUsIG1pbGQgTFYgZGlsYXRpb24sIGdsb2JhbCBoeXBva2luZXNpcywgZ3JhZGUgSUkgZGlhc3RvbGljIGR5c2Z1bmN0aW9uLCBtaWxkIGxlZnQgYXRyaWFsIGVubGFyZ2VtZW50LgpFQ0cgdG9kYXk6IHNpbnVzIHJoeXRobSBhdCA3MiBicG0gd2l0aCBwcmVtYXR1cmUgYXRyaWFsIGNvbXBsZXhlcy4KUHJpb3IgYW1idWxhdG9yeSBtb25pdG9yOiBicmllZiBhdHJpYWwgZmlicmlsbGF0aW9uIHJ1bnMgdXAgdG8gMTQwIGJwbS4KQk5QIDQxMiBwZy9tTCwgY3JlYXRpbmluZSAxLjMxIG1nL2RMLCBlR0ZSIGFwcHJveGltYXRlbHkgNDYgbUwvbWluLzEuNzMgbTIsIHBvdGFzc2l1bSA0LjUgbW1vbC9MLCBtYWduZXNpdW0gMS45IG1nL2RMLCBUU0ggMS43IHVJVS9tTC4KCkFTU0VTU01FTlQ6CjEuIEhlYXJ0IGZhaWx1cmUgd2l0aCByZWR1Y2VkIGVqZWN0aW9uIGZyYWN0aW9uLCBFRiAzNSUsIE5ZSEEgY2xhc3MgSUktSUlJLiBTeW1wdG9tYXRpYyB3aXRoIGV4ZXJ0aW9uYWwgZHlzcG5lYS4gRWNobyBzaG93cyBtaWxkIExWIGRpbGF0aW9uLCBnbG9iYWwgaHlwb2tpbmVzaXMsIGdyYWRlIElJIGRpYXN0b2xpYyBkeXNmdW5jdGlvbiwgYW5kIG1pbGQgTEEgZW5sYXJnZW1lbnQuIFJlbmFsIGZ1bmN0aW9uIGFuZCBwb3Rhc3NpdW0gYWNjZXB0YWJsZSBmb3IgaW5pdGlhdGlvbiBvZiBBUk5JIHRoZXJhcHkuCjIuIFBhcm94eXNtYWwgYXRyaWFsIGZpYnJpbGxhdGlvbi4gUHJpb3IgYW1idWxhdG9yeSBtb25pdG9yIGRvY3VtZW50ZWQgQUYgd2l0aCByYXRlcyB1cCB0byAxNDAgYnBtLiBFQ0cgdG9kYXkgc2hvd3Mgc2ludXMgcmh5dGhtIHdpdGggUEFDcy4gR2l2ZW4gSEYgYW5kIG90aGVyIHN0cm9rZSByaXNrIGZhY3RvcnMsIENIQTJEUzItVkFTYyBzY29yZSBzdXBwb3J0cyBjaHJvbmljIGFudGljb2FndWxhdGlvbi4KMy4gQ2hyb25pYyBraWRuZXkgZGlzZWFzZSwgc3RhYmxlIGZvciBtZWRpY2F0aW9uIHBsYW5uaW5nIHRvZGF5IHdpdGggY3JlYXRpbmluZSAxLjMxIGFuZCBlR0ZSIGFib3V0IDQ2OyB3aWxsIG5lZWQgbW9uaXRvcmluZyB3aXRoIEhGIHJlZ2ltZW4gYWRqdXN0bWVudHMuCjQuIEhpc3Rvcnkgb2YgQUNFIGluaGliaXRvciBpbnRvbGVyYW5jZSAoY291Z2gpLCByZWxldmFudCB0byBHRE1UIHNlbGVjdGlvbi4KClBMQU46CjEuIENvbnRpbnVlIGNhcnZlZGlsb2wgNi4yNSBtZyBQTyBCSUQuCjIuIENvbnRpbnVlIGZ1cm9zZW1pZGUgMjAgbWcgUE8gZWFjaCBtb3JuaW5nLgozLiBTdG9wIGxvc2FydGFuIGFuZCBzdGFydCBzYWN1Yml0cmlsL3ZhbHNhcnRhbiAyNC8yNiBtZyBQTyBCSUQgYWZ0ZXIgYXBwcm9wcmlhdGUgd2FzaG91dCwgZ2l2ZW4gc3ltcHRvbWF0aWMgSEZyRUYgYW5kIHByaW9yIEFDRSBpbnRvbGVyYW5jZSBoaXN0b3J5Lgo0LiBTdGFydCBhcGl4YWJhbiA1IG1nIFBPIEJJRCBmb3Igc3Ryb2tlIHByZXZlbnRpb24gaW4gcGFyb3h5c21hbCBhdHJpYWwgZmlicmlsbGF0aW9uLgo1LiBSZXZpZXdlZCBFQ0cgYW5kIGVjaG9jYXJkaW9ncmFtIGZpbmRpbmdzIHdpdGggcGF0aWVudCBhbmQgdXBkYXRlZCBtZWRpY2F0aW9uIGxpc3QuCjYuIFJlaW5mb3JjZWQgc29kaXVtIHJlc3RyaWN0aW9uIGFuZCBmbHVpZCByZXN0cmljdGlvbiBpbnN0cnVjdGlvbnMsIHdpdGggY291bnNlbGluZyBvbiBzeW1wdG9tIG1vbml0b3JpbmcgYW5kIHdoZW4gdG8gc2VlayBjYXJlIGZvciB3b3JzZW5pbmcgZHlzcG5lYSwgZWRlbWEsIGJsZWVkaW5nLCBvciByZWN1cnJlbnQgc3VzdGFpbmVkIHBhbHBpdGF0aW9ucy4KNy4gRm9sbG93IHVwIHdpdGggTGlzYSBOZ3V5ZW4sIFBBLUMsIGluIDMtNCB3ZWVrcyB0byByZWFzc2VzcyB0b2xlcmFuY2UsIHJlbmFsIGZ1bmN0aW9uL2VsZWN0cm9seXRlcyBhcyBuZWVkZWQsIGFuZCBjb25zaWRlciBtZWRpY2F0aW9uIHRpdHJhdGlvbi4K"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-001",
+        "display": "Office Visit"
+      }
+    ],
+    "period": {
+      "start": "2022-06-08",
+      "end": "2022-06-08"
+    }
+  }
+}

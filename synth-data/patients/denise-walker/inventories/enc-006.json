@@ -1,0 +1,179 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "sandia-retina-specialists",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Diabetic retinopathy with macular edema evaluation and intravitreal treatment",
+    "participants": [
+      {
+        "name": "Dr. Neha Kapur, MD",
+        "role": "retina specialist, evaluating clinician and proceduralist"
+      },
+      {
+        "name": "Isaac Feldman, OD",
+        "role": "ophthalmic imaging, OCT, fundus examination findings"
+      },
+      {
+        "name": "Teresa Lucero, RN",
+        "role": "procedure support and post-injection education"
+      }
+    ],
+    "service_provider": "Sandia Retina Specialists",
+    "location": "Sandia Retina Specialists, Albuquerque, New Mexico"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "126/78",
+        "unit": "mmHg",
+        "systolic": 126,
+        "diastolic": 78
+      },
+      {
+        "name": "heart rate",
+        "value": 71,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body weight",
+        "value": 190,
+        "unit": "lb"
+      }
+    ],
+    "labs": [
+      {
+        "name": "glucose",
+        "value": 162,
+        "unit": "mg/dL",
+        "source": "patient log",
+        "flag": "high / hyperglycemia by history",
+        "note": "Morning measurement reported by patient; specimen type not stated."
+      }
+    ],
+    "screening": [
+      {
+        "name": "visual acuity with correction, right eye",
+        "value": "20/25"
+      },
+      {
+        "name": "visual acuity with correction, left eye",
+        "value": "20/50"
+      },
+      {
+        "name": "intraocular pressure, right eye",
+        "value": 16,
+        "unit": "mmHg"
+      },
+      {
+        "name": "intraocular pressure, left eye",
+        "value": 17,
+        "unit": "mmHg"
+      },
+      {
+        "name": "central macular thickness, right eye",
+        "value": 289,
+        "unit": "microns",
+        "note": "No center-involving edema described."
+      },
+      {
+        "name": "central subfield thickness, left eye",
+        "value": 412,
+        "unit": "microns",
+        "note": "Center-involving diabetic macular edema present."
+      },
+      {
+        "name": "fundus photography / dilated fundus exam findings",
+        "value": "scattered microaneurysms, dot-blot hemorrhages, and hard exudates; no retinal tear or retinal detachment"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "moderate nonproliferative diabetic retinopathy, right eye",
+      "clinical_status": "active",
+      "onset_date": "2025-03-06",
+      "action": "create"
+    },
+    {
+      "name": "severe nonproliferative diabetic retinopathy, left eye",
+      "clinical_status": "active",
+      "onset_date": "2025-03-06",
+      "action": "create"
+    },
+    {
+      "name": "center-involving diabetic macular edema, left eye",
+      "clinical_status": "active",
+      "onset_date": "2025-03-06",
+      "action": "create"
+    },
+    {
+      "name": "type 2 diabetes mellitus with chronic hyperglycemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "bevacizumab 1.25 mg/0.05 mL intravitreal injection",
+      "sig": "Inject 1.25 mg/0.05 mL intravitreally into the left eye once on 2025-03-06.",
+      "status": "completed",
+      "reason": "center-involving diabetic macular edema of the left eye",
+      "action": "create"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "intravitreal injection of bevacizumab into the left eye",
+      "status": "completed",
+      "date": "2025-03-06",
+      "performer": "Dr. Neha Kapur, MD",
+      "support_participant": "Teresa Lucero, RN",
+      "indication": "center-involving diabetic macular edema in the left eye with reduced visual acuity and OCT-confirmed increased central subfield thickness",
+      "technique_details": "Topical anesthesia, povidone-iodine prep, intravitreal injection of bevacizumab 1.25 mg/0.05 mL in the left eye, post-injection precautions reviewed."
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "name": "Retina consultation note",
+      "description": "Summarizes referral after abnormal diabetic eye screening, blurred central vision in the left eye, intake vitals and morning glucose history, bilateral retinal examination findings, OCT interpretation, assessment of asymmetric diabetic retinopathy severity, counseling about glycemic and blood-pressure control, and plan for follow-up in 4 to 6 weeks."
+    },
+    {
+      "name": "OCT macula report",
+      "description": "Summarizes macular OCT findings for both eyes, including right-eye central macular thickness 289 microns without center-involving edema and left-eye center-involving diabetic macular edema with central subfield thickness 412 microns supporting treatment."
+    },
+    {
+      "name": "Fundus imaging report",
+      "description": "Summarizes fundus photography and dilated examination findings, including scattered microaneurysms, dot-blot hemorrhages, hard exudates, asymmetric diabetic retinopathy severity, and absence of retinal tear or detachment."
+    },
+    {
+      "name": "Procedure note",
+      "description": "Documents the left-eye intravitreal bevacizumab injection performed by Dr. Kapur, including indication, medication and dose, topical anesthesia, povidone-iodine prep, support by Teresa Lucero, RN, and immediate tolerance / post-procedure precautions."
+    },
+    {
+      "name": "Post-injection instructions",
+      "description": "Summarizes return precautions after intravitreal injection, including worsening pain, vision loss, increasing redness, flashes, floaters, or curtain-like vision change, along with the planned retina follow-up window of 4 to 6 weeks."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "optical coherence tomography of the macula, both eyes",
+      "report_state": "summary-only",
+      "description": "Imaging report documents right-eye central macular thickness of 289 microns without center-involving edema and left-eye center-involving diabetic macular edema with central subfield thickness 412 microns; used to guide same-day treatment decision."
+    },
+    {
+      "type": "fundus photography / retinal imaging report",
+      "report_state": "summary-only",
+      "description": "Imaging report documents scattered microaneurysms, dot-blot hemorrhages, hard exudates, bilateral diabetic retinopathy with greater severity in the left eye, and no retinal tear or detachment."
+    }
+  ],
+  "allergies": []
+}

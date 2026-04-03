@@ -1,0 +1,73 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-pregnancy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "inactive",
+        "display": "Inactive"
+      }
+    ],
+    "text": "Inactive"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "65727000",
+        "display": "Intrauterine pregnancy (finding)"
+      }
+    ],
+    "text": "Early intrauterine pregnancy, approximately 4 weeks 5 days gestation by last menstrual period"
+  },
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "onsetDateTime": "2024-04-08",
+  "abatementDateTime": "2024-06-03",
+  "recordedDate": "2024-05-06",
+  "note": [
+    {
+      "text": "Confirmed by positive serum beta-hCG with appropriate 48-hour doubling kinetics; estimated due date 2025-01-03"
+    },
+    {
+      "text": "Pregnancy ended in first-trimester miscarriage at approximately 6 weeks gestation on 2024-06-03. Complete resolution confirmed by beta-hCG <5 mIU/mL on 2024-06-14."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

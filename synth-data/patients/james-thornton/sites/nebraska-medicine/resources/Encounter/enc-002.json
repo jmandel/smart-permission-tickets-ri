@@ -1,0 +1,147 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-002",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "inpatient encounter"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "32485007",
+          "display": "Hospital admission (procedure)"
+        }
+      ],
+      "text": "Inpatient Encounter"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/d71350cc-eff8-48b3-a0ce-93e1e91d0e6b",
+        "type": "Practitioner",
+        "display": "Dr. Priya Nair"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Participation"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/a21fabab-5da7-4eea-aec8-26e9136e6d81",
+        "type": "Practitioner",
+        "display": "Dr. Marcus Okonkwo"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-01-12T21:00:00-06:00",
+    "end": "2026-01-15"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "64252005",
+          "display": "Acute gangrenous appendicitis with perforation AND peritonitis (disorder)"
+        }
+      ],
+      "text": "Acute gangrenous perforated appendicitis, status post laparoscopic appendectomy"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-000-perf-appendicitis",
+        "display": "Acute gangrenous appendicitis with perforation"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "billing",
+            "display": "Billing"
+          }
+        ]
+      },
+      "rank": 1
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-000-periappendiceal-abscess",
+        "display": "Periappendiceal abscess"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "billing",
+            "display": "Billing"
+          }
+        ]
+      },
+      "rank": 2
+    }
+  ],
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+          "code": "home",
+          "display": "Home"
+        }
+      ],
+      "text": "Home with self-care"
+    }
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/c4fcb878-6df4-455b-afc1-5205ef1ed63e",
+        "display": "Nebraska Medicine"
+      },
+      "status": "completed"
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/9522eda9-c4fc-4dc3-8922-59bdf218dc20",
+    "display": "Nebraska Medicine"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Encounter type: Inpatient discharge (covers hospital days January 12–15, 2026; admission encounter) Clinicians: Dr. Priya Nair (Hospitalist, co-management), Dr."
+    }
+  ]
+}

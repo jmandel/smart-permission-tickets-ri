@@ -1,0 +1,87 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-005-tdap",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "115",
+        "display": "Tdap"
+      }
+    ],
+    "text": "Tdap (tetanus, diphtheria, and acellular pertussis) vaccine"
+  },
+  "patient": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "occurrenceDateTime": "2021-03-16",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/47540de6-680b-41bd-9e2c-3903b02dc52d",
+    "display": "Cascade Community Health Center"
+  },
+  "site": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+        "code": "LD",
+        "display": "left deltoid"
+      }
+    ],
+    "text": "Left Deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "AP",
+            "display": "Administering Provider"
+          }
+        ],
+        "text": "Administering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/068c5e0f-43b2-455f-9e7e-b06ff391ca35",
+        "display": "David Kim, MA"
+      }
+    },
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+        "display": "Dr. Angela Morales, MD"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "Last Tdap dose was greater than 10 years ago. Patient tolerated well, no immediate adverse reaction."
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "alamo-family-practice",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Joint pain and stiffness evaluation, labs ordered",
+    "period_start": "2021-02-08T09:00:00-06:00",
+    "period_end": "2021-02-08T09:35:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Linda Tran",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Alamo Family Practice",
+    "location": "Alamo Family Practice, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 132,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 86,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "132/86",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 132,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 86,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 198,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.4,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "rheumatoid factor (RF)",
+        "value": 78,
+        "unit": "IU/mL",
+        "reference_range": "<14 IU/mL",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "anti-cyclic citrullinated peptide (anti-CCP) antibodies",
+        "value": ">250",
+        "unit": "U/mL",
+        "reference_range": "<20 U/mL",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "erythrocyte sedimentation rate (ESR)",
+        "value": 42,
+        "unit": "mm/hr",
+        "reference_range": "<20 mm/hr",
+        "flag": "high",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": 2.8,
+        "unit": "mg/dL",
+        "reference_range": "<0.5 mg/dL",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "white blood cell count (WBC)",
+        "value": 7.1,
+        "unit": "K/uL",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 14.8,
+        "unit": "g/dL",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "platelet count",
+        "value": 262,
+        "unit": "K/uL",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "glucose",
+        "value": 99,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 24,
+        "unit": "U/L",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 22,
+        "unit": "U/L",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "albumin",
+        "value": 4,
+        "unit": "g/dL",
+        "flag": "normal",
+        "specimen": "serum"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening total score",
+        "value": 1,
+        "interpretation": "negative screen"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "symmetric inflammatory polyarthritis, suspected rheumatoid arthritis",
+      "clinical_status": "active",
+      "onset_date": "2020-10",
+      "action": "create"
+    },
+    {
+      "name": "borderline overweight",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension, borderline",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "ibuprofen 400 mg oral tablet",
+      "sig": "Take by mouth as needed for joint pain and stiffness, with food. Avoid prolonged daily use without gastroprotection.",
+      "status": "active",
+      "reason": "symmetric inflammatory polyarthritis, suspected rheumatoid arthritis",
+      "action": "create"
+    },
+    {
+      "name": "cetirizine 10 mg oral tablet",
+      "sig": "Take once daily for seasonal allergies",
+      "status": "active",
+      "reason": "seasonal allergies",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Problem-focused office visit note documenting bilateral hand stiffness and symmetric joint pain history, physical exam findings of MCP, PIP, wrist, and MTP joint involvement, lab results, assessment of suspected rheumatoid arthritis, ibuprofen recommendation, and urgent rheumatology referral."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "rheumatoid factor and anti-CCP antibody panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "rheumatoid factor (RF)",
+        "anti-cyclic citrullinated peptide (anti-CCP) antibodies"
+      ]
+    },
+    {
+      "type": "erythrocyte sedimentation rate (ESR)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate (ESR)"
+      ]
+    },
+    {
+      "type": "C-reactive protein (CRP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein (CRP)"
+      ]
+    },
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count (WBC)",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "albumin"
+      ]
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "summary-only",
+      "description": "Urinalysis performed; results reported as normal. No individual component values provided."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "diffuse maculopapular rash",
+      "action": "reference-existing"
+    }
+  ]
+}

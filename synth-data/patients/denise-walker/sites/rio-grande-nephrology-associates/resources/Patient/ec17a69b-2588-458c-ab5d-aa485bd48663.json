@@ -1,0 +1,138 @@
+{
+  "resourceType": "Patient",
+  "id": "ec17a69b-2588-458c-ab5d-aa485bd48663",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2054-5",
+            "display": "Black or African American"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Black"
+        }
+      ]
+    },
+    {
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "non-Hispanic"
+        }
+      ]
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "In Arizona she had primary care and cardiology follow-up that established the chronic disease baseline: diabetes requiring intensification, CKD emerging, atrial fibrillation managed with anticoagulation, and HFrEF treated medically. After moving to New Mexico she had an acute decompensated heart-failure hospitalization, then longitudinal follow-up with a heart-failure clinic, nephrology, and retina specialists for diabetic retinopathy with macular edema."
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "system": "http://example.org/fhir/identifier/patient-local",
+      "value": "rio-grande-nephrology-associates-denise-walker"
+    },
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-e91cc755383ff5c44b700b01"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Walker",
+      "given": [
+        "Denise"
+      ],
+      "text": "Denise Walker"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "home",
+      "value": "505-555-0184"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-04-22",
+  "address": [
+    {
+      "use": "home",
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "text": "Albuquerque, NM"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "W",
+        "display": "Widowed"
+      }
+    ],
+    "text": "Widowed"
+  },
+  "contact": [
+    {
+      "relationship": [
+        {
+          "text": "Adult daughter"
+        }
+      ],
+      "name": {
+        "text": "Adult daughter"
+      },
+      "telecom": [
+        {
+          "system": "phone",
+          "use": "mobile",
+          "value": "505-555-0147"
+        }
+      ],
+      "address": {
+        "city": "Albuquerque",
+        "state": "NM",
+        "country": "US",
+        "text": "Albuquerque, NM"
+      }
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ],
+  "managingOrganization": {
+    "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+    "display": "Rio Grande Nephrology Associates"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "new patient office visit, comprehensive history and physical",
+    "reason": "new patient establishment of care; hypertension diagnosed",
+    "period_start": "2015-03-18",
+    "period_end": "2015-03-18",
+    "participants": [
+      {
+        "name": "Dr. Cynthia Okafor, MD",
+        "role": "internist"
+      }
+    ],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure (initial)",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 152,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 94,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "blood pressure (repeat)",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 148,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 92,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%",
+        "qualifier": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 198,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 28.4,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "fasting glucose (point-of-care)",
+        "value": 138,
+        "unit": "mg/dL",
+        "flag": "high",
+        "reference_range": "70–100 mg/dL",
+        "specimen_type": "capillary blood (point-of-care)"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "score_range": "0–6",
+        "interpretation": "negative screen"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015-03-18",
+      "action": "create"
+    },
+    {
+      "name": "elevated fasting glucose (impaired fasting glucose)",
+      "clinical_status": "active",
+      "onset_date": "2015-03-18",
+      "action": "create"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "onset_date": "2015-03-18",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take one 10 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "document_type": "progress note",
+      "description": "New patient comprehensive history and physical for a 68-year-old male establishing care after a gap of over one year. Documents social history, family history, negative review of systems, complete physical exam findings, point-of-care fasting glucose of 138 mg/dL, new diagnoses of essential hypertension and elevated fasting glucose, initiation of lisinopril 10 mg daily, allergy documentation (sulfonamide antibiotics — rash), lab orders placed, and DASH diet counseling with follow-up plan in 8–12 weeks."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "fasting lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Fasting lipid panel ordered for cardiovascular risk assessment in a patient with newly diagnosed hypertension, overweight status, and family history. No results available at this encounter."
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "ordered-not-resulted",
+      "description": "Hemoglobin A1c ordered to evaluate glycemic status over the past 2–3 months given elevated fasting glucose of 138 mg/dL and family history of type 2 diabetes. No results available at this encounter."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "CMP ordered to assess renal function (baseline before ACE inhibitor therapy), electrolytes, and hepatic function. No results available at this encounter."
+    },
+    {
+      "type": "complete blood count",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC ordered as part of baseline screening labs for a new patient who has not had lab work in over one year. No results available at this encounter."
+    },
+    {
+      "type": "urinalysis",
+      "report_state": "ordered-not-resulted",
+      "description": "Urinalysis ordered to screen for proteinuria (target organ damage from hypertension) and glycosuria. No results available at this encounter."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "create"
+    }
+  ]
+}

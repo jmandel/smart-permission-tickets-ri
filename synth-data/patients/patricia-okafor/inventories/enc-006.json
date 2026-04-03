@@ -1,0 +1,190 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "westheimer-family-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Cough follow-up, chest X-ray results review, urgent pulmonology referral",
+    "period_start": "2024-08-01T09:00:00-05:00",
+    "period_end": "2024-08-01T09:45:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Adebayo Olatunde, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Westheimer Family Medicine",
+    "location": "9745 Westheimer Rd, Suite 200, Houston, TX 77042"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 136,
+        "value_diastolic": 84,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body weight",
+        "value": 156,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 26,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 96,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 7.1,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 11.8,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "low",
+        "note": "declined from 13.1 g/dL in March 2024"
+      },
+      {
+        "name": "platelet count",
+        "value": 210,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": 3.4,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5 g/dL",
+        "flag": "low"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "persistent cough",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "update-existing"
+    },
+    {
+      "name": "unintentional weight loss",
+      "clinical_status": "active",
+      "onset_date": "2024-06",
+      "action": "create"
+    },
+    {
+      "name": "solitary pulmonary nodule, right upper lobe opacity",
+      "clinical_status": "active",
+      "onset_date": "2024-08-01",
+      "action": "create",
+      "description": "3-cm opacity in the right upper lobe with irregular borders, identified on chest X-ray"
+    },
+    {
+      "name": "mild normocytic anemia",
+      "clinical_status": "active",
+      "onset_date": "2024-08-01",
+      "action": "create",
+      "description": "hemoglobin 11.8 g/dL, declined from 13.1 g/dL over 5 months; may represent anemia of chronic disease"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "benzonatate 100 mg oral capsule",
+      "sig": "three times daily",
+      "status": "stopped",
+      "reason": "persistent cough",
+      "action": "update-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit follow-up note for persistent cough, documenting unintentional weight loss, new chest X-ray finding of a suspicious right upper lobe opacity, declining hemoglobin and low albumin on labs, clinical assessment raising concern for lung malignancy, urgent pulmonology referral, CT chest with contrast ordered, and benzonatate discontinuation. Discussion with patient and husband documented."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP performed; albumin 3.4 g/dL (mildly low) is the only individually reported value. Remainder described as unremarkable including normal renal and hepatic function."
+    },
+    {
+      "type": "chest X-ray",
+      "report_state": "summary-only",
+      "description": "Performed same day at on-site imaging suite. Findings: suspicious 3-cm opacity in the right upper lobe with irregular borders. No pleural effusion. No bony abnormalities. Cardiac silhouette normal."
+    },
+    {
+      "type": "CT chest with contrast",
+      "report_state": "ordered-not-resulted",
+      "description": "Ordered to further characterize the right upper lobe opacity identified on chest X-ray. To be completed prior to pulmonology appointment. Not yet performed as of this encounter."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

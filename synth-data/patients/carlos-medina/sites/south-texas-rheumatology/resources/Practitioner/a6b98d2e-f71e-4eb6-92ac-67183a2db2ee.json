@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Fuentes",
+      "given": [
+        "Alejandro"
+      ],
+      "prefix": [
+        "Dr."
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Rheumatologist"
+      }
+    }
+  ]
+}

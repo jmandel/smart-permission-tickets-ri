@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-015-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "date": "2025-10-06T00:00:00-04:00",
+  "author": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "type": "Practitioner",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAxMC8wNi8yMDI1ClBhdGllbnQ6IEFpc2hhIFBhdGVsIChET0I6IDAzLzE1LzIwMjAsIEFnZSA1KQpNUk46IFRQLTIwMjAtMDQxODIKQ2xpbmljaWFuOiBEci4gTWVnYW4gSGFybG93LCBNRApQcmFjdGljZTogVHJpYW5nbGUgUGVkaWF0cmljcywgNDIwMSBMYWtlIEJvb25lIFRyYWlsLCBTdWl0ZSAyMDAsIFJhbGVpZ2gsIE5DIDI3NjA3CkNvbnRhY3Q6IE1vdGhlciwgUHJpeWEgUGF0ZWwKClJFQVNPTiBGT1IgQ0FMTDogUm91dGluZSBmYWxsIGFzdGhtYSBjaGVjay1pbiBhbmQgaW5mbHVlbnphIHZhY2NpbmUgc2NoZWR1bGluZy4KCkRJU0NVU1NJT046ClNwb2tlIHdpdGggbW90aGVyIFByaXlhIFBhdGVsIGJ5IHBob25lIGZvciBhIHJvdXRpbmUgZmFsbCB0ZWxlcGhvbmUgY2hlY2staW4gcmVnYXJkaW5nIEFpc2hhJ3MgYXN0aG1hIG1hbmFnZW1lbnQuIFByaXlhIHJlcG9ydHMgQWlzaGEgc3RhcnRlZCBraW5kZXJnYXJ0ZW4gaW4gQXVndXN0IGFuZCBoYXMgYmVlbiBhZGp1c3Rpbmcgd2VsbC4gQXN0aG1hIGhhcyBiZWVuIHN0YWJsZSB0aHJvdWdoIHRoZSBzdW1tZXIgd2l0aCByZXNjdWUgaW5oYWxlciAoYWxidXRlcm9sKSB1c2UgYXBwcm94aW1hdGVseSBvbmNlIHBlciB3ZWVrLiBXaXRoIHRoZSBvbnNldCBvZiBmYWxsIGFsbGVyZ2VuIHNlYXNvbiBhbmQgcmV0dXJuIHRvIHNjaG9vbCwgUHJpeWEgaGFzIG5vdGljZWQgYSBzbGlnaHQgaW5jcmVhc2UgaW4gbW9ybmluZyBjb3VnaCBvdmVyIHRoZSBwYXN0IHdlZWsuIE5vIHdoZWV6aW5nLCBubyBuaWdodHRpbWUgc3ltcHRvbXMsIGFuZCBubyBzY2hvb2wgYWJzZW5jZXMgZHVlIHRvIHJlc3BpcmF0b3J5IGlzc3Vlcy4KCkN1cnJlbnQgbWVkaWNhdGlvbiByZWdpbWVuIHJldmlld2VkIGFuZCBjb25maXJtZWQ6CjEuIEZsdXRpY2Fzb25lL3NhbG1ldGVyb2wgKEFkdmFpciBIRkEgMTE1LzIxKSAxIHB1ZmYgQklEIHZpYSBzcGFjZXIKMi4gTW9udGVsdWthc3QgKFNpbmd1bGFpcikgNCBtZyBjaGV3YWJsZSB0YWJsZXQgZGFpbHkgYXQgYmVkdGltZQozLiBDZXRpcml6aW5lIChaeXJ0ZWMpIDUgbWcgZGFpbHkKNC4gQWxidXRlcm9sIChQcm9BaXIgSEZBIDkwIG1jZykgMiBwdWZmcyBQUk4gdmlhIHNwYWNlcgoKUHJpeWEgY29uZmlybXMgZ29vZCBhZGhlcmVuY2UgdG8gYWxsIGNvbnRyb2xsZXIgbWVkaWNhdGlvbnMuCgpBU1NFU1NNRU5UOgpTZXZlcmUgcGVyc2lzdGVudCBhc3RobWEsIGN1cnJlbnRseSB3ZWxsIGNvbnRyb2xsZWQgb24gY29tYmluYXRpb24gdGhlcmFweS4gTWlsZCBpbmNyZWFzZSBpbiBtb3JuaW5nIGNvdWdoIGxpa2VseSByZWxhdGVkIHRvIHNlYXNvbmFsIGFsbGVyZ2VuIGV4cG9zdXJlIGFuZCBzY2hvb2wgcmUtZW50cnkuIE5vIGV2aWRlbmNlIG9mIGV4YWNlcmJhdGlvbiBhdCB0aGlzIHRpbWUuCgpQTEFOOgoxLiBDb250aW51ZSBjdXJyZW50IGFzdGhtYSBjb250cm9sbGVyIHJlZ2ltZW4gdW5jaGFuZ2VkLgoyLiBNb25pdG9yIG1vcm5pbmcgY291Z2gg4oCUIG1vdGhlciBhZHZpc2VkIHRvIGNhbGwgYmFjayBpZiBjb3VnaCB3b3JzZW5zIG9yIHJlc2N1ZSBpbmhhbGVyIHVzZSBpbmNyZWFzZXMgdG8gbW9yZSB0aGFuIHR3aWNlIHdlZWtseSwgYXMgdGhpcyBtYXkgd2FycmFudCBzdGVwLXVwIGNvbnNpZGVyYXRpb24uCjMuIEluZmx1ZW56YSB2YWNjaW5lIHJlY29tbWVuZGVkIGZvciB0aGlzIGZhbGwgc2Vhc29uLiBOdXJzZSB2aXNpdCBzY2hlZHVsZWQgZm9yIHRoZSBmb2xsb3dpbmcgd2VlayBmb3IgZmx1IHNob3QgYWRtaW5pc3RyYXRpb24uCjQuIENvbnRpbnVlIEVwaVBlbiBKciBhdmFpbGFiaWxpdHkgYXQgaG9tZSBhbmQgc2Nob29sIGZvciBwZWFudXQvdHJlZSBudXQgYW5hcGh5bGF4aXMgcmlzay4KNS4gRm9sbG93IHVwIGFzIG5lZWRlZCBvciBhdCBuZXh0IHNjaGVkdWxlZCB3ZWxsLWNoaWxkIHZpc2l0LgoKRHIuIE1lZ2FuIEhhcmxvdywgTUQKVHJpYW5nbGUgUGVkaWF0cmljcwo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-015"
+      }
+    ],
+    "period": {
+      "start": "2025-10-06"
+    }
+  }
+}

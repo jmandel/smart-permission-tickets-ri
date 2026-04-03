@@ -1,0 +1,49 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-006-fundus-findings",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "exam",
+          "display": "Exam"
+        }
+      ],
+      "text": "Exam"
+    },
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "imaging",
+          "display": "Imaging"
+        }
+      ],
+      "text": "Imaging"
+    }
+  ],
+  "code": {
+    "text": "Fundus photography / dilated fundus exam findings"
+  },
+  "subject": {
+    "reference": "Patient/7b1188a2-28ef-4d17-b783-2866c438f117",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2025-03-06",
+  "performer": [
+    {
+      "reference": "Practitioner/a8476b2a-db72-4d0b-a5e5-b39505f711f4",
+      "display": "Isaac Feldman, OD"
+    }
+  ],
+  "valueString": "Scattered microaneurysms, dot-blot hemorrhages, and hard exudates; no retinal tear or retinal detachment.",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Observation enc-006-fundus-findings</p></div>"
+  }
+}

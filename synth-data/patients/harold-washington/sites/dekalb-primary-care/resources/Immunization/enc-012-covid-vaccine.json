@@ -1,0 +1,66 @@
+{
+  "resourceType": "Immunization",
+  "id": "enc-012-covid-vaccine",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "309",
+        "display": "COVID-19, mRNA, LNP-S, PF, tris-sucrose, 30 mcg/0.3 mL"
+      }
+    ],
+    "text": "COVID-19 bivalent booster (2024-2025 formulation)"
+  },
+  "patient": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-012"
+  },
+  "occurrenceDateTime": "2024-11-14",
+  "primarySource": true,
+  "location": {
+    "reference": "Location/a4cfa6c5-99a7-4a16-b7dd-6459d369f5d9",
+    "display": "DeKalb Primary Care"
+  },
+  "site": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActSite",
+        "code": "RD",
+        "display": "Right Deltoid"
+      }
+    ],
+    "text": "Right Deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
+        "code": "IM",
+        "display": "Injection, intramuscular"
+      }
+    ],
+    "text": "Intramuscular"
+  },
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0443",
+            "code": "OP",
+            "display": "Ordering Provider"
+          }
+        ],
+        "text": "Ordering Provider"
+      },
+      "actor": {
+        "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+        "display": "Dr. Anita Desai"
+      }
+    }
+  ]
+}

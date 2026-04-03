@@ -1,0 +1,150 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "bay-area-urgent-care-telegraph-ave-location",
+  "encounter": {
+    "class": "emergency",
+    "type": "Urgent care visit",
+    "reason": "Right ankle inversion injury with sprain",
+    "period_start": "2024-08-17",
+    "period_end": "2024-08-17",
+    "participants": [
+      {
+        "name": "Dr. Marcus Webb",
+        "role": "clinician"
+      }
+    ],
+    "service_provider": "Bay Area Urgent Care (Telegraph Ave location)",
+    "location": "Telegraph Avenue, Oakland, CA"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "124/78",
+        "unit": "mmHg",
+        "systolic": 124,
+        "diastolic": 78
+      },
+      {
+        "name": "heart rate",
+        "value": 88,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths per minute"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%",
+        "context": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 150,
+        "unit": "lb"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "Grade II right lateral ankle sprain",
+      "clinical_status": "active",
+      "onset_date": "2024-08-17",
+      "action": "create",
+      "detail": "Grade II lateral ankle sprain, right ankle, with involvement of the anterior talofibular ligament; acute injury sustained from inversion mechanism while walking on trail with children"
+    },
+    {
+      "name": "Rheumatoid arthritis, seropositive",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "detail": "Known chronic condition being managed at Bay Area Rheumatology Associates with methotrexate and adalimumab; noted in this encounter as relevant context for medication counseling regarding short-course ibuprofen use"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen 400 mg oral tablet",
+      "dose": "400 mg",
+      "route": "oral",
+      "sig": "every 8 hours as needed",
+      "duration": "up to 5 days",
+      "status": "active",
+      "reason": "Acute ankle sprain pain management",
+      "action": "create",
+      "note": "Clinician explicitly counseled patient on short-course use only given concurrent rheumatoid arthritis medications (methotrexate, adalimumab)"
+    },
+    {
+      "name": "Methotrexate 15 mg oral tablet",
+      "dose": "15 mg",
+      "route": "oral",
+      "sig": "once weekly",
+      "status": "active",
+      "action": "reference-existing",
+      "reason": "Rheumatoid arthritis management"
+    },
+    {
+      "name": "Folic acid 1 mg oral tablet",
+      "dose": "1 mg",
+      "route": "oral",
+      "sig": "daily",
+      "status": "active",
+      "action": "reference-existing",
+      "reason": "Concurrent with methotrexate therapy"
+    },
+    {
+      "name": "Adalimumab 40 mg subcutaneous injection",
+      "dose": "40 mg",
+      "route": "subcutaneous",
+      "sig": "every 2 weeks",
+      "status": "active",
+      "action": "reference-existing",
+      "reason": "Biologic therapy for rheumatoid arthritis"
+    },
+    {
+      "name": "Loratadine 10 mg oral tablet",
+      "dose": "10 mg",
+      "route": "oral",
+      "sig": "as needed",
+      "status": "active",
+      "action": "reference-existing",
+      "reason": "Seasonal allergies"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Clinical progress note",
+      "date": "2024-08-17",
+      "author": "Dr. Marcus Webb, MD",
+      "action": "create",
+      "description": "Complete documentation of right ankle inversion injury sustained while walking on a trail with children. Note includes: chief complaint and history of present illness with injury mechanism and symptom onset; vital signs; medication reconciliation documenting methotrexate 15 mg weekly, folic acid 1 mg daily, adalimumab 40 mg every 2 weeks, and loratadine as needed; documented amoxicillin allergy; detailed physical examination including lateral malleolar swelling, tenderness over anterior talofibular ligament distribution, pain with weight bearing, absence of gross deformity or instability, intact distal pulses and sensation, warm well-perfused foot with normal capillary refill, no open wounds beyond lateral swelling, and no focal fibula tenderness; imaging findings from three-view right ankle X-ray showing no fracture or dislocation with mild lateral soft tissue swelling; assessment of Grade II right lateral ankle sprain with anterior talofibular ligament involvement noting relevance of rheumatoid arthritis to medication counseling; treatment plan including air stirrup brace provision, RICE measures, ibuprofen 400 mg every 8 hours as needed for up to 5 days with explicit counseling regarding short-course use in context of concurrent biologic therapy, and progressive weight bearing as tolerated; patient education including review of X-ray results and explanation of conservative management appropriateness; return precautions including worsening pain, increasing swelling, numbness, inability to walk, and new instability; follow-up recommendations to contact primary care or orthopedics if not improving over next 1-2 weeks or sooner for worsening symptoms; documentation of patient understanding of diagnosis, imaging findings, home care instructions, and follow-up plan"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Right ankle X-ray, 3 views",
+      "report_state": "summary-only",
+      "description": "No acute fracture or dislocation; mild lateral soft tissue swelling only."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Amoxicillin",
+      "reaction": "Rash (hives)",
+      "severity": "unknown",
+      "action": "reference-existing",
+      "detail": "Known allergy documented and verified during medication reconciliation intake. Historical documentation from childhood ear infection."
+    }
+  ]
+}

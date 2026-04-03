@@ -1,0 +1,120 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-016",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "164850009",
+          "display": "Ambulatory electrocardiogram (procedure)"
+        }
+      ],
+      "text": "48-hour Holter Monitor Study"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Device Application and Removal"
+        }
+      ],
+      "period": {
+        "start": "2026-02-18",
+        "end": "2026-02-20"
+      },
+      "individual": {
+        "reference": "Practitioner/b5f9e94f-a4a7-4487-b3ea-98be9eb11743",
+        "display": "Maria Torres, RN, CCRN"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PART",
+              "display": "Participation"
+            }
+          ],
+          "text": "Preliminary Interpretation"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/72b83535-9536-4b6b-8af9-060de6f94e56",
+        "display": "Dr. Sarah Okonkwo, MD"
+      }
+    },
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Ordering Physician / Final Interpretation"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+        "display": "Dr. James Lindgren, MD, FHRS"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-02-18",
+    "end": "2026-02-20"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "440059007",
+          "display": "Persistent atrial fibrillation (disorder)"
+        }
+      ],
+      "text": "48-hour Holter monitor study to assess atrial fibrillation burden, rate control adequacy, and ventricular ectopy"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+        "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+    "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Encounter type: Diagnostic / ambulatory monitoring (device issued 2026-02-18, returned 2026-02-20) Clinician: Maria Torres, RN, CCRN (device application); Dr. Sarah Okonkwo, MD (preliminary read); Dr."
+    }
+  ]
+}

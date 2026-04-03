@@ -1,0 +1,46 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-001-allergy-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306111000",
+        "display": "Referral to clinical allergy service (procedure)"
+      }
+    ],
+    "text": "Referral to UNC Pediatric Allergy & Immunology (Dr. Sunita Krishnamurthy)"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-001"
+  },
+  "authoredOn": "2022-10-28",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "91935009",
+          "display": "Allergy to peanut (finding)"
+        }
+      ],
+      "text": "Peanut allergy with history of anaphylaxis — comprehensive allergy evaluation"
+    }
+  ],
+  "note": [
+    {
+      "text": "Referral to UNC Pediatric Allergy & Immunology (Dr. Sunita Krishnamurthy) for comprehensive allergy evaluation following peanut-induced anaphylaxis on 10/22/2022."
+    }
+  ]
+}

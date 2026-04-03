@@ -1,0 +1,238 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "riverside-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness exam; cognitive concerns identified by spouse",
+    "period_start": "2022-03-22",
+    "participants": [
+      {
+        "name": "Dr. Cynthia Okafor, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Riverside Internal Medicine",
+    "location": "Riverside Internal Medicine, 2255 Riverside Avenue, Suite 200, Jacksonville, FL 32204"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "136/82",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 136,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 82,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 194,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 70,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 27.8,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6.9,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high",
+        "effective_date": "2022-03-15"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 122,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "high",
+        "effective_date": "2022-03-15"
+      },
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": 2.4,
+        "unit": "mIU/L",
+        "reference_range": "0.4–4.0 mIU/L",
+        "flag": "normal",
+        "effective_date": "2022-03-15"
+      },
+      {
+        "name": "vitamin B12",
+        "value": 485,
+        "unit": "pg/mL",
+        "reference_range": "200–900 pg/mL",
+        "flag": "normal",
+        "effective_date": "2022-03-15"
+      },
+      {
+        "name": "creatinine (serum)",
+        "value": 1.1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3 mg/dL",
+        "flag": "normal",
+        "effective_date": "2022-03-15"
+      },
+      {
+        "name": "estimated glomerular filtration rate (eGFR)",
+        "value": 76,
+        "unit": "mL/min/1.73m²",
+        "reference_range": "≥60 mL/min/1.73m²",
+        "flag": "normal",
+        "effective_date": "2022-03-15"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "score_range": "0–6",
+        "interpretation": "negative screen (below threshold of 3)"
+      },
+      {
+        "name": "Mini-Mental State Examination (MMSE)",
+        "value": 24,
+        "score_range": "0–30",
+        "interpretation": "mild cognitive impairment range; deficits in short-term recall (0/3 objects at 5 minutes), orientation to date (lost 2 points), serial sevens (lost 1 point); clock drawing mildly impaired (numbers correct, hands pointing to wrong time); fully oriented to place and person"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "cognitive decline (mild), new onset",
+      "clinical_status": "active",
+      "onset_date": "2022-03-22",
+      "action": "create",
+      "note": "MMSE 24/30 with deficits in recall and orientation. Suspected early neurodegenerative process. Reversible metabolic causes (TSH, B12) ruled out. Depression screen negative."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Annual wellness visit note for 75-year-old male with stable hypertension, type 2 diabetes, and hyperlipidemia. Documents new cognitive concerns raised by spouse, MMSE administration and results (24/30), lab review ruling out reversible causes of cognitive decline, neurology referral to Dr. Raymond Patel, and home safety counseling. Includes detailed cognitive screening documentation."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "fasting glucose",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fasting glucose"
+      ]
+    },
+    {
+      "type": "thyroid-stimulating hormone (TSH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone (TSH)"
+      ]
+    },
+    {
+      "type": "vitamin B12 level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "vitamin B12"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Creatinine 1.1 mg/dL and eGFR 76 mL/min/1.73m² explicitly reported; remainder within normal limits. Only two individual component values available, which is insufficient for a full report-with-results (CMP typically has 14 components)."
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "summary-only",
+      "description": "Reported as within normal limits. No individual component values (WBC, hemoglobin, hematocrit, platelets, etc.) provided in the encounter narrative."
+    }
+  ],
+  "allergies": []
+}

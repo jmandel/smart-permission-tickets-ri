@@ -1,0 +1,42 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-014-brain-mri",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "RAD",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24589-4",
+        "display": "MR Brain W contrast IV"
+      }
+    ],
+    "text": "Brain MRI with contrast"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "effectiveDateTime": "2024-09-25",
+  "performer": [
+    {
+      "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+      "display": "The University of Texas MD Anderson Cancer Center"
+    }
+  ],
+  "conclusion": "No intracranial metastases identified."
+}

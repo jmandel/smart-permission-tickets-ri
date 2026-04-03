@@ -1,0 +1,133 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "uw-health-university-student-health-services",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "New Patient Office Visit",
+    "reason": "New patient wellness, incomplete MMR series noted",
+    "period_start": "2023-09-12",
+    "period_end": "2023-09-12",
+    "participants": [
+      {
+        "name": "Dr. Rachel Okonkwo, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "UW Health University Student Health Services",
+    "location": "UW Health University Student Health Services, Madison, WI"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 118,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 72,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "beats/min",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 176,
+        "unit": "lbs",
+        "action": "create"
+      },
+      {
+        "name": "body height",
+        "value": 71,
+        "unit": "in",
+        "action": "create"
+      },
+      {
+        "name": "body mass index",
+        "value": 24.5,
+        "unit": "kg/m²",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 total score",
+        "value": 0,
+        "interpretation": "negative",
+        "action": "create"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "incomplete immunization status — incomplete MMR vaccination series",
+      "clinical_status": "active",
+      "onset_date": "2023-09-12",
+      "action": "create",
+      "note": "Single MMR dose at 12 months (June 2005), missing recommended second dose. Documented as incomplete MMR series — consider catch-up. Not flagged for immediate follow-up action at this visit."
+    },
+    {
+      "name": "seasonal allergic rhinitis",
+      "clinical_status": "active",
+      "action": "create",
+      "note": "Pre-existing, mild. Newly documented at this encounter. Well controlled with OTC loratadine as needed."
+    }
+  ],
+  "medications": [
+    {
+      "name": "loratadine 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily as needed for seasonal allergy symptoms",
+      "status": "active",
+      "reason": "seasonal allergic rhinitis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "New patient comprehensive wellness visit for a 19-year-old healthy male enrolling at UW-Madison. Includes complete review of systems, physical exam findings, vitals, PHQ-2 screening (negative), documentation of incomplete MMR series from childhood, seasonal allergic rhinitis, NKDA status, and plan for routine follow-up.",
+      "action": "create"
+    },
+    {
+      "type": "patient education / instructions",
+      "description": "Written instructions provided to new student regarding campus health resources, including how to schedule appointments, after-hours care options, and mental health services available through UW Health University Student Health Services.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "no known drug allergies",
+      "type": "NKDA",
+      "action": "create"
+    }
+  ]
+}

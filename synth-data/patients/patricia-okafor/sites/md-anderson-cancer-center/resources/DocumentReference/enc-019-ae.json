@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-019-ae",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Adverse Event Report / Clinical Trial Adverse Event Form"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "date": "2025-02-17T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+      "type": "Practitioner",
+      "display": "Dr. Carlos Menendez, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QWR2ZXJzZSBFdmVudCBSZXBvcnQgLyBDbGluaWNhbCBUcmlhbCBBZHZlcnNlIEV2ZW50IEZvcm0KUHJvdG9jb2w6IE5DVDA1ODIwMjk1CkRhdGU6IDAyLzE3LzIwMjUKClBhdGllbnQ6IFBhdHJpY2lhIENoaWRpbm1hIE9rYWZvcgpET0I6IDA4LzE0LzE5NjMKCkFkdmVyc2UgRXZlbnQgMTogQ2hlbW90aGVyYXB5LUluZHVjZWQgUGVyaXBoZXJhbCBOZXVyb3BhdGh5Ci0gQ1RDQUUgR3JhZGU6IDEgKG5ldyBvbnNldCkKLSBEZXNjcmlwdGlvbjogQmlsYXRlcmFsIGZpbmdlcnRpcCBudW1ibmVzcyBhbmQgdGluZ2xpbmcsIG5vIG1vdG9yIGNvbXBvbmVudAotIEF0dHJpYnV0aW9uOiBQcm9iYWJseSByZWxhdGVkIHRvIGNhcmJvcGxhdGluIChjdW11bGF0aXZlIHRveGljaXR5KQotIE9uc2V0OiBBcHByb3hpbWF0ZWx5IDItMyB3ZWVrcyBhZnRlciBDeWNsZSAyCi0gQWN0aW9uIHRha2VuOiBJbml0aWF0ZWQgZ2FiYXBlbnRpbiAzMDAgbWcgUE8gYXQgYmVkdGltZTsgY2FyYm9wbGF0aW4gZG9zZSByZWR1Y2VkIDI1JSAoQVVDIDUgdG8gQVVDIDMuNzUpCgpBZHZlcnNlIEV2ZW50IDI6IEZhdGlndWUgKFdvcnNlbmVkKQotIENUQ0FFIEdyYWRlOiAyIChpbmNyZWFzZWQgZnJvbSBHcmFkZSAxIGF0IEN5Y2xlIDIpCi0gRGVzY3JpcHRpb246IExpbWl0aW5nIGluc3RydW1lbnRhbCBhY3Rpdml0aWVzIG9mIGRhaWx5IGxpdmluZzsgcmVkdWNlZCB3YWxraW5nIGRpc3RhbmNlLCBkYWlseSBuYXBwaW5nCi0gQXR0cmlidXRpb246IFByb2JhYmx5IHJlbGF0ZWQgdG8gY2hlbW90aGVyYXB5IHJlZ2ltZW4KLSBBY3Rpb24gdGFrZW46IENhcmJvcGxhdGluIGRvc2UgcmVkdWNlZCAyNSUgcGVyIHByb3RvY29sIGRvc2UgcmVkdWN0aW9uIGFsZ29yaXRobQoKRG9zZSBNb2RpZmljYXRpb24gRG9jdW1lbnRhdGlvbjoKLSBDYXJib3BsYXRpbiByZWR1Y2VkIGZyb20gQVVDIDUgKGNhbGN1bGF0ZWQgNDUwIG1nKSB0byBBVUMgMy43NSAoY2FsY3VsYXRlZCAzMzggbWcpCi0gUGVyIHByb3RvY29sLXNwZWNpZmllZCBkb3NlIHJlZHVjdGlvbiBhbGdvcml0aG0gZm9yIGN1bXVsYXRpdmUgdG94aWNpdHkKLSBQZW1icm9saXp1bWFiIGFuZCBwZW1ldHJleGVkIGRvc2VzIHVuY2hhbmdlZAoKUmVwb3J0ZWQgdG86IEplbm5pZmVyIExpdSwgUk4gKFJlc2VhcmNoIENvb3JkaW5hdG9yKQpEb2N1bWVudGVkIGJ5OiBDYXJsb3MgTWVuZW5kZXosIE1EIChQcmluY2lwYWwgSW52ZXN0aWdhdG9yKQo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-019"
+      }
+    ],
+    "period": {
+      "start": "2025-02-17"
+    }
+  }
+}

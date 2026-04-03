@@ -1,0 +1,73 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-perf-appendicitis",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "64252005",
+        "display": "Acute gangrenous appendicitis with perforation AND peritonitis (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "K35.20",
+        "display": "Acute appendicitis with generalized peritonitis, without abscess"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "K35.33",
+        "display": "Acute appendicitis with perforation and localized peritonitis, with abscess"
+      }
+    ],
+    "text": "Acute gangrenous perforated appendicitis"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2026-01-12",
+  "recordedDate": "2026-01-12",
+  "note": [
+    {
+      "text": "Operative findings refined diagnosis from acute perforated appendicitis to acute gangrenous appendicitis with perforation. Appendix visually confirmed gangrenous with transmural involvement and visible perforation at distal tip."
+    },
+    {
+      "text": "Pathology confirmed (accession SP-2026-00412, resulted 2026-01-14): Acute gangrenous appendicitis with transmural necrosis and perforation. Acute serositis with fibrinopurulent exudate. No neoplasm identified. Margins uninvolved. Status post laparoscopic appendectomy; documented as discharge diagnosis."
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Pre-wellness fasting lab work",
+    "period_start": "2024-04-15",
+    "period_end": "2024-04-15",
+    "participants": [
+      {
+        "name": "Rachel Andersen, RN",
+        "role": "performing clinician"
+      },
+      {
+        "name": "Angela Whitfield, MD",
+        "role": "ordering provider"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "total cholesterol",
+        "value": "202",
+        "unit": "mg/dL",
+        "reference_range": "< 200 mg/dL",
+        "flag": "borderline high",
+        "specimen": "venous blood (fasting)",
+        "action": "create"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": "122",
+        "unit": "mg/dL",
+        "reference_range": "< 100 mg/dL",
+        "flag": "above optimal",
+        "specimen": "venous blood (fasting)",
+        "action": "create"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": "53",
+        "unit": "mg/dL",
+        "reference_range": ">= 40 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood (fasting)",
+        "action": "create"
+      },
+      {
+        "name": "triglycerides",
+        "value": "135",
+        "unit": "mg/dL",
+        "reference_range": "< 150 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood (fasting)",
+        "action": "create"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": "5.5",
+        "unit": "%",
+        "reference_range": "4.0-5.6%",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "fasting glucose",
+        "value": "98",
+        "unit": "mg/dL",
+        "reference_range": "70-100 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood (fasting)",
+        "action": "create"
+      },
+      {
+        "name": "blood urea nitrogen (BUN)",
+        "value": "15",
+        "unit": "mg/dL",
+        "reference_range": "7-20 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "creatinine",
+        "value": "0.92",
+        "unit": "mg/dL",
+        "reference_range": "0.7-1.3 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "estimated glomerular filtration rate (eGFR)",
+        "value": ">90",
+        "unit": "mL/min/1.73m2",
+        "reference_range": ">= 90 mL/min/1.73m2",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "sodium",
+        "value": "141",
+        "unit": "mEq/L",
+        "reference_range": "136-145 mEq/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "potassium",
+        "value": "4.0",
+        "unit": "mEq/L",
+        "reference_range": "3.5-5.0 mEq/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "calcium",
+        "value": "9.5",
+        "unit": "mg/dL",
+        "reference_range": "8.5-10.5 mg/dL",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "24",
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "20",
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal",
+        "specimen": "venous blood",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "borderline hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Known condition monitored since 2019, managed with diet and exercise. Lipid results consistent with baseline."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Known condition since 2018, well-controlled on lisinopril. No change at this encounter."
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "lab visit note",
+      "description": "Documents the fasting blood draw performed by Rachel Andersen, RN, per Dr. Whitfield's standing annual lab order. Patient confirmed fasting status, venipuncture performed without adverse reaction, no clinical assessment conducted. Results routed to Dr. Whitfield's inbox for review at the upcoming annual wellness exam.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel (fasting)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fasting glucose",
+        "blood urea nitrogen (BUN)",
+        "creatinine",
+        "estimated glomerular filtration rate (eGFR)",
+        "sodium",
+        "potassium",
+        "calcium",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)"
+      ]
+    }
+  ],
+  "allergies": []
+}

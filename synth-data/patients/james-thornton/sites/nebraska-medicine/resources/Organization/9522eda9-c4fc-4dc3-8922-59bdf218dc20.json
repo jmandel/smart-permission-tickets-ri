@@ -1,0 +1,43 @@
+{
+  "resourceType": "Organization",
+  "id": "9522eda9-c4fc-4dc3-8922-59bdf218dc20",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1437289650"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "Nebraska Medicine",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "402-552-2000",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "4350 Dewey Avenue"
+      ],
+      "city": "Omaha",
+      "state": "NE",
+      "postalCode": "68105",
+      "country": "US"
+    }
+  ]
+}

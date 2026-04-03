@@ -1,0 +1,40 @@
+{
+  "resourceType": "Organization",
+  "id": "88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+  "identifier": [
+    {
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1215079346"
+    }
+  ],
+  "active": true,
+  "name": "Rio Grande Nephrology Associates",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Nephrology specialty practice"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work",
+      "value": "505-555-0129"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "city": "Albuquerque",
+      "state": "NM",
+      "country": "US",
+      "text": "Albuquerque, NM"
+    }
+  ]
+}

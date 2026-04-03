@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-005-cough",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "284523002",
+        "display": "Persistent cough (finding)"
+      }
+    ],
+    "text": "Persistent dry cough"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "onsetDateTime": "2024-06",
+  "recordedDate": "2024-07-18",
+  "note": [
+    {
+      "text": "8 weeks duration, unresponsive to benzonatate 2-week trial. In context of unintentional weight loss, declining hemoglobin, mildly low albumin, and new right upper lobe opacity on chest X-ray, lung malignancy must be excluded. Referred to pulmonology."
+    }
+  ]
+}

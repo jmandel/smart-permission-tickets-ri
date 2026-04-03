@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-tree-nut-allergy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "48821000119104",
+        "display": "Allergy to tree nut (finding)"
+      }
+    ],
+    "text": "Tree nut allergy (cashew, walnut, almond)"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "onsetDateTime": "2022-11-14",
+  "recordedDate": "2022-11-14",
+  "note": [
+    {
+      "text": "Specific IgE values trending down but still significantly positive (cashew 14.8, walnut 9.7, almond 4.9 kU/L). Continue strict avoidance. No change in management."
+    }
+  ]
+}

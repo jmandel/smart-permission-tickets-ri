@@ -1,0 +1,64 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-004-asthma-action-plan",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "69981-9",
+        "display": "Asthma action plan"
+      }
+    ],
+    "text": "Asthma Action Plan"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "date": "2023-03-15T00:00:00-04:00",
+  "author": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "type": "Practitioner",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "description": "Written asthma action plan reviewed with caregiver and provided as PDF for family and daycare. Green zone: fluticasone BID, no rescue inhaler needed. Yellow zone: albuterol every 4 hours, call office if >3 uses in 24 hours. Red zone: albuterol every 20 minutes x3, call 911 if no improvement.",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "title": "Asthma Action Plan - Aisha Patel"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-004"
+      }
+    ],
+    "period": {
+      "start": "2023-03-15"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-005",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "444971000124105",
+          "display": "Annual wellness visit (procedure)"
+        }
+      ],
+      "text": "Annual Wellness Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary Performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+        "type": "Practitioner",
+        "display": "Dr. Cynthia Okafor"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-03-22",
+    "end": "2022-03-22"
+  },
+  "reasonCode": [
+    {
+      "text": "Annual wellness exam; cognitive concerns identified by spouse"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-005-cognitive-decline",
+        "display": "Cognitive decline, new onset"
+      }
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-000-hypertension",
+        "display": "Essential hypertension"
+      }
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-001-diabetes",
+        "display": "Type 2 diabetes mellitus without complications"
+      }
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-001-hyperlipidemia",
+        "display": "Hyperlipidemia"
+      }
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/4cd27e98-771d-419d-ab82-e52e273f8fba",
+        "display": "Riverside Internal Medicine"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/799d7142-4129-4a18-99ad-3a160a2a2518",
+    "display": "Riverside Internal Medicine"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Harold, age 75, presented for his annual wellness exam. Dorothy accompanied him and expressed concern about Harold's memory."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-006-pulm-referral",
+  "status": "active",
+  "intent": "order",
+  "priority": "urgent",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306114008",
+        "display": "Referral to pulmonary medicine service (procedure)"
+      }
+    ],
+    "text": "Urgent referral to pulmonology (Houston Pulmonary Associates, Dr. Nisha Ramaswamy)"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-08-01",
+  "requester": {
+    "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+    "display": "Dr. Adebayo Olatunde, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-006-rul-opacity",
+      "display": "Right upper lobe pulmonary opacity"
+    },
+    {
+      "reference": "Condition/enc-005-cough",
+      "display": "Persistent cough"
+    },
+    {
+      "reference": "Condition/enc-005-weight-loss",
+      "display": "Unintentional weight loss"
+    }
+  ],
+  "note": [
+    {
+      "text": "Urgent referral for evaluation of right upper lobe mass, persistent cough, and weight loss. CT chest with contrast to be completed prior to pulmonology appointment."
+    }
+  ]
+}

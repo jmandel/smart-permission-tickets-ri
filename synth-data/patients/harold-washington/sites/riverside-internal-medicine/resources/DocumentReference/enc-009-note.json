@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-009-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "date": "2024-09-18T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+      "type": "Practitioner",
+      "display": "Dr. Cynthia Okafor"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwOS8xOC8yMDI0ClBhdGllbnQ6IEhhcm9sZCBKYW1lcyBXYXNoaW5ndG9uICAgRE9COiAwOS8xNC8xOTQ2ICAgQWdlOiA3OApQcm92aWRlcjogQ3ludGhpYSBPa2Fmb3IsIE1EIOKAlCBSaXZlcnNpZGUgSW50ZXJuYWwgTWVkaWNpbmUKQ29udGFjdDogTWFyZ2FyZXQgV2FzaGluZ3Rvbi1DbGFya2UgKGRhdWdodGVyLCBhdXRob3JpemVkIGhlYWx0aGNhcmUgcmVwcmVzZW50YXRpdmUgcGVyIERQT0EgZXhlY3V0ZWQgMTEvMTUvMjAyMikKClJFQVNPTiBGT1IgQ0FMTDoKRGF1Z2h0ZXIgcmVwb3J0aW5nIG5ldyBzYWZldHkgY29uY2VybnMgaW5jbHVkaW5nIHdhbmRlcmluZyBlcGlzb2RlIGFuZCBtb3RvciB2ZWhpY2xlIGluY2lkZW50LgoKRElTQ1VTU0lPTjoKTXMuIFdhc2hpbmd0b24tQ2xhcmtlIHJlcG9ydGVkIHR3byBpbmNpZGVudHMuIEluIGVhcmx5IFNlcHRlbWJlciAyMDI0LCBhIG5laWdoYm9yIGZvdW5kIE1yLiBXYXNoaW5ndG9uIHdhbmRlcmluZyB0d28gYmxvY2tzIGZyb20gaG9tZSwgZGlzb3JpZW50ZWQgYW5kIHVuYWJsZSB0byBzdGF0ZSBoaXMgZGVzdGluYXRpb24uIFRoZSBmb2xsb3dpbmcgd2VlaywgaGUgYmFja2VkIGhpcyBjYXIgaW50byBhIG1haWxib3ggd2hpbGUgcHVsbGluZyBvdXQgb2YgdGhlIGRyaXZld2F5LiBNcy4gV2FzaGluZ3Rvbi1DbGFya2UgaGFzIGJlZW4gdmlzaXRpbmcgZnJvbSBEZWNhdHVyLCBHQSBldmVyeSBvdGhlciB3ZWVrZW5kIHNpbmNlIGhpcyB3aWZlIERvcm90aHkncyBkZWF0aCBvbiAwNi8yMi8yMDI0IGFuZCBoYXMgb2JzZXJ2ZWQgZXhwaXJlZCBmb29kIGluIHRoZSByZWZyaWdlcmF0b3IsIHVub3BlbmVkIHBpbGwgYm90dGxlcyAoZG9uZXBlemlsIDEwIG1nLCBsaXNpbm9wcmlsIDIwIG1nLCBtZXRmb3JtaW4gNTAwIG1nIEJJRCwgYXRvcnZhc3RhdGluIDIwIG1nKSwgYW5kIHVucGFpZCBiaWxscyBhY2N1bXVsYXRpbmcgYXQgdGhlIGhvbWUuCgpDTElOSUNBTCBJTVBSRVNTSU9OOgpNci4gV2FzaGluZ3RvbidzIGNvZ25pdGl2ZSBkZWNsaW5lIHNlY29uZGFyeSB0byBBbHpoZWltZXIncyBkaXNlYXNlIChkaWFnbm9zZWQgMDQvMjAyMiBieSBEci4gUGF0ZWwsIG1vc3QgcmVjZW50IE1NU0UgMjItMjMvMzAgb24gZG9uZXBlemlsIDEwIG1nIGRhaWx5KSBhcHBlYXJzIHRvIGhhdmUgYWNjZWxlcmF0ZWQgc2lnbmlmaWNhbnRseSBzaW5jZSBoaXMgd2lmZSdzIGRlYXRoLiBMb3NzIG9mIGRhaWx5IHN0cnVjdHVyZSwgbWVkaWNhdGlvbiByZW1pbmRlcnMsIGFuZCBzcG91c2FsIHN1cGVydmlzaW9uIGhhcyB1bm1hc2tlZCBmdW5jdGlvbmFsIGRlZmljaXRzIGNvbnNpc3RlbnQgd2l0aCB3b3JzZW5pbmcgZGVtZW50aWEuIFdhbmRlcmluZyBiZWhhdmlvciBhbmQgaW1wYWlyZWQgZHJpdmluZyBqdWRnbWVudCByZXByZXNlbnQgc2VyaW91cyBzYWZldHkgcmlza3MuCgpQTEFOOgoxLiBBZHZpc2VkIE1zLiBXYXNoaW5ndG9uLUNsYXJrZSB0aGF0IE1yLiBXYXNoaW5ndG9uIGlzIG5vIGxvbmdlciBzYWZlIGZvciBpbmRlcGVuZGVudCBsaXZpbmcgb3IgdW5zdXBlcnZpc2VkIGRyaXZpbmcuCjIuIFJlY29tbWVuZGVkIHNoZSBjb250YWN0IEZsb3JpZGEgREhTTVYgdG8gYXJyYW5nZSB2b2x1bnRhcnkgc3VycmVuZGVyIG9mIGRyaXZlcidzIGxpY2Vuc2UuCjMuIFJlY29tbWVuZGVkIGFycmFuZ2VtZW50IGZvciBzdXBlcnZpc2VkIGxpdmluZyBhcyBzb29uIGFzIGZlYXNpYmxlLgo0LiBTY2hlZHVsZSBpbi1vZmZpY2UgdmlzaXQgdG8gcmVhc3Nlc3MgY29nbml0aXZlIGFuZCBmdW5jdGlvbmFsIHN0YXR1cywgcmV2aWV3IG1lZGljYXRpb24gYWRoZXJlbmNlLCBhbmQgcHJlcGFyZSB0cmFuc2Zlci1vZi1jYXJlIGRvY3VtZW50YXRpb24gaWYgcmVsb2NhdGluZy4KNS4gTXMuIFdhc2hpbmd0b24tQ2xhcmtlIHBsYW5zIHRvIG1vdmUgTXIuIFdhc2hpbmd0b24gdG8gbGl2ZSB3aXRoIGhlciBpbiBEZWNhdHVyLCBHQS4KCkVuY291bnRlciBkb2N1bWVudGVkIGluIEVIUi4gTm8gb3JkZXJzIHBsYWNlZCBhdCB0aGlzIHRpbWUuCgpDeW50aGlhIE9rYWZvciwgTUQKUml2ZXJzaWRlIEludGVybmFsIE1lZGljaW5lCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-009"
+      }
+    ],
+    "period": {
+      "start": "2024-09-18T00:00:00Z"
+    }
+  }
+}

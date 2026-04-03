@@ -1,0 +1,51 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-003-length",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8302-2",
+        "display": "Body height"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "8306-3",
+        "display": "Body height --lying"
+      }
+    ],
+    "text": "Body height (recumbent length)"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "effectiveDateTime": "2023-02-08",
+  "valueQuantity": {
+    "value": 92,
+    "unit": "cm",
+    "system": "http://unitsofmeasure.org",
+    "code": "cm"
+  },
+  "note": [
+    {
+      "text": "50th percentile for age"
+    }
+  ]
+}

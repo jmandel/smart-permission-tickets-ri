@@ -1,0 +1,61 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-008-act",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "82674-3",
+        "display": "Asthma Control Test [ACT]"
+      }
+    ],
+    "text": "Asthma Control Test (ACT) total score"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-008"
+  },
+  "effectiveDateTime": "2022-11-14",
+  "performer": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "valueQuantity": {
+    "value": 18
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "L",
+          "display": "Low"
+        }
+      ],
+      "text": "Not well controlled"
+    }
+  ],
+  "note": [
+    {
+      "text": "Retrospectively estimated for the prior 2-week period during telemedicine visit"
+    }
+  ]
+}

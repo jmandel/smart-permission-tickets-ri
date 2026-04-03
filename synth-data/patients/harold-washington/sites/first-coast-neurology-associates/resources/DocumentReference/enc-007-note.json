@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-007-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/9abd3fa2-00e3-443d-b159-a6b73cd80082",
+    "display": "Harold James Washington"
+  },
+  "date": "2022-05-17T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+      "type": "Practitioner",
+      "display": "Dr. Raymond Patel"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+    "type": "Practitioner",
+    "display": "Dr. Raymond Patel"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNS8xNy8yMDIyClBhdGllbnQ6IEhhcm9sZCBKYW1lcyBXYXNoaW5ndG9uICBET0I6IDA5LzE0LzE5NDYKUHJvdmlkZXI6IERyLiBSYXltb25kIFBhdGVsLCBNRCDigJQgRmlyc3QgQ29hc3QgTmV1cm9sb2d5IEFzc29jaWF0ZXMKRW5jb3VudGVyIFR5cGU6IFRlbGVwaG9uZSBmb2xsb3ctdXAKClJFQVNPTiBGT1IgQ0FMTDoKRG9uZXBlemlsIHRpdHJhdGlvbiBmb2xsb3ctdXAg4oCUIGFzc2VzcyB0b2xlcmFuY2Ugb2YgZG9uZXBlemlsIDUgbWcgZGFpbHkgaW5pdGlhdGVkIGZvdXIgd2Vla3MgYWdvIGF0IHRpbWUgb2YgQWx6aGVpbWVyJ3MgZGlzZWFzZSBkaWFnbm9zaXMgKEFwcmlsIDIwMjIpLgoKRElTQ1VTU0lPTjoKU3Bva2Ugd2l0aCBwYXRpZW50J3Mgd2lmZSwgRG9yb3RoeSBXYXNoaW5ndG9uLiBTaGUgcmVwb3J0cyBIYXJvbGQgaGFzIHRvbGVyYXRlZCBkb25lcGV6aWwgNSBtZyBkYWlseSB3ZWxsLiBNaWxkIG5hdXNlYSBub3RlZCBkdXJpbmcgdGhlIGZpcnN0IGZldyBkYXlzIG9mIHRoZXJhcHksIHdoaWNoIHNlbGYtcmVzb2x2ZWQuIE5vIGRpYXJyaGVhLCBubyB2aXZpZCBkcmVhbXMsIG5vIGRpenppbmVzcyBvciBzeW5jb3BlIHN1Z2dlc3RpdmUgb2YgYnJhZHljYXJkaWEuIE5vIGZhbGxzIG9yIG5ldyBzYWZldHkgY29uY2VybnMuIE1ycy4gV2FzaGluZ3RvbiByZXBvcnRzIG5vIGNsZWFyIGNvZ25pdGl2ZSBpbXByb3ZlbWVudCB5ZXQ7IGNvdW5zZWxlZCB0aGF0IHRoZXJhcGV1dGljIGJlbmVmaXQgbWF5IHRha2UgOC0xMiB3ZWVrcyB0byBiZWNvbWUgYXBwYXJlbnQgYW5kIHRoYXQgdGhlIGdvYWwgaXMgc3RhYmlsaXphdGlvbiByYXRoZXIgdGhhbiByZXZlcnNhbCBvZiBzeW1wdG9tcy4KClBMQU46CjEuIFRpdHJhdGUgZG9uZXBlemlsIHRvIDEwIG1nIFBPIGRhaWx5IGF0IGJlZHRpbWUsIGVmZmVjdGl2ZSB0b25pZ2h0LgoyLiBDb250aW51ZSBtb25pdG9yaW5nIGZvciBHSSBzaWRlIGVmZmVjdHMgYW5kIGJyYWR5Y2FyZGlhIHN5bXB0b21zIHdpdGggZG9zZSBpbmNyZWFzZS4KMy4gUGF0aWVudC9jYXJlZ2l2ZXIgdG8gY2FsbCBpZiBzaWduaWZpY2FudCBuYXVzZWEsIHZvbWl0aW5nLCBkaWFycmhlYSwgb3IgbGlnaHRoZWFkZWRuZXNzIG9jY3Vycy4KNC4gT2ZmaWNlIGZvbGxvdy11cCBzY2hlZHVsZWQgT2N0b2JlciAyMDIyIChzaXgtbW9udGggbWFyayBmcm9tIGluaXRpYWwgQWx6aGVpbWVyJ3MgZGlhZ25vc2lzKSBmb3IgcmVwZWF0IGNvZ25pdGl2ZSBhc3Nlc3NtZW50IChNTVNFL01vQ0EpIGFuZCBtZWRpY2F0aW9uIGVmZmljYWN5IHJldmlldy4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKUmF5bW9uZCBQYXRlbCwgTUQKRmlyc3QgQ29hc3QgTmV1cm9sb2d5IEFzc29jaWF0ZXMKODM2IFBydWRlbnRpYWwgRHJpdmUsIFN1aXRlIDE0MDAsIEphY2tzb252aWxsZSwgRkwgMzIyMDcK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-007"
+      }
+    ],
+    "period": {
+      "start": "2022-05-17"
+    }
+  }
+}

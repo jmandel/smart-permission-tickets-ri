@@ -1,0 +1,70 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-004-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34117-2",
+        "display": "History and physical note"
+      }
+    ],
+    "text": "History and Physical Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2022-11-18T10:00:00-08:00",
+  "author": [
+    {
+      "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "type": "Practitioner",
+      "display": "Dr. Anita Okonkwo"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+    "type": "Practitioner",
+    "display": "Dr. Anita Okonkwo"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgaXMgYSAzMy15ZWFyLW9sZCB3b21hbiBwcmVzZW50aW5nIHRvIGVzdGFibGlzaCBjYXJlIGZvciBhIG5ldy1wYXRpZW50IHdlbGxuZXNzIHZpc2l0IGFmdGVyIG1vdmluZyBmcm9tIEF1c3RpbiwgVFggdG8gT2FrbGFuZCwgQ0EgaW4gT2N0b2JlciAyMDIyLiBTaGUgcmVwb3J0cyBubyBhY3V0ZSBjb21wbGFpbnRzIHRvZGF5LiBIaXN0b3J5IHJldmlld2VkIGluIGRldGFpbCwgaW5jbHVkaW5nIHByaW9yIHByZWduYW5jaWVzIHdpdGggaGlzdG9yeSBvZiBnZXN0YXRpb25hbCBkaWFiZXRlcyBkdXJpbmcgaGVyIG1vc3QgcmVjZW50IHByZWduYW5jeSwgd2l0aCBwb3N0cGFydHVtIGdsdWNvc2Ugbm9ybWFsaXphdGlvbi4gU2hlIGRlbmllcyBrbm93biBjdXJyZW50IGRpYWJldGVzIGFuZCBoYXMgbm90IGhhZCBoeXBlcmdseWNlbWljIHN5bXB0b21zLiBBbHNvIHJlcG9ydHMgc2Vhc29uYWwgYWxsZXJnaWMgcmhpbml0aXMsIHN0YWJsZSwgdHlwaWNhbGx5IG1hbmFnZWQgd2l0aCBsb3JhdGFkaW5lIGFzIG5lZWRlZC4gTWVkaWNhdGlvbiBhbmQgYWxsZXJneSByZWNvbmNpbGlhdGlvbiBjb21wbGV0ZWQuIEFsbGVyZ3kgbm90ZWQgdG8gYW1veGljaWxsaW4sIHdoaWNoIGNhdXNlZCBoaXZlcyBpbiBjaGlsZGhvb2QuIFBIUS0yIHNjcmVlbmluZyBjb21wbGV0ZWQgdG9kYXksIHNjb3JlIDAuIE5vIG1vb2QgY29uY2VybnMgcmVwb3J0ZWQuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTE2Lzc2IG1tSGcsIEhSIDcyIGJwbSwgUlIgMTQsIFRlbXAgOTguMyBGLCBTcE8yIDk5JSwgV3QgMTUwIGxiLCBIdCA2NSBpbiwgQk1JIDI1LjAKR2VuZXJhbDogV2VsbC1hcHBlYXJpbmcgd29tYW4gaW4gbm8gYWN1dGUgZGlzdHJlc3MuCkhFRU5UOiBObyBhY3V0ZSBhYm5vcm1hbGl0aWVzIG5vdGVkIG9uIHJvdXRpbmUgd2VsbG5lc3MgZXhhbS4KQ1Y6IFJlZ3VsYXIgcmF0ZSBhbmQgcmh5dGhtLgpSZXNwOiBCcmVhdGhpbmcgY29tZm9ydGFibHksIGx1bmdzIGNsZWFyIHRvIGF1c2N1bHRhdGlvbiBiaWxhdGVyYWxseS4KQWJkb21lbjogU29mdCwgbm9uZGlzdGVuZGVkLCBub250ZW5kZXIuCkV4dHJlbWl0aWVzOiBObyBlZGVtYS4KTmV1cm86IEFsZXJ0IGFuZCBvcmllbnRlZCwgbm8gZm9jYWwgZGVmaWNpdHMuClBzeWNoOiBOb3JtYWwgbW9vZCBhbmQgYWZmZWN0LgoKTGFicyByZXZpZXdlZC9vcmRlcmVkIGFzIHByZXZlbnRpdmUgYmFzZWxpbmU6CkNCQyBub3JtYWwKQ01QIG5vcm1hbApDcmVhdGluaW5lIDAuNzIgbWcvZEwKQVNUIDE4IFUvTApBTFQgMTYgVS9MClRTSCAxLjYxIHVJVS9tTApBMWMgNS4zJQpGYXN0aW5nIGdsdWNvc2UgODkgbWcvZEwKVG90YWwgY2hvbGVzdGVyb2wgMTgxIG1nL2RMCkxETCAxMDEgbWcvZEwKSERMIDYwIG1nL2RMClRyaWdseWNlcmlkZXMgOTIgbWcvZEwKCkltbXVuaXphdGlvbnMgYWRtaW5pc3RlcmVkIHRvZGF5OiBpbmZsdWVuemEgdmFjY2luZSBhbmQgTW9kZXJuYSBiaXZhbGVudCBDT1ZJRC0xOSBib29zdGVyLgoKQVNTRVNTTUVOVDoKMS4gUm91dGluZSBhZHVsdCB3ZWxsbmVzcy9uZXctcGF0aWVudCB0cmFuc2Zlci1vZi1jYXJlIGV4YW0uIFJlY2VudGx5IG1vdmVkIHRvIENhbGlmb3JuaWEgYW5kIGVzdGFibGlzaGluZyBwcmltYXJ5IGNhcmUuIE5vIGFjdXRlIG1lZGljYWwgY29uY2VybnMgaWRlbnRpZmllZCB0b2RheS4KMi4gSGlzdG9yeSBvZiBnZXN0YXRpb25hbCBkaWFiZXRlcy4gUHJpb3IgcHJlZ25hbmN5LWFzc29jaWF0ZWQgZGlhYmV0ZXMgb25seTsgY3VycmVudCBmYXN0aW5nIGdsdWNvc2UgYW5kIEExYyBhcmUgbm9ybWFsIHdpdGggbm8gZXZpZGVuY2Ugb2YgcGVyc2lzdGVudCBkaWFiZXRlcy4gR2l2ZW4gaW5jcmVhc2VkIGxvbmctdGVybSByaXNrIGZvciB0eXBlIDIgZGlhYmV0ZXMsIG9uZ29pbmcgYW5udWFsIEExYyBtb25pdG9yaW5nIGlzIGFwcHJvcHJpYXRlLgozLiBTZWFzb25hbCBhbGxlcmdpYyByaGluaXRpcywgc3RhYmxlLiBObyBjdXJyZW50IGZsYXJlLgo0LiBBbW94aWNpbGxpbiBhbGxlcmd5LiBDaGlsZGhvb2QgaGl2ZXMgcmVwb3J0ZWQ7IGRvY3VtZW50ZWQgYW5kIHJldmlld2VkLgoKUExBTjoKMS4gRXN0YWJsaXNoZWQgY2FyZSB0b2RheTsgcHJpb3IgbWVkaWNhbCwgb2JzdGV0cmljLCBtZWRpY2F0aW9uLCBhbGxlcmd5LCBhbmQgaW1tdW5pemF0aW9uIGhpc3RvcnkgcmV2aWV3ZWQgYW5kIHJlY29uY2lsZWQuCjIuIENvbnRpbnVlIGN1cnJlbnQgYWxsZXJneSBtYW5hZ2VtZW50IHdpdGggbG9yYXRhZGluZSBhcyBuZWVkZWQgZm9yIHNlYXNvbmFsIHN5bXB0b21zLgozLiBDb3Vuc2VsZWQgb24gcm91dGluZSBwcmV2ZW50aXZlIGNhcmUsIGhlYWx0aHkgZGlldCwgcmVndWxhciBleGVyY2lzZSwgYW5kIG9uZ29pbmcgd2VpZ2h0IG1haW50ZW5hbmNlLgo0LiBSZXZpZXdlZCBub3JtYWwgYmFzZWxpbmUgcHJldmVudGl2ZSBsYWJzIGFzIGFib3ZlOyBubyBhZGRpdGlvbmFsIHdvcmt1cCBuZWVkZWQgYXQgdGhpcyB0aW1lLgo1LiBBbm51YWwgQTFjIHNjcmVlbmluZyByZWNvbW1lbmRlZCBnaXZlbiBwcmlvciBnZXN0YXRpb25hbCBkaWFiZXRlcyBoaXN0b3J5Lgo2LiBJbmZsdWVuemEgdmFjY2luZSBhbmQgTW9kZXJuYSBiaXZhbGVudCBDT1ZJRC0xOSBib29zdGVyIGdpdmVuIHRvZGF5Lgo3LiBGb2xsb3cgdXAgYW5udWFsbHkgZm9yIHdlbGxuZXNzIGNhcmUgb3Igc29vbmVyIGFzIG5lZWRlZCBmb3IgbmV3IGNvbmNlcm5zLg==",
+        "title": "New-patient comprehensive wellness evaluation"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-004"
+      }
+    ],
+    "period": {
+      "start": "2022-11-18T09:00:00-08:00",
+      "end": "2022-11-18T10:00:00-08:00"
+    }
+  }
+}

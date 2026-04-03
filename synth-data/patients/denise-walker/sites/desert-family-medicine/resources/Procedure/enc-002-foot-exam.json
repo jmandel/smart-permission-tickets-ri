@@ -1,0 +1,42 @@
+{
+  "resourceType": "Procedure",
+  "id": "enc-002-foot-exam",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "401191002",
+        "display": "Diabetic foot examination (regime/therapy)"
+      }
+    ],
+    "text": "Diabetic foot exam"
+  },
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "performedDateTime": "2023-11-16",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/18f66d93-d6fd-42d0-b445-64c6dd55f7eb",
+        "display": "Samuel Hart, FNP-C"
+      }
+    }
+  ],
+  "note": [
+    {
+      "text": "No ulcers or recent injury reported."
+    },
+    {
+      "text": "Callus formation present at the metatarsal heads bilaterally."
+    },
+    {
+      "text": "Monofilament sensation diminished at 6/10 points bilaterally with reduced vibration sense at the great toes."
+    }
+  ]
+}

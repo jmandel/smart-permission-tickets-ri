@@ -1,0 +1,256 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "first-coast-neurology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Initial neurology consultation for progressive memory impairment; Alzheimer's disease diagnosed",
+    "period_start": "2022-04-19",
+    "participants": [
+      {
+        "name": "Dr. Raymond Patel",
+        "role": "consulting neurologist"
+      }
+    ],
+    "service_provider": "First Coast Neurology Associates",
+    "location": "First Coast Neurology Associates, 836 Prudential Drive, Suite 1400, Jacksonville, FL 32207"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 134,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 134,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 80,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "degrees Fahrenheit"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 194,
+        "unit": "pounds"
+      }
+    ],
+    "labs": [
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": 2.4,
+        "unit": "mIU/L",
+        "reference_range": "0.4–4.0 mIU/L",
+        "flag": "normal",
+        "note": "Drawn by PCP, reviewed at this encounter"
+      },
+      {
+        "name": "vitamin B12",
+        "value": 485,
+        "unit": "pg/mL",
+        "reference_range": "200–900 pg/mL",
+        "flag": "normal"
+      },
+      {
+        "name": "rapid plasma reagin (RPR)",
+        "value": "non-reactive",
+        "flag": "normal"
+      },
+      {
+        "name": "HIV screening test",
+        "value": "negative",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "Montreal Cognitive Assessment (MoCA) total score",
+        "value": 20,
+        "unit": "/30",
+        "interpretation": "Below normal cutoff (≥26), consistent with cognitive impairment"
+      },
+      {
+        "name": "MoCA visuospatial/executive subscore",
+        "value": 2,
+        "unit": "/5",
+        "interpretation": "Impaired (trail-making, cube copy, clock drawing deficits)"
+      },
+      {
+        "name": "MoCA naming subscore",
+        "value": 3,
+        "unit": "/3",
+        "interpretation": "Normal"
+      },
+      {
+        "name": "MoCA attention subscore",
+        "value": 4,
+        "unit": "/6",
+        "interpretation": "Impaired (serial 7s and digit span deficits)"
+      },
+      {
+        "name": "MoCA language subscore",
+        "value": 3,
+        "unit": "/3",
+        "interpretation": "Normal"
+      },
+      {
+        "name": "MoCA abstraction subscore",
+        "value": 2,
+        "unit": "/2",
+        "interpretation": "Normal"
+      },
+      {
+        "name": "MoCA delayed recall subscore",
+        "value": 1,
+        "unit": "/5",
+        "interpretation": "Significant deficit (recalled 1 of 5 words after 5 minutes)"
+      },
+      {
+        "name": "MoCA orientation subscore",
+        "value": 5,
+        "unit": "/6",
+        "interpretation": "Mildly impaired (missed day of the week)"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, mild stage",
+      "clinical_status": "active",
+      "onset_date": "2021-10",
+      "action": "create"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 5 mg oral tablet",
+      "sig": "Take 5 mg by mouth once daily at bedtime. Titrate to 10 mg daily after 4 weeks if tolerated.",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "consultation note",
+      "description": "Initial neurology consultation for progressive memory impairment in a 75-year-old male referred by PCP. Includes detailed history of present illness with corroborating informant history, complete neurological examination, MoCA administration and scoring (20/30), review of laboratory workup excluding reversible causes, brain MRI interpretation, new diagnosis of Alzheimer's disease (mild stage) per NIA-AA criteria, initiation of donepezil therapy, and extensive counseling on disease course, safety, and advance care planning."
+    },
+    {
+      "type": "diagnostic imaging report",
+      "description": "Brain MRI without contrast report (performed 2022-04-26, addended to this consultation). Documents mild generalized cortical atrophy, bilateral hippocampal volume loss (left greater than right), absence of acute pathology, and Fazekas grade 1 small-vessel ischemic changes."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "brain MRI without contrast",
+      "report_state": "summary-only",
+      "description": "Ordered 2022-04-19, performed 2022-04-26. Mild generalized cortical atrophy. Bilateral hippocampal volume loss, left greater than right. No acute infarcts. No mass lesions. No subdural collections. Small-vessel ischemic changes, Fazekas grade 1."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Within normal limits. No individual component values reported."
+    },
+    {
+      "type": "thyroid function — TSH",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone (TSH)"
+      ]
+    },
+    {
+      "type": "vitamin B12 level",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "vitamin B12"
+      ]
+    },
+    {
+      "type": "RPR (syphilis screening)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "rapid plasma reagin (RPR)"
+      ]
+    },
+    {
+      "type": "HIV screening",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "HIV screening test"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

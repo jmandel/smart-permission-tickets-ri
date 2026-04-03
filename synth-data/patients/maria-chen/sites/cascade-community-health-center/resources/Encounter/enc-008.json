@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-008",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "448337001",
+          "display": "Telemedicine consultation with patient (procedure)"
+        }
+      ],
+      "text": "Telemedicine"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+        "display": "Dr. Angela Morales, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-11-14",
+    "end": "2022-11-14"
+  },
+  "reasonCode": [
+    {
+      "text": "Asthma exacerbation triggered by cold air and occupational dust exposure"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/47540de6-680b-41bd-9e2c-3903b02dc52d",
+        "display": "Cascade Community Health Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/f0f6cfeb-5a2e-4ed7-b223-e1aee4d4ec12",
+    "display": "Cascade Community Health Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Maria requests a telemedicine visit via patient portal, reporting increased albuterol use over the past 10 days (daily use, sometimes twice daily) coinciding with a cold snap and increased dust exposure at a client's home during her home health aide work. No fever, no purulent sputum, no nocturnal awakenings."
+    }
+  ]
+}

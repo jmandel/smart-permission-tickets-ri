@@ -1,0 +1,213 @@
+{
+  "encounter_id": "enc-004",
+  "encounter_index": 4,
+  "site_slug": "eastbay-primary-care-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office visit",
+    "reason": "Establish primary care after relocation from Austin, TX to Oakland, CA",
+    "period_start": "2022-11-18",
+    "participants": [],
+    "service_provider": "Eastbay Primary Care Associates",
+    "location": "Eastbay Primary Care Associates, Oakland, CA"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "Blood Pressure",
+        "value": "116/76",
+        "unit": "mmHg",
+        "flag": "normal"
+      },
+      {
+        "name": "Heart Rate",
+        "value": 72,
+        "unit": "beats per minute"
+      },
+      {
+        "name": "Respiratory Rate",
+        "value": 14,
+        "unit": "breaths per minute"
+      },
+      {
+        "name": "Body Temperature",
+        "value": 98.3,
+        "unit": "°F"
+      },
+      {
+        "name": "Oxygen Saturation",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "Body Weight",
+        "value": 150,
+        "unit": "lb"
+      },
+      {
+        "name": "Body Height",
+        "value": 65,
+        "unit": "inches"
+      },
+      {
+        "name": "Body Mass Index",
+        "value": 25,
+        "unit": "kg/m²",
+        "flag": "normal"
+      }
+    ],
+    "labs": [
+      {
+        "name": "Creatinine",
+        "value": 0.72,
+        "unit": "mg/dL",
+        "reference_range": "0.6-1.2 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "Aspartate Aminotransferase",
+        "value": 18,
+        "unit": "U/L",
+        "reference_range": "10-40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "Alanine Aminotransferase",
+        "value": 16,
+        "unit": "U/L",
+        "reference_range": "7-56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "Thyroid Stimulating Hormone",
+        "value": 1.61,
+        "unit": "uIU/mL",
+        "reference_range": "0.4-4.0 uIU/mL",
+        "flag": "normal"
+      },
+      {
+        "name": "Hemoglobin A1c",
+        "value": 5.3,
+        "unit": "%",
+        "reference_range": "4.0-5.6%",
+        "flag": "normal"
+      },
+      {
+        "name": "Fasting Glucose",
+        "value": 89,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "Total Cholesterol",
+        "value": 181,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL Cholesterol",
+        "value": 101,
+        "unit": "mg/dL",
+        "reference_range": "<100 optimal; 100-129 near optimal",
+        "flag": "near optimal"
+      },
+      {
+        "name": "HDL Cholesterol",
+        "value": 60,
+        "unit": "mg/dL",
+        "reference_range": ">40 mg/dL for women",
+        "flag": "good"
+      },
+      {
+        "name": "Triglycerides",
+        "value": 92,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 Depression Screening",
+        "value": 0,
+        "unit": "score",
+        "reference_range": "0-6",
+        "flag": "normal"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "History of Gestational Diabetes Mellitus",
+      "clinical_status": "resolved",
+      "onset_date": "2021",
+      "action": "reference-existing"
+    },
+    {
+      "name": "Seasonal Allergic Rhinitis",
+      "clinical_status": "stable",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "Influenza vaccine, inactivated",
+      "date": "2022-11-18",
+      "route": "Intramuscular injection",
+      "action": "create"
+    },
+    {
+      "name": "COVID-19 vaccine booster, Moderna bivalent",
+      "date": "2022-11-18",
+      "route": "Intramuscular injection",
+      "action": "create"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "Office visit progress note",
+      "date": "2022-11-18",
+      "description": "New-patient comprehensive wellness evaluation and establishment of care. History includes prior gestational diabetes (resolved postpartum), seasonal allergies managed with loratadine, and amoxicillin allergy. All vital signs normal, physical examination unremarkable. Baseline preventive labs reviewed with all results normal. PHQ-2 depression screening 0. Influenza and Moderna bivalent COVID-19 booster vaccines administered. Plan includes medication and allergy reconciliation, preventive counseling, annual A1c monitoring given gestational diabetes history, and annual follow-up.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Complete Blood Count",
+      "report_state": "summary-only",
+      "description": "CBC ordered and reviewed as part of baseline preventive health labs. Clinical note documents result as normal without specific component values. All components within normal limits."
+    },
+    {
+      "type": "Comprehensive Metabolic Panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Creatinine",
+        "Aspartate Aminotransferase",
+        "Alanine Aminotransferase",
+        "Fasting Glucose"
+      ]
+    },
+    {
+      "type": "Lipid Panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Total Cholesterol",
+        "LDL Cholesterol",
+        "HDL Cholesterol",
+        "Triglycerides"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "Amoxicillin",
+      "reaction": "Rash (urticarial, hives)",
+      "severity": "mild to moderate",
+      "action": "reference-existing"
+    }
+  ]
+}

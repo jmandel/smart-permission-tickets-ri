@@ -1,0 +1,45 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-000-mammo-order",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "363679005",
+          "display": "Imaging"
+        }
+      ],
+      "text": "Imaging"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "24623002",
+        "display": "Screening mammography (procedure)"
+      }
+    ],
+    "text": "Screening mammogram"
+  },
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "authoredOn": "2022-01-18",
+  "requester": {
+    "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+    "display": "Dr. Adebayo Olatunde, MD"
+  },
+  "note": [
+    {
+      "text": "Biennial screening mammogram ordered per USPSTF guidelines. Last mammogram performed in 2020."
+    }
+  ]
+}

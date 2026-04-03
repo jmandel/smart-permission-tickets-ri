@@ -1,0 +1,74 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34839-1",
+        "display": "Rheumatology Consult note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "11488-4",
+        "display": "Consult note"
+      }
+    ],
+    "text": "Rheumatology Consultation Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2023-04-06T10:30:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+      "type": "Practitioner",
+      "display": "Dr. James Tran"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+    "type": "Practitioner",
+    "display": "Dr. James Tran"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKRWxlbmEgTWFyaXNvbCBSZXllcyBpcyBhIDMzLXllYXItb2xkIHdvbWFuIHNlZW4gZm9yIGluaXRpYWwgcmhldW1hdG9sb2d5IGNvbnN1bHRhdGlvbiBhZnRlciBQQ1AgcmVmZXJyYWwgZm9yIGluZmxhbW1hdG9yeSBwb2x5YXJ0aHJpdGlzIHdpdGggcG9zaXRpdmUgc2Vyb2xvZ2llcy4gU2hlIHJlcG9ydHMgc2V2ZXJhbCBtb250aHMgb2YgYmlsYXRlcmFsIGhhbmQgYW5kIHdyaXN0IHBhaW4sIG1vcm5pbmcgc3RpZmZuZXNzLCBhbmQgc3dlbGxpbmcgaW52b2x2aW5nIHRoZSBrbnVja2xlcyBhbmQgd3Jpc3RzLCB3aXRoIGZ1bmN0aW9uYWwgZGlmZmljdWx0eSB1c2luZyBoZXIgaGFuZHMuIE91dHNpZGUgd29ya3VwIGZyb20gcHJpbWFyeSBjYXJlIHdhcyByZXZpZXdlZCBhbmQgbm90YWJsZSBmb3IgcG9zaXRpdmUgcmhldW1hdG9pZCBmYWN0b3IgYW5kIHN0cm9uZ2x5IHBvc2l0aXZlIGFudGktQ0NQIGFudGlib2R5IHdpdGggZWxldmF0ZWQgaW5mbGFtbWF0b3J5IG1hcmtlcnMsIGNvbnNpc3RlbnQgd2l0aCByaGV1bWF0b2lkIGFydGhyaXRpcy4gUGF0aWVudCBnbG9iYWwgYXNzZXNzbWVudCB0b2RheSBpcyA1OC8xMDAuIFNoZSByZWNlbnRseSByZWxvY2F0ZWQgdG8gQ2FsaWZvcm5pYSBhbmQgaXMgZXN0YWJsaXNoaW5nIHNwZWNpYWx0eSBjYXJlLiBSZWxldmFudCBoaXN0b3J5IHJldmlld2VkLiBObyBwcmlvciBETUFSRCB0aGVyYXB5LiBSaXNrcyBhbmQgYmVuZWZpdHMgb2YgdHJlYXRtZW50IG9wdGlvbnMgd2VyZSBkaXNjdXNzZWQgaW4gZGV0YWlsLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEyMi84MCBtbUhnLCBIUiA3OCBicG0sIFRlbXAgOTguMSBGLCBSUiAxNCwgU3BPMiA5OSUsIFd0IDE0OCBsYgpHZW5lcmFsOiBBbGVydCwgaW4gbm8gYWN1dGUgZGlzdHJlc3MuCk11c2N1bG9za2VsZXRhbDogU3lub3ZpdGlzIGFuZCB0ZW5kZXJuZXNzIGludm9sdmluZyBNQ1BzLCBQSVBzLCBhbmQgYm90aCB3cmlzdHMuIEpvaW50IGNvdW50IHRvZGF5IG5vdGFibGUgZm9yIDggdGVuZGVyIGpvaW50cyBhbmQgNiBzd29sbGVuIGpvaW50cy4KRGlzZWFzZSBhY3Rpdml0eTogREFTMjgtQ1JQIDUuMSwgY29uc2lzdGVudCB3aXRoIG1vZGVyYXRlLXRvLWhpZ2ggZGlzZWFzZSBhY3Rpdml0eS4KTGFiczogQmFzZWxpbmUgc2FmZXR5IG1vbml0b3Jpbmcgb2J0YWluZWQgdG9kYXkgc2hvd2VkIGhlbW9nbG9iaW4gMTIuOCBnL2RMLCBXQkMgNi45IEsvdUwsIHBsYXRlbGV0cyAzMDIgSy91TCwgY3JlYXRpbmluZSAwLjcxIG1nL2RMLCBBU1QgMTkgVS9MLCBBTFQgMTcgVS9MLCBhbGJ1bWluIDQuMyBnL2RMLiBIZXBhdGl0aXMgQiBzdXJmYWNlIGFudGlnZW4gbmVnYXRpdmUgYW5kIGhlcGF0aXRpcyBCIGNvcmUgYW50aWJvZHkgbmVnYXRpdmUuCk91dHNpZGUgbGFicyByZXZpZXdlZDogcG9zaXRpdmUgcmhldW1hdG9pZCBmYWN0b3IsIHN0cm9uZ2x5IHBvc2l0aXZlIGFudGktQ0NQLCBlbGV2YXRlZCBFU1IvQ1JQLgoKQVNTRVNTTUVOVDoKMS4gU2Vyb3Bvc2l0aXZlIHJoZXVtYXRvaWQgYXJ0aHJpdGlzLCBuZXdseSBjb25maXJtZWQuIENsaW5pY2FsIHByZXNlbnRhdGlvbiwgb3V0c2lkZSBzZXJvbG9naWVzLCBpbmZsYW1tYXRvcnkgbWFya2VycywgYW5kIGV4YW0gZmluZGluZ3MgYXJlIGFsbCBjb25zaXN0ZW50IHdpdGggUkEuIERpc2Vhc2UgYWN0aXZpdHkgaXMgbW9kZXJhdGUtdG8taGlnaCBiYXNlZCBvbiBEQVMyOC1DUlAgNS4xIHdpdGggYWN0aXZlIHN5bm92aXRpcyBpbiB0aGUgaGFuZHMgYW5kIHdyaXN0cy4gR2l2ZW4gYWN0aXZlIGRpc2Vhc2UgYW5kIHJpc2sgb2YgcHJvZ3Jlc3NpdmUgZXJvc2l2ZSBqb2ludCBkYW1hZ2UsIGVhcmx5IGluaXRpYXRpb24gb2YgRE1BUkQgdGhlcmFweSBpcyBpbmRpY2F0ZWQuCjIuIEhpZ2gtcmlzayBtZWRpY2F0aW9uIGluaXRpYXRpb24uIEJhc2VsaW5lIENCQywgcmVuYWwgZnVuY3Rpb24sIGxpdmVyIGVuenltZXMsIGFsYnVtaW4sIGFuZCBoZXBhdGl0aXMgQiBzY3JlZW5pbmcgYXJlIGFjY2VwdGFibGUgZm9yIG1ldGhvdHJleGF0ZSBzdGFydC4KClBMQU46CjEuIFN0YXJ0IG1ldGhvdHJleGF0ZSAxNSBtZyBvcmFsbHkgb25jZSB3ZWVrbHkuCjIuIFN0YXJ0IGZvbGljIGFjaWQgMSBtZyBvcmFsbHkgZGFpbHkuCjMuIFJldmlld2VkIG1ldGhvdHJleGF0ZSByaXNrcy9iZW5lZml0cyBhbmQgbW9uaXRvcmluZyByZXF1aXJlbWVudHMsIGluY2x1ZGluZyBoZXBhdG90b3hpY2l0eSwgY3l0b3BlbmlhcywgR0kgc2lkZSBlZmZlY3RzLCBpbmZlY3Rpb24gcHJlY2F1dGlvbnMsIGFuZCBuZWVkIGZvciBDQkMvQ01QIG1vbml0b3JpbmcgZXZlcnkgOC0xMiB3ZWVrcy4KNC4gQ291bnNlbGVkIHJlZ2FyZGluZyBhbGNvaG9sIGxpbWl0YXRpb24uCjUuIFJldmlld2VkIHRlcmF0b2dlbmljaXR5IGFuZCBkaXNjdXNzZWQgbmVlZCBmb3IgcmVsaWFibGUgY29udHJhY2VwdGlvbiB3aGlsZSB0YWtpbmcgbWV0aG90cmV4YXRlLgo2LiBCYXNlbGluZSBsYWJzIHJldmlld2VkIGFzIGFib3ZlOyBjb250aW51ZSByb3V0aW5lIHNhZmV0eSBtb25pdG9yaW5nLgo3LiBGb2xsb3cgdXAgaW4gYXBwcm94aW1hdGVseSA4IHdlZWtzIGZvciByZWFzc2Vzc21lbnQgb2Ygc3ltcHRvbXMsIGpvaW50IGNvdW50cywgYW5kIG1lZGljYXRpb24gdG9sZXJhbmNlLg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006"
+      }
+    ],
+    "period": {
+      "start": "2023-04-06T09:00:00-07:00",
+      "end": "2023-04-06T10:30:00-07:00"
+    }
+  }
+}

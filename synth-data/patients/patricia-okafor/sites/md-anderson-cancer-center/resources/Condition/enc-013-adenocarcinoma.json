@@ -1,0 +1,112 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-013-adenocarcinoma",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "254626006",
+        "display": "Adenocarcinoma of lung (disorder)"
+      }
+    ],
+    "text": "Non-small cell lung cancer, adenocarcinoma subtype, right upper lobe primary"
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "42400003",
+          "display": "Structure of upper lobe of right lung (body structure)"
+        }
+      ],
+      "text": "Right upper lobe of lung"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-013"
+  },
+  "onsetDateTime": "2024-10-02",
+  "recordedDate": "2024-10-07",
+  "recorder": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "stage": [
+    {
+      "summary": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "1222802001",
+            "display": "American Joint Committee on Cancer stage IIIA (qualifier value)"
+          }
+        ],
+        "text": "Stage IIIA (T2b N2 M0)"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "code": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "35917007",
+              "display": "Adenocarcinoma, no subtype (morphologic abnormality)"
+            }
+          ],
+          "text": "Adenocarcinoma on cytopathology"
+        }
+      ],
+      "detail": [
+        {
+          "reference": "DiagnosticReport/enc-013-pathology",
+          "display": "Cytopathology and immunohistochemistry report"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Final staging: Stage IIIA (T2b N2 M0). Molecular profiling (finalized 2024-10-10): KRAS G12C positive, EGFR wild-type, ALK rearrangement negative, ROS1 rearrangement negative, BRAF V600E negative, MET amplification negative. PD-L1 TPS 60% (high expression) by 22C3 IHC. No actionable driver mutations for first-line targeted therapy. Unresectable disease given N2 nodal involvement. Brain MRI (2024-09-25): no intracranial metastases."
+    }
+  ]
+}

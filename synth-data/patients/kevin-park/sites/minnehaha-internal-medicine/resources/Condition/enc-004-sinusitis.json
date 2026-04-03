@@ -1,0 +1,64 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-004-sinusitis",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "75498004",
+        "display": "Acute bacterial sinusitis (disorder)"
+      }
+    ],
+    "text": "Acute bacterial sinusitis"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "onsetDateTime": "2023-01-18",
+  "abatementDateTime": "2023-04-18",
+  "recordedDate": "2023-01-30",
+  "note": [
+    {
+      "text": "Clinical diagnosis made by telephone based on symptom duration greater than 10 days with purulent nasal discharge and facial pain/pressure. No red flag symptoms."
+    },
+    {
+      "text": "Fully resolved with amoxicillin course. No residual symptoms confirmed at annual wellness exam on 2023-04-18. Condition marked resolved."
+    }
+  ]
+}

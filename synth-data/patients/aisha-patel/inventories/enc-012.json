@@ -1,0 +1,84 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone encounter for allergy/immunology follow-up",
+    "reason": "Post-exacerbation follow-up discussion and biologic therapy consideration following severe asthma exacerbation and ED visit",
+    "period_start": "2025-02-10",
+    "participants": [
+      {
+        "name": "Dr. Sunita Krishnamurthy, MD",
+        "role": "Pediatric Allergy & Immunology"
+      }
+    ],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "reference-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21 mcg) inhaler",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg) inhaler",
+      "sig": "2 puffs inhaled PRN for wheezing/shortness of breath via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma (rescue inhaler)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr 0.15 mg)",
+      "sig": "two-pack, carried at all times, PRN for anaphylaxis",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents Dr. Krishnamurthy's telephone follow-up with Priya Patel (mother) regarding Aisha's post-exacerbation status. Reviews the January 2025 WakeMed ED visit and Dr. Harlow's step-up to Advair HFA 115/21. Mother reports clinical stabilization with decreased rescue inhaler use. Discusses future omalizumab (Xolair) consideration when Aisha reaches age 6 (March 2026) and defers detailed peanut oral immunotherapy discussion to next in-person visit. Plan continues current asthma and allergy regimen with in-person follow-up scheduled for late summer/early fall 2025."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

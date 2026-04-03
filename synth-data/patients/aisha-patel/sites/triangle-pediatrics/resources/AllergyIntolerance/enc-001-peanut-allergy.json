@@ -1,0 +1,81 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "enc-001-peanut-allergy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "food"
+  ],
+  "criticality": "high",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91935009",
+        "display": "Allergy to peanut (finding)"
+      }
+    ],
+    "text": "Peanut allergy"
+  },
+  "patient": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "onsetDateTime": "2022-10-22",
+  "recordedDate": "2022-10-28",
+  "recorder": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "display": "Dr. Megan Harlow"
+  },
+  "note": [
+    {
+      "text": "Peanut allergy confirmed after anaphylactic reaction on 10/22/2022 at WakeMed ED. Strict peanut and tree nut avoidance advised pending allergist evaluation. EpiPen Jr 0.15 mg prescribed, two-pack carried at all times."
+    }
+  ],
+  "reaction": [
+    {
+      "substance": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "91935009",
+            "display": "Allergy to peanut (finding)"
+          }
+        ],
+        "text": "Peanut"
+      },
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "39579001",
+              "display": "Anaphylaxis (disorder)"
+            }
+          ],
+          "text": "Anaphylaxis"
+        }
+      ],
+      "severity": "severe"
+    }
+  ]
+}

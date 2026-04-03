@@ -1,0 +1,301 @@
+{
+  "encounter_id": "enc-020",
+  "encounter_index": 20,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "chemotherapy infusion encounter",
+    "reason": "cycle 4 of 4 induction chemo-immunotherapy for non-small cell lung cancer; final planned induction cycle before maintenance transition",
+    "period_start": "2025-03-10",
+    "period_end": "2025-03-10",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "attending physician",
+        "specialty": "Thoracic Oncology"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 128,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 78,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "°F"
+      },
+      {
+        "name": "body weight",
+        "value": 144,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 24,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry, room air)",
+        "value": 97,
+        "unit": "%"
+      }
+    ],
+    "labs": [
+      {
+        "name": "hemoglobin",
+        "value": 10.4,
+        "unit": "g/dL",
+        "flag": "low",
+        "reference_range": "12.0–16.0 g/dL"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 5.2,
+        "unit": "× 10³/µL",
+        "flag": "normal",
+        "reference_range": "4.5–11.0 × 10³/µL"
+      },
+      {
+        "name": "absolute neutrophil count",
+        "value": 2.4,
+        "unit": "× 10³/µL",
+        "flag": "normal",
+        "reference_range": "1.5–8.0 × 10³/µL"
+      },
+      {
+        "name": "platelet count",
+        "value": 162,
+        "unit": "× 10³/µL",
+        "flag": "normal",
+        "reference_range": "150–400 × 10³/µL"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "reference_range": "0.6–1.2 mg/dL"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 20,
+        "unit": "U/L",
+        "flag": "normal",
+        "reference_range": "7–56 U/L"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 22,
+        "unit": "U/L",
+        "flag": "normal",
+        "reference_range": "10–40 U/L"
+      },
+      {
+        "name": "albumin, serum",
+        "value": 3.1,
+        "unit": "g/dL",
+        "flag": "low",
+        "reference_range": "3.5–5.5 g/dL"
+      },
+      {
+        "name": "lactate dehydrogenase (LDH)",
+        "value": 172,
+        "unit": "U/L",
+        "flag": "normal",
+        "reference_range": "140–280 U/L"
+      },
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": 2.8,
+        "unit": "mIU/L",
+        "flag": "normal",
+        "reference_range": "0.4–4.0 mIU/L"
+      }
+    ],
+    "screening": [
+      {
+        "name": "ECOG performance status",
+        "value": 1,
+        "interpretation": "restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature"
+      },
+      {
+        "name": "CTCAE fatigue toxicity grade",
+        "value": 1,
+        "interpretation": "mild fatigue, improved from prior cycle"
+      },
+      {
+        "name": "CTCAE peripheral neuropathy toxicity grade",
+        "value": 1,
+        "interpretation": "improved from grade 2 at cycle 3; numbness limited to fingertip tips bilaterally, not interfering with daily activities"
+      },
+      {
+        "name": "CTCAE nausea toxicity grade",
+        "value": 0,
+        "interpretation": "resolved"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA (T2b N2 M0), adenocarcinoma of right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chemotherapy-induced peripheral neuropathy",
+      "clinical_status": "active",
+      "onset_date": "2025-02",
+      "action": "update-existing",
+      "note": "improved from grade 2 to grade 1 on gabapentin 300 mg QHS; numbness now limited to fingertip tips and not interfering with daily activities"
+    },
+    {
+      "name": "cancer-related fatigue",
+      "clinical_status": "active",
+      "onset_date": "2025-01",
+      "action": "update-existing",
+      "note": "improved to grade 1, more manageable; patient has resumed walking one mile daily"
+    },
+    {
+      "name": "cancer-related anemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "pembrolizumab 200 mg intravenous infusion",
+      "sig": "200 mg IV, infused once, cycle 4 of induction",
+      "status": "completed",
+      "reason": "non-small cell lung cancer, stage IIIA",
+      "action": "create"
+    },
+    {
+      "name": "carboplatin 338 mg intravenous infusion (25% dose reduction)",
+      "sig": "338 mg IV, infused once, cycle 4 of induction; continued at 25% dose reduction from cycle 3 modification for neuropathy",
+      "status": "completed",
+      "reason": "non-small cell lung cancer, stage IIIA",
+      "action": "create"
+    },
+    {
+      "name": "pemetrexed 860 mg intravenous infusion",
+      "sig": "860 mg IV, infused once, cycle 4 of induction",
+      "status": "completed",
+      "reason": "non-small cell lung cancer, stage IIIA",
+      "action": "create"
+    },
+    {
+      "name": "vitamin B12 (cyanocobalamin) 1000 mcg intramuscular injection",
+      "sig": "1000 mcg IM, once, per pemetrexed supplementation protocol (every 9 weeks)",
+      "status": "completed",
+      "reason": "pemetrexed supplementation protocol",
+      "action": "create"
+    },
+    {
+      "name": "gabapentin 300 mg oral tablet",
+      "sig": "300 mg PO QHS",
+      "status": "active",
+      "reason": "chemotherapy-induced peripheral neuropathy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "1 mg PO daily",
+      "status": "active",
+      "reason": "pemetrexed supplementation protocol",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "10 mg PO daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ondansetron 8 mg oral tablet",
+      "sig": "8 mg PO PRN nausea",
+      "status": "active",
+      "reason": "chemotherapy-induced nausea",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Infusion encounter note documenting cycle 4 (final induction) of pembrolizumab + carboplatin + pemetrexed for stage IIIA NSCLC. Includes pre-treatment assessment with improved neuropathy and fatigue, pre-treatment labs and vitals confirming treatment eligibility, medication administration without infusion reactions, ECOG and CTCAE toxicity assessment, and plan for interim restaging CT on March 24 with transition to maintenance pembrolizumab if adequate response."
+    },
+    {
+      "type": "medication administration record",
+      "description": "Documents administration details for pembrolizumab 200 mg IV, carboplatin 338 mg IV (reduced dose), pemetrexed 860 mg IV, and vitamin B12 1000 mcg IM. Records infusion times, vital sign stability during infusion, and absence of infusion reactions."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin",
+        "white blood cell count",
+        "absolute neutrophil count",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "CMP performed pre-treatment; only creatinine, ALT, AST, and albumin values individually reported. Full panel was reviewed and found acceptable for treatment (renal and hepatic function adequate). Remaining components not individually documented in the narrative."
+    },
+    {
+      "type": "lactate dehydrogenase (LDH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "lactate dehydrogenase (LDH)"
+      ]
+    },
+    {
+      "type": "thyroid-stimulating hormone (TSH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone (TSH)"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "severity": "moderate",
+      "action": "reference-existing"
+    }
+  ]
+}

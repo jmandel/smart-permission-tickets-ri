@@ -1,0 +1,124 @@
+{
+  "encounter_id": "enc-006",
+  "encounter_index": 6,
+  "site_slug": "heartland-surgical-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Post-readmission follow-up and wound clearance after laparoscopic appendectomy complicated by surgical site infection",
+    "period_start": "2026-02-05",
+    "period_end": "2026-02-05",
+    "participants": [
+      {
+        "name": "Dr. Marcus Okonkwo",
+        "role": "Acute Care Surgeon"
+      }
+    ],
+    "service_provider": "Heartland Surgical Associates",
+    "location": "Heartland Surgical Associates, 8901 West Dodge Road, Suite 210, Omaha, NE 68114"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F",
+        "method": "oral",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "bpm",
+        "action": "create"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 126,
+        "diastolic": 78,
+        "unit": "mmHg",
+        "action": "create"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min",
+        "action": "create"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 99,
+        "unit": "%",
+        "supplemental_oxygen": "none (room air)",
+        "action": "create"
+      },
+      {
+        "name": "body weight",
+        "value": 208,
+        "unit": "lb",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "surgical site infection, post-procedural, right lower quadrant port site",
+      "clinical_status": "resolved",
+      "onset_date": "2026-01-22",
+      "action": "update-existing"
+    },
+    {
+      "name": "status post laparoscopic appendectomy for perforated appendicitis",
+      "clinical_status": "resolved",
+      "onset_date": "2026-01-12",
+      "action": "update-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "ciprofloxacin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "completed",
+      "reason": "surgical site infection (post-appendectomy)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metronidazole 500 mg oral tablet",
+      "sig": "three times daily",
+      "status": "completed",
+      "reason": "surgical site infection (post-appendectomy)",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "author": "Dr. Marcus Okonkwo",
+      "description": "Post-readmission follow-up note documenting the patient's recovery 10 days after second discharge and 24 days after laparoscopic appendectomy for perforated appendicitis. Documents subjective well-being, normal vitals, complete wound healing by secondary intention at all port sites, completion of antibiotic course, resolution of surgical site infection, and clearance plan including return to full work duties by February 19, 2026.",
+      "action": "create"
+    },
+    {
+      "type": "wound assessment note",
+      "author": "Dr. Marcus Okonkwo",
+      "description": "Formal wound assessment documenting complete healing of the right lower quadrant port site by secondary intention, with healthy flat scar tissue and no signs of residual or recurrent infection. Also documents fully healed umbilical and left lower quadrant port site incisions with no hernia defects. Clearance from wound care.",
+      "action": "create"
+    },
+    {
+      "type": "administrative/work release letter",
+      "author": "Dr. Marcus Okonkwo",
+      "description": "Letter authorizing return to full work duties including heavy lifting, effective February 19, 2026. Documents that the patient has been on light duty in a supervisory role since approximately one week prior and is now cleared for progressive return to full physical activity.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "no known drug allergies",
+      "action": "reference-existing"
+    }
+  ]
+}

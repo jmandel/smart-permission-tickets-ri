@@ -1,0 +1,40 @@
+{
+  "resourceType": "Location",
+  "id": "419deae8-b86b-47c9-a78a-ef5d3d36b9a0",
+  "status": "active",
+  "name": "Hawthorne Health Center",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "PC",
+          "display": "Primary care clinic"
+        }
+      ],
+      "text": "Primary Care Clinic"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "503-555-0100",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "3847 SE Hawthorne Blvd"
+    ],
+    "city": "Portland",
+    "state": "OR",
+    "postalCode": "97214",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/83164264-c08a-48b3-98a5-0d6d09e2f275",
+    "display": "Hawthorne Health Center"
+  }
+}

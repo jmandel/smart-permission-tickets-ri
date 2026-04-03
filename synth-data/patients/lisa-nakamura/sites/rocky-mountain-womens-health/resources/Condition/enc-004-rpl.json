@@ -1,0 +1,95 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-004-rpl",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "102878001",
+        "display": "Recurrent miscarriage (disorder)"
+      }
+    ],
+    "text": "Recurrent pregnancy loss"
+  },
+  "subject": {
+    "reference": "Patient/c5ddaade-eb60-4fbd-9fb6-9f6d1530e4bf",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "onsetDateTime": "2024-10-21",
+  "recordedDate": "2024-10-21",
+  "evidence": [
+    {
+      "detail": [
+        {
+          "reference": "Condition/enc-003-miscarriage",
+          "display": "First pregnancy loss (June 2024)"
+        }
+      ]
+    },
+    {
+      "detail": [
+        {
+          "reference": "Condition/enc-004-missed-abortion",
+          "display": "Second pregnancy loss (October 2024)"
+        }
+      ]
+    },
+    {
+      "detail": [
+        {
+          "reference": "Condition/enc-007-missed-abortion",
+          "display": "Third pregnancy loss (March 2025) — euploid conceptus (46,XX)"
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Three consecutive first-trimester losses (June 2024, October 2024, March 2025). Third loss confirmed euploid conceptus (46,XX) on POC cytogenetic analysis, eliminating embryonic aneuploidy as the cause and shifting suspicion toward a maternal factor. Prior RPL workup (parental karyotypes, TSH, HbA1c, coagulation, ANA) unrevealing. APS antibody panel planned."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

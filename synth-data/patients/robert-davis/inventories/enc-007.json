@@ -1,0 +1,340 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "6-week follow-up, sputum conversion monitoring, repeat imaging",
+    "period_start": "2026-03-05T09:00:00-06:00",
+    "period_end": "2026-03-05T10:00:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "attending",
+        "specialty": "Infectious Disease"
+      },
+      {
+        "name": "RN Patricia Gomez",
+        "role": "nurse"
+      }
+    ],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic, 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 98.1,
+        "unit": "°F"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm"
+      },
+      {
+        "name": "blood pressure (systolic component)",
+        "value": 132,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": 80,
+        "unit": "mmHg"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry, room air)",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 165,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 23.7,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 31,
+        "unit": "U/L",
+        "reference_range": "10–40",
+        "flag": "normal",
+        "specimen": "serum",
+        "notes": "Stable; TB medication hepatotoxicity monitoring"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 34,
+        "unit": "U/L",
+        "reference_range": "7–56",
+        "flag": "normal",
+        "specimen": "serum",
+        "notes": "Stable; TB medication hepatotoxicity monitoring"
+      },
+      {
+        "name": "white blood cell count",
+        "value": 7.6,
+        "unit": "× 10³/µL",
+        "reference_range": "4.5–11.0",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 12,
+        "unit": "g/dL",
+        "reference_range": "13.5–17.5",
+        "flag": "low",
+        "specimen": "blood",
+        "notes": "Improving from 11.2 at admission"
+      },
+      {
+        "name": "hematocrit",
+        "value": 36.2,
+        "unit": "%",
+        "reference_range": "38.3–48.6",
+        "flag": "low",
+        "specimen": "blood"
+      },
+      {
+        "name": "platelet count",
+        "value": 290,
+        "unit": "× 10³/µL",
+        "reference_range": "150–400",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "creatinine",
+        "value": 1,
+        "unit": "mg/dL",
+        "reference_range": "0.7–1.3",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "glucose, fasting",
+        "value": 156,
+        "unit": "mg/dL",
+        "reference_range": "70–100",
+        "flag": "high",
+        "specimen": "serum",
+        "notes": "Improved from 172 at 2-week visit"
+      },
+      {
+        "name": "albumin",
+        "value": 3.3,
+        "unit": "g/dL",
+        "reference_range": "3.5–5.5",
+        "flag": "low",
+        "specimen": "serum",
+        "notes": "Improving from 3.0 at admission"
+      },
+      {
+        "name": "uric acid",
+        "value": 8.9,
+        "unit": "mg/dL",
+        "reference_range": "3.4–7.0",
+        "flag": "high",
+        "specimen": "serum",
+        "notes": "Mildly elevated; consistent with pyrazinamide effect; patient asymptomatic"
+      },
+      {
+        "name": "sputum acid-fast bacilli smear",
+        "value": "Negative",
+        "unit": "(qualitative)",
+        "specimen": "sputum",
+        "notes": "Smear conversion confirmed — previously positive; significant clinical milestone"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "Negative screen"
+      },
+      {
+        "name": "visual acuity, right eye (OD)",
+        "value": "20/25",
+        "notes": "Ethambutol toxicity monitoring; unchanged from baseline"
+      },
+      {
+        "name": "visual acuity, left eye (OS)",
+        "value": "20/25",
+        "notes": "Ethambutol toxicity monitoring; unchanged from baseline"
+      },
+      {
+        "name": "color vision screening",
+        "value": "Intact",
+        "notes": "Ethambutol toxicity monitoring"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "update-existing",
+      "notes": "Excellent clinical and microbiologic response at 6 weeks. Sputum AFB smear now negative (smear conversion). Chest imaging shows interval decrease in right upper lobe cavitary lesion (3.5 → 2.5 cm). Night sweats resolved, cough improved, weight gain. Currently in intensive phase (week 6 of 8)."
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "onset_date": "~2015",
+      "action": "reference-existing",
+      "notes": "Fasting glucose 156 mg/dL (improved from prior). A1c recheck planned at 10-week visit. Continue current management."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "~2010",
+      "action": "reference-existing",
+      "notes": "Well controlled. BP 132/80 today. No changes."
+    },
+    {
+      "name": "chronic obstructive pulmonary disease, mild",
+      "clinical_status": "active",
+      "onset_date": "~2017",
+      "action": "reference-existing",
+      "notes": "Stable, no exacerbation symptoms. No changes."
+    },
+    {
+      "name": "hyperuricemia, drug-induced (pyrazinamide)",
+      "clinical_status": "active",
+      "onset_date": "2026-03-05",
+      "action": "create",
+      "notes": "New diagnosis at this encounter. Uric acid 8.9 mg/dL. Patient asymptomatic, no gout symptoms. Expected to resolve after pyrazinamide discontinuation at end of intensive phase."
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral, once daily",
+      "sig": "600 mg by mouth once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral, once daily",
+      "sig": "300 mg by mouth once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral, once daily",
+      "sig": "1500 mg by mouth once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ethambutol 1200 mg oral, once daily",
+      "sig": "1200 mg by mouth once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine (vitamin B6) 50 mg oral, once daily",
+      "sig": "50 mg by mouth once daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis (isoniazid adjunct)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral, once daily",
+      "sig": "20 mg by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral, twice daily",
+      "sig": "1000 mg by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol HFA inhaler, as needed",
+      "sig": "Inhale 1–2 puffs as needed for shortness of breath",
+      "status": "active",
+      "reason": "COPD",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "description": "6-week TB follow-up progress note by Dr. Lena Okafor. Documents significant clinical improvement on RIPE therapy including sputum smear conversion, improving chest imaging, stable hepatic function, and plan to continue intensive phase through 8-week mark with transition to continuation phase pending culture confirmation."
+    },
+    {
+      "type": "DOT adherence log summary",
+      "description": "Summary of directly observed therapy compliance documenting 100% weekday adherence since enrollment in the DOT program."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hepatic function panel",
+      "report_state": "summary-only",
+      "description": "Only AST (31 U/L) and ALT (34 U/L) reported from this panel; stable and within acceptable limits for ongoing TB medication hepatotoxicity monitoring. Insufficient components for a full panel report."
+    },
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "Only creatinine (1.0), fasting glucose (156), and albumin (3.3) reported. Insufficient components for a full CMP report. Albumin improving."
+    },
+    {
+      "type": "uric acid",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "uric acid"
+      ]
+    },
+    {
+      "type": "sputum acid-fast bacilli smear",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum acid-fast bacilli smear"
+      ]
+    },
+    {
+      "type": "chest X-ray, PA and lateral",
+      "report_state": "summary-only",
+      "description": "Interval decrease in size of right upper lobe cavitary lesion, now approximately 2.5 cm (previously 3.5 cm on 01/22/2026). Surrounding infiltrate has partially cleared. Right hilar lymph nodes appear less prominent. No new infiltrates or effusions. Overall impression: improving pulmonary tuberculosis on treatment."
+    },
+    {
+      "type": "sputum mycobacterial culture",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum specimen collected at this visit and sent to mycobacteriology lab. Results expected in 3–6 weeks."
+    }
+  ],
+  "allergies": []
+}

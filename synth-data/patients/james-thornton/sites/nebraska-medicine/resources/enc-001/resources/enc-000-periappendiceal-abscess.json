@@ -1,0 +1,65 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-periappendiceal-abscess",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "62224002",
+        "display": "Abscess of appendix (disorder)"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "K35.33",
+        "display": "Acute appendicitis with perforation and localized peritonitis, with abscess"
+      }
+    ],
+    "text": "Periappendiceal abscess"
+  },
+  "subject": {
+    "reference": "Patient/85d2a90a-ea22-452b-9f48-429df704aa0d",
+    "display": "James Robert Thornton"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2026-01-12",
+  "recordedDate": "2026-01-12",
+  "note": [
+    {
+      "text": "Operatively confirmed as 2.5 cm abscess cavity adjacent to cecum base containing approximately 30 mL purulent fluid. Initially identified on CT as 2.3 cm rim-enhancing fluid collection. Abscess drained and irrigated intraoperatively."
+    }
+  ]
+}

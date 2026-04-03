@@ -1,0 +1,62 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-020-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "date": "2022-12-05T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAxMi8wNS8yMDIyClBhdGllbnQ6IENhcmxvcyBSb2JlcnRvIE1lZGluYSAoRE9COiAwOC8xNC8xOTc0KQpQcm92aWRlcjogRHIuIEFsZWphbmRybyBGdWVudGVzLCBNRCDigJQgU291dGggVGV4YXMgUmhldW1hdG9sb2d5LCBTYW4gQW50b25pbywgVFgKRW5jb3VudGVyIFR5cGU6IFRlbGVwaG9uZQpSZWFzb24gZm9yIENhbGw6IFByaW9yIGF1dGhvcml6YXRpb24gc3RhdHVzIHVwZGF0ZSwgY29udGludWVkIFJBIG1hbmFnZW1lbnQKCkNBTEwgU1VNTUFSWToKCkRyLiBGdWVudGVzJ3Mgb2ZmaWNlIGNvbnRhY3RlZCBwYXRpZW50IHRvIHByb3ZpZGUgYW4gdXBkYXRlIG9uIHRoZSBwcmlvciBhdXRob3JpemF0aW9uIGZvciBIYWRsaW1hIChhZGFsaW11bWFiLWJ3d2QpIDQwIG1nIFNDIHEyIHdlZWtzIHN1Ym1pdHRlZCB0byBBZXRuYSBmb3IgdHJlYXRtZW50IG9mIHNlcm9wb3NpdGl2ZSByaGV1bWF0b2lkIGFydGhyaXRpcyAoTTA1Ljc5KS4KClRoZSBpbml0aWFsIHByaW9yIGF1dGhvcml6YXRpb24gd2FzIHN1Ym1pdHRlZCBpbiBTZXB0ZW1iZXIgMjAyMiB3aXRoIGRvY3VtZW50YXRpb24gb2YgZmFpbGVkIGNvbnZlbnRpb25hbCBETUFSRCB0aGVyYXB5IChtZXRob3RyZXhhdGUgZGlzY29udGludWVkIGZvciBoZXBhdG90b3hpY2l0eSwgbGVmbHVub21pZGUgaW5hZGVxdWF0ZSByZXNwb25zZSBhZnRlciA2IG1vbnRocyBhdCBmdWxsIGRvc2UpLiBBZXRuYSBzdWJzZXF1ZW50bHkgcmVxdWVzdGVkIGFkZGl0aW9uYWwgaW5mb3JtYXRpb24gaW5jbHVkaW5nIGNvcGllcyBvZiBpbWFnaW5nIHJlcG9ydHMgKGJpbGF0ZXJhbCBoYW5kIFgtcmF5cyBmcm9tIE1hcmNoIDIwMjEgYW5kIEF1Z3VzdCAyMDIyIHNob3dpbmcgZXJvc2l2ZSBwcm9ncmVzc2lvbikgYW5kIGNvbXBsZXRlIG1lZGljYXRpb24gaGlzdG9yeSB3aXRoIGRhdGVzIGFuZCByZWFzb25zIGZvciBkaXNjb250aW51YXRpb24uIFN1cHBsZW1lbnRhbCBkb2N1bWVudGF0aW9uIHdhcyBzdWJtaXR0ZWQgaW4gT2N0b2JlciAyMDIyLgoKQXMgb2YgdG9kYXkncyBjYWxsLCB0aGUgcHJpb3IgYXV0aG9yaXphdGlvbiByZW1haW5zIHVuZGVyIHJldmlldyBieSBBZXRuYS4gUGF0aWVudCBleHByZXNzZWQgZnJ1c3RyYXRpb24gd2l0aCB0aGUgcHJvbG9uZ2VkIHRpbWVsaW5lLiBOdXJzZSByZWxheWVkIHRoYXQgdGhlIG9mZmljZSBpcyBhY3RpdmVseSBmb2xsb3dpbmcgdXAgd2l0aCBBZXRuYSBhbmQgd2lsbCBlc2NhbGF0ZSB0byBwZWVyLXRvLXBlZXIgcmV2aWV3IGlmIG5lY2Vzc2FyeS4KClNZTVBUT00gVVBEQVRFOgoKUGF0aWVudCByZXBvcnRzIHN5bXB0b21zIGFyZSBzdGFibGUgYnV0IG5vdCBpbXByb3Zpbmcgb24gY3VycmVudCByZWdpbWVuLiBObyBuZXcgam9pbnQgY29tcGxhaW50cy4gVG9sZXJhdGluZyBsZWZsdW5vbWlkZSAyMCBtZyBkYWlseSB3aXRob3V0IGFkdmVyc2UgZWZmZWN0cy4gQ29udGludWVzIGRhaWx5IG5hcHJveGVuIDUwMCBtZyB3aXRoIG9tZXByYXpvbGUgMjAgbWcgZm9yIGdhc3Ryb3Byb3RlY3Rpb24uIE5vIEdJIHN5bXB0b21zLCBubyBuZXcgcmFzaCwgbm8gc3lzdGVtaWMgY29tcGxhaW50cy4gTm8gZmV2ZXIsIHdlaWdodCBsb3NzLCBvciBvdGhlciBjb25zdGl0dXRpb25hbCBzeW1wdG9tcyByZXBvcnRlZC4KCkNVUlJFTlQgTUVESUNBVElPTlM6CjEuIExlZmx1bm9taWRlIDIwIG1nIFBPIGRhaWx5CjIuIE5hcHJveGVuIDUwMCBtZyBQTyBkYWlseSAodXNlcyBtb3N0IGRheXMpCjMuIE9tZXByYXpvbGUgMjAgbWcgUE8gZGFpbHkKNC4gRm9saWMgYWNpZCAxIG1nIFBPIGRhaWx5CjUuIENldGlyaXppbmUgMTAgbWcgUE8gZGFpbHkKClBMQU46CjEuIENvbnRpbnVlIGN1cnJlbnQgbWVkaWNhdGlvbiByZWdpbWVuIHVuY2hhbmdlZC4KMi4gT2ZmaWNlIHRvIGNvbnRpbnVlIGZvbGxvdy11cCB3aXRoIEFldG5hIG9uIHByaW9yIGF1dGhvcml6YXRpb24gZm9yIEhhZGxpbWEuIFdpbGwgcHVyc3VlIHBlZXItdG8tcGVlciByZXZpZXcgaWYgUEEgbm90IGFwcHJvdmVkIGluIGEgdGltZWx5IG1hbm5lci4KMy4gTmV4dCBzY2hlZHVsZWQgb2ZmaWNlIHZpc2l0IE1hcmNoIDIwMjMsIG9yIHNvb25lciBpZiBwcmlvciBhdXRob3JpemF0aW9uIGlzIG9idGFpbmVkIHRvIGluaXRpYXRlIGJpb2xvZ2ljIHRoZXJhcHkuCjQuIFBhdGllbnQgYWR2aXNlZCB0byBjYWxsIHdpdGggYW55IG5ldyBvciB3b3JzZW5pbmcgc3ltcHRvbXMuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6IEFsZWphbmRybyBGdWVudGVzLCBNRApTb3V0aCBUZXhhcyBSaGV1bWF0b2xvZ3kKTlBJOiAxOTIzODQ3NTYxCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-020"
+      }
+    ],
+    "period": {
+      "start": "2022-12-05"
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "encounter_id": "enc-000",
+  "encounter_index": 0,
+  "site_slug": "rocky-mountain-womens-health",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "New patient comprehensive well-woman exam",
+    "reason": "New patient well-woman exam, routine preventive care",
+    "period_start": "2022-08-18T09:00:00-06:00",
+    "period_end": "2022-08-18T09:45:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Megan Forsythe",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Rocky Mountain Women's Health",
+    "location": "Rocky Mountain Women's Health, Denver, CO"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 112,
+        "value_diastolic": 72,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%",
+        "text": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 132,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 65,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index (BMI)",
+        "value": 22,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 6.2,
+        "unit": "K/uL",
+        "reference_range": "4.5–11.0 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 13.4,
+        "unit": "g/dL",
+        "reference_range": "12.0–16.0 g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hematocrit",
+        "value": 39.8,
+        "unit": "%",
+        "reference_range": "36.0–46.0 %",
+        "flag": "normal"
+      },
+      {
+        "name": "platelet count",
+        "value": 238,
+        "unit": "K/uL",
+        "reference_range": "150–400 K/uL",
+        "flag": "normal"
+      },
+      {
+        "name": "glucose",
+        "value": 88,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "blood urea nitrogen (BUN)",
+        "value": 12,
+        "unit": "mg/dL",
+        "reference_range": "7–20 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.72,
+        "unit": "mg/dL",
+        "reference_range": "0.59–1.04 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "sodium",
+        "value": 139,
+        "unit": "mEq/L",
+        "reference_range": "136–145 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "reference_range": "3.5–5.1 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 18,
+        "unit": "U/L",
+        "reference_range": "10–40 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 15,
+        "unit": "U/L",
+        "reference_range": "7–56 U/L",
+        "flag": "normal"
+      },
+      {
+        "name": "thyroid-stimulating hormone (TSH)",
+        "value": 1.8,
+        "unit": "mIU/L",
+        "reference_range": "0.27–4.20 mIU/L",
+        "flag": "normal"
+      },
+      {
+        "name": "total cholesterol",
+        "value": 178,
+        "unit": "mg/dL",
+        "reference_range": "<200 mg/dL (desirable)",
+        "flag": "normal"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 102,
+        "unit": "mg/dL",
+        "reference_range": "<100 mg/dL (optimal) to <130 mg/dL (near optimal)",
+        "flag": "normal"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 64,
+        "unit": "mg/dL",
+        "reference_range": ">40 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 72,
+        "unit": "mg/dL",
+        "reference_range": "<150 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "cervical cytology (Pap smear)",
+        "value": "normal cytology (negative for intraepithelial lesion or malignancy)",
+        "specimen": "cervical swab"
+      },
+      {
+        "name": "high-risk HPV DNA test",
+        "value": "negative",
+        "specimen": "cervical swab"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative (no indication of depression)"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "routine health maintenance",
+      "clinical_status": "active",
+      "action": "create"
+    },
+    {
+      "name": "long-term current use of oral contraceptive pills",
+      "clinical_status": "active",
+      "onset_date": "2014",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "norgestimate-ethinyl estradiol (Sprintec) 0.25 mg / 35 mcg oral tablet",
+      "sig": "Take one tablet by mouth daily",
+      "status": "active",
+      "reason": "contraception management",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "Tdap (tetanus, diphtheria, and acellular pertussis) vaccine",
+      "date": "2022-08-18",
+      "route": "intramuscular injection"
+    },
+    {
+      "name": "influenza vaccine, inactivated, 2022-2023 seasonal formulation",
+      "date": "2022-08-18",
+      "route": "intramuscular injection"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents initial comprehensive well-woman exam for a 33-year-old healthy female new patient establishing OB/GYN care after relocation. Includes complete history and physical, normal baseline labs (CBC, CMP, TSH, lipid panel), normal Pap/HPV co-test, PHQ-2 screening negative, Tdap booster and influenza vaccine administered, and contraceptive management with norgestimate-ethinyl estradiol (Sprintec) refill. Follow-up in one year for annual exam."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count",
+        "hemoglobin",
+        "hematocrit",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "blood urea nitrogen (BUN)",
+        "creatinine",
+        "sodium",
+        "potassium",
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)"
+      ]
+    },
+    {
+      "type": "thyroid-stimulating hormone (TSH)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "thyroid-stimulating hormone (TSH)"
+      ]
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "Pap smear with HPV co-testing (cervical cancer screening)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "cervical cytology (Pap smear)",
+        "high-risk HPV DNA test"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergies",
+      "type": "documented absence of allergy information (NKDA assertion)",
+      "action": "create"
+    }
+  ]
+}

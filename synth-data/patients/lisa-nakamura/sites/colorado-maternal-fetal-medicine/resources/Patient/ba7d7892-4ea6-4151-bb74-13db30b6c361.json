@@ -1,0 +1,134 @@
+{
+  "resourceType": "Patient",
+  "id": "ba7d7892-4ea6-4151-bb74-13db30b6c361",
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2028-9",
+            "display": "Asian"
+          }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2039-6",
+            "display": "Japanese"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Japanese-American"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+    },
+    {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        },
+        {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        }
+      ],
+      "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+    },
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+      "valueMarkdown": "After the third loss, her OB/GYN suspects antiphospholipid syndrome (APS) based on the pattern of recurrent early losses with a chromosomally normal conceptus. She orders anticardiolipin antibodies, lupus anticoagulant, and anti-beta-2 glycoprotein I antibodies. Anticardiolipin IgG is elevated (48 GPL, positive >40) and lupus anticoagulant is weakly positive. These need to be confirmed on repeat testing 12 weeks apart per revised Sapporo criteria.\n\nHer OB/GYN refers Lisa to: 1. Maternal-fetal medicine (MFM) for high-risk pregnancy planning and management 2. Hematology for APS evaluation and anticoagulation planning for future pregnancies\n\nBoth specialists need access to Lisa's complete OB/GYN records — the pregnancy loss history, prior workup results, and APS lab results — to provide consultation."
+    }
+  ],
+  "identifier": [
+    {
+      "use": "usual",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          }
+        ],
+        "text": "Medical Record Number"
+      },
+      "system": "urn:oid:1.2.840.114350.1.13.861.2.7.5.737384.14",
+      "value": "MFM-300419"
+    },
+    {
+      "system": "urn:smart-permission-tickets:person-id",
+      "value": "person-da20b317ce6538646b7bbbd6"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Nakamura",
+      "given": [
+        "Lisa"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "303-555-0147",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lisa.nakamura@example.com",
+      "use": "home"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-08-14",
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "4521 Elm Street"
+      ],
+      "city": "Denver",
+      "state": "CO",
+      "postalCode": "80220",
+      "country": "US"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "M",
+        "display": "Married"
+      }
+    ],
+    "text": "Married"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en",
+            "display": "English"
+          }
+        ],
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}

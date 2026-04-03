@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "f13e8eb8-5f9d-4196-83b8-8968d79fd371",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Rachel Montoya, RN",
+      "family": "Montoya",
+      "given": [
+        "Rachel"
+      ],
+      "suffix": [
+        "RN"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360/2.7",
+            "code": "RN",
+            "display": "Registered Nurse"
+          }
+        ],
+        "text": "Registered Nurse"
+      }
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-009",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386472008",
+          "display": "Telephone consultation (procedure)"
+        }
+      ],
+      "text": "Telephone"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/da2d0ec0-017a-4bc6-a178-2fa0338be62e",
+        "display": "Priya Nair, RN"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-11-22",
+    "end": "2022-11-22"
+  },
+  "reasonCode": [
+    {
+      "text": "Asthma follow-up"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/47540de6-680b-41bd-9e2c-3903b02dc52d",
+        "display": "Cascade Community Health Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/f0f6cfeb-5a2e-4ed7-b223-e1aee4d4ec12",
+    "display": "Cascade Community Health Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Priya Nair, RN, calls Maria for scheduled asthma follow-up. Maria reports significant improvement — albuterol use decreased to every other day, and she has been wearing a mask during cold weather and at her dusty client's home."
+    }
+  ]
+}

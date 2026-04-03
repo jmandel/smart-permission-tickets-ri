@@ -1,0 +1,123 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-010-guaifenesin-codeine",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "995868",
+        "display": "codeine phosphate 10 MG / guaiFENesin 100 MG in 5 mL Oral Solution"
+      }
+    ],
+    "text": "guaifenesin with codeine oral solution"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "authoredOn": "2024-09-03",
+  "requester": {
+    "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+    "type": "Practitioner",
+    "display": "Dr. Nisha Ramaswamy, MD"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "68154008",
+          "display": "Chronic cough (finding)"
+        }
+      ],
+      "text": "Worsening nighttime cough"
+    }
+  ],
+  "note": [
+    {
+      "text": "Patient counseled on potential sedation and constipation. Avoid driving or operating machinery after taking medication."
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 10 mL by mouth at bedtime as needed for cough. Avoid driving or operating machinery after taking medication.",
+      "patientInstruction": "Take 10 mL by mouth at bedtime as needed for cough. Avoid driving or operating machinery after taking medication.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d",
+          "timeOfDay": [
+            "21:00:00"
+          ]
+        },
+        "code": {
+          "text": "at bedtime"
+        }
+      },
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "738956005",
+            "display": "Oral (intended site)"
+          }
+        ],
+        "text": "Oral"
+      },
+      "method": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419652001",
+            "display": "Take"
+          }
+        ],
+        "text": "Take"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 10,
+            "unit": "mL",
+            "system": "http://unitsofmeasure.org",
+            "code": "mL"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "validityPeriod": {
+      "start": "2024-09-03"
+    }
+  }
+}

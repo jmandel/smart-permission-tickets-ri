@@ -1,0 +1,160 @@
+{
+  "encounter_id": "enc-012",
+  "encounter_index": 12,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "elevated liver enzymes on routine monitoring; methotrexate hepatotoxicity requiring medication discontinuation",
+    "period_start": "2021-11-03",
+    "period_end": "2021-11-03",
+    "participants": [],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "98",
+        "unit": "U/L",
+        "reference_range": "7–45 U/L",
+        "flag": "high",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-01",
+        "action": "create"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "82",
+        "unit": "U/L",
+        "reference_range": "8–40 U/L",
+        "flag": "high",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-01",
+        "action": "create"
+      },
+      {
+        "name": "total bilirubin",
+        "value": "0.8",
+        "unit": "mg/dL",
+        "reference_range": "0.1–1.2 mg/dL",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-01",
+        "action": "create"
+      },
+      {
+        "name": "albumin",
+        "value": "3.8",
+        "unit": "g/dL",
+        "reference_range": "3.5–5.0 g/dL",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-01",
+        "action": "create"
+      },
+      {
+        "name": "alkaline phosphatase",
+        "value": "78",
+        "unit": "U/L",
+        "reference_range": "44–147 U/L",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-01",
+        "action": "create"
+      },
+      {
+        "name": "hepatitis B surface antigen",
+        "value": "negative",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-05",
+        "action": "create"
+      },
+      {
+        "name": "hepatitis C antibody",
+        "value": "negative",
+        "flag": "normal",
+        "specimen": "blood/serum",
+        "effective_date": "2021-11-05",
+        "action": "create"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "methotrexate hepatotoxicity",
+      "clinical_status": "active",
+      "onset_date": "2021-10",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 20 mg oral tablet",
+      "sig": "take 20 mg by mouth once weekly",
+      "status": "stopped",
+      "reason": "hepatotoxicity (ALT and AST more than twice upper limit of normal)",
+      "action": "update-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "take 1 mg by mouth daily",
+      "status": "active",
+      "reason": "supplementation during/after methotrexate therapy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "naproxen 500 mg oral tablet",
+      "sig": "take 500 mg by mouth as needed for joint pain",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents discussion of November 1 lab results showing ALT 98 and AST 82 consistent with methotrexate hepatotoxicity. Records immediate discontinuation of methotrexate, review of additional hepatic workup, ordering of hepatitis serologies, patient counseling on alcohol avoidance, and follow-up plan including repeat LFTs in 4–6 weeks and December office visit to discuss alternative DMARD therapy. Includes follow-up hepatitis serology results (both negative, drawn 2021-11-05).",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hepatic function panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "total bilirubin",
+        "albumin",
+        "alkaline phosphatase"
+      ]
+    },
+    {
+      "type": "hepatitis B surface antigen",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis B surface antigen"
+      ]
+    },
+    {
+      "type": "hepatitis C antibody",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis C antibody"
+      ]
+    }
+  ],
+  "allergies": []
+}

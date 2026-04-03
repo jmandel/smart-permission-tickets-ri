@@ -1,0 +1,77 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-009-pft",
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/enc-008-pft-order",
+      "display": "Pulmonary function testing"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP99358-1",
+          "display": "Pulmonary function"
+        }
+      ],
+      "text": "Pulmonary function"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58477-1",
+        "display": "Pulmonary function study"
+      }
+    ],
+    "text": "Pulmonary Function Test Report"
+  },
+  "subject": {
+    "reference": "Patient/32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-009"
+  },
+  "effectiveDateTime": "2024-08-19",
+  "issued": "2024-08-19T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/26ca612e-5f99-46e7-bdc7-af0451a8a524",
+      "type": "Practitioner",
+      "display": "Dr. Nisha Ramaswamy, MD"
+    },
+    {
+      "reference": "Organization/b3038360-2804-4469-921c-a842836dd49a",
+      "type": "Organization",
+      "display": "Houston Pulmonary Associates"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-009-fev1",
+      "display": "FEV1"
+    },
+    {
+      "reference": "Observation/enc-009-fvc",
+      "display": "FVC"
+    },
+    {
+      "reference": "Observation/enc-009-fev1-fvc-ratio",
+      "display": "FEV1/FVC ratio"
+    },
+    {
+      "reference": "Observation/enc-009-tlc",
+      "display": "TLC"
+    },
+    {
+      "reference": "Observation/enc-009-dlco",
+      "display": "DLCO"
+    }
+  ],
+  "conclusion": "Mild restrictive ventilatory defect with reduced diffusion capacity, consistent with parenchymal disease and/or early lymphangitic involvement. No significant bronchodilator response."
+}

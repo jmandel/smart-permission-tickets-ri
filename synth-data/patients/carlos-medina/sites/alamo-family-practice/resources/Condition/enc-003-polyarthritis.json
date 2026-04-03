@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-003-polyarthritis",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "provisional",
+        "display": "Provisional"
+      }
+    ],
+    "text": "Provisional"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "30701005",
+        "display": "Inflammatory polyarthropathy (disorder)"
+      }
+    ],
+    "text": "Symmetric inflammatory polyarthritis, suspected rheumatoid arthritis"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "onsetDateTime": "2020-10",
+  "recordedDate": "2021-02-08",
+  "note": [
+    {
+      "text": "Symmetric inflammatory polyarthritis involving bilateral MCPs, PIPs, wrists, and MTPs with morning stiffness >1 hour. Strongly positive RF (78 IU/mL) and anti-CCP (>250 U/mL) with elevated inflammatory markers (ESR 42, CRP 2.8). High clinical suspicion for rheumatoid arthritis. Urgent referral to rheumatology placed."
+    }
+  ]
+}

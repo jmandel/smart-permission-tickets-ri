@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-018-mar",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "80565-5",
+        "display": "Medication administration record"
+      }
+    ],
+    "text": "Medication Administration Record"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "date": "2025-01-27T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/e42e19b6-01f0-4f55-b971-653b4342282b",
+      "type": "Practitioner",
+      "display": "Dr. Amy Pham, PharmD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TWVkaWNhdGlvbiBBZG1pbmlzdHJhdGlvbiBSZWNvcmQgLSBFbmNvdW50ZXIgMDEvMjcvMjAyNQoKUGF0aWVudDogUGF0cmljaWEgQ2hpZGlubWEgT2thZm9yCkRPQjogMDgvMTQvMTk2MwpUcmVhdG1lbnQgQ3ljbGU6IDIgb2YgNCAoSW5kdWN0aW9uIFBoYXNlKQpQcm90b2NvbDogTkNUMDU4MjAyOTUKClByZS1tZWRpY2F0aW9uczoKMS4gRGV4YW1ldGhhc29uZSA0IG1nIFBPIC0gYWRtaW5pc3RlcmVkIG1vcm5pbmcgb2YgaW5mdXNpb24gcGVyIHByb3RvY29sCjIuIERpcGhlbmh5ZHJhbWluZSAyNSBtZyBJViAtIGFkbWluaXN0ZXJlZCBwcmlvciB0byBjaGVtb3RoZXJhcHkKMy4gRmFtb3RpZGluZSAyMCBtZyBJViAtIGFkbWluaXN0ZXJlZCBwcmlvciB0byBjaGVtb3RoZXJhcHkKCkNoZW1vdGhlcmFweSBBZG1pbmlzdHJhdGlvbjoKMS4gUGVtYnJvbGl6dW1hYiAyMDAgbWcgSVYgb3ZlciAzMCBtaW51dGVzIC0gU3RhcnQ6IDA4OjE1LCBFbmQ6IDA4OjQ1IC0gTm8gcmVhY3Rpb24KMi4gUGVtZXRyZXhlZCA4NjAgbWcgSVYgKDUwMCBtZy9tMiwgQlNBIDEuNzIgbTIpIG92ZXIgMTAgbWludXRlcyAtIFN0YXJ0OiAwOTowMCwgRW5kOiAwOToxMCAtIE5vIHJlYWN0aW9uCjMuIENhcmJvcGxhdGluIDQ1MCBtZyBJViAoQVVDIDUpIG92ZXIgMzAgbWludXRlcyAtIFN0YXJ0OiAwOToyNSwgRW5kOiAwOTo1NSAtIE5vIHJlYWN0aW9uCgpQb3N0LWluZnVzaW9uIG9ic2VydmF0aW9uIHBlcmlvZDogMDk6NTUgLSAxMDozMApQYXRpZW50IGhlbW9keW5hbWljYWxseSBzdGFibGUgdGhyb3VnaG91dC4gTm8gaW5mdXNpb24gcmVhY3Rpb25zIG9ic2VydmVkLgoKVG90YWwgY2hhaXIgdGltZTogYXBwcm94aW1hdGVseSAyLjUgaG91cnMgKDA4OjAwIC0gMTA6MzApCgpWZXJpZmllZCBieTogRHIuIEFteSBQaGFtLCBQaGFybUQK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-018"
+      }
+    ],
+    "period": {
+      "start": "2025-01-27"
+    }
+  }
+}

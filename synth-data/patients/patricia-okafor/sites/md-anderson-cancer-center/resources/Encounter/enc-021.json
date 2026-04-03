@@ -1,0 +1,80 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-021",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatory"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "7396004",
+          "display": "Diagnostic imaging (procedure)"
+        }
+      ],
+      "text": "Diagnostic Imaging — CT Chest/Abdomen/Pelvis"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "Primary Performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+        "display": "Dr. Carlos Menendez, MD"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-03-24",
+    "end": "2025-03-24"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "254637007",
+          "display": "Non-small cell lung cancer (disorder)"
+        }
+      ],
+      "text": "Interim restaging CT chest/abdomen/pelvis for non-small cell lung cancer on clinical trial"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/ba2be337-a0c2-4251-9196-5dcf6351262c",
+        "display": "The University of Texas MD Anderson Cancer Center"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/b562fc37-8ffc-454d-b149-106984337212",
+    "display": "The University of Texas MD Anderson Cancer Center"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Patricia underwent CT chest/abdomen/pelvis with IV contrast for interim restaging per trial protocol. No vitals taken at the imaging suite (imaging-only visit)."
+    }
+  ]
+}

@@ -1,0 +1,4960 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T07:06:13.880Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:3b9d0354-b3d2-cd60-86e5-2ba770734959",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "3b9d0354-b3d2-cd60-86e5-2ba770734959",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2028-9",
+                  "display": "Asian"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2029-7",
+                  "display": "Asian Indian"
+                },
+                "url": "detailed"
+              },
+              {
+                "valueString": "Indian-American (Asian Indian)",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "Her care involves a pediatrician for routine well-child visits and acute illness, a pediatric allergist/immunologist for allergy management and immunotherapy evaluation, and she has had two ED visits at a children's hospital — one for an anaphylactic reaction at age 2 (accidental peanut exposure at a family gathering) and one for a severe asthma exacerbation at age 5 requiring systemic steroids.\n\nPriya Patel, as Aisha's mother, is the authorized representative who uses a patient-facing app to manage Aisha's health records.\n\nThree sites, one state (NC). Tests Permission Ticket constraints primarily on scopes (e.g., can filter to just immunization records, or just allergy-related data) and organizations (3 different health systems)."
+          }
+        ],
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ],
+              "text": "Medical Record Number"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.wakemed.2.7.2.698084",
+            "value": "WMC-20220901-APatel"
+          },
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-5d74a12a39f672bf941721ca"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Patel",
+            "given": [
+              "Aisha",
+              "Priya"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(919) 555-0142",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2020-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "4521 Sunstone Drive"
+            ],
+            "city": "Raleigh",
+            "district": "Wake County",
+            "state": "NC",
+            "postalCode": "27610",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+              "code": "UNK",
+              "display": "Unknown"
+            }
+          ],
+          "text": "N/A (minor child)"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1238574960"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://nucc.org/provider-taxonomy",
+                "code": "282NC2000X",
+                "display": "Children's Hospital"
+              }
+            ],
+            "text": "Pediatric Emergency Department"
+          }
+        ],
+        "name": "WakeMed Children's Emergency Department",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(919) 350-8000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "3000 New Bern Avenue"
+            ],
+            "city": "Raleigh",
+            "state": "NC",
+            "postalCode": "27610",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:46ae8f40-5115-bae5-0e99-681df70aed0b",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "46ae8f40-5115-bae5-0e99-681df70aed0b",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1543296807"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Trammell",
+            "given": [
+              "Jason"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "207PP0204X",
+                  "display": "Pediatric Emergency Medicine"
+                }
+              ],
+              "text": "Pediatric Emergency Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:663ff2b7-1929-7235-9f29-43f7391e3e5e",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "663ff2b7-1929-7235-9f29-43f7391e3e5e",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NPI",
+                  "display": "National Provider Identifier"
+                }
+              ],
+              "text": "National Provider Identifier"
+            },
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1891034265"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Okafor",
+            "given": [
+              "Priscilla"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Doctor of Medicine"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://nucc.org/provider-taxonomy",
+                  "code": "207PP0204X",
+                  "display": "Pediatric Emergency Medicine"
+                }
+              ],
+              "text": "Pediatric Emergency Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c4f297f9-0dd6-8d0d-d8d1-7241d2749885",
+      "resource": {
+        "resourceType": "Location",
+        "id": "c4f297f9-0dd6-8d0d-d8d1-7241d2749885",
+        "status": "active",
+        "name": "WakeMed Raleigh Campus",
+        "description": "WakeMed Children's Emergency Department at the Raleigh Campus",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "ER",
+                "display": "Emergency room"
+              }
+            ],
+            "text": "Emergency room"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "PEDU",
+                "display": "Pediatric unit"
+              }
+            ],
+            "text": "Pediatric Emergency Department"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(919) 350-8000",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "3000 New Bern Avenue"
+          ],
+          "city": "Raleigh",
+          "state": "NC",
+          "postalCode": "27610",
+          "country": "US"
+        },
+        "physicalType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+              "code": "bu",
+              "display": "Building"
+            }
+          ],
+          "text": "Building"
+        },
+        "managingOrganization": {
+          "reference": "Organization/c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+          "display": "WakeMed Children's Emergency Department"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-allergy-peanut",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "enc-000-allergy-peanut",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "type": "allergy",
+        "category": [
+          "food"
+        ],
+        "criticality": "high",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "762952008",
+              "display": "Peanut (substance)"
+            }
+          ],
+          "text": "Peanut"
+        },
+        "patient": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "onsetDateTime": "2022-10-22",
+        "recordedDate": "2022-10-22",
+        "recorder": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "note": [
+          {
+            "text": "First known allergic reaction and first known peanut exposure."
+          }
+        ],
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "762952008",
+                  "display": "Peanut (substance)"
+                }
+              ],
+              "text": "Peanut"
+            },
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "39579001",
+                    "display": "Anaphylaxis (disorder)"
+                  }
+                ],
+                "text": "Anaphylaxis"
+              },
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "126485001",
+                    "display": "Urticaria (disorder)"
+                  }
+                ],
+                "text": "Generalized urticaria"
+              },
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "41291007",
+                    "display": "Angioedema (disorder)"
+                  }
+                ],
+                "text": "Facial angioedema"
+              },
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "4386001",
+                    "display": "Bronchospasm (finding)"
+                  }
+                ],
+                "text": "Bronchospasm"
+              }
+            ],
+            "severity": "severe"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-anaphylaxis",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-000-anaphylaxis",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "241933001",
+              "display": "Peanut-induced anaphylaxis (disorder)"
+            }
+          ],
+          "text": "Anaphylaxis due to accidental peanut ingestion"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "onsetDateTime": "2022-10-22",
+        "recordedDate": "2022-10-22",
+        "abatementDateTime": "2022-10-22",
+        "note": [
+          {
+            "text": "First known allergic reaction and first known peanut exposure. Three-system involvement: cutaneous (urticaria, angioedema), respiratory (wheezing, desaturation), cardiovascular (tachycardia, borderline hypotension)."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-angioedema",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-000-angioedema",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "41291007",
+              "display": "Angioedema (disorder)"
+            }
+          ],
+          "text": "Angioedema, facial (periorbital and lip)"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "onsetDateTime": "2022-10-22",
+        "recordedDate": "2022-10-22",
+        "abatementDateTime": "2022-10-22"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bronchospasm",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-000-bronchospasm",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "4386001",
+              "display": "Bronchospasm (finding)"
+            }
+          ],
+          "text": "Acute bronchospasm"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "onsetDateTime": "2022-10-22",
+        "recordedDate": "2022-10-22",
+        "abatementDateTime": "2022-10-22"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-urticaria",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-000-urticaria",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "126485001",
+              "display": "Urticaria (disorder)"
+            }
+          ],
+          "text": "Urticaria, generalized"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "onsetDateTime": "2022-10-22",
+        "recordedDate": "2022-10-22",
+        "abatementDateTime": "2022-10-22"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-asthma-exacerbation",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-009-asthma-exacerbation",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ],
+          "text": "Resolved"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "708090002",
+              "display": "Acute severe exacerbation of asthma (disorder)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "J45.51",
+              "display": "Severe persistent asthma with (acute) exacerbation"
+            }
+          ],
+          "text": "Acute severe asthma exacerbation"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "onsetDateTime": "2025-01-12",
+        "recordedDate": "2025-01-14",
+        "abatementDateTime": "2025-01-14",
+        "note": [
+          {
+            "text": "Acute severe exacerbation triggered by viral URI in patient with known moderate persistent asthma on dual-controller therapy. Presented with SpO2 89% on room air, tachypnea to 38, intercostal and subcostal retractions. Resolved with continuous albuterol nebulization, ipratropium, and IV methylprednisolone over 4-hour observation period."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-viral-uri",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-009-viral-uri",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "281794004",
+              "display": "Viral upper respiratory tract infection (disorder)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "J06.9",
+              "display": "Acute upper respiratory infection, unspecified"
+            }
+          ],
+          "text": "Viral upper respiratory infection"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "onsetDateTime": "2025-01-12",
+        "recordedDate": "2025-01-14",
+        "note": [
+          {
+            "text": "Viral URI with rhinorrhea, cough, and low-grade fever onset 2 days prior. Likely trigger for acute severe asthma exacerbation."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp-1542",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp-1542",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T15:42:00-04:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 88,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 52,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp-1600",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp-1600",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 92,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 56,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp-1630",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp-1630",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:30:00-04:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 94,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 58,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp-1700",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp-1700",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T17:00:00-04:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 96,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 60,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp-1800",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp-1800",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T18:00:00-04:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 98,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 62,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-bp-2130",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-bp-2130",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T21:30:00-04:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 96,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 60,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-eos",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-eos",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "713-8",
+              "display": "Eosinophils/100 leukocytes in Blood by Automated count"
+            }
+          ],
+          "text": "Eosinophils/100 leukocytes in Blood by Automated count"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 8,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "note": [
+          {
+            "text": "Mildly elevated"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hgb",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Hemoglobin [Mass/volume] in Blood"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 12.1,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr-1542",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr-1542",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T15:42:00-04:00",
+        "valueQuantity": {
+          "value": 155,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr-1600",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr-1600",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 138,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr-1630",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr-1630",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:30:00-04:00",
+        "valueQuantity": {
+          "value": 122,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr-1700",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr-1700",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T17:00:00-04:00",
+        "valueQuantity": {
+          "value": 118,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr-1800",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr-1800",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T18:00:00-04:00",
+        "valueQuantity": {
+          "value": 110,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-hr-2130",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-hr-2130",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T21:30:00-04:00",
+        "valueQuantity": {
+          "value": 104,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-plt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-plt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Platelets [#/volume] in Blood by Automated count"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 278,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr-1542",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr-1542",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T15:42:00-04:00",
+        "valueQuantity": {
+          "value": 34,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr-1600",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr-1600",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 30,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr-1630",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr-1630",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:30:00-04:00",
+        "valueQuantity": {
+          "value": 26,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr-1700",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr-1700",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T17:00:00-04:00",
+        "valueQuantity": {
+          "value": 24,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr-1800",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr-1800",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T18:00:00-04:00",
+        "valueQuantity": {
+          "value": 22,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-rr-2130",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-rr-2130",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T21:30:00-04:00",
+        "valueQuantity": {
+          "value": 20,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2-1542",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2-1542",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T15:42:00-04:00",
+        "valueQuantity": {
+          "value": 93,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2-1600",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2-1600",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 95,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2-1630",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2-1630",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:30:00-04:00",
+        "valueQuantity": {
+          "value": 97,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2-1700",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2-1700",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T17:00:00-04:00",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2-1800",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2-1800",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T18:00:00-04:00",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-spo2-2130",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-spo2-2130",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T21:30:00-04:00",
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-temp-1542",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-temp-1542",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T15:42:00-04:00",
+        "valueQuantity": {
+          "value": 37.2,
+          "unit": "Cel",
+          "system": "http://unitsofmeasure.org",
+          "code": "Cel"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-tryptase",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-tryptase",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "21582-2",
+              "display": "Tryptase [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Tryptase [Mass/volume] in Serum or Plasma"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 18.4,
+          "unit": "ng/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ng/mL"
+        },
+        "referenceRange": [
+          {
+            "text": "<11.5 ng/mL"
+          }
+        ],
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "note": [
+          {
+            "text": "Confirms mast cell degranulation consistent with anaphylaxis"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-wbc",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-wbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text": "Leukocytes [#/volume] in Blood by Automated count"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "valueQuantity": {
+          "value": 11.2,
+          "unit": "10*3/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*3/uL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-wt-1542",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-000-wt-1542",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T15:42:00-04:00",
+        "valueQuantity": {
+          "value": 12.4,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-bp-1912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-bp-1912",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:12:00-05:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 102,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 64,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-bp-2315",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-bp-2315",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T23:15:00-05:00",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 98,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 62,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hr-1912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hr-1912",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:12:00-05:00",
+        "valueQuantity": {
+          "value": 142,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hr-1945",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hr-1945",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:45:00-05:00",
+        "valueQuantity": {
+          "value": 134,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hr-2015",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hr-2015",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T20:15:00-05:00",
+        "valueQuantity": {
+          "value": 126,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hr-2100",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hr-2100",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T21:00:00-05:00",
+        "valueQuantity": {
+          "value": 118,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hr-2315",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-hr-2315",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T23:15:00-05:00",
+        "valueQuantity": {
+          "value": 108,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-rr-1912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-rr-1912",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:12:00-05:00",
+        "valueQuantity": {
+          "value": 38,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-rr-1945",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-rr-1945",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:45:00-05:00",
+        "valueQuantity": {
+          "value": 32,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-rr-2015",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-rr-2015",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T20:15:00-05:00",
+        "valueQuantity": {
+          "value": 28,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-rr-2100",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-rr-2100",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T21:00:00-05:00",
+        "valueQuantity": {
+          "value": 24,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-rr-2315",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-rr-2315",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T23:15:00-05:00",
+        "valueQuantity": {
+          "value": 22,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-spo2-1912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-spo2-1912",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:12:00-05:00",
+        "valueQuantity": {
+          "value": 89,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-spo2-1945",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-spo2-1945",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:45:00-05:00",
+        "valueQuantity": {
+          "value": 92,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on 2 L/min nasal cannula"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-spo2-2015",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-spo2-2015",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T20:15:00-05:00",
+        "valueQuantity": {
+          "value": 94,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on 2 L/min nasal cannula"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-spo2-2100",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-spo2-2100",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T21:00:00-05:00",
+        "valueQuantity": {
+          "value": 96,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-spo2-2315",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-spo2-2315",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T23:15:00-05:00",
+        "valueQuantity": {
+          "value": 96,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "note": [
+          {
+            "text": "on room air"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-temp-1912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-temp-1912",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:12:00-05:00",
+        "valueQuantity": {
+          "value": 38.1,
+          "unit": "Cel",
+          "system": "http://unitsofmeasure.org",
+          "code": "Cel"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-temp-2315",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-temp-2315",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T23:15:00-05:00",
+        "valueQuantity": {
+          "value": 37.4,
+          "unit": "Cel",
+          "system": "http://unitsofmeasure.org",
+          "code": "Cel"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-wt-1912",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-wt-1912",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2025-01-14T19:12:00-05:00",
+        "valueQuantity": {
+          "value": 18.6,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-dr-bmp",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-000-dr-bmp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "51990-0",
+              "display": "Basic metabolic panel - Blood"
+            }
+          ],
+          "text": "Basic Metabolic Panel (BMP)"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "issued": "2022-10-22T17:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+            "display": "Dr. Jason Trammell"
+          }
+        ],
+        "conclusion": "Within normal limits"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-dr-cbc",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-000-dr-cbc",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count (CBC)"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "issued": "2022-10-22T17:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+            "display": "Dr. Jason Trammell"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-000-wbc",
+            "display": "Leukocytes [#/volume] in Blood"
+          },
+          {
+            "reference": "Observation/enc-000-hgb",
+            "display": "Hemoglobin [Mass/volume] in Blood"
+          },
+          {
+            "reference": "Observation/enc-000-plt",
+            "display": "Platelets [#/volume] in Blood"
+          },
+          {
+            "reference": "Observation/enc-000-eos",
+            "display": "Eosinophils/100 leukocytes in Blood"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-dr-tryptase",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-000-dr-tryptase",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "21582-2",
+              "display": "Tryptase [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Serum Tryptase"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "effectiveDateTime": "2022-10-22T16:00:00-04:00",
+        "issued": "2022-10-22T17:00:00-04:00",
+        "performer": [
+          {
+            "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+            "display": "Dr. Jason Trammell"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-000-tryptase",
+            "display": "Tryptase [Mass/volume] in Serum or Plasma"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-alb-neb",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-alb-neb",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "630208",
+              "display": "albuterol sulfate 0.083 % Inhalation Solution"
+            }
+          ],
+          "text": "Albuterol 2.5 mg via continuous nebulization"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4386001",
+                "display": "Bronchospasm (finding)"
+              }
+            ],
+            "text": "Acute bronchospasm"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "2.5 mg via continuous nebulization from 15:50 to 16:20",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-dph-iv",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-dph-iv",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1049633",
+              "display": "diphenhydrAMINE HCl 50 MG/ML Injectable Solution"
+            }
+          ],
+          "text": "Diphenhydramine 15 mg IV"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "241933001",
+                "display": "Peanut-induced anaphylaxis (disorder)"
+              }
+            ],
+            "text": "Anaphylaxis due to peanut ingestion (adjunctive antihistamine therapy)"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "15 mg IV once at 15:52",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-dph-rx",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-dph-rx",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1049906",
+              "display": "diphenhydrAMINE HCl 12.5 MG in 5 mL Oral Solution"
+            }
+          ],
+          "text": "Diphenhydramine 6.25 mg oral, every 6 hours as needed"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "126485001",
+                "display": "Urticaria (disorder)"
+              }
+            ],
+            "text": "Urticaria (residual)"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "6.25 mg by mouth every 6 hours as needed for residual urticaria, for 48 hours",
+            "asNeededBoolean": true
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        },
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2022-10-22",
+            "end": "2022-10-24"
+          },
+          "expectedSupplyDuration": {
+            "value": 2,
+            "unit": "Day",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-epi-im",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-epi-im",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "727386",
+              "display": "EpiPen Jr 0.15 MG in 0.3 ML Auto-Injector"
+            }
+          ],
+          "text": "Epinephrine 0.15 mg IM (EpiPen Jr)"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "241933001",
+                "display": "Peanut-induced anaphylaxis (disorder)"
+              }
+            ],
+            "text": "Anaphylaxis due to peanut ingestion"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "0.15 mg IM once to the right anterolateral thigh at 15:45",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-epipen-rx",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-epipen-rx",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "727386",
+              "display": "EpiPen Jr 0.15 MG in 0.3 ML Auto-Injector"
+            }
+          ],
+          "text": "Epinephrine auto-injector (EpiPen Jr 0.15 mg), two-pack"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "91935009",
+                "display": "Allergy to peanut (finding)"
+              }
+            ],
+            "text": "Peanut allergy with history of anaphylaxis"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Administer 0.15 mg intramuscularly for emergency use in anaphylaxis; carry at all times",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "continuous",
+              "display": "Continuous long term therapy"
+            }
+          ],
+          "text": "Continuous long term therapy"
+        },
+        "dispenseRequest": {
+          "quantity": {
+            "value": 2,
+            "unit": "auto-injector"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-mpred-iv",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-mpred-iv",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1743703",
+              "display": "methylprednisolone Injection"
+            }
+          ],
+          "text": "Methylprednisolone 12 mg IV"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "241933001",
+                "display": "Peanut-induced anaphylaxis (disorder)"
+              }
+            ],
+            "text": "Anaphylaxis due to peanut ingestion (adjunctive corticosteroid therapy)"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "12 mg IV once at 16:00",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-med-pred-rx",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-000-med-pred-rx",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "283077",
+              "display": "prednisoLONE sodium phosphate 15 MG in 5 mL Oral Solution"
+            }
+          ],
+          "text": "Prednisolone 12 mg oral, daily for 5 days"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-000"
+        },
+        "authoredOn": "2022-10-22",
+        "requester": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "241933001",
+                "display": "Peanut-induced anaphylaxis (disorder)"
+              }
+            ],
+            "text": "Anaphylaxis due to peanut ingestion (post-anaphylaxis corticosteroid taper)"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "12 mg (1 mg/kg/day) by mouth once daily for 5 days",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        },
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2022-10-22",
+            "end": "2022-10-27"
+          },
+          "expectedSupplyDuration": {
+            "value": 5,
+            "unit": "Day",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-med-albuterol-mdi",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-009-med-albuterol-mdi",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "745678",
+              "display": "albuterol Metered Dose Inhaler"
+            }
+          ],
+          "text": "Albuterol (ProAir HFA) 90 mcg metered-dose inhaler"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "authoredOn": "2025-01-14",
+        "requester": {
+          "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+          "display": "Dr. Priscilla Okafor"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "708090002",
+                "display": "Acute severe exacerbation of asthma (disorder)"
+              }
+            ],
+            "text": "Acute severe asthma exacerbation"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Inhale 2 puffs via spacer every 4 hours for the next 24 hours, then as needed for wheezing",
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route (qualifier value)"
+                }
+              ],
+              "text": "Inhaled"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 2,
+                  "unit": "puff",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{puff}"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-med-albuterol-neb",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-009-med-albuterol-neb",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "630208",
+              "display": "albuterol sulfate 0.083 % Inhalation Solution"
+            }
+          ],
+          "text": "Albuterol 2.5 mg continuous nebulization"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "authoredOn": "2025-01-14",
+        "requester": {
+          "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+          "display": "Dr. Priscilla Okafor"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "708090002",
+                "display": "Acute severe exacerbation of asthma (disorder)"
+              }
+            ],
+            "text": "Acute severe asthma exacerbation"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "2.5 mg continuous nebulization x 3 doses over 1 hour (19:15-20:15)",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-med-ipratropium-neb",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-009-med-ipratropium-neb",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "836358",
+              "display": "ipratropium bromide 0.02 % Inhalation Solution"
+            }
+          ],
+          "text": "Ipratropium bromide 0.5 mg nebulized"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "authoredOn": "2025-01-14",
+        "requester": {
+          "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+          "display": "Dr. Priscilla Okafor"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "708090002",
+                "display": "Acute severe exacerbation of asthma (disorder)"
+              }
+            ],
+            "text": "Acute severe asthma exacerbation"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "0.5 mg nebulized x 2 doses (19:15 and 19:35)",
+            "asNeededBoolean": false
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-med-methylpred-iv",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-009-med-methylpred-iv",
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient",
+                "display": "Inpatient"
+              }
+            ],
+            "text": "Inpatient"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1743703",
+              "display": "methylprednisolone Injection"
+            }
+          ],
+          "text": "Methylprednisolone 18 mg (1 mg/kg) IV"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "authoredOn": "2025-01-14",
+        "requester": {
+          "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+          "display": "Dr. Priscilla Okafor"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "708090002",
+                "display": "Acute severe exacerbation of asthma (disorder)"
+              }
+            ],
+            "text": "Acute severe asthma exacerbation"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "18 mg (1 mg/kg) IV single dose at 19:20",
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "47625008",
+                  "display": "Intravenous route (qualifier value)"
+                }
+              ],
+              "text": "Intravenous"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 18,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-med-prednisolone-rx",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-009-med-prednisolone-rx",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "283077",
+              "display": "prednisoLONE sodium phosphate 15 MG in 5 mL Oral Solution"
+            }
+          ],
+          "text": "Prednisolone 18 mg oral solution, once daily for 5 days"
+        },
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "authoredOn": "2025-01-14",
+        "requester": {
+          "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+          "display": "Dr. Priscilla Okafor"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "708090002",
+                "display": "Acute severe exacerbation of asthma (disorder)"
+              }
+            ],
+            "text": "Acute severe asthma exacerbation"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 18 mg (1 mg/kg/day) by mouth once daily for 5 days",
+            "asNeededBoolean": false,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 18,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+              "code": "acute",
+              "display": "Short course (acute) therapy"
+            }
+          ],
+          "text": "Short course (acute) therapy"
+        },
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2025-01-14",
+            "end": "2025-01-19"
+          },
+          "expectedSupplyDuration": {
+            "value": 5,
+            "unit": "Day",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-000-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34111-5",
+              "display": "Emergency department Note"
+            }
+          ],
+          "text": "Emergency Department Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "date": "2022-10-22T21:45:00-04:00",
+        "author": [
+          {
+            "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+            "display": "Dr. Jason Trammell"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+          "display": "Dr. Jason Trammell"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "V0FLRU1FRCBDSElMRFJFTidTIEVNRVJHRU5DWSBERVBBUlRNRU5UCjMwMDAgTmV3IEJlcm4gQXZlbnVlLCBSYWxlaWdoLCBOQyAyNzYxMApFRCBQSFlTSUNJQU4gTk9URQoKUGF0aWVudDogQWlzaGEgUGF0ZWwKRE9COiAwMy8xNS8yMDIwCkFnZTogMiB5ZWFycyA3IG1vbnRocwpNUk46IFdNLTAwMjkzODQ3CkRhdGUgb2YgU2VydmljZTogMTAvMjIvMjAyMgpBdHRlbmRpbmc6IERyLiBKYXNvbiBUcmFtbWVsbCwgTUQKQXJyaXZhbDogMTU6NDIgIERpc3Bvc2l0aW9uOiAyMTozMAoKQ0hJRUYgQ09NUExBSU5UOiBBbGxlcmdpYyByZWFjdGlvbiBhZnRlciBwZWFudXQgaW5nZXN0aW9uLgoKSElTVE9SWSBPRiBQUkVTRU5UIElMTE5FU1M6CkFpc2hhIGlzIGEgMi15ZWFyLTctbW9udGgtb2xkIGZlbWFsZSBicm91Z2h0IGluIGJ5IEVNUyBhZnRlciBhY2NpZGVudGFsIHBlYW51dCBpbmdlc3Rpb24gYXQgYSBmYW1pbHkgRGl3YWxpIGdhdGhlcmluZy4gUGVyIHRoZSBtb3RoZXIsIHRoZSBwYXRpZW50IGF0ZSBhIGNvb2tpZSBjb250YWluaW5nIHBlYW51dCBidXR0ZXIgYXBwcm94aW1hdGVseSAyMCBtaW51dGVzIHByaW9yIHRvIHN5bXB0b20gb25zZXQuIFNoZSByYXBpZGx5IGRldmVsb3BlZCBnZW5lcmFsaXplZCBoaXZlcywgZmFjaWFsIHN3ZWxsaW5nLCBhbmQgYXVkaWJsZSB3aGVlemluZy4gRU1TIHdhcyBjYWxsZWQgYnkgdGhlIG1vdGhlci4gTm8gcHJpb3IgaGlzdG9yeSBvZiBmb29kIGFsbGVyZ3kgb3IgYW5hcGh5bGF4aXMuIE5vIHByaW9yIGtub3duIHBlYW51dCBleHBvc3VyZS4gTm8gZXBpbmVwaHJpbmUgYWRtaW5pc3RlcmVkIGluIHRoZSBmaWVsZC4KClBBU1QgTUVESUNBTCBISVNUT1JZOiBNaWxkIGNyYWRsZSBjYXAgaW4gaW5mYW5jeSwgcmVzb2x2ZWQuIE90aGVyd2lzZSB1bnJlbWFya2FibGUuClBBU1QgU1VSR0lDQUwgSElTVE9SWTogTm9uZS4KTUVESUNBVElPTlM6IE5vbmUuCkFMTEVSR0lFUzogTm8ga25vd24gZHJ1ZyBhbGxlcmdpZXMuIE5vIHByZXZpb3VzbHkgZG9jdW1lbnRlZCBmb29kIGFsbGVyZ2llcy4KSU1NVU5JWkFUSU9OUzogVXAgdG8gZGF0ZSBwZXIgcmVjb3Jkcy4KRkFNSUxZIEhJU1RPUlk6IE5vdCBvYnRhaW5lZCBpbiBkZXRhaWwgZHVyaW5nIGFjdXRlIHJlc3VzY2l0YXRpb24uClNPQ0lBTCBISVNUT1JZOiBMaXZlcyB3aXRoIGJvdGggcGFyZW50cy4gTm8gc21va2UgZXhwb3N1cmUgaW4gdGhlIGhvbWUuCgpUUklBR0UgQVNTRVNTTUVOVDoKQXJyaXZhbCBUaW1lOiAxNTo0MgpUcmlhZ2UgVml0YWxzOiBIUiAxNTUgYnBtLCBSUiAzNCwgQlAgODgvNTIgbW1IZywgU3BPMiA5MyUgb24gcm9vbSBhaXIsIFRlbXAgMzcuMkMsIFdlaWdodCAxMi40IGtnLgpUcmlhZ2UgQWN1aXR5OiBFU0kgTGV2ZWwgMi4KClBIWVNJQ0FMIEVYQU1JTkFUSU9OIE9OIEFSUklWQUw6CkdlbmVyYWw6IENyeWluZyBidXQgY29uc29sYWJsZSB0b2RkbGVyIGluIG1vZGVyYXRlIGRpc3RyZXNzLiBBbGVydCBhbmQgcmVzcG9uc2l2ZS4KSEVFTlQ6IFNpZ25pZmljYW50IHBlcmlvcmJpdGFsIGVkZW1hIGJpbGF0ZXJhbGx5LiBMaXAgc3dlbGxpbmcvYW5naW9lZGVtYS4gT3JvcGhhcnlueCB3aXRoIG1pbGQgbXVjb3NhbCBlZGVtYSwgbm8gc3RyaWRvciBhcHByZWNpYXRlZC4gVE1zIG5vdCBleGFtaW5lZC4KTmVjazogU3VwcGxlLCBubyBseW1waGFkZW5vcGF0aHkuCkx1bmdzOiBEaWZmdXNlIGJpbGF0ZXJhbCBleHBpcmF0b3J5IHdoZWV6aW5nLiBBZGVxdWF0ZSBhaXIgZW50cnkuIEFjY2Vzc29yeSBtdXNjbGUgdXNlIG5vdGVkIHdpdGggbWlsZCBzdWJjb3N0YWwgcmV0cmFjdGlvbnMuCkNhcmRpb3Zhc2N1bGFyOiBUYWNoeWNhcmRpYywgcmVndWxhciByaHl0aG0uIE5vIG11cm11ci4gQ2FwaWxsYXJ5IHJlZmlsbCAyIHNlY29uZHMuCkFiZG9tZW46IFNvZnQsIG5vbnRlbmRlciwgbm9uZGlzdGVuZGVkLiBOb3JtYWwgYm93ZWwgc291bmRzLgpTa2luOiBEaWZmdXNlIHVydGljYXJpYSBvdmVyIHRydW5rIGFuZCBhbGwgZm91ciBleHRyZW1pdGllcy4gUmFpc2VkIGVyeXRoZW1hdG91cyB3aGVhbHMsIGJsYW5jaGluZy4gTm8gcGV0ZWNoaWFlLgpFeHRyZW1pdGllczogV2FybSwgd2VsbC1wZXJmdXNlZC4gTm8gZWRlbWEgYXNpZGUgZnJvbSBmYWNpYWwgYW5naW9lZGVtYS4KTmV1cm86IEFsZXJ0LCBpbnRlcmFjdGl2ZSwgYWdlLWFwcHJvcHJpYXRlLiBNb3ZpbmcgYWxsIGV4dHJlbWl0aWVzLgoKRUQgQ09VUlNFOgpUaGlzIGlzIGEgMi15ZWFyLTctbW9udGgtb2xkIGZlbWFsZSBwcmVzZW50aW5nIHdpdGggYW5hcGh5bGF4aXMgZm9sbG93aW5nIGZpcnN0IGtub3duIHBlYW51dCBpbmdlc3Rpb24sIG1lZXRpbmcgY2xpbmljYWwgY3JpdGVyaWEgd2l0aCBpbnZvbHZlbWVudCBvZiBza2luICh1cnRpY2FyaWEsIGFuZ2lvZWRlbWEpLCByZXNwaXJhdG9yeSAod2hlZXppbmcsIGRlc2F0dXJhdGlvbiksIGFuZCBjYXJkaW92YXNjdWxhciAodGFjaHljYXJkaWEsIGJvcmRlcmxpbmUgaHlwb3RlbnNpb24gZm9yIGFnZSkgc3lzdGVtcy4KCkVwaW5lcGhyaW5lIDAuMTUgbWcgSU0gKEVwaVBlbiBKcikgd2FzIGFkbWluaXN0ZXJlZCB0byB0aGUgcmlnaHQgYW50ZXJvbGF0ZXJhbCB0aGlnaCBhdCAxNTo0NS4gQ29udGludW91cyBhbGJ1dGVyb2wgbmVidWxpemF0aW9uIDIuNSBtZyB3YXMgaW5pdGlhdGVkIGF0IDE1OjUwIGZvciBwZXJzaXN0ZW50IHdoZWV6aW5nLiBEaXBoZW5oeWRyYW1pbmUgMTUgbWcgSVYgd2FzIGdpdmVuIGF0IDE1OjUyLiBNZXRoeWxwcmVkbmlzb2xvbmUgMTIgbWcgSVYgd2FzIGFkbWluaXN0ZXJlZCBhdCAxNjowMC4KClNlcmlhbCB2aXRhbCBzaWducyBtb25pdG9yZWQgY2xvc2VseToKMTY6MDAgLSBIUiAxMzgsIFJSIDMwLCBCUCA5Mi81NiwgU3BPMiA5NSUgUkEKMTY6MzAgLSBIUiAxMjIsIFJSIDI2LCBCUCA5NC81OCwgU3BPMiA5NyUgUkEKMTc6MDAgLSBIUiAxMTgsIFJSIDI0LCBCUCA5Ni82MCwgU3BPMiA5OCUgUkEKMTg6MDAgLSBIUiAxMTAsIFJSIDIyLCBCUCA5OC82MiwgU3BPMiA5OSUgUkEKClRoZSBwYXRpZW50IGRlbW9uc3RyYXRlZCBwcm9ncmVzc2l2ZSBjbGluaWNhbCBpbXByb3ZlbWVudCBmb2xsb3dpbmcgdHJlYXRtZW50LiBXaGVlemluZyByZXNvbHZlZCBieSAxNjoyMCBhbmQgYWxidXRlcm9sIG5lYnVsaXphdGlvbiB3YXMgZGlzY29udGludWVkLiBVcnRpY2FyaWEgYmVnYW4gdG8gZmFkZSBieSAxNjozMC4gQW5naW9lZGVtYSBpbXByb3ZlZCBzaWduaWZpY2FudGx5IGJ5IDE3OjAwLiBBIHNlY29uZCBkb3NlIG9mIGVwaW5lcGhyaW5lIHdhcyBub3QgcmVxdWlyZWQuIFRoZSBwYXRpZW50IHRvbGVyYXRlZCBvcmFsIGZsdWlkcyBhbmQgd2FzIHBsYXlmdWwgYnkgYXBwcm94aW1hdGVseSBob3VyIDQgb2Ygb2JzZXJ2YXRpb24uCgpMQUJPUkFUT1JZIFJFU1VMVFM6ClNlcnVtIHRyeXB0YXNlOiAxOC40IG5nL21MIChyZWYgPDExLjUgbmcvbUwpIC0gRUxFVkFURUQsIGNvbnNpc3RlbnQgd2l0aCBtYXN0IGNlbGwgZGVncmFudWxhdGlvbiBhbmQgY29uZmlybWluZyBhbmFwaHlsYXhpcy4KQ0JDOiBXQkMgMTEuMiB4IDEwXjMvdUwsIEhnYiAxMi4xIGcvZEwsIFBsdCAyNzggeCAxMF4zL3VMLiBEaWZmZXJlbnRpYWwgbm90YWJsZSBmb3IgZW9zaW5vcGhpbHMgOCUgKG1pbGRseSBlbGV2YXRlZCkuCkJNUDogV2l0aGluIG5vcm1hbCBsaW1pdHMuCgpNRURJQ0FMIERFQ0lTSU9OIE1BS0lORzoKVGhpcyBjaGlsZCBwcmVzZW50ZWQgd2l0aCBhbmFwaHlsYXhpcyBpbnZvbHZpbmcgdGhyZWUgb3JnYW4gc3lzdGVtcyAoY3V0YW5lb3VzLCByZXNwaXJhdG9yeSwgY2FyZGlvdmFzY3VsYXIpIGZvbGxvd2luZyBhY2NpZGVudGFsIHBlYW51dCBpbmdlc3Rpb24uIFRoZSBjbGluaWNhbCBwaWN0dXJlIHdhcyB1bmFtYmlndW91cyBhbmQgbWV0IGNvbnNlbnN1cyBkaWFnbm9zdGljIGNyaXRlcmlhIGZvciBhbmFwaHlsYXhpcy4gRXBpbmVwaHJpbmUgd2FzIGFkbWluaXN0ZXJlZCBwcm9tcHRseSBhcyB0aGUgZmlyc3QtbGluZSB0cmVhdG1lbnQuIEFkanVuY3RpdmUgdGhlcmFweSB3aXRoIGFudGloaXN0YW1pbmUsIGNvcnRpY29zdGVyb2lkLCBhbmQgYnJvbmNob2RpbGF0b3Igd2FzIHByb3ZpZGVkIHBlciBzdGFuZGFyZCBvZiBjYXJlLiBFbGV2YXRlZCBzZXJ1bSB0cnlwdGFzZSBhdCAxOC40IG5nL21MIHByb3ZpZGVzIGJpb2NoZW1pY2FsIGNvbmZpcm1hdGlvbiBvZiB0aGUgYW5hcGh5bGFjdGljIG1lY2hhbmlzbS4gVGhlIHBhdGllbnQgd2FzIG9ic2VydmVkIGZvciA2IGhvdXJzIGdpdmVuIHRoZSByaXNrIG9mIGJpcGhhc2ljIHJlYWN0aW9uLCB3aGljaCBjYW4gb2NjdXIgaW4gdXAgdG8gMjAlIG9mIHBlZGlhdHJpYyBhbmFwaHlsYXhpcyBjYXNlcy4gTm8gYmlwaGFzaWMgcmVhY3Rpb24gd2FzIG9ic2VydmVkLiBHaXZlbiB0aGlzIGlzIHRoZSBwYXRpZW50cyBmaXJzdCBrbm93biBhbGxlcmdpYyByZWFjdGlvbiBhbmQgZmlyc3Qga25vd24gcGVhbnV0IGV4cG9zdXJlLCByZWZlcnJhbCB0byBhIHBlZGlhdHJpYyBhbGxlcmdpc3QgaXMgZXNzZW50aWFsIGZvciBjb21wcmVoZW5zaXZlIGV2YWx1YXRpb24gaW5jbHVkaW5nIHNwZWNpZmljIElnRSB0ZXN0aW5nIGFuZCBkZXZlbG9wbWVudCBvZiBhIGxvbmctdGVybSBtYW5hZ2VtZW50IHBsYW4uCgpBU1NFU1NNRU5UOgoxLiBBbmFwaHlsYXhpcyBkdWUgdG8gYWNjaWRlbnRhbCBwZWFudXQgaW5nZXN0aW9uIChUNzguMDEpIC0gZmlyc3Qga25vd24gZXBpc29kZQoyLiBVcnRpY2FyaWEsIGdlbmVyYWxpemVkCjMuIEFuZ2lvZWRlbWEsIGZhY2lhbCAocGVyaW9yYml0YWwgYW5kIGxpcCkKNC4gQWN1dGUgYnJvbmNob3NwYXNtCgpESVNQT1NJVElPTjogRGlzY2hhcmdlIHRvIGhvbWUuIFRvdGFsIEVEIG9ic2VydmF0aW9uIHRpbWUgYXBwcm94aW1hdGVseSA2IGhvdXJzLgoKRGlzY2hhcmdlIHZpdGFscyAoMjE6MzApOiBIUiAxMDQsIFJSIDIwLCBCUCA5Ni82MCwgU3BPMiA5OSUgUkEuIFBhdGllbnQgYWxlcnQsIHBsYXlmdWwsIHNraW4gY2xlYXIsIG5vIGFuZ2lvZWRlbWEsIGx1bmdzIGNsZWFyLgoKRElTQ0hBUkdFIE1FRElDQVRJT05TOgoxLiBFcGluZXBocmluZSBhdXRvLWluamVjdG9yIChFcGlQZW4gSnIgMC4xNSBtZykgdHdvLXBhY2sgLSBmb3IgZW1lcmdlbmN5IHVzZSwgdG8gYmUgY2FycmllZCBhdCBhbGwgdGltZXMKMi4gUHJlZG5pc29sb25lIDEyIG1nICgxIG1nL2tnL2RheSkgUE8gZGFpbHkgZm9yIDUgZGF5cwozLiBEaXBoZW5oeWRyYW1pbmUgNi4yNSBtZyBQTyBldmVyeSA2IGhvdXJzIFBSTiByZXNpZHVhbCB1cnRpY2FyaWEgZm9yIDQ4IGhvdXJzCgpESVNDSEFSR0UgSU5TVFJVQ1RJT05TOgoxLiBTdHJpY3QgcGVhbnV0IGF2b2lkYW5jZSBlZmZlY3RpdmUgaW1tZWRpYXRlbHkuCjIuIFJldHVybiB0byBFRCBpbW1lZGlhdGVseSBmb3IgYW55IHJlY3VycmVuY2Ugb2Ygc3ltcHRvbXMgaW5jbHVkaW5nIGxpcCBzd2VsbGluZywgaGl2ZXMsIGRpZmZpY3VsdHkgYnJlYXRoaW5nLCBvciB2b21pdGluZy4KMy4gRXBpbmVwaHJpbmUgYXV0by1pbmplY3RvciBlZHVjYXRpb24gYW5kIGhhbmRzLW9uIHRyYWluaW5nIHByb3ZpZGVkIHRvIGJvdGggcGFyZW50cyBhdCBiZWRzaWRlLiBCb3RoIHBhcmVudHMgZGVtb25zdHJhdGVkIGNvcnJlY3QgdGVjaG5pcXVlLgo0LiBGb2xsb3ctdXAgd2l0aCBwZWRpYXRyaWNpYW4gKERyLiBIYXJsb3csIFRyaWFuZ2xlIFBlZGlhdHJpY3MpIHdpdGhpbiAzLTUgZGF5cy4KNS4gUmVmZXJyYWwgdG8gcGVkaWF0cmljIGFsbGVyZ2lzdCByZWNvbW1lbmRlZCBmb3IgY29tcHJlaGVuc2l2ZSBhbGxlcmd5IGV2YWx1YXRpb24uCjYuIEFuYXBoeWxheGlzIGVtZXJnZW5jeSBhY3Rpb24gcGxhbiBwcm92aWRlZCB0byBmYW1pbHkuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6Ckphc29uIFRyYW1tZWxsLCBNRApQZWRpYXRyaWMgRW1lcmdlbmN5IE1lZGljaW5lCldha2VNZWQgQ2hpbGRyZW4ncyBFbWVyZ2VuY3kgRGVwYXJ0bWVudAoxMC8yMi8yMDIyIDIxOjQ1Cg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-000"
+            }
+          ],
+          "period": {
+            "start": "2022-10-22T15:42:00-04:00",
+            "end": "2022-10-22T21:30:00-04:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-009-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34111-5",
+              "display": "Emergency department Note"
+            }
+          ],
+          "text": "Emergency Department Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "date": "2025-01-14T23:22:00-05:00",
+        "author": [
+          {
+            "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+            "display": "Dr. Priscilla Okafor"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+          "display": "Dr. Priscilla Okafor"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "RU1FUkdFTkNZIERFUEFSVE1FTlQgUEhZU0lDSUFOIE5PVEUKClBhdGllbnQ6IEFpc2hhIFBhdGVsCkRPQjogMDMvMTUvMjAyMCAoQWdlIDQgeWVhcnMgMTAgbW9udGhzKQpEYXRlIG9mIFZpc2l0OiAwMS8xNC8yMDI1CkFycml2YWwgVGltZTogMTk6MTIKRGlzcG9zaXRpb24gVGltZTogMjM6MTUKQXR0ZW5kaW5nIFBoeXNpY2lhbjogRHIuIFByaXNjaWxsYSBPa2Fmb3IsIE1ECkZhY2lsaXR5OiBXYWtlTWVkIENoaWxkcmVuJ3MgRW1lcmdlbmN5IERlcGFydG1lbnQsIDMwMDAgTmV3IEJlcm4gQXZlbnVlLCBSYWxlaWdoLCBOQyAyNzYxMApNUk46IFdNLTAwMjkzODQ3CgpDSElFRiBDT01QTEFJTlQ6IERpZmZpY3VsdHkgYnJlYXRoaW5nLCB3b3JzZW5pbmcgb3ZlciA0OCBob3Vycy4KClRSSUFHRTogRVNJIExldmVsIDIuIFBhdGllbnQgYXJyaXZlZCB2aWEgcHJpdmF0ZSB2ZWhpY2xlIHdpdGggbW90aGVyIChQcml5YSBQYXRlbCkuIE1vZGVyYXRlLXRvLXNldmVyZSByZXNwaXJhdG9yeSBkaXN0cmVzcyBub3RlZCBvbiBpbml0aWFsIGFzc2Vzc21lbnQuCgpISVNUT1JZIE9GIFBSRVNFTlQgSUxMTkVTUzoKQWlzaGEgaXMgYSA0LXllYXItb2xkIGZlbWFsZSB3aXRoIGEgaGlzdG9yeSBvZiBtb2RlcmF0ZSBwZXJzaXN0ZW50IGFzdGhtYSAob24gZmx1dGljYXNvbmUvc2FsbWV0ZXJvbCA0NS8yMSBvbmUgcHVmZiBCSUQgYW5kIG1vbnRlbHVrYXN0IDQgbWcgZGFpbHkpLCBwZWFudXQgYWxsZXJneSB3aXRoIGFuYXBoeWxheGlzIGhpc3RvcnksIGFuZCBhdG9waWMgZGVybWF0aXRpcywgd2hvIHByZXNlbnRzIHdpdGggcHJvZ3Jlc3NpdmUgcmVzcGlyYXRvcnkgZGlzdHJlc3Mgb3ZlciA0OCBob3VycyBpbiB0aGUgc2V0dGluZyBvZiBhIHZpcmFsIHVwcGVyIHJlc3BpcmF0b3J5IGluZmVjdGlvbi4gTW90aGVyIHJlcG9ydHMgb25zZXQgb2Ygcmhpbm9ycmhlYSwgY291Z2gsIGFuZCBsb3ctZ3JhZGUgZmV2ZXIgdHdvIGRheXMgcHJpb3Igd2l0aCBwcm9ncmVzc2l2ZSB3aGVlemluZyBvdmVyIHRoZSBwYXN0IDI0IGhvdXJzLiBUb25pZ2h0LCB0aGUgcGF0aWVudCBkZXZlbG9wZWQgaW5jcmVhc2VkIHdvcmsgb2YgYnJlYXRoaW5nLiBNb3RoZXIgYWRtaW5pc3RlcmVkIGFsYnV0ZXJvbCAyIHB1ZmZzIHZpYSBzcGFjZXIgd2l0aCBtYXNrIHRocmVlIHRpbWVzIG92ZXIgdGhlIHByZWNlZGluZyA5MCBtaW51dGVzIHBlciB0aGUgYXN0aG1hIGFjdGlvbiBwbGFuIHdpdGhvdXQgc2lnbmlmaWNhbnQgaW1wcm92ZW1lbnQsIHByb21wdGluZyBFRCBwcmVzZW50YXRpb24uCgpBTExFUkdJRVM6IFBlYW51dCAoYW5hcGh5bGF4aXMg4oCUIHVydGljYXJpYSwgYW5naW9lZGVtYSwgd2hlZXppbmcpLiBUcmVlIG51dHMgKGNhc2hldywgYWxtb25kLCB3YWxudXQg4oCUIHNlbnNpdGl6YXRpb24sIGF2b2lkYW5jZSkuIE5vIGtub3duIGRydWcgYWxsZXJnaWVzLgoKQ1VSUkVOVCBNRURJQ0FUSU9OUzoKMS4gRmx1dGljYXNvbmUvc2FsbWV0ZXJvbCAoQWR2YWlyIEhGQSkgNDUvMjEgbWNnIOKAlCAxIHB1ZmYgQklEIHZpYSBzcGFjZXIKMi4gTW9udGVsdWthc3QgNCBtZyBjaGV3YWJsZSDigJQgZGFpbHkgYXQgYmVkdGltZQozLiBBbGJ1dGVyb2wgKFByb0FpciBIRkEpIDkwIG1jZyDigJQgMiBwdWZmcyBQUk4gdmlhIHNwYWNlcgo0LiBDZXRpcml6aW5lIDUgbWcg4oCUIGRhaWx5CjUuIEVwaW5lcGhyaW5lIGF1dG8taW5qZWN0b3IgKEVwaVBlbiBKciAwLjE1IG1nKSDigJQgUFJOCgpQSFlTSUNBTCBFWEFNSU5BVElPTjoKClRyaWFnZSBBc3Nlc3NtZW50ICgxOToxMik6ClZpdGFsczogSFIgMTQyIGJwbSwgUlIgMzgsIEJQIDEwMi82NCBtbUhnLCBTcE8yIDg5JSBvbiByb29tIGFpciwgVGVtcCAzOC4xQywgV3QgMTguNiBrZy4KR2VuZXJhbDogQWxlcnQsIGFueGlvdXMtYXBwZWFyaW5nIGNoaWxkIGluIG1vZGVyYXRlLXRvLXNldmVyZSByZXNwaXJhdG9yeSBkaXN0cmVzcy4gU3BlYWtpbmcgaW4gc2hvcnQgcGhyYXNlcyBvbmx5LgpIRUVOVDogTmFzYWwgZmxhcmluZyBwcmVzZW50LiBPcm9waGFyeW54IG1pbGRseSBlcnl0aGVtYXRvdXMgd2l0aCBjbGVhciBwb3N0bmFzYWwgZHJhaW5hZ2UuIFRNcyBub3JtYWwgYmlsYXRlcmFsbHkuCk5lY2s6IFN1cHBsZSwgbm8gbHltcGhhZGVub3BhdGh5LCBubyBzdHJpZG9yIGF0IHJlc3QuCkx1bmdzOiBEaWZmdXNlIGJpbGF0ZXJhbCBleHBpcmF0b3J5IHdoZWV6aW5nLiBJbnRlcmNvc3RhbCBhbmQgc3ViY29zdGFsIHJldHJhY3Rpb25zLiBEZWNyZWFzZWQgYWlyIGVudHJ5IGF0IGJhc2VzLiBObyByYWxlcyBvciByaG9uY2hpLiBQcm9sb25nZWQgZXhwaXJhdG9yeSBwaGFzZS4KQ2FyZGlvdmFzY3VsYXI6IFRhY2h5Y2FyZGljLCByZWd1bGFyIHJoeXRobS4gTm8gbXVybXVycy4gQ2FwaWxsYXJ5IHJlZmlsbCA8MiBzZWNvbmRzLgpBYmRvbWVuOiBTb2Z0LCBub24tdGVuZGVyLCBub24tZGlzdGVuZGVkLiBObyBoZXBhdG9zcGxlbm9tZWdhbHkuClNraW46IFdhcm0sIGRyeS4gTWlsZCBlY3plbWF0b3VzIHBhdGNoZXMgYXQgYmlsYXRlcmFsIGFudGVjdWJpdGFsIGZvc3NhZS4gTm8gdXJ0aWNhcmlhLCBubyBjeWFub3Npcy4KTmV1cm9sb2dpY2FsOiBBbGVydCwgYWdlLWFwcHJvcHJpYXRlIGludGVyYWN0aW9uLCBHQ1MgMTUuCgpFRCBDT1VSU0U6CgpUcmVhdG1lbnQgaW5pdGlhdGVkIGltbWVkaWF0ZWx5IGF0IDE5OjE1IHdpdGggY29udGludW91cyBhbGJ1dGVyb2wgbmVidWxpemF0aW9uIDIuNSBtZyBhbmQgaXByYXRyb3BpdW0gYnJvbWlkZSAwLjUgbWcgbmVidWxpemVkIGNvbmN1cnJlbnRseSwgcGx1cyBzdXBwbGVtZW50YWwgb3h5Z2VuIHZpYSBuYXNhbCBjYW5udWxhIGF0IDIgTC9taW4uIElWIGFjY2VzcyBvYnRhaW5lZCBhbmQgbWV0aHlscHJlZG5pc29sb25lIDE4IG1nICgxIG1nL2tnKSBJViBhZG1pbmlzdGVyZWQgYXQgMTk6MjAuIFNlY29uZCBkb3NlIG9mIGlwcmF0cm9waXVtIGJyb21pZGUgMC41IG1nIG5lYnVsaXplZCBhdCAxOTozNS4gQ29udGludW91cyBhbGJ1dGVyb2wgbmVidWxpemF0aW9uIGNvbnRpbnVlZCB3aXRoIGEgdG90YWwgb2YgdGhyZWUgMi41IG1nIGRvc2VzIGFkbWluaXN0ZXJlZCBvdmVyIHRoZSBwZXJpb2QgMTk6MTUgdG8gMjA6MTUuCgpTZXJpYWwgVml0YWxzOgotIFBvc3QtaW5pdGlhbCB0cmVhdG1lbnQgKDE5OjQ1KTogSFIgMTM0LCBSUiAzMiwgU3BPMiA5MiUgb24gMkwgTkMuIE1pbGQgaW1wcm92ZW1lbnQ7IHBlcnNpc3RlbnQgd2hlZXppbmcsIHJldHJhY3Rpb25zIGltcHJvdmluZy4KLSBSZXBlYXQgKDIwOjE1KTogSFIgMTI2LCBSUiAyOCwgU3BPMiA5NCUgb24gMkwgTkMuIFdoZWV6aW5nIGRpbWluaXNoaW5nLCByZXRyYWN0aW9ucyBtaW5pbWFsLiBTdXBwbGVtZW50YWwgb3h5Z2VuIHdlYW5lZCBvZmYgYXQgMjA6NDUuCi0gUmVwZWF0ICgyMTowMCk6IEhSIDExOCwgUlIgMjQsIFNwTzIgOTYlIG9uIHJvb20gYWlyLiBNaWxkIGVuZC1leHBpcmF0b3J5IHdoZWV6aW5nIG9ubHkuIFJldHJhY3Rpb25zIHJlc29sdmVkLiBDaGlsZCBjb21mb3J0YWJsZSwgZHJpbmtpbmcgZmx1aWRzLgotIERpc2NoYXJnZSBhc3Nlc3NtZW50ICgyMzoxNSk6IEhSIDEwOCwgUlIgMjIsIEJQIDk4LzYyIG1tSGcsIFNwTzIgOTYlIG9uIHJvb20gYWlyLCBUZW1wIDM3LjRDLiBHb29kIGFpciBlbnRyeSBiaWxhdGVyYWxseS4gRmFpbnQgZW5kLWV4cGlyYXRvcnkgd2hlZXppbmcgb25seS4gTm8gYWNjZXNzb3J5IG11c2NsZSB1c2UuCgpMQUJPUkFUT1JJRVM6IE5vIGJsb29kd29yayBvYnRhaW5lZC4gQ2xpbmljYWwgZGlhZ25vc2lzIG1hZGUgYmFzZWQgb24gaGlzdG9yeSwgZXhhbWluYXRpb24sIGtub3duIG1vZGVyYXRlIHBlcnNpc3RlbnQgYXN0aG1hLCBhbmQgcmVzcG9uc2UgdG8gYnJvbmNob2RpbGF0b3IgdGhlcmFweS4gUGVhayBleHBpcmF0b3J5IGZsb3cgbWVhc3VyZW1lbnQgd2FzIG5vdCBhdHRlbXB0ZWQgZ2l2ZW4gcGF0aWVudCBhZ2UgYW5kIGRlZ3JlZSBvZiBkaXN0cmVzcyBvbiBwcmVzZW50YXRpb24uCgpNRURJQ0FMIERFQ0lTSU9OLU1BS0lORzoKVGhpcyA0LXllYXItb2xkIGZlbWFsZSB3aXRoIGtub3duIG1vZGVyYXRlIHBlcnNpc3RlbnQgYXN0aG1hIG9uIGR1YWwtY29udHJvbGxlciB0aGVyYXB5IHByZXNlbnRlZCB3aXRoIGFuIGFjdXRlIHNldmVyZSBleGFjZXJiYXRpb24gKEo0NS41MSkgdHJpZ2dlcmVkIGJ5IGEgdmlyYWwgdXBwZXIgcmVzcGlyYXRvcnkgaW5mZWN0aW9uLiBJbml0aWFsIFNwTzIgb2YgODklIG9uIHJvb20gYWlyLCB0YWNoeXBuZWEgdG8gMzgsIGFuZCBzaWduaWZpY2FudCBhY2Nlc3NvcnkgbXVzY2xlIHVzZSB3ZXJlIGNvbnNpc3RlbnQgd2l0aCBzZXZlcmUgZXhhY2VyYmF0aW9uLiBTaGUgd2FzIHRyZWF0ZWQgd2l0aCBhbiBhZ2dyZXNzaXZlIGJyb25jaG9kaWxhdG9yIHByb3RvY29sIChjb250aW51b3VzIG5lYnVsaXplZCBhbGJ1dGVyb2wgeDMsIGlwcmF0cm9waXVtIHgyKSBhbmQgc3lzdGVtaWMgY29ydGljb3N0ZXJvaWRzIChJViBtZXRoeWxwcmVkbmlzb2xvbmUgMSBtZy9rZykuIFNoZSBkZW1vbnN0cmF0ZWQgcHJvZ3Jlc3NpdmUgYW5kIHN1c3RhaW5lZCBpbXByb3ZlbWVudCBvdmVyIGEgNC1ob3VyIG9ic2VydmF0aW9uIHBlcmlvZCB3aXRoIFNwTzIgc3RhYmlsaXppbmcgYXQgOTYlIG9uIHJvb20gYWlyLCBub3JtYWxpemF0aW9uIG9mIHJlc3BpcmF0b3J5IHJhdGUsIGFuZCByZXNvbHV0aW9uIG9mIHJldHJhY3Rpb25zLiBHaXZlbiBoZXIgYWRlcXVhdGUgcmVzcG9uc2UgdG8gdHJlYXRtZW50IGFuZCBzdGFibGUgcm9vbSBhaXIgc2F0dXJhdGlvbnMgZm9yIG92ZXIgMiBob3Vycywgc2hlIGlzIGFwcHJvcHJpYXRlIGZvciBkaXNjaGFyZ2UgcmF0aGVyIHRoYW4gYWRtaXNzaW9uLiBOb3RhYmx5LCB0aGlzIGRlZ3JlZSBvZiBleGFjZXJiYXRpb24gb24gZHVhbC1jb250cm9sbGVyIHRoZXJhcHkgKGZsdXRpY2Fzb25lL3NhbG1ldGVyb2wgNDUvMjEgcGx1cyBtb250ZWx1a2FzdCkgc3VnZ2VzdHMgaGVyIGFzdGhtYSBtYXkgd2FycmFudCByZWNsYXNzaWZpY2F0aW9uIGFuZCB0aGVyYXB5IGVzY2FsYXRpb24sIHdoaWNoIHNob3VsZCBiZSBhZGRyZXNzZWQgYnkgaGVyIHBlZGlhdHJpY2lhbiBhbmQgYWxsZXJnaXN0LgoKQVNTRVNTTUVOVDoKMS4gQWN1dGUgc2V2ZXJlIGFzdGhtYSBleGFjZXJiYXRpb24gKElDRC0xMDogSjQ1LjUxKSDigJQgcmVzb2x2ZWQgd2l0aCBFRCB0cmVhdG1lbnQKMi4gVmlyYWwgdXBwZXIgcmVzcGlyYXRvcnkgaW5mZWN0aW9uIChJQ0QtMTA6IEowNi45KSDigJQgbGlrZWx5IHRyaWdnZXIgZm9yIGV4YWNlcmJhdGlvbgozLiBNb2RlcmF0ZSBwZXJzaXN0ZW50IGFzdGhtYSAoSUNELTEwOiBKNDUuNDApIOKAlCBrbm93biwgb24gZHVhbC1jb250cm9sbGVyIHRoZXJhcHk7IG1heSByZXF1aXJlIHN0ZXAtdXAgZ2l2ZW4gc2V2ZXJpdHkgb2YgdGhpcyBleGFjZXJiYXRpb24KCkRJU1BPU0lUSU9OOiBEaXNjaGFyZ2UgdG8gaG9tZSBpbiBzdGFibGUgY29uZGl0aW9uIGFmdGVyIDQtaG91ciBvYnNlcnZhdGlvbiBwZXJpb2QuCgpESVNDSEFSR0UgTUVESUNBVElPTlM6CjEuIFByZWRuaXNvbG9uZSAxOCBtZyAoMSBtZy9rZy9kYXkpIG9yYWwgc29sdXRpb24g4oCUIG9uY2UgZGFpbHkgZm9yIDUgZGF5cyAoc3Rlcm9pZCBidXJzdCkKMi4gQWxidXRlcm9sIChQcm9BaXIgSEZBKSA5MCBtY2cg4oCUIDIgcHVmZnMgdmlhIHNwYWNlciBldmVyeSA0IGhvdXJzIGZvciBuZXh0IDI0IGhvdXJzLCB0aGVuIFBSTiBmb3Igd2hlZXppbmcKMy4gQ29udGludWUgZmx1dGljYXNvbmUvc2FsbWV0ZXJvbCAoQWR2YWlyIEhGQSkgNDUvMjEg4oCUIDEgcHVmZiBCSUQgdmlhIHNwYWNlcgo0LiBDb250aW51ZSBtb250ZWx1a2FzdCA0IG1nIGNoZXdhYmxlIOKAlCBkYWlseSBhdCBiZWR0aW1lCgpESVNDSEFSR0UgSU5TVFJVQ1RJT05TOgotIEZvbGxvdyB1cCB3aXRoIHByaW1hcnkgcGVkaWF0cmljaWFuIERyLiBNZWdhbiBIYXJsb3cgYXQgVHJpYW5nbGUgUGVkaWF0cmljcyB3aXRoaW4gNDggaG91cnMgZm9yIHJlYXNzZXNzbWVudCBhbmQgZGlzY3Vzc2lvbiBvZiBhc3RobWEgcmVjbGFzc2lmaWNhdGlvbi4KLSBSZXR1cm4gdG8gRUQgaW1tZWRpYXRlbHkgZm9yIHdvcnNlbmluZyByZXNwaXJhdG9yeSBkaXN0cmVzcywgaW5jcmVhc2VkIHdvcmsgb2YgYnJlYXRoaW5nLCBpbmFiaWxpdHkgdG8gc3BlYWsgaW4gc2VudGVuY2VzLCBwZXJzaXN0ZW50IGNvdWdoIG5vdCByZXNwb25zaXZlIHRvIGFsYnV0ZXJvbCwgb3Igb3h5Z2VuIHNhdHVyYXRpb24gbGVzcyB0aGFuIDkyJSBvbiBob21lIHB1bHNlIG94aW1ldGVyLgotIENvbXBsZXRlIHRoZSBmdWxsIDUtZGF5IGNvdXJzZSBvZiBwcmVkbmlzb2xvbmUuIERvIG5vdCBzdG9wIGVhcmx5LgotIEtlZXAgY2hpbGQgaG9tZSBmcm9tIHNjaG9vbCB1bnRpbCByZXNwaXJhdG9yeSByYXRlIGFuZCBhY3Rpdml0eSBsZXZlbCByZXR1cm4gdG8gYmFzZWxpbmUuCi0gQ29udGludWUgYWxsIGhvbWUgY29udHJvbGxlciBtZWRpY2F0aW9ucyBhcyBwcmVzY3JpYmVkLgotIEFzdGhtYSBhY3Rpb24gcGxhbiByZXZpZXdlZCB3aXRoIG1vdGhlciBhdCBiZWRzaWRlLgoKTW90aGVyIHZlcmJhbGl6ZWQgdW5kZXJzdGFuZGluZyBvZiBkaXNjaGFyZ2UgaW5zdHJ1Y3Rpb25zIGFuZCBkZW1vbnN0cmF0ZWQgYXBwcm9wcmlhdGUgc3BhY2VyIHRlY2huaXF1ZS4gUHJlc2NyaXB0aW9ucyBzZW50IGVsZWN0cm9uaWNhbGx5LiBQYXRpZW50IGRpc2NoYXJnZWQgYW1idWxhdG9yeSBpbiBzdGFibGUgY29uZGl0aW9uIHdpdGggbW90aGVyIGF0IDIzOjE1LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpQcmlzY2lsbGEgT2thZm9yLCBNRApQZWRpYXRyaWMgRW1lcmdlbmN5IE1lZGljaW5lCldha2VNZWQgQ2hpbGRyZW4ncyBFbWVyZ2VuY3kgRGVwYXJ0bWVudAowMS8xNC8yMDI1IDIzOjIyCg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-009"
+            }
+          ],
+          "period": {
+            "start": "2025-01-14T19:12:00-05:00",
+            "end": "2025-01-14T23:15:00-05:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-000",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-000",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "emergency"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4525004",
+                "display": "Emergency department patient visit (procedure)"
+              }
+            ],
+            "text": "Emergency Department Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2022-10-22T15:42:00-04:00",
+              "end": "2022-10-22T21:30:00-04:00"
+            },
+            "individual": {
+              "reference": "Practitioner/46ae8f40-5115-bae5-0e99-681df70aed0b",
+              "display": "Dr. Jason Trammell"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-10-22T15:42:00-04:00",
+          "end": "2022-10-22T21:30:00-04:00"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "241933001",
+                "display": "Peanut-induced anaphylaxis (disorder)"
+              }
+            ],
+            "text": "Anaphylaxis due to accidental peanut ingestion"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/c4f297f9-0dd6-8d0d-d8d1-7241d2749885",
+              "display": "WakeMed Raleigh Campus"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+          "display": "WakeMed Children's Emergency Department"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Aisha, age 2 years 7 months, was brought in by EMS after accidental peanut ingestion at a family Diwali gathering. She had eaten a cookie containing peanut butter approximately 20 minutes prior to symptom onset."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-009",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "emergency"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4525004",
+                "display": "Emergency department patient visit (procedure)"
+              }
+            ],
+            "text": "Emergency Department Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/3b9d0354-b3d2-cd60-86e5-2ba770734959",
+          "display": "Aisha Patel"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2025-01-14T19:12:00-05:00",
+              "end": "2025-01-14T23:15:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/663ff2b7-1929-7235-9f29-43f7391e3e5e",
+              "display": "Dr. Priscilla Okafor"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-01-14T19:12:00-05:00",
+          "end": "2025-01-14T23:15:00-05:00"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "708090002",
+                "display": "Acute severe exacerbation of asthma (disorder)"
+              }
+            ],
+            "text": "Severe asthma exacerbation"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/c4f297f9-0dd6-8d0d-d8d1-7241d2749885",
+              "display": "WakeMed Raleigh Campus"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/c05591f4-3a6c-6f27-6271-5b0b4bef827b",
+          "display": "WakeMed Children's Emergency Department"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Aisha, age 4 years 10 months, was brought in by her mother Priya after progressive respiratory distress over 48 hours in the setting of a viral upper respiratory infection. Priya had administered albuterol 2 puffs via spacer three times over the preceding 90 minutes at home without significant improvement, per the asthma action plan."
+          }
+        ]
+      }
+    }
+  ]
+}

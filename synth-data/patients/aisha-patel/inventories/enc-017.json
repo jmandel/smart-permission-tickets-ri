@@ -1,0 +1,285 @@
+{
+  "encounter_id": "enc-017",
+  "encounter_index": 17,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Comprehensive allergy and asthma review",
+    "period_start": "2026-02-09",
+    "participants": [
+      {
+        "name": "Dr. Sunita Krishnamurthy",
+        "role": "Pediatric Allergy/Immunology"
+      }
+    ],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 90,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "value": "94/60",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 94,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 60,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.7,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 20.8,
+        "unit": "kg"
+      },
+      {
+        "name": "body height",
+        "value": 115,
+        "unit": "cm"
+      }
+    ],
+    "labs": [
+      {
+        "name": "peanut-specific IgE",
+        "value": 41.6,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "cashew-specific IgE",
+        "value": 14.8,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "walnut-specific IgE",
+        "value": 9.7,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "almond-specific IgE",
+        "value": 4.9,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "total IgE",
+        "value": 356,
+        "unit": "IU/mL",
+        "flag": "high",
+        "specimen": "serum"
+      },
+      {
+        "name": "fractional exhaled nitric oxide (FeNO)",
+        "value": 24,
+        "unit": "ppb",
+        "interpretation": "mildly elevated but improved, suggesting improved eosinophilic inflammation control"
+      },
+      {
+        "name": "FEV1 (pre-bronchodilator)",
+        "value": 1.02,
+        "unit": "L",
+        "percent_predicted": 92
+      },
+      {
+        "name": "FVC (pre-bronchodilator)",
+        "value": 1.18,
+        "unit": "L",
+        "percent_predicted": 96
+      },
+      {
+        "name": "FEV1/FVC ratio",
+        "value": 0.86,
+        "interpretation": "normal"
+      },
+      {
+        "name": "FEV1 (post-bronchodilator)",
+        "value": 1.12,
+        "unit": "L",
+        "percent_improvement": 10
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "onset_date": "2023",
+      "action": "update-existing",
+      "note": "Improved on Advair HFA 115/21 BID plus montelukast. FeNO improved from 38 to 24 ppb. Spirometry shows mild obstruction with borderline bronchodilator response. Rescue inhaler use approximately twice weekly. Discussed omalizumab as potential next step once patient turns 6 in March 2026. Continuing current regimen with reassessment in 3–4 months."
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "update-existing",
+      "note": "Peanut-specific IgE remains very high at 41.6 kU/L. Oral food challenge not appropriate. Discussed peanut oral immunotherapy (Palforzia protocol) with family. Decision pending."
+    },
+    {
+      "name": "tree nut allergy (cashew, walnut, almond)",
+      "clinical_status": "active",
+      "onset_date": "2022-11",
+      "action": "update-existing",
+      "note": "Specific IgE values trending down but still significantly positive. Continue strict avoidance. No change in management."
+    },
+    {
+      "name": "atopic dermatitis",
+      "clinical_status": "active",
+      "onset_date": "2021",
+      "action": "reference-existing",
+      "note": "Near remission. Minimal dry patches on bilateral antecubital fossae. Continue daily moisturizer only."
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing",
+      "note": "Well controlled on cetirizine 5 mg daily."
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA) 115/21 mcg inhaler",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA) 90 mcg inhaler",
+      "sig": "2 puffs inhaled as needed for wheezing/shortness of breath via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 5 mg",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr) 0.15 mg",
+      "sig": "as needed for anaphylaxis, carry at all times",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone 0.1% ointment",
+      "sig": "apply to eczema flares twice daily as needed",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "ceramide-based moisturizer",
+      "sig": "apply to affected areas daily",
+      "status": "active",
+      "reason": "atopic dermatitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "subspecialty visit note",
+      "description": "Comprehensive allergy and asthma review note documenting interval history, vitals, FeNO, spirometry results, specific IgE panel results, physical exam findings, and plan including discussion of omalizumab and peanut oral immunotherapy."
+    },
+    {
+      "type": "patient education materials",
+      "description": "Omalizumab (Xolair) educational materials provided to mother regarding potential biologic therapy for asthma management once patient becomes age-eligible in March 2026."
+    },
+    {
+      "type": "anaphylaxis emergency action plan",
+      "description": "Updated anaphylaxis emergency action plan reflecting current allergens (peanut, cashew, walnut, almond), current medications, and emergency instructions for epinephrine administration."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "fractional exhaled nitric oxide (FeNO) measurement",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "fractional exhaled nitric oxide (FeNO)"
+      ]
+    },
+    {
+      "type": "spirometry with pre- and post-bronchodilator testing",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "FEV1 (pre-bronchodilator)",
+        "FVC (pre-bronchodilator)",
+        "FEV1/FVC ratio",
+        "FEV1 (post-bronchodilator)"
+      ]
+    },
+    {
+      "type": "allergen-specific IgE panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "peanut-specific IgE",
+        "cashew-specific IgE",
+        "walnut-specific IgE",
+        "almond-specific IgE",
+        "total IgE"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis (urticaria, angioedema, wheezing, tachycardia)",
+      "severity": "high",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "tree nuts (cashew, walnut, almond)",
+      "severity": "high",
+      "action": "reference-existing",
+      "note": "Confirmed by specific IgE and skin prick testing. No known ingestion reaction."
+    }
+  ]
+}

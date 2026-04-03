@@ -1,0 +1,638 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "university-of-illinois-hospital",
+  "encounter": {
+    "class": "inpatient",
+    "type": "Inpatient Admission",
+    "reason": "Pulmonary tuberculosis, active — diagnosis confirmation and RIPE therapy initiation",
+    "period_start": "2026-01-22T18:00:00-06:00",
+    "period_end": "2026-01-27T00:00:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Marcus Thompson",
+        "role": "hospitalist, attending/admitting physician"
+      },
+      {
+        "name": "Dr. Lena Okafor",
+        "role": "infectious disease consultant (consulted hospital day 1)"
+      }
+    ],
+    "service_provider": "University of Illinois Hospital",
+    "location": "University of Illinois Hospital, Inpatient Medicine, negative-pressure isolation room, 1740 W Taylor St, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body temperature",
+        "value": 100.2,
+        "unit": "degF",
+        "date": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "heart rate",
+        "value": 88,
+        "unit": "/min",
+        "date": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 138,
+        "unit": "mmHg",
+        "date": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 86,
+        "unit": "mmHg",
+        "date": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "/min",
+        "date": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 95,
+        "unit": "%",
+        "date": "2026-01-22T18:15:00-06:00",
+        "note": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 162,
+        "unit": "lbs",
+        "date": "2026-01-22T18:15:00-06:00"
+      },
+      {
+        "name": "body temperature",
+        "value": 99.8,
+        "unit": "degF",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "heart rate",
+        "value": 84,
+        "unit": "/min",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 134,
+        "unit": "mmHg",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 82,
+        "unit": "mmHg",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "/min",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 95,
+        "unit": "%",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "body temperature",
+        "value": 99.1,
+        "unit": "degF",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "heart rate",
+        "value": 80,
+        "unit": "/min",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 130,
+        "unit": "mmHg",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 80,
+        "unit": "mmHg",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "degF",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "/min",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 132,
+        "unit": "mmHg",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 78,
+        "unit": "mmHg",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF",
+        "date": "2026-01-27"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "/min",
+        "date": "2026-01-27"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 128,
+        "unit": "mmHg",
+        "date": "2026-01-27"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 78,
+        "unit": "mmHg",
+        "date": "2026-01-27"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "/min",
+        "date": "2026-01-27"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%",
+        "date": "2026-01-27",
+        "note": "on room air"
+      },
+      {
+        "name": "body weight",
+        "value": 161,
+        "unit": "lbs",
+        "date": "2026-01-27"
+      }
+    ],
+    "labs": [
+      {
+        "name": "white blood cell count",
+        "value": 9.8,
+        "unit": "10*3/uL",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 11.2,
+        "unit": "g/dL",
+        "flag": "low",
+        "date": "2026-01-22",
+        "note": "mild normocytic anemia noted"
+      },
+      {
+        "name": "platelet count",
+        "flag": "normal",
+        "date": "2026-01-22",
+        "note": "documented as normal, no specific numeric value given"
+      },
+      {
+        "name": "glucose",
+        "value": 188,
+        "unit": "mg/dL",
+        "flag": "high",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "creatinine",
+        "value": 1.1,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 28,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 32,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "albumin",
+        "value": 3,
+        "unit": "g/dL",
+        "flag": "low",
+        "date": "2026-01-22",
+        "note": "mild hypoalbuminemia"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 8.1,
+        "unit": "%",
+        "flag": "high",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "HIV combination antigen/antibody test (4th generation)",
+        "value": "negative",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "hepatitis B surface antigen",
+        "value": "negative",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "hepatitis C antibody",
+        "value": "negative",
+        "flag": "normal",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 30,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 34,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-23"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 32,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 36,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-24"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": 29,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": 33,
+        "unit": "U/L",
+        "flag": "normal",
+        "date": "2026-01-25"
+      },
+      {
+        "name": "sputum acid-fast bacilli (AFB) smear #1",
+        "value": "positive for acid-fast bacilli",
+        "specimen_type": "sputum",
+        "date": "2026-01-22"
+      },
+      {
+        "name": "sputum acid-fast bacilli (AFB) smear #2",
+        "value": "positive for AFB, 2+",
+        "specimen_type": "sputum",
+        "date": "2026-01-23T06:00:00-06:00"
+      },
+      {
+        "name": "sputum acid-fast bacilli (AFB) smear #3",
+        "value": "positive for AFB, 1+",
+        "specimen_type": "sputum",
+        "date": "2026-01-23T14:00:00-06:00"
+      },
+      {
+        "name": "GeneXpert MTB/RIF assay",
+        "value": "positive for Mycobacterium tuberculosis complex, no rifampin resistance detected",
+        "specimen_type": "sputum",
+        "date": "2026-01-22"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis, active",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "create",
+      "note": "new diagnosis confirmed at this encounter based on AFB smear-positive sputum, GeneXpert confirmation, and cavitary chest X-ray findings"
+    },
+    {
+      "name": "type 2 diabetes mellitus, uncontrolled",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "known condition (diagnosed 2015), A1c 8.1% noted as worsened from baseline likely related to acute illness; no treatment change made"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "known condition (diagnosed 2010); continued home lisinopril; no treatment change"
+    },
+    {
+      "name": "chronic obstructive pulmonary disease, mild",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "known condition (diagnosed 2017); continued home albuterol PRN; no treatment change"
+    },
+    {
+      "name": "mild normocytic anemia",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "create",
+      "note": "new finding at this encounter, hemoglobin 11.2 g/dL"
+    },
+    {
+      "name": "mild hypoalbuminemia",
+      "clinical_status": "active",
+      "onset_date": "2026-01-22",
+      "action": "create",
+      "note": "new finding at this encounter, albumin 3.0 g/dL"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "create"
+    },
+    {
+      "name": "isoniazid 300 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "create"
+    },
+    {
+      "name": "pyridoxine (vitamin B6) 50 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "peripheral neuropathy prophylaxis during isoniazid therapy (especially important given concurrent diabetes)",
+      "action": "create"
+    },
+    {
+      "name": "pyrazinamide 1500 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "create"
+    },
+    {
+      "name": "ethambutol 1200 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis",
+      "action": "create"
+    },
+    {
+      "name": "ondansetron 4 mg intravenous",
+      "sig": "as needed",
+      "status": "completed",
+      "reason": "nausea from RIPE therapy",
+      "action": "create",
+      "note": "administered twice on hospital day 2 with relief; inpatient PRN medication"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 1000 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol HFA metered-dose inhaler",
+      "sig": "as needed",
+      "status": "active",
+      "reason": "chronic obstructive pulmonary disease",
+      "action": "reference-existing"
+    },
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "as needed",
+      "status": "on-hold",
+      "reason": "held during admission to simplify hepatic monitoring while on hepatotoxic TB medications",
+      "action": "update-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "admission H&P note",
+      "author": "Dr. Marcus Thompson",
+      "description": "Describes presentation with 2-month history of productive cough, hemoptysis, night sweats, weight loss, and fatigue; documents physical exam findings including decreased breath sounds in right upper lobe with scattered rhonchi; documents diagnostic workup and plan for RIPE therapy initiation in airborne isolation"
+    },
+    {
+      "type": "consultation note",
+      "author": "Dr. Lena Okafor",
+      "description": "Documents ID evaluation confirming active pulmonary TB based on AFB smear-positive sputum, GeneXpert MTB/RIF confirmation, and cavitary chest X-ray; recommends standard RIPE therapy with pyridoxine and hepatic monitoring protocol"
+    },
+    {
+      "type": "progress notes",
+      "author": "Dr. Marcus Thompson and inpatient team",
+      "description": "Daily progress notes (hospital days 2–5) documenting daily clinical status including nausea management with ondansetron, serial LFT monitoring results, improving vital signs trending to afebrile, and preparation for discharge with DOT arrangements",
+      "note": "4 notes"
+    },
+    {
+      "type": "discharge summary",
+      "author": "Dr. Marcus Thompson",
+      "description": "Comprehensive summary of 5-day hospitalization for active pulmonary TB including principal and secondary diagnoses, hospital course, discharge medications (RIPE therapy plus home medications), discharge instructions for airborne isolation and symptom monitoring, and follow-up plan for DOT at UI Health Ambulatory TB Clinic on February 5, 2026"
+    },
+    {
+      "type": "patient education/discharge instructions",
+      "description": "Instructions to continue airborne isolation at home, wear mask for outings, warning signs to report (fever, worsening cough, hemoptysis, visual changes, numbness/tingling, dark urine, jaundice, abdominal pain), information about rifampin-related orange discoloration of body fluids, and restriction on acetaminophen use without provider approval"
+    },
+    {
+      "type": "medication reconciliation",
+      "description": "Documents admission medication reconciliation comparing home medications to inpatient orders and discharge medication list including all RIPE therapy components and continued home medications"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "summary-only",
+      "description": "Admission CBC demonstrating mild normocytic anemia with otherwise normal white blood cell and platelet counts"
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "summary-only",
+      "description": "Admission CMP with elevated glucose, mildly low albumin, and otherwise unremarkable values for the components reported; full electrolyte and remaining panel details not individually documented"
+    },
+    {
+      "type": "hemoglobin A1c",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "HIV 4th generation antigen/antibody combination test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "HIV combination antigen/antibody test (4th generation)"
+      ]
+    },
+    {
+      "type": "hepatitis B surface antigen test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis B surface antigen"
+      ]
+    },
+    {
+      "type": "hepatitis C antibody test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hepatitis C antibody"
+      ]
+    },
+    {
+      "type": "sputum AFB smear #1",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum acid-fast bacilli (AFB) smear #1"
+      ]
+    },
+    {
+      "type": "sputum AFB smear #2",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum acid-fast bacilli (AFB) smear #2"
+      ]
+    },
+    {
+      "type": "sputum AFB smear #3",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "sputum acid-fast bacilli (AFB) smear #3"
+      ]
+    },
+    {
+      "type": "GeneXpert MTB/RIF molecular test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "GeneXpert MTB/RIF assay"
+      ]
+    },
+    {
+      "type": "sputum mycobacterial culture (specimen 1)",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum specimen #1 sent for mycobacterial culture; results expected approximately 3 weeks after collection; pending at discharge"
+    },
+    {
+      "type": "sputum mycobacterial culture (specimen 2)",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum specimen #2 sent for mycobacterial culture; results expected approximately 3 weeks after collection; pending at discharge"
+    },
+    {
+      "type": "sputum mycobacterial culture (specimen 3)",
+      "report_state": "ordered-not-resulted",
+      "description": "Sputum specimen #3 sent for mycobacterial culture; results expected approximately 3 weeks after collection; pending at discharge"
+    },
+    {
+      "type": "serial liver function tests — hospital day 2",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)"
+      ]
+    },
+    {
+      "type": "serial liver function tests — hospital day 3",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)"
+      ]
+    },
+    {
+      "type": "serial liver function tests — hospital day 4",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "aspartate aminotransferase (AST)",
+        "alanine aminotransferase (ALT)"
+      ]
+    },
+    {
+      "type": "chest X-ray, posteroanterior",
+      "report_state": "summary-only",
+      "description": "Chest X-ray showing 3.5 cm cavitary lesion in the right upper lobe with surrounding infiltrate and mildly enlarged right hilar lymph nodes; classic radiographic appearance concerning for pulmonary tuberculosis"
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "no known drug allergies (NKDA)",
+      "action": "create"
+    }
+  ]
+}

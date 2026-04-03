@@ -1,0 +1,47 @@
+{
+  "resourceType": "Practitioner",
+  "id": "189f48be-f3be-478b-80db-7dc87f3b072e",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Okafor",
+      "given": [
+        "Cynthia"
+      ],
+      "prefix": [
+        "Dr."
+      ],
+      "text": "Dr. Cynthia Okafor"
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "MD",
+            "display": "Doctor of Medicine"
+          }
+        ],
+        "text": "Doctor of Medicine"
+      },
+      "issuer": {
+        "display": "State of Florida"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "39288007",
+            "display": "Internist"
+          }
+        ],
+        "text": "Internist"
+      }
+    }
+  ]
+}

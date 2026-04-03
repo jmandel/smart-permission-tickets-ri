@@ -1,0 +1,51 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-003-rheum-referral",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "3457005",
+          "display": "Patient referral (procedure)"
+        }
+      ],
+      "text": "Referral"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306290009",
+        "display": "Referral to rheumatologist (procedure)"
+      }
+    ],
+    "text": "Urgent referral to rheumatology — South Texas Rheumatology, Dr. Alejandro Fuentes"
+  },
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-003"
+  },
+  "authoredOn": "2021-02-08",
+  "requester": {
+    "reference": "Practitioner/35af736a-6111-44d6-8586-79bb01e530b4",
+    "display": "Dr. Linda Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-003-polyarthritis",
+      "display": "Symmetric inflammatory polyarthritis, suspected rheumatoid arthritis"
+    }
+  ],
+  "note": [
+    {
+      "text": "Urgent referral to South Texas Rheumatology, Dr. Alejandro Fuentes, for diagnostic confirmation and DMARD initiation. Target consultation within 4-6 weeks. Referral documentation includes lab results (RF 78, anti-CCP >250, ESR 42, CRP 2.8) and clinical exam findings."
+    }
+  ]
+}

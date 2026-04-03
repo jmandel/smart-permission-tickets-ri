@@ -1,0 +1,205 @@
+{
+  "encounter_id": "enc-005",
+  "encounter_index": 5,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Annual wellness exam",
+    "period_start": "2023-04-18T09:00:00-05:00",
+    "period_end": "2023-04-18T09:45:00-05:00",
+    "participants": [],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, Minneapolis, MN"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 132,
+        "value_diastolic": 84,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 74,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 181,
+        "unit": "lbs"
+      },
+      {
+        "name": "body height",
+        "value": 69,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.7,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.2,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 15,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%"
+      }
+    ],
+    "labs": [
+      {
+        "name": "total cholesterol",
+        "value": 210,
+        "unit": "mg/dL",
+        "reference_range": "< 200 mg/dL desirable",
+        "flag": "borderline high"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 128,
+        "unit": "mg/dL",
+        "reference_range": "< 100 mg/dL optimal",
+        "flag": "borderline high"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 50,
+        "unit": "mg/dL",
+        "reference_range": ">= 40 mg/dL for males",
+        "flag": "normal"
+      },
+      {
+        "name": "triglycerides",
+        "value": 160,
+        "unit": "mg/dL",
+        "reference_range": "< 150 mg/dL",
+        "flag": "mildly elevated"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.4,
+        "unit": "%",
+        "reference_range": "4.0-5.6 %",
+        "flag": "normal"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 96,
+        "unit": "mg/dL",
+        "reference_range": "70-99 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "creatinine, serum",
+        "value": 0.92,
+        "unit": "mg/dL",
+        "reference_range": "0.7-1.3 mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "potassium, serum",
+        "value": 4.1,
+        "unit": "mEq/L",
+        "reference_range": "3.5-5.0 mEq/L",
+        "flag": "normal"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": ">90",
+        "unit": "mL/min/1.73m2",
+        "reference_range": ">= 90 normal",
+        "flag": "normal"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Well controlled on lisinopril 10 mg daily. BP 132/84 at goal. No medication changes."
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "note": "LDL 128 mg/dL borderline elevated, triglycerides 160 mg/dL mildly elevated. Patient continues to prefer dietary management over statin. New lab values reviewed, continued conservative management plan confirmed."
+    },
+    {
+      "name": "acute sinusitis",
+      "clinical_status": "resolved",
+      "action": "update-existing",
+      "note": "Previously active condition from January 2023, treated with amoxicillin. Confirmed fully resolved with no residual symptoms. Clinical status changed from active to resolved."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "take one 10 mg tablet by mouth once daily for hypertension",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "take one 1000 mg capsule by mouth once daily",
+      "status": "active",
+      "reason": "dietary supplement / cardiovascular health",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "recombinant zoster vaccine",
+      "date": "2023-04-18",
+      "dose": "0.5 mL",
+      "route": "intramuscular injection",
+      "site": "right deltoid",
+      "lot_number": "SHX2023B",
+      "note": "Dose 1 of 2-dose series. VIS provided and reviewed. No immediate adverse reaction during 15-minute observation. Second dose scheduled in 2-6 months."
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Annual wellness visit note for 54-year-old male including complete 14-point review of systems, comprehensive physical examination, review of fasting lab results (lipid panel, A1c, glucose, CMP), PHQ-2 depression screening (negative), immunization administration (Shingrix dose 1), assessment of hypertension (well controlled), hyperlipidemia (continued dietary management), resolved sinusitis, and preventive care plan with follow-up in 12 months.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP drawn fasting at visit. Only creatinine (0.92 mg/dL), potassium (4.1 mEq/L), and eGFR (>90) are explicitly reported in the narrative. Remaining CMP components not individually enumerated. Renal function normal per provider assessment."
+    }
+  ],
+  "allergies": []
+}

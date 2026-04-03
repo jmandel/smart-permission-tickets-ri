@@ -1,0 +1,64 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-005-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11488-4",
+        "display": "Consult note"
+      }
+    ],
+    "text": "Nephrology consultation note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ec17a69b-2588-458c-ab5d-aa485bd48663",
+    "display": "Denise Walker"
+  },
+  "date": "2024-06-17T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/f4e8e069-fa31-44d1-844a-817c9d4d49c8",
+      "type": "Practitioner",
+      "display": "Dr. Helena Ortiz, MD"
+    }
+  ],
+  "custodian": {
+    "reference": "Organization/88fe14e0-3be6-42cd-aa1d-c851f1deb17f",
+    "display": "Rio Grande Nephrology Associates"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKNTgteWVhci1vbGQgQmxhY2sgd29tYW4gd2l0aCBoaXN0b3J5IG9mIHR5cGUgMiBkaWFiZXRlcyBtZWxsaXR1cywgaHlwZXJ0ZW5zaW9uLCBIRnJFRiwgcGFyb3h5c21hbCBhdHJpYWwgZmlicmlsbGF0aW9uLCBhbmQgQ0tEIHJlZmVycmVkIGZvciBuZXcgbmVwaHJvbG9neSBjb25zdWx0YXRpb24gZm9yIENLRCBzdGFnZSAzYiB3aXRoIGFsYnVtaW51cmlhIGFmdGVyIHJlY2VudCBoZWFydC1mYWlsdXJlIGhvc3BpdGFsaXphdGlvbi4gU2hlIHJlY2VudGx5IHJlbG9jYXRlZCB0byBBbGJ1cXVlcnF1ZSBhbmQgaXMgcmUtZXN0YWJsaXNoaW5nIHNwZWNpYWx0eSBjYXJlLiBTaGUgcmVwb3J0cyBob21lIEJQIHJlYWRpbmdzIG1vc3RseSBpbiB0aGUgMTIwcyB0byAxMzBzIHN5c3RvbGljLiBTaGUgZGVuaWVzIE5TQUlEIHVzZSwgZ3Jvc3MgaGVtYXR1cmlhLCBvciBhbnkgbmV3IGZvYW15IHVyaW5lIGJleW9uZCB3aGF0IHNoZSBoYXMgbm90ZWQgb3ZlciB0aGUgeWVhcnMgd2l0aCBkaWFiZXRlcy4gTm8gaW50ZXJ2YWwgc3ltcHRvbXMgc3VnZ2VzdGluZyBhbiBhY3V0ZSBuZXBocml0aWMgb3Igb2JzdHJ1Y3RpdmUgcHJvY2VzcyB3ZXJlIHJlcG9ydGVkLiBSZWNlbnQgY291cnNlIG5vdGFibGUgZm9yIGhlYXJ0LWZhaWx1cmUgYWRtaXNzaW9uIHdpdGggb25nb2luZyBkaXVyZXRpYyB0aGVyYXB5LCByYWlzaW5nIGNvbmNlcm4gZm9yIG1peGVkIGRpYWJldGljIGtpZG5leSBkaXNlYXNlIGFuZCBjYXJkaW9yZW5hbCBjb250cmlidXRpb24gdG8gcmVuYWwgZHlzZnVuY3Rpb24uCgpSZWxldmFudCByZW5hbCByaXNrIGZhY3RvcnMgaW5jbHVkZSBsb25nc3RhbmRpbmcgZGlhYmV0ZXMgYW5kIGh5cGVydGVuc2lvbi4gQ3VycmVudCBraWRuZXktcHJvdGVjdGl2ZS9jYXJkaWFjIG1lZGljYXRpb25zIGluY2x1ZGUgc2FjdWJpdHJpbC92YWxzYXJ0YW4gYW5kIGVtcGFnbGlmbG96aW4uIE1lZGljYXRpb24gc2FmZXR5IGFuZCBuZXBocm90b3hpbiBhdm9pZGFuY2UgcmV2aWV3ZWQgaW4gZGV0YWlsLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEzNi84NCBtbUhnIHNlYXRlZCwgSFIgNzIgYnBtLCBSUiAxNi9taW4sIFRlbXAgOTcuNyBGLCBTcE8yIDk4JSwgd2VpZ2h0IDE5MyBsYiwgaGVpZ2h0IDY0IGluLCBCTUkgMzMuMSBrZy9tMgoKR2VuZXJhbDogQWxlcnQsIG9yaWVudGVkLCBpbiBubyBhY3V0ZSBkaXN0cmVzcy4KQ1Y6IEhlYXJ0IHJhdGUgY29udHJvbGxlZC4KUmVzcDogQnJlYXRoaW5nIGNvbWZvcnRhYmx5LCBubyByZXNwaXJhdG9yeSBkaXN0cmVzcy4KRXh0cmVtaXRpZXM6IE5vIGV4YW0gZmluZGluZ3Mgc3VnZ2VzdGluZyBhY3V0ZSB2b2x1bWUgb3ZlcmxvYWQgZG9jdW1lbnRlZCBhdCB0aGlzIHZpc2l0LgoKTGFiczogQ3JlYXRpbmluZSAxLjYxIG1nL2RMLCBlR0ZSIDM3IG1ML21pbi8xLjczIG0yLCBCVU4gMjggbWcvZEwsIHBvdGFzc2l1bSA0LjcgbW1vbC9MLCBzb2RpdW0gMTQwIG1tb2wvTCwgYmljYXJib25hdGUgMjMgbW1vbC9MLCBwaG9zcGhvcnVzIDMuOSBtZy9kTCwgYWxidW1pbiAzLjggZy9kTCwgaW50YWN0IFBUSCA3NCBwZy9tTCwgMjUtaHlkcm94eSB2aXRhbWluIEQgMjggbmcvbUwsIGhlbW9nbG9iaW4gMTEuNiBnL2RMLCBmZXJyaXRpbiAxMTggbmcvbUwsIHRyYW5zZmVycmluIHNhdHVyYXRpb24gMjQlLCB1cmluZSBhbGJ1bWluLWNyZWF0aW5pbmUgcmF0aW8gMjg2IG1nL2cuIFVyaW5lIHNlZGltZW50IGJsYW5kLgoKQVNTRVNTTUVOVDoKMS4gQ0tEIHN0YWdlIDNiIHdpdGggcGVyc2lzdGVudCBhbGJ1bWludXJpYSwgbW9zdCBjb25zaXN0ZW50IHdpdGggZGlhYmV0aWMga2lkbmV5IGRpc2Vhc2UgYW5kIGh5cGVydGVuc2l2ZSBraWRuZXkgZGlzZWFzZS4gQ3VycmVudCByZW5hbCBmdW5jdGlvbiB3aXRoIGNyZWF0aW5pbmUgMS42MSBhbmQgZUdGUiAzNyBpcyBzdGFibGUgZW5vdWdoIGZvciBvdXRwYXRpZW50IG1hbmFnZW1lbnQuIEJsYW5kIHVyaW5lIHNlZGltZW50LCBhYnNlbmNlIG9mIGdyb3NzIGhlbWF0dXJpYSwgYW5kIG92ZXJhbGwgY2hyb25pYyBjb3Vyc2UgZG8gbm90IHN1Z2dlc3QgYW4gYWx0ZXJuYXRpdmUgZ2xvbWVydWxhciBwcm9jZXNzOyBubyBiaW9wc3kgb3IgYWN1dGUgbmVwaHJvbG9naWMgd29ya3VwIGluZGljYXRlZCBhdCB0aGlzIHRpbWUuCjIuIEFsYnVtaW51cmlhLCBVQUNSIDI4NiBtZy9nLCBwZXJzaXN0ZW50IGFuZCBjbGluaWNhbGx5IHNpZ25pZmljYW50LiBPbmdvaW5nIFJBQVMtYmFzZWQgdGhlcmFweSBhbmQgU0dMVDIgaW5oaWJpdG9yIGFyZSBhcHByb3ByaWF0ZSBmb3IgcmVuYWwgcHJvdGVjdGlvbi4KMy4gSHlwZXJ0ZW5zaW9uLCByZWFzb25hYmx5IGNvbnRyb2xsZWQgaW4gY2xpbmljIGFuZCBieSBob21lIHJlYWRpbmdzLCB3aXRoIHN5c3RvbGljIHByZXNzdXJlcyBtb3N0bHkgaW4gdGhlIDEyMHMgdG8gMTMwcy4KNC4gQ2FyZGlvcmVuYWwgcGh5c2lvbG9neS9IRnJFRiBvbiBkaXVyZXRpYyB0aGVyYXB5IGNvbnRyaWJ1dGluZyB0byByZW5hbCBoZW1vZHluYW1pY3MgYW5kIHJlcXVpcmluZyBjb250aW51ZWQgbW9uaXRvcmluZyBvZiBjcmVhdGluaW5lLCBwb3Rhc3NpdW0sIGFuZCB2b2x1bWUgc3RhdHVzLgo1LiBNaWxkIENLRC1hc3NvY2lhdGVkIG1pbmVyYWwgYm9uZSBkaXNlYXNlIHBhcmFtZXRlcnMgd2l0aCBQVEggNzQgcGcvbUwgYW5kIHZpdGFtaW4gRCBpbnN1ZmZpY2llbmN5IGF0IDI4IG5nL21MLgo2LiBNaWxkIGFuZW1pYSBvZiBDS0QvY2hyb25pYyBkaXNlYXNlIHBhdHRlcm4gd2l0aCBoZW1vZ2xvYmluIDExLjYgZy9kTCwgZmVycml0aW4gMTE4IG5nL21MLCBhbmQgdHJhbnNmZXJyaW4gc2F0dXJhdGlvbiAyNCUsIG5vdCByZXF1aXJpbmcgYWN1dGUgaW50ZXJ2ZW50aW9uLgoKUExBTjoKMS4gQ29udGludWUgc2FjdWJpdHJpbC92YWxzYXJ0YW4gYW5kIGVtcGFnbGlmbG96aW4gZm9yIGJvdGggcmVuYWwgYW5kIGNhcmRpYWMgYmVuZWZpdC4KMi4gTm8ga2lkbmV5IGJpb3BzeSBvciBhZGRpdGlvbmFsIGFjdXRlIHdvcmt1cCBhdCB0aGlzIHRpbWUgZ2l2ZW4gc3RhYmxlIGNocm9uaWMgcGF0dGVybiBhbmQgYmxhbmQgdXJpbmUgc2VkaW1lbnQuCjMuIFJlaW5mb3JjZWQgc3RyaWN0IG5lcGhyb3RveGluIGF2b2lkYW5jZS4gUGF0aWVudCBpbnN0cnVjdGVkIHRvIGF2b2lkIG92ZXItdGhlLWNvdW50ZXIgTlNBSURzIGFuZCB0byBub3RpZnkgY2xpbmljaWFucyBiZWZvcmUgYW55IGNvbnRyYXN0IHN0dWRpZXMuCjQuIFJldmlld2VkIENLRCBlZHVjYXRpb24gYW5kIG1lZGljYXRpb24gc2FmZXR5LCBpbmNsdWRpbmcgaW1wb3J0YW5jZSBvZiBCUCBjb250cm9sLCBkaWFiZXRlcyBjb250cm9sLCBhbmQgY29vcmRpbmF0aW9uIHdpdGggY2FyZGlvbG9neSB3aGlsZSBvbiBkaXVyZXRpYyB0aGVyYXB5Lgo1LiBSZXBlYXQgQk1QIGFuZCB1cmluZSBhbGJ1bWluIHRlc3RpbmcgcHJpb3IgdG8gZm9sbG93LXVwLgo2LiBDb250aW51ZSBob21lIEJQIGxvZyBhbmQgYnJpbmcgcmVhZGluZ3MgdG8gbmV4dCB2aXNpdCBmb3IgcmV2aWV3Lgo3LiBGb2xsb3cgdXAgd2l0aCBuZXBocm9sb2d5IGluIGFwcHJveGltYXRlbHkgNCBtb250aHMsIHNvb25lciBmb3Igd29yc2VuaW5nIGVkZW1hLCBkZWNyZWFzZWQgdXJpbmUgb3V0cHV0LCByaXNpbmcgaG9tZSBCUCwgb3Igb3RoZXIgaW50ZXJ2YWwgY29uY2VybnMuCg==",
+        "title": "Clinical note"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-005",
+        "display": "Office Visit"
+      }
+    ],
+    "period": {
+      "start": "2024-06-17"
+    }
+  }
+}

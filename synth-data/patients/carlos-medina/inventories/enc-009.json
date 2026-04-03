@@ -1,0 +1,180 @@
+{
+  "encounter_id": "enc-009",
+  "encounter_index": 9,
+  "site_slug": "south-texas-rheumatology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Lab Visit",
+    "reason": "Routine methotrexate monitoring for seropositive rheumatoid arthritis; mild LFT elevation detected",
+    "period_start": "2021-09-13",
+    "period_end": "2021-09-14",
+    "participants": [
+      {
+        "name": "Dr. Alejandro Fuentes",
+        "role": "reviewing/ordering provider"
+      }
+    ],
+    "service_provider": "South Texas Rheumatology",
+    "location": "South Texas Rheumatology, San Antonio, TX"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "white blood cell count (WBC)",
+        "value": "5.8",
+        "unit": "x10^3/uL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "hemoglobin",
+        "value": "14.6",
+        "unit": "g/dL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "platelet count",
+        "value": "250",
+        "unit": "x10^3/uL",
+        "flag": "normal",
+        "specimen": "blood"
+      },
+      {
+        "name": "glucose",
+        "value": "98",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "creatinine",
+        "value": "0.9",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "alanine aminotransferase (ALT)",
+        "value": "52",
+        "unit": "U/L",
+        "reference_range": "upper limit of normal 40 U/L",
+        "flag": "high",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "aspartate aminotransferase (AST)",
+        "value": "48",
+        "unit": "U/L",
+        "reference_range": "upper limit of normal 40 U/L",
+        "flag": "high",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "albumin",
+        "value": "3.9",
+        "unit": "g/dL",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "total bilirubin",
+        "value": "0.7",
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "blood (serum)"
+      },
+      {
+        "name": "erythrocyte sedimentation rate (ESR)",
+        "value": "34",
+        "unit": "mm/hr",
+        "flag": "high",
+        "specimen": "blood"
+      },
+      {
+        "name": "C-reactive protein (CRP)",
+        "value": "2.0",
+        "unit": "mg/dL",
+        "flag": "high",
+        "specimen": "blood (serum)"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "seropositive rheumatoid arthritis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "mild drug-induced hepatotoxicity due to methotrexate",
+      "clinical_status": "active",
+      "onset_date": "2021-09-13",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "methotrexate 20 mg oral tablet",
+      "sig": "once weekly",
+      "status": "active",
+      "reason": "seropositive rheumatoid arthritis",
+      "action": "reference-existing"
+    },
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "methotrexate supplementation",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "laboratory results note",
+      "description": "Laboratory results note for routine methotrexate monitoring labs drawn 2021-09-13, results reviewed 2021-09-14 by Dr. Fuentes. Documents CBC (normal), CMP with mild LFT elevation (ALT 52, AST 48), elevated inflammatory markers (ESR 34, CRP 2.0), interpretation of findings as mild hepatotoxicity below threshold for dose change, and plan to continue methotrexate 20 mg weekly with repeat labs in 6–8 weeks. Patient advised to avoid alcohol and notified via telephone."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC) with differential",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "white blood cell count (WBC)",
+        "hemoglobin",
+        "platelet count"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "glucose",
+        "creatinine",
+        "alanine aminotransferase (ALT)",
+        "aspartate aminotransferase (AST)",
+        "albumin",
+        "total bilirubin"
+      ]
+    },
+    {
+      "type": "erythrocyte sedimentation rate (ESR)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "erythrocyte sedimentation rate (ESR)"
+      ]
+    },
+    {
+      "type": "C-reactive protein (CRP)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "C-reactive protein (CRP)"
+      ]
+    }
+  ],
+  "allergies": []
+}

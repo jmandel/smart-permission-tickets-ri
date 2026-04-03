@@ -1,0 +1,41 @@
+{
+  "resourceType": "Location",
+  "id": "01b3a1cf-a01b-4b5d-9744-b39211d9a0ba",
+  "status": "active",
+  "name": "University of Minnesota Cardiac Electrophysiology Clinic",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "612-625-8999",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "420 Delaware Street SE",
+      "MMC 508"
+    ],
+    "city": "Minneapolis",
+    "state": "MN",
+    "postalCode": "55455",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/cd04802f-d135-4320-a74a-428b4b29d64b",
+    "display": "University of Minnesota Cardiac Electrophysiology Clinic"
+  }
+}

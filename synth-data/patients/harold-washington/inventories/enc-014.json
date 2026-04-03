@@ -1,0 +1,229 @@
+{
+  "encounter_id": "enc-014",
+  "encounter_index": 14,
+  "site_slug": "emory-cognitive-neurology-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Comprehensive geriatric neurology evaluation; initial evaluation at new specialty center for known Alzheimer's disease with progressive cognitive decline",
+    "period_start": "2025-01-22",
+    "period_end": "2025-01-22",
+    "participants": [
+      {
+        "name": "Dr. Lisa Nakamura",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Emory Cognitive Neurology Center",
+    "location": "Emory Cognitive Neurology Center, 12 Executive Park Drive NE, Suite 200, Atlanta, GA 30329"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 136,
+        "value_diastolic": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 187,
+        "unit": "lbs"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "Mini-Mental State Examination (MMSE) total score",
+        "value": 17,
+        "range_max": 30,
+        "interpretation": "moderate cognitive impairment; decline of 2 points from 19/30 three months prior"
+      },
+      {
+        "name": "MMSE orientation subscore",
+        "value": 2,
+        "range_max": 10
+      },
+      {
+        "name": "MMSE registration subscore",
+        "value": 3,
+        "range_max": 3
+      },
+      {
+        "name": "MMSE attention and calculation subscore",
+        "value": 3,
+        "range_max": 5
+      },
+      {
+        "name": "MMSE recall subscore",
+        "value": 0,
+        "range_max": 3
+      },
+      {
+        "name": "MMSE language and praxis subscore",
+        "value": 9,
+        "range_max": 9
+      },
+      {
+        "name": "Montreal Cognitive Assessment (MoCA) total score",
+        "value": 13,
+        "range_max": 30,
+        "interpretation": "moderate cognitive impairment; decline from 20/30 at diagnosis in April 2022"
+      },
+      {
+        "name": "MoCA delayed recall subscore",
+        "value": 0,
+        "range_max": 5
+      },
+      {
+        "name": "MoCA orientation subscore",
+        "value": 2,
+        "range_max": 6
+      },
+      {
+        "name": "MoCA visuospatial/executive subscore",
+        "value": 1,
+        "range_max": 5
+      },
+      {
+        "name": "MoCA naming subscore",
+        "value": 2,
+        "range_max": 3
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "clinical_status": "active",
+      "onset_date": "2022-04",
+      "action": "update-existing",
+      "note": "Staging updated from mild to moderate based on MMSE 17/30, MoCA 13/30, and documented functional decline in multiple instrumental and basic ADLs. Five-point MMSE decline over 10 months, accelerated by bereavement and relocation."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2015",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "donepezil 10 mg oral tablet",
+      "sig": "once daily",
+      "status": "stopped",
+      "reason": "Alzheimer's disease",
+      "action": "update-existing"
+    },
+    {
+      "name": "donepezil 10 mg / memantine 28 mg extended-release oral capsule (Namzaric)",
+      "sig": "Take one capsule by mouth at bedtime daily",
+      "status": "active",
+      "reason": "Alzheimer's disease, moderate stage",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive geriatric neurology evaluation note documenting detailed history (including cognitive trajectory, bereavement, relocation), full neurological examination, neurocognitive testing results (MMSE 17/30, MoCA 13/30), assessment of Alzheimer's disease progression from mild to moderate stage, medication change to Namzaric, advance care planning discussion, and referrals for OT and brain MRI."
+    },
+    {
+      "type": "advance care planning documentation",
+      "description": "Documents goals-of-care discussion with patient and daughter/authorized representative. Patient expressed preference for comfort-focused care and stated he does not want intubation or mechanical ventilation. Authorized representative confirmed consistency with patient's long-standing wishes. Recommendation for formal legal documentation update in Georgia noted."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "neurocognitive testing battery report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "Mini-Mental State Examination (MMSE) total score",
+        "MMSE orientation subscore",
+        "MMSE registration subscore",
+        "MMSE attention and calculation subscore",
+        "MMSE recall subscore",
+        "MMSE language and praxis subscore",
+        "Montreal Cognitive Assessment (MoCA) total score",
+        "MoCA delayed recall subscore",
+        "MoCA orientation subscore",
+        "MoCA visuospatial/executive subscore",
+        "MoCA naming subscore"
+      ]
+    },
+    {
+      "type": "brain MRI",
+      "report_state": "ordered-not-resulted",
+      "description": "Repeat brain MRI ordered for comparison to 2022 baseline imaging to assess interval change. To be obtained before next follow-up visit in 3 months."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

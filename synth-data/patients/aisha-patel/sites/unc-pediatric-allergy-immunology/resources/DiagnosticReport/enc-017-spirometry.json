@@ -1,0 +1,62 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-017-spirometry",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "OTH",
+          "display": "Other"
+        }
+      ],
+      "text": "Pulmonary Function"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "18759-1",
+        "display": "Spirometry study"
+      }
+    ],
+    "text": "Spirometry with pre- and post-bronchodilator testing"
+  },
+  "subject": {
+    "reference": "Patient/1bda4140-96af-46b5-8d23-53fe5163e756",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2026-02-09T09:40:00-05:00",
+  "issued": "2026-02-09T10:00:00-05:00",
+  "performer": [
+    {
+      "reference": "Practitioner/1ab5acf7-c895-4088-a1a1-af3fa25674a6",
+      "type": "Practitioner",
+      "display": "Dr. Sunita Krishnamurthy"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-017-fev1-pre",
+      "display": "FEV1 (pre-bronchodilator)"
+    },
+    {
+      "reference": "Observation/enc-017-fvc-pre",
+      "display": "FVC (pre-bronchodilator)"
+    },
+    {
+      "reference": "Observation/enc-017-fev1-fvc-ratio",
+      "display": "FEV1/FVC ratio"
+    },
+    {
+      "reference": "Observation/enc-017-fev1-post",
+      "display": "FEV1 (post-bronchodilator)"
+    }
+  ],
+  "conclusion": "Spirometry performed successfully. FEV1 1.02 L (92% predicted), FVC 1.18 L (96% predicted), FEV1/FVC 0.86 (normal). Post-bronchodilator FEV1 1.12 L (10% improvement — borderline positive, threshold 12%). Mild obstruction with partial reversibility, consistent with asthma."
+}

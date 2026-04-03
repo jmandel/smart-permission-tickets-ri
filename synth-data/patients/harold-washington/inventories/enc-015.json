@@ -1,0 +1,214 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "emory-decatur-hospital-emergency-department",
+  "encounter": {
+    "class": "emergency",
+    "type": "emergency department visit",
+    "reason": "mechanical fall at home with forehead laceration",
+    "period_start": "2025-02-08T02:15:00-05:00",
+    "period_end": "2025-02-08T05:45:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Marcus Williams, MD",
+        "role": "emergency medicine attending"
+      }
+    ],
+    "service_provider": "Emory Decatur Hospital — Emergency Department",
+    "location": "Emory Decatur Hospital — Emergency Department, 2701 North Decatur Road, Decatur, GA 30033"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 148,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 90,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 92,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.8,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%",
+        "supplemental_oxygen": "none (room air)"
+      },
+      {
+        "name": "body weight",
+        "value": 188,
+        "unit": "lb",
+        "data_qualifier": "estimated"
+      },
+      {
+        "name": "pain severity (verbal numeric rating scale)",
+        "value": 4,
+        "unit": "out of 10",
+        "location": "forehead and right wrist"
+      },
+      {
+        "name": "Glasgow Coma Scale total score",
+        "value": 14,
+        "components": [
+          {
+            "name": "Glasgow Coma Scale eye opening",
+            "value": 4,
+            "text": "spontaneous"
+          },
+          {
+            "name": "Glasgow Coma Scale verbal response",
+            "value": 4,
+            "text": "confused — baseline cognitive impairment, not acute change"
+          },
+          {
+            "name": "Glasgow Coma Scale motor response",
+            "value": 6,
+            "text": "obeys commands"
+          }
+        ]
+      }
+    ],
+    "labs": [
+      {
+        "name": "glucose (point-of-care, capillary/whole blood)",
+        "value": 128,
+        "unit": "mg/dL",
+        "flag": "normal"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "mechanical fall",
+      "clinical_status": "active",
+      "onset_date": "2025-02-08",
+      "action": "create"
+    },
+    {
+      "name": "laceration of forehead",
+      "clinical_status": "active",
+      "onset_date": "2025-02-08",
+      "action": "create"
+    },
+    {
+      "name": "contusion of right wrist",
+      "clinical_status": "active",
+      "onset_date": "2025-02-08",
+      "action": "create"
+    },
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "acetaminophen 500 mg oral tablet",
+      "sig": "Take 500 mg by mouth every 6 hours as needed for pain. Do not exceed 2000 mg per day.",
+      "status": "active",
+      "reason": "forehead laceration pain, right wrist contusion pain",
+      "action": "create"
+    },
+    {
+      "name": "donepezil 10 mg / memantine 28 mg extended-release capsule",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [
+    {
+      "name": "wound irrigation with normal saline",
+      "body_site": "right forehead laceration",
+      "date": "2025-02-08",
+      "action": "create"
+    },
+    {
+      "name": "laceration repair with tissue adhesive (dermabond)",
+      "body_site": "right forehead, 2.5 cm superficial laceration",
+      "date": "2025-02-08",
+      "technique": "wound edges approximated and closed with tissue adhesive; no sutures required; hemostasis achieved",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "emergency department note",
+      "date": "2025-02-08",
+      "description": "ED provider note by Dr. Marcus Williams documenting evaluation and management of a 78-year-old male with moderate Alzheimer's disease presenting after a mechanical fall at home. Includes HPI obtained from daughter/healthcare POA, physical exam findings (forehead laceration, right wrist contusion), negative CT head and right hip X-ray results, laceration repair with dermabond, and medical decision-making."
+    },
+    {
+      "type": "discharge summary / patient instructions",
+      "date": "2025-02-08",
+      "description": "Discharge instructions provided to authorized representative Margaret Washington-Clarke. Includes dermabond wound care instructions (keep dry 24 hours, will slough off in 5–10 days), fall precautions, return precautions (worsening headache, vomiting, confusion beyond baseline, inability to bear weight), acetaminophen dosing, and follow-up with PCP Dr. Desai within 1 week."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "CT head without contrast",
+      "report_state": "summary-only",
+      "description": "No acute intracranial hemorrhage. No skull fracture. No midline shift. Chronic microvascular ischemic changes and generalized cortical atrophy consistent with known history of Alzheimer's disease."
+    },
+    {
+      "type": "right hip X-ray (AP and lateral)",
+      "report_state": "summary-only",
+      "description": "No fracture. No dislocation. Mild degenerative changes noted."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

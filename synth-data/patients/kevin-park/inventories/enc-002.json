@@ -1,0 +1,210 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Annual Wellness Exam",
+    "reason": "Annual wellness examination, hyperlipidemia identified",
+    "period_start": "2019-04-15T09:00:00-05:00",
+    "period_end": "2019-04-15T09:45:00-05:00",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, 3501 East Lake Street, Minneapolis, MN 55406"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 130,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 82,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 178,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 69,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.2,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "degF"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%"
+      }
+    ],
+    "labs": [
+      {
+        "name": "total cholesterol",
+        "value": 218,
+        "unit": "mg/dL",
+        "flag": "high",
+        "specimen": "serum (fasting)"
+      },
+      {
+        "name": "LDL cholesterol",
+        "value": 138,
+        "unit": "mg/dL",
+        "flag": "high",
+        "specimen": "serum (fasting)"
+      },
+      {
+        "name": "HDL cholesterol",
+        "value": 52,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "serum (fasting)"
+      },
+      {
+        "name": "triglycerides",
+        "value": 140,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "serum (fasting)"
+      },
+      {
+        "name": "hemoglobin A1c",
+        "value": 5.3,
+        "unit": "%",
+        "reference_range": "4.0–5.6 %",
+        "flag": "normal",
+        "specimen": "whole blood"
+      },
+      {
+        "name": "fasting glucose",
+        "value": 92,
+        "unit": "mg/dL",
+        "reference_range": "70–100 mg/dL",
+        "flag": "normal",
+        "specimen": "serum (fasting)"
+      },
+      {
+        "name": "creatinine",
+        "value": 0.9,
+        "unit": "mg/dL",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "potassium",
+        "value": 4,
+        "unit": "mEq/L",
+        "flag": "normal",
+        "specimen": "serum"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": ">90",
+        "unit": "mL/min/1.73m2",
+        "flag": "normal",
+        "specimen": "serum (calculated from creatinine)"
+      }
+    ],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "unit": "score",
+        "interpretation": "negative for depressive symptoms"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing",
+      "notes": "Well controlled on lisinopril 10 mg daily. BP 130/82 at goal."
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "onset_date": "2019-04-15",
+      "action": "create",
+      "notes": "Newly identified. LDL 138 mg/dL exceeds desirable range. Total cholesterol 218 mg/dL. 10-year ASCVD risk approximately 5.2% (borderline). Patient prefers dietary management over statin therapy."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take one 10 mg tablet by mouth once daily for hypertension",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "Take 1000 mg by mouth once daily",
+      "status": "active",
+      "reason": "general cardiovascular health / lipid support",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Comprehensive annual wellness exam note including full review of systems, physical examination, review of fasting labs (lipid panel, A1c, glucose, CMP), PHQ-2 screening, assessment of hypertension control, new diagnosis of hyperlipidemia with shared decision-making regarding statin vs. dietary management, and preventive care review including colonoscopy screening discussion."
+    },
+    {
+      "type": "patient instructions / care plan document",
+      "description": "Preventive care plan documenting age-appropriate cancer screening recommendations (colonoscopy ordered for first screening at age 51), immunization status review, and lifestyle counseling for lipid management."
+    },
+    {
+      "type": "patient education material",
+      "description": "Patient education materials on cholesterol management, dietary modifications to lower LDL (reduce saturated fat and red meat, increase omega-3 rich fish), and importance of regular physical activity including daily 30-minute walks."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "lipid panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "total cholesterol",
+        "LDL cholesterol",
+        "HDL cholesterol",
+        "triglycerides"
+      ]
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP drawn at visit. Creatinine 0.90 mg/dL, potassium 4.0 mEq/L, eGFR >90 mL/min/1.73m2 — all normal. Remainder of panel unremarkable. Only three component values explicitly reported."
+    }
+  ],
+  "allergies": []
+}

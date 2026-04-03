@@ -1,0 +1,53 @@
+{
+  "resourceType": "Organization",
+  "id": "e9829761-93af-4f85-8c90-991805d7989c",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "NPI"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "1692045837"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "DeKalb Primary Care",
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "2701 North Decatur Road",
+        "Suite 300"
+      ],
+      "city": "Decatur",
+      "state": "GA",
+      "postalCode": "30033"
+    }
+  ]
+}

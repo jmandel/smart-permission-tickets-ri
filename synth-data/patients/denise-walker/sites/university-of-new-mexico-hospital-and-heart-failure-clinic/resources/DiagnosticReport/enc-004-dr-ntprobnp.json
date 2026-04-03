@@ -1,0 +1,48 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-004-dr-ntprobnp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11502-2",
+        "display": "Laboratory report"
+      }
+    ],
+    "text": "NT-proBNP laboratory report"
+  },
+  "subject": {
+    "reference": "Patient/01fa5a17-41f0-4850-89a7-061c1dc199bd",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-004"
+  },
+  "effectiveDateTime": "2024-05-03",
+  "performer": [
+    {
+      "reference": "Organization/c95ca234-4a78-4460-9f8c-998d12bf5730",
+      "display": "University of New Mexico Hospital and Heart Failure Clinic"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-004-ntprobnp",
+      "display": "NT-proBNP"
+    }
+  ],
+  "conclusion": "NT-proBNP remained elevated but improved from hospitalization, consistent with clinically improving heart failure."
+}

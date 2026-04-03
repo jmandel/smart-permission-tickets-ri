@@ -1,0 +1,57 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-003-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/fff90155-eaa9-4315-ad01-7f58831e5df3",
+    "display": "Patricia Okafor"
+  },
+  "date": "2023-06-12T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/4946b360-c220-4f0b-ab49-eab859980a2d",
+      "display": "Dr. Adebayo Olatunde, MD"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UFJPR1JFU1MgTk9URQoKUGF0aWVudDogUGF0cmljaWEgT2thZm9yCkRhdGU6IDA2LzEyLzIwMjMKUHJvdmlkZXI6IERyLiBBZGViYXlvIE9sYXR1bmRlLCBNRApTaXRlOiBXZXN0aGVpbWVyIEZhbWlseSBNZWRpY2luZSwgOTc0NSBXZXN0aGVpbWVyIFJkLCBTdWl0ZSAyMDAsIEhvdXN0b24sIFRYIDc3MDQyClZpc2l0IFR5cGU6IE9mZmljZSBWaXNpdAoKU1VCSkVDVElWRToKUGF0cmljaWEgaXMgYSA1OS15ZWFyLW9sZCB3b21hbiBwcmVzZW50aW5nIHdpdGggd29yc2VuaW5nIGJpbGF0ZXJhbCBrbmVlIHBhaW4gb3ZlciB0aGUgcGFzdCAyLTMgbW9udGhzLiBQYWluIGlzIHdvcnNlIHdpdGggcHJvbG9uZ2VkIHN0YW5kaW5nIGFuZCBzdGFpciBjbGltYmluZywgaW1wcm92ZWQgd2l0aCByZXN0LiBTaGUgZGVuaWVzIGxvY2tpbmcsIHN3ZWxsaW5nLCBvciBpbnN0YWJpbGl0eSBpbiBlaXRoZXIga25lZS4gTm8gaGlzdG9yeSBvZiBhY3V0ZSBpbmp1cnkgb3IgdHJhdW1hLiBTaGUgcmVtYWlucyBwaHlzaWNhbGx5IGFjdGl2ZSwgd2Fsa2luZyBkYWlseS4gTm8gcmVjZW50IGZhbGxzLgoKUE1IOiBFc3NlbnRpYWwgaHlwZXJ0ZW5zaW9uICh3ZWxsLWNvbnRyb2xsZWQgb24gbGlzaW5vcHJpbCAxMCBtZyBkYWlseSksIHByZWRpYWJldGVzIChIYkExYyA2LjAlIGF0IGxhc3QgYW5udWFsIHZpc2l0LCBtYW5hZ2VkIHdpdGggZGlldCBhbmQgZXhlcmNpc2UpLgpBbGxlcmdpZXM6IFN1bGZvbmFtaWRlIGFudGliaW90aWNzIChyYXNoKS4KQ3VycmVudCBNZWRpY2F0aW9uczogTGlzaW5vcHJpbCAxMCBtZyBQTyBkYWlseS4KU29jaWFsIEhpc3Rvcnk6IFJldGlyZWQgdGVhY2hlciwgbm9uLXNtb2tlciwgbm8gYWxjb2hvbCBhYnVzZSwgYWN0aXZlIGluIGNodXJjaCBjb21tdW5pdHkuCgpST1M6Ck11c2N1bG9za2VsZXRhbDogQmlsYXRlcmFsIGtuZWUgcGFpbiBhcyBkZXNjcmliZWQgYWJvdmUuIE5vIGJhY2sgcGFpbiwgbm8gaGlwIHBhaW4uCkNvbnN0aXR1dGlvbmFsOiBObyBmZXZlciwgbm8gdW5pbnRlbnRpb25hbCB3ZWlnaHQgbG9zcywgbm8gZmF0aWd1ZS4KQWxsIG90aGVyIHN5c3RlbXMgcmV2aWV3ZWQgYW5kIG5lZ2F0aXZlLgoKT0JKRUNUSVZFOgpWaXRhbHM6IEJQIDEzNC84MiBtbUhnLCBIUiA3NCBicG0sIFdlaWdodCAxNjUgbGJzLCBCTUkgMjcuNCwgVGVtcCA5OC40IEYsIFJSIDE2LCBTcE8yIDk4JSBvbiByb29tIGFpci4KCk1TSyBFeGFtOgotIEJpbGF0ZXJhbCBrbmVlczogTWlsZCBjcmVwaXR1cyBvbiByYW5nZSBvZiBtb3Rpb24gYmlsYXRlcmFsbHkuIE5vIGVmZnVzaW9uIG5vdGVkLiBGdWxsIGV4dGVuc2lvbiBpbnRhY3QgYmlsYXRlcmFsbHkuIEZsZXhpb24gdG8gMTIwIGRlZ3JlZXMgYmlsYXRlcmFsbHkuIExpZ2FtZW50cyBzdGFibGUgdG8gdmFydXMvdmFsZ3VzIGFuZCBhbnRlcmlvci9wb3N0ZXJpb3IgZHJhd2VyIHRlc3RpbmcuIE5vIGpvaW50IGxpbmUgdGVuZGVybmVzcy4gTm8gd2FybXRoIG9yIGVyeXRoZW1hLiBHYWl0IHN0ZWFkeSBhbmQgbm9uLWFudGFsZ2ljLgoKUmVtYWluZGVyIG9mIGV4YW0gZGVmZXJyZWQgdG8gYW5udWFsIHdlbGxuZXNzIHZpc2l0LgoKQVNTRVNTTUVOVDoKMS4gTWlsZCBiaWxhdGVyYWwga25lZSBvc3Rlb2FydGhyaXRpcyDigJQgQ2xpbmljYWwgcHJlc2VudGF0aW9uIGNvbnNpc3RlbnQgd2l0aCBlYXJseSBkZWdlbmVyYXRpdmUgb3N0ZW9hcnRocml0aXMuIEdyYWR1YWwgb25zZXQsIG1lY2hhbmljYWwgcGF0dGVybiAod29yc2Ugd2l0aCBhY3Rpdml0eSwgYmV0dGVyIHdpdGggcmVzdCksIGNyZXBpdHVzIG9uIGV4YW0sIG5vIHNpZ25zIG9mIGluZmxhbW1hdG9yeSBhcnRocml0aXMgb3IgaW50ZXJuYWwgZGVyYW5nZW1lbnQuIEtuZWUgWC1yYXlzIG5vdCBpbmRpY2F0ZWQgYXQgdGhpcyB0aW1lIGdpdmVuIGNsYXNzaWMgcHJlc2VudGF0aW9uIGFuZCBtaWxkIHN5bXB0b21zLgoyLiBFc3NlbnRpYWwgaHlwZXJ0ZW5zaW9uIOKAlCBTdGFibGUsIHdlbGwtY29udHJvbGxlZCBvbiBsaXNpbm9wcmlsIDEwIG1nIGRhaWx5LiBCUCAxMzQvODIgdG9kYXkuCjMuIFByZWRpYWJldGVzIOKAlCBTdGFibGUsIG1hbmFnZWQgd2l0aCBkaWV0IGFuZCBleGVyY2lzZS4gTm8gbGFicyBkcmF3biB0b2RheS4KNC4gSHlwZXJsaXBpZGVtaWEgc2NyZWVuaW5nIOKAlCBMaXBpZCByZWNoZWNrIGRlZmVycmVkIHBlciBwYXRpZW50IHByZWZlcmVuY2UuIFBhdHJpY2lhIHJlcG9ydHMgaW1wcm92ZWQgZGlldGFyeSBoYWJpdHMgYW5kIHdvdWxkIGxpa2UgdG8gd2FpdCB1bnRpbCBoZXIgbmV4dCBhbm51YWwgd2VsbG5lc3MgdmlzaXQgZm9yIGxhYiB3b3JrLgoKUExBTjoKMS4gS25lZSBvc3Rlb2FydGhyaXRpczoKICAgLSBTdGFydCBuYXByb3hlbiAyNTAgbWcgUE8gdHdpY2UgZGFpbHkgYXMgbmVlZGVkIGZvciBwYWluLgogICAtIENvdW5zZWxlZCBwYXRpZW50IG9uIHdlaWdodCBtYW5hZ2VtZW50IGFuZCBtYWludGFpbmluZyBhIGhlYWx0aHkgQk1JIHRvIHJlZHVjZSBqb2ludCBzdHJlc3MuCiAgIC0gUmVjb21tZW5kZWQgbG93LWltcGFjdCBleGVyY2lzZTogc3dpbW1pbmcsIGN5Y2xpbmcsIG9yIHN0YXRpb25hcnkgYmlrZSBpbiBhZGRpdGlvbiB0byBkYWlseSB3YWxraW5nLgogICAtIEFkdmlzZWQgYXZvaWRpbmcgcHJvbG9uZ2VkIGtuZWVsaW5nIGFuZCByZXBldGl0aXZlIGhpZ2gtaW1wYWN0IGFjdGl2aXRpZXMuCiAgIC0gTm8gaW1hZ2luZyBvcmRlcmVkIGF0IHRoaXMgdGltZS4gV2lsbCByZWNvbnNpZGVyIGlmIHN5bXB0b21zIHdvcnNlbiBvciBmYWlsIHRvIHJlc3BvbmQgdG8gY29uc2VydmF0aXZlIG1hbmFnZW1lbnQuCjIuIEh5cGVydGVuc2lvbjogQ29udGludWUgbGlzaW5vcHJpbCAxMCBtZyBQTyBkYWlseS4gUmVjaGVjayBhdCBuZXh0IGFubnVhbCB2aXNpdC4KMy4gUHJlZGlhYmV0ZXM6IENvbnRpbnVlIGRpZXQgYW5kIGV4ZXJjaXNlLiBIYkExYyB0byBiZSByZWNoZWNrZWQgYXQgbmV4dCBhbm51YWwgd2VsbG5lc3MgdmlzaXQuCjQuIExpcGlkczogRGVmZXJyZWQgdG8gbmV4dCBhbm51YWwgdmlzaXQgcGVyIHBhdGllbnQgcHJlZmVyZW5jZS4KCkZvbGxvdy11cDogQXMgbmVlZGVkIGZvciBrbmVlIHN5bXB0b21zLCBvdGhlcndpc2UgYXQgbmV4dCBhbm51YWwgd2VsbG5lc3MgdmlzaXQuIFJldHVybiBzb29uZXIgaWYga25lZSBwYWluIHdvcnNlbnMsIHN3ZWxsaW5nIGRldmVsb3BzLCBvciBzeW1wdG9tcyBvZiBsb2NraW5nIG9yIGdpdmluZyB3YXkgb2NjdXIuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6CkRyLiBBZGViYXlvIE9sYXR1bmRlLCBNRApXZXN0aGVpbWVyIEZhbWlseSBNZWRpY2luZQo="
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-003"
+      }
+    ],
+    "period": {
+      "start": "2023-06-12"
+    }
+  }
+}

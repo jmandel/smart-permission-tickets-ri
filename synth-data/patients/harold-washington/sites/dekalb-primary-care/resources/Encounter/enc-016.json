@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-016",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "386472008",
+          "display": "Telephone consultation (procedure)"
+        }
+      ],
+      "text": "Telephone"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/5a404708-2fbd-4e0c-9a35-b5bc3502209e",
+    "display": "Harold James Washington"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attender"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/b63356b0-b7cd-430f-a8a3-87d5437d0d11",
+        "display": "Dr. Anita Desai"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-02-13",
+    "end": "2025-02-13"
+  },
+  "reasonCode": [
+    {
+      "text": "Post-ED follow-up check-in"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/a4cfa6c5-99a7-4a16-b7dd-6459d369f5d9",
+        "display": "DeKalb Primary Care"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/e9829761-93af-4f85-8c90-991805d7989c",
+    "display": "DeKalb Primary Care"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Dr. Desai's office called Margaret to check on Harold five days after his emergency department visit on February 8 (mechanical fall, forehead laceration repaired with dermabond, CT head and right hip X-ray negative)."
+    }
+  ]
+}

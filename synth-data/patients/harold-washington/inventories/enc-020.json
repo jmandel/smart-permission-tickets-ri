@@ -1,0 +1,59 @@
+{
+  "encounter_id": "enc-020",
+  "encounter_index": 20,
+  "site_slug": "emory-cognitive-neurology-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "radiology imaging encounter",
+    "reason": "brain MRI for Alzheimer's disease monitoring, comparison to prior study",
+    "period_start": "2025-04-02",
+    "period_end": "2025-04-02",
+    "participants": [
+      {
+        "name": "Dr. Lisa Nakamura",
+        "role": "ordering physician"
+      }
+    ],
+    "service_provider": "Emory Cognitive Neurology Center",
+    "location": "Emory Cognitive Neurology Center, 12 Executive Park Drive NE, Suite 200, Atlanta, GA 30329"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [],
+  "procedures": [
+    {
+      "name": "MRI of brain without and with intravenous gadolinium contrast",
+      "date": "2025-04-02",
+      "body_site": "brain",
+      "reason": "Alzheimer's disease monitoring, progressive cognitive decline, comparison to April 2022 brain MRI",
+      "action": "create"
+    }
+  ],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "radiology report",
+      "description": "Formal radiology report for MRI brain without and with contrast performed 2025-04-02. Documents progressive bilateral hippocampal atrophy (now moderate), mildly progressive generalized cortical atrophy most prominent in temporal and parietal lobes, chronic small-vessel ischemic white matter changes (Fazekas grade 1–2), and absence of acute pathology. Compared to April 2022 study from Jacksonville.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "MRI of brain without and with contrast",
+      "report_state": "summary-only",
+      "description": "Imaging report with structured impression. Findings include: (1) progressive neurodegenerative changes consistent with Alzheimer's disease with moderate bilateral hippocampal atrophy progressed from mild on April 2022 comparison; (2) mildly progressive generalized cortical atrophy, most prominent in temporal and parietal lobes; (3) chronic small-vessel ischemic white matter changes, Fazekas grade 1–2, mildly progressed; (4) no acute infarct, intracranial hemorrhage, mass lesion, or hydrocephalus. Results forwarded to Dr. Nakamura for review. Clinical correlation with neurocognitive testing recommended."
+    }
+  ],
+  "allergies": []
+}

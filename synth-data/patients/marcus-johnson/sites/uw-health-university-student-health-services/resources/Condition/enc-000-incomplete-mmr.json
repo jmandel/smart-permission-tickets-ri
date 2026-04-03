@@ -1,0 +1,68 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-000-incomplete-mmr",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "1002253002",
+        "display": "Immunization series incomplete (finding)"
+      }
+    ],
+    "text": "Incomplete immunization status — incomplete MMR vaccination series"
+  },
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "onsetDateTime": "2023-09-12",
+  "abatementDateTime": "2026-03-30",
+  "recordedDate": "2023-09-12",
+  "recorder": {
+    "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+    "display": "Dr. Rachel Okonkwo, MD"
+  },
+  "note": [
+    {
+      "text": "Single MMR dose at 12 months (June 2005), missing recommended second dose. Documented as incomplete MMR series — consider catch-up. Not flagged for immediate follow-up action at this visit."
+    },
+    {
+      "text": "2026-03-30: Resolved in the context of measles. Natural measles infection now confers durable immunity; second MMR dose no longer indicated for measles. Other immunizations remain up to date."
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "encounter_id": "enc-019",
+  "encounter_index": 19,
+  "site_slug": "ballard-family-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone Encounter",
+    "reason": "Lab results review",
+    "period_start": "2025-01-21",
+    "participants": [],
+    "service_provider": "Ballard Family Medicine",
+    "location": "Ballard Family Medicine, 5412 22nd Ave NW, Seattle, WA 98107"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "triglycerides",
+        "value": 152,
+        "unit": "mg/dL",
+        "reference_range": "< 150 mg/dL",
+        "flag": "high",
+        "note": "stable compared to prior values; consistent with quetiapine use"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate severity, in sustained remission",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "take one 50 mg tablet by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder in sustained remission",
+      "action": "create"
+    },
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Documents Dr. Tran's telephone call with Sarah Mitchell to review annual lab results. Covers review of CBC, CMP, and lipid panel findings (all normal except mildly elevated triglycerides at 152 mg/dL attributed to quetiapine), dietary counseling for hypertriglyceridemia, and provision of a 90-day naltrexone refill with plan to coordinate prescribing with Dr. Patel."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count",
+      "report_state": "summary-only",
+      "description": "CBC reviewed during telephone call; all values within normal limits. No individual component values documented."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "summary-only",
+      "description": "CMP reviewed during telephone call; all values within normal limits. No individual component values documented."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "summary-only",
+      "description": "Lipid panel reviewed during telephone call. Triglycerides mildly elevated at 152 mg/dL; remaining components within normal limits but individual values not documented."
+    }
+  ],
+  "allergies": []
+}

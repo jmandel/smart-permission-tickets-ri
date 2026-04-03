@@ -1,0 +1,70 @@
+{
+  "resourceType": "DocumentReference",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "69730-0",
+        "display": "Instructions"
+      }
+    ],
+    "text": "Patient Isolation Instructions"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "date": "2026-03-23T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+      "type": "Practitioner",
+      "display": "Dr. Rachel Okonkwo, MD"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/efac84bd-936d-44d1-be4f-0601b338e190",
+    "type": "Practitioner",
+    "display": "Dr. Rachel Okonkwo, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "UEFUSUVOVCBJTlNUUlVDVElPTlMg4oCUIE1FQVNMRVMgSVNPTEFUSU9OCgpQYXRpZW50OiBNYXJjdXMgRC4gSm9obnNvbgpEYXRlOiBNYXJjaCAyMywgMjAyNgpQcmVwYXJlZCBieTogUmFjaGVsIE9rb25rd28sIE1ELCBVVyBIZWFsdGggVW5pdmVyc2l0eSBTdHVkZW50IEhlYWx0aCBTZXJ2aWNlcwoKRElBR05PU0lTOiBZb3UgaGF2ZSBiZWVuIGRpYWdub3NlZCB3aXRoIG1lYXNsZXMgKHJ1YmVvbGEpLCBhIGhpZ2hseSBjb250YWdpb3VzIHZpcmFsIGluZmVjdGlvbi4KCklTT0xBVElPTiBSRVFVSVJFTUVOVFM6Ci0gWW91IG11c3QgcmVtYWluIGluIHlvdXIgZGVzaWduYXRlZCBpc29sYXRpb24gcm9vbSBpbiBVbml2ZXJzaXR5IEhvdXNpbmcgdW50aWwgTWFyY2ggMjcsIDIwMjYuCi0gRG8gTk9UIGxlYXZlIHlvdXIgcm9vbSBleGNlcHQgZm9yIG1lZGljYWwgZW1lcmdlbmNpZXMuCi0gRG8gTk9UIGF0dGVuZCBjbGFzc2VzLCBkaW5pbmcgaGFsbHMsIHJlY3JlYXRpb24gZmFjaWxpdGllcywgb3IgYW55IHB1YmxpYyBzcGFjZXMuCi0gSWYgYW55b25lIG11c3QgZW50ZXIgeW91ciByb29tLCB0aGV5IHNob3VsZCB3ZWFyIGFuIE45NSByZXNwaXJhdG9yIG1hc2suCi0gS2VlcCB5b3VyIGRvb3IgY2xvc2VkIGF0IGFsbCB0aW1lcy4KCkVYUEVDVEVEIENPVVJTRToKLSBGZXZlciB0eXBpY2FsbHkgcmVzb2x2ZXMgd2l0aGluIDMtNCBkYXlzIGFmdGVyIHJhc2ggb25zZXQuCi0gVGhlIHJhc2ggd2lsbCBjb250aW51ZSB0byBzcHJlYWQgZG93bndhcmQgb3ZlciAyLTMgZGF5cywgdGhlbiBiZWdpbiB0byBmYWRlIGluIHRoZSBvcmRlciBpdCBhcHBlYXJlZC4KLSBDb3VnaCBtYXkgcGVyc2lzdCBmb3IgMS0yIHdlZWtzLgotIFlvdSBzaG91bGQgc3RhcnQgZmVlbGluZyBiZXR0ZXIgd2l0aGluIDUtNyBkYXlzLgoKU0VMRi1DQVJFOgotIFRha2UgYWNldGFtaW5vcGhlbiA1MDAgbWcgZXZlcnkgNiBob3VycyBhcyBuZWVkZWQgZm9yIGZldmVyIGFuZCBkaXNjb21mb3J0LiBEbyBub3QgZXhjZWVkIDQsMDAwIG1nIGluIDI0IGhvdXJzLgotIFRha2Ugdml0YW1pbiBBIGFzIHByZXNjcmliZWQgKDIwMCwwMDAgSVUgdG9kYXkgYW5kIHRvbW9ycm93KS4KLSBEcmluayBwbGVudHkgb2YgZmx1aWRzIOKAlCB3YXRlciwgY2xlYXIgYnJvdGhzLCBlbGVjdHJvbHl0ZSBiZXZlcmFnZXMuIEFpbSBmb3IgYXQgbGVhc3QgOCBnbGFzc2VzIGRhaWx5LgotIFJlc3QgYXMgbXVjaCBhcyBwb3NzaWJsZS4KLSBFYXQgc21hbGwsIGZyZXF1ZW50IG1lYWxzIGFzIHRvbGVyYXRlZC4KCkZPTExPVy1VUDoKLSBUZWxlaGVhbHRoIHZpc2l0IHNjaGVkdWxlZCBmb3IgTWFyY2ggMjYsIDIwMjYuIFlvdSB3aWxsIHJlY2VpdmUgYSBsaW5rIHZpYSB5b3VyIHBhdGllbnQgcG9ydGFsLgoKUkVUVVJOIFBSRUNBVVRJT05TIOKAlCBTRUVLIElNTUVESUFURSBNRURJQ0FMIENBUkUgSUYgWU9VIEVYUEVSSUVOQ0U6Ci0gV29yc2VuaW5nIGRpZmZpY3VsdHkgYnJlYXRoaW5nIG9yIHNob3J0bmVzcyBvZiBicmVhdGgKLSBDb25mdXNpb24gb3IgYWx0ZXJlZCBtZW50YWwgc3RhdHVzCi0gUGVyc2lzdGVudCBoaWdoIGZldmVyIChhYm92ZSAxMDPCsEYpIGJleW9uZCBkYXkgNCBvZiByYXNoIChhZnRlciBNYXJjaCAyNikKLSBTZXZlcmUgaGVhZGFjaGUgd2l0aCBuZWNrIHN0aWZmbmVzcwotIE5ldyBvciB3b3JzZW5pbmcgc3ltcHRvbXMgYWZ0ZXIgaW5pdGlhbCBpbXByb3ZlbWVudAoKQ09OVEFDVDoKLSBVVyBIZWFsdGggVW5pdmVyc2l0eSBTdHVkZW50IEhlYWx0aCBTZXJ2aWNlczogNjA4LTI2NS01NjAwCi0gQWZ0ZXIgaG91cnMvZW1lcmdlbmNpZXM6IENhbGwgOTExIG9yIGdvIHRvIHRoZSBuZWFyZXN0IGVtZXJnZW5jeSBkZXBhcnRtZW50LiBJbmZvcm0gdGhlbSB5b3UgaGF2ZSBjb25maXJtZWQgbWVhc2xlcyBzbyB0aGV5IGNhbiB0YWtlIGFpcmJvcm5lIHByZWNhdXRpb25zLgoKSWYgeW91IGhhdmUgcXVlc3Rpb25zIGFib3V0IHlvdXIgZGlhZ25vc2lzIG9yIGlzb2xhdGlvbiwgY29udGFjdCBvdXIgb2ZmaWNlIGR1cmluZyBidXNpbmVzcyBob3Vycy4K"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-003"
+      }
+    ],
+    "period": {
+      "start": "2026-03-23",
+      "end": "2026-03-23"
+    }
+  },
+  "description": "Written patient instructions regarding measles isolation, self-care, return precautions, and follow-up.",
+  "id": "enc-003-isolation-instructions"
+}

@@ -1,0 +1,57 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-007-cbc",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "HM",
+          "display": "Hematology"
+        }
+      ],
+      "text": "Hematology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "57021-8",
+        "display": "CBC W Auto Differential panel - Blood"
+      }
+    ],
+    "text": "CBC with Differential"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "effectiveDateTime": "2021-04-12",
+  "issued": "2021-04-13T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-007-wbc",
+      "display": "Leukocytes [#/volume] in Blood by Automated count"
+    },
+    {
+      "reference": "Observation/enc-007-hgb",
+      "display": "Hemoglobin [Mass/volume] in Blood"
+    },
+    {
+      "reference": "Observation/enc-007-plt",
+      "display": "Platelets [#/volume] in Blood by Automated count"
+    }
+  ],
+  "conclusion": "CBC within normal limits. No cytopenias identified."
+}

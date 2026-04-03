@@ -1,0 +1,331 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "3118e807-601e-4eef-a4ca-dde252ced57d",
+    "extension": [
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2028-9",
+              "display": "Asian"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2040-4",
+              "display": "Korean"
+            },
+            "url": "detailed"
+          },
+          {
+            "valueString": "Korean-American",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Not Hispanic or Latino"
+            },
+            "url": "ombCategory"
+          },
+          {
+            "valueString": "Not Hispanic or Latino",
+            "url": "text"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      }
+    ],
+    "identifier": [
+      {
+        "use": "usual",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "MR",
+              "display": "Medical Record Number"
+            }
+          ],
+          "text": "Medical Record Number"
+        },
+        "system": "urn:oid:1.2.840.114350.1.13.283.2.7.5.737384.14",
+        "value": "MIM-100421"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Park",
+        "given": [
+          "Kevin",
+          "Junghwan"
+        ]
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "612-555-0148",
+        "use": "home"
+      },
+      {
+        "system": "email",
+        "value": "kevin.park@example.com",
+        "use": "home"
+      }
+    ],
+    "gender": "male",
+    "birthDate": "1968-09-14",
+    "address": [
+      {
+        "use": "home",
+        "line": [
+          "2841 Minnehaha Avenue"
+        ],
+        "city": "Minneapolis",
+        "state": "MN",
+        "postalCode": "55406",
+        "country": "US"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "M",
+          "display": "Married"
+        }
+      ],
+      "text": "Married"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "7fe430e0-4f5a-4448-952c-ce35b3b6e2d5",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "National Provider Identifier"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1234567890"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Healthcare Provider"
+      }
+    ],
+    "name": "Minnehaha Internal Medicine",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "612-555-0200",
+        "use": "work"
+      },
+      {
+        "system": "fax",
+        "value": "612-555-0201",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "line": [
+          "3501 East Lake Street"
+        ],
+        "city": "Minneapolis",
+        "state": "MN",
+        "postalCode": "55406",
+        "country": "US"
+      }
+    ]
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "identifier": [
+      {
+        "use": "official",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "NPI",
+              "display": "National Provider Identifier"
+            }
+          ],
+          "text": "National Provider Identifier"
+        },
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1528374650"
+      }
+    ],
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Whitfield",
+        "given": [
+          "Angela"
+        ],
+        "prefix": [
+          "Dr."
+        ],
+        "suffix": [
+          "MD"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Doctor of Medicine"
+        }
+      },
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://nucc.org/provider-taxonomy",
+              "code": "207R00000X",
+              "display": "Internal Medicine Physician"
+            }
+          ],
+          "text": "Internal Medicine Physician"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "e5c09f84-0a65-4621-90f7-d4e8c349cc20",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Andersen",
+        "given": [
+          "Rachel"
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "RN",
+              "display": "Registered Nurse"
+            }
+          ],
+          "text": "Registered Nurse"
+        }
+      },
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://nucc.org/provider-taxonomy",
+              "code": "163W00000X",
+              "display": "Registered Nurse"
+            }
+          ],
+          "text": "Registered Nurse"
+        }
+      }
+    ]
+  },
+  {
+    "resourceType": "Location",
+    "id": "f9035269-ec70-4976-8202-eb2c1e7e2067",
+    "status": "active",
+    "name": "Minnehaha Internal Medicine",
+    "mode": "instance",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "OF",
+            "display": "Outpatient Facility"
+          }
+        ],
+        "text": "Outpatient Facility"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "612-555-0200",
+        "use": "work"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "line": [
+        "3501 East Lake Street"
+      ],
+      "city": "Minneapolis",
+      "state": "MN",
+      "postalCode": "55406",
+      "country": "US"
+    },
+    "managingOrganization": {
+      "reference": "Organization/7fe430e0-4f5a-4448-952c-ce35b3b6e2d5",
+      "display": "Minnehaha Internal Medicine"
+    }
+  }
+]

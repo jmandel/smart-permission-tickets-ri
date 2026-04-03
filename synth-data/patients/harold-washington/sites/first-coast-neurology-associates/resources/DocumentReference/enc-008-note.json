@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-008-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "75221-2",
+        "display": "Neurology Progress note"
+      }
+    ],
+    "text": "Telemedicine Neurology Follow-Up Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/9abd3fa2-00e3-443d-b159-a6b73cd80082",
+    "display": "Harold James Washington"
+  },
+  "date": "2023-04-11T12:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+      "display": "Dr. Raymond Patel"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+    "display": "Dr. Raymond Patel"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRU1FRElDSU5FIE5FVVJPTE9HWSBGT0xMT1ctVVAgTk9URQoKRGF0ZTogMDQvMTEvMjAyMwpQcm92aWRlcjogUmF5bW9uZCBQYXRlbCwgTUQKUHJhY3RpY2U6IEZpcnN0IENvYXN0IE5ldXJvbG9neSBBc3NvY2lhdGVzLCA4MzYgUHJ1ZGVudGlhbCBEcml2ZSwgU3VpdGUgMTQwMCwgSmFja3NvbnZpbGxlLCBGTCAzMjIwNwpOUEk6IDE1Nzg5MzQyNjAKVmlzaXQgVHlwZTogVGVsZW1lZGljaW5lICh2aWRlbykKUGF0aWVudDogSGFyb2xkIFdhc2hpbmd0b24KRE9COiAwOS8xNC8xOTQ2CkFnZTogNzYgeWVhcnMKClNVQkpFQ1RJVkU6Ck1yLiBXYXNoaW5ndG9uIHByZXNlbnRzIHZpYSB0ZWxlbWVkaWNpbmUgdmlkZW8gdmlzaXQgZm9yIGhpcyBhcHByb3hpbWF0ZWx5IG9uZS15ZWFyIGZvbGxvdy11cCBzaW5jZSBBbHpoZWltZXIncyBkaXNlYXNlIGRpYWdub3Npcy4gSGlzIHdpZmUgRG9yb3RoeSBpcyBwcmVzZW50IGFuZCBhc3Npc3RlZCB3aXRoIHRoZSB0ZWNobm9sb2d5IHNldHVwLiBTaGUgcmVwb3J0cyBIYXJvbGQgaXMgbWFuYWdpbmcgd2VsbCBkYXktdG8tZGF5LiBIZSBpcyBhYmxlIHRvIGRyZXNzIGhpbXNlbGYsIG1hbmFnZSBiYXNpYyBoeWdpZW5lLCBhbmQgcGFydGljaXBhdGUgaW4gbWVhbHMgaW5kZXBlbmRlbnRseS4gRG9yb3RoeSBjb250aW51ZXMgdG8gbWFuYWdlIGhpcyBtZWRpY2F0aW9ucyB1c2luZyBhIHdlZWtseSBwaWxsIG9yZ2FuaXplci4gSGUgc3RpbGwgZHJpdmVzIHNob3J0IGZhbWlsaWFyIHJvdXRlcyB0byBjaHVyY2ggYW5kIHRoZSBWRlcgYnV0IG9ubHkgd2l0aCBEb3JvdGh5IGFjY29tcGFueWluZyBoaW0uIEhlIG9jY2FzaW9uYWxseSBiZWNvbWVzIGNvbmZ1c2VkIGFib3V0IGFwcG9pbnRtZW50cyBhbmQgcmVsaWVzIG9uIERvcm90aHkgZm9yIHNjaGVkdWxpbmcuIE5vIG5ldyBiZWhhdmlvcmFsIGRpc3R1cmJhbmNlcywgaGFsbHVjaW5hdGlvbnMsIHNsZWVwIGRpc3J1cHRpb24sIG9yIG1vb2QgY2hhbmdlcyByZXBvcnRlZC4gTm8gZmFsbHMuIE5vIHNpZGUgZWZmZWN0cyBmcm9tIGRvbmVwZXppbCBub3RlZC4gSGUgaXMgdG9sZXJhdGluZyB0aGUgbWVkaWNhdGlvbiB3ZWxsLgoKQ3VycmVudCBNZWRpY2F0aW9uczoKLSBEb25lcGV6aWwgMTAgbWcgZGFpbHkKLSBMaXNpbm9wcmlsIDIwIG1nIGRhaWx5Ci0gTWV0Zm9ybWluIDUwMCBtZyBCSUQKLSBBdG9ydmFzdGF0aW4gMjAgbWcgZGFpbHkKCkFsbGVyZ2llczogU3VsZm9uYW1pZGUgYW50aWJpb3RpY3MgKHJhc2gpCgpPQkpFQ1RJVkU6CkdlbmVyYWw6IFBhdGllbnQgYXBwZWFyZWQgd2VsbC1ncm9vbWVkIGFuZCBhbGVydCB2aWEgdmlkZW8uIFBsZWFzYW50IGFuZCBlbmdhZ2VkIGluIGNvbnZlcnNhdGlvbi4gRG9yb3RoeSBuZWVkZWQgdG8gcHJvbXB0IGhpbSBvY2Nhc2lvbmFsbHkgZHVyaW5nIHRoZSBpbnRlcnZpZXcuCgpDb2duaXRpdmUgQXNzZXNzbWVudDoKTU1TRSBhZG1pbmlzdGVyZWQgdmlhIHRlbGVtZWRpY2luZTogMjMvMzAKLSBSZWNhbGw6IDEvMwotIE9yaWVudGF0aW9uIHRvIGRhdGU6IG1pc3NlZCBkYXkgYW5kIGRhdGUgKC0yKQotIFNlcmlhbCBzZXZlbnM6IC0xCi0gUmVnaXN0cmF0aW9uLCBuYW1pbmcsIHJlcGV0aXRpb24sIDMtc3RhZ2UgY29tbWFuZCwgcmVhZGluZywgd3JpdGluZywgdmlzdW9zcGF0aWFsOiBpbnRhY3QKClNwZWVjaCBmbHVlbnQsIG5vIHBhcmFwaGFzaWMgZXJyb3JzIG5vdGVkLiBObyBmb2NhbCBuZXVyb2xvZ2ljYWwgZGVmaWNpdHMgb2JzZXJ2ZWQgb24gbGltaXRlZCB0ZWxlbWVkaWNpbmUgZXhhbS4KCkFTU0VTU01FTlQ6CjEuIEFsemhlaW1lcidzIGRpc2Vhc2UsIG1pbGQgc3RhZ2UgKEczMC45KSDigJQgc3RhYmxlIG9uIGRvbmVwZXppbCAxMCBtZyBkYWlseS4gTU1TRSAyMy8zMCB0b2RheSwgY29tcGFyZWQgdG8gMjQvMzAgYXQgUENQIG9mZmljZSBpbiBNYXJjaCAyMDIyLiBUaGlzIG9uZS1wb2ludCBjaGFuZ2Ugb3ZlciBhcHByb3hpbWF0ZWx5IG9uZSB5ZWFyIHJlcHJlc2VudHMgYSBzdGFibGUgdHJhamVjdG9yeSBhbmQgaXMgY29uc2lzdGVudCB3aXRoIGV4cGVjdGVkIHN0YWJpbGl6YXRpb24gb24gY2hvbGluZXN0ZXJhc2UgaW5oaWJpdG9yIHRoZXJhcHkuIE5vIGV2aWRlbmNlIG9mIGFjY2VsZXJhdGVkIGRlY2xpbmUuIFBhdGllbnQgcmVtYWlucyBpbiB0aGUgbWlsZCBzdGFnZSB3aXRoIHByZXNlcnZlZCBiYXNpYyBBRExzIGFuZCBwYXJ0aWFsbHkgcHJlc2VydmVkIElBRExzLgoKUExBTjoKMS4gQ29udGludWUgZG9uZXBlemlsIDEwIG1nIGRhaWx5IOKAlCB3ZWxsIHRvbGVyYXRlZCwgYXBwZWFycyB0byBiZSBwcm92aWRpbmcgY29nbml0aXZlIHN0YWJpbGl6YXRpb24uCjIuIFNhZmV0eSBjb3Vuc2VsaW5nOiBEaXNjdXNzZWQgZHJpdmluZyBzYWZldHkgd2l0aCBwYXRpZW50IGFuZCB3aWZlLiBSZWNvbW1lbmQgbGltaXRpbmcgZHJpdmluZyB0byBmYW1pbGlhciBzaG9ydCByb3V0ZXMgb25seSB3aXRoIERvcm90aHkgcHJlc2VudC4gV2lsbCByZWFzc2VzcyBkcml2aW5nIGZpdG5lc3MgYXQgZnV0dXJlIHZpc2l0cy4KMy4gUmVpbmZvcmNlIHN0cnVjdHVyZWQgZGFpbHkgcm91dGluZSB0byBzdXBwb3J0IG9yaWVudGF0aW9uIGFuZCBmdW5jdGlvbmFsIGluZGVwZW5kZW5jZS4KNC4gTmV4dCBmb2xsb3ctdXAgaW4gNiBtb250aHMgd2l0aCB0aGlzIG9mZmljZS4KNS4gUmVjb21tZW5kIE1NU0UgYWRtaW5pc3RyYXRpb24gYXQgUENQIGFubnVhbCB3ZWxsbmVzcyB2aXNpdHMgZm9yIGludGVyaW0gY29nbml0aXZlIG1vbml0b3JpbmcgYmV0d2VlbiBuZXVyb2xvZ3kgYXBwb2ludG1lbnRzLgo2LiBDb250aW51ZSBjb29yZGluYXRpb24gd2l0aCBEci4gT2thZm9yIGF0IFJpdmVyc2lkZSBJbnRlcm5hbCBNZWRpY2luZSBmb3IgY2hyb25pYyBkaXNlYXNlIG1hbmFnZW1lbnQuCjcuIERvcm90aHkgdG8gY29udGFjdCBvZmZpY2UgaWYgYW55IG5ldyBiZWhhdmlvcmFsIGNoYW5nZXMsIHNhZmV0eSBjb25jZXJucywgb3IgZnVuY3Rpb25hbCBkZWNsaW5lIG5vdGVkIGluIHRoZSBpbnRlcmltLgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpSYXltb25kIFBhdGVsLCBNRApCb2FyZCBDZXJ0aWZpZWQgTmV1cm9sb2dpc3QKRmlyc3QgQ29hc3QgTmV1cm9sb2d5IEFzc29jaWF0ZXMKMDQvMTEvMjAyMwo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-008"
+      }
+    ],
+    "period": {
+      "start": "2023-04-11",
+      "end": "2023-04-11"
+    }
+  }
+}

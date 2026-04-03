@@ -1,0 +1,77 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-002-gdm",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "resolved",
+        "display": "Resolved"
+      }
+    ],
+    "text": "Resolved"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "11687002",
+        "display": "Gestational diabetes mellitus (disorder)"
+      }
+    ],
+    "text": "Gestational diabetes mellitus, diet controlled"
+  },
+  "subject": {
+    "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "onsetDateTime": "2022-01-28",
+  "abatementDateTime": "2022-06-10",
+  "recordedDate": "2022-01-28",
+  "recorder": {
+    "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+    "display": "Dr. Carmen Villanueva"
+  },
+  "note": [
+    {
+      "text": "Diagnosed at 28 weeks gestation in third pregnancy. Abnormal 100 g 3-hour glucose tolerance test with 3 of 4 values abnormal. A1c 5.3% excludes pregestational diabetes. Initial management with diet, exercise, and home glucose monitoring."
+    },
+    {
+      "text": "Resolved postpartum. Six-week postpartum follow-up on 2022-06-10 confirmed normal fasting glucose (88 mg/dL) and A1c (5.4%), consistent with complete metabolic normalization after delivery. Patient counseled on elevated lifetime type 2 diabetes risk and recommended annual screening."
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

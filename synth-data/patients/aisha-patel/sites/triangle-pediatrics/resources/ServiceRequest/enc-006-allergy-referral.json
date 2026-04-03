@@ -1,0 +1,40 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-006-allergy-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306111000",
+        "display": "Referral to clinical allergy service (procedure)"
+      }
+    ],
+    "text": "Referral to Dr. Krishnamurthy at UNC Pediatric Allergy and Immunology for FeNO and spirometry evaluation"
+  },
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "authoredOn": "2024-03-15",
+  "requester": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-004-persistent-asthma",
+      "display": "Moderate persistent asthma"
+    }
+  ],
+  "note": [
+    {
+      "text": "Referral to Dr. Krishnamurthy at UNC Pediatric Allergy and Immunology for FeNO testing and spirometry evaluation given step-up in asthma therapy from low-dose ICS to ICS/LABA combination."
+    }
+  ]
+}

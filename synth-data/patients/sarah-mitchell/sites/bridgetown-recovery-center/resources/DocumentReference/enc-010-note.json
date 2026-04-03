@@ -1,0 +1,76 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-010-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "IOP Completion Visit Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "date": "2023-04-24T09:45:00-07:00",
+  "author": [
+    {
+      "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "display": "Dr. Rosa Delgado"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+    "display": "Dr. Rosa Delgado"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QlJJREdFVE9XTiBSRUNPVkVSWSBDRU5URVIKOTIwIFNFIFNhbmR5IEJsdmQsIFBvcnRsYW5kLCBPUiA5NzIxNApOUEk6IDM0NTY3ODkwMTIKClBST0dSRVNTIE5PVEUg4oCUIElPUCBDT01QTEVUSU9OIFZJU0lUCgpQYXRpZW50OiBTYXJhaCBFbGl6YWJldGggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzCkRhdGUgb2YgU2VydmljZTogMDQvMjQvMjAyMwpQcm92aWRlcjogUm9zYSBEZWxnYWRvLCBNRCAoQWRkaWN0aW9uIE1lZGljaW5lKQpDb3Vuc2Vsb3I6IExpc2EgSHVhbmcsIExDU1cKClNVQkpFQ1RJVkU6ClNhcmFoIHByZXNlbnRzIGZvciBoZXIgaW50ZW5zaXZlIG91dHBhdGllbnQgcHJvZ3JhbSAoSU9QKSBjb21wbGV0aW9uIHZpc2l0LiBTaGUgcmVwb3J0cyBzdXN0YWluZWQgc29icmlldHkgd2l0aCBhIHNvYnJpZXR5IGRhdGUgb2YgQXByaWwgMTQsIDIwMjMuIFNoZSBzdWNjZXNzZnVsbHkgY29tcGxldGVkIHRoZSBmdWxsIDEyLXdlZWsgSU9QLCBhdHRlbmRpbmcgYXBwcm94aW1hdGVseSAzNiBncm91cCB0aGVyYXB5IHNlc3Npb25zIGFuZCAxMiBpbmRpdmlkdWFsIGNvdW5zZWxpbmcgc2Vzc2lvbnMgd2l0aCBMaXNhIEh1YW5nLCBMQ1NXLiBTaGUgZGVzY3JpYmVzIGZlZWxpbmcgbW90aXZhdGVkIGFuZCBvcHRpbWlzdGljIGFib3V0IGhlciByZWNvdmVyeS4gU2hlIGhhcyBiZWVuIGF0dGVuZGluZyBBQSBtZWV0aW5ncyByZWd1bGFybHkgYW5kIHBsYW5zIHRvIGNvbnRpbnVlLiBTaGUgZGVuaWVzIGFueSBjcmF2aW5ncywgd2l0aGRyYXdhbCBzeW1wdG9tcywgb3IgdXJnZXMgdG8gZHJpbmsuIFNsZWVwIGhhcyBpbXByb3ZlZC4gTW9vZCBpcyBiZXR0ZXIgb3ZlcmFsbCwgdGhvdWdoIHNoZSBhY2tub3dsZWRnZXMgc29tZSByZXNpZHVhbCBsb3cgbW9vZCB3aGljaCBzaGUgYXR0cmlidXRlcyB0byBhZGp1c3RpbmcgdG8gYSBzb2JlciBsaWZlc3R5bGUuIFNoZSBjb250aW51ZXMgdG8gdGFrZSBuYWx0cmV4b25lIDUwIG1nIGRhaWx5IHdpdGhvdXQgc2lkZSBlZmZlY3RzLiBTaGUgaGFzIGJlZW4gdGFraW5nIHRoaWFtaW5lIGFzIGRpcmVjdGVkLiBObyBuZXcgbWVkaWNhbCBjb21wbGFpbnRzLiBObyBtZWRpY2F0aW9uIHNpZGUgZWZmZWN0cyByZXBvcnRlZC4KClBNSDogQWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIChkaWFnbm9zZWQgSmFudWFyeSAyMDIzKS4gQmlwb2xhciBJSSBkaXNvcmRlciAoZGlhZ25vc2VkIDIwMTksIG1hbmFnZWQgYnkgRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzKS4gSHlwZXJ0cmlnbHljZXJpZGVtaWEsIG1pbGQuCk1lZGljYXRpb25zOiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5LCB0aGlhbWluZSAxMDAgbWcgUE8gZGFpbHksIGxhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSwgcXVldGlhcGluZSA1MCBtZyBQTyBhdCBiZWR0aW1lLgpBbGxlcmdpZXM6IFN1bGZhIGFudGliaW90aWNzIChUTVAtU01YKSDigJQgcmFzaC4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMjAvNzYsIEhSIDcyLCBUZW1wIDk4LjTCsEYsIFJSIDE0LCBTcE8yIDk5JSwgV2VpZ2h0IDE0MiBsYnMsIEJNSSAyMi45CkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nLCB3ZWxsLW5vdXJpc2hlZCBmZW1hbGUgaW4gbm8gYWN1dGUgZGlzdHJlc3MuIEFmZmVjdCBpcyBicmlnaHQgYW5kIGFwcHJvcHJpYXRlLiBObyB0cmVtb3IuIE5vIGRpYXBob3Jlc2lzLgpIRUVOVDogU2NsZXJhIGFuaWN0ZXJpYy4gTXVjb3VzIG1lbWJyYW5lcyBtb2lzdC4KQWJkb21lbjogU29mdCwgbm9udGVuZGVyLCBubyBoZXBhdG9tZWdhbHkuClBzeWNoOiBBbGVydCBhbmQgb3JpZW50ZWQgeDMuIE1vb2QgImdvb2QuIiBBZmZlY3QgY29uZ3J1ZW50IGFuZCBldXRoeW1pYy4gTm8gc3VpY2lkYWwgb3IgaG9taWNpZGFsIGlkZWF0aW9uLiBJbnNpZ2h0IGFuZCBqdWRnbWVudCBpbXByb3ZlZC4KClNjcmVlbmluZyBUb29sczoKLSBBVURJVCBzY29yZTogNCAobG93IHJpc2s7IGltcHJvdmVkIGZyb20gMjggYXQgaW50YWtlIGluIEphbnVhcnkgMjAyMykKLSBQSFEtOSBzY29yZTogOCAobWlsZCBkZXByZXNzaW9uOyBpbXByb3ZlZCBmcm9tIHByaW9yIHNjb3JlcykKCkxhYnMgKGRyYXduIHRvZGF5KToKLSBDTVAgd2l0aCBsaXZlciBlbnp5bWVzOiBXaXRoaW4gbm9ybWFsIGxpbWl0cwotIEFTVDogMjQgVS9MIChub3JtYWwpCi0gQUxUOiAyOCBVL0wgKG5vcm1hbCkKLSBHR1Q6IDM4IFUvTCAobm9ybWFsKQpMaXZlciBlbnp5bWVzIGhhdmUgZnVsbHkgbm9ybWFsaXplZCBmcm9tIGVsZXZhdGVkIHZhbHVlcyBhdCBpbnRha2UgKEFTVCA1MiwgQUxUIDYxLCBHR1QgODkgaW4gSmFudWFyeSAyMDIzKS4KCkFTU0VTU01FTlQ6CjEuIEFsY29ob2wgdXNlIGRpc29yZGVyLCBtb2RlcmF0ZSDigJQgaW4gZWFybHkgcmVtaXNzaW9uLiBQYXRpZW50IGhhcyBhY2hpZXZlZCBzdXN0YWluZWQgc29icmlldHkgKHNvYnJpZXR5IGRhdGUgMDQvMTQvMjAyMykgYW5kIHN1Y2Nlc3NmdWxseSBjb21wbGV0ZWQgdGhlIDEyLXdlZWsgSU9QLiBBVURJVCBzY29yZSBoYXMgZGVjcmVhc2VkIGZyb20gMjggdG8gNCwgaW5kaWNhdGluZyBtYXJrZWQgaW1wcm92ZW1lbnQuIExpdmVyIGVuenltZXMgZnVsbHkgbm9ybWFsaXplZCwgY29uc2lzdGVudCB3aXRoIGNlc3NhdGlvbiBvZiBhbGNvaG9sIHVzZS4KMi4gQmlwb2xhciBJSSBkaXNvcmRlciDigJQgc3RhYmxlIG9uIGN1cnJlbnQgcmVnaW1lbiBwZXIgRHIuIE9rYWZvci4gTm8gZXZpZGVuY2Ugb2YgbW9vZCBkZXN0YWJpbGl6YXRpb24gZHVyaW5nIHRyZWF0bWVudCBjb3Vyc2UuCjMuIERlcHJlc3NpdmUgc3ltcHRvbXMsIG1pbGQg4oCUIFBIUS05IG9mIDgsIGltcHJvdmVkLiBMaWtlbHkgcmVsYXRlZCB0byBib3RoIHVuZGVybHlpbmcgYmlwb2xhciBJSSBkZXByZXNzaXZlIGNvbXBvbmVudCBhbmQgcHN5Y2hvc29jaWFsIGFkanVzdG1lbnQgaW4gcmVjb3ZlcnkuIFdpbGwgY29udGludWUgdG8gbW9uaXRvci4KClBMQU46CjEuIENvbnRpbnVlIG5hbHRyZXhvbmUgNTAgbWcgUE8gZGFpbHkgaW5kZWZpbml0ZWx5IGZvciBjcmF2aW5nIHN1cHByZXNzaW9uIGFuZCByZWxhcHNlIHByZXZlbnRpb24uIFBhdGllbnQgdG9sZXJhdGluZyB3ZWxsIHdpdGggbm8gYWR2ZXJzZSBlZmZlY3RzLgoyLiBEaXNjb250aW51ZSB0aGlhbWluZSAxMDAgbWcgZGFpbHkg4oCUIG5vIGxvbmdlciBjbGluaWNhbGx5IGluZGljYXRlZCBnaXZlbiBub3JtYWxpemVkIGxpdmVyIGZ1bmN0aW9uIGFuZCBhZGVxdWF0ZSBudXRyaXRpb25hbCBzdGF0dXMuCjMuIENvbnRpbnVlIEFBIG1lZXRpbmdzIGF0IGxlYXN0IHR3aWNlIHdlZWtseSBhcyBwYXJ0IG9mIGFmdGVyY2FyZSBzdXBwb3J0Lgo0LiBBZnRlcmNhcmUgZm9sbG93LXVwIGFwcG9pbnRtZW50IHNjaGVkdWxlZCBpbiAzIG1vbnRocyAoYXBwcm94aW1hdGVseSBKdWx5IDIwMjMpIHdpdGggRHIuIERlbGdhZG8gdG8gcmVhc3Nlc3Mgc29icmlldHksIG1lZGljYXRpb24gdG9sZXJhbmNlLCBhbmQgc2NyZWVuaW5nIHNjb3Jlcy4KNS4gSU9QIGNvbXBsZXRpb24gc3VtbWFyeSBub3RlIGFuZCBpbmRpdmlkdWFsaXplZCBhZnRlcmNhcmUgcGxhbiBnZW5lcmF0ZWQgYW5kIHByb3ZpZGVkIHRvIHBhdGllbnQuCjYuIENvb3JkaW5hdGlvbiBub3RlIHNlbnQgdG8gRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzIGRvY3VtZW50aW5nIElPUCBjb21wbGV0aW9uLCBzdXN0YWluZWQgc29icmlldHksIG5vcm1hbGl6ZWQgbGFicywgYW5kIG9uZ29pbmcgbmFsdHJleG9uZSBwbGFuLiBEci4gT2thZm9yIHRvIGNvbnRpbnVlIG1hbmFnZW1lbnQgb2YgYmlwb2xhciBJSSBkaXNvcmRlciBhbmQgbW9uaXRvciBmb3IgYW55IG1vb2QgY2hhbmdlcyBpbiBlYXJseSByZWNvdmVyeS4KNy4gUGF0aWVudCBlZHVjYXRlZCBvbiByZWxhcHNlIHByZXZlbnRpb24gc3RyYXRlZ2llcywgaW1wb3J0YW5jZSBvZiBjb250aW51ZWQgbmFsdHJleG9uZSBhZGhlcmVuY2UsIGFuZCB3aGVuIHRvIHNlZWsgdXJnZW50IGNhcmUgKHJldHVybiBvZiBjcmF2aW5ncywgbW9vZCBpbnN0YWJpbGl0eSwgd2l0aGRyYXdhbCBzeW1wdG9tcykuCgpJT1AgQ09NUExFVElPTiBTVU1NQVJZOgpTYXJhaCBNaXRjaGVsbCBzdWNjZXNzZnVsbHkgY29tcGxldGVkIHRoZSBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlciAxMi13ZWVrIGludGVuc2l2ZSBvdXRwYXRpZW50IHByb2dyYW0gZm9yIGFsY29ob2wgdXNlIGRpc29yZGVyIChtb2RlcmF0ZSkuIFNoZSBhdHRlbmRlZCBhcHByb3hpbWF0ZWx5IDM2IGdyb3VwIHNlc3Npb25zIGFuZCAxMiBpbmRpdmlkdWFsIGNvdW5zZWxpbmcgc2Vzc2lvbnMuIFNoZSBhY2hpZXZlZCBzb2JyaWV0eSBvbiBBcHJpbCAxNCwgMjAyMy4gQXQgcHJvZ3JhbSBjb21wbGV0aW9uLCBoZXIgQVVESVQgc2NvcmUgaW1wcm92ZWQgZnJvbSAyOCAoaGlnaCByaXNrKSB0byA0IChsb3cgcmlzayksIFBIUS05IGltcHJvdmVkIHRvIDggKG1pbGQpLCBhbmQgbGl2ZXIgZW56eW1lcyBmdWxseSBub3JtYWxpemVkLiBQcm9nbm9zaXMgaXMgZmF2b3JhYmxlIHdpdGggY29udGludWVkIGVuZ2FnZW1lbnQgaW4gYWZ0ZXJjYXJlLCBtZWRpY2F0aW9uIGFkaGVyZW5jZSwgYW5kIGNvbW11bml0eSBzdXBwb3J0LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpSb3NhIERlbGdhZG8sIE1ECkFkZGljdGlvbiBNZWRpY2luZQpCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlcgpEYXRlOiAwNC8yNC8yMDIzCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-010"
+      }
+    ],
+    "period": {
+      "start": "2023-04-24T09:00:00-07:00",
+      "end": "2023-04-24T09:45:00-07:00"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "ETH",
+        "display": "substance abuse information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "encounter_id": "enc-003",
+  "encounter_index": 3,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Third wheezing episode, prednisolone course",
+    "period_start": "2023-02-08",
+    "period_end": "2023-02-08",
+    "participants": [
+      {
+        "name": "Dr. Megan Harlow, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 128,
+        "unit": "beats/minute"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 30,
+        "unit": "breaths/minute"
+      },
+      {
+        "name": "oxygen saturation (pre-treatment)",
+        "value": 95,
+        "unit": "%",
+        "note": "on room air, pre-nebulization"
+      },
+      {
+        "name": "body temperature",
+        "value": 37.8,
+        "unit": "degrees Celsius"
+      },
+      {
+        "name": "body weight",
+        "value": 13.2,
+        "unit": "kg",
+        "note": "40th percentile for age"
+      },
+      {
+        "name": "body height (recumbent length)",
+        "value": 92,
+        "unit": "cm",
+        "note": "50th percentile for age"
+      },
+      {
+        "name": "oxygen saturation (post-treatment)",
+        "value": 97,
+        "unit": "%",
+        "note": "on room air, post-albuterol nebulization"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "recurrent viral-induced wheezing",
+      "clinical_status": "active",
+      "onset_date": "2022-12",
+      "action": "create",
+      "note": "Third wheezing episode in 8 weeks. Prior episodes managed with PRN albuterol; this episode more severe with incomplete response to home albuterol and overnight symptoms. Likely trajectory toward persistent asthma diagnosis; formal diagnosis deferred to upcoming 3-year well-child visit."
+    },
+    {
+      "name": "acute viral upper respiratory infection",
+      "clinical_status": "active",
+      "onset_date": "2023-02-04",
+      "action": "create",
+      "note": "Low-grade fever, rhinorrhea, pharyngeal erythema. Viral trigger for current wheezing exacerbation."
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atopic dermatitis, moderate",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "prednisolone 12 mg oral solution",
+      "sig": "prednisolone 12 mg (1 mg/kg/day) by mouth once daily for 3 days",
+      "status": "active",
+      "reason": "acute wheezing exacerbation (recurrent viral-induced wheezing)",
+      "action": "create"
+    },
+    {
+      "name": "albuterol (ProAir HFA) 90 mcg metered dose inhaler",
+      "sig": "2 puffs inhaled every 4-6 hours as needed for wheezing, via spacer with mask",
+      "status": "active",
+      "reason": "recurrent viral-induced wheezing",
+      "action": "reference-existing"
+    },
+    {
+      "name": "cetirizine 2.5 mg oral liquid",
+      "sig": "2.5 mg by mouth once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Acute office visit note documenting evaluation and management of third wheezing episode in 8 weeks, including history of worsening response to home albuterol with overnight symptoms, exam findings of bilateral expiratory wheezing with subcostal retractions, partial response to in-office nebulization, assessment of recurrent viral-induced wheezing with discussion of likely trajectory toward persistent asthma diagnosis, and plan including prednisolone course with follow-up at 3-year well-child visit."
+    },
+    {
+      "type": "patient education / instructions",
+      "description": "Written instructions on wheezing management at home and when to seek emergency care, including warning signs such as worsening respiratory distress, retractions, inability to feed, oxygen saturation below 92%, and poor response to albuterol."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

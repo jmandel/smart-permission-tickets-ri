@@ -1,0 +1,101 @@
+{
+  "encounter_id": "enc-001",
+  "encounter_index": 1,
+  "site_slug": "uw-health-university-student-health-services",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Acute upper respiratory infection (nasal congestion, sore throat, cough × 3 days)",
+    "period_start": "2025-01-22T09:00:00-06:00",
+    "period_end": "2025-01-22T09:30:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Rachel Okonkwo, MD",
+        "role": "attending physician"
+      }
+    ],
+    "service_provider": "UW Health University Student Health Services",
+    "location": "UW Health University Student Health Services, Madison, WI"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value_systolic": 120,
+        "value_diastolic": 74,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 76,
+        "unit": "bpm"
+      },
+      {
+        "name": "body temperature",
+        "value": 99.1,
+        "unit": "°F"
+      },
+      {
+        "name": "body weight",
+        "value": 178,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 24.8,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      }
+    ],
+    "labs": [
+      {
+        "name": "rapid streptococcal antigen test",
+        "value": "negative",
+        "flag": "normal",
+        "specimen": "throat swab",
+        "interpretation": "negative for group A streptococcus"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute viral upper respiratory infection",
+      "clinical_status": "active",
+      "onset_date": "2025-01-19",
+      "action": "create"
+    }
+  ],
+  "medications": [],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents an acute office visit for a 20-year-old male presenting with 3-day history of nasal congestion, sore throat, and cough. Exam findings include mild oropharyngeal erythema without exudates, clear lungs, and low-grade temperature. Rapid strep test negative. Diagnosed with acute viral URI; supportive care recommended with return precautions."
+    },
+    {
+      "type": "patient education / instructions",
+      "description": "Written patient handout covering viral upper respiratory infection self-care, including rest, oral hydration, OTC analgesic use, and return precautions (fever >101 °F, difficulty breathing, symptoms persisting beyond 10 days)."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "rapid streptococcal antigen test",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "rapid streptococcal antigen test"
+      ]
+    }
+  ],
+  "allergies": []
+}

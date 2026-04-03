@@ -1,0 +1,178 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "md-anderson-cancer-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Clinical trial enrollment for first-line treatment of non-small cell lung cancer",
+    "period_start": "2024-12-02",
+    "participants": [
+      {
+        "name": "Dr. Carlos Menendez, MD",
+        "role": "Attending physician, Thoracic Oncology"
+      },
+      {
+        "name": "Jennifer Liu, RN",
+        "role": "Research Coordinator, consent witness"
+      },
+      {
+        "name": "Dr. Amy Pham, PharmD",
+        "role": "Oncology Pharmacist, medication counseling"
+      }
+    ],
+    "service_provider": "The University of Texas MD Anderson Cancer Center",
+    "location": "1515 Holcombe Blvd, Houston, TX 77030"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 130,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 78,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "value": "130/78",
+        "unit": "mmHg",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 130,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 78,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 72,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body weight",
+        "value": 149,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 24.8,
+        "unit": "kg/m²"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 96,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "non-small cell lung cancer, stage IIIA, adenocarcinoma of the right upper lobe",
+      "clinical_status": "active",
+      "onset_date": "2024-10",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "onset_date": "2010",
+      "action": "reference-existing"
+    },
+    {
+      "name": "prediabetes",
+      "clinical_status": "active",
+      "onset_date": "2018",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "folic acid 1 mg oral tablet",
+      "sig": "Take 1 mg by mouth once daily, starting today; must be taken for at least 7 days prior to first pemetrexed dose; continue until directed to stop",
+      "status": "active",
+      "reason": "pemetrexed supplementation (lung cancer treatment protocol)",
+      "action": "create"
+    },
+    {
+      "name": "ondansetron 8 mg oral tablet",
+      "sig": "Take 8 mg by mouth as pre-medication prior to chemotherapy",
+      "status": "active",
+      "reason": "prevention of chemotherapy-induced nausea (lung cancer treatment)",
+      "action": "create"
+    },
+    {
+      "name": "dexamethasone 4 mg oral tablet",
+      "sig": "Take 4 mg by mouth the day before, day of, and day after pemetrexed infusion per protocol",
+      "status": "active",
+      "reason": "pemetrexed premedication to reduce hypersensitivity reactions and skin toxicity",
+      "action": "create"
+    },
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 10 mg by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "vitamin B12 (cyanocobalamin) 1000 mcg intramuscular injection",
+      "sig": "1000 mcg intramuscular, administered in office on 2024-12-02",
+      "status": "completed",
+      "reason": "required pemetrexed supplementation",
+      "action": "create",
+      "resource_type": "MedicationAdministration"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, 2024-2025 season",
+      "date": "2024-12-02",
+      "route": "intramuscular"
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Clinical trial consent and enrollment visit. Documents informed consent discussion, trial protocol review (NCT05820295, pembrolizumab + carboplatin/pemetrexed vs carboplatin/pemetrexed for stage IIIA NSCLC), patient confirmation of understanding, consent signing, randomization to experimental arm, HIPAA research authorization for historical records from Westheimer Family Medicine and Houston Pulmonary Associates, physical examination findings, vitals, and treatment plan including Cycle 1 scheduled for January 6, 2025."
+    },
+    {
+      "type": "pharmacy counseling note",
+      "description": "Pre-treatment medication counseling by Dr. Amy Pham, PharmD, covering chemotherapy regimen details, anticipated side effects (nausea, fatigue, myelosuppression, renal toxicity, immune-related adverse events), supportive medications initiated (folic acid, vitamin B12, ondansetron, dexamethasone), and patient education."
+    },
+    {
+      "type": "consent form",
+      "description": "Signed informed consent for participation in Phase III clinical trial NCT05820295 (pembrolizumab + carboplatin/pemetrexed vs carboplatin/pemetrexed alone for unresectable stage III NSCLC). Includes HIPAA research authorization for access to historical medical records from Westheimer Family Medicine and Houston Pulmonary Associates covering January 1, 2022 through present. Witnessed by Jennifer Liu, RN."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

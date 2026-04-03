@@ -1,0 +1,41 @@
+{
+  "resourceType": "Location",
+  "id": "69caa103-8a13-4093-957a-249a1b61bcff",
+  "status": "active",
+  "name": "Emory Decatur Hospital — Emergency Department",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "ER",
+          "display": "Emergency room"
+        }
+      ],
+      "text": "Emergency Department"
+    }
+  ],
+  "physicalType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+        "code": "si",
+        "display": "Site"
+      }
+    ],
+    "text": "Site"
+  },
+  "address": {
+    "use": "work",
+    "line": [
+      "2701 North Decatur Road"
+    ],
+    "city": "Decatur",
+    "state": "GA",
+    "postalCode": "30033"
+  },
+  "managingOrganization": {
+    "reference": "Organization/8336922b-928c-4ade-a187-28313e7bee13",
+    "display": "Emory Decatur Hospital — Emergency Department"
+  }
+}

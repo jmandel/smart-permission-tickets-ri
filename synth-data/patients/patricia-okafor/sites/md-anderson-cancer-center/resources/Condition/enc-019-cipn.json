@@ -1,0 +1,63 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-019-cipn",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "707088000",
+        "display": "Peripheral neuropathy due to chemotherapy (disorder)"
+      }
+    ],
+    "text": "Chemotherapy-induced peripheral neuropathy"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-020"
+  },
+  "onsetDateTime": "2025-02-17",
+  "recordedDate": "2025-02-17",
+  "note": [
+    {
+      "text": "Grade 1 per CTCAE v5.0. Bilateral fingertip numbness and tingling, no motor component. Attributed to cumulative carboplatin toxicity. Gabapentin 300 mg PO at bedtime initiated for symptomatic management."
+    },
+    {
+      "text": "2025-03-10 (Cycle 4): Improved from grade 2 at Cycle 3 to grade 1 on gabapentin 300 mg QHS. Numbness now limited to fingertip tips bilaterally, not interfering with daily activities. Carboplatin dose reduction from Cycle 3 maintained."
+    }
+  ]
+}

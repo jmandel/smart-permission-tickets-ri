@@ -1,0 +1,98 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-017-pembrolizumab",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "inpatient",
+          "display": "Inpatient"
+        }
+      ],
+      "text": "Inpatient"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "1657745",
+        "display": "pembrolizumab Injection"
+      }
+    ],
+    "text": "pembrolizumab 200 mg intravenous infusion"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-021"
+  },
+  "authoredOn": "2025-01-06",
+  "requester": {
+    "reference": "Practitioner/829b1bce-a840-494b-95a3-3c5774690a80",
+    "type": "Practitioner",
+    "display": "Dr. Carlos Menendez, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-013-adenocarcinoma",
+      "display": "Non-small cell lung cancer, adenocarcinoma, right upper lobe"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "200 mg IV over 30 minutes, every 3 weeks (maintenance phase per NCT05820295, following completion of 4 induction cycles)",
+      "patientInstruction": "Pembrolizumab 200 mg IV infusion over 30 minutes every 3 weeks. Maintenance therapy.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 3,
+          "periodUnit": "wk"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "47625008",
+            "display": "Intravenous route (qualifier value)"
+          }
+        ],
+        "text": "Intravenous"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 200,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Cycle 1 administered 2025-01-06. No infusion reactions. Per clinical trial NCT05820295 protocol."
+    },
+    {
+      "text": "2025-03-24: Transitioned to maintenance monotherapy following completion of 4 induction cycles (pembrolizumab + carboplatin + pemetrexed). Interim restaging CT shows partial response (RECIST 1.1, 33% decrease in target lesion). Carboplatin and pemetrexed discontinued per protocol."
+    }
+  ]
+}

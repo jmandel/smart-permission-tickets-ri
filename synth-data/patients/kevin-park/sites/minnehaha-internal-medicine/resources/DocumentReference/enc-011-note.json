@@ -1,0 +1,67 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-011-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "date": "2026-01-16T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/e5c09f84-0a65-4621-90f7-d4e8c349cc20",
+      "display": "Rachel Andersen, RN"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "display": "Dr. Angela Whitfield, MD"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMS8xNi8yMDI2ClBhdGllbnQ6IEtldmluIEp1bmdod2FuIFBhcmsgKERPQjogMDkvMTQvMTk2OCkKQ2xpbmljaWFuOiBSYWNoZWwgQW5kZXJzZW4sIFJOIChyZXZpZXdlZCBhbmQgc2lnbmVkIGJ5IERyLiBBbmdlbGEgV2hpdGZpZWxkLCBNRCkKU2l0ZTogTWlubmVoYWhhIEludGVybmFsIE1lZGljaW5lLCBNaW5uZWFwb2xpcywgTU4KClJFQVNPTiBGT1IgQ0FMTDogTm90aWZpY2F0aW9uIG9mIGxhYiByZXN1bHRzIGRyYXduIDAxLzEyLzIwMjYuCgpESVNDVVNTSU9OOgpQYXRpZW50IGNvbnRhY3RlZCBieSBwaG9uZSB0byByZWxheSByZXN1bHRzIG9mIGxhYnMgZHJhd24gMDEvMTIvMjAyNiAocmVzdWx0ZWQgMDEvMTMvMjAyNiksIHJldmlld2VkIGFuZCBzaWduZWQgYnkgRHIuIFdoaXRmaWVsZC4gQWxsIHJlc3VsdHMgd2l0aGluIG5vcm1hbCBsaW1pdHM6CgpUU0g6IDIuMSBtSVUvTCAocmVmIDAuNC00LjUpIOKAlCBub3JtYWwsIHJ1bGluZyBvdXQgaHlwZXJ0aHlyb2lkaXNtIGFzIGV0aW9sb2d5IG9mIGF0cmlhbCBmaWJyaWxsYXRpb24uCkNCQzogV0JDIDYuMiB4MTBeMy91TCwgSGdiIDE0LjggZy9kTCwgSGN0IDQzLjglLCBQbHQgMjM0IHgxMF4zL3VMLCBNQ1YgODguMiBmTCDigJQgYWxsIFdOTC4KQ01QOiBOYSAxNDEgbUVxL0wsIEsgNC4xIG1FcS9MLCBDbCAxMDIgbUVxL0wsIENPMiAyNSBtRXEvTCwgQlVOIDE2IG1nL2RMLCBDciAwLjk0IG1nL2RMLCBlR0ZSID45MCwgR2x1Y29zZSA5OCBtZy9kTCwgQ2EgOS41IG1nL2RMLCBUb3RhbCBwcm90ZWluIDcuMCBnL2RMLCBBbGJ1bWluIDQuMiBnL2RMLCBBTFQgMjEgVS9MLCBBU1QgMTggVS9MLCBBbGsgUGhvcyA1OCBVL0wsIFRvdGFsIGJpbGlydWJpbiAwLjcgbWcvZEwg4oCUIGFsbCBXTkwuCgpQYXRpZW50IHJlcG9ydHMgZmVlbGluZyBhYm91dCB0aGUgc2FtZSB3aXRoIGludGVybWl0dGVudCBwYWxwaXRhdGlvbnMuIERlbmllcyBjaGVzdCBwYWluIG9yIHdvcnNlbmluZyBzeW1wdG9tcy4gUGF0aWVudCBpbnF1aXJlZCBhYm91dCBzdGFydGluZyBtZWRpY2F0aW9uIG5vdy4gUGVyIERyLiBXaGl0ZmllbGQsIHRyZWF0bWVudCBkaXNjdXNzaW9uIHdpbGwgYmUgZGVmZXJyZWQgdW50aWwgYWZ0ZXIgcmV2aWV3IG9mIGVjaG9jYXJkaW9ncmFtIHJlc3VsdHMuCgpQYXRpZW50IHJlbWluZGVkIG9mIHVwY29taW5nIGFwcG9pbnRtZW50czoKLSBFY2hvY2FyZGlvZ3JhbTogMDEvMTkvMjAyNgotIEZvbGxvdy11cCB3aXRoIERyLiBXaGl0ZmllbGQ6IDAxLzI2LzIwMjYKCk5vIGFjdXRlIGNvbmNlcm5zLiBQYXRpZW50IHZlcmJhbGl6ZWQgdW5kZXJzdGFuZGluZyBhbmQgYWdyZWVtZW50IHdpdGggcGxhbi4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieTogQW5nZWxhIFdoaXRmaWVsZCwgTUQK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-011"
+      }
+    ],
+    "period": {
+      "start": "2026-01-16",
+      "end": "2026-01-16"
+    }
+  }
+}

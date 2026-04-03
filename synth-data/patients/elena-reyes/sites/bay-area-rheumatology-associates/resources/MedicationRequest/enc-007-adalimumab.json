@@ -1,0 +1,99 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-007-adalimumab",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "727703",
+        "display": "adalimumab 40 MG in 0.8 ML Prefilled Syringe"
+      }
+    ],
+    "text": "adalimumab 40 mg prefilled syringe"
+  },
+  "subject": {
+    "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-007"
+  },
+  "authoredOn": "2023-11-09",
+  "requester": {
+    "reference": "Practitioner/b94f8a2e-1c3d-4e5f-a6b7-c8d9e0f1a2b3",
+    "type": "Practitioner",
+    "display": "Dr. James Tran"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-006-ra",
+      "display": "Seropositive rheumatoid arthritis"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Inject 40 mg subcutaneously every 2 weeks",
+      "patientInstruction": "Inject 40 mg subcutaneously every 2 weeks. Store in refrigerator. Allow to reach room temperature before injecting.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 2,
+          "periodUnit": "wk"
+        },
+        "code": {
+          "text": "Every 2 weeks"
+        }
+      },
+      "asNeededBoolean": false,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "34206005",
+            "display": "Subcutaneous route (qualifier value)"
+          }
+        ],
+        "text": "Subcutaneous"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 40,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "note": [
+    {
+      "text": "Added for inadequate response to methotrexate monotherapy. Prior authorization to be submitted. Infection-risk precautions reviewed with patient."
+    }
+  ]
+}

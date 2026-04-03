@@ -1,0 +1,73 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-002-letter",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Patient Notification Letter"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "date": "2025-10-08T14:30:00-05:00",
+  "author": [
+    {
+      "reference": "Practitioner/e02a3bc3-c2e9-4eb5-b29c-e99b5041980a",
+      "type": "Practitioner",
+      "display": "Amy Liu, NP"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VVcgSGVhbHRoIFVuaXZlcnNpdHkgU3R1ZGVudCBIZWFsdGggU2VydmljZXMKMzMzIEVhc3QgQ2FtcHVzIE1hbGwsIEZsb29yIDQsIE1hZGlzb24sIFdJIDUzNzE1ClBob25lOiA2MDgtMjY1LTU2MDAKCkRhdGU6IE9jdG9iZXIgOCwgMjAyNQoKRGVhciBNYXJjdXMsCgpUaGlzIGxldHRlciBpcyB0byBpbmZvcm0geW91IHRoYXQgdGhlIHJlc3VsdHMgb2YgeW91ciBTVEkgc2NyZWVuaW5nIHRlc3RzIHBlcmZvcm1lZCBvbiBPY3RvYmVyIDgsIDIwMjUgYXJlIG5vdyBhdmFpbGFibGU6CgotIENobGFteWRpYSB0cmFjaG9tYXRpcyBOQUFUICh1cmluZSk6IE5lZ2F0aXZlCi0gTmVpc3NlcmlhIGdvbm9ycmhvZWFlIE5BQVQgKHVyaW5lKTogTmVnYXRpdmUKLSBISVYgNHRoLWdlbmVyYXRpb24gYW50aWdlbi9hbnRpYm9keSBzY3JlZW4gKHNlcnVtKTogTm9uLXJlYWN0aXZlIChOZWdhdGl2ZSkKCkFsbCByZXN1bHRzIGFyZSBub3JtYWwuIE5vIHRyZWF0bWVudCBpcyBuZWVkZWQgYXQgdGhpcyB0aW1lLgoKV2UgcmVjb21tZW5kIGFubnVhbCBTVEkgc2NyZWVuaW5nIHdoaWxlIHlvdSBhcmUgc2V4dWFsbHkgYWN0aXZlLiBQbGVhc2UgY29udGludWUgdG8gcHJhY3RpY2Ugc2FmZSBzZXgsIGluY2x1ZGluZyBjb25zaXN0ZW50IGNvbmRvbSB1c2UuIElmIHlvdSBkZXZlbG9wIGFueSBzeW1wdG9tcyBzdWNoIGFzIGRpc2NoYXJnZSwgcGFpbiB3aXRoIHVyaW5hdGlvbiwgb3IgZ2VuaXRhbCBsZXNpb25zLCBwbGVhc2UgY29udGFjdCBvdXIgb2ZmaWNlIHRvIHNjaGVkdWxlIGFuIGFwcG9pbnRtZW50LgoKSWYgeW91IGhhdmUgYW55IHF1ZXN0aW9ucyBhYm91dCB5b3VyIHJlc3VsdHMsIHBsZWFzZSBjb250YWN0IHVzIGF0IDYwOC0yNjUtNTYwMCBvciBzZW5kIGEgbWVzc2FnZSB0aHJvdWdoIHlvdXIgcGF0aWVudCBwb3J0YWwuCgpTaW5jZXJlbHksCkFteSBMaXUsIE5QClVXIEhlYWx0aCBVbml2ZXJzaXR5IFN0dWRlbnQgSGVhbHRoIFNlcnZpY2VzCg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-002"
+      }
+    ],
+    "period": {
+      "start": "2025-10-08T09:00:00-05:00",
+      "end": "2025-10-08T09:45:00-05:00"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "STD",
+        "display": "sexually transmitted disease information sensitivity"
+      }
+    ]
+  }
+}

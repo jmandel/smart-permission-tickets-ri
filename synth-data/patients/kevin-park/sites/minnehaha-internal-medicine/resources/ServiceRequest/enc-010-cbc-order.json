@@ -1,0 +1,51 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-010-cbc-order",
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "108252007",
+          "display": "Laboratory procedure"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "57021-8",
+        "display": "CBC W Auto Differential panel - Blood"
+      }
+    ],
+    "text": "CBC with differential"
+  },
+  "subject": {
+    "reference": "Patient/3118e807-601e-4eef-a4ca-dde252ced57d",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "authoredOn": "2026-01-12",
+  "requester": {
+    "reference": "Practitioner/5a20a547-c65e-4778-ada0-094d81a05ea3",
+    "display": "Dr. Angela Whitfield, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-010-afib",
+      "display": "Atrial fibrillation, new onset"
+    }
+  ],
+  "note": [
+    {
+      "text": "CBC with differential ordered as part of new-onset atrial fibrillation workup. Specimen drawn at this visit; results pending."
+    }
+  ]
+}

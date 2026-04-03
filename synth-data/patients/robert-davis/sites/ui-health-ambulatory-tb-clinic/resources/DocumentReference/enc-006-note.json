@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-006-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "34109-9",
+        "display": "Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "date": "2026-02-25T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c0d62614-7dd5-453f-83c3-0514edb2270d",
+      "type": "Practitioner",
+      "display": "RN Patricia Gomez"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/fca1b37a-0004-4c92-8717-54842b25df2a",
+    "type": "Practitioner",
+    "display": "Dr. Lena Okafor"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMi8yNS8yMDI2ClBhdGllbnQ6IFJvYmVydCBEYXZpcyAoRE9COiAwOS8xNC8xOTYwKQpDbGluaWNpYW46IFJOIFBhdHJpY2lhIEdvbWV6OyByZXN1bHRzIHJldmlld2VkIGJ5IERyLiBMZW5hIE9rYWZvcgpMb2NhdGlvbjogVUkgSGVhbHRoIEFtYnVsYXRvcnkgVEIgQ2xpbmljICh0ZWxlcGhvbmUpClJlYXNvbiBmb3IgQ2FsbDogTGFiIHJlc3VsdHMgcmV2aWV3LCBpbnBhdGllbnQgc3B1dHVtIGN1bHR1cmUgcmVzdWx0cwoKUk4gR29tZXogY2FsbGVkIHBhdGllbnQgdG8gcmV2aWV3IHJlc3VsdHMgZnJvbSB0aGUgMDIvMTkvMjAyNiBsYWIgZHJhdyBhbmQgcmVsYXkgZmluYWwgaW5wYXRpZW50IHNwdXR1bSBteWNvYmFjdGVyaWFsIGN1bHR1cmUgcmVzdWx0cy4KCkxBQk9SQVRPUlkgUkVTVUxUUyBESVNDVVNTSU9OOgpMRlRzIGZyb20gMDIvMTkgbGFiIGRyYXcgcmVtYWluIHN0YWJsZSBhbmQgd2l0aGluIGFjY2VwdGFibGUgbGltaXRzLiBObyBkb3NlIGFkanVzdG1lbnRzIGluZGljYXRlZC4gVXJpYyBhY2lkIG1pbGRseSBlbGV2YXRlZDsgcGF0aWVudCBkZW5pZXMgYW55IGpvaW50IHBhaW4sIHN3ZWxsaW5nLCBvciBnb3V0IHN5bXB0b21zLiBQeXJhemluYW1pZGUgd2lsbCBiZSBjb250aW51ZWQgd2l0aCBvbmdvaW5nIG1vbml0b3Jpbmcgb2YgdXJpYyBhY2lkIGxldmVscy4KCkNVTFRVUkUgQU5EIFNVU0NFUFRJQklMSVRZIFJFU1VMVFM6CklucGF0aWVudCBzcHV0dW0gbXljb2JhY3RlcmlhbCBjdWx0dXJlcyAoY29sbGVjdGVkIDAxLzIyLTAxLzIzLzIwMjYpIHJldHVybmVkIHBvc2l0aXZlIGZvciBNeWNvYmFjdGVyaXVtIHR1YmVyY3Vsb3NpcyBhdCAxOCBkYXlzIG9mIGluY3ViYXRpb24uIERydWcgc3VzY2VwdGliaWxpdHkgdGVzdGluZyAoRFNUKSByZXN1bHRzIG5vdyBmaW5hbGl6ZWQ6IGlzb2xhdGUgaXMgc3VzY2VwdGlibGUgdG8gYWxsIGZpcnN0LWxpbmUgYWdlbnRzIOKAlCByaWZhbXBpbiwgaXNvbmlhemlkLCBweXJhemluYW1pZGUsIGV0aGFtYnV0b2wsIGFuZCBzdHJlcHRvbXljaW4uIFRoaXMgY29uZmlybXMgdGhlIGluaXRpYWwgR2VuZVhwZXJ0IE1UQi9SSUYgcmVzdWx0IChyaWZhbXBpbiBzdXNjZXB0aWJsZSkgYW5kIHN1cHBvcnRzIGNvbnRpbnVhdGlvbiBvZiB0aGUgY3VycmVudCBSSVBFIHJlZ2ltZW4gd2l0aG91dCBtb2RpZmljYXRpb24uCgpNRURJQ0FUSU9OUzogTm8gY2hhbmdlcy4KLSBSaWZhbXBpbiA2MDAgbWcgZGFpbHkKLSBJc29uaWF6aWQgMzAwIG1nIGRhaWx5Ci0gUHlyaWRveGluZSA1MCBtZyBkYWlseQotIFB5cmF6aW5hbWlkZSAxNTAwIG1nIGRhaWx5Ci0gRXRoYW1idXRvbCAxMjAwIG1nIGRhaWx5CgpQTEFOOgoxLiBDb250aW51ZSBjdXJyZW50IFJJUEUgdGhlcmFweSBhcyBwcmVzY3JpYmVkLgoyLiBNb25pdG9yIHVyaWMgYWNpZCBhdCBuZXh0IGxhYiBkcmF3IGdpdmVuIG1pbGQgZWxldmF0aW9uIG9uIHB5cmF6aW5hbWlkZS4KMy4gTmV4dCBpbi1wZXJzb24gdmlzaXQgc2NoZWR1bGVkIDAzLzA1LzIwMjYgZm9yIDYtd2VlayBjb21wcmVoZW5zaXZlIGZvbGxvdy11cCBpbmNsdWRpbmcgc3B1dHVtIGNvbGxlY3Rpb24gZm9yIEFGQiBzbWVhci9jdWx0dXJlIGFuZCByZXBlYXQgY2hlc3QgWC1yYXkuCjQuIFBhdGllbnQgYWR2aXNlZCB0byBjYWxsIGNsaW5pYyBpZiBoZSBkZXZlbG9wcyBqb2ludCBwYWluLCB2aXN1YWwgY2hhbmdlcywgbnVtYm5lc3MvdGluZ2xpbmcsIG9yIHdvcnNlbmluZyBHSSBzeW1wdG9tcy4KClBhdGllbnQgdmVyYmFsaXplZCB1bmRlcnN0YW5kaW5nIG9mIHJlc3VsdHMgYW5kIHBsYW4uCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6ClBhdHJpY2lhIEdvbWV6LCBSTiDigJQgRE9UIE51cnNlIENvb3JkaW5hdG9yClJldmlld2VkIGJ5OiBMZW5hIE9rYWZvciwgTUQg4oCUIEluZmVjdGlvdXMgRGlzZWFzZQpVSSBIZWFsdGggQW1idWxhdG9yeSBUQiBDbGluaWMK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-006"
+      }
+    ],
+    "period": {
+      "start": "2026-02-25"
+    }
+  }
+}

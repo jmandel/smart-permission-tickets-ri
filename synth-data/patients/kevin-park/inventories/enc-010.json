@@ -1,0 +1,164 @@
+{
+  "encounter_id": "enc-010",
+  "encounter_index": 10,
+  "site_slug": "minnehaha-internal-medicine",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Hypertension follow-up; intermittent palpitations (atrial fibrillation discovered)",
+    "period_start": "2026-01-12T09:00:00-06:00",
+    "period_end": "2026-01-12T09:40:00-06:00",
+    "participants": [
+      {
+        "name": "Dr. Angela Whitfield, MD",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "Minnehaha Internal Medicine",
+    "location": "Minnehaha Internal Medicine, 3501 East Lake Street, Minneapolis, MN 55406"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 138,
+        "unit": "mmHg",
+        "effective_date": "2026-01-12",
+        "note": "slightly elevated"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 86,
+        "unit": "mmHg",
+        "effective_date": "2026-01-12",
+        "note": "slightly elevated"
+      },
+      {
+        "name": "heart rate",
+        "value": 94,
+        "unit": "bpm",
+        "effective_date": "2026-01-12",
+        "note": "irregularly irregular"
+      },
+      {
+        "name": "body weight",
+        "value": 82.1,
+        "unit": "kg",
+        "effective_date": "2026-01-12"
+      },
+      {
+        "name": "body height",
+        "value": 175.3,
+        "unit": "cm",
+        "effective_date": "2026-01-12"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.7,
+        "unit": "kg/m2",
+        "effective_date": "2026-01-12"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.9,
+        "unit": "Cel",
+        "effective_date": "2026-01-12"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min",
+        "effective_date": "2026-01-12"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 97,
+        "unit": "%",
+        "effective_date": "2026-01-12",
+        "note": "on room air"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "atrial fibrillation, new onset",
+      "clinical_status": "active",
+      "verification_status": "confirmed",
+      "onset_date": "2025-11",
+      "action": "create",
+      "note": "Discovered on examination (irregularly irregular pulse) and confirmed by in-office 12-lead ECG. Ventricular rate 92 bpm. Symptoms of palpitations and exertional dyspnea over 6-8 weeks consistent with atrial fibrillation."
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "BP slightly elevated today at 138/86. Continue lisinopril 10 mg daily."
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Stable, diet-managed. Will address at next scheduled wellness visit."
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 10 mg oral tablet",
+      "sig": "Take 1 tablet by mouth once daily",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "fish oil 1000 mg oral capsule",
+      "sig": "Take 1 capsule by mouth once daily",
+      "status": "active",
+      "reason": "general cardiovascular health",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Detailed encounter note documenting hypertension follow-up with incidental discovery of intermittent palpitations over 6-8 weeks. Documents physical exam findings including irregularly irregular pulse, in-office 12-lead ECG interpretation confirming atrial fibrillation with ventricular rate 92 bpm, new diagnosis of atrial fibrillation, labs ordered (TSH, CBC, CMP), TTE ordered, patient education on AF, and return precautions."
+    },
+    {
+      "type": "electrocardiogram tracing",
+      "description": "In-office 12-lead ECG tracing performed on 2026-01-12 showing atrial fibrillation with ventricular rate 92 bpm, normal axis, no ST-segment changes, no pathologic Q waves, no bundle branch block, normal QTc interval."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "12-lead electrocardiogram",
+      "report_state": "summary-only",
+      "description": "In-office 12-lead ECG performed and interpreted by Dr. Whitfield. Findings: atrial fibrillation with ventricular rate of 92 bpm, normal axis, no ST-segment changes, no pathologic Q waves, no bundle branch block, normal QTc interval. No prior ECG on file for comparison."
+    },
+    {
+      "type": "thyroid-stimulating hormone",
+      "report_state": "ordered-not-resulted",
+      "description": "TSH ordered to rule out thyroid dysfunction as a precipitant of new-onset atrial fibrillation. Specimen drawn at this visit; results pending."
+    },
+    {
+      "type": "complete blood count with differential",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC with differential ordered as part of new-onset atrial fibrillation workup. Specimen drawn at this visit; results pending."
+    },
+    {
+      "type": "comprehensive metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Comprehensive metabolic panel ordered as part of new-onset atrial fibrillation workup. Specimen drawn at this visit; results pending."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "ibuprofen",
+      "reaction": "gastrointestinal upset",
+      "severity": "mild",
+      "action": "reference-existing"
+    }
+  ]
+}

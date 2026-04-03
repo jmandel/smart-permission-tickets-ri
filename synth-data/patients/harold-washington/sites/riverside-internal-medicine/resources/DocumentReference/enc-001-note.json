@@ -1,0 +1,63 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-001-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "date": "2015-06-12T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/189f48be-f3be-478b-80db-7dc87f3b072e",
+      "type": "Practitioner",
+      "display": "Dr. Cynthia Okafor"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNi8xMi8yMDE1ClBhdGllbnQ6IEhhcm9sZCBXYXNoaW5ndG9uIChET0I6IDA5LzE0LzE5NDYpClByb3ZpZGVyOiBEci4gQ3ludGhpYSBPa2Fmb3IsIE1EClNpdGU6IFJpdmVyc2lkZSBJbnRlcm5hbCBNZWRpY2luZSwgSmFja3NvbnZpbGxlLCBGTAoKUmVhc29uIGZvciBDYWxsOiBSZXZpZXcgb2YgbGFib3JhdG9yeSByZXN1bHRzIGRyYXduIDA2LzA1LzIwMTUuCgpEaXNjdXNzaW9uOiBDYWxsZWQgcGF0aWVudCB0byByZXZpZXcgbGFicy4gUmVzdWx0cyBzaWduaWZpY2FudCBmb3IgSGJBMWMgNy4yJSAoZGlhYmV0aWMgcmFuZ2UpLCBmYXN0aW5nIGdsdWNvc2UgMTQyIG1nL2RMLCB0b3RhbCBjaG9sZXN0ZXJvbCAyNDggbWcvZEwsIExETCAxNTggbWcvZEwsIEhETCA0MiBtZy9kTCwgdHJpZ2x5Y2VyaWRlcyAxODYgbWcvZEwuIFJlbmFsIGZ1bmN0aW9uIG5vcm1hbDogY3JlYXRpbmluZSAxLjAgbWcvZEwsIGVHRlIgODIgbUwvbWluLCBCVU4gMTggbWcvZEwuIEVsZWN0cm9seXRlcyBub3JtYWw6IE5hIDE0MCwgSyA0LjIuIEhlcGF0aWMgcGFuZWwgbm9ybWFsOiBBTFQgMjQsIEFTVCAyMi4gQ0JDIHdpdGhpbiBub3JtYWwgbGltaXRzLiBVcmluYWx5c2lzIG5lZ2F0aXZlIGZvciBwcm90ZWluIGFuZCBnbHVjb3NlLgoKQXNzZXNzbWVudDoKMS4gVHlwZSAyIGRpYWJldGVzIG1lbGxpdHVzIHdpdGhvdXQgY29tcGxpY2F0aW9ucyAoRTExLjkpIOKAlCBuZXdseSBkaWFnbm9zZWQgYmFzZWQgb24gQTFjIDcuMiUgYW5kIGZhc3RpbmcgZ2x1Y29zZSAxNDIgbWcvZEwKMi4gSHlwZXJsaXBpZGVtaWEgKEU3OC41KSDigJQgbmV3bHkgZGlhZ25vc2VkLCBMREwgMTU4IG1nL2RMIHNpZ25pZmljYW50bHkgYWJvdmUgZ29hbAozLiBFc3NlbnRpYWwgaHlwZXJ0ZW5zaW9uIChJMTApIOKAlCBpbXByb3Zpbmcgb24gbGlzaW5vcHJpbCAxMCBtZyBkYWlseSwgcGF0aWVudCByZXBvcnRzIGhvbWUgQlBzIGF2ZXJhZ2luZyAxNDAvODgKClBsYW46CjEuIFN0YXJ0IG1ldGZvcm1pbiA1MDAgbWcgUE8gQklEIHdpdGggbWVhbHMgZm9yIGRpYWJldGVzIG1hbmFnZW1lbnQKMi4gU3RhcnQgYXRvcnZhc3RhdGluIDIwIG1nIFBPIGRhaWx5IGF0IGJlZHRpbWUgZm9yIGh5cGVybGlwaWRlbWlhCjMuIFJlZmVycmFsIHBsYWNlZCB0byBDZXJ0aWZpZWQgRGlhYmV0ZXMgRWR1Y2F0b3IgZm9yIGRpZXRhcnkgY291bnNlbGluZyBhbmQgZ2x1Y29zZSBtb25pdG9yaW5nIGluc3RydWN0aW9uCjQuIFJlaW5mb3JjZWQgbGlmZXN0eWxlIG1vZGlmaWNhdGlvbnM6IGxvdy1nbHljZW1pYywgbG93LXNvZGl1bSBkaWV0CjUuIENvbnRpbnVlIGxpc2lub3ByaWwgMTAgbWcgZGFpbHkgZm9yIGh5cGVydGVuc2lvbgo2LiBSZXBlYXQgQTFjIGFuZCBsaXBpZCBwYW5lbCBpbiAzLTQgbW9udGhzCjcuIE9mZmljZSBmb2xsb3ctdXAgaW4gMyBtb250aHMKCkFsbGVyZ3kgcmV2aWV3OiBTdWxmb25hbWlkZSBhbnRpYmlvdGljcyAocmFzaCkuIE5vIGNvbnRyYWluZGljYXRpb25zIHRvIHByZXNjcmliZWQgbWVkaWNhdGlvbnMuCgpQYXRpZW50IHZvaWNlZCB1bmRlcnN0YW5kaW5nIGFuZCBhZ3JlZW1lbnQgd2l0aCB0aGUgcGxhbi4gTm8gYWN1dGUgY29uY2VybnMgcmVwb3J0ZWQuCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6IEN5bnRoaWEgT2thZm9yLCBNRApEYXRlOiAwNi8xMi8yMDE1Cg=="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-001"
+      }
+    ],
+    "period": {
+      "start": "2015-06-12T00:00:00Z"
+    }
+  }
+}

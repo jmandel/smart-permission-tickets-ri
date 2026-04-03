@@ -1,0 +1,63 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-019-fatigue",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "716749005",
+        "display": "Fatigue associated with malignant neoplastic disease (finding)"
+      }
+    ],
+    "text": "Chemotherapy-related fatigue"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-020"
+  },
+  "onsetDateTime": "2025-01",
+  "recordedDate": "2025-02-17",
+  "note": [
+    {
+      "text": "Worsened from CTCAE grade 1 at Cycle 2 to grade 2 at Cycle 3. Now limiting instrumental ADLs — reduced walking distance, daily napping. Contributed to carboplatin dose reduction decision."
+    },
+    {
+      "text": "2025-03-10 (Cycle 4): Improved to CTCAE grade 1, more manageable. Patient has resumed walking one mile daily."
+    }
+  ]
+}

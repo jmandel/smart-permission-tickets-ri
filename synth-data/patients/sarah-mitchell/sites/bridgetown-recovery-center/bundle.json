@@ -1,0 +1,4131 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T14:05:46.041Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:8cd4ec15-7635-47ba-8017-b23b0166831f",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "8cd4ec15-7635-47ba-8017-b23b0166831f",
+        "extension": [
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "White",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                },
+                "url": "ombCategory"
+              },
+              {
+                "valueString": "Not Hispanic or Latino",
+                "url": "text"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In 2022, during a depressive episode and work stress, Sarah developed problematic alcohol use that escalated to alcohol use disorder (moderate severity). She self-referred to an outpatient addiction medicine program in Portland in early 2023. She completed a 12-week intensive outpatient program (IOP), began attending AA meetings, and was prescribed naltrexone 50mg daily. She achieved sobriety in April 2023 and has maintained it.\n\nIn mid-2024, Sarah moved to Seattle. She established with a new psychiatrist for bipolar management and a new PCP for general care. Her alcohol use disorder is in sustained remission (>12 months). She continues lamotrigine, quetiapine, and naltrexone.\n\nSarah uses a patient-facing app to access her health records across her Portland and Seattle providers. The behavioral health and substance use disorder data is subject to heightened sensitivity protections (42 CFR Part 2 for SUD records)."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Mitchell",
+            "given": [
+              "Sarah",
+              "Elizabeth"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "206-555-0147",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sarah.mitchell@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1993-11-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "2418 NW 63rd St"
+            ],
+            "city": "Seattle",
+            "district": "Ballard",
+            "state": "WA",
+            "postalCode": "98107",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "S",
+              "display": "Never Married"
+            }
+          ],
+          "text": "Single, never married"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-240ccb706aa0c92a0b715d26"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "3456789012"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Addiction medicine / intensive outpatient program (IOP)"
+          }
+        ],
+        "name": "Bridgetown Recovery Center",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "503-555-0192",
+            "use": "work"
+          },
+          {
+            "system": "fax",
+            "value": "503-555-0193",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "920 SE Sandy Blvd"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97214",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+        "name": [
+          {
+            "use": "official",
+            "family": "Delgado",
+            "given": [
+              "Rosa"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Addiction Medicine"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:713234df-e5d2-45ae-b717-b7d26cc81d11",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "713234df-e5d2-45ae-b717-b7d26cc81d11",
+        "name": [
+          {
+            "use": "official",
+            "family": "Huang",
+            "given": [
+              "Lisa"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "SW",
+                  "display": "Social Worker"
+                }
+              ],
+              "text": "LCSW, IOP group therapist"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a4805a39-6988-49ae-a2ae-3cda19be388d",
+      "resource": {
+        "resourceType": "Location",
+        "id": "a4805a39-6988-49ae-a2ae-3cda19be388d",
+        "status": "active",
+        "name": "Bridgetown Recovery Center",
+        "mode": "instance",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "OF",
+                "display": "Outpatient Facility"
+              }
+            ],
+            "text": "Addiction medicine / intensive outpatient program (IOP)"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "503-555-0192",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "use": "work",
+          "line": [
+            "920 SE Sandy Blvd"
+          ],
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "97214",
+          "country": "US"
+        },
+        "managingOrganization": {
+          "reference": "Organization/e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+          "display": "Bridgetown Recovery Center"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT (Alanine Aminotransferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "valueQuantity": {
+          "value": 61,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 35,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "<35 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST (Aspartate Aminotransferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "valueQuantity": {
+          "value": 52,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 35,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "<35 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-audit",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-audit",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75624-7",
+              "display": "Total score [AUDIT]"
+            }
+          ],
+          "text": "AUDIT (Alcohol Use Disorders Identification Test) Total Score"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 28
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "Zone IV - High risk, warrants further diagnostic evaluation and treatment"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index (BMI)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 23.6,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 132,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 84,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-ciwa",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-ciwa",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "text": "CIWA-Ar (Clinical Institute Withdrawal Assessment for Alcohol, revised) Total Score"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 6
+        },
+        "interpretation": [
+          {
+            "text": "Mild withdrawal symptoms present at time of evaluation"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-ggt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-ggt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2324-2",
+              "display": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "GGT (Gamma-Glutamyl Transferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "valueQuantity": {
+          "value": 89,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 65,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "<65 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-height",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-height",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Body height"
+            }
+          ],
+          "text": "Body height"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 66,
+          "unit": "[in_i]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[in_i]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 86,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-peth",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-peth",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "74661-0",
+              "display": "Phosphatidylethanol [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Phosphatidylethanol (PEth) Level"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "valueQuantity": {
+          "value": 284,
+          "unit": "ng/mL",
+          "system": "http://unitsofmeasure.org",
+          "code": "ng/mL"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "Elevated, consistent with heavy drinking"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 18,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (SpO2)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 98,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 98.8,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-008-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09T09:10:00-08:00",
+        "valueQuantity": {
+          "value": 146,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT (Alanine Aminotransferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-02-13",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "valueQuantity": {
+          "value": 44,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "note": [
+          {
+            "text": "Improved from 61 U/L at intake (2023-01-09)"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 7,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 56,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "7-56 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST (Aspartate Aminotransferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-02-13",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "valueQuantity": {
+          "value": 38,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "note": [
+          {
+            "text": "Improved from 52 U/L at intake (2023-01-09)"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 10,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 40,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "10-40 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-ggt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-ggt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2324-2",
+              "display": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "GGT (Gamma-Glutamyl Transferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-02-13",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "valueQuantity": {
+          "value": 62,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "H",
+                "display": "High"
+              }
+            ],
+            "text": "High"
+          }
+        ],
+        "note": [
+          {
+            "text": "Improved from 89 U/L at intake (2023-01-09)"
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 9,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "high": {
+              "value": 48,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "9-48 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-uds",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-009-uds",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "69739-1",
+              "display": "Drugs of abuse panel - Urine by Screen method"
+            }
+          ],
+          "text": "Urine Drug Screen, Qualitative"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-02-13",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "valueString": "Negative",
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-alt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-alt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1742-6",
+              "display": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "ALT (Alanine Aminotransferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24",
+        "issued": "2023-04-24T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 28,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 35,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "<35 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-ast",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-ast",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "1920-8",
+              "display": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "AST (Aspartate Aminotransferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24",
+        "issued": "2023-04-24T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 24,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 35,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "<35 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-audit",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-audit",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "75624-7",
+              "display": "Total score [AUDIT]"
+            }
+          ],
+          "text": "AUDIT (Alcohol Use Disorders Identification Test) Total Score"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Zone I - Low risk (markedly improved from 28 at intake)"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-bmi",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39156-5",
+              "display": "Body mass index (BMI) [Ratio]"
+            }
+          ],
+          "text": "Body mass index (BMI)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 22.9,
+          "unit": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg/m2"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 120,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 76,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-ggt",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-ggt",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2324-2",
+              "display": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "GGT (Gamma-Glutamyl Transferase)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24",
+        "issued": "2023-04-24T12:00:00-07:00",
+        "valueQuantity": {
+          "value": 38,
+          "unit": "U/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "U/L"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "N",
+                "display": "Normal"
+              }
+            ],
+            "text": "Normal"
+          }
+        ],
+        "referenceRange": [
+          {
+            "high": {
+              "value": 65,
+              "unit": "U/L",
+              "system": "http://unitsofmeasure.org",
+              "code": "U/L"
+            },
+            "text": "<65 U/L"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 72,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-phq9",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-phq9",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "survey",
+                "display": "Survey"
+              }
+            ],
+            "text": "Survey"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "44261-6",
+              "display": "Patient Health Questionnaire 9 item (PHQ-9) total score [Reported]"
+            }
+          ],
+          "text": "PHQ-9 (Patient Health Questionnaire-9) Depression Screening Score"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:15:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 8
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ],
+            "text": "Mild depression (improved)"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            },
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "MH",
+              "display": "mental health information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 14,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (SpO2)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 98.4,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-010-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24T09:10:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "valueQuantity": {
+          "value": 142,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-aud",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-008-aud",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "remission",
+              "display": "Remission"
+            }
+          ],
+          "text": "In Early Sustained Remission"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "714829008",
+              "display": "Moderate alcohol dependence (disorder)"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "F10.20",
+              "display": "Alcohol dependence, uncomplicated"
+            }
+          ],
+          "text": "Alcohol use disorder, moderate — in early sustained remission"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-011"
+        },
+        "onsetDateTime": "2022-07",
+        "recordedDate": "2023-01-09",
+        "recorder": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "note": [
+          {
+            "text": "Patient meets 5 of 11 DSM-5 criteria: drinking in larger amounts or for longer than intended, persistent desire or unsuccessful efforts to cut down, craving, continued use despite recurrent interpersonal problems, and tolerance."
+          },
+          {
+            "authorReference": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            },
+            "time": "2023-04-24",
+            "text": "Updated to early remission at IOP completion visit. Patient achieved sustained sobriety (sobriety date April 14, 2023), completed 12-week IOP (~36 group sessions, 12 individual counseling sessions), AUDIT score improved from 28 to 4, liver enzymes fully normalized (AST 24, ALT 28, GGT 38 — all normal). Continue naltrexone indefinitely."
+          },
+          {
+            "authorReference": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            },
+            "time": "2023-07-17",
+            "text": "Telephone aftercare follow-up. Patient reports sustained sobriety for 3 months (sober since mid-April 2023), regular AA attendance (2-3 meetings/week), stable mood, and no naltrexone side effects. Updated clinical status to early sustained remission. Reinforced relapse prevention strategies. Advised establishing addiction medicine or psychiatry follow-up at new location due to planned geographic relocation. Care at Bridgetown Recovery Center concluded."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-transaminase",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-008-transaminase",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "707724006",
+              "display": "Liver enzymes level above reference range (finding)"
+            }
+          ],
+          "text": "Mild transaminase elevation, likely alcohol-related"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "onsetDateTime": "2023-01-09",
+        "recordedDate": "2023-01-09",
+        "recorder": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "note": [
+          {
+            "text": "Likely alcohol-related given pattern and GGT elevation. Hepatic ultrasound pending to evaluate for hepatic steatosis or other structural disease."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-mild-depression",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-010-mild-depression",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "192367002",
+              "display": "Mild depressive episode (disorder)"
+            }
+          ],
+          "text": "Depressive symptoms, mild"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "onsetDateTime": "2023-04-24",
+        "recordedDate": "2023-04-24",
+        "recorder": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "evidence": [
+          {
+            "detail": [
+              {
+                "reference": "Observation/enc-010-phq9",
+                "display": "PHQ-9 score: 8 (mild depression)"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "PHQ-9 of 8 indicating mild depression, improved. Likely related to both underlying bipolar II depressive component and psychosocial adjustment in recovery. To be monitored."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-cbc-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-cbc-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "58410-2",
+              "display": "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text": "Complete Blood Count (CBC)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "conclusion": "Within normal limits.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-cmp-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-cmp-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel (CMP) with Liver Enzymes"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-008-ast",
+            "display": "AST 52 U/L (elevated)"
+          },
+          {
+            "reference": "Observation/enc-008-alt",
+            "display": "ALT 61 U/L (elevated)"
+          }
+        ],
+        "conclusion": "AST and ALT elevated. Remainder of CMP within normal limits.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-ggt-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-ggt-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2324-2",
+              "display": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Gamma-Glutamyl Transferase (GGT)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-008-ggt",
+            "display": "GGT 89 U/L (elevated)"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-peth-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-peth-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "74661-0",
+              "display": "Phosphatidylethanol [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Phosphatidylethanol (PEth) Level"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-008-peth",
+            "display": "PEth 284 ng/mL (elevated)"
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-uds-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-008-uds-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "87428-9",
+              "display": "Drugs of abuse screen W Reflex confirm panel - Urine"
+            }
+          ],
+          "text": "Urine Drug Screen"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "effectiveDateTime": "2023-01-09",
+        "issued": "2023-01-09T14:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "conclusion": "Negative for illicit substances.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-cmp-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-009-cmp-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel with Liver Enzymes and GGT"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-02-13",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "conclusion": "CMP within normal limits. Liver enzymes improving: AST 38 U/L (down from 52), ALT 44 U/L (down from 61), GGT 62 U/L (down from 89). Favorable hepatic function trend during alcohol use disorder treatment.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-hepatic-us-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-009-hepatic-us-report",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/enc-008-hepatic-us-order",
+            "display": "Hepatic ultrasound"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "28614-6",
+              "display": "US Liver"
+            }
+          ],
+          "text": "Hepatic Ultrasound"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-01-23",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "conclusion": "Liver parenchyma normal. No hepatic steatosis. No focal lesions identified. No biliary dilation. Unremarkable study.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-uds-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-009-uds-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "87428-9",
+              "display": "Drugs of abuse screen W Reflex confirm panel - Urine"
+            }
+          ],
+          "text": "Urine Drug Screen"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-009"
+        },
+        "effectiveDateTime": "2023-02-13",
+        "issued": "2023-02-13T12:00:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-009-uds",
+            "display": "Urine Drug Screen, Qualitative"
+          }
+        ],
+        "conclusion": "Negative for illicit substances.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-cmp-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-010-cmp-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24323-8",
+              "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+            }
+          ],
+          "text": "Comprehensive Metabolic Panel (CMP) with Liver Enzymes"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24",
+        "issued": "2023-04-24T12:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-010-ast",
+            "display": "AST 24 U/L"
+          },
+          {
+            "reference": "Observation/enc-010-alt",
+            "display": "ALT 28 U/L"
+          }
+        ],
+        "conclusion": "CMP within normal limits. Liver enzymes fully normalized: AST 24 U/L, ALT 28 U/L (previously AST 52, ALT 61 at intake January 2023). Consistent with cessation of alcohol use.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-ggt-report",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-010-ggt-report",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "LAB",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2324-2",
+              "display": "Gamma glutamyl transferase [Enzymatic activity/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Gamma-Glutamyl Transferase (GGT)"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "effectiveDateTime": "2023-04-24",
+        "issued": "2023-04-24T12:00:00-07:00",
+        "performer": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/enc-010-ggt",
+            "display": "GGT 38 U/L"
+          }
+        ],
+        "conclusion": "GGT 38 U/L, within normal limits. Fully normalized from 89 U/L at intake (January 2023). Consistent with sustained abstinence from alcohol.",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-hepatic-us-order",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "enc-008-hepatic-us-order",
+        "status": "completed",
+        "intent": "order",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "105377009",
+              "display": "Ultrasonography of liver (procedure)"
+            }
+          ],
+          "text": "Hepatic ultrasound"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-008"
+        },
+        "authoredOn": "2023-01-09",
+        "requester": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-008-transaminase",
+            "display": "Mild transaminase elevation, likely alcohol-related"
+          }
+        ],
+        "note": [
+          {
+            "text": "Ordered to evaluate for alcohol-related liver disease given elevated liver enzymes and history of chronic heavy alcohol use. Performed 01/23/2023; results reviewed 02/13/2023 — unremarkable study."
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-naltrexone",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-008-naltrexone",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1483744",
+              "display": "naltrexone HCl 50 MG Oral Tablet"
+            }
+          ],
+          "text": "naltrexone 50 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "authoredOn": "2023-01-09",
+        "requester": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-008-aud",
+            "display": "Alcohol use disorder, moderate — in early remission"
+          }
+        ],
+        "note": [
+          {
+            "authorReference": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            },
+            "time": "2023-04-24",
+            "text": "Continued indefinitely at IOP completion visit. Patient tolerating well with no adverse effects. Craving suppression and relapse prevention."
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 50 mg tablet by mouth once daily, indefinitely",
+            "patientInstruction": "Take one 50 mg tablet by mouth once daily indefinitely for craving reduction and relapse prevention. Do not take opioids while on this medication.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 50,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-thiamine",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-008-thiamine",
+        "status": "stopped",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "community",
+                "display": "Community"
+              }
+            ],
+            "text": "Community"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "313323",
+              "display": "thiamine 100 MG Oral Tablet"
+            }
+          ],
+          "text": "thiamine 100 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-010"
+        },
+        "authoredOn": "2023-01-09",
+        "requester": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "reasonCode": [
+          {
+            "text": "Nutritional support given chronic heavy alcohol use and risk of thiamine deficiency"
+          }
+        ],
+        "note": [
+          {
+            "authorReference": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            },
+            "time": "2023-04-24",
+            "text": "Discontinued at IOP completion visit. No longer clinically indicated given normalized liver function and adequate nutritional status."
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take one 100 mg tablet by mouth once daily",
+            "patientInstruction": "Take one 100 mg tablet by mouth once daily.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 100,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-008-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Addiction Medicine Intake Evaluation"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2023-01-09T10:30:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          },
+          {
+            "reference": "Practitioner/713234df-e5d2-45ae-b717-b7d26cc81d11",
+            "display": "Lisa Huang"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "QlJJREdFVE9XTiBSRUNPVkVSWSBDRU5URVIKOTIwIFNFIFNhbmR5IEJsdmQsIFBvcnRsYW5kLCBPUiA5NzIxNApOUEk6IDM0NTY3ODkwMTIKCkFERElDVElPTiBNRURJQ0lORSBJTlRBS0UgRVZBTFVBVElPTgoKUGF0aWVudDogU2FyYWggRWxpemFiZXRoIE1pdGNoZWxsCkRPQjogMTEvMTQvMTk5MyAoQWdlIDI5KQpEYXRlIG9mIFNlcnZpY2U6IDAxLzA5LzIwMjMKUHJvdmlkZXI6IFJvc2EgRGVsZ2FkbywgTUQgKEFkZGljdGlvbiBNZWRpY2luZSkKQ291bnNlbG9yOiBMaXNhIEh1YW5nLCBMQ1NXClZpc2l0IFR5cGU6IE5ldyBQYXRpZW50IC0gQ29tcHJlaGVuc2l2ZSBJbnRha2UgRXZhbHVhdGlvbgoKU1VCSkVDVElWRToKTXMuIE1pdGNoZWxsIGlzIGEgMjkteWVhci1vbGQgd29tYW4gd2hvIHNlbGYtcmVmZXJyZWQgZm9yIGV2YWx1YXRpb24gb2YgYWxjb2hvbCB1c2UgY29uY2VybnMuIFNoZSByZXBvcnRzIGRhaWx5IGRyaW5raW5nIGZvciB0aGUgcGFzdCA2KyBtb250aHMsIGN1cnJlbnRseSBjb25zdW1pbmcgMS0xLjUgYm90dGxlcyBvZiB3aW5lIG5pZ2h0bHkgd2l0aCBoZWF2aWVyIGNvbnN1bXB0aW9uIG9uIHdlZWtlbmRzLiBTaGUgaGFzIGF0dGVtcHRlZCB0byBjdXQgYmFjayBtdWx0aXBsZSB0aW1lcyB3aXRob3V0IHN1c3RhaW5lZCBzdWNjZXNzLiBTaGUgZW5kb3JzZXMgbWlsZCB3aXRoZHJhd2FsIHN5bXB0b21zIHdoZW4gc2tpcHBpbmcgYSBkYXksIGluY2x1ZGluZyBoYW5kIHRyZW1vciwgYW54aWV0eSwgYW5kIHN3ZWF0aW5nLgoKUHN5Y2hpYXRyaWMgSGlzdG9yeTogQmlwb2xhciBJSSBkaXNvcmRlciBkaWFnbm9zZWQgMjAxOSwgY3VycmVudGx5IG1hbmFnZWQgYnkgRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzLiBDdXJyZW50IHBzeWNoaWF0cmljIG1lZGljYXRpb25zIGluY2x1ZGUgbGFtb3RyaWdpbmUgMjAwIG1nIFBPIGRhaWx5IGFuZCBxdWV0aWFwaW5lIDUwIG1nIFBPIGF0IGJlZHRpbWUuIFBhdGllbnQgcmVwb3J0cyBtb29kIGhhcyBiZWVuIGxlc3Mgc3RhYmxlIG92ZXIgdGhlIHBhc3Qgc2V2ZXJhbCBtb250aHMsIHdpdGggZGVwcmVzc2l2ZSBzeW1wdG9tcyBleGFjZXJiYXRlZCBieSBmaW5hbmNpYWwgc3RyZXNzIGFuZCBlc2NhbGF0aW5nIGFsY29ob2wgdXNlLgoKU29jaWFsIEhpc3Rvcnk6IEZyZWVsYW5jZSBncmFwaGljIGRlc2lnbmVyLCBzZWxmLWVtcGxveWVkLiBTaW5nbGUsIGxpdmVzIGFsb25lLiBObyBjaGlsZHJlbi4gRGVuaWVzIHRvYmFjY28gb3IgaWxsaWNpdCBkcnVnIHVzZS4gTm8gcHJpb3IgU1VEIHRyZWF0bWVudC4gTW90aGVyIChSYWNoZWwgTWl0Y2hlbGwpIGluIEJlbmQsIE9SIGxpc3RlZCBhcyBlbWVyZ2VuY3kgY29udGFjdC4KCkFsbGVyZ2llczogVHJpbWV0aG9wcmltLXN1bGZhbWV0aG94YXpvbGUgKHJhc2gpLgoKQVVESVQgU2NvcmU6IDI4IChab25lIElWIC0gaGlnaCByaXNrLCB3YXJyYW50cyBmdXJ0aGVyIGRpYWdub3N0aWMgZXZhbHVhdGlvbiBhbmQgdHJlYXRtZW50KS4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMzIvODQgbW1IZywgSFIgODYgYnBtLCBUZW1wIDk4LjggRiwgUlIgMTgsIFNwTzIgOTglLCBXZWlnaHQgMTQ2IGxicywgSGVpZ2h0IDUnNiIsIEJNSSAyMy42LgoKR2VuZXJhbDogQWxlcnQgYW5kIG9yaWVudGVkLCBjb29wZXJhdGl2ZSwgbWlsZGx5IGFueGlvdXMuIE5vIGFjdXRlIGRpc3RyZXNzLgpIRUVOVDogU2NsZXJhIGFuaWN0ZXJpYywgbXVjb3VzIG1lbWJyYW5lcyBtb2lzdC4gTm8gcGFyb3RpZCBlbmxhcmdlbWVudC4KQ2FyZGlvdmFzY3VsYXI6IFJlZ3VsYXIgcmF0ZSBhbmQgcmh5dGhtLCBubyBtdXJtdXJzLgpBYmRvbWVuOiBTb2Z0LCBub250ZW5kZXIsIG5vIGhlcGF0b21lZ2FseSBhcHByZWNpYXRlZCBvbiBleGFtLiBObyBhc2NpdGVzLgpFeHRyZW1pdGllczogRmluZSByZXN0aW5nIHRyZW1vciBub3RlZCBiaWxhdGVyYWxseSBpbiBoYW5kcy4gTm8gZWRlbWEuIE5vIHBhbG1hciBlcnl0aGVtYS4gTm8gc3BpZGVyIGFuZ2lvbWF0YS4KTmV1cm9sb2dpYzogQ3JhbmlhbCBuZXJ2ZXMgaW50YWN0LiBHYWl0IHN0ZWFkeS4gTm8gYXN0ZXJpeGlzLgpQc3ljaGlhdHJpYzogTW9vZCAiYW54aW91cywiIGFmZmVjdCBjb25ncnVlbnQsIG1pbGRseSByZXN0cmljdGVkLiBUaG91Z2h0IHByb2Nlc3MgbGluZWFyLiBObyBzdWljaWRhbCBvciBob21pY2lkYWwgaWRlYXRpb24uIEp1ZGdtZW50IGFuZCBpbnNpZ2h0IGZhaXIgLSBwYXRpZW50IHJlY29nbml6ZXMgc2V2ZXJpdHkgb2YgZHJpbmtpbmcgcGF0dGVybiBhbmQgaXMgbW90aXZhdGVkIGZvciB0cmVhdG1lbnQuCgpDSVdBLUFyIFNjb3JlOiA2IChtaWxkIHdpdGhkcmF3YWwgc3ltcHRvbXMgcHJlc2VudCBhdCB0aW1lIG9mIGV2YWx1YXRpb24pLgoKTGFicyAocmVzdWx0ZWQgc2FtZSBkYXkpOgotIEFTVDogNTIgVS9MIChlbGV2YXRlZDsgbm9ybWFsIDwzNSkKLSBBTFQ6IDYxIFUvTCAoZWxldmF0ZWQ7IG5vcm1hbCA8MzUpCi0gR0dUOiA4OSBVL0wgKGVsZXZhdGVkOyBub3JtYWwgPDY1KQotIFBob3NwaGF0aWR5bGV0aGFub2wgKFBFdGgpOiAyODQgbmcvbUwgKGVsZXZhdGVkOyBjb25zaXN0ZW50IHdpdGggaGVhdnkgZHJpbmtpbmcpCi0gQ0JDOiBXaXRoaW4gbm9ybWFsIGxpbWl0cwotIENNUCAocmVtYWluZGVyKTogV2l0aGluIG5vcm1hbCBsaW1pdHMKLSBVcmluZSBkcnVnIHNjcmVlbjogTmVnYXRpdmUgZm9yIGlsbGljaXQgc3Vic3RhbmNlcwoKSW1hZ2luZzogSGVwYXRpYyB1bHRyYXNvdW5kIG9yZGVyZWQsIHBlbmRpbmcgc2NoZWR1bGluZy4KCkFTU0VTU01FTlQ6CjEuIEFsY29ob2wgdXNlIGRpc29yZGVyLCBtb2RlcmF0ZSBzZXZlcml0eSAoRFNNLTUsIEYxMC4yMCkgLSBQYXRpZW50IG1lZXRzIDUgb2YgMTEgRFNNLTUgY3JpdGVyaWE6IGRyaW5raW5nIGluIGxhcmdlciBhbW91bnRzIG9yIGZvciBsb25nZXIgdGhhbiBpbnRlbmRlZCwgcGVyc2lzdGVudCBkZXNpcmUgb3IgdW5zdWNjZXNzZnVsIGVmZm9ydHMgdG8gY3V0IGRvd24sIGNyYXZpbmcsIGNvbnRpbnVlZCB1c2UgZGVzcGl0ZSByZWN1cnJlbnQgaW50ZXJwZXJzb25hbCBwcm9ibGVtcywgYW5kIHRvbGVyYW5jZS4gTWlsZGx5IGVsZXZhdGVkIGxpdmVyIGVuenltZXMgYW5kIGVsZXZhdGVkIFBFdGggbGV2ZWwgY29uc2lzdGVudCB3aXRoIGNocm9uaWMgaGVhdnkgYWxjb2hvbCB1c2UuIENJV0EtQXIgNiBpbmRpY2F0ZXMgbWlsZCB3aXRoZHJhd2FsIHJpc2suCjIuIEJpcG9sYXIgSUkgZGlzb3JkZXIgKEYzMS44MSkgLSBTdGFibGUgb24gY3VycmVudCByZWdpbWVuIHBlciBwYXRpZW50IHJlcG9ydCBhbmQgcmVjb3JkcyBmcm9tIERyLiBPa2Fmb3IuIERvY3VtZW50ZWQgZm9yIGNhcmUgY29vcmRpbmF0aW9uIHB1cnBvc2VzLgozLiBNaWxkIHRyYW5zYW1pbmFzZSBlbGV2YXRpb24gLSBMaWtlbHkgYWxjb2hvbC1yZWxhdGVkIGdpdmVuIHBhdHRlcm4gYW5kIEdHVCBlbGV2YXRpb24uIEhlcGF0aWMgdWx0cmFzb3VuZCBwZW5kaW5nIHRvIGV2YWx1YXRlIGZvciBoZXBhdGljIHN0ZWF0b3NpcyBvciBvdGhlciBzdHJ1Y3R1cmFsIGRpc2Vhc2UuCgpQTEFOOgoxLiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5IC0gSW5pdGlhdGVkIGZvciBjcmF2aW5nIHJlZHVjdGlvbiBhbmQgcmVsYXBzZSBwcmV2ZW50aW9uLiBObyBjb250cmFpbmRpY2F0aW9ucyBpZGVudGlmaWVkLiBVRFMgbmVnYXRpdmUgZm9yIG9waW9pZHMuIFBhdGllbnQgY291bnNlbGVkIG9uIG1lY2hhbmlzbSBvZiBhY3Rpb24sIGV4cGVjdGVkIHNpZGUgZWZmZWN0cyAobmF1c2VhLCBoZWFkYWNoZSksIGFuZCBpbXBvcnRhbmNlIG9mIGF2b2lkaW5nIG9waW9pZHMgd2hpbGUgb24gbmFsdHJleG9uZS4KMi4gVGhpYW1pbmUgMTAwIG1nIFBPIGRhaWx5IC0gSW5pdGlhdGVkIGZvciBudXRyaXRpb25hbCBzdXBwb3J0IGdpdmVuIGNocm9uaWMgaGVhdnkgYWxjb2hvbCB1c2UgYW5kIHJpc2sgb2YgZGVmaWNpZW5jeS4KMy4gSW50ZW5zaXZlIG91dHBhdGllbnQgcHJvZ3JhbSAoSU9QKSBlbnJvbGxtZW50IC0gUGF0aWVudCBlbnJvbGxlZCBpbiAxMi13ZWVrIElPUDogdGhyZWUgZ3JvdXAgdGhlcmFweSBzZXNzaW9ucyBwZXIgd2VlayBwbHVzIHdlZWtseSBpbmRpdmlkdWFsIGNvdW5zZWxpbmcgd2l0aCBMaXNhIEh1YW5nLCBMQ1NXLgo0LiBIZXBhdGljIHVsdHJhc291bmQgLSBPcmRlcmVkIHRvIGV2YWx1YXRlIGZvciBhbGNvaG9sLXJlbGF0ZWQgbGl2ZXIgZGlzZWFzZS4gUGF0aWVudCB3aWxsIGJlIGNvbnRhY3RlZCBmb3Igc2NoZWR1bGluZy4KNS4gQ2FyZSBjb29yZGluYXRpb24gLSBEci4gRGVsZ2FkbyBjb250YWN0ZWQgRHIuIEphbWVzIE9rYWZvciAoUG9ydGxhbmQgQmVoYXZpb3JhbCBIZWFsdGggQXNzb2NpYXRlcykgYnkgcGhvbmUgdG8gZGlzY3VzcyBtZWRpY2F0aW9uIGludGVyYWN0aW9ucyBhbmQgY29vcmRpbmF0ZSBjYXJlLiBObyBzaWduaWZpY2FudCBkcnVnIGludGVyYWN0aW9ucyBpZGVudGlmaWVkIGJldHdlZW4gbmFsdHJleG9uZSBhbmQgY3VycmVudCBwc3ljaGlhdHJpYyByZWdpbWVuIChsYW1vdHJpZ2luZSAyMDAgbWcsIHF1ZXRpYXBpbmUgNTAgbWcpLiBEci4gT2thZm9yIGF3YXJlIG9mIEFVRCBkaWFnbm9zaXMgYW5kIHRyZWF0bWVudCBwbGFuLiBBZ3JlZW1lbnQgdG8gY29udGludWUgY3VycmVudCBwc3ljaGlhdHJpYyBtZWRpY2F0aW9ucyB3aXRob3V0IGNoYW5nZXMuCjYuIFNhZmV0eSBwbGFubmluZyAtIFBhdGllbnQgZGVuaWVzIHN1aWNpZGFsIGlkZWF0aW9uLiBFbWVyZ2VuY3kgcmVzb3VyY2VzIHJldmlld2VkLiBQYXRpZW50IGFkdmlzZWQgdG8gc2VlayBlbWVyZ2VuY3kgY2FyZSBpZiB3aXRoZHJhd2FsIHN5bXB0b21zIHdvcnNlbi4KNy4gRm9sbG93LXVwIC0gUmV0dXJuIHRvIHNlZSBEci4gRGVsZ2FkbyBpbiA0IHdlZWtzIGZvciBtZWRpY2FsIG1vbml0b3JpbmcsIHJlcGVhdCBsaXZlciBlbnp5bWVzLCBhbmQgYXNzZXNzbWVudCBvZiBuYWx0cmV4b25lIHRvbGVyYWJpbGl0eS4gSU9QIHNlc3Npb25zIHRvIGJlZ2luIHdpdGhpbiBvbmUgd2Vlay4KCkNvbXByZWhlbnNpdmUgaW50YWtlIGFzc2Vzc21lbnQgYW5kIGluaXRpYWwgdHJlYXRtZW50IHBsYW4gZ2VuZXJhdGVkIGFuZCBwbGFjZWQgaW4gY2hhcnQuIFBhdGllbnQgdmVyYmFsaXplZCB1bmRlcnN0YW5kaW5nIGFuZCBhZ3JlZW1lbnQgd2l0aCB0cmVhdG1lbnQgcGxhbi4gQ29uc2VudCBmb3IgdHJlYXRtZW50IG9idGFpbmVkIGFuZCBkb2N1bWVudGVkLgoKUm9zYSBEZWxnYWRvLCBNRApBZGRpY3Rpb24gTWVkaWNpbmUKQnJpZGdldG93biBSZWNvdmVyeSBDZW50ZXIKCkxpc2EgSHVhbmcsIExDU1cKSW5kaXZpZHVhbCBDb3Vuc2Vsb3IKQnJpZGdldG93biBSZWNvdmVyeSBDZW50ZXIK"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-008"
+            }
+          ],
+          "period": {
+            "start": "2023-01-09T09:00:00-08:00",
+            "end": "2023-01-09T10:30:00-08:00"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-009-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34857-3",
+              "display": "Addiction medicine Note"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "34109-9",
+              "display": "Note"
+            }
+          ],
+          "text": "Results Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2023-02-13T12:00:00-08:00",
+        "author": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UkVTVUxUUyBOT1RFCgpEYXRlOiAwMi8xMy8yMDIzClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsCkRPQjogMTEvMTQvMTk5MwpQcm92aWRlcjogRHIuIFJvc2EgRGVsZ2FkbywgTUQgKEFkZGljdGlvbiBNZWRpY2luZSkKRmFjaWxpdHk6IEJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyLCA5MjAgU0UgU2FuZHkgQmx2ZCwgUG9ydGxhbmQsIE9SIDk3MjE0ClZpc2l0IFR5cGU6IExhYiBWaXNpdCAvIFJlc3VsdHMgUmV2aWV3CgpSRUFTT04gRk9SIFZJU0lUOgpUcmVhdG1lbnQgbW9uaXRvcmluZyBsYWJzIGFuZCBoZXBhdGljIHVsdHJhc291bmQgcmVzdWx0cyByZXZpZXcuIFBhdGllbnQgaXMgNSB3ZWVrcyBpbnRvIDEyLXdlZWsgaW50ZW5zaXZlIG91dHBhdGllbnQgcHJvZ3JhbSAoSU9QKSBmb3IgYWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIHNldmVyaXR5LgoKQ0xJTklDQUwgVVBEQVRFOgpTYXJhaCByZXBvcnRzIHJlZHVjZWQgY3JhdmluZ3Mgc2luY2Ugc3RhcnRpbmcgbmFsdHJleG9uZSA1MG1nIGRhaWx5LiBTaGUgaGFzIHNpZ25pZmljYW50bHkgZGVjcmVhc2VkIGhlciBhbGNvaG9sIGNvbnN1bXB0aW9uIGJ1dCBoYXMgbm90IHlldCBhY2hpZXZlZCBjb21wbGV0ZSBhYnN0aW5lbmNlOyBzaGUgcmVwb3J0cyAyLTMgZHJpbmtzIG9uIG9uZSBvY2Nhc2lvbiBvdmVyIHRoZSBwcmlvciB3ZWVrZW5kLiBTaGUgY29udGludWVzIHRvIGF0dGVuZCBJT1AgZ3JvdXAgc2Vzc2lvbnMgM3gvd2VlayBhbmQgaW5kaXZpZHVhbCBjb3Vuc2VsaW5nLiBObyB2aXRhbHMgb2J0YWluZWQgdG9kYXkgKGxhYi1vbmx5IHZpc2l0KS4KCkxBQk9SQVRPUlkgUkVTVUxUUzoKQ29tcHJlaGVuc2l2ZSBNZXRhYm9saWMgUGFuZWwgd2l0aCBMaXZlciBFbnp5bWVzIGFuZCBHR1Q6CiAgU29kaXVtOiBXTkwKICBQb3Rhc3NpdW06IFdOTAogIENobG9yaWRlOiBXTkwKICBDTzI6IFdOTAogIEJVTjogV05MCiAgQ3JlYXRpbmluZTogV05MCiAgR2x1Y29zZTogV05MCiAgQ2FsY2l1bTogV05MCiAgVG90YWwgUHJvdGVpbjogV05MCiAgQWxidW1pbjogV05MCiAgVG90YWwgQmlsaXJ1YmluOiBXTkwKICBBbGthbGluZSBQaG9zcGhhdGFzZTogV05MCiAgQVNUOiAzOCBVL0wgKGltcHJvdmVkIGZyb20gNTIgVS9MIGF0IGludGFrZSkKICBBTFQ6IDQ0IFUvTCAoaW1wcm92ZWQgZnJvbSA2MSBVL0wgYXQgaW50YWtlKQogIEdHVDogNjIgVS9MIChpbXByb3ZlZCBmcm9tIDg5IFUvTCBhdCBpbnRha2UpCgpVcmluZSBEcnVnIFNjcmVlbjogTmVnYXRpdmUKCklNQUdJTkcgUkVTVUxUUyBSRVZJRVdFRDoKSGVwYXRpYyBVbHRyYXNvdW5kIChwZXJmb3JtZWQgMDEvMjMvMjAyMyk6CiAgTGl2ZXIgcGFyZW5jaHltYSBub3JtYWwuIE5vIGhlcGF0aWMgc3RlYXRvc2lzLiBObyBmb2NhbCBsZXNpb25zIGlkZW50aWZpZWQuIE5vIGJpbGlhcnkgZGlsYXRpb24uIFVucmVtYXJrYWJsZSBzdHVkeS4KCkFTU0VTU01FTlQ6CjEuIEFsY29ob2wgdXNlIGRpc29yZGVyLCBtb2RlcmF0ZSBzZXZlcml0eSDigJQgcGF0aWVudCBpcyBtYWtpbmcgcHJvZ3Jlc3MgaW4gSU9QIHdpdGggcmVkdWNlZCBjb25zdW1wdGlvbiBhbmQgcmVkdWNlZCBjcmF2aW5ncyBvbiBuYWx0cmV4b25lLCB0aG91Z2ggY29tcGxldGUgYWJzdGluZW5jZSBub3QgeWV0IGFjaGlldmVkLiBMaXZlciBlbnp5bWVzIHRyZW5kaW5nIGZhdm9yYWJseTogQVNUIGRlY3JlYXNlZCBmcm9tIDUyIHRvIDM4IFUvTCwgQUxUIGZyb20gNjEgdG8gNDQgVS9MLCBHR1QgZnJvbSA4OSB0byA2MiBVL0wuIEhlcGF0aWMgdWx0cmFzb3VuZCB1bnJlbWFya2FibGUsIHdoaWNoIGlzIHJlYXNzdXJpbmcuCjIuIEJpcG9sYXIgSUkgZGlzb3JkZXIg4oCUIHN0YWJsZSBvbiBsYW1vdHJpZ2luZSAyMDBtZyBkYWlseSBhbmQgcXVldGlhcGluZSA1MG1nIG5pZ2h0bHksIG1hbmFnZWQgYnkgb3V0cGF0aWVudCBwc3ljaGlhdHJ5IChEci4gT2thZm9yKS4gTm8gY2hhbmdlcyBpbmRpY2F0ZWQgZnJvbSBhZGRpY3Rpb24gbWVkaWNpbmUgc3RhbmRwb2ludC4KClBMQU46CjEuIENvbnRpbnVlIG5hbHRyZXhvbmUgNTBtZyBQTyBkYWlseS4KMi4gQ29udGludWUgSU9QIGFzIHNjaGVkdWxlZDsgZW5jb3VyYWdlIHBhdGllbnQgdG93YXJkIGdvYWwgb2YgY29tcGxldGUgYWJzdGluZW5jZS4KMy4gUmVwZWF0IGxpdmVyIGVuenltZSBwYW5lbCBhdCBJT1AgY29tcGxldGlvbiBvciBzb29uZXIgaWYgY2xpbmljYWxseSBpbmRpY2F0ZWQuCjQuIFVyaW5lIGRydWcgc2NyZWVuIHRvIGJlIHJlcGVhdGVkIHBlciBJT1AgcHJvdG9jb2wuCjUuIFJlc3VsdHMgcmV2aWV3ZWQgYW5kIGRvY3VtZW50ZWQgaW4gZWxlY3Ryb25pYyByZWNvcmQuIFBhdGllbnQgdG8gYmUgaW5mb3JtZWQgb2YgaW1wcm92aW5nIGxhYiB0cmVuZHMgYW5kIG5vcm1hbCB1bHRyYXNvdW5kIGZpbmRpbmdzIGF0IG5leHQgSU9QIHZpc2l0IHdpdGggRHIuIERlbGdhZG8uCgpFbGVjdHJvbmljYWxseSBzaWduZWQgYnk6ClJvc2EgRGVsZ2FkbywgTUQKQWRkaWN0aW9uIE1lZGljaW5lCkJyaWRnZXRvd24gUmVjb3ZlcnkgQ2VudGVyCg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-009"
+            }
+          ],
+          "period": {
+            "start": "2023-02-13"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-010-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "IOP Completion Visit Progress Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2023-04-24T09:45:00-07:00",
+        "author": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "QlJJREdFVE9XTiBSRUNPVkVSWSBDRU5URVIKOTIwIFNFIFNhbmR5IEJsdmQsIFBvcnRsYW5kLCBPUiA5NzIxNApOUEk6IDM0NTY3ODkwMTIKClBST0dSRVNTIE5PVEUg4oCUIElPUCBDT01QTEVUSU9OIFZJU0lUCgpQYXRpZW50OiBTYXJhaCBFbGl6YWJldGggTWl0Y2hlbGwKRE9COiAxMS8xNC8xOTkzCkRhdGUgb2YgU2VydmljZTogMDQvMjQvMjAyMwpQcm92aWRlcjogUm9zYSBEZWxnYWRvLCBNRCAoQWRkaWN0aW9uIE1lZGljaW5lKQpDb3Vuc2Vsb3I6IExpc2EgSHVhbmcsIExDU1cKClNVQkpFQ1RJVkU6ClNhcmFoIHByZXNlbnRzIGZvciBoZXIgaW50ZW5zaXZlIG91dHBhdGllbnQgcHJvZ3JhbSAoSU9QKSBjb21wbGV0aW9uIHZpc2l0LiBTaGUgcmVwb3J0cyBzdXN0YWluZWQgc29icmlldHkgd2l0aCBhIHNvYnJpZXR5IGRhdGUgb2YgQXByaWwgMTQsIDIwMjMuIFNoZSBzdWNjZXNzZnVsbHkgY29tcGxldGVkIHRoZSBmdWxsIDEyLXdlZWsgSU9QLCBhdHRlbmRpbmcgYXBwcm94aW1hdGVseSAzNiBncm91cCB0aGVyYXB5IHNlc3Npb25zIGFuZCAxMiBpbmRpdmlkdWFsIGNvdW5zZWxpbmcgc2Vzc2lvbnMgd2l0aCBMaXNhIEh1YW5nLCBMQ1NXLiBTaGUgZGVzY3JpYmVzIGZlZWxpbmcgbW90aXZhdGVkIGFuZCBvcHRpbWlzdGljIGFib3V0IGhlciByZWNvdmVyeS4gU2hlIGhhcyBiZWVuIGF0dGVuZGluZyBBQSBtZWV0aW5ncyByZWd1bGFybHkgYW5kIHBsYW5zIHRvIGNvbnRpbnVlLiBTaGUgZGVuaWVzIGFueSBjcmF2aW5ncywgd2l0aGRyYXdhbCBzeW1wdG9tcywgb3IgdXJnZXMgdG8gZHJpbmsuIFNsZWVwIGhhcyBpbXByb3ZlZC4gTW9vZCBpcyBiZXR0ZXIgb3ZlcmFsbCwgdGhvdWdoIHNoZSBhY2tub3dsZWRnZXMgc29tZSByZXNpZHVhbCBsb3cgbW9vZCB3aGljaCBzaGUgYXR0cmlidXRlcyB0byBhZGp1c3RpbmcgdG8gYSBzb2JlciBsaWZlc3R5bGUuIFNoZSBjb250aW51ZXMgdG8gdGFrZSBuYWx0cmV4b25lIDUwIG1nIGRhaWx5IHdpdGhvdXQgc2lkZSBlZmZlY3RzLiBTaGUgaGFzIGJlZW4gdGFraW5nIHRoaWFtaW5lIGFzIGRpcmVjdGVkLiBObyBuZXcgbWVkaWNhbCBjb21wbGFpbnRzLiBObyBtZWRpY2F0aW9uIHNpZGUgZWZmZWN0cyByZXBvcnRlZC4KClBNSDogQWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIChkaWFnbm9zZWQgSmFudWFyeSAyMDIzKS4gQmlwb2xhciBJSSBkaXNvcmRlciAoZGlhZ25vc2VkIDIwMTksIG1hbmFnZWQgYnkgRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzKS4gSHlwZXJ0cmlnbHljZXJpZGVtaWEsIG1pbGQuCk1lZGljYXRpb25zOiBOYWx0cmV4b25lIDUwIG1nIFBPIGRhaWx5LCB0aGlhbWluZSAxMDAgbWcgUE8gZGFpbHksIGxhbW90cmlnaW5lIDIwMCBtZyBQTyBkYWlseSwgcXVldGlhcGluZSA1MCBtZyBQTyBhdCBiZWR0aW1lLgpBbGxlcmdpZXM6IFN1bGZhIGFudGliaW90aWNzIChUTVAtU01YKSDigJQgcmFzaC4KCk9CSkVDVElWRToKVml0YWxzOiBCUCAxMjAvNzYsIEhSIDcyLCBUZW1wIDk4LjTCsEYsIFJSIDE0LCBTcE8yIDk5JSwgV2VpZ2h0IDE0MiBsYnMsIEJNSSAyMi45CkdlbmVyYWw6IFdlbGwtYXBwZWFyaW5nLCB3ZWxsLW5vdXJpc2hlZCBmZW1hbGUgaW4gbm8gYWN1dGUgZGlzdHJlc3MuIEFmZmVjdCBpcyBicmlnaHQgYW5kIGFwcHJvcHJpYXRlLiBObyB0cmVtb3IuIE5vIGRpYXBob3Jlc2lzLgpIRUVOVDogU2NsZXJhIGFuaWN0ZXJpYy4gTXVjb3VzIG1lbWJyYW5lcyBtb2lzdC4KQWJkb21lbjogU29mdCwgbm9udGVuZGVyLCBubyBoZXBhdG9tZWdhbHkuClBzeWNoOiBBbGVydCBhbmQgb3JpZW50ZWQgeDMuIE1vb2QgImdvb2QuIiBBZmZlY3QgY29uZ3J1ZW50IGFuZCBldXRoeW1pYy4gTm8gc3VpY2lkYWwgb3IgaG9taWNpZGFsIGlkZWF0aW9uLiBJbnNpZ2h0IGFuZCBqdWRnbWVudCBpbXByb3ZlZC4KClNjcmVlbmluZyBUb29sczoKLSBBVURJVCBzY29yZTogNCAobG93IHJpc2s7IGltcHJvdmVkIGZyb20gMjggYXQgaW50YWtlIGluIEphbnVhcnkgMjAyMykKLSBQSFEtOSBzY29yZTogOCAobWlsZCBkZXByZXNzaW9uOyBpbXByb3ZlZCBmcm9tIHByaW9yIHNjb3JlcykKCkxhYnMgKGRyYXduIHRvZGF5KToKLSBDTVAgd2l0aCBsaXZlciBlbnp5bWVzOiBXaXRoaW4gbm9ybWFsIGxpbWl0cwotIEFTVDogMjQgVS9MIChub3JtYWwpCi0gQUxUOiAyOCBVL0wgKG5vcm1hbCkKLSBHR1Q6IDM4IFUvTCAobm9ybWFsKQpMaXZlciBlbnp5bWVzIGhhdmUgZnVsbHkgbm9ybWFsaXplZCBmcm9tIGVsZXZhdGVkIHZhbHVlcyBhdCBpbnRha2UgKEFTVCA1MiwgQUxUIDYxLCBHR1QgODkgaW4gSmFudWFyeSAyMDIzKS4KCkFTU0VTU01FTlQ6CjEuIEFsY29ob2wgdXNlIGRpc29yZGVyLCBtb2RlcmF0ZSDigJQgaW4gZWFybHkgcmVtaXNzaW9uLiBQYXRpZW50IGhhcyBhY2hpZXZlZCBzdXN0YWluZWQgc29icmlldHkgKHNvYnJpZXR5IGRhdGUgMDQvMTQvMjAyMykgYW5kIHN1Y2Nlc3NmdWxseSBjb21wbGV0ZWQgdGhlIDEyLXdlZWsgSU9QLiBBVURJVCBzY29yZSBoYXMgZGVjcmVhc2VkIGZyb20gMjggdG8gNCwgaW5kaWNhdGluZyBtYXJrZWQgaW1wcm92ZW1lbnQuIExpdmVyIGVuenltZXMgZnVsbHkgbm9ybWFsaXplZCwgY29uc2lzdGVudCB3aXRoIGNlc3NhdGlvbiBvZiBhbGNvaG9sIHVzZS4KMi4gQmlwb2xhciBJSSBkaXNvcmRlciDigJQgc3RhYmxlIG9uIGN1cnJlbnQgcmVnaW1lbiBwZXIgRHIuIE9rYWZvci4gTm8gZXZpZGVuY2Ugb2YgbW9vZCBkZXN0YWJpbGl6YXRpb24gZHVyaW5nIHRyZWF0bWVudCBjb3Vyc2UuCjMuIERlcHJlc3NpdmUgc3ltcHRvbXMsIG1pbGQg4oCUIFBIUS05IG9mIDgsIGltcHJvdmVkLiBMaWtlbHkgcmVsYXRlZCB0byBib3RoIHVuZGVybHlpbmcgYmlwb2xhciBJSSBkZXByZXNzaXZlIGNvbXBvbmVudCBhbmQgcHN5Y2hvc29jaWFsIGFkanVzdG1lbnQgaW4gcmVjb3ZlcnkuIFdpbGwgY29udGludWUgdG8gbW9uaXRvci4KClBMQU46CjEuIENvbnRpbnVlIG5hbHRyZXhvbmUgNTAgbWcgUE8gZGFpbHkgaW5kZWZpbml0ZWx5IGZvciBjcmF2aW5nIHN1cHByZXNzaW9uIGFuZCByZWxhcHNlIHByZXZlbnRpb24uIFBhdGllbnQgdG9sZXJhdGluZyB3ZWxsIHdpdGggbm8gYWR2ZXJzZSBlZmZlY3RzLgoyLiBEaXNjb250aW51ZSB0aGlhbWluZSAxMDAgbWcgZGFpbHkg4oCUIG5vIGxvbmdlciBjbGluaWNhbGx5IGluZGljYXRlZCBnaXZlbiBub3JtYWxpemVkIGxpdmVyIGZ1bmN0aW9uIGFuZCBhZGVxdWF0ZSBudXRyaXRpb25hbCBzdGF0dXMuCjMuIENvbnRpbnVlIEFBIG1lZXRpbmdzIGF0IGxlYXN0IHR3aWNlIHdlZWtseSBhcyBwYXJ0IG9mIGFmdGVyY2FyZSBzdXBwb3J0Lgo0LiBBZnRlcmNhcmUgZm9sbG93LXVwIGFwcG9pbnRtZW50IHNjaGVkdWxlZCBpbiAzIG1vbnRocyAoYXBwcm94aW1hdGVseSBKdWx5IDIwMjMpIHdpdGggRHIuIERlbGdhZG8gdG8gcmVhc3Nlc3Mgc29icmlldHksIG1lZGljYXRpb24gdG9sZXJhbmNlLCBhbmQgc2NyZWVuaW5nIHNjb3Jlcy4KNS4gSU9QIGNvbXBsZXRpb24gc3VtbWFyeSBub3RlIGFuZCBpbmRpdmlkdWFsaXplZCBhZnRlcmNhcmUgcGxhbiBnZW5lcmF0ZWQgYW5kIHByb3ZpZGVkIHRvIHBhdGllbnQuCjYuIENvb3JkaW5hdGlvbiBub3RlIHNlbnQgdG8gRHIuIEphbWVzIE9rYWZvciBhdCBQb3J0bGFuZCBCZWhhdmlvcmFsIEhlYWx0aCBBc3NvY2lhdGVzIGRvY3VtZW50aW5nIElPUCBjb21wbGV0aW9uLCBzdXN0YWluZWQgc29icmlldHksIG5vcm1hbGl6ZWQgbGFicywgYW5kIG9uZ29pbmcgbmFsdHJleG9uZSBwbGFuLiBEci4gT2thZm9yIHRvIGNvbnRpbnVlIG1hbmFnZW1lbnQgb2YgYmlwb2xhciBJSSBkaXNvcmRlciBhbmQgbW9uaXRvciBmb3IgYW55IG1vb2QgY2hhbmdlcyBpbiBlYXJseSByZWNvdmVyeS4KNy4gUGF0aWVudCBlZHVjYXRlZCBvbiByZWxhcHNlIHByZXZlbnRpb24gc3RyYXRlZ2llcywgaW1wb3J0YW5jZSBvZiBjb250aW51ZWQgbmFsdHJleG9uZSBhZGhlcmVuY2UsIGFuZCB3aGVuIHRvIHNlZWsgdXJnZW50IGNhcmUgKHJldHVybiBvZiBjcmF2aW5ncywgbW9vZCBpbnN0YWJpbGl0eSwgd2l0aGRyYXdhbCBzeW1wdG9tcykuCgpJT1AgQ09NUExFVElPTiBTVU1NQVJZOgpTYXJhaCBNaXRjaGVsbCBzdWNjZXNzZnVsbHkgY29tcGxldGVkIHRoZSBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlciAxMi13ZWVrIGludGVuc2l2ZSBvdXRwYXRpZW50IHByb2dyYW0gZm9yIGFsY29ob2wgdXNlIGRpc29yZGVyIChtb2RlcmF0ZSkuIFNoZSBhdHRlbmRlZCBhcHByb3hpbWF0ZWx5IDM2IGdyb3VwIHNlc3Npb25zIGFuZCAxMiBpbmRpdmlkdWFsIGNvdW5zZWxpbmcgc2Vzc2lvbnMuIFNoZSBhY2hpZXZlZCBzb2JyaWV0eSBvbiBBcHJpbCAxNCwgMjAyMy4gQXQgcHJvZ3JhbSBjb21wbGV0aW9uLCBoZXIgQVVESVQgc2NvcmUgaW1wcm92ZWQgZnJvbSAyOCAoaGlnaCByaXNrKSB0byA0IChsb3cgcmlzayksIFBIUS05IGltcHJvdmVkIHRvIDggKG1pbGQpLCBhbmQgbGl2ZXIgZW56eW1lcyBmdWxseSBub3JtYWxpemVkLiBQcm9nbm9zaXMgaXMgZmF2b3JhYmxlIHdpdGggY29udGludWVkIGVuZ2FnZW1lbnQgaW4gYWZ0ZXJjYXJlLCBtZWRpY2F0aW9uIGFkaGVyZW5jZSwgYW5kIGNvbW11bml0eSBzdXBwb3J0LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OgpSb3NhIERlbGdhZG8sIE1ECkFkZGljdGlvbiBNZWRpY2luZQpCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlcgpEYXRlOiAwNC8yNC8yMDIzCg=="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-010"
+            }
+          ],
+          "period": {
+            "start": "2023-04-24T09:00:00-07:00",
+            "end": "2023-04-24T09:45:00-07:00"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-011-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-011-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34748-4",
+              "display": "Telephone encounter Note"
+            }
+          ],
+          "text": "Telephone Encounter Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "date": "2023-07-17T00:00:00-07:00",
+        "author": [
+          {
+            "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+            "display": "Dr. Rosa Delgado"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+          "display": "Dr. Rosa Delgado"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwNy8xNy8yMDIzClBhdGllbnQ6IFNhcmFoIE1pdGNoZWxsIChET0I6IDExLzE0LzE5OTMpClByb3ZpZGVyOiBEci4gUm9zYSBEZWxnYWRvLCBNRCAoQWRkaWN0aW9uIE1lZGljaW5lKQpTaXRlOiBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlciwgOTIwIFNFIFNhbmR5IEJsdmQsIFBvcnRsYW5kLCBPUiA5NzIxNApOUEk6IDM0NTY3ODkwMTIKVmlzaXQgVHlwZTogVGVsZXBob25lIGFmdGVyY2FyZSBmb2xsb3ctdXAKClJFQVNPTiBGT1IgQ0FMTDoKU2NoZWR1bGVkIGFmdGVyY2FyZSBmb2xsb3ctdXAsIGFwcHJveGltYXRlbHkgMyBtb250aHMgcG9zdC1JT1AgY29tcGxldGlvbi4KCkRJU0NVU1NJT046ClBhdGllbnQgcmVwb3J0cyBzdXN0YWluZWQgc29icmlldHkgd2l0aCAzIG1vbnRocyBzaW5jZSBsYXN0IGFsY29ob2xpYyBkcmluayAoc29iZXIgc2luY2UgbWlkLUFwcmlsIDIwMjMpLiBTaGUgaXMgYXR0ZW5kaW5nIEFBIG1lZXRpbmdzIHJlZ3VsYXJseSwgMi0zIHRpbWVzIHBlciB3ZWVrLCBhbmQgZGVzY3JpYmVzIHN0YWJsZSBtb29kIHRocm91Z2hvdXQuIFNoZSBjb250aW51ZXMgbmFsdHJleG9uZSA1MG1nIFBPIGRhaWx5IGFuZCBkZW5pZXMgYW55IHNpZGUgZWZmZWN0cyBpbmNsdWRpbmcgbmF1c2VhLCBoZWFkYWNoZSwgb3IgaGVwYXRvdG94aWNpdHkgc3ltcHRvbXMuIFBhdGllbnQgcmVwb3J0cyBmZWVsaW5nIG1vdGl2YXRlZCBhbmQgb3B0aW1pc3RpYyBhYm91dCBoZXIgcmVjb3ZlcnkuIFNoZSBpcyBjb25zaWRlcmluZyBhIGdlb2dyYXBoaWMgcmVsb2NhdGlvbiBmb3IgYSBmcmVzaCBzdGFydCBhbmQgaW5xdWlyZWQgYWJvdXQgY29udGludWl0eSBvZiBjYXJlIHBsYW5uaW5nLgoKUmV2aWV3ZWQgcmVsYXBzZSBwcmV2ZW50aW9uIHN0cmF0ZWdpZXMgaW5jbHVkaW5nIGlkZW50aWZpY2F0aW9uIG9mIHRyaWdnZXJzLCBjb3Bpbmcgc2tpbGxzLCBpbXBvcnRhbmNlIG9mIG1haW50YWluaW5nIEFBIGF0dGVuZGFuY2UsIGFuZCBoYXZpbmcgYSBzcG9uc29yIG9yIHN1cHBvcnQgc3lzdGVtIGluIHBsYWNlIGVzcGVjaWFsbHkgZHVyaW5nIHRoZSBzdHJlc3Mgb2YgcmVsb2NhdGlvbi4gQWZmaXJtZWQgaGVyIHByb2dyZXNzIGFuZCByZWluZm9yY2VkIHRoZSBpbXBvcnRhbmNlIG9mIGNvbnRpbnVpbmcgbmFsdHJleG9uZSBpbmRlZmluaXRlbHkgZ2l2ZW4gaGVyIGhpc3Rvcnkgb2YgbW9kZXJhdGUgQVVELgoKQVNTRVNTTUVOVDoKMS4gQWxjb2hvbCB1c2UgZGlzb3JkZXIsIG1vZGVyYXRlIOKAlCBpbiBlYXJseSBzdXN0YWluZWQgcmVtaXNzaW9uLiBQYXRpZW50IGhhcyBtYWludGFpbmVkIHNvYnJpZXR5IGZvciAzIG1vbnRocyBwb3N0LUlPUCBjb21wbGV0aW9uLiBBVURJVCBub3QgZm9ybWFsbHkgcmUtYWRtaW5pc3RlcmVkIHZpYSB0ZWxlcGhvbmUgYnV0IHNlbGYtcmVwb3J0IGNvbnNpc3RlbnQgd2l0aCBjb250aW51ZWQgYWJzdGluZW5jZS4gVG9sZXJhdGluZyBuYWx0cmV4b25lIHdpdGhvdXQgYWR2ZXJzZSBlZmZlY3RzLgoyLiBCaXBvbGFyIElJIGRpc29yZGVyIChtYW5hZ2VkIGJ5IERyLiBPa2Fmb3IgYXQgUG9ydGxhbmQgQmVoYXZpb3JhbCBIZWFsdGggQXNzb2NpYXRlcykg4oCUIHN0YWJsZSBwZXIgcGF0aWVudCByZXBvcnQuIENvbnRpbnVlcyBsYW1vdHJpZ2luZSAyMDBtZyBkYWlseSBhbmQgcXVldGlhcGluZSA1MG1nIGF0IGJlZHRpbWUuCgpQTEFOOgoxLiBDb250aW51ZSBuYWx0cmV4b25lIDUwbWcgUE8gZGFpbHkgaW5kZWZpbml0ZWx5LgoyLiBDb250aW51ZSBBQSBhdHRlbmRhbmNlIGF0IGN1cnJlbnQgZnJlcXVlbmN5ICgyLTMgbWVldGluZ3Mvd2Vlayk7IGluY3JlYXNlIGlmIG5lZWRlZCBkdXJpbmcgcmVsb2NhdGlvbiB0cmFuc2l0aW9uLgozLiBBZHZpc2VkIHBhdGllbnQgdG8gZXN0YWJsaXNoIGNhcmUgd2l0aCBhbiBhZGRpY3Rpb24gbWVkaWNpbmUgb3IgcHN5Y2hpYXRyeSBwcm92aWRlciBhdCBoZXIgbmV3IGxvY2F0aW9uIHRvIGVuc3VyZSBjb250aW51aXR5IG9mIG5hbHRyZXhvbmUgcHJlc2NyaWJpbmcgYW5kIEFVRCBtb25pdG9yaW5nLgo0LiBSZWluZm9yY2VkIHJlbGFwc2UgcHJldmVudGlvbiBzdHJhdGVnaWVzLCBwYXJ0aWN1bGFybHkgYXJvdW5kIHRoZSBzdHJlc3Mgb2YgYSBnZW9ncmFwaGljIG1vdmUuCjUuIE5vIGZ1cnRoZXIgdmlzaXRzIHNjaGVkdWxlZCBhdCBCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlci4gQ2FyZSBhdCB0aGlzIGZhY2lsaXR5IGNvbmNsdWRlZCBhcyBwYXRpZW50IHRyYW5zaXRpb25zIHdpdGggcGxhbm5lZCByZWxvY2F0aW9uLgo2LiBQYXRpZW50IGluc3RydWN0ZWQgdG8gY29udGFjdCBCcmlkZ2V0b3duIG9yIHByZXNlbnQgdG8gbG9jYWwgRUQgaWYgcmVsYXBzZSBvY2N1cnMgcHJpb3IgdG8gZXN0YWJsaXNoaW5nIG5ldyBwcm92aWRlci4KCkRyLiBSb3NhIERlbGdhZG8sIE1ECkFkZGljdGlvbiBNZWRpY2luZQpCcmlkZ2V0b3duIFJlY292ZXJ5IENlbnRlcgo="
+            },
+            "format": {
+              "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+              "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+              "display": "mimeType Sufficient"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-011"
+            }
+          ],
+          "period": {
+            "start": "2023-07-17"
+          }
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-008",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-008",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185347001",
+                "display": "Encounter for problem (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary Provider"
+              }
+            ],
+            "period": {
+              "start": "2023-01-09T09:00:00-08:00",
+              "end": "2023-01-09T10:30:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Individual Counselor"
+              }
+            ],
+            "period": {
+              "start": "2023-01-09T09:00:00-08:00",
+              "end": "2023-01-09T10:30:00-08:00"
+            },
+            "individual": {
+              "reference": "Practitioner/713234df-e5d2-45ae-b717-b7d26cc81d11",
+              "display": "Lisa Huang"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-01-09T09:00:00-08:00",
+          "end": "2023-01-09T10:30:00-08:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Addiction medicine intake evaluation for alcohol use concerns"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/a4805a39-6988-49ae-a2ae-3cda19be388d",
+              "display": "Bridgetown Recovery Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+          "display": "Bridgetown Recovery Center"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah self-referred to Bridgetown Recovery Center and was evaluated by Dr. Rosa Delgado for alcohol use concerns."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-009",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-009",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185347001",
+                "display": "Encounter for problem (procedure)"
+              }
+            ],
+            "text": "Lab Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "Primary Provider"
+              }
+            ],
+            "period": {
+              "start": "2023-02-13",
+              "end": "2023-02-13"
+            },
+            "individual": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-02-13",
+          "end": "2023-02-13"
+        },
+        "reasonCode": [
+          {
+            "text": "Treatment monitoring labs and hepatic ultrasound results review"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/a4805a39-6988-49ae-a2ae-3cda19be388d",
+              "display": "Bridgetown Recovery Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+          "display": "Bridgetown Recovery Center"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah presented for follow-up labs at Bridgetown Recovery Center, 5 weeks into IOP. No vitals taken."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-010",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-010",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185347001",
+                "display": "Encounter for problem (procedure)"
+              }
+            ],
+            "text": "Office Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending Provider"
+              }
+            ],
+            "period": {
+              "start": "2023-04-24T09:00:00-07:00",
+              "end": "2023-04-24T09:45:00-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            }
+          },
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ],
+                "text": "Counselor"
+              }
+            ],
+            "period": {
+              "start": "2023-04-24T09:00:00-07:00",
+              "end": "2023-04-24T09:45:00-07:00"
+            },
+            "individual": {
+              "reference": "Practitioner/713234df-e5d2-45ae-b717-b7d26cc81d11",
+              "display": "Lisa Huang, LCSW"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-04-24T09:00:00-07:00",
+          "end": "2023-04-24T09:45:00-07:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Intensive outpatient program completion, sustained sobriety achieved"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/a4805a39-6988-49ae-a2ae-3cda19be388d",
+              "display": "Bridgetown Recovery Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+          "display": "Bridgetown Recovery Center"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Sarah met with Dr. Delgado for her IOP completion visit."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-011",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-011",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "VR",
+          "display": "virtual"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "386472008",
+                "display": "Telephone consultation (procedure)"
+              }
+            ],
+            "text": "Telephone aftercare follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/8cd4ec15-7635-47ba-8017-b23b0166831f",
+          "display": "Sarah Elizabeth Mitchell"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "PPRF",
+                    "display": "primary performer"
+                  }
+                ],
+                "text": "primary performer"
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/114eaf62-fe85-4795-bfc9-4110e5cf0a7a",
+              "display": "Dr. Rosa Delgado"
+            }
+          }
+        ],
+        "period": {
+          "start": "2023-07-17",
+          "end": "2023-07-17"
+        },
+        "reasonCode": [
+          {
+            "text": "Aftercare follow-up, sustained sobriety confirmed"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/a4805a39-6988-49ae-a2ae-3cda19be388d",
+              "display": "Bridgetown Recovery Center"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/e7bc95a4-da74-4483-9a63-4ea5e49b4618",
+          "display": "Bridgetown Recovery Center"
+        },
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ETH",
+              "display": "substance abuse information sensitivity"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Dr. Delgado conducted a telephone aftercare follow-up with Sarah, approximately 3 months post-IOP completion."
+          }
+        ]
+      }
+    }
+  ]
+}

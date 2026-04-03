@@ -1,0 +1,51 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-006-moca-attention",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "text": "MoCA attention subscore"
+  },
+  "subject": {
+    "reference": "Patient/9abd3fa2-00e3-443d-b159-a6b73cd80082",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2022-04-19",
+  "performer": [
+    {
+      "reference": "Practitioner/d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+      "display": "Dr. Raymond Patel"
+    }
+  ],
+  "valueQuantity": {
+    "value": 4,
+    "unit": "{score}",
+    "system": "http://unitsofmeasure.org",
+    "code": "{score}"
+  },
+  "note": [
+    {
+      "text": "Impaired (serial 7s and digit span deficits)"
+    }
+  ],
+  "derivedFrom": [
+    {
+      "reference": "Observation/enc-006-moca-total",
+      "display": "Montreal Cognitive Assessment (MoCA) total score"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-011-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34748-4",
+        "display": "Telephone encounter Note"
+      }
+    ],
+    "text": "Telephone Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/486b21ea-5a35-437c-b09f-284d596c5073",
+    "display": "Aisha Patel"
+  },
+  "date": "2025-01-23T00:00:00-05:00",
+  "author": [
+    {
+      "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+      "type": "Practitioner",
+      "display": "Dr. Megan Harlow"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/c29b72f2-e708-4752-ad23-ae3f4ba4a93b",
+    "type": "Practitioner",
+    "display": "Dr. Megan Harlow"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VEVMRVBIT05FIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMS8yMy8yMDI1ClBhdGllbnQ6IEFpc2hhIFBhdGVsIChET0I6IDAzLzE1LzIwMjAsIEFnZSA0KQpNUk46IFRQLTIwMjAtMDQxODIKUHJvdmlkZXI6IERyLiBNZWdhbiBIYXJsb3csIE1EIOKAlCBUcmlhbmdsZSBQZWRpYXRyaWNzCkNvbnRhY3Q6IE1vdGhlciwgUHJpeWEgUGF0ZWwgKGF1dGhvcml6ZWQgcmVwcmVzZW50YXRpdmUpClJlYXNvbiBmb3IgQ2FsbDogT25lLXdlZWsgcG9zdC1FRCBmb2xsb3ctdXAgZm9yIHNldmVyZSBhc3RobWEgZXhhY2VyYmF0aW9uCgpESVNDVVNTSU9OOgpPdXRib3VuZCBjYWxsIHBsYWNlZCB0byBtb3RoZXIgZm9yIHNjaGVkdWxlZCBvbmUtd2VlayBwb3N0LUVEIGNoZWNrLWluLiBNb3RoZXIgcmVwb3J0cyBBaXNoYSBjb21wbGV0ZWQgdGhlIDUtZGF5IHByZWRuaXNvbG9uZSBidXJzdCBhcyBwcmVzY3JpYmVkIGFuZCBoYXMgYmVlbiBvbiB0aGUgc3RlcHBlZC11cCBBZHZhaXIgSEZBIDExNS8yMSAxIHB1ZmYgQklEIHZpYSBzcGFjZXIgZm9yIG9uZSB3ZWVrLiBTaWduaWZpY2FudCBjbGluaWNhbCBpbXByb3ZlbWVudCBub3RlZC4gQWlzaGEgaGFzIG5vdCByZXF1aXJlZCBhbGJ1dGVyb2wgcmVzY3VlIGluaGFsZXIgaW4gdGhlIHBhc3QgMyBkYXlzLiBOaWdodHRpbWUgY291Z2ggaGFzIHJlc29sdmVkLiBTaGUgaGFzIHJldHVybmVkIHRvIHNjaG9vbCBhbmQgaXMgdG9sZXJhdGluZyBpbmRvb3IgYWN0aXZpdHkgd2l0aG91dCB3aGVlemluZy4gTW90aGVyIG5vdGVzIG1pbGQgY291Z2ggd2l0aCB2aWdvcm91cyBvdXRkb29yIHBsYXkgaW4gY29sZCBhaXIsIHdoaWNoIGlzIHNlbGYtbGltaXRlZCBhbmQgZG9lcyBub3QgcmVxdWlyZSByZXNjdWUgaW5oYWxlciB1c2UuCgpQTEFOOgoxLiBDb250aW51ZSBjdXJyZW50IHJlZ2ltZW46IEFkdmFpciBIRkEgMTE1LzIxIDEgcHVmZiBCSUQsIG1vbnRlbHVrYXN0IDQgbWcgY2hld2FibGUgZGFpbHksIGFsYnV0ZXJvbCBQUk4gdmlhIHNwYWNlci4KMi4gTm8gbWVkaWNhdGlvbiBjaGFuZ2VzIGF0IHRoaXMgdGltZS4KMy4gQ29uZmlybWVkIHVwY29taW5nIFVOQyBQZWRpYXRyaWMgQWxsZXJneSBhcHBvaW50bWVudCB3aXRoIERyLiBLcmlzaG5hbXVydGh5IHNjaGVkdWxlZCBmb3IgRmVicnVhcnkgMjAyNSBmb3IgcmVhc3Nlc3NtZW50IGFuZCBjb25zaWRlcmF0aW9uIG9mIGJpb2xvZ2ljIHRoZXJhcHkuCjQuIEVuY291cmFnZWQgbW90aGVyIHRvIGNvbnRpbnVlIHN5bXB0b20gZGlhcnkgdG8gYnJpbmcgdG8gYWxsZXJneSBhcHBvaW50bWVudC4KNS4gUmV0dXJuIGNhbGwgb3Igb2ZmaWNlIHZpc2l0IGZvciBhbnkgd29yc2VuaW5nIHN5bXB0b21zLCBpbmNyZWFzZWQgcmVzY3VlIGluaGFsZXIgdXNlLCBvciByZWN1cnJlbmNlIG9mIG5pZ2h0dGltZSBjb3VnaC4KCkRyLiBNZWdhbiBIYXJsb3csIE1EClRyaWFuZ2xlIFBlZGlhdHJpY3MK"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-011"
+      }
+    ],
+    "period": {
+      "start": "2025-01-23"
+    }
+  }
+}

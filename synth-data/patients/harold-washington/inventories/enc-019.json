@@ -1,0 +1,144 @@
+{
+  "encounter_id": "enc-019",
+  "encounter_index": 19,
+  "site_slug": "dekalb-primary-care",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "lab results review, vitamin D deficiency management",
+    "period_start": "2025-03-20",
+    "participants": [
+      {
+        "name": "Dr. Anita Desai",
+        "role": "primary practitioner"
+      },
+      {
+        "name": "Margaret Washington-Clarke",
+        "role": "contacted party",
+        "note": "daughter, healthcare POA"
+      }
+    ],
+    "service_provider": "DeKalb Primary Care",
+    "location": "DeKalb Primary Care, 2701 North Decatur Road, Suite 300, Decatur, GA 30033"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [
+      {
+        "name": "hemoglobin A1c",
+        "value": 6.9,
+        "unit": "%",
+        "reference_range": "4.0–5.6%",
+        "flag": "high",
+        "action": "reference-existing"
+      },
+      {
+        "name": "25-hydroxyvitamin D",
+        "value": 18,
+        "unit": "ng/mL",
+        "reference_range": "30–100 ng/mL",
+        "flag": "low",
+        "action": "reference-existing"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "vitamin D deficiency",
+      "clinical_status": "active",
+      "onset_date": "2025-03-20",
+      "action": "create"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "cholecalciferol 2000 IU oral daily",
+      "sig": "Take 2000 IU by mouth once daily",
+      "status": "active",
+      "reason": "vitamin D deficiency",
+      "action": "create"
+    },
+    {
+      "name": "donepezil 10 mg / memantine 28 mg extended-release oral capsule",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "reference-existing"
+    },
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "status": "active",
+      "reason": "essential hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "Take 500 mg by mouth twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Telephone call with Margaret Washington-Clarke (daughter/healthcare POA) to review Harold's March 13 lab results. A1c improved to 6.9% indicating good diabetes control. Kidney function stable, lipids near target. Vitamin D deficient at 18 ng/mL — new diagnosis of vitamin D deficiency. Cholecalciferol 2000 IU daily started with plan to recheck level in 3 months. All other medications continued unchanged."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "hemoglobin A1c report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "hemoglobin A1c"
+      ]
+    },
+    {
+      "type": "25-hydroxyvitamin D report",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "25-hydroxyvitamin D"
+      ]
+    },
+    {
+      "type": "kidney function panel",
+      "report_state": "summary-only",
+      "description": "Kidney function stable on current regimen"
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "summary-only",
+      "description": "Lipids near target on current regimen"
+    }
+  ],
+  "allergies": []
+}

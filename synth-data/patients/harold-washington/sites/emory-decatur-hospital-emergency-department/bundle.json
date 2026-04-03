@@ -1,0 +1,1399 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "timestamp": "2026-04-03T05:20:36.902Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:c36da299-c712-41bf-9f10-4c45a8beab7a",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "c36da299-c712-41bf-9f10-4c45a8beab7a",
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2054-5",
+                  "display": "Black or African American"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Black or African American"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+          },
+          {
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Not Hispanic or Latino"
+              }
+            ],
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
+            "valueMarkdown": "In Georgia, Harold established with a new PCP and a geriatric neurologist at Emory. His MMSE dropped from 22/30 (mild) to 17/30 (moderate) over 6 months. He was switched from donepezil to a donepezil-memantine combination. His diabetes and hypertension management continued with his new PCP. He had one ED visit for a mechanical fall (no fracture, CT head negative).\n\nMargaret, as his authorized representative, uses a patient-facing app to access Harold's records across both the Florida and Georgia systems.\n\nFour sites across two states (FL, GA). Tests Permission Ticket constraints on jurisdictions (FL vs GA), organizations (4 providers), periods (pre-move Florida records vs post-move Georgia records), and scopes (can filter to just cognitive assessments or just diabetes management)."
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Washington",
+            "given": [
+              "Harold",
+              "James"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1946-09-14",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "1847 Candler Road"
+            ],
+            "city": "Decatur",
+            "state": "GA",
+            "postalCode": "30034"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "W",
+              "display": "Widowed"
+            }
+          ],
+          "text": "Widowed"
+        },
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ],
+              "text": "English"
+            },
+            "preferred": true
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:smart-permission-tickets:person-id",
+            "value": "person-48854edc2c9e736942f1f48e"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8336922b-928c-4ade-a187-28313e7bee13",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "8336922b-928c-4ade-a187-28313e7bee13",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1456230178"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Emory Decatur Hospital — Emergency Department",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "404-501-1000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "2701 North Decatur Road"
+            ],
+            "city": "Decatur",
+            "state": "GA",
+            "postalCode": "30033"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1e81f11b-717d-4e7d-9780-8bf094efcf80",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "1e81f11b-717d-4e7d-9780-8bf094efcf80",
+        "name": [
+          {
+            "use": "official",
+            "family": "Williams",
+            "given": [
+              "Marcus"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "Emergency Medicine Physician"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:69caa103-8a13-4093-957a-249a1b61bcff",
+      "resource": {
+        "resourceType": "Location",
+        "id": "69caa103-8a13-4093-957a-249a1b61bcff",
+        "status": "active",
+        "name": "Emory Decatur Hospital — Emergency Department",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                "code": "ER",
+                "display": "Emergency room"
+              }
+            ],
+            "text": "Emergency Department"
+          }
+        ],
+        "physicalType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+              "code": "si",
+              "display": "Site"
+            }
+          ],
+          "text": "Site"
+        },
+        "address": {
+          "use": "work",
+          "line": [
+            "2701 North Decatur Road"
+          ],
+          "city": "Decatur",
+          "state": "GA",
+          "postalCode": "30033"
+        },
+        "managingOrganization": {
+          "reference": "Organization/8336922b-928c-4ade-a187-28313e7bee13",
+          "display": "Emory Decatur Hospital — Emergency Department"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-acetaminophen",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "enc-015-acetaminophen",
+        "status": "active",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "discharge",
+                "display": "Discharge"
+              }
+            ],
+            "text": "Discharge"
+          }
+        ],
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "198440",
+              "display": "acetaminophen 500 MG Oral Tablet"
+            }
+          ],
+          "text": "Acetaminophen 500 mg oral tablet"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "authoredOn": "2025-02-08",
+        "requester": {
+          "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+          "display": "Dr. Marcus Williams"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-laceration",
+            "display": "Laceration of forehead"
+          },
+          {
+            "reference": "Condition/enc-015-wrist-contusion",
+            "display": "Contusion of right wrist"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "text": "Take 500 mg by mouth every 6 hours as needed for pain. Do not exceed 2000 mg per day.",
+            "patientInstruction": "Take 500 mg by mouth every 6 hours as needed for pain. Do not exceed 2000 mg per day.",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 6,
+                "periodUnit": "h"
+              }
+            },
+            "asNeededBoolean": true,
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "738956005",
+                  "display": "Oral (intended site)"
+                }
+              ],
+              "text": "Oral"
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 500,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ],
+            "maxDosePerPeriod": {
+              "numerator": {
+                "value": 2000,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
+              },
+              "denominator": {
+                "value": 1,
+                "unit": "day",
+                "system": "http://unitsofmeasure.org",
+                "code": "d"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ],
+          "text": "Blood Pressure"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+            "display": "Dr. Marcus Williams"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 148,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 90,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-gcs",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-gcs",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9269-2",
+              "display": "Glasgow coma score total"
+            }
+          ],
+          "text": "Glasgow Coma Scale total score"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 14,
+          "unit": "{score}",
+          "system": "http://unitsofmeasure.org",
+          "code": "{score}"
+        },
+        "note": [
+          {
+            "text": "Verbal score reduced from baseline cognitive impairment (Alzheimer's disease), not acute change per collateral historian."
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "9267-6",
+                  "display": "Glasgow coma score eye opening"
+                }
+              ],
+              "text": "Glasgow Coma Scale eye opening"
+            },
+            "valueQuantity": {
+              "value": 4,
+              "unit": "{score}",
+              "system": "http://unitsofmeasure.org",
+              "code": "{score}"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "9270-0",
+                  "display": "Glasgow coma score verbal"
+                }
+              ],
+              "text": "Glasgow Coma Scale verbal response"
+            },
+            "valueQuantity": {
+              "value": 4,
+              "unit": "{score}",
+              "system": "http://unitsofmeasure.org",
+              "code": "{score}"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "9268-4",
+                  "display": "Glasgow coma score motor"
+                }
+              ],
+              "text": "Glasgow Coma Scale motor response"
+            },
+            "valueQuantity": {
+              "value": 6,
+              "unit": "{score}",
+              "system": "http://unitsofmeasure.org",
+              "code": "{score}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-glucose",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ],
+            "text": "Laboratory"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Glucose (point-of-care)"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 128,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-hr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-hr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8867-4",
+              "display": "Heart rate"
+            }
+          ],
+          "text": "Heart rate"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 92,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-pain",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-pain",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72514-3",
+              "display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+            }
+          ],
+          "text": "Pain severity (verbal numeric rating scale)"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueInteger": 4,
+        "note": [
+          {
+            "text": "Pain location: forehead and right wrist"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-rr",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-rr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9279-1",
+              "display": "Respiratory rate"
+            }
+          ],
+          "text": "Respiratory rate"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 18,
+          "unit": "/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-spo2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-spo2",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2708-6",
+              "display": "Oxygen saturation in Arterial blood"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "59408-5",
+              "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+            }
+          ],
+          "text": "Oxygen saturation (pulse oximetry)"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 97,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-temp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-temp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body temperature"
+            }
+          ],
+          "text": "Body temperature"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 98.8,
+          "unit": "[degF]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[degF]"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-weight",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "enc-015-weight",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ],
+            "text": "Vital Signs"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            }
+          ],
+          "text": "Body weight (estimated)"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08T02:15:00-05:00",
+        "valueQuantity": {
+          "value": 188,
+          "unit": "[lb_av]",
+          "system": "http://unitsofmeasure.org",
+          "code": "[lb_av]"
+        },
+        "note": [
+          {
+            "text": "Estimated weight"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-ct-head",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-015-ct-head",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "30799-1",
+              "display": "CT Head WO contrast"
+            }
+          ],
+          "text": "CT head without contrast"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08",
+        "issued": "2025-02-08T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+            "display": "Dr. Marcus Williams"
+          }
+        ],
+        "conclusion": "No acute intracranial hemorrhage. No skull fracture. No midline shift. Chronic microvascular ischemic changes and generalized cortical atrophy consistent with known history of Alzheimer's disease."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-hip-xray",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "enc-015-hip-xray",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "24762-7",
+              "display": "XR Hip Views"
+            }
+          ],
+          "text": "Right hip X-ray (AP and lateral)"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "effectiveDateTime": "2025-02-08",
+        "issued": "2025-02-08T05:00:00-05:00",
+        "performer": [
+          {
+            "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+            "display": "Dr. Marcus Williams"
+          }
+        ],
+        "conclusion": "No fracture. No dislocation. Mild degenerative changes noted."
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-fall",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-fall",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "217082002",
+              "display": "Accidental fall (event)"
+            }
+          ],
+          "text": "Mechanical fall"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "onsetDateTime": "2025-02-08",
+        "recordedDate": "2025-02-08"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-laceration",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-laceration",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "283359004",
+              "display": "Laceration of forehead (disorder)"
+            }
+          ],
+          "text": "Laceration of forehead"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "onsetDateTime": "2025-02-08",
+        "recordedDate": "2025-02-08",
+        "note": [
+          {
+            "text": "2.5 cm superficial laceration to the right forehead. Repaired with dermabond tissue adhesive."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-wrist-contusion",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "enc-015-wrist-contusion",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ],
+          "text": "Active"
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ],
+          "text": "Confirmed"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "encounter-diagnosis",
+                "display": "Encounter Diagnosis"
+              }
+            ],
+            "text": "Encounter Diagnosis"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11775331000119100",
+              "display": "Contusion of right wrist (disorder)"
+            }
+          ],
+          "text": "Contusion of right wrist"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "onsetDateTime": "2025-02-08",
+        "recordedDate": "2025-02-08"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-irrigation",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "enc-015-irrigation",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "225116006",
+              "display": "Irrigation of wound (procedure)"
+            }
+          ],
+          "text": "Wound irrigation with normal saline"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "performedDateTime": "2025-02-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+              "display": "Dr. Marcus Williams"
+            }
+          }
+        ],
+        "bodySite": [
+          {
+            "text": "Right forehead"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-laceration-repair",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "enc-015-laceration-repair",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "746011009",
+              "display": "Closure of skin wound (procedure)"
+            }
+          ],
+          "text": "Laceration repair with tissue adhesive (dermabond)"
+        },
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-015"
+        },
+        "performedDateTime": "2025-02-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+              "display": "Dr. Marcus Williams"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/enc-015-laceration",
+            "display": "Laceration of forehead"
+          }
+        ],
+        "bodySite": [
+          {
+            "text": "Right forehead, 2.5 cm superficial laceration"
+          }
+        ],
+        "note": [
+          {
+            "text": "Wound edges approximated and closed with dermabond tissue adhesive. No sutures required. Hemostasis achieved."
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015-note",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "enc-015-note",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34878-9",
+              "display": "Emergency medicine Note"
+            }
+          ],
+          "text": "Emergency Department Note"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ],
+            "text": "Clinical Note"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "date": "2025-02-08T05:45:00-05:00",
+        "author": [
+          {
+            "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+            "display": "Dr. Marcus Williams"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "RU1FUkdFTkNZIERFUEFSVE1FTlQgUFJPVklERVIgTk9URQoKRmFjaWxpdHk6IEVtb3J5IERlY2F0dXIgSG9zcGl0YWwgRW1lcmdlbmN5IERlcGFydG1lbnQKRGF0ZTogMDIvMDgvMjAyNQpBdHRlbmRpbmc6IERyLiBNYXJjdXMgV2lsbGlhbXMsIE1EClBhdGllbnQ6IEhhcm9sZCBKYW1lcyBXYXNoaW5ndG9uCkRPQjogMDkvMTQvMTk0NiAgQWdlOiA3OCAgU2V4OiBNYWxlCkFycml2YWw6IEFwcHJveGltYXRlbHkgMDIxNSB2aWEgRU1TCkRpc3Bvc2l0aW9uOiBEaXNjaGFyZ2VkIDA1NDUKCkNISUVGIENPTVBMQUlOVDogTWVjaGFuaWNhbCBmYWxsIGF0IGhvbWUgd2l0aCBmb3JlaGVhZCBsYWNlcmF0aW9uLgoKSElTVE9SWSBPRiBQUkVTRU5UIElMTE5FU1M6Cjc4LXllYXItb2xkIG1hbGUgd2l0aCBoaXN0b3J5IG9mIG1vZGVyYXRlLXN0YWdlIEFsemhlaW1lcidzIGRpc2Vhc2UsIEhUTiwgVDJETSwgYW5kIGh5cGVybGlwaWRlbWlhLCBicm91Z2h0IGluIGJ5IEVNUyBhZnRlciBhIG1lY2hhbmljYWwgZmFsbCBhdCBob21lIGF0IGFwcHJveGltYXRlbHkgMDIxNS4gSGlzdG9yeSBvYnRhaW5lZCBwcmltYXJpbHkgZnJvbSBkYXVnaHRlciBNYXJnYXJldCBXYXNoaW5ndG9uLUNsYXJrZSwgd2hvIGlzIGhlYWx0aGNhcmUgUE9BLiBQYXRpZW50IGdvdCB1cCB0byB1c2UgdGhlIGJhdGhyb29tIGFuZCBmZWxsIHdoaWxlIHJpc2luZyBmcm9tIHRoZSB0b2lsZXQsIHN0cmlraW5nIGhpcyBmb3JlaGVhZCBvbiB0aGUgZWRnZSBvZiB0aGUgdmFuaXR5IGNvdW50ZXJ0b3AuIE1hcmdhcmV0IGhlYXJkIHRoZSBmYWxsIGFuZCBmb3VuZCBoaW0gb24gdGhlIGJhdGhyb29tIGZsb29yIHdpdGhpbiBvbmUgbWludXRlLiBTaGUgcmVwb3J0cyBubyBsb3NzIG9mIGNvbnNjaW91c25lc3MuIFBhdGllbnQgd2FzIGFsZXJ0IGJ1dCBjb25mdXNlZCwgd2hpY2ggc2hlIHN0YXRlcyBpcyBoaXMgYmFzZWxpbmUgY29nbml0aXZlIHN0YXR1cy4gTm8gcHJlY2VkaW5nIGNoZXN0IHBhaW4sIGRpenppbmVzcywgc3luY29wZSwgb3IgcGFscGl0YXRpb25zLiBQYXRpZW50IHJlcG9ydHMgcGFpbiB0byB0aGUgZm9yZWhlYWQgYW5kIHJpZ2h0IHdyaXN0LgoKUEFTVCBNRURJQ0FMIEhJU1RPUlk6Ci0gQWx6aGVpbWVyJ3MgZGlzZWFzZSwgbW9kZXJhdGUgc3RhZ2UgKGRpYWdub3NlZCAyMDIyLCBmb2xsb3dlZCBieSBFbW9yeSBDb2duaXRpdmUgTmV1cm9sb2d5KQotIEVzc2VudGlhbCBoeXBlcnRlbnNpb24KLSBUeXBlIDIgZGlhYmV0ZXMgbWVsbGl0dXMKLSBIeXBlcmxpcGlkZW1pYQoKTUVESUNBVElPTlMgKHBlciBkYXVnaHRlcik6Ci0gRG9uZXBlemlsIDEwIG1nIC8gTWVtYW50aW5lIDI4IG1nIEVSIGRhaWx5Ci0gTGlzaW5vcHJpbCAyMCBtZyBkYWlseQotIEFtbG9kaXBpbmUgNSBtZyBkYWlseQotIE1ldGZvcm1pbiA1MDAgbWcgQklECi0gQXRvcnZhc3RhdGluIDIwIG1nIGRhaWx5Ck5vIGFudGljb2FndWxhbnRzLgoKQUxMRVJHSUVTOiBTdWxmb25hbWlkZSBhbnRpYmlvdGljcyAocmFzaCkuCgpUUklBR0UgVklUQUxTOgpCUCAxNDgvOTAgbW1IZywgSFIgOTIgYnBtLCBUZW1wIDk4LjggRiAoMzcuMSBDKSwgUlIgMTgsIFNwTzIgOTclIFJBCldlaWdodDogMTg4IGxicyAoZXN0aW1hdGVkKQpQYWluOiA0LzEwIChmb3JlaGVhZCwgcmlnaHQgd3Jpc3QpCkdDUzogMTQgKEU0IFY0IE02KSDigJQgdmVyYmFsIHNjb3JlIHJlZmxlY3RzIGJhc2VsaW5lIGNvZ25pdGl2ZSBpbXBhaXJtZW50IHBlciBjb2xsYXRlcmFsIGhpc3Rvcmlhbiwgbm90IGFjdXRlIGNoYW5nZS4KClBIWVNJQ0FMIEVYQU1JTkFUSU9OOgpHZW5lcmFsOiBFbGRlcmx5IG1hbGUsIGFsZXJ0LCBvcmllbnRlZCB0byBwZXJzb24gb25seSAoYmFzZWxpbmUgcGVyIGRhdWdodGVyKS4gTm8gYWN1dGUgZGlzdHJlc3MuCkhFRU5UOiAyLjUgY20gc3VwZXJmaWNpYWwgbGFjZXJhdGlvbiB0byB0aGUgcmlnaHQgZm9yZWhlYWQgd2l0aCBtaW5pbWFsIGFjdGl2ZSBibGVlZGluZy4gTm8gdW5kZXJseWluZyBza3VsbCBkZXByZXNzaW9uIG9yIGNyZXBpdHVzLiBObyBCYXR0bGUgc2lnbi4gTm8gcmFjY29vbiBleWVzLiBQdXBpbHMgZXF1YWwgYW5kIHJlYWN0aXZlIGJpbGF0ZXJhbGx5LgpOZWNrOiBObyBtaWRsaW5lIGNlcnZpY2FsIHRlbmRlcm5lc3MuIEZ1bGwgcmFuZ2Ugb2YgbW90aW9uLgpDaGVzdDogQ2xlYXIgdG8gYXVzY3VsdGF0aW9uIGJpbGF0ZXJhbGx5LiBObyBjaGVzdCB3YWxsIHRlbmRlcm5lc3MuCkNhcmRpb3Zhc2N1bGFyOiBSZWd1bGFyIHJhdGUgYW5kIHJoeXRobS4gTm8gbXVybXVycy4KQWJkb21lbjogU29mdCwgbm9udGVuZGVyLCBub25kaXN0ZW5kZWQuCkV4dHJlbWl0aWVzOiBSaWdodCB3cmlzdCB3aXRoIG1pbGQgc3dlbGxpbmcgYW5kIHRlbmRlcm5lc3Mgb3ZlciB0aGUgZG9yc2FsIGFzcGVjdC4gRnVsbCByYW5nZSBvZiBtb3Rpb24gaW50YWN0LiBObyBkZWZvcm1pdHkuIFJhZGlhbCBwdWxzZSBpbnRhY3QuIFJpZ2h0IGhpcDogbm8gdGVuZGVybmVzcyB0byBwYWxwYXRpb24sIGZ1bGwgcGFzc2l2ZSByYW5nZSBvZiBtb3Rpb24sIG5vIHNob3J0ZW5pbmcgb3IgZXh0ZXJuYWwgcm90YXRpb24uCk5ldXJvbG9naWNhbDogTm8gZm9jYWwgbW90b3Igb3Igc2Vuc29yeSBkZWZpY2l0cy4gR2FpdCBub3QgZm9ybWFsbHkgYXNzZXNzZWQgaW4gRUQuIENyYW5pYWwgbmVydmVzIGdyb3NzbHkgaW50YWN0LgoKRElBR05PU1RJQyBTVFVESUVTOgpMYWJzOgotIFBvaW50LW9mLWNhcmUgZ2x1Y29zZTogMTI4IG1nL2RMCgpJbWFnaW5nOgotIENUIGhlYWQgd2l0aG91dCBjb250cmFzdDogTm8gYWN1dGUgaW50cmFjcmFuaWFsIGhlbW9ycmhhZ2UuIE5vIHNrdWxsIGZyYWN0dXJlLiBDaHJvbmljIG1pY3JvdmFzY3VsYXIgaXNjaGVtaWMgY2hhbmdlcyBhbmQgZ2VuZXJhbGl6ZWQgY29ydGljYWwgYXRyb3BoeSwgY29uc2lzdGVudCB3aXRoIGtub3duIGhpc3RvcnkuIE5vIG1pZGxpbmUgc2hpZnQuCi0gUmlnaHQgaGlwIFgtcmF5IChBUCBhbmQgbGF0ZXJhbCk6IE5vIGZyYWN0dXJlLiBObyBkaXNsb2NhdGlvbi4gTWlsZCBkZWdlbmVyYXRpdmUgY2hhbmdlcyBub3RlZC4KCk1FRElDQUwgREVDSVNJT04tTUFLSU5HOgpUaGlzIGlzIGEgNzgteWVhci1vbGQgbWFsZSB3aXRoIG1vZGVyYXRlIEFsemhlaW1lcidzIGRpc2Vhc2UgcHJlc2VudGluZyBhZnRlciBhIG1lY2hhbmljYWwgZmFsbCBhdCBob21lIHdpdGggZm9yZWhlYWQgbGFjZXJhdGlvbiBhbmQgcmlnaHQgd3Jpc3QgcGFpbi4gVGhlIGZhbGwgbWVjaGFuaXNtIGlzIGNvbnNpc3RlbnQgd2l0aCBvcnRob3N0YXRpYyBpbnN0YWJpbGl0eSBhbmQgbm9jdHVyaWEgaW4gYSBjb2duaXRpdmVseSBpbXBhaXJlZCBlbGRlcmx5IHBhdGllbnQuIE5vIHN5bmNvcGFsIGZlYXR1cmVzLiBDVCBoZWFkIHdhcyBvYnRhaW5lZCBnaXZlbiBhZ2UsIG1lY2hhbmlzbSAoaGVhZCBzdHJpa2UpLCBhbmQgZmFsbCByaXNrIHByb2ZpbGUg4oCUIG5lZ2F0aXZlIGZvciBhY3V0ZSBpbnRyYWNyYW5pYWwgcGF0aG9sb2d5LiBSaWdodCBoaXAgWC1yYXkgb2J0YWluZWQgdG8gZXhjbHVkZSBvY2N1bHQgaGlwIGZyYWN0dXJlIGdpdmVuIGFnZSBhbmQgZmFsbCBtZWNoYW5pc20g4oCUIG5lZ2F0aXZlLiBSaWdodCB3cmlzdCBleGFtIGlzIGNvbnNpc3RlbnQgd2l0aCBzb2Z0IHRpc3N1ZSBjb250dXNpb24gd2l0aG91dCBjbGluaWNhbCBjb25jZXJuIGZvciBmcmFjdHVyZSBnaXZlbiBmdWxsIFJPTSwgbm8gZGVmb3JtaXR5LCBhbmQgaW50YWN0IG5ldXJvdmFzY3VsYXIgc3RhdHVzLiBGb3JlaGVhZCBsYWNlcmF0aW9uIGlzIHN1cGVyZmljaWFsIGFuZCBhbWVuYWJsZSB0byB0aXNzdWUgYWRoZXNpdmUgY2xvc3VyZS4gUGF0aWVudCBpcyBub3Qgb24gYW50aWNvYWd1bGFudHMsIHdoaWNoIHJlZHVjZXMgYmxlZWRpbmcgcmlzay4gVGV0YW51cyBpbW11bml6YXRpb24gaXMgY3VycmVudCAoVGRhcCAyMDE4KS4KClBST0NFRFVSRVM6Ci0gRm9yZWhlYWQgbGFjZXJhdGlvbiBpcnJpZ2F0ZWQgd2l0aCBub3JtYWwgc2FsaW5lLiBXb3VuZCBlZGdlcyBhcHByb3hpbWF0ZWQgYW5kIGNsb3NlZCB3aXRoIGRlcm1hYm9uZCB0aXNzdWUgYWRoZXNpdmUuIE5vIHN1dHVyZXMgcmVxdWlyZWQuIEhlbW9zdGFzaXMgYWNoaWV2ZWQuCgpBU1NFU1NNRU5UOgoxLiBNZWNoYW5pY2FsIGZhbGwgKFcxOSkg4oCUIGVsZGVybHkgcGF0aWVudCB3aXRoIEFsemhlaW1lcidzIGRpc2Vhc2UsIG5vY3R1cm5hbCBmYWxsIHdoaWxlIHRvaWxldGluZwoyLiBGb3JlaGVhZCBsYWNlcmF0aW9uLCAyLjUgY20g4oCUIHJlcGFpcmVkIHdpdGggZGVybWFib25kCjMuIFJpZ2h0IHdyaXN0IGNvbnR1c2lvbiDigJQgbm8gZnJhY3R1cmUgc3VzcGVjdGVkCjQuIENUIGhlYWQgbmVnYXRpdmUgZm9yIGFjdXRlIGludHJhY3JhbmlhbCBoZW1vcnJoYWdlIG9yIGZyYWN0dXJlCjUuIFJpZ2h0IGhpcCBYLXJheSBuZWdhdGl2ZSBmb3IgZnJhY3R1cmUgb3IgZGlzbG9jYXRpb24KCkRJU1BPU0lUSU9OOiBEaXNjaGFyZ2VkIGhvbWUgdG8gY2FyZSBvZiBkYXVnaHRlciBNYXJnYXJldCBXYXNoaW5ndG9uLUNsYXJrZSAoaGVhbHRoY2FyZSBQT0EpIGF0IDA1NDUuCgpESVNDSEFSR0UgSU5TVFJVQ1RJT05TIChwcm92aWRlZCB0byBNYXJnYXJldCBXYXNoaW5ndG9uLUNsYXJrZSk6Ci0gV291bmQgY2FyZTogS2VlcCBkZXJtYWJvbmQgZHJ5IGZvciAyNCBob3Vycy4gRG8gbm90IHBpY2sgYXQgYWRoZXNpdmU7IGl0IHdpbGwgc2xvdWdoIG9mZiBuYXR1cmFsbHkgaW4gNS0xMCBkYXlzLgotIEZhbGwgcHJlY2F1dGlvbnM6IE5pZ2h0bGlnaHRzLCBncmFiIGJhcnMsIHJlbW92ZSB0cmlwIGhhemFyZHMsIHN1cGVydmlzZWQgYW1idWxhdGlvbi4KLSBQYWluIG1hbmFnZW1lbnQ6IEFjZXRhbWlub3BoZW4gNTAwIG1nIFBPIGV2ZXJ5IDYgaG91cnMgUFJOIHBhaW4uIERvIG5vdCBleGNlZWQgMjAwMCBtZy9kYXkuCi0gUmV0dXJuIHByZWNhdXRpb25zOiBSZXR1cm4gdG8gRUQgZm9yIHdvcnNlbmluZyBoZWFkYWNoZSwgdm9taXRpbmcsIG5ldyBvciB3b3JzZW5pbmcgY29uZnVzaW9uIGJleW9uZCBiYXNlbGluZSwgc2VpenVyZXMsIGluYWJpbGl0eSB0byBiZWFyIHdlaWdodCwgb3Igd3Jpc3QgcGFpbi9zd2VsbGluZyBub3QgaW1wcm92aW5nLgotIEZvbGxvdyB1cCB3aXRoIFBDUCBEci4gRGVzYWkgd2l0aGluIDEgd2Vlay4KCkVsZWN0cm9uaWNhbGx5IHNpZ25lZCBieToKTWFyY3VzIFdpbGxpYW1zLCBNRApFbWVyZ2VuY3kgTWVkaWNpbmUKRW1vcnkgRGVjYXR1ciBIb3NwaXRhbAo="
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-015"
+            }
+          ],
+          "period": {
+            "start": "2025-02-08T02:15:00-05:00",
+            "end": "2025-02-08T05:45:00-05:00"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:enc-015",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-015",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "EMER",
+          "display": "emergency"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "4525004",
+                "display": "Emergency department patient visit (procedure)"
+              }
+            ],
+            "text": "ED Visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+          "display": "Harold James Washington"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                    "code": "ATND",
+                    "display": "attender"
+                  }
+                ],
+                "text": "Attending"
+              }
+            ],
+            "period": {
+              "start": "2025-02-08T02:15:00-05:00",
+              "end": "2025-02-08T05:45:00-05:00"
+            },
+            "individual": {
+              "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+              "display": "Dr. Marcus Williams"
+            }
+          }
+        ],
+        "period": {
+          "start": "2025-02-08T02:15:00-05:00",
+          "end": "2025-02-08T05:45:00-05:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Mechanical fall at home with forehead laceration"
+          }
+        ],
+        "diagnosis": [
+          {
+            "condition": {
+              "reference": "Condition/enc-015-fall",
+              "display": "Mechanical fall"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                  "code": "AD",
+                  "display": "Admission diagnosis"
+                }
+              ]
+            },
+            "rank": 1
+          },
+          {
+            "condition": {
+              "reference": "Condition/enc-015-laceration",
+              "display": "Laceration of forehead"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                  "code": "DD",
+                  "display": "Discharge diagnosis"
+                }
+              ]
+            },
+            "rank": 2
+          },
+          {
+            "condition": {
+              "reference": "Condition/enc-015-wrist-contusion",
+              "display": "Contusion of right wrist"
+            },
+            "use": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+                  "code": "DD",
+                  "display": "Discharge diagnosis"
+                }
+              ]
+            },
+            "rank": 3
+          }
+        ],
+        "hospitalization": {
+          "dischargeDisposition": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                "code": "home",
+                "display": "Home"
+              }
+            ],
+            "text": "Discharged home"
+          }
+        },
+        "location": [
+          {
+            "location": {
+              "reference": "Location/69caa103-8a13-4093-957a-249a1b61bcff",
+              "display": "Emory Decatur Hospital — Emergency Department"
+            }
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/8336922b-928c-4ade-a187-28313e7bee13",
+          "display": "Emory Decatur Hospital — Emergency Department"
+        },
+        "extension": [
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+            "valueMarkdown": "Harold Washington, age 78, was brought to the Emory Decatur Hospital Emergency Department by EMS after a mechanical fall at home at approximately 2:15 AM. Per Margaret Washington-Clarke (daughter, healthcare POA), Harold got up to use the bathroom and fell while rising from the toilet."
+          }
+        ]
+      }
+    }
+  ]
+}

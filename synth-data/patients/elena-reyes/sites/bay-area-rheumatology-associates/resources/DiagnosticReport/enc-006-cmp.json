@@ -1,0 +1,60 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-006-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "CH",
+          "display": "Chemistry"
+        }
+      ],
+      "text": "Chemistry"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel"
+  },
+  "subject": {
+    "reference": "Patient/7c9e6679-7425-40de-944b-e07fc1f90ae7",
+    "display": "Elena Marisol Reyes"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-006"
+  },
+  "effectiveDateTime": "2023-04-06",
+  "issued": "2023-04-06T12:00:00-07:00",
+  "performer": [
+    {
+      "reference": "Organization/3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "display": "Bay Area Rheumatology Associates"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-006-creatinine",
+      "display": "Creatinine"
+    },
+    {
+      "reference": "Observation/enc-006-ast",
+      "display": "AST"
+    },
+    {
+      "reference": "Observation/enc-006-alt",
+      "display": "ALT"
+    },
+    {
+      "reference": "Observation/enc-006-albumin",
+      "display": "Albumin"
+    }
+  ]
+}

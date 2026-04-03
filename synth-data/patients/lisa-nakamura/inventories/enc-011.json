@@ -1,0 +1,50 @@
+{
+  "encounter_id": "enc-011",
+  "encounter_index": 11,
+  "site_slug": "colorado-maternal-fetal-medicine",
+  "encounter": {
+    "class": "virtual",
+    "type": "Telephone Encounter",
+    "reason": "Follow-up after initial MFM consultation; patient questions regarding enoxaparin self-injection; coordination with hematology",
+    "period_start": "2025-05-27",
+    "participants": [],
+    "service_provider": "Colorado Maternal-Fetal Medicine",
+    "location": "Colorado Maternal-Fetal Medicine, Denver, CO"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "suspected antiphospholipid syndrome",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "recurrent pregnancy loss",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "prenatal vitamin oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "preconception health, recurrent pregnancy loss",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Brief note documenting a follow-up telephone call after initial MFM consultation and ahead of upcoming hematology appointment. Covers patient education about enoxaparin self-injection technique and side effects, coordination with hematology regarding anticoagulation protocol, patient report of improved mood, and plan to await confirmatory APS antibody results before next in-person visit."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

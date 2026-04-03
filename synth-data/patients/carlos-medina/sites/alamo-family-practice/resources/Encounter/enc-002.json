@@ -1,0 +1,77 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-002",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "448337001",
+          "display": "Telemedicine consultation with patient (procedure)"
+        }
+      ],
+      "text": "Annual wellness visit (telemedicine)"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c0856ce7-af1d-4632-bbe1-f49ff432903e",
+    "display": "Carlos Antonio Medina"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "period": {
+        "start": "2020-10-19",
+        "end": "2020-10-19"
+      },
+      "individual": {
+        "reference": "Practitioner/35af736a-6111-44d6-8586-79bb01e530b4",
+        "display": "Dr. Linda Tran"
+      }
+    }
+  ],
+  "period": {
+    "start": "2020-10-19",
+    "end": "2020-10-19"
+  },
+  "reasonCode": [
+    {
+      "text": "Annual wellness visit"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/4cd8afdd-d7d2-427b-8a5a-f068cfa8e471",
+        "display": "Alamo Family Practice"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/c83bdb69-bae8-4fff-8c53-8a76687a2f89",
+    "display": "Alamo Family Practice"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Carlos connected via video visit for his annual wellness during the COVID-19 pandemic. He reported being generally well but mentioned increasing morning stiffness in his fingers over the past few weeks, which he attributed to cooler weather and gripping tools in the shop."
+    }
+  ]
+}

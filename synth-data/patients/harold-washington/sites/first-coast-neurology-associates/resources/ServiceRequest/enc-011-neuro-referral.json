@@ -1,0 +1,40 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-011-neuro-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183521007",
+        "display": "Referral to neurology service (procedure)"
+      }
+    ],
+    "text": "Referral to geriatric neurology in Atlanta/Decatur area for transition of care"
+  },
+  "subject": {
+    "reference": "Patient/9abd3fa2-00e3-443d-b159-a6b73cd80082",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-011"
+  },
+  "authoredOn": "2024-10-10",
+  "requester": {
+    "reference": "Practitioner/d09ecc04-deb9-4dae-9894-309f12c3f6d9",
+    "type": "Practitioner",
+    "display": "Dr. Raymond Patel"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-006-alzheimers",
+      "display": "Alzheimer's disease, moderate stage"
+    }
+  ],
+  "note": [
+    {
+      "text": "Referral letter prepared for geriatric neurologist in Atlanta/Decatur area. Recommendations: (1) Re-evaluation with full neurocognitive battery within 3 months, (2) Consider adding memantine or switching to combination donepezil 10 mg/memantine ER therapy, (3) Continue MMSE monitoring every 3-4 months, (4) Advance care planning discussion given progressive disease trajectory. Comprehensive care summary provided including all prior MRI reports, cognitive testing history, and medication records."
+    }
+  ]
+}

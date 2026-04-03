@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "4c66cae8-c1d9-46e7-848d-5e712680e66b",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Marisol Chavez, NP",
+      "family": "Chavez",
+      "given": [
+        "Marisol"
+      ],
+      "suffix": [
+        "NP"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "NP",
+            "display": "Nurse Practitioner"
+          }
+        ],
+        "text": "HF clinic follow-up"
+      }
+    }
+  ]
+}

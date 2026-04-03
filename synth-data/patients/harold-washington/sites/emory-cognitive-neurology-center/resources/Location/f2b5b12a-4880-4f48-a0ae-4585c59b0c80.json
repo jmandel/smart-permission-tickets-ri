@@ -1,0 +1,40 @@
+{
+  "resourceType": "Location",
+  "id": "f2b5b12a-4880-4f48-a0ae-4585c59b0c80",
+  "status": "active",
+  "name": "Emory Cognitive Neurology Center",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "OF",
+          "display": "Outpatient Facility"
+        }
+      ],
+      "text": "Outpatient Facility"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "404-555-0172",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "12 Executive Park Drive NE",
+      "Suite 200"
+    ],
+    "city": "Atlanta",
+    "state": "GA",
+    "postalCode": "30329",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/a195c115-0448-4095-9620-6fae08498555",
+    "display": "Emory Cognitive Neurology Center"
+  }
+}

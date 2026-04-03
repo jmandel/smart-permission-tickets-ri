@@ -1,0 +1,61 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-018-cmp",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "24323-8",
+        "display": "Comprehensive metabolic 2000 panel - Serum or Plasma"
+      }
+    ],
+    "text": "Comprehensive Metabolic Panel (CMP)"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-018"
+  },
+  "effectiveDateTime": "2025-01-14",
+  "issued": "2025-01-14T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+      "display": "Dr. Kevin Tran"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-018-glucose",
+      "display": "Glucose"
+    },
+    {
+      "reference": "Observation/enc-018-creatinine",
+      "display": "Creatinine, serum"
+    },
+    {
+      "reference": "Observation/enc-018-ast",
+      "display": "AST"
+    },
+    {
+      "reference": "Observation/enc-018-alt",
+      "display": "ALT"
+    }
+  ],
+  "conclusion": "CMP within normal limits. Liver enzymes reassuring in context of alcohol use disorder history and naltrexone use."
+}

@@ -1,0 +1,60 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-017-lipid",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "100898-6",
+        "display": "Lipid panel - Serum or Plasma"
+      }
+    ],
+    "text": "Lipid Panel"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "effectiveDateTime": "2026-03-12",
+  "issued": "2026-03-12T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+      "display": "Dr. Angela Morales, MD"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-017-total-cholesterol",
+      "display": "Total Cholesterol"
+    },
+    {
+      "reference": "Observation/enc-017-ldl",
+      "display": "LDL Cholesterol"
+    },
+    {
+      "reference": "Observation/enc-017-hdl",
+      "display": "HDL Cholesterol"
+    },
+    {
+      "reference": "Observation/enc-017-triglycerides",
+      "display": "Triglycerides"
+    }
+  ]
+}

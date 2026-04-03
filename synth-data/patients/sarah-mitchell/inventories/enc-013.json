@@ -1,0 +1,149 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "hawthorne-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Pre-move visit, records transfer, medication reconciliation",
+    "period_start": "2024-04-22T09:00:00-07:00",
+    "period_end": "2024-04-22T09:30:00-07:00",
+    "participants": [],
+    "service_provider": "Hawthorne Health Center",
+    "location": "Hawthorne Health Center, 3847 SE Hawthorne Blvd, Portland, OR 97214"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 116,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 74,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 116,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 74,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 68,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.4,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 141,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 66,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 22.8,
+        "unit": "kg/m²"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative screen for depression"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "bipolar II disorder",
+      "clinical_status": "active",
+      "onset_date": "2019",
+      "action": "reference-existing"
+    },
+    {
+      "name": "alcohol use disorder, moderate, in sustained remission",
+      "clinical_status": "active",
+      "onset_date": "2023-01",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertriglyceridemia, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lamotrigine 200 mg oral tablet",
+      "sig": "Take 1 tablet (200 mg) by mouth once daily",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "create"
+    },
+    {
+      "name": "quetiapine 50 mg oral tablet",
+      "sig": "Take 1 tablet (50 mg) by mouth at bedtime",
+      "status": "active",
+      "reason": "bipolar II disorder",
+      "action": "create"
+    },
+    {
+      "name": "naltrexone 50 mg oral tablet",
+      "sig": "Take 1 tablet (50 mg) by mouth once daily",
+      "status": "active",
+      "reason": "alcohol use disorder",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note documenting final pre-move visit. Covers subjective report of stable mood and sustained sobriety, objective vitals and PHQ-2 screening, medication reconciliation of all three active medications, active problem list review and update, 90-day bridge prescriptions, preparation of comprehensive care summary letter for new PCP, records transfer initiation, and conclusion of care at Hawthorne Health Center."
+    },
+    {
+      "type": "care summary letter",
+      "description": "Comprehensive care summary prepared for patient's new primary care provider in Seattle, including active problem list, medication history, psychiatric treatment course, and substance use disorder recovery history. Provided to patient for transfer."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfa antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

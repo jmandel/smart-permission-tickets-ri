@@ -1,0 +1,60 @@
+{
+  "resourceType": "Organization",
+  "id": "153a668b-784f-4694-96bb-26a177023060",
+  "identifier": [
+    {
+      "use": "official",
+      "type": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "NPI",
+            "display": "National Provider Identifier"
+          }
+        ],
+        "text": "NPI"
+      },
+      "system": "http://hl7.org/fhir/sid/us-npi",
+      "value": "4567890123"
+    }
+  ],
+  "active": true,
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ],
+      "text": "Healthcare Provider"
+    }
+  ],
+  "name": "Ballard Family Medicine",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "206-555-0200",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "206-555-0201",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "line": [
+        "5412 22nd Ave NW"
+      ],
+      "city": "Seattle",
+      "state": "WA",
+      "postalCode": "98107",
+      "country": "US"
+    }
+  ]
+}

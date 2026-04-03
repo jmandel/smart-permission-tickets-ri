@@ -1,0 +1,83 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-000-albuterol",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "745678",
+        "display": "albuterol Metered Dose Inhaler"
+      }
+    ],
+    "text": "albuterol sulfate 90 mcg/actuation HFA inhalation aerosol"
+  },
+  "subject": {
+    "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
+    "display": "Maria Chen"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "authoredOn": "2019-01-22",
+  "requester": {
+    "reference": "Practitioner/88db76ed-2e70-4364-9229-a6fe02a7ba13",
+    "display": "Dr. Angela Morales, MD"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-000-asthma",
+      "display": "Mild intermittent asthma"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Inhale 2 puffs by mouth as needed for wheezing or shortness of breath",
+      "patientInstruction": "Inhale 2 puffs by mouth as needed for wheezing or shortness of breath.",
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral route (qualifier value)"
+          }
+        ],
+        "text": "Inhalation"
+      },
+      "doseAndRate": [
+        {
+          "type": {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                "code": "ordered",
+                "display": "Ordered"
+              }
+            ],
+            "text": "Ordered"
+          },
+          "doseQuantity": {
+            "value": 2,
+            "unit": "puff",
+            "system": "http://unitsofmeasure.org",
+            "code": "{puff}"
+          }
+        }
+      ]
+    }
+  ]
+}

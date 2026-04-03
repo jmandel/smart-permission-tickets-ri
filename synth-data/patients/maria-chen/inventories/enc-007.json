@@ -1,0 +1,160 @@
+{
+  "encounter_id": "enc-007",
+  "encounter_index": 7,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "annual wellness visit",
+    "reason": "annual wellness visit",
+    "period_start": "2022-03-08",
+    "period_end": "2022-03-08",
+    "participants": [
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "attending"
+      },
+      {
+        "name": "David Kim, MA",
+        "role": "intake"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure (systolic component)",
+        "value": 118,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure (diastolic component)",
+        "value": 76,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "bpm"
+      },
+      {
+        "name": "body weight",
+        "value": 152,
+        "unit": "lbs"
+      },
+      {
+        "name": "body mass index",
+        "value": 26.9,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 98.6,
+        "unit": "°F"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 14,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry, room air)",
+        "value": 99,
+        "unit": "%"
+      }
+    ],
+    "labs": [],
+    "screening": [
+      {
+        "name": "PHQ-2 depression screening",
+        "value": 0,
+        "interpretation": "negative (below threshold of 3)"
+      },
+      {
+        "name": "Asthma Control Test (ACT)",
+        "value": 22,
+        "interpretation": "well controlled"
+      },
+      {
+        "name": "AHC HRSN screening questionnaire — food insecurity domain",
+        "result": "negative",
+        "interpretation": "no food insecurity identified"
+      },
+      {
+        "name": "AHC HRSN screening questionnaire — housing instability domain",
+        "result": "negative",
+        "interpretation": "no housing instability identified"
+      },
+      {
+        "name": "AHC HRSN screening questionnaire — transportation barriers domain",
+        "result": "negative",
+        "interpretation": "no transportation barriers identified"
+      },
+      {
+        "name": "AHC HRSN screening questionnaire — utilities domain",
+        "result": "negative",
+        "interpretation": "no utility difficulties identified"
+      },
+      {
+        "name": "AHC HRSN screening questionnaire — personal safety domain",
+        "result": "negative",
+        "interpretation": "no safety concerns identified"
+      }
+    ]
+  },
+  "conditions": [
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "onset_date": "2008",
+      "action": "reference-existing"
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "Inhale 2 puffs by mouth as needed for shortness of breath or wheezing",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Documents annual wellness exam for a 38-year-old female including vitals, PHQ-2 depression screening (negative), ACT asthma assessment (well controlled), AHC HRSN social determinants screening (negative all domains), review of immunization status (up to date), preventive care plan (Pap smear to be scheduled separately), lab orders (CBC, CMP, lipid panel), and albuterol refill."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "complete blood count (CBC)",
+      "report_state": "ordered-not-resulted",
+      "description": "CBC ordered as part of annual wellness labs. No results are documented in this encounter narrative."
+    },
+    {
+      "type": "comprehensive metabolic panel (CMP)",
+      "report_state": "ordered-not-resulted",
+      "description": "CMP ordered as part of annual wellness labs. No results are documented in this encounter narrative."
+    },
+    {
+      "type": "lipid panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Lipid panel ordered as part of annual wellness labs. No results are documented in this encounter narrative."
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

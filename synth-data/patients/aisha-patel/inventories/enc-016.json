@@ -1,0 +1,120 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "triangle-pediatrics",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Immunization Visit",
+    "reason": "Annual influenza vaccination",
+    "period_start": "2025-10-14",
+    "period_end": "2025-10-14",
+    "participants": [],
+    "service_provider": "Triangle Pediatrics",
+    "location": "Triangle Pediatrics, 4201 Lake Boone Trail, Suite 200, Raleigh, NC 27607"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "body weight",
+        "value": "20.2 kg",
+        "percentile": "54th percentile",
+        "action": "create"
+      },
+      {
+        "name": "body temperature",
+        "value": "36.6 °C",
+        "action": "create"
+      },
+      {
+        "name": "heart rate",
+        "value": "94 bpm",
+        "action": "create"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "severe persistent asthma",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "tree nut allergy (cashew, almond, walnut)",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "fluticasone/salmeterol (Advair HFA 115/21)",
+      "sig": "1 puff inhaled twice daily via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "montelukast 4 mg chewable tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "albuterol (ProAir HFA 90 mcg)",
+      "sig": "2 puffs inhaled PRN for wheezing/shortness of breath via spacer",
+      "status": "active",
+      "reason": "severe persistent asthma",
+      "action": "reference-existing"
+    },
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr 0.15 mg)",
+      "sig": "PRN for anaphylaxis",
+      "status": "active",
+      "reason": "peanut allergy with history of anaphylaxis",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, quadrivalent inactivated",
+      "date": "2025-10-14",
+      "dose": "0.5 mL",
+      "route": "intramuscular injection",
+      "site": "left deltoid",
+      "action": "create",
+      "note": "Lot number documented. VIS provided to mother and reviewed. Consent obtained. 15-minute post-vaccination observation completed without adverse reaction."
+    }
+  ],
+  "document_references": [
+    {
+      "type": "immunization visit note (progress note)",
+      "action": "create",
+      "description": "Documents Aisha's annual influenza vaccination visit. Records abbreviated vitals, confirms no acute illness or contraindications to vaccination, documents influenza vaccine administration details (quadrivalent inactivated, 0.5 mL IM left deltoid), 15-minute post-vaccination observation without adverse reaction, and assessment of stable asthma and food allergies with plan to continue current medications."
+    },
+    {
+      "type": "immunization administration record",
+      "action": "create",
+      "description": "Formal immunization administration record documenting the influenza vaccine given, including lot number, VIS date, administration site and route, and provider. Updated immunization history reflecting this annual influenza dose."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis",
+      "action": "reference-existing"
+    },
+    {
+      "substance": "tree nut (cashew, almond, walnut)",
+      "action": "reference-existing"
+    }
+  ]
+}

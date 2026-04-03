@@ -1,0 +1,44 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-011-culture",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "MB",
+          "display": "Microbiology"
+        }
+      ],
+      "text": "Microbiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "539-7",
+        "display": "Mycobacterium sp identified in Sputum by Organism specific culture"
+      }
+    ],
+    "text": "Sputum Mycobacterial Culture"
+  },
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-011"
+  },
+  "effectiveDateTime": "2026-03-05",
+  "issued": "2026-03-30T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/fca1b37a-0004-4c92-8717-54842b25df2a",
+      "type": "Practitioner",
+      "display": "Dr. Lena Okafor"
+    }
+  ],
+  "conclusion": "Sputum mycobacterial culture (specimen collected March 5, 2026) returned negative — no growth of Mycobacterium tuberculosis after 25 days of incubation. This is the second consecutive negative culture (following the negative February 5 specimen), confirming sputum culture conversion."
+}

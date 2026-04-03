@@ -1,0 +1,43 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-005-hand-xray",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "LP29684-5",
+          "display": "Radiology"
+        }
+      ],
+      "text": "Radiology"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "26388-9",
+        "display": "XR Hand - bilateral 2 Views"
+      }
+    ],
+    "text": "Bilateral hand X-ray"
+  },
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-005"
+  },
+  "effectiveDateTime": "2021-03-15",
+  "issued": "2021-03-15T00:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+      "display": "Dr. Alejandro Fuentes"
+    }
+  ],
+  "conclusion": "Periarticular osteopenia at MCPs bilaterally. Early marginal erosions at 2nd and 3rd MCP joints of the right hand. No joint space narrowing. Soft tissue swelling at bilateral MCPs and wrists. Findings consistent with early erosive rheumatoid arthritis."
+}

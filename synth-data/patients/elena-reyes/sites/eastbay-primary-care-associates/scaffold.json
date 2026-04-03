@@ -1,0 +1,277 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "7b2f3c1a-4d5e-4f6a-8b9c-0d1e2f3a4b5c",
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2131-1",
+              "display": "Other Race"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Other Race"
+          }
+        ]
+      },
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2135-2",
+              "display": "Hispanic or Latino"
+            }
+          },
+          {
+            "url": "detailed",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2148-5",
+              "display": "Mexican"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Hispanic or Latino - Mexican"
+          }
+        ]
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "family": "Reyes",
+        "given": [
+          "Elena",
+          "Marisol"
+        ]
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "510-555-0142",
+        "use": "home"
+      }
+    ],
+    "gender": "female",
+    "birthDate": "1989-09-14",
+    "address": [
+      {
+        "use": "home",
+        "city": "Oakland",
+        "state": "CA",
+        "country": "US"
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "M",
+          "display": "Married"
+        }
+      ],
+      "text": "Married"
+    },
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        },
+        "preferred": true
+      },
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "es",
+              "display": "Spanish"
+            }
+          ],
+          "text": "Spanish"
+        },
+        "preferred": false
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1902847536",
+          "display": "Source Organization NPI 1902847536"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "CA",
+          "display": "CA"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Organization",
+    "id": "2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1902847536"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Primary Care / Internal Medicine"
+      }
+    ],
+    "name": "Eastbay Primary Care Associates",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "510-555-0200",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "city": "Oakland",
+        "state": "CA",
+        "country": "US"
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1902847536",
+          "display": "Source Organization NPI 1902847536"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "CA",
+          "display": "CA"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Practitioner",
+    "id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+    "active": true,
+    "name": [
+      {
+        "use": "official",
+        "family": "Okonkwo",
+        "given": [
+          "Anita"
+        ],
+        "prefix": [
+          "Dr."
+        ]
+      }
+    ],
+    "qualification": [
+      {
+        "code": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+              "code": "MD",
+              "display": "Doctor of Medicine"
+            }
+          ],
+          "text": "Doctor of Medicine"
+        }
+      }
+    ],
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1902847536",
+          "display": "Source Organization NPI 1902847536"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "CA",
+          "display": "CA"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Location",
+    "id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+    "status": "active",
+    "name": "Eastbay Primary Care Associates",
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "PC",
+            "display": "Primary Care Clinic"
+          }
+        ],
+        "text": "Primary Care Clinic"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "510-555-0200",
+        "use": "work"
+      }
+    ],
+    "address": {
+      "use": "work",
+      "city": "Oakland",
+      "state": "CA",
+      "country": "US"
+    },
+    "managingOrganization": {
+      "reference": "Organization/2a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+      "display": "Eastbay Primary Care Associates"
+    },
+    "meta": {
+      "tag": [
+        {
+          "system": "urn:example:permissiontickets-demo:source-org-npi",
+          "code": "1902847536",
+          "display": "Source Organization NPI 1902847536"
+        },
+        {
+          "system": "urn:example:permissiontickets-demo:jurisdiction-state",
+          "code": "CA",
+          "display": "CA"
+        }
+      ]
+    }
+  }
+]

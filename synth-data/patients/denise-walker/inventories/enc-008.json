@@ -1,0 +1,257 @@
+{
+  "encounter_id": "enc-008",
+  "encounter_index": 8,
+  "site_slug": "rio-grande-nephrology-associates",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "CKD follow-up with potassium and blood-pressure review",
+    "participants": [
+      {
+        "name": "Omar Siddiqui, PA-C",
+        "role": "treating nephrology clinician for the visit"
+      },
+      {
+        "name": "Rachel Montoya, RN",
+        "role": "intake and home blood-pressure log review"
+      },
+      {
+        "name": "Dr. Helena Ortiz",
+        "role": "supervising nephrologist referenced in the note"
+      }
+    ],
+    "service_provider": "Rio Grande Nephrology Associates",
+    "location": "Rio Grande Nephrology Associates, Albuquerque, New Mexico"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "blood pressure",
+        "value": "128/76",
+        "unit": "mmHg"
+      },
+      {
+        "name": "systolic blood pressure",
+        "value": 128,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 76,
+        "unit": "mmHg"
+      },
+      {
+        "name": "heart rate",
+        "value": 70,
+        "unit": "beats/min"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 16,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "body temperature",
+        "value": 97.9,
+        "unit": "F"
+      },
+      {
+        "name": "oxygen saturation",
+        "value": 98,
+        "unit": "%"
+      },
+      {
+        "name": "body weight",
+        "value": 187,
+        "unit": "lb"
+      },
+      {
+        "name": "body height",
+        "value": 64,
+        "unit": "in"
+      },
+      {
+        "name": "body mass index",
+        "value": 32.1,
+        "unit": "kg/m2"
+      }
+    ],
+    "labs": [
+      {
+        "name": "creatinine",
+        "value": 1.74,
+        "unit": "mg/dL"
+      },
+      {
+        "name": "estimated glomerular filtration rate",
+        "value": "approximately 33",
+        "unit": "mL/min/1.73 m2",
+        "flag": "low"
+      },
+      {
+        "name": "blood urea nitrogen",
+        "value": 33,
+        "unit": "mg/dL",
+        "flag": "high"
+      },
+      {
+        "name": "potassium",
+        "value": 5.1,
+        "unit": "mmol/L",
+        "flag": "high"
+      },
+      {
+        "name": "sodium",
+        "value": 139,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "bicarbonate",
+        "value": 22,
+        "unit": "mmol/L",
+        "flag": "normal"
+      },
+      {
+        "name": "phosphorus",
+        "value": 4.1,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "calcium",
+        "value": 9.1,
+        "unit": "mg/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "albumin",
+        "value": 3.9,
+        "unit": "g/dL",
+        "flag": "normal"
+      },
+      {
+        "name": "hemoglobin",
+        "value": 11.4,
+        "unit": "g/dL",
+        "flag": "low"
+      },
+      {
+        "name": "urine albumin-creatinine ratio",
+        "value": 248,
+        "unit": "mg/g",
+        "flag": "high",
+        "specimen_type": "urine"
+      },
+      {
+        "name": "glucose",
+        "value": 148,
+        "unit": "mg/dL",
+        "flag": "high"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "chronic kidney disease stage 3b with persistent albuminuria",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "change": "Nephrology reassessment documented the disease as slowly progressive but outpatient-stable, with creatinine 1.74 mg/dL, estimated glomerular filtration rate about 33 mL/min/1.73 m2, and persistent albuminuria with urine albumin-creatinine ratio 248 mg/g."
+    },
+    {
+      "name": "albuminuria due to diabetic kidney disease/cardiorenal risk",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "change": "Persistent albuminuria was confirmed and explicitly used in treatment decision-making supporting continuation of sacubitril/valsartan."
+    },
+    {
+      "name": "mild hyperkalemia",
+      "clinical_status": "active",
+      "onset_date": "2026-02-11",
+      "action": "create",
+      "change": "Potassium 5.1 mmol/L was assessed as a mild elevation and risk related in part to ongoing RAAS-neprilysin inhibition; diet counseling and short-interval repeat basic metabolic panel were planned."
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "change": "Blood pressure was documented as well controlled with office blood pressure 128/76 mmHg and home readings generally 118/70 to 132/78 mmHg."
+    },
+    {
+      "name": "heart failure with reduced ejection fraction",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "change": "No new heart-failure findings; condition was referenced to explain why sacubitril/valsartan should be continued despite mild hyperkalemia."
+    },
+    {
+      "name": "mild anemia of chronic kidney disease/chronic disease pattern",
+      "clinical_status": "active",
+      "action": "update-existing",
+      "change": "Hemoglobin 11.4 g/dL was noted as stable and appropriate for continued outpatient monitoring."
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "change": "No direct diabetes treatment change; diabetes was referenced as part of the cause of diabetic kidney disease and albuminuria."
+    }
+  ],
+  "medications": [
+    {
+      "name": "sacubitril/valsartan oral therapy",
+      "sig": "continue current regimen as previously prescribed",
+      "status": "active",
+      "reason": "heart failure with reduced ejection fraction and renal-protective/blood-pressure/albuminuria benefit",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "Progress note",
+      "description": "Nephrology follow-up note documenting CKD stage 3b with persistent albuminuria in the setting of diabetes, hypertension, and heart failure with reduced ejection fraction. The note summarizes stable home and office blood-pressure control, reviewed renal and electrolyte trends including mild hyperkalemia risk, continuation of sacubitril/valsartan, counseling on potassium intake, hydration, and NSAID avoidance, and follow-up testing plans."
+    },
+    {
+      "type": "Lab summary",
+      "description": "Reviewed laboratory summary documenting creatinine, estimated glomerular filtration rate, blood urea nitrogen, electrolytes, phosphorus, calcium, albumin, hemoglobin, urine albumin-creatinine ratio, and glucose trends relevant to CKD progression and potassium monitoring. The document reflects review during the visit to guide management rather than new in-office testing."
+    },
+    {
+      "type": "Patient education / counseling note",
+      "description": "CKD diet counseling documentation covering moderation of high-potassium foods, maintaining consistent hydration, continued sodium restriction, and strict NSAID avoidance, tied to CKD stage 3b, albuminuria, and mild hyperkalemia risk while on ongoing heart-failure therapy."
+    },
+    {
+      "type": "Patient instructions",
+      "description": "Follow-up instructions advising repeat basic metabolic panel in 2 to 3 weeks, repeat renal panel and urine albumin testing before the next nephrology visit, and return precautions for worsening blood pressure control, decreased urine output, edema, dyspnea, or other clinical change. The instructions also note that no dialysis planning is indicated at present."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "Basic metabolic panel",
+      "report_state": "summary-only",
+      "description": "Laboratory review included glucose, blood urea nitrogen, creatinine, sodium, potassium, and bicarbonate, but there are not enough named components to support a full panel-style result set as a report-with-results. This visit also placed a repeat basic metabolic panel order for 2 to 3 weeks."
+    },
+    {
+      "type": "Renal function panel / chronic kidney disease monitoring labs",
+      "report_state": "summary-only",
+      "description": "Reviewed nephrology lab summary included creatinine, estimated glomerular filtration rate, phosphorus, calcium, albumin, hemoglobin, and urine albumin-creatinine ratio for CKD follow-up, but the source is documented as trend review rather than a fully enumerated resulted panel from this encounter."
+    },
+    {
+      "type": "Urine albumin testing",
+      "report_state": "ordered-not-resulted",
+      "description": "Standing order placed for repeat urine albumin testing prior to the next 6-month nephrology follow-up; no future result available yet."
+    },
+    {
+      "type": "Basic metabolic panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Repeat basic metabolic panel ordered for 2 to 3 weeks to reassess potassium and renal function; no future result available yet."
+    },
+    {
+      "type": "Renal panel",
+      "report_state": "ordered-not-resulted",
+      "description": "Standing order placed for repeat renal panel before the next nephrology follow-up; no future result available yet."
+    }
+  ],
+  "allergies": []
+}

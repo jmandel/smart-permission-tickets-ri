@@ -1,0 +1,61 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-014-lipid",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "57698-3",
+        "display": "Lipid panel with direct LDL - Serum or Plasma"
+      }
+    ],
+    "text": "Lipid Panel"
+  },
+  "subject": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-014"
+  },
+  "effectiveDateTime": "2024-07-15",
+  "issued": "2024-07-15T12:00:00Z",
+  "performer": [
+    {
+      "reference": "Practitioner/207608a9-6a13-4909-b390-b83a10582c49",
+      "display": "Dr. Kevin Tran"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-014-cholesterol",
+      "display": "Total cholesterol"
+    },
+    {
+      "reference": "Observation/enc-014-ldl",
+      "display": "LDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-014-hdl",
+      "display": "HDL cholesterol"
+    },
+    {
+      "reference": "Observation/enc-014-triglycerides",
+      "display": "Triglycerides"
+    }
+  ],
+  "conclusion": "Triglycerides mildly elevated at 162 mg/dL. Remainder within normal limits."
+}

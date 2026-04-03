@@ -1,0 +1,78 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-002-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/f3a8e9dd-2644-4d79-b3ce-97958f121277",
+    "display": "Marcus Darnell Johnson"
+  },
+  "date": "2025-10-08T09:45:00-05:00",
+  "author": [
+    {
+      "reference": "Practitioner/e02a3bc3-c2e9-4eb5-b29c-e99b5041980a",
+      "type": "Practitioner",
+      "display": "Amy Liu, NP"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/e02a3bc3-c2e9-4eb5-b29c-e99b5041980a",
+    "type": "Practitioner",
+    "display": "Amy Liu, NP"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "VVcgSGVhbHRoIFVuaXZlcnNpdHkgU3R1ZGVudCBIZWFsdGggU2VydmljZXMKMzMzIEVhc3QgQ2FtcHVzIE1hbGwsIEZsb29yIDUsIE1hZGlzb24sIFdJIDUzNzE1Ck5QSTogMTM0Njc4MjE1MAoKUFJPR1JFU1MgTk9URSDigJQgUHJldmVudGl2ZSBTY3JlZW5pbmcgVmlzaXQKCkRhdGUgb2YgU2VydmljZTogMTAvMDgvMjAyNQpQYXRpZW50OiBNYXJjdXMgSm9obnNvbiAgIERPQjogMDYvMTQvMjAwNCAgIEFnZTogMjEgeS9vIG1hbGUKQ2xpbmljaWFuOiBBbXkgTGl1LCBOUApJbnN1cmFuY2U6IEFudGhlbSBCbHVlIENyb3NzIEJsdWUgU2hpZWxkCgpTVUJKRUNUSVZFOgpNYXJjdXMgaXMgYSAyMS15ZWFyLW9sZCBtYWxlIHByZXNlbnRpbmcgZm9yIHJvdXRpbmUgU1RJIHNjcmVlbmluZy4gSGUgcmVwb3J0cyBvbmUgbmV3IHNleHVhbCBwYXJ0bmVyIGluIHRoZSBwYXN0IDYgbW9udGhzLiBIZSBlbmRvcnNlcyBjb25zaXN0ZW50IGNvbmRvbSB1c2UuIEhlIGRlbmllcyB1cmluYXJ5IHN5bXB0b21zIGluY2x1ZGluZyBkeXN1cmlhLCBmcmVxdWVuY3ksIG9yIHVyZ2VuY3kuIEhlIGRlbmllcyBnZW5pdGFsIGxlc2lvbnMsIHBlbmlsZSBkaXNjaGFyZ2UsIG9yIHRlc3RpY3VsYXIgcGFpbi4gTm8gb3RoZXIgYWN1dGUgY29tcGxhaW50cyB0b2RheS4KClJPUzoKR1U6IE5vIGR5c3VyaWEsIGhlbWF0dXJpYSwgZGlzY2hhcmdlLCBvciBsZXNpb25zLgpDb25zdGl0dXRpb25hbDogRGVuaWVzIGZldmVyLCBjaGlsbHMsIHdlaWdodCBsb3NzLCBuaWdodCBzd2VhdHMuCkFsbCBvdGhlciBzeXN0ZW1zIHJldmlld2VkIGFuZCBuZWdhdGl2ZS4KCk9CSkVDVElWRToKVml0YWxzOgogIEJQOiAxMTYvNzAgbW1IZwogIEhSOiA2NCBicG0KICBUZW1wOiA5OC4yIEYgKDM2LjggQykKICBSUjogMTQgYnJlYXRocy9taW4KICBXZWlnaHQ6IDE4MCBsYnMgKDgxLjYga2cpCiAgQk1JOiAyNS4xIGtnL20yCiAgU3BPMjogOTklCgpHZW5lcmFsOiBXZWxsLWFwcGVhcmluZyB5b3VuZyBtYWxlIGluIG5vIGFjdXRlIGRpc3RyZXNzLgpHVTogRXh0ZXJuYWwgZ2VuaXRhbGlhIG5vcm1hbCBtYWxlIGFuYXRvbXksIG5vIGxlc2lvbnMsIG5vIGRpc2NoYXJnZSwgbm8gaW5ndWluYWwgbHltcGhhZGVub3BhdGh5LgoKTGFicyAocmVzdWx0ZWQpOgogIENobGFteWRpYSB0cmFjaG9tYXRpcyBOQUFUICh1cmluZSk6IE5lZ2F0aXZlCiAgTmVpc3NlcmlhIGdvbm9ycmhvZWFlIE5BQVQgKHVyaW5lKTogTmVnYXRpdmUKICBISVYgNHRoLWdlbmVyYXRpb24gQWcvQWIgc2NyZWVuIChzZXJ1bSk6IE5vbi1yZWFjdGl2ZSAoTmVnYXRpdmUpCgpBU1NFU1NNRU5UOgoxLiBSb3V0aW5lIFNUSSBzY3JlZW5pbmcg4oCUIGFsbCByZXN1bHRzIG5lZ2F0aXZlIChjaGxhbXlkaWEsIGdvbm9ycmhlYSwgSElWKS4KMi4gSW5jb21wbGV0ZSBNTVIgdmFjY2luYXRpb24gc2VyaWVzIOKAlCBub3RlZCBpbiBjaGFydCwgbm90IGFkZHJlc3NlZCBhdCB0aGlzIHZpc2l0IHBlciBwYXRpZW50IHByZWZlcmVuY2UgKHByZXNlbnRpbmcgc3BlY2lmaWNhbGx5IGZvciBTVEkgc2NyZWVuaW5nKS4KClBMQU46CjEuIFJlc3VsdHMgcmV2aWV3ZWQgd2l0aCBwYXRpZW50LiBBbGwgU1RJIHRlc3RzIG5lZ2F0aXZlLiBObyB0cmVhdG1lbnQgaW5kaWNhdGVkLgoyLiBTZXh1YWwgaGVhbHRoIGNvdW5zZWxpbmcgcHJvdmlkZWQ6IHJlaW5mb3JjZWQgY29uc2lzdGVudCBjb25kb20gdXNlLCBkaXNjdXNzZWQgUHJFUCBhd2FyZW5lc3MgYW5kIGluZGljYXRpb25zLCBhbmQgcmVjb21tZW5kZWQgYW5udWFsIFNUSSBzY3JlZW5pbmcgd2hpbGUgc2V4dWFsbHkgYWN0aXZlLgozLiBJbW11bml6YXRpb24gc3RhdHVzIHJldmlld2VkLiBDaGFydCBjb250aW51ZXMgdG8gcmVmbGVjdCBpbmNvbXBsZXRlIE1NUiBzZXJpZXMgKG9uZSBkb3NlIGF0IGFnZSAxMiBtb250aHMsIG1pc3Npbmcgc2Vjb25kIGRvc2UpLiBOb3QgYWN0ZWQgdXBvbiB0b2RheSBhcyBwYXRpZW50IHByZXNlbnRlZCBmb3IgdGFyZ2V0ZWQgc2NyZWVuaW5nIG9ubHkuIFdpbGwgYWRkcmVzcyBhdCBuZXh0IHJvdXRpbmUgdmlzaXQuCjQuIExhYiByZXN1bHQgbm90aWZpY2F0aW9uIGxldHRlciBzZW50IHRvIHBhdGllbnQgcG9ydGFsLgo1LiBGb2xsb3ctdXA6IEFubnVhbCBTVEkgc2NyZWVuaW5nIHJlY29tbWVuZGVkLiBSZXR1cm4gdG8gY2xpbmljIGFzIG5lZWRlZCBvciBmb3IgbmV4dCByb3V0aW5lIHZpc2l0LgoKRWxlY3Ryb25pY2FsbHkgc2lnbmVkIGJ5OiBBbXkgTGl1LCBOUApOUEk6IDE1NjcyMzQ4OTAKRGF0ZTogMTAvMDgvMjAyNQo="
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-002"
+      }
+    ],
+    "period": {
+      "start": "2025-10-08T09:00:00-05:00",
+      "end": "2025-10-08T09:45:00-05:00"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "STD",
+        "display": "sexually transmitted disease information sensitivity"
+      }
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-015",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergency"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "4525004",
+          "display": "Emergency department patient visit (procedure)"
+        }
+      ],
+      "text": "ED Visit"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/c36da299-c712-41bf-9f10-4c45a8beab7a",
+    "display": "Harold James Washington"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "ATND",
+              "display": "attender"
+            }
+          ],
+          "text": "Attending"
+        }
+      ],
+      "period": {
+        "start": "2025-02-08T02:15:00-05:00",
+        "end": "2025-02-08T05:45:00-05:00"
+      },
+      "individual": {
+        "reference": "Practitioner/1e81f11b-717d-4e7d-9780-8bf094efcf80",
+        "display": "Dr. Marcus Williams"
+      }
+    }
+  ],
+  "period": {
+    "start": "2025-02-08T02:15:00-05:00",
+    "end": "2025-02-08T05:45:00-05:00"
+  },
+  "reasonCode": [
+    {
+      "text": "Mechanical fall at home with forehead laceration"
+    }
+  ],
+  "diagnosis": [
+    {
+      "condition": {
+        "reference": "Condition/enc-015-fall",
+        "display": "Mechanical fall"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "AD",
+            "display": "Admission diagnosis"
+          }
+        ]
+      },
+      "rank": 1
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-015-laceration",
+        "display": "Laceration of forehead"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "DD",
+            "display": "Discharge diagnosis"
+          }
+        ]
+      },
+      "rank": 2
+    },
+    {
+      "condition": {
+        "reference": "Condition/enc-015-wrist-contusion",
+        "display": "Contusion of right wrist"
+      },
+      "use": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+            "code": "DD",
+            "display": "Discharge diagnosis"
+          }
+        ]
+      },
+      "rank": 3
+    }
+  ],
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+          "code": "home",
+          "display": "Home"
+        }
+      ],
+      "text": "Discharged home"
+    }
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/69caa103-8a13-4093-957a-249a1b61bcff",
+        "display": "Emory Decatur Hospital — Emergency Department"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/8336922b-928c-4ade-a187-28313e7bee13",
+    "display": "Emory Decatur Hospital — Emergency Department"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Harold Washington, age 78, was brought to the Emory Decatur Hospital Emergency Department by EMS after a mechanical fall at home at approximately 2:15 AM. Per Margaret Washington-Clarke (daughter, healthcare POA), Harold got up to use the bathroom and fell while rising from the toilet."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "resourceType": "Practitioner",
+  "id": "f96088a6-9ff1-45de-8305-83d81938237c",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Liu",
+      "given": [
+        "Jennifer"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "code": "RN",
+            "display": "Registered Nurse"
+          }
+        ],
+        "text": "Registered Nurse"
+      }
+    },
+    {
+      "code": {
+        "text": "Research Coordinator"
+      }
+    }
+  ]
+}

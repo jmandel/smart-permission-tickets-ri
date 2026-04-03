@@ -1,0 +1,39 @@
+{
+  "resourceType": "Observation",
+  "id": "enc-015-qlq-lc13-dyspnea",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "survey",
+          "display": "Survey"
+        }
+      ],
+      "text": "Survey"
+    }
+  ],
+  "code": {
+    "text": "EORTC QLQ-LC13 Dyspnea Score"
+  },
+  "subject": {
+    "reference": "Patient/774ab1ae-7f7b-47c6-8b58-bccfaa023139",
+    "display": "Patricia Okafor"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-015"
+  },
+  "effectiveDateTime": "2024-11-04",
+  "valueQuantity": {
+    "value": 22,
+    "unit": "{score}",
+    "system": "http://unitsofmeasure.org",
+    "code": "{score}"
+  },
+  "note": [
+    {
+      "text": "Baseline lung-cancer-specific quality-of-life assessment. Score range 0-100, higher score indicates worse symptom burden."
+    }
+  ]
+}

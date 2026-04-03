@@ -1,0 +1,59 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "enc-014-sulfa-allergy",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "criticality": "low",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "10831",
+        "display": "sulfamethoxazole / trimethoprim"
+      }
+    ],
+    "text": "Sulfa antibiotics (trimethoprim-sulfamethoxazole)"
+  },
+  "patient": {
+    "reference": "Patient/4be35504-84b4-4bee-8ebf-a2b459c82cab",
+    "display": "Sarah Elizabeth Mitchell"
+  },
+  "recordedDate": "2024-07-15",
+  "note": [
+    {
+      "text": "Rash in childhood following trimethoprim-sulfamethoxazole exposure. Documented at new patient visit."
+    }
+  ],
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "text": "Rash"
+        }
+      ],
+      "severity": "mild"
+    }
+  ]
+}

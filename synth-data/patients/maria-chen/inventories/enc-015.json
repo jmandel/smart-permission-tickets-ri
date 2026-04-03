@@ -1,0 +1,142 @@
+{
+  "encounter_id": "enc-015",
+  "encounter_index": 15,
+  "site_slug": "cascade-community-health-center",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Nasal congestion and cough for 3 days; annual influenza vaccination",
+    "period_start": "2025-10-14",
+    "period_end": "2025-10-14",
+    "participants": [
+      {
+        "name": "Dr. Angela Morales, MD",
+        "role": "Primary care physician, examiner"
+      },
+      {
+        "name": "David Kim, MA",
+        "role": "Medical assistant, vitals and intake"
+      }
+    ],
+    "service_provider": "Cascade Community Health Center",
+    "location": "Cascade Community Health Center, 8205 SE Foster Road, Portland, OR 97206"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "systolic blood pressure",
+        "value": 118,
+        "unit": "mmHg"
+      },
+      {
+        "name": "diastolic blood pressure",
+        "value": 74,
+        "unit": "mmHg"
+      },
+      {
+        "name": "blood pressure panel",
+        "components": [
+          {
+            "name": "systolic blood pressure",
+            "value": 118,
+            "unit": "mmHg"
+          },
+          {
+            "name": "diastolic blood pressure",
+            "value": 74,
+            "unit": "mmHg"
+          }
+        ]
+      },
+      {
+        "name": "heart rate",
+        "value": 78,
+        "unit": "beats/min"
+      },
+      {
+        "name": "body weight",
+        "value": 155,
+        "unit": "lb"
+      },
+      {
+        "name": "body mass index",
+        "value": 27.4,
+        "unit": "kg/m2"
+      },
+      {
+        "name": "body temperature",
+        "value": 99.1,
+        "unit": "degF",
+        "method": "oral"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 18,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 97,
+        "unit": "%",
+        "note": "on room air"
+      }
+    ],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "acute viral upper respiratory infection",
+      "clinical_status": "active",
+      "onset_date": "2025-10-11",
+      "action": "create",
+      "note": "3-day history of nasal congestion, mild cough, and low-grade fever. Exam consistent with viral URI — erythematous nasal mucosa, mild pharyngeal erythema, lungs clear. No bacterial superinfection."
+    },
+    {
+      "name": "mild intermittent asthma",
+      "clinical_status": "active",
+      "onset_date": "2008",
+      "action": "reference-existing",
+      "note": "Currently stable despite URI. Increased albuterol use every other day this week, up from baseline 1-2 times/month. No wheezing on exam, lungs clear. No escalation of therapy required."
+    },
+    {
+      "name": "overweight",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "BMI 27.4 consistent with prior range. Not specifically addressed at this encounter beyond vital sign documentation."
+    }
+  ],
+  "medications": [
+    {
+      "name": "albuterol sulfate 90 mcg/actuation HFA inhaler",
+      "sig": "2 puffs by oral inhalation as needed for shortness of breath or wheezing; may use up to every 4-6 hours as needed during URI",
+      "status": "active",
+      "reason": "mild intermittent asthma",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [
+    {
+      "name": "influenza vaccine, inactivated, quadrivalent, 2025-2026 formulation",
+      "date": "2025-10-14",
+      "site": "left deltoid",
+      "route": "intramuscular injection",
+      "note": "Administered despite mild URI per CDC guidance. Patient tolerated well. Vaccine Information Statement provided. Documented in immunization registry."
+    }
+  ],
+  "document_references": [
+    {
+      "type": "progress note",
+      "description": "Office visit note documenting evaluation of 3-day acute viral upper respiratory infection (nasal congestion, cough, low-grade fever), physical exam findings (erythematous nasal mucosa, mild pharyngeal erythema, clear lungs), assessment of stable asthma despite URI with increased albuterol use, symptomatic management plan, and administration of influenza vaccine (quadrivalent, 2025-2026 formulation) with documentation that vaccination is appropriate despite mild URI."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": [
+    {
+      "substance": "sulfonamide antibiotics",
+      "reaction": "rash",
+      "action": "reference-existing"
+    }
+  ]
+}

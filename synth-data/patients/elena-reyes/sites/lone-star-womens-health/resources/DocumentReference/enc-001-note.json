@@ -1,0 +1,87 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-001-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34778-1",
+        "display": "Obstetrics and Gynecology Note"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Obstetrics and Gynecology Progress Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/a8f3c2d1-4e5b-4a6c-9f7e-1b2c3d4e5f60",
+    "display": "Elena Marisol Reyes"
+  },
+  "date": "2020-02-07T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+      "type": "Practitioner",
+      "display": "Dr. Carmen Villanueva"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/c2f3a4b5-6e7d-4c8f-9a0b-1d2e3f4a5b6c",
+    "type": "Practitioner",
+    "display": "Dr. Carmen Villanueva"
+  },
+  "custodian": {
+    "reference": "Organization/b1e2f3a4-5d6c-4b7e-8f9a-0c1d2e3f4a5b",
+    "display": "Lone Star Women's Health"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U1VCSkVDVElWRToKRWxlbmEgUmV5ZXMgcHJlc2VudHMgZm9yIGluLW9mZmljZSBmb2xsb3ctdXAgd2l0aCBEci4gQ2FybWVuIFZpbGxhbnVldmEgYWZ0ZXIgZmlyc3QtdHJpbWVzdGVyIHVsdHJhc291bmQgZGVtb25zdHJhdGVkIHByZWduYW5jeSBsb3NzLiBTaGUgcmVwb3J0cyBsaWdodCB2YWdpbmFsIHNwb3R0aW5nIG9ubHkuIERlbmllcyBoZWF2eSBibGVlZGluZywgc2V2ZXJlIGFiZG9taW5hbC9wZWx2aWMgcGFpbiwgZmV2ZXIsIGNoaWxscywgZGl6emluZXNzLCBvciBzeW5jb3BlLiBFbW90aW9uYWwgZGlzdHJlc3MgcmVsYXRlZCB0byBwcmVnbmFuY3kgbG9zcyB3YXMgYWNrbm93bGVkZ2VkIGFuZCBzdXBwb3J0IHdhcyBwcm92aWRlZC4gTWFuYWdlbWVudCBvcHRpb25zIGZvciBtaXNzZWQgYWJvcnRpb24sIGluY2x1ZGluZyBleHBlY3RhbnQsIG1lZGljYWwsIGFuZCBwcm9jZWR1cmFsIG1hbmFnZW1lbnQsIHdlcmUgcmV2aWV3ZWQgaW4gZGV0YWlsLiBQYXRpZW50IGVsZWN0cyBleHBlY3RhbnQgbWFuYWdlbWVudCBhdCB0aGlzIHRpbWUuIFJlbGV2YW50IE9CIGhpc3RvcnkgaW5jbHVkZXMgcHJpb3IgdGVybSB2YWdpbmFsIGRlbGl2ZXJ5IGluIE5vdmVtYmVyIDIwMTkuCgpPQkpFQ1RJVkU6ClZpdGFsczogQlAgMTA4LzcwIG1tSGcsIEhSIDc0IGJwbSwgVGVtcCA5OC40IEYsIFJSIDE0LCBTcE8yIDk5JSwgV3QgMTM4IGxiCgpHZW5lcmFsOiBBbGVydCwgdGVhcmZ1bCBidXQgYXBwcm9wcmlhdGUsIG5vIGFjdXRlIGRpc3RyZXNzLgpBYmRvbWVuOiBObyBzaWduaWZpY2FudCB0ZW5kZXJuZXNzIHJlcG9ydGVkOyBubyBzaWducyBvZiBhY3V0ZSBhYmRvbWVuLgpQZWx2aWMvT0I6IExpZ2h0IHNwb3R0aW5nIGJ5IGhpc3Rvcnk7IG5vIHJlcG9ydCBvZiBoZWF2eSBibGVlZGluZy4KVWx0cmFzb3VuZDogVHJhbnN2YWdpbmFsIHVsdHJhc291bmQgc2hvd3MgaW50cmF1dGVyaW5lIHByZWduYW5jeSB3aXRoIGNyb3duLXJ1bXAgbGVuZ3RoIGNvbnNpc3RlbnQgd2l0aCA5IHdlZWtzIDQgZGF5cyBhbmQgbm8gZmV0YWwgY2FyZGlhYyBhY3Rpdml0eSwgY29uZmlybWluZyBtaXNzZWQgYWJvcnRpb24uIE5vIGFkbmV4YWwgbWFzcyBvciBmcmVlIGZsdWlkLgpMYWJzOiBDQkMgd2l0aGluIG5vcm1hbCBsaW1pdHMvc3RhYmxlOiBoZW1vZ2xvYmluIDEyLjYgZy9kTCwgV0JDIDcuOCBLL3VMLCBwbGF0ZWxldHMgMjQ4IEsvdUwuIEJsb29kIHR5cGUgQSBwb3NpdGl2ZS4gUmggaW1tdW5lIGdsb2J1bGluIG5vdCBpbmRpY2F0ZWQuCgpBU1NFU1NNRU5UOgoxLiBNaXNzZWQgYWJvcnRpb24gLyBzcG9udGFuZW91cyBhYm9ydGlvbiwgZmlyc3QgdHJpbWVzdGVyLCBjbGluaWNhbGx5IHN0YWJsZS4gVWx0cmFzb3VuZCBjb25maXJtcyBpbnRyYXV0ZXJpbmUgcHJlZ25hbmN5IG1lYXN1cmluZyA5IHdlZWtzIDQgZGF5cyB3aXRob3V0IGZldGFsIGNhcmRpYWMgYWN0aXZpdHkuIFBhdGllbnQgaGFzIG9ubHkgbGlnaHQgc3BvdHRpbmcgYW5kIG5vIGV2aWRlbmNlIG9mIGhlbW9keW5hbWljIGluc3RhYmlsaXR5LCBoZW1vcnJoYWdlLCBlY3RvcGljIHByb2Nlc3MsIG9yIGluZmVjdGlvbi4KMi4gRW1vdGlvbmFsIGRpc3RyZXNzL2dyaWVmIHJlYWN0aW9uIHJlbGF0ZWQgdG8gcHJlZ25hbmN5IGxvc3MuIENvdW5zZWxpbmcgYW5kIHN1cHBvcnQgcHJvdmlkZWQgZHVyaW5nIHZpc2l0LgoKUExBTjoKMS4gUHJvY2VlZCB3aXRoIGV4cGVjdGFudCBtYW5hZ2VtZW50IHBlciBwYXRpZW50IHByZWZlcmVuY2UgYWZ0ZXIgY291bnNlbGluZyBvbiBhbGwgbWFuYWdlbWVudCBvcHRpb25zLgoyLiBSZXZpZXdlZCB3YXJuaW5nIHNpZ25zIGFuZCBzdHJpY3QgcmV0dXJuIHByZWNhdXRpb25zOiBzb2FraW5nIG1vcmUgdGhhbiAyIHBhZHMgcGVyIGhvdXIsIHNldmVyZSBwYWluLCBmZXZlciwgZm91bCBkaXNjaGFyZ2UsIGRpenppbmVzcywgb3Igc3luY29wZS4KMy4gUmhvZ2FtIG5vdCBpbmRpY2F0ZWQgZ2l2ZW4gQSBwb3NpdGl2ZSBibG9vZCB0eXBlLgo0LiBQcm92aWRlZCB3cml0dGVuIHBhdGllbnQgaW5zdHJ1Y3Rpb25zIHJlZ2FyZGluZyBleHBlY3RlZCBibGVlZGluZy9jcmFtcGluZyBjb3Vyc2UgYW5kIHdoZW4gdG8gc2VlayB1cmdlbnQgZXZhbHVhdGlvbi4KNS4gRm9sbG93IHVwIGluIDEtMiB3ZWVrcyBmb3IgcmVhc3Nlc3NtZW50IGFuZCB0byBjb25maXJtIGNvbXBsZXRpb24sIHNvb25lciBmb3IgYW55IHdvcnNlbmluZyBzeW1wdG9tcyBvciBjb25jZXJucy4KNi4gRW1vdGlvbmFsIHN1cHBvcnQgb2ZmZXJlZDsgcGF0aWVudCBlbmNvdXJhZ2VkIHRvIHJlYWNoIG91dCBmb3IgYWRkaXRpb25hbCBzdXBwb3J0IGFzIG5lZWRlZC4K",
+        "title": "OB/GYN Progress Note — 2020-02-07"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-001"
+      }
+    ],
+    "period": {
+      "start": "2020-02-07T00:00:00Z"
+    }
+  },
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

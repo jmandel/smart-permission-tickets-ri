@@ -1,0 +1,39 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-017-cardiac-imaging",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "105376000",
+        "display": "Transesophageal echocardiography (procedure)"
+      }
+    ],
+    "text": "Transesophageal echocardiogram or cardiac CT for left atrial anatomy and thrombus exclusion"
+  },
+  "subject": {
+    "reference": "Patient/5bd976dc-a3e0-4123-ac48-b7774a57978f",
+    "display": "Kevin Junghwan Park"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-017"
+  },
+  "authoredOn": "2026-03-09",
+  "requester": {
+    "reference": "Practitioner/50ddcfc7-0f2e-469f-9e6e-b9db95bebdf8",
+    "display": "Dr. James Lindgren, MD, FHRS"
+  },
+  "reasonReference": [
+    {
+      "reference": "ServiceRequest/enc-017-pvi",
+      "display": "Pulmonary vein isolation via catheter ablation"
+    }
+  ],
+  "note": [
+    {
+      "text": "Repeat TEE or cardiac CT for left atrial anatomy mapping and thrombus exclusion prior to planned catheter ablation procedure."
+    }
+  ]
+}

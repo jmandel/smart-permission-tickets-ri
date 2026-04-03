@@ -1,0 +1,60 @@
+{
+  "resourceType": "Condition",
+  "id": "enc-010-bereavement",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ],
+    "text": "Confirmed"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ],
+      "text": "Encounter Diagnosis"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "160850004",
+        "display": "Bereavement (finding)"
+      }
+    ],
+    "text": "Bereavement"
+  },
+  "subject": {
+    "reference": "Patient/34a5fa7f-abf9-46b6-b132-c0a5c7236939",
+    "display": "Harold James Washington"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "onsetDateTime": "2024-06",
+  "recordedDate": "2024-10-03",
+  "note": [
+    {
+      "text": "Wife Dorothy deceased June 2024. Daughter reports persistent sadness and social withdrawal. Formal PHQ-2 deferred due to cognitive status."
+    }
+  ]
+}

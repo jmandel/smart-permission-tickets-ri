@@ -1,0 +1,57 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "enc-000-hiv-report",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "56888-1",
+        "display": "HIV 1+2 Ab+HIV1 p24 Ag [Presence] in Serum or Plasma by Immunoassay"
+      }
+    ],
+    "text": "HIV Antigen/Antibody Combination Test (4th Generation)"
+  },
+  "subject": {
+    "reference": "Patient/bb4f5104-f2ac-492e-8745-681517f118b4",
+    "display": "Robert James Davis"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-000"
+  },
+  "effectiveDateTime": "2026-01-22T15:00:00-06:00",
+  "issued": "2026-01-22T15:00:00-06:00",
+  "performer": [
+    {
+      "reference": "Practitioner/86539a25-bbaa-42c0-b704-415716a07c5a",
+      "type": "Practitioner",
+      "display": "Dr. Priya Anand"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/enc-000-hiv"
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "HIV",
+        "display": "HIV/AIDS information sensitivity"
+      }
+    ]
+  }
+}

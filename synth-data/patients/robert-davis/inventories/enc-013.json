@@ -1,0 +1,74 @@
+{
+  "encounter_id": "enc-013",
+  "encounter_index": 13,
+  "site_slug": "ui-health-ambulatory-tb-clinic",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Telephone encounter",
+    "reason": "Continuation phase tolerance check",
+    "period_start": "2026-04-09",
+    "participants": [],
+    "service_provider": "UI Health Ambulatory TB Clinic",
+    "location": "UI Health Ambulatory TB Clinic (telephone), 1801 W Taylor St, Suite 1E, Chicago, IL 60612"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "pulmonary tuberculosis",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "chronic obstructive pulmonary disease, mild",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "rifampin 600 mg oral tablet",
+      "sig": "600 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis (continuation phase)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "isoniazid 300 mg oral tablet",
+      "sig": "300 mg oral once daily",
+      "status": "active",
+      "reason": "pulmonary tuberculosis (continuation phase)",
+      "action": "reference-existing"
+    },
+    {
+      "name": "pyridoxine 50 mg oral tablet",
+      "sig": "50 mg oral once daily",
+      "status": "active",
+      "reason": "neuropathy prophylaxis during isoniazid therapy",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Telephone tolerance check one week after transition to continuation phase. Patient reports feeling well on simplified two-drug regimen (rifampin, isoniazid, pyridoxine), denies nausea, abdominal pain, rash, numbness/tingling, or fatigue. Medication adherence confirmed on non-DOT days. Plan to continue current regimen with next in-person visit April 16, 2026."
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

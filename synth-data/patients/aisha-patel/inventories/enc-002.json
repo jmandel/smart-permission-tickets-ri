@@ -1,0 +1,305 @@
+{
+  "encounter_id": "enc-002",
+  "encounter_index": 2,
+  "site_slug": "unc-pediatric-allergy-immunology",
+  "encounter": {
+    "class": "ambulatory",
+    "type": "Office Visit",
+    "reason": "Initial comprehensive allergy evaluation following peanut anaphylaxis",
+    "period_start": "2022-11-14T09:00:00-05:00",
+    "period_end": "2022-11-14T10:30:00-05:00",
+    "participants": [],
+    "service_provider": "UNC Pediatric Allergy & Immunology",
+    "location": "UNC Medical Center, 101 Manning Drive, Chapel Hill, NC 27514"
+  },
+  "observations": {
+    "vitals": [
+      {
+        "name": "heart rate",
+        "value": 110,
+        "unit": "bpm"
+      },
+      {
+        "name": "respiratory rate",
+        "value": 24,
+        "unit": "breaths/min"
+      },
+      {
+        "name": "blood pressure",
+        "systolic": 88,
+        "diastolic": 54,
+        "unit": "mmHg"
+      },
+      {
+        "name": "oxygen saturation (pulse oximetry)",
+        "value": 99,
+        "unit": "%"
+      },
+      {
+        "name": "body temperature",
+        "value": 36.9,
+        "unit": "°C"
+      },
+      {
+        "name": "body weight",
+        "value": 12.8,
+        "unit": "kg"
+      },
+      {
+        "name": "body height",
+        "value": 89,
+        "unit": "cm"
+      }
+    ],
+    "labs": [
+      {
+        "name": "peanut-specific IgE",
+        "value": 48.2,
+        "unit": "kU/L",
+        "flag": "very high",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "cashew-specific IgE",
+        "value": 22.7,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "walnut-specific IgE",
+        "value": 15.1,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "almond-specific IgE",
+        "value": 8.3,
+        "unit": "kU/L",
+        "flag": "high",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "egg white-specific IgE",
+        "value": 1.8,
+        "unit": "kU/L",
+        "flag": "low positive",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "milk (cow's milk)-specific IgE",
+        "value": 0.28,
+        "unit": "kU/L",
+        "flag": "negative",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "total serum IgE",
+        "value": 384,
+        "unit": "IU/mL",
+        "reference_range": "< 60 IU/mL for age 2–3",
+        "flag": "markedly elevated",
+        "specimen_type": "serum"
+      },
+      {
+        "name": "skin prick test — peanut",
+        "wheal_mm": 12,
+        "flare_mm": 42,
+        "interpretation": "strongly positive"
+      },
+      {
+        "name": "skin prick test — cashew",
+        "wheal_mm": 9,
+        "flare_mm": 28,
+        "interpretation": "positive"
+      },
+      {
+        "name": "skin prick test — walnut",
+        "wheal_mm": 7,
+        "flare_mm": 22,
+        "interpretation": "positive"
+      },
+      {
+        "name": "skin prick test — almond",
+        "wheal_mm": 5,
+        "flare_mm": 16,
+        "interpretation": "positive"
+      },
+      {
+        "name": "skin prick test — egg white",
+        "wheal_mm": 3,
+        "interpretation": "equivocal"
+      },
+      {
+        "name": "skin prick test — cow's milk",
+        "wheal_mm": 2,
+        "interpretation": "negative"
+      },
+      {
+        "name": "skin prick test — soy",
+        "wheal_mm": 2,
+        "interpretation": "negative"
+      },
+      {
+        "name": "skin prick test — wheat",
+        "wheal_mm": 2,
+        "interpretation": "negative"
+      },
+      {
+        "name": "skin prick test — histamine positive control",
+        "wheal_mm": 4,
+        "interpretation": "valid control"
+      },
+      {
+        "name": "skin prick test — saline negative control",
+        "wheal_mm": 0,
+        "interpretation": "valid control"
+      }
+    ],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "IgE-mediated peanut allergy with history of anaphylaxis",
+      "clinical_status": "active",
+      "onset_date": "2022-10",
+      "action": "create"
+    },
+    {
+      "name": "tree nut allergy (cashew, walnut, almond)",
+      "clinical_status": "active",
+      "onset_date": "2022-11-14",
+      "action": "create"
+    },
+    {
+      "name": "atopic dermatitis, moderate",
+      "clinical_status": "active",
+      "onset_date": "2021-09",
+      "action": "create"
+    },
+    {
+      "name": "allergic rhinitis",
+      "clinical_status": "active",
+      "onset_date": "2022",
+      "action": "create"
+    },
+    {
+      "name": "elevated total IgE",
+      "clinical_status": "active",
+      "onset_date": "2022-11-14",
+      "action": "create"
+    }
+  ],
+  "medications": [
+    {
+      "name": "epinephrine auto-injector (EpiPen Jr) 0.15 mg intramuscular",
+      "sig": "inject intramuscularly into outer thigh as needed for signs/symptoms of anaphylaxis; carry two auto-injectors at all times",
+      "status": "active",
+      "reason": "IgE-mediated peanut allergy with history of anaphylaxis; tree nut allergy",
+      "action": "reference-existing"
+    },
+    {
+      "name": "triamcinolone acetonide 0.1% ointment, topical",
+      "sig": "apply to eczema-affected areas twice daily as needed for flares",
+      "status": "active",
+      "reason": "atopic dermatitis, moderate",
+      "action": "create"
+    },
+    {
+      "name": "ceramide-based moisturizer (CeraVe), topical",
+      "sig": "apply to affected areas daily for skin barrier maintenance",
+      "status": "active",
+      "reason": "atopic dermatitis, moderate",
+      "action": "create"
+    },
+    {
+      "name": "cetirizine 2.5 mg oral solution, once daily",
+      "sig": "take 2.5 mg by mouth once daily",
+      "status": "active",
+      "reason": "allergic rhinitis",
+      "action": "create"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "consultation note",
+      "description": "Comprehensive initial allergy evaluation by Dr. Krishnamurthy documenting history of peanut anaphylaxis, complete allergy testing results (SPT and specific IgE), physical examination findings including moderate atopic dermatitis and allergic rhinitis, five new diagnoses established, treatment plan including allergen avoidance, EpiPen Jr confirmation, new prescriptions for triamcinolone, cetirizine, and moisturizer, and atopic march counseling."
+    },
+    {
+      "type": "patient instructions / emergency action plan",
+      "description": "Signed anaphylaxis emergency action plan detailing when and how to administer EpiPen Jr 0.15 mg, recognition of anaphylaxis signs and symptoms, and emergency contact instructions. Copies provided for family, pediatrician (Dr. Harlow), and daycare."
+    },
+    {
+      "type": "patient instructions / care plan document",
+      "description": "Written plan documenting strict avoidance of peanut and all tree nuts, safe food guidance, cross-contamination prevention, and emergency response instructions for caregivers including daycare and family members."
+    }
+  ],
+  "diagnostic_reports": [
+    {
+      "type": "allergen-specific IgE panel (serum)",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "peanut-specific IgE",
+        "cashew-specific IgE",
+        "walnut-specific IgE",
+        "almond-specific IgE",
+        "egg white-specific IgE",
+        "milk (cow's milk)-specific IgE",
+        "total serum IgE"
+      ]
+    },
+    {
+      "type": "allergy skin prick testing panel",
+      "report_state": "report-with-results",
+      "observation_names": [
+        "skin prick test — peanut",
+        "skin prick test — cashew",
+        "skin prick test — walnut",
+        "skin prick test — almond",
+        "skin prick test — egg white",
+        "skin prick test — cow's milk",
+        "skin prick test — soy",
+        "skin prick test — wheat",
+        "skin prick test — histamine positive control",
+        "skin prick test — saline negative control"
+      ]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "peanut",
+      "reaction": "anaphylaxis (urticaria, angioedema, wheezing, tachycardia)",
+      "severity": "severe",
+      "criticality": "high",
+      "verification_status": "confirmed",
+      "action": "update-existing"
+    },
+    {
+      "substance": "cashew (tree nut)",
+      "reaction": "no known ingestion reaction; positive sensitization on testing",
+      "severity": "unknown",
+      "criticality": "high",
+      "verification_status": "confirmed",
+      "action": "create"
+    },
+    {
+      "substance": "walnut (tree nut)",
+      "reaction": "no known ingestion reaction; positive sensitization on testing",
+      "severity": "unknown",
+      "criticality": "high",
+      "verification_status": "confirmed",
+      "action": "create"
+    },
+    {
+      "substance": "almond (tree nut)",
+      "reaction": "no known ingestion reaction; positive sensitization on testing",
+      "severity": "unknown",
+      "criticality": "high",
+      "verification_status": "confirmed",
+      "action": "create"
+    }
+  ]
+}

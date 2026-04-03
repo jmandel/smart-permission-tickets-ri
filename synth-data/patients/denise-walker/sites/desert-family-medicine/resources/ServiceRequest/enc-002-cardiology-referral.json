@@ -1,0 +1,34 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "enc-002-cardiology-referral",
+  "status": "active",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183519002",
+        "display": "Referral to cardiology service (procedure)"
+      }
+    ],
+    "text": "Referral to cardiology service"
+  },
+  "subject": {
+    "reference": "Patient/7cd4e1ea-550e-4186-95bd-4f3b7d66fb72",
+    "display": "Denise Walker"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-002"
+  },
+  "authoredOn": "2023-11-16",
+  "requester": {
+    "reference": "Practitioner/18f66d93-d6fd-42d0-b445-64c6dd55f7eb",
+    "display": "Samuel Hart, FNP-C"
+  },
+  "occurrenceDateTime": "2023-11-16",
+  "reasonCode": [
+    {
+      "text": "Ongoing cardiology follow-up in the setting of heart failure with reduced ejection fraction, paroxysmal atrial fibrillation, hypertension, and diabetes."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "resourceType": "Location",
+  "id": "b975c904-df4e-4d64-a7d3-793b906dc500",
+  "status": "active",
+  "name": "Triangle Pediatrics",
+  "description": "Triangle Pediatrics main clinical location",
+  "mode": "instance",
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "PEDU",
+          "display": "Pediatric unit"
+        }
+      ],
+      "text": "Pediatric primary care clinic"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(919) 555-0300",
+      "use": "work"
+    },
+    {
+      "system": "fax",
+      "value": "(919) 555-0301",
+      "use": "work"
+    }
+  ],
+  "address": {
+    "use": "work",
+    "line": [
+      "4201 Lake Boone Trail",
+      "Suite 200"
+    ],
+    "city": "Raleigh",
+    "state": "NC",
+    "postalCode": "27607",
+    "country": "US"
+  },
+  "managingOrganization": {
+    "reference": "Organization/61e4fff9-645e-42cb-9c0d-840a3ef27819",
+    "display": "Triangle Pediatrics"
+  }
+}

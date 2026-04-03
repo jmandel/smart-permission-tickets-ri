@@ -1,0 +1,112 @@
+{
+  "encounter_id": "enc-016",
+  "encounter_index": 16,
+  "site_slug": "dekalb-primary-care",
+  "encounter": {
+    "class": "virtual",
+    "type": "telephone encounter",
+    "reason": "Post-emergency department follow-up check-in",
+    "period_start": "2025-02-13",
+    "participants": [
+      {
+        "name": "Dr. Anita Desai",
+        "role": "attending"
+      }
+    ],
+    "service_provider": "DeKalb Primary Care",
+    "location": "DeKalb Primary Care, 2701 North Decatur Road, Suite 300, Decatur, GA 30033"
+  },
+  "observations": {
+    "vitals": [],
+    "labs": [],
+    "screening": []
+  },
+  "conditions": [
+    {
+      "name": "forehead laceration",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Healing cleanly with no signs of infection. No erythema, drainage, or dehiscence."
+    },
+    {
+      "name": "right wrist contusion",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Improving — full range of motion with only mild residual tenderness."
+    },
+    {
+      "name": "history of mechanical fall",
+      "clinical_status": "active",
+      "action": "reference-existing",
+      "note": "Home safety modifications implemented: grab bars installed, throw rugs removed, nightlight purchased."
+    },
+    {
+      "name": "Alzheimer's disease, moderate stage",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "essential hypertension",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "type 2 diabetes mellitus without complications",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    },
+    {
+      "name": "hyperlipidemia",
+      "clinical_status": "active",
+      "action": "reference-existing"
+    }
+  ],
+  "medications": [
+    {
+      "name": "lisinopril 20 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "amlodipine 5 mg oral tablet",
+      "sig": "once daily",
+      "status": "active",
+      "reason": "hypertension",
+      "action": "reference-existing"
+    },
+    {
+      "name": "metformin 500 mg oral tablet",
+      "sig": "twice daily",
+      "status": "active",
+      "reason": "type 2 diabetes mellitus",
+      "action": "reference-existing"
+    },
+    {
+      "name": "atorvastatin 20 mg oral tablet",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "hyperlipidemia",
+      "action": "reference-existing"
+    },
+    {
+      "name": "donepezil 10 mg / memantine 28 mg extended-release capsule",
+      "sig": "once daily at bedtime",
+      "status": "active",
+      "reason": "Alzheimer's disease",
+      "action": "reference-existing"
+    }
+  ],
+  "procedures": [],
+  "immunizations": [],
+  "document_references": [
+    {
+      "type": "telephone encounter note",
+      "description": "Outbound telephone follow-up call to Margaret Washington-Clarke (authorized representative) five days after Harold's ED visit on 2025-02-08 for a mechanical fall. Margaret reports the forehead laceration is healing without infection and the right wrist contusion has improved with full range of motion. Home safety modifications have been implemented (grab bars, rug removal, nightlight). Plan to continue current medications, monitor for delayed symptoms, and schedule in-person follow-up in 2–3 weeks for chronic disease management and fall prevention counseling.",
+      "action": "create"
+    }
+  ],
+  "diagnostic_reports": [],
+  "allergies": []
+}

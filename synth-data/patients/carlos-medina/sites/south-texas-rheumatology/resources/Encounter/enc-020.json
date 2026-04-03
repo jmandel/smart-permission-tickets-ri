@@ -1,0 +1,73 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-020",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "VR",
+    "display": "virtual"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185317003",
+          "display": "Telephone encounter (procedure)"
+        }
+      ],
+      "text": "Telephone Encounter"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/d52e98af-b701-422a-9dba-faf6ebf1cd84",
+    "display": "Carlos Antonio Medina"
+  },
+  "participant": [
+    {
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "primary performer"
+            }
+          ],
+          "text": "primary performer"
+        }
+      ],
+      "individual": {
+        "reference": "Practitioner/a6b98d2e-f71e-4eb6-92ac-67183a2db2ee",
+        "display": "Dr. Alejandro Fuentes"
+      }
+    }
+  ],
+  "period": {
+    "start": "2022-12-05",
+    "end": "2022-12-05"
+  },
+  "reasonCode": [
+    {
+      "text": "Prior authorization status update for Hadlima (adalimumab-bwwd), continued RA management"
+    }
+  ],
+  "location": [
+    {
+      "location": {
+        "reference": "Location/a064bab9-f6d3-42ba-885b-acc55bff9f6a",
+        "display": "South Texas Rheumatology"
+      }
+    }
+  ],
+  "serviceProvider": {
+    "reference": "Organization/061c9f2e-511c-42cd-976c-06a822d42c27",
+    "display": "South Texas Rheumatology"
+  },
+  "extension": [
+    {
+      "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
+      "valueMarkdown": "Dr. Fuentes's office called Carlos to provide an update on the Hadlima (adalimumab-bwwd) prior authorization status with Aetna."
+    }
+  ]
+}

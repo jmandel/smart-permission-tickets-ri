@@ -1,0 +1,97 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "enc-010-enoxaparin",
+  "status": "draft",
+  "intent": "plan",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+          "code": "community",
+          "display": "Community"
+        }
+      ],
+      "text": "Community"
+    }
+  ],
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "854235",
+        "display": "enoxaparin sodium 40 MG in 0.4 ML Prefilled Syringe"
+      }
+    ],
+    "text": "enoxaparin 40 mg subcutaneous injection"
+  },
+  "subject": {
+    "reference": "Patient/ba7d7892-4ea6-4151-bb74-13db30b6c361",
+    "display": "Lisa Nakamura"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-010"
+  },
+  "authoredOn": "2025-05-19",
+  "requester": {
+    "reference": "Practitioner/ca48b072-2f9f-4b8b-8c97-8ca62b8100dd",
+    "display": "Dr. Sarah Whitfield"
+  },
+  "reasonReference": [
+    {
+      "reference": "Condition/enc-010-suspected-aps",
+      "display": "Suspected antiphospholipid syndrome, obstetric type"
+    },
+    {
+      "reference": "Condition/enc-010-recurrent-pregnancy-loss",
+      "display": "Recurrent pregnancy loss"
+    }
+  ],
+  "note": [
+    {
+      "text": "To be initiated upon confirmed positive pregnancy test. Prophylactic-dose LMWH for APS-associated recurrent pregnancy loss. Provisional plan contingent on confirmatory APS testing and hematology coordination."
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Inject 40 mg subcutaneously once daily, to be initiated upon confirmed positive pregnancy test",
+      "patientInstruction": "Inject 40 mg under the skin once daily.",
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "34206005",
+            "display": "Subcutaneous route (qualifier value)"
+          }
+        ],
+        "text": "Subcutaneous"
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 40,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SEX",
+        "display": "sexuality and reproductive health information sensitivity"
+      }
+    ]
+  }
+}

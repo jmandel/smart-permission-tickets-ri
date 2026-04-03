@@ -1,0 +1,58 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "enc-005-note",
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34746-8",
+        "display": "Nurse Note"
+      }
+    ],
+    "text": "Lab Encounter Note"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        }
+      ],
+      "text": "Clinical Note"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/ac7b2ece-f133-47cd-95ef-908df72dbc65",
+    "display": "Robert James Davis"
+  },
+  "date": "2026-02-19T00:00:00Z",
+  "author": [
+    {
+      "reference": "Practitioner/c0d62614-7dd5-453f-83c3-0514edb2270d",
+      "type": "Practitioner",
+      "display": "RN Patricia Gomez"
+    }
+  ],
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "TEFCIEVOQ09VTlRFUiBOT1RFCgpEYXRlOiAwMi8xOS8yMDI2ClBhdGllbnQ6IFJvYmVydCBEYXZpcwpET0I6IDA5LzE0LzE5NjAKTG9jYXRpb246IFVJIEhlYWx0aCBBbWJ1bGF0b3J5IFRCIENsaW5pYywgMTgwMSBXIFRheWxvciBTdCwgU3VpdGUgMUUsIENoaWNhZ28sIElMIDYwNjEyCkNsaW5pY2lhbjogUk4gUGF0cmljaWEgR29tZXosIERPVCBOdXJzZSBDb29yZGluYXRvcgpWaXNpdCBUeXBlOiBTY2hlZHVsZWQgbGFiIGRyYXcg4oCUIGludGVyaW0gaGVwYXRpYyBmdW5jdGlvbiBtb25pdG9yaW5nCgpSRUFTT04gRk9SIFZJU0lUOgpTY2hlZHVsZWQgaW50ZXJpbSBsYWJvcmF0b3J5IG1vbml0b3JpbmcgZHVyaW5nIGludGVuc2l2ZS1waGFzZSBSSVBFIHRoZXJhcHkgZm9yIHB1bG1vbmFyeSB0dWJlcmN1bG9zaXMuIFBhdGllbnQgaXMgY3VycmVudGx5IGluIHdlZWsgNCBvZiBkaXJlY3RseSBvYnNlcnZlZCB0aGVyYXB5LgoKQ0xJTklDQUwgU1VNTUFSWToKUGF0aWVudCBwcmVzZW50ZWQgZm9yIGxhYiBkcmF3IG9ubHkuIE5vIG5ldyBzeW1wdG9tcyByZXBvcnRlZC4gTW9ybmluZyBSSVBFIGRvc2Ugb2JzZXJ2ZWQgYW5kIGNvbmZpcm1lZCBieSBudXJzaW5nIHN0YWZmLiBObyBjbGluaWNhbCBleGFtaW5hdGlvbiBwZXJmb3JtZWQuIE5vIHZpdGFscyBvYnRhaW5lZC4KCkxBQk9SQVRPUlkgUkVTVUxUUzoKCkhlcGF0aWMgRnVuY3Rpb24gUGFuZWw6CiAgQVNUOiAzMyBVL0wgKHN0YWJsZSwgd2l0aGluIGFjY2VwdGFibGUgbGltaXRzKQogIEFMVDogMzYgVS9MIChzdGFibGUsIHdpdGhpbiBhY2NlcHRhYmxlIGxpbWl0cykKCkNCQzoKICBXQkM6IDcuOSB4IDEwXjMvdUwKICBIZ2I6IDExLjYgZy9kTAogIEhjdDogMzUuMCUKICBQbGF0ZWxldHM6IDMwNSB4IDEwXjMvdUwKCkJNUDoKICBTb2RpdW06IDEzOSBtRXEvTAogIFBvdGFzc2l1bTogNC4xIG1FcS9MCiAgQ3JlYXRpbmluZTogMS4wIG1nL2RMCiAgR2x1Y29zZSAocmFuZG9tKTogMTY4IG1nL2RMCgpVcmljIEFjaWQ6IDguMiBtZy9kTCAobWlsZGx5IGVsZXZhdGVkKQoKSU5URVJQUkVUQVRJT046CkhlcGF0aWMgdHJhbnNhbWluYXNlcyByZW1haW4gc3RhYmxlIGFuZCB3aXRoaW4gYWNjZXB0YWJsZSBsaW1pdHMgZm9yIGNvbnRpbnVlZCBSSVBFIHRoZXJhcHkuIE5vIGV2aWRlbmNlIG9mIGRydWctaW5kdWNlZCBoZXBhdG90b3hpY2l0eS4gQ0JDIHNob3dzIG1pbGQgbm9ybW9jeXRpYyBhbmVtaWEgKEhnYiAxMS42KSwgY29uc2lzdGVudCB3aXRoIHByaW9yIHZhbHVlcyBhbmQgY2hyb25pYyBkaXNlYXNlLiBSZW5hbCBmdW5jdGlvbiBub3JtYWwuIFJhbmRvbSBnbHVjb3NlIDE2OCBtZy9kTCwgY29uc2lzdGVudCB3aXRoIGtub3duIHR5cGUgMiBkaWFiZXRlczsgQTFjIHJlY2hlY2sgcGxhbm5lZCBhdCB1cGNvbWluZyB2aXNpdC4gVXJpYyBhY2lkIG1pbGRseSBlbGV2YXRlZCBhdCA4LjIgbWcvZEwsIGEgcmVjb2duaXplZCBlZmZlY3Qgb2YgcHlyYXppbmFtaWRlOyBwYXRpZW50IGlzIGFzeW1wdG9tYXRpYyB3aXRoIG5vIGdvdXR5IGFydGhyaXRpcyBzeW1wdG9tcyByZXBvcnRlZC4KCk1FRElDQVRJT05TOgpObyBjaGFuZ2VzLiBDdXJyZW50IFJJUEUgdGhlcmFweSBjb250aW51ZWQgcGVyIHByb3RvY29sOgogIFJpZmFtcGluIDYwMCBtZyBkYWlseQogIElzb25pYXppZCAzMDAgbWcgZGFpbHkKICBQeXJhemluYW1pZGUgMTUwMCBtZyBkYWlseQogIEV0aGFtYnV0b2wgMTIwMCBtZyBkYWlseQogIFB5cmlkb3hpbmUgNTAgbWcgZGFpbHkKClBMQU46ClJlc3VsdHMgdG8gYmUgcmV2aWV3ZWQgYnkgRHIuIExlbmEgT2thZm9yIChJbmZlY3Rpb3VzIERpc2Vhc2UpIGFuZCBjb21tdW5pY2F0ZWQgdG8gcGF0aWVudCBhdCBuZXh0IERPVCB2aXNpdC4gQ29udGludWUgY3VycmVudCBSSVBFIHJlZ2ltZW4uIE5leHQgc2NoZWR1bGVkIGNsaW5pYyBmb2xsb3ctdXAgd2l0aCBmdWxsIGFzc2Vzc21lbnQgb24gMDMvMDUvMjAyNi4KClJOIFBhdHJpY2lhIEdvbWV6CkRPVCBOdXJzZSBDb29yZGluYXRvcgpVSSBIZWFsdGggQW1idWxhdG9yeSBUQiBDbGluaWMK"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-005"
+      }
+    ],
+    "period": {
+      "start": "2026-02-19"
+    }
+  }
+}
