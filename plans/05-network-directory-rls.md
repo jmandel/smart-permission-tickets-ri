@@ -63,6 +63,22 @@ In practice for this repo, that means:
 - the built-in demo client should use that base
 - the built-in viewer should use it as the canonical site-discovery step
 
+## Public Base URL
+
+The reference implementation should advertise network and site endpoints from one explicit configured public origin:
+
+- `PUBLIC_BASE_URL=https://smart-permission-tickets.example.org`
+
+That configured origin should drive:
+
+- network SMART config URLs
+- network token / register / introspect endpoints
+- network FHIR base URLs in directory resources
+- site FHIR base URLs returned in `Endpoint.address`
+- issuer metadata URLs referenced elsewhere in the stack
+
+The network directory / RLS surface should not infer public origin from `X-Forwarded-*` headers by default. In this reference implementation, the hosting model should stay deterministic and config-driven.
+
 ## URL Shape
 
 Recommended base convention:

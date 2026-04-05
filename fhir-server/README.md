@@ -17,6 +17,15 @@ bun run start
 
 Default port is `8091`.
 
+Set an explicit public origin in deployed environments:
+
+```bash
+PUBLIC_BASE_URL=https://smart-permission-tickets.example.org
+```
+
+The server now uses `PUBLIC_BASE_URL` for advertised SMART/OAuth/FHIR URLs and
+token audiences. It does not infer public origin from `X-Forwarded-*` headers.
+
 Open the root UI in a browser:
 
 ```bash
@@ -28,12 +37,43 @@ The landing page lists:
 - loaded synthetic patients and sites
 - a built-in permission workbench that can:
   - select a patient
-  - choose sites, scopes, dates, and `sensitive.mode`
+  - in `strict` mode, choose a client type before building the ticket:
+    - unaffiliated registered client
+    - well-known client
+    - UDAP client
+  - choose sites, scopes, dates, ticket lifetime, and `sensitive.mode`
   - request an ES256-signed Permission Ticket from a simulated issuer
-  - dynamically register a client when needed
+  - prepare one of three client stories:
+    - dynamic JWK registration for an unaffiliated app
+    - implicit `well-known:<uri>` identity with no registration call
+    - just-in-time UDAP dynamic registration
   - exchange it for an access token
   - introspect that token
   - hand off only the sites that can actually authorize into the viewer app
+
+In `strict` mode, the workbench now explicitly explains what each client path demonstrates before launch:
+- **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `cnf.jkt`
+- **Well-known client**: a framework-affiliated client skips registration and is recognized as `well-known:<entity-uri>` using current JWKS resolution
+- **UDAP client**: a framework-backed client registers just in time with UDAP DCR and then authenticates with `x5c`
+
+After launch, use the **Ticket** and **Client** artifact menus in the viewer to inspect:
+- the chosen binding shape (`cnf.jkt`, `client_binding`, or both)
+- the client story and effective `client_id`
+- registration request/response payloads when registration occurs
+- the well-known framework document and entity JWKS for the implicit-registration path
+- a copyable token-exchange cURL template with the correct token endpoint and `client_id`
+
+The demo also includes a live event visualizer:
+- open it from **Step 4** in the workbench with **Open visualizer**
+- or visit `/demo/visualizer` directly and attach it to a session via `?session=<viewer-session-id>`
+- it streams a session-scoped audit feed over Server-Sent Events from `/demo/events/:sessionId`
+- it replays buffered events when opened mid-demo, so you can attach the visualizer after the viewer has already started
+- it makes the trust chain, validation checks, per-site fan-out, and logical data fetches inspectable in real time
+
+Default demo trust-framework surfaces are also enabled out of the box:
+- a built-in `well-known` framework document at `/demo/frameworks/well-known-reference.json` with two sample client entities hosted under `/demo/clients/...`
+- a built-in demo well-known JWKS surface at `/.well-known/jwks.json`, plus entity-local JWKS surfaces under `/demo/clients/<slug>/.well-known/jwks.json`
+- a built-in UDAP framework advertising `/.well-known/udap` metadata, including RS256-signed `signed_metadata`, trusting both the demo EC and demo RSA roots for client registration, and chaining discovery metadata to the demo RSA root for RS256-oriented interoperability testing
 
 ## Data Assumptions
 
@@ -147,14 +187,68 @@ Examples:
 ```bash
 curl http://localhost:8091/.well-known/smart-configuration
 curl http://localhost:8091/modes/open/.well-known/smart-configuration
+curl http://localhost:8091/networks/reference/fhir/.well-known/smart-configuration
+curl http://localhost:8091/fhir/.well-known/udap
+curl http://localhost:8091/.well-known/jwks.json
 ```
 
+The UDAP discovery response includes:
+- `signed_metadata`, signed as an RS256 JWT with an `x5c` certificate header
+- a discovery certificate chain that, in the default demo UDAP framework, chains to the built-in demo RSA UDAP trust anchor
+- demo certificate revocation lists (CRLs) published under `/.well-known/udap/crls/<framework-slug>/<ca-id>.crl`
+- `udap_profiles_supported` including `udap_dcr`, `udap_authn`, and `udap_authz`
+- `token_endpoint_auth_signing_alg_values_supported` including `RS256` and `ES256`
+- `registration_endpoint_jwt_signing_alg_values_supported` including `RS256` and `ES256`
+- `grant_types_supported` including `client_credentials` for the UDAP B2B workflow
+- `udap_authorization_extensions_supported` and `udap_authorization_extensions_required` including `hl7-b2b`
+
+The strict-mode demo now intentionally exercises three different client identity models:
+
+- **Unaffiliated registered client**
+  - runtime behavior: POSTs a JWK to `/register`
+  - ticket behavior: uses `cnf.jkt` in strict/key-bound flows
+
+- **Well-known client**
+  - runtime behavior: skips registration and uses `client_id=well-known:<entity-uri>`
+  - ticket behavior: uses `client_binding`
+  - discovery/demo metadata:
+    - framework JSON: `/demo/frameworks/well-known-reference.json`
+    - sample entity metadata: `/demo/clients/well-known-alpha`
+    - sample entity JWKS: `/demo/clients/well-known-alpha/.well-known/jwks.json`
+
+- **UDAP client**
+  - runtime behavior: does just-in-time UDAP registration at `/register`, then authenticates with `x5c` and `udap=1`
+  - ticket behavior: uses `client_binding`
+  - discovery/demo metadata:
+    - UDAP discovery: `/.well-known/udap`
+
+UDAP hardening in the reference implementation now includes:
+- in-memory replay prevention for UDAP software-statement and client-assertion `jti` values
+- in-memory active-registration tracking for UDAP re-registration and cancellation
+- superseded or canceled UDAP `client_id`s are rejected within the current server process
+
+Known reference-implementation limitation:
+- server restarts clear the replay cache and active-registration map
+- after a restart, older signed UDAP `client_id`s may become valid again until a fresh registration supersedes them
+- this is intentional for the demo/reference server and is not a production persistence model
+
 Permission Ticket support is advertised in SMART config via:
-- `grant_types_supported` including `urn:ietf:params:oauth:grant-type:token-exchange`
+- `grant_types_supported` including `client_credentials` and `urn:ietf:params:oauth:grant-type:token-exchange`
 - `smart_permission_ticket_types_supported`
 
 Local surface metadata is carried under:
 - `extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"]`
+
+By default the extension also advertises built-in demo trust frameworks:
+- `https://smarthealthit.org/trust-frameworks/reference-demo-well-known`
+- `https://smarthealthit.org/trust-frameworks/reference-demo-udap`
+
+To exercise the built-in UDAP registration helper against the RSA demo client instead of the default EC demo client:
+
+```bash
+cd /home/jmandel/work/smart-permission-tickets/reference-implementation/fhir-server
+DEMO_UDAP_ALG=RS256 bun run src/demo-udap-registration.ts
+```
 
 Implemented `surface_kind` values:
 - `global`
@@ -185,6 +279,19 @@ Dynamic registrations are self-contained and restart-safe in this reference serv
 - the registered public JWK is embedded in that signed descriptor
 - a server restart does not lose dynamically registered clients
 
+Demo UDAP registration helper:
+
+```bash
+cd /home/jmandel/work/smart-permission-tickets/reference-implementation/fhir-server
+bun run demo:udap-register
+```
+
+This fetches `/.well-known/udap`, builds a standards-shaped `software_statement`
+using the built-in demo UDAP certificate, and POSTs it to the server's
+registration endpoint so you can see the full registration exchange against a
+vanilla local server. The bundled helper still uses ES256, but the server also
+accepts RS256 for UDAP software statements and client assertions.
+
 Token exchange:
 
 ```bash
@@ -194,6 +301,18 @@ curl -X POST http://localhost:8091/modes/open/token \
   --data-urlencode 'subject_token_type=https://smarthealthit.org/token-type/permission-ticket' \
   --data-urlencode "subject_token=$SIGNED_PERMISSION_TICKET"
 ```
+
+The token endpoint behaves like an OAuth endpoint, not a FHIR endpoint:
+- token failures return JSON with `error` and `error_description`
+- `subject_token_type` is required and must be `https://smarthealthit.org/token-type/permission-ticket`
+- if request `scope` is present, it narrows the issued access and cannot exceed what the Permission Ticket allows
+- Permission Tickets must include `exp`, and the server rejects tickets that omit it or are already expired
+- ticket `aud` may identify explicit recipient URLs or trust-framework identifiers; the server validates both surface URL membership and configured framework membership
+- if `revocation` is present, the ticket must also carry `jti`; the server fetches the revocation list from `revocation.url`, caches it by HTTP policy, and fails closed if revocation status cannot be determined
+
+This reference implementation currently recognizes one subject token type:
+
+- `https://smarthealthit.org/token-type/permission-ticket`
 
 Introspection:
 
@@ -226,6 +345,7 @@ curl -X POST http://localhost:8091/issuer/reference-demo/sign-ticket \
   -d '{
     "sub": "demo-client-patient-123",
     "aud": "http://localhost:8091",
+    "exp": 1760000000,
     "ticket_type": "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
     "authorization": {
       "subject": {
@@ -239,14 +359,34 @@ curl -X POST http://localhost:8091/issuer/reference-demo/sign-ticket \
       "access": {
         "scopes": ["patient/*.rs"]
       }
-    },
-    "details": {
-      "sensitive": { "mode": "deny" }
     }
   }'
 ```
 
 The sign-ticket helper is demo-only. It exists so the built-in UI can request a public, issuer-scoped Permission Ticket instead of minting one with a local symmetric secret in the browser.
+
+Permission Ticket expiry follows normal JWT semantics:
+
+- `exp` is required
+- `exp` must be a NumericDate in the future
+
+The built-in demo UI exposes this as a ticket lifetime choice, including bounded options such as `1 hour`, `1 day`, `7 days`, `30 days`, `1 year`, and a long-lived `10 years (demo stand-in for never)` option.
+
+This reference implementation currently supports one Permission Ticket type end to end:
+
+- `https://smarthealthit.org/permission-ticket-type/network-patient-access-v1`
+
+The other ticket types described in the specification remain illustrative/profile targets for future implementation.
+
+## Local Authorization Semantics
+
+The reference server compiles the signed ticket into local authorization semantics for date filtering and sensitive-data handling. These are implementation behaviors derived from the common Permission Ticket claims model, not extra wire fields that callers should place in the ticket payload.
+
+- date filtering uses generated/recorded timing semantics
+- sensitive-data handling defaults to `deny`
+- the server can also resolve tickets into an `allow` mode
+
+The server maps these semantics to its own internal date handling and sensitive-data label set. Ticket callers do not need to know the raw `meta.security` labels or local query model used by the demo corpus.
 
 ## FHIR Base URLs
 
@@ -256,19 +396,58 @@ Global base:
 Site-partitioned base:
 - `/sites/:siteSlug/fhir`
 
+Network-partitioned base:
+- `/networks/:networkSlug/fhir`
+
 Mode + global base:
 - `/modes/:mode/fhir`
 
 Mode + site base:
 - `/modes/:mode/sites/:siteSlug/fhir`
 
+Mode + network base:
+- `/modes/:mode/networks/:networkSlug/fhir`
+
 Examples:
 
 ```bash
 curl http://localhost:8091/fhir/metadata
 curl http://localhost:8091/sites/lone-star-womens-health/fhir/metadata
+curl http://localhost:8091/networks/reference/fhir/metadata
 curl http://localhost:8091/modes/anonymous/fhir/Patient?_count=5
 curl http://localhost:8091/modes/anonymous/sites/lone-star-womens-health/fhir/DiagnosticReport?_count=10
+curl http://localhost:8091/modes/open/networks/reference/fhir/Organization?_count=5
+```
+
+Network OAuth/token surfaces use the same path prefix without `/fhir`:
+- `/networks/:networkSlug/register`
+- `/networks/:networkSlug/token`
+- `/networks/:networkSlug/introspect`
+- `/modes/:mode/networks/:networkSlug/register`
+- `/modes/:mode/networks/:networkSlug/token`
+- `/modes/:mode/networks/:networkSlug/introspect`
+
+Example:
+
+```bash
+curl -X POST http://localhost:8091/networks/reference/token \
+  -H 'content-type: application/x-www-form-urlencoded' \
+  --data-urlencode 'grant_type=urn:ietf:params:oauth:grant-type:token-exchange' \
+  --data-urlencode 'subject_token_type=https://smarthealthit.org/token-type/permission-ticket' \
+  --data-urlencode "subject_token=$SIGNED_PERMISSION_TICKET"
+```
+
+Network-only operation:
+- `POST /networks/:networkSlug/fhir/$resolve-record-locations`
+- resolves which record locations inside the named network can satisfy the current token's authorization envelope
+
+Example:
+
+```bash
+curl -X POST http://localhost:8091/networks/reference/fhir/$resolve-record-locations \
+  -H "authorization: Bearer $ACCESS_TOKEN" \
+  -H 'content-type: application/fhir+json' \
+  -d '{ "resourceType": "Parameters" }'
 ```
 
 ## Supported Resource Types
@@ -350,6 +529,35 @@ curl http://localhost:8091/modes/anonymous/sites/lone-star-womens-health/fhir/Di
 - `intent`
 - `authoredon`
 - `encounter`
+
+### Procedure
+
+- `patient`
+- `status`
+- `code`
+- `date`
+- `encounter`
+
+### Immunization
+
+- `patient`
+- `status`
+- `date`
+
+### ServiceRequest
+
+- `patient`
+- `status`
+- `intent`
+- `authoredon`
+- `encounter`
+
+### AllergyIntolerance
+
+- `patient`
+- `clinical-status`
+- `verification-status`
+- `code`
 
 ## Query Examples
 

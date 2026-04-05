@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Business-to-Business - Security for Scalable Registration, Authentication, and Authorization v2.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir-ig.css" rel="stylesheet"/>
+<link href="assets/css/udap.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"5"}
+    h3,h4,h5,h6{--heading-prefix:"5"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+        <div id="hl7-nav">
+          <a id="hl7-logo" no-external="true" href="http://hl7.org">
+            <img height="50" alt="Visit the HL7 website" src="assets/images/hl7-logo-header.png"/>
+          </a>
+        </div>
+        <div id="family-nav">
+          <a id="family-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="assets/images/fhir-logo-www.png"/> </a>
+        </div>
+        <div id="hl7-search">
+          <a id="hl7-search-lnk" no-external="true" href="searchform.html"><img alt="Search FHIR" src="assets/images/search.png"/></a>
+        </div>
+
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" href="https://www.udap.org/"><img height="44" alt="Visit the UDAP.org website" style="vertical-align:top" src="assets/images/udap_logo.png"/></a>
+        </div>
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" style="margin:0px" href="https://www.hl7.org/fast/"><img height="40" alt="Visit the FHIR At Scale Taskforce website" style="padding:2px 0px 1px 0px" src="assets/images/FASTLogo.png"/></a>
+        </div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Security for Scalable Registration, Authentication, and Authorization</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0 - STU 2
+
+
+
+  <img alt="United States of America (the) flag" src="assets/images/usa.svg" height="16" title="United States of America (the)"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="discovery.html">Discovery</a>
+  </li>
+  <li>
+    <a href="registration.html">Registration</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Authorization and Authentication
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="consumer.html">Consumer-Facing</a>
+      </li>
+      <li>
+        <a href="b2b.html">Business-to-Business</a>
+      </li>
+      <li>
+        <a href="user.html">Tiered OAuth for User Authentication</a>
+      </li>
+      <li>
+        <a href="general.html">General Requirements</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="about.html">About</a>
+  </li>
+  <li>
+    <a href="changelog.html">Change Log</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Business-to-Business</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Security for Scalable Registration, Authentication, and Authorization (v2.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://hl7.org/fhir/us/udap-security/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Business-to-Business</h2>
+  
+
+
+
+
+
+  <table class="colsi">
+    <tr>
+  
+      <td>
+        <i>Page standards status:</i> <a href="http://hl7.org/fhir/R4/versions.html#std-process" title="Standard Status">Informative</a>
+        
+      </td>
+  
+  
+    </tr>
+  </table>
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#obtaining-an-authorization-code" id="markdown-toc-obtaining-an-authorization-code">Obtaining an authorization code</a></li>
+  <li><a href="#obtaining-an-access-token" id="markdown-toc-obtaining-an-access-token">Obtaining an access token</a></li>
+  <li><a href="#refresh-tokens" id="markdown-toc-refresh-tokens">Refresh tokens</a></li>
+</ul>
+
+</div>
+<p>This guide supports B2B client applications using either the client credentials or authorization code grant types. The B2B transactions in this guide occur between a requesting organization (the Requestor operating the client application) and a responding organization (the Responder operating the OAuth Server and Resource Server holding the data of interest to the Requestor). In some cases, the Requestor’s client app operates in an automated manner. In other cases, there will also be a local user from the requesting organization (the User interacting with the Requestor’s client application). The client credentials grant type is always used for automated (aka “headless”) client apps. However, when a User is involved, either the client credentials or authorization code grant may be used, as discussed below.</p>
+
+<p>For client credentials flow, any necessary User authentication and authorization is performed by the Requestor as a prerequisite, before the Requestor’s client app interacts with the Responder’s servers, i.e. the Requestor is responsible for ensuring that only its authorized Users access the client app and only make requests allowed by the Requestor. How the Requestor performs this is out of scope for this guide but will typically rely on internal user authentication and access controls.</p>
+
+<div class="stu-note">
+  <p>Examples of automated client apps that use the client credentials grant type include SMART App Launch Backend Services and certain IUA Authorization Clients.</p>
+</div>
+
+<p>For authorization code flow, the User is expected to be interacting with the Requestor’s client app in real time, at least during the initial authorization of the client app with the Responder’s OAuth Server. Typically, the User must authenticate to the Responder’s system at the time of initial authorization. If the local user has been issued credentials by the Responder to use for this purpose, the authorization code flow will typically involve use of those credentials. However, it is anticipated that in some workflows, the local user will not have their own credentials on the Responder’s system, but will instead have credentials on their “home” system. In these cases, the UDAP Tiered OAuth workflow is used so that the Responder’s OAuth Server can interact with the Requestor’s OIDC Server in an automated manner to authenticate the User, as described in <a href="user.html">Section 6</a>.</p>
+
+<p>Thus, this guide provides two different paths (client credentials grants and authorization code grants with Tiered OAuth) that a user affiliated with the Requestor without credentials on the Responder’s system may use to obtain access to data held by the Responder.</p>
+
+<p>B2B client applications registered to use the authorization code grant <strong>SHALL</strong> obtain an access token for access to FHIR resources by following the OAuth 2.0 authorization code grant flow described in <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.1">Section 4.1</a> of RFC 6749, with the additional options and constraints discussed below. </p>
+
+<p>Client applications registered to use the client credentials grant <strong>SHALL</strong> obtain an access token for access to FHIR resources by following the OAuth 2.0 client credentials grant flow described in <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4">Section 4.4</a> of RFC 6749, and with the additional options and constraints discussed below. As noted in <a href="registration.html#registration">Section 3</a>, the Requestor is responsible for ensuring that the Requestor’s User, if applicable, is using the app only as authorized by the Requestor.</p>
+
+<h3 id="obtaining-an-authorization-code">Obtaining an authorization code</h3>
+
+<p>The section does not apply to client applications registered to use the client credentials grant.</p>
+
+<p>The workflow for obtaining an authorization code is summarized in the following diagram:
+<br /></p>
+<div>
+<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="185px" preserveAspectRatio="none" style="width:387px;height:185px;background:#FFFFFF;" version="1.1" viewBox="0 0 387 185" width="387px" zoomAndPan="magnify"><defs /><g><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="44" x2="44" y1="37.6094" y2="178.0156" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="201.5" x2="201.5" y1="37.6094" y2="178.0156" /><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="79" x="5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="12" y="26.5332">Client App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="142" x="130.5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="137.5" y="26.5332">Authorization Server</text><polygon fill="#181818" points="189.5,65.9609,199.5,69.9609,189.5,73.9609,193.5,69.9609" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="44.5" x2="195.5" y1="69.9609" y2="69.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="51.5" y="65.1045">Authorization request</text><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="201.5" x2="243.5" y1="116.6641" y2="116.6641" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="243.5" x2="243.5" y1="116.6641" y2="129.6641" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="202.5" x2="243.5" y1="129.6641" y2="129.6641" /><polygon fill="#181818" points="212.5,125.6641,202.5,129.6641,212.5,133.6641,208.5,129.6641" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172" x="208.5" y="95.4561">Server incorporates user input</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="151" x="208.5" y="111.8076">into authorization decision</text><polygon fill="#181818" points="55.5,156.0156,45.5,160.0156,55.5,164.0156,51.5,160.0156" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="49.5" x2="200.5" y1="160.0156" y2="160.0156" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="133" x="61.5" y="155.1592">Authorization response</text></g></svg>
+</div>
+
+<p>Client applications registered to use the authorization code grant <strong>SHALL</strong> request an authorization code as per <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.1">Section 4.1.1</a> of RFC 6749, with the following additional constraints. Client applications and servers <strong>MAY</strong> optionally support UDAP Tiered OAuth for User Authentication to allow for cross-organizational or third party user authentication as described in <a href="user.html">Section 6</a>.</p>
+
+<p>Servers <strong>SHALL</strong> handle and respond to authorization code requests as per <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2">Section 4.1.2</a> of RFC 6749.</p>
+
+<p>Client applications and Authorization Servers using the authorization code flow <strong>SHALL</strong> conform to the additional constraints for authorization code flow found in <a href="general.html#authorization-code-flow">Section 7.2</a> of this guide.</p>
+
+<h3 id="obtaining-an-access-token">Obtaining an access token</h3>
+
+<p>The workflow for obtaining an access token is summarized in the following diagram:
+<br /></p>
+<div>
+<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="125px" preserveAspectRatio="none" style="width:242px;height:125px;background:#FFFFFF;" version="1.1" viewBox="0 0 242 125" width="242px" zoomAndPan="magnify"><defs /><g><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="44" x2="44" y1="37.6094" y2="118.3125" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="165" x2="165" y1="37.6094" y2="118.3125" /><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="79" x="5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="12" y="26.5332">Client App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="142" x="94" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="101" y="26.5332">Authorization Server</text><polygon fill="#181818" points="153,65.9609,163,69.9609,153,73.9609,157,69.9609" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="44.5" x2="159" y1="69.9609" y2="69.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="82" x="51.5" y="65.1045">Token request</text><polygon fill="#181818" points="55.5,96.3125,45.5,100.3125,55.5,104.3125,51.5,100.3125" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="49.5" x2="164" y1="100.3125" y2="100.3125" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="61.5" y="95.4561">Token response</text></g></svg>
+</div>
+
+<p>Client applications using the authorization code flow <strong>SHALL</strong> exchange authorization codes for access tokens as per <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.3">Section 4.1.3</a> of RFC 6749, with the following additional options and constraints. Client applications using the client credentials flow do not use authorization codes when requesting an access token.</p>
+
+<p>Client applications using the authorization code flow <strong>SHALL</strong> include a <code class="language-plaintext highlighter-rouge">code_verifier</code> parameter and value in the token request as per Section 4.5 of RFC 7636.</p>
+
+<h4 id="constructing-authentication-token">Constructing Authentication Token</h4>
+
+<p>Client apps following this guide will have registered to authenticate using a private key rather than a shared <code class="language-plaintext highlighter-rouge">client_secret</code>. Thus, the client <strong>SHALL</strong> use its private key to sign an Authentication Token as described in this section, and include this JWT in the <code class="language-plaintext highlighter-rouge">client_assertion</code> parameter of its token request as described in <a href="https://www.udap.org/udap-jwt-client-auth-stu1.html#section-5.1">Section 5.1</a> of UDAP JWT-Based Client Authentication and detailed further in <a href="b2b.html#submitting-a-token-request">Section 5.2.2</a> of this guide.</p>
+
+<p>Authentication Tokens submitted by client apps <strong>SHALL</strong> conform to the general JWT header requirements in <a href="general.html#json-web-token-jwt-requirements">Section 7.1</a> of this guide and <strong>SHALL</strong> include the following parameters in the JWT claims, as defined in <a href="https://www.udap.org/udap-jwt-client-auth-stu1.html#section-4">Section 4</a> of UDAP JWT-Based Client Authentication and <a href="https://www.udap.org/udap-client-authorization-grants-stu1.html#section-4">Section 4</a> of UDAP Client Authorization Grants using JSON Web Tokens:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Authentication JWT Claims</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>iss</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The application's <code>client_id</code> as assigned by the Authorization Server during the registration process
+      </td>
+    </tr>
+    <tr>
+      <td><code>sub</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The application's <code>client_id</code> as assigned by the Authorization Server during the registration process
+      </td>
+    </tr>
+    <tr>
+      <td><code>aud</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The FHIR Authorization Server's token endpoint URL
+      </td>
+    </tr>
+    <tr>
+      <td><code>exp</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Expiration time integer for this authentication JWT, expressed in seconds since the "Epoch" (1970-01-01T00:00:00Z UTC)
+      </td>
+    </tr>
+    <tr>
+      <td><code>iat</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Issued time integer for this authentication JWT, expressed in seconds since the "Epoch"
+      </td>
+    </tr>
+    <tr>
+      <td><code>jti</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        A nonce string value that uniquely identifies this authentication JWT. See <a href="general.html#jwt-claims">Section 7.1.4</a> for additional requirements regarding reuse of values.
+      </td>
+    </tr>
+    <tr>
+      <td><code>extensions</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        A JSON object containing one or more extensions. The HL7 B2B Authorization Extension Object defined below is required for B2B client apps using the <code>client_credentials</code> flow; omit for client apps using the <code>authorization_code</code> flow
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The maximum lifetime for an Authentication Token <strong>SHALL</strong> be 5 minutes, i.e. the value of <code class="language-plaintext highlighter-rouge">exp</code> minus the value of <code class="language-plaintext highlighter-rouge">iat</code> <strong>SHALL</strong> NOT exceed 300 seconds. The Authorization Server <strong>MAY</strong> ignore any unrecognized claims in the Authentication Token. The Authentication Token <strong>SHALL</strong> be signed and serialized using the JSON compact serialization method.</p>
+
+<h5 id="b2b-authorization-extension-object">B2B Authorization Extension Object</h5>
+
+<p>The B2B Authorization Extension Object is used by client apps following the <code class="language-plaintext highlighter-rouge">client_credentials</code> flow to provide additional information regarding the context under which the request for data would be authorized. The client app constructs a JSON object containing the following keys and values and includes this object in the <code class="language-plaintext highlighter-rouge">extensions</code> object of the Authentication JWT as the value associated with the key name <code class="language-plaintext highlighter-rouge">hl7-b2b</code>.</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">B2B Authorization Extension Object<br />Key Name: "hl7-b2b"</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>version</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        String with fixed value: <code>"1"</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>subject_name</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        String containing the human readable name of the human or non-human requestor; required if known.
+      </td>
+    </tr>
+    <tr>
+      <td><code>subject_id</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        String containing a unique identifier for the requestor; required if known for human requestors when the <code>subject_name</code> parameter is present and the human requestor has been assigned an applicable identifier. Omit for non-human requestors and for human requestors who have not been assigned an applicable identifier. See Section 5.2.1.3 below for the preferred format of the identifier value string.
+      </td>
+    </tr>
+    <tr>
+      <td><code>subject_role</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        String containing a code identifying the role of the requestor; required if known for human requestors when the <code>subject_name</code> parameter is present. See Section 5.2.1.3 below for the preferred format of the code value string.
+      </td>
+    </tr>
+    <tr>
+      <td><code>organization_name</code></td>
+      <td><span class="label label-warning">optional</span></td>
+      <td>
+        String containing the human readable name of the organizational requestor. If a subject is named, the organizational requestor is the organization represented by the subject.
+      </td>
+    </tr>
+    <tr>
+      <td><code>organization_id</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        String containing a unique identifier for the organizational requestor. If a subject is named, the organizational requestor is the organization represented by the subject. The identifier <strong>SHALL</strong> be a Uniform Resource Identifier (URI). Trust communities <strong>SHALL</strong> define the allowed URI scheme(s). If a URL is used, the issuer <strong>SHALL</strong> include a URL that is resolvable by the receiving party.
+      </td>
+    </tr>
+    <tr>
+      <td><code>purpose_of_use</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        An array of one or more strings, each containing a code identifying a purpose for which the data is being requested. See Section 5.2.1.3 below for the preferred format of each code value string array element.
+      </td>
+    </tr>
+    <tr>
+      <td><code>consent_policy</code></td>
+      <td><span class="label label-warning">optional</span></td>
+      <td>
+        An array of one or more strings, each containing a URI identifiying a privacy consent directive policy or other policy consistent with the value of the <code>purpose_of_use</code> parameter.
+      </td>
+    </tr>
+    <tr>
+      <td><code>consent_reference</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        An array of one or more strings, each containing an absolute URL consistent with a <a href="https://www.hl7.org/fhir/R4/references.html#literal">literal reference</a> to a FHIR <a href="https://www.hl7.org/fhir/R4/consent.html">Consent</a> or <a href="https://www.hl7.org/fhir/R4/documentreference.html">DocumentReference</a> resource containing or referencing a privacy consent directive relevant to a purpose identified by the <code>purpose_of_use</code> parameter and the policy or policies identified by the <code>consent_policy</code> parameter. The issuer of this Authorization Extension Object <strong>SHALL</strong> only include URLs that are resolvable by the receiving party. If a referenced resource does not include the raw document data inline in the resource or as a contained resource, then it <strong>SHALL</strong> include a URL to the attachment data that is resolvable by the receiving party. Omit if <code>consent_policy</code> is not present.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Servers that support the B2B client credentials flow described in this guide <strong>SHALL</strong> support this B2B Authorization Extension Object. Other implementation guides <strong>MAY</strong> define additional Authorization Extension Objects to use together with this object for B2B client credentials workflows.</p>
+
+<h5 id="preferred-code-systems-and-naming-systems-for-us-realm">Preferred code systems and naming systems for US Realm</h5>
+
+<p>For <code class="language-plaintext highlighter-rouge">subject_id</code>, trust communities <strong>SHALL</strong> constrain the allowed naming system or systems, and are encouraged to require the individual National Provider Identifier (NPI) when known for human requestors who have been assigned an individual NPI.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">subject_role</code>, trust communities <strong>SHOULD</strong> constrain the allowed values and formats, and are encouraged to draw from the National Uniform Claim Committee (NUCC) Provider Taxonomy Code Set, but are not required to do so to be considered conformant.</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">purpose_of_use</code>, trust communities <strong>SHOULD</strong> constrain the allowed values, and are encouraged to draw from the HL7 <a href="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse">PurposeOfUse</a> value set, but are not required to do so to be considered conformant.</p>
+
+<h5 id="preferred-format-for-identifiers-and-codes">Preferred format for identifiers and codes</h5>
+
+<p>The preferred format to represent an identifier or code as a string value within an authorization extension object is as a Uniform Resource Identifier (URI) as defined in <a href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986</a>. Trust communities are encouraged to use this preferred format, but are not required to do so to be considered conformant with this guide.</p>
+
+<p>If the identifier or code is itself a URI, then the native representation is preferred. Otherwise, the preferred method to construct a URI is as follows:</p>
+
+<p>For identifiers, concatenate a URI identifying the namespace, the ‘#’ character, and the unique identifier assigned within the namespace.</p>
+
+<p>For codes, concatenate a URI identifying the code system, the ‘#’ character, and a code taken from the code system.</p>
+
+<p>For example, the U.S. NPI number 1234567890 can be represented as <code class="language-plaintext highlighter-rouge">urn:oid:2.16.840.1.113883.4.6#1234567890</code> and the purpose of use treatment can be represented as <code class="language-plaintext highlighter-rouge">urn:oid:2.16.840.1.113883.5.8#TREAT</code>.</p>
+
+<h4 id="submitting-a-token-request">Submitting a token request</h4>
+
+<h5 id="authorization-code-grant">Authorization code grant</h5>
+
+<p>Client applications using the authorization code grant and authenticating with a private key and Authentication Token as per <a href="b2b.html#constructing-authentication-token">Section 5.2.1</a> <strong>SHALL</strong> submit a POST request to the Authorization Server’s token endpoint containing the following parameters as per <a href="https://www.udap.org/udap-jwt-client-auth-stu1.html#section-5.1">Section 5.1</a> of UDAP JWT-Based Client Authentication. Client apps authenticating in this manner <strong>SHALL NOT</strong> include an HTTP Authorization header or client secret in its token endpoint request. The token request <strong>SHALL</strong> include the following parameters:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Token request parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>grant_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>authorization_code</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>code</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The code that the app received from the Authorization Server
+      </td>
+    </tr>
+    <tr>
+      <td><code>redirect_uri</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        The client application's redirection URI. This parameter <strong>SHALL</strong> be present only if the <code>redirect_uri</code> parameter was included in the authorization request in Section 5.1, and their values <strong>SHALL</strong> be identical.
+      </td>
+    </tr>
+    <tr>
+      <td><code>client_assertion_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>client_assertion</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The signed Authentication Token JWT
+      </td>
+    </tr>
+    <tr>
+      <td><code>udap</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>1</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="client-credentials-grant">Client credentials grant</h5>
+
+<p>Client applications using the client credentials grant and authenticating with a private key and Authentication Token as per <a href="b2b.html#constructing-authentication-token">Section 5.2.1</a> <strong>SHALL</strong> submit a POST request to the Authorization Server’s token endpoint containing the following parameters as per <a href="https://www.udap.org/udap-jwt-client-auth-stu1.html#section-5.2">Section 5.2</a> of UDAP JWT-Based Client Authentication. Client apps authenticating in this manner <strong>SHALL NOT</strong> include an HTTP Authorization header or client secret in its token endpoint request. The token request <strong>SHALL</strong> include the following parameters:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Token request parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>grant_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>client_credentials</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Space-delimited list of requested scopes of access.
+      </td>
+    </tr>
+    <tr>
+      <td><code>client_assertion_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>client_assertion</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The signed Authentication Token JWT
+      </td>
+    </tr>
+    <tr>
+      <td><code>udap</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>1</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="server-processing-of-token-requests">Server processing of token requests</h4>
+
+<p>An Authorization Server receiving token requests containing Authentication Tokens as above <strong>SHALL</strong> validate and respond to the request as per <a href="https://www.udap.org/udap-jwt-client-auth-stu1.html#section-6">Sections 6 and 7</a> of UDAP JWT-Based Client Authentication.</p>
+
+<p>For client applications using an authorization code grant, the Authorization Server <strong>SHALL</strong> return an error as per Section 4.6 of RFC 7636 if the client included a <code class="language-plaintext highlighter-rouge">code_challenge</code> in its authorization request but did not include the correct <code class="language-plaintext highlighter-rouge">code_verfier</code> value in the corresponding token request.</p>
+
+<p>For all successful token requests, the Authorization Server <strong>SHALL</strong> issue access tokens with a lifetime no longer than 60 minutes.</p>
+
+<div class="stu-note">
+  <p>This guide does not currently constrain the type or format of access tokens issued by Authorization Servers. Note that other implementation guides (e.g. SMART App Launch, IUA, etc.), when used together with this guide, may limit the allowed access token types (e.g. Bearer) and/or formats (e.g. JWT).</p>
+</div>
+
+<h4 id="client-application-use-of-access-tokens">Client application use of access tokens</h4>
+
+<p>A client application <strong>SHALL</strong> only use an access token in a manner consistent with any assertions made when requesting that token. For example, if a client asserted a <code class="language-plaintext highlighter-rouge">subject_id</code> and <code class="language-plaintext highlighter-rouge">purpose_of_use</code> in the B2B Authorization Extension Object included in its token request, then the access token granted in response to that request can only be used in that authorization context, i.e. for that requestor and for that purpose. If the same client application subsequently needs to retrieve a resource for a different requestor and/or for a different purpose from the same resource server, it cannot reuse the same access token. Instead, it must obtain a new access token by submitting another token request with an updated B2B Authorization Extension Object asserting the new authorization context.</p>
+
+<h3 id="refresh-tokens">Refresh tokens</h3>
+
+<p>This guide supports the use of refresh tokens, as described in <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-1.5">Section 1.5 of RFC 6749</a>. Authorization Servers <strong>MAY</strong> issue refresh tokens to B2B client applications that use the authorization code grant type as per <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-5">Section 5 of RFC 6749</a>. Refresh tokens are not used with the client credentials grant type. Client apps that have been issued refresh tokens <strong>MAY</strong> make refresh requests to the token endpoint as per <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-6">Section 6 of RFC 6749</a>. Client apps authenticate to the Authorization Server for refresh requests by constructing and including an Authentication Token in the same manner as for initial token requests.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://www.hl7.org/Special/committees/secure">HL7 International / Security</a> and <a style="color:var(--footer-hyperlink-text-color)" href="https://www.udap.org">UDAP.org</a>.  Package hl7.fhir.us.udap-security#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 9, 2025 21:29+0000">2025-12-09</span>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+                 | <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir/us/udap-security/history.html">Version History</a> |
+                 <a style="color: #81BEF7" rel="license" href="http://hl7.org/fhir/R4/license.html"><img style="border-style: none;" alt="CC0" src="cc0.png"/></a> |
+                 <!--<a style="color: #81BEF7" href="todo.html">Search</a> | --> 
+                 <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

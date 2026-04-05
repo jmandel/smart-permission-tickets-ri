@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Scaleable dynamic client registration for trust communities">
+    <meta name="keywords" content="Unified Data Access Profiles, UDAP, HL7 FHIR, Open APIs, Application Access APIs, Reusable Identity, Federated Identity, build FHIR client apps, Certificates to authorize FHIR transactions, scaling FHIR transactions">
+
+    <title>UDAP Server Metadata</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/images/backgrounds/udap.ico">
+
+    <!-- css -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/lib/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="assets/lib/owlcarousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/lib/owlcarousel/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="assets/lib/FlexSlider/flexslider.css">
+    <link rel="stylesheet" href="assets/lib/magnific-popup/dist/magnific-popup.css"/>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/ie_fix.css">
+    <link rel="stylesheet" href="assets/css/udap.css">
+
+    <script src="assets/lib/components-modernizr/modernizr.js"></script>
+    <script src="assets/lib/jquery/dist/jquery.js"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#main-nav-collapse" data-offset="100">
+
+<div class="page-loader">
+    <div class="loader">Wait for it...</div>
+</div>
+
+<!-- Fixed Top Navigation -->
+<nav id="fixedTopNav" class="navbar navbar-fixed-top main-navigation" itemscope itemtype="https://schema.org/SiteNavigationElement" >
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="ion-drag"></span>
+            </button>
+
+            <!-- Logo -->
+            <div class="navbar-brand" itemscope itemtype="https://schema.org/Organization">
+                <span itemprop="name" class="sr-only">UDAP</span>
+                <a href="index.html"><img src="assets/images/backgrounds/UDAP.png"></a>
+            </div>
+            <!-- /Logo -->
+
+        </div><!-- /.navbar-header -->
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="main-nav-collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Profiles</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./udap-jwt-client-auth.html">JWT Client Authentication</a></li>
+                        <li><a href="./udap-user-auth.html">Tiered OAuth</a></li>
+                        <li><a href="./udap-dynamic-client-registration.html">Dynamic Client Registration</a></li>
+                        <li><a href="./udap-tls-client-auth.html">TLS Client Authentication</a></li>
+                        <li><a href="./udap-certifications-and-endorsements.html">Client Certifications and Endorsements</a></li>
+                        <li><a href="./udap-client-authorization-grants.html">Client Authorization Grants using JWTs</a></li>
+                        <li><a href="./udap-server-metadata.html">Server Metadata</a></li>
+                    </ul>
+                </li>                
+                
+                <li>
+                    <a href="./index#contact" itemprop="url"><span itemprop="name">Contact</span></a>
+                </li>
+
+		<li><a href="#footer-widgets" itemprop="url">
+                    <span itemprop="name">About</span>
+                </a></li>
+            </ul>
+        </div>
+        <!-- /Navigation Links -->
+
+    </div><!-- /.container -->
+</nav>
+<!-- /Fixed Top Navigation -->
+
+<!-- Header -->
+<header id="header" class="header-wrapper home-parallax home-fade dark-bg header-classic bg-04">
+    <div class="color-overlay"></div>
+    <div class="header-wrapper-inner">
+        <div class="container">
+
+            <div class="intro">
+                <h2>Tools for Open API Ecosystems</h2>
+
+            </div><!-- /.intro -->
+
+        </div><!-- /.container -->
+
+    </div><!-- /.header-wrapper-inner -->
+</header>
+<!-- /Header -->
+
+<section id="blog-standard" class="section blog-standard">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+
+            
+<!--Blog Post-->
+<div class="row blog-post">
+    <div class="col-md-12">
+
+        <div class="post-content">
+
+
+
+
+
+
+
+
+
+
+<div class=WordSection1>
+
+<h1><b>UDAP Server Metadata</b></h1>
+
+<p class=MsoNormal><b>Version STU 1</b></p>
+
+<p class=MsoNormal>The UDAP profiles support the availability of server metadata
+at a well-known URL, however the specific metadata to require is left to the
+community based on the profiles and workflows supported. In general, if a
+community defines all required elements and workflows and does NOT include any
+optional elements or workflows, the metadata required to support this is
+limited. However, when optionality is permitted on the Authorization Server
+side, inclusion of the corresponding metadata is RECOMMENDED. For example, if the
+profile allows optional support for certain signing algorithms, then it would
+generally be beneficial to include these algorithms as a required metadata
+element for Authorization Servers. </p>
+
+<p class=MsoNormal>Metadata elements that reflect general OAuth 2.0 concepts
+SHALL be understood apply to the actor’s UDAP functionality, and SHALL be
+preferred by other actors over other metadata published by the same actor for
+other non-UDAP OAuth 2.0 workflows. Additionally, several of the concepts are
+only relevant to actors in the role of Authorization Server, and some are only
+relevant when certain profiles are supported. Thus, the metadata requirements
+for actors in the client and server roles MAY be (and typically will be)
+different.</p>
+
+<p class=MsoNormal>In some cases, some metadata elements may be available via
+another mechanism supported by the community; such communities are encouraged
+to include this metadata in the UDAP metadata, as well.</p>
+
+<p class=MsoNormal>When a key is included in the metadata with a value listing a
+set of supported parameters, i.e. the metadata key name ends in “_supported”, other
+actors MAY assume that, at least for UDAP workflows, the publisher of the
+metadata does NOT support other parameter values for this key. To communicate that
+optional functionality represented by a metadata key with an array value is NOT
+supported, the metadata publisher SHOULD include the key with an empty array
+value. If a metadata key is omitted, a client application SHOULD NOT make any
+assumptions regarding the parameter values supported by the metadata publisher,
+if any. The metadata publisher SHALL NOT publish parameter values supported
+only for other non-UDAP workflows in its UDAP metadata. Actors MAY ignore
+unrecognized keys in metadata obtained from other actors. </p>
+
+<p class=MsoNormal>This profile allows for the digital signing of endpoint URLs
+used for OAuth 2.0 transactions, including the authorization, token, and
+registration endpoints, to allow for Client applications to validate this
+information before redirecting a user to a server’s authorization endpoint or
+submitting data to the server’s token or registration endpoint. The primary use
+case for validation is for a client application to verify the authenticity of
+these OAuth 2.0 endpoints before initiating a transaction by confirming the
+metadata is signed by the expected organization. This is analogous to how an Authorization
+Server validates client-submitted information during UDAP Dynamic Client Registration
+or JWT-Based Client Authentication transactions. Additionally, for Client apps that
+utilize the authorization code flow, the inclusion of signed endpoints allows
+the Client app to display the validated information about the signing
+organization to the end user for confirmation before redirecting the user to
+the authorization endpoint, which will generally be more informative and/or
+granular than the attributes of a server’s TLS certificate.</p>
+
+<p class=MsoNormal>1 Supported metadata elements</p>
+
+<p class=MsoNormal>The list of supported metadata elements that a community may
+include are listed below:</p>
+
+<p class=MsoNormal>  x5c: an array of one or more certificates represented as
+strings containing the Base64 encoding of the DER representation of the
+certificate; the first certificate in the array is used by the UDAP actor to
+sign JWTs and/or to decrypt JWTs; the remaining certificates form a certificate
+chain, i.e. the subject of the certificate is the issuer of the preceding
+certificate in the chain.</p>
+
+<p class=MsoNormal>   udap_versions_supported: an array of strings containing
+the supported UDAP versions. Currently, the only defined version is “1”. UDAP
+versions are case-insensitive strings.</p>
+
+<p class=MsoNormal>   udap_profiles_supported: an array of one or more strings
+identifying the core UDAP profiles that this actor supports. Values: “udap_dcr”
+for UDAP Dynamic Client Registration, “udap_authn” for UDAP JWT-Based Client
+Authentication, “udap_authz” for UDAP Client Authorization, and “udap_to” for
+UDAP Tiered OAuth. At least one profile SHALL be supported.</p>
+
+<p class=MsoNormal>  udap_certifications_supported: an array of zero or more
+strings each containing a URI corresponding to a value recognized by the
+metadata publisher as an acceptable value in the certification_uris array. The
+meaning of the value is defined by the publishers of the profiles for the
+certification or endorsement referenced by each URI.</p>
+
+<p class=MsoNormal>  udap_certifications_required: an array of one or more
+strings each containing a URI corresponding to a value recognized by the
+metadata publisher as a required value in the certification_uris array. The
+meaning of the value is defined by the publishers of the profiles for the
+certification or endorsement referenced by each URI.</p>
+
+<p class=MsoNormal>  udap_authorization_extensions_supported: an array of zero or
+more recognized key names for authorization extension objects included in the
+extensions element of an authentication and/or authorization JWT submitted to
+the token endpoint. The key names are defined by the publishers of the profiles
+for the corresponding authorization extension objects.</p>
+
+<p class=MsoNormal>  udap_authorization_extensions_required: an array of one or
+more recognized key names for authorization extension objects included in the
+extensions element of an authentication and/or authorization JWT submitted to
+the token endpoint. The key names are defined by the publishers of the profiles
+for the corresponding authorization extension objects.</p>
+
+<p class=MsoNormal>  grant_types_supported: an array of one or more grant types
+supported by this actor for the UDAP workflows. At least one grant type SHALL
+be supported.</p>
+
+<p class=MsoNormal>  scopes_supported: an array of one or more strings
+supported by this actor for the UDAP workflows. A metadata  publisher MAY
+support a subset of these scopes for different client types or entities.</p>
+
+<p class=MsoNormal>  authorization_endpoint, token_endpoint, registration_endpoint:
+a string containing the URI to access the corresponding endpoint.</p>
+
+<p class=MsoNormal>  signed_endpoints: a signed JWT containing the URI(s) of
+the authorization_endpoint, token_endpoint, and/or registration_endpoint, as detailed
+further in section 2.</p>
+
+<p class=MsoNormal>  token_endpoint_auth_methods_supported: an array on one or
+more authentication methods supported by the metadata publisher for UDAP
+workflows. At least one authentication method SHALL be supported. Generally,
+this array will have a single element: “private_key_jwt”.</p>
+
+<p class=MsoNormal>  token_endpoint_auth_signing_alg_values_supported: an array
+of one or more JWA algorithm identifiers supported by the metadata publisher
+for validation of signed JWTs submitted to the token endpoint for UDAP
+workflows. At least one signing algorithm SHALL be supported.</p>
+
+<p class=MsoNormal>  registration_endpoint_jwt_signing_alg_values_supported: an
+array of one or more JWA algorithm identifiers supported by the metadata
+publisher for validation of signed software statements, certifications, and
+endorsements submitted to the registration endpoint. At least one signing
+algorithm SHALL be supported. It is RECOMMENDED that all Authorization Servers
+support the “RS256” algorithm.</p>
+
+<p class=MsoNormal>Some metadata keys or values only apply in the context of
+certain supported workflows. Metadata publishers SHOULD NOT include keys or
+values that are inconsistent with its other published metadata values. For
+example, if an Authorization Server does not support authorization code flow,
+the authorization endpoint is not used and the authorization_endpoint key SHOULD
+NOT be included in the metadata and “authorization_code” SHOULD NOT be included
+as a supported grant type. </p>
+
+<p class=MsoNormal>2 Signed endpoints</p>
+
+<p class=MsoNormal>If the server includes an authorization endpoint, token
+endpoint, or registration endpoint element its metadata, then it SHOULD also include
+the signed_endpoints element as a signed JWT containing the following claims:</p>
+
+<p class=MsoNormal>   iss:  Server’s unique identifying URI (identifying the
+holder of the private key, also servers as the base URI for UDAP metadata
+including lookup of certificates)<br>
+   sub: same as iss<br>
+   exp: number, expiration time (may be long-lived, e.g. 1 year)<br>
+   iat: number, issued at time<br>
+   jti: string, unique token identifier used to identify token replay<br>
+   authorization_endpoint: URI of authorization endpoint (if included in
+unsigned metadata)<br>
+   token_endpoint: URI of token endpoint (if included in unsigned metadata)<br>
+   registration_endpoint: URI of registration endpoint (if included in unsigned
+metadata)</p>
+
+<p class=MsoNormal>The JOSE Header for the signed_endpoints JWT contains the
+following key/value pairs:</p>
+
+<p class=MsoNormal>   alg : &quot;RS256&quot;<br>
+   x5c : [cert1, cert2, …] (cert1 is required; remainder of chain is optional)<br>
+   x5u : valid URI (optional)</p>
+
+<p class=MsoNormal>The x5c claim contains the Server’s UDAP certificate chain
+as an array of one or more elements, each containing a base64 encoded
+representation of the DER encoded X.509 certificate. The leaf certificate
+(cert1) contains the public key corresponding to the private signing key used
+by the Server to digitally sign the signed_endpoints JWT. The JWT is signed and
+assembled using JWS compact serialization as per RFC 7515.</p>
+
+<p class=MsoNormal>3 Client validation of signed endpoints</p>
+
+<p class=MsoNormal>If the server metadata contains the signed_endpoints element,
+then the client application SHALL validate this metadata element as follows:</p>
+
+<p class=MsoNormal>3.1 The client app validates the digital signature on the signed_endpoints
+JWT using the public key extracted from cert1 in the x5c parameter of the JOSE
+header. If the signature cannot be validated, the request is denied.</p>
+
+<p class=MsoNormal>3.2 The Client app attempts to construct a valid certificate
+chain from the Server’s certificate (cert1) to an anchor certificate trusted by
+the Client app using conventional X.509 chain building techniques and path
+validation, including certificate validity and revocation status checking. The Server
+MAY provide a complete certificate chain in the x5c element. The Client app MAY
+use additional certificates not included by the Server to construct a chain
+(e.g. from its own certificate cache or discovered via the X.509 AIA
+mechanism). Client apps SHOULD support the X.509 AIA mechanism for chain
+building. If a trusted chain cannot be built and validated by the Client app,
+the signed_endpoints JWT is rejected.</p>
+
+<p class=MsoNormal>3.3 The Client app validates the iss, sub, exp, iat, and jti
+values in the signed_endpoints JWT. The iss value MUST match a uriName entry in
+the Subject Alternative Names extension of the Server’s certificate. Typically,
+this will be the base URL of the resource server providing the metadata. The
+sub value MUST match the iss value, and the JWT MUST be unexpired.</p>
+
+<p class=MsoNormal>3.4 The Client app validates that the endpoint URLs in the
+unsigned metadata match the values in the signed_endpoints JWT claims. If an
+endpoint does not match, or an endpoint in the unsigned metadata is not
+included in the claims, the JWT is rejected.</p>
+
+<p class=MsoNormal>3.5 If the Client app rejects the signed_endpoints JWT for
+any reason, the Client app SHOULD NOT proceed, and, if applicable, SHOULD alert
+the end user that the server’s endpoint metadata could not be validated.</p>
+
+<p class=MsoNormal>4 Authors</p>
+
+<p class=MsoNormal>Luis C. Maas III, EMR Direct<br>
+Julie Maas, EMR Direct</p>
+
+<p class=MsoNormal>5 Notices</p>
+
+<p class=MsoNormal>Copyright ©2020-2025 UDAP.org and the persons identified as the
+document authors. All rights reserved.</p>
+
+<p class=MsoNormal>UDAP.org grants to any interested party a non-exclusive,
+royalty-free, worldwide right and license to reproduce, publish, distribute and
+display this Specification, in full and without modification, solely for
+the purpose of implementing the technology described in this 
+Specification, provided that attribution is made to UDAP.org as the source of
+the material and that such attribution does not indicate an endorsement by
+UDAP.org.</p>
+
+<p class=MsoNormal>All Specifications, and the
+information contained therein, are provided on an “AS IS” basis and the
+authors, the organizations they represent, and UDAP.org make no (and hereby
+expressly disclaim any) warranties, express, implied, or otherwise, including
+but not limited to any warranty that the use of the information therein will
+not infringe any rights or any implied warranties of merchantability or fitness
+for a particular purpose, and the entire risk as to implementing this
+specification is assumed by the implementer. Additionally, UDAP.org takes no
+position regarding the validity or scope of any intellectual property or other
+rights that might be claimed to pertain to the implementation or use of the
+technology described in this document or the extent to which any license under
+such rights might or might not be available, nor does it represent that it has
+made any independent effort to identify any such rights.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<!--Blog Post end-->
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer widgets -->
+<section id="footer-widgets" class="section footer-widgets dark-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-text">
+                    <h4>About UDAP</h4>
+                    <p>
+The Unified Data Access Profiles (UDAP&trade;) published
+by UDAP.org increase confidence in open API
+transactions through the use of trusted identities
+and verified attributes. UDAP use cases support standards-based security, privacy
+and scalable interoperability through reusable identities, leveraging dynamic client
+registration, JWT-based client authentication and Tiered OAuth. <br><br>
+Notice: UDAP and the UDAP gear logo, ecosystem gears, and green lock designs are trademarks of UDAP.org.  
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-contact">
+                    <h4>Check in...</h4>
+                    <ul>
+                        <li>
+                            <i class="ion-email"></i> Email collaborate@udap.org for more information or<br>
+                            <a href="https://groups.google.com/forum/#!forum/udap-discuss/join">Join our Google Group</a><br>
+                            to participate in the development of UDAP or to request our Branding Guidelines if you would like to make statements about your use of UDAP or use the UDAP logo or designs.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-recent-posts">
+                    <h4>Getting Involved</h4>
+                    <ul>
+                        <li>
+                            UDAP profiles have been tested at several HL7 FHIR connectathons. Contact
+                            us for more information about how to become involved in testing or to pilot one or more 
+                            profiles within your own ecosystem.
+                            
+                        </li>
+                        <li>
+                            HL7 and FHIR are registered trademarks of Health Level Seven International and are used with permission.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-text">
+                    <h4>Use Cases</h4>
+                    <p>UDAP's first applications are in the healthcare sector, but the profiles are not healthcare specific. Conversations about the use of UDAP in additional sectors are welcome at a community meeting or by reaching out via email.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Footer widgets -->
+<!-- footer -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="copyright text-xs-center">&copy; 2026 UDAP.org</p>
+            </div>
+
+            <div class="col-md-5 col-sm-4">
+                <ul class="footer-social-block">
+
+                    <li><a href="https://www.twitter.com/udapTools"><i class="fa fa-twitter"></i></a></li>
+
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-menu text-xs-center">
+                    <a href="http://www.emrdirect.com/privacy.html">Privacy Policy</a> | <a href="http://www.emrdirect.com/terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+
+<a id="totop" href="#totop"><i class="fa fa-angle-double-up"></i></a>
+<!-- js -->
+<script src="assets/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="assets/lib/isotope/dist/isotope.pkgd.min.js"></script>
+<script src="assets/lib/owlcarousel/owl-carousel/owl.carousel.js"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+<script src="assets/lib/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="assets/lib/waypoints/lib/shortcuts/inview.min.js"></script>
+
+<script src="assets/lib/FlexSlider/jquery.flexslider.js"></script>
+<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.js"></script>
+<script src="assets/lib/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.min.js"></script>
+<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+
+<script src="assets/js/main.js"></script>
+
+<!--[if lt IE 10]>
+<script>
+    $('input, textarea').placeholder();
+</script>
+<![endif]-->
+
+
+</body>
+</html>

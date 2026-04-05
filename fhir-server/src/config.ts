@@ -1,4 +1,5 @@
-import type { ModeName, RegisteredClient } from "./store/model.ts";
+import type { FrameworkDefinition, ModeName, RegisteredClient } from "./store/model.ts";
+import { buildDefaultFrameworks } from "./auth/demo-frameworks.ts";
 import {
   DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
   type TicketIssuerSeed,
@@ -6,6 +7,7 @@ import {
 
 export type ServerConfig = {
   port: number;
+  publicBaseUrl: string;
   issuer: string;
   accessTokenSecret: string;
   clientRegistrationSecret: string;
@@ -13,6 +15,7 @@ export type ServerConfig = {
   strictDefaultMode: ModeName;
   defaultNetworkSlug: string;
   defaultNetworkName: string;
+  frameworks: FrameworkDefinition[];
   defaultRegisteredClients: RegisteredClient[];
   defaultPermissionTicketIssuerSlug: string;
   defaultPermissionTicketIssuerName: string;
@@ -21,7 +24,8 @@ export type ServerConfig = {
 
 export function loadConfig(): ServerConfig {
   const port = Number(Bun.env.PORT ?? 8091);
-  const issuer = Bun.env.ISSUER ?? `http://localhost:${port}`;
+  const publicBaseUrl = normalizeOriginEnv(Bun.env.PUBLIC_BASE_URL ?? Bun.env.ISSUER ?? `http://localhost:${port}`, "PUBLIC_BASE_URL");
+  const issuer = normalizeOriginEnv(Bun.env.ISSUER ?? publicBaseUrl, "ISSUER");
   const defaultNetworkSlug = Bun.env.DEFAULT_NETWORK_SLUG ?? "reference";
   const defaultNetworkName = Bun.env.DEFAULT_NETWORK_NAME ?? "Reference Network";
   const defaultPermissionTicketIssuerSlug = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_SLUG ?? "reference-demo";
@@ -31,6 +35,7 @@ export function loadConfig(): ServerConfig {
   ) ?? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK;
   return {
     port,
+    publicBaseUrl,
     issuer,
     accessTokenSecret: Bun.env.ACCESS_TOKEN_SECRET ?? "reference-implementation-access-secret",
     clientRegistrationSecret: Bun.env.CLIENT_REGISTRATION_SECRET ?? Bun.env.ACCESS_TOKEN_SECRET ?? "reference-implementation-client-registration-secret",
@@ -38,6 +43,7 @@ export function loadConfig(): ServerConfig {
     strictDefaultMode: "strict",
     defaultNetworkSlug,
     defaultNetworkName,
+    frameworks: buildDefaultFrameworks(publicBaseUrl, defaultPermissionTicketIssuerSlug),
     defaultRegisteredClients: [],
     defaultPermissionTicketIssuerSlug,
     defaultPermissionTicketIssuerName,
@@ -59,4 +65,12 @@ function parsePrivateJwk(raw: string | undefined) {
   } catch {
     return null;
   }
+}
+
+function normalizeOriginEnv(raw: string, name: string) {
+  const parsed = new URL(raw);
+  if (parsed.pathname !== "/" || parsed.search || parsed.hash) {
+    throw new Error(`${name} must be an origin with no path, query, or fragment`);
+  }
+  return parsed.origin;
 }

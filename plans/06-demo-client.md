@@ -156,6 +156,12 @@ Present a developer-facing form with these controls:
 - default to the full patient timeline
 - show the patient’s actual min/max encounter dates as context
 
+#### Ticket Lifetime
+
+- a clear user-facing duration choice for how long the Permission Ticket lasts
+- bounded presets such as `1 hour`, `1 day`, `7 days`, `30 days`, `1 year`
+- an explicit `Never expires` option that omits `exp` rather than emitting an invalid null claim
+
 #### Site / Jurisdiction / Organization
 
 - site checkboxes for the patient’s actual sites of care

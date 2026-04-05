@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Extending OAuth 2.0 with secure certificate-based client authentication">
+    <meta name="keywords" content="Unified Data Access Profiles, UDAP, HL7 FHIR, Open APIs, Application Access APIs, Reusable Identity, Federated Identity, build FHIR client apps, Certificates to authorize FHIR transactions, scaling FHIR transactions">
+
+    <title>UDAP JWT-based Client Authentication</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/images/backgrounds/udap.ico">
+
+    <!-- css -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/lib/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="assets/lib/owlcarousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/lib/owlcarousel/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="assets/lib/FlexSlider/flexslider.css">
+    <link rel="stylesheet" href="assets/lib/magnific-popup/dist/magnific-popup.css"/>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/ie_fix.css">
+    <link rel="stylesheet" href="assets/css/udap.css">
+
+    <script src="assets/lib/components-modernizr/modernizr.js"></script>
+    <script src="assets/lib/jquery/dist/jquery.js"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#main-nav-collapse" data-offset="100">
+
+<div class="page-loader">
+    <div class="loader">Wait for it...</div>
+</div>
+
+<!-- Fixed Top Navigation -->
+<nav id="fixedTopNav" class="navbar navbar-fixed-top main-navigation" itemscope itemtype="https://schema.org/SiteNavigationElement" >
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="ion-drag"></span>
+            </button>
+
+            <!-- Logo -->
+            <div class="navbar-brand" itemscope itemtype="https://schema.org/Organization">
+                <span itemprop="name" class="sr-only">UDAP</span>
+                <a href="index.html"><img src="assets/images/backgrounds/UDAP.png"></a>
+            </div>
+            <!-- /Logo -->
+
+        </div><!-- /.navbar-header -->
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="main-nav-collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Profiles</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./udap-jwt-client-auth.html">JWT Client Authentication</a></li>
+                        <li><a href="./udap-user-auth.html">Tiered OAuth</a></li>
+                        <li><a href="./udap-dynamic-client-registration.html">Dynamic Client Registration</a></li>
+                        <li><a href="./udap-tls-client-auth.html">TLS Client Authentication</a></li>
+                        <li><a href="./udap-certifications-and-endorsements.html">Client Certifications and Endorsements</a></li>
+                        <li><a href="./udap-client-authorization-grants.html">Client Authorization Grants using JWTs</a></li>
+                        <li><a href="./udap-server-metadata.html">Server Metadata</a></li>
+                    </ul>
+                </li>                
+                
+                <li>
+                    <a href="./index#contact" itemprop="url"><span itemprop="name">Contact</span></a>
+                </li>
+
+		<li><a href="#footer-widgets" itemprop="url">
+                    <span itemprop="name">About</span>
+                </a></li>
+            </ul>
+        </div>
+        <!-- /Navigation Links -->
+
+    </div><!-- /.container -->
+</nav>
+<!-- /Fixed Top Navigation -->
+
+<!-- Header -->
+<header id="header" class="header-wrapper home-parallax home-fade dark-bg header-classic bg-04">
+    <div class="color-overlay"></div>
+    <div class="header-wrapper-inner">
+        <div class="container">
+
+            <div class="intro">
+                <h2>Tools for Open API Ecosystems</h2>
+
+            </div><!-- /.intro -->
+
+        </div><!-- /.container -->
+
+    </div><!-- /.header-wrapper-inner -->
+</header>
+<!-- /Header -->
+
+<section id="blog-standard" class="section blog-standard">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+
+            
+<!--Blog Post-->
+<div class="row blog-post">
+    <div class="col-md-12">
+
+        <div class="post-content">
+
+
+
+
+
+
+
+
+
+
+<div class=WordSection1>
+
+<h1><b>UDAP JWT-based Client Authentication</b></h1>
+
+<p class=MsoNormal><b>DRAFT 2022-06-21 with errata</b></p>
+
+<p class=MsoNormal>Many organizations have established digital identities that
+can be reused within a trust community to facilitate cross-organizational
+queries. UDAP JWT-based client authentication leverages existing public key
+infrastructure and validated identities to help scale such queries.</p>
+
+<p class=MsoNormal>UDAP implements JWT-based client authentication as an
+extension to the OAuth 2.0 authorization framework defined in RFC 6749, based in
+part on the profiles defined in RFC 7521 and RFC 7523 for assertion-based
+authentication. To request use of this extension, a Client App constructs and
+digitally signs a JSON Web Token (JWT) that is used by the Client App as an
+Authentication Token (AnT), then includes this token as a client assertion to
+authenticate itself to the Authorization Server’s token endpoint in its request
+for an access token. This client authentication protocol can be used with any
+OAuth 2.0 grant mechanism where a Client App authenticates to the Authorization
+Server token endpoint in order to obtain an access token, including authorization
+code flow, client credentials flow, or other extension grant flows utilizing
+the token endpoint.</p>
+
+<p class=MsoNormal>Before granting an access token, the Authorization Server uses
+standard Public Key Infrastructure tools to validate the digital signature on
+the AnT submitted by the Client App, and to evaluate the trust chain for the
+Client App’s X.509 certificate. The access token is granted by the
+Authentication Server only if the AnT is valid (see Section 6) and the Client
+App’s certificate is trusted. This protocol SHALL only be used only by Client
+Apps that are able to protect the private key used to sign AnTs, e.g.
+confidential clients and certain native device apps.</p>
+
+<p class=MsoNormal>Note: The HTTP request and response examples presented below
+are <u>non-normative</u>. For readability purposes, line wraps have been added
+to some HTTP headers and request bodies, some headers have been omitted, and
+some parameters have not been URL encoded. </p>
+
+<p class=MsoNormal>The following steps define the workflow:</p>
+
+<p class=MsoNormal>1. The Client App checks that the Authorization Server
+supports UDAP by retrieving the Authorization Server’s UDAP metadata from a
+well-known URL.</p>
+
+<p class=HTTP>GET /.well-known/udap HTTP/1.1<br>
+Host: resourceholder.example.com<br>
+<br>
+</p>
+
+<p class=MsoNormal>Response:</p>
+
+<p class=HTTP>HTTP/1.1 200 OK<br>
+Content-Type: application/json<br>
+<br>
+{ <br>
+  &quot;x5c&quot; : [&quot;{<i>cert1</i>}&quot;, &quot;{<i>cert2</i>}&quot;, …]<br>
+}</p>
+
+<p class=MsoNormal>If the Authorization Server returns an error code, then the Authorization
+Server does not support UDAP JWT-based client authentication and the Client App
+should abort this workflow. The Authorization Server’s certificates are
+discovered as part of this metadata request. The Client App MAY examine the
+certificates to determine whether the Authorization Server is part of a suitable
+trust community.</p>
+
+<p class=MsoNormal>2. The Client App MUST register with the Authorization
+Server to use signed JWTs as Authentication Tokens, unless the Client App and
+Authorization Server support the alternative flow for unregistered client apps
+described in section 8.1. If the Authorization Server supports UDAP Dynamic
+Client Registration, the Client App MAY register with the AS using that
+protocol. If the AS does not support dynamic client registration, it SHOULD
+supply another method for Client Apps to register their certificates and obtain
+a client ID.</p>
+
+<p class=MsoNormal>3. The Client App SHOULD perform any steps required by the
+grant mechanism it is using before making its request to the token endpoint. These
+steps occur prior to client authentication. </p>
+
+<p class=MsoNormal>3.1 Authorization Code Flow</p>
+
+<p class=MsoNormal>When using the authorization code flow, the Client App
+should first direct the end user to the AS’s authorization endpoint in order to
+receive an authorization code via the Client App’s redirection endpoint, as in
+this example:</p>
+
+<p class=HTTP>GET /authorize?<br>
+  response_type=code&amp;<br>
+  state=client_random_state&amp;<br>
+  client_id=clientIDforResourceHolder&amp;<br>
+  scope= resource_scope1+resource_scope2&amp;<br>
+  redirect_uri=https://client.example.net/clientredirect HTTP/1.1<br>
+Host: resourceholder.example.com<br>
+<br>
+</p>
+
+<p class=MsoNormal>If the end user authorizes the Client App to the requested
+resources, the AS will return an authorization code to the Client App by
+redirecting the user’s browser to the Client App’s redirection endpoint:</p>
+
+<p class=HTTP>HTTP/1.1 302 Found<br>
+Location: https:// client.example.net/clientredirect?<br>
+   code=authz_code_from_resource_holder&amp;<br>
+   state=client_random_state</p>
+
+<p class=MsoNormal>3.2 Client Credentials Flow</p>
+
+<p class=MsoNormal>When using the client credentials flow, no additional steps
+are required prior to connecting to the token endpoint.</p>
+
+<p class=MsoNormal>3.3 For other grant types, perform the steps required by
+that grant type, if any, prior to connecting to the token endpoint. </p>
+
+<p class=MsoNormal>4. The Client App then prepares an Authentication Token
+(AnT) for inclusion in the Client App’s request to the AS’s token endpoint. The
+AnT serves two purposes: it establishes the Client’s control of a private key,
+and it provides the digital certificate needed to validate the signature and
+establish trust. The AnT is a signed JWT containing the following claims:</p>
+
+<p class=MsoNormal>   iss: the client ID issued by the AS to the Client App<br>
+   sub: the client ID issued by the AS to the Client App<br>
+   aud: token endpoint URI of the Authorization Server<br>
+   exp: token expiration time expressed as seconds since epoch (should be
+short-lived)<br>
+   iat: issued at time expressed as seconds since epoch<br>
+   jti: token identifier used to identify token replay</p>
+
+<p class=MsoNormal>The JOSE Header for the AnT contains the following key/value
+pairs:</p>
+
+<p class=MsoNormal>   alg : &quot;RS256&quot;<br>
+   x5c : [cert1, cert2, …]<br>
+   x5u : valid URI (optional)</p>
+
+<p class=MsoNormal>The x5c claim contains the Client App’s certificate chain as
+an array of one or more elements, each containing a base64 encoded
+representation of the DER encoded X.509 certificate. The AnT is digitally
+signed and assembled using JWS compact serialization as per RFC 7515.</p>
+
+<p class=MsoNormal>5. The client uses this AnT to authenticate itself as part
+of its request for an access token from the Authorization Server’s token
+endpoint. The client indicates that an AnT will be used by including two
+extension parameters: “client_assertion_type” with a value of
+“urn:ietf:params:oauth:client-assertion-type:jwt-bearer” and “client_assertion”
+with a value equal to the JWS compact serialization of the signed AnT
+constructed in step 4. An additional extension parameter “udap” is also
+included with a string value of “1” to signal to the AS that version 1 of this
+protocol is being used. The Client App MUST NOT use HTTP Basic authentication,
+i.e. an Authorization header MUST NOT appear in the request headers, as no
+shared client secret is used in this workflow. The client ID MAY be included in
+the request parameter; if included, it must match the sub value in the AnT. </p>
+
+<p class=MsoNormal>5.1 Authorization Code Flow </p>
+
+<p class=MsoNormal>Continuing the previous example using the authorization code
+flow, the Client App submits the authorization code obtained following user
+authorization:</p>
+
+<p class=HTTP>POST /token HTTP/1.1<br>
+Host: as.example.com<br>
+Content-type: application/x-www-form-urlencoded<br>
+<br>
+grant_type=authorization_code&amp;<br>
+  code=authz_code_from_resource_holder&amp;<br>
+  client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&amp;<br>
+  client_assertion=eyJh[…remainder of AnT omitted for brevity…]&amp;<br>
+  udap=1</p>
+
+<p class=MsoNormal>5.2 Client Credentials Flow </p>
+
+<p class=MsoNormal>When using the client credentials flow, there is no
+authorization code for the Client App to submit:</p>
+
+<p class=HTTP>POST /token HTTP/1.1<br>
+Host: as.example.com<br>
+Content-type: application/x-www-form-urlencoded<br>
+<br>
+grant_type=client_credentials&amp;<br>
+ 
+client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&amp;<br>
+  client_assertion=eyJh[…remainder of AnT omitted for brevity…]&amp;<br>
+  udap=1</p>
+
+<p class=MsoNormal>6. Authorization Server (AS) validates the Client App’s request.</p>
+
+<p class=MsoNormal>6.1 The AS validates the digital signature on the AnT using
+the public key extracted from cert1 in the x5c parameter of the JOSE header. If
+the signature cannot be validated, the request is denied.</p>
+
+<p class=MsoNormal>6.2 The AS attempts to construct a valid certificate chain
+from the Client’s certificate (cert1) to an anchor certificate trusted by the
+AS using conventional X.509 chain building techniques and path validation,
+including certificate validity and revocation status checking. The Client MUST
+include its own certificate and MAY include a complete certificate chain in its
+request. The AS MAY use additional certificates not included by the Client to
+construct a chain (e.g. from its own certificate cache or discovered via the
+X.509 AIA mechanism). If a trusted chain cannot be built and validated by the AS,
+the request is denied. </p>
+
+<p class=MsoNormal>6.3 The AS validates the iss, sub, aud, exp, iat, and jti values
+within the AnT. The iss and sub values MUST correspond to a registered client ID 
+that is permitted to authenticate using an AnT and whose registration is bound to
+a uniformResourceIdentifier entry in the Subject Alternative Names extension of the Client’s
+certificate, e.g. via UDAP Dynamic Client Registration. If the request contains a client_id
+parameter, the client_id value MUST match the iss and sub values. The aud value MUST
+contain the AS’s token endpoint URI, and the AnT MUST be unexpired. A maximum AnT
+lifetime of 5 minutes is RECOMMENDED. The AS MAY deny a request if the same AnT
+(as determined by the jti value) has been used in a previous token request.</p>
+
+<p class=MsoNormal>6.4 The AS validates any other parameters in the request as
+per the requirements of the grant mechanism identified by the grant_type value.
+If a parameter is invalid or a required parameter is missing, the request is
+denied.</p>
+
+<p class=MsoNormal>6.5 The AS MAY apply additional authorization constraints
+based on certificate attributes as a matter of local policy.</p>
+
+<p class=MsoNormal>7. Authorization Server responds to request</p>
+
+<p class=MsoNormal>7.1 If the request is approved, the Authorization Server
+returns a token response as per Section 5.1 of RFC 6749. For example:</p>
+
+<p class=HTTP>HTTP/1.1 200 OK<br>
+Content-Type: application/json<br>
+<br>
+{<br>
+   &quot;access_token&quot;: &quot;example_access_token_issued_by_AS&quot;,<br>
+   &quot;token_type&quot;: &quot;Bearer&quot;,<br>
+   &quot;expires_in&quot;: 3600<br>
+}</p>
+
+<p class=MsoNormal>The AS MAY also return a refresh_token in its response.</p>
+
+<p class=MsoNormal>7.2 If the request is denied, the AS returns an error as per
+Section 5.2 of RFC 6749. Denials related to trust validation SHOULD use the “invalid_client”
+code. Denials related to invalid signatures should use the “invalid_request”
+code. The AS MAY include an error_description parameter. For example:</p>
+
+<p class=HTTP>HTTP/1.1 400 Bad Request<br>
+Content-Type: application/json<br>
+<br>
+{<br>
+   &quot;error&quot;: &quot;invalid_client&quot;,<br>
+   &quot;error_description&quot;: &quot;The submitted authentication token has
+expired&quot;<br>
+}</p>
+
+<p class=MsoNormal>8 Client Authentication without Pre-registration</p>
+
+<p class=MsoNormal>8.1 When the identity and privileges of a Client App can be
+fully determined by an Authorization Server based solely on the attributes listed
+in the client certificate included in the Authentication Token, the
+Authorization Server MAY allow an unregistered Client App to use this
+authentication protocol to obtain an access token using the client_credentials
+grant flow. In this case, as no client_id exists for the unregistered Client
+App, the corresponding trust community MUST define the set of certificate
+attributes that an AS can use to uniquely identify a Client App, and specify a
+reserved value for the sub claim (e.g. “unregistered”) that can be included in
+the AnT to signal to the AS that the subject of the AnT is the unregistered
+Client App identified by the included certificate. This specification does not
+restrict how the Authorization Server and/or Resource Server communicate to the
+Client App that this alternate workflow can be used.</p>
+
+<p class=MsoNormal>Note that this approach is not suitable for applications
+utilizing the authorization code flow as there is no mechanism to preregister
+the Client App’s redirection URI; such unregistered clients SHOULD use the UDAP
+Dynamic Client Registration Protocol instead. </p>
+
+<p class=MsoNormal>9 References</p>
+
+<p class=MsoNormal>Campbell, C., et al. “Assertion Framework for OAuth 2.0
+Client Authentication and Authorization Grants”, RFC 7521, RFC Editor, May
+2015.<br>
+Cooper, D., et al. “Internet X.509 Public Key Infrastructure Certificate and
+Certificate Revocation List (CRL) Profile”, RFC 5280, RFC Editor, May 2008.<br>
+Hardt, D., Ed., “The OAuth 2.0 Authorization Framework”, RFC 6749, RFC Editor, October
+2012.<br>
+Jones, M., et al. “JSON Web Signature (JWS)”, RFC 7515, RFC Editor, May 2015.<br>
+Jones, M., et al. “JSON Web Token (JWT)”, RFC 7519, RFC Editor, May 2015.<br>
+Jones, M., et al. “JSON Web Token (JWT) Profile for OAuth 2.0 Client
+Authentication and Authorization Grants”, RFC 7523, RFC Editor, May 2015.<br>
+Sakimura, N, et al. “OpenID Connect Core 1.0 incorporating errata set 1”, The
+OpenID Foundation, November 2014.</p>
+
+<p class=MsoNormal>10 Authors</p>
+
+<p class=MsoNormal>Luis C. Maas III, EMR Direct<br>
+Julie W. Maas, EMR Direct</p>
+
+<p class=MsoNormal>11 Notices</p>
+
+<p class=MsoNormal>Copyright ©2016-2025 UDAP.org and the persons identified as
+the document authors. All rights reserved.</p>
+
+<p class=MsoNormal>UDAP.org grants to any interested party a non-exclusive,
+royalty-free, worldwide right and license to reproduce, publish, distribute and
+display this Draft Specification, in full and without modification, solely for
+the purpose of implementing the technology described in this Draft
+Specification, provided that attribution is made to UDAP.org as the source of
+the material and that such attribution does not indicate an endorsement by
+UDAP.org.</p>
+
+<p class=MsoNormal>All Draft Specifications and Final Specifications, and the
+information contained therein, are provided on an “AS IS” basis and the
+authors, the organizations they represent, and UDAP.org make no (and hereby
+expressly disclaim any) warranties, express, implied, or otherwise, including
+but not limited to any warranty that the use of the information therein will
+not infringe any rights or any implied warranties of merchantability or fitness
+for a particular purpose, and the entire risk as to implementing this
+specification is assumed by the implementer. Additionally, UDAP.org takes no
+position regarding the validity or scope of any intellectual property or other
+rights that might be claimed to pertain to the implementation or use of the
+technology described in this document or the extent to which any license under
+such rights might or might not be available, nor does it represent that it has
+made any independent effort to identify any such rights.</p>
+
+</div>
+
+
+            
+
+
+        </div>
+    </div>
+</div>
+<!--Blog Post end-->
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer widgets -->
+<section id="footer-widgets" class="section footer-widgets dark-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-text">
+                    <h4>About UDAP</h4>
+                    <p>
+The Unified Data Access Profiles (UDAP&trade;) published
+by UDAP.org increase confidence in open API
+transactions through the use of trusted identities
+and verified attributes. UDAP use cases support standards-based security, privacy
+and scalable interoperability through reusable identities, leveraging dynamic client
+registration, JWT-based client authentication and Tiered OAuth. <br><br>
+Notice: UDAP and the UDAP gear logo, ecosystem gears, and green lock designs are trademarks of UDAP.org.  
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-contact">
+                    <h4>Check in...</h4>
+                    <ul>
+                        <li>
+                            <i class="ion-email"></i> Email collaborate@udap.org for more information or<br>
+                            <a href="https://groups.google.com/forum/#!forum/udap-discuss/join">Join our Google Group</a><br>
+                            to participate in the development of UDAP or to request our Branding Guidelines if you would like to make statements about your use of UDAP or use the UDAP logo or designs.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-recent-posts">
+                    <h4>Getting Involved</h4>
+                    <ul>
+                        <li>
+                            UDAP profiles have been tested at several HL7 FHIR connectathons. Contact
+                            us for more information about how to become involved in testing or to pilot one or more 
+                            profiles within your own ecosystem.
+                            
+                        </li>
+                        <li>
+                            HL7 and FHIR are registered trademarks of Health Level Seven International and are used with permission.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-text">
+                    <h4>Use Cases</h4>
+                    <p>UDAP's first applications are in the healthcare sector, but the profiles are not healthcare specific. Conversations about the use of UDAP in additional sectors are welcome at a community meeting or by reaching out via email.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Footer widgets -->
+<!-- footer -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="copyright text-xs-center">&copy; 2026 UDAP.org</p>
+            </div>
+
+            <div class="col-md-5 col-sm-4">
+                <ul class="footer-social-block">
+
+                    <li><a href="https://www.twitter.com/udapTools"><i class="fa fa-twitter"></i></a></li>
+
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-menu text-xs-center">
+                    <a href="http://www.emrdirect.com/privacy.html">Privacy Policy</a> | <a href="http://www.emrdirect.com/terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+
+<a id="totop" href="#totop"><i class="fa fa-angle-double-up"></i></a>
+<!-- js -->
+<script src="assets/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="assets/lib/isotope/dist/isotope.pkgd.min.js"></script>
+<script src="assets/lib/owlcarousel/owl-carousel/owl.carousel.js"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+<script src="assets/lib/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="assets/lib/waypoints/lib/shortcuts/inview.min.js"></script>
+
+<script src="assets/lib/FlexSlider/jquery.flexslider.js"></script>
+<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.js"></script>
+<script src="assets/lib/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.min.js"></script>
+<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+
+<script src="assets/js/main.js"></script>
+
+<!--[if lt IE 10]>
+<script>
+    $('input, textarea').placeholder();
+</script>
+<![endif]-->
+
+
+</body>
+</html>

@@ -76,6 +76,21 @@ Example:
 
 - `iss = http://localhost:8091/issuer/reference-demo`
 
+## Public Base URL
+
+The issuer surface should derive its public URLs from the same explicit server-wide public origin:
+
+- `PUBLIC_BASE_URL=https://smart-permission-tickets.example.org`
+
+That configured origin should drive:
+
+- issuer metadata `issuer`
+- `jwks_uri`
+- the demo sign helper URL
+- the `iss` value stamped into signed Permission Tickets
+
+The reference implementation should not infer issuer base URLs from `X-Forwarded-*` headers by default.
+
 ## Issuer Record Model
 
 Each configured issuer should have at least:
@@ -173,7 +188,9 @@ This is a demo helper, not the normative Permission Ticket protocol.
 It should:
 
 - accept a JSON Permission Ticket payload
-- normalize required claims like `iss`, `iat`, `exp`, and `jti`
+- normalize required claims like `iss`, `iat`, and `jti`
+- preserve an explicit NumericDate `exp` when provided
+- omit `exp` entirely when the caller intentionally requests a non-expiring ticket
 - return a signed JWT plus issuer metadata
 
 Example response:

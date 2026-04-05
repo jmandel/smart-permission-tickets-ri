@@ -39,6 +39,24 @@ This replaces the earlier HAPI-proxy assumption in the meta-plan. The reference 
 - one logical corpus containing all synthetic patients and all sites
 - optional in-memory mode for demos; file-backed mode for local development
 
+### Public Origin Configuration
+
+Advertised SMART/OAuth/FHIR URLs and token audiences should come from an explicit configured public origin, not from request headers.
+
+Recommended environment control:
+
+- `PUBLIC_BASE_URL=https://smart-permission-tickets.example.org`
+
+Use this configured origin for:
+
+- SMART configuration `issuer`, `token_endpoint`, `registration_endpoint`, `introspection_endpoint`, and `fhir_base_url`
+- issuer metadata and JWKS base URLs
+- access token `aud`
+- demo bootstrap issuer metadata
+- any server-rendered example links or curls that present absolute public URLs
+
+Do not derive the public origin from `X-Forwarded-*` headers in the default implementation. That creates ambiguous and potentially spoofable public URL construction. If a future deployment needs proxy-aware origin switching, it should be designed as a separate, explicitly constrained feature rather than the default path.
+
 ### URL Shape
 
 The server should support a default root policy surface plus named alternate mode mounts.
@@ -262,6 +280,26 @@ This gives the implementation two clean behaviors:
 
 ## Token Exchange And Access Token Shape
 
+### Token Endpoint Behavior
+
+The token endpoint should behave as an OAuth endpoint, not as a FHIR endpoint.
+
+For the currently supported Permission Ticket flow:
+
+- require `grant_type = urn:ietf:params:oauth:grant-type:token-exchange`
+- require `subject_token_type = https://smarthealthit.org/token-type/permission-ticket`
+- require `subject_token`
+- require a supported Permission Ticket `ticket_type`
+- if request `scope` is present, intersect it with the scopes granted by the Permission Ticket
+
+Token failures should return OAuth-style JSON errors such as:
+
+- `invalid_request`
+- `invalid_grant`
+- `invalid_scope`
+- `unsupported_grant_type`
+- `invalid_client`
+
 ### Access Token
 
 The token exchange result should be a stateless signed JWT access token in a local server-defined format.
@@ -285,6 +323,17 @@ The `aud` claim should identify the exact FHIR base that the token is valid for:
 - site-specific token -> site-specific FHIR base audience
 
 That way the server can reject replay of a site-specific token on the global base, or replay of a global token on a site-specific base when those are meant to be distinct authorization contexts.
+
+### Local Permission Ticket Extensions
+
+The reference implementation uses a small number of implementation-defined extensions under the ticket `details` object.
+
+Current local fields:
+
+- `details.dateSemantics`
+- `details.sensitive.mode`
+
+These should be documented as local extensions rather than implied to be base-spec fields.
 
 ## Viewer Handoff Boundary
 

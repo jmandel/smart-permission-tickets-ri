@@ -1,8 +1,17 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 
-import { buildFetchCurl, decodeJwtPayload } from "../demo";
+import { buildFetchCurl, buildTokenExchangeCurl, describeClientPlan } from "../demo";
 import { fetchJson } from "../lib/viewer-client";
-import { buildArtifactViewerHref, loadArtifactViewerPayload, renderArtifactText, type ArtifactViewerPayload } from "../lib/artifact-viewer";
+import {
+  buildArtifactViewerHref,
+  buildDemoEventArtifactPayload,
+  buildDemoEventSummary,
+  buildJwtArtifactPayload,
+  decodeJwtArtifact,
+  loadArtifactViewerPayload,
+  renderArtifactText,
+  type ArtifactViewerPayload,
+} from "../lib/artifact-viewer";
 import { SplitAction } from "./SplitAction";
 import {
   addDaysUtc,
@@ -222,6 +231,14 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       }),
     [selectedEncounterGroups, selectedEncounterNotes, selectedEncounterTypeCounts, siteStyles],
   );
+  const clientStory = useMemo(
+    () => (launch?.clientPlan ? describeClientPlan(launch.mode, launch.clientPlan, sharedClient?.clientId) : null),
+    [launch, sharedClient?.clientId],
+  );
+  const wellKnownClientPlan = launch?.clientPlan?.type === "well-known" ? launch.clientPlan : null;
+  const frameworkBackedClientPlan = launch?.clientPlan?.type === "well-known" || launch?.clientPlan?.type === "udap"
+    ? launch.clientPlan
+    : null;
 
   const handleToggleEncounterSelection = (encounterKey: string) => {
     // If the encounter is outside the visible window, expand the window to include it
@@ -407,7 +424,13 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
           </div>
           <div className="viewer-overview-item viewer-overview-item-wide">
             <span className="summary-label">Client</span>
-            <strong>{sharedClient ? sharedClient.clientName : launch.mode === "anonymous" || launch.mode === "open" ? "Not required" : "Pending"}</strong>
+            <strong>
+              {sharedClient
+                ? sharedClient.clientName
+                : launch.mode === "anonymous" || launch.mode === "open"
+                  ? "Not required"
+                  : launch.clientPlan?.displayLabel ?? "Pending"}
+            </strong>
           </div>
           <div className="viewer-overview-item">
             <span className="summary-label">Flow</span>
@@ -426,7 +449,32 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
 
         <section className="subpanel viewer-section">
           <h3>Authorization Artifacts</h3>
-          <p className="subtle">Inspect the network-level authorization flow first, then the site-by-site exchanges that follow from it.</p>
+          <p className="subtle">
+            Inspect the network-level authorization flow first, then the site-by-site exchanges that follow from it. Access-token claims and introspection responses include resolved client-binding and issuer-trust details when those checks are in play.
+          </p>
+          {clientStory && (
+            <>
+              <div className="summary-grid viewer-client-story-grid">
+                <div className="summary-card">
+                  <span className="summary-label">Client path</span>
+                  <strong>{clientStory.label}</strong>
+                </div>
+                <div className="summary-card">
+                  <span className="summary-label">Registration</span>
+                  <strong>{clientStory.registrationLabel}</strong>
+                </div>
+                <div className="summary-card">
+                  <span className="summary-label">Client id</span>
+                  <strong className="mono-value mono-wrap">{clientStory.effectiveClientId}</strong>
+                </div>
+                <div className="summary-card">
+                  <span className="summary-label">Ticket binding</span>
+                  <strong>{clientStory.ticketBinding.label}</strong>
+                </div>
+              </div>
+              <p className="subtle viewer-client-story-copy">{clientStory.whatThisDemonstrates}</p>
+            </>
+          )}
           {error && <p className="error-text">{error}</p>}
           <div className="artifact-toolbar">
             {launch.signedTicket && (
@@ -435,23 +483,85 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                   label: "Ticket",
                   onSelect: () => {
                     const signedTicket = launch.signedTicket!;
-                    openArtifactViewer({
+                    openArtifactViewer(buildJwtArtifactPayload({
                       title: "Signed Ticket JWT",
-                      content: {
-                        signedTicket,
-                        claims: decodeJwtPayload(signedTicket),
-                      },
-                      copyText: signedTicket,
-                    });
+                      jwt: signedTicket,
+                      metadata: buildJwtArtifactMetadata([
+                        clientStory?.ticketBinding
+                          ? { label: "Binding", value: clientStory.ticketBinding.label }
+                          : null,
+                        clientStory?.frameworkUri
+                          ? { label: "Framework", value: clientStory.frameworkUri }
+                          : null,
+                        clientStory?.entityUri
+                          ? { label: "Entity URI", value: clientStory.entityUri }
+                          : null,
+                      ]),
+                    }));
                   },
                 }}
                 secondary={[
                   ...(launch.ticketPayload
                     ? [
                         {
-                          label: "Open payload ↗",
-                          onSelect: () => openArtifactViewer({ title: "Permission Ticket Payload", content: launch.ticketPayload }),
+                          label: "Open JWT ↗",
+                          onSelect: () => openArtifactViewer(buildJwtArtifactPayload({
+                            title: "Permission Ticket JWT",
+                            jwt: launch.signedTicket!,
+                            metadata: buildJwtArtifactMetadata([
+                              clientStory?.ticketBinding
+                                ? { label: "Binding", value: clientStory.ticketBinding.label }
+                                : null,
+                              clientStory?.ticketBinding?.rationale
+                                ? { label: "Rationale", value: clientStory.ticketBinding.rationale }
+                                : null,
+                              clientStory?.frameworkUri
+                                ? { label: "Framework", value: clientStory.frameworkUri }
+                                : null,
+                              clientStory?.entityUri
+                                ? { label: "Entity URI", value: clientStory.entityUri }
+                                : null,
+                            ]),
+                          })),
                         },
+                        ...(clientStory
+                          ? [{
+                            label: "Binding summary ↗",
+                            onSelect: () => openArtifactViewer({
+                              title: "Ticket Binding Summary",
+                              content: {
+                                client_story: clientStory,
+                                ticket_binding: clientStory.ticketBinding,
+                                ticket_payload: launch.ticketPayload,
+                              },
+                            }),
+                          }]
+                          : []),
+                        ...(sharedClient
+                          ? [{
+                            label: "Token curl ↗",
+                            onSelect: () => openArtifactViewer({
+                              title: "Token Exchange cURL",
+                              content: {
+                                note: "Replace <private-key-jwt> with a freshly signed client assertion before running this command.",
+                                curl: buildTokenExchangeCurl(
+                                  launch.origin,
+                                  launch.network.authSurface,
+                                  launch.signedTicket!,
+                                  { clientId: sharedClient.clientId },
+                                  launch.proofJkt,
+                                ),
+                              },
+                              copyText: buildTokenExchangeCurl(
+                                launch.origin,
+                                launch.network.authSurface,
+                                launch.signedTicket!,
+                                { clientId: sharedClient.clientId },
+                                launch.proofJkt,
+                              ),
+                            }),
+                          }]
+                          : []),
                       ]
                     : []),
                   {
@@ -466,9 +576,74 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
               <SplitAction
                 primary={{
                   label: "Client",
-                  onSelect: () => openArtifactViewer({ title: "Viewer Client Registration", content: sharedClient }),
+                  onSelect: () => openArtifactViewer({ title: "Viewer Client Runtime", content: sharedClient }),
                 }}
                 secondary={[
+                  ...(clientStory
+                    ? [{
+                      label: "Client story ↗",
+                      onSelect: () => openArtifactViewer({ title: "Client Story", content: clientStory }),
+                    }]
+                    : []),
+                  ...(launch.clientPlan
+                    ? [{
+                      label: "Open client plan ↗",
+                      onSelect: () => openArtifactViewer({ title: "Viewer Client Plan", content: launch.clientPlan }),
+                    }]
+                    : []),
+                  ...(sharedClient.registrationRequest
+                    ? [{
+                      label: "Registration request ↗",
+                      onSelect: () => openArtifactViewer({ title: "Client Registration Request", content: sharedClient.registrationRequest }),
+                    }]
+                    : []),
+                  ...(sharedClient.registrationResponse
+                    ? [{
+                      label: "Registration response ↗",
+                      onSelect: () => openArtifactViewer({ title: "Client Registration Response", content: sharedClient.registrationResponse }),
+                    }]
+                    : []),
+                  ...(sharedClient.softwareStatement
+                    ? [{
+                      label: "Software statement ↗",
+                      onSelect: () => openArtifactViewer(buildJwtArtifactPayload({
+                        title: "UDAP Software Statement",
+                        jwt: sharedClient.softwareStatement!,
+                        metadata: buildJwtArtifactMetadata([
+                          sharedClient.clientId
+                            ? { label: "Registered client_id", value: sharedClient.clientId }
+                            : null,
+                        ]),
+                      })),
+                    }]
+                    : []),
+                  ...(frameworkBackedClientPlan?.framework.documentUrl
+                    ? [{
+                      label: "Framework doc ↗",
+                      onSelect: () => void inspectRemoteArtifact({
+                        title: `${frameworkBackedClientPlan.type === "udap" ? "UDAP" : "Well-Known"} Framework Document`,
+                        targetUrl: frameworkBackedClientPlan.framework.documentUrl!,
+                      }),
+                    }]
+                    : []),
+                  ...(frameworkBackedClientPlan?.entityUri
+                    ? [{
+                      label: "Client entity ↗",
+                      onSelect: () => void inspectRemoteArtifact({
+                        title: frameworkBackedClientPlan.type === "udap" ? "UDAP Client Entity" : "Well-Known Entity",
+                        targetUrl: frameworkBackedClientPlan.entityUri,
+                      }),
+                    }]
+                    : []),
+                  ...(wellKnownClientPlan?.jwksUrl
+                    ? [{
+                      label: "Entity JWKS ↗",
+                      onSelect: () => void inspectRemoteArtifact({
+                        title: "Well-Known Entity JWKS",
+                        targetUrl: wellKnownClientPlan.jwksUrl!,
+                      }),
+                    }]
+                    : []),
                   {
                     label: "Copy client JSON",
                     onSelect: () => void navigator.clipboard.writeText(JSON.stringify(sharedClient, null, 2)),
@@ -1115,9 +1290,11 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
   const payload = useMemo(() => loadArtifactViewerPayload(artifactKey), [artifactKey]);
   const [copiedAction, setCopiedAction] = useState<string | null>(null);
   const [focusRef, setFocusRef] = useState<string | null>(requestedFocusRef ?? null);
+  const [activeEventTabKey, setActiveEventTabKey] = useState<string | null>(null);
 
   useEffect(() => {
     setFocusRef(requestedFocusRef ?? null);
+    setActiveEventTabKey(null);
   }, [requestedFocusRef, artifactKey]);
 
   if (!payload) {
@@ -1143,10 +1320,49 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
       : null;
   const title = focusNode?.title ?? payload.title;
   const subtitle = focusNode?.subtitle ?? payload.subtitle;
-  const metadata = payload.kind === "context" ? focusNode?.metadata ?? [] : payload.metadata ?? [];
-  const noteText = payload.kind === "context" ? focusNode?.noteText ?? null : payload.noteText ?? null;
-  const text =
+  const metadata =
     payload.kind === "context"
+      ? focusNode?.metadata ?? []
+      : payload.kind === "event"
+        ? []
+        : payload.metadata ?? [];
+  const noteText =
+    payload.kind === "context"
+      ? focusNode?.noteText ?? null
+      : payload.kind === "event"
+        ? null
+        : payload.noteText ?? null;
+  const eventTabs = useMemo(() => (payload.kind === "event" ? buildEventArtifactTabs(payload.event) : []), [payload]);
+  const eventSummary = useMemo(() => (payload.kind === "event" ? buildDemoEventSummary(payload.event) : null), [payload]);
+  const activeEventTab = payload.kind === "event"
+    ? eventTabs.find((tab) => tab.key === activeEventTabKey) ?? eventTabs[0] ?? null
+    : null;
+  const jwtArtifact = useMemo(() => {
+    if (payload.kind !== "jwt") return null;
+    try {
+      return decodeJwtArtifact(payload.jwt);
+    } catch {
+      return null;
+    }
+  }, [payload]);
+  const eventJwtArtifact = useMemo(() => {
+    if (activeEventTab?.kind !== "jwt" || typeof activeEventTab.content !== "string") return null;
+    try {
+      return decodeJwtArtifact(activeEventTab.content);
+    } catch {
+      return null;
+    }
+  }, [activeEventTab]);
+  const text =
+    payload.kind === "jwt"
+      ? payload.jwt
+      : payload.kind === "event"
+        ? activeEventTab
+          ? typeof activeEventTab.content === "string"
+            ? activeEventTab.content
+            : JSON.stringify(activeEventTab.content, null, 2)
+          : ""
+      : payload.kind === "context"
       ? focusNode
         ? typeof focusNode.content === "string"
           ? focusNode.content
@@ -1288,20 +1504,260 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                 <pre className="artifact-note-pre">{noteText.trim()}</pre>
               </section>
             ) : null}
-            <section className="artifact-json-panel">
-              <div className="artifact-json-head">
-                <h3>JSON</h3>
-                <button type="button" className="button mini" onClick={() => void copyWithFeedback("json", text)}>
-                  {copiedAction === "json" ? "Copied JSON" : "Copy JSON"}
-                </button>
-              </div>
-              <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: prettyHtml }} />
-            </section>
+            {payload.kind === "event" ? (
+              <>
+                {eventSummary && (
+                  <section className="artifact-event-summary">
+                    <div className="artifact-event-summary-head">
+                      <div>
+                        <h3>Internal Audit Event</h3>
+                        <p className="subtle">{eventSummary.description}</p>
+                      </div>
+                      {eventTabs.length > 0 && (
+                        <div className="artifact-event-shortcuts">
+                          {eventTabs.map((tab) => (
+                            <button
+                              key={`shortcut:${tab.key}`}
+                              type="button"
+                              className={`artifact-tab mini${tab.key === activeEventTab?.key ? " active" : ""}`}
+                              onClick={() => setActiveEventTabKey(tab.key)}
+                            >
+                              Open {tab.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <dl className="artifact-metadata-grid">
+                      {eventSummary.fields.map((entry) => (
+                        <div key={`${entry.label}:${entry.value}`} className="artifact-metadata-item">
+                          <dt>{entry.label}</dt>
+                          <dd className="mini-definition-value mono-wrap">{entry.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    {eventSummary.patientMatch && (
+                      <div className="artifact-event-callout">
+                        <strong>Patient match</strong>
+                        <span>{eventSummary.patientMatch}</span>
+                      </div>
+                    )}
+                    {eventSummary.steps?.length ? (
+                      <details className="artifact-event-steps" open>
+                        <summary>Validation steps</summary>
+                        <div className="artifact-event-step-list">
+                          {eventSummary.steps.map((step, index) => (
+                            <div key={`${step.check}:${index}`} className={`artifact-event-step ${step.passed ? "success" : "failure"}`}>
+                              <div className="artifact-event-step-head">
+                                <strong>{step.check}</strong>
+                                <span>{step.passed ? "Passed" : "Failed"}</span>
+                              </div>
+                              {step.evidence && <div className="subtle mono-wrap">{step.evidence}</div>}
+                              {step.why && <div className="subtle">{step.why}</div>}
+                              {step.reason && <div className="subtle">{step.reason}</div>}
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    ) : null}
+                    <p className="artifact-event-note subtle">{eventSummary.noteText}</p>
+                  </section>
+                )}
+                {eventTabs.length > 0 && (
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>Protocol artifacts</h3>
+                    </div>
+                    <div className="artifact-tab-bar">
+                      {eventTabs.map((tab) => (
+                        <button
+                          key={tab.key}
+                          type="button"
+                          className={`artifact-tab${tab.key === activeEventTab?.key ? " active" : ""}`}
+                          onClick={() => setActiveEventTabKey(tab.key)}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                )}
+                {!eventTabs.length ? (
+                  <section className="artifact-note-text">
+                    <p className="subtle">This audit event does not have standalone request or response artifacts.</p>
+                  </section>
+                ) : null}
+                {activeEventTab?.kind === "jwt" ? (
+                  eventJwtArtifact ? (
+                    <>
+                      <section className="artifact-json-panel">
+                        <div className="artifact-json-head">
+                          <h3>{activeEventTab.label} Header</h3>
+                          <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-jwt-header", JSON.stringify(eventJwtArtifact.header, null, 2))}>
+                            {copiedAction === "event-jwt-header" ? "Copied Header" : "Copy Header"}
+                          </button>
+                        </div>
+                        <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: renderHighlightedJson(JSON.stringify(eventJwtArtifact.header, null, 2)) }} />
+                      </section>
+                      <section className="artifact-json-panel">
+                        <div className="artifact-json-head">
+                          <h3>{activeEventTab.label} Payload</h3>
+                          <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-jwt-payload", JSON.stringify(eventJwtArtifact.payload, null, 2))}>
+                            {copiedAction === "event-jwt-payload" ? "Copied Payload" : "Copy Payload"}
+                          </button>
+                        </div>
+                        <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: renderHighlightedJson(JSON.stringify(eventJwtArtifact.payload, null, 2)) }} />
+                      </section>
+                      <section className="artifact-json-panel">
+                        <div className="artifact-json-head">
+                          <h3>{activeEventTab.label} Signature</h3>
+                          <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-jwt-signature", eventJwtArtifact.signature)}>
+                            {copiedAction === "event-jwt-signature" ? "Copied Signature" : "Copy Signature"}
+                          </button>
+                        </div>
+                        <pre className="viewer-json viewer-json-plain">{eventJwtArtifact.signature}</pre>
+                      </section>
+                      <section className="artifact-json-panel">
+                        <div className="artifact-json-head">
+                          <h3>{activeEventTab.label} Compact</h3>
+                          <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-jwt", eventJwtArtifact.compact)}>
+                            {copiedAction === "event-jwt" ? "Copied JWT" : "Copy JWT"}
+                          </button>
+                        </div>
+                        <pre className="viewer-json viewer-json-plain">{eventJwtArtifact.compact}</pre>
+                      </section>
+                    </>
+                  ) : (
+                    <section className="artifact-json-panel">
+                      <div className="artifact-json-head">
+                        <h3>{activeEventTab.label}</h3>
+                        <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-jwt", text)}>
+                          {copiedAction === "event-jwt" ? "Copied JWT" : "Copy JWT"}
+                        </button>
+                      </div>
+                      <pre className="viewer-json viewer-json-plain">{text}</pre>
+                    </section>
+                  )
+                ) : (
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>{activeEventTab?.label ?? "Event"}</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-json", text)}>
+                        {copiedAction === "event-json" ? "Copied" : "Copy"}
+                      </button>
+                    </div>
+                    <pre
+                      className={`viewer-json${activeEventTab?.kind === "text" ? " viewer-json-plain" : ""}`}
+                      dangerouslySetInnerHTML={activeEventTab?.kind === "text" ? undefined : { __html: prettyHtml }}
+                    >
+                      {activeEventTab?.kind === "text" ? text : undefined}
+                    </pre>
+                  </section>
+                )}
+              </>
+            ) : payload.kind === "jwt" ? (
+              jwtArtifact ? (
+                <>
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>JWT Header</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("jwt-header", JSON.stringify(jwtArtifact.header, null, 2))}>
+                        {copiedAction === "jwt-header" ? "Copied Header" : "Copy Header"}
+                      </button>
+                    </div>
+                    <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: renderHighlightedJson(JSON.stringify(jwtArtifact.header, null, 2)) }} />
+                  </section>
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>JWT Payload</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("jwt-payload", JSON.stringify(jwtArtifact.payload, null, 2))}>
+                        {copiedAction === "jwt-payload" ? "Copied Payload" : "Copy Payload"}
+                      </button>
+                    </div>
+                    <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: renderHighlightedJson(JSON.stringify(jwtArtifact.payload, null, 2)) }} />
+                  </section>
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>JWT Signature</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("jwt-signature", jwtArtifact.signature)}>
+                        {copiedAction === "jwt-signature" ? "Copied Signature" : "Copy Signature"}
+                      </button>
+                    </div>
+                    <pre className="viewer-json viewer-json-plain">{jwtArtifact.signature}</pre>
+                  </section>
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>Compact JWT</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("jwt", jwtArtifact.compact)}>
+                        {copiedAction === "jwt" ? "Copied JWT" : "Copy JWT"}
+                      </button>
+                    </div>
+                    <pre className="viewer-json viewer-json-plain">{jwtArtifact.compact}</pre>
+                  </section>
+                </>
+              ) : (
+                <section className="artifact-json-panel">
+                  <div className="artifact-json-head">
+                    <h3>JWT</h3>
+                    <button type="button" className="button mini" onClick={() => void copyWithFeedback("jwt", text)}>
+                      {copiedAction === "jwt" ? "Copied JWT" : "Copy JWT"}
+                    </button>
+                  </div>
+                  <pre className="viewer-json viewer-json-plain">{text}</pre>
+                </section>
+              )
+            ) : (
+              <section className="artifact-json-panel">
+                <div className="artifact-json-head">
+                  <h3>JSON</h3>
+                  <button type="button" className="button mini" onClick={() => void copyWithFeedback("json", text)}>
+                    {copiedAction === "json" ? "Copied JSON" : "Copy JSON"}
+                  </button>
+                </div>
+                <pre className="viewer-json" dangerouslySetInnerHTML={{ __html: prettyHtml }} />
+              </section>
+            )}
           </>
         )}
       </section>
     </main>
   );
+}
+
+type EventArtifactTab = {
+  key: string;
+  label: string;
+  kind: "json" | "jwt" | "text";
+  content: unknown;
+};
+
+function buildEventArtifactTabs(event: Parameters<typeof buildDemoEventArtifactPayload>[0]): EventArtifactTab[] {
+  const tabs: EventArtifactTab[] = [];
+  if (event.artifacts?.request) {
+    tabs.push({
+      key: "request",
+      label: "Request",
+      kind: "json",
+      content: event.artifacts.request,
+    });
+  }
+  if (event.artifacts?.response) {
+    tabs.push({
+      key: "response",
+      label: "Response",
+      kind: "json",
+      content: event.artifacts.response,
+    });
+  }
+  for (const [index, artifact] of (event.artifacts?.related ?? []).entries()) {
+    tabs.push({
+      key: `related:${index}`,
+      label: artifact.label,
+      kind: artifact.kind,
+      content: artifact.content,
+    });
+  }
+  return tabs;
 }
 
 function accessTokenForSite(siteRuns: ViewerSiteRun[], siteSlug: string) {
@@ -1476,6 +1932,10 @@ function firstParagraph(text: string) {
     .split(/\n\s*\n/g)
     .map((paragraph) => paragraph.trim())
     .find(Boolean) ?? text.trim();
+}
+
+function buildJwtArtifactMetadata(entries: Array<{ label: string; value: string } | null>) {
+  return entries.filter((entry): entry is { label: string; value: string } => Boolean(entry));
 }
 
 function openArtifactViewer(payload: ArtifactViewerPayload) {

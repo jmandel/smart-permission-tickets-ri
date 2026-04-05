@@ -11,8 +11,16 @@ The ticket should describe:
 - which sites and resource types are in scope
 - what time window applies
 - whether sensitive data is included
+- which client binding, if any, must be satisfied at redemption time
 
 It should not require callers to know internal security-label systems or category codes.
+
+The signed-ticket layer now formally defines common semantics for:
+
+- date interpretation of `authorization.access.periods`
+- exclusion of sensitive data
+
+These are common processing semantics, not per-ticket wire fields. This document describes how those semantics compile into the server's normalized input.
 
 ## Boundary To The Signed Permission Ticket
 
@@ -20,7 +28,7 @@ There are two layers:
 
 1. **Signed Permission Ticket claims**
    - portable, spec-facing JWT content
-   - examples in this repo use `authorization.subject`, SMART scopes, periods, jurisdictions, organizations, and ticket-type-specific `details`
+   - examples in this repo use `authorization.subject`, SMART scopes, periods, jurisdictions, organizations, `cnf`, `client_binding`, and ticket-type-specific `details`
    - these claims are validated and interpreted by the data holder
 
 2. **Normalized server input**
@@ -54,16 +62,65 @@ This boundary is intentional. The signed ticket should stay portable and not lea
     "Practitioner",
     "Location"
   ],
+  "ticketIssuerTrust": {
+    "source": "framework",
+    "issuerUrl": "https://issuer.example.org",
+    "displayName": "https://issuer.example.org",
+    "framework": {
+      "uri": "https://example.org/frameworks/smart-health-issuers",
+      "type": "well-known"
+    }
+  },
   "dateRange": {
     "start": "2023-01-01",
     "end": "2025-12-31"
   },
   "dateSemantics": "generated-during-period",
+  "clientBinding": {
+    "binding_type": "framework-entity",
+    "framework": "https://example.org/frameworks/smart-health-issuers",
+    "framework_type": "well-known",
+    "entity_uri": "https://clinic.example.com"
+  },
   "sensitive": {
     "mode": "deny"
   }
 }
 ```
+
+## Client Binding
+
+When the signed ticket carries a framework-backed `client_binding`, the normalized server input carries it forward as `clientBinding` so token issuance and downstream enforcement can confirm that the authenticated client resolves to the expected framework entity.
+
+This is distinct from exact-key binding via `cnf.jkt`:
+
+- `cnf.jkt` is key-level proof-of-possession
+- `clientBinding` is entity-level trust-framework binding
+
+The reference implementation may carry both when the signed ticket includes both, and then requires both checks to pass.
+
+## Ticket Issuer Trust
+
+The normalized server input also carries `ticketIssuerTrust`, which records how the server validated the ticket issuer at redemption time.
+
+Example:
+
+```json
+"ticketIssuerTrust": {
+  "source": "framework",
+  "issuerUrl": "https://issuer.example.org",
+  "displayName": "https://issuer.example.org",
+  "framework": {
+    "uri": "https://example.org/frameworks/smart-health-issuers",
+    "type": "well-known"
+  }
+}
+```
+
+Semantics:
+- `source = "local"` means the issuer matched the server's local configured issuer registry
+- `source = "framework"` means the issuer was trusted through a configured trust framework and its published keys
+- this field is diagnostic and implementation-specific; it is not part of the signed Permission Ticket wire format
 
 ## Sensitive Sharing
 
@@ -91,6 +148,8 @@ Semantics:
 
 The input spec does not expose category codes or label-system details. The reference implementation maps `sensitive.mode` to the concrete `meta.security` label set internally.
 
+This normalized field reflects the server's resolved sensitive-data handling semantics, not a signed `sensitive.mode` wire field.
+
 ## Future Extension Path
 
 The current external model is intentionally all-or-none for sensitive data. If finer-grained sensitive sharing is needed later, it should first be introduced at the signed-ticket/spec layer in an abstract form. The normalized server input can then grow to match, but the reference implementation should not expose label codes or category slugs in this input by default.
@@ -109,6 +168,8 @@ Meaning:
 - apply interval overlap against the ticket's `dateRange`
 
 This is different from a clinical episode or onset/abatement window. The implementation may also track care-overlap internally, but the default input semantics for a ticket timeframe are generated/recorded timing.
+
+This normalized field reflects the server's resolved period semantics, not a signed `dateSemantics` wire field.
 
 ## Patient Identity
 

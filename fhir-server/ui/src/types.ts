@@ -1,4 +1,6 @@
 export type ModeName = "strict" | "registered" | "key-bound" | "open" | "anonymous";
+export type DemoClientType = "unaffiliated" | "well-known" | "udap";
+export type DemoClientRegistrationMode = "dynamic-jwk" | "implicit-well-known" | "udap-dcr";
 
 export type EncounterInfo = {
   id: string;
@@ -47,6 +49,8 @@ export type DemoBootstrap = {
   ticketIssuers: TicketIssuerInfo[];
   defaultNetwork: NetworkInfo;
   networks: NetworkInfo[];
+  demoClientOptions: DemoClientOption[];
+  demoWellKnownFramework?: DemoWellKnownFrameworkDocument;
   persons: PersonInfo[];
   sites: Array<{
     siteSlug: string;
@@ -78,6 +82,110 @@ export type ResourceScopeMode = "all" | "selected";
 export type LocationConstraintMode = "all" | "states" | "organizations";
 export type DateConstraintMode = "all" | "window";
 export type ScopeOptionKind = "resource" | "category";
+export type TicketLifetimeKey = "1h" | "1d" | "7d" | "30d" | "1y" | "never";
+
+export type DemoClientFrameworkInfo = {
+  uri: string;
+  displayName: string;
+  documentPath?: string;
+  documentUrl?: string;
+};
+
+export type DemoWellKnownFrameworkDocument = {
+  framework: string;
+  framework_type: "well-known";
+  display_name: string;
+  clients: Array<{
+    slug: string;
+    label: string;
+    description: string;
+    entityPath: string;
+    entityUri: string;
+    jwksPath: string;
+    jwksUrl: string;
+    framework: string;
+  }>;
+};
+
+export type DemoClientOption = {
+  type: DemoClientType;
+  label: string;
+  description: string;
+  registrationMode: DemoClientRegistrationMode;
+  framework?: DemoClientFrameworkInfo;
+  entityUri?: string;
+  jwksUrl?: string;
+  clientName?: string;
+  publicJwk?: JsonWebKey;
+  privateJwk?: JsonWebKey;
+  certificatePem?: string;
+  privateKeyPem?: string;
+  algorithm?: "RS256";
+  scope?: string;
+  contacts?: string[];
+};
+
+export type ViewerUnaffiliatedClientPlan = {
+  type: "unaffiliated";
+  displayLabel: string;
+  registrationMode: "dynamic-jwk";
+  clientName: string;
+  publicJwk: JsonWebKey;
+  privateJwk: JsonWebKey;
+  jwkThumbprint: string;
+};
+
+export type ViewerWellKnownClientPlan = {
+  type: "well-known";
+  displayLabel: string;
+  registrationMode: "implicit-well-known";
+  entityUri: string;
+  jwksUrl?: string;
+  clientName: string;
+  publicJwk: JsonWebKey;
+  privateJwk: JsonWebKey;
+  framework: DemoClientFrameworkInfo;
+};
+
+export type ViewerUdapClientPlan = {
+  type: "udap";
+  displayLabel: string;
+  registrationMode: "udap-dcr";
+  entityUri: string;
+  clientName: string;
+  framework: DemoClientFrameworkInfo;
+  algorithm: "RS256";
+  certificatePem: string;
+  privateKeyPem: string;
+  scope: string;
+  contacts: string[];
+};
+
+export type ViewerClientPlan = ViewerUnaffiliatedClientPlan | ViewerWellKnownClientPlan | ViewerUdapClientPlan;
+
+export type TicketBindingDescription = {
+  shape: "none" | "cnf.jkt" | "client_binding" | "cnf.jkt + client_binding";
+  label: string;
+  rationale: string;
+  usesProofKeyBinding: boolean;
+  usesClientBinding: boolean;
+  proofJkt: string | null;
+  clientBinding: Record<string, any> | null;
+};
+
+export type ClientStoryDescription = {
+  clientType: DemoClientType;
+  label: string;
+  registrationLabel: string;
+  authenticationLabel: string;
+  effectiveClientId: string;
+  whatThisDemonstrates: string;
+  frameworkDisplayName?: string;
+  frameworkUri?: string;
+  entityUri?: string;
+  jwksUrl?: string;
+  ticketBinding: TicketBindingDescription;
+};
 
 export type ScopeOption = {
   scope: string;
@@ -104,6 +212,7 @@ export type ConsentState = {
   dateMode: DateConstraintMode;
   dateRange: { start: string | null; end: string | null };
   sensitiveMode: "allow" | "deny";
+  ticketLifetime: TicketLifetimeKey;
 };
 
 export type AuthSurface = {
@@ -134,6 +243,7 @@ export type ViewerLaunchNetwork = NetworkInfo & {
 };
 
 export type ViewerLaunch = {
+  sessionId: string;
   origin: string;
   mode: ModeName;
   ticketIssuer: TicketIssuerInfo | null;
@@ -146,20 +256,28 @@ export type ViewerLaunch = {
   ticketPayload: Record<string, any> | null;
   signedTicket: string | null;
   proofJkt: string | null;
-  clientBootstrap: {
-    clientName: string;
-    publicJwk: JsonWebKey;
-    privateJwk: JsonWebKey;
-    jwkThumbprint: string;
-  } | null;
+  clientPlan: ViewerClientPlan | null;
+  demoSummary: {
+    dateSummary: string;
+    sensitiveSummary: string;
+    expirySummary: string;
+    bindingSummary: string;
+    clientLabel?: string | null;
+  };
 };
 
 export type RegisteredClientInfo = {
   clientId: string;
   clientName: string;
   tokenEndpointAuthMethod: "private_key_jwt";
-  publicJwk: JsonWebKey;
-  jwkThumbprint: string;
+  authMode: DemoClientType;
+  publicJwk?: JsonWebKey;
+  jwkThumbprint?: string;
+  framework?: DemoClientFrameworkInfo;
+  entityUri?: string;
+  registrationRequest?: Record<string, any>;
+  registrationResponse?: Record<string, any>;
+  softwareStatement?: string;
 };
 
 export type TokenResponseInfo = {

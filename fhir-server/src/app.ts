@@ -2,36 +2,70 @@ import { Buffer } from "node:buffer";
 import { randomUUID } from "node:crypto";
 
 import { ClientRegistry } from "./auth/clients.ts";
+import { toAuthenticatedClientIdentity } from "./auth/client-identity.ts";
+import {
+  buildDemoUdapClients,
+  buildDemoWellKnownClients,
+  buildDemoWellKnownFrameworkDocument,
+  DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
+  DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+  DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK,
+  DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH,
+  DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+} from "./auth/demo-frameworks.ts";
+import { FrameworkRegistry } from "./auth/frameworks/registry.ts";
+import { ClientRegistrationError } from "./auth/frameworks/types.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
 import { signJwt, verifyJwt } from "./auth/jwt.ts";
-import { compileAuthorizationEnvelope, validatePermissionTicket } from "./auth/tickets.ts";
+import { TicketRevocationRegistry } from "./auth/ticket-revocation.ts";
+import {
+  compileAuthorizationEnvelope,
+  compileClientCredentialsScopeRequest,
+  narrowAuthorizationEnvelopeScopes,
+  type TokenExchangeDiagnostics,
+  validatePermissionTicket,
+} from "./auth/tickets.ts";
+import { DemoEventBus } from "./demo/event-bus.ts";
+import { DemoSessionLinks } from "./demo/session-links.ts";
+import { findUdapFrameworkByCrlPath, generateCertificateRevocationList } from "./auth/udap-crl.ts";
+import { buildSignedUdapMetadata } from "./auth/udap-server-metadata.ts";
 import { loadConfig, type ServerConfig } from "./config.ts";
 import { buildNetworkCapabilityStatement, buildNetworkInfo, readNetworkDirectory, resolveRecordLocationsBundle, searchNetworkDirectory } from "./network-directory.ts";
 import { executeRead, executeSearch, getSupportedSearchParams } from "./store/search.ts";
 import { FhirStore } from "./store/store.ts";
-import type { AuthorizationEnvelope, ModeName, RegisteredClient, RouteContext, TokenExchangeRequest } from "./store/model.ts";
+import type { AuthenticatedClientIdentity, AuthorizationEnvelope, ClientBinding, ModeName, RegisteredClient, RouteContext, TokenExchangeRequest } from "./store/model.ts";
 import { SUPPORTED_RESOURCE_TYPES } from "./store/model.ts";
 import { buildAuthBasePath, buildFhirBasePath, modePrefix, normalizeModeSegment } from "../shared/surfaces.ts";
 import {
   NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   SMART_PERMISSION_TICKET_CONFIG_EXTENSION_URL,
   SUPPORTED_PERMISSION_TICKET_TYPES,
 } from "../shared/permission-tickets.ts";
+import { isDemoEventDraft, type DemoEvent, type DemoEventArtifacts, type DemoEventDraft, type DemoObserver } from "../shared/demo-events.ts";
 
 export type AppContext = {
   config: ServerConfig;
   store: FhirStore;
   clients: ClientRegistry;
+  frameworks: FrameworkRegistry;
   issuers: TicketIssuerRegistry;
+  ticketRevocations: TicketRevocationRegistry;
+  demoEvents: DemoEventBus;
+  demoSessionLinks: DemoSessionLinks;
 };
 
 export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const config = { ...loadConfig(), ...overrides };
   const store = FhirStore.load();
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
+  const frameworks = new FrameworkRegistry(config.frameworks, clients);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
-  return { config, store, clients, issuers };
+  const ticketRevocations = new TicketRevocationRegistry();
+  const demoEvents = new DemoEventBus();
+  const demoSessionLinks = new DemoSessionLinks();
+  return { config, store, clients, frameworks, issuers, ticketRevocations, demoEvents, demoSessionLinks };
 }
 
 import landingHtml from "../ui/index.html";
@@ -44,15 +78,43 @@ export function startServer(context = createAppContext(), port = context.config.
       "/": landingHtml,
       "/modes/:mode": landingHtml,
       "/viewer": landingHtml,
+      "/demo/visualizer": landingHtml,
     },
-    fetch: (request) => handleRequest(context, request),
+    fetch: (request, server) => handleRequest(context, request, server),
   });
   return server;
 }
 
-export async function handleRequest(context: AppContext, request: Request): Promise<Response> {
-  const url = publicUrl(request);
+export async function handleRequest(context: AppContext, request: Request, server?: Bun.Server<any>): Promise<Response> {
+  const url = configuredPublicUrl(context.config, request);
+  if (url.pathname === "/demo/sessions") {
+    return handleDemoSessionsRequest(context, request);
+  }
+  const demoEventsRoute = resolveDemoEventsRoute(url.pathname);
+  if (demoEventsRoute) {
+    return handleDemoEventsRequest(context, request, demoEventsRoute.sessionId, server);
+  }
+  if (url.pathname === "/.well-known/jwks.json") {
+    return jsonResponse(buildDemoWellKnownJwks());
+  }
+  if (url.pathname.startsWith("/demo/clients/udap/")) {
+    return handleDemoUdapRequest(url);
+  }
+  const demoWellKnownRoute = resolveDemoWellKnownRoute(url.pathname);
+  if (demoWellKnownRoute) {
+    return handleDemoWellKnownRequest(url, demoWellKnownRoute.clientSlug);
+  }
+  if (url.pathname === DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH) {
+    return jsonResponse(buildDemoWellKnownFrameworkDocument(url.origin));
+  }
+  const udapCrlRoute = resolveUdapCrlRoute(url.pathname);
+  if (udapCrlRoute) {
+    return handleUdapCrlRequest(context, udapCrlRoute.frameworkSlug, udapCrlRoute.caSlug);
+  }
   if (url.pathname === "/demo/bootstrap") {
+    const wellKnownFrameworkDocument = buildDemoWellKnownFrameworkDocument(url.origin);
+    const wellKnownClient = wellKnownFrameworkDocument.clients[0];
+    const udapClient = buildDemoUdapClients(url.origin).find((client) => client.algorithm === "RS256") ?? buildDemoUdapClients(url.origin)[0];
     return jsonResponse({
       defaultMode: context.config.strictDefaultMode,
       selectedMode: "strict",
@@ -63,6 +125,51 @@ export async function handleRequest(context: AppContext, request: Request): Prom
       searchableResourceTypes: SUPPORTED_RESOURCE_TYPES.filter((resourceType) => getSupportedSearchParams(resourceType).length > 0),
       defaultTicketIssuer: context.issuers.describe(url.origin, context.config.defaultPermissionTicketIssuerSlug),
       ticketIssuers: context.issuers.list(url.origin),
+      demoClientOptions: [
+        {
+          type: "unaffiliated",
+          label: "Unaffiliated registered client",
+          description: "Generates a one-off JWK pair and dynamically registers it just before token exchange.",
+          registrationMode: "dynamic-jwk",
+        },
+        {
+          type: "well-known",
+          label: "Well-known client",
+          description: "Uses an implicit well-known client id and resolves keys from the entity JWKS without a registration call.",
+          registrationMode: "implicit-well-known",
+          framework: {
+            uri: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+            displayName: wellKnownFrameworkDocument.display_name,
+            documentPath: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH,
+            documentUrl: absoluteUrl(url, DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH),
+          },
+          entityUri: wellKnownClient.entityUri,
+          jwksUrl: wellKnownClient.jwksUrl,
+          clientName: wellKnownClient.label,
+          publicJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK,
+          privateJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+        },
+        {
+          type: "udap",
+          label: "UDAP client",
+          description: "Performs just-in-time UDAP registration with a certificate chain. The entity URI comes from the certificate SAN and resolves to a demo page on this server.",
+          registrationMode: "udap-dcr",
+          framework: {
+            uri: DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
+            displayName: "Reference Demo UDAP Community",
+            documentPath: "/.well-known/udap",
+            documentUrl: absoluteUrl(url, "/.well-known/udap"),
+          },
+          entityUri: udapClient.entityUri,
+          clientName: udapClient.clientName,
+          scope: udapClient.scope,
+          contacts: udapClient.contacts,
+          algorithm: "RS256",
+          certificatePem: udapClient.certificatePem,
+          privateKeyPem: udapClient.privateKeyPem,
+        },
+      ],
+      demoWellKnownFramework: wellKnownFrameworkDocument,
     });
   }
   const issuerRoute = resolveIssuerRoute(url.pathname);
@@ -88,7 +195,9 @@ export async function handleRequest(context: AppContext, request: Request): Prom
       case "landing":
         return htmlResponse("<!doctype html><html><body>Redirecting...</body></html>");
       case "smart-config":
-        return jsonResponse(buildSmartConfig(context, url, route.context));
+        return jsonResponse(buildSmartConfig(context, url, route.context), 200, { "cache-control": "public, max-age=300" });
+      case "udap-config":
+        return handleUdapConfig(context, request, url, route.context);
       case "register":
         return await handleRegister(context, request, url, route.context);
       case "token":
@@ -112,75 +221,308 @@ export async function handleRequest(context: AppContext, request: Request): Prom
 async function handleRegister(context: AppContext, request: Request, url: URL, contextRoute: RouteContext) {
   if (request.method !== "POST") return methodNotAllowed("POST");
   const body = await parseBody(request);
+  const observer = demoObserverForRequest(context, request, body);
+  const explicitSessionId = extractDemoSessionId(request);
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
+  const registrationEndpoint = absoluteUrl(url, `${authBasePath}/register`);
+  const requestArtifact = demoRequestArtifact(
+    registrationEndpoint,
+    "POST",
+    { "content-type": request.headers.get("content-type") ?? "application/json" },
+    body,
+  );
+  try {
+    const frameworkRegistration = await context.frameworks.registerClient(body, registrationEndpoint);
+    if (frameworkRegistration) {
+      if (explicitSessionId && frameworkRegistration.client?.clientId) {
+        context.demoSessionLinks.bindClient(explicitSessionId, frameworkRegistration.client.clientId);
+      }
+      emitDemoEvent(observer, {
+        source: "server",
+        type: "registration-request",
+        label: frameworkRegistration.audit?.authMode === "udap" ? "UDAP registration" : "Client registration",
+        detail: {
+          authMode: frameworkRegistration.audit?.authMode ?? frameworkRegistration.client?.authMode ?? "unaffiliated",
+          endpoint: registrationEndpoint,
+          outcome: frameworkRegistration.audit?.outcome ?? "registered",
+          clientId: frameworkRegistration.client?.clientId,
+          registrationMode: frameworkRegistration.client?.authMode === "udap" ? "udap-dcr" : "dynamic-jwk",
+          frameworkUri: frameworkRegistration.audit?.frameworkUri ?? frameworkRegistration.client?.frameworkBinding?.framework,
+          entityUri: frameworkRegistration.audit?.entityUri ?? frameworkRegistration.client?.frameworkBinding?.entity_uri,
+          algorithm: frameworkRegistration.audit?.algorithm ?? "none",
+          steps: frameworkRegistration.audit?.steps ?? [],
+        },
+        artifacts: {
+          request: requestArtifact,
+          response: demoResponseArtifact(
+            frameworkRegistration.statusCode ?? 201,
+            { "content-type": "application/json" },
+            frameworkRegistration.response,
+          ),
+        },
+      });
+      return jsonResponse(frameworkRegistration.response, frameworkRegistration.statusCode ?? 201);
+    }
+  } catch (error) {
+    if (error instanceof ClientRegistrationError) {
+      emitDemoEvent(observer, {
+        source: "server",
+        type: "registration-request",
+        label: error.audit?.authMode === "udap" ? "UDAP registration" : "Client registration",
+        detail: {
+          authMode: error.audit?.authMode ?? (("udap" in body || "software_statement" in body) ? "udap" : "unaffiliated"),
+          endpoint: registrationEndpoint,
+          outcome: "rejected",
+          frameworkUri: error.audit?.frameworkUri,
+          entityUri: error.audit?.entityUri,
+          algorithm: error.audit?.algorithm ?? "unknown",
+          steps: error.audit?.steps ?? [],
+          error: error.description,
+        },
+        artifacts: {
+          request: requestArtifact,
+          response: demoResponseArtifact(
+            error.status,
+            { "content-type": "application/json" },
+            { error: error.errorCode, error_description: error.description },
+          ),
+        },
+      });
+      return registrationErrorResponse(error);
+    }
+    throw error;
+  }
   const publicJwk = parseRegisteredClientJwk(body);
   const client = await context.clients.register({
     clientName: body.client_name,
     publicJwk,
     tokenEndpointAuthMethod: body.token_endpoint_auth_method,
   });
-  return jsonResponse(
-    {
-      client_id: client.clientId,
-      client_name: client.clientName,
-      token_endpoint_auth_method: client.tokenEndpointAuthMethod,
-      jwks: client.publicJwk ? { keys: [client.publicJwk] } : undefined,
-      jwk_thumbprint: client.jwkThumbprint,
-      registration_client_uri: absoluteUrl(url, `${authBasePath}/register/${client.clientId}`),
-      token_endpoint: absoluteUrl(url, `${authBasePath}/token`),
+  if (explicitSessionId) {
+    context.demoSessionLinks.bindClient(explicitSessionId, client.clientId);
+  }
+  const responseBody = {
+    client_id: client.clientId,
+    client_name: client.clientName,
+    token_endpoint_auth_method: client.tokenEndpointAuthMethod,
+    jwks: registeredClientJwks(client),
+    jwk_thumbprint: client.jwkThumbprint,
+    registration_client_uri: absoluteUrl(url, `${authBasePath}/register/${client.clientId}`),
+    token_endpoint: absoluteUrl(url, `${authBasePath}/token`),
+  };
+  emitDemoEvent(observer, {
+    source: "server",
+    type: "registration-request",
+    label: "Client registration",
+    detail: {
+      authMode: client.authMode ?? "unaffiliated",
+      endpoint: registrationEndpoint,
+      outcome: "registered",
+      clientId: client.clientId,
+      registrationMode: "dynamic-jwk",
+      algorithm: "none",
+      steps: [{
+        check: "Client JWK",
+        passed: true,
+        evidence: client.jwkThumbprint,
+        why: "Dynamic client registration accepted the posted public JWK",
+      }],
     },
-    201,
-  );
+    artifacts: {
+      request: requestArtifact,
+      response: demoResponseArtifact(201, { "content-type": "application/json" }, responseBody),
+    },
+  });
+  return jsonResponse(responseBody, 201);
 }
 
 async function handleToken(context: AppContext, request: Request, url: URL, contextRoute: RouteContext) {
   if (request.method !== "POST") return methodNotAllowed("POST");
-  const body = (await parseBody(request)) as TokenExchangeRequest & Record<string, any>;
-  if (body.grant_type !== "urn:ietf:params:oauth:grant-type:token-exchange") {
-    throw new Error("Unsupported grant_type");
-  }
+  let body: (TokenExchangeRequest & Record<string, any>) | null = null;
+  let observer: DemoObserver | null = null;
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
-  const fhirBasePath = buildFhirBasePath(context.config.strictDefaultMode, contextRoute);
-  const ticket = validatePermissionTicket(body.subject_token, context.issuers, url.origin, url.origin);
-  const client = await authenticateClient(
-    context,
-    request,
-    body,
-    contextRoute.mode,
-    absoluteUrl(url, `${authBasePath}/token`),
-    ticket.cnf?.jkt,
-  );
-  enforceClientBinding(ticket.cnf?.jkt, client, contextRoute.mode);
+  const tokenEndpointUrl = absoluteUrl(url, `${authBasePath}/token`);
+  const tokenDiagnostics: TokenExchangeDiagnostics = { steps: [], relatedArtifacts: [] };
+  try {
+    body = (await parseBody(request)) as TokenExchangeRequest & Record<string, any>;
+    observer = demoObserverForRequest(context, request, body);
+    if (!body.grant_type) {
+      throw new OAuthTokenError("invalid_request", "Missing grant_type");
+    }
+    const tokenRequestArtifact = demoRequestArtifact(
+      tokenEndpointUrl,
+      "POST",
+      { "content-type": request.headers.get("content-type") ?? "application/x-www-form-urlencoded" },
+      body,
+    );
 
-  const envelope = bindEnvelopeToRoute(compileAuthorizationEnvelope(ticket, context.store, contextRoute.mode), contextRoute);
-  if (contextRoute.siteSlug && !context.store.hasVisibleEncounter(envelope, contextRoute.siteSlug)) {
-    throw new Error("Requested site has no visible encounters under current ticket constraints");
+    if (body.grant_type === "client_credentials") {
+      let client: AuthenticatedClientIdentity | null;
+      try {
+        client = await authenticateClient(
+          context,
+          request,
+          body,
+          contextRoute.mode,
+          tokenEndpointUrl,
+        );
+      } catch (error) {
+        throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
+      }
+      if (!client || client.authMode !== "udap" || !client.frameworkBinding) {
+        throw new OAuthTokenError("invalid_client", "UDAP-authenticated client required for client_credentials", 401);
+      }
+
+      let envelope: AuthorizationEnvelope;
+      try {
+        envelope = buildClientCredentialsEnvelope(context, client, contextRoute, body.scope);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Invalid client_credentials request";
+        const oauthError = message.includes("scope") ? "invalid_scope" : "invalid_request";
+        throw new OAuthTokenError(oauthError, message);
+      }
+      return issueAccessTokenResponse(context, url, contextRoute, envelope, client, observer, tokenRequestArtifact, {
+        grantType: body.grant_type,
+        diagnostics: tokenDiagnostics,
+      });
+    }
+
+    if (body.grant_type !== "urn:ietf:params:oauth:grant-type:token-exchange") {
+      throw new OAuthTokenError("unsupported_grant_type", "Unsupported grant_type");
+    }
+    if (!body.subject_token_type) {
+      throw new OAuthTokenError("invalid_request", "Missing subject_token_type");
+    }
+    if (body.subject_token_type !== PERMISSION_TICKET_SUBJECT_TOKEN_TYPE) {
+      throw new OAuthTokenError("invalid_request", "Unsupported subject_token_type");
+    }
+    if (!body.subject_token) {
+      throw new OAuthTokenError("invalid_request", "No permission ticket provided");
+    }
+
+    let ticket;
+    const demoValidationContext = contextRoute.siteSlug
+      ? {
+          phase: "site-auth" as const,
+          siteSlug: contextRoute.siteSlug,
+          siteName: siteNameForSlug(context, contextRoute.siteSlug),
+        }
+      : {
+          phase: "network-auth" as const,
+        };
+    try {
+      ticket = await validatePermissionTicket(
+        body.subject_token,
+        context.issuers,
+        context.frameworks,
+        context.ticketRevocations,
+        buildKnownTicketAudienceUrls(url, context.config, contextRoute),
+        url.origin,
+        tokenDiagnostics,
+      );
+    } catch (error) {
+      throw new OAuthTokenError("invalid_grant", error instanceof Error ? error.message : "Invalid permission ticket");
+    }
+    let client: AuthenticatedClientIdentity | null;
+    try {
+      client = await authenticateClient(
+        context,
+        request,
+        body,
+        contextRoute.mode,
+        tokenEndpointUrl,
+      );
+    } catch (error) {
+      throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
+    }
+    try {
+      enforceClientRequirements(ticket.ticket.cnf?.jkt, ticket.ticket.client_binding, client, contextRoute.mode);
+      tokenDiagnostics.steps.push({
+        check: "Client Binding",
+        passed: true,
+        evidence: ticket.ticket.client_binding && client?.frameworkBinding
+          ? client.frameworkBinding.entity_uri
+          : client?.jwkThumbprint ?? "anonymous",
+        why: ticket.ticket.client_binding
+          ? "Authenticated client matches the ticket client_binding"
+          : ticket.ticket.cnf?.jkt
+            ? "Authenticated client proof key matches the ticket cnf.jkt"
+            : "No client binding was required for this request mode",
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Client binding failed";
+      tokenDiagnostics.steps.push({
+        check: "Client Binding",
+        passed: false,
+        reason: message,
+      });
+      const oauthError = message.startsWith("Ticket ") ? "invalid_grant" : "invalid_client";
+      const status = oauthError === "invalid_client" ? 401 : 400;
+      throw new OAuthTokenError(oauthError, message, status);
+    }
+
+    let envelope;
+    try {
+      envelope = bindEnvelopeToRoute(
+        compileAuthorizationEnvelope(ticket, context.store, contextRoute.mode, tokenDiagnostics, demoValidationContext),
+        contextRoute,
+      );
+      if (contextRoute.siteSlug && !context.store.hasVisibleEncounter(envelope, contextRoute.siteSlug)) {
+        throw new Error("Requested site has no visible encounters under current ticket constraints");
+      }
+      if (contextRoute.networkSlug) {
+        const networkScope = narrowScopeString(
+          "system/Endpoint.rs system/Organization.rs system/$resolve-record-locations",
+          body.scope,
+        );
+        envelope = { ...envelope, scope: networkScope, grantedScopes: networkScope.split(/\s+/).filter(Boolean) };
+      } else {
+        envelope = narrowAuthorizationEnvelopeScopes(envelope, body.scope);
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Invalid token request";
+      const oauthError = message.includes("Requested scope") ? "invalid_scope" : "invalid_grant";
+      throw new OAuthTokenError(oauthError, message);
+    }
+
+    return issueAccessTokenResponse(context, url, contextRoute, envelope, client, observer, tokenRequestArtifact, {
+      grantType: body.grant_type,
+      diagnostics: tokenDiagnostics,
+    });
+  } catch (error) {
+    const oauthError = asOAuthTokenError(error);
+    if (observer && body) {
+      emitDemoEvent(observer, buildTokenExchangeDemoEvent({
+        context,
+        url,
+        contextRoute,
+        observer,
+        requestArtifact: demoRequestArtifact(
+          tokenEndpointUrl,
+          "POST",
+          { "content-type": request.headers.get("content-type") ?? "application/x-www-form-urlencoded" },
+          body,
+        ),
+        responseArtifact: demoResponseArtifact(
+          oauthError.status,
+          {
+            "content-type": "application/json",
+            "cache-control": "no-store",
+            pragma: "no-cache",
+          },
+          {
+            error: oauthError.errorCode,
+            error_description: oauthError.description,
+          },
+        ),
+        grantType: body.grant_type ?? "unknown",
+        diagnostics: tokenDiagnostics,
+        outcome: "rejected",
+        error: oauthError.description,
+      }));
+    }
+    return tokenErrorResponse(oauthError);
   }
-  const now = Math.floor(Date.now() / 1000);
-  const issuedScope = contextRoute.networkSlug
-    ? "system/Endpoint.rs system/Organization.rs system/$resolve-record-locations"
-    : envelope.scope;
-  const accessTokenPayload = {
-    iss: context.config.issuer,
-    aud: absoluteUrl(url, fhirBasePath),
-    sub: envelope.ticketSubject,
-    exp: now + context.config.accessTokenTtlSeconds,
-    iat: now,
-    jti: randomUUID(),
-    typ: "at+jwt",
-    client_id: client?.clientId,
-    ...envelope,
-    scope: issuedScope,
-  };
-  const accessToken = signJwt(accessTokenPayload, context.config.accessTokenSecret);
-  return jsonResponse({
-    access_token: accessToken,
-    token_type: "Bearer",
-    issued_token_type: "urn:ietf:params:oauth:token-type:access_token",
-    expires_in: context.config.accessTokenTtlSeconds,
-    scope: envelope.scope,
-    patient: envelope.patient,
-  });
 }
 
 async function handleSignTicket(context: AppContext, request: Request, url: URL, issuerSlug: string) {
@@ -189,6 +531,11 @@ async function handleSignTicket(context: AppContext, request: Request, url: URL,
   const payload = normalizeTicketPayload(body, url.origin);
   const signedTicket = context.issuers.sign(url.origin, issuerSlug, payload);
   const issuerInfo = context.issuers.describe(url.origin, issuerSlug);
+  const explicitSessionId = extractDemoSessionId(request);
+  if (explicitSessionId) {
+    context.demoSessionLinks.bindTicket(explicitSessionId, signedTicket);
+    emitDemoEvent(context.demoEvents.observer(explicitSessionId), buildTicketCreatedDemoEvent(payload, signedTicket));
+  }
   return jsonResponse(
     {
       signed_ticket: signedTicket,
@@ -231,6 +578,8 @@ async function handleIntrospect(context: AppContext, request: Request, url: URL,
       date_ranges: payload.dateRanges,
       date_semantics: payload.dateSemantics,
       sensitive: payload.sensitive,
+      client_binding: payload.clientBinding,
+      ticket_issuer_trust: payload.ticketIssuerTrust,
     });
   } catch {
     return jsonResponse({ active: false });
@@ -239,26 +588,148 @@ async function handleIntrospect(context: AppContext, request: Request, url: URL,
 
 async function handleRead(context: AppContext, request: Request, contextRoute: RouteContext, resourceType: string, logicalId: string) {
   if (request.method !== "GET") return methodNotAllowed("GET");
-  const envelope = authenticateAccessToken(context, request, contextRoute);
-  if (contextRoute.networkSlug) {
-    const resource = readNetworkDirectory(context.config, context.store, publicUrl(request), contextRoute, resourceType, logicalId);
+  const observer = demoObserverForRequest(context, request);
+  try {
+    const envelope = authenticateAccessToken(context, request, contextRoute);
+    if (contextRoute.networkSlug) {
+      const resource = readNetworkDirectory(context.config, context.store, configuredPublicUrl(context.config, request), contextRoute, resourceType, logicalId);
+      return resource ? fhirResponse(resource) : notFound();
+    }
+    const resource = executeRead(context.store.db, envelope, contextRoute.siteSlug, resourceType, logicalId);
+    if (resource && contextRoute.siteSlug) {
+      const requestArtifact = demoRequestArtifact(
+        absoluteUrl(configuredPublicUrl(context.config, request), `${buildFhirBasePath(context.config.strictDefaultMode, contextRoute)}/${resourceType}/${logicalId}`),
+        request.method,
+        {},
+      );
+      emitDemoEvent(observer, {
+        source: "server",
+        phase: "data",
+        type: "query-result",
+        label: resourceType,
+        detail: {
+          siteSlug: contextRoute.siteSlug,
+          siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+          resourceType,
+          count: 1,
+          queryPath: `${resourceType}/${logicalId}`,
+        },
+        artifacts: {
+          request: requestArtifact,
+          response: demoResponseArtifact(200, { "content-type": "application/fhir+json" }, resource),
+          related: [
+            {
+              label: `${resourceType}/${logicalId}`,
+              kind: "json",
+              content: resource,
+            },
+          ],
+        },
+      });
+    }
     return resource ? fhirResponse(resource) : notFound();
+  } catch (error) {
+    if (contextRoute.siteSlug) {
+      const requestArtifact = demoRequestArtifact(
+        absoluteUrl(configuredPublicUrl(context.config, request), `${buildFhirBasePath(context.config.strictDefaultMode, contextRoute)}/${resourceType}/${logicalId}`),
+        request.method,
+        {},
+      );
+      emitDemoEvent(observer, {
+        source: "server",
+        phase: "data",
+        type: "query-failed",
+        label: resourceType,
+        detail: {
+          siteSlug: contextRoute.siteSlug,
+          siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+          resourceType,
+          queryPath: `${resourceType}/${logicalId}`,
+          reason: error instanceof Error ? error.message : "Query failed",
+        },
+        artifacts: {
+          request: requestArtifact,
+        },
+      });
+    }
+    throw error;
   }
-  const resource = executeRead(context.store.db, envelope, contextRoute.siteSlug, resourceType, logicalId);
-  return resource ? fhirResponse(resource) : notFound();
 }
 
 async function handleSearch(context: AppContext, request: Request, url: URL, contextRoute: RouteContext, resourceType: string) {
   if (!["GET", "POST"].includes(request.method)) return methodNotAllowed("GET, POST");
-  const envelope = authenticateAccessToken(context, request, contextRoute);
-  const params = await parseSearchParams(request, url);
-  if (contextRoute.networkSlug) {
-    void envelope;
-    return fhirResponse(searchNetworkDirectory(context.config, context.store, url, contextRoute, resourceType, params));
+  const observer = demoObserverForRequest(context, request);
+  try {
+    const envelope = authenticateAccessToken(context, request, contextRoute);
+    const params = await parseSearchParams(request, url);
+    if (contextRoute.networkSlug) {
+      void envelope;
+      return fhirResponse(searchNetworkDirectory(context.config, context.store, url, contextRoute, resourceType, params));
+    }
+    const basePath = buildFhirBasePath(context.config.strictDefaultMode, contextRoute);
+    const bundle = executeSearch(context.store.db, envelope, contextRoute.siteSlug, resourceType, params, absoluteUrl(url, `${basePath}/${resourceType}`));
+    const offset = Number(params.get("_offset") ?? 0);
+    if (contextRoute.siteSlug && (!Number.isFinite(offset) || offset <= 0)) {
+      const queryPath = params.size ? `${resourceType}?${params.toString()}` : resourceType;
+      const requestArtifact = demoRequestArtifact(
+        absoluteUrl(configuredPublicUrl(context.config, request), `${basePath}/${queryPath}`),
+        request.method,
+        {},
+      );
+      emitDemoEvent(observer, {
+        source: "server",
+        phase: "data",
+        type: "query-result",
+        label: resourceType,
+        detail: {
+          siteSlug: contextRoute.siteSlug,
+          siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+          resourceType,
+          count: Number(bundle?.total ?? bundle?.entry?.length ?? 0),
+          queryPath,
+        },
+        artifacts: {
+          request: requestArtifact,
+          response: demoResponseArtifact(200, { "content-type": "application/fhir+json" }, bundle),
+          related: [
+            {
+              label: queryPath,
+              kind: "json",
+              content: bundle,
+            },
+          ],
+        },
+      });
+    }
+    return fhirResponse(bundle);
+  } catch (error) {
+    if (contextRoute.siteSlug) {
+      const params = request.method === "GET" ? new URL(request.url).searchParams : new URLSearchParams();
+      const queryPath = params.size ? `${resourceType}?${params.toString()}` : resourceType;
+      const requestArtifact = demoRequestArtifact(
+        absoluteUrl(configuredPublicUrl(context.config, request), `${buildFhirBasePath(context.config.strictDefaultMode, contextRoute)}/${queryPath}`),
+        request.method,
+        {},
+      );
+      emitDemoEvent(observer, {
+        source: "server",
+        phase: "data",
+        type: "query-failed",
+        label: resourceType,
+        detail: {
+          siteSlug: contextRoute.siteSlug,
+          siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+          resourceType,
+          queryPath,
+          reason: error instanceof Error ? error.message : "Query failed",
+        },
+        artifacts: {
+          request: requestArtifact,
+        },
+      });
+    }
+    throw error;
   }
-  const basePath = buildFhirBasePath(context.config.strictDefaultMode, contextRoute);
-  const bundle = executeSearch(context.store.db, envelope, contextRoute.siteSlug, resourceType, params, absoluteUrl(url, `${basePath}/${resourceType}`));
-  return fhirResponse(bundle);
 }
 
 async function handleOperation(
@@ -271,9 +742,36 @@ async function handleOperation(
   if (request.method !== "POST") return methodNotAllowed("POST");
   if (!contextRoute.networkSlug) return notFound();
   const envelope = authenticateAccessToken(context, request, contextRoute);
+  const observer = demoObserverForRequest(context, request);
   switch (operation) {
-    case "resolve-record-locations":
-      return fhirResponse(resolveRecordLocationsBundle(context.config, context.store, url, contextRoute, envelope));
+    case "resolve-record-locations": {
+      const bundle = resolveRecordLocationsBundle(context.config, context.store, url, contextRoute, envelope);
+      emitDemoEvent(observer, {
+        source: "server",
+        phase: "discovery",
+        type: "sites-discovered",
+        label: "Sites discovered",
+        detail: {
+          sites: (bundle.entry ?? [])
+            .filter((entry: any) => entry?.resource?.resourceType === "Endpoint")
+            .map((entry: any) => ({
+              siteSlug: (entry.resource.identifier ?? []).find((identifier: any) => identifier.system === "urn:smart-permission-tickets:site-slug")?.value ?? "unknown-site",
+              siteName: entry.resource.managingOrganization?.display ?? "Unknown site",
+              jurisdiction: undefined,
+            })),
+        },
+        artifacts: {
+          related: [
+            {
+              label: "Resolve record locations bundle",
+              kind: "json",
+              content: bundle,
+            },
+          ],
+        },
+      });
+      return fhirResponse(bundle);
+    }
   }
 }
 
@@ -283,16 +781,16 @@ async function authenticateClient(
   body: Record<string, any>,
   mode: ModeName,
   tokenEndpointUrl: string,
-  ticketJkt?: string,
-): Promise<RegisteredClient | null> {
+): Promise<AuthenticatedClientIdentity | null> {
   const basic = parseBasicAuth(request.headers.get("authorization"));
   const clientId = basic?.clientId ?? body.client_id;
-  const requiresBoundClient = mode === "registered" || mode === "strict" || mode === "key-bound" || Boolean(ticketJkt);
+  const requiresBoundClient = mode === "registered" || mode === "strict" || mode === "key-bound";
   const assertionJwt = body.client_assertion ? String(body.client_assertion) : null;
 
   if (!assertionJwt) {
     if (requiresBoundClient) throw new Error("Authenticated key-based client assertion required");
-    return clientId ? context.clients.get(clientId) : null;
+    const client = clientId ? context.clients.get(clientId) : null;
+    return client ? toAuthenticatedClientIdentity(client) : null;
   }
 
   if (body.client_assertion_type && body.client_assertion_type !== "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") {
@@ -302,14 +800,18 @@ async function authenticateClient(
   const decoded = decodeJwtWithoutVerification<any>(assertionJwt);
   const assertedClientId = String(decoded.payload.iss ?? "");
   if (!assertedClientId) throw new Error("Client assertion iss missing");
+  if (assertedClientId.startsWith("udap:") && String(body.udap ?? "") !== "1") {
+    throw new Error("UDAP client authentication requires udap=1");
+  }
   if (clientId && clientId !== assertedClientId) throw new Error("client_id does not match client assertion issuer");
+  const frameworkClient = await context.frameworks.authenticateClientAssertion(assertedClientId, assertionJwt, tokenEndpointUrl);
+  if (frameworkClient) return frameworkClient;
   const client = context.clients.get(assertedClientId);
   if (!client) throw new Error("Authenticated registered client required");
-  await verifyClientAssertion(assertionJwt, client, tokenEndpointUrl);
-  return client;
+  return verifyClientAssertion(assertionJwt, client, tokenEndpointUrl);
 }
 
-async function verifyClientAssertion(jwt: string, client: RegisteredClient, tokenEndpointUrl: string) {
+async function verifyClientAssertion(jwt: string, client: RegisteredClient, tokenEndpointUrl: string): Promise<AuthenticatedClientIdentity> {
   if (client.tokenEndpointAuthMethod !== "private_key_jwt" || !client.publicJwk) {
     throw new Error("Client does not support private_key_jwt");
   }
@@ -319,14 +821,184 @@ async function verifyClientAssertion(jwt: string, client: RegisteredClient, toke
   if (payload.aud !== tokenEndpointUrl) throw new Error("Client assertion audience mismatch");
   if (typeof payload.exp !== "number" || payload.exp <= now) throw new Error("Client assertion expired");
   if (typeof payload.iat === "number" && payload.iat > now + 60) throw new Error("Client assertion issued in the future");
-  return payload;
+  return toAuthenticatedClientIdentity(client);
 }
 
-function enforceClientBinding(ticketJkt: string | undefined, client: RegisteredClient | null, mode: ModeName) {
-  if (ticketJkt && client?.jwkThumbprint !== ticketJkt) throw new Error("Client key does not match ticket binding");
+function enforceClientRequirements(
+  ticketJkt: string | undefined,
+  clientBinding: ClientBinding | undefined,
+  client: AuthenticatedClientIdentity | null,
+  mode: ModeName,
+) {
+  if (ticketJkt && client?.jwkThumbprint !== ticketJkt) throw new Error("Ticket not bound to client key");
+  if (clientBinding) {
+    if (!client?.frameworkBinding) {
+      throw new Error(`Ticket client binding requires framework ${clientBinding.framework} entity ${clientBinding.entity_uri}`);
+    }
+    if (
+      client.frameworkBinding.binding_type !== clientBinding.binding_type
+      || client.frameworkBinding.framework !== clientBinding.framework
+      || client.frameworkBinding.framework_type !== clientBinding.framework_type
+      || client.frameworkBinding.entity_uri !== clientBinding.entity_uri
+    ) {
+      throw new Error(`Ticket client binding requires framework ${clientBinding.framework} entity ${clientBinding.entity_uri}`);
+    }
+  }
   if ((mode === "strict" || mode === "registered" || mode === "key-bound") && !client) {
     throw new Error("Authenticated registered client required");
   }
+}
+
+function buildClientCredentialsEnvelope(
+  context: AppContext,
+  client: AuthenticatedClientIdentity,
+  contextRoute: RouteContext,
+  requestedScope: string | undefined,
+): AuthorizationEnvelope {
+  const scopeResult = compileClientCredentialsScopeRequest(requestedScope, client.registeredScope);
+  const allowedSites = contextRoute.siteSlug ? [contextRoute.siteSlug] : undefined;
+  const allowedPatientAliases = allowedSites
+    ? context.store.loadResult.patientAliases.filter((alias) => allowedSites.includes(alias.siteSlug))
+    : context.store.loadResult.patientAliases;
+  if (!allowedPatientAliases.length) {
+    throw new Error("client_credentials request resolved to no visible patient aliases");
+  }
+  return {
+    ticketIssuer: "urn:smart-permission-tickets:udap-client-credentials",
+    ticketSubject: client.frameworkBinding?.entity_uri ?? client.clientId,
+    ticketType: "urn:smart-permission-tickets:udap-client-credentials",
+    mode: contextRoute.mode,
+    scope: scopeResult.scopeString,
+    grantedScopes: scopeResult.scopeStrings,
+    patient: undefined,
+    allowedPatientAliases,
+    allowedSites,
+    allowedResourceTypes: scopeResult.allowedResourceTypes,
+    dateRanges: undefined,
+    dateSemantics: "generated-during-period",
+    sensitive: { mode: "allow" },
+    requiredLabelsAll: scopeResult.requiredLabelsAll,
+    deniedLabelsAny: scopeResult.deniedLabelsAny,
+    granularCategoryRules: scopeResult.granularCategoryRules,
+    clientBinding: client.frameworkBinding,
+  };
+}
+
+function issueAccessTokenResponse(
+  context: AppContext,
+  url: URL,
+  contextRoute: RouteContext,
+  envelope: AuthorizationEnvelope,
+  client: AuthenticatedClientIdentity | null,
+  observer?: DemoObserver | null,
+  requestArtifact?: DemoEventArtifacts["request"],
+  eventOptions?: {
+    grantType: string;
+    diagnostics: TokenExchangeDiagnostics;
+  },
+) {
+  const fhirBasePath = buildFhirBasePath(context.config.strictDefaultMode, contextRoute);
+  const now = Math.floor(Date.now() / 1000);
+  const issuedScope = envelope.scope;
+  const accessTokenPayload = {
+    iss: context.config.issuer,
+    aud: absoluteUrl(url, fhirBasePath),
+    sub: envelope.ticketSubject,
+    exp: now + context.config.accessTokenTtlSeconds,
+    iat: now,
+    jti: randomUUID(),
+    typ: "at+jwt",
+    client_id: client?.clientId,
+    ...envelope,
+    scope: issuedScope,
+  };
+  const accessToken = signJwt(accessTokenPayload, context.config.accessTokenSecret);
+  const responseBody = {
+    access_token: accessToken,
+    token_type: "Bearer",
+    issued_token_type: "urn:ietf:params:oauth:token-type:access_token",
+    expires_in: context.config.accessTokenTtlSeconds,
+    scope: issuedScope,
+    patient: contextRoute.networkSlug ? undefined : envelope.patient,
+  };
+  if (observer?.sessionId) {
+    context.demoSessionLinks.bindAccessToken(observer.sessionId, accessToken);
+  }
+  emitDemoEvent(observer ?? null, buildTokenExchangeDemoEvent({
+    context,
+    url,
+    contextRoute,
+    observer,
+    requestArtifact,
+    responseArtifact: demoResponseArtifact(200, {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      pragma: "no-cache",
+    }, responseBody),
+    grantType: eventOptions?.grantType ?? "unknown",
+    diagnostics: eventOptions?.diagnostics ?? { steps: [], relatedArtifacts: [] },
+    outcome: "issued",
+    scopes: envelope.grantedScopes,
+    scopeSummary: issuedScope,
+    authorizedSiteCount: envelope.allowedSites?.length,
+    extraRelatedArtifacts: [
+      { label: "Access token", kind: "jwt", content: accessToken, copyText: accessToken },
+    ],
+  }));
+  return tokenJsonResponse(responseBody);
+}
+
+function buildTokenExchangeDemoEvent(input: {
+  context: AppContext;
+  url: URL;
+  contextRoute: RouteContext;
+  observer?: DemoObserver | null;
+  requestArtifact?: DemoEventArtifacts["request"];
+  responseArtifact?: DemoEventArtifacts["response"];
+  grantType: string;
+  diagnostics: TokenExchangeDiagnostics;
+  outcome: "issued" | "rejected";
+  scopes?: string[];
+  scopeSummary?: string;
+  authorizedSiteCount?: number;
+  error?: string;
+  extraRelatedArtifacts?: NonNullable<DemoEventArtifacts["related"]>;
+}): DemoEventDraft {
+  const siteName = input.contextRoute.siteSlug
+    ? siteNameForSlug(input.context, input.contextRoute.siteSlug) ?? input.contextRoute.siteSlug
+    : undefined;
+  return {
+    source: "server",
+    type: "token-exchange",
+    label: input.contextRoute.siteSlug
+      ? input.outcome === "issued" ? "Site token issued" : "Site token rejected"
+      : input.outcome === "issued" ? "Network token issued" : "Network token rejected",
+    detail: {
+      grantType: input.grantType,
+      endpoint: absoluteUrl(input.url, `${buildAuthBasePath(input.context.config.strictDefaultMode, input.contextRoute)}/token`),
+      mode: input.contextRoute.mode,
+      outcome: input.outcome,
+      scopes: input.scopes,
+      scopeSummary: input.scopeSummary,
+      ...(input.contextRoute.siteSlug ? {
+        siteSlug: input.contextRoute.siteSlug,
+        siteName,
+      } : {
+        authorizedSiteCount: input.authorizedSiteCount,
+      }),
+      ...(input.diagnostics.patientMatch ? { patientMatch: input.diagnostics.patientMatch } : {}),
+      steps: input.diagnostics.steps,
+      ...(input.error ? { error: input.error } : {}),
+    },
+    artifacts: {
+      ...(input.requestArtifact ? { request: input.requestArtifact } : {}),
+      ...(input.responseArtifact ? { response: input.responseArtifact } : {}),
+      related: [
+        ...input.diagnostics.relatedArtifacts,
+        ...(input.extraRelatedArtifacts ?? []),
+      ],
+    },
+  };
 }
 
 function authenticateAccessToken(context: AppContext, request: Request, contextRoute: RouteContext): AuthorizationEnvelope {
@@ -340,7 +1012,7 @@ function authenticateAccessToken(context: AppContext, request: Request, contextR
     payload,
     contextRoute.mode,
     request.headers.get("x-client-jkt"),
-    absoluteUrl(publicUrl(request), buildFhirBasePath(context.config.strictDefaultMode, contextRoute)),
+    absoluteUrl(configuredPublicUrl(context.config, request), buildFhirBasePath(context.config.strictDefaultMode, contextRoute)),
   );
   return payload as AuthorizationEnvelope;
 }
@@ -379,9 +1051,49 @@ function buildIssuerJwks(context: AppContext, issuerSlug: string) {
   };
 }
 
+function buildDemoWellKnownJwks() {
+  return {
+    keys: [DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK],
+  };
+}
+
+function handleDemoWellKnownRequest(url: URL, clientSlug: string) {
+  const client = buildDemoWellKnownClients(url.origin).find((entry) => entry.slug === clientSlug);
+  if (!client) return notFound();
+  if (url.pathname.endsWith("/.well-known/jwks.json")) {
+    return jsonResponse(buildDemoWellKnownJwks());
+  }
+  return jsonResponse({
+    entity_uri: client.entityUri,
+    label: client.label,
+    description: client.description,
+    framework: client.framework,
+    jwks_url: client.jwksUrl,
+  });
+}
+
+function handleDemoUdapRequest(url: URL) {
+  const client = buildDemoUdapClients(url.origin).find((entry) => entry.entityPath === url.pathname);
+  if (!client) return notFound();
+  return jsonResponse({
+    entity_uri: client.entityUri,
+    label: client.label,
+    description: client.description,
+    framework: client.framework,
+    algorithm: client.algorithm,
+    certificate_san_uri: client.certificateSanUri,
+    certificate_chain_pem: client.certificateChainPems,
+    note: "This entity URI comes from the client certificate Subject Alternative Name (SAN) and is what UDAP registration binds to.",
+  });
+}
+
 function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteContext) {
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
   const fhirBasePath = buildFhirBasePath(context.config.strictDefaultMode, contextRoute);
+  const grantTypesSupported = ["urn:ietf:params:oauth:grant-type:token-exchange"];
+  if (context.config.frameworks.some((framework) => framework.frameworkType === "udap" && framework.supportsClientAuth)) {
+    grantTypesSupported.unshift("client_credentials");
+  }
   const scopesSupported = contextRoute.networkSlug
     ? ["system/Endpoint.rs", "system/Organization.rs", "system/$resolve-record-locations"]
     : [
@@ -396,7 +1108,7 @@ function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteCont
     registration_endpoint: absoluteUrl(url, `${authBasePath}/register`),
     introspection_endpoint: absoluteUrl(url, `${authBasePath}/introspect`),
     fhir_base_url: absoluteUrl(url, fhirBasePath),
-    grant_types_supported: ["urn:ietf:params:oauth:grant-type:token-exchange"],
+    grant_types_supported: grantTypesSupported,
     smart_permission_ticket_types_supported: [...SUPPORTED_PERMISSION_TICKET_TYPES],
     token_endpoint_auth_methods_supported: ["none", "private_key_jwt"],
     token_endpoint_auth_signing_alg_values_supported: ["ES256"],
@@ -406,6 +1118,8 @@ function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteCont
         permission_ticket_profile: "v2",
         surface_kind: contextRoute.networkSlug ? "network" : contextRoute.siteSlug ? "site" : "global",
         surface_mode: contextRoute.mode,
+        supported_client_binding_types: ["cnf:jkt", "framework-entity"],
+        supported_trust_frameworks: context.frameworks.getSupportedTrustFrameworks(),
         ...(contextRoute.networkSlug ? { record_location_operation: "$resolve-record-locations" } : {}),
       },
     },
@@ -420,10 +1134,19 @@ function parseRegisteredClientJwk(body: Record<string, any>) {
   return candidate as JsonWebKey;
 }
 
+function registeredClientJwks(client: RegisteredClient) {
+  if (client.availablePublicJwks?.length) return { keys: client.availablePublicJwks };
+  if (client.publicJwk) return { keys: [client.publicJwk] };
+  return undefined;
+}
+
 function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: string) {
   const payload = (body.ticket ?? body.ticket_payload ?? body) as Record<string, any>;
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
     throw new Error("Ticket payload must be an object");
+  }
+  if (!("exp" in payload) || typeof payload.exp !== "number") {
+    throw new Error("Permission Ticket exp is required and must be a NumericDate");
   }
   return {
     ...payload,
@@ -432,6 +1155,108 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
     ticket_type: payload.ticket_type ?? NETWORK_PATIENT_ACCESS_TICKET_TYPE,
     sub: payload.sub ?? "demo-client-ticket",
   };
+}
+
+function buildTicketCreatedDemoEvent(ticketPayload: Record<string, any>, signedTicket: string): DemoEventDraft {
+  const subjectTraits = ticketPayload.authorization?.subject?.traits ?? {};
+  const patientName = formatTicketPatientName(subjectTraits) ?? String(ticketPayload.sub ?? "Permission Ticket");
+  const scopes = expandTicketScopeLabels(
+    Array.isArray(ticketPayload.authorization?.access?.scopes)
+      ? ticketPayload.authorization.access.scopes.map((scope: unknown) => String(scope))
+      : [],
+  );
+  return {
+    source: "server",
+    phase: "ticket",
+    type: "ticket-created",
+    label: "Permission Ticket created",
+    detail: {
+      patientName,
+      patientDob: typeof subjectTraits.birthDate === "string" ? subjectTraits.birthDate : null,
+      scopes,
+      dateSummary: summarizeTicketPeriods(ticketPayload.authorization?.access?.periods),
+      sensitiveSummary: "Sensitive excluded by default",
+      expirySummary: summarizeTicketExpiry(ticketPayload.exp),
+      bindingSummary: summarizeTicketBinding(ticketPayload),
+    },
+    artifacts: {
+      related: [
+        {
+          label: "Permission Ticket JWT",
+          kind: "jwt",
+          content: signedTicket,
+          copyText: signedTicket,
+        },
+      ],
+    },
+  };
+}
+
+function formatTicketPatientName(subjectTraits: Record<string, any>) {
+  const names = Array.isArray(subjectTraits.name) ? subjectTraits.name : [];
+  const first = names[0];
+  if (!first || typeof first !== "object") return null;
+  const given = Array.isArray(first.given) ? first.given.filter((item: unknown) => typeof item === "string") : [];
+  const family = typeof first.family === "string" ? first.family : null;
+  return [...given, ...(family ? [family] : [])].join(" ").trim() || null;
+}
+
+function summarizeTicketPeriods(periods: Array<{ start?: string; end?: string }> | undefined) {
+  if (!Array.isArray(periods) || periods.length === 0) return "All dates";
+  const first = periods[0] ?? {};
+  const startYear = typeof first.start === "string" ? first.start.slice(0, 4) : null;
+  const endYear = typeof first.end === "string" ? first.end.slice(0, 4) : null;
+  if (startYear && endYear) return `${startYear}–${endYear}`;
+  if (startYear) return `From ${startYear}`;
+  if (endYear) return `Through ${endYear}`;
+  return "Custom range";
+}
+
+function summarizeTicketExpiry(exp: unknown) {
+  if (typeof exp !== "number") return "Unknown expiry";
+  const deltaSeconds = Math.max(0, exp - Math.floor(Date.now() / 1000));
+  if (deltaSeconds >= 60 * 60 * 24 * 365 * 9) return "10 years (demo stand-in for never)";
+  if (deltaSeconds >= 60 * 60 * 24 * 365) return "1 year";
+  if (deltaSeconds >= 60 * 60 * 24 * 30) return "30 days";
+  if (deltaSeconds >= 60 * 60 * 24 * 7) return "7 days";
+  if (deltaSeconds >= 60 * 60 * 24) return "1 day";
+  if (deltaSeconds >= 60 * 60) return "1 hour";
+  return "Short-lived";
+}
+
+function summarizeTicketBinding(ticketPayload: Record<string, any>) {
+  if (ticketPayload.client_binding) return "Framework-bound client";
+  if (ticketPayload.cnf?.jkt) return "Proof-key client";
+  return "No client binding";
+}
+
+function expandTicketScopeLabels(scopes: string[]) {
+  const wildcardTypes = [
+    "Patient",
+    "Encounter",
+    "Observation",
+    "Condition",
+    "DiagnosticReport",
+    "DocumentReference",
+    "MedicationRequest",
+    "Procedure",
+    "Immunization",
+    "ServiceRequest",
+    "AllergyIntolerance",
+  ];
+  const expanded = new Set<string>();
+  for (const scope of scopes) {
+    const match = scope.match(/^[^/]+\/([^\.]+)\./);
+    const resourceType = match?.[1];
+    if (!resourceType) continue;
+    if (resourceType === "*") {
+      for (const type of wildcardTypes) expanded.add(type);
+      continue;
+    }
+    expanded.add(resourceType);
+  }
+  const order = new Map(wildcardTypes.map((label, index) => [label, index]));
+  return [...expanded].sort((left, right) => (order.get(left) ?? Number.MAX_SAFE_INTEGER) - (order.get(right) ?? Number.MAX_SAFE_INTEGER) || left.localeCompare(right));
 }
 
 function buildCapabilityStatement(context: AppContext, url: URL, contextRoute: RouteContext) {
@@ -472,6 +1297,76 @@ function buildCapabilityStatement(context: AppContext, url: URL, contextRoute: R
   };
 }
 
+function handleUdapConfig(context: AppContext, request: Request, url: URL, contextRoute: RouteContext) {
+  const frameworks = context.config.frameworks.filter((framework) => framework.frameworkType === "udap" && framework.supportsClientAuth);
+  if (!frameworks.length) return notFound();
+  const requestedCommunity = url.searchParams.get("community");
+  const selectedFramework = requestedCommunity
+    ? frameworks.find((framework) => framework.framework === requestedCommunity)
+    : frameworks[0];
+  if (requestedCommunity && !selectedFramework) {
+    return new Response(null, { status: 204 });
+  }
+  const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
+  const fhirBasePath = buildFhirBasePath(context.config.strictDefaultMode, contextRoute);
+  const authorizationEndpoint = null;
+  const tokenEndpoint = absoluteUrl(url, `${authBasePath}/token`);
+  const registrationEndpoint = absoluteUrl(url, `${authBasePath}/register`);
+  const signedFramework = selectedFramework ?? frameworks[0];
+  const signedMetadata = buildSignedUdapMetadata(
+    signedFramework,
+    absoluteUrl(url, fhirBasePath),
+    {
+      token_endpoint: tokenEndpoint,
+      registration_endpoint: registrationEndpoint,
+      ...(authorizationEndpoint ? { authorization_endpoint: authorizationEndpoint } : {}),
+    },
+  );
+  const discoveryUrl = absoluteUrl(url, `${fhirBasePath}/.well-known/udap`) + url.search;
+  const responseBody = {
+    udap_versions_supported: ["1"],
+    udap_profiles_supported: ["udap_dcr", "udap_authn", "udap_authz"],
+    udap_authorization_extensions_supported: ["hl7-b2b"],
+    udap_authorization_extensions_required: ["hl7-b2b"],
+    udap_certifications_supported: [],
+    grant_types_supported: ["client_credentials", "urn:ietf:params:oauth:grant-type:token-exchange"],
+    scopes_supported: ["patient/*.rs", "system/*.rs"],
+    token_endpoint: tokenEndpoint,
+    registration_endpoint: registrationEndpoint,
+    token_endpoint_auth_methods_supported: ["private_key_jwt"],
+    token_endpoint_auth_signing_alg_values_supported: ["RS256", "ES256"],
+    registration_endpoint_jwt_signing_alg_values_supported: ["RS256", "ES256"],
+    signed_metadata: signedMetadata,
+    supported_trust_communities: frameworks.map((framework) => framework.framework),
+    ...(selectedFramework ? { community: selectedFramework.framework } : {}),
+  };
+  emitDemoEvent(demoObserverForRequest(context, request), {
+    source: "server",
+    phase: "registration",
+    type: "udap-discovery",
+    label: "UDAP discovery",
+    detail: {
+      endpoint: discoveryUrl,
+    },
+    artifacts: {
+      response: demoResponseArtifact(200, { "cache-control": "public, max-age=300", "content-type": "application/json" }, responseBody),
+    },
+  });
+  return jsonResponse(responseBody, 200, { "cache-control": "public, max-age=300" });
+}
+
+function handleUdapCrlRequest(context: AppContext, frameworkSlug: string, caSlug: string) {
+  const match = findUdapFrameworkByCrlPath(context.config.frameworks, frameworkSlug, caSlug);
+  if (!match) return notFound();
+  const crl = generateCertificateRevocationList(match.authority);
+  return new Response(Buffer.from(crl.der), {
+    status: 200,
+    headers: {
+      "content-type": "application/pkix-crl",
+    },
+  });
+}
+
 function bindEnvelopeToRoute(envelope: AuthorizationEnvelope, contextRoute: RouteContext): AuthorizationEnvelope {
   if (!contextRoute.siteSlug) return envelope;
   const allowedPatientAliases = envelope.allowedPatientAliases.filter((alias) => alias.siteSlug === contextRoute.siteSlug);
@@ -503,6 +1398,7 @@ function searchParamType(name: string) {
 export function resolveRoute(defaultMode: ModeName, pathname: string):
   | { kind: "landing"; context: RouteContext }
   | { kind: "smart-config"; context: RouteContext }
+  | { kind: "udap-config"; context: RouteContext }
   | { kind: "register"; context: RouteContext }
   | { kind: "token"; context: RouteContext }
   | { kind: "introspect"; context: RouteContext }
@@ -525,6 +1421,9 @@ export function resolveRoute(defaultMode: ModeName, pathname: string):
 
   if (segments[index] === ".well-known" && segments[index + 1] === "smart-configuration" && segments.length === index + 2) {
     return { kind: "smart-config", context: { mode } };
+  }
+  if (segments[index] === ".well-known" && segments[index + 1] === "udap" && segments.length === index + 2) {
+    return { kind: "udap-config", context: { mode } };
   }
   if (segments[index] === "register" && segments.length === index + 1) return { kind: "register", context: { mode } };
   if (segments[index] === "token" && segments.length === index + 1) return { kind: "token", context: { mode } };
@@ -560,6 +1459,9 @@ export function resolveRoute(defaultMode: ModeName, pathname: string):
   if (segments[index] === ".well-known" && segments[index + 1] === "smart-configuration" && segments.length === index + 2) {
     return { kind: "smart-config", context };
   }
+  if (segments[index] === ".well-known" && segments[index + 1] === "udap" && segments.length === index + 2) {
+    return { kind: "udap-config", context };
+  }
   if (segments[index] === "metadata" && segments.length === index + 1) return { kind: "metadata", context };
   if (segments[index] === "$resolve-record-locations" && segments.length === index + 1) {
     return { kind: "operation", context, operation: "resolve-record-locations" };
@@ -591,6 +1493,98 @@ function resolveIssuerRoute(pathname: string):
     return { kind: "sign-ticket", issuerSlug };
   }
   return null;
+}
+
+function resolveDemoWellKnownRoute(pathname: string) {
+  const match = pathname.match(/^\/demo\/clients\/([^/]+)(?:\/\.well-known\/jwks\.json)?$/);
+  if (!match) return null;
+  return { clientSlug: match[1] };
+}
+
+function resolveUdapCrlRoute(pathname: string) {
+  const match = pathname.match(/^\/\.well-known\/udap\/crls\/([^/]+)\/([^/]+)\.crl$/);
+  if (!match) return null;
+  return {
+    frameworkSlug: match[1],
+    caSlug: match[2],
+  };
+}
+
+function resolveDemoEventsRoute(pathname: string) {
+  const match = pathname.match(/^\/demo\/events\/([^/]+)$/);
+  if (!match?.[1]) return null;
+  return { sessionId: decodeURIComponent(match[1]) };
+}
+
+async function handleDemoEventsRequest(context: AppContext, request: Request, sessionId: string, server?: Bun.Server<any>) {
+  if (request.method === "GET") {
+    try {
+      server?.timeout(request, 0);
+    } catch {
+      // Best-effort only; local/demo use still works without explicit timeout control.
+    }
+    const lastEventId = Number.parseInt(request.headers.get("last-event-id") ?? "0", 10);
+    let unsubscribe = () => {};
+    let heartbeat: ReturnType<typeof setInterval> | null = null;
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        const send = (chunk: string) => controller.enqueue(encoder.encode(chunk));
+        send("retry: 1000\n\n");
+        unsubscribe = context.demoEvents.subscribe(
+          sessionId,
+          (event) => send(formatDemoEventSse(event)),
+          Number.isFinite(lastEventId) ? lastEventId : 0,
+        );
+        heartbeat = setInterval(() => {
+          send(": ping\n\n");
+        }, 15000);
+      },
+      cancel() {
+        unsubscribe();
+        if (heartbeat) clearInterval(heartbeat);
+      },
+    });
+    return new Response(stream, {
+      headers: {
+        "content-type": "text/event-stream",
+        "cache-control": "no-cache",
+        connection: "keep-alive",
+        "x-accel-buffering": "no",
+      },
+    });
+  }
+
+  if (request.method === "POST") {
+    const body = await parseBody(request);
+    if (!isDemoEventDraft(body)) {
+      return jsonResponse(
+        {
+          error: "invalid_demo_event",
+          error_description: "Demo event POST body did not match the expected shape",
+        },
+        400,
+      );
+    }
+    const event = context.demoEvents.emit(sessionId, {
+      ...body,
+      source: "viewer",
+    } satisfies DemoEventDraft);
+    return jsonResponse(event, 202);
+  }
+
+  return methodNotAllowed("GET, POST");
+}
+
+function handleDemoSessionsRequest(context: AppContext, request: Request) {
+  if (request.method !== "GET") return methodNotAllowed("GET");
+  return jsonResponse(
+    {
+      sessions: context.demoEvents.listSessions(),
+    },
+    200,
+    { "cache-control": "no-store" },
+  );
 }
 
 async function parseBody(request: Request) {
@@ -628,10 +1622,70 @@ function parseBasicAuth(header: string | null) {
   return { clientId, clientSecret: clientSecret ?? "" };
 }
 
-function signlessDecode(jwt: string) {
-  const [, encodedPayload] = jwt.split(".");
-  if (!encodedPayload) throw new Error("Malformed JWT");
-  return JSON.parse(Buffer.from(encodedPayload, "base64url").toString("utf8"));
+function extractDemoSessionId(request: Request) {
+  const value = request.headers.get("x-demo-session")?.trim();
+  return value ? value : null;
+}
+
+function inferDemoSessionId(context: AppContext, request: Request, body?: Record<string, any> | null) {
+  const explicit = extractDemoSessionId(request);
+  if (explicit) return explicit;
+  if (body?.subject_token && typeof body.subject_token === "string") {
+    const fromTicket = context.demoSessionLinks.sessionForTicket(body.subject_token);
+    if (fromTicket) return fromTicket;
+  }
+  if (body?.client_id && typeof body.client_id === "string") {
+    const fromClient = context.demoSessionLinks.sessionForClient(body.client_id);
+    if (fromClient) return fromClient;
+  }
+  if (body?.token && typeof body.token === "string") {
+    const fromToken = context.demoSessionLinks.sessionForAccessToken(body.token);
+    if (fromToken) return fromToken;
+  }
+  const bearerToken = extractBearerToken(request);
+  if (bearerToken) {
+    const fromAccessToken = context.demoSessionLinks.sessionForAccessToken(bearerToken);
+    if (fromAccessToken) return fromAccessToken;
+  }
+  return null;
+}
+
+function demoObserverForRequest(context: AppContext, request: Request, body?: Record<string, any> | null): DemoObserver | null {
+  const sessionId = inferDemoSessionId(context, request, body);
+  return sessionId ? context.demoEvents.observer(sessionId) : null;
+}
+
+function emitDemoEvent(observer: DemoObserver | null, event: DemoEventDraft) {
+  if (!observer) return null;
+  return observer.emit(event);
+}
+
+function extractBearerToken(request: Request) {
+  const header = request.headers.get("authorization");
+  return header?.startsWith("Bearer ") ? header.slice("Bearer ".length) : null;
+}
+
+function demoRequestArtifact(url: string, method: string, headers: Headers | Record<string, string> | undefined, body?: unknown): DemoEventArtifacts["request"] {
+  const normalizedHeaders = headers instanceof Headers
+    ? Object.fromEntries(headers.entries())
+    : headers ?? {};
+  return { method, url, headers: normalizedHeaders, body };
+}
+
+function demoResponseArtifact(status: number, headers: Headers | Record<string, string> | undefined, body?: unknown): DemoEventArtifacts["response"] {
+  const normalizedHeaders = headers instanceof Headers
+    ? Object.fromEntries(headers.entries())
+    : headers ?? {};
+  return { status, headers: normalizedHeaders, body };
+}
+
+function formatDemoEventSse(event: DemoEvent) {
+  return `id: ${event.seq}\ndata: ${JSON.stringify(event)}\n\n`;
+}
+
+function siteNameForSlug(context: AppContext, siteSlug: string | undefined) {
+  if (!siteSlug) return undefined;
+  return context.store.listSiteSummaries().find((site) => site.siteSlug === siteSlug)?.organizationName ?? siteSlug;
 }
 
 function buildAnonymousEnvelope(context: AppContext): AuthorizationEnvelope {
@@ -656,15 +1710,69 @@ function absoluteUrl(url: URL, path: string) {
   return `${url.origin}${path}`;
 }
 
-/** Reconstruct the public-facing URL from X-Forwarded-* headers (set by exe.dev reverse proxy). */
-function publicUrl(request: Request): URL {
+function buildKnownTicketAudienceUrls(url: URL, config: ServerConfig, contextRoute: RouteContext) {
+  const authBasePath = buildAuthBasePath(config.strictDefaultMode, contextRoute);
+  const fhirBasePath = buildFhirBasePath(config.strictDefaultMode, contextRoute);
+  const audienceUrls = [
+    url.origin,
+    absoluteUrl(url, authBasePath),
+    absoluteUrl(url, fhirBasePath),
+    absoluteUrl(url, `${authBasePath}/token`),
+  ];
+  return [...new Set(audienceUrls)];
+}
+
+function configuredPublicUrl(config: ServerConfig, request: Request): URL {
   const raw = new URL(request.url);
-  const proto = request.headers.get("x-forwarded-proto");
-  const host = request.headers.get("x-forwarded-host");
-  if (proto && host) {
-    return new URL(`${proto}://${host}${raw.pathname}${raw.search}`);
+  return new URL(`${config.publicBaseUrl}${raw.pathname}${raw.search}`);
+}
+
+class OAuthTokenError extends Error {
+  constructor(
+    readonly errorCode: "invalid_request" | "invalid_grant" | "invalid_scope" | "unsupported_grant_type" | "invalid_client",
+    readonly description: string,
+    readonly status = 400,
+  ) {
+    super(description);
   }
-  return raw;
+}
+
+function asOAuthTokenError(error: unknown) {
+  if (error instanceof OAuthTokenError) return error;
+  return new OAuthTokenError("invalid_request", error instanceof Error ? error.message : "Token request failed");
+}
+
+function tokenErrorResponse(error: OAuthTokenError) {
+  return tokenJsonResponse(
+    {
+      error: error.errorCode,
+      error_description: error.description,
+    },
+    error.status,
+  );
+}
+
+function registrationErrorResponse(error: ClientRegistrationError) {
+  return jsonResponse(
+    {
+      error: error.errorCode,
+      error_description: error.description,
+    },
+    error.status,
+  );
+}
+
+function narrowScopeString(grantedScope: string, requestedScope: string | undefined) {
+  if (!requestedScope) return grantedScope;
+  const granted = new Set(grantedScope.split(/\s+/).map((entry) => entry.trim()).filter(Boolean));
+  const requested = [...new Set(requestedScope.split(/\s+/).map((entry) => entry.trim()).filter(Boolean))];
+  if (!requested.length) return grantedScope;
+  for (const scope of requested) {
+    if (!granted.has(scope)) {
+      throw new Error(`Requested scope is not permitted by the ticket: ${scope}`);
+    }
+  }
+  return requested.join(" ");
 }
 
 const PATIENT_SCENARIOS: Record<string, { summary: string; constraints: string }> = {
@@ -734,7 +1842,13 @@ function buildLandingPage(context: AppContext, url: URL, contextRoute: RouteCont
 
   const entrypoints = [
     { label: "SMART Config", href: `${prefix}/.well-known/smart-configuration`, note: "OAuth/SMART metadata for the selected mode." },
+    ...(context.config.frameworks.some((framework) => framework.frameworkType === "udap" && framework.supportsClientAuth)
+      ? [{ label: "UDAP Metadata", href: `${prefix}/.well-known/udap`, note: "UDAP discovery metadata for registration and token auth." }]
+      : []),
     { label: "Dynamic Registration", href: `${prefix}/register`, note: "Client registration endpoint." },
+    ...(context.config.frameworks.some((framework) => framework.frameworkType === "well-known" && framework.supportsClientAuth)
+      ? [{ label: "Demo Well-Known JWKS", href: "/.well-known/jwks.json", note: "Built-in JWKS for the demo well-known client entity." }]
+      : []),
     { label: "Token Exchange", href: `${prefix}/token`, note: "Permission Ticket to access-token exchange." },
     { label: "Introspection", href: `${prefix}/introspect`, note: "Stateless access-token introspection." },
     { label: "FHIR Metadata", href: `${prefix}/fhir/metadata`, note: "CapabilityStatement for the selected mode." },
@@ -1226,10 +2340,21 @@ function shellQuote(value: string) {
   return `'${value.replaceAll("'", `'\"'\"'`)}'`;
 }
 
-function jsonResponse(body: unknown, status = 200) {
+function jsonResponse(body: unknown, status = 200, headers: Record<string, string> = {}) {
   return new Response(JSON.stringify(body, null, 2), {
     status,
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", ...headers },
+  });
+}
+
+function tokenJsonResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body, null, 2), {
+    status,
+    headers: {
+      "content-type": "application/json",
+      "cache-control": "no-store",
+      pragma: "no-cache",
+    },
   });
 }
 

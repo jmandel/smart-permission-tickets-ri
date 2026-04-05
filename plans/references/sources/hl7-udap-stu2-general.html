@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>General Requirements - Security for Scalable Registration, Authentication, and Authorization v2.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir-ig.css" rel="stylesheet"/>
+<link href="assets/css/udap.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"7"}
+    h3,h4,h5,h6{--heading-prefix:"7"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+        <div id="hl7-nav">
+          <a id="hl7-logo" no-external="true" href="http://hl7.org">
+            <img height="50" alt="Visit the HL7 website" src="assets/images/hl7-logo-header.png"/>
+          </a>
+        </div>
+        <div id="family-nav">
+          <a id="family-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="assets/images/fhir-logo-www.png"/> </a>
+        </div>
+        <div id="hl7-search">
+          <a id="hl7-search-lnk" no-external="true" href="searchform.html"><img alt="Search FHIR" src="assets/images/search.png"/></a>
+        </div>
+
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" href="https://www.udap.org/"><img height="44" alt="Visit the UDAP.org website" style="vertical-align:top" src="assets/images/udap_logo.png"/></a>
+        </div>
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" style="margin:0px" href="https://www.hl7.org/fast/"><img height="40" alt="Visit the FHIR At Scale Taskforce website" style="padding:2px 0px 1px 0px" src="assets/images/FASTLogo.png"/></a>
+        </div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Security for Scalable Registration, Authentication, and Authorization</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0 - STU 2
+
+
+
+  <img alt="United States of America (the) flag" src="assets/images/usa.svg" height="16" title="United States of America (the)"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="discovery.html">Discovery</a>
+  </li>
+  <li>
+    <a href="registration.html">Registration</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Authorization and Authentication
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="consumer.html">Consumer-Facing</a>
+      </li>
+      <li>
+        <a href="b2b.html">Business-to-Business</a>
+      </li>
+      <li>
+        <a href="user.html">Tiered OAuth for User Authentication</a>
+      </li>
+      <li>
+        <a href="general.html">General Requirements</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="about.html">About</a>
+  </li>
+  <li>
+    <a href="changelog.html">Change Log</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>General Requirements</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Security for Scalable Registration, Authentication, and Authorization (v2.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://hl7.org/fhir/us/udap-security/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>General Requirements</h2>
+  
+
+
+
+
+
+  <table class="colsi">
+    <tr>
+  
+      <td>
+        <i>Page standards status:</i> <a href="http://hl7.org/fhir/R4/versions.html#std-process" title="Standard Status">Informative</a>
+        
+      </td>
+  
+  
+    </tr>
+  </table>
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#json-web-token-jwt-requirements" id="markdown-toc-json-web-token-jwt-requirements">JSON Web Token (JWT) Requirements</a></li>
+  <li><a href="#authorization-code-flow" id="markdown-toc-authorization-code-flow">Authorization code flow</a></li>
+  <li><a href="#scope-negotiation" id="markdown-toc-scope-negotiation">Scope negotiation</a></li>
+  <li><a href="#certifications-for-client-applications" id="markdown-toc-certifications-for-client-applications">Certifications for client applications</a></li>
+  <li><a href="#using-this-guide-with-the-smart-app-launch-framework" id="markdown-toc-using-this-guide-with-the-smart-app-launch-framework">Using this guide with the SMART App Launch framework</a></li>
+  <li><a href="#experimental-workflow-alternative-using-jku-dereferencing" id="markdown-toc-experimental-workflow-alternative-using-jku-dereferencing">Experimental workflow alternative using ‘jku’ dereferencing</a></li>
+</ul>
+
+</div>
+<p>This section contains general requirements applicable to multiple authorization and authentication workflows.</p>
+
+<h3 id="json-web-token-jwt-requirements">JSON Web Token (JWT) Requirements</h3>
+
+<p>Both the producers and consumers of JWTs specified in this guide <strong>SHALL</strong> conform to the requirements of <a href="https://datatracker.ietf.org/doc/html/rfc7515">RFC 7515</a> and the additional requirements below.</p>
+
+<h4 id="general-requirements-and-serialization">General requirements and serialization</h4>
+
+<p>All JSON Web Tokens (JWTs) defined in this guide:</p>
+<ol>
+  <li><strong>SHALL</strong> conform to the mandatory requirements of <a href="https://datatracker.ietf.org/doc/html/rfc7519">RFC 7519</a>.</li>
+  <li><strong>SHALL</strong> be JSON Web Signatures as defined in <a href="https://datatracker.ietf.org/doc/html/rfc7515">RFC 7515</a>.</li>
+  <li><strong>SHALL</strong> be serialized using JWS Compact Serialization as per <a href="https://datatracker.ietf.org/doc/html/rfc7515#section-7.1">Section 7.1</a> of RFC 7515.</li>
+</ol>
+
+<h4 id="signature-algorithm-identifiers">Signature algorithm identifiers</h4>
+
+<p>Signature algorithm identifiers used in this guide are defined in <a href="https://datatracker.ietf.org/doc/html/rfc7518#section-3.1">Section 3.1</a> of RFC 7518.</p>
+
+<table class="table">
+   <thead>
+      <th colspan="3">Signature Algorithm Identifier Conformance</th>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>RS256</code></td>
+         <td>Implementers <b>SHALL</b> support this algorithm.</td>
+      </tr>
+      <tr>
+         <td><code>ES256</code></td>
+         <td>Implementers <b>SHOULD</b> support this algorithm.</td>
+      </tr>
+      <tr>
+         <td><code>RS384</code></td>
+         <td>Implementers <b>MAY</b> support this algorithm.</td>
+      </tr>
+      <tr>
+         <td><code>ES384</code></td>
+         <td>Implementers <b>MAY</b> support this algorithm.</td>
+      </tr>
+   </tbody>
+</table>
+
+<p>While this guide mandates a baseline of support, clients and servers <strong>MAY</strong> support and use additional signature algorithms that meet the security requirements of the use case.</p>
+
+<h4 id="jwt-headers">JWT headers</h4>
+
+<p>All JWTs defined in this guide <strong>SHALL</strong> contain a Javascript Object Signing and Encryption (JOSE) header as defined in <a href="https://datatracker.ietf.org/doc/html/rfc7515#section-4">Section 4</a> of RFC 7515 that conforms to the following requirements:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">JWT Header Values</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>alg</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        A string identifying the signature algorithm used to sign the JWT. For
+        example:<br />
+        <code>"RS256"</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>x5c</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        An array of one or more strings containing the X.509 certificate or
+        certificate chain, where the leaf certificate corresponds to the
+        key used to digitally sign the JWT. Each string in the array is the
+        base64-encoded DER representation of the corresponding certificate, with the leaf
+        certificate appearing as the first (or only) element of the array.<br />
+        See <a href="https://tools.ietf.org/html/rfc7515#section-4.1.6">Section 4.1.6 of RFC 7515</a>.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="jwt-claims">JWT Claims</h4>
+
+<p>All JWTs defined in this guide contain the <code class="language-plaintext highlighter-rouge">iss</code>, <code class="language-plaintext highlighter-rouge">exp</code>, and <code class="language-plaintext highlighter-rouge">jti</code> claims. The value of the <code class="language-plaintext highlighter-rouge">jti</code> claim is a nonce string value that uniquely identifies a JWT until the expiration of that JWT, i.e. until the time specified in the <code class="language-plaintext highlighter-rouge">exp</code> claim of that JWT has passed. Thus, the issuer of a JWT <strong>SHALL NOT</strong> reuse the same <code class="language-plaintext highlighter-rouge">jti</code> value in a new JWT with the same <code class="language-plaintext highlighter-rouge">iss</code> value prior to the expiration of the previous JWT. Implementers who track <code class="language-plaintext highlighter-rouge">jti</code> values to detect the replay of received JWTs <strong>SHALL</strong> allow a <code class="language-plaintext highlighter-rouge">jti</code> value to be reused after the expiration of any other previously received JWTs containing the same <code class="language-plaintext highlighter-rouge">iss</code> and <code class="language-plaintext highlighter-rouge">jti</code> values.</p>
+
+<p>Additional JWT Claim requirements are defined elsewhere in this guide.</p>
+
+<h4 id="normalization-of-uri-values-in-jwts">Normalization of URI values in JWTs</h4>
+
+<p>This guide does not require the canonicalization of URIs included in JWTs before making string comparisons. Per Section 2 of <a href="https://datatracker.ietf.org/doc/html/rfc7519">RFC 7519</a>, URI values in JWTs are compared as case-sensitive strings with no transformations or canonicalizations applied. The JWT producer <strong>SHOULD</strong> include URI values that are normalized to facilitate successful string matching by the JWT consumer. The JWT consumer is <strong>NOT REQUIRED</strong> to perform any normalization of URI values prior to making comparisons. For example, a JWT producer cannot assume that a JWT consumer will consider <code class="language-plaintext highlighter-rouge">"https://FHIR.example.com:443"</code> and <code class="language-plaintext highlighter-rouge">"https://fhir.example.com/"</code> to be equivalent strings when evaluating a JWT.</p>
+
+<p>Note: To ensure interoperability, a URI included as the <code class="language-plaintext highlighter-rouge">iss</code> value of a JWT should exactly match a URI included in the Subject Alternative Name extension of the JWT producer’s corresponding certificate, including, for example, the case used for the host name and the presence or absence of a port number or trailing slash. Similarly, clients that include a URI provided by a server in its server metadata as the <code class="language-plaintext highlighter-rouge">aud</code> value of a JWT subsequently submitted to that server should include the URI exactly as it was originally provided by that server.</p>
+
+<h4 id="jwt-validation">JWT validation</h4>
+
+<p>Several workflows described in this guide require validation of JWTs by the JWT consumer. This includes the requirement that the JWT consumer validate that it trusts the corresponding JWT’s producer’s X.509 certificate by constructing a valid certificate chain from the JWT producer’s certificate to an anchor trusted by the JWT consumer, and by verifying that the certificates in the chain have not expired or been revoked. The full validation requirements for each workflow can be found in the UDAP profile sections referenced in Sections <a href="discovery.html#required-udap-metadata">2.3</a>, <a href="registration.html#request-body">3.2.3</a>, <a href="consumer.html#server-processing-of-token-requests">4.2.3</a>, and <a href="b2b.html#server-processing-of-token-requests">5.2.3</a>.</p>
+
+<h3 id="authorization-code-flow">Authorization code flow</h3>
+
+<p>The constraints in the following subsections apply to all workflows utilizing the authorization code flow. Authorization requests submitted by client applications <strong>SHALL</strong> include the following parameters:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Authorization request parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>response_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>code</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The client identifier issued to the client application at registration.
+      </td>
+    </tr>
+    <tr>
+      <td><code>redirect_uri</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        The client application's redirection URI for this session, <strong>REQUIRED</strong> when the client application registered more than one redirection URI. The value <strong>SHALL</strong> match one of the redirection URIs registered by the client.
+      </td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Space-delimited list of requested scopes of access.
+      </td>
+    </tr>
+    <tr>
+      <td><code>state</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        An opaque value used by the client to maintain state between the request and callback, as discused further in <a href="#the-state-parameter">Section 7.2.1</a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>code_challenge</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        PKCE code challenge, as discussed further in <a href="#proof-key-for-code-exchange-pkce">Section 7.2.2</a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>code_challenge_method</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed value: <code>S256</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="the-state-parameter">The state parameter</h4>
+<p>A Client application <strong>SHALL</strong> include the <code class="language-plaintext highlighter-rouge">state</code> parameter in its authorization request. An Authorization Server <strong>SHALL</strong> return an error code of <code class="language-plaintext highlighter-rouge">invalid_request</code> as per Section 4.1.2.1 of RFC 6749 if a client application does not include a <code class="language-plaintext highlighter-rouge">state</code> value in its authorization request.</p>
+
+<p>Servers <strong>SHALL</strong> include the <code class="language-plaintext highlighter-rouge">state</code> parameter and corresponding value provided by the client application in the authorization response as per RFC 6749. The client application <strong>SHALL NOT</strong> proceed if the <code class="language-plaintext highlighter-rouge">state</code> parameter is not included in the authorization response or its value does not match the value provided by the client application in the corresponding authorization request.</p>
+
+<h4 id="proof-key-for-code-exchange-pkce">Proof Key for Code Exchange (PKCE)</h4>
+
+<p>Client applications and Authorization Servers <strong>SHALL</strong> utilize Proof Key for Code Exchange (PKCE) with <code class="language-plaintext highlighter-rouge">code_challenge_method</code> of <code class="language-plaintext highlighter-rouge">S256</code> as defined in RFC 7636. An Authorization Server <strong>SHOULD</strong> return an error as per Section 4.4.1 of RFC 7636 if a client application does not include a <code class="language-plaintext highlighter-rouge">code_challenge</code> is its authorization request.</p>
+
+<p>The Authorization Server <strong>SHALL</strong> return an error in response to a token request as per Section 4.6 of RFC 7636 if the client included a <code class="language-plaintext highlighter-rouge">code_challenge</code> in its authorization request but did not include the correct <code class="language-plaintext highlighter-rouge">code_verfier</code> value in the corresponding token request.</p>
+
+<h3 id="scope-negotiation">Scope negotiation</h3>
+
+<p>A wildcard scope is a scope that can be alternatively represented as a set of non-wildcard scopes. An example of a wildcard scope is the SMART App Launch v1.0.0 scope <code class="language-plaintext highlighter-rouge">patient/Observation.*</code> which can expanded to the set of two non-wildcard scopes: <code class="language-plaintext highlighter-rouge">patient/Observation.read</code> and <code class="language-plaintext highlighter-rouge">patient/Observation.write</code>. Granting the wildcard scope to a client application is equivalent to granting the corresponding expanded set of non-wildcard scopes.</p>
+
+<p>The constraints enumerated below apply for scope negotiation between client applications and servers. Unless otherwise specified, these constraints apply for both registration requests and access token requests made by client applications, and the corresponding responses returned by servers.</p>
+
+<ol>
+  <li>Client applications and servers <strong>MAY</strong> support wildcard scopes.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">scopes_supported</code> metadata <strong>SHALL</strong> be present in the .well-known/udap object and <strong>SHALL</strong> list all scopes supported by the server including all supported wildcard scopes.</li>
+  <li>A client application <strong>MAY</strong> request a wildcard scope only if wildcards are specified in the server’s <code class="language-plaintext highlighter-rouge">scopes_supported</code> metadata list.</li>
+  <li>If a client application requests a wildcard scope and the server supports wildcards, then the server <strong>SHOULD</strong> return either the wildcard scope or an expanded set of scopes that the client has been granted in its response.</li>
+  <li>If a client application requests a wildcard scope and the server does not support wildcard scopes, then the server <strong>SHOULD</strong> respond with an error of “invalid_client_metadata” for registration requests or an error of “invalid_scope” for token requests.</li>
+  <li>If a server supports scopes defined in other specifications or implementaton guides for a workflow defined in this guide, then the server <strong>SHOULD</strong> include the corresponding scopes in its <code class="language-plaintext highlighter-rouge">scopes_supported</code> metadata.</li>
+  <li>In registration requests and token requests, an authorization server <strong>MAY</strong> grant all scopes requested by the client or a subset thereof. It <strong>MAY</strong> also grant additional scopes that were not in the set of scopes requested by the client application. For example, the set of scopes granted or not granted by the server could be based on technical or policy guidelines at the responding organization, or, for token requests, based on the application having registered with the server for a different set of scopes.</li>
+  <li>A server <strong>SHALL</strong> include the <code class="language-plaintext highlighter-rouge">scope</code> parameter in a token response if the set of scopes granted by the server to the client application is not identical to the set of scopes requested by the client application, or if the client application does not include a set of requested scopes in its request.</li>
+  <li>A server <strong>SHOULD</strong> respond with an error of “invalid_scope” for token requests only if a wildcard scope is requested and not supported, or if none of the requested scopes are supported.</li>
+  <li>A server <strong>SHOULD</strong> respond with an error of “invalid_client_metadata” for registration requests if a wildcard scope is requested and not supported, if none of the requested scopes are supported, and/or if the server will not grant any of the requested scopes to the client based on technical or policy guidelines at the responding organization.</li>
+  <li>Client applications <strong>SHOULD</strong> be able to handle a response granting a different set of scopes than the scopes requested. This may be a superset, subset, or entirly different set, as described in items 4 and 6 above.</li>
+</ol>
+
+<h3 id="certifications-for-client-applications">Certifications for client applications</h3>
+
+<p>As discussed in <a href="https://www.udap.org/udap-certifications-and-endorsements-stu1.html">UDAP Certifications and Endorsements for Client Applications</a>, certifications can be used by client applications or third parties to declare additional information about a client application at the time of registration.</p>
+
+<p>The table in Section 7.4.1 provides a template for UDAP Certification definitions. A trust community <strong>MAY</strong> publish one or more Certification definitions using this template. A Certification definition specifies the values to be used for the <code class="language-plaintext highlighter-rouge">certification_name</code> and <code class="language-plaintext highlighter-rouge">certification_uris</code> keys and the allowed <code class="language-plaintext highlighter-rouge">grant_types</code>. The trust community determines whether or not the optional <code class="language-plaintext highlighter-rouge">scopes</code> and <code class="language-plaintext highlighter-rouge">extensions</code> keys will be included in their Certification definition, any restrictions on their allowed values, and whether these keys will be optional, required, or conditionally included when generating a certification. If the <code class="language-plaintext highlighter-rouge">extensions</code> keys are used, the Certification definition specifies the additional extensions keys to be included in the <code class="language-plaintext highlighter-rouge">extensions</code> object, as discussed in section 7.4.2.</p>
+
+<p>The trust community also determines who will sign the certification, e.g. the app operator or another party. For example, a certification self-signed by a client app operator can be used to declare the intended use of the application within a trust community, while certifications signed by another party, such as the trust community administrator or an independent accreditor, can be used to assist servers in determining what a client application is authorized to do within a trust community. Note that a trust community could use such a certification to communicate the exchange purposes for which a particular client application operator has been approved.</p>
+
+<p>Using a Certification definition provided by the trust community, a client application or third party <strong>MAY</strong> generate a certification by constructing a signed JWT conforming to requirements of the certification definition and this section. The certification <strong>SHALL</strong> contain the required header elements specified in <a href="general.html#jwt-headers">Section 7.1.3</a> of this guide and the JWT claims listed in the certification definition. The certification <strong>SHALL</strong> be signed by the client application operator or by a third party, as specified in the certification definition, using the signature algorithm identified in the <code class="language-plaintext highlighter-rouge">alg</code> header of the certification and with the private key that corresponds to the public key listed in the signer’s X.509 certificate identified in the <code class="language-plaintext highlighter-rouge">x5c</code> header of the certification.</p>
+
+<p>Recognized Certification JWT claims and server processing rules for Certifications submitted by a client application are detailed in <a href="https://www.udap.org/udap-certifications-and-endorsements-stu1.html">UDAP Certifications and Endorsements for Client Applications</a>.</p>
+
+<h4 id="certification-template">Certification template</h4>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Template for Certification JWT Claims</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>iss</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Issuer of the JWT -- unique identifying URI of the signing entity. This <strong>SHALL</strong> match the value of a uniformResourceIdentifier entry in the Subject Alternative Name extension of the signer's certificate included in the <code>x5c</code> JWT header and <strong>SHALL</strong> uniquely identify a single signing entity over time.
+      </td>
+    </tr>
+    <tr>
+      <td><code>sub</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Subject of the JWT -- unique identifying client URI. This <strong>SHALL</strong> match the value of a uniformResourceIdentifier entry in the Subject Alternative Name extension of the client's certificate and <strong>SHALL</strong> uniquely identify a single client app operator and applications over time.
+        For a self-signed certification, this is same as <code>iss</code>.
+      </td>
+    </tr>
+    <tr>
+      <td><code>aud</code></td>
+      <td><span class="label label-warning">optional</span></td>
+      <td>
+        The "registration URL" of the intended Authorization server(s), i.e. the same URL to which the registration request will be posted. If absent, this certification is intended for all Authorization Servers. The value can be a single string or array of strings.
+      </td>
+    </tr>
+    <tr>
+      <td><code>exp</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Expiration time integer for this software statement, expressed in seconds since the "Epoch" (1970-01-01T00:00:00Z UTC). The <code>exp</code> time <strong>SHALL</strong> be no more than 3 years after the value of the <code>iat</code> claim.
+      </td>
+    </tr>
+    <tr>
+      <td><code>iat</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Issued time integer for this software statement, expressed in seconds since the "Epoch"
+      </td>
+    </tr>
+    <tr>
+      <td><code>jti</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        A nonce string value that uniquely identifies this software statement. See <a href="general.html#jwt-claims">Section 7.1.4</a> for additional requirements regarding reuse of values.
+      </td>
+    </tr>
+    <tr>
+      <td><code>certification_name</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        string with fixed value defined by the trust community, e.g. "Example HL7 Client App Certification"
+      </td>
+    </tr>
+    <tr>
+      <td><code>certification_uris</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        array of one or more string with fixed values defined by the trust community, e.g.
+        <br />["http://community.example.com/certifications/example-certifications"].
+      </td>
+    </tr>
+    <tr>
+      <td><code>grant_types</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Array of strings, each representing a requested grant type, from the following list: <code>"authorization_code"</code>, <code>"refresh_token"</code>, <code>"client_credentials"</code>. The array <strong>SHALL</strong> include either <code>"authorization_code"</code> or <code>"client_credentials"</code>, but not both. The value <code>"refresh_token"</code> <strong>SHALL NOT</strong> be present in the array unless <code>"authorization_code"</code> is also present.
+      </td>
+    </tr>
+    <tr>
+      <td><code>response_types</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        Array of strings. If <code>grant_types</code> contains <code>"authorization_code"</code>, then this element <strong>SHALL</strong> have a fixed value of <code>["code"]</code>, and <strong>SHALL</strong> be omitted otherwise
+      </td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>
+        String containing a space delimited list of scopes that may be requested by the client application in subsequent requests. The Authorization Server <strong>MAY</strong> consider this list when deciding the scopes that it will allow the application to subsequently request. Note for client apps that also support the SMART App Launch framework: certifications for apps requesting the <code>"client_credentials"</code> grant type <strong>SHOULD</strong> lisst system scopes; certifications for apps requesting the <code>"authorization_code"</code> grant type <strong>SHOULD</strong> list user or patient scopes.
+      </td>
+    </tr>
+    <tr>
+      <td><code>extensions</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>
+        A JSON object containing one or more certification extension keys, as discussed in the following section.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="certification-extension-keys-example">Certification extension keys example</h4>
+
+<p>When defining a Certification, a trust community <strong>MAY</strong> define one or more extension keys to be included in the <code class="language-plaintext highlighter-rouge">extensions</code> object of the Certification JWT, the JSON type of the corresponding value, and the conditions under which the key is present, including whether the use of the key is optional, required, etc. The value of each extension key <strong>SHALL</strong> be a JSON value or a JSON object. For example, a Certification definition could specify that the value of a key is a number, an array of strings, or a FHIR <a href="https://www.hl7.org/fhir/R4/questionnaire.html">Questionnaire</a> resource, as appropriate for its intended use.</p>
+
+<p>Two non-normative examples of extension keys that could be considered for inclusion in a Certification are presented in the table below:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="2">Example Client Application Certification JWT Extensions Keys</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>example_exchange_purposes</code></td>
+      <td>
+        Array of strings, each containing a URI identifying an exchange purpose recognized by the trust community.
+      </td>
+    </tr>
+    <tr>
+      <td><code>example_privacy_disclosures</code></td>
+      <td>
+        A JSON object containing a set of privacy-related keys and acceptable values established by the trust community. <br />For example:
+        <br />1. the key <code>funding</code> could be used to express the app's source of funding.
+        <br />2. the key <code>data_storage</code> could be used to identify where a patient's data is stored.
+        <br />3. the key <code>data_access_notification</code> could be used to indicate whether a user is notified when their data is accessed by someone else.
+        <br />Note: This example extension key is derived from an example Certification previously published by Carequality, which can be viewed <a href="https://carequality.org/wp-content/uploads/2020/12/Carequality-Consumer-Facing-App-Certification-Profile.pdf">here</a>.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="using-this-guide-with-the-smart-app-launch-framework">Using this guide with the SMART App Launch framework</h3>
+
+<p>This guide is intended to be compatible and harmonious with client and server use of versions 1 or 2 of the HL7 SMART App Launch IG. Although the use of the SMART App Launch framework is not required to be conformant with this guide, this section provides guidance on how the UDAP and SMART App Launch frameworks can be used together successfully.</p>
+
+<div class="stu-note">
+  <p>The FAST Security project team is working to identify any potential incompatibilities experienced by servers or client applications that support both this IG and the SMART App Launch IG concurrently. Implementers are requested to submit feedback regarding any other potential issues they have identified related to the concurrent use of both IGs so these may be addressed and resolved in future updates.</p>
+</div>
+
+<h4 id="consistent-use-of-both-guides">Consistent use of both guides</h4>
+
+<p>The question has been raised as to whether this IG can be used for client registration but not used for subsequent authentication. Though adopters of this IG sometimes colloquially refer to its entire workflow as “Dynamic Client Registration”, authentication consistent with this IG is also core to a compliant implementation and the HL7 UDAP FAST Security workgroup recommends that trust communities adopting this IG require the use of this IG for both client registration and authentication, even when SMART is also used, since omitting the UDAP workflow from the authentication step significantly reduces the security benefits to the community.</p>
+
+<h4 id="key-algorithms">Key Algorithms</h4>
+
+<p>JWT-based authentication in version 2 of the SMART IG requires server support for either the RS384 or ES384 signature algorithms, while this IG requires server support for RS256. However, this does not present a compatibility issue because RS256 is permitted as an optional algorithm in the SMART IG, and both RS384 and ES384 are permitted as optional algorithms in this IG. Therefore, using any of these three signature algorithms would be compliant with both IGs. It is also noted that for 2048-bit and 3072-bit RSA keys, for example, RS384 does not provide additional security strength beyond RS256.</p>
+
+<h4 id="public-key-distribution">Public Key Distribution</h4>
+
+<p>This guide uses X.509 certificates included inline within JWTs to distribute public keys. The entity generating a JWT includes the corresponding certificate in the <code class="language-plaintext highlighter-rouge">x5c</code> header of every signed JWT. Therefore, no separate key discovery or retrieval mechanism is required by the party consuming the JWT. The SMART App Launch framework instead prefers that client apps publish their public keys at a publicly available URL using the JWKS format, and submit this JWKS URL during registration. A server will then dereference this URL to obtain the client’s public key. However, this does not present a compatibility issue because the inclusion of the <code class="language-plaintext highlighter-rouge">x5c</code> header is not prohibited by the SMART IG, and a client can also publish the public keys from its certificate(s) in JWKS format at a JWKS URL or provide the JWKS directly to the server if necessary for strict conformance with the SMART IG. We note that, in practice, the public key in the certificate provided by the client would allow a server to validate the JWT signature without the need to dereference any JWKS URL provided. We also note that the SMART IG makes no stipulation regarding a server registering a key with a client, e.g. for validation of signed server metadata.</p>
+
+<h4 id="discovery">Discovery</h4>
+
+<p>Both this guide and the SMART App Launch framework have requirements regarding the publishing of server metadata at well-known URLs. There is some expected overlap in the UDAP metadata elements defined in <a href="discovery.html">Section 2</a> of this guide and the metadata required by the SMART IG, e.g. OAuth 2.0 authorization and token endpoints are included in both. This is not a compatibility issue as each guide specifies a different metadata endpoint. Having different metadata endpoints permits servers to return different metadata values for different workflows. For example, a server could operate a different token endpoint to handle token requests from clients conforming to this guide, or use the same endpoint for token requests conforming to both guides. We also note a server can easily identify token requests conforming to this guide by the presence of the extension parameter <code class="language-plaintext highlighter-rouge">udap</code> with a value of <code class="language-plaintext highlighter-rouge">1</code> in the request body.</p>
+
+<h4 id="scopes">Scopes</h4>
+
+<p>This guide does not restrict the scopes defined outside this guide that may be supported by a client or server. It is expected that clients that support both this guide and the FHIR resource scopes defined in the SMART App Launch framework will request SMART system-level scopes when using the <code class="language-plaintext highlighter-rouge">"client_credentials"</code> grant type and either SMART user-level or patient-specific scopes when using the <code class="language-plaintext highlighter-rouge">"authorization_code"</code> grant type.</p>
+
+<h4 id="authorization-requests">Authorization Requests</h4>
+
+<p>Client applications that support both this guide and the SMART App Launch IG are not required to include a launch scope or launch context requirement scope in an authorization request. However, the capability for a client application to request a launch context from the server is useful in many workflows, e.g. consumer facing workflows. Since this IG does not restrict the inclusion of additional parameters in an authorization request or in the corresponding server response, clients are able initiate either the SMART standalone or EHR launch workflows to request a launch context. For example, a client could initiate the SMART standalone launch by including the <code class="language-plaintext highlighter-rouge">launch/patient</code> scope in its authorization request to a server that supports this SMART workflow.</p>
+
+<h4 id="token-requests">Token Requests</h4>
+
+<p>For clients and servers that also support version 1 of the SMART App Launch IG, the requirement to authenticate using a private key in Section 4.2.1 overrides the requirement for the client to use HTTP Basic Authentication with a client_secret in <a href="http://hl7.org/fhir/smart-app-launch/1.0.0/index.html#step-3-app-exchanges-authorization-code-for-access-token">Section 7.1.3</a> of the SMART App Launch IG v1.0.0. It is noted that this override is only applicable to version 1, as subsequent versions of the SMART IG no longer requires client to use Basic Authentication.</p>
+
+<h4 id="token-responses">Token Responses</h4>
+
+<p>Although this guide does not currently constrain the type or format of access tokens, the SMART App Launch framework, when used together with this guide, may limit the allowed access token types (e.g. Bearer) and/or formats (e.g. JWT). Since this IG does not restrict the server from including additional parameters in the token response, servers can include other parameters specified by the SMART App Launch framework for this purpose, e.g. launch context parameters.</p>
+
+<h3 id="experimental-workflow-alternative-using-jku-dereferencing">Experimental workflow alternative using ‘jku’ dereferencing</h3>
+
+<div class="stu-note">
+  <p>Since many servers support <code class="language-plaintext highlighter-rouge">jku</code> dereferencing for certain SMART App Launch workflows, the question has been raised as to whether there may be some advantage to allowing clients and servers to re-use this <code class="language-plaintext highlighter-rouge">jku</code> mechanism for UDAP workflows, as an alternative to requiring a JWT signer to include their certificate inline in the <code class="language-plaintext highlighter-rouge">x5c</code> header of the JWT. To facilitate future discussion of this topic, this guide defines the following experimental workflow changes for testing purposes. Implementer feedback is requested to determine whether to expand or remove this option in future versions of this guide.</p>
+</div>
+
+<p>This sections defines an experimental JWT processing alernative to test the use of <code class="language-plaintext highlighter-rouge">jku</code> dereferencing for access token request/response workflows. Support for this variation is <strong>OPTIONAL</strong> for both clients and servers, and may be removed in future versions of this guide.  This variation overrides the requirement in <a href="general.html#jwt-headers">Section 7.1.3</a> to include an <code class="language-plaintext highlighter-rouge">x5c</code> header in a JWT. This section does not apply to registration requests or to JWTs signed by servers.</p>
+
+<p>Alternative workflow:</p>
+<ol>
+  <li>Clients <strong>MAY</strong> omit the <code class="language-plaintext highlighter-rouge">x5c</code> header from an Authentication JWT and instead include the <code class="language-plaintext highlighter-rouge">jku</code> header containing their pre-registered JWKS URL and the <code class="language-plaintext highlighter-rouge">kid</code> header identifying a key in the corresponding JWKS key set. If the <code class="language-plaintext highlighter-rouge">jku</code> header is included, then the key entry from the JWKS set at this URL matching the <code class="language-plaintext highlighter-rouge">kid</code> value in the JWT header <strong>SHALL</strong> include an <code class="language-plaintext highlighter-rouge">x5c</code> parameter populated with the corresponding certificate data in the same manner that the <code class="language-plaintext highlighter-rouge">x5c</code> JWT header would have been populated if it had been included in the JWT.</li>
+  <li>Servers that receive a JWT in a UDAP worfklow without an <code class="language-plaintext highlighter-rouge">x5c</code> header <strong>MAY</strong> dereference the <code class="language-plaintext highlighter-rouge">jku</code> header, attempt to locate the <code class="language-plaintext highlighter-rouge">x5c</code> parameter from the key entry corresponding to the <code class="language-plaintext highlighter-rouge">kid</code> value in the JWT, and use the <code class="language-plaintext highlighter-rouge">x5c</code> value from the JWKS in subsequent processing in the same way as if it had been included directly in the JWT as the value of <code class="language-plaintext highlighter-rouge">x5c</code> JWT header.</li>
+  <li>Clients intending to utilize this workflow <strong>SHALL</strong> register their JWKS URL by including the <code class="language-plaintext highlighter-rouge">jku</code> parameter with the JWKS URL value in their signed software statement at the time of registration.</li>
+</ol>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://www.hl7.org/Special/committees/secure">HL7 International / Security</a> and <a style="color:var(--footer-hyperlink-text-color)" href="https://www.udap.org">UDAP.org</a>.  Package hl7.fhir.us.udap-security#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 9, 2025 21:29+0000">2025-12-09</span>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+                 | <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir/us/udap-security/history.html">Version History</a> |
+                 <a style="color: #81BEF7" rel="license" href="http://hl7.org/fhir/R4/license.html"><img style="border-style: none;" alt="CC0" src="cc0.png"/></a> |
+                 <!--<a style="color: #81BEF7" href="todo.html">Search</a> | --> 
+                 <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

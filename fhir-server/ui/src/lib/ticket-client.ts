@@ -4,10 +4,14 @@ export async function signPermissionTicket(
   origin: string,
   issuer: TicketIssuerInfo,
   ticketPayload: Record<string, any>,
+  sessionId?: string | null,
 ) {
   const response = await fetch(`${origin}${issuer.signTicketPath}`, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: {
+      "content-type": "application/json",
+      ...(sessionId ? { "x-demo-session": sessionId } : {}),
+    },
     body: JSON.stringify(ticketPayload),
   });
   const payload = await response.json();

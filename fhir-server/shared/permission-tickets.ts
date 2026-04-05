@@ -4,6 +4,9 @@ export const SMART_PERMISSION_TICKET_CONFIG_EXTENSION_URL =
 export const NETWORK_PATIENT_ACCESS_TICKET_TYPE =
   "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1";
 
+export const PERMISSION_TICKET_SUBJECT_TOKEN_TYPE =
+  "https://smarthealthit.org/token-type/permission-ticket";
+
 export const SUPPORTED_PERMISSION_TICKET_TYPES = [
   NETWORK_PATIENT_ACCESS_TICKET_TYPE,
 ] as const;

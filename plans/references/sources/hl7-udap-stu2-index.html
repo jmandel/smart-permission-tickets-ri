@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Home - Security for Scalable Registration, Authentication, and Authorization v2.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir-ig.css" rel="stylesheet"/>
+<link href="assets/css/udap.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"1"}
+    h3,h4,h5,h6{--heading-prefix:"1"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+        <div id="hl7-nav">
+          <a id="hl7-logo" no-external="true" href="http://hl7.org">
+            <img height="50" alt="Visit the HL7 website" src="assets/images/hl7-logo-header.png"/>
+          </a>
+        </div>
+        <div id="family-nav">
+          <a id="family-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="assets/images/fhir-logo-www.png"/> </a>
+        </div>
+        <div id="hl7-search">
+          <a id="hl7-search-lnk" no-external="true" href="searchform.html"><img alt="Search FHIR" src="assets/images/search.png"/></a>
+        </div>
+
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" href="https://www.udap.org/"><img height="44" alt="Visit the UDAP.org website" style="vertical-align:top" src="assets/images/udap_logo.png"/></a>
+        </div>
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" style="margin:0px" href="https://www.hl7.org/fast/"><img height="40" alt="Visit the FHIR At Scale Taskforce website" style="padding:2px 0px 1px 0px" src="assets/images/FASTLogo.png"/></a>
+        </div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Security for Scalable Registration, Authentication, and Authorization</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0 - STU 2
+
+
+
+  <img alt="United States of America (the) flag" src="assets/images/usa.svg" height="16" title="United States of America (the)"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="discovery.html">Discovery</a>
+  </li>
+  <li>
+    <a href="registration.html">Registration</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Authorization and Authentication
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="consumer.html">Consumer-Facing</a>
+      </li>
+      <li>
+        <a href="b2b.html">Business-to-Business</a>
+      </li>
+      <li>
+        <a href="user.html">Tiered OAuth for User Authentication</a>
+      </li>
+      <li>
+        <a href="general.html">General Requirements</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="about.html">About</a>
+  </li>
+  <li>
+    <a href="changelog.html">Change Log</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Home</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Security for Scalable Registration, Authentication, and Authorization (v2.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://hl7.org/fhir/us/udap-security/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Home</h2>
+  
+
+
+
+
+
+
+  <table class="colstu">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://hl7.org/fhir/us/udap-security/ImplementationGuide/hl7.fhir.us.udap-security<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://hl7.org/fhir/us/udap-security/ImplementationGuide/hl7.fhir.us.udap-security"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">2.0.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://hl7.org/fhir/us/udap-security/ImplementationGuide/hl7.fhir.us.udap-security|2.0.0"/></span>
+      </td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+      <td colspan="3">
+        
+          <i>
+            
+              IG
+            
+            Standards status:
+          </i> <a href="http://hl7.org/fhir/R4/versions.html#std-process" title="Standard Status">Trial-use</a>
+          
+        
+      </td>
+
+      <td>
+        <a href="http://hl7.org/fhir/versions.html#maturity">Maturity Level</a>: 4
+        
+      </td>
+
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">UDAPSecurity</span></td>
+    </tr>
+
+
+
+
+  </table>
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#trust-community-checklist" id="markdown-toc-trust-community-checklist">Trust Community Checklist</a></li>
+</ul>
+
+</div>
+<div class="stu-note">
+  <p>This Security FHIR® IG has been established upon the recommendations of ONC’s FHIR at Scale Taskforce (FAST) Security Tiger Team, and has been adapted from IGs previously published by UDAP.org. This IG is based on the UDAP STU1 profiles. The workflows defined in the Unified Data Access Profiles (UDAP™) have been used in several FHIR IGs, including the TEFCA Facilitated FHIR IG, Carequality FHIR IG, Carin BB IG, DaVinci HREX IG, and others. The objective of this IG is to harmonize workflows for both consumer-facing and B2B applications to facilitate cross-organizational and cross-network interoperability.</p>
+
+  <p>Additional enhancements include a formal definition for a B2B Authorization Extension Object to facilitate these transactions.</p>
+</div>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>This implementation guide describes how to extend OAuth 2.0 using UDAP workflows for both consumer-facing apps that implement the authorization code flow, and business-to-business (B2B) apps that implement the client credentials flow or authorization code flow. This guide covers automating the client application registration process and increasing security using asymmetric cryptographic keys bound to digital certificates to authenticate ecosystem participants. This guide also provides a grammar for communicating metadata critical to healthcare information exchange.</p>
+
+<p class="bg-info">The requirements described in this guide are intended to align with the proposed solutions of the ONC FHIR at Scale Taskforce’s Security Tiger Team, the security model and UDAP workflows outlined in the <a href="https://carequality.org/wp-content/uploads/2020/12/Carequality-FHIR-Implementation-Guide.pdf">Carequality FHIR-Based Exchange IG</a>, and implementation guides incorporating UDAP workflows published by the <a href="http://hl7.org/fhir/us/carin-bb/STU1/Authorization_Authentication_and_Registration.html#authorization-and-authentication">CARIN Alliance</a> and the <a href="http://hl7.org/fhir/us/davinci-hrex/STU1/smart-app-reg.html">Da Vinci Project</a>.</p>
+
+<p>This Guide is divided into several pages which are listed at the top of each page in the menu bar.</p>
+
+<ul>
+  <li><a href="index.html">Home</a>: The home page provides the introduction and background for this project, and general requirements that apply to all workflows described in this guide.</li>
+  <li><a href="discovery.html">Discovery</a>: This page describes how clients can discover server support for the workflows described in this guide.</li>
+  <li><a href="registration.html">Registration</a>: This page describes workflows for dynamic registration of client applications.</li>
+  <li><a href="consumer.html">Consumer-Facing</a>: This page provides detailed guidance for authorization and authentication of consumer-facing apps.</li>
+  <li><a href="b2b.html">Business-to-Business</a>: This page provides detailed guidance for authorization and authentication of B2B apps.</li>
+  <li><a href="user.html">Tiered OAuth for User Authentication</a>: This page provides detailed guidance for user authentication.</li>
+  <li><a href="general.html">General Requirements</a>: This page provides general requirements applicable to multiple authorization and authentication workflows.</li>
+  <li><a href="artifacts.html">FHIR Artifacts</a>: This page provides additional conformance artifacts for FHIR resources.</li>
+</ul>
+
+<p>Guidance regarding the use of this IG with the SMART App Launch Framework can be found in <a href="general.html#using-this-guide-with-the-smart-app-launch-framework">Section 7.5</a>.</p>
+
+<h3 id="trust-community-checklist">Trust Community Checklist</h3>
+
+<p>A trust community is a group of member entities that has come together to support one or more interoperability use cases between its members. Typical examples of trust communities include health information networks and interoperability frameworks (e.g. a network of networks). Trust communities may be defined by geography (e.g. regional, national, international) or any other criteria (e.g. affiliated healthcare organizations, users of a common technology platform, support of specific use cases required by regulation, etc.).</p>
+
+<p>This guide provides a technical framework to securely scale FHIR transactions within a trust community using X.509 certificates as the basis of community trust, including both consumer-facing and B2B workflows. It is expected that trust communities will establish agreements and policies to address certain community-specific parameters in this guide, as well as non-technical aspects necessary for interoperability, e.g. criteria for community membership, data-sharing agreements, certificate issuance policies, etc.</p>
+
+<p>Additional topics to be addressed by trust communities adopting this guide are listed below:</p>
+
+<ol>
+  <li>Assignment of unique URIs to servers for use in certificates and in the <code class="language-plaintext highlighter-rouge">iss</code> and <code class="language-plaintext highlighter-rouge">sub</code> claims of signed metadata elements (see <a href="discovery.html#signed-metadata-elements">Section 2.3</a>).</li>
+  <li>URI used to identify the community in metadata requests (see <a href="discovery.html#multiple-trust-communities">Section 2.4</a>).</li>
+  <li>Assignment of unique URIs to client applications for use in certificates and in the <code class="language-plaintext highlighter-rouge">iss</code> and <code class="language-plaintext highlighter-rouge">sub</code> claims of software statements (see <a href="registration.html#software-statement">Section 3.1</a>).</li>
+  <li>Assignment of unique URIs to organizational requestors for use in a B2B Authorization Extension Object (see <code class="language-plaintext highlighter-rouge">organization_id</code> in <a href="b2b.html#b2b-authorization-extension-object">Section 5.2.1.1</a>).</li>
+  <li>Minimum set of scopes that servers must support (see <code class="language-plaintext highlighter-rouge">scopes_supported</code> in <a href="discovery.html#required-udap-metadata">Section 2.2</a>).</li>
+  <li>Allowed values for requestor roles in a B2B Authorization Extension Object (see <code class="language-plaintext highlighter-rouge">subject_role</code> in <a href="b2b.html#b2b-authorization-extension-object">Section 5.2.1.1</a>).</li>
+  <li>Permitted purposes of use for which data may be requested in a B2B Authorization Extension Object (see <code class="language-plaintext highlighter-rouge">purpose_of_use</code> in <a href="b2b.html#b2b-authorization-extension-object">Section 5.2.1.1</a>).</li>
+  <li>Consent and authorization policies that may be asserted in a B2B Authorization Extension Object and supporting documentation (see <code class="language-plaintext highlighter-rouge">consent_policy</code> and <code class="language-plaintext highlighter-rouge">consent_reference</code> in <a href="b2b.html#b2b-authorization-extension-object">Section 5.2.1.1</a>).</li>
+  <li>Time synchronization between community participants.</li>
+  <li>PKI policies including policies for certificate issuance and distribution.</li>
+  <li>Other community policies or conditions that an actor may need to meet before exchanging data with community participants or with other trust communities. Examples include community legal agreements, certificate policies, policies regarding what claims an actor has the authority to assert, and other community requirements relating to the specific use cases, client types and/or grant types supported by the community.</li>
+</ol>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://www.hl7.org/Special/committees/secure">HL7 International / Security</a> and <a style="color:var(--footer-hyperlink-text-color)" href="https://www.udap.org">UDAP.org</a>.  Package hl7.fhir.us.udap-security#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 9, 2025 21:29+0000">2025-12-09</span>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+                 | <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir/us/udap-security/history.html">Version History</a> |
+                 <a style="color: #81BEF7" rel="license" href="http://hl7.org/fhir/R4/license.html"><img style="border-style: none;" alt="CC0" src="cc0.png"/></a> |
+                 <!--<a style="color: #81BEF7" href="todo.html">Search</a> | --> 
+                 <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

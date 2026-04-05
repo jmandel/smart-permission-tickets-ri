@@ -100,6 +100,93 @@ The most novel component. Fractal expansion approach using LLM augmentation, gro
 Current remediation / refinement plan:
 - [07-demo-client-remediation.md](./07-demo-client-remediation.md)
 
+### Plan 8: Trust Frameworks + Client Identity Binding
+`08-trust-frameworks-client-binding.md`
+
+- add a shared trust-framework abstraction used for both client auth and issuer trust
+- keep unaffiliated dynamic registration while adding:
+  - no-registration `well-known:<uri>` clients
+  - UDAP-flavored dynamic registration and authentication
+- add framework-backed ticket binding via a spec-facing `client_binding` object
+- preserve `cnf.jkt` for frameworkless exact-key binding
+- reuse the same framework layer for framework-backed issuer trust and JWKS resolution while preserving the local issuer registry
+- for UDAP, select the applicable framework by trust evaluation of the presented chain and SAN, not by request extensions
+- where one auth surface participates in multiple UDAP trust communities, support `/.well-known/udap?community=<uri>` discovery
+- extend SMART configuration to advertise supported frameworks and binding types
+
+### Plan 9: UDAP CRL and Revocation Support
+`09-udap-crl-revocation.md`
+
+- add CRL Distribution Points to demo UDAP certificates
+- publish demo CRLs from the reference server
+- make UDAP certificate-path validation revocation-aware
+- stage the work in two phases:
+  - Phase 1: interoperable demo PKI and CRL publication
+  - Phase 2: runtime CRL enforcement in UDAP registration and token auth
+- improve alignment with UDAP revocation expectations and external validation tooling
+
+### Plan 10: Demo Client Types and Just-In-Time Registration
+`10-demo-client-types-and-jit-registration.md`
+
+Status: implemented
+
+- add an explicit client-type choice to the **strict-mode** landing/workbench flow:
+  - unaffiliated registered client
+  - well-known client
+  - UDAP client
+- move the demo flow to:
+  - choose patient
+  - choose client type
+  - configure ticket
+  - launch viewer
+- exercise three materially different client paths already supported by the backend:
+  - dynamic JWK registration
+  - implicit `well-known:<uri>` identity
+  - just-in-time UDAP dynamic registration
+- make ticket binding shape depend on client type:
+  - `cnf.jkt` for unaffiliated exact-key flows
+  - `client_binding` for well-known and UDAP flows
+- expand the viewer handoff model so the viewer knows how to prepare and authenticate the selected client path
+- improve demo artifacts and docs so users can see which client path was used and why
+
+### Plan 11: UDAP Replay Protection and Registration State
+`11-udap-replay-and-registration-state.md`
+
+Status: implemented
+
+- add in-memory `jti` replay prevention for UDAP software statements and client assertions
+- add in-memory active-registration state for UDAP re-registration and cancellation semantics
+- keep the signed self-contained UDAP client descriptor, but reject superseded `client_id`s in-process
+- explicitly document the restart caveat:
+  - process restarts clear replay and active-registration state
+  - older signed UDAP `client_id`s may become valid again until a fresh registration supersedes them
+- treat this as a reference-implementation hardening slice, not a production-grade persistence design
+
+### Plan 12: Permission Ticket Spec and Implementation Alignment
+`12-permission-ticket-spec-implementation-alignment.md`
+
+- align the core ticket validator with the current spec where the gaps are real:
+  - required `exp`
+  - `invalid_grant` for ticket-binding failures
+  - accurate SMART config grant-type advertisement
+- formalize the currently implicit `network-patient-access-v1` `details` semantics:
+  - `dateSemantics`
+  - `sensitive.mode`
+- implement framework-aware `aud` validation so tickets can target trust-network membership, not only one URL
+- implement Permission Ticket revocation checking distinct from UDAP certificate CRLs
+- explicitly document which mismatches should be fixed in code, which should be fixed in the spec, and which are intentionally deferred
+
+### Plan 13: Demo Event Visualization
+`13-demo-event-visualization.md`
+
+- add a live event visualization to the reference server so authorization decisions, token exchanges, and FHIR queries are observable in real time during demos
+- two-panel hybrid layout: compact living summary (left) + scrollable audit feed (right)
+- every important event leaves lasting visual state (pills, badges, status dots); small events leave small traces
+- SSE-based event streaming scoped per demo session via `X-Demo-Session` header
+- every visual element is clickable → opens artifact viewer with full request/response/JWT detail
+- server-side instrumentation at ~20 natural decision points; client-side event posting from the viewer
+- educational focus: makes trust chain, fan-out, per-site independence, and scope narrowing tangible
+
 ## Dependencies Between Plans
 
 ```
@@ -109,6 +196,18 @@ Plan 4 (Trusted Issuer) ─────────────┘              
                                       ↑                   │
 Plan 5 (Network Directory + RLS) ────────────────────────┘
                                       ↑
+Plan 8 (Trust Frameworks + Client Identity Binding) ─────┘
+                                      ↑
+Plan 9 (UDAP CRL + Revocation) ───────┘
+                                      ↑
+Plan 10 (Demo Client Types + JIT Registration) ─────────┘
+                                      ↑
+Plan 11 (UDAP Replay + Registration State) ─────────────┘
+                                      ↑
+Plan 12 (Ticket Spec/Impl Alignment) ───────────────────┘
+                                      ↑
+Plan 13 (Demo Event Visualization) ────────────────────┘
+                                      ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
 ```
 
@@ -117,6 +216,12 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 2 (FHIR server) depends on having data to serve and tickets to validate
 - Plan 5 (network directory + RLS) depends on issuer validation behavior and the same site-visibility model used by the server
 - Plan 6 (built-in demo client) depends on the server behavior being stable enough to expose and inspect
+- Plan 8 (trust frameworks + client identity binding) extends the server, issuer, and demo-client plans once the current JWK-only path is stable enough to generalize
+- Plan 9 (UDAP CRL + revocation) extends Plan 8 once UDAP trust roots, signed metadata, and token-time certificate validation are in place
+- Plan 10 (demo client types + just-in-time registration) extends Plans 6, 7, and 8 once the backend client stories are implemented and stable enough to expose directly in the UI
+- Plan 11 (UDAP replay + registration state) hardens Plan 8 after interoperability is in place, while intentionally remaining in-memory and restart-local for the reference implementation
+- Plan 12 (ticket spec / implementation alignment) is the follow-on cleanup and completion pass for the currently implemented Permission Ticket model, especially around `exp`, audience semantics, revocation, and ticket-type-specific `details`
+- Plan 13 (demo event visualization) adds a live event visualization so every authorization decision, token exchange, and FHIR query is observable during demos — making the protocol's trust chain, fan-out, and per-site independence tangible and inspectable
 
 ## Seed Data Available
 
@@ -155,8 +260,9 @@ Key patterns to replicate in synthetic data:
 | FHIR query filtering | Real (pre-filter + post-filter) |
 | FHIR data storage | Real (Bun + SQLite FHIR server) |
 | ID proofing | Simulated (UI placeholder, confirms identity without real verification) |
-| Trust chain verification | Simplified (issuer URL allowlist, not full federation) |
+| Trust chain verification | Simplified today, with Plan 8 expanding this toward framework-aware validation for UDAP and well-known clients/issuers |
 | Revocation checking | Structural (CRL endpoint exists, checking works, but CRL is static) |
+| UDAP certificate revocation | Not yet implemented for trust-framework PKI; planned in Plan 9 |
 | Client registration | Real enough for the reference server (preconfigured clients plus restart-safe dynamic registration, with JWK/private-key auth as the intended path) |
 
 ## Next Steps

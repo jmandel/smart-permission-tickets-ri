@@ -3,6 +3,7 @@ import { useStore } from "./store";
 import { Hero } from "./components/Hero";
 import { PersonCard } from "./components/PersonCard";
 import { DataContract } from "./components/DataContract";
+import { DemoVisualizer } from "./components/DemoVisualizer";
 import { PermissionWorkbench } from "./components/PermissionWorkbench";
 import { Viewer } from "./components/Viewer";
 
@@ -10,8 +11,11 @@ export function App() {
   if (window.location.pathname === "/viewer") {
     return <Viewer />;
   }
+  if (window.location.pathname === "/demo/visualizer") {
+    return <DemoVisualizer />;
+  }
 
-  const { loading, error, init, persons, selectedPersonId, selectPerson, selectedMode, defaultTicketIssuer, defaultNetwork } = useStore();
+  const { loading, error, init, persons, demoClientOptions, selectedPersonId, selectPerson, selectedMode, defaultTicketIssuer, defaultNetwork } = useStore();
   const [showAbout, setShowAbout] = useState(false);
   const [showPatientPicker, setShowPatientPicker] = useState(true);
   const [selectedUseCaseKey, setSelectedUseCaseKey] = useState<string | null>(null);
@@ -151,7 +155,13 @@ export function App() {
           </div>
         )}
       </section>
-      <PermissionWorkbench person={selectedPerson} mode={selectedMode} defaultTicketIssuer={defaultTicketIssuer} defaultNetwork={defaultNetwork} />
+      <PermissionWorkbench
+        person={selectedPerson}
+        mode={selectedMode}
+        defaultTicketIssuer={defaultTicketIssuer}
+        defaultNetwork={defaultNetwork}
+        demoClientOptions={demoClientOptions}
+      />
     </main>
   );
 }

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Registration - Security for Scalable Registration, Authentication, and Authorization v2.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir-ig.css" rel="stylesheet"/>
+<link href="assets/css/udap.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"3"}
+    h3,h4,h5,h6{--heading-prefix:"3"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+        <div id="hl7-nav">
+          <a id="hl7-logo" no-external="true" href="http://hl7.org">
+            <img height="50" alt="Visit the HL7 website" src="assets/images/hl7-logo-header.png"/>
+          </a>
+        </div>
+        <div id="family-nav">
+          <a id="family-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="assets/images/fhir-logo-www.png"/> </a>
+        </div>
+        <div id="hl7-search">
+          <a id="hl7-search-lnk" no-external="true" href="searchform.html"><img alt="Search FHIR" src="assets/images/search.png"/></a>
+        </div>
+
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" href="https://www.udap.org/"><img height="44" alt="Visit the UDAP.org website" style="vertical-align:top" src="assets/images/udap_logo.png"/></a>
+        </div>
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" style="margin:0px" href="https://www.hl7.org/fast/"><img height="40" alt="Visit the FHIR At Scale Taskforce website" style="padding:2px 0px 1px 0px" src="assets/images/FASTLogo.png"/></a>
+        </div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Security for Scalable Registration, Authentication, and Authorization</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0 - STU 2
+
+
+
+  <img alt="United States of America (the) flag" src="assets/images/usa.svg" height="16" title="United States of America (the)"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="discovery.html">Discovery</a>
+  </li>
+  <li>
+    <a href="registration.html">Registration</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Authorization and Authentication
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="consumer.html">Consumer-Facing</a>
+      </li>
+      <li>
+        <a href="b2b.html">Business-to-Business</a>
+      </li>
+      <li>
+        <a href="user.html">Tiered OAuth for User Authentication</a>
+      </li>
+      <li>
+        <a href="general.html">General Requirements</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="about.html">About</a>
+  </li>
+  <li>
+    <a href="changelog.html">Change Log</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Registration</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Security for Scalable Registration, Authentication, and Authorization (v2.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://hl7.org/fhir/us/udap-security/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Registration</h2>
+  
+
+
+
+
+
+  <table class="colsi">
+    <tr>
+  
+      <td>
+        <i>Page standards status:</i> <a href="http://hl7.org/fhir/R4/versions.html#std-process" title="Standard Status">Informative</a>
+        
+      </td>
+  
+  
+    </tr>
+  </table>
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#software-statement" id="markdown-toc-software-statement">Software Statement</a></li>
+  <li><a href="#example" id="markdown-toc-example">Example</a></li>
+  <li><a href="#inclusion-of-certifications-and-endorsements" id="markdown-toc-inclusion-of-certifications-and-endorsements">Inclusion of Certifications and Endorsements</a></li>
+  <li><a href="#modifying-and-cancelling-registrations" id="markdown-toc-modifying-and-cancelling-registrations">Modifying and Cancelling Registrations</a></li>
+</ul>
+
+</div>
+<p>The requirements in this section are applicable to both consumer-facing and B2B apps and the servers that support them.</p>
+
+<p>Before FHIR data requests can be made, Client application operators <strong>SHALL</strong> register each of their applications with the Authorization Servers identified by the FHIR servers with which they wish to exchange data.  Client applications <strong>SHALL</strong> use the client_id assigned by an Authorization Server in subsequent authorization and token requests to that server.</p>
+
+<p>Authorization Servers <strong>SHALL</strong> support dynamic registration as specified in the <a href="https://www.udap.org/udap-dynamic-client-registration-stu1.html">UDAP Dynamic Client Registration</a> profile with the additional options and constraints defined in this guide. Confidential clients that can secure a secret <strong>MAY</strong> use this dynamic client registration protocol as discussed further below to obtain a <code class="language-plaintext highlighter-rouge">client_id</code>. Other client types <strong>SHOULD</strong> follow the manual registration processes for each Authorization Server. Future versions of this guide may add support for dynamic client registration by public clients which cannot protect a private key.</p>
+
+<p>The dynamic registration workflow is summarized in the following diagram:
+<br /></p>
+<div>
+<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="125px" preserveAspectRatio="none" style="width:271px;height:125px;background:#FFFFFF;" version="1.1" viewBox="0 0 271 125" width="271px" zoomAndPan="magnify"><defs /><g><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="44" x2="44" y1="37.6094" y2="118.3125" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="194.5" x2="194.5" y1="37.6094" y2="118.3125" /><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="79" x="5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="12" y="26.5332">Client App</text><rect fill="#E2E2F0" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="142" x="123.5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="130.5" y="26.5332">Authorization Server</text><polygon fill="#181818" points="182.5,65.9609,192.5,69.9609,182.5,73.9609,186.5,69.9609" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="44.5" x2="188.5" y1="69.9609" y2="69.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="116" x="51.5" y="65.1045">Registration request</text><polygon fill="#181818" points="55.5,96.3125,45.5,100.3125,55.5,104.3125,51.5,100.3125" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="49.5" x2="193.5" y1="100.3125" y2="100.3125" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="126" x="61.5" y="95.4561">Registration response</text></g></svg>
+</div>
+
+<h3 id="software-statement">Software Statement</h3>
+
+<p>To register dynamically, the client application first constructs a software statement as per <a href="https://www.udap.org/udap-dynamic-client-registration-stu1.html#section-2">Section 2</a> of UDAP Dynamic Client Registration.</p>
+
+<p>The software statement <strong>SHALL</strong> contain the required header elements specified in <a href="general.html#jwt-headers">Section 7.1.3</a> of this guide and the JWT claims listed in the table below.  The software statement <strong>SHALL</strong> be signed by the client application operator using the signature algorithm identified in the <code class="language-plaintext highlighter-rouge">alg</code> header of the software statement and with the private key that corresponds to the public key listed in the client’s X.509 certificate identified in the <code class="language-plaintext highlighter-rouge">x5c</code> header of the software statement.</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Software Statement JWT Claims</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>iss</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Issuer of the JWT -- unique identifying client URI. This <strong>SHALL</strong> match the value of a uniformResourceIdentifier entry in the Subject Alternative Name extension of the client's certificate included in the <code>x5c</code> JWT header and <strong>SHALL</strong> uniquely identify a single client app operator and application over time.
+      </td>
+    </tr>
+    <tr>
+      <td><code>sub</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Same as <code>iss</code>. In typical use, the client application will not yet have a <code>client_id</code> from the Authorization Server
+      </td>
+    </tr>
+    <tr>
+      <td><code>aud</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        The Authorization Server's "registration URL" (the same URL to which the registration request will be posted)
+      </td>
+    </tr>
+    <tr>
+      <td><code>exp</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Expiration time integer for this software statement, expressed in seconds since the "Epoch" (1970-01-01T00:00:00Z UTC). The <code>exp</code> time <strong>SHALL</strong> be no more than 5 minutes after the value of the <code>iat</code> claim.
+      </td>
+    </tr>
+    <tr>
+      <td><code>iat</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Issued time integer for this software statement, expressed in seconds since the "Epoch"
+      </td>
+    </tr>
+    <tr>
+      <td><code>jti</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        A nonce string value that uniquely identifies this software statement. See <a href="general.html#jwt-claims">Section 7.1.4</a> for additional requirements regarding reuse of values.
+      </td>
+    </tr>
+    <tr>
+      <td><code>client_name</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        A string containing the human readable name of the client application
+      </td>
+    </tr>
+    <tr>
+      <td><code>redirect_uris</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        An array of one or more redirection URIs used by the client application. This claim SHALL be present if <code>grant_types</code> includes <code>"authorization_code"</code> and this claim SHALL be absent otherwise. Each URI SHALL use the https scheme.
+      </td>
+    </tr>
+    <tr>
+      <td><code>contacts</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        An array of URI strings indicating how the data holder can contact the app operator regarding the application. The array <strong>SHALL</strong> contain at least one valid email address using the <code>mailto</code> scheme, e.g.<br />
+        <code>["mailto:operations@example.com"]</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>logo_uri</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        A URL string referencing an image associated with the client application, i.e. a logo. If <code>grant_types</code> includes <code>"authorization_code"</code>, client applications <strong>SHALL</strong> include this field, and the Authorization Server <strong>MAY</strong> display this logo to the user during the authorization process. The URL <strong>SHALL</strong> use the https scheme and reference a PNG, JPG, or GIF image file, e.g. <code>"https://myapp.example.com/MyApp.png"</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>grant_types</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Array of strings, each representing a requested grant type, from the following list: <code>"authorization_code"</code>, <code>"refresh_token"</code>, <code>"client_credentials"</code>. The array <strong>SHALL</strong> include either <code>"authorization_code"</code> or <code>"client_credentials"</code>, but not both. The value <code>"refresh_token"</code> <strong>SHALL NOT</strong> be present in the array unless <code>"authorization_code"</code> is also present.
+      </td>
+    </tr>
+    <tr>
+      <td><code>response_types</code></td>
+      <td><span class="label label-warning">conditional</span></td>
+      <td>
+        Array of strings. If <code>grant_types</code> contains <code>"authorization_code"</code>, then this element <strong>SHALL</strong> have a fixed value of <code>["code"]</code>, and <strong>SHALL</strong> be omitted otherwise
+      </td>
+    </tr>
+    <tr>
+      <td><code>token_endpoint_auth_method</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        Fixed string value: <code>"private_key_jwt"</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>
+        String containing a space delimited list of scopes requested by the client application for use in subsequent requests. The Authorization Server <strong>MAY</strong> consider this list when deciding the scopes that it will allow the application to subsequently request.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="stu-note">
+  <ol>
+    <li>This guide does not currently constrain the URI scheme used to identify clients in the <code class="language-plaintext highlighter-rouge">iss</code> claim of the Authentication Token. The <code class="language-plaintext highlighter-rouge">https</code> scheme is used to identify FHIR servers, and can generally also be used for clients. However, other URI schemes can be used by communities where client app operators are not well represented by unique URLs. Communities supporting emerging concepts such as decentralized identifiers to represent client app operators may also consider using the <code class="language-plaintext highlighter-rouge">did</code> scheme for issuers of UDAP assertions.</li>
+  </ol>
+</div>
+
+<h3 id="example">Example</h3>
+
+<h4 id="client-credentials">Client Credentials</h4>
+
+<p>Example software statement, prior to Base64URL encoding and signature, for a B2B app that is requesting the use of the client credentials grant type (non-normative, the “.” between the header and claims objects is a convenience notation only):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "alg": "RS256",
+  "x5c": ["MIEF.....remainder omitted for brevity"]
+}.{
+  "iss": "http://example.com/my-b2b-app",
+  "sub": "http://example.com/my-b2b-app",
+  "aud": "https://oauth.example.net/register",
+  "exp": 1597186041,
+  "iat": 1597186341,
+  "jti": "random-value-109a3bd72"
+  "client_name": "Acme B2B App",
+  "contacts": ["mailto:b2b-operations@example.com"],
+  "grant_types": ["client_credentials"],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "scope": "system/Patient.read system/Procedure.read"
+}
+</code></pre></div></div>
+
+<h4 id="authorization-code">Authorization Code</h4>
+
+<p>Example software statement, prior to Base64URL encoding and signature, for a B2C app that is requesting the use of the authorization code grant type (non-normative, the “.” between the header and claims objects is a convenience notation only):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "alg": "RS256",
+  "x5c": ["MIEF.....remainder omitted for brevity"]
+}.{
+  "iss": "http://example.com/my-user-b2b-app",
+  "sub": "http://example.com/my-user-b2b-app",
+  "aud": "https://oauth.example.net/register",
+  "exp": 1597186054,
+  "iat": 1597186354,
+  "jti": "random-value-f83f37a29"
+  "client_name": "Acme B2B User App",
+  "redirect_uris": ["https://b2b-app.example.com/redirect"],
+  "contacts": ["mailto:b2b-operations@example.com"],
+  "logo_uri": "https://b2b-app.example.com/B2BApp.png",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "scope": "user/Patient.read user/Procedure.read"
+}
+</code></pre></div></div>
+
+<h4 id="request-body">Request Body</h4>
+
+<p>The registration request for use of either grant type is submitted by the client to the Authorization Server’s registration endpoint.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /register HTTP/1.1
+Host: oauth.example.net
+Content-Type: application/json
+
+{
+   "software_statement": "...the signed software statement JWT...",
+   "certifications": ["...a signed certification JWT..."]
+   "udap": "1"
+}
+</code></pre></div></div>
+
+<p>The Authorization Server <strong>SHALL</strong> validate the registration request as per <a href="https://www.udap.org/udap-dynamic-client-registration-stu1.html#section-4">Section 4</a> of UDAP Dynamic Client Registration. This includes validation of the JWT payload and signature, validation of the X.509 certificate chain, and validation of the requested application registration parameters.</p>
+
+<p>If a new registration is successful, the Authorization Server <strong>SHALL</strong> return a registration response with a <code class="language-plaintext highlighter-rouge">201 Created</code> HTTP response code as per <a href="https://www.udap.org/udap-dynamic-client-registration-stu1.html#section-5.1">Section 5.1</a> of UDAP Dynamic Client Registration, including the unique <code class="language-plaintext highlighter-rouge">client_id</code> assigned by the Authorization Server to that client app. Since the UDAP Dynamic Client Registration profile specifies that a successful registration response is returned as per <a href="https://datatracker.ietf.org/doc/html/rfc7591#section-3.2.1">Section 3.2.1 of RFC 7591</a>, the authorization server <strong>MAY</strong> reject or replace any of the client’s requested metadata values submitted during the registration and substitute them with suitable values. If a registration parameter has not been assigned a value by the server, the parameter <strong>SHOULD</strong> be omitted from the response; it <strong>SHOULD NOT</strong> be included with a null or empty string value. Additionally, the claims in the registration request that are defined in <a href="https://www.rfc-editor.org/rfc/rfc7519#section-4.1">Section 4.1 of RFC 7519</a> (<code class="language-plaintext highlighter-rouge">iss</code>, <code class="language-plaintext highlighter-rouge">sub</code>, <code class="language-plaintext highlighter-rouge">aud</code>, <code class="language-plaintext highlighter-rouge">exp</code>, <code class="language-plaintext highlighter-rouge">iat</code>, and <code class="language-plaintext highlighter-rouge">jti</code>) are not registration parameters and <strong>SHOULD NOT</strong> be included in the response, as the response itself is not a JWT.</p>
+
+<p>If a new registration is not successful, e.g. it is rejected by the server for any reason, the Authorization Server <strong>SHALL</strong> return an error response as per <a href="https://www.udap.org/udap-dynamic-client-registration-stu1.html#section-5.2">Section 5.2</a> of UDAP Dynamic Client Registration.</p>
+
+<h3 id="inclusion-of-certifications-and-endorsements">Inclusion of Certifications and Endorsements</h3>
+
+<p>Authorization Servers <strong>MAY</strong> support the inclusion of certifications and endorsements by client application operators using the certifications framework outlined in <a href="https://www.udap.org/udap-certifications-and-endorsements-stu1.html">UDAP Certifications and Endorsements for Client Applications</a>. Authorization Servers <strong>SHALL</strong> ignore unsupported or unrecognized certifications.</p>
+
+<p>Authorization Servers <strong>MAY</strong> require registration requests to include one or more certifications. If an Authorization Server requires the inclusion of a certain certification, then the Authorization Server <strong>SHALL</strong> communicate this by including the corresponding certification URI in the <code class="language-plaintext highlighter-rouge">udap_certifications_required</code> element of its UDAP metadata.</p>
+
+<p>An example template application to declare additional information about the client application at the time of registration is described in <a href="general.html#certifications-for-client-applications">Section 7.4</a> of this guilde.</p>
+
+<h3 id="modifying-and-cancelling-registrations">Modifying and Cancelling Registrations</h3>
+
+<p>Within a trust community, the client URI in the Subject Alternative Name of an X.509 certificate uniquely identifies a single application and its operator over time. Thus, a registered client application <strong>MAY</strong> request a modification of its registration with an Authorization Server by submitting another registration request to the same Authorization Server’s registration endpoint with a software statement containing a certificate corresponding to the same trust community and with the same <code class="language-plaintext highlighter-rouge">iss</code> value as was used in the original registration request. An Authorization Server accepting such a request <strong>SHALL</strong> only update the registration previously made in the context of the corresponding trust community, as detailed in the next paragraph, and <strong>SHALL NOT</strong> overwrite an existing registration made in the context of a different trust community.</p>
+
+<p>If an Authorization Server receives a valid registration request with a software statement containing a certificate corresponding to the same trust community and with the same <code class="language-plaintext highlighter-rouge">iss</code> value as an earlier software statement but with a different set of claims or claim values, or with a different (possibly empty) set of optional certifications and endorsements, the server <strong>SHALL</strong> treat this as a request to modify the registration parameters for the client application by replacing the information from the previous registration request with the information included in the new request. For example, an Application operator could use this mechanism to update a redirection URI or to remove or update a certification. If the registration modification request is accepted, the Authorization Server <strong>SHOULD</strong> return the same <code class="language-plaintext highlighter-rouge">client_id</code> in the registration response as for the previous registration. If it returns a different <code class="language-plaintext highlighter-rouge">client_id</code>, it <strong>SHALL</strong> cancel the registration for the previous <code class="language-plaintext highlighter-rouge">client_id</code>.</p>
+
+<p>If an Authorization Server receives a valid registration request with a software statement that contains an empty <code class="language-plaintext highlighter-rouge">grant_types</code> array from a previously registered application as per the previous paragraph, the server <strong>SHOULD</strong> interpret this as a request to cancel the previous registration. A client application <strong>SHALL</strong> interpret a registration response that contains an empty <code class="language-plaintext highlighter-rouge">grant_types</code> array as a confirmation that the registration for the <code class="language-plaintext highlighter-rouge">client_id</code> listed in the response has been cancelled by the Authorization Server.</p>
+
+<p>If the Authorization Server returns the same <code class="language-plaintext highlighter-rouge">client_id</code> in the registration response for a modification request, it SHOULD also return a <code class="language-plaintext highlighter-rouge">200 OK</code> HTTP response code. If the Authorization Server returns a new <code class="language-plaintext highlighter-rouge">client_id</code> in the registration response, the client application <strong>SHALL</strong> use only the new <code class="language-plaintext highlighter-rouge">client_id</code> in subsequent transactions with the Authorization Server.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="http://www.hl7.org/Special/committees/secure">HL7 International / Security</a> and <a style="color:var(--footer-hyperlink-text-color)" href="https://www.udap.org">UDAP.org</a>.  Package hl7.fhir.us.udap-security#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 9, 2025 21:29+0000">2025-12-09</span>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+                 | <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir/us/udap-security/history.html">Version History</a> |
+                 <a style="color: #81BEF7" rel="license" href="http://hl7.org/fhir/R4/license.html"><img style="border-style: none;" alt="CC0" src="cc0.png"/></a> |
+                 <!--<a style="color: #81BEF7" href="todo.html">Search</a> | --> 
+                 <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

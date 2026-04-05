@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Scalable dynamic client registration for trust communities">
+    <meta name="keywords" content="Unified Data Access Profiles, UDAP, HL7 FHIR, Open APIs, Application Access APIs, Reusable Identity, Federated Identity, build FHIR client apps, Certificates to authorize FHIR transactions, scaling FHIR transactions">
+
+    <title>UDAP Dynamic Client Registration</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/images/backgrounds/udap.ico">
+
+    <!-- css -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/lib/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/lib/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="assets/lib/owlcarousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/lib/owlcarousel/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="assets/lib/FlexSlider/flexslider.css">
+    <link rel="stylesheet" href="assets/lib/magnific-popup/dist/magnific-popup.css"/>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,300,400">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/ie_fix.css">
+    <link rel="stylesheet" href="assets/css/udap.css">
+
+    <script src="assets/lib/components-modernizr/modernizr.js"></script>
+    <script src="assets/lib/jquery/dist/jquery.js"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#main-nav-collapse" data-offset="100">
+
+<div class="page-loader">
+    <div class="loader">Wait for it...</div>
+</div>
+
+<!-- Fixed Top Navigation -->
+<nav id="fixedTopNav" class="navbar navbar-fixed-top main-navigation" itemscope itemtype="https://schema.org/SiteNavigationElement" >
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="ion-drag"></span>
+            </button>
+
+            <!-- Logo -->
+            <div class="navbar-brand" itemscope itemtype="https://schema.org/Organization">
+                <span itemprop="name" class="sr-only">UDAP</span>
+                <a href="index.html"><img src="assets/images/backgrounds/UDAP.png"></a>
+            </div>
+            <!-- /Logo -->
+
+        </div><!-- /.navbar-header -->
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="main-nav-collapse">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Profiles</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./udap-jwt-client-auth.html">JWT Client Authentication</a></li>
+                        <li><a href="./udap-user-auth.html">Tiered OAuth</a></li>
+                        <li><a href="./udap-dynamic-client-registration.html">Dynamic Client Registration</a></li>
+                        <li><a href="./udap-tls-client-auth.html">TLS Client Authentication</a></li>
+                        <li><a href="./udap-certifications-and-endorsements.html">Client Certifications and Endorsements</a></li>
+                        <li><a href="./udap-client-authorization-grants.html">Client Authorization Grants using JWTs</a></li>
+                        <li><a href="./udap-server-metadata.html">Server Metadata</a></li>
+                    </ul>
+                </li>                
+                
+                <li>
+                    <a href="./index#contact" itemprop="url"><span itemprop="name">Contact</span></a>
+                </li>
+
+		<li><a href="#footer-widgets" itemprop="url">
+                    <span itemprop="name">About</span>
+                </a></li>
+            </ul>
+        </div>
+        <!-- /Navigation Links -->
+
+    </div><!-- /.container -->
+</nav>
+<!-- /Fixed Top Navigation -->
+
+<!-- Header -->
+<header id="header" class="header-wrapper home-parallax home-fade dark-bg header-classic bg-04">
+    <div class="color-overlay"></div>
+    <div class="header-wrapper-inner">
+        <div class="container">
+
+            <div class="intro">
+                <h2>Tools for Open API Ecosystems</h2>
+
+            </div><!-- /.intro -->
+
+        </div><!-- /.container -->
+
+    </div><!-- /.header-wrapper-inner -->
+</header>
+<!-- /Header -->
+
+<section id="blog-standard" class="section blog-standard">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+
+            
+<!--Blog Post-->
+<div class="row blog-post">
+    <div class="col-md-12">
+
+        <div class="post-content">
+
+
+
+
+
+
+
+
+
+
+<div class=WordSection1>
+
+<h1><b>UDAP Dynamic Client Registration</b></h1>
+
+<p class=MsoNormal><b>Version STU 1</b></p>
+
+<p class=MsoNormal>Registration with an Authorization Server is typically
+required before a Client Application can access protected resources using the
+OAuth 2.0 authorization framework. For larger ecosystems with numerous clients
+and authorization servers, manual client registration requiring one-off enrollments
+or pairwise key exchange presents a significant barrier. Such communities can
+leverage a distributed system of authoritative information through the use of
+digital certificates to enable a scalable dynamic solution to client
+registration, allowing real-time trust assessment, validation of identifying
+attributes, and support for revocation of certificates.</p>
+
+<p class=MsoNormal>UDAP implements dynamic client registration using digital
+certificates as an extension to the OAuth 2.0 dynamic client registration
+protocol defined in RFC 7591. Use of this extension is requested by Client Apps
+by including a digitally signed software statement in their requests to the
+registration endpoint, where the signature is backed by an X.509 certificate.
+This framework also allows Client Apps to submit digitally signed
+certifications and endorsements provided by third parties as part of their
+registration request, either of which can be independently validated by the
+Authorization Server prior to allowing the registration of a Client App.</p>
+
+<p class=MsoNormal>This protocol is based upon standard Public Key
+Infrastructure tools. Before granting registration, the Authorization Server
+validates the digital signature on the software statement submitted by the
+Client App, and evaluates the trust chain for the Client App’s certificate.
+Client registration is permitted only if the software statement is valid and
+the Client App’s certificate is trusted. This protocol MAY be used only by
+Client Apps that are able to protect the private key used to sign software statements,
+e.g. confidential clients and certain native device apps.</p>
+
+<p class=MsoNormal>Note: The HTTP request and response examples presented below
+are <u>non-normative</u>. For readability purposes, line wraps have been added
+to some HTTP headers and request bodies, some headers have been omitted, and
+some parameters have not been URL encoded. </p>
+
+<p class=MsoNormal>Sections 1 through 5 define the steps of the workflow. Section 6
+defines how previous registrations may be modified or cancelled.</p>
+
+<p class=MsoNormal>1. The Client App checks that the Authorization Server
+supports UDAP by retrieving the Authorization Server’s UDAP metadata from a
+well-known URL.</p>
+
+<p class=HTTP>GET /.well-known/udap HTTP/1.1<br>
+Host: resourceholder.example.com<br>
+<br>
+</p>
+
+<p class=MsoNormal>Response:</p>
+
+<p class=HTTP>HTTP/1.1 200 OK<br>
+Content-Type: application/json<br>
+<br>
+{ <br>
+  &quot;x5c&quot; : [&quot;{<i>cert1</i>}&quot;, &quot;{<i>cert2</i>}&quot;, …]<br>
+}</p>
+
+<p class=MsoNormal>If the Authorization Server returns an error code, then the Authorization
+Server does not support UDAP Dynamic Client Registration and the Client App
+should abort this workflow.</p>
+
+<p class=MsoNormal>2. The Client App prepares a software statement for
+submission. The software statement serves three purposes: it provides the
+necessary metadata for registration, it establishes the Client App’s control of
+a private key, and it provides the digital certificate needed to validate the
+signature and establish trust. </p>
+
+<p class=MsoNormal>The software statement is a signed JWT containing the
+following claims:</p>
+
+<p class=MsoNormal>   iss: Client App Operator’s unique identifying URI (identifying
+the holder of private key, also serves as the base URI for UDAP metadata
+including lookup of certificates)<br>
+   sub: same as iss <br>
+   aud: string, the Authorization Server’s registration endpoint URL<br>
+   exp: number, expiration time (should be short-lived, max 5 minutes from iat)<br>
+   iat: number, issued at time<br>
+   jti: string, unique token identifier used to identify token replay<br>
+   client_name: string<br>
+   redirect_uris: array of URIs (required if grant_types includes
+authorization_code)<br>
+   grant_types: array of strings, e.g. authorization_code, refresh_token, client_credentials<br>
+   response_types: array of strings, e.g. code (omit for client_credentials)<br>
+   token_endpoint_auth_method: string, fixed value: private_key_jwt<br>
+   scope: string, space delimited list of requested scopes (optional)<br>
+<br>
+The Client MAY also include other optional parameters from section 2 of RFC
+7591.</p>
+
+<p class=MsoNormal>The JOSE Header for the software statement contains the
+following key/value pairs:</p>
+
+<p class=MsoNormal>   alg : &quot;RS256&quot;<br>
+   x5c : [cert1, cert2, …] (cert1 is required; remainder of chain is optional)<br>
+   x5u : valid URI (optional)</p>
+
+<p class=MsoNormal>The x5c claim contains the Client App’s certificate chain as
+an array of one or more elements, each containing a base64 encoded
+representation of the DER encoded X.509 certificate. The leaf certificate
+(cert1) contains the public key corresponding to the private signing key used
+by the Client App to digitally sign the software statement. The software
+statement is signed and assembled using JWS compact serialization as per RFC
+7515.</p>
+
+<p class=MsoNormal>3. The client requests registration by submitting the signed
+software statement to the Authorization Server’s registration endpoint. The
+additional extension parameter “udap” is also included with a string value of
+“1” to signal to the Authorization Server that version 1 of this protocol is
+being used, and that the included software statement conforms to this profile.
+Optionally, the Client App MAY submit certifications or endorsements provided
+by third parties by including the optional extension parameter “certifications”
+with a value of an array of one or more signed JWTs, each representing a
+separate certification or endorsement:</p>
+
+<p class=HTTP>POST /register HTTP/1.1<br>
+Host: as.example.com<br>
+Content-type: application/json<br>
+<br>
+{<br>
+   &quot;software_statement&quot; : &quot;{<i>signed software statement</i>}&quot;,<br>
+   &quot;certifications&quot; : [<i>array of one or more signed JWTs</i>],<br>
+   &quot;udap&quot; : &quot;1&quot;<br>
+}</p>
+
+<p class=MsoNormal>The client SHOULD include all requested registration
+parameters in the signed software statement, i.e. additional registration
+parameters SHOULD NOT appear at the top level of the submitted JSON object. If
+the client does include the same registration parameter twice, once at the top
+level and again in the signed software statement, then the Authorization Server
+MUST ignore the parameter included at the top level and process only the parameter
+included in the software statement. </p>
+
+<p class=MsoNormal>4. Authorization Server validates request</p>
+
+<p class=MsoNormal>4.1 The Authorization Server validates the digital signature
+on the software statement using the public key extracted from cert1 in the x5c
+parameter of the JOSE header. If the signature cannot be validated, the request
+is denied.</p>
+
+<p class=MsoNormal>4.2 The Authorization Server attempts to construct a valid
+certificate chain from the Client’s certificate (cert1) to an anchor
+certificate trusted by the Authorization Server using conventional X.509 chain
+building techniques and path validation, including certificate validity and
+revocation status checking. The Client MAY submit a complete certificate chain
+in its request. The Authorization Server MAY use additional certificates not
+included by the Client to construct a chain (e.g. from its own certificate
+cache or discovered via the X.509 AIA mechanism). Authorization Servers SHOULD
+support the X.509 AIA mechanism for chain building. If a trusted chain cannot be
+built and validated by the Authorization Server, the request is denied.</p>
+
+<p class=MsoNormal>4.3 The Authorization Server validates the iss, sub, aud,
+exp, iat, and jti values in the software statement. The iss value MUST match a
+uriName entry in the Subject Alternative Names extension of the Client’s
+certificate. The sub value MUST match the iss value. The aud value MUST contain
+the Authorization Server’s registration endpoint URL, and the software
+statement MUST be unexpired. A maximum software statement lifetime of 5 minutes
+is RECOMMENDED. The Authorization Server MAY deny a request if the same
+software statement (as determined by the jti value) has been used in a previous
+registration request.</p>
+
+<p class=MsoNormal>4.4 The Authorization Server validates the registration
+parameters in the software statement. If a parameter is invalid or a required
+parameter is missing, the request is denied.</p>
+
+<p class=MsoNormal>4.5 If there has been a previous registration granted by the
+Authorization Server linked to the public key submitted by the Client for the
+requested grant type, the Authorization Server MAY cancel the previous
+registration. See section 6 for additional details.</p>
+
+<p class=MsoNormal>5. Authorization Server responds to request</p>
+
+<p class=MsoNormal>5.1 If the request is granted, the Authorization Server returns
+a registration response as per Section 3.2.1 of RFC 7591. The top-level
+elements of the response SHALL include the client_id issued by the Authorization
+Server for use by the Client App, the software statement as submitted by the
+Client App, and all of the registration related parameters that were included
+in the software statement:</p>
+
+<p class=HTTP>HTTP/1.1 201 Created<br>
+Content-Type: application/json<br>
+<br>
+{<br>
+   &quot;client_id&quot;: &quot;example_client_id_issued_by_AS&quot;,<br>
+   &quot;software_statement&quot;: &quot;{<i>the software statement as
+submitted by the client</i>}&quot;, <br>
+   &quot;client_name&quot;: string,<br>
+   &quot;redirect_uris&quot;: [<i>array of URIs</i>],<br>
+   &quot;grant_types&quot;: [&quot;authorization_code&quot;],<br>
+   &quot;response_types&quot;: [&quot;code&quot;],<br>
+   &quot;token_endpoint_auth_method&quot;: &quot;private_key_jwt&quot;<br>
+}</p>
+
+<p class=MsoNormal>In addition, the Authorization Server MUST store the
+certificate provided by the Client for use to validate subsequent client
+authentication attempts.</p>
+
+<p class=MsoNormal>5.2 If the request is denied, the Authorization Server
+returns an error as per Section 3.2.2 of RFC 7591. Denials related to trust
+validation SHOULD use the “unapproved_software_statement” code. Denials related
+to invalid signatures SHOULD use the “invalid_software_statement” code. The Authorization
+Server MAY include an error_description parameter. For example:</p>
+
+<p class=HTTP>HTTP/1.1 400 Bad Request<br>
+Content-Type: application/json<br>
+<br>
+{<br>
+   &quot;error&quot;: &quot;unapproved_software_statement&quot;<br>
+}</p>
+
+<p class=MsoNormal>Note: if the Client App receives an error code from the
+Authorization Server, then the Client App MAY attempt registration again by
+generating a new software statement specifying a different client certificate.
+For example, if the Client App has been issued two certificates corresponding
+to two trust communities, it MAY attempt registration using the second
+certificate if the registration using the first certificate is denied. The
+Client App SHOULD NOT attempt registration again with the same certificate if
+an unapproved_software_statement error is returned.</p>
+
+<p class=MsoNormal>6 Modifying or Cancelling previous registrations
+    
+<p class=MsoNormal>The client URI in the Subject Alternative Name of an X.509
+certificate and in the 'iss' field of the software statement uniquely identifies
+a single application and its operator over time. Thus, a Client App operator MAY
+request a modification or cancellation of its previous registration with an
+Authorization Server by submitting another registration request using the same
+'iss' value, as discussed below. The Authorization Server SHALL validate such
+requests in the same manner as a new registration request, following the procedure
+defined in Section 4 above. Note that registration modification or cancellation
+requests may not always include the same client certificate as previous registration
+requests by the same Client App operator, such as in the case of a renewal or
+re-key of the previous certificate, however the client URI will be the same.</p>
+
+<p class=MsoNormal>To modify a previous registration, the Client App operator
+SHALL submit a valid registration request with a software statement containing
+the same 'iss' value as an earlier registration but with a different set of
+claims or claim values, or with a different (possibly empty) set of optional
+certifications and endorsements. The server SHALL treat this as a request to
+replace all information from the previous registration request with the information
+included in the new request. For example, a Client App operator may use this
+mechanism to update a redirection URI or to add, remove, or update a certification
+or endorsement. If the registration modification request is accepted, the
+Authorization Server SHALL return a registration response as per Section 5.1,
+reflecting the updated registration parameters. The response SHOULD include
+the same client_id as the previous registration response. If the Authorization
+Server returns a different client_id, it SHALL cancel the registration associated
+with the previous client_id, and the client application SHALL use only the new
+client_id in subsequent transactions with the Authorization Server.</p>
+
+<p class=MsoNormal>To cancel a previous registration, the Client App operator
+SHALL submit a valid registration request with a software statement containing
+the same 'iss' value as an earlier registration but with an empty grant_types array.
+The server SHOULD treat this as a request to cancel the previous registration.
+A client application SHALL interpret a registration response that contains an
+empty grant_types array as a confirmation that the registration for the client_id
+listed in the response has been cancelled by the Authorization Server.</p>
+
+<p class=MsoNormal>The Authorization Server SHOULD return an HTTP 200 response code (instead of a 201
+response code) for successful registration modification and cancellation requests.</p>
+
+<p class=MsoNormal>7 References</p>
+
+<p class=MsoNormal>Cooper, D., et al. “Internet X.509 Public Key Infrastructure
+Certificate and Certificate Revocation List (CRL) Profile”, RFC 5280, RFC
+Editor, May 2008.<br>
+Hardt, D., Ed., “The OAuth 2.0 Authorization Framework”, RFC 6749, RFC Editor,
+October 2012.<br>
+Jones, M., et al, “JSON Web Token (JWT)”, RFC 7519, RFC Editor, May 2015.<br>
+Richer, J., Ed., “OAuth 2.0 Dynamic Client Registration Protocol”, RFC 7591,
+RFC Editor, July 2015.</p>
+
+<p class=MsoNormal>8 Authors</p>
+
+<p class=MsoNormal>Luis C. Maas III, EMR Direct</p>
+
+<p class=MsoNormal>9 Acknowledgements</p>
+
+<p class=MsoNormal>The author would like to thank the following individuals for
+their valuable feedback during the development of this document: Julie Maas and
+Grahame Grieve.</p>
+
+<p class=MsoNormal>10 Notices</p>
+
+<p class=MsoNormal>Copyright ©2016-2025 UDAP.org and the persons identified as
+the document authors. All rights reserved.</p>
+
+<p class=MsoNormal>UDAP.org grants to any interested party a non-exclusive, royalty-free,
+worldwide right and license to reproduce, publish, distribute and display this
+Specification, in full and without modification, solely for the purpose
+of implementing the technology described in this Specification, provided
+that attribution is made to UDAP.org as the source of the material and that
+such attribution does not indicate an endorsement by UDAP.org.</p>
+
+<p class=MsoNormal>All Specifications, and the
+information contained therein, are provided on an “AS IS” basis and the
+authors, the organizations they represent, and UDAP.org make no (and hereby
+expressly disclaim any) warranties, express, implied, or otherwise, including
+but not limited to any warranty that the use of the information therein will
+not infringe any rights or any implied warranties of merchantability or fitness
+for a particular purpose, and the entire risk as to implementing this
+specification is assumed by the implementer. Additionally, UDAP.org takes no
+position regarding the validity or scope of any intellectual property or other
+rights that might be claimed to pertain to the implementation or use of the
+technology described in this document or the extent to which any license under
+such rights might or might not be available, nor does it represent that it has
+made any independent effort to identify any such rights.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<!--Blog Post end-->
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer widgets -->
+<section id="footer-widgets" class="section footer-widgets dark-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-text">
+                    <h4>About UDAP</h4>
+                    <p>
+The Unified Data Access Profiles (UDAP&trade;) published
+by UDAP.org increase confidence in open API
+transactions through the use of trusted identities
+and verified attributes. UDAP use cases support standards-based security, privacy
+and scalable interoperability through reusable identities, leveraging dynamic client
+registration, JWT-based client authentication and Tiered OAuth. <br><br>
+Notice: UDAP and the UDAP gear logo, ecosystem gears, and green lock designs are trademarks of UDAP.org.  
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-contact">
+                    <h4>Check in...</h4>
+                    <ul>
+                        <li>
+                            <i class="ion-email"></i> Email collaborate@udap.org for more information or<br>
+                            <a href="https://groups.google.com/forum/#!forum/udap-discuss/join">Join our Google Group</a><br>
+                            to participate in the development of UDAP or to request our Branding Guidelines if you would like to make statements about your use of UDAP or use the UDAP logo or designs.
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-recent-posts">
+                    <h4>Getting Involved</h4>
+                    <ul>
+                        <li>
+                            UDAP profiles have been tested at several HL7 FHIR connectathons. Contact
+                            us for more information about how to become involved in testing or to pilot one or more 
+                            profiles within your own ecosystem.
+                            
+                        </li>
+                        <li>
+                            HL7 and FHIR are registered trademarks of Health Level Seven International and are used with permission.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="content-wrap widget-text">
+                    <h4>Use Cases</h4>
+                    <p>UDAP's first applications are in the healthcare sector, but the profiles are not healthcare specific. Conversations about the use of UDAP in additional sectors are welcome at a community meeting or by reaching out via email.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Footer widgets -->
+<!-- footer -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="copyright text-xs-center">&copy; 2026 UDAP.org</p>
+            </div>
+
+            <div class="col-md-5 col-sm-4">
+                <ul class="footer-social-block">
+
+                    <li><a href="https://www.twitter.com/udapTools"><i class="fa fa-twitter"></i></a></li>
+
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="footer-menu text-xs-center">
+                    <a href="http://www.emrdirect.com/privacy.html">Privacy Policy</a> | <a href="http://www.emrdirect.com/terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- #footer -->
+
+<a id="totop" href="#totop"><i class="fa fa-angle-double-up"></i></a>
+<!-- js -->
+<script src="assets/lib/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="assets/lib/isotope/dist/isotope.pkgd.min.js"></script>
+<script src="assets/lib/owlcarousel/owl-carousel/owl.carousel.js"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+<script src="assets/lib/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="assets/lib/waypoints/lib/shortcuts/inview.min.js"></script>
+
+<script src="assets/lib/FlexSlider/jquery.flexslider.js"></script>
+<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.js"></script>
+<script src="assets/lib/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.min.js"></script>
+<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+
+<script src="assets/js/main.js"></script>
+
+<!--[if lt IE 10]>
+<script>
+    $('input, textarea').placeholder();
+</script>
+<![endif]-->
+
+
+</body>
+</html>

@@ -1,10 +1,15 @@
 import type {
   AuthSurface,
+  ClientStoryDescription,
+  DemoClientFrameworkInfo,
   ViewerLaunch,
   ViewerLaunchSite,
   ViewerLaunchNetwork,
   ConsentState,
   DateConstraintMode,
+  DemoClientRegistrationMode,
+  DemoClientOption,
+  DemoClientType,
   LocationConstraintMode,
   ModeName,
   NetworkInfo,
@@ -13,7 +18,10 @@ import type {
   ScopeGroup,
   ScopeOption,
   SiteOfCare,
+  TicketBindingDescription,
+  TicketLifetimeKey,
   TicketIssuerInfo,
+  ViewerClientPlan,
 } from "./types";
 import { computeJwkThumbprint, generateClientKeyMaterial } from "../../shared/private-key-jwt";
 import { buildAuthSurface } from "./lib/surfaces";
@@ -67,6 +75,30 @@ const SCOPE_GROUPS: Array<Pick<ScopeGroup, "id" | "label" | "description">> = [
   },
 ];
 
+const TEN_YEARS_SECONDS = 60 * 60 * 24 * 365 * 10;
+
+const TICKET_LIFETIME_OPTIONS: Array<{ key: TicketLifetimeKey; label: string; seconds: number }> = [
+  { key: "1h", label: "1 hour", seconds: 60 * 60 },
+  { key: "1d", label: "1 day", seconds: 60 * 60 * 24 },
+  { key: "7d", label: "7 days", seconds: 60 * 60 * 24 * 7 },
+  { key: "30d", label: "30 days", seconds: 60 * 60 * 24 * 30 },
+  { key: "1y", label: "1 year", seconds: 60 * 60 * 24 * 365 },
+  { key: "never", label: "10 years (demo stand-in for never)", seconds: TEN_YEARS_SECONDS },
+];
+
+export function ticketLifetimeOptions() {
+  return TICKET_LIFETIME_OPTIONS;
+}
+
+export function ticketLifetimeSeconds(lifetime: TicketLifetimeKey) {
+  const option = TICKET_LIFETIME_OPTIONS.find((entry) => entry.key === lifetime);
+  return option ? option.seconds : TICKET_LIFETIME_OPTIONS[0].seconds;
+}
+
+export function ticketLifetimeLabel(lifetime: TicketLifetimeKey) {
+  return TICKET_LIFETIME_OPTIONS.find((option) => option.key === lifetime)?.label ?? TICKET_LIFETIME_OPTIONS[0].label;
+}
+
 export type ConsentValidationIssue = {
   section: "resources" | "sites" | "time";
   message: string;
@@ -93,6 +125,7 @@ export function defaultConsentState(person: PersonInfo): ConsentState {
     dateMode: "all",
     dateRange: { start: person.startDate, end: person.endDate },
     sensitiveMode: "deny",
+    ticketLifetime: "1h",
   };
 }
 
@@ -144,20 +177,22 @@ export function buildTicketPayload(
   audienceOrigin: string,
   person: PersonInfo,
   consent: ConsentState,
-  options?: { proofJkt?: string | null },
+  options?: { proofJkt?: string | null; clientBinding?: Record<string, any> | null },
 ) {
   const sites = constrainedSites(person, consent);
   const scopes = selectedSmartScopes(consent);
   const jurisdictions = consent.locationMode === "states" ? compileJurisdictions(sites) : [];
   const organizations = consent.locationMode === "organizations" ? compileOrganizations(sites) : [];
+  const lifetimeSeconds = ticketLifetimeSeconds(consent.ticketLifetime);
 
   return {
     iss: ticketIssuerBaseUrl,
     sub: `demo-client-${person.personId}`,
     aud: audienceOrigin,
-    exp: Math.floor(Date.now() / 1000) + 3600,
+    exp: Math.floor(Date.now() / 1000) + lifetimeSeconds,
     ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
     ...(options?.proofJkt ? { cnf: { jkt: options.proofJkt } } : {}),
+    ...(options?.clientBinding ? { client_binding: options.clientBinding } : {}),
     authorization: {
       subject: {
         type: "match" as const,
@@ -177,11 +212,6 @@ export function buildTicketPayload(
         periods: buildPeriods(consent.dateMode, consent.dateRange),
         jurisdictions: jurisdictions.length ? jurisdictions : undefined,
         organizations: organizations.length ? organizations : undefined,
-      },
-    },
-    details: {
-      sensitive: {
-        mode: consent.sensitiveMode,
       },
     },
   };
@@ -282,6 +312,7 @@ export function summarizeConsent(person: PersonInfo, consent: ConsentState) {
     resources,
     dates,
     sensitive: consent.sensitiveMode === "allow" ? "Included" : "Excluded",
+    lifetime: ticketLifetimeLabel(consent.ticketLifetime),
   };
 }
 
@@ -318,6 +349,148 @@ export async function createViewerClientBootstrap(person: PersonInfo) {
     privateJwk: keyMaterial.privateJwk,
     jwkThumbprint: keyMaterial.thumbprint,
   };
+}
+
+export async function buildViewerClientPlan(person: PersonInfo, option: DemoClientOption): Promise<ViewerClientPlan> {
+  switch (option.type) {
+    case "unaffiliated": {
+      const bootstrap = await createViewerClientBootstrap(person);
+      return {
+        type: "unaffiliated",
+        displayLabel: option.label,
+        registrationMode: "dynamic-jwk",
+        clientName: bootstrap.clientName,
+        publicJwk: bootstrap.publicJwk,
+        privateJwk: bootstrap.privateJwk,
+        jwkThumbprint: bootstrap.jwkThumbprint,
+      };
+    }
+    case "well-known":
+      if (!option.entityUri || !option.clientName || !option.publicJwk || !option.privateJwk || !option.framework) {
+        throw new Error("Well-known demo client option is incomplete");
+      }
+      return {
+        type: "well-known",
+        displayLabel: option.label,
+        registrationMode: "implicit-well-known",
+        entityUri: option.entityUri,
+        jwksUrl: option.jwksUrl,
+        clientName: option.clientName,
+        publicJwk: option.publicJwk,
+        privateJwk: option.privateJwk,
+        framework: option.framework,
+      };
+    case "udap":
+      if (!option.entityUri || !option.clientName || !option.framework || !option.certificatePem || !option.privateKeyPem || !option.scope) {
+        throw new Error("UDAP demo client option is incomplete");
+      }
+      return {
+        type: "udap",
+        displayLabel: option.label,
+        registrationMode: "udap-dcr",
+        entityUri: option.entityUri,
+        clientName: option.clientName,
+        framework: option.framework,
+        algorithm: "RS256",
+        certificatePem: option.certificatePem,
+        privateKeyPem: option.privateKeyPem,
+        scope: option.scope,
+        contacts: option.contacts ?? [],
+      };
+  }
+}
+
+export function clientBindingForPlan(clientPlan: ViewerClientPlan | null) {
+  if (!clientPlan) return null;
+  if (clientPlan.type === "well-known") {
+    return {
+      binding_type: "framework-entity",
+      framework: clientPlan.framework.uri,
+      framework_type: "well-known",
+      entity_uri: clientPlan.entityUri,
+    };
+  }
+  if (clientPlan.type === "udap") {
+    return {
+      binding_type: "framework-entity",
+      framework: clientPlan.framework.uri,
+      framework_type: "udap",
+      entity_uri: clientPlan.entityUri,
+    };
+  }
+  return null;
+}
+
+export function proofJktForPlan(mode: ModeName, clientPlan: ViewerClientPlan | null) {
+  return (mode === "strict" || mode === "key-bound") && clientPlan?.type === "unaffiliated"
+    ? clientPlan.jwkThumbprint
+    : null;
+}
+
+export function describeTicketBinding(
+  mode: ModeName,
+  clientType: DemoClientType | null,
+  proofJkt: string | null,
+  clientBinding: Record<string, any> | null,
+): TicketBindingDescription {
+  const usesProofKeyBinding = Boolean(proofJkt);
+  const usesClientBinding = Boolean(clientBinding);
+  const shape = usesProofKeyBinding && usesClientBinding
+    ? "cnf.jkt + client_binding"
+    : usesProofKeyBinding
+      ? "cnf.jkt"
+      : usesClientBinding
+        ? "client_binding"
+        : "none";
+  const label = shape === "none" ? "No client binding in ticket" : shape;
+  const rationale = clientType === "unaffiliated"
+    ? (usesProofKeyBinding
+        ? "This app is outside any trust framework, so the ticket binds directly to the generated JWK thumbprint."
+        : "This demo path leaves the ticket unbound to a specific client.")
+    : clientType === "well-known"
+      ? "This app is recognized as a framework-listed entity, so the ticket binds to client_binding instead of a single JWK."
+      : clientType === "udap"
+        ? "This app proves its framework/entity identity through UDAP registration and certificate-based client authentication."
+        : "This ticket does not include a client binding.";
+  return {
+    shape,
+    label,
+    rationale,
+    usesProofKeyBinding,
+    usesClientBinding,
+    proofJkt,
+    clientBinding,
+  };
+}
+
+export function describeClientOption(mode: ModeName, option: DemoClientOption): ClientStoryDescription {
+  return buildClientStoryDescription(
+    mode,
+    option.type,
+    option.label,
+    option.registrationMode,
+    option.framework,
+    option.entityUri,
+    option.jwksUrl,
+    null,
+  );
+}
+
+export function describeClientPlan(
+  mode: ModeName,
+  clientPlan: ViewerClientPlan,
+  effectiveClientId?: string | null,
+): ClientStoryDescription {
+  return buildClientStoryDescription(
+    mode,
+    clientPlan.type,
+    clientPlan.displayLabel,
+    clientPlan.registrationMode,
+    "framework" in clientPlan ? clientPlan.framework : undefined,
+    "entityUri" in clientPlan ? clientPlan.entityUri : undefined,
+    "jwksUrl" in clientPlan ? clientPlan.jwksUrl : undefined,
+    effectiveClientId ?? null,
+  );
 }
 
 export async function jwkThumbprint(jwk: JsonWebKey) {
@@ -380,6 +553,7 @@ export function buildFetchCurl(targetUrl: string, accessToken?: string | null, p
 }
 
 export function buildViewerLaunch(
+  sessionId: string,
   origin: string,
   mode: ModeName,
   person: PersonInfo,
@@ -388,7 +562,8 @@ export function buildViewerLaunch(
   ticketPayload: Record<string, any> | null,
   signedTicket: string | null,
   proofJkt: string | null,
-  clientBootstrap: ViewerLaunch["clientBootstrap"],
+  clientPlan: ViewerLaunch["clientPlan"],
+  demoSummary: ViewerLaunch["demoSummary"],
 ): ViewerLaunch {
   const viewerNetwork: ViewerLaunchNetwork = {
     slug: network.slug,
@@ -396,6 +571,7 @@ export function buildViewerLaunch(
     authSurface: chooseNetworkAuthSurface(mode, network),
   };
   return {
+    sessionId,
     origin,
     mode,
     ticketIssuer,
@@ -408,21 +584,91 @@ export function buildViewerLaunch(
     ticketPayload,
     signedTicket,
     proofJkt,
-    clientBootstrap,
+    clientPlan,
+    demoSummary,
   };
 }
 
 export function buildViewerLaunchUrl(launch: ViewerLaunch) {
-  const encoded = base64UrlEncodeJson(launch);
+  const encoded = storeViewerLaunch(launch) ?? base64UrlEncodeJson(launch);
   return `/viewer?session=${encodeURIComponent(encoded)}`;
 }
 
 export function decodeViewerLaunch(encoded: string): ViewerLaunch {
+  if (encoded.startsWith("storage:")) {
+    if (typeof window === "undefined") throw new Error("Stored viewer launch unavailable in this environment");
+    const raw = window.localStorage.getItem(encoded.slice("storage:".length));
+    if (!raw) throw new Error("Stored viewer launch is missing or expired");
+    return JSON.parse(raw) as ViewerLaunch;
+  }
   return JSON.parse(new TextDecoder().decode(base64UrlDecode(encoded))) as ViewerLaunch;
+}
+
+function buildClientStoryDescription(
+  mode: ModeName,
+  clientType: DemoClientType,
+  label: string,
+  registrationMode: DemoClientRegistrationMode,
+  framework: DemoClientFrameworkInfo | undefined,
+  entityUri: string | undefined,
+  jwksUrl: string | undefined,
+  effectiveClientId: string | null,
+): ClientStoryDescription {
+  const clientBinding = clientType === "unaffiliated"
+    ? null
+    : {
+        binding_type: "framework-entity",
+        framework: framework?.uri ?? "",
+        framework_type: clientType === "well-known" ? "well-known" : "udap",
+        entity_uri: entityUri ?? "",
+      };
+  const proofJkt = clientType === "unaffiliated" && (mode === "strict" || mode === "key-bound") ? "<jkt>" : null;
+  const ticketBinding = describeTicketBinding(mode, clientType, proofJkt, clientBinding);
+  const registrationLabel = registrationMode === "dynamic-jwk"
+    ? "Dynamic registration"
+    : registrationMode === "implicit-well-known"
+      ? "No registration"
+      : "UDAP DCR";
+  const authenticationLabel = clientType === "unaffiliated"
+    ? "private_key_jwt using a one-off JWK"
+    : clientType === "well-known"
+      ? "private_key_jwt using the entity's current JWKS key"
+      : "UDAP client assertion with x5c certificate chain; entity URI comes from the certificate SAN";
+  const expectedClientId = effectiveClientId
+    ?? (clientType === "well-known"
+      ? `well-known:${entityUri ?? "<entity-uri>"}`
+      : clientType === "udap"
+        ? "Issued at runtime by UDAP dynamic registration"
+        : "Issued at runtime by dynamic registration");
+  const whatThisDemonstrates = clientType === "unaffiliated"
+    ? "A one-off app outside any trust framework can register a key just before token exchange and bind the ticket directly to that key."
+    : clientType === "well-known"
+      ? "A framework-affiliated client can skip registration entirely and be recognized from a stable entity URI plus current JWKS resolution."
+      : "A trust-framework-backed client can register just in time through UDAP, using an entity URI taken from the certificate Subject Alternative Name (SAN) and published as an inspectable page on this demo server.";
+  return {
+    clientType,
+    label,
+    registrationLabel,
+    authenticationLabel,
+    effectiveClientId: expectedClientId,
+    whatThisDemonstrates,
+    frameworkDisplayName: framework?.displayName,
+    frameworkUri: framework?.uri,
+    entityUri,
+    jwksUrl,
+    ticketBinding,
+  };
 }
 
 function base64UrlEncodeJson(value: unknown) {
   return base64UrlEncode(new TextEncoder().encode(JSON.stringify(value)));
+}
+
+function storeViewerLaunch(launch: ViewerLaunch) {
+  if (typeof window === "undefined" || !("localStorage" in window)) return null;
+  const key = `viewer-launch:${crypto.randomUUID()}`;
+  window.localStorage.setItem(key, JSON.stringify(launch));
+  return `storage:${key}`;
 }
 
 function base64UrlEncode(bytes: Uint8Array) {

@@ -1,11 +1,12 @@
 import { create } from "zustand";
-import type { DemoBootstrap, ModeName, NetworkInfo, PersonInfo, TicketIssuerInfo } from "./types";
+import type { DemoBootstrap, DemoClientOption, ModeName, NetworkInfo, PersonInfo, TicketIssuerInfo } from "./types";
 
 type AppStore = {
   loading: boolean;
   error: string | null;
   selectedMode: ModeName;
   persons: PersonInfo[];
+  demoClientOptions: DemoClientOption[];
   searchableResourceTypes: string[];
   defaultTicketIssuer: TicketIssuerInfo | null;
   defaultNetwork: NetworkInfo | null;
@@ -40,6 +41,7 @@ export const useStore = create<AppStore>((set) => ({
   error: null,
   selectedMode: modeFromPath(),
   persons: [],
+  demoClientOptions: [],
   searchableResourceTypes: [],
   defaultTicketIssuer: null,
   defaultNetwork: null,
@@ -52,6 +54,7 @@ export const useStore = create<AppStore>((set) => ({
       const persons = bootstrap.persons.sort((a, b) => a.displayName.localeCompare(b.displayName));
       set({
         persons,
+        demoClientOptions: bootstrap.demoClientOptions ?? [],
         searchableResourceTypes: bootstrap.searchableResourceTypes,
         defaultTicketIssuer: bootstrap.defaultTicketIssuer,
         defaultNetwork: bootstrap.defaultNetwork,

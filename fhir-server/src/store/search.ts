@@ -61,6 +61,31 @@ const SEARCH_MATRIX: Record<string, Record<string, SearchParamKind>> = {
     authoredon: "date",
     encounter: "ref",
   },
+  Procedure: {
+    patient: "patient-ref",
+    status: "token",
+    code: "token",
+    date: "date",
+    encounter: "ref",
+  },
+  Immunization: {
+    patient: "patient-ref",
+    status: "token",
+    date: "date",
+  },
+  ServiceRequest: {
+    patient: "patient-ref",
+    status: "token",
+    intent: "token",
+    authoredon: "date",
+    encounter: "ref",
+  },
+  AllergyIntolerance: {
+    patient: "patient-ref",
+    "clinical-status": "token",
+    "verification-status": "token",
+    code: "token",
+  },
   Organization: {
     _id: "id",
   },

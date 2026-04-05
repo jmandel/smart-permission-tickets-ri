@@ -1,22 +1,28 @@
 import { describe, expect, test } from "bun:test";
 
 import {
+  buildViewerClientPlan,
   buildFetchCurl,
   buildTicketPayload,
   buildViewerLaunch,
   buildViewerLaunchUrl,
+  clientBindingForPlan,
   chooseNetworkAuthSurface,
   chooseSiteAuthSurface,
   constrainedSites,
   decodeViewerLaunch,
   defaultConsentState,
+  describeClientOption,
+  describeClientPlan,
+  describeTicketBinding,
   isConsentValid,
+  proofJktForPlan,
   scopeOptionsForPerson,
   selectedResourceTypes,
   selectedSmartScopes,
   validateConsent,
 } from "./demo";
-import type { NetworkInfo, PersonInfo, TicketIssuerInfo } from "./types";
+import type { DemoClientOption, NetworkInfo, PersonInfo, TicketIssuerInfo } from "./types";
 
 const person: PersonInfo = {
   personId: "elena-reyes",
@@ -94,6 +100,51 @@ const network: NetworkInfo = {
   name: "Reference Network",
 };
 
+const wellKnownOption: DemoClientOption = {
+  type: "well-known",
+  label: "Well-known client",
+  description: "Framework-affiliated implicit client",
+  registrationMode: "implicit-well-known",
+  framework: {
+    uri: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+    displayName: "Reference Demo Well-Known Clients",
+  },
+  entityUri: "http://localhost:8091/demo/clients/well-known-alpha",
+  clientName: "Northwind Care Viewer",
+  publicJwk: {
+    kty: "EC",
+    crv: "P-256",
+    x: "gwA5e-J9PsxXXZ8arlndCk8-tqiJ3Ye0_BdBTVfvahQ",
+    y: "mkjjr7GMPWB26IpuJJKsq7TkhszYr4WQID2SH8CPDbQ",
+  },
+  privateJwk: {
+    kty: "EC",
+    crv: "P-256",
+    x: "gwA5e-J9PsxXXZ8arlndCk8-tqiJ3Ye0_BdBTVfvahQ",
+    y: "mkjjr7GMPWB26IpuJJKsq7TkhszYr4WQID2SH8CPDbQ",
+    d: "DaNuMMgobU757Zs4zr8PJFl6QnrBozHRFqT917WP0QE",
+  },
+};
+
+const udapOption: DemoClientOption = {
+  type: "udap",
+  label: "UDAP client",
+  description: "Just-in-time UDAP registration",
+  registrationMode: "udap-dcr",
+  framework: {
+    uri: "https://smarthealthit.org/trust-frameworks/reference-demo-udap",
+    displayName: "Reference Demo UDAP Community",
+    documentUrl: "http://localhost:8091/.well-known/udap",
+  },
+  entityUri: "http://localhost:8091/demo/clients/udap/sample-client",
+  clientName: "Reference Demo RSA UDAP Client",
+  scope: "system/Patient.rs",
+  contacts: ["mailto:ops@example.org"],
+  algorithm: "RS256",
+  certificatePem: "-----BEGIN CERTIFICATE-----\nMIIB\n-----END CERTIFICATE-----",
+  privateKeyPem: "-----BEGIN PRIVATE KEY-----\nMIIB\n-----END PRIVATE KEY-----",
+};
+
 describe("demo helpers", () => {
   test("default consent enables every resource type present for the patient", () => {
     const consent = defaultConsentState(person);
@@ -124,7 +175,28 @@ describe("demo helpers", () => {
       "bay-area-rheumatology-associates": true,
     };
     const ticketPayload = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, consent);
+    const clientPlan = {
+      type: "unaffiliated" as const,
+      displayLabel: "Unaffiliated registered client",
+      registrationMode: "dynamic-jwk" as const,
+      clientName: "Viewer client for Elena Reyes",
+      publicJwk: {
+        kty: "EC",
+        crv: "P-256",
+        x: "gwA5e-J9PsxXXZ8arlndCk8-tqiJ3Ye0_BdBTVfvahQ",
+        y: "mkjjr7GMPWB26IpuJJKsq7TkhszYr4WQID2SH8CPDbQ",
+      },
+      privateJwk: {
+        kty: "EC",
+        crv: "P-256",
+        x: "gwA5e-J9PsxXXZ8arlndCk8-tqiJ3Ye0_BdBTVfvahQ",
+        y: "mkjjr7GMPWB26IpuJJKsq7TkhszYr4WQID2SH8CPDbQ",
+        d: "DaNuMMgobU757Zs4zr8PJFl6QnrBozHRFqT917WP0QE",
+      },
+      jwkThumbprint: "thumb-1",
+    };
     const launch = buildViewerLaunch(
+      "session-1",
       "http://localhost:8091",
       "registered",
       person,
@@ -133,13 +205,21 @@ describe("demo helpers", () => {
       ticketPayload,
       "signed-ticket",
       null,
-      null,
+      clientPlan,
+      {
+        dateSummary: "All dates",
+        sensitiveSummary: "Sensitive excluded",
+        expirySummary: "1 hour",
+        bindingSummary: "Proof key",
+        clientLabel: clientPlan.displayLabel,
+      },
     );
     const roundTrip = decodeViewerLaunch(new URL(buildViewerLaunchUrl(launch), "http://localhost:8091").searchParams.get("session")!);
 
     expect(roundTrip.network.slug).toBe("reference");
     expect(roundTrip.network.authSurface.kind).toBe("network");
     expect(roundTrip.network.authSurface.fhirBasePath).toBe("/modes/registered/networks/reference/fhir");
+    expect(roundTrip.clientPlan?.type).toBe("unaffiliated");
   });
 
   test("ticket payload compiles full-state selection to jurisdictions and partial selection to organizations", () => {
@@ -172,6 +252,20 @@ describe("demo helpers", () => {
       },
     ]);
     expect(constrainedSites(person, consent).map((site) => site.siteSlug)).toEqual(["eastbay-primary-care-associates"]);
+  });
+
+  test("ticket payload supports bounded and long-lived demo ticket lifetimes", () => {
+    const oneYearConsent = defaultConsentState(person);
+    oneYearConsent.ticketLifetime = "1y";
+    const oneYearTicket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, oneYearConsent);
+    expect(typeof oneYearTicket.exp).toBe("number");
+    expect((oneYearTicket.exp ?? 0) - Math.floor(Date.now() / 1000)).toBeGreaterThan(60 * 60 * 24 * 364);
+
+    const neverConsent = defaultConsentState(person);
+    neverConsent.ticketLifetime = "never";
+    const neverTicket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, neverConsent);
+    expect(typeof neverTicket.exp).toBe("number");
+    expect((neverTicket.exp ?? 0) - Math.floor(Date.now() / 1000)).toBeGreaterThan(60 * 60 * 24 * 365 * 9);
   });
 
   test("state-limited consent is invalid until at least one state is selected", () => {
@@ -259,6 +353,61 @@ describe("demo helpers", () => {
     expect(ticket.iss).toBe(ticketIssuer.issuerBaseUrl);
     expect(ticket.aud).toBe("http://localhost:8091");
     expect(ticket.cnf).toEqual({ jkt: "demo-proof" });
+  });
+
+  test("well-known client plan drives framework client binding without proof_jkt", async () => {
+    const clientPlan = await buildViewerClientPlan(person, wellKnownOption);
+    expect(clientPlan.type).toBe("well-known");
+    expect(clientBindingForPlan(clientPlan)).toEqual({
+      binding_type: "framework-entity",
+      framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+      framework_type: "well-known",
+      entity_uri: "http://localhost:8091/demo/clients/well-known-alpha",
+    });
+    expect(proofJktForPlan("strict", clientPlan)).toBeNull();
+  });
+
+  test("client story description explains well-known framework binding", () => {
+    const story = describeClientOption("strict", wellKnownOption);
+    expect(story.registrationLabel).toBe("No registration");
+    expect(story.authenticationLabel).toBe("private_key_jwt using the entity's current JWKS key");
+    expect(story.effectiveClientId).toBe("well-known:http://localhost:8091/demo/clients/well-known-alpha");
+    expect(story.ticketBinding.shape).toBe("client_binding");
+    expect(story.whatThisDemonstrates).toContain("skip registration entirely");
+  });
+
+  test("client story description explains unaffiliated strict binding", async () => {
+    const unaffiliatedPlan = await buildViewerClientPlan(person, {
+      type: "unaffiliated",
+      label: "Unaffiliated registered client",
+      description: "One-off client",
+      registrationMode: "dynamic-jwk",
+    });
+    const story = describeClientPlan("strict", unaffiliatedPlan, "client-123");
+    expect(story.effectiveClientId).toBe("client-123");
+    expect(story.ticketBinding.shape).toBe("cnf.jkt");
+    expect(story.ticketBinding.rationale).toContain("generated JWK thumbprint");
+  });
+
+  test("client story description explains UDAP SAN-based entity binding", () => {
+    const story = describeClientOption("strict", udapOption);
+    expect(story.registrationLabel).toBe("UDAP DCR");
+    expect(story.authenticationLabel).toContain("certificate SAN");
+    expect(story.entityUri).toBe("http://localhost:8091/demo/clients/udap/sample-client");
+    expect(story.whatThisDemonstrates).toContain("Subject Alternative Name");
+    expect(story.ticketBinding.shape).toBe("client_binding");
+  });
+
+  test("ticket binding description distinguishes proof and framework binding", () => {
+    expect(describeTicketBinding("strict", "unaffiliated", "<jkt>", null).shape).toBe("cnf.jkt");
+    expect(
+      describeTicketBinding("strict", "well-known", null, {
+        binding_type: "framework-entity",
+        framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+        framework_type: "well-known",
+        entity_uri: "http://localhost:8091/demo/clients/well-known-alpha",
+      }).shape,
+    ).toBe("client_binding");
   });
 
   test("copied curls inline the actual bearer token and proof header", () => {

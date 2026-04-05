@@ -1,11 +1,14 @@
 import { decodeEs256Jwt } from "./auth/es256-jwt.ts";
+import { DEFAULT_DEMO_UDAP_FRAMEWORK_URI, DEFAULT_DEMO_UDAP_RSA_CA_ID } from "./auth/demo-frameworks.ts";
+import { buildUdapCrlUrl } from "./auth/udap-crl.ts";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
-import { NETWORK_PATIENT_ACCESS_TICKET_TYPE } from "../shared/permission-tickets.ts";
+import { NETWORK_PATIENT_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
 import { createAppContext, startServer } from "./app.ts";
 
 const context = createAppContext({ port: 0 });
 const server = startServer(context, 0);
 const origin = `http://127.0.0.1:${server.port}`;
+context.config.publicBaseUrl = origin;
 context.config.issuer = origin;
 const clientBootstrap = await generateClientKeyMaterial();
 
@@ -35,6 +38,7 @@ try {
     body: JSON.stringify({
       sub: "smoke-ticket",
       aud: origin,
+      exp: Math.floor(Date.now() / 1000) + 3600,
       ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
       authorization: {
         subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
@@ -50,6 +54,7 @@ try {
   const signedTicketBody = await signTicketResponse.json();
   const decodedSignedTicket = decodeEs256Jwt<any>(signedTicketBody.signed_ticket);
   assert(decodedSignedTicket.payload.iss === `${origin}/issuer/reference-demo`, "signed ticket issuer mismatch");
+  assert(typeof decodedSignedTicket.payload.exp === "number", "signed ticket should include exp");
 
   await expectJson(`${origin}/networks/reference/fhir/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/networks/reference/token`, "network smart config token endpoint mismatch");
@@ -62,7 +67,29 @@ try {
   await expectJson(`${origin}/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/token`, "root smart config token endpoint mismatch");
     assert(body.smart_permission_ticket_types_supported?.includes(NETWORK_PATIENT_ACCESS_TICKET_TYPE), "root smart config ticket types missing");
+    assert(Array.isArray(body.grant_types_supported) && body.grant_types_supported.includes("client_credentials"), "root smart config should advertise client_credentials when supported");
+    const extension = body.extensions?.["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
+    assert(Array.isArray(extension?.supported_client_binding_types), "root smart config should advertise client binding types");
+    assert(extension.supported_client_binding_types.includes("framework-entity"), "root smart config should advertise framework-entity binding");
+    assert(Array.isArray(extension?.supported_trust_frameworks) && extension.supported_trust_frameworks.length >= 2, "root smart config should advertise built-in trust frameworks");
   });
+  await expectJson(`${origin}/.well-known/jwks.json`, (body) => {
+    assert(Array.isArray(body.keys) && body.keys[0]?.kid, "demo well-known jwks should expose a kid");
+  });
+  await expectJson(`${origin}/.well-known/udap`, (body) => {
+    assert(Array.isArray(body.udap_versions_supported) && body.udap_versions_supported.includes("1"), "udap discovery should advertise version 1");
+    assert(Array.isArray(body.udap_profiles_supported) && body.udap_profiles_supported.includes("udap_authz"), "udap discovery should advertise udap_authz");
+    assert(Array.isArray(body.udap_authorization_extensions_supported) && body.udap_authorization_extensions_supported.includes("hl7-b2b"), "udap discovery should advertise hl7-b2b");
+    assert(Array.isArray(body.udap_authorization_extensions_required) && body.udap_authorization_extensions_required.includes("hl7-b2b"), "udap discovery should require hl7-b2b");
+    assert(Array.isArray(body.grant_types_supported) && body.grant_types_supported.includes("client_credentials"), "udap discovery should advertise client_credentials");
+    assert(typeof body.registration_endpoint === "string" && body.registration_endpoint === `${origin}/register`, "udap discovery registration endpoint mismatch");
+    assert(Array.isArray(body.token_endpoint_auth_signing_alg_values_supported) && body.token_endpoint_auth_signing_alg_values_supported.includes("RS256"), "udap discovery should advertise RS256");
+    assert(typeof body.signed_metadata === "string" && body.signed_metadata.split(".").length === 3, "udap discovery should include signed_metadata JWT");
+  });
+  const crlUrl = buildUdapCrlUrl(origin, DEFAULT_DEMO_UDAP_FRAMEWORK_URI, DEFAULT_DEMO_UDAP_RSA_CA_ID);
+  const crlResponse = await fetch(crlUrl);
+  assert(crlResponse.status === 200, "demo UDAP CRL should be published");
+  assert((crlResponse.headers.get("content-type") ?? "").includes("application/pkix-crl"), "demo UDAP CRL should use pkix-crl content type");
   await expectJson(`${origin}/modes/open/sites/lone-star-womens-health/fhir/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/modes/open/sites/lone-star-womens-health/token`, "site smart config token endpoint mismatch");
     assert(body.fhir_base_url === `${origin}/modes/open/sites/lone-star-womens-health/fhir`, "site smart config fhir base mismatch");
@@ -82,7 +109,7 @@ try {
 
   const networkToken = await postFormJsonWithClient(`${origin}/networks/reference/token`, {
     grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
-    subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
+    subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
     subject_token: signedTicketBody.signed_ticket,
   }, registration.client_id, clientBootstrap.privateJwk, clientBootstrap.thumbprint);
   assert(typeof networkToken.access_token === "string", "network token exchange should issue an access token");
@@ -141,7 +168,7 @@ try {
 
   const loneStarDeny = await postForm(`${origin}/modes/open/sites/lone-star-womens-health/token`, {
     grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
-    subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
+    subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
     subject_token: denySiteTicket,
   });
   assert(loneStarDeny.status === 400, "site-partitioned deny token exchange should fail when no encounters remain");
@@ -199,7 +226,7 @@ try {
 
   const strictWithoutClient = await postForm(`${origin}/token`, {
     grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
-    subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
+    subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
     subject_token: mintTicket({
       iss: origin,
       subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
@@ -208,7 +235,7 @@ try {
       sensitiveMode: "deny",
     }),
   });
-  assert(strictWithoutClient.status === 400, "strict token endpoint should reject unauthenticated client");
+  assert(strictWithoutClient.status === 401, "strict token endpoint should reject unauthenticated client");
 
   console.log(JSON.stringify({
     ok: true,

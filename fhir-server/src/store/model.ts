@@ -14,10 +14,77 @@ export type CategoryRule = {
 export type DateSemantics = "generated-during-period" | "care-overlap";
 export type SensitiveMode = "deny" | "allow";
 export type ModeName = "strict" | "registered" | "key-bound" | "open" | "anonymous";
+export type ClientAuthMode = "unaffiliated" | "well-known" | "udap";
 
 export type DateRange = {
   start?: string;
   end?: string;
+};
+
+export type FrameworkType = "well-known" | "udap";
+
+export type UdapCertificateAuthority = {
+  caId: string;
+  certificatePem: string;
+  privateKeyPem: string;
+};
+
+export type ClientBinding = {
+  binding_type: "framework-entity";
+  framework: string;
+  framework_type: FrameworkType;
+  entity_uri: string;
+};
+
+export type FrameworkDefinition = {
+  framework: string;
+  frameworkType: FrameworkType;
+  supportsClientAuth: boolean;
+  supportsIssuerTrust: boolean;
+  cacheTtlSeconds: number;
+  localAudienceMembership?: {
+    entityUri: string;
+  };
+  wellKnown?: {
+    allowlist: string[];
+    jwksRelativePath: string;
+  };
+  udap?: {
+    trustAnchors: string[];
+    entityAllowlist?: string[];
+    metadataSigningCertificatePem?: string;
+    metadataSigningPrivateKeyPem?: string;
+    metadataSigningIssuerCertificatePem?: string;
+    metadataSigningIssuerPrivateKeyPem?: string;
+    metadataSigningIssuerCaId?: string;
+    certificateAuthorities?: UdapCertificateAuthority[];
+  };
+};
+
+export type ResolvedFrameworkEntity = {
+  framework?: {
+    uri: string;
+    type: FrameworkType;
+  };
+  entityUri: string;
+  displayName: string;
+  publicJwks?: JsonWebKey[];
+  metadata?: Record<string, any>;
+};
+
+export type TicketIssuerTrust = {
+  source: "local" | "framework";
+  issuerUrl: string;
+  displayName: string;
+  framework?: {
+    uri: string;
+    type: FrameworkType;
+  };
+};
+
+export type ResolvedIssuerTrust = TicketIssuerTrust & {
+  publicJwks: JsonWebKey[];
+  metadata?: Record<string, any>;
 };
 
 export type AllowedPatientAlias = {
@@ -29,6 +96,7 @@ export type AllowedPatientAlias = {
 
 export type AuthorizationEnvelope = {
   ticketIssuer: string;
+  ticketIssuerTrust?: TicketIssuerTrust;
   ticketSubject: string;
   ticketId?: string;
   ticketType: string;
@@ -46,6 +114,7 @@ export type AuthorizationEnvelope = {
   deniedLabelsAny?: Label[];
   granularCategoryRules?: CategoryRule[];
   cnf?: { jkt: string };
+  clientBinding?: ClientBinding;
 };
 
 export type PermissionTicket = {
@@ -57,6 +126,7 @@ export type PermissionTicket = {
   jti?: string;
   ticket_type: string;
   cnf?: { jkt: string };
+  client_binding?: ClientBinding;
   revocation?: { url: string; rid: string };
   authorization: {
     subject: {
@@ -92,7 +162,6 @@ export type TokenExchangeRequest = {
   client_id?: string;
   client_assertion_type?: string;
   client_assertion?: string;
-  proof_jkt?: string;
 };
 
 export type RegisteredClient = {
@@ -100,8 +169,27 @@ export type RegisteredClient = {
   clientName: string;
   tokenEndpointAuthMethod: "none" | "private_key_jwt";
   publicJwk?: JsonWebKey;
+  availablePublicJwks?: JsonWebKey[];
   jwkThumbprint?: string;
+  registeredScope?: string;
   dynamic: boolean;
+  authMode?: ClientAuthMode;
+  frameworkBinding?: ClientBinding;
+};
+
+export type AuthenticatedClientIdentity = {
+  clientId: string;
+  clientName: string;
+  tokenEndpointAuthMethod: RegisteredClient["tokenEndpointAuthMethod"];
+  dynamic: boolean;
+  authMode: ClientAuthMode;
+  registeredScope?: string;
+  frameworkBinding?: ClientBinding;
+  resolvedEntity?: ResolvedFrameworkEntity;
+  availablePublicJwks: JsonWebKey[];
+  publicJwk?: JsonWebKey;
+  jwkThumbprint?: string;
+  certificateThumbprint?: string;
 };
 
 export type RouteContext = {

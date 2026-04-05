@@ -14,7 +14,7 @@ import {
   fetchSmartConfigFromFhirBase,
   introspectTokenAtEndpoint,
   introspectSurfaceToken,
-  registerViewerClient,
+  prepareViewerClient,
   resolveRecordLocations,
 } from "./viewer-client";
 import { CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM } from "../../../src/store/model";
@@ -184,12 +184,12 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
       // ---------------------------------------------------------------
 
       if (launch.mode === "strict" || launch.mode === "registered" || launch.mode === "key-bound") {
-        if (!launch.clientBootstrap) throw new Error("Missing viewer client bootstrap");
-        sharedClient = await registerViewerClient(
+        if (!launch.clientPlan) throw new Error("Missing viewer client plan");
+        sharedClient = await prepareViewerClient(
           launch.origin,
           launch.network.authSurface,
-          launch.clientBootstrap.clientName,
-          launch.clientBootstrap.publicJwk,
+          launch.clientPlan,
+          launch.sessionId,
         );
         if (cancelled()) return;
         set({ sharedClient });
@@ -205,8 +205,9 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
         launch.network.authSurface,
         launch.signedTicket,
         sharedClient,
-        launch.clientBootstrap?.privateJwk ?? null,
+        launch.clientPlan,
         launch.proofJkt,
+        undefined,
       );
       if (cancelled()) return;
       set({ networkTokenResponse, networkTokenClaims });
@@ -219,8 +220,9 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
           launch.network.authSurface,
           networkTokenResponse.access_token,
           sharedClient,
-          launch.clientBootstrap?.privateJwk ?? null,
+          launch.clientPlan,
           launch.proofJkt,
+          undefined,
         ),
         resolveRecordLocations(
           launch.origin,
@@ -228,6 +230,7 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
           launch.network.authSurface,
           networkTokenResponse.access_token,
           launch.proofJkt,
+          undefined,
         ),
       ]);
       if (cancelled()) return;
@@ -385,7 +388,6 @@ async function loadOneSite(
   if (cancelled()) return;
   updateRun(encodedSession, site.siteSlug, { smartConfig, capabilityStatement }, set, get);
 
-  const privateJwk = launch.clientBootstrap?.privateJwk ?? null;
   let accessToken: string | null = null;
   let proofJkt: string | null = launch.proofJkt;
   let patientId: string | null = null;
@@ -399,8 +401,9 @@ async function loadOneSite(
       String(smartConfig.token_endpoint),
       launch.signedTicket,
       sharedClient,
-      privateJwk,
+      launch.clientPlan,
       proofJkt,
+      undefined,
     );
     accessToken = tokenResponse.access_token;
     if (cancelled()) return;
@@ -410,13 +413,14 @@ async function loadOneSite(
     // other — both only need the access token.  Fire them in parallel.
     updateRun(encodedSession, site.siteSlug, { phase: "introspecting-token" }, set, get);
     const [introspection, resolvedPatientId] = await Promise.all([
-      introspectTokenAtEndpoint(
-        String(smartConfig.introspection_endpoint),
-        accessToken,
-        sharedClient,
-        privateJwk,
-        proofJkt,
-      ),
+        introspectTokenAtEndpoint(
+          String(smartConfig.introspection_endpoint),
+          accessToken,
+          sharedClient,
+          launch.clientPlan,
+          proofJkt,
+          undefined,
+        ),
       typeof tokenResponse.patient === "string"
         ? Promise.resolve(tokenResponse.patient)
         : resolveSitePatientId(launch, site, null, accessToken, proofJkt, smartConfig),
@@ -505,12 +509,14 @@ async function loadSiteResources(
         launch.mode === "anonymous"
           ? await fetchPreviewSiteFhirAllPages(launch.origin, site, query.relativePath)
           : await fetchFhirAllPagesFromBase(siteFhirBaseUrl, query.relativePath, accessToken, proofJkt);
-      allResources.push(...summarizeSiteResources(site, payload, fullUrl));
+      const summarized = summarizeSiteResources(site, payload, fullUrl);
+      allResources.push(...summarized);
     } catch (error) {
+      const message = error instanceof Error ? error.message : "Query failed";
       queryErrors.push({
         label: query.label,
         relativePath: query.relativePath,
-        message: error instanceof Error ? error.message : "Query failed",
+        message,
       });
     }
   });
@@ -557,4 +563,33 @@ async function resolveSitePatientId(
   if (!entries.length) return null;
   const match = entries[0]?.resource;
   return typeof match?.id === "string" ? match.id : null;
+}
+
+export function expandScopeLabels(scopes: string[]) {
+  const expanded = new Set<string>();
+  const wildcardTypes = [
+    "Patient",
+    "Encounter",
+    "Observation",
+    "Condition",
+    "DiagnosticReport",
+    "DocumentReference",
+    "MedicationRequest",
+    "Procedure",
+    "Immunization",
+    "ServiceRequest",
+    "AllergyIntolerance",
+  ];
+  for (const scope of scopes) {
+    const match = scope.match(/^[^/]+\/([^\.]+)\./);
+    const resourceType = match?.[1];
+    if (!resourceType) continue;
+    if (resourceType === "*") {
+      for (const item of wildcardTypes) expanded.add(item);
+      continue;
+    }
+    expanded.add(resourceType);
+  }
+  const order = new Map(wildcardTypes.map((label, index) => [label, index]));
+  return [...expanded].sort((left, right) => (order.get(left) ?? Number.MAX_SAFE_INTEGER) - (order.get(right) ?? Number.MAX_SAFE_INTEGER) || left.localeCompare(right));
 }

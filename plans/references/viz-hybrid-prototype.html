@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compact Summary + Detail Feed — Permission Ticket Flow</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f6f8; color: #1a1a2e; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+
+/* Banner */
+.banner { flex-shrink: 0; background: linear-gradient(135deg, #1a1a2e, #2d2d5e); color: #fff; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); z-index: 100; }
+.banner-stats { display: flex; gap: 20px; }
+.banner-stat { display: flex; align-items: center; gap: 6px; }
+.banner-stat .label { opacity: 0.7; }
+.banner-stat .value { font-weight: 600; font-size: 15px; }
+.banner-title { font-weight: 700; font-size: 15px; letter-spacing: 0.5px; }
+
+/* Controls */
+.controls { flex-shrink: 0; background: #fff; border-top: 1px solid #e0e0e0; padding: 10px 24px; display: flex; align-items: center; gap: 12px; box-shadow: 0 -2px 8px rgba(0,0,0,0.06); z-index: 100; }
+.controls button { padding: 6px 16px; border: 1px solid #d0d0d0; border-radius: 6px; background: #fff; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.15s; }
+.controls button:hover { background: #f0f0f5; border-color: #aaa; }
+.controls button.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+.speed-control { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #666; }
+.speed-control input { width: 80px; }
+.event-counter { margin-left: auto; font-size: 13px; color: #888; }
+
+/* Panels */
+.panels { flex: 1; display: flex; overflow: hidden; }
+
+/* Left panel */
+.left-panel { width: 35%; border-right: 1px solid #e0e0e0; background: #fff; overflow-y: auto; padding: 16px; }
+.left-panel::-webkit-scrollbar { width: 5px; }
+.left-panel::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+
+.summary-section { margin-bottom: 16px; padding-left: 14px; border-left: 3px solid #ddd; opacity: 0; transform: translateX(-5px); transition: all 0.3s; }
+.summary-section.visible { opacity: 1; transform: translateX(0); }
+.summary-section.amber { border-left-color: #f39c12; }
+.summary-section.blue { border-left-color: #3498db; }
+.summary-section.purple { border-left-color: #8e44ad; }
+.summary-section.teal { border-left-color: #1abc9c; }
+
+.summary-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
+.summary-content { font-size: 13px; }
+.summary-field { margin-bottom: 4px; }
+.summary-field .sf-label { font-weight: 600; color: #666; font-size: 11px; }
+
+/* Scope pills */
+.scope-pills { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+.scope-pill { padding: 2px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; color: #fff; }
+.rc-Condition { background: #e74c3c; }
+.rc-Observation { background: #3498db; }
+.rc-MedicationRequest { background: #9b59b6; }
+.rc-Encounter { background: #e67e22; }
+.rc-Procedure { background: #27ae60; }
+.rc-DocumentReference { background: #1abc9c; }
+
+/* Check badges in left panel */
+.check-badges { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+.check-badge-sm { padding: 2px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; background: #e8f5e9; color: #27ae60; opacity: 0; transition: opacity 0.25s; }
+.check-badge-sm.visible { opacity: 1; }
+.summary-line { font-size: 12px; color: #27ae60; font-weight: 600; opacity: 0; transition: opacity 0.25s; margin-top: 4px; }
+.summary-line.visible { opacity: 1; }
+
+/* Site rows in left panel */
+.site-rows { margin-top: 4px; }
+.site-row { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; transition: background 0.15s; margin-bottom: 2px; opacity: 0; transition: opacity 0.25s, background 0.15s; }
+.site-row.visible { opacity: 1; }
+.site-row:hover { background: #f5f6f8; }
+.site-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; transition: background 0.3s; }
+.site-dot.gray { background: #ccc; }
+.site-dot.amber { background: #f39c12; }
+.site-dot.green { background: #27ae60; }
+.site-row-name { font-size: 12px; font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.site-row-count { font-size: 11px; font-weight: 700; background: #e8e8f0; padding: 1px 8px; border-radius: 10px; color: #555; min-width: 28px; text-align: center; }
+
+/* Site expanded detail */
+.site-row-detail { display: none; padding: 4px 8px 8px 26px; }
+.site-row-detail.open { display: block; }
+.site-row-detail .scope-pills { gap: 3px; }
+
+/* Totals */
+.summary-totals { font-size: 12px; color: #555; padding: 10px 0; border-top: 1px solid #eee; margin-top: 8px; font-weight: 600; opacity: 0; transition: opacity 0.3s; }
+.summary-totals.visible { opacity: 1; }
+
+/* Right panel */
+.right-panel { flex: 1; overflow-y: auto; padding: 16px; background: #fafbfc; }
+.right-panel::-webkit-scrollbar { width: 5px; }
+.right-panel::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+
+/* Phase divider */
+.phase-divider { display: flex; align-items: center; gap: 10px; margin: 12px 0 8px; }
+.phase-divider-line { flex: 1; height: 1px; }
+.phase-divider-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 2px 10px; border-radius: 10px; color: #fff; }
+.phase-ticket .phase-divider-line { background: #f39c12; }
+.phase-ticket .phase-divider-label { background: #f39c12; }
+.phase-registration .phase-divider-line { background: #3498db; }
+.phase-registration .phase-divider-label { background: #3498db; }
+.phase-network-auth .phase-divider-line { background: #8e44ad; }
+.phase-network-auth .phase-divider-label { background: #8e44ad; }
+.phase-discovery .phase-divider-line { background: #16a085; }
+.phase-discovery .phase-divider-label { background: #16a085; }
+.phase-site-auth .phase-divider-line { background: #e67e22; }
+.phase-site-auth .phase-divider-label { background: #e67e22; }
+.phase-data .phase-divider-line { background: #2c3e50; }
+.phase-data .phase-divider-label { background: #2c3e50; }
+.phase-complete .phase-divider-line { background: #27ae60; }
+.phase-complete .phase-divider-label { background: #27ae60; }
+
+/* Feed entry */
+.feed-entry { background: #fff; border-radius: 8px; padding: 10px 14px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-left: 3px solid #ddd; transition: background 0.15s; opacity: 0; transform: translateY(8px); animation: feedIn 0.25s ease-out forwards; display: flex; align-items: flex-start; gap: 10px; }
+.feed-entry:hover { background: #f8f9fb; }
+@keyframes feedIn { to { opacity: 1; transform: translateY(0); } }
+
+.feed-entry.phase-ticket { border-left-color: #f39c12; }
+.feed-entry.phase-registration { border-left-color: #3498db; }
+.feed-entry.phase-network-auth { border-left-color: #8e44ad; }
+.feed-entry.phase-discovery { border-left-color: #16a085; }
+.feed-entry.phase-site-auth { border-left-color: #e67e22; }
+.feed-entry.phase-data { border-left-color: #2c3e50; }
+.feed-entry.phase-complete { border-left-color: #27ae60; }
+
+.feed-icon { font-size: 14px; flex-shrink: 0; width: 20px; text-align: center; }
+.feed-body { flex: 1; min-width: 0; }
+.feed-label { font-weight: 700; font-size: 13px; }
+.feed-detail { font-size: 12px; color: #666; margin-top: 1px; }
+.feed-inline-pill { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 10px; font-weight: 600; color: #fff; vertical-align: middle; }
+
+/* Resource type colors for feed inline pills */
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <span class="banner-title">SMART Permission Ticket — Summary + Audit Feed</span>
+  <div class="banner-stats">
+    <div class="banner-stat"><span class="label">Checks:</span><span class="value" id="b-checks">0/7</span></div>
+    <div class="banner-stat"><span class="label">Sites:</span><span class="value" id="b-sites">0/4</span></div>
+    <div class="banner-stat"><span class="label">Resources:</span><span class="value" id="b-resources">0</span></div>
+  </div>
+</div>
+
+<div class="panels">
+  <!-- Left Panel: Living Summary -->
+  <div class="left-panel" id="left-panel">
+    <!-- Ticket -->
+    <div class="summary-section amber" id="sum-ticket">
+      <div class="summary-title">Ticket</div>
+      <div class="summary-content">
+        <div class="summary-field" id="sum-patient">—</div>
+        <div class="scope-pills" id="sum-scopes"></div>
+        <div class="summary-field" id="sum-constraints" style="font-size:11px;color:#888"></div>
+      </div>
+    </div>
+
+    <!-- Client -->
+    <div class="summary-section blue" id="sum-client">
+      <div class="summary-title">Client</div>
+      <div class="summary-content">
+        <div class="summary-field" id="sum-client-status" style="font-size:12px">—</div>
+      </div>
+    </div>
+
+    <!-- Verification -->
+    <div class="summary-section purple" id="sum-verification">
+      <div class="summary-title">Verification</div>
+      <div class="summary-content">
+        <div class="check-badges" id="sum-checks"></div>
+        <div class="summary-line" id="sum-patient-line"></div>
+        <div class="summary-line" id="sum-token-line"></div>
+      </div>
+    </div>
+
+    <!-- Sites -->
+    <div class="summary-section teal" id="sum-sites">
+      <div class="summary-title">Sites</div>
+      <div class="site-rows" id="sum-site-rows"></div>
+    </div>
+
+    <!-- Totals -->
+    <div class="summary-totals" id="sum-totals"></div>
+  </div>
+
+  <!-- Right Panel: Detail Feed -->
+  <div class="right-panel" id="feed"></div>
+</div>
+
+<div class="controls">
+  <button id="btn-play" onclick="togglePlay()">Play</button>
+  <button onclick="stepForward()">Step</button>
+  <button onclick="restart()">Restart</button>
+  <div class="speed-control">
+    <span>Speed:</span>
+    <input type="range" min="1" max="10" value="5" id="speed-slider" oninput="updateSpeed()">
+    <span id="speed-label">1x</span>
+  </div>
+  <div class="event-counter">Event <span id="evt-current">0</span> / <span id="evt-total">0</span></div>
+</div>
+
+<script>
+const EVENTS=[{phase:"ticket",type:"ticket-created",label:"Permission Ticket Signed",detail:{patient:"Elena Marisol Reyes",dob:"1989-09-14",scopes:["Condition","Observation","MedicationRequest","Encounter","Procedure","DocumentReference"],dateRange:"2020–2025",sensitive:"excluded",expiry:"1 hour",binding:"UDAP client_binding"},narration:"Issuer signs a JWT encoding who the patient is, what data can be accessed, and which client can use it."},{phase:"registration",type:"udap-discovery",label:"UDAP Discovery",detail:{},narration:"App fetches UDAP metadata."},{phase:"registration",type:"udap-register",label:"UDAP Registration",detail:{method:"x5c certificate chain",framework:"Reference Demo UDAP"},narration:"App registers with X.509 certificate."},{phase:"registration",type:"client-registered",label:"Client Registered",detail:{clientId:"udap:eyJ…",entityUri:"https://demo/clients/udap/sample"},narration:"Client identity established."},{phase:"network-auth",type:"ticket-presented",label:"Ticket Presented",detail:{endpoint:"/token"},narration:"Ticket presented to network."},{phase:"network-auth",type:"check-passed",label:"Signature ✓",detail:{check:"Ticket Signature",evidence:"ES256, kid=issuer-key-1",why:"Contents haven't been tampered with"},narration:""},{phase:"network-auth",type:"check-passed",label:"Type ✓",detail:{check:"Ticket Type",evidence:"network-patient-access-v1",why:"Server recognizes this ticket format"},narration:""},{phase:"network-auth",type:"check-passed",label:"Not Expired ✓",detail:{check:"Expiration",evidence:"58 min remaining",why:"Within validity window"},narration:""},{phase:"network-auth",type:"check-passed",label:"Audience ✓",detail:{check:"Audience",evidence:"matches server FHIR base",why:"Intended for this server"},narration:""},{phase:"network-auth",type:"check-passed",label:"Issuer Trusted ✓",detail:{check:"Issuer Trust",evidence:"Reference Demo Issuer",why:"Signer is in trusted list"},narration:""},{phase:"network-auth",type:"check-passed",label:"Client Bound ✓",detail:{check:"Client Binding",evidence:"UDAP entity matches",why:"Only this app can use this ticket"},narration:""},{phase:"network-auth",type:"check-passed",label:"Not Revoked ✓",detail:{check:"Revocation",evidence:"CRL checked, active",why:"Issuer hasn't revoked this ticket"},narration:""},{phase:"network-auth",type:"patient-matched",label:"Patient Matched",detail:{patient:"Elena Marisol Reyes",sites:4},narration:"Patient found at 4 sites."},{phase:"network-auth",type:"token-issued",label:"Network Token Issued",detail:{scopes:6},narration:"Access token issued."},{phase:"discovery",type:"sites-discovered",label:"Sites Discovered",detail:{sites:[{name:"Lone Star Women's Health",location:"Austin, TX",encounters:27},{name:"Central Austin Family Medicine",location:"Austin, TX",encounters:12},{name:"EastBay Primary Care",location:"Oakland, CA",encounters:8},{name:"Bay Area Rheumatology",location:"San Francisco, CA",encounters:3}]},narration:"4 sites hold this patient's records."},{phase:"site-auth",type:"site-token-exchange",label:"Token Exchange",detail:{site:"Lone Star Women's Health"},narration:""},{phase:"site-auth",type:"site-token-issued",label:"Authorized",detail:{site:"Lone Star Women's Health",scopes:6},narration:""},{phase:"data",type:"query-result",detail:{site:"Lone Star Women's Health",resourceType:"Condition",count:14},narration:""},{phase:"data",type:"query-result",detail:{site:"Lone Star Women's Health",resourceType:"Observation",count:45},narration:""},{phase:"data",type:"query-result",detail:{site:"Lone Star Women's Health",resourceType:"MedicationRequest",count:8},narration:""},{phase:"data",type:"query-result",detail:{site:"Lone Star Women's Health",resourceType:"Encounter",count:27},narration:""},{phase:"data",type:"query-result",detail:{site:"Lone Star Women's Health",resourceType:"Procedure",count:5},narration:""},{phase:"data",type:"query-result",detail:{site:"Lone Star Women's Health",resourceType:"DocumentReference",count:3},narration:""},{phase:"site-auth",type:"site-token-exchange",label:"Token Exchange",detail:{site:"Central Austin Family Medicine"},narration:""},{phase:"site-auth",type:"site-token-issued",label:"Authorized",detail:{site:"Central Austin Family Medicine",scopes:6},narration:""},{phase:"data",type:"query-result",detail:{site:"Central Austin Family Medicine",resourceType:"Condition",count:6},narration:""},{phase:"data",type:"query-result",detail:{site:"Central Austin Family Medicine",resourceType:"Observation",count:22},narration:""},{phase:"data",type:"query-result",detail:{site:"Central Austin Family Medicine",resourceType:"MedicationRequest",count:4},narration:""},{phase:"data",type:"query-result",detail:{site:"Central Austin Family Medicine",resourceType:"Encounter",count:12},narration:""},{phase:"data",type:"query-result",detail:{site:"Central Austin Family Medicine",resourceType:"Procedure",count:2},narration:""},{phase:"data",type:"query-result",detail:{site:"Central Austin Family Medicine",resourceType:"DocumentReference",count:1},narration:""},{phase:"site-auth",type:"site-token-exchange",label:"Token Exchange",detail:{site:"EastBay Primary Care"},narration:""},{phase:"site-auth",type:"site-token-issued",label:"Authorized",detail:{site:"EastBay Primary Care",scopes:6},narration:""},{phase:"data",type:"query-result",detail:{site:"EastBay Primary Care",resourceType:"Condition",count:3},narration:""},{phase:"data",type:"query-result",detail:{site:"EastBay Primary Care",resourceType:"Observation",count:15},narration:""},{phase:"data",type:"query-result",detail:{site:"EastBay Primary Care",resourceType:"MedicationRequest",count:2},narration:""},{phase:"data",type:"query-result",detail:{site:"EastBay Primary Care",resourceType:"Encounter",count:8},narration:""},{phase:"data",type:"query-result",detail:{site:"EastBay Primary Care",resourceType:"Procedure",count:1},narration:""},{phase:"data",type:"query-result",detail:{site:"EastBay Primary Care",resourceType:"DocumentReference",count:2},narration:""},{phase:"site-auth",type:"site-token-exchange",label:"Token Exchange",detail:{site:"Bay Area Rheumatology"},narration:""},{phase:"site-auth",type:"site-token-issued",label:"Authorized",detail:{site:"Bay Area Rheumatology",scopes:6},narration:""},{phase:"data",type:"query-result",detail:{site:"Bay Area Rheumatology",resourceType:"Condition",count:2},narration:""},{phase:"data",type:"query-result",detail:{site:"Bay Area Rheumatology",resourceType:"Observation",count:8},narration:""},{phase:"data",type:"query-result",detail:{site:"Bay Area Rheumatology",resourceType:"MedicationRequest",count:3},narration:""},{phase:"data",type:"query-result",detail:{site:"Bay Area Rheumatology",resourceType:"Encounter",count:3},narration:""},{phase:"data",type:"query-result",detail:{site:"Bay Area Rheumatology",resourceType:"Procedure",count:1},narration:""},{phase:"data",type:"query-result",detail:{site:"Bay Area Rheumatology",resourceType:"DocumentReference",count:0},narration:""},{phase:"complete",type:"session-complete",label:"Complete",detail:{totalResources:197,totalSites:4},narration:"197 resources across 4 sites from one ticket."}];
+
+const RC = { Condition:'#e74c3c', Observation:'#3498db', MedicationRequest:'#9b59b6', Encounter:'#e67e22', Procedure:'#27ae60', DocumentReference:'#1abc9c' };
+const RESOURCE_TYPES = ['Condition','Observation','MedicationRequest','Encounter','Procedure','DocumentReference'];
+const PHASE_NAMES = { ticket:'Ticket', registration:'Registration', 'network-auth':'Network Auth', discovery:'Discovery', 'site-auth':'Site Auth', data:'Data Retrieval', complete:'Complete' };
+const PHASE_ICONS = { ticket:'\u{1F4DC}', registration:'\u{1F4BB}', 'network-auth':'\u{1F50D}', discovery:'\u{1F3E5}', 'site-auth':'\u{1F512}', data:'\u{1F4E6}', complete:'\u2705' };
+
+let currentEvent = 0, playing = false, playTimer = null, speedMs = 600;
+let checksCount = 0, sitesVerified = 0, totalResources = 0;
+let siteMap = {};
+let lastPhase = '';
+let userScrolledUp = false;
+
+document.getElementById('evt-total').textContent = EVENTS.length;
+
+// Track user scroll on feed
+const feed = document.getElementById('feed');
+feed.addEventListener('scroll', () => {
+  const atBottom = feed.scrollHeight - feed.scrollTop - feed.clientHeight < 100;
+  userScrolledUp = !atBottom;
+});
+
+function autoScrollFeed() {
+  if (!userScrolledUp) {
+    feed.scrollTop = feed.scrollHeight;
+  }
+}
+
+function updateSpeed() { const v = document.getElementById('speed-slider').value; speedMs = 1200 / (v/5); document.getElementById('speed-label').textContent = (v/5).toFixed(1)+'x'; }
+function togglePlay() { playing=!playing; document.getElementById('btn-play').textContent=playing?'Pause':'Play'; document.getElementById('btn-play').classList.toggle('active',playing); if(playing) scheduleNext(); else clearTimeout(playTimer); }
+function scheduleNext() { if(!playing||currentEvent>=EVENTS.length){playing=false;document.getElementById('btn-play').textContent='Play';document.getElementById('btn-play').classList.remove('active');return;} playTimer=setTimeout(()=>{processEvent(EVENTS[currentEvent]);currentEvent++;document.getElementById('evt-current').textContent=currentEvent;updateBanner();scheduleNext();},speedMs); }
+function stepForward() { if(currentEvent>=EVENTS.length)return; processEvent(EVENTS[currentEvent]);currentEvent++;document.getElementById('evt-current').textContent=currentEvent;updateBanner(); }
+
+function restart() {
+  playing=false;clearTimeout(playTimer);
+  document.getElementById('btn-play').textContent='Play';document.getElementById('btn-play').classList.remove('active');
+  currentEvent=0;checksCount=0;sitesVerified=0;totalResources=0;siteMap={};lastPhase='';userScrolledUp=false;
+  document.getElementById('evt-current').textContent='0';
+  document.querySelectorAll('.summary-section').forEach(s=>s.classList.remove('visible'));
+  document.getElementById('sum-scopes').innerHTML='';
+  document.getElementById('sum-patient').textContent='—';
+  document.getElementById('sum-constraints').textContent='';
+  document.getElementById('sum-client-status').textContent='—';
+  document.getElementById('sum-checks').innerHTML='';
+  document.getElementById('sum-patient-line').textContent='';document.getElementById('sum-patient-line').classList.remove('visible');
+  document.getElementById('sum-token-line').textContent='';document.getElementById('sum-token-line').classList.remove('visible');
+  document.getElementById('sum-site-rows').innerHTML='';
+  document.getElementById('sum-totals').textContent='';document.getElementById('sum-totals').classList.remove('visible');
+  document.getElementById('feed').innerHTML='';
+  updateBanner();
+}
+
+function updateBanner() {
+  document.getElementById('b-checks').textContent=checksCount+'/7';
+  document.getElementById('b-sites').textContent=sitesVerified+'/4';
+  document.getElementById('b-resources').textContent=totalResources;
+}
+
+function addFeedEntry(phase, icon, label, detailHtml) {
+  // Phase divider
+  if (phase !== lastPhase) {
+    lastPhase = phase;
+    const div = document.createElement('div');
+    div.className = 'phase-divider phase-' + phase;
+    div.innerHTML = `<div class="phase-divider-line"></div><span class="phase-divider-label">${PHASE_NAMES[phase]||phase}</span><div class="phase-divider-line"></div>`;
+    feed.appendChild(div);
+  }
+  const entry = document.createElement('div');
+  entry.className = 'feed-entry phase-' + phase;
+  entry.innerHTML = `<span class="feed-icon">${icon}</span><div class="feed-body"><span class="feed-label">${label}</span>${detailHtml?'<div class="feed-detail">'+detailHtml+'</div>':''}</div>`;
+  feed.appendChild(entry);
+  requestAnimationFrame(() => autoScrollFeed());
+  return entry;
+}
+
+function processEvent(evt) {
+  const t = evt.type, d = evt.detail, p = evt.phase;
+
+  if (t === 'ticket-created') {
+    document.getElementById('sum-ticket').classList.add('visible');
+    document.getElementById('sum-patient').innerHTML = '<strong>' + d.patient + '</strong> <span style="color:#888;font-size:11px">DOB ' + d.dob + '</span>';
+    const sp = document.getElementById('sum-scopes');
+    sp.innerHTML = '';
+    d.scopes.forEach(s => { const pill = document.createElement('span'); pill.className = 'scope-pill rc-' + s; pill.textContent = s; sp.appendChild(pill); });
+    document.getElementById('sum-constraints').textContent = d.dateRange + ' | Sensitive ' + d.sensitive + ' | ' + d.expiry;
+    addFeedEntry(p, PHASE_ICONS[p], 'Permission Ticket Signed', d.patient + ' &mdash; ' + d.scopes.length + ' scopes, ' + d.dateRange + ', bound to UDAP');
+  }
+  else if (t === 'udap-discovery') {
+    document.getElementById('sum-client').classList.add('visible');
+    addFeedEntry(p, PHASE_ICONS[p], 'UDAP Discovery', 'Fetching UDAP metadata');
+  }
+  else if (t === 'udap-register') {
+    addFeedEntry(p, PHASE_ICONS[p], 'UDAP Registration', 'X.509 certificate chain validated');
+  }
+  else if (t === 'client-registered') {
+    document.getElementById('sum-client-status').innerHTML = '<span style="color:#27ae60;font-weight:700">✓</span> UDAP registered &mdash; ' + d.clientId;
+    addFeedEntry(p, '\u2705', 'Client Registered', 'client_id: ' + d.clientId);
+  }
+  else if (t === 'ticket-presented') {
+    document.getElementById('sum-verification').classList.add('visible');
+    addFeedEntry(p, PHASE_ICONS[p], 'Ticket Presented', 'Submitted to ' + d.endpoint);
+  }
+  else if (t === 'check-passed') {
+    checksCount++;
+    const badge = document.createElement('span');
+    badge.className = 'check-badge-sm';
+    const short = d.check.replace('Ticket ', '').replace('Client ', '');
+    badge.textContent = '\u2713 ' + short;
+    document.getElementById('sum-checks').appendChild(badge);
+    requestAnimationFrame(() => badge.classList.add('visible'));
+    addFeedEntry(p, '\u2713', d.check, d.evidence + ' &mdash; ' + d.why);
+  }
+  else if (t === 'patient-matched') {
+    const el = document.getElementById('sum-patient-line');
+    el.textContent = 'Patient: ' + d.sites + ' sites';
+    el.classList.add('visible');
+    addFeedEntry(p, '\u{1F464}', 'Patient Matched', d.patient + ' found at ' + d.sites + ' sites');
+  }
+  else if (t === 'token-issued') {
+    const el = document.getElementById('sum-token-line');
+    el.textContent = 'Network token \u2713';
+    el.classList.add('visible');
+    addFeedEntry(p, '\u{1F511}', 'Network Token Issued', d.scopes + ' scopes authorized');
+  }
+  else if (t === 'sites-discovered') {
+    document.getElementById('sum-sites').classList.add('visible');
+    const rows = document.getElementById('sum-site-rows');
+    d.sites.forEach((site, i) => {
+      siteMap[site.name] = { index: i, verified: false, resources: {}, totalCount: 0 };
+      const row = document.createElement('div');
+      row.className = 'site-row';
+      row.id = 'srow-' + i;
+      row.innerHTML = `<div class="site-dot gray" id="sdot-${i}"></div><div class="site-row-name">${site.name}</div><div class="site-row-count" id="scount-${i}">0</div>`;
+      row.onclick = () => { toggleSiteDetail(i); scrollFeedToSite(site.name); };
+      rows.appendChild(row);
+      // Detail area
+      const detail = document.createElement('div');
+      detail.className = 'site-row-detail';
+      detail.id = 'sdetail-' + i;
+      detail.innerHTML = `<div style="font-size:11px;color:#888;margin-bottom:4px">${site.location} &mdash; ${site.encounters} encounters</div><div class="scope-pills" id="spills-${i}"></div>`;
+      rows.appendChild(detail);
+      requestAnimationFrame(() => { setTimeout(() => row.classList.add('visible'), i * 60); });
+    });
+    const siteNames = d.sites.map(s => s.name).join(', ');
+    addFeedEntry(p, PHASE_ICONS[p], 'Sites Discovered', siteNames);
+  }
+  else if (t === 'site-token-exchange') {
+    const info = siteMap[d.site]; if (!info) return;
+    document.getElementById('sdot-' + info.index).className = 'site-dot amber';
+    const entry = addFeedEntry(p, '\u{1F512}', 'Token Exchange', d.site + ' &mdash; verifying...');
+    entry.dataset.site = d.site;
+  }
+  else if (t === 'site-token-issued') {
+    const info = siteMap[d.site]; if (!info) return;
+    info.verified = true; sitesVerified++;
+    document.getElementById('sdot-' + info.index).className = 'site-dot green';
+    const entry = addFeedEntry(p, '\u2705', d.site, 'independently verified');
+    entry.dataset.site = d.site;
+  }
+  else if (t === 'query-result') {
+    const info = siteMap[d.site]; if (!info) return;
+    info.resources[d.resourceType] = d.count;
+    info.totalCount += d.count;
+    totalResources += d.count;
+    document.getElementById('scount-' + info.index).textContent = info.totalCount;
+    // Update detail pills
+    const pills = document.getElementById('spills-' + info.index);
+    let pill = document.getElementById('spill-' + info.index + '-' + d.resourceType);
+    if (!pill) {
+      pill = document.createElement('span');
+      pill.className = 'scope-pill rc-' + d.resourceType;
+      pill.id = 'spill-' + info.index + '-' + d.resourceType;
+      pill.style.opacity = d.count === 0 ? '0.4' : '1';
+      pills.appendChild(pill);
+    }
+    pill.textContent = d.resourceType + ' ' + d.count;
+
+    // Feed entry with inline colored pill
+    const shortSite = d.site.split(' ').slice(0, 2).join(' ');
+    const pillHtml = `<span class="feed-inline-pill" style="background:${RC[d.resourceType]}">${d.resourceType} ${d.count}</span>`;
+    const entry = addFeedEntry(p, '\u{1F4E6}', shortSite, pillHtml);
+    entry.dataset.site = d.site;
+  }
+  else if (t === 'session-complete') {
+    const totals = document.getElementById('sum-totals');
+    totals.textContent = d.totalResources + ' resources | ' + d.totalSites + ' sites | ' + checksCount + '/7 checks | 1 ticket';
+    totals.classList.add('visible');
+    addFeedEntry(p, '\u2705', 'Session Complete', d.totalResources + ' resources across ' + d.totalSites + ' sites from one ticket');
+  }
+}
+
+function toggleSiteDetail(index) {
+  const detail = document.getElementById('sdetail-' + index);
+  detail.classList.toggle('open');
+}
+
+function scrollFeedToSite(siteName) {
+  const entries = feed.querySelectorAll('.feed-entry');
+  for (const entry of entries) {
+    if (entry.dataset.site === siteName) {
+      entry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      entry.style.background = '#fffde7';
+      setTimeout(() => { entry.style.background = ''; }, 1500);
+      break;
+    }
+  }
+}
+
+updateBanner();
+</script>
+</body>
+</html>
