@@ -187,6 +187,21 @@ Status: implemented
 - server-side instrumentation at ~20 natural decision points; client-side event posting from the viewer
 - educational focus: makes trust chain, fan-out, per-site independence, and scope narrowing tangible
 
+### Plan 14: Permission Ticket Portable-Kernel Redesign
+`14-permission-ticket-portable-kernel-redesign.md`
+
+- define a smaller, enforceable Permission Ticket shell before rewriting the formal spec
+- keep JWT / token exchange / URI `ticket_type` / orthogonal client-binding concepts
+- make `access.permissions` the normative rights model
+- define portable common filtering for:
+  - one coarse `dataPeriod`
+  - one coarse `sensitiveData` switch
+  - coarse jurisdiction scoping
+  - positive source scoping by organizations
+- keep a modest but useful common `authority` provenance object
+- move weaker semantics out of the common shell and into `context` or profile-specific space
+- work through all seven use cases against the new model before touching `input/` or runtime code
+
 ## Dependencies Between Plans
 
 ```
@@ -208,6 +223,8 @@ Plan 12 (Ticket Spec/Impl Alignment) ──────────────�
                                       ↑
 Plan 13 (Demo Event Visualization) ────────────────────┘
                                       ↑
+Plan 14 (Portable-Kernel Redesign) ────────────────────┘
+                                      ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
 ```
 
@@ -222,6 +239,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 11 (UDAP replay + registration state) hardens Plan 8 after interoperability is in place, while intentionally remaining in-memory and restart-local for the reference implementation
 - Plan 12 (ticket spec / implementation alignment) is the follow-on cleanup and completion pass for the currently implemented Permission Ticket model, especially around `exp`, audience semantics, revocation, and ticket-type-specific `details`
 - Plan 13 (demo event visualization) adds a live event visualization so every authorization decision, token exchange, and FHIR query is observable during demos — making the protocol's trust chain, fan-out, and per-site independence tangible and inspectable
+- Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
 
 ## Seed Data Available
 
