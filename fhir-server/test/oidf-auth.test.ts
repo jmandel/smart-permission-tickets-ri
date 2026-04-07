@@ -70,6 +70,27 @@ describe("OIDF client authentication", () => {
       server.stop(true);
     }
   });
+
+  test("a valid trust chain is rejected when the leaf is not allowlisted for client usage", async () => {
+    const { context, server } = startOidfAuthServer();
+    try {
+      const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
+      if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework config");
+      oidfFramework.oidf.trustedLeaves = oidfFramework.oidf.trustedLeaves.filter((leaf) => leaf.entityId !== context.oidfTopology.demoAppEntityId);
+
+      const tokenEndpointUrl = `${context.config.publicBaseUrl}/token`;
+      const assertion = await buildOidfClientAssertion(context, tokenEndpointUrl, { withTrustChain: true });
+      await expect(
+        context.frameworks.authenticateClientAssertion(
+          context.oidfTopology.demoAppEntityId,
+          assertion,
+          tokenEndpointUrl,
+        ),
+      ).rejects.toThrow("not allowlisted for client authentication");
+    } finally {
+      server.stop(true);
+    }
+  });
 });
 
 function startOidfAuthServer() {

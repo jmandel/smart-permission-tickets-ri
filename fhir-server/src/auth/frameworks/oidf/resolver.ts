@@ -67,9 +67,12 @@ export class OidfFrameworkResolver implements FrameworkResolver {
   async resolveIssuerTrust(_issuerUrl: string): Promise<ResolvedIssuerTrust | null> {
     const oidfFrameworks = this.frameworks.filter((framework) => framework.frameworkType === "oidf" && framework.supportsIssuerTrust && framework.oidf);
     for (const framework of oidfFrameworks) {
-      const trustedLeaf = findTrustedIssuerLeaf(framework, _issuerUrl);
-      if (!trustedLeaf) continue;
-      return this.resolveIssuerTrustAgainstFramework(framework, _issuerUrl, trustedLeaf);
+      const trustedLeaves = findTrustedIssuerLeaves(framework, _issuerUrl);
+      if (!trustedLeaves.length) continue;
+      if (trustedLeaves.length > 1) {
+        throw new Error(`OIDF issuer ${_issuerUrl} matches multiple allowlisted leaves`);
+      }
+      return this.resolveIssuerTrustAgainstFramework(framework, _issuerUrl, trustedLeaves[0]!);
     }
     return null;
   }
@@ -89,6 +92,9 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(trustChain, oidf);
     if (verifiedChain.leaf.entityId !== clientId) {
       throw new Error(`OIDF client_id ${clientId} does not match trust-chain leaf ${verifiedChain.leaf.entityId}`);
+    }
+    if (!isAllowlistedClientLeaf(oidf, verifiedChain.leaf.entityId)) {
+      throw new Error(`OIDF leaf ${verifiedChain.leaf.entityId} is not allowlisted for client authentication`);
     }
     const resolved = applyMetadataPolicy(verifiedChain);
     const verifiedAssertion = await verifyAssertionAgainstJwks(assertionJwt, resolved.jwks, clientId, tokenEndpointUrl);
@@ -392,14 +398,24 @@ async function verifyTrustChainAgainstConfiguredAnchors(
   throw lastError;
 }
 
-function findTrustedIssuerLeaf(
+function findTrustedIssuerLeaves(
   framework: FrameworkDefinition,
   issuerUrl: string,
 ) {
-  return framework.oidf?.trustedLeaves.find((leaf) => (
+  return framework.oidf?.trustedLeaves.filter((leaf) => (
     (leaf.usage === "issuer" || leaf.usage === "both")
     && leaf.expectedIssuerUrl === issuerUrl
-  )) ?? null;
+  )) ?? [];
+}
+
+function isAllowlistedClientLeaf(
+  oidf: NonNullable<FrameworkDefinition["oidf"]>,
+  entityId: string,
+) {
+  return oidf.trustedLeaves.some((leaf) => (
+    leaf.entityId === entityId
+    && (leaf.usage === "client" || leaf.usage === "both")
+  ));
 }
 
 function findStatementJwksForEntity(

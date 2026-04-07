@@ -241,6 +241,10 @@ Status:
   - required trust-mark types are satisfied for issuer leaves
 - reject valid-but-unallowlisted leaves
 
+Status:
+
+- implemented on `main`
+
 ### Phase 5: Demo Topology Compatibility Pass
 
 - keep the Plan 21 demo topology working under the new generic resolver

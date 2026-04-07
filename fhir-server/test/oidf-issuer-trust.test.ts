@@ -85,6 +85,26 @@ describe("OIDF issuer trust", () => {
       server.stop(true);
     }
   });
+
+  test("issuer trust fails closed when multiple allowlisted leaves match the same issuer URL", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    try {
+      const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
+      if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework config");
+      oidfFramework.oidf.trustedLeaves.push({
+        entityId: `${publicOrigin}/federation/leafs/duplicate-ticket-issuer`,
+        usage: "issuer",
+        expectedIssuerUrl: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        requiredTrustMarkType: context.oidfTopology.trustMarkType,
+      });
+
+      await expect(
+        context.frameworks.resolveIssuerTrust(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+      ).rejects.toThrow("matches multiple allowlisted leaves");
+    } finally {
+      server.stop(true);
+    }
+  });
 });
 
 function startOidfIssuerTrustServer() {
