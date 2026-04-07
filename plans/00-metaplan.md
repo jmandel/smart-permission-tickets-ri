@@ -306,7 +306,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 13 (demo event visualization) adds a live event visualization so every authorization decision, token exchange, and FHIR query is observable during demos — making the protocol's trust chain, fan-out, and per-site independence tangible and inspectable
 - Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
 - Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
-- Plan 24 (demo crypto bundle + site OIDF leaves) is a follow-on to Plan 21 that makes provider sites first-class OIDF leaves, fixes OIDF JWT expiry by re-minting on fetch, and adds an optional bundle file for stable demo keys across restarts
+- Plan 24 (demo crypto bundle + site OIDF leaves) is a follow-on to Plan 21 that makes provider sites first-class OIDF leaves, fixes OIDF JWT expiry by re-minting on fetch, and adds an optional bundle file for stable demo keys across restarts. Phases 1 through 5 are implemented on `main`; the remaining work is final docs polish.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

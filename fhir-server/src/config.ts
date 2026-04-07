@@ -37,9 +37,8 @@ export function loadConfig(): ServerConfig {
   const defaultPermissionTicketIssuerSlug = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_SLUG ?? "reference-demo";
   const defaultPermissionTicketIssuerName = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_NAME ?? "Reference Demo Issuer";
   const demoCryptoBundle = loadDemoCryptoBundle(Bun.env.DEMO_CRYPTO_BUNDLE_PATH);
-  const configuredPrivateJwk = parsePrivateJwk(
-    Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK_JSON,
-  ) ?? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK;
+  const configuredPrivateJwk = demoCryptoBundle?.ticketIssuers[defaultPermissionTicketIssuerSlug]?.privateJwk
+    ?? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK;
   return {
     port,
     publicBaseUrl,
@@ -51,7 +50,7 @@ export function loadConfig(): ServerConfig {
     strictDefaultMode: "strict",
     defaultNetworkSlug,
     defaultNetworkName,
-    frameworks: buildDefaultFrameworks(publicBaseUrl, defaultPermissionTicketIssuerSlug),
+    frameworks: buildDefaultFrameworks(publicBaseUrl, defaultPermissionTicketIssuerSlug, demoCryptoBundle),
     defaultRegisteredClients: [],
     defaultPermissionTicketIssuerSlug,
     defaultPermissionTicketIssuerName,
@@ -64,16 +63,6 @@ export function loadConfig(): ServerConfig {
     ],
     demoCryptoBundle,
   };
-}
-
-function parsePrivateJwk(raw: string | undefined) {
-  if (!raw) return null;
-  try {
-    const parsed = JSON.parse(raw);
-    return parsed && typeof parsed === "object" ? parsed as JsonWebKey : null;
-  } catch {
-    return null;
-  }
 }
 
 function normalizeOriginEnv(raw: string, name: string) {

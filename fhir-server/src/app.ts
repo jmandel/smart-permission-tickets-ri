@@ -8,10 +8,9 @@ import {
   buildDemoWellKnownClients,
   buildDemoWellKnownFrameworkDocument,
   DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
-  DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
-  DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK,
   DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH,
   DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+  resolveDemoWellKnownClientKeys,
 } from "./auth/demo-frameworks.ts";
 import { FrameworkRegistry } from "./auth/frameworks/registry.ts";
 import { ClientRegistrationError } from "./auth/frameworks/types.ts";
@@ -111,6 +110,8 @@ function buildOidfTopologyForPublicBaseUrl(
   const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
   const sites = store.listSiteSummaries();
   assertDemoCryptoBundleCoversSites(config.demoCryptoBundle, sites.map((site) => site.siteSlug));
+  const bundle = config.demoCryptoBundle;
+  const ticketIssuerKeys = bundle?.ticketIssuers[config.defaultPermissionTicketIssuerSlug] ?? defaultIssuer ?? undefined;
   return buildOidfDemoTopology(
     config.publicBaseUrl,
     config.strictDefaultMode,
@@ -118,14 +119,14 @@ function buildOidfTopologyForPublicBaseUrl(
     config.defaultPermissionTicketIssuerSlug,
     config.defaultPermissionTicketIssuerName,
     {
-      anchor: existingTopology ? extractOidfKeyMaterial(existingTopology, "anchor") : undefined,
-      "app-network": existingTopology ? extractOidfKeyMaterial(existingTopology, "app-network") : undefined,
-      "provider-network": existingTopology ? extractOidfKeyMaterial(existingTopology, "provider-network") : undefined,
-      "demo-app": existingTopology ? extractOidfKeyMaterial(existingTopology, "demo-app") : undefined,
-      "ticket-issuer": defaultIssuer
+      anchor: bundle?.oidf.anchor ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "anchor") : undefined),
+      "app-network": bundle?.oidf.appNetwork ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "app-network") : undefined),
+      "provider-network": bundle?.oidf.providerNetwork ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "provider-network") : undefined),
+      "demo-app": bundle?.oidf.demoApp ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "demo-app") : undefined),
+      "ticket-issuer": ticketIssuerKeys
         ? {
-            publicJwk: defaultIssuer.publicJwk,
-            privateJwk: defaultIssuer.privateJwk,
+            publicJwk: ticketIssuerKeys.publicJwk,
+            privateJwk: ticketIssuerKeys.privateJwk,
           }
         : existingTopology
           ? extractOidfKeyMaterial(existingTopology, "ticket-issuer")
@@ -134,7 +135,7 @@ function buildOidfTopologyForPublicBaseUrl(
     Object.fromEntries(
       sites.map((site) => [
         site.siteSlug,
-        existingTopology ? extractProviderSiteKeyMaterial(existingTopology, site.siteSlug) : undefined,
+        bundle?.oidf.providerSites[site.siteSlug] ?? (existingTopology ? extractProviderSiteKeyMaterial(existingTopology, site.siteSlug) : undefined),
       ]),
     ),
   );
@@ -206,14 +207,14 @@ export async function handleRequest(context: AppContext, request: Request, serve
     return handleOidfRequest(context.oidfTopology, request, url, oidfRoute);
   }
   if (url.pathname === "/.well-known/jwks.json") {
-    return jsonResponse(buildDemoWellKnownJwks());
+    return jsonResponse(buildDemoWellKnownJwks(context));
   }
   if (url.pathname.startsWith("/demo/clients/udap/")) {
-    return handleDemoUdapRequest(url);
+    return handleDemoUdapRequest(context, url);
   }
   const demoWellKnownRoute = resolveDemoWellKnownRoute(url.pathname);
   if (demoWellKnownRoute) {
-    return handleDemoWellKnownRequest(url, demoWellKnownRoute.clientSlug);
+    return handleDemoWellKnownRequest(context, url, demoWellKnownRoute.clientSlug);
   }
   if (url.pathname === DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH) {
     return jsonResponse(buildDemoWellKnownFrameworkDocument(url.origin));
@@ -225,8 +226,10 @@ export async function handleRequest(context: AppContext, request: Request, serve
   if (url.pathname === "/demo/bootstrap") {
     const wellKnownFrameworkDocument = buildDemoWellKnownFrameworkDocument(url.origin);
     const wellKnownClient = wellKnownFrameworkDocument.clients[0];
+    const wellKnownKeys = resolveDemoWellKnownClientKeys(context.config.demoCryptoBundle);
     const oidfClient = context.oidfTopology.entities["demo-app"];
-    const udapClient = buildDemoUdapClients(url.origin).find((client) => client.algorithm === "RS256") ?? buildDemoUdapClients(url.origin)[0];
+    const udapClient = buildDemoUdapClients(url.origin, context.config.demoCryptoBundle).find((client) => client.algorithm === "RS256")
+      ?? buildDemoUdapClients(url.origin, context.config.demoCryptoBundle)[0];
     return jsonResponse({
       defaultMode: context.config.strictDefaultMode,
       selectedMode: "strict",
@@ -258,8 +261,8 @@ export async function handleRequest(context: AppContext, request: Request, serve
           entityUri: wellKnownClient.entityUri,
           jwksUrl: wellKnownClient.jwksUrl,
           clientName: wellKnownClient.label,
-          publicJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK,
-          privateJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+          publicJwk: wellKnownKeys.publicJwk,
+          privateJwk: wellKnownKeys.privateJwk,
         },
         {
           type: "oidf",
@@ -1275,17 +1278,18 @@ function buildIssuerJwks(context: AppContext, issuerSlug: string) {
   };
 }
 
-function buildDemoWellKnownJwks() {
+function buildDemoWellKnownJwks(context: AppContext) {
+  const keys = resolveDemoWellKnownClientKeys(context.config.demoCryptoBundle);
   return {
-    keys: [DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK],
+    keys: [keys.publicJwk],
   };
 }
 
-function handleDemoWellKnownRequest(url: URL, clientSlug: string) {
+function handleDemoWellKnownRequest(context: AppContext, url: URL, clientSlug: string) {
   const client = buildDemoWellKnownClients(url.origin).find((entry) => entry.slug === clientSlug);
   if (!client) return notFound();
   if (url.pathname.endsWith("/.well-known/jwks.json")) {
-    return jsonResponse(buildDemoWellKnownJwks());
+    return jsonResponse(buildDemoWellKnownJwks(context));
   }
   return jsonResponse({
     entity_uri: client.entityUri,
@@ -1296,8 +1300,8 @@ function handleDemoWellKnownRequest(url: URL, clientSlug: string) {
   });
 }
 
-function handleDemoUdapRequest(url: URL) {
-  const client = buildDemoUdapClients(url.origin).find((entry) => entry.entityPath === url.pathname);
+function handleDemoUdapRequest(context: AppContext, url: URL) {
+  const client = buildDemoUdapClients(url.origin, context.config.demoCryptoBundle).find((entry) => entry.entityPath === url.pathname);
   if (!client) return notFound();
   return jsonResponse({
     entity_uri: client.entityUri,

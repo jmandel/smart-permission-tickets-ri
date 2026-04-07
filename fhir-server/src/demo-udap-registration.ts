@@ -1,10 +1,12 @@
 import {
   buildDemoUdapClients,
 } from "./auth/demo-frameworks.ts";
+import { loadConfig } from "./config.ts";
 import { pemToDerBase64, signEs256JwtWithPem, signRs256JwtWithPem } from "./auth/x509-jwt.ts";
 
 const origin = Bun.env.DEMO_ORIGIN ?? "http://localhost:8091";
 const requestedAlg = Bun.env.DEMO_UDAP_ALG === "RS256" ? "RS256" : "ES256";
+const config = loadConfig();
 
 const udapMetadata = await fetchJson<Record<string, any>>(`${origin}/.well-known/udap`);
 const registrationEndpoint = String(udapMetadata.registration_endpoint ?? `${origin}/register`);
@@ -31,7 +33,8 @@ console.log(JSON.stringify({
 
 function buildSoftwareStatement(registrationEndpoint: string) {
   const isRs256 = requestedAlg === "RS256";
-  const client = buildDemoUdapClients(origin).find((entry) => entry.algorithm === requestedAlg) ?? buildDemoUdapClients(origin)[0];
+  const client = buildDemoUdapClients(origin, config.demoCryptoBundle).find((entry) => entry.algorithm === requestedAlg)
+    ?? buildDemoUdapClients(origin, config.demoCryptoBundle)[0];
   const entityUri = client.entityUri;
   const privateKeyPem = client.privateKeyPem;
   const certificatePem = client.certificatePem;

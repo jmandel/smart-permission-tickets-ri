@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { createPrivateKey } from "node:crypto";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -6,6 +7,7 @@ import { join } from "node:path";
 import { computeEcJwkThumbprintSync, normalizePrivateJwk, normalizePublicJwk } from "./es256-jwt.ts";
 import { buildUdapCrlUrl } from "./udap-crl.ts";
 import type { FrameworkDefinition } from "../store/model.ts";
+import type { DemoCryptoBundle } from "../demo-crypto-bundle.ts";
 
 export const DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI = "https://smarthealthit.org/trust-frameworks/reference-demo-well-known";
 export const DEFAULT_DEMO_UDAP_FRAMEWORK_URI = "https://smarthealthit.org/trust-frameworks/reference-demo-udap";
@@ -214,7 +216,58 @@ e2fZyAxI5h4X/TEzR+EQdB4=
 
 const demoUdapClientCache = new Map<string, DemoUdapClientDefinition[]>();
 
-export function buildDemoUdapClients(publicBaseUrl: string): DemoUdapClientDefinition[] {
+export function resolveDemoWellKnownClientKeys(bundle?: DemoCryptoBundle) {
+  if (!bundle) {
+    return {
+      privateJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+      publicJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK,
+    };
+  }
+  const publicJwk = normalizePublicJwk(bundle.wellKnown.default.publicJwk);
+  return {
+    privateJwk: normalizePrivateJwk(bundle.wellKnown.default.privateJwk),
+    publicJwk: {
+      ...publicJwk,
+      kid: computeEcJwkThumbprintSync(publicJwk),
+    },
+  };
+}
+
+export function buildDemoUdapClients(publicBaseUrl: string, bundle?: DemoCryptoBundle): DemoUdapClientDefinition[] {
+  if (bundle) {
+    return [
+      materializeDemoUdapClient(publicBaseUrl, {
+        slug: "es256-client",
+        label: "Reference Demo EC UDAP Client",
+        description: "Alternate EC demo client. Its entity URI is asserted through the certificate Subject Alternative Name (SAN).",
+        entityPath: DEFAULT_DEMO_UDAP_CLIENT_PATH,
+        framework: DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
+        algorithm: "ES256",
+        clientName: "Reference Demo UDAP Client",
+        scope: "system/Patient.rs",
+        contacts: ["mailto:ops@example.org"],
+        privateKeyPem: privateJwkToPem(bundle.udap.ec.clientPrivateJwk),
+        issuerCertificatePem: bundle.udap.ec.caCertificatePem,
+        issuerPrivateKeyPem: bundle.udap.ec.caPrivateKeyPem,
+        caId: DEFAULT_DEMO_UDAP_EC_CA_ID,
+      }),
+      materializeDemoUdapClient(publicBaseUrl, {
+        slug: "sample-client",
+        label: "Reference Demo RSA UDAP Client",
+        description: "Default UDAP demo path. Its entity URI is a resolvable page on this server and comes directly from the certificate Subject Alternative Name (SAN).",
+        entityPath: DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH,
+        framework: DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
+        algorithm: "RS256",
+        clientName: "Reference Demo RSA UDAP Client",
+        scope: "system/Patient.rs",
+        contacts: ["mailto:ops@example.org"],
+        privateKeyPem: privateJwkToPem(bundle.udap.rsa.clientPrivateJwk),
+        issuerCertificatePem: bundle.udap.rsa.caCertificatePem,
+        issuerPrivateKeyPem: bundle.udap.rsa.caPrivateKeyPem,
+        caId: DEFAULT_DEMO_UDAP_RSA_CA_ID,
+      }),
+    ];
+  }
   const cached = demoUdapClientCache.get(publicBaseUrl);
   if (cached) return cached;
 
@@ -255,7 +308,7 @@ export function buildDemoUdapClients(publicBaseUrl: string): DemoUdapClientDefin
   return clients;
 }
 
-export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string): FrameworkDefinition[] {
+export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string, bundle?: DemoCryptoBundle): FrameworkDefinition[] {
   const issuerUrl = `${publicBaseUrl}/issuer/${issuerSlug}`;
   const oidfAnchorEntityId = `${publicBaseUrl}/federation/anchor`;
   const oidfAppNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
@@ -290,24 +343,24 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
       },
       udap: {
         trustAnchors: [
-          DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PEM,
-          DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
+          bundle?.udap.ec.caCertificatePem ?? DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PEM,
+          bundle?.udap.rsa.caCertificatePem ?? DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
         ],
         certificateAuthorities: [
           {
             caId: DEFAULT_DEMO_UDAP_EC_CA_ID,
-            certificatePem: DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PEM,
-            privateKeyPem: DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+            certificatePem: bundle?.udap.ec.caCertificatePem ?? DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PEM,
+            privateKeyPem: bundle?.udap.ec.caPrivateKeyPem ?? DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PRIVATE_KEY_PEM,
           },
           {
             caId: DEFAULT_DEMO_UDAP_RSA_CA_ID,
-            certificatePem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
-            privateKeyPem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+            certificatePem: bundle?.udap.rsa.caCertificatePem ?? DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
+            privateKeyPem: bundle?.udap.rsa.caPrivateKeyPem ?? DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
           },
         ],
         metadataSigningIssuerCaId: DEFAULT_DEMO_UDAP_RSA_CA_ID,
-        metadataSigningIssuerCertificatePem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
-        metadataSigningIssuerPrivateKeyPem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+        metadataSigningIssuerCertificatePem: bundle?.udap.rsa.caCertificatePem ?? DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
+        metadataSigningIssuerPrivateKeyPem: bundle?.udap.rsa.caPrivateKeyPem ?? DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
       },
     },
     {
@@ -360,6 +413,10 @@ function materializeDemoUdapClient(publicBaseUrl: string, definition: DemoUdapCl
     certificateSanUri: entityUri,
     caId: definition.caId,
   };
+}
+
+function privateJwkToPem(privateJwk: JsonWebKey) {
+  return createPrivateKey({ key: privateJwk, format: "jwk" }).export({ format: "pem", type: "pkcs8" }).toString();
 }
 
 function generateIssuerSignedClientCertificate(options: {

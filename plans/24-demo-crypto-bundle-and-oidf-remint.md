@@ -382,6 +382,10 @@ Greenfield rule:
 - remove the standalone `DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK_JSON` config path instead of keeping it as a fallback
 - after this plan lands, stable persistent ticket-issuer keys come only from the bundle
 
+Status:
+
+- implemented on `main`
+
 ### Phase 6: Tests and Docs
 
 Tests:
