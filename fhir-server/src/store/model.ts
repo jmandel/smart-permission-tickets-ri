@@ -60,6 +60,16 @@ export type FrameworkDefinition = {
     metadataSigningIssuerCaId?: string;
     certificateAuthorities?: UdapCertificateAuthority[];
   };
+  oidf?: {
+    trustAnchorEntityId: string;
+    appNetworkEntityId: string;
+    providerNetworkEntityId: string;
+    demoAppEntityId: string;
+    fhirServerEntityId: string;
+    ticketIssuerEntityId: string;
+    ticketIssuerUrl: string;
+    trustMarkType: string;
+  };
 };
 
 export type ResolvedFrameworkEntity = {

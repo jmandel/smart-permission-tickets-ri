@@ -15,6 +15,12 @@ import {
 } from "./auth/demo-frameworks.ts";
 import { FrameworkRegistry } from "./auth/frameworks/registry.ts";
 import { ClientRegistrationError } from "./auth/frameworks/types.ts";
+import {
+  buildOidfDemoTopology,
+  findOidfEntityIdByConfigurationPath,
+  findOidfIssuerEntityIdByFetchPath,
+  type OidfDemoTopology,
+} from "./auth/frameworks/oidf/demo-topology.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
 import { signJwt, verifyJwt } from "./auth/jwt.ts";
@@ -54,6 +60,7 @@ export type AppContext = {
   store: FhirStore;
   clients: ClientRegistry;
   frameworks: FrameworkRegistry;
+  oidfTopology: OidfDemoTopology;
   issuers: TicketIssuerRegistry;
   ticketRevocations: TicketRevocationRegistry;
   demoEvents: DemoEventBus;
@@ -64,12 +71,13 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const config = { ...loadConfig(), ...overrides };
   const store = FhirStore.load();
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
+  const oidfTopology = buildOidfDemoTopology(config.publicBaseUrl, config.defaultPermissionTicketIssuerSlug, config.defaultPermissionTicketIssuerName);
   const frameworks = new FrameworkRegistry(config.frameworks, clients, config);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
   const demoSessionLinks = new DemoSessionLinks();
-  return { config, store, clients, frameworks, issuers, ticketRevocations, demoEvents, demoSessionLinks };
+  return { config, store, clients, frameworks, oidfTopology, issuers, ticketRevocations, demoEvents, demoSessionLinks };
 }
 
 import landingHtml from "../ui/index.html";
@@ -97,6 +105,10 @@ export async function handleRequest(context: AppContext, request: Request, serve
   const demoEventsRoute = resolveDemoEventsRoute(url.pathname);
   if (demoEventsRoute) {
     return handleDemoEventsRequest(context, request, demoEventsRoute.sessionId, server);
+  }
+  const oidfRoute = resolveOidfRoute(context.oidfTopology, url.pathname);
+  if (oidfRoute) {
+    return handleOidfRequest(context.oidfTopology, request, url, oidfRoute);
   }
   if (url.pathname === "/.well-known/jwks.json") {
     return jsonResponse(buildDemoWellKnownJwks());
@@ -1574,6 +1586,48 @@ function resolveDemoEventsRoute(pathname: string) {
   return { sessionId: decodeURIComponent(match[1]) };
 }
 
+function resolveOidfRoute(topology: OidfDemoTopology, pathname: string):
+  | { kind: "entity-configuration"; entityId: string }
+  | { kind: "federation-fetch"; issuerEntityId: string }
+  | null {
+  const entityId = findOidfEntityIdByConfigurationPath(topology, pathname);
+  if (entityId) {
+    return { kind: "entity-configuration", entityId };
+  }
+  const issuerEntityId = findOidfIssuerEntityIdByFetchPath(topology, pathname);
+  if (issuerEntityId) {
+    return { kind: "federation-fetch", issuerEntityId };
+  }
+  return null;
+}
+
+function handleOidfRequest(
+  topology: OidfDemoTopology,
+  request: Request,
+  url: URL,
+  route: { kind: "entity-configuration"; entityId: string } | { kind: "federation-fetch"; issuerEntityId: string },
+) {
+  if (request.method !== "GET") return methodNotAllowed("GET");
+  switch (route.kind) {
+    case "entity-configuration": {
+      const statement = topology.entityConfigurations.get(route.entityId);
+      return statement
+        ? jwtResponse(statement, "application/entity-statement+jwt")
+        : notFound();
+    }
+    case "federation-fetch": {
+      const subjectEntityId = url.searchParams.get("sub");
+      if (!subjectEntityId) {
+        return operationOutcome("Missing sub query parameter", 400);
+      }
+      const statement = topology.subordinateStatements.get(route.issuerEntityId)?.get(subjectEntityId);
+      return statement
+        ? jwtResponse(statement, "application/entity-statement+jwt")
+        : notFound();
+    }
+  }
+}
+
 async function handleDemoEventsRequest(context: AppContext, request: Request, sessionId: string, server?: Bun.Server<any>) {
   if (request.method === "GET") {
     try {
@@ -2402,6 +2456,17 @@ function jsonResponse(body: unknown, status = 200, headers: Record<string, strin
   return new Response(JSON.stringify(body, null, 2), {
     status,
     headers: { "content-type": "application/json", ...headers },
+  });
+}
+
+function jwtResponse(body: string, contentType = "application/jwt", status = 200, headers: Record<string, string> = {}) {
+  return new Response(body, {
+    status,
+    headers: {
+      "content-type": contentType,
+      "cache-control": "public, max-age=300",
+      ...headers,
+    },
   });
 }
 

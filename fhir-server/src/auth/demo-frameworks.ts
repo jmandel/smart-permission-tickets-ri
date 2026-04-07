@@ -9,6 +9,7 @@ import type { FrameworkDefinition } from "../store/model.ts";
 
 export const DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI = "https://smarthealthit.org/trust-frameworks/reference-demo-well-known";
 export const DEFAULT_DEMO_UDAP_FRAMEWORK_URI = "https://smarthealthit.org/trust-frameworks/reference-demo-udap";
+export const DEFAULT_DEMO_OIDF_FRAMEWORK_URI = "https://smarthealthit.org/trust-frameworks/reference-demo-oidf";
 export const DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_PATH = "/demo/frameworks/well-known-reference.json";
 export const DEFAULT_DEMO_UDAP_CLIENT_PATH = "/demo/clients/udap/es256-client";
 export const DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH = "/demo/clients/udap/sample-client";
@@ -256,6 +257,13 @@ export function buildDemoUdapClients(publicBaseUrl: string): DemoUdapClientDefin
 
 export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string): FrameworkDefinition[] {
   const issuerUrl = `${publicBaseUrl}/issuer/${issuerSlug}`;
+  const oidfAnchorEntityId = `${publicBaseUrl}/federation/anchor`;
+  const oidfAppNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
+  const oidfProviderNetworkEntityId = `${publicBaseUrl}/federation/networks/provider`;
+  const oidfDemoAppEntityId = `${publicBaseUrl}/federation/leafs/demo-app`;
+  const oidfFhirServerEntityId = `${publicBaseUrl}/federation/leafs/fhir-server`;
+  const oidfTicketIssuerEntityId = `${publicBaseUrl}/federation/leafs/ticket-issuer`;
+  const oidfTrustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
   const demoWellKnownClients = buildDemoWellKnownClients(publicBaseUrl);
   return [
     {
@@ -301,6 +309,26 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
         metadataSigningIssuerCaId: DEFAULT_DEMO_UDAP_RSA_CA_ID,
         metadataSigningIssuerCertificatePem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
         metadataSigningIssuerPrivateKeyPem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+      },
+    },
+    {
+      framework: DEFAULT_DEMO_OIDF_FRAMEWORK_URI,
+      frameworkType: "oidf",
+      supportsClientAuth: false,
+      supportsIssuerTrust: false,
+      cacheTtlSeconds: 300,
+      localAudienceMembership: {
+        entityUri: oidfFhirServerEntityId,
+      },
+      oidf: {
+        trustAnchorEntityId: oidfAnchorEntityId,
+        appNetworkEntityId: oidfAppNetworkEntityId,
+        providerNetworkEntityId: oidfProviderNetworkEntityId,
+        demoAppEntityId: oidfDemoAppEntityId,
+        fhirServerEntityId: oidfFhirServerEntityId,
+        ticketIssuerEntityId: oidfTicketIssuerEntityId,
+        ticketIssuerUrl: issuerUrl,
+        trustMarkType: oidfTrustMarkType,
       },
     },
   ];
