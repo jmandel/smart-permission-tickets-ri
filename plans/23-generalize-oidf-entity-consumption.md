@@ -217,6 +217,10 @@ Status:
   - safe fetch with useful diagnostics
 - remove resolver dependence on `demo-topology.ts` path builders for external consumption
 
+Status:
+
+- implemented on `main`
+
 ### Phase 3: Generic Issuer-Trust Discovery
 
 - rewrite OIDF issuer trust resolution to:

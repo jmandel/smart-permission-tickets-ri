@@ -21,9 +21,9 @@ import {
   findOidfIssuerEntityIdByFetchPath,
   mintOidfEntityConfiguration,
   mintOidfSubordinateStatement,
-  oidfEntityConfigurationPath,
   type OidfDemoTopology,
 } from "./auth/frameworks/oidf/demo-topology.ts";
+import { oidfEntityConfigurationPath } from "./auth/frameworks/oidf/urls.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
 import { signJwt, verifyJwt } from "./auth/jwt.ts";

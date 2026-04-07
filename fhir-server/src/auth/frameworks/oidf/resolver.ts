@@ -8,11 +8,15 @@ import type {
 } from "../../../store/model.ts";
 import type { ServerConfig } from "../../../config.ts";
 import type { FrameworkResolver, SupportedTrustFramework } from "../types.ts";
-import { federationFetchEndpointPath, oidfEntityConfigurationPath } from "./demo-topology.ts";
 import { applyMetadataPolicy } from "./policy.ts";
 import type { EntityStatementPayload, VerifiedTrustChain } from "./trust-chain.ts";
 import { verifyTrustChain } from "./trust-chain.ts";
 import { verifyTrustMark } from "./trust-mark.ts";
+import {
+  federationFetchEndpointUrl,
+  fetchOidfText,
+  oidfEntityConfigurationUrl,
+} from "./urls.ts";
 
 export class OidfFrameworkResolver implements FrameworkResolver {
   readonly frameworkType = "oidf" as const;
@@ -304,8 +308,8 @@ async function fetchTrustChain(
     }
 
     if (!currentEntityConfigurationJwt) {
-      currentEntityConfigurationJwt = await fetchJwt(
-        `${config.publicBaseUrl}${oidfEntityConfigurationPath(currentEntityId)}`,
+      currentEntityConfigurationJwt = await fetchOidfText(
+        oidfEntityConfigurationUrl(currentEntityId),
         "entity configuration",
         config,
         fetchImpl,
@@ -322,13 +326,13 @@ async function fetchTrustChain(
     }
 
     const parentEntityId = authorityHints[0];
-    const fetchUrl = new URL(`${config.publicBaseUrl}${federationFetchEndpointPath(parentEntityId)}`);
+    const fetchUrl = new URL(federationFetchEndpointUrl(parentEntityId));
     fetchUrl.searchParams.set("sub", currentEntityId);
-    const subordinateStatementJwt = await fetchJwt(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
+    const subordinateStatementJwt = await fetchOidfText(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
     chain.push(subordinateStatementJwt);
 
-    const parentEntityConfigurationJwt = await fetchJwt(
-      `${config.publicBaseUrl}${oidfEntityConfigurationPath(parentEntityId)}`,
+    const parentEntityConfigurationJwt = await fetchOidfText(
+      oidfEntityConfigurationUrl(parentEntityId),
       "entity configuration",
       config,
       fetchImpl,
@@ -345,38 +349,12 @@ async function fetchTrustChain(
   return chain;
 }
 
-async function fetchJwt(
-  targetUrl: string,
-  label: string,
-  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
-  fetchImpl: typeof fetch,
-) {
-  const response = await fetchImpl(rewriteSelfFetchUrl(targetUrl, config.publicBaseUrl, config.internalBaseUrl), { redirect: "follow" });
-  if (!response.ok) {
-    throw new Error(`OIDF ${label} fetch failed (${response.status})`);
-  }
-  const body = (await response.text()).trim();
-  if (!body) {
-    throw new Error(`OIDF ${label} fetch returned an empty body`);
-  }
-  return body;
-}
-
 function decodeEntityStatementPayload(jwt: string) {
   try {
     return decodeJwtWithoutVerification<EntityStatementPayload>(jwt).payload;
   } catch (error) {
     throw new Error(`Malformed OIDF entity statement during fetch: ${error instanceof Error ? error.message : String(error)}`);
   }
-}
-
-function rewriteSelfFetchUrl(targetUrl: string, publicBaseUrl: string, internalBaseUrl: string | undefined) {
-  if (!internalBaseUrl) return targetUrl;
-  const target = new URL(targetUrl);
-  const publicBase = new URL(publicBaseUrl);
-  if (target.origin !== publicBase.origin) return targetUrl;
-  const internalBase = new URL(internalBaseUrl);
-  return `${internalBase.origin}${target.pathname}${target.search}`;
 }
 
 function firstTrustedAnchor(oidf: NonNullable<FrameworkDefinition["oidf"]>) {

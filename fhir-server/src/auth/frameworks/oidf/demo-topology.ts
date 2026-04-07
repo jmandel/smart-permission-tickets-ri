@@ -4,6 +4,7 @@ import { computeEcJwkThumbprintSync, normalizePrivateJwk, normalizePublicJwk, si
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI } from "../../demo-frameworks.ts";
 import { buildAuthBasePath, buildFhirBasePath, type SurfaceMode } from "../../../../shared/surfaces.ts";
 import type { SiteSummary } from "../../../store/store.ts";
+import { federationFetchEndpointPath, oidfEntityConfigurationPath } from "./urls.ts";
 
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
 const TRUST_MARK_TYP = "trust-mark+jwt";
@@ -267,14 +268,6 @@ export function buildOidfTrustChain(topology: OidfDemoTopology, leafEntityId: st
     }
   }
   return chain;
-}
-
-export function oidfEntityConfigurationPath(entityId: string) {
-  return `${new URL(entityId).pathname}/.well-known/openid-federation`;
-}
-
-export function federationFetchEndpointPath(entityId: string) {
-  return `${new URL(entityId).pathname}/federation_fetch_endpoint`;
 }
 
 export function findOidfEntityIdByConfigurationPath(topology: OidfDemoTopology, pathname: string) {
