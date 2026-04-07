@@ -31,7 +31,7 @@ export function loadConfig(): ServerConfig {
     : undefined;
   const issuer = normalizeOriginEnv(Bun.env.ISSUER ?? publicBaseUrl, "ISSUER");
   const defaultNetworkSlug = Bun.env.DEFAULT_NETWORK_SLUG ?? "reference";
-  const defaultNetworkName = Bun.env.DEFAULT_NETWORK_NAME ?? "Reference Network";
+  const defaultNetworkName = Bun.env.DEFAULT_NETWORK_NAME ?? "Provider Network";
   const defaultPermissionTicketIssuerSlug = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_SLUG ?? "reference-demo";
   const defaultPermissionTicketIssuerName = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_NAME ?? "Reference Demo Issuer";
   const configuredPrivateJwk = parsePrivateJwk(

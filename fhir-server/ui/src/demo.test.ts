@@ -97,7 +97,7 @@ const ticketIssuer: TicketIssuerInfo = {
 
 const network: NetworkInfo = {
   slug: "reference",
-  name: "Reference Network",
+  name: "Provider Network",
 };
 
 const wellKnownOption: DemoClientOption = {
