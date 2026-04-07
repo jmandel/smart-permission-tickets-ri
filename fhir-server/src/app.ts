@@ -76,7 +76,7 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const store = FhirStore.load();
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
-  const oidfTopology = buildOidfTopologyForPublicBaseUrl(config, issuers);
+  const oidfTopology = buildOidfTopologyForPublicBaseUrl(config, store, issuers);
   const frameworks = buildFrameworkRegistry(config, clients, oidfTopology);
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
@@ -103,12 +103,16 @@ export function startServer(context = createAppContext(), port = context.config.
 
 function buildOidfTopologyForPublicBaseUrl(
   config: ServerConfig,
+  store: FhirStore,
   issuers: TicketIssuerRegistry,
   existingTopology?: OidfDemoTopology,
 ) {
   const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
+  const sites = store.listSiteSummaries();
   return buildOidfDemoTopology(
     config.publicBaseUrl,
+    config.strictDefaultMode,
+    sites,
     config.defaultPermissionTicketIssuerSlug,
     config.defaultPermissionTicketIssuerName,
     {
@@ -116,7 +120,6 @@ function buildOidfTopologyForPublicBaseUrl(
       "app-network": existingTopology ? extractOidfKeyMaterial(existingTopology, "app-network") : undefined,
       "provider-network": existingTopology ? extractOidfKeyMaterial(existingTopology, "provider-network") : undefined,
       "demo-app": existingTopology ? extractOidfKeyMaterial(existingTopology, "demo-app") : undefined,
-      "fhir-server": existingTopology ? extractOidfKeyMaterial(existingTopology, "fhir-server") : undefined,
       "ticket-issuer": defaultIssuer
         ? {
             publicJwk: defaultIssuer.publicJwk,
@@ -126,6 +129,12 @@ function buildOidfTopologyForPublicBaseUrl(
           ? extractOidfKeyMaterial(existingTopology, "ticket-issuer")
           : undefined,
     },
+    Object.fromEntries(
+      sites.map((site) => [
+        site.siteSlug,
+        existingTopology ? extractProviderSiteKeyMaterial(existingTopology, site.siteSlug) : undefined,
+      ]),
+    ),
   );
 }
 
@@ -145,7 +154,7 @@ function buildFrameworkRegistry(
               appNetworkEntityId: oidfTopology.appNetworkEntityId,
               providerNetworkEntityId: oidfTopology.providerNetworkEntityId,
               demoAppEntityId: oidfTopology.demoAppEntityId,
-              fhirServerEntityId: oidfTopology.fhirServerEntityId,
+              providerSiteEntityIds: oidfTopology.providerSiteEntityIds,
               ticketIssuerEntityId: oidfTopology.ticketIssuerEntityId,
               ticketIssuerUrl: oidfTopology.ticketIssuerUrl,
               trustMarkType: oidfTopology.trustMarkType,
@@ -164,10 +173,19 @@ function extractOidfKeyMaterial(topology: OidfDemoTopology, role: keyof OidfDemo
   };
 }
 
+function extractProviderSiteKeyMaterial(topology: OidfDemoTopology, siteSlug: string) {
+  const entity = topology.providerSiteEntities[siteSlug];
+  if (!entity) return undefined;
+  return {
+    publicJwk: entity.publicJwk,
+    privateJwk: entity.privateJwk,
+  };
+}
+
 function syncOidfTopologyWithConfig(context: AppContext) {
   const currentOrigin = new URL(context.oidfTopology.trustAnchorEntityId).origin;
   if (currentOrigin === context.config.publicBaseUrl) return;
-  context.oidfTopology = buildOidfTopologyForPublicBaseUrl(context.config, context.issuers, context.oidfTopology);
+  context.oidfTopology = buildOidfTopologyForPublicBaseUrl(context.config, context.store, context.issuers, context.oidfTopology);
   context.frameworks = buildFrameworkRegistry(context.config, context.clients, context.oidfTopology);
 }
 

@@ -261,7 +261,6 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
   const oidfAppNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
   const oidfProviderNetworkEntityId = `${publicBaseUrl}/federation/networks/provider`;
   const oidfDemoAppEntityId = `${publicBaseUrl}/federation/leafs/demo-app`;
-  const oidfFhirServerEntityId = `${publicBaseUrl}/federation/leafs/fhir-server`;
   const oidfTicketIssuerEntityId = `${publicBaseUrl}/federation/leafs/ticket-issuer`;
   const oidfTrustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
   const demoWellKnownClients = buildDemoWellKnownClients(publicBaseUrl);
@@ -318,14 +317,14 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
       supportsIssuerTrust: true,
       cacheTtlSeconds: 300,
       localAudienceMembership: {
-        entityUri: oidfFhirServerEntityId,
+        entityUri: oidfProviderNetworkEntityId,
       },
       oidf: {
         trustAnchorEntityId: oidfAnchorEntityId,
         appNetworkEntityId: oidfAppNetworkEntityId,
         providerNetworkEntityId: oidfProviderNetworkEntityId,
         demoAppEntityId: oidfDemoAppEntityId,
-        fhirServerEntityId: oidfFhirServerEntityId,
+        providerSiteEntityIds: {},
         ticketIssuerEntityId: oidfTicketIssuerEntityId,
         ticketIssuerUrl: issuerUrl,
         trustMarkType: oidfTrustMarkType,

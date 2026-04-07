@@ -66,7 +66,7 @@ export type FrameworkDefinition = {
     appNetworkEntityId: string;
     providerNetworkEntityId: string;
     demoAppEntityId: string;
-    fhirServerEntityId: string;
+    providerSiteEntityIds: Record<string, string>;
     ticketIssuerEntityId: string;
     ticketIssuerUrl: string;
     trustMarkType: string;

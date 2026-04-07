@@ -2,24 +2,28 @@ import { generateKeyPairSync } from "node:crypto";
 
 import { computeEcJwkThumbprintSync, normalizePrivateJwk, normalizePublicJwk, signEs256Jwt } from "../../es256-jwt.ts";
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI } from "../../demo-frameworks.ts";
+import { buildAuthBasePath, buildFhirBasePath, type SurfaceMode } from "../../../../shared/surfaces.ts";
+import type { SiteSummary } from "../../../store/store.ts";
 
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
 const TRUST_MARK_TYP = "trust-mark+jwt";
 const ENTITY_STATEMENT_TTL_SECONDS = 3600;
 const TRUST_MARK_TTL_SECONDS = 86400;
 
-export type OidfDemoEntityRole =
+export type OidfDemoFixedEntityRole =
   | "anchor"
   | "app-network"
   | "provider-network"
   | "demo-app"
-  | "fhir-server"
   | "ticket-issuer";
+
+export type OidfDemoEntityRole = OidfDemoFixedEntityRole | "provider-site";
 
 export type OidfDemoEntity = {
   role: OidfDemoEntityRole;
   entityId: string;
   name: string;
+  siteSlug?: string;
   publicJwk: JsonWebKey & { kid: string };
   privateJwk: JsonWebKey & { kid: string };
   metadata: Record<string, Record<string, unknown>>;
@@ -35,9 +39,10 @@ export type OidfDemoTopology = {
   appNetworkEntityId: string;
   providerNetworkEntityId: string;
   demoAppEntityId: string;
-  fhirServerEntityId: string;
+  providerSiteEntityIds: Record<string, string>;
   ticketIssuerEntityId: string;
-  entities: Record<OidfDemoEntityRole, OidfDemoEntity>;
+  entities: Record<OidfDemoFixedEntityRole, OidfDemoEntity>;
+  providerSiteEntities: Record<string, OidfDemoEntity>;
   entityConfigurations: Map<string, string>;
   subordinateStatements: Map<string, Map<string, OidfDemoSubordinateStatement>>;
 };
@@ -47,31 +52,33 @@ type OidfDemoKeyMaterial = {
   privateJwk: JsonWebKey & { kid?: string };
 };
 
-type OidfDemoKeyMaterialByRole = Partial<Record<OidfDemoEntityRole, OidfDemoKeyMaterial>>;
+type OidfDemoKeyMaterialByRole = Partial<Record<OidfDemoFixedEntityRole, OidfDemoKeyMaterial>>;
+type OidfDemoProviderSiteKeyMaterialBySlug = Record<string, OidfDemoKeyMaterial | undefined>;
 type OidfDemoSubordinateMetadataPolicy = Record<string, Record<string, Record<string, unknown>>>;
 type OidfDemoSubordinateStatement = {
   metadataPolicy: OidfDemoSubordinateMetadataPolicy;
 };
 
-const DEFAULT_OIDF_DEMO_KEY_MATERIAL: Record<Exclude<OidfDemoEntityRole, "ticket-issuer">, OidfDemoKeyMaterial> = {
+const DEFAULT_OIDF_DEMO_KEY_MATERIAL: Record<Exclude<OidfDemoFixedEntityRole, "ticket-issuer">, OidfDemoKeyMaterial> = {
   anchor: generateEcKeyPair(),
   "app-network": generateEcKeyPair(),
   "provider-network": generateEcKeyPair(),
   "demo-app": generateEcKeyPair(),
-  "fhir-server": generateEcKeyPair(),
 };
 
 export function buildOidfDemoTopology(
   publicBaseUrl: string,
+  defaultMode: SurfaceMode,
+  sites: SiteSummary[],
   ticketIssuerSlug: string,
   ticketIssuerName = "Reference Demo Issuer",
   keyMaterialByRole: OidfDemoKeyMaterialByRole = {},
+  providerSiteKeyMaterialBySlug: OidfDemoProviderSiteKeyMaterialBySlug = {},
 ): OidfDemoTopology {
   const trustAnchorEntityId = `${publicBaseUrl}/federation/anchor`;
   const appNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
   const providerNetworkEntityId = `${publicBaseUrl}/federation/networks/provider`;
   const demoAppEntityId = `${publicBaseUrl}/federation/leafs/demo-app`;
-  const fhirServerEntityId = `${publicBaseUrl}/federation/leafs/fhir-server`;
   const ticketIssuerEntityId = `${publicBaseUrl}/federation/leafs/ticket-issuer`;
   const ticketIssuerUrl = `${publicBaseUrl}/issuer/${ticketIssuerSlug}`;
   const trustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
@@ -104,32 +111,54 @@ export function buildOidfDemoTopology(
       response_types: [],
     },
   }, [appNetworkEntityId], keyMaterialByRole["demo-app"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["demo-app"]);
-  const fhirServer = createEntity("fhir-server", fhirServerEntityId, "FHIR Server", {
-    oauth_authorization_server: {
-      token_endpoint: `${publicBaseUrl}/token`,
-    },
-  }, [providerNetworkEntityId], keyMaterialByRole["fhir-server"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["fhir-server"]);
   const ticketIssuer = createEntity("ticket-issuer", ticketIssuerEntityId, ticketIssuerName, {
     federation_entity: {
       organization_name: ticketIssuerName,
       issuer_url: ticketIssuerUrl,
     },
   }, [providerNetworkEntityId], keyMaterialByRole["ticket-issuer"]);
+  const providerSiteEntities = Object.fromEntries(
+    [...sites]
+      .sort((a, b) => a.siteSlug.localeCompare(b.siteSlug))
+      .map((site) => {
+        const authBasePath = buildAuthBasePath(defaultMode, { mode: defaultMode, siteSlug: site.siteSlug });
+        const fhirBasePath = buildFhirBasePath(defaultMode, { mode: defaultMode, siteSlug: site.siteSlug });
+        const entity = createEntity(
+          "provider-site",
+          `${publicBaseUrl}/federation/leafs/provider-sites/${site.siteSlug}`,
+          site.organizationName,
+          {
+            oauth_authorization_server: {
+              token_endpoint: `${publicBaseUrl}${authBasePath}/token`,
+            },
+            oauth_resource: {
+              resource: `${publicBaseUrl}${fhirBasePath}`,
+            },
+          },
+          [providerNetworkEntityId],
+          providerSiteKeyMaterialBySlug[site.siteSlug],
+          site.siteSlug,
+        );
+        return [site.siteSlug, entity];
+      }),
+  );
+  const providerSiteEntityIds = Object.fromEntries(
+    Object.entries(providerSiteEntities).map(([siteSlug, entity]) => [siteSlug, entity.entityId]),
+  );
 
   const ticketIssuerTrustMark = signTrustMark(providerNetwork, ticketIssuer.entityId, trustMarkType, now);
   ticketIssuer.trustMarks = [ticketIssuerTrustMark];
 
-  const entities: Record<OidfDemoEntityRole, OidfDemoEntity> = {
+  const entities: Record<OidfDemoFixedEntityRole, OidfDemoEntity> = {
     anchor,
     "app-network": appNetwork,
     "provider-network": providerNetwork,
     "demo-app": demoApp,
-    "fhir-server": fhirServer,
     "ticket-issuer": ticketIssuer,
   };
 
   const entityConfigurations = new Map<string, string>();
-  for (const entity of Object.values(entities)) {
+  for (const entity of [...Object.values(entities), ...Object.values(providerSiteEntities)]) {
     entityConfigurations.set(entity.entityId, signEntityConfiguration(entity, now));
   }
 
@@ -152,15 +181,22 @@ export function buildOidfDemoTopology(
       },
     },
   });
-  addSubordinateStatement(subordinateStatements, providerNetwork.entityId, fhirServer.entityId, {
-    metadataPolicy: {
-      oauth_authorization_server: {
-        token_endpoint: {
-          value: `${publicBaseUrl}/token`,
+  for (const siteEntity of Object.values(providerSiteEntities)) {
+    addSubordinateStatement(subordinateStatements, providerNetwork.entityId, siteEntity.entityId, {
+      metadataPolicy: {
+        oauth_authorization_server: {
+          token_endpoint: {
+            value: siteEntity.metadata.oauth_authorization_server?.token_endpoint,
+          },
+        },
+        oauth_resource: {
+          resource: {
+            value: siteEntity.metadata.oauth_resource?.resource,
+          },
         },
       },
-    },
-  });
+    });
+  }
   addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, {
     metadataPolicy: {
       federation_entity: {
@@ -188,9 +224,10 @@ export function buildOidfDemoTopology(
     appNetworkEntityId,
     providerNetworkEntityId,
     demoAppEntityId,
-    fhirServerEntityId,
+    providerSiteEntityIds,
     ticketIssuerEntityId,
     entities,
+    providerSiteEntities,
     entityConfigurations,
     subordinateStatements,
   };
@@ -264,6 +301,7 @@ function createEntity(
     publicJwk: JsonWebKey & { kid?: string };
     privateJwk: JsonWebKey & { kid?: string };
   },
+  siteSlug?: string,
 ): OidfDemoEntity {
   const keys = keyMaterial
     ? (() => {
@@ -287,6 +325,7 @@ function createEntity(
     role,
     entityId,
     name,
+    siteSlug,
     publicJwk: keys.publicJwk,
     privateJwk: keys.privateJwk,
     metadata,
@@ -399,6 +438,9 @@ function entityAuthorityHints(topology: OidfDemoTopology, entityId: string) {
 
 function findEntity(topology: OidfDemoTopology, entityId: string) {
   for (const entity of Object.values(topology.entities)) {
+    if (entity.entityId === entityId) return entity;
+  }
+  for (const entity of Object.values(topology.providerSiteEntities)) {
     if (entity.entityId === entityId) return entity;
   }
   return null;

@@ -307,6 +307,10 @@ Files:
 
 This is the foundational topology correction.
 
+Status:
+
+- implemented on `main`
+
 ### Phase 2: OIDF Re-Minting Fix
 
 Scope:

@@ -11,6 +11,8 @@ describe("OIDF demo topology", () => {
     const server = startServer(context, 0);
     const origin = `http://127.0.0.1:${server.port}`;
     const publicOrigin = context.config.publicBaseUrl;
+    const firstSite = context.store.listSiteSummaries()[0];
+    const firstSiteEntityId = context.oidfTopology.providerSiteEntityIds[firstSite!.siteSlug];
     try {
       const entityResponse = await fetch(`${origin}/federation/leafs/demo-app/.well-known/openid-federation`);
       expect(entityResponse.status).toBe(200);
@@ -32,6 +34,56 @@ describe("OIDF demo topology", () => {
       expect(decodedSubordinate.payload.sub).toBe(`${publicOrigin}/federation/leafs/demo-app`);
       expect(decodedSubordinate.payload.jwks.keys).toEqual(decodedEntity.payload.jwks.keys);
       expect(decodedSubordinate.payload.metadata_policy.oauth_client.client_name.value).toBe("OpenID Federation Demo App");
+
+      const siteEntityResponse = await fetch(`${origin}/federation/leafs/provider-sites/${firstSite!.siteSlug}/.well-known/openid-federation`);
+      expect(siteEntityResponse.status).toBe(200);
+      const siteEntityStatement = await siteEntityResponse.text();
+      const decodedSiteEntity = decodeEs256Jwt<Record<string, any>>(siteEntityStatement);
+      expect(decodedSiteEntity.payload.iss).toBe(firstSiteEntityId);
+      expect(decodedSiteEntity.payload.authority_hints).toEqual([`${publicOrigin}/federation/networks/provider`]);
+      expect(decodedSiteEntity.payload.metadata.oauth_authorization_server.token_endpoint).toBe(
+        `${publicOrigin}/sites/${firstSite!.siteSlug}/token`,
+      );
+      expect(decodedSiteEntity.payload.metadata.oauth_resource.resource).toBe(
+        `${publicOrigin}/sites/${firstSite!.siteSlug}/fhir`,
+      );
+
+      const siteFetchResponse = await fetch(
+        `${origin}/federation/networks/provider/federation_fetch_endpoint?sub=${encodeURIComponent(firstSiteEntityId)}`,
+      );
+      expect(siteFetchResponse.status).toBe(200);
+      const siteSubordinateStatement = await siteFetchResponse.text();
+      const decodedSiteSubordinate = decodeEs256Jwt<Record<string, any>>(siteSubordinateStatement);
+      expect(decodedSiteSubordinate.payload.iss).toBe(`${publicOrigin}/federation/networks/provider`);
+      expect(decodedSiteSubordinate.payload.sub).toBe(firstSiteEntityId);
+      expect(decodedSiteSubordinate.payload.jwks.keys).toEqual(decodedSiteEntity.payload.jwks.keys);
+      expect(decodedSiteSubordinate.payload.metadata_policy.oauth_authorization_server.token_endpoint.value).toBe(
+        `${publicOrigin}/sites/${firstSite!.siteSlug}/token`,
+      );
+      expect(decodedSiteSubordinate.payload.metadata_policy.oauth_resource.resource.value).toBe(
+        `${publicOrigin}/sites/${firstSite!.siteSlug}/fhir`,
+      );
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("provider network federation fetch resolves subordinate statements for every discovered site leaf", async () => {
+    const context = createAppContext({ port: 0 });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    try {
+      for (const site of context.store.listSiteSummaries()) {
+        const siteEntityId = context.oidfTopology.providerSiteEntityIds[site.siteSlug];
+        expect(typeof siteEntityId).toBe("string");
+        const response = await fetch(
+          `${origin}/federation/networks/provider/federation_fetch_endpoint?sub=${encodeURIComponent(siteEntityId)}`,
+        );
+        expect(response.status).toBe(200);
+        const statement = await response.text();
+        const decoded = decodeEs256Jwt<Record<string, any>>(statement);
+        expect(decoded.payload.sub).toBe(siteEntityId);
+      }
     } finally {
       server.stop(true);
     }
@@ -111,6 +163,9 @@ describe("OIDF demo topology", () => {
     expect(oidfFramework?.supportsClientAuth).toBe(true);
     expect(oidfFramework?.supportsIssuerTrust).toBe(true);
     expect(oidfFramework?.oidf?.trustAnchorEntityId).toBe(`${context.config.publicBaseUrl}/federation/anchor`);
+    expect(Object.keys(oidfFramework?.oidf?.providerSiteEntityIds ?? {})).toEqual(
+      context.store.listSiteSummaries().map((site) => site.siteSlug).sort(),
+    );
     expect(oidfFramework?.oidf?.ticketIssuerUrl).toBe(`${context.config.publicBaseUrl}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
   });
 
