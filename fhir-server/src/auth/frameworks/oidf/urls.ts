@@ -45,13 +45,19 @@ export async function fetchOidfText(
   config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
   fetchImpl: typeof fetch,
 ) {
-  const response = await fetchImpl(rewriteSelfOriginFetchUrl(targetUrl, config), { redirect: "follow" });
+  const requestUrl = rewriteSelfOriginFetchUrl(targetUrl, config);
+  let response: Response;
+  try {
+    response = await fetchImpl(requestUrl, { redirect: "follow" });
+  } catch (error) {
+    throw new Error(`OIDF ${label} fetch failed for ${describeFetchRoute(targetUrl, requestUrl)}: ${formatError(error)}`);
+  }
   if (!response.ok) {
-    throw new Error(`OIDF ${label} fetch failed (${response.status})`);
+    throw new Error(`OIDF ${label} fetch failed (${response.status}) for ${describeFetchRoute(targetUrl, requestUrl)}`);
   }
   const body = (await response.text()).trim();
   if (!body) {
-    throw new Error(`OIDF ${label} fetch returned an empty body`);
+    throw new Error(`OIDF ${label} fetch returned an empty body for ${describeFetchRoute(targetUrl, requestUrl)}`);
   }
   return body;
 }
@@ -63,4 +69,12 @@ function appendPathToEntityId(entityId: string, suffix: string) {
   url.search = "";
   url.hash = "";
   return url.toString();
+}
+
+function describeFetchRoute(targetUrl: string, requestUrl: string) {
+  return targetUrl === requestUrl ? targetUrl : `${targetUrl} via ${requestUrl}`;
+}
+
+function formatError(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }

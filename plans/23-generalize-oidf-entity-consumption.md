@@ -1,6 +1,6 @@
 # Plan 23: Generalize OIDF Entity Consumption
 
-Status: in progress
+Status: completed
 
 ## Goal
 
@@ -279,6 +279,10 @@ Status:
   - unknown trust anchor
   - discovery/fetch failure
   - trust-mark failure
+
+Status:
+
+- implemented on `main`
 
 ## File Impact
 

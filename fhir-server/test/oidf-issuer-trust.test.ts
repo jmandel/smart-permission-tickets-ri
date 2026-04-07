@@ -131,6 +131,18 @@ describe("OIDF issuer trust", () => {
       server.stop(true);
     }
   });
+
+  test("issuer trust discovery failures identify the leaf and fetch step", async () => {
+    const { context, publicOrigin } = startOidfIssuerTrustServer();
+    const resolver = new OidfFrameworkResolver(
+      context.config.frameworks,
+      context.config,
+      async () => new Response("not found", { status: 404 }),
+    );
+    await expect(
+      resolver.resolveIssuerTrust(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+    ).rejects.toThrow(`OIDF issuer trust discovery failed for ${context.oidfTopology.ticketIssuerEntityId}`);
+  });
 });
 
 function startOidfIssuerTrustServer() {

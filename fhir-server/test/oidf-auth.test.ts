@@ -91,6 +91,30 @@ describe("OIDF client authentication", () => {
       server.stop(true);
     }
   });
+
+  test("a trust chain under an unconfigured anchor is rejected clearly", async () => {
+    const { context, server, publicOrigin } = startOidfAuthServer();
+    try {
+      const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
+      if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework config");
+      oidfFramework.oidf.trustAnchors = [{
+        entityId: `${publicOrigin}/federation/anchors/other`,
+        jwks: [context.oidfTopology.entities.anchor.publicJwk],
+      }];
+
+      const tokenEndpointUrl = `${context.config.publicBaseUrl}/token`;
+      const assertion = await buildOidfClientAssertion(context, tokenEndpointUrl, { withTrustChain: true });
+      await expect(
+        context.frameworks.authenticateClientAssertion(
+          context.oidfTopology.demoAppEntityId,
+          assertion,
+          tokenEndpointUrl,
+        ),
+      ).rejects.toThrow("did not validate against any configured trust anchor");
+    } finally {
+      server.stop(true);
+    }
+  });
 });
 
 function startOidfAuthServer() {

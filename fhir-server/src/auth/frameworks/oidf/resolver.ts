@@ -154,12 +154,17 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
 
-    const trustChain = await fetchTrustChain(
-      trustedLeaf.entityId,
-      firstTrustedAnchor(oidf).entityId,
-      this.config,
-      this.fetchImpl,
-    );
+    let trustChain: string[];
+    try {
+      trustChain = await fetchTrustChain(
+        trustedLeaf.entityId,
+        firstTrustedAnchor(oidf).entityId,
+        this.config,
+        this.fetchImpl,
+      );
+    } catch (error) {
+      throw new Error(`OIDF issuer trust discovery failed for ${trustedLeaf.entityId}: ${formatError(error)}`);
+    }
     const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(trustChain, oidf);
     if (verifiedChain.leaf.entityId !== trustedLeaf.entityId) {
       throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${trustedLeaf.entityId}`);
@@ -316,7 +321,7 @@ async function fetchTrustChain(
     if (!currentEntityConfigurationJwt) {
       currentEntityConfigurationJwt = await fetchOidfText(
         oidfEntityConfigurationUrl(currentEntityId),
-        "entity configuration",
+        `entity configuration for ${currentEntityId}`,
         config,
         fetchImpl,
       );
@@ -334,14 +339,19 @@ async function fetchTrustChain(
     const parentEntityId = authorityHints[0];
     const parentEntityConfigurationJwt = await fetchOidfText(
       oidfEntityConfigurationUrl(parentEntityId),
-      "entity configuration",
+      `entity configuration for ${parentEntityId}`,
       config,
       fetchImpl,
     );
     const parentDecoded = decodeEntityStatementPayload(parentEntityConfigurationJwt);
     const fetchUrl = new URL(resolvePublishedFederationFetchEndpointUrl(parentEntityId, parentDecoded));
     fetchUrl.searchParams.set("sub", currentEntityId);
-    const subordinateStatementJwt = await fetchOidfText(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
+    const subordinateStatementJwt = await fetchOidfText(
+      fetchUrl.toString(),
+      `subordinate statement from ${parentEntityId} about ${currentEntityId}`,
+      config,
+      fetchImpl,
+    );
     chain.push(subordinateStatementJwt);
     if (parentEntityId === expectedAnchorEntityId) {
       chain.push(parentEntityConfigurationJwt);
@@ -395,7 +405,7 @@ async function verifyTrustChainAgainstConfiguredAnchors(
   if (!lastError) {
     throw new Error("OIDF framework is missing configured trust anchor jwks");
   }
-  throw lastError;
+  throw new Error(`OIDF trust chain did not validate against any configured trust anchor: ${lastError.message}`);
 }
 
 function findTrustedIssuerLeaves(
@@ -426,4 +436,8 @@ function findStatementJwksForEntity(
     return verifiedChain.anchor.payload.jwks?.keys ?? [];
   }
   return verifiedChain.subordinateStatements.find((statement) => statement.payload.sub === entityId)?.payload.jwks?.keys ?? [];
+}
+
+function formatError(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }

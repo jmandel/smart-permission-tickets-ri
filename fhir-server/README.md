@@ -53,12 +53,14 @@ The landing page lists:
   - in `strict` mode, choose a client type before building the ticket:
     - unaffiliated registered client
     - well-known client
+    - OIDF client
     - UDAP client
   - choose sites, scopes, dates, ticket lifetime, and the `access.sensitive_data` policy
   - request an ES256-signed Permission Ticket from a simulated issuer
-  - prepare one of three client stories:
+  - prepare one of four client stories:
     - dynamic JWK registration for an unaffiliated app
     - implicit `well-known:<uri>` identity with no registration call
+    - OpenID Federation client auth with `client_id=<entity-id>` and a supplied `trust_chain`
     - just-in-time UDAP dynamic registration
   - exchange it for an access token
   - introspect that token
@@ -67,6 +69,7 @@ The landing page lists:
 In `strict` mode, the workbench now explicitly explains what each client path demonstrates before launch:
 - **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `presenter_binding.method = "jkt"`
 - **Well-known client**: a framework-affiliated client skips registration and is recognized as `well-known:<entity-uri>` using current JWKS resolution
+- **OIDF client**: a framework-affiliated client skips registration, uses `client_id=<entity-id>`, and proves trust with a static `trust_chain` in the `client_assertion` JOSE header
 - **UDAP client**: a framework-backed client registers just in time with UDAP DCR and then authenticates with `x5c`
 
 After launch, use the **Ticket** and **Client** artifact menus in the viewer to inspect:
@@ -85,8 +88,37 @@ The demo also includes a live protocol trace:
 
 Default demo trust-framework surfaces are also enabled out of the box:
 - a built-in `well-known` framework document at `/demo/frameworks/well-known-reference.json` with two sample client entities hosted under `/demo/clients/...`
+- a built-in OIDF trust fabric with:
+  - the Trust Anchor at `/federation/anchor/.well-known/openid-federation`
+  - the App Network, Provider Network, demo app, ticket issuer, and one provider-site leaf per discovered site
 - a built-in demo well-known JWKS surface at `/.well-known/jwks.json`, plus entity-local JWKS surfaces under `/demo/clients/<slug>/.well-known/jwks.json`
 - a built-in UDAP framework advertising `/.well-known/udap` metadata, including RS256-signed `signed_metadata`, trusting both the demo EC and demo RSA roots for client registration, and chaining discovery metadata to the demo RSA root for RS256-oriented interoperability testing
+
+## OIDF Consumption Model
+
+OIDF client authentication and OIDF issuer trust intentionally behave differently:
+
+- **Client authentication** is static and offline.
+  - the client sends a complete `trust_chain` in the `client_assertion` JOSE header
+  - the token endpoint validates that chain in memory
+  - no network fetches occur on the token request path
+- **Issuer trust** is discovery-driven.
+  - the server starts from the allowlisted issuer leaf entity ID
+  - it fetches the real entity configuration from the entity's own origin
+  - it follows the published `metadata.federation_entity.federation_fetch_endpoint`
+  - it verifies the resulting trust chain and any required trust mark
+
+OIDF trust is explicitly allowlisted:
+
+- configured `trustAnchors` define which terminal anchors are accepted
+- configured `trustedLeaves` define which OIDF leaves may be used for:
+  - client authentication
+  - issuer trust
+- a valid-looking chain for an unallowlisted leaf is rejected
+
+`INTERNAL_BASE_URL` is only a loopback rewrite for this server's own advertised
+origin. If an OIDF URL points at some other host, the resolver fetches that
+foreign URL as-is.
 
 ## Stable Demo Crypto Bundle
 
@@ -259,7 +291,7 @@ The UDAP discovery response includes:
 - `grant_types_supported` including `client_credentials` for the UDAP B2B workflow
 - `udap_authorization_extensions_supported` and `udap_authorization_extensions_required` including `hl7-b2b`
 
-The strict-mode demo now intentionally exercises three different client identity models:
+The strict-mode demo now intentionally exercises four different client identity models:
 
 - **Unaffiliated registered client**
   - runtime behavior: POSTs a JWK to `/register`
@@ -272,6 +304,14 @@ The strict-mode demo now intentionally exercises three different client identity
     - framework JSON: `/demo/frameworks/well-known-reference.json`
     - sample entity metadata: `/demo/clients/well-known-alpha`
     - sample entity JWKS: `/demo/clients/well-known-alpha/.well-known/jwks.json`
+
+- **OIDF client**
+  - runtime behavior: skips registration and uses `client_id=<entity-id>`
+  - token behavior: sends `trust_chain` in the `client_assertion` JOSE header
+  - ticket behavior: uses `presenter_binding.method = "framework_client"`
+  - discovery/demo metadata:
+    - demo app entity configuration: `/federation/leafs/demo-app/.well-known/openid-federation`
+    - app-network fetch endpoint: `/federation/networks/app/federation_fetch_endpoint`
 
 - **UDAP client**
   - runtime behavior: does just-in-time UDAP registration at `/register`, then authenticates with `x5c` and `udap=1`
@@ -297,6 +337,7 @@ Local surface metadata is carried under:
 - `extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"]`
 
 By default the extension also advertises built-in demo trust frameworks:
+- `https://smarthealthit.org/trust-frameworks/reference-demo-oidf`
 - `https://smarthealthit.org/trust-frameworks/reference-demo-well-known`
 - `https://smarthealthit.org/trust-frameworks/reference-demo-udap`
 
