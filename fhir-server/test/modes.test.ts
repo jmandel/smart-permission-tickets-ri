@@ -275,6 +275,10 @@ describe("mode surfaces", () => {
         framework: "https://smarthealthit.org/trust-frameworks/reference-demo-udap",
         framework_type: "udap",
       },
+      {
+        framework: "https://smarthealthit.org/trust-frameworks/reference-demo-oidf",
+        framework_type: "oidf",
+      },
     ]);
 
     const jwksResponse = await fetch(`${origin}/.well-known/jwks.json`);

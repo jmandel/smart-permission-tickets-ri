@@ -1,5 +1,6 @@
 import { ClientRegistry } from "../clients.ts";
 import type { AuthenticatedClientIdentity, FrameworkDefinition, ResolvedIssuerTrust } from "../../store/model.ts";
+import { OidfFrameworkResolver } from "./oidf/resolver.ts";
 import { UdapFrameworkResolver } from "./udap.ts";
 import type { FrameworkClientRegistration, FrameworkResolver } from "./types.ts";
 import { WellKnownFrameworkResolver } from "./well-known.ts";
@@ -20,6 +21,7 @@ export class FrameworkRegistry {
     this.resolvers = resolverOverrides ?? [
       new WellKnownFrameworkResolver(frameworks, config, fetchImpl),
       new UdapFrameworkResolver(frameworks, clients),
+      new OidfFrameworkResolver(frameworks, config, fetchImpl),
     ];
   }
 

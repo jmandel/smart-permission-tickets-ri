@@ -314,7 +314,7 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
     {
       framework: DEFAULT_DEMO_OIDF_FRAMEWORK_URI,
       frameworkType: "oidf",
-      supportsClientAuth: false,
+      supportsClientAuth: true,
       supportsIssuerTrust: false,
       cacheTtlSeconds: 300,
       localAudienceMembership: {

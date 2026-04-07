@@ -77,7 +77,7 @@ export function buildOidfDemoTopology(
   }, [trustAnchorEntityId]);
   const demoApp = createEntity("demo-app", demoAppEntityId, "OpenID Federation Demo App", {
     oauth_client: {
-      client_name: "OpenID Federation Demo App",
+      client_name: "Leaf Demo App",
       token_endpoint_auth_method: "private_key_jwt",
       redirect_uris: [],
       grant_types: ["client_credentials"],
