@@ -264,6 +264,10 @@ Status:
   - issuer trust fetches external URLs as-is
   - self-origin URLs still loop back internally
 
+Status:
+
+- implemented on `main`
+
 ### Phase 7: Docs and Diagnostics
 
 - update README and OIDF plan/docs to explain:
