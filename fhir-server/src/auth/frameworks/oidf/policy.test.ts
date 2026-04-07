@@ -7,7 +7,12 @@ describe("OIDF metadata policy", () => {
   test("value forces the resolved value", async () => {
     const fixture = await makePolicyFixture();
 
-    const verified = await verifyTrustChain(fixture.chain, fixture.anchorEntityId, fixture.now);
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    });
     const resolved = applyMetadataPolicy(verified);
 
     expect(resolved.metadata.oauth_client?.client_name).toBe("Demo App from Policy");
@@ -36,7 +41,12 @@ describe("OIDF metadata policy", () => {
       },
     });
 
-    const verified = await verifyTrustChain(fixture.chain, fixture.anchorEntityId, fixture.now);
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    });
     const resolved = applyMetadataPolicy(verified);
 
     expect(resolved.metadata.oauth_client?.logo_uri).toBe("https://assets.example/logo.png");
@@ -67,7 +77,12 @@ describe("OIDF metadata policy", () => {
       },
     });
 
-    const verified = await verifyTrustChain(fixture.chain, fixture.anchorEntityId, fixture.now);
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    });
     const resolved = applyMetadataPolicy(verified);
 
     expect(resolved.metadata.oauth_client?.token_endpoint_auth_method).toBe("private_key_jwt");
@@ -96,7 +111,12 @@ describe("OIDF metadata policy", () => {
       },
     });
 
-    const verified = await verifyTrustChain(fixture.chain, fixture.anchorEntityId, fixture.now);
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    });
 
     expect(() => applyMetadataPolicy(verified)).toThrow("one_of");
   });
@@ -112,7 +132,12 @@ describe("OIDF metadata policy", () => {
       },
     });
 
-    const verified = await verifyTrustChain(fixture.chain, fixture.anchorEntityId, fixture.now);
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    });
 
     expect(() => applyMetadataPolicy(verified)).toThrow("unsupported");
   });
@@ -153,6 +178,7 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     sub: leafEntityId,
     iat: now - 60,
     exp: now + 3600,
+    jwks: { keys: [leafKeys.publicJwk] },
     metadata_policy: options.networkPolicy ?? {
       oauth_client: {
         client_name: {
@@ -181,6 +207,7 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     sub: networkEntityId,
     iat: now - 60,
     exp: now + 3600,
+    jwks: { keys: [networkKeys.publicJwk] },
     metadata_policy: options.anchorPolicy ?? {
       oauth_client: {
         client_name: {
@@ -206,10 +233,11 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
   return {
     now,
     anchorEntityId,
+    anchorJwks: { keys: [anchorKeys.publicJwk] },
+    supplementalEntityConfigurations: [networkConfiguration],
     chain: [
       leafConfiguration,
       networkToLeaf,
-      networkConfiguration,
       anchorToNetwork,
       anchorConfiguration,
     ],

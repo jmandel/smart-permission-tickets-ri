@@ -81,7 +81,16 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
 
-    const verifiedChain = await verifyTrustChain(trustChain, oidf.trustAnchorEntityId);
+    const verifiedChain = await verifyTrustChain(trustChain, {
+      expectedAnchor: oidf.trustAnchorEntityId,
+      trustedAnchorJwks: requiredTrustedAnchorJwks(oidf),
+      supplementalEntityConfigurations: await fetchSupplementalEntityConfigurations(
+        trustChain,
+        oidf.trustAnchorEntityId,
+        this.config,
+        this.fetchImpl,
+      ),
+    });
     if (verifiedChain.leaf.entityId !== clientId) {
       throw new Error(`OIDF client_id ${clientId} does not match trust-chain leaf ${verifiedChain.leaf.entityId}`);
     }
@@ -138,8 +147,17 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
 
-    const trustChain = await fetchTrustChain(oidf.ticketIssuerEntityId, this.config, this.fetchImpl);
-    const verifiedChain = await verifyTrustChain(trustChain, oidf.trustAnchorEntityId);
+    const { chain: trustChain, supplementalEntityConfigurations } = await fetchTrustChain(
+      oidf.ticketIssuerEntityId,
+      oidf.trustAnchorEntityId,
+      this.config,
+      this.fetchImpl,
+    );
+    const verifiedChain = await verifyTrustChain(trustChain, {
+      expectedAnchor: oidf.trustAnchorEntityId,
+      trustedAnchorJwks: requiredTrustedAnchorJwks(oidf),
+      supplementalEntityConfigurations,
+    });
     if (verifiedChain.leaf.entityId !== oidf.ticketIssuerEntityId) {
       throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${oidf.ticketIssuerEntityId}`);
     }
@@ -150,9 +168,9 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF issuer_url ${String(resolvedIssuerUrl ?? "")} does not match ${issuerUrl}`);
     }
 
-    const providerNetwork = verifiedChain.entityConfigurations.find((statement) => statement.entityId === oidf.providerNetworkEntityId);
-    if (!providerNetwork) {
-      throw new Error(`OIDF trust chain does not include provider network ${oidf.providerNetworkEntityId}`);
+    const providerNetworkStatement = verifiedChain.subordinateStatements.find((statement) => statement.payload.sub === oidf.providerNetworkEntityId);
+    if (!providerNetworkStatement) {
+      throw new Error(`OIDF trust chain does not endorse provider network ${oidf.providerNetworkEntityId}`);
     }
 
     const trustMarks = verifiedChain.leaf.payload.trust_marks;
@@ -168,7 +186,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
           issuerEntityId: oidf.providerNetworkEntityId,
           subjectEntityId: oidf.ticketIssuerEntityId,
           expectedTrustMarkType: oidf.trustMarkType,
-          issuerJwks: providerNetwork.payload.jwks?.keys ?? [],
+          issuerJwks: providerNetworkStatement.payload.jwks?.keys ?? [],
         });
         break;
       } catch (error) {
@@ -250,11 +268,14 @@ function normalizeTrustChain(value: unknown) {
 
 async function fetchTrustChain(
   leafEntityId: string,
+  expectedAnchorEntityId: string,
   config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
   fetchImpl: typeof fetch,
 ) {
   const chain: string[] = [];
+  const supplementalEntityConfigurations: string[] = [];
   let currentEntityId: string | undefined = leafEntityId;
+  let currentEntityConfigurationJwt: string | undefined;
   let depth = 0;
 
   while (currentEntityId) {
@@ -263,14 +284,16 @@ async function fetchTrustChain(
       throw new Error("OIDF issuer trust chain exceeds the supported depth of 3");
     }
 
-    const entityConfigurationJwt = await fetchJwt(
-      `${config.publicBaseUrl}${oidfEntityConfigurationPath(currentEntityId)}`,
-      "entity configuration",
-      config,
-      fetchImpl,
-    );
-    chain.push(entityConfigurationJwt);
-    const decoded = decodeEntityStatementPayload(entityConfigurationJwt);
+    if (!currentEntityConfigurationJwt) {
+      currentEntityConfigurationJwt = await fetchJwt(
+        `${config.publicBaseUrl}${oidfEntityConfigurationPath(currentEntityId)}`,
+        "entity configuration",
+        config,
+        fetchImpl,
+      );
+      chain.push(currentEntityConfigurationJwt);
+    }
+    const decoded = decodeEntityStatementPayload(currentEntityConfigurationJwt);
     const authorityHints = Array.isArray(decoded.authority_hints)
       ? decoded.authority_hints.filter((hint): hint is string => typeof hint === "string" && !!hint)
       : [];
@@ -284,10 +307,24 @@ async function fetchTrustChain(
     fetchUrl.searchParams.set("sub", currentEntityId);
     const subordinateStatementJwt = await fetchJwt(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
     chain.push(subordinateStatementJwt);
+
+    const parentEntityConfigurationJwt = await fetchJwt(
+      `${config.publicBaseUrl}${oidfEntityConfigurationPath(parentEntityId)}`,
+      "entity configuration",
+      config,
+      fetchImpl,
+    );
+    if (parentEntityId === expectedAnchorEntityId) {
+      chain.push(parentEntityConfigurationJwt);
+      break;
+    }
+
+    supplementalEntityConfigurations.push(parentEntityConfigurationJwt);
     currentEntityId = parentEntityId;
+    currentEntityConfigurationJwt = parentEntityConfigurationJwt;
   }
 
-  return chain;
+  return { chain, supplementalEntityConfigurations };
 }
 
 async function fetchJwt(
@@ -322,4 +359,34 @@ function rewriteSelfFetchUrl(targetUrl: string, publicBaseUrl: string, internalB
   if (target.origin !== publicBase.origin) return targetUrl;
   const internalBase = new URL(internalBaseUrl);
   return `${internalBase.origin}${target.pathname}${target.search}`;
+}
+
+async function fetchSupplementalEntityConfigurations(
+  trustChain: string[],
+  expectedAnchorEntityId: string,
+  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
+  fetchImpl: typeof fetch,
+) {
+  const leafEntityId = decodeEntityStatementPayload(trustChain[0]).sub;
+  const intermediateEntityIds = new Set<string>();
+  for (const jwt of trustChain.slice(1, -1)) {
+    const payload = decodeEntityStatementPayload(jwt);
+    if (payload.sub === leafEntityId || payload.sub === expectedAnchorEntityId) continue;
+    intermediateEntityIds.add(payload.sub);
+  }
+  return Promise.all(
+    [...intermediateEntityIds].map((entityId) => fetchJwt(
+      `${config.publicBaseUrl}${oidfEntityConfigurationPath(entityId)}`,
+      "entity configuration",
+      config,
+      fetchImpl,
+    )),
+  );
+}
+
+function requiredTrustedAnchorJwks(oidf: NonNullable<FrameworkDefinition["oidf"]>) {
+  if (!Array.isArray(oidf.trustAnchorJwks) || oidf.trustAnchorJwks.length === 0) {
+    throw new Error("OIDF framework is missing configured trust anchor jwks");
+  }
+  return oidf.trustAnchorJwks;
 }

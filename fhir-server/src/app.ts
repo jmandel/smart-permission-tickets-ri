@@ -84,6 +84,15 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
       }
       : undefined,
   );
+  config.frameworks = config.frameworks.map((framework) => framework.frameworkType === "oidf" && framework.oidf?.trustAnchorEntityId === oidfTopology.trustAnchorEntityId
+    ? {
+        ...framework,
+        oidf: {
+          ...framework.oidf,
+          trustAnchorJwks: [oidfTopology.entities.anchor.publicJwk],
+        },
+      }
+    : framework);
   const frameworks = new FrameworkRegistry(config.frameworks, clients, config);
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();

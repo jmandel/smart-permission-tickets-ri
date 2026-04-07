@@ -6,17 +6,25 @@ describe("OIDF trust chain validation", () => {
   test("valid 3-deep chain succeeds", async () => {
     const fixture = await makeTrustChainFixture();
 
-    const verified = await verifyTrustChain(fixture.chain, fixture.anchor.entityId, fixture.now);
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    });
 
     expect(verified.depth).toBe(3);
     expect(verified.leaf.entityId).toBe(fixture.leaf.entityId);
     expect(verified.anchor.entityId).toBe(fixture.anchor.entityId);
     expect(verified.subordinateStatements).toHaveLength(2);
+    expect(verified.statements).toHaveLength(4);
     expect(verified.metadataPolicies.map((entry) => entry.issuer)).toEqual([
       fixture.network.entityId,
       fixture.anchor.entityId,
     ]);
     expect(verified.leafMetadata.oauth_client?.client_name).toBe("Demo App");
+    expect(verified.subordinateStatements[0]?.payload.jwks).toEqual(fixture.leaf.jwks);
+    expect(verified.subordinateStatements[1]?.payload.jwks).toEqual(fixture.network.jwks);
   });
 
   test("tampering with the leaf statement breaks signature chaining", async () => {
@@ -32,7 +40,12 @@ describe("OIDF trust chain validation", () => {
       },
     }));
 
-    await expect(verifyTrustChain([tamperedLeaf, ...fixture.chain.slice(1)], fixture.anchor.entityId, fixture.now))
+    await expect(verifyTrustChain([tamperedLeaf, ...fixture.chain.slice(1)], {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
       .rejects.toThrow("signature verification failed");
   });
 
@@ -46,14 +59,24 @@ describe("OIDF trust chain validation", () => {
       },
     });
 
-    await expect(verifyTrustChain(fixture.chain, fixture.anchor.entityId, fixture.now))
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
       .rejects.toThrow("has expired");
   });
 
   test("wrong anchor invalidates the chain", async () => {
     const fixture = await makeTrustChainFixture();
 
-    await expect(verifyTrustChain(fixture.chain, "https://demo.example/federation/anchor/other", fixture.now))
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: "https://demo.example/federation/anchor/other",
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
       .rejects.toThrow("terminates at");
   });
 
@@ -66,11 +89,16 @@ describe("OIDF trust chain validation", () => {
       },
     });
 
-    await expect(verifyTrustChain(fixture.chain, fixture.anchor.entityId, fixture.now))
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
       .rejects.toThrow("must target");
   });
 
-  test("missing authority_hints invalidates the chain", async () => {
+  test("missing leaf authority_hints invalidates the chain", async () => {
     const fixture = await makeTrustChainFixture({
       leaf: {
         configOverrides: {
@@ -79,14 +107,42 @@ describe("OIDF trust chain validation", () => {
       },
     });
 
-    await expect(verifyTrustChain(fixture.chain, fixture.anchor.entityId, fixture.now))
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
+      .rejects.toThrow("authority_hints");
+  });
+
+  test("missing intermediate authority_hints invalidates the chain", async () => {
+    const fixture = await makeTrustChainFixture({
+      network: {
+        configOverrides: {
+          authority_hints: [],
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
       .rejects.toThrow("authority_hints");
   });
 
   test("malformed trust_chain payload is rejected", async () => {
     const fixture = await makeTrustChainFixture();
 
-    await expect(verifyTrustChain(["not-a-jwt", ...fixture.chain.slice(1)], fixture.anchor.entityId, fixture.now))
+    await expect(verifyTrustChain(["not-a-jwt", ...fixture.chain.slice(1)], {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
+      nowSeconds: fixture.now,
+    }))
       .rejects.toThrow("Malformed entity statement");
   });
 });
@@ -102,6 +158,7 @@ type EntityFixture = {
 type TrustChainFixture = {
   now: number;
   chain: string[];
+  supplementalEntityConfigurations: string[];
   leaf: EntityFixture;
   network: EntityFixture;
   anchor: EntityFixture;
@@ -187,6 +244,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       sub: leaf.entityId,
       iat: now - 60,
       exp: now + 3600,
+      jwks: leaf.jwks,
       metadata_policy: {
         oauth_client: {
           client_name: {
@@ -219,6 +277,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       sub: network.entityId,
       iat: now - 60,
       exp: now + 3600,
+      jwks: network.jwks,
       metadata_policy: {
         federation_entity: {
           organization_name: {
@@ -249,10 +308,10 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
     chain: [
       leafConfiguration,
       networkToLeaf,
-      networkConfiguration,
       anchorToNetwork,
       anchorConfiguration,
     ],
+    supplementalEntityConfigurations: [networkConfiguration],
     leaf,
     network,
     anchor,

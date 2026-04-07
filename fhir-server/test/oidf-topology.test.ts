@@ -3,6 +3,7 @@ import { describe, expect, test } from "bun:test";
 import { createAppContext, startServer } from "../src/app.ts";
 import { decodeEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI } from "../src/auth/demo-frameworks.ts";
+import { buildOidfTrustChain } from "../src/auth/frameworks/oidf/demo-topology.ts";
 
 describe("OIDF demo topology", () => {
   test("publishes entity configurations and federation-fetch endpoints", async () => {
@@ -29,10 +30,27 @@ describe("OIDF demo topology", () => {
       expect(decodedSubordinate.header.typ).toBe("entity-statement+jwt");
       expect(decodedSubordinate.payload.iss).toBe(`${publicOrigin}/federation/networks/app`);
       expect(decodedSubordinate.payload.sub).toBe(`${publicOrigin}/federation/leafs/demo-app`);
+      expect(decodedSubordinate.payload.jwks.keys).toEqual(decodedEntity.payload.jwks.keys);
       expect(decodedSubordinate.payload.metadata_policy.oauth_client.client_name.value).toBe("OpenID Federation Demo App");
     } finally {
       server.stop(true);
     }
+  });
+
+  test("builds a 4-statement RFC-shaped trust chain without intermediate entity configurations", () => {
+    const context = createAppContext({ port: 0 });
+    const chain = buildOidfTrustChain(context.oidfTopology, context.oidfTopology.demoAppEntityId);
+    expect(chain).toHaveLength(4);
+
+    const decoded = chain.map((statement) => decodeEs256Jwt<Record<string, any>>(statement).payload);
+    expect(decoded[0]?.iss).toBe(context.oidfTopology.demoAppEntityId);
+    expect(decoded[0]?.sub).toBe(context.oidfTopology.demoAppEntityId);
+    expect(decoded[1]?.iss).toBe(context.oidfTopology.appNetworkEntityId);
+    expect(decoded[1]?.sub).toBe(context.oidfTopology.demoAppEntityId);
+    expect(decoded[2]?.iss).toBe(context.oidfTopology.trustAnchorEntityId);
+    expect(decoded[2]?.sub).toBe(context.oidfTopology.appNetworkEntityId);
+    expect(decoded[3]?.iss).toBe(context.oidfTopology.trustAnchorEntityId);
+    expect(decoded[3]?.sub).toBe(context.oidfTopology.trustAnchorEntityId);
   });
 
   test("embeds a provider-issued trust mark in the ticket issuer entity configuration", async () => {

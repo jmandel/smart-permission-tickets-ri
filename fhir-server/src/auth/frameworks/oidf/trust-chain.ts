@@ -5,6 +5,7 @@ export const ACCEPTED_ENTITY_STATEMENT_ALGS = ["ES256"] as const;
 
 const CLOCK_SKEW_SECONDS = 60;
 const MAX_ENTITY_DEPTH = 3;
+const MAX_CHAIN_LENGTH = MAX_ENTITY_DEPTH + 1;
 
 export type EntityStatementAlg = (typeof ACCEPTED_ENTITY_STATEMENT_ALGS)[number];
 
@@ -45,7 +46,6 @@ export type VerifiedTrustChain = {
   expectedAnchor: string;
   depth: number;
   statements: ParsedEntityStatement[];
-  entityConfigurations: ParsedEntityStatement[];
   subordinateStatements: ParsedEntityStatement[];
   leaf: ParsedEntityStatement;
   anchor: ParsedEntityStatement;
@@ -63,70 +63,68 @@ export type VerifiedTrustChain = {
 
 export async function verifyTrustChain(
   chain: string[],
-  expectedAnchor: string,
-  nowSeconds = Math.floor(Date.now() / 1000),
+  options: {
+    expectedAnchor: string;
+    trustedAnchorJwks: JsonWebKey[];
+    supplementalEntityConfigurations?: string[];
+    nowSeconds?: number;
+  },
 ): Promise<VerifiedTrustChain> {
-  if (!Array.isArray(chain) || chain.length === 0 || chain.length % 2 === 0) {
-    throw new Error("OIDF trust chain must be an odd-length array of entity statements");
+  const nowSeconds = options.nowSeconds ?? Math.floor(Date.now() / 1000);
+  if (!Array.isArray(chain) || chain.length === 0) {
+    throw new Error("OIDF trust chain must be a non-empty array of entity statements");
   }
-
-  const depth = (chain.length + 1) / 2;
-  if (depth > MAX_ENTITY_DEPTH) {
+  if (chain.length === 2 || chain.length > MAX_CHAIN_LENGTH) {
     throw new Error(`OIDF trust chain exceeds the supported depth of ${MAX_ENTITY_DEPTH}`);
   }
 
   const statements = chain.map((jwt, position) => parseEntityStatement(jwt, position, nowSeconds));
-  const entityConfigurations: ParsedEntityStatement[] = [];
-  const subordinateStatements: ParsedEntityStatement[] = [];
-
-  for (const statement of statements) {
-    if (statement.position % 2 === 0) {
-      if (statement.kind !== "entity-configuration") {
-        throw new Error(`Entity statement ${statement.position} must be an entity configuration`);
-      }
-      entityConfigurations.push(statement);
-    } else {
-      if (statement.kind !== "subordinate-statement") {
-        throw new Error(`Entity statement ${statement.position} must be a subordinate statement`);
-      }
-      subordinateStatements.push(statement);
-    }
+  const depth = chain.length === 1 ? 1 : chain.length - 1;
+  const leaf = statements[0];
+  const anchor = statements[statements.length - 1];
+  if (leaf.kind !== "entity-configuration") {
+    throw new Error("OIDF trust chain must begin with an entity configuration");
+  }
+  if (anchor.kind !== "entity-configuration") {
+    throw new Error("OIDF trust chain must end with the trust anchor entity configuration");
+  }
+  if (anchor.entityId !== options.expectedAnchor) {
+    throw new Error(`OIDF trust chain terminates at ${anchor.entityId}, expected ${options.expectedAnchor}`);
   }
 
-  if (entityConfigurations.length !== subordinateStatements.length + 1) {
-    throw new Error("OIDF trust chain structure is inconsistent");
+  const subordinateStatements = statements.slice(1, -1);
+  if (subordinateStatements.some((statement) => statement.kind !== "subordinate-statement")) {
+    throw new Error("OIDF trust chain may only contain subordinate statements between the leaf and trust anchor");
   }
 
-  const leaf = entityConfigurations[0];
-  const anchor = entityConfigurations[entityConfigurations.length - 1];
-  if (anchor.entityId !== expectedAnchor) {
-    throw new Error(`OIDF trust chain terminates at ${anchor.entityId}, expected ${expectedAnchor}`);
+  await verifyEntityStatementSignature(leaf, requiredJwks(leaf));
+  for (let index = 0; index < statements.length - 1; index += 1) {
+    const statement = statements[index];
+    const signer = statements[index + 1];
+    await verifyEntityStatementSignature(statement, requiredJwks(signer));
   }
+  await verifyEntityStatementSignature(anchor, options.trustedAnchorJwks.map((jwk) => normalizePublicJwk(jwk)));
 
-  await Promise.all(entityConfigurations.map((statement) => verifyEntityStatementSignature(statement, requiredJwks(statement))));
-
-  for (const subordinate of subordinateStatements) {
-    const parentConfiguration = statements[subordinate.position + 1];
-    if (!parentConfiguration || parentConfiguration.kind !== "entity-configuration") {
-      throw new Error(`Subordinate statement ${subordinate.position} is missing its superior entity configuration`);
+  const supplementalConfigurations = parseSupplementalEntityConfigurations(
+    options.supplementalEntityConfigurations ?? [],
+    nowSeconds,
+  );
+  for (const [index, subordinate] of subordinateStatements.entries()) {
+    const expectedSubjectEntityId = index === 0 ? leaf.entityId : subordinateStatements[index - 1]?.payload.iss;
+    if (subordinate.payload.sub !== expectedSubjectEntityId) {
+      throw new Error(`Subordinate statement ${subordinate.position} must target ${expectedSubjectEntityId}`);
     }
-    await verifyEntityStatementSignature(subordinate, requiredJwks(parentConfiguration));
-  }
-
-  for (let index = 0; index < subordinateStatements.length; index += 1) {
-    const child = entityConfigurations[index];
-    const parent = entityConfigurations[index + 1];
-    const subordinate = subordinateStatements[index];
-    const authorityHints = child.payload.authority_hints ?? [];
-
-    if (!authorityHints.includes(parent.entityId)) {
-      throw new Error(`Entity configuration ${child.entityId} does not name ${parent.entityId} in authority_hints`);
+    const subjectConfiguration = subordinate.payload.sub === leaf.entityId
+      ? leaf
+      : subordinate.payload.sub === anchor.entityId
+      ? anchor
+      : supplementalConfigurations.get(subordinate.payload.sub);
+    if (!subjectConfiguration) {
+      throw new Error(`OIDF trust chain is missing the subject entity configuration for ${subordinate.payload.sub}`);
     }
-    if (subordinate.payload.sub !== child.entityId) {
-      throw new Error(`Subordinate statement ${subordinate.position} must target ${child.entityId}`);
-    }
-    if (subordinate.payload.iss !== parent.entityId) {
-      throw new Error(`Subordinate statement ${subordinate.position} must be issued by ${parent.entityId}`);
+    const authorityHints = subjectConfiguration.payload.authority_hints ?? [];
+    if (!authorityHints.includes(subordinate.payload.iss)) {
+      throw new Error(`Entity configuration ${subjectConfiguration.entityId} does not name ${subordinate.payload.iss} in authority_hints`);
     }
   }
 
@@ -139,10 +137,9 @@ export async function verifyTrustChain(
     }));
 
   return {
-    expectedAnchor,
+    expectedAnchor: options.expectedAnchor,
     depth,
     statements,
-    entityConfigurations,
     subordinateStatements,
     leaf,
     anchor,
@@ -188,19 +185,7 @@ function parseEntityStatement(jwt: string, position: number, nowSeconds: number)
   }
 
   const kind = payload.iss === payload.sub ? "entity-configuration" : "subordinate-statement";
-  if (kind === "entity-configuration") {
-    requiredJwks({
-      jwt,
-      position,
-      kind,
-      header: header as EntityStatementHeader,
-      payload: payload as EntityStatementPayload,
-      entityId: payload.sub,
-      signerEntityId: payload.iss,
-    });
-  }
-
-  return {
+  const statement: ParsedEntityStatement = {
     jwt,
     position,
     kind,
@@ -209,12 +194,14 @@ function parseEntityStatement(jwt: string, position: number, nowSeconds: number)
     entityId: payload.sub,
     signerEntityId: payload.iss,
   };
+  requiredJwks(statement);
+  return statement;
 }
 
 function requiredJwks(statement: ParsedEntityStatement) {
   const jwks = statement.payload.jwks?.keys;
   if (!Array.isArray(jwks) || jwks.length === 0) {
-    throw new Error(`Entity configuration ${statement.entityId} is missing jwks`);
+    throw new Error(`Entity statement ${statement.position} is missing jwks`);
   }
   return jwks.map((jwk) => normalizePublicJwk(jwk));
 }
@@ -236,4 +223,16 @@ async function verifyEntityStatementSignature(statement: ParsedEntityStatement, 
 
 function formatError(error: unknown) {
   return error instanceof Error ? error.message : String(error);
+}
+
+function parseSupplementalEntityConfigurations(entityConfigurations: string[], nowSeconds: number) {
+  const map = new Map<string, ParsedEntityStatement>();
+  for (const [index, jwt] of entityConfigurations.entries()) {
+    const parsed = parseEntityStatement(jwt, MAX_CHAIN_LENGTH + index, nowSeconds);
+    if (parsed.kind !== "entity-configuration") {
+      throw new Error(`OIDF supplemental entity statement ${parsed.position} must be an entity configuration`);
+    }
+    map.set(parsed.entityId, parsed);
+  }
+  return map;
 }

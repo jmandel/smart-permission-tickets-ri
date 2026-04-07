@@ -120,7 +120,7 @@ export function buildOidfDemoTopology(
   const subordinateStatements = new Map<string, Map<string, string>>();
   addSubordinateStatement(subordinateStatements, appNetwork.entityId, demoApp.entityId, signSubordinateStatement({
     issuer: appNetwork,
-    subjectEntityId: demoApp.entityId,
+    subject: demoApp,
     metadataPolicy: {
       oauth_client: {
         client_name: {
@@ -132,7 +132,7 @@ export function buildOidfDemoTopology(
   }));
   addSubordinateStatement(subordinateStatements, anchor.entityId, appNetwork.entityId, signSubordinateStatement({
     issuer: anchor,
-    subjectEntityId: appNetwork.entityId,
+    subject: appNetwork,
     metadataPolicy: {
       oauth_client: {
         token_endpoint_auth_method: {
@@ -144,7 +144,7 @@ export function buildOidfDemoTopology(
   }));
   addSubordinateStatement(subordinateStatements, providerNetwork.entityId, fhirServer.entityId, signSubordinateStatement({
     issuer: providerNetwork,
-    subjectEntityId: fhirServer.entityId,
+    subject: fhirServer,
     metadataPolicy: {
       oauth_authorization_server: {
         token_endpoint: {
@@ -156,7 +156,7 @@ export function buildOidfDemoTopology(
   }));
   addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, signSubordinateStatement({
     issuer: providerNetwork,
-    subjectEntityId: ticketIssuer.entityId,
+    subject: ticketIssuer,
     metadataPolicy: {
       federation_entity: {
         issuer_url: {
@@ -168,7 +168,7 @@ export function buildOidfDemoTopology(
   }));
   addSubordinateStatement(subordinateStatements, anchor.entityId, providerNetwork.entityId, signSubordinateStatement({
     issuer: anchor,
-    subjectEntityId: providerNetwork.entityId,
+    subject: providerNetwork,
     metadataPolicy: {
       federation_entity: {
         organization_name: {
@@ -198,20 +198,35 @@ export function buildOidfDemoTopology(
 export function buildOidfTrustChain(topology: OidfDemoTopology, leafEntityId: string) {
   const chain: string[] = [];
   let currentEntityId: string | undefined = leafEntityId;
+  let first = true;
   while (currentEntityId) {
     const entityConfiguration = topology.entityConfigurations.get(currentEntityId);
     if (!entityConfiguration) {
       throw new Error(`No OIDF entity configuration published for ${currentEntityId}`);
     }
-    chain.push(entityConfiguration);
+    if (first) {
+      chain.push(entityConfiguration);
+      first = false;
+    }
     const parentEntityId: string | undefined = entityAuthorityHints(topology, currentEntityId)[0];
-    if (!parentEntityId) break;
+    if (!parentEntityId) {
+      if (currentEntityId === topology.trustAnchorEntityId) break;
+      throw new Error(`OIDF entity ${currentEntityId} is missing authority_hints for trust-chain construction`);
+    }
     const subordinateStatement = topology.subordinateStatements.get(parentEntityId)?.get(currentEntityId);
     if (!subordinateStatement) {
       throw new Error(`No OIDF subordinate statement from ${parentEntityId} to ${currentEntityId}`);
     }
     chain.push(subordinateStatement);
     currentEntityId = parentEntityId;
+    if (currentEntityId === topology.trustAnchorEntityId) {
+      const anchorConfiguration = topology.entityConfigurations.get(currentEntityId);
+      if (!anchorConfiguration) {
+        throw new Error(`No OIDF entity configuration published for ${currentEntityId}`);
+      }
+      chain.push(anchorConfiguration);
+      break;
+    }
   }
   return chain;
 }
@@ -296,15 +311,16 @@ function signEntityConfiguration(entity: OidfDemoEntity, now: number) {
 
 function signSubordinateStatement(options: {
   issuer: OidfDemoEntity;
-  subjectEntityId: string;
+  subject: OidfDemoEntity;
   metadataPolicy: Record<string, Record<string, Record<string, unknown>>>;
   now: number;
 }) {
   return signEs256Jwt({
     iss: options.issuer.entityId,
-    sub: options.subjectEntityId,
+    sub: options.subject.entityId,
     iat: options.now - 60,
     exp: options.now + ENTITY_STATEMENT_TTL_SECONDS,
+    jwks: { keys: [options.subject.publicJwk] },
     metadata_policy: options.metadataPolicy,
   }, options.issuer.privateJwk, {
     typ: ENTITY_STATEMENT_TYP,

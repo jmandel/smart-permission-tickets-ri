@@ -62,6 +62,7 @@ export type FrameworkDefinition = {
   };
   oidf?: {
     trustAnchorEntityId: string;
+    trustAnchorJwks?: JsonWebKey[];
     appNetworkEntityId: string;
     providerNetworkEntityId: string;
     demoAppEntityId: string;
