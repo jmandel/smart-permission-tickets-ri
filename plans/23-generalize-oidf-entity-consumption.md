@@ -251,6 +251,10 @@ Status:
 - ensure our own entity IDs and fetch endpoints still resolve correctly
 - verify that self-origin fetches use `INTERNAL_BASE_URL` only when the target origin equals `PUBLIC_BASE_URL`
 
+Status:
+
+- implemented on `main`
+
 ### Phase 6: External-Looking Topology Tests
 
 - add tests for at least one non-demo-origin OIDF issuer leaf

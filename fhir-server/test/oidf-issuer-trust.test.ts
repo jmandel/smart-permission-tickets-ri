@@ -4,6 +4,7 @@ import { PATIENT_SELF_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE }
 import { signEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { buildDefaultFrameworks } from "../src/auth/demo-frameworks.ts";
 import type { OidfDemoEntity, OidfDemoTopology } from "../src/auth/frameworks/oidf/demo-topology.ts";
+import { OidfFrameworkResolver } from "../src/auth/frameworks/oidf/resolver.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
@@ -101,6 +102,31 @@ describe("OIDF issuer trust", () => {
       await expect(
         context.frameworks.resolveIssuerTrust(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
       ).rejects.toThrow("matches multiple allowlisted leaves");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("demo issuer trust uses INTERNAL_BASE_URL only for self-origin loopback", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    const seenUrls: string[] = [];
+    const resolver = new OidfFrameworkResolver(
+      context.config.frameworks,
+      context.config,
+      async (input, init) => {
+        const targetUrl = typeof input === "string" ? input : input.url;
+        seenUrls.push(targetUrl);
+        return fetch(input, init);
+      },
+    );
+    try {
+      const issuerTrust = await resolver.resolveIssuerTrust(
+        `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+      );
+      expect(issuerTrust?.framework?.type).toBe("oidf");
+      expect(seenUrls.length).toBeGreaterThan(0);
+      const internalOrigin = new URL(context.config.internalBaseUrl!).origin;
+      expect(seenUrls.every((url) => new URL(url).origin === internalOrigin)).toBe(true);
     } finally {
       server.stop(true);
     }
