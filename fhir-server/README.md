@@ -26,6 +26,19 @@ PUBLIC_BASE_URL=https://smart-permission-tickets.example.org
 The server now uses `PUBLIC_BASE_URL` for advertised SMART/OAuth/FHIR URLs and
 token audiences. It does not infer public origin from `X-Forwarded-*` headers.
 
+If the server advertises a public HTTPS origin that the VM cannot reach directly
+(for example, TLS terminates on an external proxy), also set an internal
+self-fetch origin:
+
+```bash
+PUBLIC_BASE_URL=https://smart-permission-tickets.example.org
+INTERNAL_BASE_URL=http://127.0.0.1:8091
+```
+
+`INTERNAL_BASE_URL` is only used when the server needs to fetch its own
+publicly advertised well-known resources, such as a built-in well-known client
+JWKS. Wire identifiers and advertised metadata still use `PUBLIC_BASE_URL`.
+
 Open the root UI in a browser:
 
 ```bash

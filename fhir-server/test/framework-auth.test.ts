@@ -6,6 +6,11 @@ import {
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
+import {
+  buildDefaultFrameworks,
+  DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+  DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+} from "../src/auth/demo-frameworks.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
 describe("framework-aware client auth", () => {
@@ -151,6 +156,42 @@ describe("framework-aware client auth", () => {
       expect(futureIatBody.error).toBe("invalid_client");
       expect(futureIatBody.error_description).toContain("issued in the future");
     });
+  });
+
+  test("well-known self-fetch uses INTERNAL_BASE_URL when PUBLIC_BASE_URL is not directly reachable", async () => {
+    const publicOrigin = "https://tickets.example.test";
+    const appContext = createAppContext({
+      port: 0,
+      publicBaseUrl: publicOrigin,
+      issuer: publicOrigin,
+      frameworks: buildDefaultFrameworks(publicOrigin, "reference-demo"),
+    });
+    const appServer = startServer(appContext, 0);
+    const localOrigin = `http://127.0.0.1:${appServer.port}`;
+    appContext.config.internalBaseUrl = localOrigin;
+    try {
+      const frameworkEntityUri = `${publicOrigin}/demo/clients/well-known-alpha`;
+      const ticket = mintTicket(appContext, publicOrigin, {
+        presenterBinding: {
+          method: "framework_client",
+          framework: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+          framework_type: "well-known",
+          entity_uri: frameworkEntityUri,
+        },
+      });
+      const response = await postWellKnownToken(
+        `${localOrigin}/token`,
+        frameworkEntityUri,
+        DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+        ticket,
+        { assertionAud: `${publicOrigin}/token` },
+      );
+      expect(response.status).toBe(200);
+      const body = await response.json();
+      expect(typeof body.access_token).toBe("string");
+    } finally {
+      appServer.stop(true);
+    }
   });
 });
 

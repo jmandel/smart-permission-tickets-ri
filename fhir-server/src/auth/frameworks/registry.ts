@@ -3,6 +3,7 @@ import type { AuthenticatedClientIdentity, FrameworkDefinition, ResolvedIssuerTr
 import { UdapFrameworkResolver } from "./udap.ts";
 import type { FrameworkClientRegistration, FrameworkResolver } from "./types.ts";
 import { WellKnownFrameworkResolver } from "./well-known.ts";
+import type { ServerConfig } from "../../config.ts";
 
 export class FrameworkRegistry {
   private readonly frameworks: FrameworkDefinition[];
@@ -11,11 +12,12 @@ export class FrameworkRegistry {
   constructor(
     frameworks: FrameworkDefinition[],
     clients: ClientRegistry,
+    config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
     fetchImpl: typeof fetch = fetch,
   ) {
     this.frameworks = frameworks;
     this.resolvers = [
-      new WellKnownFrameworkResolver(frameworks, fetchImpl),
+      new WellKnownFrameworkResolver(frameworks, config, fetchImpl),
       new UdapFrameworkResolver(frameworks, clients),
     ];
   }

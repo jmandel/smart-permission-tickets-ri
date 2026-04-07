@@ -8,6 +8,7 @@ import {
 export type ServerConfig = {
   port: number;
   publicBaseUrl: string;
+  internalBaseUrl?: string;
   issuer: string;
   accessTokenSecret: string;
   clientRegistrationSecret: string;
@@ -25,6 +26,9 @@ export type ServerConfig = {
 export function loadConfig(): ServerConfig {
   const port = Number(Bun.env.PORT ?? 8091);
   const publicBaseUrl = normalizeOriginEnv(Bun.env.PUBLIC_BASE_URL ?? Bun.env.ISSUER ?? `http://localhost:${port}`, "PUBLIC_BASE_URL");
+  const internalBaseUrl = Bun.env.INTERNAL_BASE_URL
+    ? normalizeOriginEnv(Bun.env.INTERNAL_BASE_URL, "INTERNAL_BASE_URL")
+    : undefined;
   const issuer = normalizeOriginEnv(Bun.env.ISSUER ?? publicBaseUrl, "ISSUER");
   const defaultNetworkSlug = Bun.env.DEFAULT_NETWORK_SLUG ?? "reference";
   const defaultNetworkName = Bun.env.DEFAULT_NETWORK_NAME ?? "Reference Network";
@@ -36,6 +40,7 @@ export function loadConfig(): ServerConfig {
   return {
     port,
     publicBaseUrl,
+    internalBaseUrl,
     issuer,
     accessTokenSecret: Bun.env.ACCESS_TOKEN_SECRET ?? "reference-implementation-access-secret",
     clientRegistrationSecret: Bun.env.CLIENT_REGISTRATION_SECRET ?? Bun.env.ACCESS_TOKEN_SECRET ?? "reference-implementation-client-registration-secret",

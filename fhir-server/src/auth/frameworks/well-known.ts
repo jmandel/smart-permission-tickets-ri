@@ -8,6 +8,7 @@ import type {
   ResolvedFrameworkEntity,
   ResolvedIssuerTrust,
 } from "../../store/model.ts";
+import type { ServerConfig } from "../../config.ts";
 import type { FrameworkResolver, SupportedTrustFramework } from "./types.ts";
 
 const DEFAULT_CACHE_TTL_SECONDS = 3600;
@@ -24,6 +25,7 @@ export class WellKnownFrameworkResolver implements FrameworkResolver {
 
   constructor(
     private readonly frameworks: FrameworkDefinition[],
+    private readonly config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
     private readonly fetchImpl: typeof fetch = fetch,
   ) {}
 
@@ -115,7 +117,7 @@ export class WellKnownFrameworkResolver implements FrameworkResolver {
     const frameworkBinding = resolveFrameworkBinding(this.frameworks, entityUri, capability);
     if (capability === "issuer" && !frameworkBinding) return null;
     const jwksUrl = buildEntityRelativeUrl(entityUri, frameworkBinding?.jwksRelativePath ?? "/.well-known/jwks.json");
-    const response = await this.fetchImpl(jwksUrl, { redirect: "follow" });
+    const response = await this.fetchImpl(rewriteSelfFetchUrl(jwksUrl, this.config.publicBaseUrl, this.config.internalBaseUrl), { redirect: "follow" });
     if (!response.ok) {
       throw new Error(`Unable to retrieve well-known JWKS (${response.status})`);
     }
@@ -227,6 +229,15 @@ function cacheTtlMs(headers: Headers, fallbackSeconds: number) {
     if (Number.isFinite(seconds) && seconds >= 0) return seconds * 1000;
   }
   return fallbackSeconds * 1000;
+}
+
+function rewriteSelfFetchUrl(targetUrl: string, publicBaseUrl: string, internalBaseUrl: string | undefined) {
+  if (!internalBaseUrl) return targetUrl;
+  const target = new URL(targetUrl);
+  const publicBase = new URL(publicBaseUrl);
+  if (target.origin !== publicBase.origin) return targetUrl;
+  const internalBase = new URL(internalBaseUrl);
+  return `${internalBase.origin}${target.pathname}${target.search}`;
 }
 
 function isSecureLocalOrigin(url: URL) {
