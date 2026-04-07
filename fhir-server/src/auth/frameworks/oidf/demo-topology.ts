@@ -46,6 +46,10 @@ export function buildOidfDemoTopology(
   publicBaseUrl: string,
   ticketIssuerSlug: string,
   ticketIssuerName = "Reference Demo Issuer",
+  ticketIssuerKeys?: {
+    publicJwk: JsonWebKey & { kid?: string };
+    privateJwk: JsonWebKey & { kid?: string };
+  },
 ): OidfDemoTopology {
   const trustAnchorEntityId = `${publicBaseUrl}/federation/anchor`;
   const appNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
@@ -94,7 +98,7 @@ export function buildOidfDemoTopology(
       organization_name: ticketIssuerName,
       issuer_url: ticketIssuerUrl,
     },
-  }, [providerNetworkEntityId]);
+  }, [providerNetworkEntityId], ticketIssuerKeys);
 
   const ticketIssuerTrustMark = signTrustMark(providerNetwork, ticketIssuer.entityId, trustMarkType, now);
   ticketIssuer.trustMarks = [ticketIssuerTrustMark];
@@ -240,8 +244,29 @@ function createEntity(
   name: string,
   metadata: Record<string, Record<string, unknown>>,
   authorityHints: string[] = [],
+  keyMaterial?: {
+    publicJwk: JsonWebKey & { kid?: string };
+    privateJwk: JsonWebKey & { kid?: string };
+  },
 ): OidfDemoEntity {
-  const keys = generateEcKeyPair();
+  const keys = keyMaterial
+    ? (() => {
+      const normalizedPublicJwk = normalizePublicJwk(keyMaterial.publicJwk);
+      const publicJwk = {
+        ...normalizedPublicJwk,
+        kid: typeof keyMaterial.publicJwk.kid === "string"
+          ? keyMaterial.publicJwk.kid
+          : computeEcJwkThumbprintSync(normalizedPublicJwk),
+      };
+      return {
+        publicJwk,
+        privateJwk: {
+          ...normalizePrivateJwk(keyMaterial.privateJwk),
+          kid: typeof keyMaterial.privateJwk.kid === "string" ? keyMaterial.privateJwk.kid : publicJwk.kid,
+        },
+      };
+    })()
+    : generateEcKeyPair();
   return {
     role,
     entityId,

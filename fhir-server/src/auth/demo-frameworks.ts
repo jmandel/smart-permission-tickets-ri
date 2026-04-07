@@ -276,7 +276,7 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
         entityUri: publicBaseUrl,
       },
       wellKnown: {
-        allowlist: [publicBaseUrl, issuerUrl, ...demoWellKnownClients.map((client) => client.entityUri)],
+        allowlist: [publicBaseUrl, ...demoWellKnownClients.map((client) => client.entityUri)],
         jwksRelativePath: "/.well-known/jwks.json",
       },
     },
@@ -315,7 +315,7 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
       framework: DEFAULT_DEMO_OIDF_FRAMEWORK_URI,
       frameworkType: "oidf",
       supportsClientAuth: true,
-      supportsIssuerTrust: false,
+      supportsIssuerTrust: true,
       cacheTtlSeconds: 300,
       localAudienceMembership: {
         entityUri: oidfFhirServerEntityId,

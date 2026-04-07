@@ -52,7 +52,11 @@ export class FrameworkRegistry {
   }
 
   async resolveIssuerTrust(issuerUrl: string): Promise<ResolvedIssuerTrust | null> {
-    for (const resolver of this.resolvers) {
+    const issuerResolvers = [
+      ...this.resolvers.filter((resolver) => resolver.frameworkType === "oidf"),
+      ...this.resolvers.filter((resolver) => resolver.frameworkType !== "oidf"),
+    ];
+    for (const resolver of issuerResolvers) {
       if (!resolver.resolveIssuerTrust) continue;
       const issuerTrust = await resolver.resolveIssuerTrust(issuerUrl);
       if (issuerTrust) return issuerTrust;

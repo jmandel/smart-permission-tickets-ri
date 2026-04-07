@@ -11,12 +11,9 @@ import { createAppContext, startServer } from "../src/app.ts";
 
 describe("OIDF client authentication", () => {
   test("unknown URL client_id authenticates successfully when a valid trust_chain header is supplied", async () => {
-    const frameworks = buildDefaultFrameworks("http://localhost:8091", "reference-demo");
-    const context = createAppContext({ port: 0, frameworks });
-    const server = startServer(context, 0);
-    const origin = `http://127.0.0.1:${server.port}`;
+    const { context, server, origin, publicOrigin } = startOidfAuthServer();
     try {
-      const ticket = mintOidfTicket(context);
+      const ticket = mintOidfTicket(context, publicOrigin);
       const response = await postOidfToken(origin, context, ticket);
       expect(response.status).toBe(200);
       const body = await response.json();
@@ -27,9 +24,7 @@ describe("OIDF client authentication", () => {
   });
 
   test("resolved client_name comes from metadata policy, not just the leaf metadata", async () => {
-    const frameworks = buildDefaultFrameworks("http://localhost:8091", "reference-demo");
-    const context = createAppContext({ port: 0, frameworks });
-    const server = startServer(context, 0);
+    const { context, server } = startOidfAuthServer();
     try {
       const tokenEndpointUrl = `${context.config.publicBaseUrl}/token`;
       const assertion = await buildOidfClientAssertion(context, tokenEndpointUrl, { withTrustChain: true });
@@ -46,9 +41,7 @@ describe("OIDF client authentication", () => {
   });
 
   test("OIDF dispatch wins based on trust_chain header even though the client_id is a URL", async () => {
-    const frameworks = buildDefaultFrameworks("http://localhost:8091", "reference-demo");
-    const context = createAppContext({ port: 0, frameworks });
-    const server = startServer(context, 0);
+    const { context, server } = startOidfAuthServer();
     try {
       const tokenEndpointUrl = `${context.config.publicBaseUrl}/token`;
       const assertion = await buildOidfClientAssertion(context, tokenEndpointUrl, { withTrustChain: true });
@@ -65,12 +58,9 @@ describe("OIDF client authentication", () => {
   });
 
   test("a URL client_id without trust_chain continues to follow the non-OIDF path", async () => {
-    const frameworks = buildDefaultFrameworks("http://localhost:8091", "reference-demo");
-    const context = createAppContext({ port: 0, frameworks });
-    const server = startServer(context, 0);
-    const origin = `http://127.0.0.1:${server.port}`;
+    const { context, server, origin, publicOrigin } = startOidfAuthServer();
     try {
-      const ticket = mintOidfTicket(context);
+      const ticket = mintOidfTicket(context, publicOrigin);
       const response = await postOidfToken(origin, context, ticket, { withTrustChain: false });
       expect(response.status).toBe(401);
       const body = await response.json();
@@ -82,10 +72,24 @@ describe("OIDF client authentication", () => {
   });
 });
 
-function mintOidfTicket(appContext: ReturnType<typeof createAppContext>) {
-  return appContext.issuers.sign(appContext.config.publicBaseUrl, appContext.config.defaultPermissionTicketIssuerSlug, {
-    iss: `${appContext.config.publicBaseUrl}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
-    aud: appContext.config.publicBaseUrl,
+function startOidfAuthServer() {
+  const publicOrigin = "https://tickets.example.test";
+  const context = createAppContext({
+    port: 0,
+    publicBaseUrl: publicOrigin,
+    issuer: publicOrigin,
+    frameworks: buildDefaultFrameworks(publicOrigin, "reference-demo"),
+  });
+  const server = startServer(context, 0);
+  const origin = `http://127.0.0.1:${server.port}`;
+  context.config.internalBaseUrl = origin;
+  return { context, server, origin, publicOrigin };
+}
+
+function mintOidfTicket(appContext: ReturnType<typeof createAppContext>, publicOrigin: string) {
+  return appContext.issuers.sign(publicOrigin, appContext.config.defaultPermissionTicketIssuerSlug, {
+    iss: `${publicOrigin}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
+    aud: publicOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
     jti: crypto.randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,

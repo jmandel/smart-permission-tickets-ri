@@ -18,7 +18,7 @@ type FieldConstraint = {
 export function applyMetadataPolicy(verifiedChain: VerifiedTrustChain): ResolvedOidfClientMetadata {
   const jwks = verifiedChain.leaf.payload.jwks?.keys;
   if (!Array.isArray(jwks) || jwks.length === 0) {
-    throw new Error("OIDF resolved metadata is missing the leaf client jwks");
+    throw new Error("OIDF resolved metadata is missing the leaf entity jwks");
   }
 
   const resolvedMetadata = cloneMetadata(verifiedChain.leafMetadata);

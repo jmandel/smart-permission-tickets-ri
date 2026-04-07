@@ -63,7 +63,7 @@ describe("OIDF demo topology", () => {
     const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
     expect(oidfFramework?.framework).toBe(DEFAULT_DEMO_OIDF_FRAMEWORK_URI);
     expect(oidfFramework?.supportsClientAuth).toBe(true);
-    expect(oidfFramework?.supportsIssuerTrust).toBe(false);
+    expect(oidfFramework?.supportsIssuerTrust).toBe(true);
     expect(oidfFramework?.oidf?.trustAnchorEntityId).toBe(`${context.config.publicBaseUrl}/federation/anchor`);
     expect(oidfFramework?.oidf?.ticketIssuerUrl).toBe(`${context.config.publicBaseUrl}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
   });

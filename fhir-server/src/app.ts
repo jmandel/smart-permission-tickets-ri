@@ -71,9 +71,20 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const config = { ...loadConfig(), ...overrides };
   const store = FhirStore.load();
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
-  const oidfTopology = buildOidfDemoTopology(config.publicBaseUrl, config.defaultPermissionTicketIssuerSlug, config.defaultPermissionTicketIssuerName);
-  const frameworks = new FrameworkRegistry(config.frameworks, clients, config);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
+  const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
+  const oidfTopology = buildOidfDemoTopology(
+    config.publicBaseUrl,
+    config.defaultPermissionTicketIssuerSlug,
+    config.defaultPermissionTicketIssuerName,
+    defaultIssuer
+      ? {
+        publicJwk: defaultIssuer.publicJwk,
+        privateJwk: defaultIssuer.privateJwk,
+      }
+      : undefined,
+  );
+  const frameworks = new FrameworkRegistry(config.frameworks, clients, config);
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
   const demoSessionLinks = new DemoSessionLinks();

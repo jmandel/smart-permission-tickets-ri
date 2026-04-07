@@ -1,4 +1,4 @@
-import { computeJwkThumbprint, normalizePublicJwk, verifyPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
+import { computeJwkThumbprint, decodeJwtWithoutVerification, normalizePublicJwk, verifyPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
 import { toAuthenticatedClientIdentity } from "../../client-identity.ts";
 import type {
   AuthenticatedClientIdentity,
@@ -8,8 +8,11 @@ import type {
 } from "../../../store/model.ts";
 import type { ServerConfig } from "../../../config.ts";
 import type { FrameworkResolver, SupportedTrustFramework } from "../types.ts";
+import { federationFetchEndpointPath, oidfEntityConfigurationPath } from "./demo-topology.ts";
 import { applyMetadataPolicy } from "./policy.ts";
+import type { EntityStatementPayload } from "./trust-chain.ts";
 import { verifyTrustChain } from "./trust-chain.ts";
+import { verifyTrustMark } from "./trust-mark.ts";
 
 export class OidfFrameworkResolver implements FrameworkResolver {
   readonly frameworkType = "oidf" as const;
@@ -58,8 +61,11 @@ export class OidfFrameworkResolver implements FrameworkResolver {
   }
 
   async resolveIssuerTrust(_issuerUrl: string): Promise<ResolvedIssuerTrust | null> {
-    void this.config;
-    void this.fetchImpl;
+    const oidfFrameworks = this.frameworks.filter((framework) => framework.frameworkType === "oidf" && framework.supportsIssuerTrust && framework.oidf);
+    for (const framework of oidfFrameworks) {
+      if (framework.oidf?.ticketIssuerUrl !== _issuerUrl) continue;
+      return this.resolveIssuerTrustAgainstFramework(framework, _issuerUrl);
+    }
     return null;
   }
 
@@ -125,6 +131,76 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       },
     );
   }
+
+  private async resolveIssuerTrustAgainstFramework(framework: FrameworkDefinition, issuerUrl: string): Promise<ResolvedIssuerTrust> {
+    const oidf = framework.oidf;
+    if (!oidf) {
+      throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
+    }
+
+    const trustChain = await fetchTrustChain(oidf.ticketIssuerEntityId, this.config, this.fetchImpl);
+    const verifiedChain = await verifyTrustChain(trustChain, oidf.trustAnchorEntityId);
+    if (verifiedChain.leaf.entityId !== oidf.ticketIssuerEntityId) {
+      throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${oidf.ticketIssuerEntityId}`);
+    }
+
+    const resolved = applyMetadataPolicy(verifiedChain);
+    const resolvedIssuerUrl = resolved.metadata.federation_entity?.issuer_url;
+    if (resolvedIssuerUrl !== issuerUrl) {
+      throw new Error(`OIDF issuer_url ${String(resolvedIssuerUrl ?? "")} does not match ${issuerUrl}`);
+    }
+
+    const providerNetwork = verifiedChain.entityConfigurations.find((statement) => statement.entityId === oidf.providerNetworkEntityId);
+    if (!providerNetwork) {
+      throw new Error(`OIDF trust chain does not include provider network ${oidf.providerNetworkEntityId}`);
+    }
+
+    const trustMarks = verifiedChain.leaf.payload.trust_marks;
+    if (!Array.isArray(trustMarks) || trustMarks.length === 0) {
+      throw new Error("OIDF issuer trust mark is missing");
+    }
+
+    let verifiedTrustMark: Awaited<ReturnType<typeof verifyTrustMark>> | null = null;
+    let trustMarkError: Error | null = null;
+    for (const trustMark of trustMarks) {
+      try {
+        verifiedTrustMark = await verifyTrustMark(trustMark, {
+          issuerEntityId: oidf.providerNetworkEntityId,
+          subjectEntityId: oidf.ticketIssuerEntityId,
+          expectedTrustMarkType: oidf.trustMarkType,
+          issuerJwks: providerNetwork.payload.jwks?.keys ?? [],
+        });
+        break;
+      } catch (error) {
+        trustMarkError = error instanceof Error ? error : new Error(String(error));
+      }
+    }
+    if (!verifiedTrustMark) {
+      throw trustMarkError ?? new Error("OIDF issuer trust mark verification failed");
+    }
+
+    const displayName = typeof resolved.metadata.federation_entity?.organization_name === "string"
+      ? resolved.metadata.federation_entity.organization_name
+      : verifiedChain.leaf.entityId;
+
+    return {
+      source: "framework",
+      issuerUrl,
+      displayName,
+      framework: {
+        uri: framework.framework,
+        type: "oidf",
+      },
+      publicJwks: resolved.jwks,
+      metadata: {
+        resolution: "oidf-issuer-trust",
+        entity_id: verifiedChain.leaf.entityId,
+        trust_chain_depth: verifiedChain.depth,
+        resolved_metadata: resolved.metadata,
+        trust_mark: verifiedTrustMark.payload,
+      },
+    };
+  }
 }
 
 async function verifyAssertionAgainstJwks(
@@ -170,4 +246,80 @@ function normalizeTrustChain(value: unknown) {
     throw new Error("OIDF trust_chain header must be a non-empty array of entity statements");
   }
   return value;
+}
+
+async function fetchTrustChain(
+  leafEntityId: string,
+  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
+  fetchImpl: typeof fetch,
+) {
+  const chain: string[] = [];
+  let currentEntityId: string | undefined = leafEntityId;
+  let depth = 0;
+
+  while (currentEntityId) {
+    depth += 1;
+    if (depth > 3) {
+      throw new Error("OIDF issuer trust chain exceeds the supported depth of 3");
+    }
+
+    const entityConfigurationJwt = await fetchJwt(
+      `${config.publicBaseUrl}${oidfEntityConfigurationPath(currentEntityId)}`,
+      "entity configuration",
+      config,
+      fetchImpl,
+    );
+    chain.push(entityConfigurationJwt);
+    const decoded = decodeEntityStatementPayload(entityConfigurationJwt);
+    const authorityHints = Array.isArray(decoded.authority_hints)
+      ? decoded.authority_hints.filter((hint): hint is string => typeof hint === "string" && !!hint)
+      : [];
+    if (authorityHints.length === 0) break;
+    if (authorityHints.length > 1) {
+      throw new Error(`OIDF issuer trust only supports a single authority_hints parent for ${currentEntityId}`);
+    }
+
+    const parentEntityId = authorityHints[0];
+    const fetchUrl = new URL(`${config.publicBaseUrl}${federationFetchEndpointPath(parentEntityId)}`);
+    fetchUrl.searchParams.set("sub", currentEntityId);
+    const subordinateStatementJwt = await fetchJwt(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
+    chain.push(subordinateStatementJwt);
+    currentEntityId = parentEntityId;
+  }
+
+  return chain;
+}
+
+async function fetchJwt(
+  targetUrl: string,
+  label: string,
+  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
+  fetchImpl: typeof fetch,
+) {
+  const response = await fetchImpl(rewriteSelfFetchUrl(targetUrl, config.publicBaseUrl, config.internalBaseUrl), { redirect: "follow" });
+  if (!response.ok) {
+    throw new Error(`OIDF ${label} fetch failed (${response.status})`);
+  }
+  const body = (await response.text()).trim();
+  if (!body) {
+    throw new Error(`OIDF ${label} fetch returned an empty body`);
+  }
+  return body;
+}
+
+function decodeEntityStatementPayload(jwt: string) {
+  try {
+    return decodeJwtWithoutVerification<EntityStatementPayload>(jwt).payload;
+  } catch (error) {
+    throw new Error(`Malformed OIDF entity statement during fetch: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
+function rewriteSelfFetchUrl(targetUrl: string, publicBaseUrl: string, internalBaseUrl: string | undefined) {
+  if (!internalBaseUrl) return targetUrl;
+  const target = new URL(targetUrl);
+  const publicBase = new URL(publicBaseUrl);
+  if (target.origin !== publicBase.origin) return targetUrl;
+  const internalBase = new URL(internalBaseUrl);
+  return `${internalBase.origin}${target.pathname}${target.search}`;
 }

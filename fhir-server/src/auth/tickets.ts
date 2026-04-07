@@ -305,10 +305,10 @@ async function resolveTrustedIssuer(
   frameworks: FrameworkRegistry,
   requestOrigin: string,
 ): Promise<ResolvedIssuerTrust> {
-  const localIssuer = issuers.resolveTrustedIssuer(issuerUrl, requestOrigin);
-  if (localIssuer) return localIssuer;
   const frameworkIssuer = await frameworks.resolveIssuerTrust(issuerUrl);
   if (frameworkIssuer) return frameworkIssuer;
+  const localIssuer = issuers.resolveTrustedIssuer(issuerUrl, requestOrigin);
+  if (localIssuer) return localIssuer;
   throw new Error("Unknown Permission Ticket issuer");
 }
 

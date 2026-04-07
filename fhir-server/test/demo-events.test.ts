@@ -1,9 +1,10 @@
 import { describe, expect, test } from "bun:test";
 
-import { createAppContext, handleRequest } from "../src/app.ts";
+import { createAppContext, handleRequest, startServer } from "../src/app.ts";
 import type { DemoEvent } from "../shared/demo-events.ts";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import { PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import { buildDefaultFrameworks } from "../src/auth/demo-frameworks.ts";
 
 describe("demo event stream", () => {
   test("replays buffered events after Last-Event-ID and preserves session scoping", async () => {
@@ -317,22 +318,28 @@ describe("demo event stream", () => {
   });
 
   test("downstream token and FHIR requests inherit the session from ticket, client, and access-token links", async () => {
-    const context = createAppContext({ port: 0 });
-    context.config.publicBaseUrl = "http://example.test";
-    context.config.issuer = "http://example.test";
+    const publicOrigin = "https://tickets.example.test";
+    const context = createAppContext({
+      port: 0,
+      publicBaseUrl: publicOrigin,
+      issuer: publicOrigin,
+      frameworks: buildDefaultFrameworks(publicOrigin, "reference-demo"),
+    });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    context.config.internalBaseUrl = origin;
     const { publicJwk, privateJwk, thumbprint } = await generateClientKeyMaterial();
 
-    const signResponse = await handleRequest(
-      context,
-      new Request("http://example.test/issuer/reference-demo/sign-ticket", {
+    try {
+      const signResponse = await fetch(`${origin}/issuer/reference-demo/sign-ticket`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
           "x-demo-session": "session-flow",
         },
         body: JSON.stringify({
-          iss: "http://example.test/issuer/reference-demo",
-          aud: "http://example.test",
+          iss: `${publicOrigin}/issuer/reference-demo`,
+          aud: publicOrigin,
           exp: Math.floor(Date.now() / 1000) + 3600,
           jti: crypto.randomUUID(),
           ticket_type: "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
@@ -352,14 +359,11 @@ describe("demo event stream", () => {
             sensitive_data: "exclude",
           },
         }),
-      }),
-    );
-    expect(signResponse.status).toBe(201);
-    const signBody = await signResponse.json() as { signed_ticket: string };
+      });
+      expect(signResponse.status).toBe(201);
+      const signBody = await signResponse.json() as { signed_ticket: string };
 
-    const registerResponse = await handleRequest(
-      context,
-      new Request("http://example.test/networks/reference/register", {
+      const registerResponse = await fetch(`${origin}/networks/reference/register`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -370,27 +374,24 @@ describe("demo event stream", () => {
           token_endpoint_auth_method: "private_key_jwt",
           jwk: publicJwk,
         }),
-      }),
-    );
-    expect(registerResponse.status).toBe(201);
-    const registered = await registerResponse.json() as { client_id: string };
+      });
+      expect(registerResponse.status).toBe(201);
+      const registered = await registerResponse.json() as { client_id: string };
 
-    const networkAudience = "http://example.test/networks/reference/token";
-    const networkAssertion = await signPrivateKeyJwt(
-      {
-        iss: registered.client_id,
-        sub: registered.client_id,
-        aud: networkAudience,
-        iat: Math.floor(Date.now() / 1000),
-        exp: Math.floor(Date.now() / 1000) + 300,
-        jti: crypto.randomUUID(),
-      },
-      privateJwk as JsonWebKey & { kty: "EC"; crv: "P-256"; x: string; y: string; d: string },
-    );
+      const networkAudience = `${publicOrigin}/networks/reference/token`;
+      const networkAssertion = await signPrivateKeyJwt(
+        {
+          iss: registered.client_id,
+          sub: registered.client_id,
+          aud: networkAudience,
+          iat: Math.floor(Date.now() / 1000),
+          exp: Math.floor(Date.now() / 1000) + 300,
+          jti: crypto.randomUUID(),
+        },
+        privateJwk as JsonWebKey & { kty: "EC"; crv: "P-256"; x: string; y: string; d: string },
+      );
 
-    const networkTokenResponse = await handleRequest(
-      context,
-      new Request(networkAudience, {
+      const networkTokenResponse = await fetch(`${origin}/networks/reference/token`, {
         method: "POST",
         headers: {
           "content-type": "application/x-www-form-urlencoded",
@@ -404,15 +405,11 @@ describe("demo event stream", () => {
           client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
           client_assertion: networkAssertion,
         }).toString(),
-      }),
-    );
-    expect(networkTokenResponse.status).toBe(200);
-    const networkTokenBody = await networkTokenResponse.json() as { access_token: string };
-    const networkTokenClaims = decodeJwtPayload(networkTokenBody.access_token);
+      });
+      expect(networkTokenResponse.status).toBe(200);
+      const networkTokenBody = await networkTokenResponse.json() as { access_token: string };
 
-    const resolveResponse = await handleRequest(
-      context,
-      new Request("http://example.test/networks/reference/fhir/$resolve-record-locations", {
+      const resolveResponse = await fetch(`${origin}/networks/reference/fhir/$resolve-record-locations`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -420,19 +417,21 @@ describe("demo event stream", () => {
           "x-client-jkt": thumbprint,
         },
         body: JSON.stringify({ resourceType: "Parameters" }),
-      }),
-    );
-    expect(resolveResponse.status).toBe(200);
-    const flowEvents = context.demoEvents.getEvents("session-flow");
-    const eventTypes = flowEvents.map((event) => event.type);
-    expect(eventTypes).toContain("ticket-created");
-    expect(eventTypes).toContain("registration-request");
-    expect(eventTypes).toContain("sites-discovered");
-    expect(eventTypes).toContain("token-exchange");
-    const sitesDiscovered = flowEvents.find((event) => event.type === "sites-discovered");
-    expect(sitesDiscovered?.artifacts?.request?.method).toBe("POST");
-    expect(sitesDiscovered?.artifacts?.request?.url).toContain("/networks/reference/fhir/$resolve-record-locations");
-    expect(sitesDiscovered?.artifacts?.response?.status).toBe(200);
+      });
+      expect(resolveResponse.status).toBe(200);
+      const flowEvents = context.demoEvents.getEvents("session-flow");
+      const eventTypes = flowEvents.map((event) => event.type);
+      expect(eventTypes).toContain("ticket-created");
+      expect(eventTypes).toContain("registration-request");
+      expect(eventTypes).toContain("sites-discovered");
+      expect(eventTypes).toContain("token-exchange");
+      const sitesDiscovered = flowEvents.find((event) => event.type === "sites-discovered");
+      expect(sitesDiscovered?.artifacts?.request?.method).toBe("POST");
+      expect(sitesDiscovered?.artifacts?.request?.url).toContain("/networks/reference/fhir/$resolve-record-locations");
+      expect(sitesDiscovered?.artifacts?.response?.status).toBe(200);
+    } finally {
+      server.stop(true);
+    }
   });
 
   test("site registration events carry site identity for swimlane placement", async () => {
@@ -534,10 +533,4 @@ async function readRawSseText(response: Response, blockCount: number) {
   } finally {
     await reader.cancel();
   }
-}
-
-function decodeJwtPayload(token: string) {
-  const payload = token.split(".")[1];
-  if (!payload) throw new Error("JWT payload missing");
-  return JSON.parse(Buffer.from(payload, "base64url").toString("utf8")) as Record<string, any>;
 }
