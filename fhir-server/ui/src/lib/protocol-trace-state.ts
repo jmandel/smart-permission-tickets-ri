@@ -230,7 +230,7 @@ export function traceCellHasContent(state: TraceState, cell: TraceCellId) {
       case "resolve-match":
         return Boolean(state.network.resolveMatchEvent);
       case "client-setup":
-        return state.network.clientSetupEvents.length > 0;
+        return state.network.clientSetupEvents.length > 0 || state.network.tokenEvents.length > 0;
       case "token":
         return state.network.tokenEvents.length > 0;
       case "data":
@@ -245,7 +245,7 @@ export function traceCellHasContent(state: TraceState, cell: TraceCellId) {
     case "resolve-match":
       return Boolean(site.resolveMatchEvent);
     case "client-setup":
-      return site.clientSetupEvents.length > 0;
+      return site.clientSetupEvents.length > 0 || site.tokenEvents.length > 0;
     case "token":
       return site.tokenEvents.length > 0;
     case "data":

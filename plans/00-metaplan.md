@@ -234,6 +234,19 @@ Status: implemented
   - protocol detail stays in Protocol Trace
   - the viewer stays focused on clinical data and selection/exploration
 
+### Plan 21: Add OpenID Federation 1.0 Support
+`21-add-openid-federation-support.md`
+
+Status: implemented on `main`
+
+- adds a spec-aligned OIDF framework path for:
+  - automatic-registration-style client authentication via `trust_chain`
+  - metadata-policy resolution
+  - OIDF-backed issuer trust and trust-mark verification
+- Phases 1 through 7 are implemented on `main`
+- the trust-chain shape and validation model were corrected after RFC review and are now folded directly into the canonical Plan 21 text
+- Phase 7 UI / Protocol Trace integration, including the OIDF client demo flow, is now on `main`
+
 ## Dependencies Between Plans
 
 ```
@@ -258,6 +271,8 @@ Plan 13 (Demo Event Visualization) ───────────────
 Plan 14 (Portable-Kernel Redesign) ────────────────────┘
                                       ↑
 Plan 15 (Schema Unification + Ref Impl Migration) ─────┘
+                                      ↑
+Plan 21 (OpenID Federation 1.0 Support) ───────────────┘
                                       ↑
 Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
                                       ↑

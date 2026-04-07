@@ -114,10 +114,12 @@ export type DemoClientOption = {
   registrationMode: DemoClientRegistrationMode;
   framework?: DemoClientFrameworkInfo;
   entityUri?: string;
+  entityConfigurationUrl?: string;
   jwksUrl?: string;
   clientName?: string;
   publicJwk?: JsonWebKey;
   privateJwk?: JsonWebKey;
+  trustChain?: string[];
   certificatePem?: string;
   privateKeyPem?: string;
   algorithm?: "RS256";
@@ -166,9 +168,11 @@ export type ViewerOidfClientPlan = {
   displayLabel: string;
   registrationMode: "oidf-automatic";
   entityUri: string;
+  entityConfigurationUrl: string;
   clientName: string;
   publicJwk: JsonWebKey;
   privateJwk: JsonWebKey;
+  trustChain: string[];
   framework: DemoClientFrameworkInfo;
 };
 

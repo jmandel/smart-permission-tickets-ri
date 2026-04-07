@@ -133,6 +133,8 @@ export function PermissionWorkbench({
     ? "Dynamic registration"
     : selectedClientOption?.registrationMode === "implicit-well-known"
       ? "No registration"
+      : selectedClientOption?.registrationMode === "oidf-automatic"
+        ? "No registration"
       : selectedClientOption?.registrationMode === "udap-dcr"
         ? "UDAP DCR"
         : "Not required";
@@ -301,7 +303,7 @@ export function PermissionWorkbench({
             <div>
               <p className="eyebrow">Step 2 · Choose Client Type</p>
               <h2>Pick how the app will identify itself</h2>
-              <p className="subtle">This choice changes how the viewer authenticates and whether the ticket binds to a key or to a framework-listed client entity.</p>
+              <p className="subtle">This choice changes client authentication and ticket binding. Ticket-issuer trust is evaluated separately by the data holder.</p>
             </div>
           </div>
           <div className="demo-client-grid">
@@ -317,6 +319,8 @@ export function PermissionWorkbench({
                   ? "Dynamic registration"
                   : option.registrationMode === "implicit-well-known"
                     ? "No registration"
+                    : option.registrationMode === "oidf-automatic"
+                      ? "No registration"
                     : "UDAP DCR"}</strong>
                 <p>{option.description}</p>
                 {option.framework && <span className="demo-client-meta">{option.framework.displayName}</span>}
@@ -360,6 +364,7 @@ export function PermissionWorkbench({
                 )}
               </div>
               <p className="subtle demo-client-binding-copy">{selectedClientStory.ticketBinding.rationale}</p>
+              <p className="subtle demo-client-binding-copy">Client trust and ticket-issuer trust are shown separately in Protocol Trace and token diagnostics.</p>
               <div className="button-row demo-client-actions">
                 <button type="button" className="secondary-button" onClick={() => openArtifact("Client Story", selectedClientStory)}>
                   Open client story ↗
@@ -373,13 +378,22 @@ export function PermissionWorkbench({
                     Open framework doc ↗
                   </button>
                 )}
-                {selectedClientOption?.type !== "unaffiliated" && selectedClientOption?.entityUri && (
+                {selectedClientOption?.type !== "unaffiliated" && (selectedClientOption?.entityConfigurationUrl || selectedClientOption?.entityUri) && (
                   <button
                     type="button"
                     className="secondary-button"
-                    onClick={() => void openRemoteArtifact(selectedClientOption.type === "udap" ? "UDAP Client Entity" : "Well-Known Entity", selectedClientOption.entityUri!)}
+                    onClick={() => void openRemoteArtifact(
+                      selectedClientOption.type === "oidf"
+                        ? "OIDF Entity Configuration"
+                        : selectedClientOption.type === "udap"
+                          ? "UDAP Client Entity"
+                          : "Well-Known Entity",
+                      selectedClientOption.type === "oidf"
+                        ? selectedClientOption.entityConfigurationUrl!
+                        : selectedClientOption.entityUri!,
+                    )}
                   >
-                    Open entity ↗
+                    {selectedClientOption.type === "oidf" ? "Open entity configuration ↗" : "Open entity ↗"}
                   </button>
                 )}
                 {selectedClientOption?.type === "well-known" && selectedClientOption.jwksUrl && (

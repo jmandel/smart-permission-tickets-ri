@@ -9,7 +9,6 @@ describe("OIDF trust chain validation", () => {
     const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     });
 
@@ -43,16 +42,15 @@ describe("OIDF trust chain validation", () => {
     await expect(verifyTrustChain([tamperedLeaf, ...fixture.chain.slice(1)], {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     }))
       .rejects.toThrow("signature verification failed");
   });
 
-  test("expired intermediate invalidates the whole chain", async () => {
+  test("expired subordinate statement invalidates the whole chain", async () => {
     const fixture = await makeTrustChainFixture({
-      network: {
-        configOverrides: {
+      anchorToNetwork: {
+        payloadOverrides: {
           iat: fixtureBaseNow() - 7200,
           exp: fixtureBaseNow() - 3600,
         },
@@ -62,7 +60,6 @@ describe("OIDF trust chain validation", () => {
     await expect(verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     }))
       .rejects.toThrow("has expired");
@@ -74,7 +71,6 @@ describe("OIDF trust chain validation", () => {
     await expect(verifyTrustChain(fixture.chain, {
       expectedAnchor: "https://demo.example/federation/anchor/other",
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     }))
       .rejects.toThrow("terminates at");
@@ -92,10 +88,9 @@ describe("OIDF trust chain validation", () => {
     await expect(verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     }))
-      .rejects.toThrow("must target");
+      .rejects.toThrow("ES[0].iss must equal ES[1].sub");
   });
 
   test("missing leaf authority_hints invalidates the chain", async () => {
@@ -110,13 +105,12 @@ describe("OIDF trust chain validation", () => {
     await expect(verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     }))
       .rejects.toThrow("authority_hints");
   });
 
-  test("missing intermediate authority_hints invalidates the chain", async () => {
+  test("missing intermediate authority_hints does not invalidate static trust-chain validation", async () => {
     const fixture = await makeTrustChainFixture({
       network: {
         configOverrides: {
@@ -125,13 +119,13 @@ describe("OIDF trust chain validation", () => {
       },
     });
 
-    await expect(verifyTrustChain(fixture.chain, {
+    const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
-    }))
-      .rejects.toThrow("authority_hints");
+    });
+
+    expect(verified.depth).toBe(3);
   });
 
   test("malformed trust_chain payload is rejected", async () => {
@@ -140,7 +134,6 @@ describe("OIDF trust chain validation", () => {
     await expect(verifyTrustChain(["not-a-jwt", ...fixture.chain.slice(1)], {
       expectedAnchor: fixture.anchor.entityId,
       trustedAnchorJwks: fixture.anchor.jwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     }))
       .rejects.toThrow("Malformed entity statement");
@@ -158,7 +151,6 @@ type EntityFixture = {
 type TrustChainFixture = {
   now: number;
   chain: string[];
-  supplementalEntityConfigurations: string[];
   leaf: EntityFixture;
   network: EntityFixture;
   anchor: EntityFixture;
@@ -257,7 +249,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
     network.privateJwk,
   );
 
-  const networkConfiguration = await signEntityStatement(
+  await signEntityStatement(
     {
       iss: network.entityId,
       sub: network.entityId,
@@ -311,7 +303,6 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       anchorToNetwork,
       anchorConfiguration,
     ],
-    supplementalEntityConfigurations: [networkConfiguration],
     leaf,
     network,
     anchor,

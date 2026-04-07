@@ -716,7 +716,7 @@ type TraceCellPresentation = {
   meta?: string;
   statusCode?: string;
   statusTone?: "neutral" | "success" | "error";
-  tone: "tone-ticket" | "tone-discovery" | "tone-setup" | "tone-token" | "tone-data" | "tone-error";
+  tone: "tone-ticket" | "tone-discovery" | "tone-setup" | "tone-token" | "tone-data" | "tone-info" | "tone-error";
 };
 
 type TraceDetailModel =
@@ -753,7 +753,12 @@ export function buildDetailModel(
 ): TraceDetailModel | null {
   if (!selectedCell) return null;
   const cellEvents = cellEventsForTrace(traceState, selectedCell);
-  if (!cellEvents.length) return null;
+  if (!cellEvents.length) {
+    if (selectedCell.column === "client-setup") {
+      return buildClientSetupNotRequiredDetail(traceState, selectedCell);
+    }
+    return null;
+  }
 
   if (selectedCell.column === "data") {
     const queries = filterTraceQueryEvents(cellEvents as Array<DemoQueryResultEvent | DemoQueryFailedEvent>);
@@ -792,9 +797,11 @@ export function buildDetailModel(
   };
 }
 
-function buildCellPresentation(traceState: ReturnType<typeof accumulateTraceState>, cell: TraceCellId): TraceCellPresentation | null {
+export function buildCellPresentation(traceState: ReturnType<typeof accumulateTraceState>, cell: TraceCellId): TraceCellPresentation | null {
   const events = cellEventsForTrace(traceState, cell);
-  if (!events.length) return null;
+  if (!events.length) {
+    return buildClientSetupNotRequiredCell(traceState, cell);
+  }
 
   if (cell.column === "ticket") {
     const event = events[0]!;
@@ -904,6 +911,73 @@ function eventLine(event: DemoEvent, column: Exclude<TraceColumn, "ticket" | "da
     primary: event.label,
     secondary: column,
     tone: "tone-discovery",
+  };
+}
+
+function buildClientSetupNotRequiredCell(
+  traceState: ReturnType<typeof accumulateTraceState>,
+  cell: TraceCellId,
+): TraceCellPresentation | null {
+  if (cell.column !== "client-setup") return null;
+  const tokenEvents = cell.row === "network"
+    ? traceState.network.tokenEvents
+    : traceState.sites.get(cell.row)?.tokenEvents ?? [];
+  if (!tokenEvents.length) return null;
+  const latestToken = tokenEvents[tokenEvents.length - 1]!;
+  const clientId = latestToken.detail.clientId;
+  if (latestToken.detail.clientAuthMode === "oidf") {
+    return {
+      badge: "OIDF",
+      badgeTone: "neutral",
+      primary: "Automatic registration",
+      secondary: "OIDF trust_chain in client_assertion",
+      meta: clientId ?? undefined,
+      tone: "tone-info",
+    };
+  }
+  if (latestToken.detail.clientAuthMode === "well-known") {
+    return {
+      badge: "ID",
+      badgeTone: "neutral",
+      primary: "Framework-identified",
+      secondary: clientId ?? "well-known client identity",
+      tone: "tone-info",
+    };
+  }
+  return {
+    badge: "—",
+    badgeTone: "neutral",
+    primary: "Not required",
+    secondary: "This client does not register",
+    tone: "tone-info",
+  };
+}
+
+function buildClientSetupNotRequiredDetail(
+  traceState: ReturnType<typeof accumulateTraceState>,
+  cell: TraceCellId,
+): TraceDetailModel | null {
+  const presentation = buildClientSetupNotRequiredCell(traceState, cell);
+  if (!presentation) return null;
+  const tokenEvents = cell.row === "network"
+    ? traceState.network.tokenEvents
+    : traceState.sites.get(cell.row)?.tokenEvents ?? [];
+  const latestToken = tokenEvents[tokenEvents.length - 1];
+  return {
+    kind: "event",
+    title: presentation.primary,
+    subtitle: presentation.secondary,
+    summary: {
+      description: "This client flow does not call the registration endpoint on this surface.",
+      fields: [
+        { label: "Step", value: presentation.primary },
+        { label: "Why", value: presentation.secondary },
+        ...(presentation.meta ? [{ label: "Client", value: presentation.meta }] : []),
+      ],
+      noteText: "This summary is inferred from the token exchange flow for this client type. No separate registration HTTP request occurred on this surface.",
+    },
+    tabs: [],
+    history: latestToken ? [latestToken] : [],
   };
 }
 

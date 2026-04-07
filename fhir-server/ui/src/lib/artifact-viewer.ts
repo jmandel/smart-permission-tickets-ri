@@ -176,6 +176,8 @@ export function buildDemoEventSummary(event: DemoEvent): ArtifactViewerEventSumm
           { label: "Grant type", value: event.detail.grantType },
           { label: "Mode", value: event.detail.mode },
           { label: "Outcome", value: event.detail.outcome },
+          ...(event.detail.clientAuthMode ? [{ label: "Client auth", value: event.detail.clientAuthMode }] : []),
+          ...(event.detail.clientId ? [{ label: "Client ID", value: event.detail.clientId }] : []),
           ...(event.detail.siteName ? [{ label: "Site", value: event.detail.siteName }] : []),
           ...(event.detail.scopeSummary ? [{ label: "Issued scope", value: event.detail.scopeSummary }] : []),
           ...(typeof event.detail.authorizedSiteCount === "number" ? [{ label: "Authorized sites", value: String(event.detail.authorizedSiteCount) }] : []),

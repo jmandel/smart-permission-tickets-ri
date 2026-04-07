@@ -10,7 +10,6 @@ describe("OIDF metadata policy", () => {
     const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchorEntityId,
       trustedAnchorJwks: fixture.anchorJwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     });
     const resolved = applyMetadataPolicy(verified);
@@ -44,7 +43,6 @@ describe("OIDF metadata policy", () => {
     const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchorEntityId,
       trustedAnchorJwks: fixture.anchorJwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     });
     const resolved = applyMetadataPolicy(verified);
@@ -80,7 +78,6 @@ describe("OIDF metadata policy", () => {
     const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchorEntityId,
       trustedAnchorJwks: fixture.anchorJwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     });
     const resolved = applyMetadataPolicy(verified);
@@ -114,7 +111,6 @@ describe("OIDF metadata policy", () => {
     const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchorEntityId,
       trustedAnchorJwks: fixture.anchorJwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     });
 
@@ -135,7 +131,6 @@ describe("OIDF metadata policy", () => {
     const verified = await verifyTrustChain(fixture.chain, {
       expectedAnchor: fixture.anchorEntityId,
       trustedAnchorJwks: fixture.anchorJwks.keys,
-      supplementalEntityConfigurations: fixture.supplementalEntityConfigurations,
       nowSeconds: fixture.now,
     });
 
@@ -188,20 +183,6 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     },
   }, networkKeys.privateJwk);
 
-  const networkConfiguration = await signStatement({
-    iss: networkEntityId,
-    sub: networkEntityId,
-    iat: now - 60,
-    exp: now + 3600,
-    jwks: { keys: [networkKeys.publicJwk] },
-    metadata: {
-      federation_entity: {
-        organization_name: "App Network",
-      },
-    },
-    authority_hints: [anchorEntityId],
-  }, networkKeys.privateJwk);
-
   const anchorToNetwork = await signStatement({
     iss: anchorEntityId,
     sub: networkEntityId,
@@ -234,7 +215,6 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     now,
     anchorEntityId,
     anchorJwks: { keys: [anchorKeys.publicJwk] },
-    supplementalEntityConfigurations: [networkConfiguration],
     chain: [
       leafConfiguration,
       networkToLeaf,

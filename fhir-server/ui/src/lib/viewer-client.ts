@@ -402,7 +402,7 @@ async function appendClientAuth(
   if (clientPlan.type === "udap") form.set("udap", "1");
 }
 
-async function buildClientAssertion(client: RegisteredClientInfo, clientPlan: ViewerClientPlan, audience: string) {
+export async function buildClientAssertion(client: RegisteredClientInfo, clientPlan: ViewerClientPlan, audience: string) {
   const payload = {
     iss: client.clientId,
     sub: client.clientId,
@@ -414,6 +414,11 @@ async function buildClientAssertion(client: RegisteredClientInfo, clientPlan: Vi
   if (clientPlan.type === "udap") {
     return signRs256JwtWithPem(payload, clientPlan.privateKeyPem, {
       x5c: [pemToDerBase64(clientPlan.certificatePem)],
+    });
+  }
+  if (clientPlan.type === "oidf") {
+    return signPrivateKeyJwt(payload, clientPlan.privateJwk, {
+      trust_chain: clientPlan.trustChain,
     });
   }
   return signPrivateKeyJwt(payload, clientPlan.privateJwk);

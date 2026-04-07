@@ -66,7 +66,6 @@ export async function verifyTrustChain(
   options: {
     expectedAnchor: string;
     trustedAnchorJwks: JsonWebKey[];
-    supplementalEntityConfigurations?: string[];
     nowSeconds?: number;
   },
 ): Promise<VerifiedTrustChain> {
@@ -101,30 +100,19 @@ export async function verifyTrustChain(
   for (let index = 0; index < statements.length - 1; index += 1) {
     const statement = statements[index];
     const signer = statements[index + 1];
+    if (statement.payload.iss !== signer.payload.sub) {
+      throw new Error(`OIDF trust chain linkage failed: ES[${index}].iss must equal ES[${index + 1}].sub`);
+    }
     await verifyEntityStatementSignature(statement, requiredJwks(signer));
   }
   await verifyEntityStatementSignature(anchor, options.trustedAnchorJwks.map((jwk) => normalizePublicJwk(jwk)));
 
-  const supplementalConfigurations = parseSupplementalEntityConfigurations(
-    options.supplementalEntityConfigurations ?? [],
-    nowSeconds,
-  );
-  for (const [index, subordinate] of subordinateStatements.entries()) {
-    const expectedSubjectEntityId = index === 0 ? leaf.entityId : subordinateStatements[index - 1]?.payload.iss;
-    if (subordinate.payload.sub !== expectedSubjectEntityId) {
-      throw new Error(`Subordinate statement ${subordinate.position} must target ${expectedSubjectEntityId}`);
-    }
-    const subjectConfiguration = subordinate.payload.sub === leaf.entityId
-      ? leaf
-      : subordinate.payload.sub === anchor.entityId
-      ? anchor
-      : supplementalConfigurations.get(subordinate.payload.sub);
-    if (!subjectConfiguration) {
-      throw new Error(`OIDF trust chain is missing the subject entity configuration for ${subordinate.payload.sub}`);
-    }
-    const authorityHints = subjectConfiguration.payload.authority_hints ?? [];
-    if (!authorityHints.includes(subordinate.payload.iss)) {
-      throw new Error(`Entity configuration ${subjectConfiguration.entityId} does not name ${subordinate.payload.iss} in authority_hints`);
+  if (subordinateStatements.length > 0) {
+    const leafAuthorityHints = Array.isArray(leaf.payload.authority_hints)
+      ? leaf.payload.authority_hints.filter((hint): hint is string => typeof hint === "string" && !!hint)
+      : [];
+    if (!leafAuthorityHints.includes(subordinateStatements[0].payload.iss)) {
+      throw new Error(`Leaf entity configuration does not name ${subordinateStatements[0].payload.iss} in authority_hints`);
     }
   }
 
@@ -223,16 +211,4 @@ async function verifyEntityStatementSignature(statement: ParsedEntityStatement, 
 
 function formatError(error: unknown) {
   return error instanceof Error ? error.message : String(error);
-}
-
-function parseSupplementalEntityConfigurations(entityConfigurations: string[], nowSeconds: number) {
-  const map = new Map<string, ParsedEntityStatement>();
-  for (const [index, jwt] of entityConfigurations.entries()) {
-    const parsed = parseEntityStatement(jwt, MAX_CHAIN_LENGTH + index, nowSeconds);
-    if (parsed.kind !== "entity-configuration") {
-      throw new Error(`OIDF supplemental entity statement ${parsed.position} must be an entity configuration`);
-    }
-    map.set(parsed.entityId, parsed);
-  }
-  return map;
 }

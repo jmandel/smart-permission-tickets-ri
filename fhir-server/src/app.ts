@@ -17,8 +17,10 @@ import { FrameworkRegistry } from "./auth/frameworks/registry.ts";
 import { ClientRegistrationError } from "./auth/frameworks/types.ts";
 import {
   buildOidfDemoTopology,
+  buildOidfTrustChain,
   findOidfEntityIdByConfigurationPath,
   findOidfIssuerEntityIdByFetchPath,
+  oidfEntityConfigurationPath,
   type OidfDemoTopology,
 } from "./auth/frameworks/oidf/demo-topology.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
@@ -72,28 +74,8 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const store = FhirStore.load();
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
-  const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
-  const oidfTopology = buildOidfDemoTopology(
-    config.publicBaseUrl,
-    config.defaultPermissionTicketIssuerSlug,
-    config.defaultPermissionTicketIssuerName,
-    defaultIssuer
-      ? {
-        publicJwk: defaultIssuer.publicJwk,
-        privateJwk: defaultIssuer.privateJwk,
-      }
-      : undefined,
-  );
-  config.frameworks = config.frameworks.map((framework) => framework.frameworkType === "oidf" && framework.oidf?.trustAnchorEntityId === oidfTopology.trustAnchorEntityId
-    ? {
-        ...framework,
-        oidf: {
-          ...framework.oidf,
-          trustAnchorJwks: [oidfTopology.entities.anchor.publicJwk],
-        },
-      }
-    : framework);
-  const frameworks = new FrameworkRegistry(config.frameworks, clients, config);
+  const oidfTopology = buildOidfTopologyForPublicBaseUrl(config, issuers);
+  const frameworks = buildFrameworkRegistry(config, clients, oidfTopology);
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
   const demoSessionLinks = new DemoSessionLinks();
@@ -117,7 +99,78 @@ export function startServer(context = createAppContext(), port = context.config.
   return server;
 }
 
+function buildOidfTopologyForPublicBaseUrl(
+  config: ServerConfig,
+  issuers: TicketIssuerRegistry,
+  existingTopology?: OidfDemoTopology,
+) {
+  const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
+  return buildOidfDemoTopology(
+    config.publicBaseUrl,
+    config.defaultPermissionTicketIssuerSlug,
+    config.defaultPermissionTicketIssuerName,
+    {
+      anchor: existingTopology ? extractOidfKeyMaterial(existingTopology, "anchor") : undefined,
+      "app-network": existingTopology ? extractOidfKeyMaterial(existingTopology, "app-network") : undefined,
+      "provider-network": existingTopology ? extractOidfKeyMaterial(existingTopology, "provider-network") : undefined,
+      "demo-app": existingTopology ? extractOidfKeyMaterial(existingTopology, "demo-app") : undefined,
+      "fhir-server": existingTopology ? extractOidfKeyMaterial(existingTopology, "fhir-server") : undefined,
+      "ticket-issuer": defaultIssuer
+        ? {
+            publicJwk: defaultIssuer.publicJwk,
+            privateJwk: defaultIssuer.privateJwk,
+          }
+        : existingTopology
+          ? extractOidfKeyMaterial(existingTopology, "ticket-issuer")
+          : undefined,
+    },
+  );
+}
+
+function buildFrameworkRegistry(
+  config: ServerConfig,
+  clients: ClientRegistry,
+  oidfTopology: OidfDemoTopology,
+) {
+  config.frameworks = config.frameworks.map((framework) => framework.frameworkType === "oidf"
+    ? {
+        ...framework,
+        oidf: framework.oidf
+          ? {
+              ...framework.oidf,
+              trustAnchorEntityId: oidfTopology.trustAnchorEntityId,
+              trustAnchorJwks: [oidfTopology.entities.anchor.publicJwk],
+              appNetworkEntityId: oidfTopology.appNetworkEntityId,
+              providerNetworkEntityId: oidfTopology.providerNetworkEntityId,
+              demoAppEntityId: oidfTopology.demoAppEntityId,
+              fhirServerEntityId: oidfTopology.fhirServerEntityId,
+              ticketIssuerEntityId: oidfTopology.ticketIssuerEntityId,
+              ticketIssuerUrl: oidfTopology.ticketIssuerUrl,
+              trustMarkType: oidfTopology.trustMarkType,
+            }
+          : undefined,
+      }
+    : framework);
+  return new FrameworkRegistry(config.frameworks, clients, config);
+}
+
+function extractOidfKeyMaterial(topology: OidfDemoTopology, role: keyof OidfDemoTopology["entities"]) {
+  const entity = topology.entities[role];
+  return {
+    publicJwk: entity.publicJwk,
+    privateJwk: entity.privateJwk,
+  };
+}
+
+function syncOidfTopologyWithConfig(context: AppContext) {
+  const currentOrigin = new URL(context.oidfTopology.trustAnchorEntityId).origin;
+  if (currentOrigin === context.config.publicBaseUrl) return;
+  context.oidfTopology = buildOidfTopologyForPublicBaseUrl(context.config, context.issuers, context.oidfTopology);
+  context.frameworks = buildFrameworkRegistry(context.config, context.clients, context.oidfTopology);
+}
+
 export async function handleRequest(context: AppContext, request: Request, server?: Bun.Server<any>): Promise<Response> {
+  syncOidfTopologyWithConfig(context);
   const url = configuredPublicUrl(context.config, request);
   if (url.pathname === "/demo/sessions") {
     return handleDemoSessionsRequest(context, request);
@@ -150,6 +203,7 @@ export async function handleRequest(context: AppContext, request: Request, serve
   if (url.pathname === "/demo/bootstrap") {
     const wellKnownFrameworkDocument = buildDemoWellKnownFrameworkDocument(url.origin);
     const wellKnownClient = wellKnownFrameworkDocument.clients[0];
+    const oidfClient = context.oidfTopology.entities["demo-app"];
     const udapClient = buildDemoUdapClients(url.origin).find((client) => client.algorithm === "RS256") ?? buildDemoUdapClients(url.origin)[0];
     return jsonResponse({
       defaultMode: context.config.strictDefaultMode,
@@ -184,6 +238,22 @@ export async function handleRequest(context: AppContext, request: Request, serve
           clientName: wellKnownClient.label,
           publicJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PUBLIC_JWK,
           privateJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+        },
+        {
+          type: "oidf",
+          label: "OIDF client",
+          description: "Uses the Entity Identifier URL as client_id and authenticates with a trust_chain JOSE header. No registration call occurs. Client trust and ticket-issuer trust are evaluated separately.",
+          registrationMode: "oidf-automatic",
+          framework: {
+            uri: context.oidfTopology.frameworkUri,
+            displayName: "Demo OpenID Federation",
+          },
+          entityUri: context.oidfTopology.demoAppEntityId,
+          entityConfigurationUrl: absoluteUrl(url, oidfEntityConfigurationPath(context.oidfTopology.demoAppEntityId)),
+          clientName: String(oidfClient.metadata.oauth_client?.client_name ?? oidfClient.name),
+          publicJwk: oidfClient.publicJwk,
+          privateJwk: oidfClient.privateJwk,
+          trustChain: buildOidfTrustChain(context.oidfTopology, context.oidfTopology.demoAppEntityId),
         },
         {
           type: "udap",
@@ -397,6 +467,8 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
   if (request.method !== "POST") return methodNotAllowed("POST");
   let body: (TokenExchangeRequest & Record<string, any>) | null = null;
   let observer: DemoObserver | null = null;
+  let authenticatedClientAuthMode: AuthenticatedClientIdentity["authMode"] | undefined;
+  let authenticatedClientId: string | undefined;
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
   const tokenEndpointUrl = absoluteUrl(url, `${authBasePath}/token`);
   const authSurfaceUrl = absoluteUrl(url, authBasePath);
@@ -424,7 +496,10 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
           contextRoute.mode,
           tokenEndpointUrl,
           authSurfaceUrl,
+          tokenDiagnostics,
         );
+        authenticatedClientAuthMode = client?.authMode;
+        authenticatedClientId = client?.clientId;
       } catch (error) {
         throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
       }
@@ -491,7 +566,10 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
         contextRoute.mode,
         tokenEndpointUrl,
         authSurfaceUrl,
+        tokenDiagnostics,
       );
+      authenticatedClientAuthMode = client?.authMode;
+      authenticatedClientId = client?.clientId;
     } catch (error) {
       throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
     }
@@ -587,6 +665,8 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
         grantType: body.grant_type ?? "unknown",
         diagnostics: tokenDiagnostics,
         outcome: "rejected",
+        clientAuthMode: authenticatedClientAuthMode,
+        clientId: authenticatedClientId,
         error: oauthError.description,
       }));
     }
@@ -844,6 +924,7 @@ async function authenticateClient(
   mode: ModeName,
   tokenEndpointUrl: string,
   authSurfaceUrl: string,
+  diagnostics?: TokenExchangeDiagnostics,
 ): Promise<AuthenticatedClientIdentity | null> {
   const basic = parseBasicAuth(request.headers.get("authorization"));
   const clientId = basic?.clientId ?? body.client_id;
@@ -872,12 +953,49 @@ async function authenticateClient(
   const frameworkClient = await context.frameworks.authenticateClientAssertion(assertedClientId, assertionJwt, tokenEndpointUrl);
   if (frameworkClient) {
     enforceClientRegistrationScope(frameworkClient, authSurfaceUrl);
+    appendFrameworkClientDiagnostics(frameworkClient, diagnostics);
     return frameworkClient;
   }
   const client = context.clients.get(assertedClientId);
   if (!client) throw new Error("Authenticated registered client required");
   enforceClientRegistrationScope(client, authSurfaceUrl);
   return verifyClientAssertion(assertionJwt, client, tokenEndpointUrl);
+}
+
+function appendFrameworkClientDiagnostics(
+  client: AuthenticatedClientIdentity,
+  diagnostics: TokenExchangeDiagnostics | undefined,
+) {
+  if (!diagnostics || client.authMode !== "oidf") return;
+  const metadata = client.resolvedEntity?.metadata as Record<string, any> | undefined;
+  if (metadata?.trust_chain) {
+    diagnostics.steps.push({
+      check: "Client trust via OIDF",
+      passed: true,
+      evidence: `depth=${String(metadata.trust_chain_depth ?? "")}`,
+      why: "Client assertion supplied a trust_chain that validated to the configured Trust Anchor",
+    });
+    diagnostics.relatedArtifacts.push({
+      label: "Client trust via OIDF: decoded trust chain",
+      kind: "json",
+      content: metadata.trust_chain,
+    });
+  }
+  if (metadata?.resolved_metadata) {
+    diagnostics.steps.push({
+      check: "Client metadata via OIDF policy",
+      passed: true,
+      evidence: typeof metadata.resolved_metadata?.oauth_client?.client_name === "string"
+        ? metadata.resolved_metadata.oauth_client.client_name
+        : client.clientName,
+      why: "Metadata policy was applied top-down to resolve the client metadata and leaf JWKS",
+    });
+    diagnostics.relatedArtifacts.push({
+      label: "Client trust via OIDF: resolved metadata",
+      kind: "json",
+      content: metadata.resolved_metadata,
+    });
+  }
 }
 
 async function verifyClientAssertion(jwt: string, client: RegisteredClient, tokenEndpointUrl: string): Promise<AuthenticatedClientIdentity> {
@@ -1016,6 +1134,8 @@ function issueAccessTokenResponse(
     grantType: eventOptions?.grantType ?? "unknown",
     diagnostics: eventOptions?.diagnostics ?? { steps: [], relatedArtifacts: [] },
     outcome: "issued",
+    clientAuthMode: client?.authMode,
+    clientId: client?.clientId,
     scopes: envelope.grantedScopes,
     scopeSummary: issuedScope,
     authorizedSiteCount: envelope.allowedSites?.length,
@@ -1036,6 +1156,8 @@ function buildTokenExchangeDemoEvent(input: {
   grantType: string;
   diagnostics: TokenExchangeDiagnostics;
   outcome: "issued" | "rejected";
+  clientAuthMode?: AuthenticatedClientIdentity["authMode"];
+  clientId?: string;
   scopes?: string[];
   scopeSummary?: string;
   authorizedSiteCount?: number;
@@ -1056,6 +1178,8 @@ function buildTokenExchangeDemoEvent(input: {
       endpoint: absoluteUrl(input.url, `${buildAuthBasePath(input.context.config.strictDefaultMode, input.contextRoute)}/token`),
       mode: input.contextRoute.mode,
       outcome: input.outcome,
+      ...(input.clientAuthMode ? { clientAuthMode: input.clientAuthMode } : {}),
+      ...(input.clientId ? { clientId: input.clientId } : {}),
       scopes: input.scopes,
       scopeSummary: input.scopeSummary,
       ...(input.contextRoute.siteSlug ? {

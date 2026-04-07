@@ -167,6 +167,7 @@ export async function validatePermissionTicket(
     evidence: issuer.displayName ?? issuer.issuerUrl,
     why: `Issuer is trusted via ${issuer.source}`,
   });
+  appendFrameworkIssuerDiagnostics(issuer, diagnostics);
   enforceMustUnderstand(payload, diagnostics);
   try {
     await ticketRevocations.assertActive(payload);
@@ -297,6 +298,47 @@ function addRelatedArtifact(diagnostics: TokenExchangeDiagnostics | undefined, a
   if (!diagnostics) return;
   const duplicate = diagnostics.relatedArtifacts.some((existing) => existing.label === artifact.label && existing.kind === artifact.kind);
   if (!duplicate) diagnostics.relatedArtifacts.push(artifact);
+}
+
+function appendFrameworkIssuerDiagnostics(
+  issuer: ResolvedIssuerTrust,
+  diagnostics: TokenExchangeDiagnostics | undefined,
+) {
+  if (!diagnostics || issuer.framework?.type !== "oidf" || !issuer.metadata) return;
+  const metadata = issuer.metadata as Record<string, any>;
+  if (metadata.trust_chain) {
+    addRelatedArtifact(diagnostics, {
+      label: "Issuer trust via OIDF: decoded trust chain",
+      kind: "json",
+      content: metadata.trust_chain,
+    });
+  }
+  if (metadata.resolved_metadata) {
+    addRelatedArtifact(diagnostics, {
+      label: "Issuer trust via OIDF: resolved metadata",
+      kind: "json",
+      content: metadata.resolved_metadata,
+    });
+  }
+  if (metadata.trust_mark && typeof metadata.trust_mark === "object") {
+    const trustMark = metadata.trust_mark as Record<string, any>;
+    addAuditStep(diagnostics, {
+      check: "Issuer trust via OIDF",
+      passed: true,
+      evidence: String(trustMark.trust_mark_type ?? ""),
+      why: "The ticket issuer URL was evaluated through OIDF federation. This issuer-trust path is separate from client authentication.",
+    });
+    addRelatedArtifact(diagnostics, {
+      label: "Issuer trust via OIDF: verified trust mark",
+      kind: "json",
+      content: {
+        trust_mark_type: trustMark.trust_mark_type,
+        issuer_entity: trustMark.iss,
+        subject_entity: trustMark.sub,
+        jwt_claims: trustMark,
+      },
+    });
+  }
 }
 
 async function resolveTrustedIssuer(

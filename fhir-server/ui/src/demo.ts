@@ -436,7 +436,7 @@ export async function buildViewerClientPlan(person: PersonInfo, option: DemoClie
         contacts: option.contacts ?? [],
       };
     case "oidf":
-      if (!option.entityUri || !option.clientName || !option.publicJwk || !option.privateJwk || !option.framework) {
+      if (!option.entityUri || !option.entityConfigurationUrl || !option.clientName || !option.publicJwk || !option.privateJwk || !option.framework || !option.trustChain?.length) {
         throw new Error("OIDF demo client option is incomplete");
       }
       return {
@@ -444,9 +444,11 @@ export async function buildViewerClientPlan(person: PersonInfo, option: DemoClie
         displayLabel: option.label,
         registrationMode: "oidf-automatic",
         entityUri: option.entityUri,
+        entityConfigurationUrl: option.entityConfigurationUrl,
         clientName: option.clientName,
         publicJwk: option.publicJwk,
         privateJwk: option.privateJwk,
+        trustChain: option.trustChain,
         framework: option.framework,
       };
   }
@@ -686,7 +688,7 @@ function buildClientStoryDescription(
     : registrationMode === "implicit-well-known"
       ? "No registration"
       : registrationMode === "oidf-automatic"
-        ? "Automatic registration"
+        ? "No registration"
         : "UDAP DCR";
   const authenticationLabel = clientType === "unaffiliated"
     ? "private_key_jwt using a one-off JWK"
@@ -708,7 +710,7 @@ function buildClientStoryDescription(
     : clientType === "well-known"
       ? "A framework-affiliated client can skip registration entirely and be recognized from a stable entity URI plus current JWKS resolution."
       : clientType === "oidf"
-        ? "A framework-affiliated client can authenticate without prior registration by presenting its entity URL plus a trust chain that resolves its metadata and keys."
+        ? "A framework-affiliated client can authenticate without prior registration by presenting its entity URL plus a trust_chain header that resolves its metadata and keys. Client trust and ticket-issuer trust are evaluated separately."
       : "A trust-framework-backed client can register just in time through UDAP, using an entity URI taken from the certificate Subject Alternative Name (SAN) and published as an inspectable page on this demo server.";
   return {
     clientType,

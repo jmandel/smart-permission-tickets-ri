@@ -42,14 +42,26 @@ export type OidfDemoTopology = {
   subordinateStatements: Map<string, Map<string, string>>;
 };
 
+type OidfDemoKeyMaterial = {
+  publicJwk: JsonWebKey & { kid?: string };
+  privateJwk: JsonWebKey & { kid?: string };
+};
+
+type OidfDemoKeyMaterialByRole = Partial<Record<OidfDemoEntityRole, OidfDemoKeyMaterial>>;
+
+const DEFAULT_OIDF_DEMO_KEY_MATERIAL: Record<Exclude<OidfDemoEntityRole, "ticket-issuer">, OidfDemoKeyMaterial> = {
+  anchor: generateEcKeyPair(),
+  "app-network": generateEcKeyPair(),
+  "provider-network": generateEcKeyPair(),
+  "demo-app": generateEcKeyPair(),
+  "fhir-server": generateEcKeyPair(),
+};
+
 export function buildOidfDemoTopology(
   publicBaseUrl: string,
   ticketIssuerSlug: string,
   ticketIssuerName = "Reference Demo Issuer",
-  ticketIssuerKeys?: {
-    publicJwk: JsonWebKey & { kid?: string };
-    privateJwk: JsonWebKey & { kid?: string };
-  },
+  keyMaterialByRole: OidfDemoKeyMaterialByRole = {},
 ): OidfDemoTopology {
   const trustAnchorEntityId = `${publicBaseUrl}/federation/anchor`;
   const appNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
@@ -66,19 +78,19 @@ export function buildOidfDemoTopology(
       organization_name: "Demo Trust Anchor",
       federation_fetch_endpoint: federationFetchEndpointPath(trustAnchorEntityId),
     },
-  });
+  }, [], keyMaterialByRole.anchor ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL.anchor);
   const appNetwork = createEntity("app-network", appNetworkEntityId, "Demo App Network", {
     federation_entity: {
       organization_name: "Demo App Network",
       federation_fetch_endpoint: federationFetchEndpointPath(appNetworkEntityId),
     },
-  }, [trustAnchorEntityId]);
+  }, [trustAnchorEntityId], keyMaterialByRole["app-network"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["app-network"]);
   const providerNetwork = createEntity("provider-network", providerNetworkEntityId, "Provider Network", {
     federation_entity: {
       organization_name: "Provider Network",
       federation_fetch_endpoint: federationFetchEndpointPath(providerNetworkEntityId),
     },
-  }, [trustAnchorEntityId]);
+  }, [trustAnchorEntityId], keyMaterialByRole["provider-network"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["provider-network"]);
   const demoApp = createEntity("demo-app", demoAppEntityId, "OpenID Federation Demo App", {
     oauth_client: {
       client_name: "Leaf Demo App",
@@ -87,18 +99,18 @@ export function buildOidfDemoTopology(
       grant_types: ["client_credentials"],
       response_types: [],
     },
-  }, [appNetworkEntityId]);
+  }, [appNetworkEntityId], keyMaterialByRole["demo-app"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["demo-app"]);
   const fhirServer = createEntity("fhir-server", fhirServerEntityId, "FHIR Server", {
     oauth_authorization_server: {
       token_endpoint: `${publicBaseUrl}/token`,
     },
-  }, [providerNetworkEntityId]);
+  }, [providerNetworkEntityId], keyMaterialByRole["fhir-server"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["fhir-server"]);
   const ticketIssuer = createEntity("ticket-issuer", ticketIssuerEntityId, ticketIssuerName, {
     federation_entity: {
       organization_name: ticketIssuerName,
       issuer_url: ticketIssuerUrl,
     },
-  }, [providerNetworkEntityId], ticketIssuerKeys);
+  }, [providerNetworkEntityId], keyMaterialByRole["ticket-issuer"]);
 
   const ticketIssuerTrustMark = signTrustMark(providerNetwork, ticketIssuer.entityId, trustMarkType, now);
   ticketIssuer.trustMarks = [ticketIssuerTrustMark];

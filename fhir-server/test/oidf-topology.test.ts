@@ -85,4 +85,23 @@ describe("OIDF demo topology", () => {
     expect(oidfFramework?.oidf?.trustAnchorEntityId).toBe(`${context.config.publicBaseUrl}/federation/anchor`);
     expect(oidfFramework?.oidf?.ticketIssuerUrl).toBe(`${context.config.publicBaseUrl}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
   });
+
+  test("demo bootstrap publishes an OIDF client option with a trust chain", async () => {
+    const context = createAppContext({ port: 0 });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    try {
+      const response = await fetch(`${origin}/demo/bootstrap`);
+      expect(response.status).toBe(200);
+      const body = await response.json() as { demoClientOptions?: Array<Record<string, any>> };
+      const oidf = body.demoClientOptions?.find((option) => option.type === "oidf");
+      expect(oidf?.label).toBe("OIDF client");
+      expect(oidf?.entityUri).toBe(context.oidfTopology.demoAppEntityId);
+      expect(Array.isArray(oidf?.trustChain)).toBe(true);
+      expect(oidf?.trustChain).toHaveLength(4);
+      expect(typeof oidf?.entityConfigurationUrl).toBe("string");
+    } finally {
+      server.stop(true);
+    }
+  });
 });

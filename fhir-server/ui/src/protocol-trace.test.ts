@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 
 import type { DemoEvent } from "../../shared/demo-events";
-import { buildDetailModel } from "./components/ProtocolTrace";
+import { buildCellPresentation, buildDetailModel } from "./components/ProtocolTrace";
 import { buildDemoEventArtifactTabs } from "./lib/demo-event-tabs";
 import { accumulateTraceState, buildTraceOverview, cellEventsForTrace, filterTraceQueryEvents, hasVisibleSiteClientSetup } from "./lib/protocol-trace-state";
 
@@ -193,6 +193,70 @@ describe("protocol trace state", () => {
     expect(cellEventsForTrace(state, { row: "alpha", column: "client-setup" })).toHaveLength(2);
     expect(hasVisibleSiteClientSetup(state)).toBe(true);
     expect(state.selectedCell).toEqual({ row: "network", column: "resolve-match" });
+  });
+
+  test("network client setup shows automatic registration when OIDF skips /register", () => {
+    const events: DemoEvent[] = [
+      {
+        seq: 1,
+        timestamp: 1,
+        source: "server",
+        phase: "network-auth",
+        type: "token-exchange",
+        label: "Network token issued",
+        detail: {
+          grantType: "urn:ietf:params:oauth:grant-type:token-exchange",
+          endpoint: "http://example.test/token",
+          mode: "strict",
+          outcome: "issued",
+          clientAuthMode: "oidf",
+          clientId: "https://example.test/federation/leafs/demo-app",
+          scopes: ["patient/*.rs"],
+          scopeSummary: "patient/*.rs",
+          steps: [],
+        },
+      },
+    ];
+
+    const state = accumulateTraceState(events);
+    const cell = buildCellPresentation(state, { row: "network", column: "client-setup" });
+    expect(cell?.primary).toBe("Automatic registration");
+    expect(cell?.secondary).toBe("OIDF trust_chain in client_assertion");
+
+    const detail = buildDetailModel(state, { row: "network", column: "client-setup" }, null);
+    expect(detail?.kind).toBe("event");
+    expect(detail?.title).toBe("Automatic registration");
+  });
+
+  test("site client setup shows framework-identified when well-known skips /register", () => {
+    const events: DemoEvent[] = [
+      {
+        seq: 1,
+        timestamp: 1,
+        source: "server",
+        phase: "site-auth",
+        type: "token-exchange",
+        label: "Site token issued",
+        detail: {
+          grantType: "urn:ietf:params:oauth:grant-type:token-exchange",
+          endpoint: "http://example.test/sites/alpha/token",
+          mode: "strict",
+          outcome: "issued",
+          clientAuthMode: "well-known",
+          clientId: "well-known:https://example.test/demo/clients/alpha",
+          siteSlug: "alpha",
+          siteName: "Alpha Health",
+          scopes: ["patient/*.rs"],
+          scopeSummary: "patient/*.rs",
+          steps: [],
+        },
+      },
+    ];
+
+    const state = accumulateTraceState(events);
+    const cell = buildCellPresentation(state, { row: "alpha", column: "client-setup" });
+    expect(cell?.primary).toBe("Framework-identified");
+    expect(cell?.secondary).toContain("well-known:");
   });
 
   test("default selection preserves an existing valid cell", () => {

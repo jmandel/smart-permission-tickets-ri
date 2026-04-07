@@ -83,6 +83,8 @@ export type DemoTokenExchangeEvent = DemoEventEnvelope<
     endpoint: string;
     mode: string;
     outcome: "issued" | "rejected";
+    clientAuthMode?: string;
+    clientId?: string;
     scopes?: string[];
     scopeSummary?: string;
     siteSlug?: string;
