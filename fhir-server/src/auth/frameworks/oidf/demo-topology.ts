@@ -39,7 +39,7 @@ export type OidfDemoTopology = {
   ticketIssuerEntityId: string;
   entities: Record<OidfDemoEntityRole, OidfDemoEntity>;
   entityConfigurations: Map<string, string>;
-  subordinateStatements: Map<string, Map<string, string>>;
+  subordinateStatements: Map<string, Map<string, OidfDemoSubordinateStatement>>;
 };
 
 type OidfDemoKeyMaterial = {
@@ -48,6 +48,10 @@ type OidfDemoKeyMaterial = {
 };
 
 type OidfDemoKeyMaterialByRole = Partial<Record<OidfDemoEntityRole, OidfDemoKeyMaterial>>;
+type OidfDemoSubordinateMetadataPolicy = Record<string, Record<string, Record<string, unknown>>>;
+type OidfDemoSubordinateStatement = {
+  metadataPolicy: OidfDemoSubordinateMetadataPolicy;
+};
 
 const DEFAULT_OIDF_DEMO_KEY_MATERIAL: Record<Exclude<OidfDemoEntityRole, "ticket-issuer">, OidfDemoKeyMaterial> = {
   anchor: generateEcKeyPair(),
@@ -129,10 +133,8 @@ export function buildOidfDemoTopology(
     entityConfigurations.set(entity.entityId, signEntityConfiguration(entity, now));
   }
 
-  const subordinateStatements = new Map<string, Map<string, string>>();
-  addSubordinateStatement(subordinateStatements, appNetwork.entityId, demoApp.entityId, signSubordinateStatement({
-    issuer: appNetwork,
-    subject: demoApp,
+  const subordinateStatements = new Map<string, Map<string, OidfDemoSubordinateStatement>>();
+  addSubordinateStatement(subordinateStatements, appNetwork.entityId, demoApp.entityId, {
     metadataPolicy: {
       oauth_client: {
         client_name: {
@@ -140,11 +142,8 @@ export function buildOidfDemoTopology(
         },
       },
     },
-    now,
-  }));
-  addSubordinateStatement(subordinateStatements, anchor.entityId, appNetwork.entityId, signSubordinateStatement({
-    issuer: anchor,
-    subject: appNetwork,
+  });
+  addSubordinateStatement(subordinateStatements, anchor.entityId, appNetwork.entityId, {
     metadataPolicy: {
       oauth_client: {
         token_endpoint_auth_method: {
@@ -152,11 +151,8 @@ export function buildOidfDemoTopology(
         },
       },
     },
-    now,
-  }));
-  addSubordinateStatement(subordinateStatements, providerNetwork.entityId, fhirServer.entityId, signSubordinateStatement({
-    issuer: providerNetwork,
-    subject: fhirServer,
+  });
+  addSubordinateStatement(subordinateStatements, providerNetwork.entityId, fhirServer.entityId, {
     metadataPolicy: {
       oauth_authorization_server: {
         token_endpoint: {
@@ -164,11 +160,8 @@ export function buildOidfDemoTopology(
         },
       },
     },
-    now,
-  }));
-  addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, signSubordinateStatement({
-    issuer: providerNetwork,
-    subject: ticketIssuer,
+  });
+  addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, {
     metadataPolicy: {
       federation_entity: {
         issuer_url: {
@@ -176,11 +169,8 @@ export function buildOidfDemoTopology(
         },
       },
     },
-    now,
-  }));
-  addSubordinateStatement(subordinateStatements, anchor.entityId, providerNetwork.entityId, signSubordinateStatement({
-    issuer: anchor,
-    subject: providerNetwork,
+  });
+  addSubordinateStatement(subordinateStatements, anchor.entityId, providerNetwork.entityId, {
     metadataPolicy: {
       federation_entity: {
         organization_name: {
@@ -188,8 +178,7 @@ export function buildOidfDemoTopology(
         },
       },
     },
-    now,
-  }));
+  });
 
   return {
     frameworkUri: DEFAULT_DEMO_OIDF_FRAMEWORK_URI,
@@ -212,12 +201,12 @@ export function buildOidfTrustChain(topology: OidfDemoTopology, leafEntityId: st
   let currentEntityId: string | undefined = leafEntityId;
   let first = true;
   while (currentEntityId) {
-    const entityConfiguration = topology.entityConfigurations.get(currentEntityId);
-    if (!entityConfiguration) {
+    const entity = findEntity(topology, currentEntityId);
+    if (!entity) {
       throw new Error(`No OIDF entity configuration published for ${currentEntityId}`);
     }
     if (first) {
-      chain.push(entityConfiguration);
+      chain.push(signEntityConfiguration(entity, Math.floor(Date.now() / 1000)));
       first = false;
     }
     const parentEntityId: string | undefined = entityAuthorityHints(topology, currentEntityId)[0];
@@ -229,14 +218,14 @@ export function buildOidfTrustChain(topology: OidfDemoTopology, leafEntityId: st
     if (!subordinateStatement) {
       throw new Error(`No OIDF subordinate statement from ${parentEntityId} to ${currentEntityId}`);
     }
-    chain.push(subordinateStatement);
+    chain.push(signCurrentSubordinateStatement(topology, parentEntityId, currentEntityId, Math.floor(Date.now() / 1000)));
     currentEntityId = parentEntityId;
     if (currentEntityId === topology.trustAnchorEntityId) {
-      const anchorConfiguration = topology.entityConfigurations.get(currentEntityId);
-      if (!anchorConfiguration) {
+      const anchorEntity = findEntity(topology, currentEntityId);
+      if (!anchorEntity) {
         throw new Error(`No OIDF entity configuration published for ${currentEntityId}`);
       }
-      chain.push(anchorConfiguration);
+      chain.push(signEntityConfiguration(anchorEntity, Math.floor(Date.now() / 1000)));
       break;
     }
   }
@@ -324,7 +313,7 @@ function signEntityConfiguration(entity: OidfDemoEntity, now: number) {
 function signSubordinateStatement(options: {
   issuer: OidfDemoEntity;
   subject: OidfDemoEntity;
-  metadataPolicy: Record<string, Record<string, Record<string, unknown>>>;
+  metadataPolicy: OidfDemoSubordinateMetadataPolicy;
   now: number;
 }) {
   return signEs256Jwt({
@@ -354,24 +343,65 @@ function signTrustMark(issuer: OidfDemoEntity, subjectEntityId: string, trustMar
 }
 
 function addSubordinateStatement(
-  statements: Map<string, Map<string, string>>,
+  statements: Map<string, Map<string, OidfDemoSubordinateStatement>>,
   issuerEntityId: string,
   subjectEntityId: string,
-  statement: string,
+  statement: OidfDemoSubordinateStatement,
 ) {
   let children = statements.get(issuerEntityId);
   if (!children) {
-    children = new Map<string, string>();
+    children = new Map<string, OidfDemoSubordinateStatement>();
     statements.set(issuerEntityId, children);
   }
   children.set(subjectEntityId, statement);
 }
 
-function entityAuthorityHints(topology: OidfDemoTopology, entityId: string) {
-  for (const entity of Object.values(topology.entities)) {
-    if (entity.entityId === entityId) return entity.authorityHints;
+export function mintOidfEntityConfiguration(topology: OidfDemoTopology, entityId: string, now = Math.floor(Date.now() / 1000)) {
+  const entity = findEntity(topology, entityId);
+  if (!entity) return null;
+  return signEntityConfiguration(entity, now);
+}
+
+export function mintOidfSubordinateStatement(
+  topology: OidfDemoTopology,
+  issuerEntityId: string,
+  subjectEntityId: string,
+  now = Math.floor(Date.now() / 1000),
+) {
+  const statement = topology.subordinateStatements.get(issuerEntityId)?.get(subjectEntityId);
+  if (!statement) return null;
+  return signCurrentSubordinateStatement(topology, issuerEntityId, subjectEntityId, now);
+}
+
+function signCurrentSubordinateStatement(
+  topology: OidfDemoTopology,
+  issuerEntityId: string,
+  subjectEntityId: string,
+  now: number,
+) {
+  const issuer = findEntity(topology, issuerEntityId);
+  const subject = findEntity(topology, subjectEntityId);
+  const statement = topology.subordinateStatements.get(issuerEntityId)?.get(subjectEntityId);
+  if (!issuer || !subject || !statement) {
+    throw new Error(`No OIDF subordinate statement from ${issuerEntityId} to ${subjectEntityId}`);
   }
-  return [];
+  return signSubordinateStatement({
+    issuer,
+    subject,
+    metadataPolicy: statement.metadataPolicy,
+    now,
+  });
+}
+
+function entityAuthorityHints(topology: OidfDemoTopology, entityId: string) {
+  return findEntity(topology, entityId)?.authorityHints ?? [];
+}
+
+function findEntity(topology: OidfDemoTopology, entityId: string) {
+  for (const entity of Object.values(topology.entities)) {
+    if (entity.entityId === entityId) return entity;
+  }
+  return null;
 }
 
 function generateEcKeyPair() {

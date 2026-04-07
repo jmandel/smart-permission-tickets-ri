@@ -247,6 +247,18 @@ Status: implemented on `main`
 - the trust-chain shape and validation model were corrected after RFC review and are now folded directly into the canonical Plan 21 text
 - Phase 7 UI / Protocol Trace integration, including the OIDF client demo flow, is now on `main`
 
+### Plan 24: Demo Crypto Bundle and OIDF Re-Minting
+`24-demo-crypto-bundle-and-oidf-remint.md`
+
+Status: in progress
+
+- fixes the long-running demo expiry bug by re-minting OIDF entity statements and trust marks on fetch
+- revises the provider-side OIDF topology so each site is a discoverable Provider Network leaf
+- adds one optional generated crypto-bundle file that can stabilize demo keys across restarts, including per-site OIDF keys
+- keeps zero-config behavior working when no bundle is present
+- prefers one explicit stored bundle over a seed-based derivation scheme
+- Phase 2 is already implemented on `main`; the remaining work is the site-topology rewrite and bundle plumbing
+
 ## Dependencies Between Plans
 
 ```
@@ -274,6 +286,8 @@ Plan 15 (Schema Unification + Ref Impl Migration) ─────┘
                                       ↑
 Plan 21 (OpenID Federation 1.0 Support) ───────────────┘
                                       ↑
+Plan 24 (Demo Crypto Bundle + Site OIDF Leaves) ──────┘
+                                      ↑
 Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
                                       ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
@@ -292,6 +306,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 13 (demo event visualization) adds a live event visualization so every authorization decision, token exchange, and FHIR query is observable during demos — making the protocol's trust chain, fan-out, and per-site independence tangible and inspectable
 - Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
 - Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
+- Plan 24 (demo crypto bundle + site OIDF leaves) is a follow-on to Plan 21 that makes provider sites first-class OIDF leaves, fixes OIDF JWT expiry by re-minting on fetch, and adds an optional bundle file for stable demo keys across restarts
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

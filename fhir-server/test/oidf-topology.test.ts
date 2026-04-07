@@ -76,6 +76,34 @@ describe("OIDF demo topology", () => {
     }
   });
 
+  test("re-mints entity statements on fetch instead of serving stale boot-time JWTs", async () => {
+    const realDateNow = Date.now;
+    Date.now = () => new Date("2026-04-07T12:00:00.000Z").getTime();
+    const context = createAppContext({ port: 0 });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    try {
+      const firstResponse = await fetch(`${origin}/federation/leafs/demo-app/.well-known/openid-federation`);
+      expect(firstResponse.status).toBe(200);
+      const firstStatement = await firstResponse.text();
+      const firstDecoded = decodeEs256Jwt<Record<string, any>>(firstStatement);
+
+      Date.now = () => new Date("2026-04-07T14:30:00.000Z").getTime();
+
+      const secondResponse = await fetch(`${origin}/federation/leafs/demo-app/.well-known/openid-federation`);
+      expect(secondResponse.status).toBe(200);
+      const secondStatement = await secondResponse.text();
+      const secondDecoded = decodeEs256Jwt<Record<string, any>>(secondStatement);
+
+      expect(secondDecoded.payload.iat).toBeGreaterThan(firstDecoded.payload.iat);
+      expect(secondDecoded.payload.exp).toBeGreaterThan(firstDecoded.payload.exp);
+      expect(secondDecoded.payload.exp - secondDecoded.payload.iat).toBe(firstDecoded.payload.exp - firstDecoded.payload.iat);
+    } finally {
+      Date.now = realDateNow;
+      server.stop(true);
+    }
+  });
+
   test("default frameworks include a dormant OIDF definition with stable entity ids", () => {
     const context = createAppContext({ port: 0 });
     const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");

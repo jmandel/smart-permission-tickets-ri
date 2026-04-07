@@ -45,7 +45,6 @@ describe("OIDF issuer trust", () => {
     try {
       const ticketIssuer = context.oidfTopology.entities["ticket-issuer"];
       ticketIssuer.trustMarks = [];
-      refreshEntityConfiguration(context.oidfTopology, ticketIssuer);
 
       const response = await exchangeTicket(origin, mintOidfIssuerTicket(context, publicOrigin));
       expect(response.status).toBe(400);
@@ -76,7 +75,6 @@ describe("OIDF issuer trust", () => {
           kid: provider.publicJwk.kid,
         }),
       ];
-      refreshEntityConfiguration(context.oidfTopology, ticketIssuer);
 
       const response = await exchangeTicket(origin, mintOidfIssuerTicket(context, publicOrigin));
       expect(response.status).toBe(400);
@@ -152,21 +150,4 @@ function introspectToken(origin: string, accessToken: string) {
       token: accessToken,
     }),
   });
-}
-
-function refreshEntityConfiguration(topology: OidfDemoTopology, entity: OidfDemoEntity) {
-  const now = Math.floor(Date.now() / 1000);
-  topology.entityConfigurations.set(entity.entityId, signEs256Jwt({
-    iss: entity.entityId,
-    sub: entity.entityId,
-    iat: now - 60,
-    exp: now + 3600,
-    jwks: { keys: [entity.publicJwk] },
-    metadata: entity.metadata,
-    authority_hints: entity.authorityHints,
-    ...(entity.trustMarks?.length ? { trust_marks: entity.trustMarks } : {}),
-  }, entity.privateJwk, {
-    typ: ENTITY_STATEMENT_TYP,
-    kid: entity.publicJwk.kid,
-  }));
 }

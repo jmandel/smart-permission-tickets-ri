@@ -20,6 +20,8 @@ import {
   buildOidfTrustChain,
   findOidfEntityIdByConfigurationPath,
   findOidfIssuerEntityIdByFetchPath,
+  mintOidfEntityConfiguration,
+  mintOidfSubordinateStatement,
   oidfEntityConfigurationPath,
   type OidfDemoTopology,
 } from "./auth/frameworks/oidf/demo-topology.ts";
@@ -1754,7 +1756,7 @@ function handleOidfRequest(
   if (request.method !== "GET") return methodNotAllowed("GET");
   switch (route.kind) {
     case "entity-configuration": {
-      const statement = topology.entityConfigurations.get(route.entityId);
+      const statement = mintOidfEntityConfiguration(topology, route.entityId);
       return statement
         ? jwtResponse(statement, "application/entity-statement+jwt")
         : notFound();
@@ -1764,7 +1766,7 @@ function handleOidfRequest(
       if (!subjectEntityId) {
         return operationOutcome("Missing sub query parameter", 400);
       }
-      const statement = topology.subordinateStatements.get(route.issuerEntityId)?.get(subjectEntityId);
+      const statement = mintOidfSubordinateStatement(topology, route.issuerEntityId, subjectEntityId);
       return statement
         ? jwtResponse(statement, "application/entity-statement+jwt")
         : notFound();
