@@ -257,7 +257,7 @@ Status: in progress
 - adds one optional generated crypto-bundle file that can stabilize demo keys across restarts, including per-site OIDF keys
 - keeps zero-config behavior working when no bundle is present
 - prefers one explicit stored bundle over a seed-based derivation scheme
-- Phases 1, 2, and 3 are already implemented on `main`; the remaining work is the bundle generator and surface wiring
+- Phases 1, 2, 3, and 4 are already implemented on `main`; the remaining work is the actual bundle-backed surface wiring
 
 ## Dependencies Between Plans
 

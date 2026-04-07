@@ -1,6 +1,15 @@
-import { createPrivateKey, createPublicKey } from "node:crypto";
+import { createPrivateKey, createPublicKey, generateKeyPairSync } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+
+import {
+  DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
+  DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+  DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PEM,
+  DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+  DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+} from "./auth/demo-frameworks.ts";
+import { DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK } from "./auth/issuers.ts";
 
 type DemoCryptoBundlePrivateJwkEntry = {
   privateJwk: JsonWebKey;
@@ -15,6 +24,25 @@ type DemoCryptoBundleUdapEntry = {
   caPrivateKeyPem: string;
   clientPrivateJwk: JsonWebKey;
   clientPublicJwk: JsonWebKey;
+};
+
+export type DemoCryptoBundleDocument = {
+  version: 1;
+  ticketIssuers: Record<string, DemoCryptoBundlePrivateJwkEntry>;
+  oidf: {
+    anchor: DemoCryptoBundlePrivateJwkEntry;
+    appNetwork: DemoCryptoBundlePrivateJwkEntry;
+    providerNetwork: DemoCryptoBundlePrivateJwkEntry;
+    demoApp: DemoCryptoBundlePrivateJwkEntry;
+    providerSites: Record<string, DemoCryptoBundlePrivateJwkEntry>;
+  };
+  wellKnown: {
+    default: DemoCryptoBundlePrivateJwkEntry;
+  };
+  udap: {
+    ec: Omit<DemoCryptoBundleUdapEntry, "clientPublicJwk">;
+    rsa: Omit<DemoCryptoBundleUdapEntry, "clientPublicJwk">;
+  };
 };
 
 export type DemoCryptoBundle = {
@@ -81,6 +109,43 @@ export function parseDemoCryptoBundle(raw: string, sourceLabel = "demo crypto bu
   };
 }
 
+export function generateDemoCryptoBundle(siteSlugs: string[]): DemoCryptoBundleDocument {
+  return {
+    version: 1,
+    ticketIssuers: {
+      "reference-demo": {
+        privateJwk: DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
+      },
+    },
+    oidf: {
+      anchor: { privateJwk: generateEcPrivateJwk() },
+      appNetwork: { privateJwk: generateEcPrivateJwk() },
+      providerNetwork: { privateJwk: generateEcPrivateJwk() },
+      demoApp: { privateJwk: generateEcPrivateJwk() },
+      providerSites: Object.fromEntries(
+        [...siteSlugs].sort().map((siteSlug) => [siteSlug, { privateJwk: generateEcPrivateJwk() }]),
+      ),
+    },
+    wellKnown: {
+      default: {
+        privateJwk: DEFAULT_DEMO_WELL_KNOWN_CLIENT_PRIVATE_JWK,
+      },
+    },
+    udap: {
+      ec: {
+        caCertificatePem: DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PEM,
+        caPrivateKeyPem: DEFAULT_DEMO_UDAP_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+        clientPrivateJwk: generateEcPrivateJwk(),
+      },
+      rsa: {
+        caCertificatePem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PEM,
+        caPrivateKeyPem: DEFAULT_DEMO_UDAP_RSA_TRUST_ANCHOR_PRIVATE_KEY_PEM,
+        clientPrivateJwk: generateRsaPrivateJwk(),
+      },
+    },
+  };
+}
+
 export function assertDemoCryptoBundleCoversSites(bundle: DemoCryptoBundle | undefined, siteSlugs: string[]) {
   if (!bundle) return;
   const missing = siteSlugs.filter((siteSlug) => !bundle.oidf.providerSites[siteSlug]);
@@ -129,6 +194,16 @@ function derivePublicJwk(privateJwk: JsonWebKey, label: string) {
   } catch (error) {
     throw new Error(`Invalid ${label}.privateJwk: ${error instanceof Error ? error.message : String(error)}`);
   }
+}
+
+function generateEcPrivateJwk() {
+  const { privateKey } = generateKeyPairSync("ec", { namedCurve: "prime256v1" });
+  return privateKey.export({ format: "jwk" }) as JsonWebKey;
+}
+
+function generateRsaPrivateJwk() {
+  const { privateKey } = generateKeyPairSync("rsa", { modulusLength: 2048 });
+  return privateKey.export({ format: "jwk" }) as JsonWebKey;
 }
 
 function readObject(value: unknown, label: string) {

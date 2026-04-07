@@ -356,6 +356,10 @@ Scope:
 - generate all required EC, RSA, and PEM materials in one document
 - include one provider-site key per discovered `siteSlug`
 
+Status:
+
+- implemented on `main`
+
 ### Phase 5: Wire Bundle Into Existing Surfaces
 
 Scope:
