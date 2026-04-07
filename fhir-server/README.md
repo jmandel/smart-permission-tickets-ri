@@ -52,12 +52,12 @@ The landing page lists:
   - hand off only the sites that can actually authorize into the viewer app
 
 In `strict` mode, the workbench now explicitly explains what each client path demonstrates before launch:
-- **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `presenter_binding.key.jkt`
+- **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `presenter_binding.method = "jkt"`
 - **Well-known client**: a framework-affiliated client skips registration and is recognized as `well-known:<entity-uri>` using current JWKS resolution
 - **UDAP client**: a framework-backed client registers just in time with UDAP DCR and then authenticates with `x5c`
 
 After launch, use the **Ticket** and **Client** artifact menus in the viewer to inspect:
-- the chosen presenter-binding shape (`presenter_binding.key.jkt`, `presenter_binding.framework_client`, or both)
+- the chosen presenter-binding shape (`presenter_binding.method = "jkt"`, `presenter_binding.method = "framework_client"`, or no binding)
 - the client story and effective `client_id`
 - registration request/response payloads when registration occurs
 - the well-known framework document and entity JWKS for the implicit-registration path
@@ -151,7 +151,7 @@ Named mode mounts:
 
 ### `key-bound`
 
-- intended for `presenter_binding.key.jkt` sender-constrained flows
+- intended for `presenter_binding.method = "jkt"` sender-constrained flows
 - FHIR requests still require a Bearer access token
 
 ### `open`
@@ -206,11 +206,11 @@ The strict-mode demo now intentionally exercises three different client identity
 
 - **Unaffiliated registered client**
   - runtime behavior: POSTs a JWK to `/register`
-  - ticket behavior: uses `presenter_binding.key.jkt` in strict/key-bound flows
+  - ticket behavior: uses `presenter_binding.method = "jkt"` in strict/key-bound flows
 
 - **Well-known client**
   - runtime behavior: skips registration and uses `client_id=well-known:<entity-uri>`
-  - ticket behavior: uses `presenter_binding.framework_client`
+  - ticket behavior: uses `presenter_binding.method = "framework_client"`
   - discovery/demo metadata:
     - framework JSON: `/demo/frameworks/well-known-reference.json`
     - sample entity metadata: `/demo/clients/well-known-alpha`
@@ -218,7 +218,7 @@ The strict-mode demo now intentionally exercises three different client identity
 
 - **UDAP client**
   - runtime behavior: does just-in-time UDAP registration at `/register`, then authenticates with `x5c` and `udap=1`
-  - ticket behavior: uses `presenter_binding.framework_client`
+  - ticket behavior: uses `presenter_binding.method = "framework_client"`
   - discovery/demo metadata:
     - UDAP discovery: `/.well-known/udap`
 
@@ -347,11 +347,10 @@ curl -X POST http://localhost:8091/issuer/reference-demo/sign-ticket \
     "aud": "http://localhost:8091",
     "exp": 1760000000,
     "jti": "example-ticket-id",
-    "ticket_type": "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
+    "ticket_type": "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
     "presenter_binding": {
-      "key": {
-        "jkt": "example-proof-key-thumbprint"
-      }
+      "method": "jkt",
+      "jkt": "example-proof-key-thumbprint"
     },
     "subject": {
       "patient": {
@@ -365,9 +364,6 @@ curl -X POST http://localhost:8091/issuer/reference-demo/sign-ticket \
         { "kind": "data", "resource_type": "*", "interactions": ["read", "search"] }
       ],
       "sensitive_data": "exclude"
-    },
-    "context": {
-      "kind": "patient-access"
     }
   }'
 ```
@@ -383,7 +379,7 @@ The built-in demo UI exposes this as a ticket lifetime choice, including bounded
 
 This reference implementation currently supports one Permission Ticket type end to end:
 
-- `https://smarthealthit.org/permission-ticket-type/network-patient-access-v1`
+- `https://smarthealthit.org/permission-ticket-type/patient-self-access-v1`
 
 The other ticket types described in the specification remain illustrative/profile targets for future implementation.
 

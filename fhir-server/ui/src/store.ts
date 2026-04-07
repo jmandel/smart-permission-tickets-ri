@@ -30,7 +30,7 @@ async function fetchJson<T>(path: string): Promise<T> {
 function defaultPersonId(persons: PersonInfo[]) {
   return (
     persons.find((person) => person.displayName === "Elena Marisol Reyes")?.personId ??
-    persons.find((person) => person.useCases.some((useCase) => /patient access/i.test(useCase.display)))?.personId ??
+    persons.find((person) => person.useCases.some((useCase) => /patient(?: self)? access/i.test(useCase.display)))?.personId ??
     persons[0]?.personId ??
     null
   );

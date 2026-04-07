@@ -31,7 +31,7 @@ export type UdapCertificateAuthority = {
 };
 
 export type FrameworkClientBinding = {
-  binding_type: "framework-entity";
+  method: "framework_client";
   framework: string;
   framework_type: FrameworkType;
   entity_uri: string;

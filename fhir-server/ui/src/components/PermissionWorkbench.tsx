@@ -137,11 +137,11 @@ export function PermissionWorkbench({
         ? "UDAP DCR"
         : "Not required";
   const selectedBindingSummary = selectedClientOption?.type === "unaffiliated"
-    ? ((mode === "strict" || mode === "key-bound") ? "Ticket uses presenter_binding.key" : "No presenter binding in ticket")
+    ? ((mode === "strict" || mode === "key-bound") ? "Ticket uses presenter_binding.method = jkt" : "No presenter binding in ticket")
     : selectedClientOption?.type === "well-known"
-      ? "Ticket uses presenter_binding.framework_client"
+      ? "Ticket uses presenter_binding.method = framework_client"
       : selectedClientOption?.type === "udap"
-        ? "Ticket uses presenter_binding.framework_client"
+        ? "Ticket uses presenter_binding.method = framework_client"
         : "No presenter binding";
   const selectedClientStory = selectedClientOption ? describeClientOption(mode, selectedClientOption) : null;
 

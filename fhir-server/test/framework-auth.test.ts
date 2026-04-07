@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial, signPrivateKeyJwt, type ClientKeyMaterial } from "../shared/private-key-jwt.ts";
 import {
-  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
@@ -14,7 +14,7 @@ describe("framework-aware client auth", () => {
       const response = await fetch(`${appOrigin}/.well-known/smart-configuration`);
       expect(response.status).toBe(200);
       const body = await response.json();
-      expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_client_binding_types).toContain("presenter_binding.framework_client");
+      expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_client_binding_types).toContain("framework_client");
       expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_trust_frameworks).toEqual([
         {
           framework: "https://example.org/frameworks/smart-health-issuers",
@@ -24,10 +24,11 @@ describe("framework-aware client auth", () => {
     });
   });
 
-  test("strict token exchange accepts a framework-affiliated well-known client bound by presenter_binding.framework_client", async () => {
+  test("strict token exchange accepts a framework-affiliated well-known client bound by presenter_binding", async () => {
     await withFrameworkHarness(async ({ appOrigin, appContext, frameworkEntityUri, frameworkClientKeys }) => {
       const ticket = mintTicket(appContext, appOrigin, {
-        frameworkClientBinding: {
+        presenterBinding: {
+          method: "framework_client",
           framework: "https://example.org/frameworks/smart-health-issuers",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
@@ -52,7 +53,8 @@ describe("framework-aware client auth", () => {
   test("ticket presenter binding mismatch rejects a well-known client with invalid_grant", async () => {
     await withFrameworkHarness(async ({ appOrigin, appContext, frameworkEntityUri, frameworkClientKeys }) => {
       const mismatchedTicket = mintTicket(appContext, appOrigin, {
-        frameworkClientBinding: {
+        presenterBinding: {
+          method: "framework_client",
           framework: "https://example.org/frameworks/other",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
@@ -71,7 +73,8 @@ describe("framework-aware client auth", () => {
       appContext.config.frameworks[0]!.localAudienceMembership = { entityUri: appOrigin };
       const ticket = mintTicket(appContext, appOrigin, {
         aud: "https://example.org/frameworks/smart-health-issuers",
-        frameworkClientBinding: {
+        presenterBinding: {
+          method: "framework_client",
           framework: "https://example.org/frameworks/smart-health-issuers",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
@@ -226,16 +229,16 @@ async function withFrameworkHarness(
 function mintTicket(
   appContext: ReturnType<typeof createAppContext>,
   appOrigin: string,
-  input: { aud?: string | string[]; frameworkClientBinding?: Record<string, string> },
+  input: { aud?: string | string[]; presenterBinding?: Record<string, string> & { method: "framework_client" } },
 ) {
-  const ticketType = input.frameworkClientBinding ? NETWORK_PATIENT_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE;
+  const ticketType = input.presenterBinding ? PATIENT_SELF_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE;
   return appContext.issuers.sign(appOrigin, appContext.config.defaultPermissionTicketIssuerSlug, {
     iss: `${appOrigin}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
     aud: input.aud ?? appOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
     jti: crypto.randomUUID(),
     ticket_type: ticketType,
-    ...(input.frameworkClientBinding ? { presenter_binding: { framework_client: input.frameworkClientBinding } } : {}),
+    ...(input.presenterBinding ? { presenter_binding: input.presenterBinding } : {}),
     ...(ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE
       ? {
           requester: {
@@ -261,14 +264,13 @@ function mintTicket(
       data_period: { start: "2023-01-01", end: "2025-12-31" },
       sensitive_data: "exclude",
     },
-    context: ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE
+    ...(ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE
       ? {
-          kind: "public-health",
-          reportable_condition: { text: "Public health investigation" },
+          context: {
+            reportable_condition: { text: "Public health investigation" },
+          },
         }
-      : {
-          kind: "patient-access",
-        },
+      : {}),
   });
 }
 

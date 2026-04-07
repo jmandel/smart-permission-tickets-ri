@@ -166,9 +166,8 @@ export type ViewerClientPlan = ViewerUnaffiliatedClientPlan | ViewerWellKnownCli
 export type TicketBindingDescription = {
   shape:
     | "none"
-    | "presenter_binding.key"
-    | "presenter_binding.framework_client"
-    | "presenter_binding.key + presenter_binding.framework_client";
+    | "presenter_binding.method=jkt"
+    | "presenter_binding.method=framework_client";
   label: string;
   rationale: string;
   usesProofKeyBinding: boolean;

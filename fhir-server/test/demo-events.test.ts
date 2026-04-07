@@ -302,7 +302,6 @@ describe("demo event stream", () => {
             sensitive_data: "exclude",
           },
           context: {
-            kind: "public-health",
             reportable_condition: { text: "Public health investigation" },
           },
         }),
@@ -336,8 +335,8 @@ describe("demo event stream", () => {
           aud: "http://example.test",
           exp: Math.floor(Date.now() / 1000) + 3600,
           jti: crypto.randomUUID(),
-          ticket_type: "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
-          presenter_binding: { key: { jkt: thumbprint } },
+          ticket_type: "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
+          presenter_binding: { method: "jkt", jkt: thumbprint },
           subject: {
             patient: {
               resourceType: "Patient",
@@ -352,7 +351,6 @@ describe("demo event stream", () => {
             ],
             sensitive_data: "exclude",
           },
-          context: { kind: "patient-access" },
         }),
       }),
     );

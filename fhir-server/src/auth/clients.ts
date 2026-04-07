@@ -159,7 +159,7 @@ export class ClientRegistry {
         dynamic: false,
         authMode: "udap",
         frameworkBinding: {
-          binding_type: "framework-entity",
+          method: "framework_client",
           framework: payload.framework,
           framework_type: "udap",
           entity_uri: payload.entity_uri,

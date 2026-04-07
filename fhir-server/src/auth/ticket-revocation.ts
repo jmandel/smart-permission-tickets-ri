@@ -1,38 +1,37 @@
+import { gunzipSync } from "node:zlib";
+
 import type { PermissionTicket } from "../store/model.ts";
 
-type TicketRevocationList = {
+type TicketStatusList = {
   kid?: string;
-  method: "rid";
-  ctr: number;
-  rids: string[];
+  bits: string;
 };
 
-type CachedTicketRevocationList = {
+type CachedTicketStatusList = {
   expiresAtMs: number;
-  list: TicketRevocationList;
+  list: TicketStatusList;
 };
 
 export class TicketRevocationRegistry {
-  private readonly cache = new Map<string, CachedTicketRevocationList>();
+  private readonly cache = new Map<string, CachedTicketStatusList>();
 
   constructor(
     private readonly fetchImpl: typeof fetch = fetch,
     private readonly nowMs: () => number = () => Date.now(),
   ) {}
 
-  async assertActive(ticket: Pick<PermissionTicket, "iat" | "revocation"> & { jti?: string }) {
+  async assertActive(ticket: Pick<PermissionTicket, "revocation"> & { jti?: string }) {
     if (!ticket.revocation) return;
     if (typeof ticket.jti !== "string" || !ticket.jti) throw new Error("Revocable ticket missing jti");
-    if (typeof ticket.revocation.rid !== "string" || !ticket.revocation.rid) throw new Error("Permission Ticket revocation rid missing");
 
     const revocationUrl = normalizeRevocationUrl(ticket.revocation.url);
-    const revocationList = await this.loadRevocationList(revocationUrl);
-    const status = evaluateRevocationStatus(revocationList.rids, ticket.revocation.rid, ticket.iat);
-    if (status === "revoked") throw new Error("Permission Ticket has been revoked");
-    if (status === "indeterminate") throw new Error("Permission Ticket revocation status could not be determined");
+    const statusList = await this.loadStatusList(revocationUrl);
+    if (isRevoked(statusList.bits, ticket.revocation.index)) {
+      throw new Error("Permission Ticket has been revoked");
+    }
   }
 
-  private async loadRevocationList(revocationUrl: string) {
+  private async loadStatusList(revocationUrl: string) {
     const now = this.nowMs();
     this.evictExpired(now);
 
@@ -42,10 +41,10 @@ export class TicketRevocationRegistry {
     try {
       const response = await this.fetchImpl(revocationUrl, { redirect: "follow" });
       if (!response.ok) {
-        throw new Error(`CRL retrieval returned ${response.status}`);
+        throw new Error(`Status list retrieval returned ${response.status}`);
       }
       const body = await response.json();
-      const list = parseTicketRevocationList(body);
+      const list = parseTicketStatusList(body);
       const ttlMs = cacheTtlMs(response.headers);
       if (ttlMs > 0) {
         this.cache.set(revocationUrl, { list, expiresAtMs: now + ttlMs });
@@ -65,45 +64,34 @@ export class TicketRevocationRegistry {
   }
 }
 
-function parseTicketRevocationList(body: unknown): TicketRevocationList {
+function parseTicketStatusList(body: unknown): TicketStatusList {
   if (!body || typeof body !== "object" || Array.isArray(body)) {
-    throw new Error("Invalid revocation list");
+    throw new Error("Invalid status list");
   }
   const list = body as Record<string, unknown>;
-  if (list.method !== "rid") throw new Error("Invalid revocation list");
-  if (typeof list.ctr !== "number" || !Number.isFinite(list.ctr)) throw new Error("Invalid revocation list");
-  if (!Array.isArray(list.rids) || !list.rids.every((value) => typeof value === "string")) throw new Error("Invalid revocation list");
-  if (list.kid !== undefined && typeof list.kid !== "string") throw new Error("Invalid revocation list");
+  if (typeof list.bits !== "string" || !list.bits) throw new Error("Invalid status list");
+  if (list.kid !== undefined && typeof list.kid !== "string") throw new Error("Invalid status list");
   return {
     ...(typeof list.kid === "string" ? { kid: list.kid } : {}),
-    method: "rid",
-    ctr: list.ctr,
-    rids: list.rids,
+    bits: list.bits,
   };
 }
 
-function evaluateRevocationStatus(rids: string[], targetRid: string, issuedAt: number | undefined) {
-  let indeterminate = false;
-  for (const entry of rids) {
-    if (entry === targetRid) return "revoked";
-    if (!entry.startsWith(`${targetRid}.`)) continue;
-    const cutoffRaw = entry.slice(targetRid.length + 1);
-    if (!/^\d+$/.test(cutoffRaw)) {
-      indeterminate = true;
-      continue;
-    }
-    const cutoff = Number(cutoffRaw);
-    if (!Number.isFinite(cutoff)) {
-      indeterminate = true;
-      continue;
-    }
-    if (typeof issuedAt !== "number") {
-      indeterminate = true;
-      continue;
-    }
-    if (issuedAt < cutoff) return "revoked";
+function isRevoked(encodedBits: string, index: number) {
+  const bytes = decodeStatusBits(encodedBits);
+  const byteIndex = Math.floor(index / 8);
+  if (byteIndex >= bytes.length) return false;
+  const bitMask = 1 << (index % 8);
+  return (bytes[byteIndex] & bitMask) !== 0;
+}
+
+function decodeStatusBits(encodedBits: string) {
+  try {
+    const compressed = Buffer.from(encodedBits, "base64url");
+    return new Uint8Array(gunzipSync(compressed));
+  } catch {
+    throw new Error("Invalid status list");
   }
-  return indeterminate ? "indeterminate" : "active";
 }
 
 function cacheTtlMs(headers: Headers) {

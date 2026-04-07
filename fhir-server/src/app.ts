@@ -38,7 +38,7 @@ import type { AuthenticatedClientIdentity, AuthorizationEnvelope, FrameworkClien
 import { SUPPORTED_RESOURCE_TYPES } from "./store/model.ts";
 import { buildAuthBasePath, buildFhirBasePath, modePrefix, normalizeModeSegment } from "../shared/surfaces.ts";
 import {
-  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   SMART_PERMISSION_TICKET_CONFIG_EXTENSION_URL,
   SUPPORTED_PERMISSION_TICKET_TYPES,
@@ -464,13 +464,13 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
     }
     try {
-      const proofKeyJkt = ticket.ticket.presenter_binding?.key?.jkt;
-      const frameworkClientBinding = ticket.ticket.presenter_binding?.framework_client
+      const proofKeyJkt = ticket.ticket.presenter_binding?.method === "jkt" ? ticket.ticket.presenter_binding.jkt : undefined;
+      const frameworkClientBinding = ticket.ticket.presenter_binding?.method === "framework_client"
         ? {
-            binding_type: "framework-entity" as const,
-            framework: ticket.ticket.presenter_binding.framework_client.framework,
-            framework_type: ticket.ticket.presenter_binding.framework_client.framework_type,
-            entity_uri: ticket.ticket.presenter_binding.framework_client.entity_uri,
+            method: "framework_client" as const,
+            framework: ticket.ticket.presenter_binding.framework,
+            framework_type: ticket.ticket.presenter_binding.framework_type,
+            entity_uri: ticket.ticket.presenter_binding.entity_uri,
           }
         : undefined;
       enforceClientRequirements(proofKeyJkt, frameworkClientBinding, client, contextRoute.mode);
@@ -481,9 +481,9 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
           ? client.frameworkBinding.entity_uri
           : client?.jwkThumbprint ?? "anonymous",
         why: frameworkClientBinding
-          ? "Authenticated client matches the ticket presenter_binding.framework_client"
+          ? "Authenticated client matches the ticket presenter binding"
           : proofKeyJkt
-            ? "Authenticated client proof key matches the ticket presenter_binding.key.jkt"
+            ? "Authenticated client proof key matches the ticket presenter binding"
             : "No presenter binding was required for this request mode",
       });
     } catch (error) {
@@ -873,7 +873,7 @@ function enforceClientRequirements(
       throw new Error(`Ticket presenter binding requires framework ${frameworkClientBinding.framework} entity ${frameworkClientBinding.entity_uri}`);
     }
     if (
-      client.frameworkBinding.binding_type !== frameworkClientBinding.binding_type
+      client.frameworkBinding.method !== frameworkClientBinding.method
       || client.frameworkBinding.framework !== frameworkClientBinding.framework
       || client.frameworkBinding.framework_type !== frameworkClientBinding.framework_type
       || client.frameworkBinding.entity_uri !== frameworkClientBinding.entity_uri
@@ -1164,7 +1164,7 @@ function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteCont
         permission_ticket_profile: "v2",
         surface_kind: contextRoute.networkSlug ? "network" : contextRoute.siteSlug ? "site" : "global",
         surface_mode: contextRoute.mode,
-        supported_client_binding_types: ["presenter_binding.key.jkt", "presenter_binding.framework_client"],
+        supported_client_binding_types: ["jkt", "framework_client"],
         supported_trust_frameworks: context.frameworks.getSupportedTrustFrameworks(),
         ...(contextRoute.networkSlug ? { record_location_operation: "$resolve-record-locations" } : {}),
       },
@@ -1194,7 +1194,7 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
   const candidate = {
     ...payload,
     aud: payload.aud ?? audienceOrigin,
-    ticket_type: payload.ticket_type ?? NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+    ticket_type: payload.ticket_type ?? PATIENT_SELF_ACCESS_TICKET_TYPE,
   };
   const parsed = PermissionTicketSchema.safeParse(candidate);
   if (!parsed.success) {
@@ -1217,7 +1217,11 @@ function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTick
       patientDob: typeof ticketPayload.subject.patient.birthDate === "string" ? ticketPayload.subject.patient.birthDate : null,
       scopes,
       dateSummary: summarizeTicketPeriod(ticketPayload.access.data_period),
-      sensitiveSummary: ticketPayload.access.sensitive_data === "include" ? "Sensitive included" : "Sensitive excluded",
+      sensitiveSummary: ticketPayload.access.sensitive_data === "include"
+        ? "Sensitive included"
+        : ticketPayload.access.sensitive_data === "exclude"
+          ? "Sensitive excluded"
+          : "Sensitive policy uses recipient default",
       expirySummary: summarizeTicketExpiry(ticketPayload.exp),
       bindingSummary: summarizeTicketBinding(ticketPayload),
     },
@@ -1266,11 +1270,8 @@ function summarizeTicketExpiry(exp: unknown) {
 }
 
 function summarizeTicketBinding(ticketPayload: PermissionTicket) {
-  if (ticketPayload.presenter_binding?.framework_client && ticketPayload.presenter_binding?.key?.jkt) {
-    return "Framework-bound + proof-key client";
-  }
-  if (ticketPayload.presenter_binding?.framework_client) return "Framework-bound client";
-  if (ticketPayload.presenter_binding?.key?.jkt) return "Proof-key client";
+  if (ticketPayload.presenter_binding?.method === "framework_client") return "Framework-bound client";
+  if (ticketPayload.presenter_binding?.method === "jkt") return "Proof-key client";
   return "No presenter binding";
 }
 
@@ -1278,11 +1279,14 @@ function buildPresenterBindingSummary(payload: {
   presenterProofKey?: { jkt: string };
   presenterFrameworkClient?: FrameworkClientBinding;
 }) {
-  if (!payload.presenterProofKey && !payload.presenterFrameworkClient) return undefined;
-  return {
-    ...(payload.presenterProofKey ? { key: payload.presenterProofKey } : {}),
-    ...(payload.presenterFrameworkClient ? { framework_client: payload.presenterFrameworkClient } : {}),
-  };
+  if (payload.presenterFrameworkClient) return payload.presenterFrameworkClient;
+  if (payload.presenterProofKey) {
+    return {
+      method: "jkt" as const,
+      jkt: payload.presenterProofKey.jkt,
+    };
+  }
+  return undefined;
 }
 
 function expandPermissionLabels(permissions: PermissionTicket["access"]["permissions"]) {
@@ -1874,7 +1878,7 @@ function buildLandingPage(context: AppContext, url: URL, contextRoute: RouteCont
     {
       mode: "key-bound",
       title: "Key-Bound",
-      summary: "Sender-constrained token exchange and token use when tickets carry presenter_binding.key.jkt.",
+      summary: "Sender-constrained token exchange and token use when tickets carry presenter_binding.method = jkt.",
       auth: "Proof key must match the ticket binding.",
       fhir: "FHIR requests require a Bearer access token and matching proof header.",
     },

@@ -105,8 +105,8 @@ async function benchmarkPatient(person: any) {
     aud: BASE,
     exp: Math.floor(Date.now() / 1000) + 3600,
     jti: crypto.randomUUID(),
-    ticket_type: "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
-    presenter_binding: { key: { jkt: keys.thumbprint } },
+    ticket_type: "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
+    presenter_binding: { method: "jkt", jkt: keys.thumbprint },
     subject: {
       patient: { resourceType: "Patient", name: [{ family: familyName, given: givenNames }], birthDate },
     },
@@ -114,7 +114,6 @@ async function benchmarkPatient(person: any) {
       permissions: [{ kind: "data", resource_type: "*", interactions: ["read", "search"] }],
       sensitive_data: "include",
     },
-    context: { kind: "patient-access" },
   };
 
   const { result: signResult, ms: signMs } = await timeIt("sign-ticket", () =>

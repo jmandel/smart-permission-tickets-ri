@@ -399,19 +399,23 @@ function resolveSubject(ticket: PermissionTicket, store: FhirStore): AllowedPati
 
 function compileAllowedSites(ticket: PermissionTicket, store: FhirStore, aliases: AllowedPatientAlias[]) {
   const aliasSites = new Set(aliases.map((alias) => alias.siteSlug));
-  const constrainedSets: Array<Set<string>> = [];
+  const filters = ticket.access.responder_filter;
+  if (!filters?.length) return undefined;
 
-  if (ticket.access.source_organizations?.length) {
-    constrainedSets.push(new Set(store.resolveAllowedSitesByOrganizations(ticket.access.source_organizations.map((identifier) => ({ identifier: [identifier] })))));
+  const matchedSites = new Set<string>();
+  for (const filter of filters) {
+    if (filter.kind === "jurisdiction") {
+      for (const siteSlug of store.resolveAllowedSitesByJurisdictions([filter.address])) {
+        matchedSites.add(siteSlug);
+      }
+      continue;
+    }
+    for (const siteSlug of store.resolveAllowedSitesByOrganizations([filter.organization])) {
+      matchedSites.add(siteSlug);
+    }
   }
-  if (ticket.access.jurisdictions?.length) {
-    constrainedSets.push(new Set(store.resolveAllowedSitesByJurisdictions(ticket.access.jurisdictions)));
-  }
 
-  if (!constrainedSets.length) return undefined;
-
-  const intersection = [...aliasSites].filter((siteSlug) => constrainedSets.every((set) => set.has(siteSlug)));
-  return intersection.sort();
+  return [...aliasSites].filter((siteSlug) => matchedSites.has(siteSlug)).sort();
 }
 
 function compilePermissions(permissions: PermissionRule[]) {
@@ -574,6 +578,9 @@ function compileDateSemantics(): DateSemantics {
 }
 
 function compileSensitiveMode(ticket: PermissionTicket): SensitiveMode {
+  // The spec leaves the absent-case to recipient policy. This reference server
+  // uses a conservative local default and excludes sensitive data unless the
+  // ticket explicitly opts in.
   return ticket.access.sensitive_data === "include" ? "allow" : "deny";
 }
 
@@ -593,16 +600,16 @@ function dedupeCategoryRules(rules: CategoryRule[]) {
 }
 
 function extractPresenterProofKey(binding: PresenterBinding | undefined) {
-  return binding?.key?.jkt ? { jkt: binding.key.jkt } : undefined;
+  return binding?.method === "jkt" ? { jkt: binding.jkt } : undefined;
 }
 
 function toFrameworkClientBinding(binding: PresenterBinding | undefined): FrameworkClientBinding | undefined {
-  if (!binding?.framework_client) return undefined;
+  if (binding?.method !== "framework_client") return undefined;
   return {
-    binding_type: "framework-entity",
-    framework: binding.framework_client.framework,
-    framework_type: binding.framework_client.framework_type,
-    entity_uri: binding.framework_client.entity_uri,
+    method: "framework_client",
+    framework: binding.framework,
+    framework_type: binding.framework_type,
+    entity_uri: binding.entity_uri,
   };
 }
 

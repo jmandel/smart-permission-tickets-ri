@@ -3,7 +3,7 @@ import { DEFAULT_DEMO_UDAP_FRAMEWORK_URI, DEFAULT_DEMO_UDAP_RSA_CA_ID } from "./
 import { buildUdapCrlUrl } from "./auth/udap-crl.ts";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import {
-  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
@@ -43,9 +43,9 @@ try {
       iss: `${origin}/issuer/reference-demo`,
       aud: origin,
       exp: Math.floor(Date.now() / 1000) + 3600,
-      ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+      ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
       jti: crypto.randomUUID(),
-      presenter_binding: { key: { jkt: clientBootstrap.thumbprint } },
+      presenter_binding: { method: "jkt", jkt: clientBootstrap.thumbprint },
       subject: {
         patient: {
           resourceType: "Patient",
@@ -61,7 +61,6 @@ try {
         data_period: { start: "2023-01-01", end: "2025-12-31" },
         sensitive_data: "exclude",
       },
-      context: { kind: "patient-access" },
     }),
   });
   assert(signTicketResponse.status === 201, "issuer sign-ticket should create a signed ticket");
@@ -73,18 +72,18 @@ try {
   await expectJson(`${origin}/networks/reference/fhir/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/networks/reference/token`, "network smart config token endpoint mismatch");
     assert(body.fhir_base_url === `${origin}/networks/reference/fhir`, "network smart config fhir base mismatch");
-    assert(body.smart_permission_ticket_types_supported?.includes(NETWORK_PATIENT_ACCESS_TICKET_TYPE), "network smart config ticket types missing");
+    assert(body.smart_permission_ticket_types_supported?.includes(PATIENT_SELF_ACCESS_TICKET_TYPE), "network smart config ticket types missing");
     assert(body.mode === undefined, "network smart config should not expose legacy mode");
     assert(body.capabilities === undefined, "network smart config should not expose legacy custom capabilities");
   });
 
   await expectJson(`${origin}/.well-known/smart-configuration`, (body) => {
     assert(body.token_endpoint === `${origin}/token`, "root smart config token endpoint mismatch");
-    assert(body.smart_permission_ticket_types_supported?.includes(NETWORK_PATIENT_ACCESS_TICKET_TYPE), "root smart config ticket types missing");
+    assert(body.smart_permission_ticket_types_supported?.includes(PATIENT_SELF_ACCESS_TICKET_TYPE), "root smart config ticket types missing");
     assert(Array.isArray(body.grant_types_supported) && body.grant_types_supported.includes("client_credentials"), "root smart config should advertise client_credentials when supported");
     const extension = body.extensions?.["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
     assert(Array.isArray(extension?.supported_client_binding_types), "root smart config should advertise client binding types");
-    assert(extension.supported_client_binding_types.includes("presenter_binding.framework_client"), "root smart config should advertise framework client binding");
+    assert(extension.supported_client_binding_types.includes("framework_client"), "root smart config should advertise framework client binding");
     assert(Array.isArray(extension?.supported_trust_frameworks) && extension.supported_trust_frameworks.length >= 2, "root smart config should advertise built-in trust frameworks");
   });
   await expectJson(`${origin}/.well-known/jwks.json`, (body) => {
@@ -215,7 +214,7 @@ try {
     ],
     dataPeriod: { start: "2023-01-01", end: "2025-12-31" },
     sensitiveData: "exclude",
-    presenterBinding: { key: { jkt: clientBootstrap.thumbprint } },
+    presenterBinding: { method: "jkt", jkt: clientBootstrap.thumbprint },
   });
   const strictToken = await exchangeStrictToken(origin, rootRegistration.client_id, clientBootstrap.privateJwk, strictTicket);
 
@@ -300,11 +299,11 @@ function mintTicket(input: {
   permissions: Array<Record<string, any>>;
   dataPeriod: { start?: string; end?: string };
   sensitiveData: "exclude" | "include";
-  presenterBinding?: { key?: { jkt: string } };
+  presenterBinding?: { method: "jkt"; jkt: string };
 }) {
   const ticketOrigin = input.iss;
   const ticketType = input.presenterBinding
-    ? NETWORK_PATIENT_ACCESS_TICKET_TYPE
+    ? PATIENT_SELF_ACCESS_TICKET_TYPE
     : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE;
   return context.issuers.sign(ticketOrigin, context.config.defaultPermissionTicketIssuerSlug, {
     iss: `${ticketOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
@@ -330,9 +329,9 @@ function mintTicket(input: {
       data_period: input.dataPeriod,
       sensitive_data: input.sensitiveData,
     },
-    context: input.presenterBinding
-      ? { kind: "patient-access" }
-      : { kind: "public-health", reportable_condition: { text: "Public health investigation" } },
+    ...(!input.presenterBinding
+      ? { context: { reportable_condition: { text: "Public health investigation" } } }
+      : {}),
   });
 }
 

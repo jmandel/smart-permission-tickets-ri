@@ -4,10 +4,11 @@ import { execFileSync } from "node:child_process";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { gzipSync } from "node:zlib";
 
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import {
-  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
@@ -160,10 +161,8 @@ describe("mode surfaces", () => {
           aud: publicOrigin,
           exp: Math.floor(Date.now() / 1000) + 3600,
           jti: crypto.randomUUID(),
-          ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-          presenter_binding: {
-            key: { jkt: "public-origin-test-jkt" },
-          },
+          ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
+          presenter_binding: { method: "jkt", jkt: "public-origin-test-jkt" },
           subject: {
             patient: elenaPatient(),
           },
@@ -174,7 +173,6 @@ describe("mode surfaces", () => {
               interactions: ["read"],
             }],
           },
-          context: { kind: "patient-access" },
         }),
       });
       expect(signResponse.status).toBe(201);
@@ -206,10 +204,8 @@ describe("mode surfaces", () => {
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
         jti: crypto.randomUUID(),
-        ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-        presenter_binding: {
-          key: { jkt: "sign-ticket-test-jkt" },
-        },
+        ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
+        presenter_binding: { method: "jkt", jkt: "sign-ticket-test-jkt" },
         subject: {
           patient: elenaPatient(),
         },
@@ -222,7 +218,6 @@ describe("mode surfaces", () => {
           data_period: { start: "2023-01-01", end: "2025-12-31" },
           sensitive_data: "exclude",
         },
-        context: { kind: "patient-access" },
       }),
     });
     expect(signResponse.status).toBe(201);
@@ -242,10 +237,8 @@ describe("mode surfaces", () => {
         iss: `${origin}/issuer/reference-demo`,
         aud: origin,
         jti: crypto.randomUUID(),
-        ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-        presenter_binding: {
-          key: { jkt: "missing-exp-test-jkt" },
-        },
+        ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
+        presenter_binding: { method: "jkt", jkt: "missing-exp-test-jkt" },
         subject: {
           patient: elenaPatient(),
         },
@@ -256,7 +249,6 @@ describe("mode surfaces", () => {
             interactions: ["read", "search"],
           }],
         },
-        context: { kind: "patient-access" },
       }),
     });
     expect(signResponse.status).toBe(400);
@@ -272,8 +264,8 @@ describe("mode surfaces", () => {
     const extension = smartConfig.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
     expect(smartConfig.grant_types_supported).toContain("client_credentials");
     expect(smartConfig.grant_types_supported).toContain("urn:ietf:params:oauth:grant-type:token-exchange");
-    expect(extension.supported_client_binding_types).toContain("presenter_binding.framework_client");
-    expect(extension.supported_client_binding_types).toContain("presenter_binding.key.jkt");
+    expect(extension.supported_client_binding_types).toContain("framework_client");
+    expect(extension.supported_client_binding_types).toContain("jkt");
     expect(extension.supported_trust_frameworks).toEqual([
       {
         framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
@@ -395,7 +387,7 @@ describe("mode surfaces", () => {
     const config = await configResponse.json();
     expect(config.token_endpoint).toBe(`${origin}/networks/reference/token`);
     expect(config.fhir_base_url).toBe(`${origin}/networks/reference/fhir`);
-    expect(config.smart_permission_ticket_types_supported).toContain(NETWORK_PATIENT_ACCESS_TICKET_TYPE);
+    expect(config.smart_permission_ticket_types_supported).toContain(PATIENT_SELF_ACCESS_TICKET_TYPE);
     expect(config.mode).toBeUndefined();
     expect(config.capabilities).toBeUndefined();
 
@@ -409,7 +401,7 @@ describe("mode surfaces", () => {
         scopes: ["patient/*.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "deny",
-        proofKeyBinding: { jkt: client.jwkThumbprint },
+        presenterBinding: { method: "jkt", jkt: client.jwkThumbprint },
       }),
     }, client, { proofJkt: client.jwkThumbprint });
     expect(typeof token.access_token).toBe("string");
@@ -487,7 +479,7 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
-      proofKeyBinding: { jkt: registeredClient.jwkThumbprint },
+      presenterBinding: { method: "jkt", jkt: registeredClient.jwkThumbprint },
     });
 
     const wrongAssertion = await postFormWithClient(
@@ -775,9 +767,13 @@ describe("mode surfaces", () => {
         scopes: ["patient/Encounter.rs"],
         periods: [{ start: "2022-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        organizations: [
+        responderFilter: [
           {
-            identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1902847536" }],
+            kind: "organization",
+            organization: {
+              resourceType: "Organization",
+              identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1902847536" }],
+            },
           },
         ],
       }),
@@ -930,7 +926,7 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
-      proofKeyBinding: { jkt: boundClient.jwkThumbprint },
+      presenterBinding: { method: "jkt", jkt: boundClient.jwkThumbprint },
     });
 
     const missingProof = await postForm(`${origin}/modes/key-bound/token`, {
@@ -996,7 +992,10 @@ describe("mode surfaces", () => {
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        jurisdictions: [{ state: "CA" }, { state: "TX" }],
+        responderFilter: [
+          { kind: "jurisdiction", address: { state: "CA" } },
+          { kind: "jurisdiction", address: { state: "TX" } },
+        ],
       }),
     });
 
@@ -1013,9 +1012,13 @@ describe("mode surfaces", () => {
         scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        organizations: [
+        responderFilter: [
           {
-            identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1589043712" }],
+            kind: "organization",
+            organization: {
+              resourceType: "Organization",
+              identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1589043712" }],
+            },
           },
         ],
       }),
@@ -1060,8 +1063,8 @@ describe("mode surfaces", () => {
     expect(locationBundle.total).toBeGreaterThan(0);
   });
 
-  test("organization and jurisdiction constraints intersect rather than widen", async () => {
-    const response = await postForm(`${origin}/modes/open/token`, {
+  test("responder filters widen by union across organization and jurisdiction matches", async () => {
+    const tokenBody = await postFormJson(`${origin}/modes/open/token`, {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
@@ -1069,15 +1072,20 @@ describe("mode surfaces", () => {
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        jurisdictions: [{ state: "CA" }],
-        organizations: [
+        responderFilter: [
+          { kind: "jurisdiction", address: { state: "CA" } },
           {
-            identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1589043712" }],
+            kind: "organization",
+            organization: {
+              resourceType: "Organization",
+              identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1589043712" }],
+            },
           },
         ],
       }),
     });
-    await expectTokenError(response, "invalid_grant", "exclude all patient aliases");
+    const bundle = await getJson(`${origin}/modes/open/fhir/Patient?_count=20`, tokenBody.access_token);
+    expect(bundle.total).toBeGreaterThan(1);
   });
 
   test("site token issuance fails when the requested site is excluded by jurisdiction", async () => {
@@ -1086,7 +1094,7 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
-      jurisdictions: [{ state: "CA" }],
+      responderFilter: [{ kind: "jurisdiction", address: { state: "CA" } }],
     });
 
     const allowed = await postFormJson(`${origin}/modes/open/sites/eastbay-primary-care-associates/token`, {
@@ -1110,9 +1118,13 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
-      organizations: [
+      responderFilter: [
         {
-          identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1589043712" }],
+          kind: "organization",
+          organization: {
+            resourceType: "Organization",
+            identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: "1589043712" }],
+          },
         },
       ],
     });
@@ -1142,7 +1154,7 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
-      proofKeyBinding: { jkt: loneStarClient.jwkThumbprint },
+      presenterBinding: { method: "jkt", jkt: loneStarClient.jwkThumbprint },
     });
 
     const allowed = await postFormWithClient(
@@ -1198,16 +1210,14 @@ describe("mode surfaces", () => {
     expect(typeof allowed.access_token).toBe("string");
   });
 
-  test("revocable tickets are accepted when CRL does not list the rid", async () => {
+  test("revocable tickets are accepted when the status list bit is clear", async () => {
     const revocationServer = startTicketRevocationServer({
-      "/crl.json": () => jsonResponse({
+      "/status.json": () => jsonResponse({
         kid: "issuer-key-1",
-        method: "rid",
-        ctr: 1,
-        rids: [],
+        bits: encodeStatusBits([]),
       }, 200, { "cache-control": "max-age=60" }),
     });
-    const revocationUrl = `${revocationServer.origin}/crl.json`;
+    const revocationUrl = `${revocationServer.origin}/status.json`;
     try {
       const tokenBody = await postFormJson(`${origin}/modes/open/token`, {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -1217,7 +1227,7 @@ describe("mode surfaces", () => {
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
-          revocation: { url: revocationUrl, rid: "rid-ok" },
+          revocation: { url: revocationUrl, index: 7 },
         }),
       });
       expect(typeof tokenBody.access_token).toBe("string");
@@ -1228,14 +1238,12 @@ describe("mode surfaces", () => {
 
   test("revoked tickets are rejected", async () => {
     const revocationServer = startTicketRevocationServer({
-      "/crl.json": () => jsonResponse({
+      "/status.json": () => jsonResponse({
         kid: "issuer-key-1",
-        method: "rid",
-        ctr: 1,
-        rids: ["rid-revoked"],
+        bits: encodeStatusBits([7]),
       }, 200, { "cache-control": "max-age=60" }),
     });
-    const revocationUrl = `${revocationServer.origin}/crl.json`;
+    const revocationUrl = `${revocationServer.origin}/status.json`;
     try {
       const response = await postForm(`${origin}/modes/open/token`, {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -1245,7 +1253,7 @@ describe("mode surfaces", () => {
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
-          revocation: { url: revocationUrl, rid: "rid-revoked" },
+          revocation: { url: revocationUrl, index: 7 },
         }),
       });
       await expectTokenError(response, "invalid_grant", "has been revoked");
@@ -1256,14 +1264,12 @@ describe("mode surfaces", () => {
 
   test("revocable tickets without jti are rejected", async () => {
     const revocationServer = startTicketRevocationServer({
-      "/crl.json": () => jsonResponse({
+      "/status.json": () => jsonResponse({
         kid: "issuer-key-1",
-        method: "rid",
-        ctr: 1,
-        rids: [],
+        bits: encodeStatusBits([]),
       }),
     });
-    const revocationUrl = `${revocationServer.origin}/crl.json`;
+    const revocationUrl = `${revocationServer.origin}/status.json`;
     try {
       const response = await postForm(`${origin}/modes/open/token`, {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -1274,7 +1280,7 @@ describe("mode surfaces", () => {
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
           jti: null,
-          revocation: { url: revocationUrl, rid: "rid-ok" },
+          revocation: { url: revocationUrl, index: 7 },
           rawSign: true,
         }),
       });
@@ -1286,9 +1292,9 @@ describe("mode surfaces", () => {
 
   test("revocable tickets fail closed when the CRL cannot be retrieved", async () => {
     const revocationServer = startTicketRevocationServer({
-      "/crl.json": () => jsonResponse({ error: "unavailable" }, 503),
+      "/status.json": () => jsonResponse({ error: "unavailable" }, 503),
     });
-    const revocationUrl = `${revocationServer.origin}/crl.json`;
+    const revocationUrl = `${revocationServer.origin}/status.json`;
     try {
       const response = await postForm(`${origin}/modes/open/token`, {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -1298,7 +1304,7 @@ describe("mode surfaces", () => {
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
-          revocation: { url: revocationUrl, rid: "rid-unknown" },
+          revocation: { url: revocationUrl, index: 7 },
         }),
       });
       await expectTokenError(response, "invalid_grant", "revocation status could not be determined");
@@ -1451,7 +1457,7 @@ describe("issued token behavior", () => {
         subject_token: missingTypeTicket,
       }),
       "invalid_grant",
-      "Invalid option",
+      "Invalid input",
     );
 
     await expectTokenError(
@@ -1568,24 +1574,26 @@ function mintTicket(input: {
   scopes: string[];
   periods: Array<{ start?: string; end?: string }>;
   sensitiveMode: "deny" | "allow";
-  proofKeyBinding?: { jkt: string };
-  frameworkClientBinding?: { framework: string; framework_type: "well-known" | "udap"; entity_uri: string };
+  presenterBinding?: { method: "jkt"; jkt: string } | { method: "framework_client"; framework: string; framework_type: "well-known" | "udap"; entity_uri: string };
   ticketType?: string;
   requester?: Record<string, unknown>;
   context?: Record<string, unknown>;
   exp?: number;
   iat?: number;
   jti?: string | null;
-  revocation?: { url: string; rid: string };
-  jurisdictions?: Array<{ state?: string }>;
-  organizations?: Array<{ system?: string; value?: string; identifier?: Array<{ system?: string; value?: string }> }>;
+  revocation?: { url: string; index: number };
+  responderFilter?: Array<
+    | { kind: "jurisdiction"; address: { state?: string; country?: string } }
+    | { kind: "organization"; organization: { resourceType: "Organization"; name?: string; identifier?: Array<{ system?: string; value?: string }> } }
+  >;
   accessExtras?: Record<string, unknown>;
   rawSign?: boolean;
 }) {
   const ticketOrigin = input.issuer ?? origin;
   const ticketType = input.ticketType
-    ?? ((input.proofKeyBinding || input.frameworkClientBinding) ? NETWORK_PATIENT_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE);
+    ?? (input.presenterBinding ? PATIENT_SELF_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE);
   const requester = input.requester ?? defaultRequester(ticketType);
+  const effectiveContext = input.context ?? defaultContext(ticketType);
   const payload = {
     iss: `${ticketOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
     aud: input.aud ?? ticketOrigin,
@@ -1593,26 +1601,18 @@ function mintTicket(input: {
     ...(typeof input.iat === "number" ? { iat: input.iat } : {}),
     ...(input.jti === null ? {} : (typeof input.jti === "string" ? { jti: input.jti } : { jti: crypto.randomUUID() })),
     ticket_type: ticketType,
-    ...(input.proofKeyBinding || input.frameworkClientBinding
-      ? {
-          presenter_binding: {
-            ...(input.proofKeyBinding ? { key: { jkt: input.proofKeyBinding.jkt } } : {}),
-            ...(input.frameworkClientBinding ? { framework_client: input.frameworkClientBinding } : {}),
-          },
-        }
-      : {}),
+    ...(input.presenterBinding ? { presenter_binding: input.presenterBinding } : {}),
     ...(input.revocation ? { revocation: input.revocation } : {}),
     subject: normalizeSubject(input.subject),
     ...(requester ? { requester } : {}),
     access: {
       permissions: projectScopesToPermissions(input.scopes),
       data_period: normalizeDataPeriod(input.periods),
-      jurisdictions: input.jurisdictions,
-      source_organizations: normalizeSourceOrganizations(input.organizations),
+      responder_filter: input.responderFilter,
       sensitive_data: input.sensitiveMode === "allow" ? "include" : "exclude",
       ...input.accessExtras,
     },
-    context: input.context ?? defaultContext(ticketType),
+    ...(effectiveContext ? { context: effectiveContext } : {}),
   };
   if (input.rawSign) {
     const issuer = context.issuers.get(context.config.defaultPermissionTicketIssuerSlug);
@@ -1655,7 +1655,7 @@ async function issueStrictToken(
       scopes,
       periods,
       sensitiveMode,
-      proofKeyBinding: { jkt: client.jwkThumbprint },
+      presenterBinding: { method: "jkt", jkt: client.jwkThumbprint },
     }),
   }, client);
 }
@@ -1769,23 +1769,13 @@ function normalizeDataPeriod(periods: Array<{ start?: string; end?: string }>) {
   };
 }
 
-function normalizeSourceOrganizations(
-  organizations?: Array<{ system?: string; value?: string; identifier?: Array<{ system?: string; value?: string }> }>,
-) {
-  return organizations?.map((organization) => organization.identifier?.[0] ?? {
-    system: organization.system,
-    value: organization.value,
-  });
-}
-
 function defaultContext(ticketType: string) {
   if (ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE) {
     return {
-      kind: "public-health" as const,
       reportable_condition: { text: "Public health investigation" },
     };
   }
-  return { kind: "patient-access" as const };
+  return undefined;
 }
 
 function defaultRequester(ticketType: string) {
@@ -1824,6 +1814,15 @@ function startTicketRevocationServer(routes: Record<string, () => Response>) {
       server.stop(force);
     },
   };
+}
+
+function encodeStatusBits(revokedIndexes: number[]) {
+  const maxIndex = revokedIndexes.length ? Math.max(...revokedIndexes) : -1;
+  const bytes = new Uint8Array(Math.max(1, Math.floor(maxIndex / 8) + 1));
+  for (const index of revokedIndexes) {
+    bytes[Math.floor(index / 8)] |= 1 << (index % 8);
+  }
+  return Buffer.from(gzipSync(bytes)).toString("base64url");
 }
 
 function jsonResponse(body: unknown, status = 200, headers: Record<string, string> = {}) {

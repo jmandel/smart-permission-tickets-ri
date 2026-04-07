@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 
-import { buildArtifactHull, buildEncounterDashboard, summarizeSiteResources } from "./lib/viewer-model";
+import { buildArtifactHull, buildEncounterDashboard, splitUnassignedResourceGroups, summarizeSiteResources } from "./lib/viewer-model";
 import type { ViewerLaunchSite } from "./types";
 
 const site: ViewerLaunchSite = {
@@ -120,6 +120,65 @@ describe("viewer model", () => {
       "James Tran",
       "Bay Area Rheumatology Associates",
       "Telegraph Ave Clinic",
+    ]);
+  });
+
+  test("longitudinal clinical resources stay out of supporting context", () => {
+    const resources = summarizeSiteResources(
+      site,
+      {
+        resourceType: "Bundle",
+        entry: [
+          {
+            resource: {
+              resourceType: "AllergyIntolerance",
+              id: "allergy-1",
+              code: { text: "Amoxicillin" },
+            },
+          },
+          {
+            resource: {
+              resourceType: "Condition",
+              id: "cond-1",
+              code: { text: "Rheumatoid arthritis" },
+            },
+          },
+          {
+            resource: {
+              resourceType: "MedicationRequest",
+              id: "med-1",
+              medicationCodeableConcept: { text: "Methotrexate" },
+            },
+          },
+          {
+            resource: {
+              resourceType: "Patient",
+              id: "patient-1",
+              name: [{ given: ["Elena"], family: "Reyes" }],
+            },
+          },
+          {
+            resource: {
+              resourceType: "Organization",
+              id: "org-1",
+              name: "Bay Area Rheumatology Associates",
+            },
+          },
+        ],
+      },
+      null,
+    );
+
+    const split = splitUnassignedResourceGroups(resources);
+
+    expect(split.longitudinalClinicalGroups.map((group) => group.resourceType)).toEqual([
+      "AllergyIntolerance",
+      "Condition",
+      "MedicationRequest",
+    ]);
+    expect(split.supportingContextGroups.map((group) => group.resourceType)).toEqual([
+      "Organization",
+      "Patient",
     ]);
   });
 

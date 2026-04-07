@@ -79,7 +79,6 @@ describe("framework-backed issuer trust", () => {
             sensitive_data: "exclude",
           },
           context: {
-            kind: "public-health",
             reportable_condition: { text: "Public health investigation" },
           },
         },

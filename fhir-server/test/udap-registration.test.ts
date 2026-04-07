@@ -43,7 +43,7 @@ describe("UDAP registration", () => {
 
         const registered = context.clients.get(firstBody.client_id);
         expect(registered?.frameworkBinding).toEqual({
-          binding_type: "framework-entity",
+          method: "framework_client",
           framework: "https://example.org/frameworks/tefca",
           framework_type: "udap",
           entity_uri: "https://client-a.example.org",
@@ -161,7 +161,7 @@ describe("UDAP registration", () => {
 
       const registered = context.clients.get(body.client_id);
       expect(registered?.frameworkBinding).toEqual({
-        binding_type: "framework-entity",
+        method: "framework_client",
         framework: "https://example.org/frameworks/rsa-community",
         framework_type: "udap",
         entity_uri: "https://rs256-client.example.org",

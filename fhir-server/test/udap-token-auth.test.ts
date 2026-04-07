@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import {
-  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
@@ -28,13 +28,12 @@ describe("UDAP token authentication and discovery", () => {
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
         jti: crypto.randomUUID(),
-        ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+        ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: {
-          framework_client: {
-            framework: "https://example.org/frameworks/tefca",
-            framework_type: "udap",
-            entity_uri: "https://client-a.example.org",
-          },
+          method: "framework_client",
+          framework: "https://example.org/frameworks/tefca",
+          framework_type: "udap",
+          entity_uri: "https://client-a.example.org",
         },
         subject: {
           patient: {
@@ -52,7 +51,6 @@ describe("UDAP token authentication and discovery", () => {
           data_period: { start: "2023-01-01", end: "2025-12-31" },
           sensitive_data: "exclude",
         },
-        context: { kind: "patient-access" },
       });
 
       const response = await fetch(`${origin}/token`, {
@@ -534,13 +532,12 @@ describe("UDAP token authentication and discovery", () => {
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
         jti: crypto.randomUUID(),
-        ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+        ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: {
-          framework_client: {
-            framework: frameworkUri,
-            framework_type: "udap",
-            entity_uri: "https://rs256-client.example.org",
-          },
+          method: "framework_client",
+          framework: frameworkUri,
+          framework_type: "udap",
+          entity_uri: "https://rs256-client.example.org",
         },
         subject: {
           patient: {
@@ -557,7 +554,6 @@ describe("UDAP token authentication and discovery", () => {
           }],
           sensitive_data: "exclude",
         },
-        context: { kind: "patient-access" },
       });
 
       const response = await fetch(`${origin}/token`, {
@@ -761,7 +757,6 @@ function mintTicket(context: ReturnType<typeof createAppContext>, origin: string
       sensitive_data: "exclude",
     },
     context: {
-      kind: "public-health",
       reportable_condition: { text: "Public health investigation" },
     },
   });

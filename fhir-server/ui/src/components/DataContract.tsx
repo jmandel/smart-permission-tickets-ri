@@ -20,7 +20,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
       appPath: "/modes/key-bound",
       tokenPath: "/modes/key-bound/token",
       fhirBase: "/modes/key-bound/sites/{siteSlug}/fhir",
-      note: "For sender-constrained tickets that carry presenter_binding.key.jkt and require the matching client key.",
+      note: "For sender-constrained tickets that carry presenter_binding.method=jkt and require the matching client key.",
     },
     {
       label: "Open",
@@ -146,7 +146,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>TX</code>, <code>CA</code>, <code>IL</code></td>
             <td>
               Jurisdiction-based ticket filtering. A ticket with{" "}
-              <code>access.jurisdictions</code> is resolved to matching site slugs
+              <code>access.responder_filter</code> jurisdiction entries are resolved to matching site slugs
               during token exchange.
             </td>
           </tr>
@@ -155,7 +155,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>1437826095</code></td>
             <td>
               Organization-based ticket filtering. A ticket with{" "}
-              <code>access.source_organizations</code> can identify sites by NPI.
+              <code>access.responder_filter</code> organization entries can identify sites by NPI.
             </td>
           </tr>
         </tbody>

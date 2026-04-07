@@ -100,6 +100,26 @@ export type ViewerArtifactHull = {
   summary?: string | null;
 };
 
+export type ViewerUnassignedResourceSplit = {
+  supportingContextGroups: Array<{
+    resourceType: string;
+    count: number;
+    items: ViewerResourceItem[];
+  }>;
+  longitudinalClinicalGroups: Array<{
+    resourceType: string;
+    count: number;
+    items: ViewerResourceItem[];
+  }>;
+};
+
+const SUPPORTING_CONTEXT_RESOURCE_TYPES = new Set([
+  "Patient",
+  "Organization",
+  "Practitioner",
+  "Location",
+]);
+
 export function buildSiteQueryPlan(
   launch: ViewerLaunch,
   site: ViewerLaunchSite,
@@ -313,6 +333,15 @@ export function groupResourcesByType(resources: ViewerResourceItem[]) {
       }),
     }))
     .sort((left, right) => left.resourceType.localeCompare(right.resourceType));
+}
+
+export function splitUnassignedResourceGroups(resources: ViewerResourceItem[]): ViewerUnassignedResourceSplit {
+  const supportingContext = resources.filter((item) => SUPPORTING_CONTEXT_RESOURCE_TYPES.has(item.resourceType));
+  const longitudinalClinical = resources.filter((item) => !SUPPORTING_CONTEXT_RESOURCE_TYPES.has(item.resourceType));
+  return {
+    supportingContextGroups: groupResourcesByType(supportingContext),
+    longitudinalClinicalGroups: groupResourcesByType(longitudinalClinical),
+  };
 }
 
 export function summarizeSiteResources(site: ViewerLaunchSite, payload: any, fullUrl: string | null): ViewerResourceItem[] {

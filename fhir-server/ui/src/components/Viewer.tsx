@@ -27,6 +27,7 @@ import {
   buildEncounterScale,
   diffDaysUtc,
   groupResourcesByType,
+  splitUnassignedResourceGroups,
   type ViewerEncounterDashboard,
   type ViewerResourceItem,
   type ViewerSiteRun,
@@ -165,13 +166,15 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
     () => new Set(selectedEncounters.map((encounter) => encounter.siteSlug)),
     [selectedEncounters],
   );
-  const outsideEncounterGroups = useMemo(
+  const unassignedResourceGroups = useMemo(
     () =>
-      groupResourcesByType(
+      splitUnassignedResourceGroups(
         encounterDashboard.unassignedResources.filter((resource) => selectedEncounterSiteSet.has(resource.siteSlug)),
       ),
     [encounterDashboard.unassignedResources, selectedEncounterSiteSet],
   );
+  const longitudinalClinicalGroups = unassignedResourceGroups.longitudinalClinicalGroups;
+  const supportingContextGroups = unassignedResourceGroups.supportingContextGroups;
   const selectedEncounterTypeCounts = useMemo(
     () =>
       [
@@ -814,10 +817,10 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         </section>
 
         <section className="subpanel viewer-section">
-          <h3>Supporting Context</h3>
-          <p className="subtle">Administrative and longitudinal resources not tied to a specific encounter, limited to the sites represented in your current selection.</p>
+          <h3>Longitudinal Clinical Data</h3>
+          <p className="subtle">Clinical resources not tied to a specific encounter, limited to the sites represented in your current selection.</p>
           <div className="resource-library">
-            {outsideEncounterGroups.map((group) => (
+            {longitudinalClinicalGroups.map((group) => (
               <details key={group.resourceType} className="resource-group">
                 <summary>
                   <span>{group.resourceType}</span>
@@ -863,7 +866,61 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                 </div>
               </details>
             ))}
-            {!outsideEncounterGroups.length && <p className="subtle">All loaded resources are attached to encounters.</p>}
+            {!longitudinalClinicalGroups.length && <p className="subtle">All loaded clinical resources are attached to encounters.</p>}
+          </div>
+        </section>
+
+        <section className="subpanel viewer-section">
+          <h3>Supporting Context</h3>
+          <p className="subtle">Administrative resources not tied to a specific encounter, limited to the sites represented in your current selection.</p>
+          <div className="resource-library">
+            {supportingContextGroups.map((group) => (
+              <details key={group.resourceType} className="resource-group">
+                <summary>
+                  <span>{group.resourceType}</span>
+                  <span className="subtle">{group.count}</span>
+                </summary>
+                <div className="result-list">
+                  {group.items.map((item) => (
+                    <article key={item.key} className="result-item" style={siteListItemStyle(siteStyles[item.siteSlug])}>
+                      <div>
+                        <h4>{item.label}</h4>
+                        <p className="subtle">{item.sublabel}</p>
+                      </div>
+                      <div className="result-meta">
+                        <span>{item.resourceType}/{item.id}</span>
+                        <span>{item.siteName}</span>
+                        <div className="result-actions">
+                          {item.fullUrl && (
+                            <SplitAction
+                              primary={{
+                                label: "Open",
+                                onSelect: () => openClinicalArtifactViewer(item.key),
+                              }}
+                              secondary={[
+                                {
+                                  label: "Copy curl",
+                                  onSelect: () =>
+                                    void navigator.clipboard.writeText(
+                                      buildFetchCurl(
+                                        item.fullUrl!,
+                                        accessTokenForSite(siteRuns, item.siteSlug),
+                                        proofForSite(siteRuns, item.siteSlug),
+                                      ),
+                                    ),
+                                  feedbackLabel: "Copied",
+                                },
+                              ]}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </details>
+            ))}
+            {!supportingContextGroups.length && <p className="subtle">No supporting context resources were loaded outside encounters.</p>}
           </div>
         </section>
 

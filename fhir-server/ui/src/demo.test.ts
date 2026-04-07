@@ -232,8 +232,9 @@ describe("demo helpers", () => {
     };
     consent.selectedStateCodes = { TX: true, CA: false };
     const ticket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, consent);
-    expect(ticket.access.jurisdictions).toEqual([{ state: "TX" }]);
-    expect(ticket.access.source_organizations).toBeUndefined();
+    expect(ticket.access.responder_filter).toEqual([
+      { kind: "jurisdiction", address: { state: "TX" } },
+    ]);
   });
 
   test("ticket payload prefers organization identifiers over names when a partial state selection is needed", () => {
@@ -245,11 +246,19 @@ describe("demo helpers", () => {
       "bay-area-rheumatology-associates": false,
     };
     const ticket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, consent);
-    expect(ticket.access.jurisdictions).toBeUndefined();
-    expect(ticket.access.source_organizations).toEqual([
+    expect(ticket.access.responder_filter).toEqual([
       {
-        system: "http://hl7.org/fhir/sid/us-npi",
-        value: "2222222222",
+        kind: "organization",
+        organization: {
+          resourceType: "Organization",
+          identifier: [
+            {
+              system: "http://hl7.org/fhir/sid/us-npi",
+              value: "2222222222",
+            },
+          ],
+          name: "Eastbay Primary Care Associates",
+        },
       },
     ]);
     expect(constrainedSites(person, consent).map((site) => site.siteSlug)).toEqual(["eastbay-primary-care-associates"]);
@@ -372,16 +381,17 @@ describe("demo helpers", () => {
     expect(ticket.iss).toBe(ticketIssuer.issuerBaseUrl);
     expect(ticket.aud).toBe("http://localhost:8091");
     expect(typeof ticket.jti).toBe("string");
-    expect(ticket.presenter_binding).toEqual({ key: { jkt: "demo-proof" } });
+    expect(ticket.presenter_binding).toEqual({ method: "jkt", jkt: "demo-proof" });
     expect(ticket.subject.patient.resourceType).toBe("Patient");
     expect(ticket.access.sensitive_data).toBe("exclude");
-    expect(ticket.context).toEqual({ kind: "patient-access" });
+    expect(ticket.context).toBeUndefined();
   });
 
-  test("well-known client plan drives framework presenter binding without presenter_binding.key", async () => {
+  test("well-known client plan drives framework presenter binding without jkt binding", async () => {
     const clientPlan = await buildViewerClientPlan(person, wellKnownOption);
     expect(clientPlan.type).toBe("well-known");
     expect(clientBindingForPlan(clientPlan)).toEqual({
+      method: "framework_client",
       framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
       framework_type: "well-known",
       entity_uri: "http://localhost:8091/demo/clients/well-known-alpha",
@@ -394,7 +404,7 @@ describe("demo helpers", () => {
     expect(story.registrationLabel).toBe("No registration");
     expect(story.authenticationLabel).toBe("private_key_jwt using the entity's current JWKS key");
     expect(story.effectiveClientId).toBe("well-known:http://localhost:8091/demo/clients/well-known-alpha");
-    expect(story.ticketBinding.shape).toBe("presenter_binding.framework_client");
+    expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");
     expect(story.whatThisDemonstrates).toContain("skip registration entirely");
   });
 
@@ -407,7 +417,7 @@ describe("demo helpers", () => {
     });
     const story = describeClientPlan("strict", unaffiliatedPlan, "client-123");
     expect(story.effectiveClientId).toBe("client-123");
-    expect(story.ticketBinding.shape).toBe("presenter_binding.key");
+    expect(story.ticketBinding.shape).toBe("presenter_binding.method=jkt");
     expect(story.ticketBinding.rationale).toContain("generated JWK thumbprint");
   });
 
@@ -417,18 +427,19 @@ describe("demo helpers", () => {
     expect(story.authenticationLabel).toContain("certificate SAN");
     expect(story.entityUri).toBe("http://localhost:8091/demo/clients/udap/sample-client");
     expect(story.whatThisDemonstrates).toContain("Subject Alternative Name");
-    expect(story.ticketBinding.shape).toBe("presenter_binding.framework_client");
+    expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");
   });
 
   test("ticket binding description distinguishes proof and framework binding", () => {
-    expect(describeTicketBinding("strict", "unaffiliated", "<jkt>", null).shape).toBe("presenter_binding.key");
+    expect(describeTicketBinding("strict", "unaffiliated", "<jkt>", null).shape).toBe("presenter_binding.method=jkt");
     expect(
       describeTicketBinding("strict", "well-known", null, {
+        method: "framework_client",
         framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
         framework_type: "well-known",
         entity_uri: "http://localhost:8091/demo/clients/well-known-alpha",
       }).shape,
-    ).toBe("presenter_binding.framework_client");
+    ).toBe("presenter_binding.method=framework_client");
   });
 
   test("copied curls inline the actual bearer token and proof header", () => {
