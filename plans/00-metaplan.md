@@ -309,7 +309,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
 - Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
 - Plan 24 (demo crypto bundle + site OIDF leaves) is a follow-on to Plan 21 that makes provider sites first-class OIDF leaves, fixes OIDF JWT expiry by re-minting on fetch, and adds an optional bundle file for stable demo keys across restarts. It is fully implemented on `main`.
-- Plan 23 (generalize OIDF entity consumption) is the follow-on to Plans 21 and 24 that turns the current demo-local OIDF resolver into a generic allowlist-based consumer. Phases 1 and 2 (config model rewrite and generic URL/fetch utilities) are implemented on `main`.
+- Plan 23 (generalize OIDF entity consumption) is the follow-on to Plans 21 and 24 that turns the current demo-local OIDF resolver into a generic allowlist-based consumer. Phases 1 through 3 (config model rewrite, generic URL/fetch utilities, and discovery-driven issuer trust) are implemented on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

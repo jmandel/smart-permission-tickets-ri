@@ -22,6 +22,15 @@ describe("OIDF demo topology", () => {
       expect(decodedEntity.header.typ).toBe("entity-statement+jwt");
       expect(decodedEntity.payload.iss).toBe(`${publicOrigin}/federation/leafs/demo-app`);
       expect(decodedEntity.payload.authority_hints).toEqual([`${publicOrigin}/federation/networks/app`]);
+      expect(decodedEntity.payload.metadata.federation_entity).toBeUndefined();
+
+      const appNetworkResponse = await fetch(`${origin}/federation/networks/app/.well-known/openid-federation`);
+      expect(appNetworkResponse.status).toBe(200);
+      const appNetworkStatement = await appNetworkResponse.text();
+      const decodedAppNetwork = decodeEs256Jwt<Record<string, any>>(appNetworkStatement);
+      expect(decodedAppNetwork.payload.metadata.federation_entity.federation_fetch_endpoint).toBe(
+        `${publicOrigin}/federation/networks/app/federation_fetch_endpoint`,
+      );
 
       const fetchResponse = await fetch(
         `${origin}/federation/networks/app/federation_fetch_endpoint?sub=${encodeURIComponent(`${publicOrigin}/federation/leafs/demo-app`)}`,

@@ -229,6 +229,10 @@ Status:
   - follow real `federation_fetch_endpoint` values
   - build a trust chain without assuming one in-process path layout
 
+Status:
+
+- implemented on `main`
+
 ### Phase 4: Trust-Anchor and Allowlist Enforcement
 
 - enforce that:

@@ -4,7 +4,7 @@ import { computeEcJwkThumbprintSync, normalizePrivateJwk, normalizePublicJwk, si
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI } from "../../demo-frameworks.ts";
 import { buildAuthBasePath, buildFhirBasePath, type SurfaceMode } from "../../../../shared/surfaces.ts";
 import type { SiteSummary } from "../../../store/store.ts";
-import { federationFetchEndpointPath, oidfEntityConfigurationPath } from "./urls.ts";
+import { federationFetchEndpointPath, federationFetchEndpointUrl, oidfEntityConfigurationPath } from "./urls.ts";
 
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
 const TRUST_MARK_TYP = "trust-mark+jwt";
@@ -88,19 +88,19 @@ export function buildOidfDemoTopology(
   const anchor = createEntity("anchor", trustAnchorEntityId, "Demo Trust Anchor", {
     federation_entity: {
       organization_name: "Demo Trust Anchor",
-      federation_fetch_endpoint: federationFetchEndpointPath(trustAnchorEntityId),
+      federation_fetch_endpoint: federationFetchEndpointUrl(trustAnchorEntityId),
     },
   }, [], keyMaterialByRole.anchor ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL.anchor);
   const appNetwork = createEntity("app-network", appNetworkEntityId, "Demo App Network", {
     federation_entity: {
       organization_name: "Demo App Network",
-      federation_fetch_endpoint: federationFetchEndpointPath(appNetworkEntityId),
+      federation_fetch_endpoint: federationFetchEndpointUrl(appNetworkEntityId),
     },
   }, [trustAnchorEntityId], keyMaterialByRole["app-network"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["app-network"]);
   const providerNetwork = createEntity("provider-network", providerNetworkEntityId, "Provider Network", {
     federation_entity: {
       organization_name: "Provider Network",
-      federation_fetch_endpoint: federationFetchEndpointPath(providerNetworkEntityId),
+      federation_fetch_endpoint: federationFetchEndpointUrl(providerNetworkEntityId),
     },
   }, [trustAnchorEntityId], keyMaterialByRole["provider-network"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["provider-network"]);
   const demoApp = createEntity("demo-app", demoAppEntityId, "OpenID Federation Demo App", {

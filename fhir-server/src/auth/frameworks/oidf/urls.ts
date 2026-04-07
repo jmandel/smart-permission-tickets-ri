@@ -16,6 +16,17 @@ export function federationFetchEndpointUrl(entityId: string) {
   return appendPathToEntityId(entityId, "/federation_fetch_endpoint");
 }
 
+export function resolvePublishedFederationFetchEndpointUrl(
+  entityId: string,
+  payload: { metadata?: Record<string, Record<string, unknown>> },
+) {
+  const endpoint = payload.metadata?.federation_entity?.federation_fetch_endpoint;
+  if (typeof endpoint !== "string" || !endpoint.trim()) {
+    throw new Error(`OIDF entity ${entityId} is missing metadata.federation_entity.federation_fetch_endpoint`);
+  }
+  return new URL(endpoint, entityId).toString();
+}
+
 export function rewriteSelfOriginFetchUrl(
   targetUrl: string,
   config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,

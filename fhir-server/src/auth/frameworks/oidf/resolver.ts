@@ -13,9 +13,9 @@ import type { EntityStatementPayload, VerifiedTrustChain } from "./trust-chain.t
 import { verifyTrustChain } from "./trust-chain.ts";
 import { verifyTrustMark } from "./trust-mark.ts";
 import {
-  federationFetchEndpointUrl,
   fetchOidfText,
   oidfEntityConfigurationUrl,
+  resolvePublishedFederationFetchEndpointUrl,
 } from "./urls.ts";
 
 export class OidfFrameworkResolver implements FrameworkResolver {
@@ -326,17 +326,17 @@ async function fetchTrustChain(
     }
 
     const parentEntityId = authorityHints[0];
-    const fetchUrl = new URL(federationFetchEndpointUrl(parentEntityId));
-    fetchUrl.searchParams.set("sub", currentEntityId);
-    const subordinateStatementJwt = await fetchOidfText(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
-    chain.push(subordinateStatementJwt);
-
     const parentEntityConfigurationJwt = await fetchOidfText(
       oidfEntityConfigurationUrl(parentEntityId),
       "entity configuration",
       config,
       fetchImpl,
     );
+    const parentDecoded = decodeEntityStatementPayload(parentEntityConfigurationJwt);
+    const fetchUrl = new URL(resolvePublishedFederationFetchEndpointUrl(parentEntityId, parentDecoded));
+    fetchUrl.searchParams.set("sub", currentEntityId);
+    const subordinateStatementJwt = await fetchOidfText(fetchUrl.toString(), "subordinate statement", config, fetchImpl);
+    chain.push(subordinateStatementJwt);
     if (parentEntityId === expectedAnchorEntityId) {
       chain.push(parentEntityConfigurationJwt);
       break;
