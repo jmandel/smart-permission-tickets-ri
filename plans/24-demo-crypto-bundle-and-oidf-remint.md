@@ -1,6 +1,6 @@
 # Plan 24: Demo Crypto Bundle, Per-Site OIDF Leaves, and OIDF Re-Minting
 
-Status: in progress
+Status: completed on `main`
 
 ## Goal
 
@@ -409,6 +409,10 @@ Docs:
   - that provider sites are first-class OIDF leaves
   - what is stabilized
   - what is not stabilized
+
+Status:
+
+- implemented on `main`
 
 ## Non-Goals
 

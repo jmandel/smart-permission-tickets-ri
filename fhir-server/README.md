@@ -88,6 +88,50 @@ Default demo trust-framework surfaces are also enabled out of the box:
 - a built-in demo well-known JWKS surface at `/.well-known/jwks.json`, plus entity-local JWKS surfaces under `/demo/clients/<slug>/.well-known/jwks.json`
 - a built-in UDAP framework advertising `/.well-known/udap` metadata, including RS256-signed `signed_metadata`, trusting both the demo EC and demo RSA roots for client registration, and chaining discovery metadata to the demo RSA root for RS256-oriented interoperability testing
 
+## Stable Demo Crypto Bundle
+
+The server can keep demo crypto identities stable across restarts with one optional
+JSON bundle file.
+
+Generate it offline from the current site inventory:
+
+```bash
+cd /home/jmandel/work/smart-permission-tickets/reference-implementation
+bun run scripts/generate-demo-crypto-bundle.ts > fhir-server/.demo-crypto-bundle.json
+```
+
+The generator uses the in-process store loader to discover site slugs. It does not
+start the HTTP server or make network requests.
+
+Load the bundle either by:
+- placing it at the conventional path `reference-implementation/fhir-server/.demo-crypto-bundle.json`
+- or setting `DEMO_CRYPTO_BUNDLE_PATH=/abs/path/to/demo-crypto-bundle.json`
+
+When a bundle is present, the server keeps these identities stable across restarts:
+- local ticket issuer signing keys
+- OIDF fixed-role entities
+- one OIDF provider-site leaf per discovered `siteSlug`
+- the built-in well-known demo client
+- UDAP EC and RSA CA/client key material
+
+Provider sites are now first-class OIDF members of the Provider Network. Each site
+publishes its own entity configuration under:
+- `/federation/leafs/provider-sites/<siteSlug>/.well-known/openid-federation`
+
+and the Provider Network federation fetch endpoint publishes subordinate statements
+for every discovered site leaf.
+
+OIDF entity configurations, subordinate statements, and trust marks are re-minted
+when served. This keeps their `iat`/`exp` fresh indefinitely while preserving the
+same signing keys when bundle-backed mode is active.
+
+What the bundle does not stabilize:
+- UDAP leaf certificate bytes issued from the stable CA/client keys
+- OIDF JWT bytes themselves, since those are intentionally re-minted with fresh time claims
+
+If bundle-backed mode is enabled and the current site inventory includes a site with
+no matching `providerSites[siteSlug]` entry, startup fails loudly.
+
 ## Data Assumptions
 
 The server does not require synthetic resources to carry repeated site/jurisdiction `meta.tag` entries.
