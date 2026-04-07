@@ -1289,6 +1289,86 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   overflow-wrap: anywhere;
 }
 
+.viewer-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.viewer-banner-identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+}
+
+.viewer-banner-copy {
+  min-width: 0;
+}
+
+.viewer-banner-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #e8f0fe, #d2e3fc);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  flex: 0 0 auto;
+}
+
+.viewer-banner-copy h2 {
+  margin: 6px 0 0;
+  letter-spacing: -0.02em;
+}
+
+.viewer-patient-banner-meta {
+  margin-top: 6px;
+}
+
+.viewer-banner-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.viewer-banner-primary-actions {
+  justify-content: flex-end;
+}
+
+.viewer-more-actions {
+  position: relative;
+}
+
+.viewer-more-actions summary {
+  list-style: none;
+}
+
+.viewer-more-actions summary::-webkit-details-marker {
+  display: none;
+}
+
+.viewer-more-actions-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10;
+  min-width: 180px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(60, 64, 67, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .viewer-json {
   margin: 16px 0 0;
   padding: 16px;
@@ -1451,7 +1531,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .viewer-overview-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin-top: 16px;
 }
@@ -1471,72 +1551,14 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   line-height: 1.25;
 }
 
-.viewer-site-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 12px;
-  margin-top: 14px;
+.viewer-overview-item .subtle {
+  line-height: 1.35;
 }
 
-.viewer-site-card {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #fff;
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.viewer-site-card-head {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.viewer-site-card-head h4 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.viewer-site-card-meta {
+.viewer-overview-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-}
-
-.viewer-site-card-resource-count {
-  align-self: center;
-}
-
-.viewer-site-status {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding: 0 8px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.viewer-site-status-loading {
-  background: #fef7e0;
-  color: #b06000;
-  border: 1px solid #f6c453;
-}
-
-.viewer-site-status-ready {
-  background: #e6f4ea;
-  color: #137333;
-  border: 1px solid #81c995;
-}
-
-.viewer-site-status-error {
-  background: #fce8e6;
-  color: #a50e0e;
-  border: 1px solid #f28b82;
+  gap: 6px;
 }
 
 .site-session-meta-row {
@@ -2137,6 +2159,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   border-radius: 8px;
   background: #fff;
   padding: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
 .encounter-detail-card h4,
@@ -2280,12 +2303,13 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .encounter-note-card {
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: #fff;
+  background: linear-gradient(180deg, #fffdf8, #ffffff);
   padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 14px;
   min-height: 220px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
 }
 
 .encounter-note-card-head {
@@ -2314,6 +2338,8 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .encounter-note-card-snippet {
   margin: 0;
   line-height: 1.45;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.97rem;
 }
 
 .encounter-note-card .split-action {
@@ -3384,6 +3410,24 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
   .selected-person-header {
     flex-direction: column;
+  }
+
+  .viewer-banner {
+    flex-direction: column;
+  }
+
+  .viewer-banner-actions {
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .viewer-banner-primary-actions {
+    justify-content: flex-start;
+  }
+
+  .viewer-more-actions-menu {
+    position: static;
+    box-shadow: none;
   }
 
   .result-meta {

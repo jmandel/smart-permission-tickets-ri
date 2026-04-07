@@ -32,6 +32,7 @@ import {
   type ViewerResourceItem,
   type ViewerSiteRun,
 } from "../lib/viewer-model";
+import { buildViewerPatientBanner, viewerPatientBannerTitle } from "../lib/viewer-patient-banner";
 import { useViewerStore } from "../lib/viewer-store";
 
 type TimelineDragState = {
@@ -97,6 +98,10 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   }, [encodedSession, initSession]);
 
   const aggregatedResources = useMemo(() => siteRuns.flatMap((run) => run.resources), [siteRuns]);
+  const patientBanner = useMemo(
+    () => buildViewerPatientBanner(launch?.ticketPayload ?? null, aggregatedResources),
+    [aggregatedResources, launch?.ticketPayload],
+  );
   const encounterDashboard = useMemo(() => buildEncounterDashboard(aggregatedResources), [aggregatedResources]);
   const timelineScale = useMemo(() => buildEncounterScale(encounterDashboard.encounters), [encounterDashboard.encounters]);
   const maxTimelineIndex = timelineScale ? Math.max(timelineScale.totalDays - 1, 0) : 0;
@@ -220,6 +225,14 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   const noteCount = useMemo(
     () => aggregatedResources.filter((resource) => resource.resourceType === "DocumentReference").length,
     [aggregatedResources],
+  );
+  const siteJurisdictions = useMemo(
+    () => [...new Set(siteRuns.map((run) => run.site.jurisdiction).filter((value): value is string => Boolean(value)))].sort((left, right) => left.localeCompare(right)),
+    [siteRuns],
+  );
+  const encounterDateSpanLabel = useMemo(
+    () => summarizeEncounterDateSpan(encounterDashboard.encounters),
+    [encounterDashboard.encounters],
   );
   const selectedEncounterTypeMap = useMemo(
     () =>
@@ -408,97 +421,77 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   return (
     <main className="shell viewer-shell">
       <section className="panel section">
-        <div className="section-header">
-          <div>
-            <p className="eyebrow">Health App</p>
-            <h2>{launch.person.displayName}</h2>
-            <p className="subtle viewer-target">
-              Clinical data gathered from {siteRuns.length} connected site{siteRuns.length !== 1 && "s"} for review, comparison, and ad-hoc querying.
-            </p>
+        <div className="viewer-banner">
+          <div className="viewer-banner-identity">
+            <div className="viewer-banner-avatar" aria-hidden="true">PT</div>
+            <div className="viewer-banner-copy">
+              <p className="eyebrow">Health App Viewer</p>
+              <h2>{viewerPatientBannerTitle(patientBanner)}</h2>
+              {(patientBanner.birthDate || patientBanner.gender || patientBanner.mrIdentifier) && (
+                <p className="subtle viewer-patient-banner-meta">
+                  {[
+                    patientBanner.birthDate ? `DOB ${formatDateLabel(patientBanner.birthDate)}${formatAgeLabel(patientBanner.birthDate)}` : null,
+                    patientBanner.gender ? formatGenderLabel(patientBanner.gender) : null,
+                    patientBanner.mrIdentifier ? `MR ${patientBanner.mrIdentifier}` : null,
+                  ].filter(Boolean).join(" · ")}
+                </p>
+              )}
+              <p className="subtle viewer-target">
+                Clinical data gathered from {siteRuns.length} connected site{siteRuns.length !== 1 && "s"} for review, comparison, and ad-hoc querying.
+              </p>
+            </div>
           </div>
-          <div className="button-row">
-            <a className="action-link button" href="/">Back to workbench</a>
-            <a
-              className="action-link button"
-              href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View protocol trace
-            </a>
-            <button type="button" className="button" onClick={() => void navigator.clipboard.writeText(window.location.href)}>
-              Copy app link
-            </button>
-            <button type="button" className="button" onClick={() => window.location.reload()}>
-              Reload app
-            </button>
+          <div className="viewer-banner-actions">
+            <div className="button-row viewer-banner-primary-actions">
+              <a className="action-link button" href="/">Back to workbench</a>
+              <a
+                className="action-link button"
+                href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View protocol trace
+              </a>
+            </div>
+            <details className="viewer-more-actions">
+              <summary className="button">More</summary>
+              <div className="viewer-more-actions-menu">
+                <button type="button" className="button" onClick={() => void navigator.clipboard.writeText(window.location.href)}>
+                  Copy app link
+                </button>
+                <button type="button" className="button" onClick={() => window.location.reload()}>
+                  Reload app
+                </button>
+              </div>
+            </details>
           </div>
         </div>
 
         <div className="viewer-overview-strip">
           <div className="viewer-overview-item">
-            <span className="summary-label">Connected sites</span>
-            <strong>{siteRuns.length}</strong>
+            <span className="summary-label">Sites</span>
+            <strong>{siteRuns.length} connected</strong>
+            {siteJurisdictions.length > 0 && (
+              <div className="viewer-overview-pills">
+                {siteJurisdictions.map((state) => (
+                  <span key={state} className="state-pill">{state}</span>
+                ))}
+              </div>
+            )}
           </div>
           <div className="viewer-overview-item">
             <span className="summary-label">Encounters</span>
             <strong>{encounterDashboard.encounters.length}</strong>
+            {encounterDateSpanLabel && <span className="subtle">{encounterDateSpanLabel}</span>}
           </div>
           <div className="viewer-overview-item">
             <span className="summary-label">Resources</span>
             <strong>{aggregatedResources.length} loaded</strong>
-          </div>
-          <div className="viewer-overview-item">
-            <span className="summary-label">Clinical notes</span>
-            <strong>{noteCount}</strong>
+            {noteCount > 0 && <span className="subtle">{noteCount} documents</span>}
           </div>
         </div>
 
-        {launch.person.summary && (
-          <section className="subpanel viewer-section">
-            <h3>Patient Context</h3>
-            <div className="viewer-copy-block">
-              {renderSummaryParagraphs(launch.person.summary)}
-            </div>
-          </section>
-        )}
-
-        <section className="subpanel viewer-section">
-          <div className="section-header">
-            <div>
-              <h3>Clinical Data by Site</h3>
-              <p className="subtle">
-                Each site shows whether it is connected and how many resources have loaded so far.
-              </p>
-            </div>
-          </div>
-          {error && <p className="error-text">{error}</p>}
-          <div className="viewer-site-card-grid">
-            {siteRuns.map((run) => {
-              const siteStatus = clinicalSiteStatus(run);
-              return (
-                <article key={run.site.siteSlug} className="viewer-site-card">
-                  <div className="viewer-site-card-head">
-                    <div>
-                      <h4>{run.site.orgName}</h4>
-                      <div className="viewer-site-card-meta">
-                        {run.site.jurisdiction && <span className="state-pill">{run.site.jurisdiction}</span>}
-                        <span className={`viewer-site-status viewer-site-status-${siteStatus}`}>{clinicalSiteStatusLabel(siteStatus)}</span>
-                        <span className="subtle viewer-site-card-resource-count">{run.resources.length} resources</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {run.error ? (
-                    <p className="error-text">{run.error}</p>
-                  ) : (
-                    siteStatus === "loading" ? <p className="subtle">Loading clinical resources…</p> : null
-                  )}
-                </article>
-              );
-            })}
-          </div>
-        </section>
+        {error && <p className="error-text">{error}</p>}
 
         <section className="subpanel viewer-section">
           <h3>Encounter Timeline</h3>
@@ -807,7 +800,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                     </div>
                   </>
                 ) : (
-                    <p className="subtle">No encounters are currently selected.</p>
+                    <p className="subtle">Drag the timeline handles above or choose encounters to build a working set.</p>
                   )}
               </section>
             </>
@@ -1520,6 +1513,52 @@ function formatCompactDate(value: string) {
   }).format(date);
 }
 
+function formatDateLabel(value: string) {
+  return formatCompactDate(value);
+}
+
+function formatAgeLabel(value: string) {
+  const age = ageInYears(value);
+  return age === null ? "" : ` (${age}y)`;
+}
+
+function formatGenderLabel(value: string) {
+  if (!value) return "—";
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function ageInYears(value: string) {
+  const birthDate = new Date(`${value}T00:00:00Z`);
+  if (Number.isNaN(birthDate.getTime())) return null;
+  const now = new Date();
+  let age = now.getUTCFullYear() - birthDate.getUTCFullYear();
+  const monthDelta = now.getUTCMonth() - birthDate.getUTCMonth();
+  const dayDelta = now.getUTCDate() - birthDate.getUTCDate();
+  if (monthDelta < 0 || (monthDelta === 0 && dayDelta < 0)) age -= 1;
+  return age >= 0 ? age : null;
+}
+
+function summarizeEncounterDateSpan(encounters: ViewerEncounterDashboard["encounters"]) {
+  if (!encounters.length) return null;
+  const starts = encounters.map((encounter) => encounter.startDate ?? encounter.endDate).filter((value): value is string => Boolean(value));
+  const ends = encounters.map((encounter) => encounter.endDate ?? encounter.startDate).filter((value): value is string => Boolean(value));
+  if (!starts.length || !ends.length) return null;
+  const start = starts.sort((left, right) => left.localeCompare(right))[0]!;
+  const end = ends.sort((left, right) => right.localeCompare(left))[0]!;
+  return `${formatMonthYearLabel(start)} - ${formatMonthYearLabel(end)}`;
+}
+
+function formatMonthYearLabel(value: string) {
+  if (!value) return "—";
+  const date = new Date(`${value.slice(0, 10)}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) return value.slice(0, 7) || "—";
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+}
+
 const MIN_PILL_PCT = 3.5;
 const TIMELINE_SELECTION_PAD_PCT = 0.9;
 
@@ -1624,23 +1663,6 @@ function inferPayloadCounts(payload: any) {
 function formatResultCounts(shownCount: number, totalCount: number) {
   if (totalCount > shownCount) return `${shownCount} shown · ${totalCount} total`;
   return `${shownCount} result${shownCount !== 1 ? "s" : ""}`;
-}
-
-function clinicalSiteStatus(run: ViewerSiteRun) {
-  if (run.error || run.phase === "error") return "error";
-  if (run.phase === "ready" || run.resources.length > 0) return "ready";
-  return "loading";
-}
-
-function clinicalSiteStatusLabel(status: ReturnType<typeof clinicalSiteStatus>) {
-  switch (status) {
-    case "ready":
-      return "Ready";
-    case "error":
-      return "Error";
-    default:
-      return "Loading";
-  }
 }
 
 function renderSummaryParagraphs(summary: string) {

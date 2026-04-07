@@ -219,6 +219,21 @@ Status: implemented
 - update the server, UI, visualizer, tests, and smoke paths in a coordinated sequence
 - preserve current resource-filtering and revocation behavior where compatible, while moving to `access.permissions` as the canonical authorization model
 
+### Plan 20: Viewer Clinical Banner and Density Refresh
+`20-viewer-clinical-banner-and-density-refresh.md`
+
+Status: implemented
+
+- make the viewer feel more like a compact clinical application and less like a generic demo shell
+- derive patient identity context from the signed ticket and loaded `Patient` resources, not duplicated launch-only demographics
+- replace the generic viewer header with a patient-banner pattern showing name, DOB/age, and gender when available
+- improve action hierarchy by keeping navigation primary and operational utilities secondary
+- tighten the overview strip into denser insight cards
+- further simplify site summaries so they show only the clinically useful information at a glance
+- preserve the separation established by Plans 17 and 18:
+  - protocol detail stays in Protocol Trace
+  - the viewer stays focused on clinical data and selection/exploration
+
 ## Dependencies Between Plans
 
 ```
@@ -244,6 +259,8 @@ Plan 14 (Portable-Kernel Redesign) ───────────────
                                       ↑
 Plan 15 (Schema Unification + Ref Impl Migration) ─────┘
                                       ↑
+Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
+                                      ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
 ```
 
@@ -260,6 +277,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 13 (demo event visualization) adds a live event visualization so every authorization decision, token exchange, and FHIR query is observable during demos — making the protocol's trust chain, fan-out, and per-site independence tangible and inspectable
 - Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
 - Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
+- Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available
 

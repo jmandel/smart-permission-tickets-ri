@@ -253,8 +253,6 @@ export type ViewerLaunch = {
   network: ViewerLaunchNetwork;
   person: {
     personId: string;
-    displayName: string;
-    summary: string | null;
   };
   ticketPayload: PermissionTicket | null;
   signedTicket: string | null;

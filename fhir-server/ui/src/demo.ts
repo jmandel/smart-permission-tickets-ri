@@ -614,8 +614,6 @@ export function buildViewerLaunch(
     network: viewerNetwork,
     person: {
       personId: person.personId,
-      displayName: person.displayName,
-      summary: person.summary,
     },
     ticketPayload,
     signedTicket,
