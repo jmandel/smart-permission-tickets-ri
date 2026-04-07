@@ -11,6 +11,7 @@ export function toAuthenticatedClientIdentity(
     clientId: client.clientId,
     clientName: client.clientName,
     tokenEndpointAuthMethod: client.tokenEndpointAuthMethod,
+    registeredAuthSurface: client.registeredAuthSurface,
     dynamic: client.dynamic,
     authMode: client.authMode ?? "unaffiliated",
     registeredScope: client.registeredScope,

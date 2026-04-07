@@ -190,17 +190,34 @@ Status: implemented
 ### Plan 14: Permission Ticket Portable-Kernel Redesign
 `14-permission-ticket-portable-kernel-redesign.md`
 
-- define a smaller, enforceable Permission Ticket shell before rewriting the formal spec
-- keep JWT / token exchange / URI `ticket_type` / orthogonal client-binding concepts
-- make `access.permissions` the normative rights model
-- define portable common filtering for:
-  - one coarse `dataPeriod`
-  - one coarse `sensitiveData` switch
-  - coarse jurisdiction scoping
-  - positive source scoping by organizations
-- keep a modest but useful common `authority` provenance object
-- move weaker semantics out of the common shell and into `context` or profile-specific space
-- work through all seven use cases against the new model before touching `input/` or runtime code
+- define a smaller, enforceable Permission Ticket portable kernel and rewrite the formal spec around it
+- keep JWT / token exchange / URI `ticket_type` / a unified `presenter_binding` container with independent key/framework sub-bindings
+- make `access.permissions` the normative rights model; SMART scopes are a coarse projection
+- define portable common filtering: one coarse `data_period`, one `sensitive_data` switch (default `exclude`), coarse `jurisdictions`, positive `source_organizations`
+- remove `authority` — legal basis is implied by `ticket_type` + `requester` type + `context.kind`
+- remove `regrant` / `derivedFrom` — may revisit as client-attenuable model later
+- add `must_understand` for profile-specific must-understand extensibility (inspired by JWS `crit`)
+- add `supporting_artifacts` for optional audit/review material not needed for yes/no
+- `requester` is issuer-attested; recipient trusts it for policy but does not independently verify
+- all kernel fields are must-understand when present; unknown fields safe to ignore unless in `must_understand`
+- move weaker semantics out of the common shell and into `context`, `supporting_artifacts`, or profile-specific space
+- work through all seven use cases with minimum enforceable examples
+
+### Plan 15: Spec / Reference-Implementation Schema Unification and Migration
+`15-spec-refimpl-schema-unification-and-migration.md`
+
+- make one canonical Permission Ticket schema shared by:
+  - the main spec
+  - spec-generation scripts
+  - the reference implementation server and UI
+- use Zod as the executable source of truth for the ticket wire model
+- derive:
+  - runtime parsing/validation
+  - TypeScript types
+  - JSON Schema for spec publication and example checking
+- migrate the reference implementation from the old ticket model (`cnf`, `client_binding`, `authorization`, `details`) to the new portable-kernel model (`presenter_binding`, `subject`, `access`, `context`)
+- update the server, UI, visualizer, tests, and smoke paths in a coordinated sequence
+- preserve current resource-filtering and revocation behavior where compatible, while moving to `access.permissions` as the canonical authorization model
 
 ## Dependencies Between Plans
 
@@ -225,6 +242,8 @@ Plan 13 (Demo Event Visualization) ───────────────
                                       ↑
 Plan 14 (Portable-Kernel Redesign) ────────────────────┘
                                       ↑
+Plan 15 (Schema Unification + Ref Impl Migration) ─────┘
+                                      ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
 ```
 
@@ -240,6 +259,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 12 (ticket spec / implementation alignment) is the follow-on cleanup and completion pass for the currently implemented Permission Ticket model, especially around `exp`, audience semantics, revocation, and ticket-type-specific `details`
 - Plan 13 (demo event visualization) adds a live event visualization so every authorization decision, token exchange, and FHIR query is observable during demos — making the protocol's trust chain, fan-out, and per-site independence tangible and inspectable
 - Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
+- Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
 
 ## Seed Data Available
 

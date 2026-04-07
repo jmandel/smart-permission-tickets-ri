@@ -47,6 +47,7 @@ export interface FrameworkResolver {
   registerClient?(
     body: Record<string, any>,
     registrationEndpointUrl: string,
+    authSurfaceUrl: string,
   ): Promise<FrameworkClientRegistration | null>;
 }
 

@@ -2,8 +2,8 @@ import { computeJwkThumbprint, normalizePublicJwk, verifyPrivateKeyJwt } from ".
 import { toAuthenticatedClientIdentity } from "../client-identity.ts";
 import type {
   AuthenticatedClientIdentity,
-  ClientBinding,
   FrameworkDefinition,
+  FrameworkClientBinding,
   RegisteredClient,
   ResolvedFrameworkEntity,
   ResolvedIssuerTrust,
@@ -170,7 +170,7 @@ function resolveFrameworkBinding(
   frameworks: FrameworkDefinition[],
   entityUri: string,
   capability: "client" | "issuer",
-): { binding: ClientBinding; jwksRelativePath: string; cacheTtlSeconds: number } | null {
+): { binding: FrameworkClientBinding; jwksRelativePath: string; cacheTtlSeconds: number } | null {
   for (const framework of frameworks) {
     if (framework.frameworkType !== "well-known") continue;
     if (capability === "client" && !framework.supportsClientAuth) continue;

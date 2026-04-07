@@ -1,7 +1,10 @@
 import { describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial } from "../shared/private-key-jwt.ts";
-import { NETWORK_PATIENT_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import {
+  PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+  PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+} from "../shared/permission-tickets.ts";
 import { computeEcJwkThumbprintSync, signEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
@@ -50,26 +53,34 @@ describe("framework-backed issuer trust", () => {
       const ticket = signEs256Jwt(
         {
           iss: issuerUrl,
-          sub: "framework-issued-ticket",
           aud: origin,
           exp: Math.floor(Date.now() / 1000) + 3600,
-          ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-          authorization: {
-            subject: {
-              type: "match",
-              traits: {
-                resourceType: "Patient",
-                name: [{ family: "Reyes", given: ["Elena"] }],
-                birthDate: "1989-09-14",
-              },
-            },
-            access: {
-              scopes: ["patient/Patient.rs"],
-              periods: [{ start: "2023-01-01", end: "2025-12-31" }],
+          jti: crypto.randomUUID(),
+          ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+          requester: {
+            resourceType: "Organization",
+            identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+            name: "Public Health Department",
+          },
+          subject: {
+            patient: {
+              resourceType: "Patient",
+              name: [{ family: "Reyes", given: ["Elena"] }],
+              birthDate: "1989-09-14",
             },
           },
-          details: {
-            sensitive: { mode: "deny" },
+          access: {
+            permissions: [{
+              kind: "data",
+              resource_type: "Patient",
+              interactions: ["read", "search"],
+            }],
+            data_period: { start: "2023-01-01", end: "2025-12-31" },
+            sensitive_data: "exclude",
+          },
+          context: {
+            kind: "public-health",
+            reportable_condition: { text: "Public health investigation" },
           },
         },
         issuerKeys.privateJwk,

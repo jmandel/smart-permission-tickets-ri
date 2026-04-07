@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import type { DemoHttpRequestArtifact, DemoHttpResponseArtifact } from "../../../shared/demo-events";
 
 import { buildFetchCurl, buildTokenExchangeCurl, describeClientPlan } from "../demo";
 import { fetchJson } from "../lib/viewer-client";
@@ -12,7 +13,15 @@ import {
   renderArtifactText,
   type ArtifactViewerPayload,
 } from "../lib/artifact-viewer";
+import { buildDemoEventArtifactTabs, type EventArtifactTab } from "../lib/demo-event-tabs";
 import { SplitAction } from "./SplitAction";
+import {
+  formatHttpRequestForCopy,
+  formatHttpResponseForCopy,
+  HttpRequestArtifactPanel,
+  HttpResponseArtifactPanel,
+  renderHighlightedJson,
+} from "./ArtifactPanels";
 import {
   addDaysUtc,
   buildArtifactHull,
@@ -51,8 +60,15 @@ export function Viewer() {
   return (
     <main className="shell viewer-shell">
       <section className="panel section">
-        <h2>Health App Viewer</h2>
-        <p className="error-text">Missing viewer session or artifact payload.</p>
+        <div className="section-header">
+          <div>
+            <h2>Health App Viewer</h2>
+            <p className="error-text">Missing viewer session or artifact payload.</p>
+          </div>
+          <div className="button-row">
+            <a className="action-link button" href="/">Back to workbench</a>
+          </div>
+        </div>
       </section>
     </main>
   );
@@ -385,8 +401,15 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
     return (
       <main className="shell viewer-shell">
         <section className="panel section">
-          <h2>Health App Viewer</h2>
-          <p className="error-text">{error ?? "Invalid session payload."}</p>
+          <div className="section-header">
+            <div>
+              <h2>Health App Viewer</h2>
+              <p className="error-text">{error ?? "Invalid session payload."}</p>
+            </div>
+            <div className="button-row">
+              <a className="action-link button" href="/">Back to workbench</a>
+            </div>
+          </div>
         </section>
       </main>
     );
@@ -404,6 +427,15 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
             </p>
           </div>
           <div className="button-row">
+            <a className="action-link button" href="/">Back to workbench</a>
+            <a
+              className="action-link button"
+              href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open protocol trace
+            </a>
             <button type="button" className="button" onClick={() => void navigator.clipboard.writeText(window.location.href)}>
               Copy app link
             </button>
@@ -450,7 +482,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         <section className="subpanel viewer-section">
           <h3>Authorization Artifacts</h3>
           <p className="subtle">
-            Inspect the network-level authorization flow first, then the site-by-site exchanges that follow from it. Access-token claims and introspection responses include resolved client-binding and issuer-trust details when those checks are in play.
+            Inspect the network-level authorization flow first, then the site-by-site exchanges that follow from it. Access-token claims and introspection responses include resolved presenter-binding and issuer-trust details when those checks are in play.
           </p>
           {clientStory && (
             <>
@@ -1291,6 +1323,7 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
   const [copiedAction, setCopiedAction] = useState<string | null>(null);
   const [focusRef, setFocusRef] = useState<string | null>(requestedFocusRef ?? null);
   const [activeEventTabKey, setActiveEventTabKey] = useState<string | null>(null);
+  const eventArtifactsSectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setFocusRef(requestedFocusRef ?? null);
@@ -1301,8 +1334,15 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
     return (
       <main className="shell viewer-shell">
         <section className="panel section">
-          <h2>Artifact Viewer</h2>
-          <p className="error-text">Artifact payload is missing or expired.</p>
+          <div className="section-header">
+            <div>
+              <h2>Artifact Viewer</h2>
+              <p className="error-text">Artifact payload is missing or expired.</p>
+            </div>
+            <div className="button-row">
+              <a className="action-link button" href="/">Back to workbench</a>
+            </div>
+          </div>
         </section>
       </main>
     );
@@ -1332,7 +1372,7 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
       : payload.kind === "event"
         ? null
         : payload.noteText ?? null;
-  const eventTabs = useMemo(() => (payload.kind === "event" ? buildEventArtifactTabs(payload.event) : []), [payload]);
+  const eventTabs = useMemo(() => (payload.kind === "event" ? buildDemoEventArtifactTabs(payload.event) : []), [payload]);
   const eventSummary = useMemo(() => (payload.kind === "event" ? buildDemoEventSummary(payload.event) : null), [payload]);
   const activeEventTab = payload.kind === "event"
     ? eventTabs.find((tab) => tab.key === activeEventTabKey) ?? eventTabs[0] ?? null
@@ -1358,9 +1398,13 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
       ? payload.jwt
       : payload.kind === "event"
         ? activeEventTab
-          ? typeof activeEventTab.content === "string"
-            ? activeEventTab.content
-            : JSON.stringify(activeEventTab.content, null, 2)
+          ? activeEventTab.kind === "http-request"
+            ? formatHttpRequestForCopy(activeEventTab.content as DemoHttpRequestArtifact)
+            : activeEventTab.kind === "http-response"
+              ? formatHttpResponseForCopy(activeEventTab.content as DemoHttpResponseArtifact)
+              : typeof activeEventTab.content === "string"
+                ? activeEventTab.content
+                : JSON.stringify(activeEventTab.content, null, 2)
           : ""
       : payload.kind === "context"
       ? focusNode
@@ -1385,6 +1429,13 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
     window.setTimeout(() => {
       setCopiedAction((current) => (current === key ? null : current));
     }, 1200);
+  };
+
+  const activateEventTab = (nextTabKey: string) => {
+    setActiveEventTabKey(nextTabKey);
+    window.requestAnimationFrame(() => {
+      eventArtifactsSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
   const metadataSection = metadata.length ? (
@@ -1420,6 +1471,9 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
             <p className="eyebrow">Artifact Viewer</p>
             <h2>{title}</h2>
             {subtitle && <p className="subtle viewer-target">{subtitle}</p>}
+          </div>
+          <div className="button-row">
+            <a className="action-link button" href="/">Back to workbench</a>
           </div>
         </div>
         {payload.kind === "context" ? (
@@ -1520,7 +1574,7 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                               key={`shortcut:${tab.key}`}
                               type="button"
                               className={`artifact-tab mini${tab.key === activeEventTab?.key ? " active" : ""}`}
-                              onClick={() => setActiveEventTabKey(tab.key)}
+                              onClick={() => activateEventTab(tab.key)}
                             >
                               Open {tab.label}
                             </button>
@@ -1564,7 +1618,7 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                   </section>
                 )}
                 {eventTabs.length > 0 && (
-                  <section className="artifact-json-panel">
+                  <section ref={eventArtifactsSectionRef} className="artifact-json-panel">
                     <div className="artifact-json-head">
                       <h3>Protocol artifacts</h3>
                     </div>
@@ -1574,7 +1628,7 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                           key={tab.key}
                           type="button"
                           className={`artifact-tab${tab.key === activeEventTab?.key ? " active" : ""}`}
-                          onClick={() => setActiveEventTabKey(tab.key)}
+                          onClick={() => activateEventTab(tab.key)}
                         >
                           {tab.label}
                         </button>
@@ -1638,6 +1692,26 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                       <pre className="viewer-json viewer-json-plain">{text}</pre>
                     </section>
                   )
+                ) : activeEventTab?.kind === "http-request" && isDemoHttpRequestArtifact(activeEventTab.content) ? (
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>{activeEventTab.label}</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-http-request", formatHttpRequestForCopy(activeEventTab.content as DemoHttpRequestArtifact))}>
+                        {copiedAction === "event-http-request" ? "Copied HTTP" : "Copy HTTP"}
+                      </button>
+                    </div>
+                    <HttpRequestArtifactPanel artifact={activeEventTab.content as DemoHttpRequestArtifact} />
+                  </section>
+                ) : activeEventTab?.kind === "http-response" && isDemoHttpResponseArtifact(activeEventTab.content) ? (
+                  <section className="artifact-json-panel">
+                    <div className="artifact-json-head">
+                      <h3>{activeEventTab.label}</h3>
+                      <button type="button" className="button mini" onClick={() => void copyWithFeedback("event-http-response", formatHttpResponseForCopy(activeEventTab.content as DemoHttpResponseArtifact))}>
+                        {copiedAction === "event-http-response" ? "Copied HTTP" : "Copy HTTP"}
+                      </button>
+                    </div>
+                    <HttpResponseArtifactPanel artifact={activeEventTab.content as DemoHttpResponseArtifact} />
+                  </section>
                 ) : (
                   <section className="artifact-json-panel">
                     <div className="artifact-json-head">
@@ -1722,42 +1796,6 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
       </section>
     </main>
   );
-}
-
-type EventArtifactTab = {
-  key: string;
-  label: string;
-  kind: "json" | "jwt" | "text";
-  content: unknown;
-};
-
-function buildEventArtifactTabs(event: Parameters<typeof buildDemoEventArtifactPayload>[0]): EventArtifactTab[] {
-  const tabs: EventArtifactTab[] = [];
-  if (event.artifacts?.request) {
-    tabs.push({
-      key: "request",
-      label: "Request",
-      kind: "json",
-      content: event.artifacts.request,
-    });
-  }
-  if (event.artifacts?.response) {
-    tabs.push({
-      key: "response",
-      label: "Response",
-      kind: "json",
-      content: event.artifacts.response,
-    });
-  }
-  for (const [index, artifact] of (event.artifacts?.related ?? []).entries()) {
-    tabs.push({
-      key: `related:${index}`,
-      label: artifact.label,
-      kind: artifact.kind,
-      content: artifact.content,
-    });
-  }
-  return tabs;
 }
 
 function accessTokenForSite(siteRuns: ViewerSiteRun[], siteSlug: string) {
@@ -2117,27 +2155,23 @@ function coalesceArtifactMetadata(metadata: Array<{ label: string; value: string
   return rows;
 }
 
-function renderHighlightedJson(text: string) {
-  const escaped = escapeHtml(text);
-  return escaped.replace(
-    /("(?:\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"\s*:?)|\b(true|false|null)\b|\b-?\d+(?:\.\d+)?(?:[eE][+\-]?\d+)?\b/g,
-    (match) => {
-      if (/^"/.test(match)) {
-        const className = /:\s*$/.test(match) ? "json-key" : "json-string";
-        return `<span class="${className}">${match}</span>`;
-      }
-      if (/true|false/.test(match)) return `<span class="json-boolean">${match}</span>`;
-      if (/null/.test(match)) return `<span class="json-null">${match}</span>`;
-      return `<span class="json-number">${match}</span>`;
-    },
+function isDemoHttpRequestArtifact(value: unknown): value is DemoHttpRequestArtifact {
+  return Boolean(
+    value
+      && typeof value === "object"
+      && typeof (value as DemoHttpRequestArtifact).method === "string"
+      && typeof (value as DemoHttpRequestArtifact).url === "string"
+      && typeof (value as DemoHttpRequestArtifact).headers === "object",
   );
 }
 
-function escapeHtml(text: string) {
-  return text
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
+function isDemoHttpResponseArtifact(value: unknown): value is DemoHttpResponseArtifact {
+  return Boolean(
+    value
+      && typeof value === "object"
+      && typeof (value as DemoHttpResponseArtifact).status === "number"
+      && typeof (value as DemoHttpResponseArtifact).headers === "object",
+  );
 }
 
 function buildPostJsonCurl(url: string, body: unknown, accessToken?: string | null, proofJkt?: string | null) {

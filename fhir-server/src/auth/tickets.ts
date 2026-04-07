@@ -4,12 +4,10 @@ import {
   type AllowedPatientAlias,
   type AuthorizationEnvelope,
   type CategoryRule,
-  type ClientBinding,
   type DateRange,
   type DateSemantics,
-  type FrameworkType,
+  type FrameworkClientBinding,
   type ModeName,
-  type PermissionTicket,
   type ResolvedIssuerTrust,
   type SensitiveMode,
   type TicketIssuerTrust,
@@ -20,6 +18,15 @@ import type { TicketIssuerRegistry } from "./issuers.ts";
 import type { TicketRevocationRegistry } from "./ticket-revocation.ts";
 import { SUPPORTED_PERMISSION_TICKET_TYPES } from "../../shared/permission-tickets.ts";
 import type { DemoAuditStep, DemoObserver, DemoPatientMatchDetail, DemoRelatedArtifact } from "../../shared/demo-events.ts";
+import {
+  type DataPermission,
+  type FHIRHumanName,
+  type FHIRIdentifier,
+  type PermissionRule,
+  PermissionTicketSchema,
+  type PermissionTicket,
+  type PresenterBinding,
+} from "../../../shared/permission-ticket-schema.ts";
 
 const RESOURCE_WILDCARD = new Set(["*", "Patient", "Encounter", "Observation", "Condition", "DiagnosticReport", "DocumentReference", "MedicationRequest", "Procedure", "Immunization", "ServiceRequest", "Organization", "Practitioner", "Location", "AllergyIntolerance"]);
 const SUPPORTING_CONTEXT_TYPES = ["Organization", "Practitioner", "Location"] as const;
@@ -57,14 +64,21 @@ export async function validatePermissionTicket(
     content: subjectToken,
     copyText: subjectToken,
   });
-  const { header, payload } = decodeEs256Jwt<PermissionTicket>(subjectToken);
+  const { header, payload: decodedPayload } = decodeEs256Jwt<Record<string, unknown>>(subjectToken);
   if (header.alg !== "ES256") {
     addAuditStep(diagnostics, { check: "Signature", passed: false, reason: "Permission Ticket must be signed with ES256" });
     throw new Error("Permission Ticket must be signed with ES256");
   }
+  if (!decodedPayload || typeof decodedPayload !== "object" || Array.isArray(decodedPayload)) {
+    addAuditStep(diagnostics, { check: "Signature", passed: false, reason: "Malformed Permission Ticket payload" });
+    throw new Error("Malformed Permission Ticket payload");
+  }
   let issuer: ResolvedIssuerTrust;
   try {
-    issuer = await resolveTrustedIssuer(payload.iss, issuers, frameworks, requestOrigin);
+    if (typeof decodedPayload.iss !== "string" || !decodedPayload.iss) {
+      throw new Error("Permission Ticket missing iss");
+    }
+    issuer = await resolveTrustedIssuer(decodedPayload.iss, issuers, frameworks, requestOrigin);
   } catch (error) {
     addAuditStep(diagnostics, {
       check: "Issuer Trust",
@@ -99,11 +113,19 @@ export async function validatePermissionTicket(
     evidence: `alg=${header.alg}${header.kid ? `, kid=${header.kid}` : ""}`,
     why: "Issuer signature verified",
   });
-  const now = Math.floor(Date.now() / 1000);
-  if (typeof payload.exp !== "number") {
-    addAuditStep(diagnostics, { check: "Expiration", passed: false, reason: "Permission Ticket missing exp" });
-    throw new Error("Permission Ticket missing exp");
+  const parseResult = PermissionTicketSchema.safeParse(decodedPayload);
+  if (!parseResult.success) {
+    const issue = parseResult.error.issues[0];
+    const failingCheck = schemaIssueCheckLabel(issue.path[0]);
+    addAuditStep(diagnostics, {
+      check: failingCheck,
+      passed: false,
+      reason: issue.message,
+    });
+    throw new Error(issue.message);
   }
+  const payload = parseResult.data;
+  const now = Math.floor(Date.now() / 1000);
   if (payload.exp <= now) {
     addAuditStep(diagnostics, { check: "Expiration", passed: false, reason: "Permission Ticket expired" });
     throw new Error("Permission Ticket expired");
@@ -116,7 +138,6 @@ export async function validatePermissionTicket(
   });
   const audValues = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
   if (!permissionTicketAudienceMatches(audValues, expectedAudiences, frameworks)) {
-    addRelatedArtifact(diagnostics, { label: "Expected audiences", kind: "json", content: expectedAudiences });
     addAuditStep(diagnostics, {
       check: "Audience",
       passed: false,
@@ -124,17 +145,12 @@ export async function validatePermissionTicket(
     });
     throw new Error("Permission Ticket audience mismatch");
   }
-  addRelatedArtifact(diagnostics, { label: "Expected audiences", kind: "json", content: expectedAudiences });
   addAuditStep(diagnostics, {
     check: "Audience",
     passed: true,
     evidence: audValues.join(", "),
     why: "Ticket audience matches this server surface",
   });
-  if (!payload.ticket_type) {
-    addAuditStep(diagnostics, { check: "Type", passed: false, reason: "Permission Ticket missing ticket_type" });
-    throw new Error("Permission Ticket missing ticket_type");
-  }
   if (!SUPPORTED_PERMISSION_TICKET_TYPES.includes(payload.ticket_type as (typeof SUPPORTED_PERMISSION_TICKET_TYPES)[number])) {
     addAuditStep(diagnostics, { check: "Type", passed: false, reason: "Unsupported ticket type" });
     throw new Error("Unsupported ticket type");
@@ -151,9 +167,7 @@ export async function validatePermissionTicket(
     evidence: issuer.displayName ?? issuer.issuerUrl,
     why: `Issuer is trusted via ${issuer.source}`,
   });
-  validateSubjectConsistency(payload.authorization.subject);
-  validateSupportedAccessConstraints(payload.authorization.access);
-  validateClientBinding(payload.client_binding);
+  enforceMustUnderstand(payload, diagnostics);
   try {
     await ticketRevocations.assertActive(payload);
   } catch (error) {
@@ -210,9 +224,9 @@ export function compileAuthorizationEnvelope(
 
   const allowedPatientAliases = store.expandAliasesForPatientSlugs(patientSlugs);
   const allowedSites = compileAllowedSites(ticket, store, allowedPatientAliases);
-  const scopeResult = compileScopes(ticket.authorization.access.scopes ?? []);
-  const dateRanges = compileDateRanges(ticket.authorization.access.periods ?? []);
-  const dateSemantics = compileDateSemantics(ticket);
+  const scopeResult = compilePermissions(ticket.access.permissions);
+  const dateRanges = compileDateRanges(ticket.access.data_period);
+  const dateSemantics = compileDateSemantics();
   const sensitiveMode = compileSensitiveMode(ticket);
 
   const filteredAliases = allowedSites === undefined
@@ -230,11 +244,11 @@ export function compileAuthorizationEnvelope(
   const envelope: AuthorizationEnvelope = {
     ticketIssuer: ticket.iss,
     ticketIssuerTrust: issuerTrust,
-    ticketSubject: ticket.sub,
+    grantSubject: deriveGrantSubject(ticket),
     ticketId: ticket.jti,
     ticketType: ticket.ticket_type,
     mode,
-    scope: scopeResult.scopeString || (ticket.authorization.access.scopes ?? []).join(" "),
+    scope: scopeResult.scopeString,
     grantedScopes: scopeResult.scopeStrings,
     patient: patient?.split("/", 2).at(1),
     allowedPatientAliases: filteredAliases,
@@ -246,8 +260,8 @@ export function compileAuthorizationEnvelope(
     requiredLabelsAll: requiredLabelsAll.length ? requiredLabelsAll : undefined,
     deniedLabelsAny: deniedLabelsAny.length ? deniedLabelsAny : undefined,
     granularCategoryRules: scopeResult.granularCategoryRules,
-    cnf: ticket.cnf,
-    clientBinding: ticket.client_binding,
+    presenterProofKey: extractPresenterProofKey(ticket.presenter_binding),
+    presenterFrameworkClient: toFrameworkClientBinding(ticket.presenter_binding),
   };
   recordPatientMatch(diagnostics, demoContext, resolvedAliases, filteredAliases, store, envelope);
   return envelope;
@@ -319,24 +333,6 @@ function verifyPermissionTicketSignature(token: string, expectedKid: string | un
   throw lastError ?? new Error("Permission Ticket signature verification failed");
 }
 
-function validateClientBinding(binding: ClientBinding | undefined) {
-  if (!binding) return;
-  if (binding.binding_type !== "framework-entity") throw new Error("Unsupported client binding type");
-  if (!isFrameworkType(binding.framework_type)) throw new Error("Unsupported client binding framework_type");
-  validateUrlField(binding.framework, "Permission Ticket client_binding framework must be an absolute URL");
-  validateUrlField(binding.entity_uri, "Permission Ticket client_binding entity_uri must be an absolute URL");
-}
-
-function isFrameworkType(value: string): value is FrameworkType {
-  return value === "well-known" || value === "udap";
-}
-
-function validateUrlField(value: string, message: string) {
-  if (typeof value !== "string" || !value) throw new Error(message);
-  const parsed = new URL(value);
-  if (!["http:", "https:"].includes(parsed.protocol)) throw new Error(message);
-}
-
 export function narrowAuthorizationEnvelopeScopes(envelope: AuthorizationEnvelope, requestedScope: string | undefined): AuthorizationEnvelope {
   const requestedScopes = normalizeRequestedScopes(requestedScope);
   if (!requestedScopes.length) return envelope;
@@ -387,66 +383,40 @@ export function compileClientCredentialsScopeRequest(
 }
 
 function resolveSubject(ticket: PermissionTicket, store: FhirStore): AllowedPatientAlias[] {
-  const subject = ticket.authorization.subject;
-  switch (subject.type) {
-    case "reference": {
-      const reference = subject.reference ?? (subject.resourceType && subject.id ? `${subject.resourceType}/${subject.id}` : undefined);
-      if (!reference) throw new Error("Reference subject missing reference");
-      return store.findPatientAliasesByReference(reference);
-    }
-    case "identifier":
-      return store.findPatientAliasesByIdentifiers(subject.identifier ?? []);
-    case "match":
-      return store.findPatientAliasesByTraits(subject.traits ?? {});
+  const recipientRecord = ticket.subject.recipient_record;
+  if (recipientRecord?.reference) {
+    return store.findPatientAliasesByReference(recipientRecord.reference);
   }
-}
-
-function validateSubjectConsistency(subject: PermissionTicket["authorization"]["subject"]) {
-  switch (subject.type) {
-    case "match":
-      if (subject.id || subject.reference || subject.identifier?.length || subject.resourceType) {
-        throw new Error("Subject type inconsistent with populated fields");
-      }
-      if (!subject.traits) throw new Error("Match subject missing traits");
-      return;
-    case "identifier":
-      if (subject.id || subject.reference || subject.resourceType || subject.traits) {
-        throw new Error("Subject type inconsistent with populated fields");
-      }
-      if (!subject.identifier?.length) throw new Error("Identifier subject missing identifier");
-      return;
-    case "reference":
-      if (subject.identifier?.length || subject.traits) {
-        throw new Error("Subject type inconsistent with populated fields");
-      }
-      if (subject.reference) return;
-      if (subject.resourceType && subject.id) return;
-      throw new Error("Reference subject missing reference");
+  if (recipientRecord?.identifier) {
+    return store.findPatientAliasesByIdentifiers([recipientRecord.identifier]);
   }
-}
-
-function validateSupportedAccessConstraints(access: PermissionTicket["authorization"]["access"]) {
-  const supportedKeys = new Set(["scopes", "periods", "jurisdictions", "organizations"]);
-  for (const key of Object.keys(access)) {
-    if (!supportedKeys.has(key)) throw new Error(`Unsupported access constraint: ${key}`);
-  }
+  return store.findPatientAliasesByTraits({
+    name: ticket.subject.patient.name,
+    birthDate: ticket.subject.patient.birthDate,
+    identifier: ticket.subject.patient.identifier,
+  });
 }
 
 function compileAllowedSites(ticket: PermissionTicket, store: FhirStore, aliases: AllowedPatientAlias[]) {
   const aliasSites = new Set(aliases.map((alias) => alias.siteSlug));
   const constrainedSets: Array<Set<string>> = [];
 
-  if (ticket.authorization.access.organizations?.length) {
-    constrainedSets.push(new Set(store.resolveAllowedSitesByOrganizations(ticket.authorization.access.organizations)));
+  if (ticket.access.source_organizations?.length) {
+    constrainedSets.push(new Set(store.resolveAllowedSitesByOrganizations(ticket.access.source_organizations.map((identifier) => ({ identifier: [identifier] })))));
   }
-  if (ticket.authorization.access.jurisdictions?.length) {
-    constrainedSets.push(new Set(store.resolveAllowedSitesByJurisdictions(ticket.authorization.access.jurisdictions)));
+  if (ticket.access.jurisdictions?.length) {
+    constrainedSets.push(new Set(store.resolveAllowedSitesByJurisdictions(ticket.access.jurisdictions)));
   }
 
   if (!constrainedSets.length) return undefined;
 
   const intersection = [...aliasSites].filter((siteSlug) => constrainedSets.every((set) => set.has(siteSlug)));
   return intersection.sort();
+}
+
+function compilePermissions(permissions: PermissionRule[]) {
+  const projectedScopes = permissions.map(projectPermissionRuleToSmartScope);
+  return compileScopes(projectedScopes);
 }
 
 function compileScopes(scopes: string[]) {
@@ -494,6 +464,43 @@ function compileScopes(scopes: string[]) {
     requiredLabelsAll: requiredLabelsAll.length ? requiredLabelsAll : undefined,
     deniedLabelsAny: deniedLabelsAny.length ? deniedLabelsAny : undefined,
   };
+}
+
+function projectPermissionRuleToSmartScope(permission: PermissionRule) {
+  if (permission.kind === "operation") {
+    throw new Error(`Unsupported access permission: operation ${permission.name}`);
+  }
+  return projectDataPermissionToSmartScope(permission);
+}
+
+function projectDataPermissionToSmartScope(permission: DataPermission) {
+  const unsupportedInteractions = permission.interactions.filter((interaction) => !["read", "search"].includes(interaction));
+  if (unsupportedInteractions.length) {
+    throw new Error(`Unsupported access interaction: ${unsupportedInteractions[0]}`);
+  }
+
+  let scopePermissions = "";
+  if (permission.interactions.includes("read")) scopePermissions += "r";
+  if (permission.interactions.includes("search")) scopePermissions += "s";
+  if (!scopePermissions) {
+    throw new Error(`Permission does not project to a SMART read/search scope for ${permission.resource_type}`);
+  }
+
+  if (permission.code_any_of?.length) {
+    throw new Error(`Unsupported access constraint: code_any_of`);
+  }
+
+  const queryParts: string[] = [];
+  if (permission.category_any_of?.length) {
+    if (permission.category_any_of.length !== 1) {
+      throw new Error(`Unsupported access constraint: category_any_of`);
+    }
+    const category = permission.category_any_of[0];
+    if (!category.code) throw new Error("Unsupported access constraint: category_any_of");
+    queryParts.push(`category=${encodeURIComponent(category.system ? `${category.system}|${category.code}` : category.code)}`);
+  }
+
+  return `patient/${permission.resource_type}.${scopePermissions}${queryParts.length ? `?${queryParts.join("&")}` : ""}`;
 }
 
 type ParsedSmartScope = {
@@ -555,21 +562,19 @@ function compileCategoryRule(resourceType: string, category: string): CategoryRu
   }
 }
 
-function compileDateRanges(periods: Array<{ start?: string; end?: string }>): DateRange[] | undefined {
-  const normalized = periods
-    .map((period) => ({ start: period.start?.slice(0, 10), end: period.end?.slice(0, 10) }))
-    .filter((period) => period.start || period.end);
+function compileDateRanges(period: { start?: string; end?: string } | undefined): DateRange[] | undefined {
+  if (!period) return undefined;
+  const normalized = [{ start: period.start?.slice(0, 10), end: period.end?.slice(0, 10) }]
+    .filter((entry) => entry.start || entry.end);
   return normalized.length ? normalized : undefined;
 }
 
-function compileDateSemantics(ticket: PermissionTicket): DateSemantics {
-  const value = ticket.details?.dateSemantics;
-  return value === "care-overlap" ? "care-overlap" : "generated-during-period";
+function compileDateSemantics(): DateSemantics {
+  return "generated-during-period";
 }
 
 function compileSensitiveMode(ticket: PermissionTicket): SensitiveMode {
-  const mode = ticket.details?.sensitive?.mode;
-  return mode === "allow" ? "allow" : "deny";
+  return ticket.access.sensitive_data === "include" ? "allow" : "deny";
 }
 
 function choosePatientClaim(aliases: AllowedPatientAlias[], allowedSites?: string[]) {
@@ -585,4 +590,62 @@ function dedupeCategoryRules(rules: CategoryRule[]) {
     seen.add(key);
     return true;
   });
+}
+
+function extractPresenterProofKey(binding: PresenterBinding | undefined) {
+  return binding?.key?.jkt ? { jkt: binding.key.jkt } : undefined;
+}
+
+function toFrameworkClientBinding(binding: PresenterBinding | undefined): FrameworkClientBinding | undefined {
+  if (!binding?.framework_client) return undefined;
+  return {
+    binding_type: "framework-entity",
+    framework: binding.framework_client.framework,
+    framework_type: binding.framework_client.framework_type,
+    entity_uri: binding.framework_client.entity_uri,
+  };
+}
+
+function deriveGrantSubject(ticket: PermissionTicket) {
+  if (ticket.subject.recipient_record?.reference) return ticket.subject.recipient_record.reference;
+  const identifier = ticket.subject.patient.identifier?.find((entry) => typeof entry.value === "string" && entry.value);
+  if (identifier?.value) return identifier.system ? `${identifier.system}|${identifier.value}` : identifier.value;
+  const name = formatHumanNames(ticket.subject.patient.name);
+  if (name || ticket.subject.patient.birthDate) {
+    return [name, ticket.subject.patient.birthDate].filter(Boolean).join(" ").trim();
+  }
+  return ticket.jti;
+}
+
+function formatHumanNames(names: FHIRHumanName[] | undefined) {
+  const first = names?.[0];
+  if (!first) return "";
+  return [...(first.given ?? []), ...(first.family ? [first.family] : [])].join(" ").trim();
+}
+
+function schemaIssueCheckLabel(pathHead: PropertyKey | undefined): DemoAuditStep["check"] {
+  switch (pathHead) {
+    case "exp":
+      return "Expiration";
+    case "aud":
+      return "Audience";
+    case "ticket_type":
+    case "context":
+      return "Type";
+    case "revocation":
+      return "Revocation";
+    default:
+      return "Type";
+  }
+}
+
+function enforceMustUnderstand(ticket: PermissionTicket, diagnostics?: TokenExchangeDiagnostics) {
+  if (!ticket.must_understand?.length) return;
+  const first = ticket.must_understand[0];
+  addAuditStep(diagnostics, {
+    check: "Extensions",
+    passed: false,
+    reason: `Unrecognized must_understand claim: ${first}`,
+  });
+  throw new Error(`Unrecognized must_understand claim: ${first}`);
 }

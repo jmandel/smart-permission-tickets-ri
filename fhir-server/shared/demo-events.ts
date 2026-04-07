@@ -101,6 +101,8 @@ export type DemoRegistrationRequestEvent = DemoEventEnvelope<
     authMode: string;
     endpoint: string;
     outcome: "registered" | "rejected" | "cancelled";
+    siteSlug?: string;
+    siteName?: string;
     clientId?: string;
     registrationMode?: string;
     frameworkUri?: string;

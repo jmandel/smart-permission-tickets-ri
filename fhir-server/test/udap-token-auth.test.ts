@@ -1,5 +1,9 @@
 import { describe, expect, test } from "bun:test";
-import { NETWORK_PATIENT_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import {
+  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+  PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+} from "../shared/permission-tickets.ts";
 import { parseX5cCertificates, signEs256JwtWithPem, signRs256JwtWithPem, verifyX509JwtWithKey } from "../src/auth/x509-jwt.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 import {
@@ -21,33 +25,34 @@ describe("UDAP token authentication and discovery", () => {
     await withUdapHarness(async ({ origin, context, registeredClientId }) => {
       const ticket = context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-        sub: "udap-token-auth-ticket",
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
         ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-        client_binding: {
-          binding_type: "framework-entity",
-          framework: "https://example.org/frameworks/tefca",
-          framework_type: "udap",
-          entity_uri: "https://client-a.example.org",
-        },
-        authorization: {
-          subject: {
-            type: "match",
-            traits: {
-              resourceType: "Patient",
-              name: [{ family: "Reyes", given: ["Elena"] }],
-              birthDate: "1989-09-14",
-            },
-          },
-          access: {
-            scopes: ["patient/Patient.rs"],
-            periods: [{ start: "2023-01-01", end: "2025-12-31" }],
+        presenter_binding: {
+          framework_client: {
+            framework: "https://example.org/frameworks/tefca",
+            framework_type: "udap",
+            entity_uri: "https://client-a.example.org",
           },
         },
-        details: {
-          sensitive: { mode: "deny" },
+        subject: {
+          patient: {
+            resourceType: "Patient",
+            name: [{ family: "Reyes", given: ["Elena"] }],
+            birthDate: "1989-09-14",
+          },
         },
+        access: {
+          permissions: [{
+            kind: "data",
+            resource_type: "Patient",
+            interactions: ["read", "search"],
+          }],
+          data_period: { start: "2023-01-01", end: "2025-12-31" },
+          sensitive_data: "exclude",
+        },
+        context: { kind: "patient-access" },
       });
 
       const response = await fetch(`${origin}/token`, {
@@ -526,29 +531,33 @@ describe("UDAP token authentication and discovery", () => {
 
       const ticket = context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-        sub: "udap-rs256-ticket",
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
         ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-        client_binding: {
-          binding_type: "framework-entity",
-          framework: frameworkUri,
-          framework_type: "udap",
-          entity_uri: "https://rs256-client.example.org",
-        },
-        authorization: {
-          subject: {
-            type: "match",
-            traits: {
-              resourceType: "Patient",
-              name: [{ family: "Reyes", given: ["Elena"] }],
-              birthDate: "1989-09-14",
-            },
-          },
-          access: {
-            scopes: ["patient/Patient.rs"],
+        presenter_binding: {
+          framework_client: {
+            framework: frameworkUri,
+            framework_type: "udap",
+            entity_uri: "https://rs256-client.example.org",
           },
         },
+        subject: {
+          patient: {
+            resourceType: "Patient",
+            name: [{ family: "Reyes", given: ["Elena"] }],
+            birthDate: "1989-09-14",
+          },
+        },
+        access: {
+          permissions: [{
+            kind: "data",
+            resource_type: "Patient",
+            interactions: ["read", "search"],
+          }],
+          sensitive_data: "exclude",
+        },
+        context: { kind: "patient-access" },
       });
 
       const response = await fetch(`${origin}/token`, {
@@ -726,26 +735,34 @@ async function expectSignedMetadata(
 function mintTicket(context: ReturnType<typeof createAppContext>, origin: string) {
   return context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
     iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-    sub: "udap-token-auth-ticket",
     aud: origin,
     exp: Math.floor(Date.now() / 1000) + 3600,
-    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-    authorization: {
-      subject: {
-        type: "match",
-        traits: {
-          resourceType: "Patient",
-          name: [{ family: "Reyes", given: ["Elena"] }],
-          birthDate: "1989-09-14",
-        },
-      },
-      access: {
-        scopes: ["patient/Patient.rs"],
-        periods: [{ start: "2023-01-01", end: "2025-12-31" }],
+    jti: crypto.randomUUID(),
+    ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+    requester: {
+      resourceType: "Organization",
+      identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+      name: "Public Health Department",
+    },
+    subject: {
+      patient: {
+        resourceType: "Patient",
+        name: [{ family: "Reyes", given: ["Elena"] }],
+        birthDate: "1989-09-14",
       },
     },
-    details: {
-      sensitive: { mode: "deny" },
+    access: {
+      permissions: [{
+        kind: "data",
+        resource_type: "Patient",
+        interactions: ["read", "search"],
+      }],
+      data_period: { start: "2023-01-01", end: "2025-12-31" },
+      sensitive_data: "exclude",
+    },
+    context: {
+      kind: "public-health",
+      reportable_condition: { text: "Public health investigation" },
     },
   });
 }

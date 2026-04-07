@@ -18,8 +18,8 @@ export function Hero({ onToggleAbout, aboutOpen }: { onToggleAbout: () => void; 
           >
             IG
           </a>
-          <a className="menu-link" href="/demo/visualizer" title="Open the live demo visualizer. Launch a session from Step 4 to populate it.">
-            Visualizer
+          <a className="menu-link" href="/trace" title="Open the live protocol trace. Launch a session from Step 4 to populate it.">
+            Protocol Trace
           </a>
           <button type="button" className={`menu-link${aboutOpen ? " active" : ""}`} onClick={onToggleAbout}>
             About

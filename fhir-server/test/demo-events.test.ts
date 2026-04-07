@@ -280,21 +280,30 @@ describe("demo event stream", () => {
           "x-demo-session": "session-ticket",
         },
         body: JSON.stringify({
-          sub: "demo-client-person-3b4d924f1bbc870106629acc",
+          iss: "http://example.test/issuer/reference-demo",
           aud: "http://example.test/networks/reference/token",
           exp: Math.floor(Date.now() / 1000) + 3600,
-          authorization: {
-            subject: {
-              type: "match",
-              traits: {
-                resourceType: "Patient",
-                name: [{ family: "Reyes", given: ["Elena", "Marisol"] }],
-                birthDate: "1989-09-14",
-              },
+          jti: crypto.randomUUID(),
+          ticket_type: "https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1",
+          requester: {
+            resourceType: "Organization",
+            identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+            name: "Public Health Department",
+          },
+          subject: {
+            patient: {
+              resourceType: "Patient",
+              name: [{ family: "Reyes", given: ["Elena", "Marisol"] }],
+              birthDate: "1989-09-14",
             },
-            access: {
-              scopes: ["patient/*.rs"],
-            },
+          },
+          access: {
+            permissions: [{ kind: "data", resource_type: "*", interactions: ["read", "search"] }],
+            sensitive_data: "exclude",
+          },
+          context: {
+            kind: "public-health",
+            reportable_condition: { text: "Public health investigation" },
           },
         }),
       }),
@@ -312,7 +321,7 @@ describe("demo event stream", () => {
     const context = createAppContext({ port: 0 });
     context.config.publicBaseUrl = "http://example.test";
     context.config.issuer = "http://example.test";
-    const { publicJwk, privateJwk, jwkThumbprint } = await generateClientKeyMaterial();
+    const { publicJwk, privateJwk, thumbprint } = await generateClientKeyMaterial();
 
     const signResponse = await handleRequest(
       context,
@@ -323,23 +332,27 @@ describe("demo event stream", () => {
           "x-demo-session": "session-flow",
         },
         body: JSON.stringify({
-          sub: "demo-client-person-3b4d924f1bbc870106629acc",
+          iss: "http://example.test/issuer/reference-demo",
           aud: "http://example.test",
           exp: Math.floor(Date.now() / 1000) + 3600,
-          cnf: { jkt: jwkThumbprint },
-          authorization: {
-            subject: {
-              type: "match",
-              traits: {
-                resourceType: "Patient",
-                name: [{ family: "Reyes", given: ["Elena", "Marisol"] }],
-                birthDate: "1989-09-14",
-              },
-            },
-            access: {
-              scopes: ["patient/Patient.rs", "patient/Observation.rs"],
+          jti: crypto.randomUUID(),
+          ticket_type: "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
+          presenter_binding: { key: { jkt: thumbprint } },
+          subject: {
+            patient: {
+              resourceType: "Patient",
+              name: [{ family: "Reyes", given: ["Elena", "Marisol"] }],
+              birthDate: "1989-09-14",
             },
           },
+          access: {
+            permissions: [
+              { kind: "data", resource_type: "Patient", interactions: ["read", "search"] },
+              { kind: "data", resource_type: "Observation", interactions: ["read", "search"] },
+            ],
+            sensitive_data: "exclude",
+          },
+          context: { kind: "patient-access" },
         }),
       }),
     );
@@ -348,7 +361,7 @@ describe("demo event stream", () => {
 
     const registerResponse = await handleRequest(
       context,
-      new Request("http://example.test/register", {
+      new Request("http://example.test/networks/reference/register", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -383,7 +396,7 @@ describe("demo event stream", () => {
         method: "POST",
         headers: {
           "content-type": "application/x-www-form-urlencoded",
-          "x-client-jkt": jwkThumbprint,
+          "x-client-jkt": thumbprint,
         },
         body: new URLSearchParams({
           grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -406,17 +419,47 @@ describe("demo event stream", () => {
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${networkTokenBody.access_token}`,
-          "x-client-jkt": jwkThumbprint,
+          "x-client-jkt": thumbprint,
         },
         body: JSON.stringify({ resourceType: "Parameters" }),
       }),
     );
     expect(resolveResponse.status).toBe(200);
-    const eventTypes = context.demoEvents.getEvents("session-flow").map((event) => event.type);
+    const flowEvents = context.demoEvents.getEvents("session-flow");
+    const eventTypes = flowEvents.map((event) => event.type);
     expect(eventTypes).toContain("ticket-created");
     expect(eventTypes).toContain("registration-request");
     expect(eventTypes).toContain("sites-discovered");
     expect(eventTypes).toContain("token-exchange");
+    const sitesDiscovered = flowEvents.find((event) => event.type === "sites-discovered");
+    expect(sitesDiscovered?.artifacts?.request?.method).toBe("POST");
+    expect(sitesDiscovered?.artifacts?.request?.url).toContain("/networks/reference/fhir/$resolve-record-locations");
+    expect(sitesDiscovered?.artifacts?.response?.status).toBe(200);
+  });
+
+  test("site registration events carry site identity for swimlane placement", async () => {
+    const context = createAppContext({ port: 0 });
+    const response = await handleRequest(
+      context,
+      new Request("http://example.test/sites/lone-star-womens-health/register", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-demo-session": "session-site-registration",
+        },
+        body: JSON.stringify({
+          client_name: "Site-bound demo client",
+          token_endpoint_auth_method: "private_key_jwt",
+          jwk: (await generateClientKeyMaterial()).publicJwk,
+        }),
+      }),
+    );
+
+    expect(response.status).toBe(201);
+    const event = context.demoEvents.getEvents("session-site-registration").find((candidate) => candidate.type === "registration-request");
+    expect(event?.type).toBe("registration-request");
+    expect(event?.detail.siteSlug).toBe("lone-star-womens-health");
+    expect(event?.detail.siteName).toBe("Lone Star Women's Health");
   });
 });
 

@@ -1,7 +1,11 @@
 import { describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial, signPrivateKeyJwt, type ClientKeyMaterial } from "../shared/private-key-jwt.ts";
-import { NETWORK_PATIENT_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import {
+  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+  PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+} from "../shared/permission-tickets.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
 describe("framework-aware client auth", () => {
@@ -10,7 +14,7 @@ describe("framework-aware client auth", () => {
       const response = await fetch(`${appOrigin}/.well-known/smart-configuration`);
       expect(response.status).toBe(200);
       const body = await response.json();
-      expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_client_binding_types).toContain("framework-entity");
+      expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_client_binding_types).toContain("presenter_binding.framework_client");
       expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_trust_frameworks).toEqual([
         {
           framework: "https://example.org/frameworks/smart-health-issuers",
@@ -20,11 +24,10 @@ describe("framework-aware client auth", () => {
     });
   });
 
-  test("strict token exchange accepts a framework-affiliated well-known client bound by client_binding", async () => {
+  test("strict token exchange accepts a framework-affiliated well-known client bound by presenter_binding.framework_client", async () => {
     await withFrameworkHarness(async ({ appOrigin, appContext, frameworkEntityUri, frameworkClientKeys }) => {
       const ticket = mintTicket(appContext, appOrigin, {
-        clientBinding: {
-          binding_type: "framework-entity",
+        frameworkClientBinding: {
           framework: "https://example.org/frameworks/smart-health-issuers",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
@@ -46,11 +49,10 @@ describe("framework-aware client auth", () => {
     });
   });
 
-  test("ticket client_binding mismatch rejects a well-known client with invalid_grant", async () => {
+  test("ticket presenter binding mismatch rejects a well-known client with invalid_grant", async () => {
     await withFrameworkHarness(async ({ appOrigin, appContext, frameworkEntityUri, frameworkClientKeys }) => {
       const mismatchedTicket = mintTicket(appContext, appOrigin, {
-        clientBinding: {
-          binding_type: "framework-entity",
+        frameworkClientBinding: {
           framework: "https://example.org/frameworks/other",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
@@ -60,7 +62,7 @@ describe("framework-aware client auth", () => {
       expect(response.status).toBe(400);
       const body = await response.json();
       expect(body.error).toBe("invalid_grant");
-      expect(body.error_description).toContain("Ticket client binding requires framework https://example.org/frameworks/other entity");
+      expect(body.error_description).toContain("Ticket presenter binding requires framework https://example.org/frameworks/other entity");
     });
   });
 
@@ -69,8 +71,7 @@ describe("framework-aware client auth", () => {
       appContext.config.frameworks[0]!.localAudienceMembership = { entityUri: appOrigin };
       const ticket = mintTicket(appContext, appOrigin, {
         aud: "https://example.org/frameworks/smart-health-issuers",
-        clientBinding: {
-          binding_type: "framework-entity",
+        frameworkClientBinding: {
           framework: "https://example.org/frameworks/smart-health-issuers",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
@@ -225,32 +226,49 @@ async function withFrameworkHarness(
 function mintTicket(
   appContext: ReturnType<typeof createAppContext>,
   appOrigin: string,
-  input: { aud?: string | string[]; clientBinding?: Record<string, string> },
+  input: { aud?: string | string[]; frameworkClientBinding?: Record<string, string> },
 ) {
+  const ticketType = input.frameworkClientBinding ? NETWORK_PATIENT_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE;
   return appContext.issuers.sign(appOrigin, appContext.config.defaultPermissionTicketIssuerSlug, {
     iss: `${appOrigin}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
-    sub: "framework-auth-test-ticket",
     aud: input.aud ?? appOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
-    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-    client_binding: input.clientBinding,
-    authorization: {
-      subject: {
-        type: "match",
-        traits: {
-          resourceType: "Patient",
-          name: [{ family: "Reyes", given: ["Elena"] }],
-          birthDate: "1989-09-14",
+    jti: crypto.randomUUID(),
+    ticket_type: ticketType,
+    ...(input.frameworkClientBinding ? { presenter_binding: { framework_client: input.frameworkClientBinding } } : {}),
+    ...(ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE
+      ? {
+          requester: {
+            resourceType: "Organization",
+            identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+            name: "Public Health Department",
+          },
+        }
+      : {}),
+    subject: {
+      patient: {
+        resourceType: "Patient",
+        name: [{ family: "Reyes", given: ["Elena"] }],
+        birthDate: "1989-09-14",
+      },
+    },
+    access: {
+      permissions: [{
+        kind: "data",
+        resource_type: "Patient",
+        interactions: ["read", "search"],
+      }],
+      data_period: { start: "2023-01-01", end: "2025-12-31" },
+      sensitive_data: "exclude",
+    },
+    context: ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE
+      ? {
+          kind: "public-health",
+          reportable_condition: { text: "Public health investigation" },
+        }
+      : {
+          kind: "patient-access",
         },
-      },
-      access: {
-        scopes: ["patient/Patient.rs"],
-        periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-      },
-    },
-    details: {
-      sensitive: { mode: "deny" },
-    },
   });
 }
 

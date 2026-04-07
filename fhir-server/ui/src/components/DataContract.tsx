@@ -20,7 +20,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
       appPath: "/modes/key-bound",
       tokenPath: "/modes/key-bound/token",
       fhirBase: "/modes/key-bound/sites/{siteSlug}/fhir",
-      note: "For sender-constrained tickets that carry cnf.jkt and require the matching client key.",
+      note: "For sender-constrained tickets that carry presenter_binding.key.jkt and require the matching client key.",
     },
     {
       label: "Open",
@@ -146,7 +146,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>TX</code>, <code>CA</code>, <code>IL</code></td>
             <td>
               Jurisdiction-based ticket filtering. A ticket with{" "}
-              <code>authorization.access.jurisdictions</code> is resolved to matching site slugs
+              <code>access.jurisdictions</code> is resolved to matching site slugs
               during token exchange.
             </td>
           </tr>
@@ -155,7 +155,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>1437826095</code></td>
             <td>
               Organization-based ticket filtering. A ticket with{" "}
-              <code>authorization.access.organizations</code> can identify sites by NPI.
+              <code>access.source_organizations</code> can identify sites by NPI.
             </td>
           </tr>
         </tbody>
@@ -174,7 +174,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>http://terminology.hl7.org/CodeSystem/v3-ActCode</code></td>
             <td><code>SEX</code>, <code>MH</code>, <code>HIV</code>, <code>ETH</code>, <code>STD</code>, <code>SDV</code></td>
             <td>
-              Sensitive-data filtering. When a ticket carries <code>sensitive.mode = deny</code>,
+              Sensitive-data filtering. When a ticket carries <code>access.sensitive_data = exclude</code>,
               resources with any of these labels are excluded from the visible set.
             </td>
           </tr>

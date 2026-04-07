@@ -137,12 +137,12 @@ export function PermissionWorkbench({
         ? "UDAP DCR"
         : "Not required";
   const selectedBindingSummary = selectedClientOption?.type === "unaffiliated"
-    ? ((mode === "strict" || mode === "key-bound") ? "Ticket uses cnf.jkt" : "No client binding in ticket")
+    ? ((mode === "strict" || mode === "key-bound") ? "Ticket uses presenter_binding.key" : "No presenter binding in ticket")
     : selectedClientOption?.type === "well-known"
-      ? "Ticket uses client_binding"
+      ? "Ticket uses presenter_binding.framework_client"
       : selectedClientOption?.type === "udap"
-        ? "Ticket uses client_binding"
-        : "No client binding";
+        ? "Ticket uses presenter_binding.framework_client"
+        : "No presenter binding";
   const selectedClientStory = selectedClientOption ? describeClientOption(mode, selectedClientOption) : null;
 
   function openArtifact(title: string, content: unknown, copyText?: string, subtitle?: string) {
@@ -166,7 +166,7 @@ export function PermissionWorkbench({
     const sessionId = crypto.randomUUID();
     const clientPlan = selectedClientOption ? await buildViewerClientPlan(currentPerson, selectedClientOption) : null;
     const proofJkt = proofJktForPlan(mode, clientPlan);
-    const clientBinding = clientBindingForPlan(clientPlan);
+    const frameworkPresenterBinding = clientBindingForPlan(clientPlan);
 
     if (!defaultTicketIssuer) {
       throw new Error("No default Permission Ticket issuer is configured");
@@ -175,7 +175,10 @@ export function PermissionWorkbench({
       throw new Error("No default network is configured");
     }
 
-    const ticketPayload = buildTicketPayload(defaultTicketIssuer.issuerBaseUrl, origin, currentPerson, currentConsent, { proofJkt, clientBinding });
+    const ticketPayload = buildTicketPayload(defaultTicketIssuer.issuerBaseUrl, origin, currentPerson, currentConsent, {
+      proofJkt,
+      frameworkClientBinding: frameworkPresenterBinding,
+    });
     const signedTicket = (await signPermissionTicket(origin, defaultTicketIssuer, ticketPayload, sessionId)).signedTicket;
 
     const viewerLaunch = buildViewerLaunch(
@@ -238,10 +241,10 @@ export function PermissionWorkbench({
     window.open(nextArtifacts.viewerUrl, "_blank", "noopener,noreferrer");
   }
 
-  async function openVisualizer() {
+  async function openProtocolTrace() {
     const nextArtifacts = await ensureArtifacts();
     if (!nextArtifacts) return;
-    window.open(`/demo/visualizer?session=${encodeURIComponent(nextArtifacts.viewerLaunch.sessionId)}`, "_blank", "noopener,noreferrer");
+    window.open(`/trace?session=${encodeURIComponent(nextArtifacts.viewerLaunch.sessionId)}`, "_blank", "noopener,noreferrer");
   }
 
   async function copyAppLink() {
@@ -804,8 +807,8 @@ export function PermissionWorkbench({
                     ]
                   : []),
                 {
-                  label: "Open visualizer ↗",
-                  onSelect: openVisualizer,
+                  label: "Open Protocol Trace ↗",
+                  onSelect: openProtocolTrace,
                   disabled: !canRun || running,
                 },
                 {

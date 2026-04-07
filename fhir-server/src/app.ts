@@ -34,7 +34,7 @@ import { loadConfig, type ServerConfig } from "./config.ts";
 import { buildNetworkCapabilityStatement, buildNetworkInfo, readNetworkDirectory, resolveRecordLocationsBundle, searchNetworkDirectory } from "./network-directory.ts";
 import { executeRead, executeSearch, getSupportedSearchParams } from "./store/search.ts";
 import { FhirStore } from "./store/store.ts";
-import type { AuthenticatedClientIdentity, AuthorizationEnvelope, ClientBinding, ModeName, RegisteredClient, RouteContext, TokenExchangeRequest } from "./store/model.ts";
+import type { AuthenticatedClientIdentity, AuthorizationEnvelope, FrameworkClientBinding, ModeName, RegisteredClient, RouteContext, TokenExchangeRequest } from "./store/model.ts";
 import { SUPPORTED_RESOURCE_TYPES } from "./store/model.ts";
 import { buildAuthBasePath, buildFhirBasePath, modePrefix, normalizeModeSegment } from "../shared/surfaces.ts";
 import {
@@ -44,6 +44,10 @@ import {
   SUPPORTED_PERMISSION_TICKET_TYPES,
 } from "../shared/permission-tickets.ts";
 import { isDemoEventDraft, type DemoEvent, type DemoEventArtifacts, type DemoEventDraft, type DemoObserver } from "../shared/demo-events.ts";
+import {
+  PermissionTicketSchema,
+  type PermissionTicket,
+} from "../../shared/permission-ticket-schema.ts";
 
 export type AppContext = {
   config: ServerConfig;
@@ -78,7 +82,7 @@ export function startServer(context = createAppContext(), port = context.config.
       "/": landingHtml,
       "/modes/:mode": landingHtml,
       "/viewer": landingHtml,
-      "/demo/visualizer": landingHtml,
+      "/trace": landingHtml,
     },
     fetch: (request, server) => handleRequest(context, request, server),
   });
@@ -224,7 +228,9 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
   const observer = demoObserverForRequest(context, request, body);
   const explicitSessionId = extractDemoSessionId(request);
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
+  const authSurface = absoluteUrl(url, authBasePath);
   const registrationEndpoint = absoluteUrl(url, `${authBasePath}/register`);
+  const tokenEndpoint = absoluteUrl(url, `${authBasePath}/token`);
   const requestArtifact = demoRequestArtifact(
     registrationEndpoint,
     "POST",
@@ -232,7 +238,7 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
     body,
   );
   try {
-    const frameworkRegistration = await context.frameworks.registerClient(body, registrationEndpoint);
+    const frameworkRegistration = await context.frameworks.registerClient(body, registrationEndpoint, authSurface);
     if (frameworkRegistration) {
       if (explicitSessionId && frameworkRegistration.client?.clientId) {
         context.demoSessionLinks.bindClient(explicitSessionId, frameworkRegistration.client.clientId);
@@ -245,6 +251,12 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
           authMode: frameworkRegistration.audit?.authMode ?? frameworkRegistration.client?.authMode ?? "unaffiliated",
           endpoint: registrationEndpoint,
           outcome: frameworkRegistration.audit?.outcome ?? "registered",
+          ...(contextRoute.siteSlug
+            ? {
+                siteSlug: contextRoute.siteSlug,
+                siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+              }
+            : {}),
           clientId: frameworkRegistration.client?.clientId,
           registrationMode: frameworkRegistration.client?.authMode === "udap" ? "udap-dcr" : "dynamic-jwk",
           frameworkUri: frameworkRegistration.audit?.frameworkUri ?? frameworkRegistration.client?.frameworkBinding?.framework,
@@ -273,6 +285,12 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
           authMode: error.audit?.authMode ?? (("udap" in body || "software_statement" in body) ? "udap" : "unaffiliated"),
           endpoint: registrationEndpoint,
           outcome: "rejected",
+          ...(contextRoute.siteSlug
+            ? {
+                siteSlug: contextRoute.siteSlug,
+                siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+              }
+            : {}),
           frameworkUri: error.audit?.frameworkUri,
           entityUri: error.audit?.entityUri,
           algorithm: error.audit?.algorithm ?? "unknown",
@@ -296,6 +314,7 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
   const client = await context.clients.register({
     clientName: body.client_name,
     publicJwk,
+    authSurfaceUrl: authSurface,
     tokenEndpointAuthMethod: body.token_endpoint_auth_method,
   });
   if (explicitSessionId) {
@@ -308,7 +327,7 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
     jwks: registeredClientJwks(client),
     jwk_thumbprint: client.jwkThumbprint,
     registration_client_uri: absoluteUrl(url, `${authBasePath}/register/${client.clientId}`),
-    token_endpoint: absoluteUrl(url, `${authBasePath}/token`),
+    token_endpoint: tokenEndpoint,
   };
   emitDemoEvent(observer, {
     source: "server",
@@ -318,6 +337,12 @@ async function handleRegister(context: AppContext, request: Request, url: URL, c
       authMode: client.authMode ?? "unaffiliated",
       endpoint: registrationEndpoint,
       outcome: "registered",
+      ...(contextRoute.siteSlug
+        ? {
+            siteSlug: contextRoute.siteSlug,
+            siteName: siteNameForSlug(context, contextRoute.siteSlug) ?? contextRoute.siteSlug,
+          }
+        : {}),
       clientId: client.clientId,
       registrationMode: "dynamic-jwk",
       algorithm: "none",
@@ -342,6 +367,7 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
   let observer: DemoObserver | null = null;
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
   const tokenEndpointUrl = absoluteUrl(url, `${authBasePath}/token`);
+  const authSurfaceUrl = absoluteUrl(url, authBasePath);
   const tokenDiagnostics: TokenExchangeDiagnostics = { steps: [], relatedArtifacts: [] };
   try {
     body = (await parseBody(request)) as TokenExchangeRequest & Record<string, any>;
@@ -365,6 +391,7 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
           body,
           contextRoute.mode,
           tokenEndpointUrl,
+          authSurfaceUrl,
         );
       } catch (error) {
         throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
@@ -431,23 +458,33 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
         body,
         contextRoute.mode,
         tokenEndpointUrl,
+        authSurfaceUrl,
       );
     } catch (error) {
       throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
     }
     try {
-      enforceClientRequirements(ticket.ticket.cnf?.jkt, ticket.ticket.client_binding, client, contextRoute.mode);
+      const proofKeyJkt = ticket.ticket.presenter_binding?.key?.jkt;
+      const frameworkClientBinding = ticket.ticket.presenter_binding?.framework_client
+        ? {
+            binding_type: "framework-entity" as const,
+            framework: ticket.ticket.presenter_binding.framework_client.framework,
+            framework_type: ticket.ticket.presenter_binding.framework_client.framework_type,
+            entity_uri: ticket.ticket.presenter_binding.framework_client.entity_uri,
+          }
+        : undefined;
+      enforceClientRequirements(proofKeyJkt, frameworkClientBinding, client, contextRoute.mode);
       tokenDiagnostics.steps.push({
         check: "Client Binding",
         passed: true,
-        evidence: ticket.ticket.client_binding && client?.frameworkBinding
+        evidence: frameworkClientBinding && client?.frameworkBinding
           ? client.frameworkBinding.entity_uri
           : client?.jwkThumbprint ?? "anonymous",
-        why: ticket.ticket.client_binding
-          ? "Authenticated client matches the ticket client_binding"
-          : ticket.ticket.cnf?.jkt
-            ? "Authenticated client proof key matches the ticket cnf.jkt"
-            : "No client binding was required for this request mode",
+        why: frameworkClientBinding
+          ? "Authenticated client matches the ticket presenter_binding.framework_client"
+          : proofKeyJkt
+            ? "Authenticated client proof key matches the ticket presenter_binding.key.jkt"
+            : "No presenter binding was required for this request mode",
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Client binding failed";
@@ -551,7 +588,14 @@ async function handleIntrospect(context: AppContext, request: Request, url: URL,
   if (request.method !== "POST") return methodNotAllowed("POST");
   const body = await parseBody(request);
   const authBasePath = buildAuthBasePath(context.config.strictDefaultMode, contextRoute);
-  await authenticateClient(context, request, body, contextRoute.mode, absoluteUrl(url, `${authBasePath}/introspect`));
+  await authenticateClient(
+    context,
+    request,
+    body,
+    contextRoute.mode,
+    absoluteUrl(url, `${authBasePath}/introspect`),
+    absoluteUrl(url, authBasePath),
+  );
   const token = body.token;
   if (!token) return jsonResponse({ active: false });
   try {
@@ -578,7 +622,7 @@ async function handleIntrospect(context: AppContext, request: Request, url: URL,
       date_ranges: payload.dateRanges,
       date_semantics: payload.dateSemantics,
       sensitive: payload.sensitive,
-      client_binding: payload.clientBinding,
+      presenter_binding: buildPresenterBindingSummary(payload),
       ticket_issuer_trust: payload.ticketIssuerTrust,
     });
   } catch {
@@ -617,13 +661,6 @@ async function handleRead(context: AppContext, request: Request, contextRoute: R
         artifacts: {
           request: requestArtifact,
           response: demoResponseArtifact(200, { "content-type": "application/fhir+json" }, resource),
-          related: [
-            {
-              label: `${resourceType}/${logicalId}`,
-              kind: "json",
-              content: resource,
-            },
-          ],
         },
       });
     }
@@ -691,13 +728,6 @@ async function handleSearch(context: AppContext, request: Request, url: URL, con
         artifacts: {
           request: requestArtifact,
           response: demoResponseArtifact(200, { "content-type": "application/fhir+json" }, bundle),
-          related: [
-            {
-              label: queryPath,
-              kind: "json",
-              content: bundle,
-            },
-          ],
         },
       });
     }
@@ -761,13 +791,13 @@ async function handleOperation(
             })),
         },
         artifacts: {
-          related: [
-            {
-              label: "Resolve record locations bundle",
-              kind: "json",
-              content: bundle,
-            },
-          ],
+          request: demoRequestArtifact(
+            absoluteUrl(configuredPublicUrl(context.config, request), `${buildFhirBasePath(context.config.strictDefaultMode, contextRoute)}/$resolve-record-locations`),
+            request.method,
+            request.headers,
+            { resourceType: "Parameters" },
+          ),
+          response: demoResponseArtifact(200, { "content-type": "application/fhir+json" }, bundle),
         },
       });
       return fhirResponse(bundle);
@@ -781,6 +811,7 @@ async function authenticateClient(
   body: Record<string, any>,
   mode: ModeName,
   tokenEndpointUrl: string,
+  authSurfaceUrl: string,
 ): Promise<AuthenticatedClientIdentity | null> {
   const basic = parseBasicAuth(request.headers.get("authorization"));
   const clientId = basic?.clientId ?? body.client_id;
@@ -790,7 +821,9 @@ async function authenticateClient(
   if (!assertionJwt) {
     if (requiresBoundClient) throw new Error("Authenticated key-based client assertion required");
     const client = clientId ? context.clients.get(clientId) : null;
-    return client ? toAuthenticatedClientIdentity(client) : null;
+    if (!client) return null;
+    enforceClientRegistrationScope(client, authSurfaceUrl);
+    return toAuthenticatedClientIdentity(client);
   }
 
   if (body.client_assertion_type && body.client_assertion_type !== "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") {
@@ -805,9 +838,13 @@ async function authenticateClient(
   }
   if (clientId && clientId !== assertedClientId) throw new Error("client_id does not match client assertion issuer");
   const frameworkClient = await context.frameworks.authenticateClientAssertion(assertedClientId, assertionJwt, tokenEndpointUrl);
-  if (frameworkClient) return frameworkClient;
+  if (frameworkClient) {
+    enforceClientRegistrationScope(frameworkClient, authSurfaceUrl);
+    return frameworkClient;
+  }
   const client = context.clients.get(assertedClientId);
   if (!client) throw new Error("Authenticated registered client required");
+  enforceClientRegistrationScope(client, authSurfaceUrl);
   return verifyClientAssertion(assertionJwt, client, tokenEndpointUrl);
 }
 
@@ -826,26 +863,35 @@ async function verifyClientAssertion(jwt: string, client: RegisteredClient, toke
 
 function enforceClientRequirements(
   ticketJkt: string | undefined,
-  clientBinding: ClientBinding | undefined,
+  frameworkClientBinding: FrameworkClientBinding | undefined,
   client: AuthenticatedClientIdentity | null,
   mode: ModeName,
 ) {
   if (ticketJkt && client?.jwkThumbprint !== ticketJkt) throw new Error("Ticket not bound to client key");
-  if (clientBinding) {
+  if (frameworkClientBinding) {
     if (!client?.frameworkBinding) {
-      throw new Error(`Ticket client binding requires framework ${clientBinding.framework} entity ${clientBinding.entity_uri}`);
+      throw new Error(`Ticket presenter binding requires framework ${frameworkClientBinding.framework} entity ${frameworkClientBinding.entity_uri}`);
     }
     if (
-      client.frameworkBinding.binding_type !== clientBinding.binding_type
-      || client.frameworkBinding.framework !== clientBinding.framework
-      || client.frameworkBinding.framework_type !== clientBinding.framework_type
-      || client.frameworkBinding.entity_uri !== clientBinding.entity_uri
+      client.frameworkBinding.binding_type !== frameworkClientBinding.binding_type
+      || client.frameworkBinding.framework !== frameworkClientBinding.framework
+      || client.frameworkBinding.framework_type !== frameworkClientBinding.framework_type
+      || client.frameworkBinding.entity_uri !== frameworkClientBinding.entity_uri
     ) {
-      throw new Error(`Ticket client binding requires framework ${clientBinding.framework} entity ${clientBinding.entity_uri}`);
+      throw new Error(`Ticket presenter binding requires framework ${frameworkClientBinding.framework} entity ${frameworkClientBinding.entity_uri}`);
     }
   }
   if ((mode === "strict" || mode === "registered" || mode === "key-bound") && !client) {
     throw new Error("Authenticated registered client required");
+  }
+}
+
+function enforceClientRegistrationScope(
+  client: Pick<RegisteredClient, "registeredAuthSurface" | "clientId"> | Pick<AuthenticatedClientIdentity, "registeredAuthSurface" | "clientId">,
+  authSurfaceUrl: string,
+) {
+  if (client.registeredAuthSurface && client.registeredAuthSurface !== authSurfaceUrl) {
+    throw new OAuthTokenError("invalid_client", "Client registration is scoped to a different auth surface", 401);
   }
 }
 
@@ -865,7 +911,7 @@ function buildClientCredentialsEnvelope(
   }
   return {
     ticketIssuer: "urn:smart-permission-tickets:udap-client-credentials",
-    ticketSubject: client.frameworkBinding?.entity_uri ?? client.clientId,
+    grantSubject: client.frameworkBinding?.entity_uri ?? client.clientId,
     ticketType: "urn:smart-permission-tickets:udap-client-credentials",
     mode: contextRoute.mode,
     scope: scopeResult.scopeString,
@@ -880,7 +926,7 @@ function buildClientCredentialsEnvelope(
     requiredLabelsAll: scopeResult.requiredLabelsAll,
     deniedLabelsAny: scopeResult.deniedLabelsAny,
     granularCategoryRules: scopeResult.granularCategoryRules,
-    clientBinding: client.frameworkBinding,
+    presenterFrameworkClient: client.frameworkBinding,
   };
 }
 
@@ -903,7 +949,7 @@ function issueAccessTokenResponse(
   const accessTokenPayload = {
     iss: context.config.issuer,
     aud: absoluteUrl(url, fhirBasePath),
-    sub: envelope.ticketSubject,
+    sub: envelope.grantSubject,
     exp: now + context.config.accessTokenTtlSeconds,
     iat: now,
     jti: randomUUID(),
@@ -1029,7 +1075,7 @@ function enforceAccessToken(
   if (payload.exp <= now) throw new Error("Access token expired");
   if (payload.mode !== mode) throw new Error("Access token mode mismatch");
   if (expectedAudience && payload.aud !== expectedAudience) throw new Error("Access token audience mismatch");
-  if (payload.cnf?.jkt && proofJkt !== payload.cnf.jkt) throw new Error("Access token proof key mismatch");
+  if (payload.presenterProofKey?.jkt && proofJkt !== payload.presenterProofKey.jkt) throw new Error("Access token proof key mismatch");
 }
 
 function buildIssuerMetadata(context: AppContext, url: URL, issuerSlug: string) {
@@ -1118,7 +1164,7 @@ function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteCont
         permission_ticket_profile: "v2",
         surface_kind: contextRoute.networkSlug ? "network" : contextRoute.siteSlug ? "site" : "global",
         surface_mode: contextRoute.mode,
-        supported_client_binding_types: ["cnf:jkt", "framework-entity"],
+        supported_client_binding_types: ["presenter_binding.key.jkt", "presenter_binding.framework_client"],
         supported_trust_frameworks: context.frameworks.getSupportedTrustFrameworks(),
         ...(contextRoute.networkSlug ? { record_location_operation: "$resolve-record-locations" } : {}),
       },
@@ -1145,26 +1191,22 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
   if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
     throw new Error("Ticket payload must be an object");
   }
-  if (!("exp" in payload) || typeof payload.exp !== "number") {
-    throw new Error("Permission Ticket exp is required and must be a NumericDate");
-  }
-  return {
+  const candidate = {
     ...payload,
     aud: payload.aud ?? audienceOrigin,
-    iss: payload.iss,
     ticket_type: payload.ticket_type ?? NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-    sub: payload.sub ?? "demo-client-ticket",
   };
+  const parsed = PermissionTicketSchema.safeParse(candidate);
+  if (!parsed.success) {
+    const issue = parsed.error.issues[0];
+    throw new Error(issue?.message ?? "Invalid Permission Ticket payload");
+  }
+  return parsed.data;
 }
 
-function buildTicketCreatedDemoEvent(ticketPayload: Record<string, any>, signedTicket: string): DemoEventDraft {
-  const subjectTraits = ticketPayload.authorization?.subject?.traits ?? {};
-  const patientName = formatTicketPatientName(subjectTraits) ?? String(ticketPayload.sub ?? "Permission Ticket");
-  const scopes = expandTicketScopeLabels(
-    Array.isArray(ticketPayload.authorization?.access?.scopes)
-      ? ticketPayload.authorization.access.scopes.map((scope: unknown) => String(scope))
-      : [],
-  );
+function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTicket: string): DemoEventDraft {
+  const patientName = formatTicketPatientName(ticketPayload.subject.patient) ?? "Permission Ticket";
+  const scopes = expandPermissionLabels(ticketPayload.access.permissions);
   return {
     source: "server",
     phase: "ticket",
@@ -1172,10 +1214,10 @@ function buildTicketCreatedDemoEvent(ticketPayload: Record<string, any>, signedT
     label: "Permission Ticket created",
     detail: {
       patientName,
-      patientDob: typeof subjectTraits.birthDate === "string" ? subjectTraits.birthDate : null,
+      patientDob: typeof ticketPayload.subject.patient.birthDate === "string" ? ticketPayload.subject.patient.birthDate : null,
       scopes,
-      dateSummary: summarizeTicketPeriods(ticketPayload.authorization?.access?.periods),
-      sensitiveSummary: "Sensitive excluded by default",
+      dateSummary: summarizeTicketPeriod(ticketPayload.access.data_period),
+      sensitiveSummary: ticketPayload.access.sensitive_data === "include" ? "Sensitive included" : "Sensitive excluded",
       expirySummary: summarizeTicketExpiry(ticketPayload.exp),
       bindingSummary: summarizeTicketBinding(ticketPayload),
     },
@@ -1192,8 +1234,8 @@ function buildTicketCreatedDemoEvent(ticketPayload: Record<string, any>, signedT
   };
 }
 
-function formatTicketPatientName(subjectTraits: Record<string, any>) {
-  const names = Array.isArray(subjectTraits.name) ? subjectTraits.name : [];
+function formatTicketPatientName(patient: PermissionTicket["subject"]["patient"]) {
+  const names = Array.isArray(patient.name) ? patient.name : [];
   const first = names[0];
   if (!first || typeof first !== "object") return null;
   const given = Array.isArray(first.given) ? first.given.filter((item: unknown) => typeof item === "string") : [];
@@ -1201,11 +1243,10 @@ function formatTicketPatientName(subjectTraits: Record<string, any>) {
   return [...given, ...(family ? [family] : [])].join(" ").trim() || null;
 }
 
-function summarizeTicketPeriods(periods: Array<{ start?: string; end?: string }> | undefined) {
-  if (!Array.isArray(periods) || periods.length === 0) return "All dates";
-  const first = periods[0] ?? {};
-  const startYear = typeof first.start === "string" ? first.start.slice(0, 4) : null;
-  const endYear = typeof first.end === "string" ? first.end.slice(0, 4) : null;
+function summarizeTicketPeriod(period: { start?: string; end?: string } | undefined) {
+  if (!period) return "All dates";
+  const startYear = typeof period.start === "string" ? period.start.slice(0, 4) : null;
+  const endYear = typeof period.end === "string" ? period.end.slice(0, 4) : null;
   if (startYear && endYear) return `${startYear}–${endYear}`;
   if (startYear) return `From ${startYear}`;
   if (endYear) return `Through ${endYear}`;
@@ -1224,13 +1265,27 @@ function summarizeTicketExpiry(exp: unknown) {
   return "Short-lived";
 }
 
-function summarizeTicketBinding(ticketPayload: Record<string, any>) {
-  if (ticketPayload.client_binding) return "Framework-bound client";
-  if (ticketPayload.cnf?.jkt) return "Proof-key client";
-  return "No client binding";
+function summarizeTicketBinding(ticketPayload: PermissionTicket) {
+  if (ticketPayload.presenter_binding?.framework_client && ticketPayload.presenter_binding?.key?.jkt) {
+    return "Framework-bound + proof-key client";
+  }
+  if (ticketPayload.presenter_binding?.framework_client) return "Framework-bound client";
+  if (ticketPayload.presenter_binding?.key?.jkt) return "Proof-key client";
+  return "No presenter binding";
 }
 
-function expandTicketScopeLabels(scopes: string[]) {
+function buildPresenterBindingSummary(payload: {
+  presenterProofKey?: { jkt: string };
+  presenterFrameworkClient?: FrameworkClientBinding;
+}) {
+  if (!payload.presenterProofKey && !payload.presenterFrameworkClient) return undefined;
+  return {
+    ...(payload.presenterProofKey ? { key: payload.presenterProofKey } : {}),
+    ...(payload.presenterFrameworkClient ? { framework_client: payload.presenterFrameworkClient } : {}),
+  };
+}
+
+function expandPermissionLabels(permissions: PermissionTicket["access"]["permissions"]) {
   const wildcardTypes = [
     "Patient",
     "Encounter",
@@ -1245,10 +1300,9 @@ function expandTicketScopeLabels(scopes: string[]) {
     "AllergyIntolerance",
   ];
   const expanded = new Set<string>();
-  for (const scope of scopes) {
-    const match = scope.match(/^[^/]+\/([^\.]+)\./);
-    const resourceType = match?.[1];
-    if (!resourceType) continue;
+  for (const permission of permissions) {
+    if (permission.kind !== "data") continue;
+    const resourceType = permission.resource_type;
     if (resourceType === "*") {
       for (const type of wildcardTypes) expanded.add(type);
       continue;
@@ -1691,7 +1745,7 @@ function siteNameForSlug(context: AppContext, siteSlug: string | undefined) {
 function buildAnonymousEnvelope(context: AppContext): AuthorizationEnvelope {
   return {
     ticketIssuer: "local-anonymous-mode",
-    ticketSubject: "anonymous-read-only",
+    grantSubject: "anonymous-read-only",
     ticketType: "urn:smart-permission-tickets:anonymous-mode",
     mode: "anonymous",
     scope: "system/*.rs",
@@ -1820,7 +1874,7 @@ function buildLandingPage(context: AppContext, url: URL, contextRoute: RouteCont
     {
       mode: "key-bound",
       title: "Key-Bound",
-      summary: "Sender-constrained token exchange and token use when tickets carry cnf.jkt.",
+      summary: "Sender-constrained token exchange and token use when tickets carry presenter_binding.key.jkt.",
       auth: "Proof key must match the ticket binding.",
       fhir: "FHIR requests require a Bearer access token and matching proof header.",
     },
@@ -2274,7 +2328,7 @@ function buildLandingPage(context: AppContext, url: URL, contextRoute: RouteCont
             <tr>
               <td><strong>Sensitivity labels</strong></td>
               <td><code>meta.security</code><br><span class="subtle">http://terminology.hl7.org/CodeSystem/v3-ActCode</span></td>
-              <td>Clinical sensitivity categories such as <code>SEX</code>, <code>MH</code>, <code>HIV</code>, <code>ETH</code>, <code>STD</code>, and <code>SDV</code>. When a ticket carries <code>sensitive.mode=deny</code>, resources with these labels are excluded from the visible set.</td>
+              <td>Clinical sensitivity categories such as <code>SEX</code>, <code>MH</code>, <code>HIV</code>, <code>ETH</code>, <code>STD</code>, and <code>SDV</code>. When a ticket carries <code>access.sensitive_data=exclude</code>, resources with these labels are excluded from the visible set.</td>
             </tr>
           </tbody>
         </table>

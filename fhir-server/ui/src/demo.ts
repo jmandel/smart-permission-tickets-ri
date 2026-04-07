@@ -26,6 +26,11 @@ import type {
 import { computeJwkThumbprint, generateClientKeyMaterial } from "../../shared/private-key-jwt";
 import { buildAuthSurface } from "./lib/surfaces";
 import { NETWORK_PATIENT_ACCESS_TICKET_TYPE } from "../../shared/permission-tickets";
+import type {
+  DataPermission,
+  PermissionTicket,
+  PresenterBinding,
+} from "../../../shared/permission-ticket-schema";
 const OBSERVATION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/observation-category";
 const US_CORE_OBSERVATION_CATEGORY_SYSTEM = "http://hl7.org/fhir/us/core/CodeSystem/us-core-category";
 const CONDITION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-category";
@@ -177,42 +182,42 @@ export function buildTicketPayload(
   audienceOrigin: string,
   person: PersonInfo,
   consent: ConsentState,
-  options?: { proofJkt?: string | null; clientBinding?: Record<string, any> | null },
-) {
+  options?: { proofJkt?: string | null; frameworkClientBinding?: PresenterBinding["framework_client"] | null },
+): PermissionTicket {
   const sites = constrainedSites(person, consent);
-  const scopes = selectedSmartScopes(consent);
   const jurisdictions = consent.locationMode === "states" ? compileJurisdictions(sites) : [];
-  const organizations = consent.locationMode === "organizations" ? compileOrganizations(sites) : [];
+  const sourceOrganizations = consent.locationMode === "organizations" ? compileOrganizations(sites) : [];
   const lifetimeSeconds = ticketLifetimeSeconds(consent.ticketLifetime);
+  const presenterBinding = buildPresenterBinding(options?.proofJkt, options?.frameworkClientBinding);
 
   return {
     iss: ticketIssuerBaseUrl,
-    sub: `demo-client-${person.personId}`,
     aud: audienceOrigin,
     exp: Math.floor(Date.now() / 1000) + lifetimeSeconds,
+    jti: crypto.randomUUID(),
     ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-    ...(options?.proofJkt ? { cnf: { jkt: options.proofJkt } } : {}),
-    ...(options?.clientBinding ? { client_binding: options.clientBinding } : {}),
-    authorization: {
-      subject: {
-        type: "match" as const,
-        traits: {
-          resourceType: "Patient" as const,
-          name: [
-            {
-              family: person.familyName ?? undefined,
-              given: person.givenNames,
-            },
-          ],
-          birthDate: person.birthDate ?? undefined,
-        },
+    ...(presenterBinding ? { presenter_binding: presenterBinding } : {}),
+    subject: {
+      patient: {
+        resourceType: "Patient" as const,
+        name: [
+          {
+            family: person.familyName ?? undefined,
+            given: person.givenNames,
+          },
+        ],
+        birthDate: person.birthDate ?? undefined,
       },
-      access: {
-        scopes,
-        periods: buildPeriods(consent.dateMode, consent.dateRange),
-        jurisdictions: jurisdictions.length ? jurisdictions : undefined,
-        organizations: organizations.length ? organizations : undefined,
-      },
+    },
+    access: {
+      permissions: permissionsFromSelectedScopes(consent),
+      data_period: buildDataPeriod(consent.dateMode, consent.dateRange),
+      jurisdictions: jurisdictions.length ? jurisdictions : undefined,
+      source_organizations: sourceOrganizations.length ? sourceOrganizations : undefined,
+      sensitive_data: consent.sensitiveMode === "allow" ? "include" : "exclude",
+    },
+    context: {
+      kind: "patient-access" as const,
     },
   };
 }
@@ -226,28 +231,62 @@ function compileOrganizations(selected: SiteOfCare[]) {
     .map((site) =>
       site.organizationNpi
         ? {
-            identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: site.organizationNpi }],
+            system: "http://hl7.org/fhir/sid/us-npi",
+            value: site.organizationNpi,
           }
         : {
-            name: site.orgName,
+            value: site.orgName,
           },
     )
     .sort((a, b) => {
-      const left = a.identifier?.[0]?.value ?? a.name ?? "";
-      const right = b.identifier?.[0]?.value ?? b.name ?? "";
+      const left = a.value ?? "";
+      const right = b.value ?? "";
       return left.localeCompare(right);
     });
 }
 
-function buildPeriods(mode: DateConstraintMode, dateRange: ConsentState["dateRange"]) {
+function buildDataPeriod(mode: DateConstraintMode, dateRange: ConsentState["dateRange"]) {
   if (mode === "all") return undefined;
   if (!dateRange.start && !dateRange.end) return undefined;
-  return [
-    {
-      start: dateRange.start ?? undefined,
-      end: dateRange.end ?? undefined,
-    },
-  ];
+  return {
+    start: dateRange.start ?? undefined,
+    end: dateRange.end ?? undefined,
+  };
+}
+
+function permissionsFromSelectedScopes(consent: ConsentState): DataPermission[] {
+  return selectedSmartScopes(consent).map(projectSmartScopeToPermission);
+}
+
+function projectSmartScopeToPermission(scope: string): DataPermission {
+  const [baseScope, query] = scope.split("?", 2);
+  const resourceType = resourceTypeFromScope(scope);
+  const permission: DataPermission = {
+    kind: "data",
+    resource_type: resourceType,
+    interactions: ["read", "search"],
+  };
+  if (!query) return permission;
+  const params = new URLSearchParams(query);
+  const category = params.get("category");
+  if (!category) return permission;
+  const [system, code] = category.split("|", 2);
+  permission.category_any_of = [{
+    ...(system ? { system } : {}),
+    ...(code ? { code } : {}),
+  }];
+  return permission;
+}
+
+function buildPresenterBinding(
+  proofJkt: string | null | undefined,
+  frameworkClientBinding: PresenterBinding["framework_client"] | null | undefined,
+) {
+  if (!proofJkt && !frameworkClientBinding) return undefined;
+  return {
+    ...(proofJkt ? { key: { jkt: proofJkt } } : {}),
+    ...(frameworkClientBinding ? { framework_client: frameworkClientBinding } : {}),
+  };
 }
 
 export function isConsentValid(person: PersonInfo, consent: ConsentState) {
@@ -400,11 +439,10 @@ export async function buildViewerClientPlan(person: PersonInfo, option: DemoClie
   }
 }
 
-export function clientBindingForPlan(clientPlan: ViewerClientPlan | null) {
+export function clientBindingForPlan(clientPlan: ViewerClientPlan | null): PresenterBinding["framework_client"] | null {
   if (!clientPlan) return null;
   if (clientPlan.type === "well-known") {
     return {
-      binding_type: "framework-entity",
       framework: clientPlan.framework.uri,
       framework_type: "well-known",
       entity_uri: clientPlan.entityUri,
@@ -412,7 +450,6 @@ export function clientBindingForPlan(clientPlan: ViewerClientPlan | null) {
   }
   if (clientPlan.type === "udap") {
     return {
-      binding_type: "framework-entity",
       framework: clientPlan.framework.uri,
       framework_type: "udap",
       entity_uri: clientPlan.entityUri,
@@ -431,35 +468,35 @@ export function describeTicketBinding(
   mode: ModeName,
   clientType: DemoClientType | null,
   proofJkt: string | null,
-  clientBinding: Record<string, any> | null,
+  frameworkClientBinding: Record<string, any> | null,
 ): TicketBindingDescription {
   const usesProofKeyBinding = Boolean(proofJkt);
-  const usesClientBinding = Boolean(clientBinding);
-  const shape = usesProofKeyBinding && usesClientBinding
-    ? "cnf.jkt + client_binding"
+  const usesFrameworkBinding = Boolean(frameworkClientBinding);
+  const shape = usesProofKeyBinding && usesFrameworkBinding
+    ? "presenter_binding.key + presenter_binding.framework_client"
     : usesProofKeyBinding
-      ? "cnf.jkt"
-      : usesClientBinding
-        ? "client_binding"
+      ? "presenter_binding.key"
+      : usesFrameworkBinding
+        ? "presenter_binding.framework_client"
         : "none";
-  const label = shape === "none" ? "No client binding in ticket" : shape;
+  const label = shape === "none" ? "No presenter binding in ticket" : shape;
   const rationale = clientType === "unaffiliated"
     ? (usesProofKeyBinding
         ? "This app is outside any trust framework, so the ticket binds directly to the generated JWK thumbprint."
         : "This demo path leaves the ticket unbound to a specific client.")
     : clientType === "well-known"
-      ? "This app is recognized as a framework-listed entity, so the ticket binds to client_binding instead of a single JWK."
+      ? "This app is recognized as a framework-listed entity, so the ticket binds to presenter_binding.framework_client instead of a single JWK."
       : clientType === "udap"
         ? "This app proves its framework/entity identity through UDAP registration and certificate-based client authentication."
-        : "This ticket does not include a client binding.";
+        : "This ticket does not include a presenter binding.";
   return {
     shape,
     label,
     rationale,
     usesProofKeyBinding,
-    usesClientBinding,
+    usesFrameworkBinding,
     proofJkt,
-    clientBinding,
+    frameworkClientBinding,
   };
 }
 
@@ -559,7 +596,7 @@ export function buildViewerLaunch(
   person: PersonInfo,
   network: NetworkInfo,
   ticketIssuer: TicketIssuerInfo | null,
-  ticketPayload: Record<string, any> | null,
+  ticketPayload: ViewerLaunch["ticketPayload"],
   signedTicket: string | null,
   proofJkt: string | null,
   clientPlan: ViewerLaunch["clientPlan"],
@@ -614,16 +651,15 @@ function buildClientStoryDescription(
   jwksUrl: string | undefined,
   effectiveClientId: string | null,
 ): ClientStoryDescription {
-  const clientBinding = clientType === "unaffiliated"
+  const frameworkPresenterBinding = clientType === "unaffiliated"
     ? null
     : {
-        binding_type: "framework-entity",
         framework: framework?.uri ?? "",
         framework_type: clientType === "well-known" ? "well-known" : "udap",
         entity_uri: entityUri ?? "",
       };
   const proofJkt = clientType === "unaffiliated" && (mode === "strict" || mode === "key-bound") ? "<jkt>" : null;
-  const ticketBinding = describeTicketBinding(mode, clientType, proofJkt, clientBinding);
+  const ticketBinding = describeTicketBinding(mode, clientType, proofJkt, frameworkPresenterBinding);
   const registrationLabel = registrationMode === "dynamic-jwk"
     ? "Dynamic registration"
     : registrationMode === "implicit-well-known"

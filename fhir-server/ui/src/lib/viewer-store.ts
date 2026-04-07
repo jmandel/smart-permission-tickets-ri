@@ -265,7 +265,7 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
       await mapConcurrent(resolvedSites, SITE_CONCURRENCY, async (site) => {
         if (cancelled()) return;
         try {
-          await loadOneSite(launch!, encodedSession, site, sharedClient, set, get);
+          await loadOneSite(launch!, encodedSession, site, set, get);
         } catch (siteError) {
           if (cancelled()) return;
           updateRun(
@@ -371,7 +371,6 @@ async function loadOneSite(
   launch: ViewerLaunch,
   encodedSession: string,
   site: ViewerLaunchSite,
-  sharedClient: RegisteredClientInfo | null,
   set: (partial: Partial<ViewerStore> | ((state: ViewerStore) => Partial<ViewerStore>)) => void,
   get: () => ViewerStore,
 ) {
@@ -391,16 +390,29 @@ async function loadOneSite(
   let accessToken: string | null = null;
   let proofJkt: string | null = launch.proofJkt;
   let patientId: string | null = null;
+  let siteClient: RegisteredClientInfo | null = null;
 
   if (launch.mode !== "anonymous") {
     if (!launch.signedTicket) throw new Error("Missing signed ticket for token exchange");
+
+    if (launch.mode === "strict" || launch.mode === "registered" || launch.mode === "key-bound") {
+      if (!launch.clientPlan) throw new Error("Missing viewer client plan");
+      updateRun(encodedSession, site.siteSlug, { phase: "registering-client" }, set, get);
+      siteClient = await prepareViewerClient(
+        launch.origin,
+        site.authSurface,
+        launch.clientPlan,
+        launch.sessionId,
+      );
+      if (cancelled()) return;
+    }
 
     // Token exchange must complete before we can introspect or query.
     updateRun(encodedSession, site.siteSlug, { phase: "exchanging-token" }, set, get);
     const { tokenResponse, tokenClaims } = await exchangeTokenAtEndpoint(
       String(smartConfig.token_endpoint),
       launch.signedTicket,
-      sharedClient,
+      siteClient,
       launch.clientPlan,
       proofJkt,
       undefined,
@@ -416,7 +428,7 @@ async function loadOneSite(
         introspectTokenAtEndpoint(
           String(smartConfig.introspection_endpoint),
           accessToken,
-          sharedClient,
+          siteClient,
           launch.clientPlan,
           proofJkt,
           undefined,

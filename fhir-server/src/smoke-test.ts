@@ -2,7 +2,11 @@ import { decodeEs256Jwt } from "./auth/es256-jwt.ts";
 import { DEFAULT_DEMO_UDAP_FRAMEWORK_URI, DEFAULT_DEMO_UDAP_RSA_CA_ID } from "./auth/demo-frameworks.ts";
 import { buildUdapCrlUrl } from "./auth/udap-crl.ts";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
-import { NETWORK_PATIENT_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import {
+  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+  PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+} from "../shared/permission-tickets.ts";
 import { createAppContext, startServer } from "./app.ts";
 
 const context = createAppContext({ port: 0 });
@@ -36,18 +40,28 @@ try {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      sub: "smoke-ticket",
+      iss: `${origin}/issuer/reference-demo`,
       aud: origin,
       exp: Math.floor(Date.now() / 1000) + 3600,
       ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-      authorization: {
-        subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-        access: {
-          scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
-          periods: [{ start: "2023-01-01", end: "2025-12-31" }],
+      jti: crypto.randomUUID(),
+      presenter_binding: { key: { jkt: clientBootstrap.thumbprint } },
+      subject: {
+        patient: {
+          resourceType: "Patient",
+          name: [{ family: "Reyes", given: ["Elena"] }],
+          birthDate: "1989-09-14",
         },
       },
-      details: { sensitive: { mode: "deny" } },
+      access: {
+        permissions: [
+          { kind: "data", resource_type: "Patient", interactions: ["read"] },
+          { kind: "data", resource_type: "Encounter", interactions: ["read", "search"] },
+        ],
+        data_period: { start: "2023-01-01", end: "2025-12-31" },
+        sensitive_data: "exclude",
+      },
+      context: { kind: "patient-access" },
     }),
   });
   assert(signTicketResponse.status === 201, "issuer sign-ticket should create a signed ticket");
@@ -70,7 +84,7 @@ try {
     assert(Array.isArray(body.grant_types_supported) && body.grant_types_supported.includes("client_credentials"), "root smart config should advertise client_credentials when supported");
     const extension = body.extensions?.["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
     assert(Array.isArray(extension?.supported_client_binding_types), "root smart config should advertise client binding types");
-    assert(extension.supported_client_binding_types.includes("framework-entity"), "root smart config should advertise framework-entity binding");
+    assert(extension.supported_client_binding_types.includes("presenter_binding.framework_client"), "root smart config should advertise framework client binding");
     assert(Array.isArray(extension?.supported_trust_frameworks) && extension.supported_trust_frameworks.length >= 2, "root smart config should advertise built-in trust frameworks");
   });
   await expectJson(`${origin}/.well-known/jwks.json`, (body) => {
@@ -128,31 +142,37 @@ try {
 
   const denyTicket = mintTicket({
     iss: origin,
-    subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-    scopes: ["patient/DiagnosticReport.rs"],
-    periods: [{ start: "2021-01-01", end: "2023-12-31" }],
-    sensitiveMode: "deny",
+    patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+    permissions: [{ kind: "data", resource_type: "DiagnosticReport", interactions: ["read", "search"] }],
+    dataPeriod: { start: "2021-01-01", end: "2023-12-31" },
+    sensitiveData: "exclude",
   });
   const allowTicket = mintTicket({
     iss: origin,
-    subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-    scopes: ["patient/DiagnosticReport.rs"],
-    periods: [{ start: "2021-01-01", end: "2023-12-31" }],
-    sensitiveMode: "allow",
+    patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+    permissions: [{ kind: "data", resource_type: "DiagnosticReport", interactions: ["read", "search"] }],
+    dataPeriod: { start: "2021-01-01", end: "2023-12-31" },
+    sensitiveData: "include",
   });
   const denySiteTicket = mintTicket({
     iss: origin,
-    subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-    scopes: ["patient/Encounter.rs", "patient/DiagnosticReport.rs"],
-    periods: [{ start: "2021-01-01", end: "2023-12-31" }],
-    sensitiveMode: "deny",
+    patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+    permissions: [
+      { kind: "data", resource_type: "Encounter", interactions: ["read", "search"] },
+      { kind: "data", resource_type: "DiagnosticReport", interactions: ["read", "search"] },
+    ],
+    dataPeriod: { start: "2021-01-01", end: "2023-12-31" },
+    sensitiveData: "exclude",
   });
   const allowSiteTicket = mintTicket({
     iss: origin,
-    subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-    scopes: ["patient/Encounter.rs", "patient/DiagnosticReport.rs"],
-    periods: [{ start: "2021-01-01", end: "2023-12-31" }],
-    sensitiveMode: "allow",
+    patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+    permissions: [
+      { kind: "data", resource_type: "Encounter", interactions: ["read", "search"] },
+      { kind: "data", resource_type: "DiagnosticReport", interactions: ["read", "search"] },
+    ],
+    dataPeriod: { start: "2021-01-01", end: "2023-12-31" },
+    sensitiveData: "include",
   });
 
   const openTokenDeny = await exchangeOpenToken(origin, denyTicket);
@@ -180,11 +200,14 @@ try {
 
   const strictTicket = mintTicket({
     iss: origin,
-    subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-    scopes: ["patient/Patient.rs", "patient/Observation.rs?category=laboratory"],
-    periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-    sensitiveMode: "deny",
-    cnf: { jkt: clientBootstrap.thumbprint },
+    patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+    permissions: [
+      { kind: "data", resource_type: "Patient", interactions: ["read"] },
+      { kind: "data", resource_type: "Observation", interactions: ["read", "search"], category_any_of: [{ code: "laboratory" }] },
+    ],
+    dataPeriod: { start: "2023-01-01", end: "2025-12-31" },
+    sensitiveData: "exclude",
+    presenterBinding: { key: { jkt: clientBootstrap.thumbprint } },
   });
   const strictToken = await exchangeStrictToken(origin, registration.client_id, clientBootstrap.privateJwk, strictTicket);
 
@@ -203,10 +226,10 @@ try {
     origin,
     mintTicket({
       iss: origin,
-      subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-      scopes: ["patient/Patient.rs"],
-      periods: [{ start: "2021-01-01", end: "2025-12-31" }],
-      sensitiveMode: "allow",
+      patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+      permissions: [{ kind: "data", resource_type: "Patient", interactions: ["read", "search"] }],
+      dataPeriod: { start: "2021-01-01", end: "2025-12-31" },
+      sensitiveData: "include",
     }),
   );
   const patientPage = await getJson(`${origin}/modes/open/fhir/Patient?_count=1`, patientPagingToken.access_token);
@@ -229,10 +252,10 @@ try {
     subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
     subject_token: mintTicket({
       iss: origin,
-      subject: { type: "match", traits: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" } },
-      scopes: ["patient/Patient.rs"],
-      periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-      sensitiveMode: "deny",
+      patient: { resourceType: "Patient", name: [{ family: "Reyes", given: ["Elena"] }], birthDate: "1989-09-14" },
+      permissions: [{ kind: "data", resource_type: "Patient", interactions: ["read", "search"] }],
+      dataPeriod: { start: "2023-01-01", end: "2025-12-31" },
+      sensitiveData: "exclude",
     }),
   });
   assert(strictWithoutClient.status === 401, "strict token endpoint should reject unauthenticated client");
@@ -265,32 +288,43 @@ try {
 
 function mintTicket(input: {
   iss: string;
-  subject: any;
-  scopes: string[];
-  periods: Array<{ start?: string; end?: string }>;
-  sensitiveMode: "deny" | "allow";
-  cnf?: { jkt: string };
+  patient: any;
+  permissions: Array<Record<string, any>>;
+  dataPeriod: { start?: string; end?: string };
+  sensitiveData: "exclude" | "include";
+  presenterBinding?: { key?: { jkt: string } };
 }) {
   const ticketOrigin = input.iss;
+  const ticketType = input.presenterBinding
+    ? NETWORK_PATIENT_ACCESS_TICKET_TYPE
+    : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE;
   return context.issuers.sign(ticketOrigin, context.config.defaultPermissionTicketIssuerSlug, {
     iss: `${ticketOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-    sub: "smoke-ticket",
     aud: ticketOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
-    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-    cnf: input.cnf,
-    authorization: {
-      subject: input.subject,
-      access: {
-        scopes: input.scopes,
-        periods: input.periods,
-      },
+    jti: crypto.randomUUID(),
+    ticket_type: ticketType,
+    ...(input.presenterBinding ? { presenter_binding: input.presenterBinding } : {}),
+    subject: {
+      patient: input.patient,
     },
-    details: {
-      sensitive: {
-        mode: input.sensitiveMode,
-      },
+    ...(!input.presenterBinding
+      ? {
+          requester: {
+            resourceType: "Organization",
+            identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+            name: "Public Health Department",
+          },
+        }
+      : {}),
+    access: {
+      permissions: input.permissions,
+      data_period: input.dataPeriod,
+      sensitive_data: input.sensitiveData,
     },
+    context: input.presenterBinding
+      ? { kind: "patient-access" }
+      : { kind: "public-health", reportable_condition: { text: "Public health investigation" } },
   });
 }
 

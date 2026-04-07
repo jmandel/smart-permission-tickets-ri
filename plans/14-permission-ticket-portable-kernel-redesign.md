@@ -1,144 +1,161 @@
-# Plan 14: Permission Ticket Portable-Kernel Redesign
+# Plan 14 (Updated): Permission Ticket Portable-Kernel Redesign
 
 ## Status
 
-Design draft for review. This plan does **not** update `input/` yet. Its job is to pin down the candidate new specification model before translating it into formal spec language or reference-implementation code.
+Design draft for review. This plan does **not** update `input/`. Its purpose is to lock the candidate model before translating it into spec text or implementation code.
 
-## Why This Plan Exists
+## Why this plan exists
 
-The earlier Permission Ticket model drifted toward portable semantics that many recipients cannot reliably enforce. In practice, recipient organizations can usually enforce a smaller kernel:
+The earlier model drifted toward portable semantics that many recipients are unlikely to implement consistently. The updated direction is a **portable kernel**: only the signed fields that a recipient plausibly needs in order to say yes or no to a request should live in the common shell. JWT remains the artifact container, RFC 8693 token exchange remains the transport pattern, JWT `aud` remains a standard audience claim, and FHIR `Reference` remains the right shape when a ticket wants to carry a literal patient record reference and/or a target-site identifier.
 
-- who the patient is
-- who the real-world requester is
-- why any access exists at all
-- what resource types / operations are allowed
-- one coarse timeframe
-- one coarse sensitive-data instruction
-- coarse jurisdiction scoping
-- positive source scoping by exact organizations
+## Bright-line modeling rule
 
-Everything beyond that should either be:
+A fact belongs in the signed portable kernel **only if** a conforming recipient would plausibly need that fact to get to yes or no.
 
-- ticket-type-specific `context`, or
-- explicitly profile-specific, or
-- treated as a non-portable hint rather than a universal portable semantic.
+A fact belongs in **ticket-type `context`** if every instance of that ticket type needs it to get to yes or no, but other ticket types do not.
 
-This plan defines that smaller kernel.
+A fact belongs in **`supporting_artifacts`** if it is useful for audit, UI, review, or additional verification but should not be required by the base protocol to approve or deny.
 
-## Core Decisions
+That means, for example:
 
-### 1. Keep JWT and Token Exchange
+* a signed POA document is usually a **supporting artifact**
+* a full contract document is usually a **supporting artifact**
+* detailed delegation limitations should usually be reflected in `access` and `exp`, not duplicated as prose-like legal structure
+* if a ticket type truly needs a specific workflow fact such as a reportable condition, study, claim, or consult request, that fact belongs in `context`
+* if a recipient wants to use more detail than the kernel contains, it may, but the base protocol should not require that detail
 
-- The ticket remains a JWT redeemed as an RFC 8693 `subject_token`.
-- `aud` remains a standard JWT audience claim.
-- `ticket_type` remains a **URI**, not a local string enum.
-- `jti` is required.
+## Core decisions
 
-### 2. Keep Subject Portable and Thin
+### 1. Keep JWT and token exchange
 
-- `subject.patient` is always present.
-- The inline patient MAY be thin and only needs enough facts for portable matching.
-- `subject.recipientRecord` is optional and acts as a direct-recipient optimization when the issuer knows a recipient-local patient record reference or identifier.
+* The ticket remains a JWT redeemed as an RFC 8693 `subject_token`.
+* `aud` remains a standard JWT audience claim.
+* `ticket_type` remains a URI.
+* `jti` is required.
 
-### 3. Distinguish Requester from Presenter
+### 2. Keep `subject` portable and thin
 
-- `requester` is the substantive human/organization on whose behalf access exists.
-- `presenter` is the software client redeeming the ticket.
-- The ticket models the requester, not the presenter.
-- Presenter identity and binding are handled separately by client authentication plus binding claims.
+* `subject.patient` is always present.
+* It may be thin.
+* `subject.recipient_record` is optional and is only a direct-recipient optimization.
+* `recipient_record` uses `FHIR.Reference` so it can carry a literal `.reference`, a logical `.identifier`, or both.
 
-### 4. Keep Authority Provenance Common but Modest
+### 3. Distinguish requester from presenter
 
-The common shell carries an `authority` object answering:
+* `requester` is the substantive human/organization on whose behalf access exists.
+* `presenter` is the software client redeeming the ticket.
+* The ticket models the requester.
+* Presenter identity and binding are handled separately by client authentication plus `presenter_binding`.
 
-- why does any access exist at all?
+### 4. No `authority` claim in the kernel
 
-It is richer than a single enum, but it should not swallow ticket-type-specific workflow semantics.
+The earlier model had an `authority` object answering "why does any access exist at all?" In practice, the answer is already implied by `ticket_type` + the presence/type of `requester` + `context.kind`. A data holder processing a public-health ticket with an Organization requester already knows it's a mandate; a patient-access ticket with a RelatedPerson requester already knows it's delegated. A separate `authority.kind` label adds no information the data holder doesn't already have. If an issuer wants to label the legal basis for audit, it can use `supporting_artifacts`.
 
-### 5. Make Access the Normative Model
+### 5. Make `access` the normative authorization model
 
-`access.permissions` is the normative authorization model.
+`access.permissions` is the normative model. SMART scopes serve as a coarse request-time ceiling and issued-token projection over the permission model, not the core ticket semantics.
 
-SMART scopes are:
+### 6. Keep portable filtering coarse and positive
 
-- a request-time ceiling
-- an issued-token projection
-- not the core ticket semantics
+The portable kernel should include:
 
-### 6. Keep Filtering Portable and Positive
+* one coarse `data_period`
+* coarse `jurisdictions`
+* positive data-holder scoping by organizational identity
+* one coarse `sensitive_data` switch
 
-Portable common filtering should include:
+The portable kernel should **not** standardize:
 
-- one coarse `dataPeriod`
-- coarse jurisdiction scoping using `FHIR.Address`-shaped country/state values
-- positive source organization scoping
-- one coarse `sensitiveData` switch
+* negative source exclusions
+* facility/service-class exclusions
+* arbitrary search filters
+* recipient-specific sensitive-source taxonomies
 
-The common shell should **not** standardize negative source exclusions.
+### 7. Unify presenter binding but keep the semantics independent
 
-### 7. Keep Binding Orthogonal
+`presenter_binding` is one container with two independent sub-bindings:
 
-Client redemption binding remains orthogonal to access semantics.
+* exact key binding (`presenter_binding.key.jkt`)
+* trust-framework client identity binding (`presenter_binding.framework_client`)
 
-This design keeps today’s two independent binding semantics:
+Either may appear alone, or both may appear together.
 
-- exact key binding (`cnf.jkt`)
-- framework/entity binding (`client_binding`)
+**Note on `cnf`:** Standard JWT confirmation uses the `cnf` claim (RFC 7800). This plan wraps key binding inside `presenter_binding.key` instead, co-locating it with framework binding so that all presenter-binding semantics live in one container. The semantics are identical to `cnf.jkt`; only the claim path differs.
 
-They may appear independently or together.
+For the framework binding, this plan keeps two flavors:
 
-The shell could eventually wrap them under a single `presenter_binding` object, but the semantics remain independent:
+* `well-known`: entity identity is a URL-form client identity
+* `udap`: entity identity is a SAN URI
 
-- key binding
-- framework-entity binding
+### 8. Use `must_understand` for extensibility
 
-not one-or-the-other.
+All fields defined in the base kernel are must-understand when present. If a recipient encounters a kernel field it cannot enforce, it SHALL reject the ticket.
 
-### 8. Keep Regrant Issuer-Mediated
+For profile-specific extensions beyond the kernel, the ticket MAY include a `must_understand` claim listing additional claim names that the recipient MUST understand. If a recipient sees a `must_understand` entry it does not recognize, it MUST reject the ticket. This is inspired by the JWS `crit` header parameter (RFC 7515 §4.1.11) but applied to payload claims rather than header parameters.
 
-- regrant means issuer-mediated child-ticket issuance
-- not embedded tickets
-- not holder self-minting
+Fields not in the base kernel and not listed in `must_understand` are safe to ignore.
 
-## Portable Kernel vs Profile-Specific Space
+## Must-understand semantics
 
-### Tier 1: Base Portable Kernel
+### Base must-understand set
 
-Recipients claiming the base profile should plausibly support:
+Every field defined in the kernel is must-understand when present. If a recipient receives a ticket containing a kernel field it cannot enforce, it SHALL reject with `invalid_grant`. The base set includes:
 
-- JWT envelope validation
-- subject resolution from `subject.patient` and optional `recipientRecord`
-- requester interpretation
-- `authority`
-- `permissions`
-- one coarse `dataPeriod`
-- one coarse `sensitiveData`
-- coarse `jurisdictions`
+* JWT envelope: `iss`, `aud`, `exp`, `jti`, `ticket_type`
+* `presenter_binding` (key and/or framework_client)
+* `subject.patient` and optional `recipient_record`
+* `requester`
+* `access.permissions`
+* `access.data_period`
+* `access.jurisdictions`
+* `access.source_organizations`
+* `access.sensitive_data`
+* `context`
+* `revocation`
 
-### Tier 2: Portable but Conditional
+### `must_understand` for extensions
 
-Recipients may support these in the base profile, but only if they can truly enforce them:
+Profile-specific claims not in the base set are safe to ignore unless the issuer lists them in `must_understand`. A recipient that sees a `must_understand` entry it does not recognize SHALL reject the ticket.
 
-- `source.organizations`
+`supporting_artifacts` is explicitly NOT must-understand. A base-conformant recipient can ignore it entirely unless a narrower profile adds it to `must_understand` (which would be unusual).
 
-### Tier 3: Profile-Specific Only
+### Unknown fields
 
-These should **not** be universal common-shell semantics:
+Fields not in the base kernel, not in `must_understand`, and not recognized by the recipient are safe to ignore. This is standard JWT behavior.
 
-- negative source exclusions
-- facility/service-class exclusions
-- encounter-class restrictions
-- arbitrary recipient-specific sensitive-source taxonomies
-- fine-grained local security-label semantics
-- arbitrary search filters if they depend on recipient-specific indexing or unsupported search behavior
+## Issuer vs. recipient responsibility
 
-## Proposed TypeScript Model
+The issuer does all real-world verification. The ticket carries only what the recipient needs for matching, filtering, and local policy selection.
 
-This is the current candidate shape for the redesign.
+### What the issuer verifies before minting
+
+* Patient identity (via digital ID, in-person verification, portal authentication, etc.)
+* Requester identity and relationship to patient (for delegation: POA, guardianship, parental authority; for B2B: organizational identity)
+* Legal/regulatory basis for access (consent obtained, mandate exists, contract in force, care relationship established)
+* Scope appropriateness (the requested access is within the delegation scope, study protocol, mandate authority, etc.)
+* Any jurisdiction-specific requirements
+
+### What the recipient uses from the ticket
+
+* **For matching**: `subject.patient` → resolve to a local patient record
+* **For cryptographic validation**: signature, `iss` (issuer trust), `exp`, `aud`, `presenter_binding`
+* **For access filtering**: `access.permissions`, `data_period`, `jurisdictions`, `source_organizations`, `sensitive_data`
+* **For local policy selection**: `requester` (type, identity, relationship), `ticket_type`, `context` — the recipient may apply different local policies based on these (e.g., broader release for a public health investigation than for a payer claim)
+* **For audit**: all of the above
+
+### What the recipient does NOT do
+
+* Re-verify the delegation relationship, consent, mandate, or contract
+* Independently authenticate the requester's identity (the presenter is authenticated; the requester is an issuer attestation)
+* Require supporting artifacts to say yes or no (unless a profile says otherwise)
+
+The recipient trusts the issuer for all real-world verification. The issuer's reputation and trust-framework membership back that trust.
+
+## Updated TypeScript model
 
 ```ts
 export type Uri = string;
-export type Instant = string;
+export type Instant = string; // ISO 8601 timestamp per FHIR
 export type NonEmptyArray<T> = [T, ...T[]];
 export type JwtAudience = string | NonEmptyArray<string>;
 
@@ -151,18 +168,23 @@ export interface PermissionTicket {
   iat?: number;
 
   /**
-   * Orthogonal redemption binding mechanisms.
-   * Either may appear alone, or both may appear together.
+   * Unified presenter binding container.
+   * key and framework_client are independent; either may appear alone,
+   * or both may appear together.
+   *
+   * Note: this replaces the standard JWT cnf claim (RFC 7800) so that
+   * all presenter-binding semantics live in one container. The key.jkt
+   * semantics are identical to cnf.jkt.
    */
-  cnf?: {
-    jkt: string;
-  };
-
-  client_binding?: {
-    binding_type: "framework-entity";
-    framework: Uri;
-    framework_type: "well-known" | "udap";
-    entity_uri: Uri;
+  presenter_binding?: {
+    key?: {
+      jkt: string;
+    };
+    framework_client?: {
+      framework: Uri;
+      framework_type: "well-known" | "udap";
+      entity_uri: Uri;
+    };
   };
 
   revocation?: {
@@ -170,27 +192,37 @@ export interface PermissionTicket {
     rid: string;
   };
 
-  derivedFrom?: {
-    parentJti: string;
-    rootJti: string;
-    depth: number;
-  };
+  /**
+   * Profile-specific claim names that the recipient MUST understand.
+   * Inspired by JWS crit (RFC 7515 §4.1.11), applied to payload claims.
+   */
+  must_understand?: string[];
 
   subject: Subject;
 
   /**
    * The real-world party for whom the grant exists.
-   * Distinct from the software presenter/client.
+   * Issuer-attested; the recipient trusts this without independent verification.
+   * Distinct from the presenting software client.
    */
   requester?: Requester;
 
-  authority: Authority;
-
+  /**
+   * Normative authorization model.
+   */
   access: AccessGrant;
 
+  /**
+   * Ticket-type-specific mandatory workflow semantics.
+   */
   context: TicketContext;
 
-  regrant?: Regrant;
+  /**
+   * Optional evidence and review material.
+   * Not required by the base protocol to say yes/no.
+   * Not must-understand unless a profile adds it to must_understand.
+   */
+  supporting_artifacts?: FHIR.Resource[];
 }
 
 export interface Subject {
@@ -202,9 +234,9 @@ export interface Subject {
 
   /**
    * Optional recipient-local patient locator.
-   * Useful when the issuer knows a target-local reference or identifier.
+   * Uses FHIR.Reference so it can carry .reference, .identifier, or both.
    */
-  recipientRecord?: FHIR.Reference & { type?: "Patient" };
+  recipient_record?: FHIR.Reference & { type?: "Patient" };
 }
 
 export type Requester =
@@ -212,33 +244,6 @@ export type Requester =
   | FHIR.Practitioner
   | FHIR.PractitionerRole
   | FHIR.Organization;
-
-export type AuthorityKind =
-  | "self"
-  | "delegation"
-  | "consent"
-  | "mandate"
-  | "policy"
-  | "relationship"
-  | "contract";
-
-export interface Authority {
-  kind: AuthorityKind;
-
-  /**
-   * Coarse refinement when needed, but not the full workflow context.
-   */
-  code?: FHIR.CodeableConcept;
-
-  /**
-   * Common provenance fields worth keeping across many ticket families.
-   */
-  verifiedAt?: Instant;
-  verifiedBy?: FHIR.Organization | FHIR.Practitioner | FHIR.PractitionerRole;
-  grantor?: FHIR.Patient | FHIR.RelatedPerson | FHIR.Organization;
-  issuingAuthority?: FHIR.Organization;
-  evidence?: FHIR.Resource[];
-}
 
 export type SensitiveDataPolicy = "exclude" | "include";
 
@@ -253,15 +258,15 @@ export type RestInteraction =
 
 export interface DataPermission {
   kind: "data";
-  resourceType: string;
+  resource_type: string;
   interactions: NonEmptyArray<RestInteraction>;
 
   /**
    * Optional portable narrowing dimensions.
    * AND across populated groups, OR within each group.
    */
-  categoryAnyOf?: NonEmptyArray<FHIR.Coding>;
-  codeAnyOf?: NonEmptyArray<FHIR.Coding>;
+  category_any_of?: NonEmptyArray<FHIR.Coding>;
+  code_any_of?: NonEmptyArray<FHIR.Coding>;
 }
 
 export interface OperationPermission {
@@ -279,37 +284,28 @@ export interface AccessGrant {
    * One coarse timeframe only.
    * If disjoint windows are required, mint separate tickets.
    */
-  dataPeriod?: FHIR.Period;
+  data_period?: FHIR.Period;
 
   /**
-   * Coarse jurisdiction scoping.
-   * Uses Address-shaped values for country/state-style matching.
+   * Coarse geographic restriction on which data holders or
+   * data holder sites should be included. Country/state only.
    */
   jurisdictions?: NonEmptyArray<Pick<FHIR.Address, "country" | "state">>;
 
   /**
-   * Positive source scoping only.
-   * Omitted = any source.
-   * Present = returned data must be attributable to one of the listed sources.
+   * Positive data-holder scoping by organizational identity.
+   * When present, only data from data holders (or sites within
+   * a multi-site holder) matching one of these identifiers
+   * should be included. When absent, any data holder in the
+   * audience may return data.
    */
-  source?: {
-    organizations?: NonEmptyArray<FHIR.Identifier>;
-
-    /**
-     * Candidate profile-level extension point, not guaranteed base semantics.
-     */
-    organizationTypesAnyOf?: NonEmptyArray<FHIR.CodeableConcept>;
-  };
+  source_organizations?: NonEmptyArray<FHIR.Identifier>;
 
   /**
-   * Recipient interprets this using local sensitivity labels and policy.
+   * Recipient-interpreted using local sensitivity labels/policy.
+   * If absent, recipients default to exclude.
    */
-  sensitiveData?: SensitiveDataPolicy;
-}
-
-export interface Regrant {
-  maxDepth: number;
-  allowSubdelegation?: boolean;
+  sensitive_data?: SensitiveDataPolicy;
 }
 
 export interface PatientAccessContext {
@@ -318,10 +314,10 @@ export interface PatientAccessContext {
 
 export interface PublicHealthContext {
   kind: "public-health";
-  reportableCondition: FHIR.CodeableConcept;
-  investigationCase?: FHIR.Identifier;
-  triggeringResource?: FHIR.Condition | FHIR.Observation | FHIR.DiagnosticReport;
-  sourceReport?: FHIR.DocumentReference;
+  reportable_condition: FHIR.CodeableConcept;
+  investigation_case?: FHIR.Identifier;
+  triggering_resource?: FHIR.Condition | FHIR.Observation | FHIR.DiagnosticReport;
+  source_report?: FHIR.DocumentReference;
 }
 
 export interface SocialCareReferralContext {
@@ -340,14 +336,14 @@ export interface PayerClaimsContext {
 export interface ResearchContext {
   kind: "research";
   study: FHIR.ResearchStudy;
-  researchSubject?: FHIR.ResearchSubject;
+  research_subject?: FHIR.ResearchSubject;
   condition?: FHIR.CodeableConcept;
 }
 
 export interface ProviderConsultContext {
   kind: "provider-consult";
   reason: FHIR.CodeableConcept;
-  consultRequest: FHIR.ServiceRequest;
+  consult_request: FHIR.ServiceRequest;
 }
 
 export type TicketContext =
@@ -363,39 +359,64 @@ export type TicketContext =
 
 ### Envelope
 
-- `iss`, `aud`, `exp`, and `jti` are mandatory.
-- `ticket_type` is a URI and selects ticket-type-specific processing rules.
-- `aud` may be one URI/string or an array of recipient identifiers.
-- `jti` is the stable handle for revocation, lineage, and audit correlation.
+* `iss`, `aud`, `exp`, `jti`, and `ticket_type` are mandatory.
+* `aud` is a standard JWT audience claim: one string or an array of strings.
+* `ticket_type` is a URI and selects ticket-type-specific processing rules.
+* `jti` is the stable handle for revocation, lineage, and audit correlation.
 
 ### Subject
 
-- `subject.patient` is always required.
-- The inline patient may be thin.
-- `recipientRecord` is optional and is preferred only as a direct-recipient optimization.
+* `subject.patient` is always required.
+* It may be thin.
+* `recipient_record` is optional and is only a direct-recipient optimization.
+* Because it is a `FHIR.Reference`, it may carry `.reference`, `.identifier`, or both.
 
 ### Requester
 
-- Absent for self-access.
-- Present for proxy, organizational, clinician, or other non-self use cases.
-- Represents the real-world party for whom the grant exists.
-- Distinct from the presenting software client.
+* Absent for self-access. For self-access, the patient's identity is already in `subject.patient`; a separate `requester` would be redundant.
+* Present for proxy, organizational, clinician, or other non-self use cases.
+* `requester` is an **issuer-attested claim** about who the grant is for. The recipient trusts the issuer's attestation; it does not independently verify the requester's identity against the client authentication event.
+* The recipient **may use `requester` for local policy decisions** — scoping data, applying sensitivity rules, choosing which local access-control policies apply, audit logging, etc.
+* The **security gate** for ticket redemption remains: issuer trust, ticket signature, presenter binding, and audience validation. `requester` is not part of that gate.
+* The level of real-world verification the issuer performed before attesting to the requester varies by use case. For delegation, the issuer typically identity-proofed the requester and confirmed the patient's intent to delegate. For B2B use cases (public health, payer, consult), the issuer has institutional knowledge of the requesting organization rather than individual identity proofing.
+* Distinct from the presenting software client. The presenter authenticates via `client_assertion` and optional `presenter_binding`. The `requester` describes who the issuer says the grant is for; the presenter is the software actually redeeming it.
 
-### Authority
+#### Delegation and RelatedPerson.relationship
 
-`authority.kind` is the coarse answer to “why does any access exist at all?”
+For delegated access, the `requester` is a `RelatedPerson`. FHIR's `RelatedPerson.relationship` field (0..* CodeableConcept, Preferred binding) can express both the personal relationship **and** the legal authority type using stacked codings from v3-RoleCode:
 
-Allowed kinds:
+* Familial: `DAU` (daughter), `MTH` (mother), `SPS` (spouse), etc.
+* Legal authority: `GUARD` (guardian), `HPOWATT` (healthcare power of attorney), `DPOWATT` (durable POA), `POWATT` (power of attorney), `SPOWATT` (special POA)
 
-- `self`
-- `delegation`
-- `consent`
-- `mandate`
-- `policy`
-- `relationship`
-- `contract`
+R5 explicitly added the legal authority codes to the RelatedPerson relationship value set. A single `requester` can carry both:
 
-The common provenance fields (`verifiedAt`, `verifiedBy`, `grantor`, `issuingAuthority`, `evidence`) are intended for audit and broad policy reasoning. Ticket-type-specific workflow semantics belong in `context`.
+```json
+"requester": {
+  "resourceType": "RelatedPerson",
+  "relationship": [
+    { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode", "code": "DAU" }] },
+    { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode", "code": "HPOWATT" }] }
+  ],
+  "name": [{ "family": "Reyes", "given": ["Elena"] }]
+}
+```
+
+This tells the recipient: "the requester is the patient's daughter and holds healthcare power of attorney." The recipient can use this for local policy decisions (e.g., applying different rules for a guardian vs. a POA holder). The actual POA document, if needed for audit or review, belongs in `supporting_artifacts`.
+
+### Supporting artifacts
+
+`supporting_artifacts` is the explicit optional/supporting-artifact space.
+
+Use it for:
+
+* signed POA or guardianship documents
+* consent documents or richer Consent resources
+* contracts
+* institutional policy documents
+* verifier attestations
+* detailed delegation metadata that is useful for audit or UI but not required by the base protocol
+
+Generic external documents should usually be represented as `DocumentReference` resources with attachments, URLs, identifiers, or hashes rather than inventing a parallel non-FHIR artifact syntax. Supporting artifacts are optional and not required by the base protocol for the recipient's yes/no decision.
 
 ### Access
 
@@ -403,185 +424,972 @@ The common provenance fields (`verifiedAt`, `verifiedBy`, `grantor`, `issuingAut
 
 Rules:
 
-- `permissions` are additive.
-- within one `DataPermission`, populated filter groups are ANDed
-- values within one `*AnyOf` group are ORed
-- `dataPeriod` applies to the whole access grant, not to one permission only
-- `jurisdictions` applies to the whole access grant, not to one permission only
-- `sensitiveData` is coarse and recipient-interpreted
-- `source` is positive-only scoping
+* `permissions` are additive
+* within one `DataPermission`, populated filter groups are ANDed
+* values within one `*_any_of` group are ORed
+* `data_period`, `jurisdictions`, `source_organizations`, and `sensitive_data` apply to the whole access grant
+* `resource_type` may be `"*"` for broad access (e.g., a research study with full-record consent)
 
-### Timeframe
+### Timeframe and data period matching
 
-- `dataPeriod` is one coarse timeframe for the ticket.
-- If multiple disjoint windows are needed, mint multiple tickets.
+* `data_period` is one coarse timeframe for the ticket.
+* If multiple disjoint windows are needed, mint separate tickets.
+* Matching semantics: the recipient filters to resources whose clinically relevant date falls within the period. Relevant dates are `authored`, `recorded`, `issued`, or `effective[x]` where present, falling back to encounter timing when no resource-level date is available. Identity-type resources (Patient, Practitioner, Organization, Location) are exempt from date filtering.
 
-### Sensitive Data
+### Sensitive data
 
-- `exclude` means the recipient should exclude locally classified sensitive data
-- `include` means the ticket permits it, subject to local law/policy
-- if classification is unknown and the ticket says `exclude`, recipients should default conservatively
+* `exclude` means the recipient should exclude locally classified sensitive data
+* `include` means the ticket permits such data, subject to local law and recipient policy — even with `resource_type: "*"` and `sensitive_data: "include"`, the recipient may still withhold data that local law prohibits releasing (e.g., 42 CFR Part 2 substance abuse records without proper consent)
+* if `sensitive_data` is absent, recipients default to `exclude`
+* if classification is unknown and the ticket says `exclude`, recipients should default conservatively
 
 ### Jurisdictions
 
-- `jurisdictions` provides coarse geographic filtering
-- it is modeled using `FHIR.Address`-shaped values, typically only `country` and `state`
-- recipients should treat it as a coarse portable restriction, not a full geospatial model
-- this is the preferred common-shell mechanism for state-based access restrictions
+* `jurisdictions` restricts which data holders or data holder sites respond to the ticket
+* modeled with country/state-style values only
+* matching: a data holder checks whether its own jurisdiction matches one of the listed values; a multi-site data holder filters to sites in matching jurisdictions
+* this is a one-hop restriction about the responding node, not a provenance chain; the spec does not address re-disclosed data from other jurisdictions
 
-### Source Scoping
+### Source organizations (data-holder scoping)
 
-- `source.organizations` is the strongest portable provenance filter in the common shell
-- `organizationTypesAnyOf` is a candidate profile-level dimension, not a guaranteed base semantic
+* `source_organizations` restricts which data holders (or sites within a multi-site holder) should return data
+* matching: a data holder checks whether its organizational identity (typically NPI) matches one of the listed identifiers
+* when absent, any data holder in the ticket's `aud` may return data
+* when present, only matching data holders or sites should return data
+* this is positive scoping only; negative exclusions are out of scope
 
-### Presenter Binding
+Note: `aud` and `source_organizations` both restrict which data holders honor the ticket, but at different levels. `aud` identifies eligible token endpoints (by URL or trust framework membership). `source_organizations` narrows within that audience by organizational identity — useful when the issuer knows an NPI but not the data holder's FHIR URL.
 
-Redemption binding remains orthogonal to access semantics:
+### Presenter binding
 
-- `cnf.jkt` means exact-key binding
-- `client_binding` means framework/entity binding
-- if both are present, both must pass
+`presenter_binding` keeps two independent semantics in one container:
 
-### Regrant
+* `key.jkt` means exact key binding
+* `framework_client` means trust-framework identity binding
 
-- only issuer-mediated child tickets
-- no embedded tickets
-- no holder self-minting
-- child tickets must be narrower than or equal to parent tickets
+If both are present, both must pass.
 
-## Use-Case Walkthroughs
+This plan uses `presenter_binding.key.jkt` rather than the standard RFC 7800 `cnf.jkt` claim. The semantics are identical; the structural change co-locates both binding mechanisms in a single container for consistency. The spec should acknowledge this departure.
 
-These examples are intentionally schematic. Their job is to validate the model, not to serve as final spec examples.
+#### Binding modes
 
-### UC1: Network-Mediated Patient Access
+**Key-bound**: The issuer knows the client's key at mint time and binds the ticket to it via `presenter_binding.key.jkt`. Verification: the data holder computes the JWK thumbprint (RFC 7638) of the key used to sign the `client_assertion` and compares it to `presenter_binding.key.jkt`. If they don't match, reject.
 
-- `subject.patient`: thin demographics and/or identifier
-- `requester`: absent
-- `authority.kind`: `self`
-- `access.permissions`: data permissions for specific resource types
-- `access.dataPeriod`: optional
-- `access.sensitiveData`: likely `exclude` by default
-- `context.kind`: `patient-access`
-- binding: typically `cnf.jkt`
+**Framework-bound**: The issuer knows the client's trust-framework identity but not necessarily its current key. The ticket binds to a framework entity via `presenter_binding.framework_client`. Verification depends on `framework_type`:
 
-### UC2: Authorized Representative
+* `udap`: the data holder verifies that the presenting client's certificate SAN URI matches `entity_uri` and that the certificate chains to a trust anchor recognized for the named `framework`.
+* `well-known`: the data holder verifies that the presenting client's registered entity URL matches `entity_uri` within the named `framework`.
 
-- `subject.patient`: thin patient identity
-- `requester`: `RelatedPerson`
-- `authority.kind`: `delegation`
-- `authority.verifiedAt`, `authority.verifiedBy`, `authority.grantor`
-- `access.permissions`: broader patient-facing data access
-- `access.sensitiveData`: usually `exclude` unless explicitly allowed by issuer policy
-- `context.kind`: `patient-access`
-- binding: typically `cnf.jkt`
+**Unaffiliated**: Neither `key` nor `framework_client` is present. The ticket does not constrain which client may present it. The data holder still authenticates the client using whatever mechanism it supports (e.g., SMART Backend Services `client_assertion` JWT, UDAP client credentials) and validates `aud`. This mode is appropriate for B2B flows where the issuer does not know which specific client will present the ticket.
 
-### UC3: Public Health Investigation
+In all three modes, the data holder authenticates the presenting client through its standard client authentication mechanism. The binding claims add additional constraints on top of that baseline authentication, not in place of it.
 
-- `subject.patient`: thin patient identity
-- `requester`: `Organization`
-- `authority.kind`: `mandate` or `policy`
-- `authority.issuingAuthority` / `evidence` as needed
-- `access.permissions`: broad data access
-- `access.dataPeriod`: likely present
-- `access.jurisdictions`: may be present for state or territorial restriction
-- `access.sensitiveData`: may be `include` depending on law/policy
-- `access.source.organizations`: optional positive narrowing when appropriate
-- `context.kind`: `public-health`
+#### Relationship between `framework_client.entity_uri` and `requester`
 
-### UC4: Social Care Referral
+The `requester` and `presenter_binding.framework_client.entity_uri` will often identify the same organization — the requesting organization is also the one operating the client software. But they do not need to align. Multiple requesters may share a client; an organization may operate a client on behalf of several requesters; or a platform provider may present tickets on behalf of various requesting organizations. The `requester` describes who the grant is for; the `framework_client` constrains which software may redeem it.
 
-- `subject.patient`: thin patient identity, optional `recipientRecord`
-- `requester`: `PractitionerRole` or `Organization`
-- `authority.kind`: `relationship`, `consent`, or `policy`
-- `access.permissions`: targeted `ServiceRequest` / `Task` / supporting data
-- `access.jurisdictions`: may be present when the authorization is jurisdiction-limited
-- `access.source.organizations`: optional positive scoping
-- `access.sensitiveData`: often `exclude`
-- `context.kind`: `social-care-referral`
+### `must_understand`
 
-### UC5: Payer Claims Adjudication
+`must_understand` lists **top-level claim names** that the recipient MUST understand beyond the base kernel. Each entry is a string matching a top-level claim in the ticket payload. If a recipient encounters a `must_understand` entry it does not recognize, it MUST reject the ticket with `invalid_grant`.
 
-- `subject.patient`: thin patient identity, optional `recipientRecord`
-- `requester`: `Organization`
-- `authority.kind`: `contract` or `policy`
-- `access.permissions`: targeted documents / procedures / claim-supporting data
-- `access.dataPeriod`: often present
-- `access.jurisdictions`: may be present for payer-region or regulatory bounds
-- `access.source.organizations`: often present
-- `access.sensitiveData`: usually `exclude` unless policy requires inclusion
-- `context.kind`: `payer-claims`
+This enables profile-specific extensions without requiring changes to the base spec. A profile defines a new top-level claim with clear semantics, and instructs issuers to list it in `must_understand` when recipients must enforce it.
 
-### UC6: Research Study
+Example: a profile adds encounter-class filtering via a new top-level claim:
 
-- `subject.patient`: thin identity, perhaps MRN or study-local identity
-- `requester`: `Organization` or `PractitionerRole`
-- `authority.kind`: `consent` or `policy`
-- `authority.evidence`: may include Consent or related resource
-- `access.permissions`: broad or targeted data access depending on study
-- `access.dataPeriod`: often present
-- `access.jurisdictions`: optional when the study or governing policy is jurisdiction-bound
-- `access.sensitiveData`: usually `exclude` unless explicit policy/consent supports inclusion
-- `context.kind`: `research`
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "ext-example-1",
+  "ticket_type": "https://example.org/ticket-types/encounter-filtered-v1",
+  "must_understand": ["encounter_class_filter"],
+  "encounter_class_filter": {
+    "include": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      }
+    ]
+  },
+  "subject": { "..." : "..." },
+  "access": { "..." : "..." },
+  "context": { "kind": "patient-access" }
+}
+```
 
-### UC7: Provider-to-Provider Consult
+A recipient that understands `encounter_class_filter` enforces it. A recipient that does not recognize the name rejects the ticket because it appears in `must_understand`. If the issuer omitted `encounter_class_filter` from `must_understand`, recipients that don't recognize it would simply ignore it.
 
-- `subject.patient`: thin identity, optional `recipientRecord`
-- `requester`: `Practitioner` or `PractitionerRole`
-- `authority.kind`: `relationship` or `policy`
-- `access.permissions`: broad consult-supporting data or targeted slices
-- `access.jurisdictions`: optional
-- `access.source.organizations`: optional positive scoping
-- `access.sensitiveData`: usually `exclude`
-- `context.kind`: `provider-consult`
+Extensions should be modeled as new top-level claims rather than injecting fields into existing kernel structures. This keeps extensions visible and prevents profiles from silently altering the semantics of base claims.
 
-## What Is Explicitly Out of Core
+### Revocation
+
+Revocation semantics are unchanged from the current specification. In brief:
+
+* `revocation.url` points to an issuer-published Credential Revocation List (CRL).
+* `revocation.rid` is an opaque revocation identifier for this ticket.
+* The CRL is a JSON file with a `rids` array of revoked identifiers, a `kid` matching the signing key, a `method` field (`"rid"`), and a monotonic `ctr` for change detection.
+* A `rid` entry may include a `.timestamp` suffix to revoke only tickets issued before that time.
+* If `revocation` is present in the ticket, `jti` SHALL also be present.
+* Recipients SHALL check the CRL before issuing a token. If CRL status cannot be determined (retrieval failure, no valid cache), recipients SHALL reject the request (fail-closed).
+* Issuers SHOULD generate `rid` using a one-way transformation (e.g., `base64url(hmac-sha-256(issuer_secret || kid, ticket_jti)[0:8])`) to prevent correlation.
+
+See the spec for the full CRL format, caching rules, and privacy considerations.
+
+## How to model delegation detail
+
+This is the bright line for delegation, and it generalizes to the other use cases.
+
+### Put in the kernel
+
+Only the facts needed for yes/no:
+
+* `requester` (as `RelatedPerson` with stacked `relationship` codings for both personal relationship and legal authority type)
+* the effective `access`
+* ticket `exp`
+
+### Put in `supporting_artifacts`
+
+Everything else unless the ticket type profile says it is required:
+
+* signed POA or guardianship documents
+* contract PDFs
+* richer Consent artifacts
+* verification timestamps and verifier identity
+* grantor identity beyond what is already implied by `subject.patient`
+* legal limitations that are already represented by `access` and `exp`
+* narrative explanations
+
+### Put in `context`
+
+Only ticket-type-specific facts that a conforming recipient for that ticket type must understand to say yes:
+
+* public health: `reportable_condition`
+* research: `study`
+* payer: `claim` and `service`
+* consult: `consult_request` and `reason`
+* social care referral: `referral` and `concern`
+
+## Use-case minimums
+
+The JSON examples below are **minimum enforceable examples**. They intentionally omit `supporting_artifacts` unless needed for illustration. That omission is the point: a recipient should be able to honor the minimum example using only the signed ticket plus ordinary local matching, provenance attribution, and sensitivity-policy machinery.
+
+### UC1: network-mediated patient access
+
+Kernel minimum:
+
+* `subject.patient`
+* no `requester` (the patient is already identified by `subject.patient`)
+* `access`
+* `context.kind = "patient-access"`
+* optional `presenter_binding`
+
+Optional supporting material:
+
+* richer identity proof
+* issuer-side UI evidence
+
+Minimum enforceable example:
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc1-4b33cc1d-0f6b-44bf-bd33-80f6d7140f3e",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
+  "presenter_binding": {
+    "key": {
+      "jkt": "xYz123abcExampleThumbprint"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "A12345"
+        }
+      ],
+      "birthDate": "1989-09-14",
+      "name": [
+        {
+          "family": "Reyes",
+          "given": ["Elena"]
+        }
+      ]
+    }
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "AllergyIntolerance",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Condition",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Observation",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "MedicationRequest",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "data_period": {
+      "start": "2021-01-01",
+      "end": "2026-01-01"
+    }
+  },
+  "context": {
+    "kind": "patient-access"
+  }
+}
+```
+
+### UC2: authorized representative
+
+Kernel minimum:
+
+* `subject.patient`
+* `requester` (RelatedPerson with relationship codings expressing both personal relationship and legal authority type)
+* `access`
+* `context.kind = "patient-access"` (same as UC1; delegation is expressed by the presence and type of `requester`)
+
+Optional supporting material:
+
+* POA documents, guardianship orders (as `supporting_artifacts`)
+* verification details, grantor identity
+
+Minimum enforceable example:
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc2-8c6f4ec2-4fb6-4c42-9530-6bbd11c77e49",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/authorized-representative-access-v1",
+  "presenter_binding": {
+    "key": {
+      "jkt": "repKeyThumbprintExample123"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "P99887"
+        }
+      ],
+      "birthDate": "2016-04-12",
+      "name": [
+        {
+          "family": "Reyes",
+          "given": ["Luis"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "RelatedPerson",
+    "relationship": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "code": "MTH",
+            "display": "mother"
+          }
+        ]
+      }
+    ],
+    "name": [
+      {
+        "family": "Reyes",
+        "given": ["Elena"]
+      }
+    ]
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "Condition",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Immunization",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "MedicationRequest",
+        "interactions": ["read", "search"]
+      }
+    ]
+  },
+  "context": {
+    "kind": "patient-access"
+  }
+}
+```
+
+In this example, the mother relationship is sufficient for a parent accessing a minor's records. For a healthcare power of attorney scenario, the requester would include stacked relationship codings:
+
+```json
+"requester": {
+  "resourceType": "RelatedPerson",
+  "relationship": [
+    { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode", "code": "DAU", "display": "daughter" }] },
+    { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode", "code": "HPOWATT", "display": "healthcare power of attorney" }] }
+  ],
+  "name": [{ "family": "Reyes", "given": ["Elena"] }]
+}
+```
+
+### UC3: public health investigation
+
+Kernel minimum:
+
+* `subject.patient`
+* organizational `requester`
+* `access`
+* `context.kind = "public-health"`
+* `context.reportable_condition`
+
+Optional supporting material:
+
+* case identifier, triggering resource, source report
+* supporting policy/mandate documents
+
+Minimum enforceable example:
+
+```json
+{
+  "iss": "https://issuer.state.example.gov",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc3-16ff62cf-2d2d-4b30-8c86-6a13d7ab7d16",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1",
+  "presenter_binding": {
+    "framework_client": {
+      "framework": "https://state.example.gov/trust-framework/public-health",
+      "framework_type": "udap",
+      "entity_uri": "https://state.example.gov/organizations/epi-unit"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "M445566"
+        }
+      ],
+      "birthDate": "1978-02-21",
+      "name": [
+        {
+          "family": "Carter",
+          "given": ["Monica"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "Organization",
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "https://state.example.gov/organizations/epi-unit"
+      }
+    ],
+    "name": "State Epidemiology Unit"
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "Condition",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Observation",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "DiagnosticReport",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "data_period": {
+      "start": "2025-12-01",
+      "end": "2026-06-01"
+    },
+    "jurisdictions": [
+      {
+        "country": "US",
+        "state": "TX"
+      }
+    ],
+    "sensitive_data": "include"
+  },
+  "context": {
+    "kind": "public-health",
+    "reportable_condition": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "840539006",
+          "display": "Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder)"
+        }
+      ]
+    }
+  }
+}
+```
+
+### UC4: social care referral
+
+Kernel minimum:
+
+* `subject.patient`
+* `requester`
+* `access`
+* `context.kind = "social-care-referral"`
+* `context.concern`
+* `context.referral`
+
+Optional supporting material:
+
+* `Task`, richer referral payload, extra policy/consent evidence
+
+Minimum enforceable example:
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc4-0d0f7272-2d85-49ef-8c39-d4a8e8d8a7f2",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/social-care-referral-v1",
+  "presenter_binding": {
+    "framework_client": {
+      "framework": "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+      "framework_type": "well-known",
+      "entity_uri": "https://aco.example.org/entities/social-care-hub"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "S778899"
+        }
+      ],
+      "birthDate": "1963-11-03",
+      "name": [
+        {
+          "family": "Nguyen",
+          "given": ["Linh"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "Organization",
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "https://aco.example.org/entities/social-care-hub"
+      }
+    ],
+    "name": "Community Social Care Hub"
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "ServiceRequest",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Condition",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Observation",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "sensitive_data": "exclude"
+  },
+  "context": {
+    "kind": "social-care-referral",
+    "concern": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "733423003",
+          "display": "Food insecurity"
+        }
+      ]
+    },
+    "referral": {
+      "resourceType": "ServiceRequest",
+      "identifier": [
+        {
+          "system": "http://issuer.example.org/referrals",
+          "value": "REF-1001"
+        }
+      ],
+      "status": "active",
+      "intent": "order"
+    }
+  }
+}
+```
+
+### UC5: payer claims adjudication
+
+Kernel minimum:
+
+* `subject.patient`
+* organizational `requester`
+* `access`
+* `context.kind = "payer-claims"`
+* `context.claim`
+* `context.service`
+
+Optional supporting material:
+
+* supporting contract artifacts, utilization-management notes
+
+Minimum enforceable example:
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc5-9096d8d2-3627-45ee-8ea2-5e5a0ab51b7b",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1",
+  "presenter_binding": {
+    "framework_client": {
+      "framework": "https://payer.example.org/trust-framework",
+      "framework_type": "udap",
+      "entity_uri": "https://payer.example.org/entities/claims-ops"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "C112233"
+        }
+      ],
+      "birthDate": "1954-07-19",
+      "name": [
+        {
+          "family": "Johnson",
+          "given": ["Amelia"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "Organization",
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "https://payer.example.org/entities/claims-ops"
+      }
+    ],
+    "name": "Acme Health Plan Claims Operations"
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "Claim",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "ExplanationOfBenefit",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "DocumentReference",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "data_period": {
+      "start": "2025-01-01",
+      "end": "2025-12-31"
+    },
+    "source_organizations": [
+      {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "1234567893"
+      }
+    ],
+    "sensitive_data": "exclude"
+  },
+  "context": {
+    "kind": "payer-claims",
+    "service": {
+      "coding": [
+        {
+          "system": "http://www.ama-assn.org/go/cpt",
+          "code": "99214",
+          "display": "Office or other outpatient visit"
+        }
+      ]
+    },
+    "claim": {
+      "resourceType": "Claim",
+      "identifier": [
+        {
+          "system": "http://payer.example.org/claims",
+          "value": "CLM-884422"
+        }
+      ],
+      "status": "active",
+      "use": "claim"
+    }
+  }
+}
+```
+
+### UC6: research study
+
+Kernel minimum:
+
+* `subject.patient`
+* research `requester`
+* `access`
+* `context.kind = "research"`
+* `context.study`
+
+Optional supporting material:
+
+* `ResearchSubject`, condition focus, supporting consent documents
+
+#### Minimum enforceable example (targeted access)
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc6-b5774e14-a020-46f2-94d3-2bb95b7ac4af",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/research-study-access-v1",
+  "presenter_binding": {
+    "framework_client": {
+      "framework": "https://research.example.org/trust-framework",
+      "framework_type": "udap",
+      "entity_uri": "https://research.example.org/entities/study-team-204"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "R445500"
+        }
+      ],
+      "birthDate": "1970-05-30",
+      "name": [
+        {
+          "family": "Lopez",
+          "given": ["Marina"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "Organization",
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "https://research.example.org/entities/study-team-204"
+      }
+    ],
+    "name": "Study Team 204"
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "Condition",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Observation",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "data_period": {
+      "start": "2024-01-01",
+      "end": "2026-12-31"
+    },
+    "sensitive_data": "exclude"
+  },
+  "context": {
+    "kind": "research",
+    "study": {
+      "resourceType": "ResearchStudy",
+      "identifier": [
+        {
+          "system": "http://research.example.org/studies",
+          "value": "STUDY-204"
+        }
+      ],
+      "status": "active",
+      "title": "Diabetes Outcomes Registry"
+    }
+  }
+}
+```
+
+#### Variant: full-record consent for rare disease research
+
+When a patient has consented to share their full record (e.g., for a rare disease community registry), `resource_type: "*"` grants broad access:
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc6-rare-c3a91f7e-8812-4a5b-b9e0-df5c2e01a447",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/research-study-access-v1",
+  "presenter_binding": {
+    "framework_client": {
+      "framework": "https://raredisease.example.org/trust-framework",
+      "framework_type": "udap",
+      "entity_uri": "https://raredisease.example.org/entities/registry-team"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "R990011"
+        }
+      ],
+      "birthDate": "1985-11-22",
+      "name": [
+        {
+          "family": "Park",
+          "given": ["Jin"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "Organization",
+    "identifier": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "https://raredisease.example.org/entities/registry-team"
+      }
+    ],
+    "name": "Rare Disease Community Registry"
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "*",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "sensitive_data": "include"
+  },
+  "context": {
+    "kind": "research",
+    "study": {
+      "resourceType": "ResearchStudy",
+      "identifier": [
+        {
+          "system": "http://raredisease.example.org/studies",
+          "value": "REGISTRY-EHLERS-DANLOS"
+        }
+      ],
+      "status": "active",
+      "title": "Ehlers-Danlos Syndrome Community Registry"
+    }
+  }
+}
+```
+
+### UC7: provider-to-provider consult
+
+Kernel minimum:
+
+* `subject.patient`
+* clinician/role `requester`
+* `access`
+* `context.kind = "provider-consult"`
+* `context.reason`
+* `context.consult_request`
+
+Optional supporting material:
+
+* richer clinician identity, local policy artifacts, positive source narrowing
+
+Minimum enforceable example:
+
+```json
+{
+  "iss": "https://issuer.example.org",
+  "aud": "https://network.example.org/token",
+  "exp": 1775328000,
+  "jti": "uc7-d6927f7f-74c8-4b1b-a7a5-7f4e6d99390a",
+  "ticket_type": "https://smarthealthit.org/permission-ticket-type/provider-consult-v1",
+  "presenter_binding": {
+    "framework_client": {
+      "framework": "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+      "framework_type": "well-known",
+      "entity_uri": "https://hospital.example.org/entities/cardiology-group"
+    }
+  },
+  "subject": {
+    "patient": {
+      "resourceType": "Patient",
+      "identifier": [
+        {
+          "system": "http://hospital.example.org/mrn",
+          "value": "K667788"
+        }
+      ],
+      "birthDate": "1981-03-08",
+      "name": [
+        {
+          "family": "Thomas",
+          "given": ["Jared"]
+        }
+      ]
+    }
+  },
+  "requester": {
+    "resourceType": "PractitionerRole",
+    "code": [
+      {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "17561000",
+            "display": "Cardiologist"
+          }
+        ]
+      }
+    ]
+  },
+  "access": {
+    "permissions": [
+      {
+        "kind": "data",
+        "resource_type": "Condition",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "Observation",
+        "interactions": ["read", "search"]
+      },
+      {
+        "kind": "data",
+        "resource_type": "DiagnosticReport",
+        "interactions": ["read", "search"]
+      }
+    ],
+    "sensitive_data": "exclude"
+  },
+  "context": {
+    "kind": "provider-consult",
+    "reason": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "53741008",
+          "display": "Coronary arteriosclerosis"
+        }
+      ]
+    },
+    "consult_request": {
+      "resourceType": "ServiceRequest",
+      "identifier": [
+        {
+          "system": "http://issuer.example.org/consults",
+          "value": "CONSULT-7788"
+        }
+      ],
+      "status": "active",
+      "intent": "order"
+    }
+  }
+}
+```
+
+## What is explicitly out of core
 
 These are intentionally **not** common portable semantics:
 
-- negative source exclusions
-- facility/service-class exclusion logic
-- arbitrary recipient-specific sensitivity sub-taxonomies
-- local encounter-class semantics
-- arbitrary search filters that recipients may not uniformly support
+* negative source exclusions
+* facility/service-class exclusions
+* arbitrary local sensitive-source taxonomies
+* detailed security-label semantics
+* detailed legal instrument semantics
+* arbitrary search filters
+* detailed encounter-class restrictions
 
-If needed, they should be handled as:
+If a deployment truly needs them, they should be:
 
-- ticket-type-specific `context`, or
-- specialized profile extensions with explicit support/fail behavior
+* moved into a specialized ticket-type profile with appropriate `must_understand` entries,
+* or carried as non-kernel `supporting_artifacts`,
+* or handled purely as recipient-local policy.
 
-## Open Design Questions
+## Resolved design questions
 
-1. **Requester vs grantee**
-   - keep `requester`
-   - or rename to `grantee`
-   - recommendation: use `requester` if we are explicit that presenter is separate
+* **`source_organizations`**: base kernel. If present, enforce it.
+* **`authority`**: removed entirely. The legal/policy basis is already implied by `ticket_type` + `requester` type + `context.kind`. If needed for audit, use `supporting_artifacts`.
+* **`DelegatedAccessContext`**: removed. Delegation is expressed by the presence and type of `requester` within the `patient-access` context. No separate context kind needed.
 
-2. **Organization type filtering**
-   - include as `source.organizationTypesAnyOf`
-   - or exclude from base semantics entirely
-   - recommendation: keep as profile-level candidate, not core
+## Follow-on work
 
-3. **Search filters**
-   - include in base `DataPermission`
-   - or exclude from the portable kernel
-   - recommendation: exclude from base unless we define a very narrow, enforceable subset
+1. Rewrite the spec draft around this portable kernel.
+2. Update examples to reflect: small common shell, required `context`, optional `supporting_artifacts`.
+3. Reconcile use-case profiles against the new kernel/context boundary.
+4. Update validation logic: kernel validation, ticket-type context validation, presenter-binding validation, `must_understand` processing.
+5. Explicitly mark old semantics as: removed from core, moved to `context`, moved to `supporting_artifacts`, or deferred to specialized profiles.
+6. Define the SMART scope projection rule (how `permissions` map to SMART v2 scopes).
 
-4. **Authority richness**
-   - how many provenance fields stay common
-   - recommendation: keep `verifiedAt`, `verifiedBy`, `grantor`, `issuingAuthority`, `evidence`
-
-## Follow-On Work
-
-Once the model above is accepted at a design level:
-
-1. Rewrite the ticket-design draft around this kernel.
-2. Update `input/` spec sources and generated examples.
-3. Reconcile use-case ticket type definitions against the new shell.
-4. Plan the reference-implementation updates:
-   - new ticket validation model
-   - new access compilation model
-   - new filtering semantics for time/source/sensitive data
-5. Identify which old semantics are:
-   - removed
-   - profile-specific
-   - mapped into `context`
+The key change in this update is the modeling rule: **make the signed portable kernel only as rich as recipients plausibly need to say yes; put everything else in clearly separate optional/supporting artifact space; use `must_understand` for must-understand extensibility.**

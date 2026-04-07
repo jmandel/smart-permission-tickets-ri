@@ -1,4 +1,5 @@
 import path from "node:path";
+import type { PermissionTicket as SharedPermissionTicket } from "../../../shared/permission-ticket-schema.ts";
 
 export type Label = {
   system: string;
@@ -29,7 +30,7 @@ export type UdapCertificateAuthority = {
   privateKeyPem: string;
 };
 
-export type ClientBinding = {
+export type FrameworkClientBinding = {
   binding_type: "framework-entity";
   framework: string;
   framework_type: FrameworkType;
@@ -97,7 +98,7 @@ export type AllowedPatientAlias = {
 export type AuthorizationEnvelope = {
   ticketIssuer: string;
   ticketIssuerTrust?: TicketIssuerTrust;
-  ticketSubject: string;
+  grantSubject: string;
   ticketId?: string;
   ticketType: string;
   mode: ModeName;
@@ -113,46 +114,11 @@ export type AuthorizationEnvelope = {
   requiredLabelsAll?: Label[];
   deniedLabelsAny?: Label[];
   granularCategoryRules?: CategoryRule[];
-  cnf?: { jkt: string };
-  clientBinding?: ClientBinding;
+  presenterProofKey?: { jkt: string };
+  presenterFrameworkClient?: FrameworkClientBinding;
 };
 
-export type PermissionTicket = {
-  iss: string;
-  sub: string;
-  aud: string | string[];
-  exp: number;
-  iat?: number;
-  jti?: string;
-  ticket_type: string;
-  cnf?: { jkt: string };
-  client_binding?: ClientBinding;
-  revocation?: { url: string; rid: string };
-  authorization: {
-    subject: {
-      type: "match" | "identifier" | "reference";
-      resourceType?: string;
-      id?: string;
-      reference?: string;
-      identifier?: Array<{ system?: string; value?: string; [key: string]: any }>;
-      traits?: {
-        resourceType: "Patient";
-        name?: Array<{ family?: string; given?: string[]; text?: string }>;
-        birthDate?: string;
-        identifier?: Array<{ system?: string; value?: string; [key: string]: any }>;
-        [key: string]: any;
-      };
-    };
-    access: {
-      scopes?: string[];
-      periods?: Array<{ start?: string; end?: string }>;
-      jurisdictions?: Array<{ state?: string; country?: string; [key: string]: any }>;
-      organizations?: Array<{ identifier?: Array<{ system?: string; value?: string }>; name?: string; [key: string]: any }>;
-    };
-    requester?: Record<string, any>;
-  };
-  details?: Record<string, any>;
-};
+export type PermissionTicket = SharedPermissionTicket;
 
 export type TokenExchangeRequest = {
   grant_type: string;
@@ -168,23 +134,25 @@ export type RegisteredClient = {
   clientId: string;
   clientName: string;
   tokenEndpointAuthMethod: "none" | "private_key_jwt";
+  registeredAuthSurface?: string;
   publicJwk?: JsonWebKey;
   availablePublicJwks?: JsonWebKey[];
   jwkThumbprint?: string;
   registeredScope?: string;
   dynamic: boolean;
   authMode?: ClientAuthMode;
-  frameworkBinding?: ClientBinding;
+  frameworkBinding?: FrameworkClientBinding;
 };
 
 export type AuthenticatedClientIdentity = {
   clientId: string;
   clientName: string;
   tokenEndpointAuthMethod: RegisteredClient["tokenEndpointAuthMethod"];
+  registeredAuthSurface?: string;
   dynamic: boolean;
   authMode: ClientAuthMode;
   registeredScope?: string;
-  frameworkBinding?: ClientBinding;
+  frameworkBinding?: FrameworkClientBinding;
   resolvedEntity?: ResolvedFrameworkEntity;
   availablePublicJwks: JsonWebKey[];
   publicJwk?: JsonWebKey;

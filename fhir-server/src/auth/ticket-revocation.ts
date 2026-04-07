@@ -20,7 +20,7 @@ export class TicketRevocationRegistry {
     private readonly nowMs: () => number = () => Date.now(),
   ) {}
 
-  async assertActive(ticket: Pick<PermissionTicket, "jti" | "iat" | "revocation">) {
+  async assertActive(ticket: Pick<PermissionTicket, "iat" | "revocation"> & { jti?: string }) {
     if (!ticket.revocation) return;
     if (typeof ticket.jti !== "string" || !ticket.jti) throw new Error("Revocable ticket missing jti");
     if (typeof ticket.revocation.rid !== "string" || !ticket.revocation.rid) throw new Error("Permission Ticket revocation rid missing");

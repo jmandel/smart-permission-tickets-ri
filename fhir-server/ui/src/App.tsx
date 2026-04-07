@@ -3,7 +3,7 @@ import { useStore } from "./store";
 import { Hero } from "./components/Hero";
 import { PersonCard } from "./components/PersonCard";
 import { DataContract } from "./components/DataContract";
-import { DemoVisualizer } from "./components/DemoVisualizer";
+import { ProtocolTrace } from "./components/ProtocolTrace";
 import { PermissionWorkbench } from "./components/PermissionWorkbench";
 import { Viewer } from "./components/Viewer";
 
@@ -11,8 +11,8 @@ export function App() {
   if (window.location.pathname === "/viewer") {
     return <Viewer />;
   }
-  if (window.location.pathname === "/demo/visualizer") {
-    return <DemoVisualizer />;
+  if (window.location.pathname === "/trace") {
+    return <ProtocolTrace />;
   }
 
   const { loading, error, init, persons, demoClientOptions, selectedPersonId, selectPerson, selectedMode, defaultTicketIssuer, defaultNetwork } = useStore();

@@ -164,13 +164,17 @@ export type ViewerUdapClientPlan = {
 export type ViewerClientPlan = ViewerUnaffiliatedClientPlan | ViewerWellKnownClientPlan | ViewerUdapClientPlan;
 
 export type TicketBindingDescription = {
-  shape: "none" | "cnf.jkt" | "client_binding" | "cnf.jkt + client_binding";
+  shape:
+    | "none"
+    | "presenter_binding.key"
+    | "presenter_binding.framework_client"
+    | "presenter_binding.key + presenter_binding.framework_client";
   label: string;
   rationale: string;
   usesProofKeyBinding: boolean;
-  usesClientBinding: boolean;
+  usesFrameworkBinding: boolean;
   proofJkt: string | null;
-  clientBinding: Record<string, any> | null;
+  frameworkClientBinding: Record<string, any> | null;
 };
 
 export type ClientStoryDescription = {
@@ -253,7 +257,7 @@ export type ViewerLaunch = {
     displayName: string;
     summary: string | null;
   };
-  ticketPayload: Record<string, any> | null;
+  ticketPayload: PermissionTicket | null;
   signedTicket: string | null;
   proofJkt: string | null;
   clientPlan: ViewerClientPlan | null;
@@ -288,3 +292,4 @@ export type TokenResponseInfo = {
   scope: string;
   patient?: string;
 };
+import type { PermissionTicket } from "../../../shared/permission-ticket-schema.ts";

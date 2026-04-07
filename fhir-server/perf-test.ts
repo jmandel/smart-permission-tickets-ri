@@ -102,19 +102,19 @@ async function benchmarkPatient(person: any) {
   // 3. Sign permission ticket
   const ticketPayload = {
     iss: `${BASE}/issuer/reference-demo`,
-    sub: `demo-client-${personId}`,
     aud: BASE,
     exp: Math.floor(Date.now() / 1000) + 3600,
+    jti: crypto.randomUUID(),
     ticket_type: "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
-    cnf: { jkt: keys.thumbprint },
-    authorization: {
-      subject: {
-        type: "match",
-        traits: { resourceType: "Patient", name: [{ family: familyName, given: givenNames }], birthDate },
-      },
-      access: { scopes: ["patient/*.rs"] },
+    presenter_binding: { key: { jkt: keys.thumbprint } },
+    subject: {
+      patient: { resourceType: "Patient", name: [{ family: familyName, given: givenNames }], birthDate },
     },
-    details: { sensitive: { mode: "allow" } },
+    access: {
+      permissions: [{ kind: "data", resource_type: "*", interactions: ["read", "search"] }],
+      sensitive_data: "include",
+    },
+    context: { kind: "patient-access" },
   };
 
   const { result: signResult, ms: signMs } = await timeIt("sign-ticket", () =>

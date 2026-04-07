@@ -154,6 +154,7 @@ export function buildDemoEventSummary(event: DemoEvent): ArtifactViewerEventSumm
           { label: "Endpoint", value: event.detail.endpoint },
           { label: "Auth mode", value: event.detail.authMode },
           { label: "Outcome", value: event.detail.outcome },
+          ...(event.detail.siteName ? [{ label: "Site", value: event.detail.siteName }] : []),
           ...(event.detail.clientId ? [{ label: "Client ID", value: event.detail.clientId }] : []),
           ...(event.detail.registrationMode ? [{ label: "Registration mode", value: event.detail.registrationMode }] : []),
           ...(event.detail.frameworkUri ? [{ label: "Framework", value: event.detail.frameworkUri }] : []),

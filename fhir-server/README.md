@@ -41,7 +41,7 @@ The landing page lists:
     - unaffiliated registered client
     - well-known client
     - UDAP client
-  - choose sites, scopes, dates, ticket lifetime, and `sensitive.mode`
+  - choose sites, scopes, dates, ticket lifetime, and the `access.sensitive_data` policy
   - request an ES256-signed Permission Ticket from a simulated issuer
   - prepare one of three client stories:
     - dynamic JWK registration for an unaffiliated app
@@ -52,22 +52,22 @@ The landing page lists:
   - hand off only the sites that can actually authorize into the viewer app
 
 In `strict` mode, the workbench now explicitly explains what each client path demonstrates before launch:
-- **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `cnf.jkt`
+- **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `presenter_binding.key.jkt`
 - **Well-known client**: a framework-affiliated client skips registration and is recognized as `well-known:<entity-uri>` using current JWKS resolution
 - **UDAP client**: a framework-backed client registers just in time with UDAP DCR and then authenticates with `x5c`
 
 After launch, use the **Ticket** and **Client** artifact menus in the viewer to inspect:
-- the chosen binding shape (`cnf.jkt`, `client_binding`, or both)
+- the chosen presenter-binding shape (`presenter_binding.key.jkt`, `presenter_binding.framework_client`, or both)
 - the client story and effective `client_id`
 - registration request/response payloads when registration occurs
 - the well-known framework document and entity JWKS for the implicit-registration path
 - a copyable token-exchange cURL template with the correct token endpoint and `client_id`
 
-The demo also includes a live event visualizer:
-- open it from **Step 4** in the workbench with **Open visualizer**
-- or visit `/demo/visualizer` directly and attach it to a session via `?session=<viewer-session-id>`
+The demo also includes a live protocol trace:
+- open it from **Step 4** in the workbench with **Open Protocol Trace**
+- or visit `/trace` directly and attach it to a session via `?session=<viewer-session-id>`
 - it streams a session-scoped audit feed over Server-Sent Events from `/demo/events/:sessionId`
-- it replays buffered events when opened mid-demo, so you can attach the visualizer after the viewer has already started
+- it replays buffered events when opened mid-demo, so you can attach the protocol trace after the viewer has already started
 - it makes the trust chain, validation checks, per-site fan-out, and logical data fetches inspectable in real time
 
 Default demo trust-framework surfaces are also enabled out of the box:
@@ -151,7 +151,7 @@ Named mode mounts:
 
 ### `key-bound`
 
-- intended for `cnf.jkt` sender-constrained flows
+- intended for `presenter_binding.key.jkt` sender-constrained flows
 - FHIR requests still require a Bearer access token
 
 ### `open`
@@ -206,11 +206,11 @@ The strict-mode demo now intentionally exercises three different client identity
 
 - **Unaffiliated registered client**
   - runtime behavior: POSTs a JWK to `/register`
-  - ticket behavior: uses `cnf.jkt` in strict/key-bound flows
+  - ticket behavior: uses `presenter_binding.key.jkt` in strict/key-bound flows
 
 - **Well-known client**
   - runtime behavior: skips registration and uses `client_id=well-known:<entity-uri>`
-  - ticket behavior: uses `client_binding`
+  - ticket behavior: uses `presenter_binding.framework_client`
   - discovery/demo metadata:
     - framework JSON: `/demo/frameworks/well-known-reference.json`
     - sample entity metadata: `/demo/clients/well-known-alpha`
@@ -218,7 +218,7 @@ The strict-mode demo now intentionally exercises three different client identity
 
 - **UDAP client**
   - runtime behavior: does just-in-time UDAP registration at `/register`, then authenticates with `x5c` and `udap=1`
-  - ticket behavior: uses `client_binding`
+  - ticket behavior: uses `presenter_binding.framework_client`
   - discovery/demo metadata:
     - UDAP discovery: `/.well-known/udap`
 
@@ -343,22 +343,31 @@ curl http://localhost:8091/issuer/reference-demo/.well-known/jwks.json
 curl -X POST http://localhost:8091/issuer/reference-demo/sign-ticket \
   -H 'content-type: application/json' \
   -d '{
-    "sub": "demo-client-patient-123",
+    "iss": "http://localhost:8091/issuer/reference-demo",
     "aud": "http://localhost:8091",
     "exp": 1760000000,
+    "jti": "example-ticket-id",
     "ticket_type": "https://smarthealthit.org/permission-ticket-type/network-patient-access-v1",
-    "authorization": {
-      "subject": {
-        "type": "match",
-        "traits": {
-          "resourceType": "Patient",
-          "name": [{ "family": "Reyes", "given": ["Elena"] }],
-          "birthDate": "1989-09-14"
-        }
-      },
-      "access": {
-        "scopes": ["patient/*.rs"]
+    "presenter_binding": {
+      "key": {
+        "jkt": "example-proof-key-thumbprint"
       }
+    },
+    "subject": {
+      "patient": {
+        "resourceType": "Patient",
+        "name": [{ "family": "Reyes", "given": ["Elena"] }],
+        "birthDate": "1989-09-14"
+      }
+    },
+    "access": {
+      "permissions": [
+        { "kind": "data", "resource_type": "*", "interactions": ["read", "search"] }
+      ],
+      "sensitive_data": "exclude"
+    },
+    "context": {
+      "kind": "patient-access"
     }
   }'
 ```

@@ -6,7 +6,7 @@ import { TtlReplayCache } from "../replay-cache.ts";
 import { decodeJwtWithoutVerification, extractUriSans, parseX5cCertificates, verifyX509JwtWithKey } from "../x509-jwt.ts";
 import { computeJwkThumbprint, normalizePublicJwk } from "../../../shared/private-key-jwt.ts";
 import type { DemoAuditStep } from "../../../shared/demo-events.ts";
-import type { AuthenticatedClientIdentity, ClientBinding, FrameworkDefinition, ResolvedFrameworkEntity } from "../../store/model.ts";
+import type { AuthenticatedClientIdentity, FrameworkClientBinding, FrameworkDefinition, ResolvedFrameworkEntity } from "../../store/model.ts";
 import type { FrameworkClientRegistration, FrameworkResolver, SupportedTrustFramework } from "./types.ts";
 import { ClientRegistrationError } from "./types.ts";
 
@@ -119,7 +119,7 @@ export class UdapFrameworkResolver implements FrameworkResolver {
     );
   }
 
-  async registerClient(body: Record<string, any>, registrationEndpointUrl: string): Promise<FrameworkClientRegistration | null> {
+  async registerClient(body: Record<string, any>, registrationEndpointUrl: string, authSurfaceUrl: string): Promise<FrameworkClientRegistration | null> {
     const looksLikeUdap = "udap" in body || "software_statement" in body;
     if (!looksLikeUdap) return null;
     const steps: DemoAuditStep[] = [];
@@ -201,14 +201,14 @@ export class UdapFrameworkResolver implements FrameworkResolver {
         evidence: framework.framework,
         why: "Presented certificate chain matches exactly one configured UDAP framework",
       });
-      const frameworkBinding: ClientBinding = {
+      const frameworkBinding: FrameworkClientBinding = {
         binding_type: "framework-entity",
         framework: framework.framework,
         framework_type: "udap",
         entity_uri: entityUri,
       };
       if (isCancellationRequest(payload)) {
-        this.clients.cancelUdap(frameworkBinding);
+        this.clients.cancelUdap(frameworkBinding, authSurfaceUrl);
         return {
           response: buildCancellationResponse(softwareStatement, payload, frameworkBinding),
           statusCode: 200,
@@ -224,6 +224,7 @@ export class UdapFrameworkResolver implements FrameworkResolver {
       }
       const client = this.clients.registerUdap({
         frameworkBinding,
+        authSurfaceUrl,
         clientName: payload.client_name,
         scope: payload.scope,
       });
@@ -421,7 +422,7 @@ function buildRegistrationResponse(clientId: string, softwareStatement: string, 
   return response;
 }
 
-function buildCancellationResponse(softwareStatement: string, payload: UdapSoftwareStatementClaims, frameworkBinding: ClientBinding) {
+function buildCancellationResponse(softwareStatement: string, payload: UdapSoftwareStatementClaims, frameworkBinding: FrameworkClientBinding) {
   return {
     client_id: null,
     software_statement: softwareStatement,

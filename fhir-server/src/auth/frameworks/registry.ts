@@ -32,10 +32,10 @@ export class FrameworkRegistry {
     return null;
   }
 
-  async registerClient(body: Record<string, any>, registrationEndpointUrl: string): Promise<FrameworkClientRegistration | null> {
+  async registerClient(body: Record<string, any>, registrationEndpointUrl: string, authSurfaceUrl: string): Promise<FrameworkClientRegistration | null> {
     for (const resolver of this.resolvers) {
       if (!resolver.registerClient) continue;
-      const registration = await resolver.registerClient(body, registrationEndpointUrl);
+      const registration = await resolver.registerClient(body, registrationEndpointUrl, authSurfaceUrl);
       if (registration) return registration;
     }
     return null;

@@ -1,5 +1,6 @@
 import type { ViewerLaunch, ViewerLaunchSite } from "../types";
 import { resourcePrimaryDisplay } from "../../../shared/resource-display.ts";
+import type { PermissionTicket } from "../../../../shared/permission-ticket-schema.ts";
 
 export type ViewerSiteRun = {
   site: ViewerLaunchSite;
@@ -106,14 +107,18 @@ export function buildSiteQueryPlan(
   capabilityStatement: Record<string, any> | null,
 ): ViewerQuerySpec[] {
   const capability = parseCapabilityStatement(capabilityStatement);
-  const scopes = launch.ticketPayload?.authorization?.access?.scopes;
-  if (!Array.isArray(scopes) || !scopes.length || scopes.includes("patient/*.rs")) {
+  const permissions = launch.ticketPayload?.access?.permissions;
+  if (
+    !Array.isArray(permissions)
+    || !permissions.length
+    || permissions.some((permission) => permission.kind === "data" && permission.resource_type === "*")
+  ) {
     return buildCapabilityQueries(site, patientId, capability);
   }
 
   const queries = new Map<string, ViewerQuerySpec>();
-  for (const scope of scopes) {
-    const parsed = parseScope(String(scope), patientId, capability);
+  for (const permission of permissions) {
+    const parsed = permission.kind === "data" ? queryForPermission(permission, patientId, capability) : null;
     if (!parsed) continue;
     queries.set(parsed.key, parsed);
   }
@@ -395,11 +400,14 @@ function defaultQueryForResourceType(resourceType: string, patientId: string): V
   };
 }
 
-function parseScope(scope: string, patientId: string, capability: Map<string, Set<string>>): ViewerQuerySpec | null {
-  const match = scope.match(/^[^/]+\/([A-Za-z*]+)\.rs(?:\?(.*))?$/);
-  if (!match?.[1] || match[1] === "*") return null;
-  const resourceType = match[1];
-  const rawQuery = match[2];
+function queryForPermission(
+  permission: Extract<PermissionTicket["access"]["permissions"][number], { kind: "data" }>,
+  patientId: string,
+  capability: Map<string, Set<string>>,
+): ViewerQuerySpec | null {
+  const resourceType = permission.resource_type;
+  if (resourceType === "*") return null;
+  const rawQuery = encodePermissionQuery(permission);
   const searchParams = capability.get(resourceType);
 
   if (resourceType === "Patient") {
@@ -430,14 +438,23 @@ function parseScope(scope: string, patientId: string, capability: Map<string, Se
   const separator = rawQuery ? `&${rawQuery}` : "";
   return {
     key: `${resourceType}:${rawQuery ?? "all"}`,
-    label: humanScopeLabel(resourceType, rawQuery),
+    label: humanPermissionLabel(resourceType, rawQuery),
     resourceType,
     relativePath: `${resourceType}?patient=${encodeURIComponent(patientId)}${separator ? `${separator}` : ""}&_count=100`,
     kind: "patient-search",
   };
 }
 
-function humanScopeLabel(resourceType: string, rawQuery?: string) {
+function encodePermissionQuery(
+  permission: Extract<PermissionTicket["access"]["permissions"][number], { kind: "data" }>,
+) {
+  const category = permission.category_any_of?.[0];
+  if (!category?.code) return undefined;
+  const value = category.system ? `${category.system}|${category.code}` : category.code;
+  return new URLSearchParams({ category: value }).toString();
+}
+
+function humanPermissionLabel(resourceType: string, rawQuery?: string) {
   if (!rawQuery) return resourceType;
   const params = new URLSearchParams(rawQuery);
   const category = params.get("category");

@@ -6,7 +6,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
-import { NETWORK_PATIENT_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import {
+  NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+  PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+  PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+} from "../shared/permission-tickets.ts";
 import {
   buildDemoUdapClients,
   DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
@@ -108,18 +112,27 @@ describe("mode surfaces", () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        sub: "mode-test-ticket",
+        iss: `${origin}/issuer/reference-demo`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
         ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-        authorization: {
-          subject: elenaMatchSubject(),
-          access: {
-            scopes: ["patient/Patient.rs"],
-            periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-          },
+        presenter_binding: {
+          key: { jkt: "sign-ticket-test-jkt" },
         },
-        details: { sensitive: { mode: "deny" } },
+        subject: {
+          patient: elenaPatient(),
+        },
+        access: {
+          permissions: [{
+            kind: "data",
+            resource_type: "Patient",
+            interactions: ["read", "search"],
+          }],
+          data_period: { start: "2023-01-01", end: "2025-12-31" },
+          sensitive_data: "exclude",
+        },
+        context: { kind: "patient-access" },
       }),
     });
     expect(signResponse.status).toBe(201);
@@ -136,20 +149,29 @@ describe("mode surfaces", () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        sub: "mode-test-ticket",
+        iss: `${origin}/issuer/reference-demo`,
         aud: origin,
+        jti: crypto.randomUUID(),
         ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-        authorization: {
-          subject: elenaMatchSubject(),
-          access: {
-            scopes: ["patient/Patient.rs"],
-          },
+        presenter_binding: {
+          key: { jkt: "missing-exp-test-jkt" },
         },
+        subject: {
+          patient: elenaPatient(),
+        },
+        access: {
+          permissions: [{
+            kind: "data",
+            resource_type: "Patient",
+            interactions: ["read", "search"],
+          }],
+        },
+        context: { kind: "patient-access" },
       }),
     });
     expect(signResponse.status).toBe(400);
     const body = await signResponse.json();
-    expect(body.issue?.[0]?.diagnostics ?? "").toContain("Permission Ticket exp is required");
+    expect(body.issue?.[0]?.diagnostics ?? "").toContain("exp");
   });
 
   test("default config advertises built-in framework metadata and demo jwks surfaces", async () => {
@@ -160,7 +182,8 @@ describe("mode surfaces", () => {
     const extension = smartConfig.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
     expect(smartConfig.grant_types_supported).toContain("client_credentials");
     expect(smartConfig.grant_types_supported).toContain("urn:ietf:params:oauth:grant-type:token-exchange");
-    expect(extension.supported_client_binding_types).toContain("framework-entity");
+    expect(extension.supported_client_binding_types).toContain("presenter_binding.framework_client");
+    expect(extension.supported_client_binding_types).toContain("presenter_binding.key.jkt");
     expect(extension.supported_trust_frameworks).toEqual([
       {
         framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
@@ -292,11 +315,11 @@ describe("mode surfaces", () => {
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
         aud: `${origin}/networks/reference/fhir`,
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/*.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "deny",
-        cnf: { jkt: client.jwkThumbprint },
+        proofKeyBinding: { jkt: client.jwkThumbprint },
       }),
     }, client, { proofJkt: client.jwkThumbprint });
     expect(typeof token.access_token).toBe("string");
@@ -323,7 +346,7 @@ describe("mode surfaces", () => {
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
       subject_token: mintTicket({
         aud: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2023-01-01", end: "2025-12-31" }],
         sensitiveMode: "deny",
@@ -341,7 +364,7 @@ describe("mode surfaces", () => {
         subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
         subject_token: mintTicket({
           aud: "https://example.org/frameworks/not-a-member",
-          subject: elenaMatchSubject(),
+          subject: elenaPatient(),
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
@@ -357,7 +380,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2023-01-01", end: "2025-12-31" }],
         sensitiveMode: "deny",
@@ -370,11 +393,11 @@ describe("mode surfaces", () => {
     const registeredClient = await registerDynamicClient(`${origin}/register`, "Strict Bound Client");
     const wrongKeyClient = await registerDynamicClient(`${origin}/register`, "Strict Wrong Key Client");
     const ticket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
-      cnf: { jkt: registeredClient.jwkThumbprint },
+      proofKeyBinding: { jkt: registeredClient.jwkThumbprint },
     });
 
     const wrongAssertion = await postFormWithClient(
@@ -403,7 +426,7 @@ describe("mode surfaces", () => {
 
   test("ticket validation rejects non-ES256 algorithms, kid mismatches, and bad signatures", async () => {
     const validTicket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
@@ -446,7 +469,7 @@ describe("mode surfaces", () => {
   test("client assertion rejects audience mismatch and future iat", async () => {
     const client = await registerDynamicClient(`${origin}/register`, "Assertion Edge Client");
     const ticket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
@@ -482,7 +505,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2023-01-01", end: "2025-12-31" }],
         sensitiveMode: "deny",
@@ -531,59 +554,75 @@ describe("mode surfaces", () => {
     await expectTokenError(ambiguous, "invalid_grant", "matched more than one patient");
   });
 
-  test("subject field consistency is enforced by subject type", async () => {
+  test("subject payload must satisfy the new subject schema", async () => {
     const inconsistentMatch = await postForm(`${origin}/modes/open/token`, {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
-      subject_token: mintTicket({
-        subject: {
-          type: "match",
-          reference: "Patient/123",
-          traits: {
-            resourceType: "Patient",
-            name: [{ family: "Reyes", given: ["Elena"] }],
-            birthDate: "1989-09-14",
-          },
+      subject_token: context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
+        iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        aud: origin,
+        exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
+        ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+        requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+        access: {
+          permissions: projectScopesToPermissions(["patient/Patient.rs"]),
+          data_period: { start: "2023-01-01", end: "2025-12-31" },
+          sensitive_data: "exclude",
         },
-        scopes: ["patient/Patient.rs"],
-        periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-        sensitiveMode: "deny",
-      }),
+        context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+        subject: {
+          recipient_record: { reference: "Patient/123", type: "Patient" },
+        },
+      } as any),
     });
-    await expectTokenError(inconsistentMatch, "invalid_grant", "Subject type inconsistent with populated fields");
+    await expectTokenError(inconsistentMatch, "invalid_grant", "expected object");
 
     const inconsistentReference = await postForm(`${origin}/modes/open/token`, {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
-      subject_token: mintTicket({
-        subject: {
-          type: "reference",
-          reference: "Patient/123",
-          identifier: [{ system: "urn:example", value: "123" }],
+      subject_token: context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
+        iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        aud: origin,
+        exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
+        ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+        requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+        access: {
+          permissions: projectScopesToPermissions(["patient/Patient.rs"]),
+          data_period: { start: "2023-01-01", end: "2025-12-31" },
+          sensitive_data: "exclude",
         },
-        scopes: ["patient/Patient.rs"],
-        periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-        sensitiveMode: "deny",
-      }),
+        context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+        subject: "not-an-object",
+      } as any),
     });
-    await expectTokenError(inconsistentReference, "invalid_grant", "Subject type inconsistent with populated fields");
+    await expectTokenError(inconsistentReference, "invalid_grant", "expected object");
   });
 
-  test("unsupported access constraint fields are rejected", async () => {
+  test("must_understand rejects unrecognized top-level claims", async () => {
     const response = await postForm(`${origin}/modes/open/token`, {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
-      subject_token: mintTicket({
-        subject: elenaMatchSubject(),
-        scopes: ["patient/Patient.rs"],
-        periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-        sensitiveMode: "deny",
-        accessExtras: {
-          locationCodes: ["foo"],
+      subject_token: context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
+        iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        aud: origin,
+        exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
+        ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+        requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+        must_understand: ["experimental_constraint"],
+        experimental_constraint: { foo: true },
+        subject: { patient: elenaPatient() },
+        access: {
+          permissions: projectScopesToPermissions(["patient/Patient.rs"]),
+          data_period: { start: "2023-01-01", end: "2025-12-31" },
+          sensitive_data: "exclude",
         },
-      }),
+        context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+      } as any),
     });
-    await expectTokenError(response, "invalid_grant", "Unsupported access constraint: locationCodes");
+    await expectTokenError(response, "invalid_grant", "Unrecognized must_understand claim: experimental_constraint");
   });
 
   test("site-specific SMART config advertises site-bound auth endpoints", async () => {
@@ -602,7 +641,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/DiagnosticReport.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -621,7 +660,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -642,7 +681,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Encounter.rs"],
         periods: [{ start: "2022-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -673,7 +712,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -700,7 +739,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -721,12 +760,12 @@ describe("mode surfaces", () => {
   });
 
   test("registered mode accepts a dynamically registered client", async () => {
-    const client = await registerDynamicClient(`${origin}/register`, "Registered Mode Test Client");
+    const client = await registerDynamicClient(`${origin}/modes/registered/register`, "Registered Mode Test Client");
     const tokenBody = await postFormJsonWithClient(`${origin}/modes/registered/token`, {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2023-01-01", end: "2025-12-31" }],
         sensitiveMode: "deny",
@@ -739,43 +778,69 @@ describe("mode surfaces", () => {
   });
 
   test("dynamic registrations survive server restart without stored state", async () => {
-    const client = await registerDynamicClient(`${origin}/register`, "Restart Safe Client");
+    const client = await registerDynamicClient(`${origin}/modes/registered/register`, "Restart Safe Client");
 
     const restartedContext = createAppContext({ port: 0 });
-    const restartedServer = startServer(restartedContext, 0);
-    const restartedOrigin = `http://127.0.0.1:${restartedServer.port}`;
-    restartedContext.config.publicBaseUrl = restartedOrigin;
-    restartedContext.config.issuer = restartedOrigin;
+    restartedContext.config.publicBaseUrl = origin;
+    restartedContext.config.issuer = origin;
+    const now = Math.floor(Date.now() / 1000);
+    const clientAssertion = await signPrivateKeyJwt(
+      {
+        iss: client.clientId,
+        sub: client.clientId,
+        aud: `${origin}/modes/registered/token`,
+        iat: now,
+        exp: now + 300,
+        jti: crypto.randomUUID(),
+      },
+      client.privateJwk,
+    );
 
-    try {
-      const tokenBody = await postFormJsonWithClient(`${restartedOrigin}/modes/registered/token`, {
-        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
-        subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
-        subject_token: mintTicket({
-          issuer: restartedOrigin,
-          subject: elenaMatchSubject(),
-          scopes: ["patient/Patient.rs"],
-          periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-          sensitiveMode: "deny",
+    const tokenResponse = await handleRequest(
+      restartedContext,
+      new Request(`${origin}/modes/registered/token`, {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+          subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
+          subject_token: mintTicket({
+            issuer: origin,
+            subject: elenaPatient(),
+            scopes: ["patient/Patient.rs"],
+            periods: [{ start: "2023-01-01", end: "2025-12-31" }],
+            sensitiveMode: "deny",
+          }),
+          client_id: client.clientId,
+          client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+          client_assertion: clientAssertion,
         }),
-      }, client);
-      expect(typeof tokenBody.access_token).toBe("string");
-      const patient = await getJson(`${restartedOrigin}/modes/registered/fhir/Patient/${tokenBody.patient}`, tokenBody.access_token);
-      expect(patient.resourceType).toBe("Patient");
-    } finally {
-      restartedServer.stop(true);
-    }
+      }),
+    );
+    expect(tokenResponse.status).toBe(200);
+    const tokenBody = await tokenResponse.json();
+    expect(typeof tokenBody.access_token).toBe("string");
+
+    const patientResponse = await handleRequest(
+      restartedContext,
+      new Request(`${origin}/modes/registered/fhir/Patient/${tokenBody.patient}`, {
+        headers: { authorization: `Bearer ${tokenBody.access_token}` },
+      }),
+    );
+    expect(patientResponse.status).toBe(200);
+    const patient = await patientResponse.json();
+    expect(patient.resourceType).toBe("Patient");
   });
 
-  test("key-bound mode requires matching client binding for cnf-bound tickets", async () => {
+  test("key-bound mode requires matching presenter binding for key-bound tickets", async () => {
     const boundClient = await registerDynamicClient(`${origin}/modes/key-bound/register`, "Key Bound Test Client");
     const wrongClient = await registerDynamicClient(`${origin}/modes/key-bound/register`, "Wrong Key Test Client");
     const ticket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
-      cnf: { jkt: boundClient.jwkThumbprint },
+      proofKeyBinding: { jkt: boundClient.jwkThumbprint },
     });
 
     const missingProof = await postForm(`${origin}/modes/key-bound/token`, {
@@ -837,7 +902,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -854,7 +919,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -886,7 +951,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: [
           "patient/Encounter.rs",
           "patient/Observation.rs?category=http://terminology.hl7.org/CodeSystem/observation-category|laboratory",
@@ -910,7 +975,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -927,7 +992,7 @@ describe("mode surfaces", () => {
 
   test("site token issuance fails when the requested site is excluded by jurisdiction", async () => {
     const caOnlyTicket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
@@ -951,7 +1016,7 @@ describe("mode surfaces", () => {
 
   test("site token issuance fails when the requested site is excluded by organization identifier", async () => {
     const loneStarOnlyTicket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
@@ -977,9 +1042,47 @@ describe("mode surfaces", () => {
     await expectTokenError(rejected, "invalid_grant", "exclude the requested site");
   });
 
+  test("site-registered clients cannot be reused at a different site token endpoint", async () => {
+    const loneStarClient = await registerDynamicClient(
+      `${origin}/modes/open/sites/lone-star-womens-health/register`,
+      "Lone Star scoped client",
+    );
+    const ticket = mintTicket({
+      subject: elenaPatient(),
+      scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
+      periods: [{ start: "2021-01-01", end: "2025-12-31" }],
+      sensitiveMode: "allow",
+      proofKeyBinding: { jkt: loneStarClient.jwkThumbprint },
+    });
+
+    const allowed = await postFormWithClient(
+      `${origin}/modes/open/sites/lone-star-womens-health/token`,
+      {
+        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+        subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+        subject_token: ticket,
+      },
+      loneStarClient,
+      { proofJkt: loneStarClient.jwkThumbprint },
+    );
+    expect(allowed.status).toBe(200);
+
+    const rejected = await postFormWithClient(
+      `${origin}/modes/open/sites/eastbay-primary-care-associates/token`,
+      {
+        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+        subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+        subject_token: ticket,
+      },
+      loneStarClient,
+      { proofJkt: loneStarClient.jwkThumbprint },
+    );
+    await expectTokenError(rejected, "invalid_client", "scoped to a different auth surface", 401);
+  });
+
   test("site token issuance fails when filters leave the requested site with only supporting context", async () => {
     const denySensitiveTicket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/*.rs"],
       periods: [{ start: "2020-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
@@ -996,7 +1099,7 @@ describe("mode surfaces", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/*.rs"],
         periods: [{ start: "2020-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -1020,7 +1123,7 @@ describe("mode surfaces", () => {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
         subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
         subject_token: mintTicket({
-          subject: elenaMatchSubject(),
+          subject: elenaPatient(),
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
@@ -1048,7 +1151,7 @@ describe("mode surfaces", () => {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
         subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
         subject_token: mintTicket({
-          subject: elenaMatchSubject(),
+          subject: elenaPatient(),
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
@@ -1076,15 +1179,16 @@ describe("mode surfaces", () => {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
         subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
         subject_token: mintTicket({
-          subject: elenaMatchSubject(),
+          subject: elenaPatient(),
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
+          jti: null,
           revocation: { url: revocationUrl, rid: "rid-ok" },
           rawSign: true,
         }),
       });
-      await expectTokenError(response, "invalid_grant", "Revocable ticket missing jti");
+      await expectTokenError(response, "invalid_grant", "expected string");
     } finally {
       revocationServer.stop(true);
     }
@@ -1100,7 +1204,7 @@ describe("mode surfaces", () => {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
         subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
         subject_token: mintTicket({
-          subject: elenaMatchSubject(),
+          subject: elenaPatient(),
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
           sensitiveMode: "deny",
@@ -1186,7 +1290,7 @@ describe("issued token behavior", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/DiagnosticReport.rs"],
         periods: [{ start: "2021-01-01", end: "2023-12-31" }],
         sensitiveMode: "deny",
@@ -1200,7 +1304,7 @@ describe("issued token behavior", () => {
 
   test("token endpoint validates token-exchange request fields explicitly", async () => {
     const validTicket = mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes: ["patient/Patient.rs"],
       periods: [{ start: "2023-01-01", end: "2025-12-31" }],
       sensitiveMode: "deny",
@@ -1236,17 +1340,19 @@ describe("issued token behavior", () => {
 
     const missingTypeTicket = context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
       iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-      sub: "missing-ticket-type",
       aud: origin,
       exp: Math.floor(Date.now() / 1000) + 3600,
-      authorization: {
-        subject: elenaMatchSubject(),
-        access: {
-          scopes: ["patient/Patient.rs"],
-          periods: [{ start: "2023-01-01", end: "2025-12-31" }],
-        },
+      jti: crypto.randomUUID(),
+      requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+      subject: {
+        patient: elenaPatient(),
       },
-      details: { sensitive: { mode: "deny" } },
+      access: {
+        permissions: projectScopesToPermissions(["patient/Patient.rs"]),
+        data_period: { start: "2023-01-01", end: "2025-12-31" },
+        sensitive_data: "exclude",
+      },
+      context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
     } as any);
     await expectTokenError(
       await postForm(`${origin}/modes/open/token`, {
@@ -1255,7 +1361,7 @@ describe("issued token behavior", () => {
         subject_token: missingTypeTicket,
       }),
       "invalid_grant",
-      "missing ticket_type",
+      "Invalid option",
     );
 
     await expectTokenError(
@@ -1275,7 +1381,7 @@ describe("issued token behavior", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
       subject_token: mintTicket({
-        subject: elenaMatchSubject(),
+        subject: elenaPatient(),
         scopes: ["patient/*.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
@@ -1296,7 +1402,7 @@ describe("issued token behavior", () => {
         grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
         subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
         subject_token: mintTicket({
-          subject: elenaMatchSubject(),
+          subject: elenaPatient(),
           scopes: ["patient/Observation.rs?category=laboratory"],
           periods: [{ start: "2021-01-01", end: "2025-12-31" }],
           sensitiveMode: "allow",
@@ -1313,7 +1419,7 @@ describe("issued token behavior", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
       subject_token: mintTicket({
-        subject: aishaMatchSubject(),
+        subject: aishaPatient(),
         scopes: ["patient/AllergyIntolerance.rs", "patient/Immunization.rs", "patient/ServiceRequest.rs"],
         periods: [{ start: "2020-01-01", end: "2026-12-31" }],
         sensitiveMode: "allow",
@@ -1330,7 +1436,7 @@ describe("issued token behavior", () => {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
       subject_token: mintTicket({
-        subject: deniseMatchSubject(),
+        subject: denisePatient(),
         scopes: ["patient/Procedure.rs"],
         periods: [{ start: "2020-01-01", end: "2026-12-31" }],
         sensitiveMode: "allow",
@@ -1341,36 +1447,27 @@ describe("issued token behavior", () => {
   });
 });
 
-function elenaMatchSubject() {
+function elenaPatient() {
   return {
-    type: "match" as const,
-    traits: {
-      resourceType: "Patient" as const,
-      name: [{ family: "Reyes", given: ["Elena"] }],
-      birthDate: "1989-09-14",
-    },
+    resourceType: "Patient" as const,
+    name: [{ family: "Reyes", given: ["Elena"] }],
+    birthDate: "1989-09-14",
   };
 }
 
-function aishaMatchSubject() {
+function aishaPatient() {
   return {
-    type: "match" as const,
-    traits: {
-      resourceType: "Patient" as const,
-      name: [{ family: "Patel", given: ["Aisha"] }],
-      birthDate: "2020-03-15",
-    },
+    resourceType: "Patient" as const,
+    name: [{ family: "Patel", given: ["Aisha"] }],
+    birthDate: "2020-03-15",
   };
 }
 
-function deniseMatchSubject() {
+function denisePatient() {
   return {
-    type: "match" as const,
-    traits: {
-      resourceType: "Patient" as const,
-      name: [{ family: "Walker", given: ["Denise"] }],
-      birthDate: "1958-07-22",
-    },
+    resourceType: "Patient" as const,
+    name: [{ family: "Walker", given: ["Denise"] }],
+    birthDate: "1958-07-22",
   };
 }
 
@@ -1381,40 +1478,51 @@ function mintTicket(input: {
   scopes: string[];
   periods: Array<{ start?: string; end?: string }>;
   sensitiveMode: "deny" | "allow";
-  cnf?: { jkt: string };
+  proofKeyBinding?: { jkt: string };
+  frameworkClientBinding?: { framework: string; framework_type: "well-known" | "udap"; entity_uri: string };
+  ticketType?: string;
+  requester?: Record<string, unknown>;
+  context?: Record<string, unknown>;
   exp?: number;
   iat?: number;
-  jti?: string;
+  jti?: string | null;
   revocation?: { url: string; rid: string };
   jurisdictions?: Array<{ state?: string }>;
-  organizations?: Array<{ name?: string; identifier?: Array<{ system?: string; value?: string }> }>;
+  organizations?: Array<{ system?: string; value?: string; identifier?: Array<{ system?: string; value?: string }> }>;
   accessExtras?: Record<string, unknown>;
   rawSign?: boolean;
 }) {
   const ticketOrigin = input.issuer ?? origin;
+  const ticketType = input.ticketType
+    ?? ((input.proofKeyBinding || input.frameworkClientBinding) ? NETWORK_PATIENT_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE);
+  const requester = input.requester ?? defaultRequester(ticketType);
   const payload = {
     iss: `${ticketOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-    sub: "mode-test-ticket",
     aud: input.aud ?? ticketOrigin,
     ...(typeof input.exp === "number" ? { exp: input.exp } : { exp: Math.floor(Date.now() / 1000) + 3600 }),
     ...(typeof input.iat === "number" ? { iat: input.iat } : {}),
-    ...(typeof input.jti === "string" ? { jti: input.jti } : {}),
-    ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
-    cnf: input.cnf,
-    revocation: input.revocation,
-    authorization: {
-      subject: input.subject,
-      access: {
-        scopes: input.scopes,
-        periods: input.periods,
-        jurisdictions: input.jurisdictions,
-        organizations: input.organizations,
-        ...input.accessExtras,
-      },
+    ...(input.jti === null ? {} : (typeof input.jti === "string" ? { jti: input.jti } : { jti: crypto.randomUUID() })),
+    ticket_type: ticketType,
+    ...(input.proofKeyBinding || input.frameworkClientBinding
+      ? {
+          presenter_binding: {
+            ...(input.proofKeyBinding ? { key: { jkt: input.proofKeyBinding.jkt } } : {}),
+            ...(input.frameworkClientBinding ? { framework_client: input.frameworkClientBinding } : {}),
+          },
+        }
+      : {}),
+    ...(input.revocation ? { revocation: input.revocation } : {}),
+    subject: normalizeSubject(input.subject),
+    ...(requester ? { requester } : {}),
+    access: {
+      permissions: projectScopesToPermissions(input.scopes),
+      data_period: normalizeDataPeriod(input.periods),
+      jurisdictions: input.jurisdictions,
+      source_organizations: normalizeSourceOrganizations(input.organizations),
+      sensitive_data: input.sensitiveMode === "allow" ? "include" : "exclude",
+      ...input.accessExtras,
     },
-    details: {
-      sensitive: { mode: input.sensitiveMode },
-    },
+    context: input.context ?? defaultContext(ticketType),
   };
   if (input.rawSign) {
     const issuer = context.issuers.get(context.config.defaultPermissionTicketIssuerSlug);
@@ -1435,7 +1543,7 @@ async function issueOpenToken(
     grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
     subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
     subject_token: mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes,
       periods,
       sensitiveMode,
@@ -1453,11 +1561,11 @@ async function issueStrictToken(
     grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
     subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
     subject_token: mintTicket({
-      subject: elenaMatchSubject(),
+      subject: elenaPatient(),
       scopes,
       periods,
       sensitiveMode,
-      cnf: { jkt: client.jwkThumbprint },
+      proofKeyBinding: { jkt: client.jwkThumbprint },
     }),
   }, client);
 }
@@ -1509,6 +1617,94 @@ async function postForm(url: string, body: Record<string, string>) {
     headers: { "content-type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(body),
   });
+}
+
+function normalizeSubject(subject: any) {
+  if (subject?.patient) return subject;
+  if (subject?.resourceType === "Patient") return { patient: subject };
+  if (subject?.type === "match") return { patient: subject.traits };
+  if (subject?.type === "reference") {
+    return {
+      patient: elenaPatient(),
+      recipient_record: {
+        reference: subject.reference,
+        type: "Patient",
+      },
+    };
+  }
+  if (subject?.type === "identifier") {
+    return {
+      patient: subject.traits ?? elenaPatient(),
+      recipient_record: {
+        identifier: subject.identifier?.[0],
+        type: "Patient",
+      },
+    };
+  }
+  return subject;
+}
+
+function projectScopesToPermissions(scopes: string[]) {
+  return scopes.map((scope) => {
+    const [baseScope, query] = scope.split("?", 2);
+    const resourceType = baseScope.match(/^[^/]+\/([A-Za-z*]+)\./)?.[1] ?? "*";
+    const permission: Record<string, unknown> = {
+      kind: "data",
+      resource_type: resourceType,
+      interactions: ["read", "search"],
+    };
+    if (query) {
+      const params = new URLSearchParams(query);
+      const category = params.get("category");
+      if (category) {
+        const [system, code] = category.includes("|")
+          ? category.split("|", 2)
+          : [undefined, category];
+        permission.category_any_of = [{
+          ...(system ? { system } : {}),
+          ...(code ? { code } : {}),
+        }];
+      }
+    }
+    return permission;
+  });
+}
+
+function normalizeDataPeriod(periods: Array<{ start?: string; end?: string }>) {
+  const [first] = periods;
+  if (!first || (!first.start && !first.end)) return undefined;
+  return {
+    start: first.start,
+    end: first.end,
+  };
+}
+
+function normalizeSourceOrganizations(
+  organizations?: Array<{ system?: string; value?: string; identifier?: Array<{ system?: string; value?: string }> }>,
+) {
+  return organizations?.map((organization) => organization.identifier?.[0] ?? {
+    system: organization.system,
+    value: organization.value,
+  });
+}
+
+function defaultContext(ticketType: string) {
+  if (ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE) {
+    return {
+      kind: "public-health" as const,
+      reportable_condition: { text: "Public health investigation" },
+    };
+  }
+  return { kind: "patient-access" as const };
+}
+
+function defaultRequester(ticketType: string) {
+  if (ticketType !== PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE) return undefined;
+  return {
+    resourceType: "Organization",
+    identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+    name: "Public Health Department",
+  };
 }
 
 async function expectTokenError(
