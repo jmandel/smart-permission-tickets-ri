@@ -12,6 +12,7 @@ import {
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
 import {
+  buildDefaultFrameworks,
   buildDemoUdapClients,
   DEFAULT_DEMO_UDAP_FRAMEWORK_URI,
   DEFAULT_DEMO_UDAP_RSA_CA_ID,
@@ -97,6 +98,95 @@ describe("mode surfaces", () => {
     } finally {
       context.config.publicBaseUrl = previousPublicBaseUrl;
       context.config.issuer = previousIssuer;
+    }
+  });
+
+  test("public-facing metadata and demo client surfaces honor configured public origin end to end", async () => {
+    const publicOrigin = "https://tickets.example.test";
+    const publicContext = createAppContext({
+      publicBaseUrl: publicOrigin,
+      issuer: publicOrigin,
+      frameworks: buildDefaultFrameworks(publicOrigin, "reference-demo"),
+    });
+    const publicServer = startServer(publicContext, 0);
+    const localOrigin = `http://127.0.0.1:${publicServer.port}`;
+    const assertPublicOnly = (body: unknown) => {
+      const serialized = JSON.stringify(body);
+      expect(serialized).toContain(publicOrigin);
+      expect(serialized).not.toContain(localOrigin);
+      expect(serialized).not.toContain("localhost");
+    };
+    try {
+      const bootstrap = await fetch(`${localOrigin}/demo/bootstrap`).then((response) => response.json());
+      assertPublicOnly(bootstrap);
+      expect(bootstrap.defaultTicketIssuer.issuerBaseUrl).toBe(`${publicOrigin}/issuer/reference-demo`);
+      expect(bootstrap.demoClientOptions.find((option: any) => option.type === "well-known")?.entityUri).toBe(`${publicOrigin}/demo/clients/well-known-alpha`);
+      expect(bootstrap.demoClientOptions.find((option: any) => option.type === "udap")?.entityUri).toBe(`${publicOrigin}${DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH}`);
+
+      const frameworkDoc = await fetch(`${localOrigin}/demo/frameworks/well-known-reference.json`).then((response) => response.json());
+      assertPublicOnly(frameworkDoc);
+      expect(frameworkDoc.clients[0].entityUri).toBe(`${publicOrigin}/demo/clients/well-known-alpha`);
+
+      const wellKnownClient = await fetch(`${localOrigin}/demo/clients/well-known-alpha`).then((response) => response.json());
+      assertPublicOnly(wellKnownClient);
+      expect(wellKnownClient.jwks_url).toBe(`${publicOrigin}/demo/clients/well-known-alpha/.well-known/jwks.json`);
+
+      const udapClient = await fetch(`${localOrigin}${DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH}`).then((response) => response.json());
+      assertPublicOnly(udapClient);
+      expect(udapClient.entity_uri).toBe(`${publicOrigin}${DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH}`);
+      expect(udapClient.certificate_san_uri).toBe(`${publicOrigin}${DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH}`);
+
+      const udapMetadata = await fetch(`${localOrigin}/fhir/.well-known/udap`).then((response) => response.json());
+      assertPublicOnly(udapMetadata);
+      expect(udapMetadata.registration_endpoint).toBe(`${publicOrigin}/register`);
+      const udapPayload = JSON.parse(Buffer.from(String(udapMetadata.signed_metadata).split(".")[1] ?? "", "base64url").toString("utf8"));
+      expect(udapPayload.iss).toBe(`${publicOrigin}/fhir`);
+
+      const networkSmartConfig = await fetch(`${localOrigin}/networks/reference/fhir/.well-known/smart-configuration`).then((response) => response.json());
+      assertPublicOnly(networkSmartConfig);
+      expect(networkSmartConfig.token_endpoint).toBe(`${publicOrigin}/networks/reference/token`);
+      expect(networkSmartConfig.fhir_base_url).toBe(`${publicOrigin}/networks/reference/fhir`);
+
+      const issuerMetadata = await fetch(`${localOrigin}/issuer/reference-demo`).then((response) => response.json());
+      assertPublicOnly(issuerMetadata);
+      expect(issuerMetadata.issuer).toBe(`${publicOrigin}/issuer/reference-demo`);
+      expect(issuerMetadata.sign_ticket_endpoint).toBe(`${publicOrigin}/issuer/reference-demo/sign-ticket`);
+
+      const signResponse = await fetch(`${localOrigin}/issuer/reference-demo/sign-ticket`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          iss: `${publicOrigin}/issuer/reference-demo`,
+          aud: publicOrigin,
+          exp: Math.floor(Date.now() / 1000) + 3600,
+          jti: crypto.randomUUID(),
+          ticket_type: NETWORK_PATIENT_ACCESS_TICKET_TYPE,
+          presenter_binding: {
+            key: { jkt: "public-origin-test-jkt" },
+          },
+          subject: {
+            patient: elenaPatient(),
+          },
+          access: {
+            permissions: [{
+              kind: "data",
+              resource_type: "Patient",
+              interactions: ["read"],
+            }],
+          },
+          context: { kind: "patient-access" },
+        }),
+      });
+      expect(signResponse.status).toBe(201);
+      const signedTicketBody = await signResponse.json();
+      assertPublicOnly(signedTicketBody);
+      expect(signedTicketBody.issuer).toBe(`${publicOrigin}/issuer/reference-demo`);
+      expect(signedTicketBody.jwks_uri).toBe(`${publicOrigin}/issuer/reference-demo/.well-known/jwks.json`);
+      const signedTicket = decodeEs256Jwt<any>(signedTicketBody.signed_ticket);
+      expect(signedTicket.payload.iss).toBe(`${publicOrigin}/issuer/reference-demo`);
+      expect(signedTicket.payload.aud).toBe(publicOrigin);
+    } finally {
+      publicServer.stop(true);
     }
   });
 

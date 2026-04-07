@@ -1,13 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import type { DemoHttpRequestArtifact, DemoHttpResponseArtifact } from "../../../shared/demo-events";
 
-import { buildFetchCurl, buildTokenExchangeCurl, describeClientPlan } from "../demo";
+import { buildFetchCurl } from "../demo";
 import { fetchJson } from "../lib/viewer-client";
 import {
   buildArtifactViewerHref,
-  buildDemoEventArtifactPayload,
   buildDemoEventSummary,
-  buildJwtArtifactPayload,
   decodeJwtArtifact,
   loadArtifactViewerPayload,
   renderArtifactText,
@@ -78,12 +76,6 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
   const launch = useViewerStore((state) => state.launch);
   const loading = useViewerStore((state) => state.loading);
   const error = useViewerStore((state) => state.error);
-  const sharedClient = useViewerStore((state) => state.sharedClient);
-  const networkSmartConfig = useViewerStore((state) => state.networkSmartConfig);
-  const networkTokenResponse = useViewerStore((state) => state.networkTokenResponse);
-  const networkTokenClaims = useViewerStore((state) => state.networkTokenClaims);
-  const networkIntrospection = useViewerStore((state) => state.networkIntrospection);
-  const networkRecordLocations = useViewerStore((state) => state.networkRecordLocations);
   const siteRuns = useViewerStore((state) => state.siteRuns);
   const queryPath = useViewerStore((state) => state.queryPath);
   const queryRunning = useViewerStore((state) => state.queryRunning);
@@ -222,6 +214,10 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       ),
     [siteRuns],
   );
+  const noteCount = useMemo(
+    () => aggregatedResources.filter((resource) => resource.resourceType === "DocumentReference").length,
+    [aggregatedResources],
+  );
   const selectedEncounterTypeMap = useMemo(
     () =>
       selectedEncounterTypeCounts.map((entry) => {
@@ -247,15 +243,6 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
       }),
     [selectedEncounterGroups, selectedEncounterNotes, selectedEncounterTypeCounts, siteStyles],
   );
-  const clientStory = useMemo(
-    () => (launch?.clientPlan ? describeClientPlan(launch.mode, launch.clientPlan, sharedClient?.clientId) : null),
-    [launch, sharedClient?.clientId],
-  );
-  const wellKnownClientPlan = launch?.clientPlan?.type === "well-known" ? launch.clientPlan : null;
-  const frameworkBackedClientPlan = launch?.clientPlan?.type === "well-known" || launch?.clientPlan?.type === "udap"
-    ? launch.clientPlan
-    : null;
-
   const handleToggleEncounterSelection = (encounterKey: string) => {
     // If the encounter is outside the visible window, expand the window to include it
     if (timelineScale) {
@@ -423,7 +410,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
             <p className="eyebrow">Health App</p>
             <h2>{launch.person.displayName}</h2>
             <p className="subtle viewer-target">
-              One signed ticket, {siteRuns.length} connected site{siteRuns.length !== 1 && "s"}, and a site-by-site token exchange trail.
+              Clinical data gathered from {siteRuns.length} connected site{siteRuns.length !== 1 && "s"} for review, comparison, and ad-hoc querying.
             </p>
           </div>
           <div className="button-row">
@@ -434,7 +421,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open protocol trace
+              View protocol trace
             </a>
             <button type="button" className="button" onClick={() => void navigator.clipboard.writeText(window.location.href)}>
               Copy app link
@@ -451,22 +438,16 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
             <strong>{siteRuns.length}</strong>
           </div>
           <div className="viewer-overview-item">
+            <span className="summary-label">Encounters</span>
+            <strong>{encounterDashboard.encounters.length}</strong>
+          </div>
+          <div className="viewer-overview-item">
             <span className="summary-label">Resources</span>
             <strong>{aggregatedResources.length} loaded</strong>
           </div>
-          <div className="viewer-overview-item viewer-overview-item-wide">
-            <span className="summary-label">Client</span>
-            <strong>
-              {sharedClient
-                ? sharedClient.clientName
-                : launch.mode === "anonymous" || launch.mode === "open"
-                  ? "Not required"
-                  : launch.clientPlan?.displayLabel ?? "Pending"}
-            </strong>
-          </div>
           <div className="viewer-overview-item">
-            <span className="summary-label">Flow</span>
-            <strong>{launch.mode === "anonymous" ? "Preview only" : "Per-site exchange"}</strong>
+            <span className="summary-label">Clinical notes</span>
+            <strong>{noteCount}</strong>
           </div>
         </div>
 
@@ -480,387 +461,39 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         )}
 
         <section className="subpanel viewer-section">
-          <h3>Authorization Artifacts</h3>
-          <p className="subtle">
-            Inspect the network-level authorization flow first, then the site-by-site exchanges that follow from it. Access-token claims and introspection responses include resolved presenter-binding and issuer-trust details when those checks are in play.
-          </p>
-          {clientStory && (
-            <>
-              <div className="summary-grid viewer-client-story-grid">
-                <div className="summary-card">
-                  <span className="summary-label">Client path</span>
-                  <strong>{clientStory.label}</strong>
-                </div>
-                <div className="summary-card">
-                  <span className="summary-label">Registration</span>
-                  <strong>{clientStory.registrationLabel}</strong>
-                </div>
-                <div className="summary-card">
-                  <span className="summary-label">Client id</span>
-                  <strong className="mono-value mono-wrap">{clientStory.effectiveClientId}</strong>
-                </div>
-                <div className="summary-card">
-                  <span className="summary-label">Ticket binding</span>
-                  <strong>{clientStory.ticketBinding.label}</strong>
-                </div>
-              </div>
-              <p className="subtle viewer-client-story-copy">{clientStory.whatThisDemonstrates}</p>
-            </>
-          )}
-          {error && <p className="error-text">{error}</p>}
-          <div className="artifact-toolbar">
-            {launch.signedTicket && (
-              <SplitAction
-                primary={{
-                  label: "Ticket",
-                  onSelect: () => {
-                    const signedTicket = launch.signedTicket!;
-                    openArtifactViewer(buildJwtArtifactPayload({
-                      title: "Signed Ticket JWT",
-                      jwt: signedTicket,
-                      metadata: buildJwtArtifactMetadata([
-                        clientStory?.ticketBinding
-                          ? { label: "Binding", value: clientStory.ticketBinding.label }
-                          : null,
-                        clientStory?.frameworkUri
-                          ? { label: "Framework", value: clientStory.frameworkUri }
-                          : null,
-                        clientStory?.entityUri
-                          ? { label: "Entity URI", value: clientStory.entityUri }
-                          : null,
-                      ]),
-                    }));
-                  },
-                }}
-                secondary={[
-                  ...(launch.ticketPayload
-                    ? [
-                        {
-                          label: "Open JWT ↗",
-                          onSelect: () => openArtifactViewer(buildJwtArtifactPayload({
-                            title: "Permission Ticket JWT",
-                            jwt: launch.signedTicket!,
-                            metadata: buildJwtArtifactMetadata([
-                              clientStory?.ticketBinding
-                                ? { label: "Binding", value: clientStory.ticketBinding.label }
-                                : null,
-                              clientStory?.ticketBinding?.rationale
-                                ? { label: "Rationale", value: clientStory.ticketBinding.rationale }
-                                : null,
-                              clientStory?.frameworkUri
-                                ? { label: "Framework", value: clientStory.frameworkUri }
-                                : null,
-                              clientStory?.entityUri
-                                ? { label: "Entity URI", value: clientStory.entityUri }
-                                : null,
-                            ]),
-                          })),
-                        },
-                        ...(clientStory
-                          ? [{
-                            label: "Binding summary ↗",
-                            onSelect: () => openArtifactViewer({
-                              title: "Ticket Binding Summary",
-                              content: {
-                                client_story: clientStory,
-                                ticket_binding: clientStory.ticketBinding,
-                                ticket_payload: launch.ticketPayload,
-                              },
-                            }),
-                          }]
-                          : []),
-                        ...(sharedClient
-                          ? [{
-                            label: "Token curl ↗",
-                            onSelect: () => openArtifactViewer({
-                              title: "Token Exchange cURL",
-                              content: {
-                                note: "Replace <private-key-jwt> with a freshly signed client assertion before running this command.",
-                                curl: buildTokenExchangeCurl(
-                                  launch.origin,
-                                  launch.network.authSurface,
-                                  launch.signedTicket!,
-                                  { clientId: sharedClient.clientId },
-                                  launch.proofJkt,
-                                ),
-                              },
-                              copyText: buildTokenExchangeCurl(
-                                launch.origin,
-                                launch.network.authSurface,
-                                launch.signedTicket!,
-                                { clientId: sharedClient.clientId },
-                                launch.proofJkt,
-                              ),
-                            }),
-                          }]
-                          : []),
-                      ]
-                    : []),
-                  {
-                    label: "Copy ticket",
-                    onSelect: () => void navigator.clipboard.writeText(launch.signedTicket!),
-                    feedbackLabel: "Copied",
-                  },
-                ]}
-              />
-            )}
-            {sharedClient && (
-              <SplitAction
-                primary={{
-                  label: "Client",
-                  onSelect: () => openArtifactViewer({ title: "Viewer Client Runtime", content: sharedClient }),
-                }}
-                secondary={[
-                  ...(clientStory
-                    ? [{
-                      label: "Client story ↗",
-                      onSelect: () => openArtifactViewer({ title: "Client Story", content: clientStory }),
-                    }]
-                    : []),
-                  ...(launch.clientPlan
-                    ? [{
-                      label: "Open client plan ↗",
-                      onSelect: () => openArtifactViewer({ title: "Viewer Client Plan", content: launch.clientPlan }),
-                    }]
-                    : []),
-                  ...(sharedClient.registrationRequest
-                    ? [{
-                      label: "Registration request ↗",
-                      onSelect: () => openArtifactViewer({ title: "Client Registration Request", content: sharedClient.registrationRequest }),
-                    }]
-                    : []),
-                  ...(sharedClient.registrationResponse
-                    ? [{
-                      label: "Registration response ↗",
-                      onSelect: () => openArtifactViewer({ title: "Client Registration Response", content: sharedClient.registrationResponse }),
-                    }]
-                    : []),
-                  ...(sharedClient.softwareStatement
-                    ? [{
-                      label: "Software statement ↗",
-                      onSelect: () => openArtifactViewer(buildJwtArtifactPayload({
-                        title: "UDAP Software Statement",
-                        jwt: sharedClient.softwareStatement!,
-                        metadata: buildJwtArtifactMetadata([
-                          sharedClient.clientId
-                            ? { label: "Registered client_id", value: sharedClient.clientId }
-                            : null,
-                        ]),
-                      })),
-                    }]
-                    : []),
-                  ...(frameworkBackedClientPlan?.framework.documentUrl
-                    ? [{
-                      label: "Framework doc ↗",
-                      onSelect: () => void inspectRemoteArtifact({
-                        title: `${frameworkBackedClientPlan.type === "udap" ? "UDAP" : "Well-Known"} Framework Document`,
-                        targetUrl: frameworkBackedClientPlan.framework.documentUrl!,
-                      }),
-                    }]
-                    : []),
-                  ...(frameworkBackedClientPlan?.entityUri
-                    ? [{
-                      label: "Client entity ↗",
-                      onSelect: () => void inspectRemoteArtifact({
-                        title: frameworkBackedClientPlan.type === "udap" ? "UDAP Client Entity" : "Well-Known Entity",
-                        targetUrl: frameworkBackedClientPlan.entityUri,
-                      }),
-                    }]
-                    : []),
-                  ...(wellKnownClientPlan?.jwksUrl
-                    ? [{
-                      label: "Entity JWKS ↗",
-                      onSelect: () => void inspectRemoteArtifact({
-                        title: "Well-Known Entity JWKS",
-                        targetUrl: wellKnownClientPlan.jwksUrl!,
-                      }),
-                    }]
-                    : []),
-                  {
-                    label: "Copy client JSON",
-                    onSelect: () => void navigator.clipboard.writeText(JSON.stringify(sharedClient, null, 2)),
-                    feedbackLabel: "Copied",
-                  },
-                ]}
-              />
-            )}
+          <div className="section-header">
+            <div>
+              <h3>Clinical Data by Site</h3>
+              <p className="subtle">
+                Each site shows whether it is connected and how many resources have loaded so far.
+              </p>
+            </div>
           </div>
-          <div className="artifact-matrix-wrap">
-            <table className="compact-table artifact-matrix">
-              <thead>
-                <tr>
-                  <th>Site</th>
-                  <th>SMART discovery</th>
-                  <th>Token response</th>
-                  <th>Introspection</th>
-                  <th>Access token</th>
-                  <th>Patient / RLS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="artifact-band-row">
-                  <th colSpan={6}>Network-level RLS</th>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="artifact-site-cell artifact-network-cell">
-                      <strong>{launch.network.name}</strong>
-                      <span className="subtle mono-value">{launch.network.authSurface.fhirBasePath}</span>
-                    </div>
-                  </td>
-                  <td>
-                    {renderArtifactCell(
-                      "Network SMART Discovery",
-                      networkSmartConfig,
-                      networkSmartConfig
-                        ? {
-                            metadata: buildInspectionMetadata({
-                              url: `${launch.origin}${launch.network.authSurface.smartConfigPath}`,
-                              curl: buildFetchCurl(`${launch.origin}${launch.network.authSurface.smartConfigPath}`),
-                            }),
-                          }
-                        : undefined,
-                    )}
-                  </td>
-                  <td>{renderArtifactCell("Network Token Response", networkTokenResponse)}</td>
-                  <td>{renderArtifactCell("Network Introspection", networkIntrospection)}</td>
-                  <td>
-                    {networkTokenResponse?.access_token ? (
-                      <SplitAction
-                        primary={{
-                          label: "Open",
-                          onSelect: () =>
-                            openArtifactViewer({
-                              title: "Network Access Token",
-                              subtitle: launch.network.authSurface.tokenPath,
-                              content: {
-                                access_token: networkTokenResponse.access_token,
-                                claims: networkTokenClaims,
-                              },
-                              copyText: networkTokenResponse.access_token,
-                            }),
-                        }}
-                        secondary={[
-                          {
-                            label: "Copy token",
-                            onSelect: () => void navigator.clipboard.writeText(networkTokenResponse.access_token),
-                            feedbackLabel: "Copied",
-                          },
-                        ]}
-                      />
-                    ) : (
-                      <span className="subtle">Not issued</span>
-                    )}
-                  </td>
-                  <td>
-                    {renderArtifactCell(
-                      "Record Location Resolution",
-                      networkRecordLocations,
-                      networkTokenResponse?.access_token
-                        ? {
-                            label: "RLS result",
-                            metadata: buildInspectionMetadata({
-                              url: `${launch.origin}${launch.network.authSurface.fhirBasePath}/$resolve-record-locations`,
-                              curl: buildPostJsonCurl(
-                                `${launch.origin}${launch.network.authSurface.fhirBasePath}/$resolve-record-locations`,
-                                { resourceType: "Parameters" },
-                                networkTokenResponse.access_token,
-                                launch.proofJkt,
-                              ),
-                            }),
-                          }
-                        : undefined,
-                    )}
-                  </td>
-                </tr>
-                <tr className="artifact-band-row">
-                  <th colSpan={6}>Site-level access</th>
-                </tr>
-                {siteRuns.map((run) => (
-                  <tr key={`${run.site.siteSlug}-artifact-row`}>
-                    <td>
-                      <div className="artifact-site-stack" style={siteListItemStyle(siteStyles[run.site.siteSlug])}>
-                        <div className="artifact-site-cell">
-                          <strong>{run.site.orgName}</strong>
-                        </div>
-                        <div className="artifact-site-meta subtle">
-                          <span className="state-pill">{run.site.jurisdiction || "No state"}</span>
-                          <span className={`session-phase session-phase-${run.phase}`}>{humanizePhase(run.phase)}</span>
-                          <span><strong>{run.resources.length}</strong> loaded</span>
-                          <span><strong>{run.queryErrors.length}</strong> skipped</span>
-                        </div>
-                        {run.error && <p className="error-text artifact-site-error">{run.error}</p>}
+          {error && <p className="error-text">{error}</p>}
+          <div className="viewer-site-card-grid">
+            {siteRuns.map((run) => {
+              const siteStatus = clinicalSiteStatus(run);
+              return (
+                <article key={run.site.siteSlug} className="viewer-site-card">
+                  <div className="viewer-site-card-head">
+                    <div>
+                      <h4>{run.site.orgName}</h4>
+                      <div className="viewer-site-card-meta">
+                        {run.site.jurisdiction && <span className="state-pill">{run.site.jurisdiction}</span>}
+                        <span className={`viewer-site-status viewer-site-status-${siteStatus}`}>{clinicalSiteStatusLabel(siteStatus)}</span>
+                        <span className="subtle viewer-site-card-resource-count">{run.resources.length} resources</span>
                       </div>
-                    </td>
-                    <td>{renderArtifactCell(`SMART discovery · ${run.site.orgName}`, run.smartConfig)}</td>
-                    <td>{renderArtifactCell(`Token response · ${run.site.orgName}`, run.tokenResponse)}</td>
-                    <td>{renderArtifactCell(`Introspection · ${run.site.orgName}`, run.introspection)}</td>
-                    <td>
-                      {run.tokenResponse?.access_token ? (
-                        <SplitAction
-                          primary={{
-                            label: "Open",
-                            onSelect: () =>
-                              openArtifactViewer({
-                                title: `Access token · ${run.site.orgName}`,
-                                subtitle: run.site.authSurface.tokenPath,
-                                content: {
-                                  access_token: run.tokenResponse?.access_token,
-                                  claims: run.tokenClaims,
-                                },
-                                copyText: run.tokenResponse?.access_token,
-                              }),
-                          }}
-                          secondary={[
-                            {
-                              label: "Copy token",
-                              onSelect: () => void navigator.clipboard.writeText(run.tokenResponse!.access_token),
-                              feedbackLabel: "Copied",
-                            },
-                          ]}
-                        />
-                      ) : (
-                        <span className="subtle">Not issued</span>
-                      )}
-                    </td>
-                    <td>
-                      <SplitAction
-                          primary={{
-                            label: "Patient",
-                            onSelect: run.patientId
-                              ? () => {
-                                  const previewUrl = `${launch.origin}${run.site.authSurface.previewFhirBasePath}/Patient/${run.patientId}`;
-                                  return void inspectRemoteArtifact({
-                                    title: `${run.site.orgName} preview patient`,
-                                    subtitle: run.site.authSurface.previewFhirBasePath,
-                                    targetUrl: previewUrl,
-                                    metadata: buildInspectionMetadata({
-                                      url: previewUrl,
-                                      curl: buildFetchCurl(previewUrl),
-                                    }),
-                                  });
-                                }
-                              : undefined,
-                            disabled: !run.patientId,
-                          }}
-                          secondary={[
-                            {
-                              label: "Copy preview curl",
-                              onSelect: () =>
-                                run.patientId
-                                  ? void navigator.clipboard.writeText(
-                                      buildFetchCurl(`${launch.origin}${run.site.authSurface.previewFhirBasePath}/Patient/${run.patientId}`),
-                                    )
-                                  : undefined,
-                              feedbackLabel: "Copied",
-                            },
-                        ]}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </div>
+                  </div>
+
+                  {run.error ? (
+                    <p className="error-text">{run.error}</p>
+                  ) : (
+                    siteStatus === "loading" ? <p className="subtle">Loading clinical resources…</p> : null
+                  )}
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -1931,30 +1564,26 @@ function inferPayloadCounts(payload: any) {
   return { shownCount: 1, totalCount: 1 };
 }
 
-function humanizePhase(phase: ViewerSiteRun["phase"]) {
-  switch (phase) {
-    case "loading-config":
-      return "Loading SMART config";
-    case "registering-client":
-      return "Registering client";
-    case "exchanging-token":
-      return "Exchanging ticket";
-    case "introspecting-token":
-      return "Introspecting token";
-    case "loading-data":
-      return "Loading site data";
+function formatResultCounts(shownCount: number, totalCount: number) {
+  if (totalCount > shownCount) return `${shownCount} shown · ${totalCount} total`;
+  return `${shownCount} result${shownCount !== 1 ? "s" : ""}`;
+}
+
+function clinicalSiteStatus(run: ViewerSiteRun) {
+  if (run.error || run.phase === "error") return "error";
+  if (run.phase === "ready" || run.resources.length > 0) return "ready";
+  return "loading";
+}
+
+function clinicalSiteStatusLabel(status: ReturnType<typeof clinicalSiteStatus>) {
+  switch (status) {
     case "ready":
       return "Ready";
     case "error":
       return "Error";
     default:
-      return "Idle";
+      return "Loading";
   }
-}
-
-function formatResultCounts(shownCount: number, totalCount: number) {
-  if (totalCount > shownCount) return `${shownCount} shown · ${totalCount} total`;
-  return `${shownCount} result${shownCount !== 1 ? "s" : ""}`;
 }
 
 function renderSummaryParagraphs(summary: string) {
@@ -1970,10 +1599,6 @@ function firstParagraph(text: string) {
     .split(/\n\s*\n/g)
     .map((paragraph) => paragraph.trim())
     .find(Boolean) ?? text.trim();
-}
-
-function buildJwtArtifactMetadata(entries: Array<{ label: string; value: string } | null>) {
-  return entries.filter((entry): entry is { label: string; value: string } => Boolean(entry));
 }
 
 function openArtifactViewer(payload: ArtifactViewerPayload) {
@@ -2083,29 +1708,6 @@ function buildClinicalArtifactPayload(
   };
 }
 
-function renderArtifactCell(
-  title: string,
-  content: unknown,
-  options?: { metadata?: Array<{ label: string; value: string }>; copyText?: string; label?: string },
-) {
-  if (!content) return <span className="subtle">Not available</span>;
-  return (
-    <SplitAction
-      primary={{
-        label: options?.label ?? "Open",
-        onSelect: () => openArtifactViewer({ title, content, metadata: options?.metadata, copyText: options?.copyText }),
-      }}
-      secondary={[
-        {
-          label: "Copy",
-          onSelect: () => void navigator.clipboard.writeText(options?.copyText ?? (typeof content === "string" ? content : JSON.stringify(content, null, 2))),
-          feedbackLabel: "Copied",
-        },
-      ]}
-    />
-  );
-}
-
 function buildInspectionMetadata(input: {
   url: string;
   curl: string;
@@ -2172,17 +1774,6 @@ function isDemoHttpResponseArtifact(value: unknown): value is DemoHttpResponseAr
       && typeof (value as DemoHttpResponseArtifact).status === "number"
       && typeof (value as DemoHttpResponseArtifact).headers === "object",
   );
-}
-
-function buildPostJsonCurl(url: string, body: unknown, accessToken?: string | null, proofJkt?: string | null) {
-  const headers = [
-    accessToken ? `-H 'authorization: Bearer ${accessToken}'` : "",
-    proofJkt ? `-H 'x-client-jkt: ${proofJkt}'` : "",
-    `-H 'content-type: application/json'`,
-  ]
-    .filter(Boolean)
-    .join(" ");
-  return `curl -X POST ${headers} --data '${JSON.stringify(body)}' '${url}'`;
 }
 
 function extractDocumentReferenceText(content: unknown) {

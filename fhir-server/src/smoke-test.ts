@@ -113,19 +113,27 @@ try {
     assert(body.resourceType === "CapabilityStatement", "metadata must be CapabilityStatement");
   });
 
-  const registration = await postJson(`${origin}/register`, {
+  const networkRegistration = await postJson(`${origin}/networks/reference/register`, {
     client_name: "Smoke Test Client",
     token_endpoint_auth_method: "private_key_jwt",
     jwk: clientBootstrap.publicJwk,
   });
-  assert(registration.client_id, "dynamic registration client_id missing");
-  assert(registration.jwk_thumbprint, "dynamic registration thumbprint missing");
+  assert(networkRegistration.client_id, "dynamic registration client_id missing");
+  assert(networkRegistration.jwk_thumbprint, "dynamic registration thumbprint missing");
+
+  const rootRegistration = await postJson(`${origin}/register`, {
+    client_name: "Smoke Test Root Client",
+    token_endpoint_auth_method: "private_key_jwt",
+    jwk: clientBootstrap.publicJwk,
+  });
+  assert(rootRegistration.client_id, "root client registration client_id missing");
+  assert(rootRegistration.jwk_thumbprint, "root client registration thumbprint missing");
 
   const networkToken = await postFormJsonWithClient(`${origin}/networks/reference/token`, {
     grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
     subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
     subject_token: signedTicketBody.signed_ticket,
-  }, registration.client_id, clientBootstrap.privateJwk, clientBootstrap.thumbprint);
+  }, networkRegistration.client_id, clientBootstrap.privateJwk, clientBootstrap.thumbprint);
   assert(typeof networkToken.access_token === "string", "network token exchange should issue an access token");
 
   const networkLocations = await postJsonWithBearer(
@@ -209,9 +217,9 @@ try {
     sensitiveData: "exclude",
     presenterBinding: { key: { jkt: clientBootstrap.thumbprint } },
   });
-  const strictToken = await exchangeStrictToken(origin, registration.client_id, clientBootstrap.privateJwk, strictTicket);
+  const strictToken = await exchangeStrictToken(origin, rootRegistration.client_id, clientBootstrap.privateJwk, strictTicket);
 
-  const introspection = await introspect(origin, registration.client_id, clientBootstrap.privateJwk, strictToken.access_token, clientBootstrap.thumbprint);
+  const introspection = await introspect(origin, rootRegistration.client_id, clientBootstrap.privateJwk, strictToken.access_token, clientBootstrap.thumbprint);
   assert(introspection.active === true, "strict access token should introspect active");
   assert(introspection.patient, "introspection should return patient");
 

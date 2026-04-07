@@ -1471,6 +1471,74 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   line-height: 1.25;
 }
 
+.viewer-site-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.viewer-site-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.viewer-site-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.viewer-site-card-head h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.viewer-site-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.viewer-site-card-resource-count {
+  align-self: center;
+}
+
+.viewer-site-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.viewer-site-status-loading {
+  background: #fef7e0;
+  color: #b06000;
+  border: 1px solid #f6c453;
+}
+
+.viewer-site-status-ready {
+  background: #e6f4ea;
+  color: #137333;
+  border: 1px solid #81c995;
+}
+
+.viewer-site-status-error {
+  background: #fce8e6;
+  color: #a50e0e;
+  border: 1px solid #f28b82;
+}
+
 .site-session-meta-row {
   display: flex;
   align-items: center;
@@ -2604,6 +2672,34 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .artifact-event-summary-head h3 {
   margin: 0 0 6px;
+}
+
+.artifact-event-summary .artifact-metadata-grid {
+  gap: 10px;
+}
+
+.artifact-event-summary .artifact-metadata-item {
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+.artifact-event-summary-label {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.artifact-event-summary-value {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .artifact-event-shortcuts {

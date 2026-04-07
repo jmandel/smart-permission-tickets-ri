@@ -624,8 +624,8 @@ function TraceEventSummarySection({
       <dl className="artifact-metadata-grid">
         {summary.fields.map((entry) => (
           <div key={`${entry.label}:${entry.value}`} className="artifact-metadata-item">
-            <dt>{entry.label}</dt>
-            <dd className="mini-definition-value mono-wrap">{entry.value}</dd>
+            <dt className="artifact-event-summary-label">{entry.label}</dt>
+            <dd className="artifact-event-summary-value">{entry.value}</dd>
           </div>
         ))}
       </dl>
