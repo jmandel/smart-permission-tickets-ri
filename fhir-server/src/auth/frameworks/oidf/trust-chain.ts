@@ -50,6 +50,10 @@ export type VerifiedTrustChain = {
   leaf: ParsedEntityStatement;
   anchor: ParsedEntityStatement;
   leafMetadata: EntityMetadata;
+  /**
+   * Ordered from closest-to-leaf upward.
+   * Consumers that apply policy top-down per OIDF 6.1.4.2 must reverse this list.
+   */
   metadataPolicies: Array<{
     issuer: string;
     subject: string;

@@ -70,6 +70,19 @@ describe("OIDF trust chain validation", () => {
       .rejects.toThrow("must target");
   });
 
+  test("missing authority_hints invalidates the chain", async () => {
+    const fixture = await makeTrustChainFixture({
+      leaf: {
+        configOverrides: {
+          authority_hints: [],
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, fixture.anchor.entityId, fixture.now))
+      .rejects.toThrow("authority_hints");
+  });
+
   test("malformed trust_chain payload is rejected", async () => {
     const fixture = await makeTrustChainFixture();
 
