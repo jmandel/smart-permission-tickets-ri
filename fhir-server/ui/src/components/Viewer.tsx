@@ -425,7 +425,11 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
           <div className="viewer-banner-identity">
             <div className="viewer-banner-avatar" aria-hidden="true">PT</div>
             <div className="viewer-banner-copy">
-              <p className="eyebrow">Health App Viewer</p>
+              <div className="viewer-banner-eyebrow">
+                <a className="viewer-banner-back-link" href="/">← Workbench</a>
+                <span className="viewer-banner-eyebrow-separator" aria-hidden="true">·</span>
+                <span className="eyebrow viewer-banner-eyebrow-label">Health App Viewer</span>
+              </div>
               <h2>{viewerPatientBannerTitle(patientBanner)}</h2>
               {(patientBanner.birthDate || patientBanner.gender || patientBanner.mrIdentifier) && (
                 <p className="subtle viewer-patient-banner-meta">
@@ -442,24 +446,35 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
             </div>
           </div>
           <div className="viewer-banner-actions">
-            <div className="button-row viewer-banner-primary-actions">
-              <a className="action-link button" href="/">Back to workbench</a>
-              <a
-                className="action-link button"
-                href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View protocol trace
-              </a>
-            </div>
             <details className="viewer-more-actions">
-              <summary className="button">More</summary>
-              <div className="viewer-more-actions-menu">
-                <button type="button" className="button" onClick={() => void navigator.clipboard.writeText(window.location.href)}>
+              <summary className="viewer-banner-menu-trigger" aria-label="Viewer actions">
+                <span aria-hidden="true">⋯</span>
+              </summary>
+              <div className="viewer-more-actions-menu" role="menu">
+                <a
+                  className="viewer-more-actions-item"
+                  href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="menuitem"
+                >
+                  View protocol trace
+                </a>
+                <div className="viewer-more-actions-divider" role="separator" />
+                <button
+                  type="button"
+                  className="viewer-more-actions-item"
+                  role="menuitem"
+                  onClick={() => void navigator.clipboard.writeText(window.location.href)}
+                >
                   Copy app link
                 </button>
-                <button type="button" className="button" onClick={() => window.location.reload()}>
+                <button
+                  type="button"
+                  className="viewer-more-actions-item"
+                  role="menuitem"
+                  onClick={() => window.location.reload()}
+                >
                   Reload app
                 </button>
               </div>
