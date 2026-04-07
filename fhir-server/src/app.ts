@@ -151,16 +151,24 @@ function buildFrameworkRegistry(
         ...framework,
         oidf: framework.oidf
           ? {
-              ...framework.oidf,
-              trustAnchorEntityId: oidfTopology.trustAnchorEntityId,
-              trustAnchorJwks: [oidfTopology.entities.anchor.publicJwk],
-              appNetworkEntityId: oidfTopology.appNetworkEntityId,
-              providerNetworkEntityId: oidfTopology.providerNetworkEntityId,
-              demoAppEntityId: oidfTopology.demoAppEntityId,
-              providerSiteEntityIds: oidfTopology.providerSiteEntityIds,
-              ticketIssuerEntityId: oidfTopology.ticketIssuerEntityId,
-              ticketIssuerUrl: oidfTopology.ticketIssuerUrl,
-              trustMarkType: oidfTopology.trustMarkType,
+              trustAnchors: [
+                {
+                  entityId: oidfTopology.trustAnchorEntityId,
+                  jwks: [oidfTopology.entities.anchor.publicJwk],
+                },
+              ],
+              trustedLeaves: [
+                {
+                  entityId: oidfTopology.demoAppEntityId,
+                  usage: "client",
+                },
+                {
+                  entityId: oidfTopology.ticketIssuerEntityId,
+                  usage: "issuer",
+                  expectedIssuerUrl: oidfTopology.ticketIssuerUrl,
+                  requiredTrustMarkType: oidfTopology.trustMarkType,
+                },
+              ],
             }
           : undefined,
       }

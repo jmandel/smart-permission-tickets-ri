@@ -30,6 +30,20 @@ export type UdapCertificateAuthority = {
   privateKeyPem: string;
 };
 
+export type OidfTrustedAnchor = {
+  entityId: string;
+  jwks: JsonWebKey[];
+};
+
+export type OidfTrustedLeafUsage = "client" | "issuer" | "both";
+
+export type OidfTrustedLeaf = {
+  entityId: string;
+  usage: OidfTrustedLeafUsage;
+  expectedIssuerUrl?: string;
+  requiredTrustMarkType?: string;
+};
+
 export type FrameworkClientBinding = {
   method: "framework_client";
   framework: string;
@@ -61,15 +75,8 @@ export type FrameworkDefinition = {
     certificateAuthorities?: UdapCertificateAuthority[];
   };
   oidf?: {
-    trustAnchorEntityId: string;
-    trustAnchorJwks?: JsonWebKey[];
-    appNetworkEntityId: string;
-    providerNetworkEntityId: string;
-    demoAppEntityId: string;
-    providerSiteEntityIds: Record<string, string>;
-    ticketIssuerEntityId: string;
-    ticketIssuerUrl: string;
-    trustMarkType: string;
+    trustAnchors: OidfTrustedAnchor[];
+    trustedLeaves: OidfTrustedLeaf[];
   };
 };
 

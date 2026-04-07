@@ -373,14 +373,24 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
         entityUri: oidfProviderNetworkEntityId,
       },
       oidf: {
-        trustAnchorEntityId: oidfAnchorEntityId,
-        appNetworkEntityId: oidfAppNetworkEntityId,
-        providerNetworkEntityId: oidfProviderNetworkEntityId,
-        demoAppEntityId: oidfDemoAppEntityId,
-        providerSiteEntityIds: {},
-        ticketIssuerEntityId: oidfTicketIssuerEntityId,
-        ticketIssuerUrl: issuerUrl,
-        trustMarkType: oidfTrustMarkType,
+        trustAnchors: [
+          {
+            entityId: oidfAnchorEntityId,
+            jwks: [],
+          },
+        ],
+        trustedLeaves: [
+          {
+            entityId: oidfDemoAppEntityId,
+            usage: "client",
+          },
+          {
+            entityId: oidfTicketIssuerEntityId,
+            usage: "issuer",
+            expectedIssuerUrl: issuerUrl,
+            requiredTrustMarkType: oidfTrustMarkType,
+          },
+        ],
       },
     },
   ];

@@ -63,8 +63,9 @@ export class OidfFrameworkResolver implements FrameworkResolver {
   async resolveIssuerTrust(_issuerUrl: string): Promise<ResolvedIssuerTrust | null> {
     const oidfFrameworks = this.frameworks.filter((framework) => framework.frameworkType === "oidf" && framework.supportsIssuerTrust && framework.oidf);
     for (const framework of oidfFrameworks) {
-      if (framework.oidf?.ticketIssuerUrl !== _issuerUrl) continue;
-      return this.resolveIssuerTrustAgainstFramework(framework, _issuerUrl);
+      const trustedLeaf = findTrustedIssuerLeaf(framework, _issuerUrl);
+      if (!trustedLeaf) continue;
+      return this.resolveIssuerTrustAgainstFramework(framework, _issuerUrl, trustedLeaf);
     }
     return null;
   }
@@ -81,10 +82,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
 
-    const verifiedChain = await verifyTrustChain(trustChain, {
-      expectedAnchor: oidf.trustAnchorEntityId,
-      trustedAnchorJwks: requiredTrustedAnchorJwks(oidf),
-    });
+    const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(trustChain, oidf);
     if (verifiedChain.leaf.entityId !== clientId) {
       throw new Error(`OIDF client_id ${clientId} does not match trust-chain leaf ${verifiedChain.leaf.entityId}`);
     }
@@ -136,24 +134,25 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     );
   }
 
-  private async resolveIssuerTrustAgainstFramework(framework: FrameworkDefinition, issuerUrl: string): Promise<ResolvedIssuerTrust> {
+  private async resolveIssuerTrustAgainstFramework(
+    framework: FrameworkDefinition,
+    issuerUrl: string,
+    trustedLeaf: NonNullable<FrameworkDefinition["oidf"]>["trustedLeaves"][number],
+  ): Promise<ResolvedIssuerTrust> {
     const oidf = framework.oidf;
     if (!oidf) {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
 
     const trustChain = await fetchTrustChain(
-      oidf.ticketIssuerEntityId,
-      oidf.trustAnchorEntityId,
+      trustedLeaf.entityId,
+      firstTrustedAnchor(oidf).entityId,
       this.config,
       this.fetchImpl,
     );
-    const verifiedChain = await verifyTrustChain(trustChain, {
-      expectedAnchor: oidf.trustAnchorEntityId,
-      trustedAnchorJwks: requiredTrustedAnchorJwks(oidf),
-    });
-    if (verifiedChain.leaf.entityId !== oidf.ticketIssuerEntityId) {
-      throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${oidf.ticketIssuerEntityId}`);
+    const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(trustChain, oidf);
+    if (verifiedChain.leaf.entityId !== trustedLeaf.entityId) {
+      throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${trustedLeaf.entityId}`);
     }
 
     const resolved = applyMetadataPolicy(verifiedChain);
@@ -162,9 +161,18 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF issuer_url ${String(resolvedIssuerUrl ?? "")} does not match ${issuerUrl}`);
     }
 
-    const providerNetworkStatement = verifiedChain.subordinateStatements.find((statement) => statement.payload.sub === oidf.providerNetworkEntityId);
-    if (!providerNetworkStatement) {
-      throw new Error(`OIDF trust chain does not endorse provider network ${oidf.providerNetworkEntityId}`);
+    const trustMarkType = trustedLeaf.requiredTrustMarkType;
+    if (!trustMarkType) {
+      throw new Error(`OIDF issuer leaf ${trustedLeaf.entityId} is missing requiredTrustMarkType`);
+    }
+
+    const immediateSuperiorEntityId = verifiedChain.subordinateStatements[0]?.payload.iss;
+    if (typeof immediateSuperiorEntityId !== "string" || !immediateSuperiorEntityId) {
+      throw new Error("OIDF issuer trust chain is missing an immediate superior for trust-mark verification");
+    }
+    const trustMarkIssuerJwks = findStatementJwksForEntity(verifiedChain, immediateSuperiorEntityId);
+    if (!trustMarkIssuerJwks.length) {
+      throw new Error(`OIDF trust chain does not expose jwks for trust-mark issuer ${immediateSuperiorEntityId}`);
     }
 
     const trustMarks = verifiedChain.leaf.payload.trust_marks;
@@ -177,10 +185,10 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     for (const trustMark of trustMarks) {
       try {
         verifiedTrustMark = await verifyTrustMark(trustMark, {
-          issuerEntityId: oidf.providerNetworkEntityId,
-          subjectEntityId: oidf.ticketIssuerEntityId,
-          expectedTrustMarkType: oidf.trustMarkType,
-          issuerJwks: providerNetworkStatement.payload.jwks?.keys ?? [],
+          issuerEntityId: immediateSuperiorEntityId,
+          subjectEntityId: trustedLeaf.entityId,
+          expectedTrustMarkType: trustMarkType,
+          issuerJwks: trustMarkIssuerJwks,
         });
         break;
       } catch (error) {
@@ -371,9 +379,57 @@ function rewriteSelfFetchUrl(targetUrl: string, publicBaseUrl: string, internalB
   return `${internalBase.origin}${target.pathname}${target.search}`;
 }
 
-function requiredTrustedAnchorJwks(oidf: NonNullable<FrameworkDefinition["oidf"]>) {
-  if (!Array.isArray(oidf.trustAnchorJwks) || oidf.trustAnchorJwks.length === 0) {
+function firstTrustedAnchor(oidf: NonNullable<FrameworkDefinition["oidf"]>) {
+  const anchor = oidf.trustAnchors[0];
+  if (!anchor) {
+    throw new Error("OIDF framework is missing configured trust anchors");
+  }
+  return anchor;
+}
+
+async function verifyTrustChainAgainstConfiguredAnchors(
+  trustChain: string[],
+  oidf: NonNullable<FrameworkDefinition["oidf"]>,
+) {
+  if (!Array.isArray(oidf.trustAnchors) || oidf.trustAnchors.length === 0) {
+    throw new Error("OIDF framework is missing configured trust anchors");
+  }
+  let lastError: Error | null = null;
+  for (const trustAnchor of oidf.trustAnchors) {
+    if (!Array.isArray(trustAnchor.jwks) || trustAnchor.jwks.length === 0) {
+      continue;
+    }
+    try {
+      return await verifyTrustChain(trustChain, {
+        expectedAnchor: trustAnchor.entityId,
+        trustedAnchorJwks: trustAnchor.jwks,
+      });
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+    }
+  }
+  if (!lastError) {
     throw new Error("OIDF framework is missing configured trust anchor jwks");
   }
-  return oidf.trustAnchorJwks;
+  throw lastError;
+}
+
+function findTrustedIssuerLeaf(
+  framework: FrameworkDefinition,
+  issuerUrl: string,
+) {
+  return framework.oidf?.trustedLeaves.find((leaf) => (
+    (leaf.usage === "issuer" || leaf.usage === "both")
+    && leaf.expectedIssuerUrl === issuerUrl
+  )) ?? null;
+}
+
+function findStatementJwksForEntity(
+  verifiedChain: VerifiedTrustChain,
+  entityId: string,
+) {
+  if (verifiedChain.anchor.entityId === entityId) {
+    return verifiedChain.anchor.payload.jwks?.keys ?? [];
+  }
+  return verifiedChain.subordinateStatements.find((statement) => statement.payload.sub === entityId)?.payload.jwks?.keys ?? [];
 }

@@ -162,11 +162,24 @@ describe("OIDF demo topology", () => {
     expect(oidfFramework?.framework).toBe(DEFAULT_DEMO_OIDF_FRAMEWORK_URI);
     expect(oidfFramework?.supportsClientAuth).toBe(true);
     expect(oidfFramework?.supportsIssuerTrust).toBe(true);
-    expect(oidfFramework?.oidf?.trustAnchorEntityId).toBe(`${context.config.publicBaseUrl}/federation/anchor`);
-    expect(Object.keys(oidfFramework?.oidf?.providerSiteEntityIds ?? {})).toEqual(
-      context.store.listSiteSummaries().map((site) => site.siteSlug).sort(),
-    );
-    expect(oidfFramework?.oidf?.ticketIssuerUrl).toBe(`${context.config.publicBaseUrl}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
+    expect(oidfFramework?.oidf?.trustAnchors).toEqual([
+      {
+        entityId: `${context.config.publicBaseUrl}/federation/anchor`,
+        jwks: [context.oidfTopology.entities.anchor.publicJwk],
+      },
+    ]);
+    expect(oidfFramework?.oidf?.trustedLeaves).toEqual([
+      {
+        entityId: context.oidfTopology.demoAppEntityId,
+        usage: "client",
+      },
+      {
+        entityId: context.oidfTopology.ticketIssuerEntityId,
+        usage: "issuer",
+        expectedIssuerUrl: `${context.config.publicBaseUrl}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        requiredTrustMarkType: context.oidfTopology.trustMarkType,
+      },
+    ]);
   });
 
   test("demo bootstrap publishes an OIDF client option with a trust chain", async () => {
