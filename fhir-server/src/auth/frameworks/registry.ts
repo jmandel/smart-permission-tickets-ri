@@ -14,9 +14,10 @@ export class FrameworkRegistry {
     clients: ClientRegistry,
     config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
     fetchImpl: typeof fetch = fetch,
+    resolverOverrides?: FrameworkResolver[],
   ) {
     this.frameworks = frameworks;
-    this.resolvers = [
+    this.resolvers = resolverOverrides ?? [
       new WellKnownFrameworkResolver(frameworks, config, fetchImpl),
       new UdapFrameworkResolver(frameworks, clients),
     ];
@@ -27,6 +28,11 @@ export class FrameworkRegistry {
   }
 
   async authenticateClientAssertion(clientId: string, assertionJwt: string, tokenEndpointUrl: string): Promise<AuthenticatedClientIdentity | null> {
+    const joseHeader = decodeJoseProtectedHeader(assertionJwt);
+    for (const resolver of this.resolvers) {
+      if (!resolver.matchesAssertion?.(clientId, joseHeader)) continue;
+      return resolver.authenticateClientAssertion(clientId, assertionJwt, tokenEndpointUrl);
+    }
     for (const resolver of this.resolvers) {
       if (!resolver.matchesClientId(clientId)) continue;
       return resolver.authenticateClientAssertion(clientId, assertionJwt, tokenEndpointUrl);
@@ -56,5 +62,19 @@ export class FrameworkRegistry {
     return this.frameworks.some(
       (framework) => framework.framework === frameworkUri && typeof framework.localAudienceMembership?.entityUri === "string" && !!framework.localAudienceMembership.entityUri,
     );
+  }
+}
+
+export function decodeJoseProtectedHeader(jwt: string): Record<string, unknown> {
+  const [encodedHeader = ""] = jwt.split(".", 1);
+  if (!encodedHeader) return {};
+  try {
+    const base64 = encodedHeader.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = base64 + "=".repeat((4 - (base64.length % 4)) % 4);
+    const json = Buffer.from(padded, "base64").toString("utf8");
+    const parsed = JSON.parse(json);
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed as Record<string, unknown> : {};
+  } catch {
+    return {};
   }
 }

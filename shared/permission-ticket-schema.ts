@@ -39,7 +39,7 @@ export const RestInteractionValues = [
 
 export const RestInteractionSchema = z.enum(RestInteractionValues);
 export const SensitiveDataPolicySchema = z.enum(["exclude", "include"]);
-export const FrameworkTypeSchema = z.enum(["well-known", "udap"]);
+export const FrameworkTypeSchema = z.enum(["well-known", "udap", "oidf"]);
 
 const NonEmptyStringSchema = z.string().min(1);
 const UriSchema = NonEmptyStringSchema;

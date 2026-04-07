@@ -15,14 +15,14 @@ export type CategoryRule = {
 export type DateSemantics = "generated-during-period" | "care-overlap";
 export type SensitiveMode = "deny" | "allow";
 export type ModeName = "strict" | "registered" | "key-bound" | "open" | "anonymous";
-export type ClientAuthMode = "unaffiliated" | "well-known" | "udap";
+export type ClientAuthMode = "unaffiliated" | "well-known" | "udap" | "oidf";
 
 export type DateRange = {
   start?: string;
   end?: string;
 };
 
-export type FrameworkType = "well-known" | "udap";
+export type FrameworkType = "well-known" | "udap" | "oidf";
 
 export type UdapCertificateAuthority = {
   caId: string;

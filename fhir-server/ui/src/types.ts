@@ -1,6 +1,6 @@
 export type ModeName = "strict" | "registered" | "key-bound" | "open" | "anonymous";
-export type DemoClientType = "unaffiliated" | "well-known" | "udap";
-export type DemoClientRegistrationMode = "dynamic-jwk" | "implicit-well-known" | "udap-dcr";
+export type DemoClientType = "unaffiliated" | "well-known" | "udap" | "oidf";
+export type DemoClientRegistrationMode = "dynamic-jwk" | "implicit-well-known" | "udap-dcr" | "oidf-automatic";
 
 export type EncounterInfo = {
   id: string;
@@ -161,7 +161,22 @@ export type ViewerUdapClientPlan = {
   contacts: string[];
 };
 
-export type ViewerClientPlan = ViewerUnaffiliatedClientPlan | ViewerWellKnownClientPlan | ViewerUdapClientPlan;
+export type ViewerOidfClientPlan = {
+  type: "oidf";
+  displayLabel: string;
+  registrationMode: "oidf-automatic";
+  entityUri: string;
+  clientName: string;
+  publicJwk: JsonWebKey;
+  privateJwk: JsonWebKey;
+  framework: DemoClientFrameworkInfo;
+};
+
+export type ViewerClientPlan =
+  | ViewerUnaffiliatedClientPlan
+  | ViewerWellKnownClientPlan
+  | ViewerUdapClientPlan
+  | ViewerOidfClientPlan;
 
 export type TicketBindingDescription = {
   shape:

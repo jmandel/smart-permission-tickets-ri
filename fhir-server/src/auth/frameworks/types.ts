@@ -32,6 +32,11 @@ export interface FrameworkResolver {
 
   getSupportedTrustFrameworks(): SupportedTrustFramework[];
 
+  matchesAssertion?(
+    clientId: string,
+    joseHeader: Record<string, unknown>,
+  ): boolean;
+
   matchesClientId(clientId: string): boolean;
 
   authenticateClientAssertion(

@@ -69,6 +69,18 @@ export async function prepareViewerClient(origin: string, surface: AuthSurface, 
       entityUri: clientPlan.entityUri,
     };
   }
+  if (clientPlan.type === "oidf") {
+    return {
+      clientId: clientPlan.entityUri,
+      clientName: clientPlan.clientName,
+      tokenEndpointAuthMethod: "private_key_jwt",
+      authMode: "oidf",
+      publicJwk: clientPlan.publicJwk,
+      jwkThumbprint: await computeJwkThumbprint(clientPlan.publicJwk),
+      framework: clientPlan.framework,
+      entityUri: clientPlan.entityUri,
+    };
+  }
 
   const discovery = await fetchJson<Record<string, any>>(`${origin}${surface.fhirBasePath}/.well-known/udap`, undefined, demoSessionId);
   const registrationEndpoint = String(discovery.registration_endpoint ?? `${origin}${surface.registerPath}`);

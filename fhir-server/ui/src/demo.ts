@@ -435,6 +435,20 @@ export async function buildViewerClientPlan(person: PersonInfo, option: DemoClie
         scope: option.scope,
         contacts: option.contacts ?? [],
       };
+    case "oidf":
+      if (!option.entityUri || !option.clientName || !option.publicJwk || !option.privateJwk || !option.framework) {
+        throw new Error("OIDF demo client option is incomplete");
+      }
+      return {
+        type: "oidf",
+        displayLabel: option.label,
+        registrationMode: "oidf-automatic",
+        entityUri: option.entityUri,
+        clientName: option.clientName,
+        publicJwk: option.publicJwk,
+        privateJwk: option.privateJwk,
+        framework: option.framework,
+      };
   }
 }
 
@@ -453,6 +467,14 @@ export function clientBindingForPlan(clientPlan: ViewerClientPlan | null): Frame
       method: "framework_client",
       framework: clientPlan.framework.uri,
       framework_type: "udap",
+      entity_uri: clientPlan.entityUri,
+    };
+  }
+  if (clientPlan.type === "oidf") {
+    return {
+      method: "framework_client",
+      framework: clientPlan.framework.uri,
+      framework_type: "oidf",
       entity_uri: clientPlan.entityUri,
     };
   }
@@ -487,6 +509,8 @@ export function describeTicketBinding(
       ? "This app is recognized as a framework-listed entity, so the ticket binds with presenter_binding.method=framework_client instead of a single JWK."
       : clientType === "udap"
         ? "This app proves its framework/entity identity through UDAP registration and certificate-based client authentication."
+        : clientType === "oidf"
+          ? "This app is identified by its entity URL and proves framework membership by presenting a trust chain in the client assertion header."
         : "This ticket does not include a presenter binding.";
   return {
     shape,
@@ -652,7 +676,7 @@ function buildClientStoryDescription(
     ? null
     : {
         framework: framework?.uri ?? "",
-        framework_type: clientType === "well-known" ? "well-known" : "udap",
+        framework_type: clientType === "well-known" ? "well-known" : clientType === "oidf" ? "oidf" : "udap",
         entity_uri: entityUri ?? "",
       };
   const proofJkt = clientType === "unaffiliated" && (mode === "strict" || mode === "key-bound") ? "<jkt>" : null;
@@ -661,15 +685,21 @@ function buildClientStoryDescription(
     ? "Dynamic registration"
     : registrationMode === "implicit-well-known"
       ? "No registration"
-      : "UDAP DCR";
+      : registrationMode === "oidf-automatic"
+        ? "Automatic registration"
+        : "UDAP DCR";
   const authenticationLabel = clientType === "unaffiliated"
     ? "private_key_jwt using a one-off JWK"
     : clientType === "well-known"
       ? "private_key_jwt using the entity's current JWKS key"
+      : clientType === "oidf"
+        ? "private_key_jwt using the entity's federation-resolved JWKS and a trust_chain JOSE header"
       : "UDAP client assertion with x5c certificate chain; entity URI comes from the certificate SAN";
   const expectedClientId = effectiveClientId
     ?? (clientType === "well-known"
       ? `well-known:${entityUri ?? "<entity-uri>"}`
+      : clientType === "oidf"
+        ? entityUri ?? "<entity-uri>"
       : clientType === "udap"
         ? "Issued at runtime by UDAP dynamic registration"
         : "Issued at runtime by dynamic registration");
@@ -677,6 +707,8 @@ function buildClientStoryDescription(
     ? "A one-off app outside any trust framework can register a key just before token exchange and bind the ticket directly to that key."
     : clientType === "well-known"
       ? "A framework-affiliated client can skip registration entirely and be recognized from a stable entity URI plus current JWKS resolution."
+      : clientType === "oidf"
+        ? "A framework-affiliated client can authenticate without prior registration by presenting its entity URL plus a trust chain that resolves its metadata and keys."
       : "A trust-framework-backed client can register just in time through UDAP, using an entity URI taken from the certificate Subject Alternative Name (SAN) and published as an inspectable page on this demo server.";
   return {
     clientType,
