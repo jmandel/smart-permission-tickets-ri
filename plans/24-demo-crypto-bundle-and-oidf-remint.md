@@ -344,6 +344,10 @@ Files:
 - `fhir-server/src/config.ts`
 - new small schema/helper module if needed
 
+Status:
+
+- implemented on `main`
+
 ### Phase 4: Bundle Generator Script
 
 Scope:

@@ -41,6 +41,7 @@ import { DemoSessionLinks } from "./demo/session-links.ts";
 import { findUdapFrameworkByCrlPath, generateCertificateRevocationList } from "./auth/udap-crl.ts";
 import { buildSignedUdapMetadata } from "./auth/udap-server-metadata.ts";
 import { loadConfig, type ServerConfig } from "./config.ts";
+import { assertDemoCryptoBundleCoversSites } from "./demo-crypto-bundle.ts";
 import { buildNetworkCapabilityStatement, buildNetworkInfo, readNetworkDirectory, resolveRecordLocationsBundle, searchNetworkDirectory } from "./network-directory.ts";
 import { executeRead, executeSearch, getSupportedSearchParams } from "./store/search.ts";
 import { FhirStore } from "./store/store.ts";
@@ -109,6 +110,7 @@ function buildOidfTopologyForPublicBaseUrl(
 ) {
   const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
   const sites = store.listSiteSummaries();
+  assertDemoCryptoBundleCoversSites(config.demoCryptoBundle, sites.map((site) => site.siteSlug));
   return buildOidfDemoTopology(
     config.publicBaseUrl,
     config.strictDefaultMode,

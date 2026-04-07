@@ -4,6 +4,7 @@ import {
   DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
   type TicketIssuerSeed,
 } from "./auth/issuers.ts";
+import { loadDemoCryptoBundle, type DemoCryptoBundle } from "./demo-crypto-bundle.ts";
 
 export type ServerConfig = {
   port: number;
@@ -21,6 +22,7 @@ export type ServerConfig = {
   defaultPermissionTicketIssuerSlug: string;
   defaultPermissionTicketIssuerName: string;
   permissionTicketIssuers: TicketIssuerSeed[];
+  demoCryptoBundle?: DemoCryptoBundle;
 };
 
 export function loadConfig(): ServerConfig {
@@ -34,6 +36,7 @@ export function loadConfig(): ServerConfig {
   const defaultNetworkName = Bun.env.DEFAULT_NETWORK_NAME ?? "Provider Network";
   const defaultPermissionTicketIssuerSlug = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_SLUG ?? "reference-demo";
   const defaultPermissionTicketIssuerName = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_NAME ?? "Reference Demo Issuer";
+  const demoCryptoBundle = loadDemoCryptoBundle(Bun.env.DEMO_CRYPTO_BUNDLE_PATH);
   const configuredPrivateJwk = parsePrivateJwk(
     Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK_JSON,
   ) ?? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK;
@@ -59,6 +62,7 @@ export function loadConfig(): ServerConfig {
         privateJwk: configuredPrivateJwk,
       },
     ],
+    demoCryptoBundle,
   };
 }
 
