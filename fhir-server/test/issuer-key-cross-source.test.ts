@@ -2,7 +2,9 @@ import { describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial, normalizePublicJwk } from "../shared/private-key-jwt.ts";
 import { PATIENT_SELF_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
+import { decodeEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { buildDefaultFrameworks } from "../src/auth/demo-frameworks.ts";
+import { SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "../src/auth/frameworks/oidf/smart-permission-ticket-issuer.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
 describe("issuer key publication consistency", () => {
@@ -26,6 +28,21 @@ describe("issuer key publication consistency", () => {
     }
   });
 
+  test("ticket issuer entity configuration publishes a federation key distinct from the inline ticket-signing jwks", async () => {
+    const { context, origin, server } = startHarness();
+    try {
+      const entityStatement = await fetchText(`${origin}/federation/leafs/ticket-issuer/.well-known/openid-federation`);
+      const decoded = decodeEs256Jwt<Record<string, any>>(entityStatement);
+      const federationKey = decoded.payload.jwks.keys[0];
+      const inlineKey = inlineTicketIssuerJwks(context)[0];
+      if (!federationKey || !inlineKey) throw new Error("Missing published ticket issuer keys");
+
+      expect(canonicalizePublicJwk(federationKey)).not.toEqual(canonicalizePublicJwk(inlineKey));
+    } finally {
+      server.stop(true);
+    }
+  });
+
   test("publication consistency helper flags shared-kid disagreement", async () => {
     const { context, origin, publicOrigin, server } = startHarness();
     try {
@@ -33,11 +50,12 @@ describe("issuer key publication consistency", () => {
       if (!issuer) throw new Error("Missing direct issuer");
       const alternate = await generateClientKeyMaterial();
 
-      context.oidfTopology.entities["ticket-issuer"].privateJwk = alternate.privateJwk;
-      context.oidfTopology.entities["ticket-issuer"].publicJwk = {
-        ...alternate.publicJwk,
-        kid: issuer.kid,
-      };
+      setInlineTicketIssuerJwks(context, [
+        {
+          ...alternate.publicJwk,
+          kid: issuer.kid,
+        },
+      ]);
 
       const directJwks = await fetchJson<{ keys: JsonWebKey[] }>(`${origin}/issuer/reference-demo/.well-known/jwks.json`);
       const oidfTrust = await context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/reference-demo`);
@@ -71,11 +89,12 @@ describe("issuer key publication consistency", () => {
       if (!issuer) throw new Error("Missing direct issuer");
       const alternate = await generateClientKeyMaterial();
 
-      context.oidfTopology.entities["ticket-issuer"].privateJwk = alternate.privateJwk;
-      context.oidfTopology.entities["ticket-issuer"].publicJwk = {
-        ...alternate.publicJwk,
-        kid: issuer.kid,
-      };
+      setInlineTicketIssuerJwks(context, [
+        {
+          ...alternate.publicJwk,
+          kid: issuer.kid,
+        },
+      ]);
 
       const response = await exchangeTicket(origin, mintTicket(context, publicOrigin));
       expect(response.status).toBe(200);
@@ -111,6 +130,12 @@ async function fetchJson<T>(url: string) {
   return response.json() as Promise<T>;
 }
 
+async function fetchText(url: string) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`);
+  return response.text();
+}
+
 function assertPublishedKeyConsistency(kid: string, sources: Array<{ label: string; keys: JsonWebKey[] }>) {
   const primary = sources[0]!;
   const primaryKey = primary.keys.find((key) => key.kid === kid);
@@ -144,6 +169,20 @@ function canonicalizePublicJwk(jwk: JsonWebKey) {
     });
   }
   throw new Error("Unsupported issuer public JWK type");
+}
+
+function inlineTicketIssuerJwks(context: ReturnType<typeof createAppContext>) {
+  const metadata = context.oidfTopology.entities["ticket-issuer"].metadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE];
+  if (!metadata) throw new Error("Missing smart_permission_ticket_issuer metadata");
+  const jwks = (metadata as { jwks?: { keys?: JsonWebKey[] } }).jwks;
+  if (!Array.isArray(jwks?.keys)) throw new Error("Missing smart_permission_ticket_issuer.jwks.keys");
+  return jwks.keys;
+}
+
+function setInlineTicketIssuerJwks(context: ReturnType<typeof createAppContext>, keys: JsonWebKey[]) {
+  const metadata = context.oidfTopology.entities["ticket-issuer"].metadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE];
+  if (!metadata) throw new Error("Missing smart_permission_ticket_issuer metadata");
+  (metadata as { jwks?: { keys?: JsonWebKey[] } }).jwks = { keys };
 }
 
 function mintTicket(context: ReturnType<typeof createAppContext>, publicOrigin: string) {

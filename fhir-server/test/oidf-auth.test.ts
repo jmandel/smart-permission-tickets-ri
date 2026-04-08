@@ -7,6 +7,7 @@ import {
 } from "../shared/permission-tickets.ts";
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI, buildDefaultFrameworks } from "../src/auth/demo-frameworks.ts";
 import { buildOidfTrustChain } from "../src/auth/frameworks/oidf/demo-topology.ts";
+import { SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "../src/auth/frameworks/oidf/smart-permission-ticket-issuer.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
 describe("OIDF client authentication", () => {
@@ -111,6 +112,29 @@ describe("OIDF client authentication", () => {
           tokenEndpointUrl,
         ),
       ).rejects.toThrow("did not validate against any configured trust anchor");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("client auth ignores smart_permission_ticket_issuer metadata on the client leaf", async () => {
+    const { context, server } = startOidfAuthServer();
+    try {
+      context.oidfTopology.entities["demo-app"].metadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE] = {
+        issuer_url: 7,
+        jwks: null,
+      };
+
+      const tokenEndpointUrl = `${context.config.publicBaseUrl}/token`;
+      const assertion = await buildOidfClientAssertion(context, tokenEndpointUrl, { withTrustChain: true });
+      const identity = await context.frameworks.authenticateClientAssertion(
+        context.oidfTopology.demoAppEntityId,
+        assertion,
+        tokenEndpointUrl,
+      );
+
+      expect(identity?.authMode).toBe("oidf");
+      expect(identity?.clientId).toBe(context.oidfTopology.demoAppEntityId);
     } finally {
       server.stop(true);
     }

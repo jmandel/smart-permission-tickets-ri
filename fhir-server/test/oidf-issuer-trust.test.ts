@@ -1,21 +1,28 @@
 import { describe, expect, test } from "bun:test";
 
+import { generateClientKeyMaterial } from "../shared/private-key-jwt.ts";
 import { PATIENT_SELF_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
 import { signEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { buildDefaultFrameworks } from "../src/auth/demo-frameworks.ts";
 import type { OidfDemoEntity, OidfDemoTopology } from "../src/auth/frameworks/oidf/demo-topology.ts";
 import { OidfFrameworkResolver } from "../src/auth/frameworks/oidf/resolver.ts";
+import { SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "../src/auth/frameworks/oidf/smart-permission-ticket-issuer.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
 const TRUST_MARK_TYP = "trust-mark+jwt";
+type TicketIssuerMetadata = {
+  issuer_url?: unknown;
+  jwks?: unknown;
+};
 
 describe("OIDF issuer trust", () => {
   test("Ticket Issuer trust resolves through the OIDF topology", async () => {
     const { context, server, publicOrigin } = startOidfIssuerTrustServer();
     const origin = `http://127.0.0.1:${server.port}`;
     try {
-      const directIssuerTrust = await context.frameworks.resolveIssuerTrust(
+      const directIssuerTrust = await context.frameworks.resolveIssuerTrustByType(
+        "oidf",
         `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
       );
       expect(directIssuerTrust?.metadata?.trust_mark?.trust_mark_type).toBe(context.oidfTopology.trustMarkType);
@@ -35,6 +42,24 @@ describe("OIDF issuer trust", () => {
           type: "oidf",
         },
       });
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("ticket-signing key is independent from the federation key in the OIDF token-exchange path", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    const origin = `http://127.0.0.1:${server.port}`;
+    try {
+      const validResponse = await exchangeTicket(origin, mintOidfIssuerTicket(context, publicOrigin));
+      expect(validResponse.status).toBe(200);
+
+      const federationSignedTicket = mintFederationSignedIssuerTicket(context, publicOrigin);
+      const response = await exchangeTicket(origin, federationSignedTicket);
+      expect(response.status).toBe(400);
+      const body = await response.json();
+      expect(body.error).toBe("invalid_grant");
+      expect(String(body.error_description)).toContain("kid mismatch");
     } finally {
       server.stop(true);
     }
@@ -82,6 +107,91 @@ describe("OIDF issuer trust", () => {
       const body = await response.json();
       expect(body.error).toBe("invalid_grant");
       expect(String(body.error_description)).toContain("trust mark type");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("missing smart_permission_ticket_issuer metadata rejects issuer trust", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    try {
+      delete context.oidfTopology.entities["ticket-issuer"].metadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE];
+
+      await expect(
+        context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+      ).rejects.toThrow("oidf_ticket_issuer_metadata_missing");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("missing or empty ticket issuer jwks rejects issuer trust", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    try {
+      ticketIssuerMetadata(context).jwks = { keys: [] };
+
+      await expect(
+        context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+      ).rejects.toThrow("oidf_ticket_issuer_jwks_missing");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("duplicate ticket issuer jwks kid values reject issuer trust", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    try {
+      const alternate = await generateClientKeyMaterial();
+      const metadata = ticketIssuerMetadata(context);
+      const currentKey = firstTicketIssuerPublicJwk(context);
+      metadata.jwks = {
+        keys: [
+          currentKey,
+          {
+            ...alternate.publicJwk,
+            kid: currentKey.kid,
+          },
+        ],
+      };
+
+      await expect(
+        context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+      ).rejects.toThrow("oidf_ticket_issuer_jwks_duplicate_kid");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("issuer trust rejects ticket issuer jwks entries with a missing kid", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    try {
+      const metadata = ticketIssuerMetadata(context);
+      const currentKey = firstTicketIssuerPublicJwk(context);
+      metadata.jwks = {
+        keys: [
+          {
+            ...currentKey,
+            kid: "",
+          },
+        ],
+      };
+
+      await expect(
+        context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+      ).rejects.toThrow("oidf_ticket_issuer_jwks_kid_missing");
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("issuer_url mismatch rejects issuer trust", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    try {
+      ticketIssuerSubordinatePolicy(context).value = `${publicOrigin}/issuer/other-demo`;
+
+      await expect(
+        context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
+      ).rejects.toThrow("oidf_ticket_issuer_url_mismatch");
     } finally {
       server.stop(true);
     }
@@ -166,10 +276,28 @@ function startOidfIssuerTrustServer() {
 }
 
 function mintOidfIssuerTicket(appContext: ReturnType<typeof createAppContext>, publicOrigin: string) {
-  return appContext.issuers.sign(publicOrigin, appContext.config.defaultPermissionTicketIssuerSlug, {
+  const issuer = appContext.issuers.get(appContext.config.defaultPermissionTicketIssuerSlug);
+  if (!issuer) throw new Error("Missing direct issuer");
+  return signIssuerTicket(appContext, publicOrigin, issuer.privateJwk, issuer.kid);
+}
+
+function mintFederationSignedIssuerTicket(appContext: ReturnType<typeof createAppContext>, publicOrigin: string) {
+  const ticketIssuerEntity = appContext.oidfTopology.entities["ticket-issuer"];
+  return signIssuerTicket(appContext, publicOrigin, ticketIssuerEntity.privateJwk, ticketIssuerEntity.publicJwk.kid);
+}
+
+function signIssuerTicket(
+  appContext: ReturnType<typeof createAppContext>,
+  publicOrigin: string,
+  signingKey: JsonWebKey,
+  kid: string,
+) {
+  const now = Math.floor(Date.now() / 1000);
+  return signEs256Jwt({
     iss: `${publicOrigin}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
     aud: publicOrigin,
-    exp: Math.floor(Date.now() / 1000) + 3600,
+    iat: now,
+    exp: now + 3600,
     jti: crypto.randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     subject: {
@@ -188,7 +316,32 @@ function mintOidfIssuerTicket(appContext: ReturnType<typeof createAppContext>, p
       data_period: { start: "2023-01-01", end: "2025-12-31" },
       sensitive_data: "exclude",
     },
-  });
+  }, signingKey, { kid });
+}
+
+function ticketIssuerMetadata(appContext: ReturnType<typeof createAppContext>) {
+  const metadata = appContext.oidfTopology.entities["ticket-issuer"].metadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE];
+  if (!metadata) throw new Error("Missing smart_permission_ticket_issuer metadata");
+  return metadata as TicketIssuerMetadata;
+}
+
+function firstTicketIssuerPublicJwk(appContext: ReturnType<typeof createAppContext>) {
+  const jwks = ticketIssuerMetadata(appContext).jwks as { keys?: JsonWebKey[] } | undefined;
+  const key = jwks?.keys?.[0];
+  if (!key) throw new Error("Missing smart_permission_ticket_issuer jwks[0]");
+  return key;
+}
+
+function ticketIssuerSubordinatePolicy(appContext: ReturnType<typeof createAppContext>) {
+  const statement = appContext.oidfTopology.subordinateStatements
+    .get(appContext.oidfTopology.providerNetworkEntityId)
+    ?.get(appContext.oidfTopology.ticketIssuerEntityId);
+  const metadataType = statement?.metadataPolicy[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE];
+  const issuerUrlPolicy = metadataType?.issuer_url;
+  if (!issuerUrlPolicy || typeof issuerUrlPolicy !== "object" || Array.isArray(issuerUrlPolicy)) {
+    throw new Error("Missing smart_permission_ticket_issuer issuer_url policy");
+  }
+  return issuerUrlPolicy as Record<string, unknown>;
 }
 
 function exchangeTicket(origin: string, ticket: string) {

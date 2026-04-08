@@ -9,7 +9,7 @@ import type {
 import type { ServerConfig } from "../../../config.ts";
 import type { FrameworkResolver, SupportedTrustFramework } from "../types.ts";
 import { applyMetadataPolicy } from "./policy.ts";
-import { extractTicketIssuerMetadata } from "./smart-permission-ticket-issuer.ts";
+import { extractTicketIssuerMetadata, SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "./smart-permission-ticket-issuer.ts";
 import type { EntityStatementPayload, VerifiedTrustChain } from "./trust-chain.ts";
 import { verifyTrustChain } from "./trust-chain.ts";
 import { verifyTrustMark } from "./trust-mark.ts";
@@ -179,6 +179,11 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(fetchedTrustChain.chain, oidf);
     if (verifiedChain.leaf.entityId !== trustedLeaf.entityId) {
       throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${trustedLeaf.entityId}`);
+    }
+    if (!verifiedChain.directSubjectMetadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]) {
+      throw new Error(
+        `OIDF oidf_ticket_issuer_metadata_missing: leaf entity configuration is missing ${SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE}`,
+      );
     }
 
     const resolved = applyMetadataPolicy(verifiedChain);

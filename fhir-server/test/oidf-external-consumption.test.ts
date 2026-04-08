@@ -3,6 +3,7 @@ import { generateKeyPairSync } from "node:crypto";
 
 import { signPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import { OidfFrameworkResolver } from "../src/auth/frameworks/oidf/resolver.ts";
+import { SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "../src/auth/frameworks/oidf/smart-permission-ticket-issuer.ts";
 import { ENTITY_STATEMENT_TYP } from "../src/auth/frameworks/oidf/trust-chain.ts";
 import { TRUST_MARK_TYP } from "../src/auth/frameworks/oidf/trust-mark.ts";
 import { federationFetchEndpointPath, oidfEntityConfigurationPath } from "../src/auth/frameworks/oidf/urls.ts";
@@ -211,6 +212,7 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
   const providerNetwork = generateEcKeyPair();
   const clientLeaf = generateEcKeyPair();
   const issuerLeaf = generateEcKeyPair();
+  const issuerTicketSigning = generateEcKeyPair();
 
   const anchorEc = signEntityStatement({
     iss: anchorEntityId,
@@ -273,7 +275,13 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
     jwks: { keys: [issuerLeaf.publicJwk] },
     metadata: {
       federation_entity: {
+        organization_name: "External OIDF Issuer",
+      },
+      [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
         issuer_url: expectedIssuerUrl,
+        jwks: {
+          keys: [issuerTicketSigning.publicJwk],
+        },
       },
     },
     authority_hints: overrides.issuerAuthorityHints ?? [providerNetworkEntityId],
@@ -302,7 +310,7 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
     exp: now + 3600,
     jwks: { keys: [issuerLeaf.publicJwk] },
     metadata_policy: {
-      federation_entity: {
+      [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
         issuer_url: {
           value: expectedIssuerUrl,
         },
@@ -335,6 +343,7 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
     anchor,
     clientLeaf,
     issuerLeaf,
+    issuerTicketSigning,
     clientTrustChain: [clientLeafEc, networkAboutClient, anchorAboutNetwork, anchorEc],
     responses: new Map<string, string>([
       [new URL(oidfEntityConfigurationPath(clientLeafEntityId), baseOrigin).pathname, clientLeafEc],
