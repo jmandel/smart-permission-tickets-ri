@@ -20,6 +20,10 @@ export type ResolvedOidfClientMetadata = {
 
 type FieldConstraint = {
   allowedValues?: unknown[];
+  hasValuePolicy?: boolean;
+  valuePolicy?: unknown;
+  hasDefaultPolicy?: boolean;
+  defaultPolicy?: unknown;
 };
 
 export function applyMetadataPolicy(verifiedChain: VerifiedTrustChain): ResolvedOidfClientMetadata {
@@ -120,26 +124,59 @@ function applyFieldPolicy(
     }
   }
 
-  let currentValue = metadata[metadataType]?.[fieldName];
-
   if ("value" in fieldPolicy) {
-    currentValue = fieldPolicy.value;
-    assertAllowedValue(currentConstraint.allowedValues, currentValue, metadataType, fieldName, issuer, "value");
-    setResolvedField(metadata, metadataType, fieldName, currentValue);
-  } else if ("default" in fieldPolicy && currentValue === undefined) {
-    currentValue = fieldPolicy.default;
-    assertAllowedValue(currentConstraint.allowedValues, currentValue, metadataType, fieldName, issuer, "default");
-    setResolvedField(metadata, metadataType, fieldName, currentValue);
+    if (currentConstraint.hasValuePolicy && !jsonEqual(currentConstraint.valuePolicy, fieldPolicy.value)) {
+      throw new Error(`OIDF metadata_policy value conflict on ${metadataType}.${fieldName}`);
+    }
+    currentConstraint.hasValuePolicy = true;
+    currentConstraint.valuePolicy = fieldPolicy.value;
   }
 
-  currentValue = metadata[metadataType]?.[fieldName];
+  if ("default" in fieldPolicy) {
+    if (fieldPolicy.default === null) {
+      throw new Error(`OIDF metadata_policy default on ${metadataType}.${fieldName} from ${issuer} must not be null`);
+    }
+    if (currentConstraint.hasDefaultPolicy && !jsonEqual(currentConstraint.defaultPolicy, fieldPolicy.default)) {
+      throw new Error(`OIDF metadata_policy default conflict on ${metadataType}.${fieldName}`);
+    }
+    currentConstraint.hasDefaultPolicy = true;
+    currentConstraint.defaultPolicy = fieldPolicy.default;
+  }
+
+  validateSupportedOperatorCombinations(currentConstraint, metadataType, fieldName, issuer);
+
+  if ("value" in fieldPolicy) {
+    assertAllowedValue(currentConstraint.allowedValues, fieldPolicy.value, metadataType, fieldName, issuer, "value");
+    if (fieldPolicy.value === null) {
+      unsetResolvedField(metadata, metadataType, fieldName);
+    } else {
+      setResolvedField(metadata, metadataType, fieldName, fieldPolicy.value);
+    }
+  } else if ("default" in fieldPolicy && metadata[metadataType]?.[fieldName] === undefined) {
+    assertAllowedValue(currentConstraint.allowedValues, fieldPolicy.default, metadataType, fieldName, issuer, "default");
+    setResolvedField(metadata, metadataType, fieldName, fieldPolicy.default);
+  }
+
+  const currentValue = metadata[metadataType]?.[fieldName];
   if (currentValue !== undefined) {
     assertAllowedValue(currentConstraint.allowedValues, currentValue, metadataType, fieldName, issuer, "resolved");
-  } else if (currentConstraint.allowedValues?.length === 1) {
-    setResolvedField(metadata, metadataType, fieldName, currentConstraint.allowedValues[0]);
   }
 
   fieldConstraints.set(constraintKey, currentConstraint);
+}
+
+function validateSupportedOperatorCombinations(
+  fieldConstraint: FieldConstraint,
+  metadataType: string,
+  fieldName: string,
+  issuer: string,
+) {
+  if (fieldConstraint.hasValuePolicy && fieldConstraint.valuePolicy === null && fieldConstraint.hasDefaultPolicy) {
+    throw new Error(`OIDF metadata_policy value on ${metadataType}.${fieldName} from ${issuer} cannot be null when default is present`);
+  }
+  if (fieldConstraint.hasValuePolicy) {
+    assertAllowedValue(fieldConstraint.allowedValues, fieldConstraint.valuePolicy, metadataType, fieldName, issuer, "value");
+  }
 }
 
 function normalizeOneOf(value: unknown, metadataType: string, fieldName: string, issuer: string) {
@@ -165,6 +202,14 @@ function assertAllowedValue(
 function setResolvedField(metadata: EntityMetadata, metadataType: string, fieldName: string, value: unknown) {
   metadata[metadataType] ??= {};
   metadata[metadataType][fieldName] = value;
+}
+
+function unsetResolvedField(metadata: EntityMetadata, metadataType: string, fieldName: string) {
+  if (!metadata[metadataType]) return;
+  delete metadata[metadataType][fieldName];
+  if (Object.keys(metadata[metadataType] ?? {}).length === 0) {
+    delete metadata[metadataType];
+  }
 }
 
 function applyAllowedEntityTypes(metadata: EntityMetadata, allowedEntityTypes: string[] | null) {

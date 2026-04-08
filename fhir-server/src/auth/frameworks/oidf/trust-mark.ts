@@ -1,4 +1,4 @@
-import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
+import { decodeJwtWithoutVerification, normalizePublicJwk, verifyPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
 
 export const TRUST_MARK_TYP = "trust-mark+jwt";
 export const ACCEPTED_TRUST_MARK_ALGS = ["ES256"] as const;
@@ -31,6 +31,9 @@ export async function verifyTrustMark(
   }
   if (!ACCEPTED_TRUST_MARK_ALGS.includes(decoded.header.alg)) {
     throw new Error(`OIDF trust mark uses unsupported alg ${String(decoded.header.alg ?? "")}`);
+  }
+  if (typeof decoded.header.kid !== "string" || !decoded.header.kid.trim()) {
+    throw new Error("OIDF trust mark is missing a non-empty header kid");
   }
 
   const payload = decoded.payload;
@@ -68,18 +71,22 @@ export async function verifyTrustMark(
     throw new Error("OIDF trust mark has expired");
   }
 
-  let lastError: Error | null = null;
-  for (const key of options.issuerJwks) {
-    try {
-      await verifyPrivateKeyJwt(jwt, key);
-      return {
-        header: decoded.header,
-        payload,
-      };
-    } catch (error) {
-      lastError = error instanceof Error ? error : new Error(String(error));
-    }
+  const signingKey = options.issuerJwks.find((key) => (
+    (key as JsonWebKey & { kid?: string }).kid === decoded.header.kid
+  ));
+  if (!signingKey) {
+    throw new Error(`OIDF trust mark kid ${decoded.header.kid} does not match issuer jwks`);
   }
 
-  throw new Error(`OIDF trust mark signature verification failed: ${lastError?.message ?? "no key matched"}`);
+  try {
+    await verifyPrivateKeyJwt(jwt, normalizePublicJwk(signingKey));
+  } catch (error) {
+    const lastError = error instanceof Error ? error : new Error(String(error));
+    throw new Error(`OIDF trust mark signature verification failed: ${lastError.message}`);
+  }
+
+  return {
+    header: decoded.header,
+    payload,
+  };
 }

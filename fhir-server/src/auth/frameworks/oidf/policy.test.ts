@@ -85,6 +85,39 @@ describe("OIDF metadata policy", () => {
     expect(resolved.metadata.oauth_client?.token_endpoint_auth_method).toBe("private_key_jwt");
   });
 
+  test("leaf metadata that deviates from an anchor one_of allowlist is rejected", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Demo App",
+          token_endpoint_auth_method: "tls_client_auth",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          token_endpoint_auth_method: {
+            one_of: ["private_key_jwt", "tls_client_auth"],
+          },
+        },
+      },
+      anchorPolicy: {
+        oauth_client: {
+          token_endpoint_auth_method: {
+            one_of: ["private_key_jwt"],
+          },
+        },
+      },
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+
+    expect(() => applyMetadataPolicy(verified)).toThrow("violates one_of constraints");
+  });
+
   test("conflicting one_of policies fail resolution", async () => {
     const fixture = await makePolicyFixture({
       leafMetadata: {
@@ -271,6 +304,153 @@ describe("OIDF metadata policy", () => {
     expect(() => applyMetadataPolicy(verified)).toThrow("metadata_policy_crit");
   });
 
+  test("metadata_policy_crit from a superior without metadata_policy still invalidates unsupported operators later in the chain", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          client_name: {
+            regexp: "^Leaf",
+          },
+        },
+      },
+      anchorPolicy: null,
+      anchorPolicyCrit: ["regexp"],
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+
+    expect(() => applyMetadataPolicy(verified)).toThrow("metadata_policy_crit");
+  });
+
+  test("conflicting default operators fail resolution", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          token_endpoint_auth_method: "private_key_jwt",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          logo_uri: {
+            default: "https://assets.example/network-logo.png",
+          },
+        },
+      },
+      anchorPolicy: {
+        oauth_client: {
+          logo_uri: {
+            default: "https://assets.example/anchor-logo.png",
+          },
+        },
+      },
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+
+    expect(() => applyMetadataPolicy(verified)).toThrow("default conflict");
+  });
+
+  test("conflicting value operators fail resolution", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          client_name: {
+            value: "Network Name",
+          },
+        },
+      },
+      anchorPolicy: {
+        oauth_client: {
+          client_name: {
+            value: "Anchor Name",
+          },
+        },
+      },
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+
+    expect(() => applyMetadataPolicy(verified)).toThrow("value conflict");
+  });
+
+  test("value null removes a metadata parameter instead of assigning null", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+          logo_uri: "https://assets.example/leaf-logo.png",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          logo_uri: {
+            value: null,
+          },
+        },
+      },
+      anchorPolicy: null,
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client?.client_name).toBe("Leaf Demo App");
+    expect("logo_uri" in (resolved.metadata.oauth_client ?? {})).toBe(false);
+  });
+
+  test("one_of alone does not synthesize a missing metadata parameter", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          token_endpoint_auth_method: {
+            one_of: ["private_key_jwt"],
+          },
+        },
+      },
+      anchorPolicy: null,
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client?.token_endpoint_auth_method).toBeUndefined();
+  });
+
   test("allowed_entity_types empty array leaves only federation_entity metadata", async () => {
     const fixture = await makePolicyFixture({
       leafMetadata: {
@@ -314,10 +494,11 @@ describe("OIDF metadata policy", () => {
 type PolicyFixtureOptions = {
   leafMetadata?: Record<string, Record<string, unknown>>;
   networkMetadata?: Record<string, Record<string, unknown>>;
-  networkPolicy?: Record<string, Record<string, Record<string, unknown>>>;
+  networkPolicy?: Record<string, Record<string, Record<string, unknown>>> | null;
   networkPolicyCrit?: string[];
   networkConstraints?: Record<string, unknown>;
-  anchorPolicy?: Record<string, Record<string, Record<string, unknown>>>;
+  anchorPolicy?: Record<string, Record<string, Record<string, unknown>>> | null;
+  anchorPolicyCrit?: string[];
 };
 
 async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
@@ -351,15 +532,17 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     exp: now + 3600,
     jwks: { keys: [leafKeys.publicJwk] },
     metadata: options.networkMetadata,
-    metadata_policy: options.networkPolicy ?? {
-      oauth_client: {
-        client_name: {
-          value: "Demo App from Policy",
-        },
-      },
-    },
     metadata_policy_crit: options.networkPolicyCrit,
     constraints: options.networkConstraints,
+    ...(options.networkPolicy === null ? {} : {
+      metadata_policy: options.networkPolicy ?? {
+        oauth_client: {
+          client_name: {
+            value: "Demo App from Policy",
+          },
+        },
+      },
+    }),
   }, networkKeys.privateJwk);
 
   const anchorToNetwork = await signStatement({
@@ -368,13 +551,16 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     iat: now - 60,
     exp: now + 3600,
     jwks: { keys: [networkKeys.publicJwk] },
-    metadata_policy: options.anchorPolicy ?? {
-      oauth_client: {
-        client_name: {
-          default: "Anchor Demo App",
+    metadata_policy_crit: options.anchorPolicyCrit,
+    ...(options.anchorPolicy === null ? {} : {
+      metadata_policy: options.anchorPolicy ?? {
+        oauth_client: {
+          client_name: {
+            default: "Anchor Demo App",
+          },
         },
       },
-    },
+    }),
   }, anchorKeys.privateJwk);
 
   const anchorConfiguration = await signStatement({

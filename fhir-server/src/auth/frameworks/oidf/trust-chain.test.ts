@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
-import { verifyTrustChain } from "./trust-chain.ts";
+import { verifyTrustChain } from "./trust-chain-kernel.ts";
 
 describe("OIDF trust chain validation", () => {
   test("valid 3-deep chain succeeds", async () => {
