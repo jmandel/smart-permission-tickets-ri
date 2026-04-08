@@ -1,8 +1,8 @@
 # Plan 25: Issuer Key Publication and Cross-Source Consistency
 
-Status: in progress
+Status: completed
 
-Post-review note: Phases 1 and 2 (spec text) are landed on `main`, Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is landed on `main`, Phase 4 is a publication-consistency test slice rather than a token-time verifier gate, and Phase 5 (UDAP issuer resolution from `iss`) is now landed on `main`. The current demo holder runtime still uses explicit allowlisted `direct_jwks` policy by default; richer issuer policies exist in the generic verifier and in tests, but remain configured out of the runtime demo holders.
+Post-review note: Phases 1 and 2 (spec text) are landed on `main`, Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is landed on `main`, Phase 4 is a publication-consistency test slice rather than a token-time verifier gate, and Phase 5 (UDAP issuer resolution from `iss`) is landed on `main`. Phase 6 documentation is now landed as well, so Plan 25 is complete on `main`. The current demo holder runtime still uses explicit allowlisted `direct_jwks` policy by default; richer issuer policies exist in the generic verifier and in tests, but remain configured out of the runtime demo holders.
 
 ## Goal
 
@@ -486,7 +486,7 @@ The key runtime distinction is now explicit:
 - the current demo holder runtime stays configured to direct JWKS only
 - richer OIDF/UDAP issuer behaviors are built and tested under explicit policy, not turned on by default in the runtime demo holders
 
-Plan is implementation-ready. Phases 1 through 5 are now landed, and Phase 6 (README / final plan status) is the next discrete implementation commit.
+Plan is complete on `main`.
 
 ## Acceptance Criteria
 

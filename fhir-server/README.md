@@ -120,6 +120,81 @@ OIDF trust is explicitly allowlisted:
 origin. If an OIDF URL points at some other host, the resolver fetches that
 foreign URL as-is.
 
+## Issuer Key Publication and Trust Policy
+
+`PermissionTicket` issuers stay framework-neutral on the wire. The verifier starts
+from `iss` and consults an ordered issuer-trust policy list in
+`ServerConfig.issuerTrust.policies`.
+
+Supported policy types:
+- `direct_jwks`
+  - allowlist exact issuer URLs
+  - resolve signing keys from `${iss}/.well-known/jwks.json`
+- `oidf`
+  - resolve issuer trust through the configured OIDF resolver
+  - optionally require predicates such as anchor membership or a trust mark
+- `udap`
+  - start at `GET {iss}/.well-known/udap`
+  - validate the returned `signed_metadata` against configured UDAP trust anchors
+  - optionally require predicates such as `udap_chains_to`
+
+Current demo runtime default:
+
+```ts
+issuerTrust: {
+  policies: [
+    {
+      type: "direct_jwks",
+      trustedIssuers: [
+        "https://.../issuer/reference-demo",
+      ],
+    },
+  ],
+}
+```
+
+That means the built-in demo data holders currently trust only allowlisted issuer
+URLs and derive the key publication path from `iss`. OIDF and UDAP issuer trust are
+implemented and tested, but they are not enabled in the default demo holder policy.
+
+Example richer policies:
+
+```ts
+issuerTrust: {
+  policies: [
+    {
+      type: "oidf",
+      require: {
+        kind: "all",
+        rules: [
+          { kind: "issuer_url_in", values: ["https://issuer.example.org/issuer/demo"] },
+          { kind: "oidf_chain_anchored_in", entityIds: ["https://anchor.example.org"] },
+          { kind: "oidf_has_trust_mark", trustMarkTypes: ["https://example.org/trust-marks/permission-ticket-issuer"] },
+        ],
+      },
+    },
+    {
+      type: "udap",
+      require: {
+        kind: "all",
+        rules: [
+          { kind: "issuer_url_in", values: ["https://issuer.example.org/issuer/demo"] },
+          { kind: "udap_chains_to", trustAnchors: ["https://example.org/trust-communities/provider-network"] },
+        ],
+      },
+    },
+  ],
+}
+```
+
+Policy evaluation is ordered. The first policy that both matches and resolves trust
+becomes the active verification path for that incoming ticket.
+
+When this repo intentionally publishes the same issuer through more than one
+mechanism, shared `kid` values are kept aligned with publication-level tests.
+Runtime verification does not re-fetch secondary sources after the selected
+primary policy path succeeds.
+
 ## Stable Demo Crypto Bundle
 
 The server can keep demo crypto identities stable across restarts with one optional
