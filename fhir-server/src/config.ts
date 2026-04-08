@@ -1,7 +1,8 @@
-import type { FrameworkDefinition, ModeName, RegisteredClient } from "./store/model.ts";
+import type { FrameworkDefinition, IssuerTrustConfig, ModeName, RegisteredClient } from "./store/model.ts";
 import { buildDefaultFrameworks } from "./auth/demo-frameworks.ts";
 import {
   DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
+  issuerBasePathFor,
   type TicketIssuerSeed,
 } from "./auth/issuers.ts";
 import { loadDemoCryptoBundle, type DemoCryptoBundle } from "./demo-crypto-bundle.ts";
@@ -18,6 +19,7 @@ export type ServerConfig = {
   defaultNetworkSlug: string;
   defaultNetworkName: string;
   frameworks: FrameworkDefinition[];
+  issuerTrust: IssuerTrustConfig;
   defaultRegisteredClients: RegisteredClient[];
   defaultPermissionTicketIssuerSlug: string;
   defaultPermissionTicketIssuerName: string;
@@ -51,6 +53,11 @@ export function loadConfig(): ServerConfig {
     defaultNetworkSlug,
     defaultNetworkName,
     frameworks: buildDefaultFrameworks(publicBaseUrl, defaultPermissionTicketIssuerSlug, demoCryptoBundle),
+    issuerTrust: buildDefaultIssuerTrustConfig(publicBaseUrl, [
+      {
+        slug: defaultPermissionTicketIssuerSlug,
+      },
+    ]),
     defaultRegisteredClients: [],
     defaultPermissionTicketIssuerSlug,
     defaultPermissionTicketIssuerName,
@@ -62,6 +69,17 @@ export function loadConfig(): ServerConfig {
       },
     ],
     demoCryptoBundle,
+  };
+}
+
+export function buildDefaultIssuerTrustConfig(publicBaseUrl: string, issuers: Pick<TicketIssuerSeed, "slug">[]): IssuerTrustConfig {
+  return {
+    policies: [
+      {
+        type: "direct_jwks",
+        trustedIssuers: issuers.map((issuer) => `${publicBaseUrl}${issuerBasePathFor(issuer.slug)}`),
+      },
+    ],
   };
 }
 

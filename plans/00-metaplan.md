@@ -264,11 +264,11 @@ Status: implemented on `main`
 
 Status: in progress
 
-- rewrites the spec so issuer public-key publication gives equal billing to direct JWKS, OIDF entity configurations, and UDAP `x5c` binding
-- corrects the spec so UDAP issuer participation is discovered from `iss` and `/.well-known/udap`, not by changing ticket serialization
+- rewrites the spec so issuer public-key publication gives equal billing to direct JWKS, OIDF entity configurations, and UDAP discovery rooted at `iss`
+- keeps `PermissionTicket` serialization framework-neutral and makes issuer-framework participation purely verifier-side
 - adds verifier-side cross-source consistency checking so configured issuer key sources must agree on the public key for the JWT's actual `kid`
-- gives ticket issuers a real UDAP-bound signing identity, rather than only direct JWKS publication
-- Phases 1 and 2 (spec text and framework-neutral corrective follow-up) are implemented on `main`
+- adds a generic ordered issuer-trust policy model so the verifier can support direct JWKS, OIDF, and UDAP while the current demo holder runtime stays on allowlisted direct-JWKS resolution by default
+- Phases 1 through 3 are implemented on `main`, including the explicit verifier-side issuer-trust policy model and direct-JWKS default runtime path
 
 ## Dependencies Between Plans
 
@@ -323,7 +323,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
 - Plan 24 (demo crypto bundle + site OIDF leaves) is a follow-on to Plan 21 that makes provider sites first-class OIDF leaves, fixes OIDF JWT expiry by re-minting on fetch, and adds an optional bundle file for stable demo keys across restarts. It is fully implemented on `main`.
 - Plan 23 (generalize OIDF entity consumption) is the follow-on to Plans 21 and 24 that turns the current demo-local OIDF resolver into a generic allowlist-based consumer. It is fully implemented on `main`, including allowlist-based OIDF client trust, discovery-driven issuer trust, external-origin coverage tests, and README/diagnostic cleanup.
-- Plan 25 (issuer key publication + cross-source consistency) is the follow-on hardening/spec-clarification plan after Plans 23 and 24: it broadens the issuer-key publication model to cover direct JWKS, OIDF, and UDAP equally, keeps `PermissionTicket` serialization framework-neutral, and adds verifier-side disagreement detection when multiple configured sources publish the same issuer key material. Phases 1 and 2 (spec text) are implemented on `main`.
+- Plan 25 (issuer key publication + cross-source consistency) is the follow-on hardening/spec-clarification plan after Plans 23 and 24: it broadens the issuer-key publication model to cover direct JWKS, OIDF, and UDAP discovery rooted at `iss`, keeps `PermissionTicket` serialization framework-neutral, adds an explicit ordered issuer-trust policy model, and adds verifier-side disagreement detection when multiple configured sources publish the same issuer key material. Phases 1 through 3 are implemented on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

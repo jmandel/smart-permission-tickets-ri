@@ -64,6 +64,16 @@ export class FrameworkRegistry {
     return null;
   }
 
+  async resolveIssuerTrustByType(frameworkType: FrameworkDefinition["frameworkType"], issuerUrl: string): Promise<ResolvedIssuerTrust | null> {
+    for (const resolver of this.resolvers) {
+      if (resolver.frameworkType !== frameworkType) continue;
+      if (!resolver.resolveIssuerTrust) continue;
+      const issuerTrust = await resolver.resolveIssuerTrust(issuerUrl);
+      if (issuerTrust) return issuerTrust;
+    }
+    return null;
+  }
+
   hasLocalAudienceMembership(frameworkUri: string) {
     return this.frameworks.some(
       (framework) => framework.framework === frameworkUri && typeof framework.localAudienceMembership?.entityUri === "string" && !!framework.localAudienceMembership.entityUri,

@@ -157,6 +157,11 @@ export function issuerJwksPathFor(slug: string) {
   return `${issuerBasePathFor(slug)}/.well-known/jwks.json`;
 }
 
+export function issuerJwksUrlForIssuerUrl(issuerUrl: string) {
+  const normalizedIssuerUrl = normalizeIssuerUrl(issuerUrl);
+  return `${normalizedIssuerUrl}/.well-known/jwks.json`;
+}
+
 export function issuerSignTicketPathFor(slug: string) {
   return `${issuerBasePathFor(slug)}/sign-ticket`;
 }
@@ -164,4 +169,81 @@ export function issuerSignTicketPathFor(slug: string) {
 export function issuerSlugFromPath(pathname: string) {
   const match = pathname.match(/^\/issuer\/([^/]+)(?:\/|$)/);
   return match?.[1] ?? null;
+}
+
+export async function resolveDirectJwksIssuerTrust(
+  issuerUrl: string,
+  config: { publicBaseUrl: string; internalBaseUrl?: string },
+  fetchImpl: typeof fetch = fetch,
+): Promise<ResolvedIssuerTrust> {
+  const normalizedIssuerUrl = normalizeIssuerUrl(issuerUrl);
+  const jwksUrl = issuerJwksUrlForIssuerUrl(normalizedIssuerUrl);
+  const effectiveJwksUrl = rewriteSelfOriginIssuerFetchUrl(jwksUrl, config.publicBaseUrl, config.internalBaseUrl);
+
+  let response: Response;
+  try {
+    response = await fetchImpl(effectiveJwksUrl, { redirect: "follow" });
+  } catch (error) {
+    throw new Error(`Unable to retrieve issuer JWKS for ${describeFetchRoute(jwksUrl, effectiveJwksUrl)}: ${formatError(error)}`);
+  }
+  if (!response.ok) {
+    throw new Error(`Unable to retrieve issuer JWKS (${response.status}) for ${describeFetchRoute(jwksUrl, effectiveJwksUrl)}`);
+  }
+
+  let body: any;
+  try {
+    body = await response.json();
+  } catch {
+    throw new Error(`Unable to parse issuer JWKS for ${jwksUrl}`);
+  }
+  if (!body || !Array.isArray(body.keys) || body.keys.length === 0) {
+    throw new Error(`Issuer JWKS did not include any keys for ${jwksUrl}`);
+  }
+
+  return {
+    source: "direct",
+    issuerUrl: normalizedIssuerUrl,
+    displayName: normalizedIssuerUrl,
+    publicJwks: body.keys.map((key: JsonWebKey) => normalizePublicJwkWithMetadata(key)),
+    metadata: {
+      resolution: "direct-jwks",
+      jwks_url: jwksUrl,
+      ...(effectiveJwksUrl !== jwksUrl ? { effective_jwks_url: effectiveJwksUrl } : {}),
+    },
+  };
+}
+
+function normalizeIssuerUrl(raw: string) {
+  const parsed = new URL(raw);
+  parsed.hash = "";
+  parsed.search = "";
+  if (parsed.pathname.length > 1 && parsed.pathname.endsWith("/")) {
+    parsed.pathname = parsed.pathname.replace(/\/+$/, "");
+  }
+  return parsed.toString();
+}
+
+function normalizePublicJwkWithMetadata(jwk: JsonWebKey) {
+  const normalized = normalizePublicJwk(jwk);
+  return {
+    ...(typeof (jwk as JsonWebKey & { kid?: string }).kid === "string" ? { kid: (jwk as JsonWebKey & { kid?: string }).kid } : {}),
+    ...normalized,
+  };
+}
+
+function rewriteSelfOriginIssuerFetchUrl(targetUrl: string, publicBaseUrl: string, internalBaseUrl: string | undefined) {
+  if (!internalBaseUrl) return targetUrl;
+  const target = new URL(targetUrl);
+  const publicBase = new URL(publicBaseUrl);
+  if (target.origin !== publicBase.origin) return targetUrl;
+  const internalBase = new URL(internalBaseUrl);
+  return `${internalBase.origin}${target.pathname}${target.search}`;
+}
+
+function describeFetchRoute(publishedUrl: string, effectiveUrl: string) {
+  return publishedUrl === effectiveUrl ? publishedUrl : `${publishedUrl} via ${effectiveUrl}`;
+}
+
+function formatError(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }

@@ -8,8 +8,8 @@ import {
 import { computeEcJwkThumbprintSync, signEs256Jwt } from "../src/auth/es256-jwt.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
-describe("framework-backed issuer trust", () => {
-  test("open-mode token exchange accepts a well-known issuer trusted through the shared framework registry", async () => {
+describe("issuer trust policy", () => {
+  test("open-mode token exchange accepts an allowlisted issuer via direct JWKS", async () => {
     const issuerKeys = await generateClientKeyMaterial();
     const issuerKid = computeEcJwkThumbprintSync(issuerKeys.publicJwk);
 
@@ -30,6 +30,14 @@ describe("framework-backed issuer trust", () => {
     const issuerUrl = `${issuerOrigin}/demo/issuer-a`;
     const context = createAppContext({
       port: 0,
+      issuerTrust: {
+        policies: [
+          {
+            type: "direct_jwks",
+            trustedIssuers: [issuerUrl],
+          },
+        ],
+      },
       frameworks: [
         {
           framework: "https://example.org/frameworks/smart-health-issuers",
@@ -114,14 +122,182 @@ describe("framework-backed issuer trust", () => {
       const introspectionBody = await introspectionResponse.json();
       expect(introspectionBody.active).toBe(true);
       expect(introspectionBody.ticket_issuer_trust).toEqual({
-        source: "framework",
+        source: "direct",
         issuerUrl,
         displayName: issuerUrl,
-        framework: {
-          uri: "https://example.org/frameworks/smart-health-issuers",
-          type: "well-known",
+      });
+    } finally {
+      server.stop(true);
+      jwksServer.stop(true);
+    }
+  });
+
+  test("default demo runtime trusts its local issuer through direct JWKS, not framework issuer trust", async () => {
+    const publicOrigin = "https://tickets.example.test";
+    const context = createAppContext({
+      port: 0,
+      publicBaseUrl: publicOrigin,
+      issuer: publicOrigin,
+    });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    context.config.internalBaseUrl = origin;
+
+    try {
+      const ticket = context.issuers.sign(publicOrigin, context.config.defaultPermissionTicketIssuerSlug, {
+        iss: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        aud: publicOrigin,
+        exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
+        ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+        requester: {
+          resourceType: "Organization",
+          identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+          name: "Public Health Department",
+        },
+        subject: {
+          patient: {
+            resourceType: "Patient",
+            name: [{ family: "Reyes", given: ["Elena"] }],
+            birthDate: "1989-09-14",
+          },
+        },
+        access: {
+          permissions: [{
+            kind: "data",
+            resource_type: "Patient",
+            interactions: ["read", "search"],
+          }],
+          data_period: { start: "2023-01-01", end: "2025-12-31" },
+          sensitive_data: "exclude",
+        },
+        context: {
+          reportable_condition: { text: "Public health investigation" },
         },
       });
+
+      const tokenResponse = await fetch(`${origin}/modes/open/token`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+          subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+          subject_token: ticket,
+        }),
+      });
+      expect(tokenResponse.status).toBe(200);
+      const tokenBody = await tokenResponse.json();
+
+      const introspectionResponse = await fetch(`${origin}/modes/open/introspect`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          token: tokenBody.access_token,
+        }),
+      });
+      expect(introspectionResponse.status).toBe(200);
+      const introspectionBody = await introspectionResponse.json();
+      expect(introspectionBody.ticket_issuer_trust).toEqual({
+        source: "direct",
+        issuerUrl: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        displayName: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+      });
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("direct JWKS issuer trust requires the issuer URL to be allowlisted", async () => {
+    const issuerKeys = await generateClientKeyMaterial();
+    const issuerKid = computeEcJwkThumbprintSync(issuerKeys.publicJwk);
+
+    const jwksServer = Bun.serve({
+      port: 0,
+      fetch(request) {
+        const url = new URL(request.url);
+        if (url.pathname === "/demo/issuer-b/.well-known/jwks.json") {
+          return jsonResponse({
+            keys: [{ ...issuerKeys.publicJwk, kid: issuerKid }],
+          });
+        }
+        return new Response("Not found", { status: 404 });
+      },
+    });
+
+    const issuerOrigin = `http://127.0.0.1:${jwksServer.port}`;
+    const issuerUrl = `${issuerOrigin}/demo/issuer-b`;
+    const context = createAppContext({
+      port: 0,
+      issuerTrust: {
+        policies: [
+          {
+            type: "direct_jwks",
+            trustedIssuers: [],
+          },
+        ],
+      },
+    });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    context.config.publicBaseUrl = origin;
+    context.config.issuer = origin;
+
+    try {
+      const ticket = signEs256Jwt(
+        {
+          iss: issuerUrl,
+          aud: origin,
+          exp: Math.floor(Date.now() / 1000) + 3600,
+          jti: crypto.randomUUID(),
+          ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+          requester: {
+            resourceType: "Organization",
+            identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+            name: "Public Health Department",
+          },
+          subject: {
+            patient: {
+              resourceType: "Patient",
+              name: [{ family: "Reyes", given: ["Elena"] }],
+              birthDate: "1989-09-14",
+            },
+          },
+          access: {
+            permissions: [{
+              kind: "data",
+              resource_type: "Patient",
+              interactions: ["read", "search"],
+            }],
+            data_period: { start: "2023-01-01", end: "2025-12-31" },
+            sensitive_data: "exclude",
+          },
+          context: {
+            reportable_condition: { text: "Public health investigation" },
+          },
+        },
+        issuerKeys.privateJwk,
+        { kid: issuerKid },
+      );
+
+      const tokenResponse = await fetch(`${origin}/modes/open/token`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+          subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+          subject_token: ticket,
+        }),
+      });
+      expect(tokenResponse.status).toBe(400);
+      const tokenBody = await tokenResponse.json();
+      expect(tokenBody.error).toBe("invalid_grant");
+      expect(String(tokenBody.error_description)).toContain("Unknown Permission Ticket issuer");
     } finally {
       server.stop(true);
       jwksServer.stop(true);

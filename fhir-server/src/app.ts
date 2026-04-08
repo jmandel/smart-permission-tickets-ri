@@ -39,7 +39,7 @@ import { DemoEventBus } from "./demo/event-bus.ts";
 import { DemoSessionLinks } from "./demo/session-links.ts";
 import { findUdapFrameworkByCrlPath, generateCertificateRevocationList } from "./auth/udap-crl.ts";
 import { buildSignedUdapMetadata } from "./auth/udap-server-metadata.ts";
-import { loadConfig, type ServerConfig } from "./config.ts";
+import { buildDefaultIssuerTrustConfig, loadConfig, type ServerConfig } from "./config.ts";
 import { assertDemoCryptoBundleCoversSites } from "./demo-crypto-bundle.ts";
 import { buildNetworkCapabilityStatement, buildNetworkInfo, readNetworkDirectory, resolveRecordLocationsBundle, searchNetworkDirectory } from "./network-directory.ts";
 import { executeRead, executeSearch, getSupportedSearchParams } from "./store/search.ts";
@@ -69,10 +69,16 @@ export type AppContext = {
   ticketRevocations: TicketRevocationRegistry;
   demoEvents: DemoEventBus;
   demoSessionLinks: DemoSessionLinks;
+  usesDefaultIssuerTrustPolicy: boolean;
 };
 
 export function createAppContext(overrides: Partial<ServerConfig> = {}) {
-  const config = { ...loadConfig(), ...overrides };
+  const baseConfig = loadConfig();
+  const config = { ...baseConfig, ...overrides };
+  const usesDefaultIssuerTrustPolicy = !overrides.issuerTrust;
+  if (usesDefaultIssuerTrustPolicy) {
+    config.issuerTrust = buildDefaultIssuerTrustConfig(config.publicBaseUrl, config.permissionTicketIssuers);
+  }
   const store = FhirStore.load();
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
@@ -81,7 +87,7 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
   const demoSessionLinks = new DemoSessionLinks();
-  return { config, store, clients, frameworks, oidfTopology, issuers, ticketRevocations, demoEvents, demoSessionLinks };
+  return { config, store, clients, frameworks, oidfTopology, issuers, ticketRevocations, demoEvents, demoSessionLinks, usesDefaultIssuerTrustPolicy };
 }
 
 import landingHtml from "../ui/index.html";
@@ -194,6 +200,9 @@ function extractProviderSiteKeyMaterial(topology: OidfDemoTopology, siteSlug: st
 }
 
 function syncOidfTopologyWithConfig(context: AppContext) {
+  if (context.usesDefaultIssuerTrustPolicy) {
+    context.config.issuerTrust = buildDefaultIssuerTrustConfig(context.config.publicBaseUrl, context.config.permissionTicketIssuers);
+  }
   const currentOrigin = new URL(context.oidfTopology.trustAnchorEntityId).origin;
   if (currentOrigin === context.config.publicBaseUrl) return;
   context.oidfTopology = buildOidfTopologyForPublicBaseUrl(context.config, context.store, context.issuers, context.oidfTopology);
@@ -580,11 +589,10 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
     try {
       ticket = await validatePermissionTicket(
         body.subject_token,
-        context.issuers,
+        context.config,
         context.frameworks,
         context.ticketRevocations,
         buildKnownTicketAudienceUrls(url, context.config, contextRoute),
-        url.origin,
         tokenDiagnostics,
       );
     } catch (error) {

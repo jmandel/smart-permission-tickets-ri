@@ -23,6 +23,39 @@ export type DateRange = {
 };
 
 export type FrameworkType = "well-known" | "udap" | "oidf";
+export type IssuerTrustPolicyType = "direct_jwks" | "oidf" | "udap";
+
+export type IssuerTrustPredicate =
+  | { kind: "all"; rules: IssuerTrustPredicate[] }
+  | { kind: "any"; rules: IssuerTrustPredicate[] }
+  | { kind: "issuer_url_in"; values: string[] }
+  | { kind: "oidf_chain_anchored_in"; entityIds: string[] }
+  | { kind: "oidf_has_trust_mark"; trustMarkTypes: string[] }
+  | { kind: "udap_chains_to"; trustAnchors: string[] };
+
+export type DirectJwksIssuerTrustPolicy = {
+  type: "direct_jwks";
+  trustedIssuers: string[];
+};
+
+export type OidfIssuerTrustPolicy = {
+  type: "oidf";
+  require?: IssuerTrustPredicate;
+};
+
+export type UdapIssuerTrustPolicy = {
+  type: "udap";
+  require?: IssuerTrustPredicate;
+};
+
+export type IssuerTrustPolicy =
+  | DirectJwksIssuerTrustPolicy
+  | OidfIssuerTrustPolicy
+  | UdapIssuerTrustPolicy;
+
+export type IssuerTrustConfig = {
+  policies: IssuerTrustPolicy[];
+};
 
 export type UdapCertificateAuthority = {
   caId: string;
@@ -92,7 +125,7 @@ export type ResolvedFrameworkEntity = {
 };
 
 export type TicketIssuerTrust = {
-  source: "local" | "framework";
+  source: "direct" | "framework" | "local";
   issuerUrl: string;
   displayName: string;
   framework?: {

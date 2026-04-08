@@ -1,4 +1,5 @@
 import type { FhirStore } from "../store/store.ts";
+import type { ServerConfig } from "../config.ts";
 import {
   SUPPORTED_RESOURCE_TYPES,
   type AllowedPatientAlias,
@@ -13,8 +14,8 @@ import {
   type TicketIssuerTrust,
 } from "../store/model.ts";
 import { decodeEs256Jwt, verifyEs256Jwt } from "./es256-jwt.ts";
+import { resolveConfiguredIssuerTrust } from "./issuer-trust.ts";
 import type { FrameworkRegistry } from "./frameworks/registry.ts";
-import type { TicketIssuerRegistry } from "./issuers.ts";
 import type { TicketRevocationRegistry } from "./ticket-revocation.ts";
 import { SUPPORTED_PERMISSION_TICKET_TYPES } from "../../shared/permission-tickets.ts";
 import type {
@@ -57,11 +58,10 @@ type DemoValidationContext = {
 
 export async function validatePermissionTicket(
   subjectToken: string,
-  issuers: TicketIssuerRegistry,
+  config: Pick<ServerConfig, "issuerTrust" | "publicBaseUrl" | "internalBaseUrl">,
   frameworks: FrameworkRegistry,
   ticketRevocations: TicketRevocationRegistry,
   expectedAudiences: string[],
-  requestOrigin: string,
   diagnostics?: TokenExchangeDiagnostics,
 ): Promise<ValidatedPermissionTicket> {
   if (!subjectToken) throw new Error("No permission ticket provided");
@@ -85,7 +85,7 @@ export async function validatePermissionTicket(
     if (typeof decodedPayload.iss !== "string" || !decodedPayload.iss) {
       throw new Error("Permission Ticket missing iss");
     }
-    issuer = await resolveTrustedIssuer(decodedPayload.iss, issuers, frameworks, requestOrigin);
+    issuer = await resolveConfiguredIssuerTrust(decodedPayload.iss, config, frameworks);
   } catch (error) {
     addAuditStep(diagnostics, {
       check: "Issuer Trust",
@@ -419,6 +419,30 @@ function buildIssuerPublicJwksProvenance(issuer: ResolvedIssuerTrust) {
     };
   }
 
+  if (issuer.source === "direct") {
+    const jwksUrl = typeof metadata.jwks_url === "string" ? metadata.jwks_url : `${issuer.issuerUrl.replace(/\/$/, "")}/.well-known/jwks.json`;
+    const effectiveJwksUrl = typeof metadata.effective_jwks_url === "string" ? metadata.effective_jwks_url : jwksUrl;
+    return {
+      steps: [
+        provenanceStep(
+          "outbound",
+          "Data holder -> issuer JWKS endpoint",
+          "Fetched from the issuer URL's direct JWKS publication path.",
+          [{ method: "GET", url: jwksUrl, headers: {} }],
+        ),
+        ...(effectiveJwksUrl !== jwksUrl
+          ? [
+              provenanceStep(
+                "in-process",
+                "Inside data holder",
+                `Self-origin loopback rewrite used the internal fetch route ${effectiveJwksUrl}.`,
+              ),
+            ]
+          : []),
+      ],
+    };
+  }
+
   if (issuer.framework?.type === "well-known") {
     const jwksUrl = typeof metadata.jwks_url === "string" ? metadata.jwks_url : `${issuer.issuerUrl.replace(/\/$/, "")}/.well-known/jwks.json`;
     return {
@@ -480,19 +504,6 @@ function oidfDiscoveryRequests(discovery: unknown) {
     })
     .filter((request): request is { method: string; url: string; headers: Record<string, string> } => request !== null);
   return requests.length ? requests : undefined;
-}
-
-async function resolveTrustedIssuer(
-  issuerUrl: string,
-  issuers: TicketIssuerRegistry,
-  frameworks: FrameworkRegistry,
-  requestOrigin: string,
-): Promise<ResolvedIssuerTrust> {
-  const frameworkIssuer = await frameworks.resolveIssuerTrust(issuerUrl);
-  if (frameworkIssuer) return frameworkIssuer;
-  const localIssuer = issuers.resolveTrustedIssuer(issuerUrl, requestOrigin);
-  if (localIssuer) return localIssuer;
-  throw new Error("Unknown Permission Ticket issuer");
 }
 
 function verifyPermissionTicketSignature(token: string, expectedKid: string | undefined, publicJwks: JsonWebKey[]) {

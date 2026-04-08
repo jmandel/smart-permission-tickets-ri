@@ -152,6 +152,13 @@ function startOidfIssuerTrustServer() {
     publicBaseUrl: publicOrigin,
     issuer: publicOrigin,
     frameworks: buildDefaultFrameworks(publicOrigin, "reference-demo"),
+    issuerTrust: {
+      policies: [
+        {
+          type: "oidf",
+        },
+      ],
+    },
   });
   const server = startServer(context, 0);
   context.config.internalBaseUrl = `http://127.0.0.1:${server.port}`;

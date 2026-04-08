@@ -2,13 +2,13 @@
 
 Status: in progress
 
-Post-review note: Phase 1 spec text landed on `main`, and a corrective spec follow-up is part of this plan so the published wording now matches the explicit decision that `PermissionTicket` serialization remains framework-neutral.
+Post-review note: Phases 1 and 2 (spec text) are landed on `main`, and Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is also landed on `main`. The current demo holder runtime now uses explicit allowlisted `direct_jwks` policy by default; richer OIDF/UDAP issuer policies remain follow-on phases of this plan.
 
 ## Goal
 
 Make the spec and the reference implementation honest about how a `PermissionTicket` issuer's signing keys can be discovered, and harden the verifier against multi-source key disagreement:
 
-- acknowledge in the spec that `${iss}/.well-known/jwks.json` is the common-denominator / fallback publication path, and that issuers participating in a trust framework (OIDF, UDAP) have a framework-native publication path that takes precedence
+- acknowledge in the spec that `${iss}/.well-known/jwks.json` is the common-denominator / fallback publication path, and that issuers participating in a trust framework (OIDF, UDAP) have a framework-native publication path that a verifier may prefer when configured to do so
 - keep `PermissionTicket` serialization framework-neutral: framework participation is discovered from `iss`, not encoded into the ticket payload or JOSE header
 - introduce a generic issuer-trust policy model so a data holder can explicitly choose whether to resolve issuer trust via direct JWKS, OIDF, UDAP, or a combination of them
 - keep the current demo data-holder runtime configured conservatively: allowlisted issuer `iss` URLs with direct JWKS lookup derived from `iss`, while still building and testing the richer OIDF/UDAP capability
@@ -20,10 +20,11 @@ Three things are currently misaligned:
 
 1. **Spec text is too narrow.** Section 1.14.2 says "Public keys SHALL be exposed via a JWK Set URL". That sentence quietly excludes both OIDF entity configurations and UDAP X.509 cert binding, even though the rest of the spec already names those frameworks as first-class trust paths.
 
-2. **Reference implementation only knows two of the three paths for issuer keys.**
-   - Direct JWKS at `${iss}/.well-known/jwks.json`: implemented in `auth/issuers.ts`
-   - OIDF entity configuration via the leaf entity ID: implemented in `auth/frameworks/oidf/resolver.ts` after Plans 21 and 23
-   - UDAP issuer discovery from `iss`: **not implemented for issuers**. The data holder publishes its own UDAP discovery document at `${fhirBaseUrl}/.well-known/udap`, but the ticket issuer path does not yet have a verifier-side UDAP discovery model rooted in `iss`.
+2. **Reference implementation publication and verification are misaligned.**
+   - local ticket issuers publish direct JWKS at `${iss}/.well-known/jwks.json`
+   - OIDF issuer trust exists as a framework resolver after Plans 21 and 23
+   - UDAP issuer discovery from `iss` is not yet implemented for ticket issuers
+   - the current verifier does not express an ordered issuer-trust policy; it trusts local issuers in-process and framework issuer trust via built-in behavior
 
 3. **No defense against multi-source disagreement.** A misconfigured deployment can publish two different public keys under the same `kid` via two different mechanisms (e.g., one in the issuer's static JWKS, one in its OIDF entity configuration) and the data holder will silently accept whichever path it consults first. There is no tripwire.
 
@@ -62,12 +63,12 @@ Consequences:
 
 ### 4. UDAP Issuer Trust Must Be Rooted In `iss`
 
-If a ticket issuer participates in UDAP, the data holder must discover and evaluate that participation from the issuer URL and verifier-side configuration. This plan does **not** invent a new ticket-level UDAP binding.
+If a ticket issuer participates in UDAP, the data holder discovers and evaluates that participation from:
 
-Current implication:
+- `GET {iss}/.well-known/udap`
+- verifier-side trust policy and trust anchors
 
-- Plan 25 continues with direct JWKS + OIDF cross-source consistency work
-- any UDAP issuer path starts from `{iss}/.well-known/udap` and verifier-side policy, without changing ticket serialization
+This plan does **not** invent a new ticket-level UDAP binding, and it does not alter the `PermissionTicket` payload or JOSE header.
 
 ### 5. Issuer Trust Uses An Ordered Declarative Policy List
 
@@ -144,6 +145,8 @@ For those allowlisted issuer URLs, the verifier derives the common-denominator k
 
 OIDF and UDAP issuer-resolution capability may still exist in the generic verifier and in tests, but they are not enabled in the current demo holder runtime policy by default.
 
+There is also no special in-process verifier shortcut for those runtime holders. Even for local demo issuers, the direct-JWKS runtime path is modeled as issuer-URL allowlist plus `${iss}/.well-known/jwks.json` resolution.
+
 ### 7. Cross-Source Consistency Check
 
 When verifying an incoming `PermissionTicket` JWT, the data holder evaluates its ordered issuer-trust policy list to choose a primary trust path. That primary path establishes trust.
@@ -189,12 +192,17 @@ In `input/pagecontent/index.md` §1.14.2, replace the current `Keys` block with:
 
 > *   **Keys:**
 >     *   **Issuer:** Signs the `PermissionTicket`. Public keys are discovered via the trust framework the issuer participates in:
->         *   **Direct trust (framework-agnostic):** publish via a JWK Set URL the Data Holder has been pre-configured to trust, e.g. `${issuerBaseUrl}/.well-known/jwks.json`. This is the common-denominator fallback.
+>         *   **Direct trust (framework-agnostic):** publish via a JWK Set URL rooted at an issuer URL the Data Holder has been pre-configured to trust, e.g. `${iss}/.well-known/jwks.json`. This is the common-denominator fallback.
 >         *   **OpenID Federation:** publish keys inside an entity configuration at `${entityId}/.well-known/openid-federation`; verification keys are taken from the resolved trust chain after metadata policy is applied.
 >         *   **UDAP:** discover issuer trust from `${iss}/.well-known/udap` using a configured UDAP trust community and verifier-side policy. This specification does not require UDAP participation to alter the `PermissionTicket` payload or JOSE header.
 >     *   **Client:** Signs the `ClientAssertion`. Public keys SHALL be registered with the Data Holder or exposed via JWKS.
 
-And add a new subsection §1.14.3 "Issuer Key Publication" (renumber the existing "Error Responses" accordingly) with the prose explaining publication path selection, ordered verifier-side policy evaluation, and the RECOMMENDED multi-source consistency check.
+And add a new subsection §1.14.3 "Issuer Key Publication" (renumber the existing "Error Responses" accordingly) with prose explaining:
+
+- publication path selection from an implementation-defined ordered verifier-side trust policy
+- direct JWKS as the common-denominator fallback
+- OIDF and UDAP as framework-native discovery paths when the verifier is configured to use them
+- a RECOMMENDED multi-source consistency check for shared `kid` values
 
 ## Target Reference Implementation Behaviour
 
@@ -209,6 +217,10 @@ And add a new subsection §1.14.3 "Issuer Key Publication" (renumber the existin
 4. Verify the JWT signature against the primary path's resolved key for the JWT's `kid`. Reject if not found.
 5. **Cross-source check.** For every other source that is also explicitly configured for this issuer, attempt to resolve key material for the same `kid`. For every source that has the `kid`, assert public key equality with the primary path. Reject on any disagreement. Reject by default if a configured secondary source is unreachable or cannot complete verification.
 6. Continue with the rest of `PermissionTicket` validation (audience, expiry, presenter binding, etc.).
+
+In the current demo holder runtime, step 2 evaluates a one-entry policy list:
+
+- `direct_jwks` for allowlisted issuer `iss` URLs only
 
 ### Issuer Registry Changes
 
@@ -258,10 +270,13 @@ Files:
 - add the verifier-side ordered issuer-trust policy model in `store/model.ts`
 - wire the current demo data-holder runtime to a single `direct_jwks` policy using allowlisted issuer `iss` URLs
 - derive the direct JWKS endpoint from `iss` instead of configuring arbitrary JWKS URLs
+- remove the current framework-first plus local-in-process fallback from ticket verification in favor of explicit policy evaluation
+- use actual `${iss}/.well-known/jwks.json` resolution for the demo holder runtime, including self-origin loopback rewrite only when the issuer origin is this server's own public origin
 - update tests to confirm the current demo holder runtime continues to use only direct JWKS for issuer trust by default
 
 Files:
 - `fhir-server/src/store/model.ts`
+- `fhir-server/src/config.ts`
 - `fhir-server/src/auth/tickets.ts`
 - `fhir-server/src/auth/issuers.ts`
 - tests covering default runtime policy
@@ -340,8 +355,13 @@ Expected primary files (consolidated from phases above):
 - No new persistence mechanism beyond the demo crypto bundle introduced in Plan 24
 - No support for issuer key rotation choreography — that is a separate concern; this plan only ensures that whatever is published is consistent at any given moment
 - No automatic discovery of unconfigured framework participation — the data holder still only consults sources that have been explicitly allowlisted for the issuer
+- No special in-process issuer-verification shortcut for the current demo holder runtime; default runtime behaviour should match its configured direct-JWKS policy
 
 ## Resolved Decisions (Formerly Open Questions)
+
+### Former OQ-1 — UDAP issuer discovery shape
+
+Resolved: verifier-side discovery starts from `GET {iss}/.well-known/udap`, and `PermissionTicket` serialization remains framework-neutral.
 
 ### Former OQ-3 — Cross-source check eagerness
 
@@ -354,14 +374,6 @@ Resolved: strict mode by default. If the chosen primary path fails, verification
 ## Open Questions
 
 These are explicit decision points where the plan currently uses a default and the user (or reviewer) may want to override before implementation starts. Each open question lists the default and the alternatives.
-
-### OQ-1 — UDAP issuer publication shape
-
-**Default:** a ticket issuer's participation in UDAP, if supported, is discovered from `iss` and verifier-side configuration. The `PermissionTicket` itself remains framework-neutral.
-
-**Alternatives:**
-- (a) ticket-level `x5c` binding — rejected because it changes ticket serialization based on framework participation
-- (b) publish a stripped-down variant at a new path like `${iss}/.well-known/udap-issuer-metadata` carrying only issuer key/cert binding — invents a new convention
 
 ### OQ-4 — Cross-check semantics
 
@@ -405,16 +417,13 @@ I applied a few plan edits directly while reviewing because they tighten the des
 
 The plan direction is good and worth doing. The spec problem is real, the reference implementation already has enough OIDF/JWKS surface to land the first hardening phase, and the multi-source disagreement check is a real security improvement.
 
-### OQ-1 — UDAP issuer publication shape
+### Former OQ-1 — UDAP issuer discovery
 
-I agree with the default.
+This is now resolved in the plan body:
 
-Reason:
-- the current UDAP discovery implementation in `fhir-server/src/app.ts` and `fhir-server/src/auth/udap-server-metadata.ts` is clearly authorization-server / registration-surface metadata, not a generic issuer-key publication document
-- a pure ticket issuer does not have meaningful `token_endpoint`, `registration_endpoint`, `grant_types_supported`, etc.
-- publishing a literal `.well-known/udap` document for a pure ticket issuer would be misleading at best and non-conformant at worst
-
-So the earlier `x5c`-in-ticket draft was the wrong default for this plan.
+- discovery starts from `{iss}/.well-known/udap`
+- the ticket stays framework-neutral
+- verifier-side policy decides whether UDAP resolution is enabled and what trust anchors/community rules apply
 
 ### OQ-3 — Cross-source check eagerness
 
@@ -480,7 +489,7 @@ Current state:
 - that object already includes `publicJwks`
 - so the cross-source helper can already consume OIDF-resolved keys without widening the core trust result much further
 
-Likely Phase-2 need:
+Likely Phase-4 need:
 - expose a small source label / helper path so the disagreement diagnostic can say exactly which source produced which key
 
 But there is no major OIDF blocker.
@@ -493,7 +502,7 @@ The key runtime distinction is now explicit:
 - the current demo holder runtime stays configured to direct JWKS only
 - richer OIDF/UDAP issuer behaviors are built and tested under explicit policy, not turned on by default in the runtime demo holders
 
-Plan is implementation-ready once the already-landed Phase 1 spec text is corrected to remove the earlier ticket-level UDAP wording. After that corrective spec commit, the issuer-trust policy model is the next discrete implementation commit.
+Plan is implementation-ready. Phases 1 and 2 (spec text) are already landed, and Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is the next discrete implementation commit.
 
 ## Acceptance Criteria
 
