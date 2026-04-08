@@ -129,6 +129,19 @@ Unsupported standard operators fail closed when present in `metadata_policy` wit
 
 The trust-chain validator also rejects delegated trust marks explicitly with `OIDF trust_mark delegation_unsupported`. This server only accepts non-delegated trust marks in the current first-pass OIDF implementation.
 
+OIDF ticket issuers now publish two different key surfaces with different jobs:
+
+- `metadata.federation_entity.organization_name`
+  - display-only organizational metadata
+- `metadata.smart_permission_ticket_issuer.issuer_url`
+  - the `iss` value the verifier matches for issuer trust
+- `metadata.smart_permission_ticket_issuer.jwks`
+  - the inline ticket-signing JWK Set returned as `ResolvedIssuerTrust.publicJwks`
+- leaf entity statement top-level `jwks`
+  - federation-signing keys only, used to validate the OIDF chain itself
+
+For issuer trust, the resolver now verifies the chain, applies metadata policy, extracts `smart_permission_ticket_issuer`, validates its inline JWK Set, and then verifies the `PermissionTicket` against those keys. It does not use the leaf entity statement's top-level federation `jwks` for ticket signature verification.
+
 ## Issuer Key Publication and Trust Policy
 
 `PermissionTicket` issuers stay framework-neutral on the wire. The verifier starts
@@ -204,6 +217,12 @@ mechanism, shared `kid` values are kept aligned with publication-level tests.
 Runtime verification does not re-fetch secondary sources after the selected
 primary policy path succeeds.
 
+For the built-in OIDF demo issuer, the publication contract is now explicit:
+
+- direct JWKS at `${iss}/.well-known/jwks.json` and inline `metadata.smart_permission_ticket_issuer.jwks` publish the same ticket-signing key set
+- the leaf entity statement top-level `jwks` publishes a different federation-signing key set
+- the OIDF issuer-trust path consumes the inline metadata JWK Set, not the federation-signing key set
+
 ## Stable Demo Crypto Lockfile
 
 The server now treats the demo crypto bundle as a lockfile:
@@ -224,6 +243,7 @@ What the lockfile stabilizes across restarts:
 - the HS256 access-token signing secret
 - the HS256 client-registration signing secret
 - local ticket issuer signing keys
+- one OIDF ticket-issuer federation key per issuer slug, separate from the direct ticket-signing key
 - OIDF fixed-role entities
 - one OIDF provider-site leaf per discovered `siteSlug`
 - the built-in well-known demo client

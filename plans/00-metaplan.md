@@ -290,6 +290,17 @@ Status: complete on `main`
 - keeps the first-pass metadata-policy operator surface intentionally limited to `value`, `default`, and `one_of`, while failing closed on unsupported standard operators
 - rejects delegated trust marks explicitly and improves issuer-trust discovery with bounded multi-hint traversal plus caching
 
+### Plan 29: SMART Permission Ticket Issuer Entity Type
+`29-smart-permission-ticket-issuer-entity-type.md`
+
+Status: complete on `main`
+
+- introduces the `smart_permission_ticket_issuer` OIDF metadata type for ticket issuers
+- separates the leaf federation-signing key from the `PermissionTicket` signing key in the demo topology
+- grows the demo crypto lockfile with a dedicated `oidfTicketIssuerFederation` sibling map for ticket-issuer leaf keys
+- updates issuer-trust resolution so OIDF verifiers consume inline `smart_permission_ticket_issuer.jwks` instead of the leaf entity-statement top-level `jwks`
+- adds publication-level tests asserting direct JWKS equals inline ticket-signing JWKS while differing from the federation-signing key
+
 ## Dependencies Between Plans
 
 ```
@@ -329,6 +340,8 @@ Plan 27 (Legacy Cleanup After Plans 23-26) ────────────�
                                       ↑
 Plan 28 (OIDF Spec Alignment + Functional Kernel) ───────┘
                                       ↑
+Plan 29 (SMART Permission Ticket Issuer Entity Type) ────┘
+                                      ↑
 Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
                                       ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
@@ -353,6 +366,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 25 (issuer key publication + cross-source consistency) is the follow-on hardening/spec-clarification plan after Plans 23 and 24: it broadens the issuer-key publication model to cover direct JWKS, OIDF, and UDAP discovery rooted at `iss`, keeps `PermissionTicket` serialization framework-neutral, adds an explicit ordered issuer-trust policy model, adds publication-level consistency tests for issuers exposed through more than one mechanism, and includes UDAP issuer resolution from `iss` under explicit verifier policy. Plan 25 is complete on `main`.
 - Plan 27 (legacy cleanup after Plans 23-26) is the follow-on cleanup pass after the issuer-trust, lockfile, and generic framework refactors: it removes the dead `local` issuer-trust branch, deletes the unneeded standalone UDAP demo registration helper instead of carrying a second bootstrap path, trims genuinely unused compatibility helpers, and deliberately preserves the still-intentional env/config override surfaces. It is fully implemented on `main`.
 - Plan 28 (OIDF spec alignment + functional kernel) is the OIDF correctness and hardening pass after Plans 21 and 23: it extracts a pure trust-chain kernel, implements direct-superior metadata plus top-down metadata-policy handling, enforces `crit` / `metadata_policy_crit` / RFC constraints, explicitly rejects delegated trust marks, and documents the intentional first-pass operator subset. It is fully implemented on `main`.
+- Plan 29 (SMART Permission Ticket Issuer entity type) is the follow-on issuer-publication refinement after Plans 25, 26, and 28: it introduces `smart_permission_ticket_issuer`, separates ticket-signing keys from OIDF federation-signing keys, persists a dedicated ticket-issuer federation key in the demo lockfile, and updates issuer-trust resolution plus publication-consistency tests around the new split. It is fully implemented on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available
