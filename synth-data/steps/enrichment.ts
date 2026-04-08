@@ -97,14 +97,58 @@ function stableCrossSitePatientId(patientSlug: string) {
   return `person-${createHash("sha256").update(`patient:${patientSlug}`).digest("hex").slice(0, 24)}`;
 }
 
-function buildPatientSummary(scenarioText: string): string | undefined {
-  const paragraphs = splitMarkdownParagraphs(scenarioText)
-    .map(cleanMarkdownText)
-    .filter(Boolean)
-    .filter((paragraph) => !shouldSkipPatientParagraph(paragraph));
+const META_SECTION_HEADING_PREFIXES = [
+  "key features",
+  "encounter guidance",
+  "demo relevance",
+  "why this patient matters",
+  "constraint exercise goals",
+];
 
-  if (paragraphs.length === 0) return undefined;
-  return paragraphs.slice(0, 3).join("\n\n");
+function buildPatientSummary(scenarioText: string): string | undefined {
+  // Drop the top-level `# Title` line (viewer already shows the patient name).
+  const withoutTopTitle = scenarioText.replace(/^\s*#\s[^\n]*\n?/, "");
+
+  // Drop demo-meta sections ("## Key Features ...", etc.) by slicing out everything
+  // from a meta heading through the next same-or-higher-level heading.
+  const withoutMetaSections = stripMetaSections(withoutTopTitle);
+
+  const trimmed = withoutMetaSections.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
+function stripMetaSections(markdown: string): string {
+  const lines = markdown.split("\n");
+  const output: string[] = [];
+  let skipUntilHeadingLevel: number | null = null;
+
+  for (const line of lines) {
+    const headingMatch = line.match(/^(#{1,6})\s+(.*)$/);
+    if (headingMatch) {
+      const level = headingMatch[1].length;
+      const headingText = headingMatch[2].toLowerCase().trim();
+
+      if (skipUntilHeadingLevel !== null) {
+        // We're currently in a skipped section. Stop skipping when we hit a heading
+        // at the same level or shallower.
+        if (level <= skipUntilHeadingLevel) {
+          skipUntilHeadingLevel = null;
+        } else {
+          continue;
+        }
+      }
+
+      if (META_SECTION_HEADING_PREFIXES.some((prefix) => headingText.startsWith(prefix))) {
+        skipUntilHeadingLevel = level;
+        continue;
+      }
+    }
+
+    if (skipUntilHeadingLevel !== null) continue;
+    output.push(line);
+  }
+
+  return output.join("\n");
 }
 
 function buildEncounterSummary(encounter: EncounterRecord): string {
@@ -151,15 +195,6 @@ function splitSentences(value: string): string[] {
     .split(/(?<=[.!?])\s+/)
     .map((sentence) => sentence.trim())
     .filter(Boolean);
-}
-
-function shouldSkipPatientParagraph(paragraph: string): boolean {
-  const normalized = paragraph.toLowerCase();
-  return normalized.startsWith("why this patient matters")
-    || normalized.startsWith("constraint exercise goals")
-    || normalized.startsWith("key features for permission tickets demo")
-    || normalized.startsWith("encounter guidance")
-    || normalized.startsWith("sites");
 }
 
 function stripProjectMetaTags(resource: any) {

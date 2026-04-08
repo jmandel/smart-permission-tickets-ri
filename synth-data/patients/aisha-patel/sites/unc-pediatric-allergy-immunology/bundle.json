@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T18:45:36.825Z",
+  "timestamp": "2026-04-08T21:57:40.632Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:1bda4140-96af-46b5-8d23-53fe5163e756",
@@ -53,7 +53,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
-            "valueMarkdown": "Her care involves a pediatrician for routine well-child visits and acute illness, a pediatric allergist/immunologist for allergy management and immunotherapy evaluation, and she has had two ED visits at a children's hospital — one for an anaphylactic reaction at age 2 (accidental peanut exposure at a family gathering) and one for a severe asthma exacerbation at age 5 requiring systemic steroids.\n\nPriya Patel, as Aisha's mother, is the authorized representative who uses a patient-facing app to manage Aisha's health records.\n\nThree sites, one state (NC). Tests Permission Ticket constraints primarily on scopes (e.g., can filter to just immunization records, or just allergy-related data) and organizations (3 different health systems)."
+            "valueMarkdown": "## Character\n6-year-old Indian-American girl. Lives with her mother Priya Patel (age 34, software engineer) and father Raj Patel (age 36, pharmacist) in Raleigh, NC. Attends first grade. Generally active and happy but has significant allergic disease burden.\n\n## Clinical Scenario\nAisha was diagnosed with asthma at age 3 after recurrent wheezing with viral URIs. She progressed to severe persistent asthma by age 5, requiring daily fluticasone/salmeterol plus montelukast, with PRN albuterol. She has confirmed IgE-mediated food allergies to peanuts (anaphylaxis at age 2 — epinephrine auto-injector prescribed) and tree nuts (positive skin prick and specific IgE testing). She also has moderate atopic dermatitis managed with topical steroids and moisturizers, and allergic rhinitis.\n\nHer care involves a pediatrician for routine well-child visits and acute illness, a pediatric allergist/immunologist for allergy management and immunotherapy evaluation, and she has had two ED visits at a children's hospital — one for an anaphylactic reaction at age 2 (accidental peanut exposure at a family gathering) and one for a severe asthma exacerbation at age 5 requiring systemic steroids.\n\nPriya Patel, as Aisha's mother, is the authorized representative who uses a patient-facing app to manage Aisha's health records.\n\n## Sites\n- **Triangle Pediatrics** — Pediatrician in Raleigh, NC (2020–present). Well-child visits, immunizations, acute visits, asthma management.\n- **UNC Pediatric Allergy & Immunology** — Allergist in Chapel Hill, NC (2022–present). Food allergy testing, asthma specialist management, immunotherapy evaluation.\n- **WakeMed Children's Emergency Department** — ED in Raleigh, NC. Two visits: anaphylaxis (2022) and severe asthma exacerbation (2025).\n\nThree sites, one state (NC). Tests Permission Ticket constraints primarily on **scopes** (e.g., can filter to just immunization records, or just allergy-related data) and **organizations** (3 different health systems)."
           }
         ],
         "identifier": [

@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-03T18:45:37.210Z",
+  "timestamp": "2026-04-08T21:57:41.861Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:5bd976dc-a3e0-4123-ac48-b7774a57978f",
@@ -53,7 +53,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
-            "valueMarkdown": "His PCP starts workup: TTE (echocardiogram) shows mild left atrial dilation (4.3 cm), preserved LVEF (58%), no valvular disease. TSH is normal. CBC and metabolic panel are normal. CHA₂DS₂-VASc score is 1 (hypertension). His PCP initiates rate control (metoprolol succinate 50mg daily) and anticoagulation (apixaban 5mg BID), then refers Kevin to an electrophysiologist at the University of Minnesota for evaluation of catheter ablation.\n\nThe EP specialist at U of M issues a Permission Ticket to access Kevin's records from his PCP, including the ECG, echocardiogram, labs, and medication history relevant to the consult.\n\nTwo sites, one state (MN). Tests Permission Ticket constraints on scopes (specialist needs cardiac-relevant data: ECG, echo, labs, medications — not unrelated history) and organizations (community PCP → academic specialist)."
+            "valueMarkdown": "## Character\n57-year-old Korean-American man, owner of a small dry cleaning business. Lives in Minneapolis, MN with his wife Soon-Yi. Generally healthy, moderate alcohol use (2-3 glasses of wine per week with dinner). Active — plays golf in summer, walks regularly. Insurance: employer group plan through a local business association.\n\n## Clinical Scenario\nKevin has been seeing his PCP for routine care — well-controlled mild hypertension (lisinopril 10mg) and borderline cholesterol (managed with diet and exercise, no statin). In November 2025, he develops intermittent palpitations and mild exertional dyspnea while golfing. He dismisses it initially but mentions it at a routine follow-up in January 2026. His PCP discovers an irregularly irregular pulse at 94 bpm. A 12-lead ECG confirms atrial fibrillation.\n\nHis PCP starts workup: TTE (echocardiogram) shows mild left atrial dilation (4.3 cm), preserved LVEF (58%), no valvular disease. TSH is normal. CBC and metabolic panel are normal. CHA₂DS₂-VASc score is 1 (hypertension). His PCP initiates rate control (metoprolol succinate 50mg daily) and anticoagulation (apixaban 5mg BID), then refers Kevin to an electrophysiologist at the University of Minnesota for evaluation of catheter ablation.\n\nThe EP specialist at U of M issues a Permission Ticket to access Kevin's records from his PCP, including the ECG, echocardiogram, labs, and medication history relevant to the consult.\n\n## Sites\n- **Minnehaha Internal Medicine** — PCP in Minneapolis, MN (2018–present). Routine chronic disease management, AFib discovery, initial workup, rate control + anticoagulation initiation.\n- **University of Minnesota Cardiac Electrophysiology** — EP specialist in Minneapolis, MN (2026). Consultation for catheter ablation evaluation, Holter monitor, shared decision-making.\n\nTwo sites, one state (MN). Tests Permission Ticket constraints on **scopes** (specialist needs cardiac-relevant data: ECG, echo, labs, medications — not unrelated history) and **organizations** (community PCP → academic specialist)."
           }
         ],
         "identifier": [
