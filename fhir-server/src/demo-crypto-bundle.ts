@@ -33,6 +33,7 @@ export type DemoCryptoBundleDocument = {
     clientRegistrationSecret: string;
   };
   ticketIssuers: Record<string, DemoCryptoBundlePrivateJwkEntry>;
+  oidfTicketIssuerFederation: Record<string, DemoCryptoBundlePrivateJwkEntry>;
   oidf: {
     anchor: DemoCryptoBundlePrivateJwkEntry;
     appNetwork: DemoCryptoBundlePrivateJwkEntry;
@@ -56,6 +57,7 @@ export type DemoCryptoBundle = {
     clientRegistrationSecret: string;
   };
   ticketIssuers: Record<string, DemoCryptoBundleJwkEntry>;
+  oidfTicketIssuerFederation: Record<string, DemoCryptoBundleJwkEntry>;
   oidf: {
     anchor: DemoCryptoBundleJwkEntry;
     appNetwork: DemoCryptoBundleJwkEntry;
@@ -80,6 +82,7 @@ type EnsureDemoCryptoBundleOptions = {
 
 type BundleEntryKind =
   | { kind: "ticket-issuer"; slug: string }
+  | { kind: "oidf-ticket-issuer-federation"; slug: string }
   | { kind: "provider-site"; slug: string }
   | { kind: "fixed-role"; name: string };
 
@@ -121,6 +124,8 @@ export function ensureDemoCryptoBundle({
       console.info(`demo crypto bundle: added provider-site key for ${addition.slug}`);
     } else if (addition.kind === "ticket-issuer") {
       console.info(`demo crypto bundle: added ticket-issuer key for ${addition.slug}`);
+    } else if (addition.kind === "oidf-ticket-issuer-federation") {
+      console.info(`demo crypto bundle: added oidf ticket-issuer federation key for ${addition.slug}`);
     } else {
       console.info(`demo crypto bundle: added fixed role key for ${addition.name}`);
     }
@@ -153,6 +158,10 @@ export function parseDemoCryptoBundle(raw: string, sourceLabel = "demo crypto bu
       ),
     },
     ticketIssuers: materializeJwkEntryRecord(readObject(bundle.ticketIssuers, `${sourceLabel}.ticketIssuers`), `${sourceLabel}.ticketIssuers`),
+    oidfTicketIssuerFederation: materializeJwkEntryRecord(
+      readObject(bundle.oidfTicketIssuerFederation, `${sourceLabel}.oidfTicketIssuerFederation`),
+      `${sourceLabel}.oidfTicketIssuerFederation`,
+    ),
     oidf: {
       anchor: materializeJwkEntry(readObject(bundle.oidf, `${sourceLabel}.oidf`).anchor, `${sourceLabel}.oidf.anchor`),
       appNetwork: materializeJwkEntry(readObject(bundle.oidf, `${sourceLabel}.oidf`).appNetwork, `${sourceLabel}.oidf.appNetwork`),
@@ -184,12 +193,10 @@ export function generateDemoCryptoBundle(
       clientRegistrationSecret: generateSharedSecret(),
     },
     ticketIssuers: Object.fromEntries(
-      normalizeSlugs(options.issuerSlugs ?? ["reference-demo"]).map((issuerSlug) => [
-        issuerSlug,
-        {
-          privateJwk: issuerSlug === "reference-demo" ? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK : generateEcPrivateJwk(),
-        },
-      ]),
+      normalizeSlugs(options.issuerSlugs ?? ["reference-demo"]).map((issuerSlug) => [issuerSlug, generateTicketIssuerEntry(issuerSlug)]),
+    ),
+    oidfTicketIssuerFederation: Object.fromEntries(
+      normalizeSlugs(options.issuerSlugs ?? ["reference-demo"]).map((issuerSlug) => [issuerSlug, generateOidfTicketIssuerFederationEntry()]),
     ),
     oidf: {
       anchor: { privateJwk: generateEcPrivateJwk() },
@@ -248,10 +255,19 @@ function growDemoCryptoBundleDocument(
   const ticketIssuers = ensureObjectChild(bundleDocument, "ticketIssuers", "demo crypto bundle.ticketIssuers");
   for (const issuerSlug of issuerSlugs) {
     if (ticketIssuers[issuerSlug] !== undefined) continue;
-    ticketIssuers[issuerSlug] = {
-      privateJwk: issuerSlug === "reference-demo" ? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK : generateEcPrivateJwk(),
-    } satisfies DemoCryptoBundlePrivateJwkEntry;
+    ticketIssuers[issuerSlug] = generateTicketIssuerEntry(issuerSlug);
     additions.push({ kind: "ticket-issuer", slug: issuerSlug });
+  }
+
+  const oidfTicketIssuerFederation = ensureObjectChild(
+    bundleDocument,
+    "oidfTicketIssuerFederation",
+    "demo crypto bundle.oidfTicketIssuerFederation",
+  );
+  for (const issuerSlug of issuerSlugs) {
+    if (oidfTicketIssuerFederation[issuerSlug] !== undefined) continue;
+    oidfTicketIssuerFederation[issuerSlug] = generateOidfTicketIssuerFederationEntry();
+    additions.push({ kind: "oidf-ticket-issuer-federation", slug: issuerSlug });
   }
 
   const oidf = ensureObjectChild(bundleDocument, "oidf", "demo crypto bundle.oidf");
@@ -350,6 +366,7 @@ function serializeBundleDocument(bundleDocument: DemoCryptoBundleDocument | Reco
 function countManagedEntries(bundle: DemoCryptoBundleDocument) {
   return 2
     + Object.keys(bundle.ticketIssuers).length
+    + Object.keys(bundle.oidfTicketIssuerFederation).length
     + 4
     + Object.keys(bundle.oidf.providerSites).length
     + 1
@@ -392,6 +409,18 @@ function derivePublicJwk(privateJwk: JsonWebKey, label: string) {
   } catch (error) {
     throw new Error(`Invalid ${label}.privateJwk: ${error instanceof Error ? error.message : String(error)}`);
   }
+}
+
+function generateTicketIssuerEntry(issuerSlug: string): DemoCryptoBundlePrivateJwkEntry {
+  return {
+    privateJwk: issuerSlug === "reference-demo" ? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK : generateEcPrivateJwk(),
+  };
+}
+
+function generateOidfTicketIssuerFederationEntry(): DemoCryptoBundlePrivateJwkEntry {
+  return {
+    privateJwk: generateEcPrivateJwk(),
+  };
 }
 
 function generateEcPrivateJwk() {

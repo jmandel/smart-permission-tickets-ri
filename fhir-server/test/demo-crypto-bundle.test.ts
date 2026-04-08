@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 
 import { createAppContext, startServer } from "../src/app.ts";
 import { DEFAULT_DEMO_UDAP_FRAMEWORK_URI } from "../src/auth/demo-frameworks.ts";
+import { DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK } from "../src/auth/issuers.ts";
 import { FhirStore } from "../src/store/store.ts";
 import {
   ensureDemoCryptoBundle,
@@ -37,7 +38,9 @@ describe("demo crypto bundle", () => {
       expect(first.sharedSecrets.clientRegistrationSecret).toBeString();
       expect(first.sharedSecrets.accessTokenSecret).not.toBe(first.sharedSecrets.clientRegistrationSecret);
       expect(first.ticketIssuers["reference-demo"]?.publicJwk.kty).toBe("EC");
+      expect(first.oidfTicketIssuerFederation["reference-demo"]?.publicJwk.kty).toBe("EC");
       expect(second.ticketIssuers["reference-demo"]?.publicJwk.kty).toBe("EC");
+      expect(second.oidfTicketIssuerFederation["reference-demo"]?.publicJwk.kty).toBe("EC");
       expect(second.sharedSecrets.accessTokenSecret).toBe(first.sharedSecrets.accessTokenSecret);
       expect(second.sharedSecrets.clientRegistrationSecret).toBe(first.sharedSecrets.clientRegistrationSecret);
       expect(secondRaw).toBe(firstRaw);
@@ -45,6 +48,20 @@ describe("demo crypto bundle", () => {
     } finally {
       cleanupBundlePath(bundlePath);
     }
+  });
+
+  test("generateDemoCryptoBundle creates separate federation keys for known issuers without changing ticket-signing defaults", () => {
+    const bundle = generateDemoCryptoBundle(["alpha"], { issuerSlugs: ["reference-demo", "secondary-demo"] });
+
+    expect(privateScalarFor(bundle.ticketIssuers["reference-demo"])).toBe(DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK.d);
+    expect(privateScalarFor(bundle.oidfTicketIssuerFederation["reference-demo"])).toBeString();
+    expect(privateScalarFor(bundle.oidfTicketIssuerFederation["reference-demo"])).not.toBe(
+      privateScalarFor(bundle.ticketIssuers["reference-demo"]),
+    );
+    expect(privateScalarFor(bundle.oidfTicketIssuerFederation["secondary-demo"])).toBeString();
+    expect(privateScalarFor(bundle.oidfTicketIssuerFederation["secondary-demo"])).not.toBe(
+      privateScalarFor(bundle.ticketIssuers["secondary-demo"]),
+    );
   });
 
   test("ensureDemoCryptoBundle grows a missing provider-site entry without changing existing site keys", () => {
@@ -70,6 +87,51 @@ describe("demo crypto bundle", () => {
     }
   });
 
+  test("ensureDemoCryptoBundle grows a missing ticket-issuer entry without changing existing federation keys", () => {
+    const bundle = generateDemoCryptoBundle(["alpha"], { issuerSlugs: ["reference-demo"] });
+    delete bundle.ticketIssuers["reference-demo"];
+    const bundlePath = writeBundle(bundle);
+    try {
+      const before = readBundle(bundlePath);
+      const preservedFederationKey = privateScalarFor(before.oidfTicketIssuerFederation["reference-demo"]);
+
+      ensureDemoCryptoBundle({
+        bundlePath,
+        siteSlugs: ["alpha"],
+        issuerSlugs: ["reference-demo"],
+      });
+
+      const after = readBundle(bundlePath);
+      expect(privateScalarFor(after.ticketIssuers["reference-demo"])).toBe(DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK.d);
+      expect(privateScalarFor(after.oidfTicketIssuerFederation["reference-demo"])).toBe(preservedFederationKey);
+    } finally {
+      cleanupBundlePath(bundlePath);
+    }
+  });
+
+  test("ensureDemoCryptoBundle grows a missing federation entry without changing existing ticket-signing keys", () => {
+    const bundle = generateDemoCryptoBundle(["alpha"], { issuerSlugs: ["reference-demo"] });
+    delete bundle.oidfTicketIssuerFederation["reference-demo"];
+    const bundlePath = writeBundle(bundle);
+    try {
+      const before = readBundle(bundlePath);
+      const preservedTicketKey = privateScalarFor(before.ticketIssuers["reference-demo"]);
+
+      ensureDemoCryptoBundle({
+        bundlePath,
+        siteSlugs: ["alpha"],
+        issuerSlugs: ["reference-demo"],
+      });
+
+      const after = readBundle(bundlePath);
+      expect(privateScalarFor(after.ticketIssuers["reference-demo"])).toBe(preservedTicketKey);
+      expect(privateScalarFor(after.oidfTicketIssuerFederation["reference-demo"])).toBeString();
+      expect(privateScalarFor(after.oidfTicketIssuerFederation["reference-demo"])).not.toBe(preservedTicketKey);
+    } finally {
+      cleanupBundlePath(bundlePath);
+    }
+  });
+
   test("ensureDemoCryptoBundle fills missing fixed roles and preserves stale provider-sites and ticket issuers", () => {
     const siteSlugs = FhirStore.load().listSiteSummaries().map((site) => site.siteSlug);
     const bundle = generateDemoCryptoBundle(siteSlugs, { issuerSlugs: ["reference-demo", "secondary-demo"] });
@@ -80,6 +142,7 @@ describe("demo crypto bundle", () => {
       const before = readBundle(bundlePath);
       const preservedSiteKey = privateScalarFor(before.oidf.providerSites[siteSlugs[0]!]!);
       const preservedSecondaryIssuerKey = privateScalarFor(before.ticketIssuers["secondary-demo"]!);
+      const preservedSecondaryFederationKey = privateScalarFor(before.oidfTicketIssuerFederation["secondary-demo"]!);
 
       ensureDemoCryptoBundle({
         bundlePath,
@@ -94,6 +157,7 @@ describe("demo crypto bundle", () => {
       expect(privateScalarFor(after.oidf.providerSites[siteSlugs[0]!]!)).toBe(preservedSiteKey);
       expect(after.oidf.providerSites["stale-site"]).toBeDefined();
       expect(privateScalarFor(after.ticketIssuers["secondary-demo"]!)).toBe(preservedSecondaryIssuerKey);
+      expect(privateScalarFor(after.oidfTicketIssuerFederation["secondary-demo"]!)).toBe(preservedSecondaryFederationKey);
     } finally {
       cleanupBundlePath(bundlePath);
     }
