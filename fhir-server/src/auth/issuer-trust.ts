@@ -1,13 +1,7 @@
 import type { ServerConfig } from "../config.ts";
-import type { IssuerTrustConfig, IssuerTrustPolicy, IssuerTrustPredicate, ResolvedIssuerTrust } from "../store/model.ts";
+import type { IssuerTrustPolicy, IssuerTrustPredicate, ResolvedIssuerTrust } from "../store/model.ts";
 import type { FrameworkRegistry } from "./frameworks/registry.ts";
 import { resolveDirectJwksIssuerTrust } from "./issuers.ts";
-
-export type ResolvedIssuerTrustSource = {
-  policy: IssuerTrustPolicy;
-  issuerTrust: ResolvedIssuerTrust;
-  sourceLabel: string;
-};
 
 export async function resolveConfiguredIssuerTrust(
   issuerUrl: string,
@@ -15,28 +9,13 @@ export async function resolveConfiguredIssuerTrust(
   frameworks: FrameworkRegistry,
   fetchImpl: typeof fetch = fetch,
 ): Promise<ResolvedIssuerTrust> {
-  return (await resolveConfiguredIssuerTrustSources(issuerUrl, config, frameworks, fetchImpl))[0]!.issuerTrust;
-}
-
-export async function resolveConfiguredIssuerTrustSources(
-  issuerUrl: string,
-  config: Pick<ServerConfig, "issuerTrust" | "publicBaseUrl" | "internalBaseUrl">,
-  frameworks: FrameworkRegistry,
-  fetchImpl: typeof fetch = fetch,
-): Promise<ResolvedIssuerTrustSource[]> {
   const normalizedIssuerUrl = normalizeIssuerUrl(issuerUrl);
   const policies = config.issuerTrust?.policies ?? [];
-  const resolvedSources: ResolvedIssuerTrustSource[] = [];
   for (const policy of policies) {
     const resolved = await resolveIssuerTrustViaPolicy(policy, normalizedIssuerUrl, config, frameworks, fetchImpl);
-    if (resolved) resolvedSources.push({
-      policy,
-      issuerTrust: resolved,
-      sourceLabel: sourceLabelForPolicy(policy),
-    });
+    if (resolved) return resolved;
   }
-  if (!resolvedSources.length) throw new Error("Unknown Permission Ticket issuer");
-  return resolvedSources;
+  throw new Error("Unknown Permission Ticket issuer");
 }
 
 async function resolveIssuerTrustViaPolicy(
@@ -114,15 +93,4 @@ function stringValue(value: unknown) {
 
 function arrayOfStrings(value: unknown) {
   return Array.isArray(value) ? value.filter((entry): entry is string => typeof entry === "string" && !!entry.trim()) : [];
-}
-
-function sourceLabelForPolicy(policy: IssuerTrustPolicy) {
-  switch (policy.type) {
-    case "direct_jwks":
-      return "direct JWKS";
-    case "oidf":
-      return "OIDF";
-    case "udap":
-      return "UDAP";
-  }
 }

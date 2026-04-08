@@ -1,54 +1,80 @@
 import { describe, expect, test } from "bun:test";
 
-import { generateClientKeyMaterial } from "../shared/private-key-jwt.ts";
+import { generateClientKeyMaterial, normalizePublicJwk } from "../shared/private-key-jwt.ts";
 import { PATIENT_SELF_ACCESS_TICKET_TYPE, PERMISSION_TICKET_SUBJECT_TOKEN_TYPE } from "../shared/permission-tickets.ts";
 import { buildDefaultFrameworks } from "../src/auth/demo-frameworks.ts";
 import { createAppContext, startServer } from "../src/app.ts";
 
-describe("issuer key cross-source consistency", () => {
-  test("direct JWKS + OIDF agreement passes", async () => {
-    const { context, origin, publicOrigin, server } = startCrossSourceHarness();
+describe("issuer key publication consistency", () => {
+  test("multi-method issuer publishes the same signing key through direct JWKS and OIDF", async () => {
+    const { context, origin, publicOrigin, server } = startHarness();
     try {
-      const response = await exchangeTicket(origin, mintTicket(context, publicOrigin));
-      expect(response.status).toBe(200);
-      const body = await response.json();
-      expect(typeof body.access_token).toBe("string");
+      const issuer = context.issuers.get(context.config.defaultPermissionTicketIssuerSlug);
+      if (!issuer) throw new Error("Missing direct issuer");
+
+      const directJwks = await fetchJson<{ keys: JsonWebKey[] }>(`${origin}/issuer/reference-demo/.well-known/jwks.json`);
+      const oidfTrust = await context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/reference-demo`);
+      if (!oidfTrust) throw new Error("Expected OIDF issuer trust");
+
+      const directKey = directJwks.keys.find((key) => key.kid === issuer.kid);
+      const oidfKey = oidfTrust.publicJwks.find((key) => key.kid === issuer.kid);
+      if (!directKey || !oidfKey) throw new Error("Missing published key for issuer kid");
+
+      expect(canonicalizePublicJwk(directKey)).toEqual(canonicalizePublicJwk(oidfKey));
     } finally {
       server.stop(true);
     }
   });
 
-  test("direct JWKS + OIDF disagreement on the JWT kid fails closed", async () => {
-    const { context, origin, publicOrigin, server } = startCrossSourceHarness();
+  test("publication consistency helper flags shared-kid disagreement", async () => {
+    const { context, origin, publicOrigin, server } = startHarness();
     try {
-      const directIssuer = context.issuers.get(context.config.defaultPermissionTicketIssuerSlug);
-      if (!directIssuer) throw new Error("Missing direct issuer");
-
+      const issuer = context.issuers.get(context.config.defaultPermissionTicketIssuerSlug);
+      if (!issuer) throw new Error("Missing direct issuer");
       const alternate = await generateClientKeyMaterial();
+
       context.oidfTopology.entities["ticket-issuer"].privateJwk = alternate.privateJwk;
       context.oidfTopology.entities["ticket-issuer"].publicJwk = {
         ...alternate.publicJwk,
-        kid: directIssuer.kid,
+        kid: issuer.kid,
       };
 
-      const response = await exchangeTicket(origin, mintTicket(context, publicOrigin));
-      expect(response.status).toBe(400);
-      const body = await response.json();
-      expect(body.error).toBe("invalid_grant");
-      expect(String(body.error_description)).toContain(`OIDF issuer key for kid ${directIssuer.kid} disagrees with direct JWKS`);
+      const directJwks = await fetchJson<{ keys: JsonWebKey[] }>(`${origin}/issuer/reference-demo/.well-known/jwks.json`);
+      const oidfTrust = await context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/reference-demo`);
+      if (!oidfTrust) throw new Error("Expected OIDF issuer trust");
+
+      expect(() => assertPublishedKeyConsistency(issuer.kid, [
+        { label: "direct JWKS", keys: directJwks.keys },
+        { label: "OIDF", keys: oidfTrust.publicJwks },
+      ])).toThrow(`OIDF issuer key for kid ${issuer.kid} disagrees with direct JWKS`);
     } finally {
       server.stop(true);
     }
   });
 
-  test("direct JWKS + OIDF disagreement on a different kid does not fail the ticket", async () => {
-    const { context, origin, publicOrigin, server } = startCrossSourceHarness();
+  test("runtime verification follows the selected primary source and ignores mismatched secondary publication", async () => {
+    const { context, origin, publicOrigin, server } = startHarness((resolvedPublicOrigin) => ({
+      issuerTrust: {
+        policies: [
+          {
+            type: "direct_jwks",
+            trustedIssuers: [`${resolvedPublicOrigin}/issuer/reference-demo`],
+          },
+          {
+            type: "oidf",
+          },
+        ],
+      },
+    }));
     try {
+      const issuer = context.issuers.get(context.config.defaultPermissionTicketIssuerSlug);
+      if (!issuer) throw new Error("Missing direct issuer");
       const alternate = await generateClientKeyMaterial();
+
       context.oidfTopology.entities["ticket-issuer"].privateJwk = alternate.privateJwk;
       context.oidfTopology.entities["ticket-issuer"].publicJwk = {
         ...alternate.publicJwk,
-        kid: alternate.thumbprint,
+        kid: issuer.kid,
       };
 
       const response = await exchangeTicket(origin, mintTicket(context, publicOrigin));
@@ -61,29 +87,63 @@ describe("issuer key cross-source consistency", () => {
   });
 });
 
-function startCrossSourceHarness() {
+function startHarness(
+  overrides: Parameters<typeof createAppContext>[0] | ((publicOrigin: string) => Parameters<typeof createAppContext>[0]) = {},
+) {
   const publicOrigin = "https://tickets.example.test";
+  const resolvedOverrides = typeof overrides === "function" ? overrides(publicOrigin) : overrides;
   const context = createAppContext({
     port: 0,
     publicBaseUrl: publicOrigin,
     issuer: publicOrigin,
     frameworks: buildDefaultFrameworks(publicOrigin, "reference-demo"),
-    issuerTrust: {
-      policies: [
-        {
-          type: "direct_jwks",
-          trustedIssuers: [`${publicOrigin}/issuer/reference-demo`],
-        },
-        {
-          type: "oidf",
-        },
-      ],
-    },
+    ...resolvedOverrides,
   });
   const server = startServer(context, 0);
   const origin = `http://127.0.0.1:${server.port}`;
   context.config.internalBaseUrl = origin;
   return { context, server, origin, publicOrigin };
+}
+
+async function fetchJson<T>(url: string) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Failed to fetch ${url}: ${response.status}`);
+  return response.json() as Promise<T>;
+}
+
+function assertPublishedKeyConsistency(kid: string, sources: Array<{ label: string; keys: JsonWebKey[] }>) {
+  const primary = sources[0]!;
+  const primaryKey = primary.keys.find((key) => key.kid === kid);
+  if (!primaryKey) throw new Error(`Missing key ${kid} in ${primary.label}`);
+  const normalizedPrimary = canonicalizePublicJwk(primaryKey);
+
+  for (const source of sources.slice(1)) {
+    const candidate = source.keys.find((key) => key.kid === kid);
+    if (!candidate) continue;
+    if (canonicalizePublicJwk(candidate) !== normalizedPrimary) {
+      throw new Error(`${source.label} issuer key for kid ${kid} disagrees with ${primary.label}`);
+    }
+  }
+}
+
+function canonicalizePublicJwk(jwk: JsonWebKey) {
+  if (jwk.kty === "EC" && jwk.crv === "P-256" && jwk.x && jwk.y) {
+    const normalized = normalizePublicJwk(jwk);
+    return JSON.stringify({
+      kty: normalized.kty,
+      crv: normalized.crv,
+      x: normalized.x,
+      y: normalized.y,
+    });
+  }
+  if (jwk.kty === "RSA" && jwk.n && jwk.e) {
+    return JSON.stringify({
+      kty: "RSA",
+      n: jwk.n,
+      e: jwk.e,
+    });
+  }
+  throw new Error("Unsupported issuer public JWK type");
 }
 
 function mintTicket(context: ReturnType<typeof createAppContext>, publicOrigin: string) {

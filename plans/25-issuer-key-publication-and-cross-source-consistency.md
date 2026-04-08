@@ -2,17 +2,17 @@
 
 Status: in progress
 
-Post-review note: Phases 1 and 2 (spec text) are landed on `main`, Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is landed on `main`, and Phase 4 (JWKS + OIDF cross-source consistency checking) is landed on `main`. The current demo holder runtime still uses explicit allowlisted `direct_jwks` policy by default; richer issuer policies remain follow-on phases of this plan.
+Post-review note: Phases 1 and 2 (spec text) are landed on `main`, Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is landed on `main`, and Phase 4 is now a publication-consistency test slice rather than a token-time verifier gate. The current demo holder runtime still uses explicit allowlisted `direct_jwks` policy by default; richer issuer policies remain follow-on phases of this plan.
 
 ## Goal
 
-Make the spec and the reference implementation honest about how a `PermissionTicket` issuer's signing keys can be discovered, and harden the verifier against multi-source key disagreement:
+Make the spec and the reference implementation honest about how a `PermissionTicket` issuer's signing keys can be discovered, while keeping runtime verification scoped to the selected issuer-trust policy:
 
 - acknowledge in the spec that `${iss}/.well-known/jwks.json` is the common-denominator / fallback publication path, and that issuers participating in a trust framework (OIDF, UDAP) have a framework-native publication path that a verifier may prefer when configured to do so
 - keep `PermissionTicket` serialization framework-neutral: framework participation is discovered from `iss`, not encoded into the ticket payload or JOSE header
 - introduce a generic issuer-trust policy model so a data holder can explicitly choose whether to resolve issuer trust via direct JWKS, OIDF, UDAP, or a combination of them
 - keep the current demo data-holder runtime configured conservatively: allowlisted issuer `iss` URLs with direct JWKS lookup derived from `iss`, while still building and testing the richer OIDF/UDAP capability
-- when more than one publication source is reachable for a given issuer, require that all sources agree on the public key for any `kid` that an actual incoming `PermissionTicket` JWT used to sign itself — fail closed on disagreement
+- add publication-level tests for multi-method issuers so the signing key a ticket issuer actually uses is published consistently through every enabled mechanism we expose from this repo
 
 ## Why This Plan Exists
 
@@ -26,7 +26,7 @@ Three things are currently misaligned:
    - UDAP issuer discovery from `iss` is not yet implemented for ticket issuers
    - the current verifier does not express an ordered issuer-trust policy; it trusts local issuers in-process and framework issuer trust via built-in behavior
 
-3. **No defense against multi-source disagreement.** A misconfigured deployment can publish two different public keys under the same `kid` via two different mechanisms (e.g., one in the issuer's static JWKS, one in its OIDF entity configuration) and the data holder will silently accept whichever path it consults first. There is no tripwire.
+3. **No publication-level guardrail for multi-method issuers.** A misconfigured deployment can publish two different public keys under the same `kid` via two different mechanisms (e.g., one in the issuer's static JWKS, one in its OIDF entity configuration) and we have no test that catches the mismatch at publication time.
 
 4. **Verifier policy is currently implicit instead of explicit.** The demo data holder effectively treats issuer trust as a built-in behavior instead of a configured policy. We need a small explicit policy model so:
    - the generic verifier can support direct JWKS, OIDF, and UDAP issuer resolution
@@ -45,7 +45,7 @@ These are the working defaults for this plan. Items still **OPEN** are marked ex
 - the data holder has no framework binding for this issuer
 - the verifier is explicitly configured to use direct JWKS as the chosen primary path for this issuer
 
-Issuers that participate in a framework MAY continue to publish JWKS in addition to the framework-native source. When they do, the cross-source consistency check (decision 5 below) applies.
+Issuers that participate in a framework MAY continue to publish JWKS in addition to the framework-native source. When they do, shared `kid` values should remain aligned across those publication surfaces.
 
 ### 2. OIDF Issuers Publish via Entity Configuration
 
@@ -122,7 +122,7 @@ Examples:
 ]
 ```
 
-The first matching policy that successfully resolves issuer trust becomes the primary path. Cross-source consistency checks can then consult any other explicitly configured policies for the same `iss`.
+The first matching policy that successfully resolves issuer trust becomes the primary path. That selected path establishes trust for the incoming ticket.
 
 ### 6. Demo Runtime Policy Stays Simple For Now
 
@@ -147,19 +147,19 @@ OIDF and UDAP issuer-resolution capability may still exist in the generic verifi
 
 There is also no special in-process verifier shortcut for those runtime holders. Even for local demo issuers, the direct-JWKS runtime path is modeled as issuer-URL allowlist plus `${iss}/.well-known/jwks.json` resolution.
 
-### 7. Cross-Source Consistency Check
+### 7. Multi-Method Issuer Publication Consistency Is Tested, Not Enforced On The Hot Path
 
-When verifying an incoming `PermissionTicket` JWT, the data holder evaluates its ordered issuer-trust policy list to choose a primary trust path. That primary path establishes trust.
+When an issuer is intentionally published through more than one mechanism (for example, direct JWKS plus OIDF), the same signing key material should appear under any shared `kid` values across those publication surfaces.
 
-If the data holder also has other configured sources for the same issuer, it eagerly consults each configured secondary source and looks up the JWT's actual `kid` in that source's published JWKS. For every secondary source where the `kid` is present, the public key MUST equal the primary source's public key for the same `kid`. If any disagreement is found, verification fails closed with a clear diagnostic. If a configured secondary source cannot be reached or cannot complete its verification work, verification also fails closed by default.
+The reference implementation enforces that invariant with publication-level tests for multi-method issuers. It does **not** require token-endpoint verification to consult every other configured source after the selected primary policy path succeeds.
 
-The check is **scoped to the kid the JWT actually uses**, not to the entire key set. Two sources may legitimately publish disjoint kid spaces (e.g., a JWKS with kids `K1`/`K2` and an OIDF chain whose leaf publishes only `K3`); only kids that overlap matter.
+The check remains **scoped to the kid the JWT actually uses**, not to the entire key set. Two sources may legitimately publish disjoint kid spaces (e.g., a JWKS with kids `K1`/`K2` and an OIDF chain whose leaf publishes only `K3`); only kids that overlap matter.
 
-The check is also **opt-in by configuration**: it fires only when the data holder has explicitly registered more than one source for an issuer in its allowlist. The plan does not impose mandatory multi-source resolution for issuers that have only one configured source.
+This remains **opt-in by publication/testing scope**: it matters only for issuers we intentionally expose through more than one source. It is not a mandatory token-time resolution rule for every issuer.
 
 ### 8. Cross-Check Direction: Shared `kid` ⇒ Same Public Key
 
-The check enforces that two sources cannot publish different public keys under the same `kid`. It does **not** enforce the reverse — two sources may publish the same public key under different kids (e.g., RFC 7638 thumbprint vs. framework-assigned label). That reverse direction is theoretical, noisy, and not a security failure.
+The publication-level check enforces that two sources cannot publish different public keys under the same `kid`. It does **not** enforce the reverse — two sources may publish the same public key under different kids (e.g., RFC 7638 thumbprint vs. framework-assigned label). That reverse direction is theoretical, noisy, and not a security failure.
 
 ### 9. Spec Scope
 
@@ -168,13 +168,13 @@ The check enforces that two sources cannot publish different public keys under t
   - the three publication paths
   - JWKS as the common-denominator fallback
   - that the data holder SHOULD use the most-specific framework path it has configured
-  - that when multiple sources are configured for the same issuer, the data holder is RECOMMENDED (not SHALL) to verify that they do not disagree on shared kids
+  - that implementations exposing the same issuer through multiple sources SHOULD keep shared `kid` values aligned across those publication surfaces
 
-The cross-source consistency requirement is RECOMMENDED in the spec but enforced as a hard check in the reference implementation (the spec doesn't want to over-specify implementation behaviour for non-reference deployments).
+This consistency language is an interoperability/deployment-quality recommendation. In the reference implementation it is covered by publication-level tests for multi-method issuers, not by token-time verifier behavior.
 
 ### 10. OIDF Stays as Is for Discovery
 
-Plan 23 already gives us a generic, allowlist-based OIDF resolver. This plan does not change OIDF discovery. The only OIDF-related work is wiring its resolved JWKS into the cross-source check so it can be compared against any same-issuer direct JWKS (and any future UDAP-discovered key source if that remains in scope).
+Plan 23 already gives us a generic, allowlist-based OIDF resolver. This plan does not change OIDF discovery. The OIDF-related work here is verifier-side policy wiring plus publication-level consistency tests for issuers that we expose through both OIDF and direct JWKS.
 
 We are NOT adding a `direct_jwks_uri` field inside OIDF entity configuration metadata. OIDF already publishes keys; we don't need to teach it to advertise a parallel JWKS URL.
 
@@ -202,7 +202,7 @@ And add a new subsection §1.14.3 "Issuer Key Publication" (renumber the existin
 - publication path selection from an implementation-defined ordered verifier-side trust policy
 - direct JWKS as the common-denominator fallback
 - OIDF and UDAP as framework-native discovery paths when the verifier is configured to use them
-- a RECOMMENDED multi-source consistency check for shared `kid` values
+- that implementations exposing the same issuer through multiple publication paths SHOULD keep shared `kid` values aligned across those surfaces
 
 ## Target Reference Implementation Behaviour
 
@@ -215,8 +215,7 @@ And add a new subsection §1.14.3 "Issuer Key Publication" (renumber the existin
    - `oidf`: resolve issuer trust through OIDF and apply the configured predicates (allowlist, trust anchor, trust mark, etc.)
    - `udap`: fetch `${iss}/.well-known/udap`, validate against the configured UDAP trust community, and apply the configured predicates
 4. Verify the JWT signature against the primary path's resolved key for the JWT's `kid`. Reject if not found.
-5. **Cross-source check.** For every other source that is also explicitly configured for this issuer, attempt to resolve key material for the same `kid`. For every source that has the `kid`, assert public key equality with the primary path. Reject on any disagreement. Reject by default if a configured secondary source is unreachable or cannot complete verification.
-6. Continue with the rest of `PermissionTicket` validation (audience, expiry, presenter binding, etc.).
+5. Continue with the rest of `PermissionTicket` validation (audience, expiry, presenter binding, etc.).
 
 In the current demo holder runtime, step 2 evaluates a one-entry policy list:
 
@@ -281,27 +280,18 @@ Files:
 - `fhir-server/src/auth/issuers.ts`
 - tests covering default runtime policy
 
-### Phase 4: Cross-Source Consistency Check (JWKS + OIDF Capability)
+### Phase 4: Multi-Method Issuer Publication Consistency Tests
 
-This is the highest-value implementation phase because it works with the two key publication mechanisms we *already* have. UDAP issuer support comes later.
+This phase adds guardrails for issuers we publish through more than one mechanism, without turning that guardrail into a token-time verifier requirement.
 
-- introduce a `resolveIssuerJwks(iss, kid)` helper that consults every configured source for the issuer and returns a `Map<sourceLabel, publicJwk | undefined>` for the requested `kid`
-- in ticket verification, after primary verification succeeds, call the helper and assert all returned keys for the chosen `kid` are equal
-- on disagreement, fail with a clear error: `OIDF issuer key for kid <kid> disagrees with direct JWKS for issuer <iss>`
-- add tests:
-  - JWKS-only issuer verifies cleanly
-  - OIDF-only issuer verifies cleanly when enabled by policy (already covered by Plan 23, but assert the new code path doesn't break it)
-  - JWKS + OIDF agree → pass
-  - JWKS + OIDF disagree on the JWT's kid → reject with specific error
-  - JWKS + OIDF disagree on a different kid the JWT does NOT use → pass (kid scoping)
-  - current demo data-holder runtime remains direct-JWKS-only by default
+- add tests that fetch/resolve the same issuer through direct JWKS and OIDF and assert that the actual signing `kid` maps to the same public key through both paths
+- add a negative fixture that proves the publication-consistency helper detects disagreement on a shared `kid`
+- add a regression test that the runtime verifier continues to trust the selected primary source only and does not reject a ticket merely because a secondary configured source would disagree
+- current demo data-holder runtime remains direct-JWKS-only by default
 
 Files:
-- `fhir-server/src/auth/tickets.ts`
-- `fhir-server/src/auth/issuers.ts`
-- `fhir-server/src/store/model.ts`
-- `fhir-server/src/auth/frameworks/oidf/resolver.ts` (small surface to expose resolved JWKS for cross-check)
-- new test file `fhir-server/test/issuer-key-cross-source.test.ts`
+- `fhir-server/test/issuer-key-cross-source.test.ts`
+- small cleanup in runtime verifier code to remove any hot-path cross-source enforcement
 
 ### Phase 5: UDAP Issuer Resolution From `iss`
 
@@ -322,9 +312,9 @@ Files:
 
 - README section "Issuer Key Publication" that mirrors the spec subsection but with reference-implementation specifics:
   - precedence rule
-  - cross-source check semantics
+  - direct-JWKS default runtime policy
+  - publication-consistency test semantics for multi-method issuers
   - how to configure each path
-  - how to opt out of cross-source checking (if we expose a flag)
 - update `plans/00-metaplan.md` and mark Plan 25 complete on `main`
 
 Files:
@@ -339,7 +329,6 @@ Expected primary files (consolidated from phases above):
 - `input/pagecontent/index.md` (spec)
 - `fhir-server/src/auth/issuers.ts`
 - `fhir-server/src/auth/tickets.ts`
-- `fhir-server/src/auth/frameworks/oidf/resolver.ts`
 - `fhir-server/src/auth/frameworks/udap.ts`
 - `fhir-server/src/store/model.ts`
 - `fhir-server/test/issuer-key-cross-source.test.ts` (new)
@@ -351,7 +340,7 @@ Expected primary files (consolidated from phases above):
 
 - No ticket-level UDAP signaling such as `x5c` added solely because the issuer participates in UDAP
 - No advertising of direct JWKS URLs inside OIDF entity configurations
-- No mandatory cross-source check at the spec level — only RECOMMENDED in the spec, enforced in the reference implementation
+- No token-time verifier requirement to consult every available source after the selected issuer-trust policy path succeeds
 - No new persistence mechanism beyond the demo crypto bundle introduced in Plan 24
 - No support for issuer key rotation choreography — that is a separate concern; this plan only ensures that whatever is published is consistent at any given moment
 - No automatic discovery of unconfigured framework participation — the data holder still only consults sources that have been explicitly allowlisted for the issuer
@@ -363,9 +352,9 @@ Expected primary files (consolidated from phases above):
 
 Resolved: verifier-side discovery starts from `GET {iss}/.well-known/udap`, and `PermissionTicket` serialization remains framework-neutral.
 
-### Former OQ-3 — Cross-source check eagerness
+### Former OQ-3 — Cross-source consistency handling
 
-Resolved: eager across explicitly configured sources. If an issuer has multiple configured trust sources, the verifier consults all of them for the JWT's actual `kid` and requires agreement.
+Resolved: keep the runtime verifier scoped to the selected primary issuer-trust path. Multi-method consistency is enforced with publication-level tests, not token-time secondary-source fetching.
 
 ### Former OQ-8 — Primary-path failure handling
 
@@ -385,7 +374,7 @@ These are explicit decision points where the plan currently uses a default and t
 
 ### OQ-5 — Spec normative weight
 
-**Default:** the spec rewrite enumerates the three publication paths, JWKS is the common-denominator fallback, multi-source consistency is RECOMMENDED. The hard cross-source check is enforced only in the reference implementation, documented in the README.
+**Default:** the spec rewrite enumerates the three publication paths, JWKS is the common-denominator fallback, and implementations that publish the same issuer through multiple mechanisms are encouraged to keep shared `kid` values aligned. The reference implementation covers that with tests rather than a token-time hard check.
 
 **Alternatives:**
 - (a) make multi-source consistency a SHALL in the spec
@@ -407,15 +396,15 @@ These are explicit decision points where the plan currently uses a default and t
 
 I applied a few plan edits directly while reviewing because they tighten the design without changing the overall shape:
 
-- changed the cross-source check default from opportunistic to eager across explicitly configured sources
 - changed primary-path failure from fallback-by-default to strict failure-by-default
 - clarified that verifier-side issuer trust-source config belongs in the config model, not in `auth/issuers.ts`
 - aligned the plan with the rule that `PermissionTicket` serialization is framework-neutral and that any future UDAP issuer support must be discovered from `iss`
 - added an ordered declarative issuer-trust policy model so richer OIDF/UDAP behavior can exist in the generic verifier while the current demo holder runtime remains direct-JWKS-only by policy
+- narrowed multi-method consistency from a token-time verifier gate to a publication-level test/admin invariant
 
 ### Overall
 
-The plan direction is good and worth doing. The spec problem is real, the reference implementation already has enough OIDF/JWKS surface to land the first hardening phase, and the multi-source disagreement check is a real security improvement.
+The plan direction is good and worth doing. The spec problem is real, the reference implementation already has enough OIDF/JWKS surface to land the first hardening phase, and publication-level multi-method issuer consistency checks are a good guardrail without complicating the runtime verifier.
 
 ### Former OQ-1 — UDAP issuer discovery
 
@@ -425,20 +414,18 @@ This is now resolved in the plan body:
 - the ticket stays framework-neutral
 - verifier-side policy decides whether UDAP resolution is enabled and what trust anchors/community rules apply
 
-### OQ-3 — Cross-source check eagerness
+### OQ-3 — Cross-source consistency handling
 
-I did **not** agree with the earlier draft default. I recommended changing the implementation default from **opportunistic** to **eager across all explicitly configured sources for that issuer**.
+I no longer think this belongs on the token path by default.
 
 Reason:
-- opportunistic checking is easy to bypass operationally: if one secondary source is down or skipped, the disagreement tripwire silently disappears
-- the plan already says sources are explicitly allowlisted; this is not internet-wide speculative fetching
-- the main value of the feature is exactly that explicitly configured parallel sources are expected to agree
+- the selected issuer-trust policy path is sufficient to establish trust for the incoming ticket
+- forcing every secondary source to be live and mutually consistent on every request couples availability and security more tightly than needed
+- the real invariant we care about is that issuers we publish through multiple mechanisms do not drift apart, and that is better caught in tests/admin checks than per-request runtime logic
 
-So my recommendation is now reflected in the edited default:
-- if multiple sources are configured for the issuer, consult all of them for the JWT's actual `kid`
-- if a configured secondary source is unreachable, treat that as a verification failure by default in the reference implementation
-
-That dovetails with OQ-8 below.
+So the plan now reflects a simpler stance:
+- runtime verifier trusts the selected primary source
+- multi-method publication consistency is covered by tests for issuers we publish from this repo
 
 ### OQ-7 and OQ-8 — Policy ordering and primary failure fallback
 
@@ -456,14 +443,14 @@ My recommendation, now reflected in the edited default:
 
 ### Phase ordering
 
-I agree with the current ordering after the corrective spec follow-up: direct-JWKS runtime policy first, then JWKS + OIDF cross-source capability, then UDAP issuer support.
+I agree with the current ordering after the corrective spec follow-up: direct-JWKS runtime policy first, then JWKS + OIDF publication-consistency tests, then UDAP issuer support.
 
 Reason:
 - the corrective spec commit has to repair the earlier ticket-level UDAP wording first
 - direct-JWKS runtime policy needs to be explicit before we add richer capability that remains disabled by default
 - JWKS + OIDF already exist
-- that lands the first real disagreement tripwire immediately
-- it forces the cross-source helper abstraction to exist before UDAP is added as a third source
+- that lands the first publication-level disagreement tripwire immediately
+- it proves the multi-method issuer invariant before UDAP is added as a third source
 
 So I would keep the current phase order.
 
@@ -487,12 +474,9 @@ The good news is that Phase 2 is not blocked here.
 Current state:
 - `OidfFrameworkResolver.resolveIssuerTrust()` already returns `ResolvedIssuerTrust`
 - that object already includes `publicJwks`
-- so the cross-source helper can already consume OIDF-resolved keys without widening the core trust result much further
+- so publication-level tests can compare OIDF-published keys with direct JWKS without widening the production trust result
 
-Likely Phase-4 need:
-- expose a small source label / helper path so the disagreement diagnostic can say exactly which source produced which key
-
-But there is no major OIDF blocker.
+There is no major OIDF blocker.
 
 ### Demo runtime vs generic verifier behavior
 
@@ -502,7 +486,7 @@ The key runtime distinction is now explicit:
 - the current demo holder runtime stays configured to direct JWKS only
 - richer OIDF/UDAP issuer behaviors are built and tested under explicit policy, not turned on by default in the runtime demo holders
 
-Plan is implementation-ready. Phases 1 and 2 (spec text) are already landed, and Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is the next discrete implementation commit.
+Plan is implementation-ready. Phases 1 through 4 are already landed, and Phase 5 (UDAP issuer resolution from `iss`) is the next discrete implementation commit.
 
 ## Acceptance Criteria
 
@@ -512,8 +496,7 @@ Plan is implementation-ready. Phases 1 and 2 (spec text) are already landed, and
   - an OIDF-backed issuer when OIDF issuer policy is enabled
   - a UDAP-backed issuer when UDAP issuer policy is enabled
 - The default demo holder runtime verifies allowlisted issuer `iss` URLs by deriving `${iss}/.well-known/jwks.json` and does not enable OIDF/UDAP issuer resolution by default
-- The verifier rejects a `PermissionTicket` whose JWT `kid` resolves to different public keys via two configured sources
-- The verifier accepts a `PermissionTicket` whose two configured sources publish disjoint kid spaces (no overlap on the JWT's actual `kid`)
-- Tests cover all path-pair combinations and the disagreement-on-shared-kid failure case
+- Tests cover multi-method issuer publication consistency, including the disagreement-on-shared-kid failure case
+- Runtime verification follows the selected issuer-trust policy path and does not require secondary-source agreement after the primary path succeeds
 - README documents the publication, precedence, and consistency model
 - `plans/00-metaplan.md` marks Plan 25 complete on `main`
