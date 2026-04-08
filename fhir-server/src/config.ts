@@ -5,7 +5,7 @@ import {
   issuerBasePathFor,
   type TicketIssuerSeed,
 } from "./auth/issuers.ts";
-import { loadDemoCryptoBundle, type DemoCryptoBundle } from "./demo-crypto-bundle.ts";
+import { resolveDemoCryptoBundlePath, type DemoCryptoBundle } from "./demo-crypto-bundle.ts";
 
 export type ServerConfig = {
   port: number;
@@ -24,6 +24,7 @@ export type ServerConfig = {
   defaultPermissionTicketIssuerSlug: string;
   defaultPermissionTicketIssuerName: string;
   permissionTicketIssuers: TicketIssuerSeed[];
+  demoCryptoBundlePath: string;
   demoCryptoBundle?: DemoCryptoBundle;
 };
 
@@ -38,9 +39,7 @@ export function loadConfig(): ServerConfig {
   const defaultNetworkName = Bun.env.DEFAULT_NETWORK_NAME ?? "Provider Network";
   const defaultPermissionTicketIssuerSlug = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_SLUG ?? "reference-demo";
   const defaultPermissionTicketIssuerName = Bun.env.DEFAULT_PERMISSION_TICKET_ISSUER_NAME ?? "Reference Demo Issuer";
-  const demoCryptoBundle = loadDemoCryptoBundle(Bun.env.DEMO_CRYPTO_BUNDLE_PATH);
-  const configuredPrivateJwk = demoCryptoBundle?.ticketIssuers[defaultPermissionTicketIssuerSlug]?.privateJwk
-    ?? DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK;
+  const demoCryptoBundlePath = resolveDemoCryptoBundlePath(Bun.env.DEMO_CRYPTO_BUNDLE_PATH);
   return {
     port,
     publicBaseUrl,
@@ -52,7 +51,7 @@ export function loadConfig(): ServerConfig {
     strictDefaultMode: "strict",
     defaultNetworkSlug,
     defaultNetworkName,
-    frameworks: buildDefaultFrameworks(publicBaseUrl, defaultPermissionTicketIssuerSlug, demoCryptoBundle),
+    frameworks: buildDefaultFrameworks(publicBaseUrl, defaultPermissionTicketIssuerSlug),
     issuerTrust: buildDefaultIssuerTrustConfig(publicBaseUrl, [
       {
         slug: defaultPermissionTicketIssuerSlug,
@@ -65,10 +64,11 @@ export function loadConfig(): ServerConfig {
       {
         slug: defaultPermissionTicketIssuerSlug,
         name: defaultPermissionTicketIssuerName,
-        privateJwk: configuredPrivateJwk,
+        privateJwk: DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
       },
     ],
-    demoCryptoBundle,
+    demoCryptoBundlePath,
+    demoCryptoBundle: undefined,
   };
 }
 

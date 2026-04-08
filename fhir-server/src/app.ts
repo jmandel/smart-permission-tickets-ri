@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { ClientRegistry } from "./auth/clients.ts";
 import { toAuthenticatedClientIdentity } from "./auth/client-identity.ts";
 import {
+  buildDefaultFrameworks,
   buildDemoUdapClients,
   buildDemoWellKnownClients,
   buildDemoWellKnownFrameworkDocument,
@@ -40,7 +41,7 @@ import { DemoSessionLinks } from "./demo/session-links.ts";
 import { findUdapFrameworkByCrlPath, generateCertificateRevocationList } from "./auth/udap-crl.ts";
 import { buildSignedUdapMetadata } from "./auth/udap-server-metadata.ts";
 import { buildDefaultIssuerTrustConfig, loadConfig, type ServerConfig } from "./config.ts";
-import { assertDemoCryptoBundleCoversSites } from "./demo-crypto-bundle.ts";
+import { ensureDemoCryptoBundle } from "./demo-crypto-bundle.ts";
 import { buildNetworkCapabilityStatement, buildNetworkInfo, readNetworkDirectory, resolveRecordLocationsBundle, searchNetworkDirectory } from "./network-directory.ts";
 import { executeRead, executeSearch, getSupportedSearchParams } from "./store/search.ts";
 import { FhirStore } from "./store/store.ts";
@@ -80,6 +81,27 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
     config.issuerTrust = buildDefaultIssuerTrustConfig(config.publicBaseUrl, config.permissionTicketIssuers);
   }
   const store = FhirStore.load();
+  const siteSlugs = store.listSiteSummaries().map((site) => site.siteSlug);
+  const demoCryptoBundle = ensureDemoCryptoBundle({
+    bundlePath: config.demoCryptoBundlePath,
+    siteSlugs,
+    issuerSlugs: config.permissionTicketIssuers.map((issuer) => issuer.slug),
+  });
+  config.demoCryptoBundle = demoCryptoBundle;
+  if (!overrides.permissionTicketIssuers) {
+    config.permissionTicketIssuers = config.permissionTicketIssuers.map((issuer) => {
+      const bundleEntry = demoCryptoBundle.ticketIssuers[issuer.slug];
+      return bundleEntry
+        ? {
+            ...issuer,
+            privateJwk: bundleEntry.privateJwk,
+          }
+        : issuer;
+    });
+  }
+  if (!overrides.frameworks) {
+    config.frameworks = buildDefaultFrameworks(config.publicBaseUrl, config.defaultPermissionTicketIssuerSlug, demoCryptoBundle);
+  }
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
   const oidfTopology = buildOidfTopologyForPublicBaseUrl(config, store, issuers);
@@ -115,7 +137,6 @@ function buildOidfTopologyForPublicBaseUrl(
 ) {
   const defaultIssuer = issuers.get(config.defaultPermissionTicketIssuerSlug);
   const sites = store.listSiteSummaries();
-  assertDemoCryptoBundleCoversSites(config.demoCryptoBundle, sites.map((site) => site.siteSlug));
   const bundle = config.demoCryptoBundle;
   const ticketIssuerKeys = bundle?.ticketIssuers[config.defaultPermissionTicketIssuerSlug] ?? defaultIssuer ?? undefined;
   return buildOidfDemoTopology(
