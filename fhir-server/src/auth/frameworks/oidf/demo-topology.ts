@@ -73,6 +73,7 @@ export function buildOidfDemoTopology(
   sites: SiteSummary[],
   ticketIssuerSlug: string,
   ticketIssuerName = "Reference Demo Issuer",
+  ticketIssuerSigningKeyMaterial?: OidfDemoKeyMaterial,
   keyMaterialByRole: OidfDemoKeyMaterialByRole = {},
   providerSiteKeyMaterialBySlug: OidfDemoProviderSiteKeyMaterialBySlug = {},
 ): OidfDemoTopology {
@@ -84,6 +85,9 @@ export function buildOidfDemoTopology(
   const ticketIssuerUrl = `${publicBaseUrl}/issuer/${ticketIssuerSlug}`;
   const trustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
   const now = Math.floor(Date.now() / 1000);
+  const ticketIssuerSigningKeys = ticketIssuerSigningKeyMaterial
+    ? normalizeKeyMaterial(ticketIssuerSigningKeyMaterial)
+    : generateEcKeyPair();
 
   const anchor = createEntity("anchor", trustAnchorEntityId, "Demo Trust Anchor", {
     federation_entity: {
@@ -115,7 +119,12 @@ export function buildOidfDemoTopology(
   const ticketIssuer = createEntity("ticket-issuer", ticketIssuerEntityId, ticketIssuerName, {
     federation_entity: {
       organization_name: ticketIssuerName,
+    },
+    smart_permission_ticket_issuer: {
       issuer_url: ticketIssuerUrl,
+      jwks: {
+        keys: [ticketIssuerSigningKeys.publicJwk],
+      },
     },
   }, [providerNetworkEntityId], keyMaterialByRole["ticket-issuer"]);
   const providerSiteEntities = Object.fromEntries(
@@ -200,7 +209,7 @@ export function buildOidfDemoTopology(
   }
   addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, {
     metadataPolicy: {
-      federation_entity: {
+      smart_permission_ticket_issuer: {
         issuer_url: {
           value: ticketIssuerUrl,
         },
@@ -296,24 +305,7 @@ function createEntity(
   },
   siteSlug?: string,
 ): OidfDemoEntity {
-  const keys = keyMaterial
-    ? (() => {
-      const normalizedPublicJwk = normalizePublicJwk(keyMaterial.publicJwk);
-      const publicJwk = {
-        ...normalizedPublicJwk,
-        kid: typeof keyMaterial.publicJwk.kid === "string"
-          ? keyMaterial.publicJwk.kid
-          : computeEcJwkThumbprintSync(normalizedPublicJwk),
-      };
-      return {
-        publicJwk,
-        privateJwk: {
-          ...normalizePrivateJwk(keyMaterial.privateJwk),
-          kid: typeof keyMaterial.privateJwk.kid === "string" ? keyMaterial.privateJwk.kid : publicJwk.kid,
-        },
-      };
-    })()
-    : generateEcKeyPair();
+  const keys = keyMaterial ? normalizeKeyMaterial(keyMaterial) : generateEcKeyPair();
   return {
     role,
     entityId,
@@ -448,6 +440,23 @@ function generateEcKeyPair() {
     privateJwk: {
       ...normalizePrivateJwk(privateKey.export({ format: "jwk" }) as JsonWebKey),
       kid,
+    },
+  };
+}
+
+function normalizeKeyMaterial(keyMaterial: OidfDemoKeyMaterial) {
+  const normalizedPublicJwk = normalizePublicJwk(keyMaterial.publicJwk);
+  const publicJwk = {
+    ...normalizedPublicJwk,
+    kid: typeof keyMaterial.publicJwk.kid === "string"
+      ? keyMaterial.publicJwk.kid
+      : computeEcJwkThumbprintSync(normalizedPublicJwk),
+  };
+  return {
+    publicJwk,
+    privateJwk: {
+      ...normalizePrivateJwk(keyMaterial.privateJwk),
+      kid: typeof keyMaterial.privateJwk.kid === "string" ? keyMaterial.privateJwk.kid : publicJwk.kid,
     },
   };
 }

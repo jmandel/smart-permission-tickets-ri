@@ -124,6 +124,14 @@ describe("OIDF demo topology", () => {
       expect(response.status).toBe(200);
       const entityStatement = await response.text();
       const decodedEntity = decodeEs256Jwt<Record<string, any>>(entityStatement);
+      expect(decodedEntity.payload.metadata.federation_entity).toEqual({
+        organization_name: context.config.defaultPermissionTicketIssuerName,
+      });
+      expect(decodedEntity.payload.metadata.smart_permission_ticket_issuer.issuer_url).toBe(
+        `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+      );
+      expect(decodedEntity.payload.metadata.smart_permission_ticket_issuer.jwks.keys).toHaveLength(1);
+      expect(decodedEntity.payload.metadata.federation_entity.issuer_url).toBeUndefined();
       const trustMarks = decodedEntity.payload.trust_marks;
       expect(Array.isArray(trustMarks)).toBe(true);
       expect(trustMarks).toHaveLength(1);

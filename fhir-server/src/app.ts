@@ -155,15 +155,21 @@ function buildOidfTopologyForPublicBaseUrl(
     sites,
     config.defaultPermissionTicketIssuerSlug,
     config.defaultPermissionTicketIssuerName,
+    ticketIssuerKeys
+      ? {
+          publicJwk: ticketIssuerKeys.publicJwk,
+          privateJwk: ticketIssuerKeys.privateJwk,
+        }
+      : undefined,
     {
       anchor: bundle?.oidf.anchor ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "anchor") : undefined),
       "app-network": bundle?.oidf.appNetwork ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "app-network") : undefined),
       "provider-network": bundle?.oidf.providerNetwork ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "provider-network") : undefined),
       "demo-app": bundle?.oidf.demoApp ?? (existingTopology ? extractOidfKeyMaterial(existingTopology, "demo-app") : undefined),
-      "ticket-issuer": ticketIssuerKeys
+      "ticket-issuer": bundle?.oidfTicketIssuerFederation[config.defaultPermissionTicketIssuerSlug]
         ? {
-            publicJwk: ticketIssuerKeys.publicJwk,
-            privateJwk: ticketIssuerKeys.privateJwk,
+            publicJwk: bundle.oidfTicketIssuerFederation[config.defaultPermissionTicketIssuerSlug]!.publicJwk,
+            privateJwk: bundle.oidfTicketIssuerFederation[config.defaultPermissionTicketIssuerSlug]!.privateJwk,
           }
         : existingTopology
           ? extractOidfKeyMaterial(existingTopology, "ticket-issuer")
