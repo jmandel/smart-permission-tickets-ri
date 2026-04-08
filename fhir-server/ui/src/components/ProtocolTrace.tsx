@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 
 import type { DemoEvent, DemoQueryFailedEvent, DemoQueryResultEvent, DemoSessionSummary, DemoTokenExchangeEvent } from "../../../shared/demo-events";
 import { buildDemoEventSummary } from "../lib/artifact-viewer";
-import { buildDemoEventArtifactTabs, type EventArtifactTab } from "../lib/demo-event-tabs";
+import { buildDemoEventArtifactTabs, splitSharedEventArtifactProvenance, type EventArtifactTab } from "../lib/demo-event-tabs";
 import {
   accumulateTraceState,
   buildTraceOverview,
@@ -13,12 +13,15 @@ import {
   type TraceColumn,
 } from "../lib/protocol-trace-state";
 import {
+  ArtifactProvenancePanel,
   formatHttpRequestForCopy,
   formatHttpResponseForCopy,
   HttpRequestArtifactPanel,
   HttpResponseArtifactPanel,
   JsonArtifactPanel,
   JwtArtifactPanel,
+  renderHighlightedJson,
+  SharedArtifactProvenancePanel,
 } from "./ArtifactPanels";
 
 const NETWORK_TRACE_COLUMNS: TraceColumn[] = ["client-setup", "token", "resolve-match"];
@@ -240,6 +243,7 @@ export function ProtocolTrace() {
                   <div className="protocol-trace-grid-section-title">Ticket</div>
                   <TicketTraceCard
                     cell={buildCellPresentation(traceState, { row: "network", column: "ticket" })}
+                    hasDownstreamActivity={traceHasDownstreamActivity(traceState)}
                     selected={resolvedSelectedCell?.row === "network" && resolvedSelectedCell.column === "ticket"}
                     onSelect={() => selectTraceCell({ row: "network", column: "ticket" })}
                   />
@@ -321,11 +325,7 @@ export function ProtocolTrace() {
                 <>
                   <div className="protocol-trace-detail-stack">
                     <TraceSummaryPanel detailModel={detailModel} />
-                    {detailModel.tabs
-                      .filter((tab) => tab.key !== "summary")
-                      .map((tab) => (
-                        <TraceArtifactTabPanel key={tab.key} tab={tab} />
-                      ))}
+                    <TraceArtifactTabList tabs={detailModel.tabs.filter((tab) => tab.key !== "summary")} />
                   </div>
 
                 </>
@@ -410,19 +410,25 @@ function TraceSection({
 
 function TicketTraceCard({
   cell,
+  hasDownstreamActivity,
   selected,
   onSelect,
 }: {
   cell: TraceCellPresentation | null;
+  hasDownstreamActivity: boolean;
   selected: boolean;
   onSelect: () => void;
 }) {
   if (!cell) {
     return (
-      <div className="protocol-trace-ticket-card pending">
+      <div className={`protocol-trace-ticket-card ${hasDownstreamActivity ? "info" : "pending"}`}>
         <div>
-          <strong>Waiting for ticket</strong>
-          <div className="subtle">The trace will populate once a permission ticket is signed.</div>
+          <strong>{hasDownstreamActivity ? "Ticket already used" : "Waiting for ticket"}</strong>
+          <div className="subtle">
+            {hasDownstreamActivity
+              ? "Later network or site activity is present, but the original ticket-signing event is not in the currently loaded trace history."
+              : "The trace will populate once a permission ticket is signed."}
+          </div>
         </div>
       </div>
     );
@@ -445,6 +451,16 @@ function TicketTraceCard({
       </div>
     </button>
   );
+}
+
+function traceHasDownstreamActivity(state: ReturnType<typeof accumulateTraceState>) {
+  if (state.network.resolveMatchEvent) return true;
+  if (state.network.clientSetupEvents.length > 0) return true;
+  if (state.network.tokenEvents.length > 0) return true;
+  for (const site of state.sites.values()) {
+    if (site.clientSetupEvents.length > 0 || site.tokenEvents.length > 0 || site.queries.length > 0) return true;
+  }
+  return false;
 }
 
 function TraceRow({
@@ -587,11 +603,7 @@ function DataQueryListPanel({
           </div>
           <div className="protocol-trace-detail-stack">
             <TraceEventSummarySection summary={selectedQueryDetail.summary} />
-            {selectedQueryDetail.tabs
-              .filter((tab) => tab.key !== "summary")
-              .map((tab) => (
-                <TraceArtifactTabPanel key={tab.key} tab={tab} />
-              ))}
+            <TraceArtifactTabList tabs={selectedQueryDetail.tabs.filter((tab) => tab.key !== "summary")} />
           </div>
         </section>
       )}
@@ -671,6 +683,18 @@ function TraceEventSummarySection({
   );
 }
 
+function TraceArtifactTabList({ tabs }: { tabs: EventArtifactTab[] }) {
+  const { sharedGroups, tabsWithoutSharedProvenance } = splitSharedEventArtifactProvenance(tabs);
+  return (
+    <>
+      <SharedArtifactProvenancePanel groups={sharedGroups} />
+      {tabsWithoutSharedProvenance.map((tab) => (
+        <TraceArtifactTabPanel key={tab.key} tab={tab} />
+      ))}
+    </>
+  );
+}
+
 function TraceArtifactTabPanel({ tab }: { tab: EventArtifactTab }) {
   if (tab.kind === "http-request") {
     return (
@@ -704,6 +728,23 @@ function TraceArtifactTabPanel({ tab }: { tab: EventArtifactTab }) {
     } catch {
       return <JsonArtifactPanel title={tab.label} content={tab.content} plainText />;
     }
+  }
+  if (tab.provenance) {
+    const text = typeof tab.content === "string" ? tab.content : JSON.stringify(tab.content, null, 2);
+    return (
+      <section className="artifact-json-panel">
+        <div className="artifact-json-head">
+          <h3>{tab.label}</h3>
+        </div>
+        <ArtifactProvenancePanel provenance={tab.provenance} />
+        <pre
+          className={`viewer-json${tab.kind === "text" ? " viewer-json-plain" : ""}`}
+          dangerouslySetInnerHTML={tab.kind === "text" ? undefined : { __html: renderHighlightedJson(text) }}
+        >
+          {tab.kind === "text" ? text : undefined}
+        </pre>
+      </section>
+    );
   }
   return <JsonArtifactPanel title={tab.label} content={tab.content} plainText={tab.kind === "text"} />;
 }

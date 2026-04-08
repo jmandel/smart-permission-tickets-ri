@@ -17,7 +17,14 @@ import type { FrameworkRegistry } from "./frameworks/registry.ts";
 import type { TicketIssuerRegistry } from "./issuers.ts";
 import type { TicketRevocationRegistry } from "./ticket-revocation.ts";
 import { SUPPORTED_PERMISSION_TICKET_TYPES } from "../../shared/permission-tickets.ts";
-import type { DemoAuditStep, DemoObserver, DemoPatientMatchDetail, DemoRelatedArtifact } from "../../shared/demo-events.ts";
+import type {
+  DemoArtifactProvenanceStep,
+  DemoAuditStep,
+  DemoHttpRequestArtifact,
+  DemoObserver,
+  DemoPatientMatchDetail,
+  DemoRelatedArtifact,
+} from "../../shared/demo-events.ts";
 import {
   type DataPermission,
   type FHIRHumanName,
@@ -93,7 +100,8 @@ export async function validatePermissionTicket(
     addRelatedArtifact(diagnostics, {
       label: "Issuer public JWKS",
       kind: "json",
-      content: issuer.publicJwks,
+      content: buildIssuerPublicJwksArtifact(issuer),
+      provenance: buildIssuerPublicJwksProvenance(issuer),
     });
     addAuditStep(diagnostics, {
       check: "Signature",
@@ -105,7 +113,8 @@ export async function validatePermissionTicket(
   addRelatedArtifact(diagnostics, {
     label: "Issuer public JWKS",
     kind: "json",
-    content: issuer.publicJwks,
+    content: buildIssuerPublicJwksArtifact(issuer),
+    provenance: buildIssuerPublicJwksProvenance(issuer),
   });
   addAuditStep(diagnostics, {
     check: "Signature",
@@ -311,6 +320,16 @@ function appendFrameworkIssuerDiagnostics(
       label: "Issuer trust via OIDF: decoded trust chain",
       kind: "json",
       content: metadata.trust_chain,
+      provenance: {
+        steps: [
+          {
+            role: "outbound",
+            title: "Data holder -> issuer federation endpoints",
+            summary: "Fetched by the data holder while discovering and validating issuer trust through OIDF.",
+            requests: oidfDiscoveryRequests(metadata.trust_chain_discovery),
+          },
+        ],
+      },
     });
   }
   if (metadata.resolved_metadata) {
@@ -318,6 +337,21 @@ function appendFrameworkIssuerDiagnostics(
       label: "Issuer trust via OIDF: resolved metadata",
       kind: "json",
       content: metadata.resolved_metadata,
+      provenance: {
+        steps: [
+          {
+            role: "outbound",
+            title: "Data holder -> issuer federation endpoints",
+            summary: "The issuer trust chain below was fetched by the data holder during OIDF discovery.",
+            requests: oidfDiscoveryRequests(metadata.trust_chain_discovery),
+          },
+          {
+            role: "in-process",
+            title: "Inside data holder",
+            summary: "Synthesized in-process after applying OIDF metadata policy to the fetched issuer trust chain.",
+          },
+        ],
+      },
     });
   }
   if (metadata.trust_mark && typeof metadata.trust_mark === "object") {
@@ -337,8 +371,115 @@ function appendFrameworkIssuerDiagnostics(
         subject_entity: trustMark.sub,
         jwt_claims: trustMark,
       },
+      provenance: {
+        steps: [
+          {
+            role: "outbound",
+            title: "Data holder -> issuer federation endpoints",
+            summary: "The issuer entity configuration and subordinate statements were fetched during OIDF issuer-trust discovery.",
+            requests: oidfDiscoveryRequests(metadata.trust_chain_discovery),
+          },
+          {
+            role: "in-process",
+            title: "Inside data holder",
+            summary: "Extracted from the fetched issuer entity configuration and verified against the immediate superior's attested keys.",
+          },
+        ],
+      },
     });
   }
+}
+
+function buildIssuerPublicJwksArtifact(issuer: ResolvedIssuerTrust) {
+  return issuer.publicJwks;
+}
+
+function provenanceStep(
+  role: DemoArtifactProvenanceStep["role"],
+  title: string,
+  summary: string,
+  requests?: DemoHttpRequestArtifact[],
+): DemoArtifactProvenanceStep {
+  return requests ? { role, title, summary, requests } : { role, title, summary };
+}
+
+function buildIssuerPublicJwksProvenance(issuer: ResolvedIssuerTrust) {
+  const metadata = issuer.metadata && typeof issuer.metadata === "object"
+    ? issuer.metadata as Record<string, any>
+    : {};
+  if (issuer.source === "local") {
+    return {
+      steps: [
+        provenanceStep(
+          "in-process",
+          "Inside data holder",
+          `Resolved from the local issuer registry. Published issuer JWKS endpoint: ${typeof metadata.jwks_url === "string" ? metadata.jwks_url : `${issuer.issuerUrl.replace(/\/$/, "")}/.well-known/jwks.json`}`,
+        ),
+      ],
+    };
+  }
+
+  if (issuer.framework?.type === "well-known") {
+    const jwksUrl = typeof metadata.jwks_url === "string" ? metadata.jwks_url : `${issuer.issuerUrl.replace(/\/$/, "")}/.well-known/jwks.json`;
+    return {
+      steps: [
+        provenanceStep(
+          "outbound",
+          "Data holder -> issuer JWKS endpoint",
+          "Fetched from the issuer's published well-known JWKS endpoint.",
+          [{ method: "GET", url: jwksUrl, headers: {} }],
+        ),
+      ],
+    };
+  }
+
+  if (issuer.framework?.type === "oidf") {
+    return {
+      steps: [
+        provenanceStep(
+          "outbound",
+          "Data holder -> issuer federation endpoints",
+          "Fetched during OIDF issuer-trust discovery.",
+          oidfDiscoveryRequests(metadata.trust_chain_discovery),
+        ),
+        provenanceStep(
+          "in-process",
+          "Inside data holder",
+          "The key set below was taken from the validated OIDF issuer-trust material and used to verify the Permission Ticket signature.",
+        ),
+      ],
+    };
+  }
+
+  return {
+    steps: [
+      provenanceStep(
+        "in-process",
+        "Inside data holder",
+        "Resolved by the data holder before verifying the Permission Ticket signature.",
+      ),
+    ],
+  };
+}
+
+function oidfDiscoveryRequests(discovery: unknown) {
+  if (!Array.isArray(discovery)) return undefined;
+  const requests = discovery
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") return null;
+      const record = entry as Record<string, unknown>;
+      const requestLine = typeof record.published_request === "string"
+        ? record.published_request
+        : typeof record.effective_request === "string"
+          ? record.effective_request
+          : null;
+      if (!requestLine?.startsWith("GET ")) return null;
+      const url = requestLine.slice(4).trim();
+      if (!url) return null;
+      return { method: "GET", url, headers: {} };
+    })
+    .filter((request): request is { method: string; url: string; headers: Record<string, string> } => request !== null);
+  return requests.length ? requests : undefined;
 }
 
 async function resolveTrustedIssuer(

@@ -127,6 +127,7 @@ export class TicketIssuerRegistry {
       metadata: {
         slug: issuer.slug,
         kid: issuer.kid,
+        jwks_url: `${parsed.origin}${issuerJwksPathFor(issuer.slug)}`,
       },
     };
   }

@@ -202,6 +202,7 @@ function toIssuerTrust(entity: ResolvedFrameworkEntity): ResolvedIssuerTrust {
     publicJwks: entity.publicJwks ?? [],
     metadata: {
       resolution: "well-known-jwks",
+      jwks_url: buildEntityRelativeUrl(entity.entityUri, "/.well-known/jwks.json"),
       ...(entity.metadata ?? {}),
     },
   };

@@ -1307,18 +1307,6 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   min-width: 0;
 }
 
-.viewer-banner-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-
-.viewer-banner-eyebrow-label {
-  margin: 0;
-}
-
 .viewer-banner-back-link {
   color: var(--muted);
   font-size: 0.84rem;
@@ -1332,9 +1320,12 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   text-decoration: underline;
 }
 
-.viewer-banner-eyebrow-separator {
-  color: var(--muted);
-  font-size: 0.9rem;
+.viewer-banner-back-row {
+  margin-top: 10px;
+}
+
+.viewer-banner-eyebrow-label {
+  margin: 0 0 8px;
 }
 
 .viewer-banner-avatar {
@@ -1364,7 +1355,21 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  gap: 8px;
   flex: 0 0 auto;
+}
+
+.viewer-banner-trace-link {
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.viewer-banner-trace-link:hover {
+  text-decoration: underline;
 }
 
 .viewer-more-actions {
@@ -1432,12 +1437,6 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .viewer-more-actions-item:hover {
   background: var(--panel-soft);
-}
-
-.viewer-more-actions-divider {
-  height: 1px;
-  margin: 6px 4px;
-  background: var(--line);
 }
 
 .viewer-json {
@@ -2953,6 +2952,100 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   font-weight: 600;
 }
 
+.artifact-provenance-panel {
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel-soft);
+}
+
+.artifact-provenance-head h4 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.artifact-protocol-guide {
+  margin: 12px 0 0;
+}
+
+.artifact-provenance-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.artifact-provenance-step {
+  padding-top: 2px;
+}
+
+.artifact-provenance-step + .artifact-provenance-step {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.artifact-provenance-step-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.artifact-provenance-step-head h5 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.artifact-provenance-role {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.artifact-provenance-role-inbound {
+  background: #e8f0fe;
+  color: #174ea6;
+}
+
+.artifact-provenance-role-outbound {
+  background: #fff4d6;
+  color: #8a5b00;
+}
+
+.artifact-provenance-role-in-process {
+  background: #eef3f6;
+  color: #4c5d6b;
+}
+
+.artifact-provenance-summary {
+  margin: 8px 0 0;
+}
+
+.artifact-provenance-derived {
+  margin: 8px 0 0;
+}
+
+.artifact-provenance-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.artifact-provenance-request {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
 .artifact-event-note {
   margin: 0;
 }
@@ -3149,6 +3242,10 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .protocol-trace-ticket-card.pending {
   background: #fafbfd;
+}
+
+.protocol-trace-ticket-card.info {
+  background: #f7f8fb;
 }
 
 .protocol-trace-ticket-copy {
@@ -3491,6 +3588,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   .viewer-banner-actions {
     align-self: flex-end;
     width: auto;
+    align-items: center;
   }
 
   .result-meta {

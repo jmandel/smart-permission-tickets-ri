@@ -14,12 +14,22 @@ export type DemoHttpResponseArtifact = {
   body?: unknown;
 };
 
+export type DemoArtifactProvenanceStep = {
+  role: "inbound" | "outbound" | "in-process";
+  title: string;
+  summary?: string;
+  requests?: DemoHttpRequestArtifact[];
+};
+
 export type DemoRelatedArtifact = {
   label: string;
   kind: "jwt" | "json" | "text";
   content: unknown;
   copyText?: string;
   subtitle?: string;
+  provenance?: {
+    steps: DemoArtifactProvenanceStep[];
+  };
 };
 
 export type DemoAuditStep = {

@@ -1012,6 +1012,15 @@ function appendFrameworkClientDiagnostics(
       label: "Client trust via OIDF: decoded trust chain",
       kind: "json",
       content: metadata.trust_chain,
+      provenance: {
+        steps: [
+          {
+            role: "inbound",
+            title: "App -> data holder",
+            summary: "Supplied directly by the app in the client_assertion JOSE header. No outbound fetch was required on the token-endpoint path.",
+          },
+        ],
+      },
     });
   }
   if (metadata?.resolved_metadata) {
@@ -1027,6 +1036,20 @@ function appendFrameworkClientDiagnostics(
       label: "Client trust via OIDF: resolved metadata",
       kind: "json",
       content: metadata.resolved_metadata,
+      provenance: {
+        steps: [
+          {
+            role: "inbound",
+            title: "App -> data holder",
+            summary: "The underlying trust_chain was supplied directly by the app in the client_assertion JOSE header.",
+          },
+          {
+            role: "in-process",
+            title: "Inside data holder",
+            summary: "Synthesized in-process after applying OIDF metadata policy to the app-supplied trust_chain.",
+          },
+        ],
+      },
     });
   }
 }

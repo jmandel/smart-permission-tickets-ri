@@ -1,4 +1,5 @@
-import type { DemoHttpRequestArtifact, DemoHttpResponseArtifact } from "../../../shared/demo-events";
+import type { DemoArtifactProvenanceStep, DemoHttpRequestArtifact, DemoHttpResponseArtifact } from "../../../shared/demo-events";
+import type { SharedEventArtifactProvenanceGroup } from "../lib/demo-event-tabs";
 import { decodeJwtArtifact } from "../lib/artifact-viewer";
 
 export function HttpRequestArtifactPanel({ artifact }: { artifact: DemoHttpRequestArtifact }) {
@@ -77,6 +78,82 @@ export function JsonArtifactPanel({ title, content, plainText = false }: { title
       >
         {plainText ? text : undefined}
       </pre>
+    </section>
+  );
+}
+
+export function ArtifactProvenancePanel({
+  provenance,
+}: {
+  provenance: {
+    steps: DemoArtifactProvenanceStep[];
+  };
+}) {
+  const steps = provenance.steps.filter((step) => step.summary || (step.requests?.length ?? 0) > 0);
+  if (!steps.length) return null;
+  return (
+    <section className="artifact-provenance-panel">
+      <div className="artifact-provenance-head">
+        <h4>How this artifact was obtained</h4>
+      </div>
+      <div className="artifact-provenance-steps">
+        {steps.map((step, stepIndex) => (
+          <section key={`${step.role}:${step.title}:${stepIndex}`} className="artifact-provenance-step">
+            <div className="artifact-provenance-step-head">
+              <span className={`artifact-provenance-role artifact-provenance-role-${step.role}`}>{formatProvenanceRole(step.role)}</span>
+              <h5>{step.title}</h5>
+            </div>
+            {step.summary ? <p className="artifact-provenance-summary subtle">{step.summary}</p> : null}
+            {step.requests?.length ? (
+              <div className="artifact-provenance-stack">
+                {step.requests.map((request, requestIndex) => (
+                  <div key={`${request.method}:${request.url}:${requestIndex}`} className="artifact-provenance-request">
+                    <HttpRequestArtifactPanel artifact={request} />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </section>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function SharedArtifactProvenancePanel({
+  groups,
+}: {
+  groups: SharedEventArtifactProvenanceGroup[];
+}) {
+  if (!groups.length) return null;
+  return (
+    <section className="artifact-provenance-panel">
+      <div className="artifact-provenance-head">
+        <h4>Shared inputs behind these artifacts</h4>
+      </div>
+      <div className="artifact-provenance-steps">
+        {groups.map((group, groupIndex) => (
+          <section key={`${group.step.role}:${group.step.title}:${groupIndex}`} className="artifact-provenance-step">
+            <div className="artifact-provenance-step-head">
+              <span className={`artifact-provenance-role artifact-provenance-role-${group.step.role}`}>{formatProvenanceRole(group.step.role)}</span>
+              <h5>{group.step.title}</h5>
+            </div>
+            {group.step.summary ? <p className="artifact-provenance-summary subtle">{group.step.summary}</p> : null}
+            <p className="artifact-provenance-derived subtle">
+              Used to derive: {group.artifactLabels.join(" · ")}
+            </p>
+            {group.step.requests?.length ? (
+              <div className="artifact-provenance-stack">
+                {group.step.requests.map((request, requestIndex) => (
+                  <div key={`${request.method}:${request.url}:${requestIndex}`} className="artifact-provenance-request">
+                    <HttpRequestArtifactPanel artifact={request} />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </section>
+        ))}
+      </div>
     </section>
   );
 }
@@ -185,6 +262,19 @@ function formatUnknownForCopy(value: unknown) {
 
 function httpStatusText(status: number) {
   return HTTP_STATUS_TEXT[status] ?? "";
+}
+
+function formatProvenanceRole(role: DemoArtifactProvenanceStep["role"]) {
+  switch (role) {
+    case "inbound":
+      return "Inbound";
+    case "outbound":
+      return "Outbound";
+    case "in-process":
+      return "In-process";
+    default:
+      return "Step";
+  }
 }
 
 const HTTP_STATUS_TEXT: Record<number, string> = {

@@ -16,6 +16,7 @@ import {
   fetchOidfText,
   oidfEntityConfigurationUrl,
   resolvePublishedFederationFetchEndpointUrl,
+  rewriteSelfOriginFetchUrl,
 } from "./urls.ts";
 
 export class OidfFrameworkResolver implements FrameworkResolver {
@@ -154,9 +155,9 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
 
-    let trustChain: string[];
+    let fetchedTrustChain: FetchedTrustChain;
     try {
-      trustChain = await fetchTrustChain(
+      fetchedTrustChain = await fetchTrustChain(
         trustedLeaf.entityId,
         firstTrustedAnchor(oidf).entityId,
         this.config,
@@ -165,7 +166,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     } catch (error) {
       throw new Error(`OIDF issuer trust discovery failed for ${trustedLeaf.entityId}: ${formatError(error)}`);
     }
-    const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(trustChain, oidf);
+    const verifiedChain = await verifyTrustChainAgainstConfiguredAnchors(fetchedTrustChain.chain, oidf);
     if (verifiedChain.leaf.entityId !== trustedLeaf.entityId) {
       throw new Error(`OIDF issuer trust leaf ${verifiedChain.leaf.entityId} does not match ${trustedLeaf.entityId}`);
     }
@@ -232,6 +233,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
         entity_id: verifiedChain.leaf.entityId,
         trust_chain_depth: verifiedChain.depth,
         trust_chain: buildDecodedTrustChainArtifact(verifiedChain),
+        trust_chain_discovery: fetchedTrustChain.discoverySources,
         resolved_metadata: resolved.metadata,
         trust_mark: verifiedTrustMark.payload,
       },
@@ -239,7 +241,20 @@ export class OidfFrameworkResolver implements FrameworkResolver {
   }
 }
 
-function buildDecodedTrustChainArtifact(verifiedChain: VerifiedTrustChain) {
+type FetchedTrustChain = {
+  chain: string[];
+  discoverySources: Array<{
+    kind: "entity-configuration" | "subordinate-statement";
+    entity_id: string;
+    published_url: string;
+    published_request: string;
+    effective_request?: string;
+  }>;
+};
+
+function buildDecodedTrustChainArtifact(
+  verifiedChain: VerifiedTrustChain,
+) {
   return {
     expected_anchor: verifiedChain.expectedAnchor,
     anchor_entity_id: verifiedChain.anchor.entityId,
@@ -306,8 +321,9 @@ async function fetchTrustChain(
   expectedAnchorEntityId: string,
   config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
   fetchImpl: typeof fetch,
-) {
+) : Promise<FetchedTrustChain> {
   const chain: string[] = [];
+  const discoverySources: FetchedTrustChain["discoverySources"] = [];
   let currentEntityId: string | undefined = leafEntityId;
   let currentEntityConfigurationJwt: string | undefined;
   let depth = 0;
@@ -319,13 +335,15 @@ async function fetchTrustChain(
     }
 
     if (!currentEntityConfigurationJwt) {
+      const entityConfigurationUrl = oidfEntityConfigurationUrl(currentEntityId);
       currentEntityConfigurationJwt = await fetchOidfText(
-        oidfEntityConfigurationUrl(currentEntityId),
+        entityConfigurationUrl,
         `entity configuration for ${currentEntityId}`,
         config,
         fetchImpl,
       );
       chain.push(currentEntityConfigurationJwt);
+      discoverySources.push(buildDiscoverySource("entity-configuration", currentEntityId, entityConfigurationUrl, config));
     }
     const decoded = decodeEntityStatementPayload(currentEntityConfigurationJwt);
     const authorityHints = Array.isArray(decoded.authority_hints)
@@ -337,22 +355,26 @@ async function fetchTrustChain(
     }
 
     const parentEntityId = authorityHints[0];
+    const parentEntityConfigurationUrl = oidfEntityConfigurationUrl(parentEntityId);
     const parentEntityConfigurationJwt = await fetchOidfText(
-      oidfEntityConfigurationUrl(parentEntityId),
+      parentEntityConfigurationUrl,
       `entity configuration for ${parentEntityId}`,
       config,
       fetchImpl,
     );
+    discoverySources.push(buildDiscoverySource("entity-configuration", parentEntityId, parentEntityConfigurationUrl, config));
     const parentDecoded = decodeEntityStatementPayload(parentEntityConfigurationJwt);
     const fetchUrl = new URL(resolvePublishedFederationFetchEndpointUrl(parentEntityId, parentDecoded));
     fetchUrl.searchParams.set("sub", currentEntityId);
+    const subordinateStatementUrl = fetchUrl.toString();
     const subordinateStatementJwt = await fetchOidfText(
-      fetchUrl.toString(),
+      subordinateStatementUrl,
       `subordinate statement from ${parentEntityId} about ${currentEntityId}`,
       config,
       fetchImpl,
     );
     chain.push(subordinateStatementJwt);
+    discoverySources.push(buildDiscoverySource("subordinate-statement", currentEntityId, subordinateStatementUrl, config));
     if (parentEntityId === expectedAnchorEntityId) {
       chain.push(parentEntityConfigurationJwt);
       break;
@@ -362,7 +384,7 @@ async function fetchTrustChain(
     currentEntityConfigurationJwt = parentEntityConfigurationJwt;
   }
 
-  return chain;
+  return { chain, discoverySources };
 }
 
 function decodeEntityStatementPayload(jwt: string) {
@@ -440,4 +462,20 @@ function findStatementJwksForEntity(
 
 function formatError(error: unknown) {
   return error instanceof Error ? error.message : String(error);
+}
+
+function buildDiscoverySource(
+  kind: FetchedTrustChain["discoverySources"][number]["kind"],
+  entityId: string,
+  publishedUrl: string,
+  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
+) {
+  const effectiveRequestUrl = rewriteSelfOriginFetchUrl(publishedUrl, config);
+  return {
+    kind,
+    entity_id: entityId,
+    published_url: publishedUrl,
+    published_request: `GET ${publishedUrl}`,
+    ...(effectiveRequestUrl !== publishedUrl ? { effective_request: `GET ${effectiveRequestUrl}` } : {}),
+  };
 }

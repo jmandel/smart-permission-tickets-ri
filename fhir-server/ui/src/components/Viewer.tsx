@@ -11,9 +11,11 @@ import {
   renderArtifactText,
   type ArtifactViewerPayload,
 } from "../lib/artifact-viewer";
-import { buildDemoEventArtifactTabs, type EventArtifactTab } from "../lib/demo-event-tabs";
+import { buildDemoEventArtifactTabs, splitSharedEventArtifactProvenance, type EventArtifactTab } from "../lib/demo-event-tabs";
 import { SplitAction } from "./SplitAction";
 import {
+  ArtifactProvenancePanel,
+  SharedArtifactProvenancePanel,
   formatHttpRequestForCopy,
   formatHttpResponseForCopy,
   HttpRequestArtifactPanel,
@@ -393,7 +395,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
     return (
       <main className="shell viewer-shell">
         <section className="panel section">
-          <h2>Health App Viewer</h2>
+          <h2>Sample Health App</h2>
           <p className="subtle">Loading viewer session…</p>
         </section>
       </main>
@@ -406,7 +408,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
         <section className="panel section">
           <div className="section-header">
             <div>
-              <h2>Health App Viewer</h2>
+              <h2>Sample Health App</h2>
               <p className="error-text">{error ?? "Invalid session payload."}</p>
             </div>
             <div className="button-row">
@@ -425,11 +427,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
           <div className="viewer-banner-identity">
             <div className="viewer-banner-avatar" aria-hidden="true">PT</div>
             <div className="viewer-banner-copy">
-              <div className="viewer-banner-eyebrow">
-                <a className="viewer-banner-back-link" href="/">← Workbench</a>
-                <span className="viewer-banner-eyebrow-separator" aria-hidden="true">·</span>
-                <span className="eyebrow viewer-banner-eyebrow-label">Health App Viewer</span>
-              </div>
+              <p className="eyebrow viewer-banner-eyebrow-label">Sample Health App</p>
               <h2>{viewerPatientBannerTitle(patientBanner)}</h2>
               {(patientBanner.birthDate || patientBanner.gender || patientBanner.mrIdentifier) && (
                 <p className="subtle viewer-patient-banner-meta">
@@ -443,24 +441,25 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
               <p className="subtle viewer-target">
                 Clinical data gathered from {siteRuns.length} connected site{siteRuns.length !== 1 && "s"} for review, comparison, and ad-hoc querying.
               </p>
+              <div className="viewer-banner-back-row">
+                <a className="viewer-banner-back-link" href="/">← Workbench</a>
+              </div>
             </div>
           </div>
           <div className="viewer-banner-actions">
+            <a
+              className="viewer-banner-trace-link"
+              href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View protocol trace
+            </a>
             <details className="viewer-more-actions">
               <summary className="viewer-banner-menu-trigger" aria-label="Viewer actions">
                 <span aria-hidden="true">⋯</span>
               </summary>
               <div className="viewer-more-actions-menu" role="menu">
-                <a
-                  className="viewer-more-actions-item"
-                  href={`/trace?session=${encodeURIComponent(launch.sessionId)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  role="menuitem"
-                >
-                  View protocol trace
-                </a>
-                <div className="viewer-more-actions-divider" role="separator" />
                 <button
                   type="button"
                   className="viewer-more-actions-item"
@@ -1071,9 +1070,13 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
         ? null
         : payload.noteText ?? null;
   const eventTabs = useMemo(() => (payload.kind === "event" ? buildDemoEventArtifactTabs(payload.event) : []), [payload]);
+  const { sharedGroups: sharedEventProvenanceGroups, tabsWithoutSharedProvenance: eventTabsWithDedupedProvenance } = useMemo(
+    () => splitSharedEventArtifactProvenance(eventTabs),
+    [eventTabs],
+  );
   const eventSummary = useMemo(() => (payload.kind === "event" ? buildDemoEventSummary(payload.event) : null), [payload]);
   const activeEventTab = payload.kind === "event"
-    ? eventTabs.find((tab) => tab.key === activeEventTabKey) ?? eventTabs[0] ?? null
+    ? eventTabsWithDedupedProvenance.find((tab) => tab.key === activeEventTabKey) ?? eventTabsWithDedupedProvenance[0] ?? null
     : null;
   const jwtArtifact = useMemo(() => {
     if (payload.kind !== "jwt") return null;
@@ -1265,9 +1268,9 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                         <h3>Internal Audit Event</h3>
                         <p className="subtle">{eventSummary.description}</p>
                       </div>
-                      {eventTabs.length > 0 && (
+                      {eventTabsWithDedupedProvenance.length > 0 && (
                         <div className="artifact-event-shortcuts">
-                          {eventTabs.map((tab) => (
+                          {eventTabsWithDedupedProvenance.map((tab) => (
                             <button
                               key={`shortcut:${tab.key}`}
                               type="button"
@@ -1315,13 +1318,13 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                     <p className="artifact-event-note subtle">{eventSummary.noteText}</p>
                   </section>
                 )}
-                {eventTabs.length > 0 && (
+                {eventTabsWithDedupedProvenance.length > 0 && (
                   <section ref={eventArtifactsSectionRef} className="artifact-json-panel">
                     <div className="artifact-json-head">
                       <h3>Protocol artifacts</h3>
                     </div>
                     <div className="artifact-tab-bar">
-                      {eventTabs.map((tab) => (
+                      {eventTabsWithDedupedProvenance.map((tab) => (
                         <button
                           key={tab.key}
                           type="button"
@@ -1332,9 +1335,13 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                         </button>
                       ))}
                     </div>
+                    <p className="artifact-protocol-guide subtle">
+                      Tabs labeled <strong>App -&gt; data holder</strong> or <strong>Data holder -&gt; app</strong> are direct client traffic. Sections titled <strong>How this artifact was obtained</strong> show additional outbound fetches or in-process derivation performed by the data holder.
+                    </p>
+                    <SharedArtifactProvenancePanel groups={sharedEventProvenanceGroups} />
                   </section>
                 )}
-                {!eventTabs.length ? (
+                {!eventTabsWithDedupedProvenance.length ? (
                   <section className="artifact-note-text">
                     <p className="subtle">This audit event does not have standalone request or response artifacts.</p>
                   </section>
@@ -1418,6 +1425,9 @@ function ArtifactViewer({ artifactKey, requestedFocusRef }: { artifactKey: strin
                         {copiedAction === "event-json" ? "Copied" : "Copy"}
                       </button>
                     </div>
+                    {activeEventTab?.provenance && (
+                      <ArtifactProvenancePanel provenance={activeEventTab.provenance} />
+                    )}
                     <pre
                       className={`viewer-json${activeEventTab?.kind === "text" ? " viewer-json-plain" : ""}`}
                       dangerouslySetInnerHTML={activeEventTab?.kind === "text" ? undefined : { __html: prettyHtml }}
