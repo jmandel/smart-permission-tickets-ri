@@ -227,6 +227,48 @@ describe("OIDF issuer trust", () => {
       resolver.resolveIssuerTrust(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
     ).rejects.toThrow(`OIDF issuer trust discovery failed for ${context.oidfTopology.ticketIssuerEntityId}`);
   });
+
+  test("issuer trust can succeed with only trust anchors configured and no issuer leaf allowlist entry", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    const origin = `http://127.0.0.1:${server.port}`;
+    const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
+    if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework");
+    oidfFramework.oidf.trustedLeaves = [];
+    try {
+      const issuerTrust = await context.frameworks.resolveIssuerTrustByType(
+        "oidf",
+        `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+      );
+      expect(issuerTrust?.framework?.type).toBe("oidf");
+
+      const response = await exchangeTicket(origin, mintOidfIssuerTicket(context, publicOrigin));
+      expect(response.status).toBe(200);
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("issuer trust rejects chains that do not terminate at a configured trust anchor", async () => {
+    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
+    const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
+    if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework");
+    oidfFramework.oidf.trustAnchors = [
+      {
+        entityId: `${publicOrigin}/federation/anchors/untrusted`,
+        jwks: [context.oidfTopology.entities.anchor.publicJwk],
+      },
+    ];
+    try {
+      await expect(
+        context.frameworks.resolveIssuerTrustByType(
+          "oidf",
+          `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        ),
+      ).rejects.toThrow("oidf_trust_chain_anchor_mismatch");
+    } finally {
+      server.stop(true);
+    }
+  });
 });
 
 function startOidfIssuerTrustServer() {

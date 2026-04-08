@@ -143,6 +143,30 @@ describe("OIDF demo topology", () => {
     }
   });
 
+  test("serves both issuer JWKS and OIDF entity configuration from the issuer base path", async () => {
+    const context = createAppContext({ port: 0 });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    const issuerBasePath = `/issuer/${context.config.defaultPermissionTicketIssuerSlug}`;
+    try {
+      const jwksResponse = await fetch(`${origin}${issuerBasePath}/.well-known/jwks.json`);
+      expect(jwksResponse.status).toBe(200);
+      const jwksBody = await jwksResponse.json() as { keys?: JsonWebKey[] };
+      expect(Array.isArray(jwksBody.keys)).toBe(true);
+      expect(jwksBody.keys).toHaveLength(1);
+
+      const oidfResponse = await fetch(`${origin}${issuerBasePath}/.well-known/openid-federation`);
+      expect(oidfResponse.status).toBe(200);
+      expect(oidfResponse.headers.get("content-type")).toBe("application/entity-statement+jwt");
+      const entityStatement = await oidfResponse.text();
+      const decodedEntity = decodeEs256Jwt<Record<string, any>>(entityStatement);
+      expect(decodedEntity.payload.iss).toBe(`${context.config.publicBaseUrl}${issuerBasePath}`);
+      expect(decodedEntity.payload.metadata.smart_permission_ticket_issuer.jwks.keys).toHaveLength(1);
+    } finally {
+      server.stop(true);
+    }
+  });
+
   test("re-mints entity statements on fetch instead of serving stale boot-time JWTs", async () => {
     const realDateNow = Date.now;
     Date.now = () => new Date("2026-04-07T12:00:00.000Z").getTime();

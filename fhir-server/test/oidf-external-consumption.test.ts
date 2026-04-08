@@ -162,6 +162,128 @@ describe("OIDF external entity consumption", () => {
     }
   });
 
+  test("external OIDF issuer trust explores later configured trust anchors when the first anchor cannot terminate the chain", async () => {
+    let fixture: ReturnType<typeof buildExternalOidfFixture> | null = null;
+    const server = Bun.serve({
+      port: 0,
+      fetch(request) {
+        if (!fixture) return new Response("fixture not ready", { status: 500 });
+        const url = new URL(request.url);
+        const body = fixture.responses.get(url.pathname + url.search);
+        return body ? new Response(body, { status: 200, headers: { "content-type": "application/entity-statement+jwt" } }) : new Response("not found", { status: 404 });
+      },
+    });
+    fixture = buildExternalOidfFixture(`http://127.0.0.1:${server.port}`);
+    const wrongAnchor = generateEcKeyPair();
+
+    const resolver = new OidfFrameworkResolver(
+      [buildExternalOidfFramework(fixture, {
+        trustAnchors: [
+          {
+            entityId: `${fixture.baseOrigin}/federation/anchors/untrusted`,
+            jwks: [wrongAnchor.publicJwk],
+          },
+          {
+            entityId: fixture.anchorEntityId,
+            jwks: [fixture.anchor.publicJwk],
+          },
+        ],
+      })],
+      {
+        publicBaseUrl: "https://tickets.example.test",
+        internalBaseUrl: "http://127.0.0.1:9999",
+      },
+      fetch,
+    );
+
+    try {
+      const issuerTrust = await resolver.resolveIssuerTrust(fixture.expectedIssuerUrl);
+      expect(issuerTrust?.framework?.type).toBe("oidf");
+      expect(issuerTrust?.metadata?.entity_id).toBe(fixture.issuerLeafEntityId);
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("external OIDF issuer trust rejects a fetched chain whose validated leaf entity_id does not match the requested issuer", async () => {
+    let fixture: ReturnType<typeof buildExternalOidfFixture> | null = null;
+    const server = Bun.serve({
+      port: 0,
+      fetch(request) {
+        if (!fixture) return new Response("fixture not ready", { status: 500 });
+        const url = new URL(request.url);
+        const body = fixture.responses.get(url.pathname + url.search);
+        return body ? new Response(body, { status: 200, headers: { "content-type": "application/entity-statement+jwt" } }) : new Response("not found", { status: 404 });
+      },
+    });
+    fixture = buildExternalOidfFixture(`http://127.0.0.1:${server.port}`);
+
+    const mismatchedIssuerEntityId = `${fixture.baseOrigin}/issuer/mismatched-demo`;
+    const now = Math.floor(Date.now() / 1000);
+    const issuerTrustMark = signEs256Jwt({
+      iss: fixture.providerNetworkEntityId,
+      sub: mismatchedIssuerEntityId,
+      iat: now,
+      exp: now + 86400,
+      trust_mark_type: fixture.trustMarkType,
+    }, fixture.providerNetwork.privateJwk, {
+      typ: TRUST_MARK_TYP,
+      kid: fixture.providerNetwork.publicJwk.kid,
+    });
+    const mismatchedIssuerLeafEc = signEntityStatement({
+      iss: mismatchedIssuerEntityId,
+      sub: mismatchedIssuerEntityId,
+      iat: now,
+      exp: now + 3600,
+      jwks: { keys: [fixture.issuerLeaf.publicJwk] },
+      metadata: {
+        federation_entity: {
+          organization_name: "External OIDF Issuer",
+        },
+        [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
+          jwks: {
+            keys: [fixture.issuerTicketSigning.publicJwk],
+          },
+        },
+      },
+      authority_hints: [fixture.providerNetworkEntityId],
+      trust_marks: [issuerTrustMark],
+    }, fixture.issuerLeaf.privateJwk, fixture.issuerLeaf.publicJwk.kid);
+    const networkAboutMismatchedIssuer = signEntityStatement({
+      iss: fixture.providerNetworkEntityId,
+      sub: mismatchedIssuerEntityId,
+      iat: now,
+      exp: now + 3600,
+      jwks: { keys: [fixture.issuerLeaf.publicJwk] },
+      metadata_policy: {},
+    }, fixture.providerNetwork.privateJwk, fixture.providerNetwork.publicJwk.kid);
+    fixture.responses.set(
+      new URL(oidfEntityConfigurationPath(fixture.issuerLeafEntityId), fixture.baseOrigin).pathname,
+      mismatchedIssuerLeafEc,
+    );
+    fixture.responses.set(
+      `${new URL(federationFetchEndpointPath(fixture.providerNetworkEntityId), fixture.baseOrigin).pathname}?sub=${encodeURIComponent(fixture.issuerLeafEntityId)}`,
+      networkAboutMismatchedIssuer,
+    );
+
+    const resolver = new OidfFrameworkResolver(
+      [buildExternalOidfFramework(fixture)],
+      {
+        publicBaseUrl: "https://tickets.example.test",
+        internalBaseUrl: "http://127.0.0.1:9999",
+      },
+      fetch,
+    );
+
+    try {
+      await expect(
+        resolver.resolveIssuerTrust(fixture.expectedIssuerUrl),
+      ).rejects.toThrow("oidf_ticket_issuer_entity_id_mismatch");
+    } finally {
+      server.stop(true);
+    }
+  });
+
 });
 
 function buildExternalOidfFramework(
