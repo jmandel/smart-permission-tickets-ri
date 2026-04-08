@@ -110,6 +110,8 @@ export type FrameworkDefinition = {
   oidf?: {
     trustAnchors: OidfTrustedAnchor[];
     trustedLeaves: OidfTrustedLeaf[];
+    maxTrustChainDepth?: number;
+    maxAuthorityHints?: number;
   };
 };
 

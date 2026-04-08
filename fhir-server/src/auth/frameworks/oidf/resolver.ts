@@ -21,6 +21,7 @@ import {
 
 export class OidfFrameworkResolver implements FrameworkResolver {
   readonly frameworkType = "oidf" as const;
+  private readonly issuerTrustCache = new Map<string, { expiresAt: number; value: ResolvedIssuerTrust }>();
 
   constructor(
     private readonly frameworks: FrameworkDefinition[],
@@ -73,6 +74,9 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       if (trustedLeaves.length > 1) {
         throw new Error(`OIDF issuer ${_issuerUrl} matches multiple allowlisted leaves`);
       }
+      const cacheKey = buildIssuerTrustCacheKey(framework, _issuerUrl, trustedLeaves[0]!);
+      const cached = this.readIssuerTrustCache(cacheKey);
+      if (cached) return cached;
       return this.resolveIssuerTrustAgainstFramework(framework, _issuerUrl, trustedLeaves[0]!);
     }
     return null;
@@ -154,6 +158,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     if (!oidf) {
       throw new Error(`OIDF framework ${framework.framework} is missing topology settings`);
     }
+    const cacheKey = buildIssuerTrustCacheKey(framework, issuerUrl, trustedLeaf);
 
     let fetchedTrustChain: FetchedTrustChain;
     try {
@@ -162,6 +167,10 @@ export class OidfFrameworkResolver implements FrameworkResolver {
         firstTrustedAnchor(oidf).entityId,
         this.config,
         this.fetchImpl,
+        {
+          maxDepth: oidf.maxTrustChainDepth ?? 10,
+          maxAuthorityHints: oidf.maxAuthorityHints ?? 8,
+        },
       );
     } catch (error) {
       throw new Error(`OIDF issuer trust discovery failed for ${trustedLeaf.entityId}: ${formatError(error)}`);
@@ -219,7 +228,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       ? resolved.metadata.federation_entity.organization_name
       : verifiedChain.leaf.entityId;
 
-    return {
+    const resolvedIssuerTrust: ResolvedIssuerTrust = {
       source: "framework",
       issuerUrl,
       displayName,
@@ -238,6 +247,24 @@ export class OidfFrameworkResolver implements FrameworkResolver {
         trust_mark: verifiedTrustMark.payload,
       },
     };
+    const expiresAt = computeIssuerTrustCacheExpiry(verifiedChain, verifiedTrustMark, framework.cacheTtlSeconds);
+    if (expiresAt > Date.now()) {
+      this.issuerTrustCache.set(cacheKey, {
+        expiresAt,
+        value: resolvedIssuerTrust,
+      });
+    }
+    return resolvedIssuerTrust;
+  }
+
+  private readIssuerTrustCache(cacheKey: string) {
+    const entry = this.issuerTrustCache.get(cacheKey);
+    if (!entry) return null;
+    if (entry.expiresAt <= Date.now()) {
+      this.issuerTrustCache.delete(cacheKey);
+      return null;
+    }
+    return entry.value;
   }
 }
 
@@ -321,70 +348,21 @@ async function fetchTrustChain(
   expectedAnchorEntityId: string,
   config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
   fetchImpl: typeof fetch,
+  options: {
+    maxDepth: number;
+    maxAuthorityHints: number;
+  },
 ) : Promise<FetchedTrustChain> {
-  const chain: string[] = [];
-  const discoverySources: FetchedTrustChain["discoverySources"] = [];
-  let currentEntityId: string | undefined = leafEntityId;
-  let currentEntityConfigurationJwt: string | undefined;
-  let depth = 0;
-
-  while (currentEntityId) {
-    depth += 1;
-    if (depth > 3) {
-      throw new Error("OIDF issuer trust chain exceeds the supported depth of 3");
-    }
-
-    if (!currentEntityConfigurationJwt) {
-      const entityConfigurationUrl = oidfEntityConfigurationUrl(currentEntityId);
-      currentEntityConfigurationJwt = await fetchOidfText(
-        entityConfigurationUrl,
-        `entity configuration for ${currentEntityId}`,
-        config,
-        fetchImpl,
-      );
-      chain.push(currentEntityConfigurationJwt);
-      discoverySources.push(buildDiscoverySource("entity-configuration", currentEntityId, entityConfigurationUrl, config));
-    }
-    const decoded = decodeEntityStatementPayload(currentEntityConfigurationJwt);
-    const authorityHints = Array.isArray(decoded.authority_hints)
-      ? decoded.authority_hints.filter((hint): hint is string => typeof hint === "string" && !!hint)
-      : [];
-    if (authorityHints.length === 0) break;
-    if (authorityHints.length > 1) {
-      throw new Error(`OIDF issuer trust only supports a single authority_hints parent for ${currentEntityId}`);
-    }
-
-    const parentEntityId = authorityHints[0];
-    const parentEntityConfigurationUrl = oidfEntityConfigurationUrl(parentEntityId);
-    const parentEntityConfigurationJwt = await fetchOidfText(
-      parentEntityConfigurationUrl,
-      `entity configuration for ${parentEntityId}`,
-      config,
-      fetchImpl,
-    );
-    discoverySources.push(buildDiscoverySource("entity-configuration", parentEntityId, parentEntityConfigurationUrl, config));
-    const parentDecoded = decodeEntityStatementPayload(parentEntityConfigurationJwt);
-    const fetchUrl = new URL(resolvePublishedFederationFetchEndpointUrl(parentEntityId, parentDecoded));
-    fetchUrl.searchParams.set("sub", currentEntityId);
-    const subordinateStatementUrl = fetchUrl.toString();
-    const subordinateStatementJwt = await fetchOidfText(
-      subordinateStatementUrl,
-      `subordinate statement from ${parentEntityId} about ${currentEntityId}`,
-      config,
-      fetchImpl,
-    );
-    chain.push(subordinateStatementJwt);
-    discoverySources.push(buildDiscoverySource("subordinate-statement", currentEntityId, subordinateStatementUrl, config));
-    if (parentEntityId === expectedAnchorEntityId) {
-      chain.push(parentEntityConfigurationJwt);
-      break;
-    }
-
-    currentEntityId = parentEntityId;
-    currentEntityConfigurationJwt = parentEntityConfigurationJwt;
-  }
-
-  return { chain, discoverySources };
+  return fetchTrustChainPath({
+    currentEntityId: leafEntityId,
+    expectedAnchorEntityId,
+    config,
+    fetchImpl,
+    maxDepth: options.maxDepth,
+    maxAuthorityHints: options.maxAuthorityHints,
+    depth: 1,
+    visited: new Set(),
+  });
 }
 
 function decodeEntityStatementPayload(jwt: string) {
@@ -419,6 +397,7 @@ async function verifyTrustChainAgainstConfiguredAnchors(
       return await verifyTrustChain(trustChain, {
         expectedAnchor: trustAnchor.entityId,
         trustedAnchorJwks: trustAnchor.jwks,
+        maxDepth: oidf.maxTrustChainDepth ?? 10,
       });
     } catch (error) {
       lastError = error instanceof Error ? error : new Error(String(error));
@@ -478,4 +457,139 @@ function buildDiscoverySource(
     published_request: `GET ${publishedUrl}`,
     ...(effectiveRequestUrl !== publishedUrl ? { effective_request: `GET ${effectiveRequestUrl}` } : {}),
   };
+}
+
+async function fetchTrustChainPath(options: {
+  currentEntityId: string;
+  expectedAnchorEntityId: string;
+  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">;
+  fetchImpl: typeof fetch;
+  maxDepth: number;
+  maxAuthorityHints: number;
+  depth: number;
+  visited: Set<string>;
+  prefetchedEntityConfigurationJwt?: string;
+  prefetchedDiscoverySource?: FetchedTrustChain["discoverySources"][number];
+}): Promise<FetchedTrustChain> {
+  if (options.depth > options.maxDepth) {
+    throw new Error(`OIDF issuer trust chain exceeds the configured depth of ${options.maxDepth}`);
+  }
+  if (options.visited.has(options.currentEntityId)) {
+    throw new Error(`OIDF issuer trust discovery encountered a cycle at ${options.currentEntityId}`);
+  }
+
+  const entityConfigurationUrl = oidfEntityConfigurationUrl(options.currentEntityId);
+  const entityConfigurationJwt = options.prefetchedEntityConfigurationJwt ?? await fetchOidfText(
+    entityConfigurationUrl,
+    `entity configuration for ${options.currentEntityId}`,
+    options.config,
+    options.fetchImpl,
+  );
+  const entityConfigurationSource = options.prefetchedDiscoverySource
+    ?? buildDiscoverySource("entity-configuration", options.currentEntityId, entityConfigurationUrl, options.config);
+
+  if (options.currentEntityId === options.expectedAnchorEntityId) {
+    return {
+      chain: [entityConfigurationJwt],
+      discoverySources: [entityConfigurationSource],
+    };
+  }
+
+  const decoded = decodeEntityStatementPayload(entityConfigurationJwt);
+  const authorityHints = Array.isArray(decoded.authority_hints)
+    ? decoded.authority_hints.filter((hint): hint is string => typeof hint === "string" && !!hint)
+    : [];
+  if (authorityHints.length === 0) {
+    throw new Error(`OIDF issuer trust path from ${options.currentEntityId} has no authority_hints`);
+  }
+
+  const candidateHints = authorityHints.slice(0, options.maxAuthorityHints);
+  let lastError: Error | null = null;
+  for (const parentEntityId of candidateHints) {
+    try {
+      const parentEntityConfigurationUrl = oidfEntityConfigurationUrl(parentEntityId);
+      const parentEntityConfigurationJwt = await fetchOidfText(
+        parentEntityConfigurationUrl,
+        `entity configuration for ${parentEntityId}`,
+        options.config,
+        options.fetchImpl,
+      );
+      const parentEntityConfigurationSource = buildDiscoverySource(
+        "entity-configuration",
+        parentEntityId,
+        parentEntityConfigurationUrl,
+        options.config,
+      );
+      const parentDecoded = decodeEntityStatementPayload(parentEntityConfigurationJwt);
+      const fetchUrl = new URL(resolvePublishedFederationFetchEndpointUrl(parentEntityId, parentDecoded));
+      fetchUrl.searchParams.set("sub", options.currentEntityId);
+      const subordinateStatementUrl = fetchUrl.toString();
+      const subordinateStatementJwt = await fetchOidfText(
+        subordinateStatementUrl,
+        `subordinate statement from ${parentEntityId} about ${options.currentEntityId}`,
+        options.config,
+        options.fetchImpl,
+      );
+      const subordinateStatementSource = buildDiscoverySource(
+        "subordinate-statement",
+        options.currentEntityId,
+        subordinateStatementUrl,
+        options.config,
+      );
+
+      if (parentEntityId === options.expectedAnchorEntityId) {
+        return {
+          chain: [entityConfigurationJwt, subordinateStatementJwt, parentEntityConfigurationJwt],
+          discoverySources: [entityConfigurationSource, parentEntityConfigurationSource, subordinateStatementSource],
+        };
+      }
+
+      const tail = await fetchTrustChainPath({
+        currentEntityId: parentEntityId,
+        expectedAnchorEntityId: options.expectedAnchorEntityId,
+        config: options.config,
+        fetchImpl: options.fetchImpl,
+        maxDepth: options.maxDepth,
+        maxAuthorityHints: options.maxAuthorityHints,
+        depth: options.depth + 1,
+        visited: new Set([...options.visited, options.currentEntityId]),
+        prefetchedEntityConfigurationJwt: parentEntityConfigurationJwt,
+        prefetchedDiscoverySource: parentEntityConfigurationSource,
+      });
+      return {
+        chain: [entityConfigurationJwt, subordinateStatementJwt, ...tail.chain.slice(1)],
+        discoverySources: [entityConfigurationSource, parentEntityConfigurationSource, subordinateStatementSource, ...tail.discoverySources.slice(1)],
+      };
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+    }
+  }
+
+  if (authorityHints.length > options.maxAuthorityHints) {
+    throw new Error(
+      `OIDF issuer trust discovery inspected ${options.maxAuthorityHints} authority_hints for ${options.currentEntityId} without finding a valid path: ${lastError?.message ?? "no path"}`,
+    );
+  }
+  throw lastError ?? new Error(`OIDF issuer trust discovery found no valid parent for ${options.currentEntityId}`);
+}
+
+function buildIssuerTrustCacheKey(
+  framework: FrameworkDefinition,
+  issuerUrl: string,
+  trustedLeaf: NonNullable<FrameworkDefinition["oidf"]>["trustedLeaves"][number],
+) {
+  return `${framework.framework}|${trustedLeaf.entityId}|${issuerUrl}`;
+}
+
+function computeIssuerTrustCacheExpiry(
+  verifiedChain: VerifiedTrustChain,
+  verifiedTrustMark: Awaited<ReturnType<typeof verifyTrustMark>>,
+  frameworkCacheTtlSeconds: number,
+) {
+  const frameworkExpiry = Date.now() + Math.max(0, frameworkCacheTtlSeconds) * 1000;
+  const statementExpiry = Math.min(
+    ...verifiedChain.statements.map((statement) => statement.payload.exp * 1000),
+    verifiedTrustMark.payload.exp * 1000,
+  );
+  return Math.min(frameworkExpiry, statementExpiry);
 }

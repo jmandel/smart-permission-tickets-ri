@@ -85,9 +85,87 @@ describe("OIDF external entity consumption", () => {
       server.stop(true);
     }
   });
+
+  test("external OIDF issuer trust caches successful resolutions while the cache is fresh", async () => {
+    let fixture: ReturnType<typeof buildExternalOidfFixture> | null = null;
+    const server = Bun.serve({
+      port: 0,
+      fetch(request) {
+        if (!fixture) return new Response("fixture not ready", { status: 500 });
+        const url = new URL(request.url);
+        const body = fixture.responses.get(url.pathname + url.search);
+        return body ? new Response(body, { status: 200, headers: { "content-type": "application/entity-statement+jwt" } }) : new Response("not found", { status: 404 });
+      },
+    });
+    fixture = buildExternalOidfFixture(`http://127.0.0.1:${server.port}`);
+
+    const seenUrls: string[] = [];
+    const resolver = new OidfFrameworkResolver(
+      [buildExternalOidfFramework(fixture)],
+      {
+        publicBaseUrl: "https://tickets.example.test",
+        internalBaseUrl: "http://127.0.0.1:9999",
+      },
+      async (input, init) => {
+        const url = typeof input === "string" ? input : input.url;
+        seenUrls.push(url);
+        return fetch(input, init);
+      },
+    );
+
+    try {
+      const first = await resolver.resolveIssuerTrust(fixture.expectedIssuerUrl);
+      const firstFetchCount = seenUrls.length;
+      const second = await resolver.resolveIssuerTrust(fixture.expectedIssuerUrl);
+      expect(first?.issuerUrl).toBe(fixture.expectedIssuerUrl);
+      expect(second?.issuerUrl).toBe(fixture.expectedIssuerUrl);
+      expect(seenUrls).toHaveLength(firstFetchCount);
+    } finally {
+      server.stop(true);
+    }
+  });
+
+  test("external OIDF issuer trust explores later authority_hints when the first parent path fails", async () => {
+    let fixture: ReturnType<typeof buildExternalOidfFixture> | null = null;
+    const server = Bun.serve({
+      port: 0,
+      fetch(request) {
+        if (!fixture) return new Response("fixture not ready", { status: 500 });
+        const url = new URL(request.url);
+        const body = fixture.responses.get(url.pathname + url.search);
+        return body ? new Response(body, { status: 200, headers: { "content-type": "application/entity-statement+jwt" } }) : new Response("not found", { status: 404 });
+      },
+    });
+    fixture = buildExternalOidfFixture(`http://127.0.0.1:${server.port}`, {
+      issuerAuthorityHints: [
+        `${baseOriginForFixture(server.port)}/federation/networks/untrusted`,
+        `${baseOriginForFixture(server.port)}/federation/networks/provider`,
+      ],
+    });
+
+    const resolver = new OidfFrameworkResolver(
+      [buildExternalOidfFramework(fixture)],
+      {
+        publicBaseUrl: "https://tickets.example.test",
+        internalBaseUrl: "http://127.0.0.1:9999",
+      },
+      fetch,
+    );
+
+    try {
+      const issuerTrust = await resolver.resolveIssuerTrust(fixture.expectedIssuerUrl);
+      expect(issuerTrust?.framework?.type).toBe("oidf");
+      expect(issuerTrust?.metadata?.entity_id).toBe(fixture.issuerLeafEntityId);
+    } finally {
+      server.stop(true);
+    }
+  });
 });
 
-function buildExternalOidfFramework(fixture: ReturnType<typeof buildExternalOidfFixture>): FrameworkDefinition {
+function buildExternalOidfFramework(
+  fixture: ReturnType<typeof buildExternalOidfFixture>,
+  overrides: Partial<NonNullable<FrameworkDefinition["oidf"]>> = {},
+): FrameworkDefinition {
   return {
     framework: "https://smarthealthit.org/trust-frameworks/external-oidf-test",
     frameworkType: "oidf",
@@ -113,11 +191,14 @@ function buildExternalOidfFramework(fixture: ReturnType<typeof buildExternalOidf
           requiredTrustMarkType: fixture.trustMarkType,
         },
       ],
+      ...overrides,
     },
   };
 }
 
-function buildExternalOidfFixture(baseOrigin: string) {
+function buildExternalOidfFixture(baseOrigin: string, overrides: {
+  issuerAuthorityHints?: string[];
+} = {}) {
   const anchorEntityId = `${baseOrigin}/federation/anchor`;
   const providerNetworkEntityId = `${baseOrigin}/federation/networks/provider`;
   const clientLeafEntityId = `${baseOrigin}/federation/leafs/external-client`;
@@ -195,7 +276,7 @@ function buildExternalOidfFixture(baseOrigin: string) {
         issuer_url: expectedIssuerUrl,
       },
     },
-    authority_hints: [providerNetworkEntityId],
+    authority_hints: overrides.issuerAuthorityHints ?? [providerNetworkEntityId],
     trust_marks: [issuerTrustMark],
   }, issuerLeaf.privateJwk, issuerLeaf.publicJwk.kid);
 
@@ -265,6 +346,10 @@ function buildExternalOidfFixture(baseOrigin: string) {
       [`${new URL(federationFetchEndpointPath(anchorEntityId), baseOrigin).pathname}?sub=${encodeURIComponent(providerNetworkEntityId)}`, anchorAboutNetwork],
     ]),
   };
+}
+
+function baseOriginForFixture(port: number) {
+  return `http://127.0.0.1:${port}`;
 }
 
 function generateEcKeyPair() {
