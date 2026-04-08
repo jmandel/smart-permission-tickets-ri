@@ -4,6 +4,7 @@ import { computeEcJwkThumbprintSync, normalizePrivateJwk, normalizePublicJwk, si
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI } from "../../demo-frameworks.ts";
 import { buildAuthBasePath, buildFhirBasePath, type SurfaceMode } from "../../../../shared/surfaces.ts";
 import type { SiteSummary } from "../../../store/store.ts";
+import { SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "./smart-permission-ticket-issuer.ts";
 import { federationFetchEndpointPath, federationFetchEndpointUrl, oidfEntityConfigurationPath } from "./urls.ts";
 
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
@@ -120,7 +121,7 @@ export function buildOidfDemoTopology(
     federation_entity: {
       organization_name: ticketIssuerName,
     },
-    smart_permission_ticket_issuer: {
+    [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
       issuer_url: ticketIssuerUrl,
       jwks: {
         keys: [ticketIssuerSigningKeys.publicJwk],
@@ -209,7 +210,7 @@ export function buildOidfDemoTopology(
   }
   addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, {
     metadataPolicy: {
-      smart_permission_ticket_issuer: {
+      [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
         issuer_url: {
           value: ticketIssuerUrl,
         },

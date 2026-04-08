@@ -9,6 +9,7 @@ import type {
 import type { ServerConfig } from "../../../config.ts";
 import type { FrameworkResolver, SupportedTrustFramework } from "../types.ts";
 import { applyMetadataPolicy } from "./policy.ts";
+import { extractTicketIssuerMetadata } from "./smart-permission-ticket-issuer.ts";
 import type { EntityStatementPayload, VerifiedTrustChain } from "./trust-chain.ts";
 import { verifyTrustChain } from "./trust-chain.ts";
 import { verifyTrustMark } from "./trust-mark.ts";
@@ -102,7 +103,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       throw new Error(`OIDF leaf ${verifiedChain.leaf.entityId} is not allowlisted for client authentication`);
     }
     const resolved = applyMetadataPolicy(verifiedChain);
-    const verifiedAssertion = await verifyAssertionAgainstJwks(assertionJwt, resolved.jwks, clientId, tokenEndpointUrl);
+    const verifiedAssertion = await verifyAssertionAgainstJwks(assertionJwt, resolved.leafEntityJwks, clientId, tokenEndpointUrl);
     const clientName = typeof resolved.metadata.oauth_client?.client_name === "string"
       ? resolved.metadata.oauth_client.client_name
       : clientId;
@@ -114,7 +115,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       },
       entityUri: clientId,
       displayName: clientName,
-      publicJwks: resolved.jwks,
+      publicJwks: resolved.leafEntityJwks,
       metadata: {
         resolution: "oidf-trust-chain",
         trust_chain_depth: verifiedChain.depth,
@@ -137,12 +138,12 @@ export class OidfFrameworkResolver implements FrameworkResolver {
           entity_uri: clientId,
         },
         publicJwk: verifiedAssertion.publicJwk,
-        availablePublicJwks: resolved.jwks,
+        availablePublicJwks: resolved.leafEntityJwks,
         jwkThumbprint: verifiedAssertion.jwkThumbprint,
       },
       {
         resolvedEntity,
-        availablePublicJwks: resolved.jwks,
+        availablePublicJwks: resolved.leafEntityJwks,
         publicJwk: verifiedAssertion.publicJwk,
         jwkThumbprint: verifiedAssertion.jwkThumbprint,
       },
@@ -181,9 +182,11 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     }
 
     const resolved = applyMetadataPolicy(verifiedChain);
-    const resolvedIssuerUrl = resolved.metadata.federation_entity?.issuer_url;
-    if (resolvedIssuerUrl !== issuerUrl) {
-      throw new Error(`OIDF issuer_url ${String(resolvedIssuerUrl ?? "")} does not match ${issuerUrl}`);
+    const ticketIssuer = extractTicketIssuerMetadata(resolved.metadata);
+    if (ticketIssuer.issuer_url !== issuerUrl) {
+      throw new Error(
+        `OIDF oidf_ticket_issuer_url_mismatch: ${ticketIssuer.issuer_url} does not match resolved issuer ${issuerUrl}`,
+      );
     }
 
     const trustMarkType = trustedLeaf.requiredTrustMarkType;
@@ -236,7 +239,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
         uri: framework.framework,
         type: "oidf",
       },
-      publicJwks: resolved.jwks,
+      publicJwks: ticketIssuer.publicJwks,
       metadata: {
         resolution: "oidf-issuer-trust",
         entity_id: verifiedChain.leaf.entityId,
