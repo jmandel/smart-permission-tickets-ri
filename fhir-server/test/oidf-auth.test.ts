@@ -121,7 +121,6 @@ describe("OIDF client authentication", () => {
     const { context, server } = startOidfAuthServer();
     try {
       context.oidfTopology.entities["demo-app"].metadata[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE] = {
-        issuer_url: 7,
         jwks: null,
       };
 

@@ -11,22 +11,6 @@ export function extractTicketIssuerMetadata(resolvedMetadata: EntityMetadata) {
     );
   }
 
-  const rawIssuerUrl = metadata.issuer_url;
-  if (typeof rawIssuerUrl !== "string" || !rawIssuerUrl.trim()) {
-    throw new Error(
-      `OIDF oidf_ticket_issuer_url_missing: ${SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE}.issuer_url must be a non-empty string`,
-    );
-  }
-
-  let issuer_url: string;
-  try {
-    issuer_url = new URL(rawIssuerUrl).toString();
-  } catch (error) {
-    throw new Error(
-      `OIDF oidf_ticket_issuer_url_invalid: ${SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE}.issuer_url must be a parseable absolute URL (${error instanceof Error ? error.message : String(error)})`,
-    );
-  }
-
   const jwks = metadata.jwks;
   const keys = jwks && typeof jwks === "object" && !Array.isArray(jwks) ? (jwks as { keys?: unknown }).keys : undefined;
   if (!Array.isArray(keys) || keys.length === 0) {
@@ -68,5 +52,5 @@ export function extractTicketIssuerMetadata(resolvedMetadata: EntityMetadata) {
     seenKids.add(kid);
   }
 
-  return { issuer_url, publicJwks };
+  return { publicJwks };
 }

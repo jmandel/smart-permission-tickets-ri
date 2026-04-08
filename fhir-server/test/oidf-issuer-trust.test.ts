@@ -12,7 +12,6 @@ import { createAppContext, startServer } from "../src/app.ts";
 const ENTITY_STATEMENT_TYP = "entity-statement+jwt";
 const TRUST_MARK_TYP = "trust-mark+jwt";
 type TicketIssuerMetadata = {
-  issuer_url?: unknown;
   jwks?: unknown;
 };
 
@@ -21,6 +20,14 @@ describe("OIDF issuer trust", () => {
     const { context, server, publicOrigin } = startOidfIssuerTrustServer();
     const origin = `http://127.0.0.1:${server.port}`;
     try {
+      const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
+      expect(oidfFramework?.oidf?.trustedLeaves).toEqual([
+        {
+          entityId: context.oidfTopology.demoAppEntityId,
+          usage: "client",
+        },
+      ]);
+
       const directIssuerTrust = await context.frameworks.resolveIssuerTrustByType(
         "oidf",
         `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
@@ -184,39 +191,6 @@ describe("OIDF issuer trust", () => {
     }
   });
 
-  test("issuer_url mismatch rejects issuer trust", async () => {
-    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
-    try {
-      ticketIssuerSubordinatePolicy(context).value = `${publicOrigin}/issuer/other-demo`;
-
-      await expect(
-        context.frameworks.resolveIssuerTrustByType("oidf", `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
-      ).rejects.toThrow("oidf_ticket_issuer_url_mismatch");
-    } finally {
-      server.stop(true);
-    }
-  });
-
-  test("issuer trust fails closed when multiple allowlisted leaves match the same issuer URL", async () => {
-    const { context, server, publicOrigin } = startOidfIssuerTrustServer();
-    try {
-      const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
-      if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework config");
-      oidfFramework.oidf.trustedLeaves.push({
-        entityId: `${publicOrigin}/federation/leafs/duplicate-ticket-issuer`,
-        usage: "issuer",
-        expectedIssuerUrl: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-        requiredTrustMarkType: context.oidfTopology.trustMarkType,
-      });
-
-      await expect(
-        context.frameworks.resolveIssuerTrust(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`),
-      ).rejects.toThrow("matches multiple allowlisted leaves");
-    } finally {
-      server.stop(true);
-    }
-  });
-
   test("demo issuer trust uses INTERNAL_BASE_URL only for self-origin loopback", async () => {
     const { context, server, publicOrigin } = startOidfIssuerTrustServer();
     const seenUrls: string[] = [];
@@ -330,18 +304,6 @@ function firstTicketIssuerPublicJwk(appContext: ReturnType<typeof createAppConte
   const key = jwks?.keys?.[0];
   if (!key) throw new Error("Missing smart_permission_ticket_issuer jwks[0]");
   return key;
-}
-
-function ticketIssuerSubordinatePolicy(appContext: ReturnType<typeof createAppContext>) {
-  const statement = appContext.oidfTopology.subordinateStatements
-    .get(appContext.oidfTopology.providerNetworkEntityId)
-    ?.get(appContext.oidfTopology.ticketIssuerEntityId);
-  const metadataType = statement?.metadataPolicy[SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE];
-  const issuerUrlPolicy = metadataType?.issuer_url;
-  if (!issuerUrlPolicy || typeof issuerUrlPolicy !== "object" || Array.isArray(issuerUrlPolicy)) {
-    throw new Error("Missing smart_permission_ticket_issuer issuer_url policy");
-  }
-  return issuerUrlPolicy as Record<string, unknown>;
 }
 
 function exchangeTicket(origin: string, ticket: string) {

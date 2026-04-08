@@ -194,22 +194,18 @@ function buildFrameworkRegistry(
         ...framework,
         oidf: framework.oidf
           ? {
+              ...framework.oidf,
               trustAnchors: [
                 {
                   entityId: oidfTopology.trustAnchorEntityId,
                   jwks: [oidfTopology.entities.anchor.publicJwk],
                 },
               ],
+              requiredIssuerTrustMarkType: oidfTopology.trustMarkType,
               trustedLeaves: [
                 {
                   entityId: oidfTopology.demoAppEntityId,
                   usage: "client",
-                },
-                {
-                  entityId: oidfTopology.ticketIssuerEntityId,
-                  usage: "issuer",
-                  expectedIssuerUrl: oidfTopology.ticketIssuerUrl,
-                  requiredTrustMarkType: oidfTopology.trustMarkType,
                 },
               ],
             }

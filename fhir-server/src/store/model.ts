@@ -73,8 +73,6 @@ export type OidfTrustedLeafUsage = "client" | "issuer" | "both";
 export type OidfTrustedLeaf = {
   entityId: string;
   usage: OidfTrustedLeafUsage;
-  expectedIssuerUrl?: string;
-  requiredTrustMarkType?: string;
 };
 
 export type FrameworkClientBinding = {
@@ -110,6 +108,7 @@ export type FrameworkDefinition = {
   oidf?: {
     trustAnchors: OidfTrustedAnchor[];
     trustedLeaves: OidfTrustedLeaf[];
+    requiredIssuerTrustMarkType?: string;
     maxTrustChainDepth?: number;
     maxAuthorityHints?: number;
   };

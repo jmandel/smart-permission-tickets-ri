@@ -161,6 +161,7 @@ describe("OIDF external entity consumption", () => {
       server.stop(true);
     }
   });
+
 });
 
 function buildExternalOidfFramework(
@@ -180,16 +181,11 @@ function buildExternalOidfFramework(
           jwks: [fixture.anchor.publicJwk],
         },
       ],
+      requiredIssuerTrustMarkType: fixture.trustMarkType,
       trustedLeaves: [
         {
           entityId: fixture.clientLeafEntityId,
           usage: "client",
-        },
-        {
-          entityId: fixture.issuerLeafEntityId,
-          usage: "issuer",
-          expectedIssuerUrl: fixture.expectedIssuerUrl,
-          requiredTrustMarkType: fixture.trustMarkType,
         },
       ],
       ...overrides,
@@ -203,8 +199,8 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
   const anchorEntityId = `${baseOrigin}/federation/anchor`;
   const providerNetworkEntityId = `${baseOrigin}/federation/networks/provider`;
   const clientLeafEntityId = `${baseOrigin}/federation/leafs/external-client`;
-  const issuerLeafEntityId = `${baseOrigin}/federation/leafs/external-issuer`;
-  const expectedIssuerUrl = "https://issuer.example.test/issuer/external-demo";
+  const expectedIssuerUrl = `${baseOrigin}/issuer/external-demo`;
+  const issuerLeafEntityId = expectedIssuerUrl;
   const trustMarkType = `${baseOrigin}/federation/trust-marks/permission-ticket-issuer`;
   const now = Math.floor(Date.now() / 1000);
 
@@ -278,7 +274,6 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
         organization_name: "External OIDF Issuer",
       },
       [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
-        issuer_url: expectedIssuerUrl,
         jwks: {
           keys: [issuerTicketSigning.publicJwk],
         },
@@ -309,13 +304,7 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
     iat: now,
     exp: now + 3600,
     jwks: { keys: [issuerLeaf.publicJwk] },
-    metadata_policy: {
-      [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
-        issuer_url: {
-          value: expectedIssuerUrl,
-        },
-      },
-    },
+    metadata_policy: {},
   }, providerNetwork.privateJwk, providerNetwork.publicJwk.kid);
 
   const anchorAboutNetwork = signEntityStatement({
@@ -336,11 +325,13 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
   return {
     baseOrigin,
     anchorEntityId,
+    providerNetworkEntityId,
     clientLeafEntityId,
     expectedIssuerUrl,
     issuerLeafEntityId,
     trustMarkType,
     anchor,
+    providerNetwork,
     clientLeaf,
     issuerLeaf,
     issuerTicketSigning,

@@ -31,7 +31,7 @@ describe("issuer key publication consistency", () => {
   test("ticket issuer entity configuration publishes a federation key distinct from the inline ticket-signing jwks", async () => {
     const { context, origin, server } = startHarness();
     try {
-      const entityStatement = await fetchText(`${origin}/federation/leafs/ticket-issuer/.well-known/openid-federation`);
+      const entityStatement = await fetchText(`${origin}/issuer/reference-demo/.well-known/openid-federation`);
       const decoded = decodeEs256Jwt<Record<string, any>>(entityStatement);
       const federationKey = decoded.payload.jwks.keys[0];
       const inlineKey = inlineTicketIssuerJwks(context)[0];

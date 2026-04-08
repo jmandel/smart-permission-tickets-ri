@@ -314,7 +314,6 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
   const oidfAppNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
   const oidfProviderNetworkEntityId = `${publicBaseUrl}/federation/networks/provider`;
   const oidfDemoAppEntityId = `${publicBaseUrl}/federation/leafs/demo-app`;
-  const oidfTicketIssuerEntityId = `${publicBaseUrl}/federation/leafs/ticket-issuer`;
   const oidfTrustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
   const demoWellKnownClients = buildDemoWellKnownClients(publicBaseUrl);
   return [
@@ -379,16 +378,11 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
             jwks: [],
           },
         ],
+        requiredIssuerTrustMarkType: oidfTrustMarkType,
         trustedLeaves: [
           {
             entityId: oidfDemoAppEntityId,
             usage: "client",
-          },
-          {
-            entityId: oidfTicketIssuerEntityId,
-            usage: "issuer",
-            expectedIssuerUrl: issuerUrl,
-            requiredTrustMarkType: oidfTrustMarkType,
           },
         ],
       },

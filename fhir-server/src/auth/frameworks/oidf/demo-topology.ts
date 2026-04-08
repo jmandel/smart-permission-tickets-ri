@@ -82,8 +82,8 @@ export function buildOidfDemoTopology(
   const appNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
   const providerNetworkEntityId = `${publicBaseUrl}/federation/networks/provider`;
   const demoAppEntityId = `${publicBaseUrl}/federation/leafs/demo-app`;
-  const ticketIssuerEntityId = `${publicBaseUrl}/federation/leafs/ticket-issuer`;
   const ticketIssuerUrl = `${publicBaseUrl}/issuer/${ticketIssuerSlug}`;
+  const ticketIssuerEntityId = ticketIssuerUrl;
   const trustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
   const now = Math.floor(Date.now() / 1000);
   const ticketIssuerSigningKeys = ticketIssuerSigningKeyMaterial
@@ -122,7 +122,6 @@ export function buildOidfDemoTopology(
       organization_name: ticketIssuerName,
     },
     [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
-      issuer_url: ticketIssuerUrl,
       jwks: {
         keys: [ticketIssuerSigningKeys.publicJwk],
       },
@@ -209,13 +208,7 @@ export function buildOidfDemoTopology(
     });
   }
   addSubordinateStatement(subordinateStatements, providerNetwork.entityId, ticketIssuer.entityId, {
-    metadataPolicy: {
-      [SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE]: {
-        issuer_url: {
-          value: ticketIssuerUrl,
-        },
-      },
-    },
+    metadataPolicy: {},
   });
   addSubordinateStatement(subordinateStatements, anchor.entityId, providerNetwork.entityId, {
     metadataPolicy: {

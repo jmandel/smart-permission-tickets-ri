@@ -120,25 +120,23 @@ describe("OIDF demo topology", () => {
     const origin = `http://127.0.0.1:${server.port}`;
     const publicOrigin = context.config.publicBaseUrl;
     try {
-      const response = await fetch(`${origin}/federation/leafs/ticket-issuer/.well-known/openid-federation`);
+      const response = await fetch(`${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}/.well-known/openid-federation`);
       expect(response.status).toBe(200);
       const entityStatement = await response.text();
       const decodedEntity = decodeEs256Jwt<Record<string, any>>(entityStatement);
+      expect(decodedEntity.payload.iss).toBe(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
+      expect(decodedEntity.payload.sub).toBe(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
       expect(decodedEntity.payload.metadata.federation_entity).toEqual({
         organization_name: context.config.defaultPermissionTicketIssuerName,
       });
-      expect(decodedEntity.payload.metadata.smart_permission_ticket_issuer.issuer_url).toBe(
-        `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-      );
       expect(decodedEntity.payload.metadata.smart_permission_ticket_issuer.jwks.keys).toHaveLength(1);
-      expect(decodedEntity.payload.metadata.federation_entity.issuer_url).toBeUndefined();
       const trustMarks = decodedEntity.payload.trust_marks;
       expect(Array.isArray(trustMarks)).toBe(true);
       expect(trustMarks).toHaveLength(1);
       const decodedTrustMark = decodeEs256Jwt<Record<string, any>>(trustMarks[0]);
       expect(decodedTrustMark.header.typ).toBe("trust-mark+jwt");
       expect(decodedTrustMark.payload.iss).toBe(`${publicOrigin}/federation/networks/provider`);
-      expect(decodedTrustMark.payload.sub).toBe(`${publicOrigin}/federation/leafs/ticket-issuer`);
+      expect(decodedTrustMark.payload.sub).toBe(`${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`);
       expect(decodedTrustMark.payload.trust_mark_type).toBe(`${publicOrigin}/federation/trust-marks/permission-ticket-issuer`);
     } finally {
       server.stop(true);
@@ -185,16 +183,11 @@ describe("OIDF demo topology", () => {
         jwks: [context.oidfTopology.entities.anchor.publicJwk],
       },
     ]);
+    expect(oidfFramework?.oidf?.requiredIssuerTrustMarkType).toBe(context.oidfTopology.trustMarkType);
     expect(oidfFramework?.oidf?.trustedLeaves).toEqual([
       {
         entityId: context.oidfTopology.demoAppEntityId,
         usage: "client",
-      },
-      {
-        entityId: context.oidfTopology.ticketIssuerEntityId,
-        usage: "issuer",
-        expectedIssuerUrl: `${context.config.publicBaseUrl}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
-        requiredTrustMarkType: context.oidfTopology.trustMarkType,
       },
     ]);
   });
