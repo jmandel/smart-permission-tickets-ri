@@ -334,7 +334,7 @@ function signEntityConfiguration(entity: OidfDemoEntity, now: number) {
     exp: now + ENTITY_STATEMENT_TTL_SECONDS,
     jwks: { keys: [entity.publicJwk] },
     metadata: entity.metadata,
-    authority_hints: entity.authorityHints,
+    ...(entity.authorityHints.length ? { authority_hints: entity.authorityHints } : {}),
     ...(entity.trustMarks?.length ? { trust_marks: entity.trustMarks } : {}),
   }, entity.privateJwk, {
     typ: ENTITY_STATEMENT_TYP,

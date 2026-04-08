@@ -49,6 +49,9 @@ export async function verifyTrustMark(
   if (typeof payload.trust_mark_type !== "string" || !payload.trust_mark_type) {
     throw new Error("OIDF trust mark is missing trust_mark_type");
   }
+  if ("delegation" in payload) {
+    throw new Error("OIDF delegated trust marks are not supported");
+  }
   if (payload.iss !== options.issuerEntityId) {
     throw new Error(`OIDF trust mark issuer ${payload.iss} does not match ${options.issuerEntityId}`);
   }

@@ -136,19 +136,195 @@ describe("OIDF metadata policy", () => {
 
     expect(() => applyMetadataPolicy(verified)).toThrow("unsupported");
   });
+
+  test("subordinate metadata overrides the leaf entity configuration", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkMetadata: {
+        oauth_client: {
+          client_name: "Immediate Superior Override",
+        },
+      },
+      networkPolicy: {},
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client?.client_name).toBe("Immediate Superior Override");
+  });
+
+  test("subordinate metadata only applies to entity types present in the leaf configuration", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkMetadata: {
+        federation_entity: {
+          organization_name: "Should Be Ignored",
+        },
+      },
+      networkPolicy: {},
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client?.client_name).toBe("Leaf Demo App");
+    expect(resolved.metadata.federation_entity).toBeUndefined();
+  });
+
+  test("subordinate metadata is applied before metadata_policy", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkMetadata: {
+        oauth_client: {
+          client_name: "Immediate Superior Override",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          client_name: {
+            one_of: ["Immediate Superior Override"],
+          },
+        },
+      },
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client?.client_name).toBe("Immediate Superior Override");
+  });
+
+  test("unknown additional operators are ignored when not listed in metadata_policy_crit", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          client_name: {
+            regexp: "^Immediate Superior",
+          },
+        },
+      },
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client?.client_name).toBe("Leaf Demo App");
+  });
+
+  test("unknown additional operators listed in metadata_policy_crit invalidate the chain", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+      },
+      networkPolicy: {
+        oauth_client: {
+          client_name: {
+            regexp: "^Leaf",
+          },
+        },
+      },
+      networkPolicyCrit: ["regexp"],
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+
+    expect(() => applyMetadataPolicy(verified)).toThrow("metadata_policy_crit");
+  });
+
+  test("allowed_entity_types empty array leaves only federation_entity metadata", async () => {
+    const fixture = await makePolicyFixture({
+      leafMetadata: {
+        oauth_client: {
+          client_name: "Leaf Demo App",
+        },
+        federation_entity: {
+          organization_name: "Leaf Federation Identity",
+        },
+      },
+      networkMetadata: {
+        federation_entity: {
+          organization_name: "Immediate Superior Federation Identity",
+        },
+      },
+      networkConstraints: {
+        allowed_entity_types: [],
+      },
+      networkPolicy: {},
+      anchorPolicy: {
+        oauth_client: {
+          client_name: {
+            default: "Should Never Survive",
+          },
+        },
+      },
+    });
+
+    const verified = await verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchorEntityId,
+      trustedAnchorJwks: fixture.anchorJwks.keys,
+      nowSeconds: fixture.now,
+    });
+    const resolved = applyMetadataPolicy(verified);
+
+    expect(resolved.metadata.oauth_client).toBeUndefined();
+    expect(resolved.metadata.federation_entity?.organization_name).toBe("Immediate Superior Federation Identity");
+  });
 });
 
 type PolicyFixtureOptions = {
   leafMetadata?: Record<string, Record<string, unknown>>;
+  networkMetadata?: Record<string, Record<string, unknown>>;
   networkPolicy?: Record<string, Record<string, Record<string, unknown>>>;
+  networkPolicyCrit?: string[];
+  networkConstraints?: Record<string, unknown>;
   anchorPolicy?: Record<string, Record<string, Record<string, unknown>>>;
 };
 
 async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
   const now = Math.floor(Date.now() / 1000);
-  const leafKeys = await generateClientKeyMaterial();
-  const networkKeys = await generateClientKeyMaterial();
-  const anchorKeys = await generateClientKeyMaterial();
+  const leafKeys = await generateKeyFixture();
+  const networkKeys = await generateKeyFixture();
+  const anchorKeys = await generateKeyFixture();
 
   const leafEntityId = "https://demo.example/federation/leafs/demo-app";
   const networkEntityId = "https://demo.example/federation/networks/app";
@@ -174,6 +350,7 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
     iat: now - 60,
     exp: now + 3600,
     jwks: { keys: [leafKeys.publicJwk] },
+    metadata: options.networkMetadata,
     metadata_policy: options.networkPolicy ?? {
       oauth_client: {
         client_name: {
@@ -181,6 +358,8 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
         },
       },
     },
+    metadata_policy_crit: options.networkPolicyCrit,
+    constraints: options.networkConstraints,
   }, networkKeys.privateJwk);
 
   const anchorToNetwork = await signStatement({
@@ -224,6 +403,23 @@ async function makePolicyFixture(options: PolicyFixtureOptions = {}) {
   };
 }
 
-async function signStatement(payload: Record<string, unknown>, privateJwk: JsonWebKey) {
-  return signPrivateKeyJwt(payload, privateJwk, { typ: "entity-statement+jwt" });
+async function signStatement(payload: Record<string, unknown>, privateJwk: JsonWebKey & { kid: string }) {
+  return signPrivateKeyJwt(payload, privateJwk, {
+    typ: "entity-statement+jwt",
+    kid: privateJwk.kid,
+  });
+}
+
+async function generateKeyFixture() {
+  const keyMaterial = await generateClientKeyMaterial();
+  return {
+    publicJwk: {
+      ...keyMaterial.publicJwk,
+      kid: keyMaterial.thumbprint,
+    } satisfies JsonWebKey & { kid: string },
+    privateJwk: {
+      ...keyMaterial.privateJwk,
+      kid: keyMaterial.thumbprint,
+    } satisfies JsonWebKey & { kid: string },
+  };
 }

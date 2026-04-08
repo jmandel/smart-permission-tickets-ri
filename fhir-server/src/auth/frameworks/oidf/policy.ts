@@ -1,9 +1,16 @@
-import type { EntityMetadata, EntityMetadataPolicy, VerifiedTrustChain } from "./trust-chain.ts";
+import {
+  STANDARD_METADATA_POLICY_OPERATORS,
+  type EntityMetadata,
+  type EntityMetadataPolicy,
+  type StandardMetadataPolicyOperator,
+  type VerifiedTrustChain,
+} from "./trust-chain.ts";
 
 export const SUPPORTED_METADATA_POLICY_OPERATORS = ["value", "default", "one_of"] as const;
 
 type SupportedMetadataPolicyOperator = (typeof SUPPORTED_METADATA_POLICY_OPERATORS)[number];
-type MetadataFieldPolicy = Partial<Record<SupportedMetadataPolicyOperator, unknown>> & Record<string, unknown>;
+type MetadataFieldPolicy = Partial<Record<StandardMetadataPolicyOperator, unknown>> & Record<string, unknown>;
+type SupportedFieldPolicy = Partial<Record<SupportedMetadataPolicyOperator, unknown>>;
 type MetadataTypePolicy = Record<string, MetadataFieldPolicy>;
 
 export type ResolvedOidfClientMetadata = {
@@ -21,18 +28,29 @@ export function applyMetadataPolicy(verifiedChain: VerifiedTrustChain): Resolved
     throw new Error("OIDF resolved metadata is missing the leaf entity jwks");
   }
 
-  const resolvedMetadata = cloneMetadata(verifiedChain.leafMetadata);
+  const resolvedMetadata = cloneMetadata(verifiedChain.directSubjectMetadata);
+  applyAllowedEntityTypes(resolvedMetadata, verifiedChain.allowedEntityTypes);
+
   const fieldConstraints = new Map<string, FieldConstraint>();
+  const criticalOperators = new Set(verifiedChain.criticalMetadataPolicyOperators);
 
   // OIDF 6.1.4.2 applies metadata policy top-down starting from the Trust Anchor.
   // VerifiedTrustChain.metadataPolicies is stored leaf-up, so reverse it here.
   const policyLayers = [...verifiedChain.metadataPolicies].reverse();
   for (const layer of policyLayers) {
     for (const [metadataType, metadataTypePolicy] of Object.entries(layer.metadataPolicy)) {
+      if (!isAllowedEntityType(metadataType, verifiedChain.allowedEntityTypes)) continue;
       const typedPolicy = asMetadataTypePolicy(metadataTypePolicy, metadataType, layer.issuer);
       for (const [fieldName, fieldPolicy] of Object.entries(typedPolicy)) {
-        validateSupportedOperators(fieldPolicy, metadataType, fieldName, layer.issuer);
-        applyFieldPolicy(resolvedMetadata, fieldConstraints, metadataType, fieldName, fieldPolicy, layer.issuer);
+        const supportedFieldPolicy = normalizeSupportedOperators(
+          fieldPolicy,
+          metadataType,
+          fieldName,
+          layer.issuer,
+          criticalOperators,
+        );
+        if (!supportedFieldPolicy) continue;
+        applyFieldPolicy(resolvedMetadata, fieldConstraints, metadataType, fieldName, supportedFieldPolicy, layer.issuer);
       }
     }
   }
@@ -50,12 +68,35 @@ function asMetadataTypePolicy(value: unknown, metadataType: string, issuer: stri
   return value as MetadataTypePolicy;
 }
 
-function validateSupportedOperators(fieldPolicy: MetadataFieldPolicy, metadataType: string, fieldName: string, issuer: string) {
-  for (const operator of Object.keys(fieldPolicy)) {
-    if (!(SUPPORTED_METADATA_POLICY_OPERATORS as readonly string[]).includes(operator)) {
+function normalizeSupportedOperators(
+  fieldPolicy: MetadataFieldPolicy,
+  metadataType: string,
+  fieldName: string,
+  issuer: string,
+  criticalOperators: Set<string>,
+) {
+  const supportedOperators: SupportedFieldPolicy = {};
+  let hasSupportedOperator = false;
+
+  for (const [operator, value] of Object.entries(fieldPolicy)) {
+    if ((SUPPORTED_METADATA_POLICY_OPERATORS as readonly string[]).includes(operator)) {
+      supportedOperators[operator as SupportedMetadataPolicyOperator] = value;
+      hasSupportedOperator = true;
+      continue;
+    }
+
+    if ((STANDARD_METADATA_POLICY_OPERATORS as readonly string[]).includes(operator)) {
       throw new Error(`OIDF metadata_policy operator ${operator} on ${metadataType}.${fieldName} from ${issuer} is unsupported`);
     }
+
+    if (criticalOperators.has(operator)) {
+      throw new Error(
+        `OIDF metadata_policy_crit requires unsupported operator ${operator} on ${metadataType}.${fieldName} from ${issuer}`,
+      );
+    }
   }
+
+  return hasSupportedOperator ? supportedOperators : null;
 }
 
 function applyFieldPolicy(
@@ -63,7 +104,7 @@ function applyFieldPolicy(
   fieldConstraints: Map<string, FieldConstraint>,
   metadataType: string,
   fieldName: string,
-  fieldPolicy: MetadataFieldPolicy,
+  fieldPolicy: SupportedFieldPolicy,
   issuer: string,
 ) {
   const constraintKey = `${metadataType}.${fieldName}`;
@@ -124,6 +165,20 @@ function assertAllowedValue(
 function setResolvedField(metadata: EntityMetadata, metadataType: string, fieldName: string, value: unknown) {
   metadata[metadataType] ??= {};
   metadata[metadataType][fieldName] = value;
+}
+
+function applyAllowedEntityTypes(metadata: EntityMetadata, allowedEntityTypes: string[] | null) {
+  if (allowedEntityTypes === null) return;
+  const allowed = new Set(["federation_entity", ...allowedEntityTypes]);
+  for (const entityType of Object.keys(metadata)) {
+    if (allowed.has(entityType)) continue;
+    delete metadata[entityType];
+  }
+}
+
+function isAllowedEntityType(metadataType: string, allowedEntityTypes: string[] | null) {
+  if (allowedEntityTypes === null) return true;
+  return metadataType === "federation_entity" || allowedEntityTypes.includes(metadataType);
 }
 
 function cloneMetadata(metadata: EntityMetadata): EntityMetadata {

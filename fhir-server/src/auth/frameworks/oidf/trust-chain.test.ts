@@ -138,12 +138,173 @@ describe("OIDF trust chain validation", () => {
     }))
       .rejects.toThrow("Malformed entity statement");
   });
+
+  test("missing header kid is rejected", async () => {
+    const fixture = await makeTrustChainFixture({
+      leaf: {
+        headerOverrides: {
+          kid: undefined,
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("kid");
+  });
+
+  test("empty header kid is rejected", async () => {
+    const fixture = await makeTrustChainFixture({
+      networkToLeaf: {
+        headerOverrides: {
+          kid: "",
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("kid");
+  });
+
+  test("kid mismatch against issuer jwks is rejected", async () => {
+    const fixture = await makeTrustChainFixture({
+      anchorToNetwork: {
+        headerOverrides: {
+          kid: "missing-anchor-key",
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("kid");
+  });
+
+  test("duplicate kid values inside a statement jwks are rejected", async () => {
+    const fixture = await makeTrustChainFixture({
+      leaf: {
+        configOverrides: {
+          jwks: {
+            keys: [
+              fixtureDuplicateKey("duplicate-leaf-key"),
+              fixtureDuplicateKey("duplicate-leaf-key"),
+            ],
+          },
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("duplicate");
+  });
+
+  test("critical unknown claims are rejected", async () => {
+    const fixture = await makeTrustChainFixture({
+      leaf: {
+        configOverrides: {
+          crit: ["unsupported_crit_extension"],
+          unsupported_crit_extension: true,
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("crit");
+  });
+
+  test("critical claims cannot reference RFC-defined entity-statement claims", async () => {
+    const fixture = await makeTrustChainFixture({
+      leaf: {
+        configOverrides: {
+          crit: ["metadata"],
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("crit");
+  });
+
+  test("max_path_length constraints reject chains with too many intermediates", async () => {
+    const fixture = await makeTrustChainFixture({
+      anchorToNetwork: {
+        payloadOverrides: {
+          constraints: {
+            max_path_length: 0,
+          },
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("max_path_length");
+  });
+
+  test("naming_constraints permitted rejects a leaf outside the permitted host set", async () => {
+    const fixture = await makeTrustChainFixture({
+      anchorToNetwork: {
+        payloadOverrides: {
+          constraints: {
+            naming_constraints: {
+              permitted: ["issuer.example.test"],
+            },
+          },
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("naming_constraints");
+  });
+
+  test("naming_constraints excluded rejects a leaf even when otherwise allowed", async () => {
+    const fixture = await makeTrustChainFixture({
+      anchorToNetwork: {
+        payloadOverrides: {
+          constraints: {
+            naming_constraints: {
+              permitted: ["demo.example"],
+              excluded: ["demo.example"],
+            },
+          },
+        },
+      },
+    });
+
+    await expect(verifyTrustChain(fixture.chain, {
+      expectedAnchor: fixture.anchor.entityId,
+      trustedAnchorJwks: fixture.anchor.jwks.keys,
+      nowSeconds: fixture.now,
+    })).rejects.toThrow("naming_constraints");
+  });
 });
 
 type EntityFixture = {
   entityId: string;
   jwks: { keys: JsonWebKey[] };
-  privateJwk: JsonWebKey;
+  privateJwk: JsonWebKey & { kid: string };
   metadata?: Record<string, Record<string, unknown>>;
   authorityHints?: string[];
 };
@@ -159,27 +320,32 @@ type TrustChainFixture = {
 type FixtureOverrides = {
   leaf?: {
     configOverrides?: Partial<Record<string, unknown>>;
+    headerOverrides?: Record<string, unknown>;
   };
   network?: {
     configOverrides?: Partial<Record<string, unknown>>;
+    headerOverrides?: Record<string, unknown>;
   };
   anchor?: {
     configOverrides?: Partial<Record<string, unknown>>;
+    headerOverrides?: Record<string, unknown>;
   };
   networkToLeaf?: {
     payloadOverrides?: Partial<Record<string, unknown>>;
+    headerOverrides?: Record<string, unknown>;
   };
   anchorToNetwork?: {
     payloadOverrides?: Partial<Record<string, unknown>>;
+    headerOverrides?: Record<string, unknown>;
   };
 };
 
 async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<TrustChainFixture> {
   const now = fixtureBaseNow();
 
-  const leafKeys = await generateClientKeyMaterial();
-  const networkKeys = await generateClientKeyMaterial();
-  const anchorKeys = await generateClientKeyMaterial();
+  const leafKeys = await generateKeyFixture();
+  const networkKeys = await generateKeyFixture();
+  const anchorKeys = await generateKeyFixture();
 
   const leaf: EntityFixture = {
     entityId: "https://demo.example/federation/leafs/demo-app",
@@ -228,6 +394,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       ...overrides.leaf?.configOverrides,
     },
     leaf.privateJwk,
+    overrides.leaf?.headerOverrides,
   );
 
   const networkToLeaf = await signEntityStatement(
@@ -247,6 +414,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       ...overrides.networkToLeaf?.payloadOverrides,
     },
     network.privateJwk,
+    overrides.networkToLeaf?.headerOverrides,
   );
 
   await signEntityStatement(
@@ -261,6 +429,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       ...overrides.network?.configOverrides,
     },
     network.privateJwk,
+    overrides.network?.headerOverrides,
   );
 
   const anchorToNetwork = await signEntityStatement(
@@ -280,6 +449,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       ...overrides.anchorToNetwork?.payloadOverrides,
     },
     anchor.privateJwk,
+    overrides.anchorToNetwork?.headerOverrides,
   );
 
   const anchorConfiguration = await signEntityStatement(
@@ -293,6 +463,7 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
       ...overrides.anchor?.configOverrides,
     },
     anchor.privateJwk,
+    overrides.anchor?.headerOverrides,
   );
 
   return {
@@ -309,8 +480,16 @@ async function makeTrustChainFixture(overrides: FixtureOverrides = {}): Promise<
   };
 }
 
-async function signEntityStatement(payload: Record<string, unknown>, privateJwk: JsonWebKey) {
-  return signPrivateKeyJwt(payload, privateJwk, { typ: "entity-statement+jwt" });
+async function signEntityStatement(
+  payload: Record<string, unknown>,
+  privateJwk: JsonWebKey & { kid: string },
+  headerOverrides: Record<string, unknown> = {},
+) {
+  return signPrivateKeyJwt(payload, privateJwk, {
+    typ: "entity-statement+jwt",
+    kid: privateJwk.kid,
+    ...headerOverrides,
+  });
 }
 
 function tamperJwtPayload(token: string, update: (payload: Record<string, any>) => Record<string, any>) {
@@ -323,4 +502,31 @@ function tamperJwtPayload(token: string, update: (payload: Record<string, any>) 
 
 function fixtureBaseNow() {
   return Math.floor(Date.now() / 1000);
+}
+
+async function generateKeyFixture() {
+  const keyMaterial = await generateClientKeyMaterial();
+  return {
+    publicJwk: {
+      ...keyMaterial.publicJwk,
+      kid: keyMaterial.thumbprint,
+    } satisfies JsonWebKey & { kid: string },
+    privateJwk: {
+      ...keyMaterial.privateJwk,
+      kid: keyMaterial.thumbprint,
+    } satisfies JsonWebKey & { kid: string },
+  };
+}
+
+function fixtureDuplicateKey(kid: string): JsonWebKey & { kid: string } {
+  return {
+    kty: "EC",
+    crv: "P-256",
+    x: "f83OJ3D2xF4wD7-BL3J6dOrjP6KycdxY6z3n9JVpazA",
+    y: "x_FEzRu9dJ0M1nP9Wcv16O3MHuvb6jVWeItPxX2VINo",
+    alg: "ES256",
+    use: "sig",
+    key_ops: ["verify"],
+    kid,
+  };
 }
