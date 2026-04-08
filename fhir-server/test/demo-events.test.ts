@@ -425,6 +425,15 @@ describe("demo event stream", () => {
       expect(eventTypes).toContain("registration-request");
       expect(eventTypes).toContain("sites-discovered");
       expect(eventTypes).toContain("token-exchange");
+      const tokenExchange = flowEvents.find((event) => event.type === "token-exchange");
+      expect(tokenExchange?.artifacts?.request?.method).toBe("POST");
+      expect(tokenExchange?.artifacts?.request?.url).toContain("/networks/reference/token");
+      expect(tokenExchange?.artifacts?.response?.status).toBe(200);
+      expect(tokenExchange?.artifacts?.response?.body).toMatchObject({
+        access_token: expect.any(String),
+        token_type: "Bearer",
+      });
+      expect(tokenExchange?.artifacts?.related?.some((artifact) => artifact.label === "Access token")).toBe(false);
       const sitesDiscovered = flowEvents.find((event) => event.type === "sites-discovered");
       expect(sitesDiscovered?.artifacts?.request?.method).toBe("POST");
       expect(sitesDiscovered?.artifacts?.request?.url).toContain("/networks/reference/fhir/$resolve-record-locations");

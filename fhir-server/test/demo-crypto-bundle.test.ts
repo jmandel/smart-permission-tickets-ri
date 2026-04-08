@@ -33,8 +33,13 @@ describe("demo crypto bundle", () => {
       const secondRaw = readBundleRaw(bundlePath);
       const secondMtime = statSync(bundlePath).mtimeMs;
 
+      expect(first.sharedSecrets.accessTokenSecret).toBeString();
+      expect(first.sharedSecrets.clientRegistrationSecret).toBeString();
+      expect(first.sharedSecrets.accessTokenSecret).not.toBe(first.sharedSecrets.clientRegistrationSecret);
       expect(first.ticketIssuers["reference-demo"]?.publicJwk.kty).toBe("EC");
       expect(second.ticketIssuers["reference-demo"]?.publicJwk.kty).toBe("EC");
+      expect(second.sharedSecrets.accessTokenSecret).toBe(first.sharedSecrets.accessTokenSecret);
+      expect(second.sharedSecrets.clientRegistrationSecret).toBe(first.sharedSecrets.clientRegistrationSecret);
       expect(secondRaw).toBe(firstRaw);
       expect(secondMtime).toBe(firstMtime);
     } finally {
@@ -83,6 +88,8 @@ describe("demo crypto bundle", () => {
       });
 
       const after = readBundle(bundlePath);
+      expect(after.sharedSecrets.accessTokenSecret).toBe(before.sharedSecrets.accessTokenSecret);
+      expect(after.sharedSecrets.clientRegistrationSecret).toBe(before.sharedSecrets.clientRegistrationSecret);
       expect(privateScalarFor(after.oidf.anchor)).toBeString();
       expect(privateScalarFor(after.oidf.providerSites[siteSlugs[0]!]!)).toBe(preservedSiteKey);
       expect(after.oidf.providerSites["stale-site"]).toBeDefined();
@@ -103,6 +110,8 @@ describe("demo crypto bundle", () => {
         const origin = `http://127.0.0.1:${server.port}`;
         try {
           expect(grownBundle.oidf.providerSites[siteSlugs.at(-1)!]).toBeDefined();
+          expect(context.config.accessTokenSecret).toBe(context.config.demoCryptoBundle?.sharedSecrets.accessTokenSecret);
+          expect(context.config.clientRegistrationSecret).toBe(context.config.demoCryptoBundle?.sharedSecrets.clientRegistrationSecret);
           expect(context.issuers.get("reference-demo")?.publicJwk.x).toBe(context.config.demoCryptoBundle?.ticketIssuers["reference-demo"]?.publicJwk.x);
           expect(context.oidfTopology.entities.anchor.publicJwk.x).toBe(context.config.demoCryptoBundle?.oidf.anchor.publicJwk.x);
           expect(context.oidfTopology.providerSiteEntities[siteSlugs[0]!]!.publicJwk.x).toBe(
@@ -118,6 +127,26 @@ describe("demo crypto bundle", () => {
         } finally {
           server.stop(true);
         }
+      });
+    } finally {
+      cleanupBundlePath(bundlePath);
+    }
+  });
+
+  test("explicit env secrets override the lockfile-backed symmetric defaults", async () => {
+    const siteSlugs = FhirStore.load().listSiteSummaries().map((site) => site.siteSlug);
+    const bundlePath = writeBundle(generateDemoCryptoBundle(siteSlugs));
+    try {
+      await withEnvAsync("DEMO_CRYPTO_BUNDLE_PATH", bundlePath, async () => {
+        await withEnvAsync("ACCESS_TOKEN_SECRET", "env-access-secret", async () => {
+          await withEnvAsync("CLIENT_REGISTRATION_SECRET", "env-registration-secret", async () => {
+            const context = createAppContext({ port: 0 });
+            expect(context.config.demoCryptoBundle?.sharedSecrets.accessTokenSecret).not.toBe("env-access-secret");
+            expect(context.config.demoCryptoBundle?.sharedSecrets.clientRegistrationSecret).not.toBe("env-registration-secret");
+            expect(context.config.accessTokenSecret).toBe("env-access-secret");
+            expect(context.config.clientRegistrationSecret).toBe("env-registration-secret");
+          });
+        });
       });
     } finally {
       cleanupBundlePath(bundlePath);

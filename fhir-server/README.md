@@ -212,6 +212,8 @@ Bundle path resolution:
 The conventional default file is gitignored in this repo.
 
 What the lockfile stabilizes across restarts:
+- the HS256 access-token signing secret
+- the HS256 client-registration signing secret
 - local ticket issuer signing keys
 - OIDF fixed-role entities
 - one OIDF provider-site leaf per discovered `siteSlug`
@@ -226,11 +228,15 @@ and the Provider Network federation fetch endpoint publishes subordinate stateme
 for every discovered site leaf.
 
 Growth behavior:
+- missing symmetric secrets are added automatically
 - missing provider-site entries are added automatically when the site inventory grows
 - missing fixed roles are added automatically
 - existing keys are preserved
 - stale extra entries are left alone
 - if nothing is missing, the file is not rewritten
+
+When set explicitly, `ACCESS_TOKEN_SECRET` and `CLIENT_REGISTRATION_SECRET`
+override the lockfile-backed symmetric defaults.
 
 OIDF entity configurations, subordinate statements, and trust marks are re-minted
 when served. This keeps their `iat`/`exp` fresh indefinitely while preserving the

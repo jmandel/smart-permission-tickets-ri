@@ -1,4 +1,4 @@
-import { createPrivateKey, createPublicKey, generateKeyPairSync } from "node:crypto";
+import { createPrivateKey, createPublicKey, generateKeyPairSync, randomBytes } from "node:crypto";
 import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -28,6 +28,10 @@ type DemoCryptoBundleUdapEntry = {
 
 export type DemoCryptoBundleDocument = {
   version: 1;
+  sharedSecrets: {
+    accessTokenSecret: string;
+    clientRegistrationSecret: string;
+  };
   ticketIssuers: Record<string, DemoCryptoBundlePrivateJwkEntry>;
   oidf: {
     anchor: DemoCryptoBundlePrivateJwkEntry;
@@ -47,6 +51,10 @@ export type DemoCryptoBundleDocument = {
 
 export type DemoCryptoBundle = {
   version: 1;
+  sharedSecrets: {
+    accessTokenSecret: string;
+    clientRegistrationSecret: string;
+  };
   ticketIssuers: Record<string, DemoCryptoBundleJwkEntry>;
   oidf: {
     anchor: DemoCryptoBundleJwkEntry;
@@ -143,6 +151,13 @@ export function parseDemoCryptoBundle(raw: string, sourceLabel = "demo crypto bu
   }
   return {
     version: 1,
+    sharedSecrets: {
+      accessTokenSecret: readString(readObject(bundle.sharedSecrets, `${sourceLabel}.sharedSecrets`).accessTokenSecret, `${sourceLabel}.sharedSecrets.accessTokenSecret`),
+      clientRegistrationSecret: readString(
+        readObject(bundle.sharedSecrets, `${sourceLabel}.sharedSecrets`).clientRegistrationSecret,
+        `${sourceLabel}.sharedSecrets.clientRegistrationSecret`,
+      ),
+    },
     ticketIssuers: materializeJwkEntryRecord(readObject(bundle.ticketIssuers, `${sourceLabel}.ticketIssuers`), `${sourceLabel}.ticketIssuers`),
     oidf: {
       anchor: materializeJwkEntry(readObject(bundle.oidf, `${sourceLabel}.oidf`).anchor, `${sourceLabel}.oidf.anchor`),
@@ -170,6 +185,10 @@ export function generateDemoCryptoBundle(
 ): DemoCryptoBundleDocument {
   return {
     version: 1,
+    sharedSecrets: {
+      accessTokenSecret: generateSharedSecret(),
+      clientRegistrationSecret: generateSharedSecret(),
+    },
     ticketIssuers: Object.fromEntries(
       normalizeSlugs(options.issuerSlugs ?? ["reference-demo"]).map((issuerSlug) => [
         issuerSlug,
@@ -222,6 +241,16 @@ function growDemoCryptoBundleDocument(
   }
 
   const additions: BundleEntryKind[] = [];
+  const sharedSecrets = ensureObjectChild(bundleDocument, "sharedSecrets", "demo crypto bundle.sharedSecrets");
+  if (sharedSecrets.accessTokenSecret === undefined) {
+    sharedSecrets.accessTokenSecret = generateSharedSecret();
+    additions.push({ kind: "fixed-role", name: "sharedSecrets.accessTokenSecret" });
+  }
+  if (sharedSecrets.clientRegistrationSecret === undefined) {
+    sharedSecrets.clientRegistrationSecret = generateSharedSecret();
+    additions.push({ kind: "fixed-role", name: "sharedSecrets.clientRegistrationSecret" });
+  }
+
   const ticketIssuers = ensureObjectChild(bundleDocument, "ticketIssuers", "demo crypto bundle.ticketIssuers");
   for (const issuerSlug of issuerSlugs) {
     if (ticketIssuers[issuerSlug] !== undefined) continue;
@@ -325,7 +354,8 @@ function serializeBundleDocument(bundleDocument: DemoCryptoBundleDocument | Reco
 }
 
 function countManagedEntries(bundle: DemoCryptoBundleDocument) {
-  return Object.keys(bundle.ticketIssuers).length
+  return 2
+    + Object.keys(bundle.ticketIssuers).length
     + 4
     + Object.keys(bundle.oidf.providerSites).length
     + 1
@@ -378,6 +408,10 @@ function generateEcPrivateJwk() {
 function generateRsaPrivateJwk() {
   const { privateKey } = generateKeyPairSync("rsa", { modulusLength: 2048 });
   return privateKey.export({ format: "jwk" }) as JsonWebKey;
+}
+
+function generateSharedSecret() {
+  return randomBytes(32).toString("base64url");
 }
 
 function readObject(value: unknown, label: string) {

@@ -88,6 +88,16 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
     issuerSlugs: config.permissionTicketIssuers.map((issuer) => issuer.slug),
   });
   config.demoCryptoBundle = demoCryptoBundle;
+  if (overrides.accessTokenSecret === undefined && Bun.env.ACCESS_TOKEN_SECRET === undefined) {
+    config.accessTokenSecret = demoCryptoBundle.sharedSecrets.accessTokenSecret;
+  }
+  if (
+    overrides.clientRegistrationSecret === undefined
+    && Bun.env.CLIENT_REGISTRATION_SECRET === undefined
+    && Bun.env.ACCESS_TOKEN_SECRET === undefined
+  ) {
+    config.clientRegistrationSecret = demoCryptoBundle.sharedSecrets.clientRegistrationSecret;
+  }
   if (!overrides.permissionTicketIssuers) {
     config.permissionTicketIssuers = config.permissionTicketIssuers.map((issuer) => {
       const bundleEntry = demoCryptoBundle.ticketIssuers[issuer.slug];
@@ -1224,9 +1234,6 @@ function issueAccessTokenResponse(
     scopes: envelope.grantedScopes,
     scopeSummary: issuedScope,
     authorizedSiteCount: envelope.allowedSites?.length,
-    extraRelatedArtifacts: [
-      { label: "Access token", kind: "jwt", content: accessToken, copyText: accessToken },
-    ],
   }));
   return tokenJsonResponse(responseBody);
 }
@@ -1247,7 +1254,6 @@ function buildTokenExchangeDemoEvent(input: {
   scopeSummary?: string;
   authorizedSiteCount?: number;
   error?: string;
-  extraRelatedArtifacts?: NonNullable<DemoEventArtifacts["related"]>;
 }): DemoEventDraft {
   const siteName = input.contextRoute.siteSlug
     ? siteNameForSlug(input.context, input.contextRoute.siteSlug) ?? input.contextRoute.siteSlug
@@ -1280,10 +1286,7 @@ function buildTokenExchangeDemoEvent(input: {
     artifacts: {
       ...(input.requestArtifact ? { request: input.requestArtifact } : {}),
       ...(input.responseArtifact ? { response: input.responseArtifact } : {}),
-      related: [
-        ...input.diagnostics.relatedArtifacts,
-        ...(input.extraRelatedArtifacts ?? []),
-      ],
+      related: input.diagnostics.relatedArtifacts,
     },
   };
 }
