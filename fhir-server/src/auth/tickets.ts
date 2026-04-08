@@ -13,8 +13,9 @@ import {
   type SensitiveMode,
   type TicketIssuerTrust,
 } from "../store/model.ts";
+import { normalizePublicJwk as normalizeEcPublicJwk } from "../../shared/private-key-jwt.ts";
 import { decodeEs256Jwt, verifyEs256Jwt } from "./es256-jwt.ts";
-import { resolveConfiguredIssuerTrust } from "./issuer-trust.ts";
+import { resolveConfiguredIssuerTrustSources } from "./issuer-trust.ts";
 import type { FrameworkRegistry } from "./frameworks/registry.ts";
 import type { TicketRevocationRegistry } from "./ticket-revocation.ts";
 import { SUPPORTED_PERMISSION_TICKET_TYPES } from "../../shared/permission-tickets.ts";
@@ -81,11 +82,15 @@ export async function validatePermissionTicket(
     throw new Error("Malformed Permission Ticket payload");
   }
   let issuer: ResolvedIssuerTrust;
+  let issuerTrustSources:
+    | Awaited<ReturnType<typeof resolveConfiguredIssuerTrustSources>>
+    | undefined;
   try {
     if (typeof decodedPayload.iss !== "string" || !decodedPayload.iss) {
       throw new Error("Permission Ticket missing iss");
     }
-    issuer = await resolveConfiguredIssuerTrust(decodedPayload.iss, config, frameworks);
+    issuerTrustSources = await resolveConfiguredIssuerTrustSources(decodedPayload.iss, config, frameworks);
+    issuer = issuerTrustSources[0]!.issuerTrust;
   } catch (error) {
     addAuditStep(diagnostics, {
       check: "Issuer Trust",
@@ -122,6 +127,24 @@ export async function validatePermissionTicket(
     evidence: `alg=${header.alg}${header.kid ? `, kid=${header.kid}` : ""}`,
     why: "Issuer signature verified",
   });
+  try {
+    assertIssuerKeyConsistency(header.kid, issuer.issuerUrl, issuerTrustSources ?? [{ issuerTrust: issuer, sourceLabel: issuer.framework?.type === "oidf" ? "OIDF" : "direct JWKS", policy: { type: "direct_jwks", trustedIssuers: [issuer.issuerUrl] } }]);
+    if ((issuerTrustSources?.length ?? 0) > 1) {
+      addAuditStep(diagnostics, {
+        check: "Issuer Key Consistency",
+        passed: true,
+        evidence: header.kid ?? "no kid",
+        why: "Every configured issuer key source that published this kid agreed on the public key.",
+      });
+    }
+  } catch (error) {
+    addAuditStep(diagnostics, {
+      check: "Issuer Key Consistency",
+      passed: false,
+      reason: error instanceof Error ? error.message : "Issuer key sources disagreed",
+    });
+    throw error;
+  }
   const parseResult = PermissionTicketSchema.safeParse(decodedPayload);
   if (!parseResult.success) {
     const issue = parseResult.error.issues[0];
@@ -525,6 +548,46 @@ function verifyPermissionTicketSignature(token: string, expectedKid: string | un
     }
   }
   throw lastError ?? new Error("Permission Ticket signature verification failed");
+}
+
+function assertIssuerKeyConsistency(
+  expectedKid: string | undefined,
+  issuerUrl: string,
+  sources: Array<{ issuerTrust: ResolvedIssuerTrust; sourceLabel: string }>,
+) {
+  if (!expectedKid || sources.length < 2) return;
+  const primary = sources[0]!;
+  const primaryKey = primary.issuerTrust.publicJwks.find((key) => (key as JsonWebKey & { kid?: string }).kid === expectedKid);
+  if (!primaryKey) return;
+  const normalizedPrimary = canonicalizePublicJwk(primaryKey);
+  for (const source of sources.slice(1)) {
+    const candidate = source.issuerTrust.publicJwks.find((key) => (key as JsonWebKey & { kid?: string }).kid === expectedKid);
+    if (!candidate) continue;
+    const normalizedCandidate = canonicalizePublicJwk(candidate);
+    if (normalizedCandidate !== normalizedPrimary) {
+      throw new Error(`${source.sourceLabel} issuer key for kid ${expectedKid} disagrees with ${primary.sourceLabel} for issuer ${issuerUrl}`);
+    }
+  }
+}
+
+function canonicalizePublicJwk(jwk: JsonWebKey) {
+  if (jwk.kty === "EC" && jwk.crv === "P-256" && jwk.x && jwk.y) {
+    const normalized = normalizeEcPublicJwk(jwk);
+    return JSON.stringify({
+      kty: normalized.kty,
+      crv: normalized.crv,
+      x: normalized.x,
+      y: normalized.y,
+    });
+  }
+  if (jwk.kty === "RSA" && jwk.n && jwk.e) {
+    return JSON.stringify({
+      kty: "RSA",
+      n: jwk.n,
+      e: jwk.e,
+    });
+  }
+  throw new Error("Unsupported issuer public JWK type for consistency checking");
 }
 
 export function narrowAuthorizationEnvelopeScopes(envelope: AuthorizationEnvelope, requestedScope: string | undefined): AuthorizationEnvelope {

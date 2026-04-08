@@ -2,7 +2,7 @@
 
 Status: in progress
 
-Post-review note: Phases 1 and 2 (spec text) are landed on `main`, and Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is also landed on `main`. The current demo holder runtime now uses explicit allowlisted `direct_jwks` policy by default; richer OIDF/UDAP issuer policies remain follow-on phases of this plan.
+Post-review note: Phases 1 and 2 (spec text) are landed on `main`, Phase 3 (issuer-trust policy model + direct-JWKS runtime wiring) is landed on `main`, and Phase 4 (JWKS + OIDF cross-source consistency checking) is landed on `main`. The current demo holder runtime still uses explicit allowlisted `direct_jwks` policy by default; richer issuer policies remain follow-on phases of this plan.
 
 ## Goal
 
