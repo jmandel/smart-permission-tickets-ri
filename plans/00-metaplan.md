@@ -301,6 +301,16 @@ Status: complete on `main`
 - updates issuer-trust resolution so OIDF verifiers consume inline `smart_permission_ticket_issuer.jwks` instead of the leaf entity-statement top-level `jwks`
 - adds publication-level tests asserting direct JWKS equals inline ticket-signing JWKS while differing from the federation-signing key
 
+### Plan 30: Unify Issuer URL with OIDF Entity Identifier
+`30-unify-issuer-url-with-oidf-entity-id.md`
+
+Status: complete on `main`
+
+- unifies the `PermissionTicket` issuer `iss` with the OIDF ticket-issuer leaf entity ID so discovery starts at `${iss}/.well-known/openid-federation`
+- removes `smart_permission_ticket_issuer.issuer_url` and makes the structural binding rule `verifiedChain.leaf.entityId === iss`
+- keeps OIDF client-auth allowlisting in `trustedLeaves` while moving issuer trust to anchor-driven discovery plus a framework-level `requiredIssuerTrustMarkType`
+- adds anchor-driven discovery regressions for multi-anchor success, leaf/entity-id mismatch rejection, and issuer JWKS/OIDF route coexistence
+
 ## Dependencies Between Plans
 
 ```
@@ -342,6 +352,8 @@ Plan 28 (OIDF Spec Alignment + Functional Kernel) ───────┘
                                       ↑
 Plan 29 (SMART Permission Ticket Issuer Entity Type) ────┘
                                       ↑
+Plan 30 (Unify Issuer URL with OIDF Entity ID) ──────────┘
+                                      ↑
 Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
                                       ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
@@ -367,6 +379,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 27 (legacy cleanup after Plans 23-26) is the follow-on cleanup pass after the issuer-trust, lockfile, and generic framework refactors: it removes the dead `local` issuer-trust branch, deletes the unneeded standalone UDAP demo registration helper instead of carrying a second bootstrap path, trims genuinely unused compatibility helpers, and deliberately preserves the still-intentional env/config override surfaces. It is fully implemented on `main`.
 - Plan 28 (OIDF spec alignment + functional kernel) is the OIDF correctness and hardening pass after Plans 21 and 23: it extracts a pure trust-chain kernel, implements direct-superior metadata plus top-down metadata-policy handling, enforces `crit` / `metadata_policy_crit` / RFC constraints, explicitly rejects delegated trust marks, and documents the intentional first-pass operator subset. It is fully implemented on `main`.
 - Plan 29 (SMART Permission Ticket Issuer entity type) is the follow-on issuer-publication refinement after Plans 25, 26, and 28: it introduces `smart_permission_ticket_issuer`, separates ticket-signing keys from OIDF federation-signing keys, persists a dedicated ticket-issuer federation key in the demo lockfile, and updates issuer-trust resolution plus publication-consistency tests around the new split. It is fully implemented on `main`.
+- Plan 30 (unify issuer URL with OIDF entity identifier) is the follow-on simplification after Plan 29: it makes `${iss}` be the OIDF ticket-issuer leaf entity ID, drops the redundant `issuer_url` metadata field, replaces the old per-issuer bridge with anchor-driven discovery from `${iss}/.well-known/openid-federation`, and keeps client-auth leaf allowlisting separate from issuer-trust admission. It is fully implemented on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

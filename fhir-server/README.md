@@ -108,13 +108,13 @@ OIDF client authentication and OIDF issuer trust intentionally behave differentl
   - it follows the published `metadata.federation_entity.federation_fetch_endpoint`
   - it verifies the resulting trust chain and any required trust mark
 
-OIDF trust is explicitly allowlisted:
+OIDF trust is split cleanly by responsibility:
 
 - configured `trustAnchors` define which terminal anchors are accepted
-- configured `trustedLeaves` define which OIDF leaves may be used for:
-  - client authentication
-  - issuer trust
-- a valid-looking chain for an unallowlisted leaf is rejected
+- configured `trustedLeaves` define which OIDF leaves may be used for client authentication
+- configured `requiredIssuerTrustMarkType` defines which trust mark an OIDF ticket-issuer leaf must present
+- issuer trust is discovered from `${iss}/.well-known/openid-federation`, so holders no longer need a per-issuer `iss -> entityId` map
+- holder-local issuer policy can still narrow acceptance through predicates such as `issuer_url_in`, `oidf_chain_anchored_in`, and `oidf_has_trust_mark`
 
 `INTERNAL_BASE_URL` is only a loopback rewrite for this server's own advertised
 origin. If an OIDF URL points at some other host, the resolver fetches that
@@ -131,16 +131,16 @@ The trust-chain validator also rejects delegated trust marks explicitly with `OI
 
 OIDF ticket issuers now publish two different key surfaces with different jobs:
 
+- issuer leaf entity configuration at `${iss}/.well-known/openid-federation`
+  - the leaf entity ID is the same URL as the `PermissionTicket` issuer `iss`
 - `metadata.federation_entity.organization_name`
   - display-only organizational metadata
-- `metadata.smart_permission_ticket_issuer.issuer_url`
-  - the `iss` value the verifier matches for issuer trust
 - `metadata.smart_permission_ticket_issuer.jwks`
   - the inline ticket-signing JWK Set returned as `ResolvedIssuerTrust.publicJwks`
 - leaf entity statement top-level `jwks`
   - federation-signing keys only, used to validate the OIDF chain itself
 
-For issuer trust, the resolver now verifies the chain, applies metadata policy, extracts `smart_permission_ticket_issuer`, validates its inline JWK Set, and then verifies the `PermissionTicket` against those keys. It does not use the leaf entity statement's top-level federation `jwks` for ticket signature verification.
+For issuer trust, the resolver now fetches `${iss}/.well-known/openid-federation`, verifies the chain, applies metadata policy, enforces `verifiedChain.leaf.entityId === iss`, extracts `smart_permission_ticket_issuer`, validates its inline JWK Set, and then verifies the `PermissionTicket` against those keys. It does not use the leaf entity statement's top-level federation `jwks` for ticket signature verification.
 
 ## Issuer Key Publication and Trust Policy
 
