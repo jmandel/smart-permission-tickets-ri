@@ -6,6 +6,7 @@ import { DataContract } from "./components/DataContract";
 import { ProtocolTrace } from "./components/ProtocolTrace";
 import { PermissionWorkbench } from "./components/PermissionWorkbench";
 import { Viewer } from "./components/Viewer";
+import { PatientSummaryBox } from "./components/PatientSummaryBox";
 
 export function App() {
   if (window.location.pathname === "/viewer") {
@@ -30,9 +31,6 @@ export function App() {
   if (error) return <main className="shell"><p style={{ color: "var(--warn)" }}>Error: {error}</p></main>;
 
   const selectedPerson = persons.find((person) => person.personId === selectedPersonId) ?? null;
-  const selectedSummaryParagraphs = selectedPerson?.summary
-    ? selectedPerson.summary.split(/\n\s*\n/g).map((paragraph) => paragraph.trim()).filter(Boolean).slice(0, 2)
-    : [];
   const useCaseOptions = Array.from(
     persons
       .flatMap((person) => person.useCases.map((useCase) => ({ ...useCase, key: `${useCase.system}|${useCase.code}` })))
@@ -124,13 +122,8 @@ export function App() {
                 </button>
               )}
             </div>
-            {selectedSummaryParagraphs.length > 0 && (
-              <div className="viewer-copy-block selected-person-summary">
-                {selectedSummaryParagraphs.map((paragraph, index) => (
-                  <p key={`${index}:${paragraph.slice(0, 24)}`}>{paragraph}</p>
-                ))}
-              </div>
-            )}
+            <PatientSummaryBox summary={selectedPerson.summary} />
+
             <div className="patient-card-tags selected-person-tags">
               {selectedPerson.sites.slice(0, 4).map((site) => (
                 <span key={site.siteSlug} className="patient-card-tag">

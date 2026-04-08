@@ -1,5 +1,24 @@
 import type { PersonInfo } from "../types";
 
+function firstProseLine(markdown: string | null | undefined): string | null {
+  if (!markdown) return null;
+  for (const block of markdown.split(/\n\s*\n/g)) {
+    const stripped = block
+      .split("\n")
+      .filter((line) => !/^\s*#{1,6}\s/.test(line))
+      .join(" ")
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1")
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+      .replace(/^\s*[-*]\s+/gm, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (stripped) return stripped;
+  }
+  return null;
+}
+
 export function PersonCard({
   person,
   selected,
@@ -13,6 +32,7 @@ export function PersonCard({
   const hiddenSiteCount = Math.max(person.sites.length - visibleSites.length, 0);
   const visibleUseCases = person.useCases.slice(0, 2);
   const hiddenUseCaseCount = Math.max(person.useCases.length - visibleUseCases.length, 0);
+  const summaryPreview = firstProseLine(person.summary);
 
   return (
     <article
@@ -48,7 +68,7 @@ export function PersonCard({
           {hiddenUseCaseCount > 0 && <span className="use-case-tag">… and {hiddenUseCaseCount} more</span>}
         </div>
       )}
-      {person.summary && <p className="patient-card-summary clamped">{person.summary}</p>}
+      {summaryPreview && <p className="patient-card-summary clamped">{summaryPreview}</p>}
       <div className="patient-card-tags">
         {visibleSites.map((site) => (
           <span key={site.siteSlug} className="patient-card-tag">
