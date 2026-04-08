@@ -6,7 +6,6 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "bun --watch run src/index.ts",
-    "demo:udap-register": "bun run src/demo-udap-registration.ts",
     "smoke:http": "bun run src/smoke-test.ts",
     "test": "bun test"
   },

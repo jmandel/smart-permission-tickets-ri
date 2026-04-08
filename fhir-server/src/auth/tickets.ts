@@ -407,18 +407,6 @@ function buildIssuerPublicJwksProvenance(issuer: ResolvedIssuerTrust) {
   const metadata = issuer.metadata && typeof issuer.metadata === "object"
     ? issuer.metadata as Record<string, any>
     : {};
-  if (issuer.source === "local") {
-    return {
-      steps: [
-        provenanceStep(
-          "in-process",
-          "Inside data holder",
-          `Resolved from the local issuer registry. Published issuer JWKS endpoint: ${typeof metadata.jwks_url === "string" ? metadata.jwks_url : `${issuer.issuerUrl.replace(/\/$/, "")}/.well-known/jwks.json`}`,
-        ),
-      ],
-    };
-  }
-
   if (issuer.source === "direct") {
     const jwksUrl = typeof metadata.jwks_url === "string" ? metadata.jwks_url : `${issuer.issuerUrl.replace(/\/$/, "")}/.well-known/jwks.json`;
     const effectiveJwksUrl = typeof metadata.effective_jwks_url === "string" ? metadata.effective_jwks_url : jwksUrl;

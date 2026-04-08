@@ -433,13 +433,6 @@ By default the extension also advertises built-in demo trust frameworks:
 - `https://smarthealthit.org/trust-frameworks/reference-demo-well-known`
 - `https://smarthealthit.org/trust-frameworks/reference-demo-udap`
 
-To exercise the built-in UDAP registration helper against the RSA demo client instead of the default EC demo client:
-
-```bash
-cd /home/jmandel/work/smart-permission-tickets/reference-implementation/fhir-server
-DEMO_UDAP_ALG=RS256 bun run src/demo-udap-registration.ts
-```
-
 Implemented `surface_kind` values:
 - `global`
 - `site`
@@ -469,18 +462,9 @@ Dynamic registrations are self-contained and restart-safe in this reference serv
 - the registered public JWK is embedded in that signed descriptor
 - a server restart does not lose dynamically registered clients
 
-Demo UDAP registration helper:
-
-```bash
-cd /home/jmandel/work/smart-permission-tickets/reference-implementation/fhir-server
-bun run demo:udap-register
-```
-
-This fetches `/.well-known/udap`, builds a standards-shaped `software_statement`
-using the built-in demo UDAP certificate, and POSTs it to the server's
-registration endpoint so you can see the full registration exchange against a
-vanilla local server. The bundled helper still uses ES256, but the server also
-accepts RS256 for UDAP software statements and client assertions.
+UDAP registration is also supported at `/register` using a standards-shaped
+`software_statement`. The browser demo and the automated tests exercise that
+path directly; there is no separate bundled CLI helper anymore.
 
 Token exchange:
 

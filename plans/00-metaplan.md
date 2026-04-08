@@ -262,13 +262,23 @@ Status: implemented on `main`
 ### Plan 25: Issuer Key Publication and Cross-Source Consistency
 `25-issuer-key-publication-and-cross-source-consistency.md`
 
-Status: in progress
+Status: complete
 
 - rewrites the spec so issuer public-key publication gives equal billing to direct JWKS, OIDF entity configurations, and UDAP discovery rooted at `iss`
 - keeps `PermissionTicket` serialization framework-neutral and makes issuer-framework participation purely verifier-side
 - adds a generic ordered issuer-trust policy model so the verifier can support direct JWKS, OIDF, and UDAP while the current demo holder runtime stays on allowlisted direct-JWKS resolution by default
 - adds publication-level consistency tests for issuers that this repo exposes through more than one mechanism, without requiring token-time secondary-source checks
 - Phases 1 through 4 are implemented on `main`, including the explicit verifier-side issuer-trust policy model, the direct-JWKS default runtime path, and the JWKS + OIDF publication-consistency tests
+
+### Plan 27: Legacy Cleanup After Plans 23-26
+`27-legacy-cleanup.md`
+
+Status: complete
+
+- removes the dead pre-Plan-25 `local` issuer-trust classification so runtime trust sources collapse cleanly to `direct` vs `framework`
+- aligns standalone demo helpers with the Plan 26 lockfile bootstrap instead of silently bypassing it with baked-in demo key material
+- removes truly unused bundle/bootstrap helpers after the lockfile + policy refactors settle
+- cleans up README/comments so remaining fallbacks are clearly intentional rather than accidental leftovers
 
 ## Dependencies Between Plans
 
@@ -305,6 +315,8 @@ Plan 23 (Generalize OIDF Consumption) ──────────────
                                       ↑
 Plan 25 (Issuer Key Publication + Cross-Source Consistency) ─┘
                                       ↑
+Plan 27 (Legacy Cleanup After Plans 23-26) ───────────────┘
+                                      ↑
 Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
                                       ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
@@ -327,6 +339,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 26 (demo crypto lockfile growth) is the follow-on to Plan 24 that turns the bundle into a normal reusable lockfile: boot auto-creates it if missing, grows it when site/issuer inventory expands, preserves existing key material, removes the old drift-fail startup behavior, and keeps the conventional default file gitignored. It is fully implemented on `main`.
 - Plan 23 (generalize OIDF entity consumption) is the follow-on to Plans 21 and 24 that turns the current demo-local OIDF resolver into a generic allowlist-based consumer. It is fully implemented on `main`, including allowlist-based OIDF client trust, discovery-driven issuer trust, external-origin coverage tests, and README/diagnostic cleanup.
 - Plan 25 (issuer key publication + cross-source consistency) is the follow-on hardening/spec-clarification plan after Plans 23 and 24: it broadens the issuer-key publication model to cover direct JWKS, OIDF, and UDAP discovery rooted at `iss`, keeps `PermissionTicket` serialization framework-neutral, adds an explicit ordered issuer-trust policy model, adds publication-level consistency tests for issuers exposed through more than one mechanism, and includes UDAP issuer resolution from `iss` under explicit verifier policy. Plan 25 is complete on `main`.
+- Plan 27 (legacy cleanup after Plans 23-26) is the follow-on cleanup pass after the issuer-trust, lockfile, and generic framework refactors: it removes the dead `local` issuer-trust branch, deletes the unneeded standalone UDAP demo registration helper instead of carrying a second bootstrap path, trims genuinely unused compatibility helpers, and deliberately preserves the still-intentional env/config override surfaces. It is fully implemented on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

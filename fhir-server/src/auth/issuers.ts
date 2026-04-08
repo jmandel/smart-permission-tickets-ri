@@ -105,43 +105,6 @@ export class TicketIssuerRegistry {
     return signEs256Jwt(normalizedPayload, issuer.privateJwk, { kid: issuer.kid });
   }
 
-  resolveTrustedIssuer(issuerUrl: string, expectedOrigin?: string): ResolvedIssuerTrust | null {
-    let parsed: URL;
-    try {
-      parsed = new URL(issuerUrl);
-    } catch {
-      throw new Error("Permission Ticket issuer is not a valid URL");
-    }
-    const slug = issuerSlugFromPath(parsed.pathname);
-    if (!slug) return null;
-    if (expectedOrigin && parsed.origin !== expectedOrigin) {
-      throw new Error("Permission Ticket issuer origin mismatch");
-    }
-    const issuer = this.get(slug);
-    if (!issuer) throw new Error("Unknown Permission Ticket issuer");
-    return {
-      source: "local",
-      issuerUrl: parsed.toString(),
-      displayName: issuer.name,
-      publicJwks: [issuer.publicJwk],
-      metadata: {
-        slug: issuer.slug,
-        kid: issuer.kid,
-        jwks_url: `${parsed.origin}${issuerJwksPathFor(issuer.slug)}`,
-      },
-    };
-  }
-
-  resolveFromIssuerUrl(issuerUrl: string, expectedOrigin?: string) {
-    const trustedIssuer = this.resolveTrustedIssuer(issuerUrl, expectedOrigin);
-    if (!trustedIssuer) throw new Error("Unknown Permission Ticket issuer");
-    const slug = issuerSlugFromPath(new URL(issuerUrl).pathname);
-    if (!slug) throw new Error("Unknown Permission Ticket issuer");
-    const issuer = this.get(slug);
-    if (!issuer) throw new Error("Unknown Permission Ticket issuer");
-    return issuer;
-  }
-
   private require(slug: string) {
     const issuer = this.get(slug);
     if (!issuer) throw new Error(`Unknown issuer: ${slug}`);

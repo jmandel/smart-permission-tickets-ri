@@ -125,7 +125,7 @@ export type ResolvedFrameworkEntity = {
 };
 
 export type TicketIssuerTrust = {
-  source: "direct" | "framework" | "local";
+  source: "direct" | "framework";
   issuerUrl: string;
   displayName: string;
   framework?: {

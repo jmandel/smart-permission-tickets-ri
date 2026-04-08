@@ -89,12 +89,6 @@ export function resolveDemoCryptoBundlePath(configuredPath: string | undefined) 
   return configuredPath ?? CONVENTIONAL_BUNDLE_PATH;
 }
 
-export function loadDemoCryptoBundle(configuredPath: string | undefined): DemoCryptoBundle | undefined {
-  const bundlePath = resolveDemoCryptoBundlePath(configuredPath);
-  if (!existsSync(bundlePath)) return undefined;
-  return parseDemoCryptoBundle(readFileSync(bundlePath, "utf8"), bundlePath);
-}
-
 export function ensureDemoCryptoBundle({
   bundlePath,
   siteSlugs,
