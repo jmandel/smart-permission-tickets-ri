@@ -195,49 +195,60 @@ mechanism, shared `kid` values are kept aligned with publication-level tests.
 Runtime verification does not re-fetch secondary sources after the selected
 primary policy path succeeds.
 
-## Stable Demo Crypto Bundle
+## Stable Demo Crypto Lockfile
 
-The server can keep demo crypto identities stable across restarts with one optional
-JSON bundle file.
+The server now treats the demo crypto bundle as a lockfile:
 
-Generate it offline from the current site inventory:
+- if the file already exists, it is reused
+- if it is missing entries the current server needs, it is grown in place
+- if it does not exist yet, it is created automatically at boot
 
-```bash
-cd /home/jmandel/work/smart-permission-tickets/reference-implementation
-bun run scripts/generate-demo-crypto-bundle.ts > fhir-server/.demo-crypto-bundle.json
-```
+Normal operators do not need to pregenerate it.
 
-The generator uses the in-process store loader to discover site slugs. It does not
-start the HTTP server or make network requests.
+Bundle path resolution:
+- `DEMO_CRYPTO_BUNDLE_PATH=/abs/path/to/demo-crypto-bundle.json`, if set
+- otherwise `reference-implementation/fhir-server/.demo-crypto-bundle.json`
 
-Load the bundle either by:
-- placing it at the conventional path `reference-implementation/fhir-server/.demo-crypto-bundle.json`
-- or setting `DEMO_CRYPTO_BUNDLE_PATH=/abs/path/to/demo-crypto-bundle.json`
+The conventional default file is gitignored in this repo.
 
-When a bundle is present, the server keeps these identities stable across restarts:
+What the lockfile stabilizes across restarts:
 - local ticket issuer signing keys
 - OIDF fixed-role entities
 - one OIDF provider-site leaf per discovered `siteSlug`
 - the built-in well-known demo client
 - UDAP EC and RSA CA/client key material
 
-Provider sites are now first-class OIDF members of the Provider Network. Each site
+Provider sites are first-class OIDF members of the Provider Network. Each site
 publishes its own entity configuration under:
 - `/federation/leafs/provider-sites/<siteSlug>/.well-known/openid-federation`
 
 and the Provider Network federation fetch endpoint publishes subordinate statements
 for every discovered site leaf.
 
+Growth behavior:
+- missing provider-site entries are added automatically when the site inventory grows
+- missing fixed roles are added automatically
+- existing keys are preserved
+- stale extra entries are left alone
+- if nothing is missing, the file is not rewritten
+
 OIDF entity configurations, subordinate statements, and trust marks are re-minted
 when served. This keeps their `iat`/`exp` fresh indefinitely while preserving the
-same signing keys when bundle-backed mode is active.
+same signing keys from the lockfile.
 
-What the bundle does not stabilize:
+What the lockfile does not stabilize:
 - UDAP leaf certificate bytes issued from the stable CA/client keys
 - OIDF JWT bytes themselves, since those are intentionally re-minted with fresh time claims
 
-If bundle-backed mode is enabled and the current site inventory includes a site with
-no matching `providerSites[siteSlug]` entry, startup fails loudly.
+The offline generator script still exists for inspection or explicit fresh
+materialization:
+
+```bash
+cd /home/jmandel/work/smart-permission-tickets/reference-implementation
+bun run scripts/generate-demo-crypto-bundle.ts > fhir-server/.demo-crypto-bundle.json
+```
+
+But it is no longer required for normal boot.
 
 ## Data Assumptions
 

@@ -299,6 +299,8 @@ Plan 21 (OpenID Federation 1.0 Support) ─────────────�
                                       ↑
 Plan 24 (Demo Crypto Bundle + Site OIDF Leaves) ──────┘
                                       ↑
+Plan 26 (Demo Crypto Lockfile Growth) ────────────────┘
+                                      ↑
 Plan 23 (Generalize OIDF Consumption) ────────────────┘
                                       ↑
 Plan 25 (Issuer Key Publication + Cross-Source Consistency) ─┘
@@ -322,6 +324,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 14 (portable-kernel redesign) is a design-first precursor to any deeper spec or implementation rewrite of the Permission Ticket shell
 - Plan 15 (schema unification + reference-implementation migration) is the execution plan that turns Plan 14 into a shared canonical schema and a migrated working reference implementation
 - Plan 24 (demo crypto bundle + site OIDF leaves) is a follow-on to Plan 21 that makes provider sites first-class OIDF leaves, fixes OIDF JWT expiry by re-minting on fetch, and adds an optional bundle file for stable demo keys across restarts. It is fully implemented on `main`.
+- Plan 26 (demo crypto lockfile growth) is the follow-on to Plan 24 that turns the bundle into a normal reusable lockfile: boot auto-creates it if missing, grows it when site/issuer inventory expands, preserves existing key material, removes the old drift-fail startup behavior, and keeps the conventional default file gitignored. It is fully implemented on `main`.
 - Plan 23 (generalize OIDF entity consumption) is the follow-on to Plans 21 and 24 that turns the current demo-local OIDF resolver into a generic allowlist-based consumer. It is fully implemented on `main`, including allowlist-based OIDF client trust, discovery-driven issuer trust, external-origin coverage tests, and README/diagnostic cleanup.
 - Plan 25 (issuer key publication + cross-source consistency) is the follow-on hardening/spec-clarification plan after Plans 23 and 24: it broadens the issuer-key publication model to cover direct JWKS, OIDF, and UDAP discovery rooted at `iss`, keeps `PermissionTicket` serialization framework-neutral, adds an explicit ordered issuer-trust policy model, adds publication-level consistency tests for issuers exposed through more than one mechanism, and includes UDAP issuer resolution from `iss` under explicit verifier policy. Plan 25 is complete on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
