@@ -20,7 +20,7 @@ export class FrameworkRegistry {
     this.frameworks = frameworks;
     this.resolvers = resolverOverrides ?? [
       new WellKnownFrameworkResolver(frameworks, config, fetchImpl),
-      new UdapFrameworkResolver(frameworks, clients),
+      new UdapFrameworkResolver(frameworks, clients, config, fetchImpl),
       new OidfFrameworkResolver(frameworks, config, fetchImpl),
     ];
   }

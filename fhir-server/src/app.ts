@@ -1577,7 +1577,7 @@ function buildCapabilityStatement(context: AppContext, url: URL, contextRoute: R
 }
 
 function handleUdapConfig(context: AppContext, request: Request, url: URL, contextRoute: RouteContext) {
-  const frameworks = context.config.frameworks.filter((framework) => framework.frameworkType === "udap" && framework.supportsClientAuth);
+  const frameworks = context.config.frameworks.filter((framework) => framework.frameworkType === "udap" && (framework.supportsClientAuth || framework.supportsIssuerTrust));
   if (!frameworks.length) return notFound();
   const requestedCommunity = url.searchParams.get("community");
   const selectedFramework = requestedCommunity
@@ -2163,8 +2163,8 @@ function buildLandingPage(context: AppContext, url: URL, contextRoute: RouteCont
 
   const entrypoints = [
     { label: "SMART Config", href: `${prefix}/.well-known/smart-configuration`, note: "OAuth/SMART metadata for the selected mode." },
-    ...(context.config.frameworks.some((framework) => framework.frameworkType === "udap" && framework.supportsClientAuth)
-      ? [{ label: "UDAP Metadata", href: `${prefix}/.well-known/udap`, note: "UDAP discovery metadata for registration and token auth." }]
+    ...(context.config.frameworks.some((framework) => framework.frameworkType === "udap" && (framework.supportsClientAuth || framework.supportsIssuerTrust))
+      ? [{ label: "UDAP Metadata", href: `${prefix}/.well-known/udap`, note: "UDAP discovery metadata for registration, token auth, and issuer evaluation." }]
       : []),
     { label: "Dynamic Registration", href: `${prefix}/register`, note: "Client registration endpoint." },
     ...(context.config.frameworks.some((framework) => framework.frameworkType === "well-known" && framework.supportsClientAuth)

@@ -6,7 +6,8 @@ import { TtlReplayCache } from "../replay-cache.ts";
 import { decodeJwtWithoutVerification, extractUriSans, parseX5cCertificates, verifyX509JwtWithKey } from "../x509-jwt.ts";
 import { computeJwkThumbprint, normalizePublicJwk } from "../../../shared/private-key-jwt.ts";
 import type { DemoAuditStep } from "../../../shared/demo-events.ts";
-import type { AuthenticatedClientIdentity, FrameworkClientBinding, FrameworkDefinition, ResolvedFrameworkEntity } from "../../store/model.ts";
+import type { AuthenticatedClientIdentity, FrameworkClientBinding, FrameworkDefinition, ResolvedFrameworkEntity, ResolvedIssuerTrust } from "../../store/model.ts";
+import type { ServerConfig } from "../../config.ts";
 import type { FrameworkClientRegistration, FrameworkResolver, SupportedTrustFramework } from "./types.ts";
 import { ClientRegistrationError } from "./types.ts";
 
@@ -47,6 +48,8 @@ export class UdapFrameworkResolver implements FrameworkResolver {
   constructor(
     private readonly frameworks: FrameworkDefinition[],
     private readonly clients: ClientRegistry,
+    private readonly config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
+    private readonly fetchImpl: typeof fetch = fetch,
   ) {}
 
   getSupportedTrustFrameworks(): SupportedTrustFramework[] {
@@ -60,6 +63,22 @@ export class UdapFrameworkResolver implements FrameworkResolver {
 
   matchesClientId(clientId: string) {
     return clientId.startsWith(UDAP_CLIENT_PREFIX);
+  }
+
+  async resolveIssuerTrust(issuerUrl: string): Promise<ResolvedIssuerTrust | null> {
+    const udapFrameworks = this.frameworks.filter((framework) => framework.frameworkType === "udap" && framework.supportsIssuerTrust);
+    if (!udapFrameworks.length) return null;
+
+    const matches: ResolvedIssuerTrust[] = [];
+    for (const framework of udapFrameworks) {
+      const resolved = await this.resolveIssuerTrustAgainstFramework(framework, issuerUrl);
+      if (resolved) matches.push(resolved);
+    }
+
+    if (matches.length > 1) {
+      throw new Error(`UDAP issuer ${issuerUrl} matches multiple configured frameworks`);
+    }
+    return matches[0] ?? null;
   }
 
   async authenticateClientAssertion(clientId: string, assertionJwt: string, tokenEndpointUrl: string): Promise<AuthenticatedClientIdentity | null> {
@@ -268,7 +287,74 @@ export class UdapFrameworkResolver implements FrameworkResolver {
     const udapFrameworks = this.frameworks.filter((framework) => framework.frameworkType === "udap" && framework.supportsClientAuth);
     return udapFrameworks.filter((framework) => frameworkMatches(framework, certificates, entityUri));
   }
+
+  private async resolveIssuerTrustAgainstFramework(
+    framework: FrameworkDefinition,
+    issuerUrl: string,
+  ): Promise<ResolvedIssuerTrust | null> {
+    const discovery = await fetchUdapDiscoveryDocument(issuerUrl, framework, this.config, this.fetchImpl);
+    if (!discovery) return null;
+
+    const signedMetadata = typeof discovery.signed_metadata === "string" ? discovery.signed_metadata.trim() : "";
+    if (!signedMetadata) {
+      throw new Error(`UDAP discovery for ${issuerUrl} did not include signed_metadata`);
+    }
+
+    const { header, payload } = decodeJwtWithoutVerification<Record<string, any>>(signedMetadata);
+    const certificates = parseX5cCertificates(header.x5c);
+    const matchingAnchor = findMatchingTrustAnchor(framework, certificates);
+    if (!matchingAnchor) {
+      throw new Error(`UDAP discovery for ${issuerUrl} is not trusted by framework ${framework.framework}`);
+    }
+    verifyX509JwtWithKey<Record<string, any>>(signedMetadata, certificates[0].publicKey);
+    validateIssuerSignedMetadata(payload, certificates[0], issuerUrl);
+
+    const publicJwk = extractPublicJwk(certificates[0]);
+    if (!publicJwk) {
+      throw new Error(`UDAP discovery for ${issuerUrl} did not expose a usable public key`);
+    }
+    const kid = await computeJwkThumbprint(publicJwk);
+    const publicJwkWithKid: JsonWebKey & { kid: string } = {
+      ...publicJwk,
+      kid,
+    };
+
+    const supportedCommunities = Array.isArray(discovery.supported_trust_communities)
+      ? discovery.supported_trust_communities.filter((entry): entry is string => typeof entry === "string" && !!entry.trim())
+      : [];
+    const declaredCommunity = typeof discovery.community === "string" && discovery.community.trim() ? discovery.community : null;
+    if (declaredCommunity && declaredCommunity !== framework.framework) {
+      return null;
+    }
+    if (!declaredCommunity && supportedCommunities.length && !supportedCommunities.includes(framework.framework)) {
+      return null;
+    }
+
+    return {
+      source: "framework",
+      issuerUrl,
+      displayName: issuerUrl,
+      framework: {
+        uri: framework.framework,
+        type: "udap",
+      },
+      publicJwks: [publicJwkWithKid],
+      metadata: {
+        resolution: "udap-discovery",
+        discovery_url: discovery.discoveryUrl,
+        community: declaredCommunity ?? undefined,
+        supported_trust_communities: supportedCommunities,
+        signed_metadata_claims: payload,
+        trust_anchors: framework.udap?.trustAnchors ?? [],
+        certificate_thumbprint: certificates[0].fingerprint256,
+      },
+    };
+  }
 }
+
+type UdapDiscoveryDocument = Record<string, unknown> & {
+  discoveryUrl: string;
+};
 
 function verifySoftwareStatement(softwareStatement: string) {
   const { header } = decodeJwtWithoutVerification<UdapSoftwareStatementClaims>(softwareStatement);
@@ -353,6 +439,84 @@ function frameworkMatches(framework: FrameworkDefinition, certificates: X509Cert
   if (allowlist?.length && !allowlist.includes(entityUri)) return false;
   const trustAnchors = framework.udap?.trustAnchors ?? [];
   return trustAnchors.some((trustAnchorPem) => validateCertificatePath(certificates, new X509Certificate(trustAnchorPem)));
+}
+
+async function fetchUdapDiscoveryDocument(
+  issuerUrl: string,
+  framework: FrameworkDefinition,
+  config: Pick<ServerConfig, "publicBaseUrl" | "internalBaseUrl">,
+  fetchImpl: typeof fetch,
+): Promise<UdapDiscoveryDocument | null> {
+  const preferredUrl = buildUdapDiscoveryUrl(issuerUrl, framework.framework);
+  const preferredResponse = await fetchImpl(rewriteSelfFetchUrl(preferredUrl, config.publicBaseUrl, config.internalBaseUrl), { redirect: "follow" });
+  if (preferredResponse.ok) {
+    return parseDiscoveryDocument(preferredResponse, preferredUrl);
+  }
+  if (preferredResponse.status !== 204 && preferredResponse.status !== 404) {
+    throw new Error(`UDAP discovery fetch failed (${preferredResponse.status})`);
+  }
+
+  const fallbackUrl = buildUdapDiscoveryUrl(issuerUrl);
+  const fallbackResponse = await fetchImpl(rewriteSelfFetchUrl(fallbackUrl, config.publicBaseUrl, config.internalBaseUrl), { redirect: "follow" });
+  if (fallbackResponse.status === 204 || fallbackResponse.status === 404) return null;
+  if (!fallbackResponse.ok) {
+    throw new Error(`UDAP discovery fetch failed (${fallbackResponse.status})`);
+  }
+  return parseDiscoveryDocument(fallbackResponse, fallbackUrl);
+}
+
+async function parseDiscoveryDocument(response: Response, discoveryUrl: string): Promise<UdapDiscoveryDocument> {
+  let body: unknown;
+  try {
+    body = await response.json();
+  } catch {
+    throw new Error("UDAP discovery response was not valid JSON");
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    throw new Error("UDAP discovery response was not a JSON object");
+  }
+  return {
+    ...(body as Record<string, unknown>),
+    discoveryUrl,
+  };
+}
+
+function buildUdapDiscoveryUrl(issuerUrl: string, community?: string) {
+  const normalizedBase = issuerUrl.endsWith("/") ? issuerUrl : `${issuerUrl}/`;
+  const url = new URL(".well-known/udap", normalizedBase);
+  if (community) url.searchParams.set("community", community);
+  return url.toString();
+}
+
+function rewriteSelfFetchUrl(targetUrl: string, publicBaseUrl: string, internalBaseUrl: string | undefined) {
+  if (!internalBaseUrl) return targetUrl;
+  const target = new URL(targetUrl);
+  const publicBase = new URL(publicBaseUrl);
+  if (target.origin !== publicBase.origin) return targetUrl;
+  const internalBase = new URL(internalBaseUrl);
+  return `${internalBase.origin}${target.pathname}${target.search}`;
+}
+
+function findMatchingTrustAnchor(framework: FrameworkDefinition, certificates: X509Certificate[]) {
+  const trustAnchors = framework.udap?.trustAnchors ?? [];
+  return trustAnchors.find((trustAnchorPem) => validateCertificatePath(certificates, new X509Certificate(trustAnchorPem))) ?? null;
+}
+
+function validateIssuerSignedMetadata(payload: Record<string, any>, leafCertificate: X509Certificate, issuerUrl: string) {
+  const now = Math.floor(Date.now() / 1000);
+  if (payload.iss !== issuerUrl || payload.sub !== issuerUrl) {
+    throw new Error("UDAP signed_metadata iss/sub must match the issuer URL");
+  }
+  if (typeof payload.exp !== "number" || typeof payload.iat !== "number" || payload.exp <= now || payload.iat > now + 60) {
+    throw new Error("UDAP signed_metadata exp/iat invalid");
+  }
+  if (payload.exp - payload.iat > 366 * 24 * 60 * 60) {
+    throw new Error("UDAP signed_metadata lifetime must not exceed one year");
+  }
+  const uriSans = extractUriSans(leafCertificate);
+  if (!uriSans.includes(issuerUrl)) {
+    throw new Error("UDAP signed_metadata issuer URL must match a URI SAN on the discovery certificate");
+  }
 }
 
 function validateCertificatePath(certificates: X509Certificate[], trustAnchor: X509Certificate) {
