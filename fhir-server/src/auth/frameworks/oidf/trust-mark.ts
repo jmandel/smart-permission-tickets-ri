@@ -33,7 +33,7 @@ export async function verifyTrustMark(
     throw new Error(`OIDF trust mark uses unsupported alg ${String(decoded.header.alg ?? "")}`);
   }
   if (typeof decoded.header.kid !== "string" || !decoded.header.kid.trim()) {
-    throw new Error("OIDF trust mark is missing a non-empty header kid");
+    throw new Error("OIDF trust_mark header_kid_missing: OIDF trust mark is missing a non-empty header kid");
   }
 
   const payload = decoded.payload;
@@ -53,7 +53,7 @@ export async function verifyTrustMark(
     throw new Error("OIDF trust mark is missing trust_mark_type");
   }
   if ("delegation" in payload) {
-    throw new Error("OIDF delegated trust marks are not supported");
+    throw new Error("OIDF trust_mark delegation_unsupported: OIDF delegated trust marks are not supported");
   }
   if (payload.iss !== options.issuerEntityId) {
     throw new Error(`OIDF trust mark issuer ${payload.iss} does not match ${options.issuerEntityId}`);
@@ -75,7 +75,7 @@ export async function verifyTrustMark(
     (key as JsonWebKey & { kid?: string }).kid === decoded.header.kid
   ));
   if (!signingKey) {
-    throw new Error(`OIDF trust mark kid ${decoded.header.kid} does not match issuer jwks`);
+    throw new Error(`OIDF trust_mark kid_mismatch: OIDF trust mark kid ${decoded.header.kid} does not match issuer jwks`);
   }
 
   try {

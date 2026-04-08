@@ -90,12 +90,14 @@ function normalizeSupportedOperators(
     }
 
     if ((STANDARD_METADATA_POLICY_OPERATORS as readonly string[]).includes(operator)) {
-      throw new Error(`OIDF metadata_policy operator ${operator} on ${metadataType}.${fieldName} from ${issuer} is unsupported`);
+      throw new Error(
+        `OIDF metadata_policy unsupported_standard_operator: metadata_policy operator ${operator} on ${metadataType}.${fieldName} from ${issuer} is unsupported`,
+      );
     }
 
     if (criticalOperators.has(operator)) {
       throw new Error(
-        `OIDF metadata_policy_crit requires unsupported operator ${operator} on ${metadataType}.${fieldName} from ${issuer}`,
+        `OIDF metadata_policy_crit unsupported_operator: metadata_policy_crit requires unsupported operator ${operator} on ${metadataType}.${fieldName} from ${issuer}`,
       );
     }
   }

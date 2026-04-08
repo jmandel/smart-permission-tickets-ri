@@ -223,7 +223,7 @@ function parseEntityStatement(jwt: string, position: number, nowSeconds: number)
     throw new Error(`Entity statement ${position} uses unsupported alg ${String(header.alg ?? "")}`);
   }
   if (typeof header.kid !== "string" || !header.kid.trim()) {
-    throw new Error(`Entity statement ${position} is missing a non-empty header kid`);
+    throw new Error(`OIDF entity_statement header_kid_missing: Entity statement ${position} is missing a non-empty header kid`);
   }
 
   const payload = decoded.payload as Partial<EntityStatementPayload>;
@@ -272,13 +272,17 @@ function requiredJwks(statement: ParsedEntityStatement) {
   const normalizedKeys = jwks.map((jwk, index) => {
     const normalized = normalizeFederationPublicJwk(jwk);
     if (!normalized.kid.trim()) {
-      throw new Error(`Entity statement ${statement.position} jwks key ${index} is missing kid`);
+      throw new Error(
+        `OIDF entity_statement jwks_kid_missing: Entity statement ${statement.position} jwks key ${index} is missing kid`,
+      );
     }
     return normalized;
   });
   const kids = normalizedKeys.map((key) => key.kid);
   if (new Set(kids).size !== kids.length) {
-    throw new Error(`Entity statement ${statement.position} jwks contains duplicate kid values`);
+    throw new Error(
+      `OIDF entity_statement jwks_duplicate_kid: Entity statement ${statement.position} jwks contains duplicate kid values`,
+    );
   }
   return normalizedKeys;
 }
@@ -286,7 +290,9 @@ function requiredJwks(statement: ParsedEntityStatement) {
 async function verifyEntityStatementSignature(statement: ParsedEntityStatement, keys: Array<JsonWebKey & { kid: string }>) {
   const signingKey = keys.find((key) => key.kid === statement.header.kid);
   if (!signingKey) {
-    throw new Error(`Entity statement ${statement.position} kid ${statement.header.kid} does not match issuer jwks`);
+    throw new Error(
+      `OIDF entity_statement kid_mismatch: Entity statement ${statement.position} kid ${statement.header.kid} does not match issuer jwks`,
+    );
   }
 
   try {
@@ -300,16 +306,22 @@ async function verifyEntityStatementSignature(statement: ParsedEntityStatement, 
 function validateCriticalClaims(statement: ParsedEntityStatement) {
   if (!("crit" in statement.payload) || statement.payload.crit === undefined) return;
   if (!Array.isArray(statement.payload.crit) || statement.payload.crit.length === 0) {
-    throw new Error(`Entity statement ${statement.position} crit must be a non-empty array`);
+    throw new Error(`OIDF crit invalid_array: Entity statement ${statement.position} crit must be a non-empty array`);
   }
   for (const claim of statement.payload.crit) {
     if (typeof claim !== "string" || !claim.trim()) {
-      throw new Error(`Entity statement ${statement.position} crit contains a non-string claim name`);
+      throw new Error(
+        `OIDF crit invalid_claim_name: Entity statement ${statement.position} crit contains a non-string claim name`,
+      );
     }
     if (STANDARD_ENTITY_STATEMENT_CLAIMS.has(claim)) {
-      throw new Error(`Entity statement ${statement.position} crit must not reference standard claim ${claim}`);
+      throw new Error(
+        `OIDF crit standard_claim_forbidden: Entity statement ${statement.position} crit must not reference standard claim ${claim}`,
+      );
     }
-    throw new Error(`Entity statement ${statement.position} crit references unsupported claim ${claim}`);
+    throw new Error(
+      `OIDF crit unsupported_claim: Entity statement ${statement.position} crit references unsupported claim ${claim}`,
+    );
   }
 }
 
@@ -332,17 +344,25 @@ function validateClaimUsage(statement: ParsedEntityStatement) {
   }
   if ("metadata_policy_crit" in statement.payload && statement.payload.metadata_policy_crit !== undefined) {
     if (statement.kind !== "subordinate-statement") {
-      throw new Error(`Entity statement ${statement.position} metadata_policy_crit may only appear in subordinate statements`);
+      throw new Error(
+        `OIDF metadata_policy_crit invalid_location: Entity statement ${statement.position} metadata_policy_crit may only appear in subordinate statements`,
+      );
     }
     if (!Array.isArray(statement.payload.metadata_policy_crit) || statement.payload.metadata_policy_crit.length === 0) {
-      throw new Error(`Entity statement ${statement.position} metadata_policy_crit must be a non-empty array`);
+      throw new Error(
+        `OIDF metadata_policy_crit invalid_array: Entity statement ${statement.position} metadata_policy_crit must be a non-empty array`,
+      );
     }
     for (const operator of statement.payload.metadata_policy_crit) {
       if (typeof operator !== "string" || !operator.trim()) {
-        throw new Error(`Entity statement ${statement.position} metadata_policy_crit contains a non-string operator`);
+        throw new Error(
+          `OIDF metadata_policy_crit invalid_operator_name: Entity statement ${statement.position} metadata_policy_crit contains a non-string operator`,
+        );
       }
       if ((STANDARD_METADATA_POLICY_OPERATORS as readonly string[]).includes(operator)) {
-        throw new Error(`Entity statement ${statement.position} metadata_policy_crit must not reference standard operator ${operator}`);
+        throw new Error(
+          `OIDF metadata_policy_crit standard_operator_forbidden: Entity statement ${statement.position} metadata_policy_crit must not reference standard operator ${operator}`,
+        );
       }
     }
   }
@@ -361,10 +381,14 @@ function enforceTrustChainConstraints(
     const layerConstraints = constraintLayer.constraints;
     if (typeof layerConstraints.max_path_length === "number") {
       if (!Number.isInteger(layerConstraints.max_path_length) || layerConstraints.max_path_length < 0) {
-        throw new Error(`OIDF constraints max_path_length from ${constraintLayer.issuer} must be a non-negative integer`);
+        throw new Error(
+          `OIDF constraints max_path_length_invalid: max_path_length from ${constraintLayer.issuer} must be a non-negative integer`,
+        );
       }
       if (constraintLayer.distanceToLeaf > layerConstraints.max_path_length) {
-        throw new Error(`OIDF constraints max_path_length from ${constraintLayer.issuer} rejects this trust chain`);
+        throw new Error(
+          `OIDF constraints max_path_length_exceeded: max_path_length from ${constraintLayer.issuer} rejects this trust chain`,
+        );
       }
     }
 
@@ -388,10 +412,12 @@ function validateNamingConstraints(
   for (const entityId of entityIds) {
     const hostname = new URL(entityId).hostname;
     if (excluded.some((constraint) => hostMatchesConstraint(hostname, constraint))) {
-      throw new Error(`OIDF naming_constraints from ${issuer} excludes ${entityId}`);
+      throw new Error(`OIDF constraints naming_constraints_excluded: naming_constraints from ${issuer} excludes ${entityId}`);
     }
     if (permitted.length > 0 && !permitted.some((constraint) => hostMatchesConstraint(hostname, constraint))) {
-      throw new Error(`OIDF naming_constraints from ${issuer} does not permit ${entityId}`);
+      throw new Error(
+        `OIDF constraints naming_constraints_not_permitted: naming_constraints from ${issuer} does not permit ${entityId}`,
+      );
     }
   }
 }
@@ -399,7 +425,7 @@ function validateNamingConstraints(
 function normalizeConstraintHostList(value: unknown) {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.some((entry) => typeof entry !== "string" || !entry)) {
-    throw new Error("OIDF naming_constraints must be arrays of non-empty strings");
+    throw new Error("OIDF constraints naming_constraints_invalid: naming_constraints must be arrays of non-empty strings");
   }
   return value;
 }
@@ -418,10 +444,14 @@ function resolveAllowedEntityTypes(constraints: VerifiedTrustChain["constraints"
     const configured = layer.constraints.allowed_entity_types;
     if (configured === undefined) continue;
     if (!Array.isArray(configured) || configured.some((value) => typeof value !== "string" || !value)) {
-      throw new Error(`OIDF constraints allowed_entity_types from ${layer.issuer} must be an array of non-empty strings`);
+      throw new Error(
+        `OIDF constraints allowed_entity_types_invalid: allowed_entity_types from ${layer.issuer} must be an array of non-empty strings`,
+      );
     }
     if (configured.includes("federation_entity")) {
-      throw new Error(`OIDF constraints allowed_entity_types from ${layer.issuer} must not include federation_entity`);
+      throw new Error(
+        `OIDF constraints allowed_entity_types_invalid: allowed_entity_types from ${layer.issuer} must not include federation_entity`,
+      );
     }
     allowed = allowed === null ? [...configured] : allowed.filter((entityType) => configured.includes(entityType));
   }

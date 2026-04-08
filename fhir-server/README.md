@@ -120,6 +120,15 @@ OIDF trust is explicitly allowlisted:
 origin. If an OIDF URL points at some other host, the resolver fetches that
 foreign URL as-is.
 
+Current metadata-policy support is intentionally partial:
+
+- supported RFC operators: `value`, `default`, `one_of`
+- unsupported standard RFC operators: `add`, `subset_of`, `superset_of`, `essential`
+
+Unsupported standard operators fail closed when present in `metadata_policy` with an `OIDF metadata_policy unsupported_standard_operator` diagnostic. Additional non-standard operators are ignored unless they are named in `metadata_policy_crit`; if named there and unsupported, the chain fails closed with an `OIDF metadata_policy_crit unsupported_operator` diagnostic.
+
+The trust-chain validator also rejects delegated trust marks explicitly with `OIDF trust_mark delegation_unsupported`. This server only accepts non-delegated trust marks in the current first-pass OIDF implementation.
+
 ## Issuer Key Publication and Trust Policy
 
 `PermissionTicket` issuers stay framework-neutral on the wire. The verifier starts

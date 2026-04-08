@@ -280,6 +280,16 @@ Status: complete
 - removes truly unused bundle/bootstrap helpers after the lockfile + policy refactors settle
 - cleans up README/comments so remaining fallbacks are clearly intentional rather than accidental leftovers
 
+### Plan 28: OIDF Spec Alignment and Functional Kernel
+`28-oidf-spec-alignment-kernel.md`
+
+Status: complete on `main`
+
+- extracts the OIDF trust-chain validator into a pure `trust-chain-kernel.ts`
+- aligns entity-statement validation with RFC handling for `kid`, `crit`, `metadata_policy_crit`, direct-superior `metadata`, and explicit constraint enforcement
+- keeps the first-pass metadata-policy operator surface intentionally limited to `value`, `default`, and `one_of`, while failing closed on unsupported standard operators
+- rejects delegated trust marks explicitly and improves issuer-trust discovery with bounded multi-hint traversal plus caching
+
 ## Dependencies Between Plans
 
 ```
@@ -317,6 +327,8 @@ Plan 25 (Issuer Key Publication + Cross-Source Consistency) ─┘
                                       ↑
 Plan 27 (Legacy Cleanup After Plans 23-26) ───────────────┘
                                       ↑
+Plan 28 (OIDF Spec Alignment + Functional Kernel) ───────┘
+                                      ↑
 Plan 20 (Viewer Banner + Density Refresh) ─────────────┘
                                       ↑
 Plan 1 (Architecture) ───────────────┘ (informs all others)
@@ -340,6 +352,7 @@ Plan 1 (Architecture) ───────────────┘ (informs 
 - Plan 23 (generalize OIDF entity consumption) is the follow-on to Plans 21 and 24 that turns the current demo-local OIDF resolver into a generic allowlist-based consumer. It is fully implemented on `main`, including allowlist-based OIDF client trust, discovery-driven issuer trust, external-origin coverage tests, and README/diagnostic cleanup.
 - Plan 25 (issuer key publication + cross-source consistency) is the follow-on hardening/spec-clarification plan after Plans 23 and 24: it broadens the issuer-key publication model to cover direct JWKS, OIDF, and UDAP discovery rooted at `iss`, keeps `PermissionTicket` serialization framework-neutral, adds an explicit ordered issuer-trust policy model, adds publication-level consistency tests for issuers exposed through more than one mechanism, and includes UDAP issuer resolution from `iss` under explicit verifier policy. Plan 25 is complete on `main`.
 - Plan 27 (legacy cleanup after Plans 23-26) is the follow-on cleanup pass after the issuer-trust, lockfile, and generic framework refactors: it removes the dead `local` issuer-trust branch, deletes the unneeded standalone UDAP demo registration helper instead of carrying a second bootstrap path, trims genuinely unused compatibility helpers, and deliberately preserves the still-intentional env/config override surfaces. It is fully implemented on `main`.
+- Plan 28 (OIDF spec alignment + functional kernel) is the OIDF correctness and hardening pass after Plans 21 and 23: it extracts a pure trust-chain kernel, implements direct-superior metadata plus top-down metadata-policy handling, enforces `crit` / `metadata_policy_crit` / RFC constraints, explicitly rejects delegated trust marks, and documents the intentional first-pass operator subset. It is fully implemented on `main`.
 - Plan 20 (viewer clinical banner + density refresh) is a follow-on viewer polish pass after Plans 17, 18, and 19: it keeps protocol detail in Protocol Trace while making the viewer itself feel more like a compact clinical application
 
 ## Seed Data Available

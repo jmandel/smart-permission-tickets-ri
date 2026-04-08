@@ -154,6 +154,25 @@ A Bun + SQLite read-only FHIR server that:
 
 See [fhir-server/README.md](fhir-server/README.md) for details.
 
+## OpenID Federation (OIDF)
+
+The reference server includes OpenID Federation 1.0 client-auth and issuer-trust flows. Current metadata-policy support is intentionally limited to these RFC operators:
+
+- `value`
+- `default`
+- `one_of`
+
+The remaining standard RFC operators are not implemented in this first pass:
+
+- `add`
+- `subset_of`
+- `superset_of`
+- `essential`
+
+If one of those standard operators appears in `metadata_policy`, validation fails closed with an explicit `OIDF metadata_policy unsupported_standard_operator` error. Additional non-standard operators are ignored unless they are named in `metadata_policy_crit`; if an unsupported operator is marked critical there, validation fails closed with an explicit `OIDF metadata_policy_crit unsupported_operator` error.
+
+Trust-mark delegation is also intentionally out of scope for this pass. Any trust mark carrying a `delegation` claim is rejected explicitly rather than being processed implicitly.
+
 ## Terminology database
 
 The terminology database is built locally from public sources — no external dependencies or licensed data downloads required:
