@@ -146,6 +146,23 @@ const udapOption: DemoClientOption = {
   privateKeyPem: "-----BEGIN PRIVATE KEY-----\nMIIB\n-----END PRIVATE KEY-----",
 };
 
+const oidfOption: DemoClientOption = {
+  type: "oidf",
+  label: "OIDF client",
+  description: "Browser-generated subordinate OIDF client",
+  registrationMode: "oidf-automatic",
+  framework: {
+    uri: "https://smarthealthit.org/trust-frameworks/reference-demo-oidf",
+    displayName: "Reference Demo OpenID Federation",
+    documentUrl: "http://localhost:8091/federation/anchor/.well-known/openid-federation",
+  },
+  entityUri: "http://localhost:8091/demo/clients/oidf/worldwide-app",
+  entityConfigurationUrl: "http://localhost:8091/demo/clients/oidf/worldwide-app/.well-known/openid-federation",
+  browserInstanceBaseUri: "http://localhost:8091/demo/clients/oidf/worldwide-app/instances",
+  browserInstanceIssuePath: "/demo/clients/oidf/issue-browser-instance",
+  clientName: "Reference Demo OIDF Client",
+};
+
 const scenarioPerson: PersonInfo = {
   ...person,
   ticketScenarios: [
@@ -514,6 +531,15 @@ describe("demo helpers", () => {
     expect(story.effectiveClientId).toBe("client-123");
     expect(story.ticketBinding.shape).toBe("presenter_binding.method=jkt");
     expect(story.ticketBinding.rationale).toContain("generated JWK thumbprint");
+  });
+
+  test("client story description uses the generated OIDF browser instance entity URI", async () => {
+    const oidfPlan = await buildViewerClientPlan(person, oidfOption);
+    expect(oidfPlan.type).toBe("oidf");
+    if (oidfPlan.type !== "oidf") throw new Error("Expected OIDF client plan");
+    const story = describeClientPlan("strict", oidfPlan);
+    expect(story.effectiveClientId).toBe(oidfPlan.entityUri);
+    expect(story.entityUri).toBe(oidfPlan.entityUri);
   });
 
   test("client story description explains UDAP SAN-based entity binding", () => {

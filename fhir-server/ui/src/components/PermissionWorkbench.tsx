@@ -20,7 +20,7 @@ import {
   ticketLifetimeOptions,
   validateConsent,
 } from "../demo";
-import type { ConsentState, DemoClientOption, DemoClientType, ModeName, NetworkInfo, PersonInfo, TicketIssuerInfo, ViewerLaunch } from "../types";
+import type { ConsentState, DemoClientOption, DemoClientType, ModeName, NetworkInfo, PersonInfo, TicketIssuerInfo, ViewerClientPlan, ViewerLaunch } from "../types";
 import { buildArtifactViewerHref, buildJwtArtifactPayload } from "../lib/artifact-viewer";
 import { signPermissionTicket } from "../lib/ticket-client";
 import { SplitAction } from "./SplitAction";
@@ -64,7 +64,32 @@ function ticketBindingHeadline(clientStory: NonNullable<ReturnType<typeof descri
   return "No binding";
 }
 
-function ticketBindingPreview(clientStory: NonNullable<ReturnType<typeof describeClientOption>>) {
+function ticketBindingPreview(
+  clientStory: NonNullable<ReturnType<typeof describeClientOption>>,
+  clientPlan: ViewerClientPlan | null,
+  mode: ModeName,
+) {
+  if (clientPlan) {
+    const frameworkBinding = clientBindingForPlan(clientPlan);
+    if (frameworkBinding?.entity_uri) {
+      return {
+        method: frameworkBinding.method,
+        detailLabel: "entity_uri",
+        detailHeading: clientPlan.type === "udap" ? "SAN entity URI" : "Entity URI",
+        value: frameworkBinding.entity_uri,
+      };
+    }
+    const proofJkt = proofJktForPlan(mode, clientPlan);
+    if (proofJkt) {
+      return {
+        method: "jkt",
+        detailLabel: "jkt",
+        detailHeading: "JKT",
+        value: proofJkt,
+      };
+    }
+  }
+
   if (clientStory.clientType === "udap" && clientStory.entityUri) {
     return {
       method: "framework_client",
@@ -111,7 +136,9 @@ export function PermissionWorkbench({
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [artifacts, setArtifacts] = useState<ArtifactState | null>(null);
+  const [selectedClientPlan, setSelectedClientPlan] = useState<ViewerClientPlan | null>(null);
   const preparePromiseRef = useRef<Promise<ArtifactState | null> | null>(null);
+  const clientPlanPromiseRef = useRef<Promise<ViewerClientPlan | null> | null>(null);
 
   const availableClientOptions: DemoClientOption[] = useMemo(() => (
     mode === "strict"
@@ -133,8 +160,10 @@ export function PermissionWorkbench({
       setSelectedScenarioId(null);
       setSelectedClientType(null);
       setArtifacts(null);
+      setSelectedClientPlan(null);
       setError(null);
       preparePromiseRef.current = null;
+      clientPlanPromiseRef.current = null;
       return;
     }
     const defaultScenario = defaultScenarioForPerson(person);
@@ -142,8 +171,10 @@ export function PermissionWorkbench({
     setConsent(defaultConsentState(person, defaultScenario));
     setSelectedClientType((current) => current ?? availableClientOptions[0]?.type ?? null);
     setArtifacts(null);
+    setSelectedClientPlan(null);
     setError(null);
     preparePromiseRef.current = null;
+    clientPlanPromiseRef.current = null;
   }, [person?.personId, availableClientOptions]);
 
   useEffect(() => {
@@ -152,6 +183,36 @@ export function PermissionWorkbench({
     setError(null);
     preparePromiseRef.current = null;
   }, [consent, mode, selectedClientType, selectedScenarioId]);
+
+  useEffect(() => {
+    if (!person || !selectedClientOption) {
+      setSelectedClientPlan(null);
+      clientPlanPromiseRef.current = null;
+      return;
+    }
+
+    let active = true;
+    setSelectedClientPlan(null);
+    let pending: Promise<ViewerClientPlan | null>;
+    pending = buildViewerClientPlan(person, selectedClientOption)
+      .then((plan) => {
+        if (active) setSelectedClientPlan(plan);
+        return plan;
+      })
+      .finally(() => {
+        if (clientPlanPromiseRef.current === pending) {
+          clientPlanPromiseRef.current = null;
+        }
+      });
+    clientPlanPromiseRef.current = pending;
+
+    return () => {
+      active = false;
+      if (clientPlanPromiseRef.current === pending) {
+        clientPlanPromiseRef.current = null;
+      }
+    };
+  }, [person?.personId, selectedClientOption?.type]);
 
   if (!person || !consent) {
     return (
@@ -193,8 +254,12 @@ export function PermissionWorkbench({
       : selectedClientOption?.type === "udap"
         ? "Ticket uses presenter_binding.method = framework_client"
         : "No presenter binding";
-  const selectedClientStory = selectedClientOption ? describeClientOption(mode, selectedClientOption) : null;
-  const selectedBindingPreview = selectedClientStory ? ticketBindingPreview(selectedClientStory) : null;
+  const selectedClientStory = selectedClientPlan
+    ? describeClientPlan(mode, selectedClientPlan)
+    : selectedClientOption
+      ? describeClientOption(mode, selectedClientOption)
+      : null;
+  const selectedBindingPreview = selectedClientStory ? ticketBindingPreview(selectedClientStory, selectedClientPlan, mode) : null;
   const selectedScenarioRequester = selectedScenario ? scenarioRequesterLabel(selectedScenario) : null;
   const selectedScenarioContext = selectedScenario ? scenarioContextDetails(selectedScenario) : [];
 
@@ -223,7 +288,7 @@ export function PermissionWorkbench({
 
   async function buildArtifacts() {
     const sessionId = crypto.randomUUID();
-    const clientPlan = selectedClientOption ? await buildViewerClientPlan(currentPerson, selectedClientOption) : null;
+    const clientPlan = await ensureSelectedClientPlan();
     const proofJkt = proofJktForPlan(mode, clientPlan);
     const frameworkPresenterBinding = clientBindingForPlan(clientPlan);
 
@@ -268,6 +333,26 @@ export function PermissionWorkbench({
       signedTicket,
       proofJkt,
     };
+  }
+
+  async function ensureSelectedClientPlan() {
+    if (!selectedClientOption) return null;
+    if (selectedClientPlan) return selectedClientPlan;
+    if (clientPlanPromiseRef.current) return clientPlanPromiseRef.current;
+
+    let pending: Promise<ViewerClientPlan | null>;
+    pending = buildViewerClientPlan(currentPerson, selectedClientOption)
+      .then((plan) => {
+        setSelectedClientPlan(plan);
+        return plan;
+      })
+      .finally(() => {
+        if (clientPlanPromiseRef.current === pending) {
+          clientPlanPromiseRef.current = null;
+        }
+      });
+    clientPlanPromiseRef.current = pending;
+    return pending;
   }
 
   async function ensureArtifacts() {
