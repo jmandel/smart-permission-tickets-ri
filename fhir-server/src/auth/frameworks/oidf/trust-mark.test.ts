@@ -1,12 +1,13 @@
 import { describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
+import { signEs256Jwt } from "../../es256-jwt.ts";
 import { TRUST_MARK_TYP, verifyTrustMark } from "./trust-mark.ts";
 
 describe("OIDF trust mark validation", () => {
   test("missing header kid is rejected", async () => {
     const issuerKeys = await generateKeyFixture();
-    const trustMark = await signPrivateKeyJwt({
+    const trustMark = signEs256Jwt({
       iss: "https://demo.example/federation/trust-mark-issuer",
       sub: "https://demo.example/federation/leafs/demo-app",
       iat: Math.floor(Date.now() / 1000) - 60,

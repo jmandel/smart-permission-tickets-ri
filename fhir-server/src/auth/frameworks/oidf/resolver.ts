@@ -1,4 +1,10 @@
-import { computeJwkThumbprint, decodeJwtWithoutVerification, normalizePublicJwk, verifyPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
+import {
+  computeJwkThumbprint,
+  decodeJwtWithoutVerification,
+  normalizePublicJwk,
+  selectJwtVerificationCandidates,
+  verifyPrivateKeyJwt,
+} from "../../../../shared/private-key-jwt.ts";
 import { toAuthenticatedClientIdentity } from "../../client-identity.ts";
 import type {
   AuthenticatedClientIdentity,
@@ -8,6 +14,7 @@ import type {
 } from "../../../store/model.ts";
 import type { ServerConfig } from "../../../config.ts";
 import type { FrameworkResolver, SupportedTrustFramework } from "../types.ts";
+import { extractOidfOauthClientPublicJwks } from "./oauth-client-keys.ts";
 import { applyMetadataPolicy } from "./policy.ts";
 import { extractTicketIssuerMetadata, SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "./smart-permission-ticket-issuer.ts";
 import type { EntityStatementPayload, VerifiedTrustChain } from "./trust-chain.ts";
@@ -100,11 +107,9 @@ export class OidfFrameworkResolver implements FrameworkResolver {
     if (verifiedChain.leaf.entityId !== clientId) {
       throw new Error(`OIDF client_id ${clientId} does not match trust-chain leaf ${verifiedChain.leaf.entityId}`);
     }
-    if (!isAllowlistedClientLeaf(oidf, verifiedChain.leaf.entityId)) {
-      throw new Error(`OIDF leaf ${verifiedChain.leaf.entityId} is not allowlisted for client authentication`);
-    }
     const resolved = applyMetadataPolicy(verifiedChain);
-    const verifiedAssertion = await verifyAssertionAgainstJwks(assertionJwt, resolved.leafEntityJwks, clientId, tokenEndpointUrl);
+    const oauthClientJwks = extractOidfOauthClientPublicJwks(resolved.metadata);
+    const verifiedAssertion = await verifyAssertionAgainstJwks(assertionJwt, oauthClientJwks, clientId, tokenEndpointUrl);
     const clientName = typeof resolved.metadata.oauth_client?.client_name === "string"
       ? resolved.metadata.oauth_client.client_name
       : clientId;
@@ -116,12 +121,13 @@ export class OidfFrameworkResolver implements FrameworkResolver {
       },
       entityUri: clientId,
       displayName: clientName,
-      publicJwks: resolved.leafEntityJwks,
+      publicJwks: oauthClientJwks,
       metadata: {
         resolution: "oidf-trust-chain",
         trust_chain_depth: verifiedChain.depth,
         trust_chain: buildDecodedTrustChainArtifact(verifiedChain),
         resolved_metadata: resolved.metadata,
+        leaf_federation_jwks: resolved.leafFederationEntityJwks,
       },
     };
 
@@ -135,19 +141,19 @@ export class OidfFrameworkResolver implements FrameworkResolver {
         frameworkBinding: {
           method: "framework_client",
           framework: framework.framework,
-          framework_type: "oidf",
-          entity_uri: clientId,
-        },
-        publicJwk: verifiedAssertion.publicJwk,
-        availablePublicJwks: resolved.leafEntityJwks,
-        jwkThumbprint: verifiedAssertion.jwkThumbprint,
+        framework_type: "oidf",
+        entity_uri: clientId,
       },
-      {
-        resolvedEntity,
-        availablePublicJwks: resolved.leafEntityJwks,
-        publicJwk: verifiedAssertion.publicJwk,
-        jwkThumbprint: verifiedAssertion.jwkThumbprint,
-      },
+      publicJwk: verifiedAssertion.publicJwk,
+      availablePublicJwks: oauthClientJwks,
+      jwkThumbprint: verifiedAssertion.jwkThumbprint,
+    },
+    {
+      resolvedEntity,
+      availablePublicJwks: oauthClientJwks,
+      publicJwk: verifiedAssertion.publicJwk,
+      jwkThumbprint: verifiedAssertion.jwkThumbprint,
+    },
     );
   }
 
@@ -305,8 +311,11 @@ async function verifyAssertionAgainstJwks(
   tokenEndpointUrl: string,
 ) {
   const now = Math.floor(Date.now() / 1000);
+  const { candidateJwks: selectedJwks } = selectJwtVerificationCandidates(assertionJwt, candidateJwks, {
+    unknownKidMessage: "OIDF client_assertion kid_mismatch: client_assertion kid did not match any resolved oauth_client jwks",
+  });
   let lastError: Error | null = null;
-  for (const jwk of candidateJwks) {
+  for (const jwk of selectedJwks) {
     try {
       const normalizedKey = normalizePublicJwk(jwk);
       const { payload } = await verifyPrivateKeyJwt<any>(assertionJwt, normalizedKey);
@@ -399,16 +408,6 @@ async function verifyTrustChainAgainstConfiguredAnchors(
     throw new Error("OIDF framework is missing configured trust anchor jwks");
   }
   throw new Error(`OIDF trust chain did not validate against any configured trust anchor: ${lastError.message}`);
-}
-
-function isAllowlistedClientLeaf(
-  oidf: NonNullable<FrameworkDefinition["oidf"]>,
-  entityId: string,
-) {
-  return oidf.trustedLeaves.some((leaf) => (
-    leaf.entityId === entityId
-    && (leaf.usage === "client" || leaf.usage === "both")
-  ));
 }
 
 function findStatementJwksForEntity(

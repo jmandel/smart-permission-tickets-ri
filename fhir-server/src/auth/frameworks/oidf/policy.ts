@@ -15,9 +15,9 @@ type MetadataTypePolicy = Record<string, MetadataFieldPolicy>;
 
 export type ResolvedOidfMetadataPolicyResult = {
   metadata: EntityMetadata;
-  // The leaf entity-statement jwks remains the client-auth verification surface.
-  // Issuer trust reads ticket-signing keys from smart_permission_ticket_issuer metadata instead.
-  leafEntityJwks: JsonWebKey[];
+  // These remain federation entity keys from the leaf entity statement.
+  // Protocol-specific consumers must read their own keys from resolved metadata.
+  leafFederationEntityJwks: JsonWebKey[];
 };
 
 type FieldConstraint = {
@@ -29,8 +29,8 @@ type FieldConstraint = {
 };
 
 export function applyMetadataPolicy(verifiedChain: VerifiedTrustChain): ResolvedOidfMetadataPolicyResult {
-  const leafEntityJwks = verifiedChain.leaf.payload.jwks?.keys;
-  if (!Array.isArray(leafEntityJwks) || leafEntityJwks.length === 0) {
+  const leafFederationEntityJwks = verifiedChain.leaf.payload.jwks?.keys;
+  if (!Array.isArray(leafFederationEntityJwks) || leafFederationEntityJwks.length === 0) {
     throw new Error("OIDF resolved metadata is missing the leaf entity jwks");
   }
 
@@ -63,7 +63,7 @@ export function applyMetadataPolicy(verifiedChain: VerifiedTrustChain): Resolved
 
   return {
     metadata: resolvedMetadata,
-    leafEntityJwks,
+    leafFederationEntityJwks,
   };
 }
 

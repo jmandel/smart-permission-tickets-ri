@@ -21,12 +21,7 @@ describe("OIDF issuer trust", () => {
     const origin = `http://127.0.0.1:${server.port}`;
     try {
       const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
-      expect(oidfFramework?.oidf?.trustedLeaves).toEqual([
-        {
-          entityId: context.oidfTopology.demoAppEntityId,
-          usage: "client",
-        },
-      ]);
+      expect(oidfFramework?.oidf?.trustAnchors).toHaveLength(1);
 
       const directIssuerTrust = await context.frameworks.resolveIssuerTrustByType(
         "oidf",
@@ -233,7 +228,6 @@ describe("OIDF issuer trust", () => {
     const origin = `http://127.0.0.1:${server.port}`;
     const oidfFramework = context.config.frameworks.find((framework) => framework.frameworkType === "oidf");
     if (!oidfFramework?.oidf) throw new Error("Missing OIDF framework");
-    oidfFramework.oidf.trustedLeaves = [];
     try {
       const issuerTrust = await context.frameworks.resolveIssuerTrustByType(
         "oidf",

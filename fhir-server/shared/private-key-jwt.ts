@@ -12,9 +12,17 @@ export type EcPrivateJwk = EcPublicJwk & {
   d: string;
 };
 
+export type KeyedEcPublicJwk = EcPublicJwk & {
+  kid: string;
+};
+
+export type KeyedEcPrivateJwk = EcPrivateJwk & {
+  kid: string;
+};
+
 export type ClientKeyMaterial = {
-  publicJwk: EcPublicJwk;
-  privateJwk: EcPrivateJwk;
+  publicJwk: KeyedEcPublicJwk;
+  privateJwk: KeyedEcPrivateJwk;
   thumbprint: string;
 };
 
@@ -32,10 +40,11 @@ export async function generateClientKeyMaterial(): Promise<ClientKeyMaterial> {
   const privateJwk = normalizePrivateJwk(
     (await crypto.subtle.exportKey("jwk", keyPair.privateKey)) as EcPrivateJwk,
   );
+  const thumbprint = await computeJwkThumbprint(publicJwk);
   return {
-    publicJwk,
-    privateJwk,
-    thumbprint: await computeJwkThumbprint(publicJwk),
+    publicJwk: { ...publicJwk, kid: thumbprint },
+    privateJwk: { ...privateJwk, kid: thumbprint },
+    thumbprint,
   };
 }
 
@@ -58,7 +67,10 @@ export async function signPrivateKeyJwt(
   privateJwk: JsonWebKey,
   extraHeader: Record<string, any> = {},
 ): Promise<string> {
-  const header = { alg: "ES256", typ: "JWT", ...extraHeader };
+  const header = { alg: "ES256", typ: "JWT", ...extraHeader } as Record<string, any>;
+  if (typeof header.kid !== "string" || !header.kid.trim()) {
+    header.kid = await computeJwkThumbprint(normalizePublicJwk(privateJwk));
+  }
   const encodedHeader = base64UrlEncodeJson(header);
   const encodedPayload = base64UrlEncodeJson(payload);
   const signingInput = `${encodedHeader}.${encodedPayload}`;
@@ -109,6 +121,41 @@ export function decodeJwtWithoutVerification<T extends JwtPayload>(token: string
   return {
     header: JSON.parse(utf8Decode(base64UrlDecode(encodedHeader))) as Record<string, any>,
     payload: JSON.parse(utf8Decode(base64UrlDecode(encodedPayload))) as T,
+  };
+}
+
+export function selectJwtVerificationCandidates(
+  token: string,
+  candidateJwks: Array<JsonWebKey & { kid?: string }>,
+  options: {
+    unknownKidMessage: string;
+  },
+) {
+  const { header } = decodeJwtWithoutVerification(token);
+  const kid = typeof header.kid === "string" && header.kid.trim() ? header.kid.trim() : null;
+  if (!kid) {
+    return {
+      header,
+      candidateJwks,
+    };
+  }
+
+  const keyedCandidates = candidateJwks.filter((jwk) => typeof (jwk as JsonWebKey & { kid?: string }).kid === "string" && !!(jwk as JsonWebKey & { kid?: string }).kid);
+  if (!keyedCandidates.length) {
+    return {
+      header,
+      candidateJwks,
+    };
+  }
+
+  const matches = keyedCandidates.filter((jwk) => (jwk as JsonWebKey & { kid?: string }).kid === kid);
+  if (!matches.length) {
+    throw new Error(options.unknownKidMessage);
+  }
+
+  return {
+    header,
+    candidateJwks: matches,
   };
 }
 

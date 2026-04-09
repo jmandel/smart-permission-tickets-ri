@@ -575,6 +575,31 @@ export async function createViewerClientBootstrap(person: PersonInfo) {
   };
 }
 
+async function createOidfBrowserInstanceBootstrap(instanceBaseUri: string) {
+  const federationKeys = await generateClientKeyMaterial();
+  const oauthKeys = await generateClientKeyMaterial();
+  const entityUri = `${trimTrailingSlash(instanceBaseUri)}/${crypto.randomUUID()}`;
+  return {
+    entityUri,
+    federationPublicJwk: {
+      ...federationKeys.publicJwk,
+      kid: federationKeys.thumbprint,
+    },
+    federationPrivateJwk: {
+      ...federationKeys.privateJwk,
+      kid: federationKeys.thumbprint,
+    },
+    oauthPublicJwk: {
+      ...oauthKeys.publicJwk,
+      kid: oauthKeys.thumbprint,
+    },
+    oauthPrivateJwk: {
+      ...oauthKeys.privateJwk,
+      kid: oauthKeys.thumbprint,
+    },
+  };
+}
+
 export async function buildViewerClientPlan(person: PersonInfo, option: DemoClientOption): Promise<ViewerClientPlan> {
   switch (option.type) {
     case "unaffiliated": {
@@ -622,19 +647,24 @@ export async function buildViewerClientPlan(person: PersonInfo, option: DemoClie
         contacts: option.contacts ?? [],
       };
     case "oidf":
-      if (!option.entityUri || !option.entityConfigurationUrl || !option.clientName || !option.publicJwk || !option.privateJwk || !option.framework || !option.trustChain?.length) {
+      if (!option.entityUri || !option.entityConfigurationUrl || !option.browserInstanceBaseUri || !option.browserInstanceIssuePath || !option.clientName || !option.framework) {
         throw new Error("OIDF demo client option is incomplete");
       }
+      const oidfBootstrap = await createOidfBrowserInstanceBootstrap(option.browserInstanceBaseUri);
       return {
         type: "oidf",
         displayLabel: option.label,
         registrationMode: "oidf-automatic",
-        entityUri: option.entityUri,
-        entityConfigurationUrl: option.entityConfigurationUrl,
+        entityUri: oidfBootstrap.entityUri,
+        parentEntityUri: option.entityUri,
+        parentEntityConfigurationUrl: option.entityConfigurationUrl,
+        browserInstanceIssuePath: option.browserInstanceIssuePath,
         clientName: option.clientName,
-        publicJwk: option.publicJwk,
-        privateJwk: option.privateJwk,
-        trustChain: option.trustChain,
+        publicJwk: oidfBootstrap.oauthPublicJwk,
+        privateJwk: oidfBootstrap.oauthPrivateJwk,
+        federationPublicJwk: oidfBootstrap.federationPublicJwk,
+        federationPrivateJwk: oidfBootstrap.federationPrivateJwk,
+        trustChain: [],
         framework: option.framework,
       };
   }
@@ -885,7 +915,7 @@ function buildClientStoryDescription(
     : clientType === "well-known"
       ? "private_key_jwt with current entity JWKS"
       : clientType === "oidf"
-        ? "private_key_jwt with resolved federation JWKS + trust_chain"
+        ? "private_key_jwt with oauth_client.jwks + trust_chain"
       : "UDAP client assertion with x5c chain + SAN entity URI";
   const expectedClientId = effectiveClientId
     ?? (clientType === "well-known"
@@ -900,7 +930,7 @@ function buildClientStoryDescription(
     : clientType === "well-known"
       ? "A framework-affiliated client can skip registration entirely and be recognized from a stable entity URI plus current JWKS resolution."
       : clientType === "oidf"
-        ? "A framework-affiliated client can authenticate without prior registration by presenting its entity URL plus a trust_chain header that resolves its metadata and keys. Client trust and ticket-issuer trust are evaluated separately."
+        ? "A browser-generated client instance can authenticate by presenting its own trust_chain, a parent-issued subordinate statement, and oauth_client keys resolved from federation metadata. Client trust and ticket-issuer trust are evaluated separately."
       : "A trust-framework-backed client can register just in time through UDAP, using an entity URI taken from the certificate Subject Alternative Name (SAN) and published as an inspectable page on this demo server.";
   return {
     clientType,
@@ -919,6 +949,10 @@ function buildClientStoryDescription(
 
 function base64UrlEncodeJson(value: unknown) {
   return base64UrlEncode(new TextEncoder().encode(JSON.stringify(value)));
+}
+
+function trimTrailingSlash(value: string) {
+  return value.replace(/\/+$/, "");
 }
 
 function storeViewerLaunch(launch: ViewerLaunch) {

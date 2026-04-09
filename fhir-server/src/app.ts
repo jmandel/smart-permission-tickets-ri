@@ -17,9 +17,9 @@ import { FrameworkRegistry } from "./auth/frameworks/registry.ts";
 import { ClientRegistrationError } from "./auth/frameworks/types.ts";
 import {
   buildOidfDemoTopology,
-  buildOidfTrustChain,
   findOidfEntityIdByConfigurationPath,
   findOidfIssuerEntityIdByFetchPath,
+  mintOidfBrowserClientInstance,
   mintOidfEntityConfiguration,
   mintOidfSubordinateStatement,
   type OidfDemoTopology,
@@ -202,12 +202,6 @@ function buildFrameworkRegistry(
                 },
               ],
               requiredIssuerTrustMarkType: oidfTopology.trustMarkType,
-              trustedLeaves: [
-                {
-                  entityId: oidfTopology.demoAppEntityId,
-                  usage: "client",
-                },
-              ],
             }
           : undefined,
       }
@@ -277,7 +271,6 @@ export async function handleRequest(context: AppContext, request: Request, serve
     const wellKnownFrameworkDocument = buildDemoWellKnownFrameworkDocument(url.origin);
     const wellKnownClient = wellKnownFrameworkDocument.clients[0];
     const wellKnownKeys = resolveDemoWellKnownClientKeys(context.config.demoCryptoBundle);
-    const oidfClient = context.oidfTopology.entities["demo-app"];
     const udapClient = buildDemoUdapClients(url.origin, context.config.demoCryptoBundle).find((client) => client.algorithm === "RS256")
       ?? buildDemoUdapClients(url.origin, context.config.demoCryptoBundle)[0];
     return jsonResponse({
@@ -317,7 +310,7 @@ export async function handleRequest(context: AppContext, request: Request, serve
         {
           type: "oidf",
           label: "OIDF client",
-          description: "Uses the Entity Identifier URL as client_id and authenticates with a trust_chain JOSE header. No registration call occurs. Client trust and ticket-issuer trust are evaluated separately.",
+          description: "Generates a browser-specific OIDF client instance, gets a parent-signed subordinate statement, and authenticates with oauth_client keys plus a trust_chain JOSE header. Client trust and ticket-issuer trust are evaluated separately.",
           registrationMode: "oidf-automatic",
           framework: {
             uri: context.oidfTopology.frameworkUri,
@@ -325,10 +318,9 @@ export async function handleRequest(context: AppContext, request: Request, serve
           },
           entityUri: context.oidfTopology.demoAppEntityId,
           entityConfigurationUrl: absoluteUrl(url, oidfEntityConfigurationPath(context.oidfTopology.demoAppEntityId)),
-          clientName: String(oidfClient.metadata.oauth_client?.client_name ?? oidfClient.name),
-          publicJwk: oidfClient.publicJwk,
-          privateJwk: oidfClient.privateJwk,
-          trustChain: buildOidfTrustChain(context.oidfTopology, context.oidfTopology.demoAppEntityId),
+          browserInstanceBaseUri: context.oidfTopology.browserInstanceEntityBaseId,
+          browserInstanceIssuePath: "/demo/oidf/browser-client-instance",
+          clientName: "OpenID Federation Browser Demo App",
         },
         {
           type: "udap",
@@ -352,6 +344,9 @@ export async function handleRequest(context: AppContext, request: Request, serve
       ],
       demoWellKnownFramework: wellKnownFrameworkDocument,
     });
+  }
+  if (url.pathname === "/demo/oidf/browser-client-instance") {
+    return handleOidfBrowserClientInstanceRequest(context, request);
   }
   const issuerRoute = resolveIssuerRoute(url.pathname);
   if (issuerRoute) {
@@ -1071,7 +1066,7 @@ function appendFrameworkClientDiagnostics(
       evidence: typeof metadata.resolved_metadata?.oauth_client?.client_name === "string"
         ? metadata.resolved_metadata.oauth_client.client_name
         : client.clientName,
-      why: "Metadata policy was applied top-down to resolve the client metadata and leaf JWKS",
+      why: "Metadata policy was applied top-down to resolve the client metadata and oauth_client JWKS",
     });
     diagnostics.relatedArtifacts.push({
       label: "Client trust via OIDF: resolved metadata",
@@ -1860,6 +1855,37 @@ function handleOidfRequest(
         ? jwtResponse(statement, "application/entity-statement+jwt")
         : notFound();
     }
+  }
+}
+
+async function handleOidfBrowserClientInstanceRequest(context: AppContext, request: Request) {
+  if (request.method !== "POST") return methodNotAllowed("POST");
+  const body = await parseBody(request);
+  const leafEntityConfiguration = typeof body.leaf_entity_configuration === "string" ? body.leaf_entity_configuration.trim() : "";
+  if (!leafEntityConfiguration) {
+    return operationOutcome("Missing leaf_entity_configuration", 400);
+  }
+
+  try {
+    const minted = mintOidfBrowserClientInstance(context.oidfTopology, leafEntityConfiguration);
+    const explicitSessionId = extractDemoSessionId(request);
+    if (explicitSessionId) {
+      context.demoSessionLinks.bindClient(explicitSessionId, minted.entityId);
+    }
+    return jsonResponse(
+      {
+        entity_uri: minted.entityId,
+        leaf_entity_configuration: minted.leafEntityConfiguration,
+        subordinate_statement: minted.subordinateStatement,
+        trust_chain: minted.trustChain,
+        parent_entity_uri: context.oidfTopology.demoAppEntityId,
+        parent_entity_configuration_url: `${context.config.publicBaseUrl}${oidfEntityConfigurationPath(context.oidfTopology.demoAppEntityId)}`,
+      },
+      201,
+      { "cache-control": "no-store" },
+    );
+  } catch (error) {
+    return operationOutcome(error instanceof Error ? error.message : "OIDF browser instance creation failed", 400);
   }
 }
 

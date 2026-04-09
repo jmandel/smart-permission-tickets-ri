@@ -1,4 +1,9 @@
-import { computeJwkThumbprint, normalizePublicJwk, verifyPrivateKeyJwt } from "../../../shared/private-key-jwt.ts";
+import {
+  computeJwkThumbprint,
+  normalizePublicJwk,
+  selectJwtVerificationCandidates,
+  verifyPrivateKeyJwt,
+} from "../../../shared/private-key-jwt.ts";
 import { toAuthenticatedClientIdentity } from "../client-identity.ts";
 import type {
   AuthenticatedClientIdentity,
@@ -82,9 +87,12 @@ export class WellKnownFrameworkResolver implements FrameworkResolver {
     const client = registeredClientForEntity(entity);
     const keys = entity.publicJwks ?? [];
     if (!keys.length) throw new Error("No client keys available");
+    const { candidateJwks } = selectJwtVerificationCandidates(assertionJwt, keys, {
+      unknownKidMessage: "well-known client_assertion kid_mismatch: client_assertion kid did not match any advertised JWKS key",
+    });
 
     let lastError: Error | null = null;
-    for (const key of keys) {
+    for (const key of candidateJwks) {
       try {
         const normalizedKey = normalizePublicJwk(key);
         const { payload } = await verifyPrivateKeyJwt<any>(assertionJwt, normalizedKey);

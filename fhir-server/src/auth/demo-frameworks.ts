@@ -379,12 +379,6 @@ export function buildDefaultFrameworks(publicBaseUrl: string, issuerSlug: string
           },
         ],
         requiredIssuerTrustMarkType: oidfTrustMarkType,
-        trustedLeaves: [
-          {
-            entityId: oidfDemoAppEntityId,
-            usage: "client",
-          },
-        ],
       },
     },
   ];

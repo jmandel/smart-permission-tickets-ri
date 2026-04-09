@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { generateClientKeyMaterial, signPrivateKeyJwt } from "../../../../shared/private-key-jwt.ts";
+import { signEs256Jwt } from "../../es256-jwt.ts";
 import { verifyTrustChain } from "./trust-chain-kernel.ts";
 
 describe("OIDF trust chain validation", () => {
@@ -485,6 +486,13 @@ async function signEntityStatement(
   privateJwk: JsonWebKey & { kid: string },
   headerOverrides: Record<string, unknown> = {},
 ) {
+  if (Object.prototype.hasOwnProperty.call(headerOverrides, "kid")) {
+    return signEs256Jwt(payload, privateJwk, {
+      typ: "entity-statement+jwt",
+      kid: privateJwk.kid,
+      ...headerOverrides,
+    });
+  }
   return signPrivateKeyJwt(payload, privateJwk, {
     typ: "entity-statement+jwt",
     kid: privateJwk.kid,

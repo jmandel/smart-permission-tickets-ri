@@ -68,13 +68,6 @@ export type OidfTrustedAnchor = {
   jwks: JsonWebKey[];
 };
 
-export type OidfTrustedLeafUsage = "client" | "issuer" | "both";
-
-export type OidfTrustedLeaf = {
-  entityId: string;
-  usage: OidfTrustedLeafUsage;
-};
-
 export type FrameworkClientBinding = {
   method: "framework_client";
   framework: string;
@@ -107,7 +100,6 @@ export type FrameworkDefinition = {
   };
   oidf?: {
     trustAnchors: OidfTrustedAnchor[];
-    trustedLeaves: OidfTrustedLeaf[];
     requiredIssuerTrustMarkType?: string;
     maxTrustChainDepth?: number;
     maxAuthorityHints?: number;

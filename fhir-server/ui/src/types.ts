@@ -118,6 +118,8 @@ export type DemoClientOption = {
   framework?: DemoClientFrameworkInfo;
   entityUri?: string;
   entityConfigurationUrl?: string;
+  browserInstanceBaseUri?: string;
+  browserInstanceIssuePath?: string;
   jwksUrl?: string;
   clientName?: string;
   publicJwk?: JsonWebKey;
@@ -171,10 +173,14 @@ export type ViewerOidfClientPlan = {
   displayLabel: string;
   registrationMode: "oidf-automatic";
   entityUri: string;
-  entityConfigurationUrl: string;
+  parentEntityUri: string;
+  parentEntityConfigurationUrl: string;
+  browserInstanceIssuePath: string;
   clientName: string;
   publicJwk: JsonWebKey;
   privateJwk: JsonWebKey;
+  federationPublicJwk: JsonWebKey;
+  federationPrivateJwk: JsonWebKey;
   trustChain: string[];
   framework: DemoClientFrameworkInfo;
 };

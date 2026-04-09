@@ -78,7 +78,8 @@ describe("mode surfaces", () => {
     expect(Array.isArray(body.demoClientOptions)).toBe(true);
     expect(body.demoClientOptions.map((option: any) => option.type)).toEqual(["unaffiliated", "well-known", "oidf", "udap"]);
     expect(body.demoClientOptions.find((option: any) => option.type === "well-known")?.entityUri).toBe(`${origin}/demo/clients/well-known-alpha`);
-    expect(body.demoClientOptions.find((option: any) => option.type === "oidf")?.entityUri).toBe(`${origin}/federation/leafs/demo-app`);
+    expect(body.demoClientOptions.find((option: any) => option.type === "oidf")?.entityUri).toBe(`${origin}/demo/clients/oidf/worldwide-app`);
+    expect(body.demoClientOptions.find((option: any) => option.type === "oidf")?.browserInstanceIssuePath).toBe("/demo/oidf/browser-client-instance");
     expect(body.demoClientOptions.find((option: any) => option.type === "udap")?.entityUri).toBe(`${origin}${DEFAULT_DEMO_UDAP_RSA_CLIENT_PATH}`);
   });
 

@@ -34,7 +34,7 @@ describe("OIDF external entity consumption", () => {
         exp: Math.floor(Date.now() / 1000) + 300,
         jti: crypto.randomUUID(),
       },
-      fixture.clientLeaf.privateJwk,
+      fixture.clientOauth.privateJwk,
       { trust_chain: fixture.clientTrustChain },
     );
 
@@ -304,12 +304,6 @@ function buildExternalOidfFramework(
         },
       ],
       requiredIssuerTrustMarkType: fixture.trustMarkType,
-      trustedLeaves: [
-        {
-          entityId: fixture.clientLeafEntityId,
-          usage: "client",
-        },
-      ],
       ...overrides,
     },
   };
@@ -329,6 +323,7 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
   const anchor = generateEcKeyPair();
   const providerNetwork = generateEcKeyPair();
   const clientLeaf = generateEcKeyPair();
+  const clientOauth = generateEcKeyPair();
   const issuerLeaf = generateEcKeyPair();
   const issuerTicketSigning = generateEcKeyPair();
 
@@ -369,6 +364,9 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
       oauth_client: {
         client_name: "External Leaf App",
         token_endpoint_auth_method: "private_key_jwt",
+        jwks: {
+          keys: [clientOauth.publicJwk],
+        },
       },
     },
     authority_hints: [providerNetworkEntityId],
@@ -455,6 +453,7 @@ function buildExternalOidfFixture(baseOrigin: string, overrides: {
     anchor,
     providerNetwork,
     clientLeaf,
+    clientOauth,
     issuerLeaf,
     issuerTicketSigning,
     clientTrustChain: [clientLeafEc, networkAboutClient, anchorAboutNetwork, anchorEc],

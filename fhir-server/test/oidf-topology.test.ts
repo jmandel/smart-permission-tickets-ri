@@ -14,15 +14,15 @@ describe("OIDF demo topology", () => {
     const firstSite = context.store.listSiteSummaries()[0];
     const firstSiteEntityId = context.oidfTopology.providerSiteEntityIds[firstSite!.siteSlug];
     try {
-      const entityResponse = await fetch(`${origin}/federation/leafs/demo-app/.well-known/openid-federation`);
+      const entityResponse = await fetch(`${origin}/demo/clients/oidf/worldwide-app/.well-known/openid-federation`);
       expect(entityResponse.status).toBe(200);
       expect(entityResponse.headers.get("content-type")).toBe("application/entity-statement+jwt");
       const entityStatement = await entityResponse.text();
       const decodedEntity = decodeEs256Jwt<Record<string, any>>(entityStatement);
       expect(decodedEntity.header.typ).toBe("entity-statement+jwt");
-      expect(decodedEntity.payload.iss).toBe(`${publicOrigin}/federation/leafs/demo-app`);
+      expect(decodedEntity.payload.iss).toBe(`${publicOrigin}/demo/clients/oidf/worldwide-app`);
       expect(decodedEntity.payload.authority_hints).toEqual([`${publicOrigin}/federation/networks/app`]);
-      expect(decodedEntity.payload.metadata.federation_entity).toBeUndefined();
+      expect(decodedEntity.payload.metadata.federation_entity.organization_name).toBe("OIDF Worldwide Demo App");
 
       const appNetworkResponse = await fetch(`${origin}/federation/networks/app/.well-known/openid-federation`);
       expect(appNetworkResponse.status).toBe(200);
@@ -33,16 +33,16 @@ describe("OIDF demo topology", () => {
       );
 
       const fetchResponse = await fetch(
-        `${origin}/federation/networks/app/federation_fetch_endpoint?sub=${encodeURIComponent(`${publicOrigin}/federation/leafs/demo-app`)}`,
+        `${origin}/federation/networks/app/federation_fetch_endpoint?sub=${encodeURIComponent(`${publicOrigin}/demo/clients/oidf/worldwide-app`)}`,
       );
       expect(fetchResponse.status).toBe(200);
       const subordinateStatement = await fetchResponse.text();
       const decodedSubordinate = decodeEs256Jwt<Record<string, any>>(subordinateStatement);
       expect(decodedSubordinate.header.typ).toBe("entity-statement+jwt");
       expect(decodedSubordinate.payload.iss).toBe(`${publicOrigin}/federation/networks/app`);
-      expect(decodedSubordinate.payload.sub).toBe(`${publicOrigin}/federation/leafs/demo-app`);
+      expect(decodedSubordinate.payload.sub).toBe(`${publicOrigin}/demo/clients/oidf/worldwide-app`);
       expect(decodedSubordinate.payload.jwks.keys).toEqual(decodedEntity.payload.jwks.keys);
-      expect(decodedSubordinate.payload.metadata_policy.oauth_client.client_name.value).toBe("OpenID Federation Demo App");
+      expect(decodedSubordinate.payload.metadata_policy).toEqual({});
 
       const siteEntityResponse = await fetch(`${origin}/federation/leafs/provider-sites/${firstSite!.siteSlug}/.well-known/openid-federation`);
       expect(siteEntityResponse.status).toBe(200);
@@ -174,14 +174,14 @@ describe("OIDF demo topology", () => {
     const server = startServer(context, 0);
     const origin = `http://127.0.0.1:${server.port}`;
     try {
-      const firstResponse = await fetch(`${origin}/federation/leafs/demo-app/.well-known/openid-federation`);
+      const firstResponse = await fetch(`${origin}/demo/clients/oidf/worldwide-app/.well-known/openid-federation`);
       expect(firstResponse.status).toBe(200);
       const firstStatement = await firstResponse.text();
       const firstDecoded = decodeEs256Jwt<Record<string, any>>(firstStatement);
 
       Date.now = () => new Date("2026-04-07T14:30:00.000Z").getTime();
 
-      const secondResponse = await fetch(`${origin}/federation/leafs/demo-app/.well-known/openid-federation`);
+      const secondResponse = await fetch(`${origin}/demo/clients/oidf/worldwide-app/.well-known/openid-federation`);
       expect(secondResponse.status).toBe(200);
       const secondStatement = await secondResponse.text();
       const secondDecoded = decodeEs256Jwt<Record<string, any>>(secondStatement);
@@ -208,15 +208,10 @@ describe("OIDF demo topology", () => {
       },
     ]);
     expect(oidfFramework?.oidf?.requiredIssuerTrustMarkType).toBe(context.oidfTopology.trustMarkType);
-    expect(oidfFramework?.oidf?.trustedLeaves).toEqual([
-      {
-        entityId: context.oidfTopology.demoAppEntityId,
-        usage: "client",
-      },
-    ]);
+    expect(oidfFramework?.oidf?.maxTrustChainDepth).toBeUndefined();
   });
 
-  test("demo bootstrap publishes an OIDF client option with a trust chain", async () => {
+  test("demo bootstrap publishes an OIDF client option for browser-instance issuance", async () => {
     const context = createAppContext({ port: 0 });
     const server = startServer(context, 0);
     const origin = `http://127.0.0.1:${server.port}`;
@@ -227,9 +222,12 @@ describe("OIDF demo topology", () => {
       const oidf = body.demoClientOptions?.find((option) => option.type === "oidf");
       expect(oidf?.label).toBe("OIDF client");
       expect(oidf?.entityUri).toBe(context.oidfTopology.demoAppEntityId);
-      expect(Array.isArray(oidf?.trustChain)).toBe(true);
-      expect(oidf?.trustChain).toHaveLength(4);
       expect(typeof oidf?.entityConfigurationUrl).toBe("string");
+      expect(oidf?.browserInstanceBaseUri).toBe(context.oidfTopology.browserInstanceEntityBaseId);
+      expect(oidf?.browserInstanceIssuePath).toBe("/demo/oidf/browser-client-instance");
+      expect(oidf?.publicJwk).toBeUndefined();
+      expect(oidf?.privateJwk).toBeUndefined();
+      expect(oidf?.trustChain).toBeUndefined();
     } finally {
       server.stop(true);
     }

@@ -1,8 +1,16 @@
 import { generateKeyPairSync } from "node:crypto";
 
-import { computeEcJwkThumbprintSync, normalizePrivateJwk, normalizePublicJwk, signEs256Jwt } from "../../es256-jwt.ts";
+import {
+  computeEcJwkThumbprintSync,
+  decodeEs256Jwt,
+  normalizePrivateJwk,
+  normalizePublicJwk,
+  signEs256Jwt,
+  verifyEs256Jwt,
+} from "../../es256-jwt.ts";
 import { DEFAULT_DEMO_OIDF_FRAMEWORK_URI } from "../../demo-frameworks.ts";
 import { buildAuthBasePath, buildFhirBasePath, type SurfaceMode } from "../../../../shared/surfaces.ts";
+import { extractOidfOauthClientPublicJwks } from "./oauth-client-keys.ts";
 import type { SiteSummary } from "../../../store/store.ts";
 import { SMART_PERMISSION_TICKET_ISSUER_ENTITY_TYPE } from "./smart-permission-ticket-issuer.ts";
 import { federationFetchEndpointPath, federationFetchEndpointUrl, oidfEntityConfigurationPath } from "./urls.ts";
@@ -41,6 +49,7 @@ export type OidfDemoTopology = {
   appNetworkEntityId: string;
   providerNetworkEntityId: string;
   demoAppEntityId: string;
+  browserInstanceEntityBaseId: string;
   providerSiteEntityIds: Record<string, string>;
   ticketIssuerEntityId: string;
   entities: Record<OidfDemoFixedEntityRole, OidfDemoEntity>;
@@ -59,6 +68,33 @@ type OidfDemoProviderSiteKeyMaterialBySlug = Record<string, OidfDemoKeyMaterial 
 type OidfDemoSubordinateMetadataPolicy = Record<string, Record<string, Record<string, unknown>>>;
 type OidfDemoSubordinateStatement = {
   metadataPolicy: OidfDemoSubordinateMetadataPolicy;
+};
+
+export type MintedOidfBrowserClientInstance = {
+  entityId: string;
+  leafEntityConfiguration: string;
+  subordinateStatement: string;
+  trustChain: string[];
+};
+
+const OIDF_BROWSER_CLIENT_METADATA_POLICY: OidfDemoSubordinateMetadataPolicy = {
+  oauth_client: {
+    client_name: {
+      value: "OpenID Federation Browser Demo App",
+    },
+    token_endpoint_auth_method: {
+      value: "private_key_jwt",
+    },
+    grant_types: {
+      value: ["client_credentials"],
+    },
+    response_types: {
+      value: [],
+    },
+    redirect_uris: {
+      value: [],
+    },
+  },
 };
 
 const DEFAULT_OIDF_DEMO_KEY_MATERIAL: Record<Exclude<OidfDemoFixedEntityRole, "ticket-issuer">, OidfDemoKeyMaterial> = {
@@ -81,7 +117,8 @@ export function buildOidfDemoTopology(
   const trustAnchorEntityId = `${publicBaseUrl}/federation/anchor`;
   const appNetworkEntityId = `${publicBaseUrl}/federation/networks/app`;
   const providerNetworkEntityId = `${publicBaseUrl}/federation/networks/provider`;
-  const demoAppEntityId = `${publicBaseUrl}/federation/leafs/demo-app`;
+  const demoAppEntityId = `${publicBaseUrl}/demo/clients/oidf/worldwide-app`;
+  const browserInstanceEntityBaseId = `${demoAppEntityId}/instances`;
   const ticketIssuerUrl = `${publicBaseUrl}/issuer/${ticketIssuerSlug}`;
   const ticketIssuerEntityId = ticketIssuerUrl;
   const trustMarkType = `${publicBaseUrl}/federation/trust-marks/permission-ticket-issuer`;
@@ -108,13 +145,10 @@ export function buildOidfDemoTopology(
       federation_fetch_endpoint: federationFetchEndpointUrl(providerNetworkEntityId),
     },
   }, [trustAnchorEntityId], keyMaterialByRole["provider-network"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["provider-network"]);
-  const demoApp = createEntity("demo-app", demoAppEntityId, "OpenID Federation Demo App", {
-    oauth_client: {
-      client_name: "Leaf Demo App",
-      token_endpoint_auth_method: "private_key_jwt",
-      redirect_uris: [],
-      grant_types: ["client_credentials"],
-      response_types: [],
+  const demoApp = createEntity("demo-app", demoAppEntityId, "OIDF Worldwide Demo App", {
+    federation_entity: {
+      organization_name: "OIDF Worldwide Demo App",
+      federation_fetch_endpoint: federationFetchEndpointUrl(demoAppEntityId),
     },
   }, [appNetworkEntityId], keyMaterialByRole["demo-app"] ?? DEFAULT_OIDF_DEMO_KEY_MATERIAL["demo-app"]);
   const ticketIssuer = createEntity("ticket-issuer", ticketIssuerEntityId, ticketIssuerName, {
@@ -174,13 +208,7 @@ export function buildOidfDemoTopology(
 
   const subordinateStatements = new Map<string, Map<string, OidfDemoSubordinateStatement>>();
   addSubordinateStatement(subordinateStatements, appNetwork.entityId, demoApp.entityId, {
-    metadataPolicy: {
-      oauth_client: {
-        client_name: {
-          value: "OpenID Federation Demo App",
-        },
-      },
-    },
+    metadataPolicy: {},
   });
   addSubordinateStatement(subordinateStatements, anchor.entityId, appNetwork.entityId, {
     metadataPolicy: {
@@ -228,6 +256,7 @@ export function buildOidfDemoTopology(
     appNetworkEntityId,
     providerNetworkEntityId,
     demoAppEntityId,
+    browserInstanceEntityBaseId,
     providerSiteEntityIds,
     ticketIssuerEntityId,
     entities,
@@ -391,6 +420,37 @@ export function mintOidfSubordinateStatement(
   return signCurrentSubordinateStatement(topology, issuerEntityId, subjectEntityId, now);
 }
 
+export function buildOidfBrowserInstanceEntityId(topology: OidfDemoTopology, instanceId: string) {
+  const normalizedInstanceId = instanceId.trim();
+  if (!normalizedInstanceId) {
+    throw new Error("OIDF browser instance id must be non-empty");
+  }
+  return `${topology.browserInstanceEntityBaseId}/${normalizedInstanceId}`;
+}
+
+export function mintOidfBrowserClientInstance(
+  topology: OidfDemoTopology,
+  leafEntityConfigurationJwt: string,
+  now = Math.floor(Date.now() / 1000),
+): MintedOidfBrowserClientInstance {
+  const validatedLeaf = validateBrowserLeafEntityConfiguration(topology, leafEntityConfigurationJwt);
+  const parentEntity = topology.entities["demo-app"];
+  const subordinateStatement = signDynamicSubordinateStatement({
+    issuer: parentEntity,
+    subjectEntityId: validatedLeaf.entityId,
+    subjectJwks: validatedLeaf.federationJwks,
+    metadataPolicy: OIDF_BROWSER_CLIENT_METADATA_POLICY,
+    now,
+  });
+  const ancestorChain = buildOidfTrustChain(topology, topology.demoAppEntityId).slice(1);
+  return {
+    entityId: validatedLeaf.entityId,
+    leafEntityConfiguration: leafEntityConfigurationJwt,
+    subordinateStatement,
+    trustChain: [leafEntityConfigurationJwt, subordinateStatement, ...ancestorChain],
+  };
+}
+
 function signCurrentSubordinateStatement(
   topology: OidfDemoTopology,
   issuerEntityId: string,
@@ -408,6 +468,26 @@ function signCurrentSubordinateStatement(
     subject,
     metadataPolicy: statement.metadataPolicy,
     now,
+  });
+}
+
+function signDynamicSubordinateStatement(options: {
+  issuer: OidfDemoEntity;
+  subjectEntityId: string;
+  subjectJwks: Array<JsonWebKey & { kid: string }>;
+  metadataPolicy: OidfDemoSubordinateMetadataPolicy;
+  now: number;
+}) {
+  return signEs256Jwt({
+    iss: options.issuer.entityId,
+    sub: options.subjectEntityId,
+    iat: options.now - 60,
+    exp: options.now + ENTITY_STATEMENT_TTL_SECONDS,
+    jwks: { keys: options.subjectJwks },
+    metadata_policy: options.metadataPolicy,
+  }, options.issuer.privateJwk, {
+    typ: ENTITY_STATEMENT_TYP,
+    kid: options.issuer.publicJwk.kid,
   });
 }
 
@@ -436,6 +516,93 @@ function generateEcKeyPair() {
       kid,
     },
   };
+}
+
+function validateBrowserLeafEntityConfiguration(topology: OidfDemoTopology, jwt: string) {
+  const decoded = decodeEs256Jwt<Record<string, any>>(jwt) as { header: Record<string, any>; payload: Record<string, any> };
+  if (decoded.header.typ !== ENTITY_STATEMENT_TYP) {
+    throw new Error("OIDF oidf_browser_leaf_typ_invalid: browser leaf entity configuration must use typ=entity-statement+jwt");
+  }
+  if (decoded.header.alg !== "ES256") {
+    throw new Error("OIDF oidf_browser_leaf_alg_invalid: browser leaf entity configuration must use alg=ES256");
+  }
+  if (typeof decoded.header.kid !== "string" || !decoded.header.kid.trim()) {
+    throw new Error("OIDF oidf_browser_leaf_header_kid_missing: browser leaf entity configuration header is missing kid");
+  }
+
+  const payload = decoded.payload;
+  if (typeof payload.iss !== "string" || !payload.iss || typeof payload.sub !== "string" || !payload.sub) {
+    throw new Error("OIDF oidf_browser_leaf_iss_sub_missing: browser leaf entity configuration must include iss and sub");
+  }
+  if (payload.iss !== payload.sub) {
+    throw new Error("OIDF oidf_browser_leaf_iss_sub_mismatch: browser leaf entity configuration must have iss equal to sub");
+  }
+  if (!payload.iss.startsWith(`${topology.browserInstanceEntityBaseId}/`)) {
+    throw new Error(
+      `OIDF oidf_browser_leaf_entity_id_invalid: browser leaf entity_id must be under ${topology.browserInstanceEntityBaseId}`,
+    );
+  }
+
+  const federationJwks = normalizeFederationJwks(payload.jwks?.keys, "OIDF oidf_browser_leaf_federation_jwks");
+  const signingKey = federationJwks.find((key) => key.kid === decoded.header.kid);
+  if (!signingKey) {
+    throw new Error(
+      `OIDF oidf_browser_leaf_kid_mismatch: browser leaf entity configuration kid ${decoded.header.kid} does not match federation jwks`,
+    );
+  }
+  verifyEs256Jwt(jwt, signingKey);
+
+  const authorityHints = payload.authority_hints;
+  if (!Array.isArray(authorityHints) || authorityHints.length !== 1 || authorityHints[0] !== topology.demoAppEntityId) {
+    throw new Error(
+      `OIDF oidf_browser_leaf_authority_hints_invalid: browser leaf authority_hints must equal [${topology.demoAppEntityId}]`,
+    );
+  }
+  if (payload.metadata?.federation_entity) {
+    throw new Error(
+      "OIDF oidf_browser_leaf_federation_entity_forbidden: browser leaf entity configuration must not include federation_entity metadata",
+    );
+  }
+  extractOidfOauthClientPublicJwks(payload.metadata ?? {});
+
+  return {
+    entityId: payload.iss,
+    federationJwks,
+  };
+}
+
+function normalizeFederationJwks(
+  jwks: JsonWebKey[] | undefined,
+  errorPrefix: string,
+): Array<JsonWebKey & { kid: string }> {
+  if (!Array.isArray(jwks) || jwks.length === 0) {
+    throw new Error(`${errorPrefix}_missing: browser leaf entity configuration is missing top-level jwks.keys`);
+  }
+
+  const normalizedKeys = jwks.map((jwk, index) => {
+    const keyKid = (jwk as JsonWebKey & { kid?: string }).kid;
+    const kid = typeof keyKid === "string"
+      ? keyKid.trim()
+      : "";
+    if (!kid) {
+      throw new Error(`${errorPrefix}_kid_missing: browser leaf federation jwks key ${index} is missing kid`);
+    }
+    try {
+      return {
+        ...normalizePublicJwk(jwk),
+        kid,
+      };
+    } catch (error) {
+      throw new Error(`${errorPrefix}_invalid_key: browser leaf federation jwks key ${index} is invalid (${error instanceof Error ? error.message : String(error)})`);
+    }
+  });
+
+  const kids = normalizedKeys.map((key) => key.kid);
+  if (new Set(kids).size !== kids.length) {
+    throw new Error(`${errorPrefix}_duplicate_kid: browser leaf federation jwks contains duplicate kid values`);
+  }
+
+  return normalizedKeys;
 }
 
 function normalizeKeyMaterial(keyMaterial: OidfDemoKeyMaterial) {

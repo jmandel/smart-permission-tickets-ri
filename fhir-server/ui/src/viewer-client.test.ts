@@ -15,7 +15,7 @@ const privateJwk: JsonWebKey = {
 describe("viewer OIDF client assertion", () => {
   test("injects trust_chain into the client_assertion JOSE header", async () => {
     const client: RegisteredClientInfo = {
-      clientId: "https://tickets.example.test/federation/leafs/demo-app",
+      clientId: "https://tickets.example.test/demo/clients/oidf/worldwide-app/instances/browser-123",
       clientName: "OpenID Federation Demo App",
       tokenEndpointAuthMethod: "private_key_jwt",
       authMode: "oidf",
@@ -25,13 +25,18 @@ describe("viewer OIDF client assertion", () => {
       type: "oidf",
       displayLabel: "OIDF client",
       registrationMode: "oidf-automatic",
-      entityUri: client.clientId,
-      entityConfigurationUrl: `${client.clientId}/.well-known/openid-federation`,
+      entityUri: "https://tickets.example.test/demo/clients/oidf/worldwide-app/instances/browser-123",
+      parentEntityUri: "https://tickets.example.test/demo/clients/oidf/worldwide-app",
+      parentEntityConfigurationUrl: "https://tickets.example.test/demo/clients/oidf/worldwide-app/.well-known/openid-federation",
+      browserInstanceIssuePath: "/demo/oidf/browser-client-instance",
       clientName: client.clientName,
       publicJwk: privateJwk,
       privateJwk,
+      federationPublicJwk: privateJwk,
+      federationPrivateJwk: privateJwk,
       trustChain: [
         "leaf-config-jwt",
+        "worldwide-app-subordinate-jwt",
         "app-network-subordinate-jwt",
         "anchor-subordinate-jwt",
         "anchor-config-jwt",
@@ -46,7 +51,36 @@ describe("viewer OIDF client assertion", () => {
     const decoded = decodeJwtWithoutVerification<Record<string, any>>(assertion);
 
     expect(decoded.header.trust_chain).toEqual(clientPlan.trustChain);
+    expect(typeof decoded.header.kid).toBe("string");
     expect(decoded.payload.iss).toBe(client.clientId);
     expect(decoded.payload.aud).toBe("https://tickets.example.test/token");
+  });
+
+  test("well-known ES256 client assertions also emit kid", async () => {
+    const client: RegisteredClientInfo = {
+      clientId: "well-known:https://tickets.example.test/demo/clients/well-known-alpha",
+      clientName: "Northwind Care Viewer",
+      tokenEndpointAuthMethod: "private_key_jwt",
+      authMode: "well-known",
+      publicJwk: privateJwk,
+    };
+    const assertion = await buildClientAssertion(client, {
+      type: "well-known",
+      displayLabel: "Well-known client",
+      registrationMode: "implicit-well-known",
+      entityUri: "https://tickets.example.test/demo/clients/well-known-alpha",
+      jwksUrl: "https://tickets.example.test/demo/clients/well-known-alpha/.well-known/jwks.json",
+      clientName: client.clientName,
+      publicJwk: privateJwk,
+      privateJwk,
+      framework: {
+        uri: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+        displayName: "Demo Well-Known",
+      },
+    }, "https://tickets.example.test/token");
+
+    const decoded = decodeJwtWithoutVerification<Record<string, any>>(assertion);
+    expect(typeof decoded.header.kid).toBe("string");
+    expect(decoded.payload.iss).toBe(client.clientId);
   });
 });

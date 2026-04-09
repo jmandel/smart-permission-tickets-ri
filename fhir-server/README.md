@@ -60,7 +60,7 @@ The landing page lists:
   - prepare one of four client stories:
     - dynamic JWK registration for an unaffiliated app
     - implicit `well-known:<uri>` identity with no registration call
-    - OpenID Federation client auth with `client_id=<entity-id>` and a supplied `trust_chain`
+    - OpenID Federation client auth with a browser-generated `client_id=<entity-id>`, parent-issued subordinate statement, and supplied `trust_chain`
     - just-in-time UDAP dynamic registration
   - exchange it for an access token
   - introspect that token
@@ -69,7 +69,7 @@ The landing page lists:
 In `strict` mode, the workbench now explicitly explains what each client path demonstrates before launch:
 - **Unaffiliated registered client**: a one-off app registers a JWK and, in strict/key-bound flows, the ticket binds with `presenter_binding.method = "jkt"`
 - **Well-known client**: a framework-affiliated client skips registration and is recognized as `well-known:<entity-uri>` using current JWKS resolution
-- **OIDF client**: a framework-affiliated client skips registration, uses `client_id=<entity-id>`, and proves trust with a static `trust_chain` in the `client_assertion` JOSE header
+- **OIDF client**: a browser-generated federated client instance skips OAuth registration, uses `client_id=<entity-id>`, and proves trust with a `trust_chain` in the `client_assertion` JOSE header
 - **UDAP client**: a framework-backed client registers just in time with UDAP DCR and then authenticates with `x5c`
 
 After launch, use the **Ticket** and **Client** artifact menus in the viewer to inspect:
@@ -111,10 +111,19 @@ OIDF client authentication and OIDF issuer trust intentionally behave differentl
 OIDF trust is split cleanly by responsibility:
 
 - configured `trustAnchors` define which terminal anchors are accepted
-- configured `trustedLeaves` define which OIDF leaves may be used for client authentication
+- any anchored leaf that resolves to `oauth_client` metadata can be used for client authentication
 - configured `requiredIssuerTrustMarkType` defines which trust mark an OIDF ticket-issuer leaf must present
 - issuer trust is discovered from `${iss}/.well-known/openid-federation`, so holders no longer need a per-issuer `iss -> entityId` map
 - holder-local issuer policy can still narrow acceptance through predicates such as `issuer_url_in`, `oidf_chain_anchored_in`, and `oidf_has_trust_mark`
+
+The demo OIDF client flow separates federation keys from OAuth keys:
+
+- the stable worldwide app entity is server-hosted and signs subordinate statements for browser-instance leaves
+- each browser instance generates its own federation keypair and its own OAuth keypair locally
+- the browser leaf Entity Configuration publishes the federation key in top-level `jwks`
+- the browser leaf publishes OAuth client-auth keys in `metadata.oauth_client.jwks`
+- the token endpoint verifies the `client_assertion` against resolved `oauth_client` keys, not the leaf's federation keys
+- demo-published EC JWK Sets use thumbprint-style `kid` values throughout
 
 `INTERNAL_BASE_URL` is only a loopback rewrite for this server's own advertised
 origin. If an OIDF URL points at some other host, the resolver fetches that

@@ -70,6 +70,11 @@ export async function prepareViewerClient(origin: string, surface: AuthSurface, 
     };
   }
   if (clientPlan.type === "oidf") {
+    const issued = await issueOidfBrowserClientInstance(origin, clientPlan, demoSessionId);
+    clientPlan.trustChain = issued.trust_chain;
+    if (issued.entity_uri !== clientPlan.entityUri) {
+      throw new Error(`OIDF browser instance issuance returned unexpected entity_uri ${issued.entity_uri}`);
+    }
     return {
       clientId: clientPlan.entityUri,
       clientName: clientPlan.clientName,
@@ -417,11 +422,48 @@ export async function buildClientAssertion(client: RegisteredClientInfo, clientP
     });
   }
   if (clientPlan.type === "oidf") {
+    if (!clientPlan.trustChain.length) {
+      throw new Error("OIDF browser client instance is missing a trust chain; prepareViewerClient must run first");
+    }
     return signPrivateKeyJwt(payload, clientPlan.privateJwk, {
       trust_chain: clientPlan.trustChain,
     });
   }
   return signPrivateKeyJwt(payload, clientPlan.privateJwk);
+}
+
+async function issueOidfBrowserClientInstance(origin: string, clientPlan: Extract<ViewerClientPlan, { type: "oidf" }>, demoSessionId?: string | null) {
+  const now = Math.floor(Date.now() / 1000);
+  const leafEntityConfiguration = await signPrivateKeyJwt(
+    {
+      iss: clientPlan.entityUri,
+      sub: clientPlan.entityUri,
+      iat: now,
+      exp: now + 3600,
+      jwks: {
+        keys: [clientPlan.federationPublicJwk],
+      },
+      metadata: {
+        oauth_client: {
+          jwks: {
+            keys: [clientPlan.publicJwk],
+          },
+        },
+      },
+      authority_hints: [clientPlan.parentEntityUri],
+    },
+    clientPlan.federationPrivateJwk,
+    {
+      typ: "entity-statement+jwt",
+    },
+  );
+
+  return postJson<{
+    entity_uri: string;
+    trust_chain: string[];
+  }>(`${origin}${clientPlan.browserInstanceIssuePath}`, {
+    leaf_entity_configuration: leafEntityConfiguration,
+  }, demoSessionId);
 }
 
 async function buildUdapSoftwareStatement(registrationEndpoint: string, clientPlan: Extract<ViewerClientPlan, { type: "udap" }>) {
