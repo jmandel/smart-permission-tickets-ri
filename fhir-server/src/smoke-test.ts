@@ -143,7 +143,7 @@ try {
   );
   const resolvedSiteSlugs = (networkLocations.entry ?? [])
     .filter((entry: any) => entry?.resource?.resourceType === "Endpoint")
-    .map((entry: any) => entry.resource.identifier?.find((identifier: any) => identifier.system === "urn:smart-permission-tickets:site-slug")?.value)
+    .map((entry: any) => entry.resource.identifier?.find((identifier: any) => identifier.system === "urn:example:smart-permission-ticket-demo:site-slug")?.value)
     .filter((value: unknown): value is string => typeof value === "string");
   assert(resolvedSiteSlugs.includes("bay-area-rheumatology-associates"), "network RLS should include surviving sites");
 

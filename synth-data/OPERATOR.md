@@ -20,9 +20,11 @@ Each patient goes through these steps, each producing files on disk in `patients
 4. `steps/04-inventory.ts <patient-dir>` — Fan-out: generates `inventories/enc-*.md` (per-encounter resource manifests, informed by the clinical notes)
 5. `steps/05-generate-fhir.ts <patient-dir>` — Reference scaffold + chronological encounter generation → FHIR JSON in `sites/*/resources/`
 6. `steps/06-security-labels.ts <patient-dir>` — Classifies encounter sensitivity and stamps `meta.security` onto resources in place
-7. `steps/07-assemble.ts <patient-dir>` — Enriches resources, assembles `sites/*/bundle.json`, validates, and updates `manifest.json`
+7. `steps/07-assemble.ts <patient-dir>` — Enriches resources, assembles `sites/*/bundle.json`, normalizes `Bundle.entry.fullUrl` to valid `urn:uuid:` values, validates, and updates `manifest.json`
 
 Steps 1-2 produce markdown meant for human review. Step 3 generates clinical notes (the narrative). Step 4 generates resource inventories that are consistent with those notes. Step 5 first creates a small site reference scaffold, then generates encounters in chronological order with prior site resources available as context. Step 6 applies security labels. Step 7 is pure code and rebuilds the final bundles from the labeled resources.
+
+Step 07 also repairs legacy bundle entry URLs. If a resource `id` is not itself a UUID, the assembler deterministically maps that `id` to a real UUID-shaped `Bundle.entry.fullUrl` so the final bundle still uses valid `urn:uuid:` values.
 
 Every step checks if its output already exists and skips if so. Pass `--force` to regenerate.
 
@@ -174,3 +176,20 @@ bun run validator:stop
 ```
 
 Step 07 (assemble) automatically runs terminology validation against `terminology.sqlite`. The FHIR validator server is optional but useful for structural validation during development — step 05 agents can use it to spot-check generated resources if it's running.
+
+## Bundle `fullUrl` normalization
+
+FHIR bundles in this pipeline use `Bundle.entry.fullUrl = urn:uuid:<uuid>`.
+
+Two supported ways to keep those values valid:
+
+- Normal path: run `bun run step:assemble patients/<slug>`. Step 07 automatically rebuilds `bundle.json` and normalizes every entry to a valid UUID URN.
+- Repair path: run `bun run bundle-fullurls:normalize [patients/<slug> ...]` if you need to clean up legacy `bundle.json` files without rerunning the whole assemble step.
+
+Use the standalone normalizer when:
+
+- a bundle was generated before the UUID repair logic existed
+- a bundle was hand-edited
+- you imported or copied legacy `bundle.json` files and want to make only the `fullUrl` values conformant
+
+The normalization is deterministic. A given non-UUID resource `id` always maps to the same UUID-shaped `fullUrl`, so repeated runs do not churn the bundles.

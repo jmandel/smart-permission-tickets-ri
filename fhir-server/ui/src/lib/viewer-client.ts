@@ -277,7 +277,7 @@ export async function resolveRecordLocations(
     .filter((entry: any) => entry?.resource?.resourceType === "Endpoint")
     .map((entry: any) => {
       const endpoint = entry.resource;
-      const siteSlug = (endpoint.identifier ?? []).find((identifier: any) => identifier.system === "urn:smart-permission-tickets:site-slug")?.value;
+      const siteSlug = (endpoint.identifier ?? []).find((identifier: any) => identifier.system === "urn:example:smart-permission-ticket-demo:site-slug")?.value;
       const organizationRef = endpoint.managingOrganization?.reference ?? "";
       const organizationId = organizationRef.split("/").at(-1) ?? undefined;
       const organization = organizationId ? organizations.get(organizationId) : null;

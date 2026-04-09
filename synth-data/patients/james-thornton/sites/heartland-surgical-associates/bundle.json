@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:00:28.797Z",
+  "timestamp": "2026-04-09T18:47:37.927Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:537091c6-acfe-41e2-bf58-03bff451519d",
@@ -49,7 +49,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"appendectomy-claim-review\",\"label\":\"Appendectomy claim review\",\"summary\":\"BCBS of Nebraska requests the surgical and readmission episode needed to adjudicate James's appendectomy and SSI complication claims.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Blue Cross Blue Shield of Nebraska\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-requester-organization\",\"value\":\"blue-cross-blue-shield-nebraska\"}]},\"context\":{\"service\":{\"text\":\"Laparoscopic appendectomy and surgical-site infection follow-up\"},\"claim\":{\"resourceType\":\"Claim\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-claim\",\"value\":\"BCBSNE-2026-002184\"}],\"status\":\"active\",\"use\":\"claim\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-02-28\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Nebraska Medicine\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Heartland Surgical Associates\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"appendectomy-claim-review\",\"label\":\"Appendectomy claim review\",\"summary\":\"BCBS of Nebraska requests the surgical and readmission episode needed to adjudicate James's appendectomy and SSI complication claims.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Blue Cross Blue Shield of Nebraska\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"blue-cross-blue-shield-nebraska\"}]},\"context\":{\"service\":{\"text\":\"Laparoscopic appendectomy and surgical-site infection follow-up\"},\"claim\":{\"resourceType\":\"Claim\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-claim\",\"value\":\"BCBSNE-2026-002184\"}],\"status\":\"active\",\"use\":\"claim\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-02-28\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Nebraska Medicine\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Heartland Surgical Associates\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "identifier": [
@@ -69,7 +69,7 @@
             "value": "HSA-900471"
           },
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-a5f2afa8a1754b8eb5f081f6"
           }
         ],
@@ -317,7 +317,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-amox-clav",
+      "fullUrl": "urn:uuid:0a0a9c06-8dad-5ca0-8259-67a90948c336",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-003-amox-clav",
@@ -431,7 +431,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-bp",
+      "fullUrl": "urn:uuid:43542a78-fc63-58c3-8a8e-eae6ab35230e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-bp",
@@ -513,7 +513,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-hr",
+      "fullUrl": "urn:uuid:f853aac5-099c-5dc7-a6de-13deb27c4313",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-hr",
@@ -563,7 +563,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-rr",
+      "fullUrl": "urn:uuid:8d6882cb-7f4b-5991-aea6-876594e547ee",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-rr",
@@ -613,7 +613,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-spo2",
+      "fullUrl": "urn:uuid:010d6e4c-b3fd-5479-a59a-69f49b39dc6a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-spo2",
@@ -668,7 +668,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-temp",
+      "fullUrl": "urn:uuid:2c09c29d-9290-5025-9ece-8ad9ce080490",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-temp",
@@ -718,7 +718,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-weight",
+      "fullUrl": "urn:uuid:a39c39d8-3404-5bb0-8ecc-2c30a7af78e6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-weight",
@@ -768,7 +768,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-bp",
+      "fullUrl": "urn:uuid:744f6bb4-ce3d-5f7a-ae3f-50a580b580e9",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-bp",
@@ -850,7 +850,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-hr",
+      "fullUrl": "urn:uuid:be55a9a2-47d3-543a-852b-e7ae92a8f336",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-hr",
@@ -900,7 +900,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-rr",
+      "fullUrl": "urn:uuid:2f71dba0-d9cb-5087-821a-818427cbb9ca",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-rr",
@@ -950,7 +950,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-spo2",
+      "fullUrl": "urn:uuid:b50b0f5b-1cb8-5a91-800b-d5d3d80ee64c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-spo2",
@@ -1005,7 +1005,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-temp",
+      "fullUrl": "urn:uuid:81c6b8d8-e6c6-5385-a8bc-2a7ac56574c5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-temp",
@@ -1055,7 +1055,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-weight",
+      "fullUrl": "urn:uuid:35755f90-f71a-5a3e-8faa-4a4e7d47b51b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-weight",
@@ -1105,7 +1105,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-note",
+      "fullUrl": "urn:uuid:1f3a951c-ada8-58d9-be6b-206b2adb1955",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-003-note",
@@ -1176,7 +1176,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-note",
+      "fullUrl": "urn:uuid:e9c29666-36f7-54f6-a80b-99908cae7a22",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-006-note",
@@ -1248,7 +1248,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-ssi",
+      "fullUrl": "urn:uuid:57789374-5d1d-570f-bec0-bd9baffafc15",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-003-ssi",
@@ -1321,7 +1321,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-status-post-appendectomy",
+      "fullUrl": "urn:uuid:f1f22f5e-59ff-58d4-9668-60f3745ffc6c",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-006-status-post-appendectomy",
@@ -1394,7 +1394,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003",
+      "fullUrl": "urn:uuid:78de5d07-bc7c-5e9b-8886-489f777ccc7f",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-003",
@@ -1499,7 +1499,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006",
+      "fullUrl": "urn:uuid:a7e884e7-e11c-5ae0-8fe5-6c3d73b6fb75",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-006",

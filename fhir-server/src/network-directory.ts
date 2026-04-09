@@ -3,7 +3,7 @@ import type { AuthorizationEnvelope, RouteContext } from "./store/model.ts";
 import type { FhirStore, SiteSummary } from "./store/store.ts";
 import { buildAuthBasePath, buildFhirBasePath } from "../shared/surfaces.ts";
 
-const SITE_SLUG_SYSTEM = "urn:smart-permission-tickets:site-slug";
+const SITE_SLUG_SYSTEM = "urn:example:smart-permission-ticket-demo:site-slug";
 const NPI_SYSTEM = "http://hl7.org/fhir/sid/us-npi";
 const ENDPOINT_CONNECTION_SYSTEM = "http://terminology.hl7.org/CodeSystem/endpoint-connection-type";
 
@@ -64,7 +64,7 @@ export function buildNetworkCapabilityStatement(config: ServerConfig, url: URL, 
         operation: [
           {
             name: "resolve-record-locations",
-            definition: "urn:smart-permission-tickets:OperationDefinition/resolve-record-locations",
+            definition: "urn:example:smart-permission-ticket-demo:OperationDefinition/resolve-record-locations",
           },
         ],
       },

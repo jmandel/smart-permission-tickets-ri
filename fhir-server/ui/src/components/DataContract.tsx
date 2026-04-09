@@ -188,7 +188,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
         </thead>
         <tbody>
           <tr>
-            <td><code>Patient.identifier[system=&quot;urn:smart-permission-tickets:person-id&quot;]</code></td>
+            <td><code>Patient.identifier[system=&quot;urn:example:smart-permission-ticket-demo:person-id&quot;]</code></td>
             <td>Cross-site person linkage visible in served FHIR responses.</td>
           </tr>
           <tr>

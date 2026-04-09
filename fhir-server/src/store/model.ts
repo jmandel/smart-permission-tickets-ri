@@ -286,7 +286,7 @@ export type ResourceRow = {
 
 export const DATA_ROOT = path.resolve(import.meta.dir, "..", "..", "..", "synth-data", "patients");
 export const SECURITY_SYSTEM = "urn:example:permissiontickets-demo:security";
-export const CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM = "urn:smart-permission-tickets:person-id";
+export const CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM = "urn:example:smart-permission-ticket-demo:person-id";
 export const V3_ACTCODE_SYSTEM = "http://terminology.hl7.org/CodeSystem/v3-ActCode";
 export const SENSITIVE_LABELS: Label[] = [
   { system: V3_ACTCODE_SYSTEM, code: "SEX" },

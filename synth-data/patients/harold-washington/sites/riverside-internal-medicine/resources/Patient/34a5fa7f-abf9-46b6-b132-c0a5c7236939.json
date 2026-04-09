@@ -42,7 +42,7 @@
     },
     {
       "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-      "valueString": "{\"scenarios\":[{\"id\":\"daughter-caregiver-access\",\"label\":\"Daughter caregiver access\",\"summary\":\"Margaret Washington-Clarke requests Harold's records across Florida and Georgia to manage his Alzheimer's care after relocation.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/patient-delegated-access-v1\",\"requester\":{\"resourceType\":\"RelatedPerson\",\"relationship\":[{\"coding\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\"code\":\"DAU\",\"display\":\"daughter\"}],\"text\":\"Daughter\"}],\"name\":[{\"family\":\"Washington-Clarke\",\"given\":[\"Margaret\"]}],\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-related-person\",\"value\":\"margaret-washington-clarke\"}]},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"*\",\"interactions\":[\"read\",\"search\"]}],\"sensitive_data\":\"exclude\"}}}]}"
+      "valueString": "{\"scenarios\":[{\"id\":\"daughter-caregiver-access\",\"label\":\"Daughter caregiver access\",\"summary\":\"Margaret Washington-Clarke requests Harold's records across Florida and Georgia to manage his Alzheimer's care after relocation.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/patient-delegated-access-v1\",\"requester\":{\"resourceType\":\"RelatedPerson\",\"relationship\":[{\"coding\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\"code\":\"DAU\",\"display\":\"daughter\"}],\"text\":\"Daughter\"}],\"name\":[{\"family\":\"Washington-Clarke\",\"given\":[\"Margaret\"]}],\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-related-person\",\"value\":\"margaret-washington-clarke\"}]},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"*\",\"interactions\":[\"read\",\"search\"]}],\"sensitive_data\":\"exclude\"}}}]}"
     }
   ],
   "identifier": [
@@ -62,7 +62,7 @@
       "value": "RIM-HW-20150318"
     },
     {
-      "system": "urn:smart-permission-tickets:person-id",
+      "system": "urn:example:smart-permission-ticket-demo:person-id",
       "value": "person-48854edc2c9e736942f1f48e"
     }
   ],

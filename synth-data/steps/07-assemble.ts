@@ -13,6 +13,7 @@ import { resolve, dirname, basename } from "path";
 import { readdir } from "fs/promises";
 import Database from "bun:sqlite";
 
+import { buildBundle } from "../lib/bundle-fullurl.ts";
 import { enrichResource, loadEnrichmentContext } from "./enrichment.ts";
 
 const PIPELINE_ROOT = resolve(dirname(new URL(import.meta.url).pathname), "..");
@@ -71,18 +72,6 @@ async function collectResourceFiles(siteDir: string): Promise<Array<{ path: stri
   }
 
   return resourceFiles;
-}
-
-function buildBundle(resources: any[]): any {
-  return {
-    resourceType: "Bundle",
-    type: "collection",
-    timestamp: new Date().toISOString(),
-    entry: resources.map(r => ({
-      fullUrl: `urn:uuid:${r.id}`,
-      resource: r,
-    })),
-  };
 }
 
 function countByType(resources: any[]): Record<string, number> {

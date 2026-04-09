@@ -11,7 +11,7 @@
           "name": "Aetna Prior Authorization Operations",
           "identifier": [
             {
-              "system": "urn:smart-permission-tickets:demo-requester-organization",
+              "system": "urn:example:smart-permission-ticket-demo:demo-requester-organization",
               "value": "aetna-prior-authorization-operations"
             }
           ]
@@ -26,7 +26,7 @@
             "use": "preauthorization",
             "identifier": [
               {
-                "system": "urn:smart-permission-tickets:demo-claim",
+                "system": "urn:example:smart-permission-ticket-demo:demo-claim",
                 "value": "AETNA-PA-2023-7715"
               }
             ]

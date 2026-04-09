@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:10:13.773Z",
+  "timestamp": "2026-04-09T18:47:39.457Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:bb4f5104-f2ac-492e-8745-681517f118b4",
@@ -49,7 +49,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"tb-public-health-investigation\",\"label\":\"Tuberculosis investigation\",\"summary\":\"Illinois public health access focused on Robert's TB episode across the hospital and ambulatory TB clinic.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Illinois Department of Public Health\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-requester-organization\",\"value\":\"illinois-department-public-health\"}]},\"context\":{\"reportable_condition\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"56717001\",\"display\":\"Tuberculosis\"}],\"text\":\"Tuberculosis\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-04-30\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"University of Illinois Hospital\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UI Health Ambulatory TB Clinic\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"tb-public-health-investigation\",\"label\":\"Tuberculosis investigation\",\"summary\":\"Illinois public health access focused on Robert's TB episode across the hospital and ambulatory TB clinic.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Illinois Department of Public Health\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"illinois-department-public-health\"}]},\"context\":{\"reportable_condition\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"56717001\",\"display\":\"Tuberculosis\"}],\"text\":\"Tuberculosis\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-04-30\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"University of Illinois Hospital\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UI Health Ambulatory TB Clinic\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "name": [
@@ -110,7 +110,7 @@
         ],
         "identifier": [
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-6fe9159adc6cb369be301246"
           }
         ],
@@ -314,7 +314,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-a1c-report",
+      "fullUrl": "urn:uuid:aee3cd66-c434-50e4-a240-9467d06be88d",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-a1c-report",
@@ -365,7 +365,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-afb-report",
+      "fullUrl": "urn:uuid:b96257b8-f104-5e19-9b59-f3c7dbc87996",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-afb-report",
@@ -416,7 +416,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-cbc-report",
+      "fullUrl": "urn:uuid:1390413c-aeb0-5a7e-98b8-b611375ffc41",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-cbc-report",
@@ -488,7 +488,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-cmp-report",
+      "fullUrl": "urn:uuid:0112a4da-e355-531a-bdad-63280e23d4a1",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-cmp-report",
@@ -578,7 +578,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-cxr-report",
+      "fullUrl": "urn:uuid:58d65573-7c53-5361-9bf1-1996b85c26f5",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-cxr-report",
@@ -625,7 +625,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-genexpert-report",
+      "fullUrl": "urn:uuid:bab1ab78-a660-5227-a5df-d40a9bf349ab",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-genexpert-report",
@@ -676,7 +676,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hbsag-report",
+      "fullUrl": "urn:uuid:106ca250-69f4-5e24-80a8-453993c0d270",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-hbsag-report",
@@ -727,7 +727,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hcv-report",
+      "fullUrl": "urn:uuid:3d27d8be-2a01-50ce-92f8-ae133959b232",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-hcv-report",
@@ -778,7 +778,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hiv-report",
+      "fullUrl": "urn:uuid:18b076ca-ec9f-5e55-beaf-886c942eedeb",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-hiv-report",
@@ -838,7 +838,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-afb-report-2",
+      "fullUrl": "urn:uuid:7a3ad111-ecd0-5d96-a61e-2677cd0e53d7",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-afb-report-2",
@@ -890,7 +890,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-afb-report-3",
+      "fullUrl": "urn:uuid:c26004fb-95d2-5fe9-8208-27eef1c305a3",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-afb-report-3",
@@ -942,7 +942,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-culture-1",
+      "fullUrl": "urn:uuid:93f6b44c-8e58-5576-865d-252769ab56c2",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-culture-1",
@@ -982,7 +982,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-culture-2",
+      "fullUrl": "urn:uuid:c9f10d01-e7ea-5777-9eba-6be65fa81655",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-culture-2",
@@ -1022,7 +1022,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-culture-3",
+      "fullUrl": "urn:uuid:e1b7c296-b4e9-563e-ab3c-6dcc206c691c",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-culture-3",
@@ -1062,7 +1062,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-lft-report-d2",
+      "fullUrl": "urn:uuid:6122919d-76b9-59d9-91e7-acf5b24815c5",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-lft-report-d2",
@@ -1117,7 +1117,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-lft-report-d3",
+      "fullUrl": "urn:uuid:c307c777-836c-5117-81fb-f8b0c0750d7c",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-lft-report-d3",
@@ -1172,7 +1172,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-lft-report-d4",
+      "fullUrl": "urn:uuid:0916743a-353e-500a-a846-b8e0e08fe032",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-lft-report-d4",
@@ -1227,7 +1227,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-a1c",
+      "fullUrl": "urn:uuid:a83cb20d-f223-526a-a4bc-5337220a373f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-a1c",
@@ -1293,7 +1293,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-afb-smear",
+      "fullUrl": "urn:uuid:060d3970-3902-55c7-b8fb-cf6cf473ab77",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-afb-smear",
@@ -1349,7 +1349,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-albumin",
+      "fullUrl": "urn:uuid:b208f2cb-8f5c-5c1a-8a6d-a9bc213629c5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-albumin",
@@ -1415,7 +1415,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-alkphos",
+      "fullUrl": "urn:uuid:450e5350-65bd-5386-98e9-4f884b8c33a5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-alkphos",
@@ -1481,7 +1481,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-alt",
+      "fullUrl": "urn:uuid:ef809f48-eeef-59cb-a8ea-dc894cce3fa8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-alt",
@@ -1547,7 +1547,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ast",
+      "fullUrl": "urn:uuid:eb3004e3-28b9-5a7f-9cf6-0202d518ad89",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-ast",
@@ -1613,7 +1613,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bilirubin",
+      "fullUrl": "urn:uuid:b68a4a17-07c8-5bb6-ba42-e6d268cb9822",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bilirubin",
@@ -1679,7 +1679,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bmi",
+      "fullUrl": "urn:uuid:9511c6ba-2a1a-5bf0-ab71-e27327c33c91",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bmi",
@@ -1723,7 +1723,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bp",
+      "fullUrl": "urn:uuid:a0e03fee-a4e1-5319-9548-8bcaa51c5067",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bp",
@@ -1799,7 +1799,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bun",
+      "fullUrl": "urn:uuid:10635f10-1612-5339-8795-a0ff486ca913",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bun",
@@ -1865,7 +1865,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-calcium",
+      "fullUrl": "urn:uuid:6819be68-9ba0-5e10-a5e5-84f87331cf26",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-calcium",
@@ -1931,7 +1931,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-chloride",
+      "fullUrl": "urn:uuid:7c4c0197-fc86-561f-b613-524651ca5628",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-chloride",
@@ -1997,7 +1997,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-co2",
+      "fullUrl": "urn:uuid:6cd9caf7-b239-543b-9cae-e5372b507bfa",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-co2",
@@ -2063,7 +2063,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-creatinine",
+      "fullUrl": "urn:uuid:1cb80e1d-328a-5632-8520-26638f4c8d5f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-creatinine",
@@ -2129,7 +2129,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-genexpert",
+      "fullUrl": "urn:uuid:0c19ae34-6801-50b3-bcca-35c9ff199828",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-genexpert",
@@ -2182,7 +2182,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-glucose",
+      "fullUrl": "urn:uuid:01cd18c9-068d-5a39-9ad9-c4cd72bf7809",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-glucose",
@@ -2248,7 +2248,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hbsag",
+      "fullUrl": "urn:uuid:25cdad1f-c49c-52ce-8aad-e8e5bcaa7eae",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hbsag",
@@ -2298,7 +2298,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hct",
+      "fullUrl": "urn:uuid:19f4647e-65d7-549c-86f5-16f86af9638b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hct",
@@ -2364,7 +2364,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hcv",
+      "fullUrl": "urn:uuid:15a87275-e934-5970-bf6d-88fd0605772d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hcv",
@@ -2414,7 +2414,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-height",
+      "fullUrl": "urn:uuid:6785bbe3-6409-5bab-8c29-757974d79c29",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-height",
@@ -2458,7 +2458,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hgb",
+      "fullUrl": "urn:uuid:5247ff4b-d896-5235-a6cc-a582de68a47c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hgb",
@@ -2524,7 +2524,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hiv",
+      "fullUrl": "urn:uuid:0d59fa2a-e4cc-5b5d-84c0-f4c6576fe0f3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hiv",
@@ -2583,7 +2583,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hr",
+      "fullUrl": "urn:uuid:7c9f6ac4-ecbf-5b09-a7cf-fdd2620ad5cc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hr",
@@ -2627,7 +2627,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-lymphocytes",
+      "fullUrl": "urn:uuid:6a7d14a6-d811-598d-bf3d-8f493defeedb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-lymphocytes",
@@ -2671,7 +2671,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-mcv",
+      "fullUrl": "urn:uuid:31829fe0-0011-53a0-94b4-738053e88cad",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-mcv",
@@ -2737,7 +2737,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-monocytes",
+      "fullUrl": "urn:uuid:79161f41-3a13-56e2-be8f-20a9cedc2164",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-monocytes",
@@ -2781,7 +2781,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-neutrophils",
+      "fullUrl": "urn:uuid:999671cb-0fe6-5fc0-a432-b2ba28dc26e2",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-neutrophils",
@@ -2825,7 +2825,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-platelets",
+      "fullUrl": "urn:uuid:b362007d-14cd-5778-86e3-1615160274ee",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-platelets",
@@ -2891,7 +2891,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-potassium",
+      "fullUrl": "urn:uuid:36c609c9-6a5d-5479-85b0-925056f94f60",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-potassium",
@@ -2957,7 +2957,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-protein",
+      "fullUrl": "urn:uuid:2f709b27-2b87-5e51-ad79-e0d5f933e017",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-protein",
@@ -3023,7 +3023,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-rr",
+      "fullUrl": "urn:uuid:9610d8ad-d375-5215-a139-775410eb53af",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-rr",
@@ -3067,7 +3067,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-sodium",
+      "fullUrl": "urn:uuid:1b63359f-fb6d-578e-8f4f-b14581fc4452",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-sodium",
@@ -3133,7 +3133,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-spo2",
+      "fullUrl": "urn:uuid:0a61b16d-3016-55ef-b818-1d8728468ea1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-spo2",
@@ -3182,7 +3182,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-temp",
+      "fullUrl": "urn:uuid:b7cdb1f7-fe2f-5b61-9912-3deaa3632a69",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-temp",
@@ -3226,7 +3226,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-wbc",
+      "fullUrl": "urn:uuid:0eead2b1-3463-52ee-b858-0dff55d66d70",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-wbc",
@@ -3292,7 +3292,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-weight",
+      "fullUrl": "urn:uuid:76ec4589-f94c-5ffb-9515-ae081f45f6d8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-weight",
@@ -3336,7 +3336,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-afb-smear-2",
+      "fullUrl": "urn:uuid:aca74fd8-22dc-5f53-9cff-4d93c0601c5b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-afb-smear-2",
@@ -3392,7 +3392,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-afb-smear-3",
+      "fullUrl": "urn:uuid:a12efd3b-6a88-5d3f-9a53-2fac775ffde9",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-afb-smear-3",
@@ -3448,7 +3448,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-alt-d2",
+      "fullUrl": "urn:uuid:6d6ab09d-1d73-5a2d-8e04-92fbf18bdcfa",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-alt-d2",
@@ -3514,7 +3514,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-alt-d3",
+      "fullUrl": "urn:uuid:32acb3f7-ea7b-5a6b-ae8c-a8d5a864e4d3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-alt-d3",
@@ -3580,7 +3580,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-alt-d4",
+      "fullUrl": "urn:uuid:672963f3-b18e-5025-9302-8d37ae9ba878",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-alt-d4",
@@ -3646,7 +3646,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-ast-d2",
+      "fullUrl": "urn:uuid:0ddadd63-49f1-5316-8f4a-850f61536ecc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-ast-d2",
@@ -3712,7 +3712,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-ast-d3",
+      "fullUrl": "urn:uuid:b5457a0d-2682-584c-981b-255e178cef45",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-ast-d3",
@@ -3778,7 +3778,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-ast-d4",
+      "fullUrl": "urn:uuid:79ab4da7-8b0b-565e-af2f-691192e72044",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-ast-d4",
@@ -3844,7 +3844,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-bp-d1",
+      "fullUrl": "urn:uuid:5e7136d2-cdeb-53bd-8551-8e4112bf3b8a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-bp-d1",
@@ -3920,7 +3920,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-bp-d2",
+      "fullUrl": "urn:uuid:1152bf14-e9e1-557c-b586-8ef580e3a07d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-bp-d2",
@@ -3996,7 +3996,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-bp-d3",
+      "fullUrl": "urn:uuid:06d0f96e-d29e-572f-9130-1cd58ccdf105",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-bp-d3",
@@ -4072,7 +4072,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-bp-d4",
+      "fullUrl": "urn:uuid:9b9516d6-b831-52e3-b8dd-151860f74479",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-bp-d4",
@@ -4148,7 +4148,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-bp-d5",
+      "fullUrl": "urn:uuid:4ca18959-07e6-55d1-89e0-080641f156a7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-bp-d5",
@@ -4224,7 +4224,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-hr-d1",
+      "fullUrl": "urn:uuid:ec5a7bca-69a9-52ac-a93a-c1efff6990a6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-hr-d1",
@@ -4268,7 +4268,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-hr-d2",
+      "fullUrl": "urn:uuid:dc62a2e8-fffb-5801-9c3e-6dab9f60ac46",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-hr-d2",
@@ -4312,7 +4312,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-hr-d3",
+      "fullUrl": "urn:uuid:983d6bef-f026-5827-9542-e2634301c4bb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-hr-d3",
@@ -4356,7 +4356,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-hr-d4",
+      "fullUrl": "urn:uuid:8af6db7a-d752-5e55-8997-93751f95db8a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-hr-d4",
@@ -4400,7 +4400,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-hr-d5",
+      "fullUrl": "urn:uuid:87455627-eec8-5082-b1a0-186ce12c2f51",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-hr-d5",
@@ -4444,7 +4444,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-rr-d1",
+      "fullUrl": "urn:uuid:c9e4aad3-293f-588a-90f5-94b5d8907694",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-rr-d1",
@@ -4488,7 +4488,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-rr-d2",
+      "fullUrl": "urn:uuid:91b53d25-3b82-5479-ab8c-345a59033538",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-rr-d2",
@@ -4532,7 +4532,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-rr-d3",
+      "fullUrl": "urn:uuid:4c5dcaaa-edd7-538f-b4fb-dfdb75012a62",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-rr-d3",
@@ -4576,7 +4576,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-rr-d4",
+      "fullUrl": "urn:uuid:867eadb9-6c91-5cb9-8f7a-72cc28043d91",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-rr-d4",
@@ -4620,7 +4620,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-rr-d5",
+      "fullUrl": "urn:uuid:db3c6360-dedd-5a8c-be18-75e13dbd8620",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-rr-d5",
@@ -4664,7 +4664,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-spo2-d1",
+      "fullUrl": "urn:uuid:51de6c48-2b92-5eed-b2f4-948fd9df3abf",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-spo2-d1",
@@ -4718,7 +4718,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-spo2-d2",
+      "fullUrl": "urn:uuid:41d105ee-ceb8-5007-9b4d-2a4b9134c6d2",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-spo2-d2",
@@ -4767,7 +4767,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-spo2-d3",
+      "fullUrl": "urn:uuid:5dd40c87-fd3a-57a6-9c2d-e9066205a0c1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-spo2-d3",
@@ -4816,7 +4816,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-spo2-d4",
+      "fullUrl": "urn:uuid:327bbd2a-a1b9-52d7-a226-10c3e7f6dd74",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-spo2-d4",
@@ -4865,7 +4865,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-spo2-d5",
+      "fullUrl": "urn:uuid:bfb91fba-a227-5a2d-a110-adb57489e811",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-spo2-d5",
@@ -4919,7 +4919,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-temp-d1",
+      "fullUrl": "urn:uuid:ed438db1-f515-5034-8f8c-f5c9cd9abb77",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-temp-d1",
@@ -4963,7 +4963,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-temp-d2",
+      "fullUrl": "urn:uuid:0ab56c44-e78e-514f-a53e-288d7c8dd8fc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-temp-d2",
@@ -5007,7 +5007,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-temp-d3",
+      "fullUrl": "urn:uuid:9e08ed1f-9c88-5dd4-bda3-498299b98aea",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-temp-d3",
@@ -5051,7 +5051,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-temp-d4",
+      "fullUrl": "urn:uuid:7a18ba0f-1cab-512c-8a10-b0771bd54422",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-temp-d4",
@@ -5095,7 +5095,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-temp-d5",
+      "fullUrl": "urn:uuid:27312288-617d-5a07-8282-829d4286776e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-temp-d5",
@@ -5139,7 +5139,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-weight-d1",
+      "fullUrl": "urn:uuid:63ba63b8-5849-56d7-a4ee-27c81b241ed3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-weight-d1",
@@ -5183,7 +5183,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-weight-d5",
+      "fullUrl": "urn:uuid:06afe76a-6a68-5891-8d14-8e6825bfe39e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-001-weight-d5",
@@ -5227,7 +5227,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-allergy-ragweed",
+      "fullUrl": "urn:uuid:3d614e43-eca0-5e0b-bfbe-e4b21267331c",
       "resource": {
         "resourceType": "AllergyIntolerance",
         "id": "enc-000-allergy-ragweed",
@@ -5284,7 +5284,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-nkda",
+      "fullUrl": "urn:uuid:f951b95d-05e9-5d59-bf0d-d01358d884d2",
       "resource": {
         "resourceType": "AllergyIntolerance",
         "id": "enc-000-nkda",
@@ -5326,7 +5326,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-anemia",
+      "fullUrl": "urn:uuid:97cdd60e-3b8e-5333-9369-41c2636d6dfb",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-000-anemia",
@@ -5384,7 +5384,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-tb",
+      "fullUrl": "urn:uuid:ab06dd96-daa1-5498-899d-c21f245bf69d",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-000-tb",
@@ -5442,7 +5442,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-hypoalbuminemia",
+      "fullUrl": "urn:uuid:ed1106fd-454d-59d1-91a6-0393655fa833",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-001-hypoalbuminemia",
@@ -5500,7 +5500,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-note",
+      "fullUrl": "urn:uuid:6ef3ab32-dd3d-5fd3-935e-2cbab5c39d47",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-000-note",
@@ -5561,7 +5561,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-note",
+      "fullUrl": "urn:uuid:3163f359-b6fc-5a47-b53e-ca1a61155e20",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-001-note",
@@ -5623,7 +5623,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000",
+      "fullUrl": "urn:uuid:f8bb9785-61bf-50f4-9a02-03e1f89f4208",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-000",
@@ -5704,7 +5704,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001",
+      "fullUrl": "urn:uuid:77ff4782-f463-5bc0-9199-4e7fa5dbef5a",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-001",
@@ -5840,7 +5840,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-acetaminophen-hold",
+      "fullUrl": "urn:uuid:c023e263-05e6-55fc-9254-f8fe3603a873",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-acetaminophen-hold",
@@ -5899,7 +5899,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-ethambutol",
+      "fullUrl": "urn:uuid:b731aeeb-90a4-5271-885e-38ed768af60a",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-ethambutol",
@@ -5960,7 +5960,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-isoniazid",
+      "fullUrl": "urn:uuid:38fb0c64-011d-5ad3-a060-6c1fbd523904",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-isoniazid",
@@ -6021,7 +6021,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-ondansetron",
+      "fullUrl": "urn:uuid:72e4faa5-4319-5095-afd2-a09850c3de29",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-ondansetron",
@@ -6087,7 +6087,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-pyrazinamide",
+      "fullUrl": "urn:uuid:bf3b884c-fd8f-5ab2-85da-659946fb349c",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-pyrazinamide",
@@ -6148,7 +6148,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-pyridoxine",
+      "fullUrl": "urn:uuid:35cf4ca1-4dbb-5e29-a29d-27ed08514b6f",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-pyridoxine",
@@ -6202,7 +6202,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-rifampin",
+      "fullUrl": "urn:uuid:a01c624e-bfba-5fee-bd29-54b5539d0cc6",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-rifampin",

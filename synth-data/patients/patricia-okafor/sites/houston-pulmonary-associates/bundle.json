@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:00:29.729Z",
+  "timestamp": "2026-04-09T18:47:39.144Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:32ee000c-abb4-49f2-a38b-ebbc651c9dcf",
@@ -49,7 +49,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"oncology-trial-record-packet\",\"label\":\"Oncology trial record packet\",\"summary\":\"MD Anderson research access focused on Patricia's pre-enrollment and ongoing oncology history from community PCP and pulmonology sources.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/research-study-access-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"MD Anderson Cancer Center Research Institute\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-requester-organization\",\"value\":\"md-anderson-cancer-center-research-institute\"}]},\"context\":{\"study\":{\"resourceType\":\"ResearchStudy\",\"identifier\":[{\"system\":\"https://clinicaltrials.gov\",\"value\":\"NCT05820295\"}],\"status\":\"active\",\"title\":\"Phase III chemo-immunotherapy study for stage III NSCLC\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2022-01-01\",\"end\":\"2025-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Westheimer Family Medicine\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Houston Pulmonary Associates\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"oncology-trial-record-packet\",\"label\":\"Oncology trial record packet\",\"summary\":\"MD Anderson research access focused on Patricia's pre-enrollment and ongoing oncology history from community PCP and pulmonology sources.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/research-study-access-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"MD Anderson Cancer Center Research Institute\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"md-anderson-cancer-center-research-institute\"}]},\"context\":{\"study\":{\"resourceType\":\"ResearchStudy\",\"identifier\":[{\"system\":\"https://clinicaltrials.gov\",\"value\":\"NCT05820295\"}],\"status\":\"active\",\"title\":\"Phase III chemo-immunotherapy study for stage III NSCLC\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2022-01-01\",\"end\":\"2025-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Westheimer Family Medicine\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Houston Pulmonary Associates\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "identifier": [
@@ -69,7 +69,7 @@
             "value": "HPA-200481"
           },
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-190bdb79160b5ea0ea721891"
           }
         ],
@@ -307,7 +307,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-bmi",
+      "fullUrl": "urn:uuid:25cd39f9-4151-53c9-a8e3-d01cf13eb937",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-bmi",
@@ -351,7 +351,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-bp",
+      "fullUrl": "urn:uuid:efd71911-029b-5040-bbbb-eebc9a3d0009",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-bp",
@@ -433,7 +433,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-hr",
+      "fullUrl": "urn:uuid:f661ea8c-8468-56ce-ac62-49e1c93bec24",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-hr",
@@ -477,7 +477,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-rr",
+      "fullUrl": "urn:uuid:6a6c6056-10d6-5da5-9b64-50e37abd1085",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-rr",
@@ -521,7 +521,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-spo2",
+      "fullUrl": "urn:uuid:df58523b-769d-5786-bcdd-295b055c36e0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-spo2",
@@ -570,7 +570,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-temp",
+      "fullUrl": "urn:uuid:4a1ce181-034d-52c2-b7d6-6b226cf1be2c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-temp",
@@ -614,7 +614,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-weight",
+      "fullUrl": "urn:uuid:d94a08c8-3f52-58c1-a43b-8128ee5ee68d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-008-weight",
@@ -658,7 +658,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-dlco",
+      "fullUrl": "urn:uuid:293dad8a-440c-5ab2-80b2-c63f9c8da6fd",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-dlco",
@@ -732,7 +732,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-fev1-fvc-ratio",
+      "fullUrl": "urn:uuid:2c27a03c-1793-5b32-84c1-d1b06c803aff",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-fev1-fvc-ratio",
@@ -801,7 +801,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-fev1",
+      "fullUrl": "urn:uuid:68de1878-813e-58e0-a801-8f8e626c468c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-fev1",
@@ -875,7 +875,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-fvc",
+      "fullUrl": "urn:uuid:2d730305-4216-5713-8d04-b0a14d40ef3c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-fvc",
@@ -949,7 +949,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-tlc",
+      "fullUrl": "urn:uuid:60b6666b-102c-5078-b279-80a23144b6a7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-tlc",
@@ -1023,7 +1023,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-cbc",
+      "fullUrl": "urn:uuid:4028afc1-2845-5408-8101-39922aff3062",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-008-cbc",
@@ -1063,7 +1063,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-cmp",
+      "fullUrl": "urn:uuid:ae4c9144-af33-572e-bb43-6e669036eff2",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-008-cmp",
@@ -1103,7 +1103,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-ct-chest",
+      "fullUrl": "urn:uuid:05e0d43b-b559-58f5-b85c-565e6c5caf36",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-008-ct-chest",
@@ -1161,7 +1161,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-pft",
+      "fullUrl": "urn:uuid:dd258963-50c4-5b08-974b-701d4f6c62e6",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-009-pft",
@@ -1241,7 +1241,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-lung-mass",
+      "fullUrl": "urn:uuid:7d7fcd61-7ef5-5198-bca1-ef7cbde0781c",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-008-lung-mass",
@@ -1308,7 +1308,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-mda-referral",
+      "fullUrl": "urn:uuid:7fa05596-4b57-50b5-8db7-3527088ad05f",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-008-mda-referral",
@@ -1362,7 +1362,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-pft-order",
+      "fullUrl": "urn:uuid:ab78e446-ebfc-521b-a101-efa493ceac74",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-008-pft-order",
@@ -1405,7 +1405,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-note",
+      "fullUrl": "urn:uuid:75053b15-8d54-5427-9d07-f070250f767d",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-008-note",
@@ -1465,7 +1465,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-note",
+      "fullUrl": "urn:uuid:d66436f3-628c-5ff6-b8b6-db56aa25b3d7",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-009-note",
@@ -1537,7 +1537,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-note",
+      "fullUrl": "urn:uuid:15c21655-eab9-52a2-bb14-03d27eb3400a",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-010-note",
@@ -1608,7 +1608,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008",
+      "fullUrl": "urn:uuid:a03165b5-1157-5ddf-b34e-c27fbd091dbe",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-008",
@@ -1688,7 +1688,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009",
+      "fullUrl": "urn:uuid:ae6c9817-7d90-57e6-9642-a2c929c57311",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-009",
@@ -1768,7 +1768,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010",
+      "fullUrl": "urn:uuid:608754b8-f297-517d-a650-af5bef7e2e48",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-010",
@@ -1844,7 +1844,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-guaifenesin-codeine",
+      "fullUrl": "urn:uuid:646f8fcb-2956-5db7-847d-ebc500c454b6",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-010-guaifenesin-codeine",

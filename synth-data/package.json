@@ -10,6 +10,7 @@
     "step:generate": "bun run steps/05-generate-fhir.ts",
     "step:security-labels": "bun run steps/06-security-labels.ts",
     "step:assemble": "bun run steps/07-assemble.ts",
+    "bundle-fullurls:normalize": "bun run scripts/normalize-bundle-fullurls.ts",
     "spike:permissioned-query": "bun run scripts/permissioned-query-spike.ts",
     "extract-few-shots": "bun run scripts/extract-few-shots.ts",
     "setup": "bun run scripts/setup.ts",

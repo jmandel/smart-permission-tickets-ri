@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:00:28.781Z",
+  "timestamp": "2026-04-09T18:47:37.911Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:85d2a90a-ea22-452b-9f48-429df704aa0d",
@@ -49,7 +49,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"appendectomy-claim-review\",\"label\":\"Appendectomy claim review\",\"summary\":\"BCBS of Nebraska requests the surgical and readmission episode needed to adjudicate James's appendectomy and SSI complication claims.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Blue Cross Blue Shield of Nebraska\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-requester-organization\",\"value\":\"blue-cross-blue-shield-nebraska\"}]},\"context\":{\"service\":{\"text\":\"Laparoscopic appendectomy and surgical-site infection follow-up\"},\"claim\":{\"resourceType\":\"Claim\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-claim\",\"value\":\"BCBSNE-2026-002184\"}],\"status\":\"active\",\"use\":\"claim\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-02-28\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Nebraska Medicine\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Heartland Surgical Associates\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"appendectomy-claim-review\",\"label\":\"Appendectomy claim review\",\"summary\":\"BCBS of Nebraska requests the surgical and readmission episode needed to adjudicate James's appendectomy and SSI complication claims.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Blue Cross Blue Shield of Nebraska\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"blue-cross-blue-shield-nebraska\"}]},\"context\":{\"service\":{\"text\":\"Laparoscopic appendectomy and surgical-site infection follow-up\"},\"claim\":{\"resourceType\":\"Claim\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-claim\",\"value\":\"BCBSNE-2026-002184\"}],\"status\":\"active\",\"use\":\"claim\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-02-28\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Nebraska Medicine\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Heartland Surgical Associates\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "name": [
@@ -114,7 +114,7 @@
         },
         "identifier": [
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-a5f2afa8a1754b8eb5f081f6"
           }
         ],
@@ -360,7 +360,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bands",
+      "fullUrl": "urn:uuid:b52e7f4a-8132-5751-aca5-7cdd308c6885",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bands",
@@ -415,7 +415,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bicarb",
+      "fullUrl": "urn:uuid:a594bebd-1176-5ce5-a8a4-e0bda2428a31",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bicarb",
@@ -470,7 +470,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bmi",
+      "fullUrl": "urn:uuid:9511c6ba-2a1a-5bf0-ab71-e27327c33c91",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bmi",
@@ -514,7 +514,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bp",
+      "fullUrl": "urn:uuid:a0e03fee-a4e1-5319-9548-8bcaa51c5067",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bp",
@@ -590,7 +590,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bun",
+      "fullUrl": "urn:uuid:10635f10-1612-5339-8795-a0ff486ca913",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-bun",
@@ -645,7 +645,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-chloride",
+      "fullUrl": "urn:uuid:7c4c0197-fc86-561f-b613-524651ca5628",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-chloride",
@@ -700,7 +700,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-creatinine",
+      "fullUrl": "urn:uuid:1cb80e1d-328a-5632-8520-26638f4c8d5f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-creatinine",
@@ -755,7 +755,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-crp",
+      "fullUrl": "urn:uuid:8da96204-52e8-5a5e-8de0-eec7587f9592",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-crp",
@@ -810,7 +810,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-glucose",
+      "fullUrl": "urn:uuid:01cd18c9-068d-5a39-9ad9-c4cd72bf7809",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-glucose",
@@ -865,7 +865,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-height",
+      "fullUrl": "urn:uuid:6785bbe3-6409-5bab-8c29-757974d79c29",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-height",
@@ -914,7 +914,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hematocrit",
+      "fullUrl": "urn:uuid:7914f329-0eb3-5172-8422-75d8342ae420",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hematocrit",
@@ -969,7 +969,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hemoglobin",
+      "fullUrl": "urn:uuid:0bc2fc1a-cd54-57bf-b20d-12403099b83d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hemoglobin",
@@ -1024,7 +1024,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-hr",
+      "fullUrl": "urn:uuid:7c9f6ac4-ecbf-5b09-a7cf-fdd2620ad5cc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-hr",
@@ -1068,7 +1068,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-lipase",
+      "fullUrl": "urn:uuid:8044910e-fb04-50e2-9af3-7cbb14d565c9",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-lipase",
@@ -1123,7 +1123,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-lymphocytes",
+      "fullUrl": "urn:uuid:6a7d14a6-d811-598d-bf3d-8f493defeedb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-lymphocytes",
@@ -1178,7 +1178,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-monocytes",
+      "fullUrl": "urn:uuid:79161f41-3a13-56e2-be8f-20a9cedc2164",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-monocytes",
@@ -1233,7 +1233,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-neutrophils",
+      "fullUrl": "urn:uuid:999671cb-0fe6-5fc0-a432-b2ba28dc26e2",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-neutrophils",
@@ -1288,7 +1288,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-pain",
+      "fullUrl": "urn:uuid:f2085659-8b00-59e5-a159-eaa3df33e6fa",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-pain",
@@ -1332,7 +1332,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-platelets",
+      "fullUrl": "urn:uuid:b362007d-14cd-5778-86e3-1615160274ee",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-platelets",
@@ -1387,7 +1387,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-potassium",
+      "fullUrl": "urn:uuid:36c609c9-6a5d-5479-85b0-925056f94f60",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-potassium",
@@ -1442,7 +1442,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-rr",
+      "fullUrl": "urn:uuid:9610d8ad-d375-5215-a139-775410eb53af",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-rr",
@@ -1486,7 +1486,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-sodium",
+      "fullUrl": "urn:uuid:1b63359f-fb6d-578e-8f4f-b14581fc4452",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-sodium",
@@ -1541,7 +1541,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-spo2",
+      "fullUrl": "urn:uuid:0a61b16d-3016-55ef-b818-1d8728468ea1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-spo2",
@@ -1590,7 +1590,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-temp",
+      "fullUrl": "urn:uuid:b7cdb1f7-fe2f-5b61-9912-3deaa3632a69",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-temp",
@@ -1634,7 +1634,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ua-appearance",
+      "fullUrl": "urn:uuid:00c0567d-fc17-5501-9c7b-38c5ab22e894",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-ua-appearance",
@@ -1673,7 +1673,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ua-blood",
+      "fullUrl": "urn:uuid:e3548823-66a2-531b-b24f-07b04a185a3f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-ua-blood",
@@ -1712,7 +1712,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ua-nitrites",
+      "fullUrl": "urn:uuid:ea01fa34-33cc-597f-b429-0e483ac45526",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-ua-nitrites",
@@ -1751,7 +1751,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ua-wbc",
+      "fullUrl": "urn:uuid:dc8944e2-8e0b-52ab-a55c-900bac78f790",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-ua-wbc",
@@ -1790,7 +1790,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-wbc",
+      "fullUrl": "urn:uuid:0eead2b1-3463-52ee-b858-0dff55d66d70",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-wbc",
@@ -1845,7 +1845,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-weight",
+      "fullUrl": "urn:uuid:76ec4589-f94c-5ffb-9515-ae081f45f6d8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-000-weight",
@@ -1894,7 +1894,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-bp-pod0",
+      "fullUrl": "urn:uuid:53707c81-8ada-56eb-b161-46b3d5c35e4b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-bp-pod0",
@@ -1970,7 +1970,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-bp-pod1",
+      "fullUrl": "urn:uuid:80c884f0-b8ad-5680-aba1-1ee18631144d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-bp-pod1",
@@ -2046,7 +2046,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-bp-pod2",
+      "fullUrl": "urn:uuid:cdea8481-4f28-5f56-89be-9ddf251bd44d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-bp-pod2",
@@ -2122,7 +2122,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-bp-pod3",
+      "fullUrl": "urn:uuid:1d154216-658d-5095-a54d-6853f3007a1d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-bp-pod3",
@@ -2198,7 +2198,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-creatinine-pod1",
+      "fullUrl": "urn:uuid:635f2182-f029-537b-ba4c-931eb3eec611",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-creatinine-pod1",
@@ -2253,7 +2253,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-crp-pod2",
+      "fullUrl": "urn:uuid:d3704c06-25e8-5293-924d-ee94426b16b5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-crp-pod2",
@@ -2308,7 +2308,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-glucose-pod1",
+      "fullUrl": "urn:uuid:a6b3e787-2833-5864-88e4-b16022d8eccc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-glucose-pod1",
@@ -2363,7 +2363,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-hgb-pod1",
+      "fullUrl": "urn:uuid:0d78f5fa-edf7-56f8-bd7b-592e9596506f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-hgb-pod1",
@@ -2418,7 +2418,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-hr-pod0",
+      "fullUrl": "urn:uuid:079fad8b-3918-5d65-8575-093c7f35f4e5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-hr-pod0",
@@ -2462,7 +2462,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-hr-pod1",
+      "fullUrl": "urn:uuid:d3958a64-8ed6-5603-a5f1-698e86fca644",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-hr-pod1",
@@ -2506,7 +2506,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-hr-pod2",
+      "fullUrl": "urn:uuid:49975260-854d-5887-a7bd-c35859db3001",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-hr-pod2",
@@ -2550,7 +2550,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-hr-pod3",
+      "fullUrl": "urn:uuid:d465cd42-1b4e-5205-a111-aa3c8343dc51",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-hr-pod3",
@@ -2594,7 +2594,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-rr-pod0",
+      "fullUrl": "urn:uuid:1f0ba200-e22e-5f2d-a0aa-2b77c4dd3beb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-rr-pod0",
@@ -2638,7 +2638,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-rr-pod1",
+      "fullUrl": "urn:uuid:db6a2ec8-2ba5-52e9-8e74-81f7f068c765",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-rr-pod1",
@@ -2682,7 +2682,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-rr-pod2",
+      "fullUrl": "urn:uuid:55c68e08-5752-5ed1-98db-a4477d762438",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-rr-pod2",
@@ -2726,7 +2726,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-rr-pod3",
+      "fullUrl": "urn:uuid:f316f692-3b13-52aa-9759-59a0d242e2d7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-rr-pod3",
@@ -2770,7 +2770,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-spo2-pod0",
+      "fullUrl": "urn:uuid:806053e8-2729-5c13-a941-e17dbac2d066",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-spo2-pod0",
@@ -2814,7 +2814,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-spo2-pod1",
+      "fullUrl": "urn:uuid:82555559-06a2-5737-a6d6-0afcd0a554d0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-spo2-pod1",
@@ -2858,7 +2858,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-spo2-pod2",
+      "fullUrl": "urn:uuid:102f9ce1-d856-512b-99f2-8ecf7af20415",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-spo2-pod2",
@@ -2902,7 +2902,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-spo2-pod3",
+      "fullUrl": "urn:uuid:83a40cd0-bd84-5cea-9255-520d617f412f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-spo2-pod3",
@@ -2946,7 +2946,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-temp-pod0",
+      "fullUrl": "urn:uuid:49c8fba7-587f-562e-b22d-ea0ae171500d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-temp-pod0",
@@ -2990,7 +2990,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-temp-pod1",
+      "fullUrl": "urn:uuid:e519905b-274f-52d8-95f4-50b9c1048d32",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-temp-pod1",
@@ -3034,7 +3034,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-temp-pod2",
+      "fullUrl": "urn:uuid:b1c12267-52ae-57ba-9e99-b26a21a4c06e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-temp-pod2",
@@ -3078,7 +3078,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-temp-pod3",
+      "fullUrl": "urn:uuid:7a5914a6-e137-5ee6-b0f8-71a609794e6f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-temp-pod3",
@@ -3122,7 +3122,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-wbc-pod1",
+      "fullUrl": "urn:uuid:36477b28-338f-5bb2-80e9-202dead0f153",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-wbc-pod1",
@@ -3177,7 +3177,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-wbc-pod2",
+      "fullUrl": "urn:uuid:b952789a-e05b-5466-b0cb-25a17833f9de",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-wbc-pod2",
@@ -3232,7 +3232,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-weight",
+      "fullUrl": "urn:uuid:58ef953b-ec01-5027-a1b1-e44123bf83e6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-002-weight",
@@ -3276,7 +3276,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-bands",
+      "fullUrl": "urn:uuid:ef4924d7-c0f3-5721-8d9a-4b98447bdd14",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-bands",
@@ -3331,7 +3331,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-bp",
+      "fullUrl": "urn:uuid:5f407d95-c84d-5b6e-a7ef-89e5c03f1fa9",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-bp",
@@ -3407,7 +3407,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-creatinine",
+      "fullUrl": "urn:uuid:ff4618f9-d17f-5488-9bcf-9cfc1d0b7826",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-creatinine",
@@ -3462,7 +3462,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-crp",
+      "fullUrl": "urn:uuid:0b4025b3-efb9-5943-a8e5-9fb78c517952",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-crp",
@@ -3528,7 +3528,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-glucose",
+      "fullUrl": "urn:uuid:164d1df8-70ae-571c-b5fe-bda07c17132c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-glucose",
@@ -3583,7 +3583,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-hemoglobin",
+      "fullUrl": "urn:uuid:dd09dfa1-c13b-57e0-a49b-fa79fdeeb362",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-hemoglobin",
@@ -3627,7 +3627,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-hr",
+      "fullUrl": "urn:uuid:b2d1d887-571c-55a1-a46c-cdbf09bb17f4",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-hr",
@@ -3671,7 +3671,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-lactate",
+      "fullUrl": "urn:uuid:3bce7870-e9f5-593e-99da-3458836c1386",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-lactate",
@@ -3726,7 +3726,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-neutrophils",
+      "fullUrl": "urn:uuid:b588f231-6600-5d38-8674-5a71ca38e5ef",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-neutrophils",
@@ -3781,7 +3781,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-pain",
+      "fullUrl": "urn:uuid:6dde0b61-9448-5ca8-bfef-2038222cdb65",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-pain",
@@ -3825,7 +3825,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-platelets",
+      "fullUrl": "urn:uuid:be521a47-01d9-5f46-b5b1-c0711217237a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-platelets",
@@ -3869,7 +3869,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-potassium",
+      "fullUrl": "urn:uuid:e2ca4cc4-9abe-5061-bf1e-89d6204d48fd",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-potassium",
@@ -3924,7 +3924,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-procalcitonin",
+      "fullUrl": "urn:uuid:0dff0eff-ed27-524f-9dae-3351f6318204",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-procalcitonin",
@@ -3987,7 +3987,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-rr",
+      "fullUrl": "urn:uuid:1089f50a-c43f-5012-8a6b-de222dee333e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-rr",
@@ -4031,7 +4031,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-sodium",
+      "fullUrl": "urn:uuid:4ac8bac4-c4e9-51c9-ae26-447d7de4b4cc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-sodium",
@@ -4086,7 +4086,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-spo2",
+      "fullUrl": "urn:uuid:e459970f-adff-57ae-a983-0d4a8c0990d6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-spo2",
@@ -4130,7 +4130,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-temp",
+      "fullUrl": "urn:uuid:7a971a31-e0fb-5386-a1b5-edb3629b648a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-temp",
@@ -4174,7 +4174,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-wbc",
+      "fullUrl": "urn:uuid:d7ac0acf-3836-5269-80de-409317c88ffe",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-wbc",
@@ -4240,7 +4240,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-weight",
+      "fullUrl": "urn:uuid:36d44d4d-4100-5710-bbab-941c0522fa43",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-004-weight",
@@ -4284,7 +4284,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-bp-dc",
+      "fullUrl": "urn:uuid:5929b06e-da84-55fb-b7ea-b4ab11ffd184",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-bp-dc",
@@ -4360,7 +4360,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-bp-hd2",
+      "fullUrl": "urn:uuid:69c545f3-cbb8-504c-9ec4-7e7d4af71327",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-bp-hd2",
@@ -4436,7 +4436,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-bp-hd3",
+      "fullUrl": "urn:uuid:6512c0ee-773d-5e4d-9bb6-a7d6a4406430",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-bp-hd3",
@@ -4512,7 +4512,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-crp-hd2",
+      "fullUrl": "urn:uuid:5feaa8a4-73fc-5f6c-ab4e-2f5d7b45aa2d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-crp-hd2",
@@ -4573,7 +4573,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-crp-hd3",
+      "fullUrl": "urn:uuid:30c3772b-9808-5da6-9131-89412bf8c35f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-crp-hd3",
@@ -4634,7 +4634,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-hr-dc",
+      "fullUrl": "urn:uuid:939a82a2-16a5-526a-8627-715bd55e7c49",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-hr-dc",
@@ -4678,7 +4678,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-hr-hd2",
+      "fullUrl": "urn:uuid:e526a071-9083-575d-a971-fbf1c7e1ba06",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-hr-hd2",
@@ -4722,7 +4722,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-hr-hd3",
+      "fullUrl": "urn:uuid:f68f3ae8-ceab-5218-a35a-8d283ffeaaf2",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-hr-hd3",
@@ -4766,7 +4766,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-rr-dc",
+      "fullUrl": "urn:uuid:3c35405f-ee23-5177-b155-cd126e8d6a2a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-rr-dc",
@@ -4810,7 +4810,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-spo2-dc",
+      "fullUrl": "urn:uuid:fb6ab4a1-a46e-5951-ba87-b51ffee2bd96",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-spo2-dc",
@@ -4854,7 +4854,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-temp-dc",
+      "fullUrl": "urn:uuid:43c888c4-f56d-52dd-84de-3c0034a1ae6a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-temp-dc",
@@ -4898,7 +4898,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-temp-hd2-am",
+      "fullUrl": "urn:uuid:184f6b1b-6205-5404-af37-ed05af38aaf8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-temp-hd2-am",
@@ -4942,7 +4942,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-temp-hd2-pm",
+      "fullUrl": "urn:uuid:eee12a5e-7e5f-57cd-aaf7-dde1e2538d26",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-temp-hd2-pm",
@@ -4986,7 +4986,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-temp-hd3",
+      "fullUrl": "urn:uuid:d17f34f2-8e31-5b12-bd2d-7a73d34ce07d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-temp-hd3",
@@ -5030,7 +5030,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-wbc-hd2",
+      "fullUrl": "urn:uuid:30c1c4d3-76a6-5cdd-b8e3-8dc03db2d036",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-wbc-hd2",
@@ -5091,7 +5091,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-wbc-hd3",
+      "fullUrl": "urn:uuid:c831aed5-4bd8-5c97-aa03-9ba8b3c5e65b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-wbc-hd3",
@@ -5152,7 +5152,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-weight-dc",
+      "fullUrl": "urn:uuid:c5f42fde-840d-5eff-bacb-c82720c0391e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-weight-dc",
@@ -5196,7 +5196,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-bmp",
+      "fullUrl": "urn:uuid:97341b59-4c29-5b03-a494-2915c947cf00",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-bmp",
@@ -5271,7 +5271,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-cbc",
+      "fullUrl": "urn:uuid:f8493ed1-efa3-5f04-ab11-3b566dba91d3",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-cbc",
@@ -5350,7 +5350,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-crp-report",
+      "fullUrl": "urn:uuid:8dff03a7-5763-5a70-a4cb-5df520ea120d",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-crp-report",
@@ -5401,7 +5401,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ct-abdomen",
+      "fullUrl": "urn:uuid:3aa3f58d-46e6-5a7f-9dab-7633cb3e90fd",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-ct-abdomen",
@@ -5453,7 +5453,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-lipase-report",
+      "fullUrl": "urn:uuid:01545019-db58-5468-bbcf-91a96eb94022",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-lipase-report",
@@ -5504,7 +5504,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ua-report",
+      "fullUrl": "urn:uuid:7aceff00-307c-5c5a-a647-86187fdfd58d",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-000-ua-report",
@@ -5567,7 +5567,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-path",
+      "fullUrl": "urn:uuid:26ad08d8-c841-5023-887c-d1578bf60bad",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-001-path",
@@ -5631,7 +5631,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-bmp-pod1",
+      "fullUrl": "urn:uuid:4f4b7494-0515-5fdc-9153-44b1ed0fe30a",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-002-bmp-pod1",
@@ -5681,7 +5681,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-cbc-pod1",
+      "fullUrl": "urn:uuid:57f1eafd-fc79-5878-854e-d041c6aa99c1",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-002-cbc-pod1",
@@ -5731,7 +5731,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-cbc-pod2",
+      "fullUrl": "urn:uuid:e9556bc7-96c9-519f-94b1-676e2611f827",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-002-cbc-pod2",
@@ -5777,7 +5777,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-crp-report",
+      "fullUrl": "urn:uuid:49bdccab-08a1-546c-bc93-30004986dc1e",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-002-crp-report",
@@ -5823,7 +5823,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-blood-culture",
+      "fullUrl": "urn:uuid:9111291e-46fe-51ec-9dbd-7b1add357fe1",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-blood-culture",
@@ -5869,7 +5869,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-bmp",
+      "fullUrl": "urn:uuid:492c0df3-dfb5-526f-93f1-abf1deb556e7",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-bmp",
@@ -5932,7 +5932,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-cbc",
+      "fullUrl": "urn:uuid:1bd829d6-13f7-5d01-8dee-be04b5cf00d0",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-cbc",
@@ -5999,7 +5999,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-crp-report",
+      "fullUrl": "urn:uuid:019ce509-e5ab-572f-a4ba-e6615bcc7c81",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-crp-report",
@@ -6050,7 +6050,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-lactate-report",
+      "fullUrl": "urn:uuid:e70694be-dafb-59e8-ba6b-12b3f08d9e42",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-lactate-report",
@@ -6101,7 +6101,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-procalcitonin-report",
+      "fullUrl": "urn:uuid:59b1da5b-3b89-5b9b-920a-4c979687a827",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-procalcitonin-report",
@@ -6152,7 +6152,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-wound-culture",
+      "fullUrl": "urn:uuid:5ad082eb-b538-5ab3-955b-6e6f24117cdd",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-004-wound-culture",
@@ -6210,7 +6210,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-ct-abdomen",
+      "fullUrl": "urn:uuid:506c5815-dfa9-5bf2-90d0-c006592adde3",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-005-ct-abdomen",
@@ -6250,7 +6250,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-morphine",
+      "fullUrl": "urn:uuid:0b5b3f8b-abee-57fe-87c5-48b0f4c1c7c1",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-000-morphine",
@@ -6317,7 +6317,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ns-bolus",
+      "fullUrl": "urn:uuid:f7b849e2-d1ff-51ca-90d2-ab38a6a8f5f5",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-000-ns-bolus",
@@ -6384,7 +6384,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-ondansetron",
+      "fullUrl": "urn:uuid:ac10a197-7cfc-59c1-861b-199b1faedd26",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-000-ondansetron",
@@ -6445,7 +6445,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-acetaminophen",
+      "fullUrl": "urn:uuid:6ac49a44-adc4-5258-b42e-cd2eec1f4be0",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-acetaminophen",
@@ -6532,7 +6532,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-heparin",
+      "fullUrl": "urn:uuid:dac77d35-57ad-5a36-b06f-7702e3f3d447",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-heparin",
@@ -6618,7 +6618,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-morphine",
+      "fullUrl": "urn:uuid:a0d29ad5-2e4b-59a4-b936-eee70f842e1c",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-morphine",
@@ -6713,7 +6713,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-pip-tazo-postop",
+      "fullUrl": "urn:uuid:cb75d499-3490-5ae6-bae4-f42196c93ef4",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-pip-tazo-postop",
@@ -6804,7 +6804,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-pip-tazo-preop",
+      "fullUrl": "urn:uuid:298eeeac-8284-558c-a3ee-1dc3a1f79d21",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-001-pip-tazo-preop",
@@ -6887,7 +6887,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-acetaminophen-oral",
+      "fullUrl": "urn:uuid:f4d776af-f913-5585-a490-42c8cac54796",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-002-acetaminophen-oral",
@@ -6970,7 +6970,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-augmentin",
+      "fullUrl": "urn:uuid:27df6363-fb53-5d5a-bd45-c1211d592e68",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-002-augmentin",
@@ -7078,7 +7078,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-oxycodone",
+      "fullUrl": "urn:uuid:5499ee30-ddaa-5cad-9886-73ddbd936be0",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-002-oxycodone",
@@ -7167,7 +7167,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-acetaminophen",
+      "fullUrl": "urn:uuid:b1ffcf6d-a673-57eb-a719-b23fae354d2f",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-004-acetaminophen",
@@ -7240,7 +7240,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-ns-bolus",
+      "fullUrl": "urn:uuid:2c9de902-4a62-525f-a9bf-fb589c75ac5a",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-004-ns-bolus",
@@ -7306,7 +7306,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-pip-tazo",
+      "fullUrl": "urn:uuid:dd9013a0-f99b-538e-a19c-1abd849a85d4",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-004-pip-tazo",
@@ -7375,7 +7375,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-acetaminophen-iv",
+      "fullUrl": "urn:uuid:a05fd737-eb5f-5209-a0c5-2845149440b5",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-005-acetaminophen-iv",
@@ -7463,7 +7463,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-acetaminophen-oral",
+      "fullUrl": "urn:uuid:047d5b3a-b6a0-5da8-a0c1-2d171a676ab1",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-005-acetaminophen-oral",
@@ -7546,7 +7546,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-ciprofloxacin",
+      "fullUrl": "urn:uuid:604216df-0eb7-5dfd-afef-8504e594ba41",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-005-ciprofloxacin",
@@ -7663,7 +7663,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-metronidazole",
+      "fullUrl": "urn:uuid:25b42c14-ddb5-5dc9-857f-88df65de42db",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-005-metronidazole",
@@ -7776,7 +7776,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-pip-tazo",
+      "fullUrl": "urn:uuid:afd8ca66-08b4-5d60-9855-e61107e41902",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-005-pip-tazo",
@@ -7858,7 +7858,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-nkda",
+      "fullUrl": "urn:uuid:f951b95d-05e9-5d59-bf0d-d01358d884d2",
       "resource": {
         "resourceType": "AllergyIntolerance",
         "id": "enc-000-nkda",
@@ -7900,7 +7900,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-note",
+      "fullUrl": "urn:uuid:6ef3ab32-dd3d-5fd3-935e-2cbab5c39d47",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-000-note",
@@ -7961,7 +7961,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-note",
+      "fullUrl": "urn:uuid:3163f359-b6fc-5a47-b53e-ca1a61155e20",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-001-note",
@@ -8028,7 +8028,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-note",
+      "fullUrl": "urn:uuid:96896dbe-d877-56c9-a62c-9fd0a2f3cdd2",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-002-note",
@@ -8095,7 +8095,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-note",
+      "fullUrl": "urn:uuid:c7fb0a8b-f38b-53ab-b784-d5394beab199",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-004-note",
@@ -8156,7 +8156,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-note",
+      "fullUrl": "urn:uuid:b1e7dee6-baea-5560-b35a-548ded946116",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-005-note",
@@ -8233,7 +8233,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-perf-appendicitis",
+      "fullUrl": "urn:uuid:3370defd-960d-5bfb-8586-768b9bbbd3fb",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-000-perf-appendicitis",
@@ -8309,7 +8309,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000-periappendiceal-abscess",
+      "fullUrl": "urn:uuid:44efb30a-8534-5da5-8eb6-25ebdea82ee8",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-000-periappendiceal-abscess",
@@ -8380,7 +8380,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-ssi",
+      "fullUrl": "urn:uuid:3312c781-87dc-5ece-9bc8-5ffd17c107fd",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-004-ssi",
@@ -8463,7 +8463,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-ecoli-infection",
+      "fullUrl": "urn:uuid:c52aa144-0439-58da-b7cb-41b3d692ed2f",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-005-ecoli-infection",
@@ -8526,7 +8526,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-000",
+      "fullUrl": "urn:uuid:f8bb9785-61bf-50f4-9a02-03e1f89f4208",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-000",
@@ -8665,7 +8665,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001",
+      "fullUrl": "urn:uuid:77ff4782-f463-5bc0-9199-4e7fa5dbef5a",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-001",
@@ -8786,7 +8786,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002",
+      "fullUrl": "urn:uuid:8c431635-2a67-54ac-80af-eedb6b9d8e8e",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-002",
@@ -8936,7 +8936,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004",
+      "fullUrl": "urn:uuid:aa51471f-503e-55bc-b734-7d9d915c7f21",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-004",
@@ -9041,7 +9041,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005",
+      "fullUrl": "urn:uuid:435c65fe-aa06-55d3-bfde-0a79c0cf9aae",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-005",
@@ -9193,7 +9193,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-abscess-drainage",
+      "fullUrl": "urn:uuid:50d18e2a-e739-5061-89bf-75b55ba0d810",
       "resource": {
         "resourceType": "Procedure",
         "id": "enc-001-abscess-drainage",
@@ -9267,7 +9267,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-jp-drain",
+      "fullUrl": "urn:uuid:6da18afb-b369-5579-91e4-006595750cf2",
       "resource": {
         "resourceType": "Procedure",
         "id": "enc-001-jp-drain",
@@ -9341,7 +9341,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-001-lap-appy",
+      "fullUrl": "urn:uuid:3bb10b4e-ff8b-5cf4-a553-b8840efa41c7",
       "resource": {
         "resourceType": "Procedure",
         "id": "enc-001-lap-appy",
@@ -9415,7 +9415,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-jp-drain-removal",
+      "fullUrl": "urn:uuid:4c59db4e-f81b-59da-92fa-20925dd2fcb0",
       "resource": {
         "resourceType": "Procedure",
         "id": "enc-002-jp-drain-removal",

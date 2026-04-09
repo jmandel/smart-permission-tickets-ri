@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:10:13.557Z",
+  "timestamp": "2026-04-09T18:47:38.903Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:b838bed3-9811-46c9-9ff1-cce96db07c59",
@@ -57,7 +57,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"closed-loop-social-care-referral\",\"label\":\"Closed-loop social care referral\",\"summary\":\"Rose City Community Services requests only the referral and SDOH screening context needed to follow Maria's food and transportation support referral.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/social-care-referral-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Rose City Community Services\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-requester-organization\",\"value\":\"rose-city-community-services\"}]},\"context\":{\"concern\":{\"text\":\"Food insecurity and transportation barriers\"},\"referral\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-referral\",\"value\":\"REF-OR-2026-1048\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://hl7.org/fhir/us/core/CodeSystem/us-core-category\",\"code\":\"sdoh\"}]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Cascade Community Health Center\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"closed-loop-social-care-referral\",\"label\":\"Closed-loop social care referral\",\"summary\":\"Rose City Community Services requests only the referral and SDOH screening context needed to follow Maria's food and transportation support referral.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/social-care-referral-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Rose City Community Services\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"rose-city-community-services\"}]},\"context\":{\"concern\":{\"text\":\"Food insecurity and transportation barriers\"},\"referral\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-referral\",\"value\":\"REF-OR-2026-1048\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://hl7.org/fhir/us/core/CodeSystem/us-core-category\",\"code\":\"sdoh\"}]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Cascade Community Health Center\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "identifier": [
@@ -77,7 +77,7 @@
             "value": "RCCS-MRN-90481"
           },
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-fa977290ff474ac87d97e3a0"
           }
         ],
@@ -304,7 +304,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-020-note",
+      "fullUrl": "urn:uuid:21c09175-26c3-5f16-8ef9-1a44b94d2ec7",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-020-note",
@@ -369,7 +369,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-021-note",
+      "fullUrl": "urn:uuid:4889e434-bc5e-550d-a863-de2b710ebfd6",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-021-note",
@@ -434,7 +434,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-022-note",
+      "fullUrl": "urn:uuid:c5901d2e-e503-5b19-9a3a-8668242cf32c",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-022-note",
@@ -499,7 +499,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-020",
+      "fullUrl": "urn:uuid:491ceeda-596f-580b-afd3-047ed233bc92",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-020",
@@ -592,7 +592,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-021",
+      "fullUrl": "urn:uuid:aaf324e4-6593-5e5e-b994-65f59ac2a714",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-021",
@@ -667,7 +667,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-022",
+      "fullUrl": "urn:uuid:992f5202-8adb-50fa-a975-637abea905a8",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-022",

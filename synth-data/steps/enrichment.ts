@@ -7,7 +7,7 @@ import {
 } from "../../shared/demo-ticket-scenarios.ts";
 import { loadEncounterTimeline, loadProviderMap, type EncounterRecord } from "./artifacts.ts";
 
-export const CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM = "urn:smart-permission-tickets:person-id";
+export const CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM = "urn:example:smart-permission-ticket-demo:person-id";
 export const PATIENT_SUMMARY_EXTENSION_URL =
   "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary";
 export const ENCOUNTER_SUMMARY_EXTENSION_URL =

@@ -424,7 +424,7 @@ describe("mode surfaces", () => {
     );
     const endpoints = (bundle.entry ?? []).filter((entry: any) => entry?.resource?.resourceType === "Endpoint");
     const siteSlugs = endpoints.map((entry: any) =>
-      entry.resource.identifier?.find((identifier: any) => identifier.system === "urn:smart-permission-tickets:site-slug")?.value,
+      entry.resource.identifier?.find((identifier: any) => identifier.system === "urn:example:smart-permission-ticket-demo:site-slug")?.value,
     );
     expect(siteSlugs).not.toContain("lone-star-womens-health");
     expect(siteSlugs).toContain("bay-area-rheumatology-associates");
@@ -822,7 +822,7 @@ describe("mode surfaces", () => {
       bundle.entry
         .map((entry: any) =>
           entry.resource.identifier?.find(
-            (identifier: any) => identifier.system === "urn:smart-permission-tickets:person-id",
+            (identifier: any) => identifier.system === "urn:example:smart-permission-ticket-demo:person-id",
           )?.value,
         )
         .filter(Boolean),

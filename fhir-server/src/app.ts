@@ -966,7 +966,7 @@ async function handleOperation(
           sites: (bundle.entry ?? [])
             .filter((entry: any) => entry?.resource?.resourceType === "Endpoint")
             .map((entry: any) => ({
-              siteSlug: (entry.resource.identifier ?? []).find((identifier: any) => identifier.system === "urn:smart-permission-tickets:site-slug")?.value ?? "unknown-site",
+              siteSlug: (entry.resource.identifier ?? []).find((identifier: any) => identifier.system === "urn:example:smart-permission-ticket-demo:site-slug")?.value ?? "unknown-site",
               siteName: entry.resource.managingOrganization?.display ?? "Unknown site",
               jurisdiction: undefined,
             })),
@@ -1152,9 +1152,9 @@ function buildClientCredentialsEnvelope(
     throw new Error("client_credentials request resolved to no visible patient aliases");
   }
   return {
-    ticketIssuer: "urn:smart-permission-tickets:udap-client-credentials",
+    ticketIssuer: "urn:example:smart-permission-ticket-demo:udap-client-credentials",
     grantSubject: client.frameworkBinding?.entity_uri ?? client.clientId,
-    ticketType: "urn:smart-permission-tickets:udap-client-credentials",
+    ticketType: "urn:example:smart-permission-ticket-demo:udap-client-credentials",
     mode: contextRoute.mode,
     scope: scopeResult.scopeString,
     grantedScopes: scopeResult.scopeStrings,
@@ -2065,7 +2065,7 @@ function buildAnonymousEnvelope(context: AppContext): AuthorizationEnvelope {
   return {
     ticketIssuer: "local-anonymous-mode",
     grantSubject: "anonymous-read-only",
-    ticketType: "urn:smart-permission-tickets:anonymous-mode",
+    ticketType: "urn:example:smart-permission-ticket-demo:anonymous-mode",
     mode: "anonymous",
     scope: "system/*.rs",
     grantedScopes: ["system/*.rs"],

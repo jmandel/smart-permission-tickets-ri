@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T01:48:38.166Z",
+  "timestamp": "2026-04-09T18:47:38.427Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:8ce01a70-400d-4b62-8feb-7311fb2eaec2",
@@ -57,7 +57,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"maternal-fetal-medicine-consult-packet\",\"label\":\"Maternal-fetal medicine consult packet\",\"summary\":\"An MFM specialist requests Lisa's recurrent-pregnancy-loss workup, APS labs, and related OB/GYN records for preconception planning.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/provider-consult-v1\",\"requester\":{\"resourceType\":\"PractitionerRole\",\"code\":[{\"text\":\"Maternal-fetal medicine specialist\"}],\"identifier\":[{\"system\":\"http://hl7.org/fhir/sid/us-npi\",\"value\":\"1771888002\"}],\"practitioner\":{\"display\":\"Dr. Hannah Ruiz\"},\"organization\":{\"display\":\"Colorado Maternal-Fetal Medicine\"}},\"context\":{\"reason\":{\"text\":\"Recurrent pregnancy loss with antiphospholipid syndrome evaluation\"},\"consult_request\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-consult\",\"value\":\"MFM-CONSULT-2025-144\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2024-01-01\",\"end\":\"2025-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Rocky Mountain Women's Health\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UC Health Hematology\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"maternal-fetal-medicine-consult-packet\",\"label\":\"Maternal-fetal medicine consult packet\",\"summary\":\"An MFM specialist requests Lisa's recurrent-pregnancy-loss workup, APS labs, and related OB/GYN records for preconception planning.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/provider-consult-v1\",\"requester\":{\"resourceType\":\"PractitionerRole\",\"code\":[{\"text\":\"Maternal-fetal medicine specialist\"}],\"identifier\":[{\"system\":\"http://hl7.org/fhir/sid/us-npi\",\"value\":\"1771888002\"}],\"practitioner\":{\"display\":\"Dr. Hannah Ruiz\"},\"organization\":{\"display\":\"Colorado Maternal-Fetal Medicine\"}},\"context\":{\"reason\":{\"text\":\"Recurrent pregnancy loss with antiphospholipid syndrome evaluation\"},\"consult_request\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-consult\",\"value\":\"MFM-CONSULT-2025-144\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Procedure\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2024-01-01\",\"end\":\"2025-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Rocky Mountain Women's Health\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UC Health Hematology\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "name": [
@@ -106,7 +106,7 @@
         ],
         "identifier": [
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-da20b317ce6538646b7bbbd6"
           }
         ],
@@ -235,7 +235,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-aps",
+      "fullUrl": "urn:uuid:9c4e0d1b-fdd5-56d6-83e4-a44bb20ab42b",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-012-aps",
@@ -311,7 +311,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-rpl",
+      "fullUrl": "urn:uuid:0cae31a9-200c-5d24-b778-0e807fea0f55",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-012-rpl",
@@ -387,7 +387,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-bmi",
+      "fullUrl": "urn:uuid:7cc11a2f-0ca5-568e-a593-c084b925999a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-bmi",
@@ -446,7 +446,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-bp",
+      "fullUrl": "urn:uuid:4c9260dd-4e9c-594d-b5b9-bda6f91ea986",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-bp",
@@ -537,7 +537,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-height",
+      "fullUrl": "urn:uuid:3a046966-14a7-5acf-8fdd-51431d7fd881",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-height",
@@ -596,7 +596,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-hr",
+      "fullUrl": "urn:uuid:c6301ae0-e37f-5179-b73c-ba4ddcd1749c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-hr",
@@ -655,7 +655,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-rr",
+      "fullUrl": "urn:uuid:df303caa-ba27-5912-a5a0-75bc0e7bd068",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-rr",
@@ -714,7 +714,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-spo2",
+      "fullUrl": "urn:uuid:9042d851-3a49-57c2-aa8a-15043522091c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-spo2",
@@ -778,7 +778,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-temp",
+      "fullUrl": "urn:uuid:7f0d54f4-4fcc-5e4d-a7b5-2a9f270771d8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-temp",
@@ -837,7 +837,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-weight",
+      "fullUrl": "urn:uuid:413c2dc1-a520-5e1e-a607-a7804e4acfb5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-weight",
@@ -896,7 +896,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-acl-igg",
+      "fullUrl": "urn:uuid:b1a9bd03-ca5d-5552-8cc1-35aaa6426398",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-acl-igg",
@@ -983,7 +983,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-acl-igm",
+      "fullUrl": "urn:uuid:0ae1c8f8-b274-5f78-8449-a1c23a5caec3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-acl-igm",
@@ -1070,7 +1070,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-antithrombin",
+      "fullUrl": "urn:uuid:a6623947-dffe-5396-9be5-5ed2c09bfd92",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-antithrombin",
@@ -1161,7 +1161,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-b2gp1-igg",
+      "fullUrl": "urn:uuid:631e1173-4a65-52bd-957e-5d002f70c07f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-b2gp1-igg",
@@ -1248,7 +1248,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-b2gp1-igm",
+      "fullUrl": "urn:uuid:50d5fb47-e723-53a2-b733-6b994f3d89c6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-b2gp1-igm",
@@ -1335,7 +1335,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-fvl",
+      "fullUrl": "urn:uuid:924cc2d1-e9d2-500f-90fa-af42b0c96cc7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-fvl",
@@ -1408,7 +1408,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-la-interp",
+      "fullUrl": "urn:uuid:fe5cb2f4-7251-58fb-b37f-b9fbbbd1e39f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-la-interp",
@@ -1486,7 +1486,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-la-ratio",
+      "fullUrl": "urn:uuid:8faa03b0-6e8c-57c8-92b7-780860bfc878",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-la-ratio",
@@ -1578,7 +1578,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-protein-c",
+      "fullUrl": "urn:uuid:9af66feb-204a-59dc-8592-9a61b4aaf47e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-protein-c",
@@ -1669,7 +1669,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-protein-s-free",
+      "fullUrl": "urn:uuid:c54f02e8-c8b9-5840-ba8e-2bf90d8084ce",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-protein-s-free",
@@ -1760,7 +1760,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-protein-s-total",
+      "fullUrl": "urn:uuid:09987b79-33e3-5f81-8e7c-e817b1ac988d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-protein-s-total",
@@ -1838,7 +1838,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-ptm",
+      "fullUrl": "urn:uuid:2c7dc6d0-1afe-5508-8b96-091a2922b9db",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-013-ptm",
@@ -1911,7 +1911,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-acl-igg",
+      "fullUrl": "urn:uuid:98bd6dbf-728a-52d3-9d44-ebc9a52bba30",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-acl-igg",
@@ -1997,7 +1997,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-acl-igm",
+      "fullUrl": "urn:uuid:21763aa8-63cf-50cc-9b79-f0f0e7b7f4e8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-acl-igm",
@@ -2078,7 +2078,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-antithrombin",
+      "fullUrl": "urn:uuid:b150e0e1-874b-5a0b-9687-d72f47a1b5fc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-antithrombin",
@@ -2158,7 +2158,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-b2gp1-igg",
+      "fullUrl": "urn:uuid:2bd7590c-aed2-50a2-a855-f5cd3deefd6d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-b2gp1-igg",
@@ -2244,7 +2244,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-b2gp1-igm",
+      "fullUrl": "urn:uuid:0976e60f-1ca3-502c-bd90-64fd9b2010e3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-b2gp1-igm",
@@ -2325,7 +2325,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-bmi",
+      "fullUrl": "urn:uuid:a1ea365f-758f-5ac0-8a2b-71cafd000529",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-bmi",
@@ -2384,7 +2384,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-bp",
+      "fullUrl": "urn:uuid:cd0af6ba-e918-5f6b-86b5-e703b51e17f7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-bp",
@@ -2475,7 +2475,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-fvl",
+      "fullUrl": "urn:uuid:4e08c559-ee9d-5267-b70c-b62ff7acd3e8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-fvl",
@@ -2542,7 +2542,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-hr",
+      "fullUrl": "urn:uuid:acbbbc29-a3a5-52f4-9c61-3e8b8f172fa4",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-hr",
@@ -2601,7 +2601,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-la",
+      "fullUrl": "urn:uuid:d3644fbd-4c0d-5053-bfc8-56d28ac3a168",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-la",
@@ -2673,7 +2673,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-protein-c",
+      "fullUrl": "urn:uuid:3f454c1a-1cee-5d8a-a3a7-0c1a43d45ce9",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-protein-c",
@@ -2753,7 +2753,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-protein-s",
+      "fullUrl": "urn:uuid:915ef61f-c10f-5f9a-893b-946d13f3ca08",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-protein-s",
@@ -2833,7 +2833,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-ptm",
+      "fullUrl": "urn:uuid:d381bccc-a0d8-576b-ae88-422deb5e6c11",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-ptm",
@@ -2900,7 +2900,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-rr",
+      "fullUrl": "urn:uuid:27e09e51-0ae4-55ed-9d99-2a0c92cad3bf",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-rr",
@@ -2959,7 +2959,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-spo2",
+      "fullUrl": "urn:uuid:5f3c6d1f-f8c0-5a9c-91f4-b6697d75c3ec",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-spo2",
@@ -3023,7 +3023,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-temp",
+      "fullUrl": "urn:uuid:99747ce1-1336-5cde-9569-2417fdc35252",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-temp",
@@ -3082,7 +3082,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-weight",
+      "fullUrl": "urn:uuid:8a6673df-1f3f-5696-a14e-bbb6a7aad45c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-weight",
@@ -3141,7 +3141,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-note",
+      "fullUrl": "urn:uuid:a8450116-cebc-55f5-a93a-2bd87a5b716b",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-012-note",
@@ -3211,7 +3211,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-note",
+      "fullUrl": "urn:uuid:246a1739-3742-5864-a385-b656c6a2c1af",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-013-note",
@@ -3280,7 +3280,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-note",
+      "fullUrl": "urn:uuid:e021ee8f-2036-5840-b37a-f65bad04e257",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-014-note",
@@ -3350,7 +3350,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-order-acl",
+      "fullUrl": "urn:uuid:0817254d-e41b-5d08-a13e-a6e2dab4f9b1",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-012-order-acl",
@@ -3414,7 +3414,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-order-b2gp1",
+      "fullUrl": "urn:uuid:040a0d3e-5bcb-5fc9-8d71-e2ee9f414f6e",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-012-order-b2gp1",
@@ -3478,7 +3478,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-order-la",
+      "fullUrl": "urn:uuid:08606df2-f53d-5d34-b5eb-53e9e3a3a863",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-012-order-la",
@@ -3542,7 +3542,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-order-thrombophilia",
+      "fullUrl": "urn:uuid:2254f654-c2ce-5ba8-ad15-e014ef056f21",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-012-order-thrombophilia",
@@ -3606,7 +3606,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012",
+      "fullUrl": "urn:uuid:efe50209-ab44-5b92-afad-f689f539c915",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-012",
@@ -3696,7 +3696,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013",
+      "fullUrl": "urn:uuid:0d7f7f4c-cec3-57c1-b103-93f19edfe011",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-013",
@@ -3781,7 +3781,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014",
+      "fullUrl": "urn:uuid:9e2da27a-37ce-50a9-8f9c-f6794ea85cb7",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-014",
@@ -3871,7 +3871,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-dx-aps-panel",
+      "fullUrl": "urn:uuid:373b8444-9e4a-5c5b-8c54-e5e25809509b",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-013-dx-aps-panel",
@@ -3947,7 +3947,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-dx-la",
+      "fullUrl": "urn:uuid:377f6f57-850e-516a-90e5-3734053c8d2e",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-013-dx-la",
@@ -4018,7 +4018,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-dx-thrombophilia-functional",
+      "fullUrl": "urn:uuid:34ec4698-6057-5315-a28f-b720c7aa4e81",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-013-dx-thrombophilia-functional",
@@ -4090,7 +4090,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-dx-thrombophilia-genetic",
+      "fullUrl": "urn:uuid:6c7e281e-cde5-52a5-98ab-74b3bb360a68",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-013-dx-thrombophilia-genetic",
@@ -4154,7 +4154,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-dx-aps-panel",
+      "fullUrl": "urn:uuid:dc91b4e7-20da-5a25-bc5b-e80e6c85bf1c",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-dx-aps-panel",
@@ -4225,7 +4225,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-dx-thrombophilia",
+      "fullUrl": "urn:uuid:faaf3af5-6446-547f-aceb-28781f2f2b0e",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-dx-thrombophilia",
@@ -4296,7 +4296,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-aspirin",
+      "fullUrl": "urn:uuid:7f56bb68-da75-5613-867b-beb40b7b689c",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-014-aspirin",
@@ -4418,7 +4418,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-enoxaparin",
+      "fullUrl": "urn:uuid:e5a611f0-8763-50a6-a55f-287ae12b2f3e",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-014-enoxaparin",

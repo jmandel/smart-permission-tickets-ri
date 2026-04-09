@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:10:13.813Z",
+  "timestamp": "2026-04-09T18:47:39.497Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:ac7b2ece-f133-47cd-95ef-908df72dbc65",
@@ -49,7 +49,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"tb-public-health-investigation\",\"label\":\"Tuberculosis investigation\",\"summary\":\"Illinois public health access focused on Robert's TB episode across the hospital and ambulatory TB clinic.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Illinois Department of Public Health\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-requester-organization\",\"value\":\"illinois-department-public-health\"}]},\"context\":{\"reportable_condition\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"56717001\",\"display\":\"Tuberculosis\"}],\"text\":\"Tuberculosis\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-04-30\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"University of Illinois Hospital\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UI Health Ambulatory TB Clinic\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"tb-public-health-investigation\",\"label\":\"Tuberculosis investigation\",\"summary\":\"Illinois public health access focused on Robert's TB episode across the hospital and ambulatory TB clinic.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Illinois Department of Public Health\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"illinois-department-public-health\"}]},\"context\":{\"reportable_condition\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"56717001\",\"display\":\"Tuberculosis\"}],\"text\":\"Tuberculosis\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-04-30\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"University of Illinois Hospital\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UI Health Ambulatory TB Clinic\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "identifier": [
@@ -69,7 +69,7 @@
             "value": "UIH-TB-AC7B2ECE"
           },
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-6fe9159adc6cb369be301246"
           }
         ],
@@ -352,7 +352,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002-note",
+      "fullUrl": "urn:uuid:96896dbe-d877-56c9-a62c-9fd0a2f3cdd2",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-002-note",
@@ -418,7 +418,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-note",
+      "fullUrl": "urn:uuid:1f3a951c-ada8-58d9-be6b-206b2adb1955",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-003-note",
@@ -479,7 +479,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-note",
+      "fullUrl": "urn:uuid:c7fb0a8b-f38b-53ab-b784-d5394beab199",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-004-note",
@@ -550,7 +550,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-note",
+      "fullUrl": "urn:uuid:b1e7dee6-baea-5560-b35a-548ded946116",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-005-note",
@@ -611,7 +611,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-lab-comm",
+      "fullUrl": "urn:uuid:c1c0f605-6d6a-5dd4-b4fa-efaca06e8a80",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-006-lab-comm",
@@ -682,7 +682,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-note",
+      "fullUrl": "urn:uuid:e9c29666-36f7-54f6-a80b-99908cae7a22",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-006-note",
@@ -753,7 +753,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-note",
+      "fullUrl": "urn:uuid:ba66f684-53fb-563b-a0ad-2cdb3ff5116e",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-007-note",
@@ -814,7 +814,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-note",
+      "fullUrl": "urn:uuid:75053b15-8d54-5427-9d07-f070250f767d",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-008-note",
@@ -885,7 +885,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-note",
+      "fullUrl": "urn:uuid:d66436f3-628c-5ff6-b8b6-db56aa25b3d7",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-009-note",
@@ -946,7 +946,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-note",
+      "fullUrl": "urn:uuid:15c21655-eab9-52a2-bb14-03d27eb3400a",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-010-note",
@@ -1007,7 +1007,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-011-note",
+      "fullUrl": "urn:uuid:4e75e763-09df-5664-a8e2-490e199f7b2c",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-011-note",
@@ -1078,7 +1078,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-note",
+      "fullUrl": "urn:uuid:a8450116-cebc-55f5-a93a-2bd87a5b716b",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-012-note",
@@ -1139,7 +1139,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013-note",
+      "fullUrl": "urn:uuid:246a1739-3742-5864-a385-b656c6a2c1af",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-013-note",
@@ -1210,7 +1210,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-dot-log",
+      "fullUrl": "urn:uuid:a343a126-6986-5c94-b24f-a39596998062",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-014-dot-log",
@@ -1272,7 +1272,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-note",
+      "fullUrl": "urn:uuid:e021ee8f-2036-5840-b37a-f65bad04e257",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-014-note",
@@ -1333,7 +1333,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-002",
+      "fullUrl": "urn:uuid:8c431635-2a67-54ac-80af-eedb6b9d8e8e",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-002",
@@ -1409,7 +1409,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003",
+      "fullUrl": "urn:uuid:78de5d07-bc7c-5e9b-8886-489f777ccc7f",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-003",
@@ -1513,7 +1513,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004",
+      "fullUrl": "urn:uuid:aa51471f-503e-55bc-b734-7d9d915c7f21",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-004",
@@ -1628,7 +1628,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005",
+      "fullUrl": "urn:uuid:435c65fe-aa06-55d3-bfde-0a79c0cf9aae",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-005",
@@ -1709,7 +1709,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006",
+      "fullUrl": "urn:uuid:a7e884e7-e11c-5ae0-8fe5-6c3d73b6fb75",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-006",
@@ -1803,7 +1803,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007",
+      "fullUrl": "urn:uuid:acbfbe51-ba2c-55ae-8248-f797704b3961",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-007",
@@ -1907,7 +1907,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008",
+      "fullUrl": "urn:uuid:a03165b5-1157-5ddf-b34e-c27fbd091dbe",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-008",
@@ -1983,7 +1983,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009",
+      "fullUrl": "urn:uuid:ae6c9817-7d90-57e6-9642-a2c929c57311",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-009",
@@ -2087,7 +2087,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010",
+      "fullUrl": "urn:uuid:608754b8-f297-517d-a650-af5bef7e2e48",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-010",
@@ -2168,7 +2168,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-011",
+      "fullUrl": "urn:uuid:cf9b5259-c429-5b34-8e1c-824b4f557283",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-011",
@@ -2244,7 +2244,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012",
+      "fullUrl": "urn:uuid:efe50209-ab44-5b92-afad-f689f539c915",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-012",
@@ -2371,7 +2371,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-013",
+      "fullUrl": "urn:uuid:0d7f7f4c-cec3-57c1-b103-93f19edfe011",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-013",
@@ -2447,7 +2447,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014",
+      "fullUrl": "urn:uuid:9e2da27a-37ce-50a9-8f9c-f6794ea85cb7",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-014",
@@ -2551,7 +2551,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-afb-report",
+      "fullUrl": "urn:uuid:c8cfdebb-7864-51e2-a6ac-c90e418bb710",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-003-afb-report",
@@ -2604,7 +2604,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-cbc",
+      "fullUrl": "urn:uuid:9eaef5f9-479d-5fca-9b1c-ea6bf5e163bf",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-003-cbc",
@@ -2668,7 +2668,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-cmp",
+      "fullUrl": "urn:uuid:21c22bb4-d6a9-50d9-9aaa-a71b63edc589",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-003-cmp",
@@ -2729,7 +2729,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-hfp",
+      "fullUrl": "urn:uuid:6fe79fb3-5ef8-5e3b-bbc9-c7af5e743760",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-003-hfp",
@@ -2786,7 +2786,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-bmp",
+      "fullUrl": "urn:uuid:a3133cc0-fb1e-5354-b060-4ba6e03088db",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-005-bmp",
@@ -2851,7 +2851,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-cbc",
+      "fullUrl": "urn:uuid:5dd25532-5ce0-5fa4-bf5f-033f3efff3b4",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-005-cbc",
@@ -2915,7 +2915,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-hfp",
+      "fullUrl": "urn:uuid:bfcfe8b6-2fba-59ee-92fd-7072b29c285c",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-005-hfp",
@@ -2972,7 +2972,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-uric-acid-report",
+      "fullUrl": "urn:uuid:376054ea-54f3-5d4e-9555-2153e8f769f3",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-005-uric-acid-report",
@@ -3025,7 +3025,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-culture-dst",
+      "fullUrl": "urn:uuid:965ad83d-2512-5104-93d3-ca9cb70469d0",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-006-culture-dst",
@@ -3098,7 +3098,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-afb-report",
+      "fullUrl": "urn:uuid:5c53b13b-94be-5df3-be96-2eb76f928b29",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-007-afb-report",
@@ -3151,7 +3151,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-cbc",
+      "fullUrl": "urn:uuid:56b4c61b-d420-5ae8-a67e-37a4cd979e27",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-007-cbc",
@@ -3215,7 +3215,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-cxr",
+      "fullUrl": "urn:uuid:d4ccca34-404b-5a93-b022-77b93797d7bc",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-007-cxr",
@@ -3262,7 +3262,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-uric-acid-report",
+      "fullUrl": "urn:uuid:92d17526-bd80-5eb8-a75b-78e564540ba9",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-007-uric-acid-report",
@@ -3315,7 +3315,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-008-culture",
+      "fullUrl": "urn:uuid:841a0fb4-285d-5e38-bdab-22ac86d512de",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-008-culture",
@@ -3362,7 +3362,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-afb-report",
+      "fullUrl": "urn:uuid:bc394ee9-59f0-58c9-ac16-9ee02a9ea355",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-009-afb-report",
@@ -3415,7 +3415,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-bmp",
+      "fullUrl": "urn:uuid:579a2329-34d2-504e-a680-97ab0d8101b1",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-009-bmp",
@@ -3480,7 +3480,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-cbc",
+      "fullUrl": "urn:uuid:97a4fa2c-77ae-5ddb-8aba-80938500c521",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-009-cbc",
@@ -3545,7 +3545,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-hfp",
+      "fullUrl": "urn:uuid:db5d7ade-ada0-538c-9c40-59f55c922d0d",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-009-hfp",
@@ -3602,7 +3602,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-cbc",
+      "fullUrl": "urn:uuid:1d12c241-2f3f-590b-881b-c6594d26760d",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-010-cbc",
@@ -3667,7 +3667,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-cmp",
+      "fullUrl": "urn:uuid:4835706a-0da9-506f-9887-40185e1f1cf2",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-010-cmp",
@@ -3768,7 +3768,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-hba1c-report",
+      "fullUrl": "urn:uuid:c3ccf864-ef5e-58eb-b085-64142232ec6f",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-010-hba1c-report",
@@ -3821,7 +3821,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-hfp",
+      "fullUrl": "urn:uuid:c79a9859-565a-59cc-b726-294d9e5a0662",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-010-hfp",
@@ -3890,7 +3890,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-lipid",
+      "fullUrl": "urn:uuid:e04139f9-6559-58f1-a46b-a8b557b9e264",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-010-lipid",
@@ -3955,7 +3955,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-uric-acid-report",
+      "fullUrl": "urn:uuid:504a468e-188a-551f-a19f-aeb1310366eb",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-010-uric-acid-report",
@@ -4008,7 +4008,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-011-culture",
+      "fullUrl": "urn:uuid:680a6743-3923-56bb-91c9-f707095f3311",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-011-culture",
@@ -4055,7 +4055,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-afb-report",
+      "fullUrl": "urn:uuid:dc6a9925-f199-54dc-a98f-212b4cf07232",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-012-afb-report",
@@ -4108,7 +4108,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-cbc-report",
+      "fullUrl": "urn:uuid:032d9835-3d5d-55f5-9bcc-1b0ffee44b04",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-012-cbc-report",
@@ -4155,7 +4155,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-culture-report",
+      "fullUrl": "urn:uuid:f5a8a959-7c5c-567a-89a8-f3ef254383f8",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-012-culture-report",
@@ -4195,7 +4195,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-cxr",
+      "fullUrl": "urn:uuid:f079efd6-b6a9-5da2-90b2-828a5a82ac80",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-012-cxr",
@@ -4242,7 +4242,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-lft-report",
+      "fullUrl": "urn:uuid:edf8f9e1-5635-5925-9de0-49f1a98a16f1",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-012-lft-report",
@@ -4289,7 +4289,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-afb-report",
+      "fullUrl": "urn:uuid:43846112-f673-5b2e-a8be-cc07a5100945",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-afb-report",
@@ -4342,7 +4342,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-bmp",
+      "fullUrl": "urn:uuid:0bed56e9-ce8c-57c1-b891-1995e8dc7303",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-bmp",
@@ -4407,7 +4407,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-cbc",
+      "fullUrl": "urn:uuid:a049c0e3-d8bb-5a56-92da-79f97f12b293",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-cbc",
@@ -4472,7 +4472,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-culture-report",
+      "fullUrl": "urn:uuid:cde6b8e8-015c-5336-bb85-f5e34f6b5646",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-culture-report",
@@ -4512,7 +4512,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-hfp",
+      "fullUrl": "urn:uuid:dab1f299-4420-578e-91e8-700bf1dd85c1",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-hfp",
@@ -4569,7 +4569,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-uric-acid-report",
+      "fullUrl": "urn:uuid:e4b19897-834d-5c12-9cd5-e3dd44adac65",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-014-uric-acid-report",
@@ -4622,7 +4622,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-afb-smear",
+      "fullUrl": "urn:uuid:7aa110c3-5080-5ba5-a523-b5c5e0ab8e53",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-afb-smear",
@@ -4681,7 +4681,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-albumin",
+      "fullUrl": "urn:uuid:78e819eb-b4d3-53e0-a10b-c9fa57eebf67",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-albumin",
@@ -4759,7 +4759,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-alt",
+      "fullUrl": "urn:uuid:ed775b57-db14-5e85-9d4d-cd5fb6bcd904",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-alt",
@@ -4825,7 +4825,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-ast",
+      "fullUrl": "urn:uuid:795bb713-5575-51d0-9249-87d89d8abced",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-ast",
@@ -4891,7 +4891,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-bmi",
+      "fullUrl": "urn:uuid:8166483c-ec81-5635-adc1-eeac94c5fd92",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-bmi",
@@ -4935,7 +4935,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-bp",
+      "fullUrl": "urn:uuid:43542a78-fc63-58c3-8a8e-eae6ab35230e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-bp",
@@ -5011,7 +5011,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-color-vision",
+      "fullUrl": "urn:uuid:69a3e2f9-64e8-5b5f-9d53-2ad745e4b745",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-color-vision",
@@ -5055,7 +5055,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-creatinine",
+      "fullUrl": "urn:uuid:efe88a23-6e13-5a93-b6b6-5b9c59d80ba0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-creatinine",
@@ -5116,7 +5116,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-glucose",
+      "fullUrl": "urn:uuid:85935a9c-1e9e-5150-a84c-532b5c1c18ba",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-glucose",
@@ -5194,7 +5194,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-hct",
+      "fullUrl": "urn:uuid:3bfd5f72-7c55-5a38-8597-617dac187407",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-hct",
@@ -5267,7 +5267,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-hgb",
+      "fullUrl": "urn:uuid:231fd1a7-2b49-524b-ba03-061eb67e139c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-hgb",
@@ -5345,7 +5345,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-hr",
+      "fullUrl": "urn:uuid:f853aac5-099c-5dc7-a6de-13deb27c4313",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-hr",
@@ -5389,7 +5389,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-phq2",
+      "fullUrl": "urn:uuid:231851c3-4009-5833-882c-f59701eeac84",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-phq2",
@@ -5449,7 +5449,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-plt",
+      "fullUrl": "urn:uuid:a35ca572-0863-5a98-9bd7-5d09382d4716",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-plt",
@@ -5510,7 +5510,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-rr",
+      "fullUrl": "urn:uuid:8d6882cb-7f4b-5991-aea6-876594e547ee",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-rr",
@@ -5554,7 +5554,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-spo2",
+      "fullUrl": "urn:uuid:010d6e4c-b3fd-5479-a59a-69f49b39dc6a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-spo2",
@@ -5603,7 +5603,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-temp",
+      "fullUrl": "urn:uuid:2c09c29d-9290-5025-9ece-8ad9ce080490",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-temp",
@@ -5647,7 +5647,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-uric-acid",
+      "fullUrl": "urn:uuid:521f0c7e-fe45-5293-8877-9fcf223203b7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-uric-acid",
@@ -5725,7 +5725,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-va-od",
+      "fullUrl": "urn:uuid:18157526-55e8-5650-a2a4-6dc3c0c8bf7c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-va-od",
@@ -5769,7 +5769,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-va-os",
+      "fullUrl": "urn:uuid:b79e7045-4180-556c-8b78-449a5ea99f9f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-va-os",
@@ -5813,7 +5813,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-wbc",
+      "fullUrl": "urn:uuid:b5d27ef6-26ac-5d5d-98e8-2a0cc4ea1d2d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-wbc",
@@ -5874,7 +5874,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-weight",
+      "fullUrl": "urn:uuid:a39c39d8-3404-5bb0-8ecc-2c30a7af78e6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-003-weight",
@@ -5918,7 +5918,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-alt",
+      "fullUrl": "urn:uuid:ed50fd95-8e2f-5b92-8ebd-415567b89f49",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-alt",
@@ -5984,7 +5984,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-ast",
+      "fullUrl": "urn:uuid:a286dd39-1845-58db-95b5-8653b9fe7cdb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-ast",
@@ -6050,7 +6050,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-creatinine",
+      "fullUrl": "urn:uuid:58089880-8e08-5403-bf47-f18ba3586dc7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-creatinine",
@@ -6111,7 +6111,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-glucose",
+      "fullUrl": "urn:uuid:58e02ca7-0452-5eaf-a4cb-9dafc8558421",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-glucose",
@@ -6189,7 +6189,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-hct",
+      "fullUrl": "urn:uuid:b8471a25-c961-5126-86cc-14e033a4ba22",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-hct",
@@ -6262,7 +6262,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-hgb",
+      "fullUrl": "urn:uuid:de4d30db-c4e1-5e63-9c72-8b847ebd1e06",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-hgb",
@@ -6340,7 +6340,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-plt",
+      "fullUrl": "urn:uuid:e204c7d9-8a30-5682-a7d9-6f102d15beaa",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-plt",
@@ -6401,7 +6401,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-potassium",
+      "fullUrl": "urn:uuid:d42d7504-b7b7-577f-a531-0637156b4630",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-potassium",
@@ -6462,7 +6462,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-sodium",
+      "fullUrl": "urn:uuid:c9f817b0-0ebe-553b-b197-112a43ecd709",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-sodium",
@@ -6523,7 +6523,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-uric-acid",
+      "fullUrl": "urn:uuid:3132e2c6-f583-5490-a88d-698d3962b896",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-uric-acid",
@@ -6601,7 +6601,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-005-wbc",
+      "fullUrl": "urn:uuid:3a67ba6a-7475-5cc0-aa6d-cb38d4b5cb3a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-005-wbc",
@@ -6662,7 +6662,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-emb-suscept",
+      "fullUrl": "urn:uuid:8e877f20-e578-52c5-b1e7-c40c1fdeceff",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-emb-suscept",
@@ -6729,7 +6729,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-inh-suscept",
+      "fullUrl": "urn:uuid:621abb9f-638b-550a-a3c1-d3fd0893635d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-inh-suscept",
@@ -6796,7 +6796,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-pza-suscept",
+      "fullUrl": "urn:uuid:b403114e-e56c-5bcb-b17f-11186b81ea48",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-pza-suscept",
@@ -6863,7 +6863,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-rif-suscept",
+      "fullUrl": "urn:uuid:7a3c52ec-5a08-5a90-a7a5-b9f2035c0869",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-rif-suscept",
@@ -6930,7 +6930,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-sputum-culture",
+      "fullUrl": "urn:uuid:185602c9-f1e2-53d4-a64e-d84f5aaf7713",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-sputum-culture",
@@ -7006,7 +7006,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-006-strep-suscept",
+      "fullUrl": "urn:uuid:f7cd47a9-30bc-54c2-afac-fcf4e497e0d3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-006-strep-suscept",
@@ -7073,7 +7073,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-afb-smear",
+      "fullUrl": "urn:uuid:fa5c0e57-9165-5a0b-b537-bed828deea40",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-afb-smear",
@@ -7132,7 +7132,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-albumin",
+      "fullUrl": "urn:uuid:a97c3375-b83b-5b9e-bb01-879010d3fe8b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-albumin",
@@ -7210,7 +7210,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-alt",
+      "fullUrl": "urn:uuid:0564d5f6-2c27-55e1-bdfe-eeb95facb050",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-alt",
@@ -7276,7 +7276,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-ast",
+      "fullUrl": "urn:uuid:080f7d58-0ecc-5dad-b990-1b28cdbabdc0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-ast",
@@ -7342,7 +7342,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-bmi",
+      "fullUrl": "urn:uuid:669adede-0b47-5a94-8b3e-ff0b945b4d2c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-bmi",
@@ -7386,7 +7386,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-bp",
+      "fullUrl": "urn:uuid:44328f0a-a375-53be-8825-8f9cb7d7d178",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-bp",
@@ -7462,7 +7462,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-color-vision",
+      "fullUrl": "urn:uuid:ad7d0cec-4016-50d6-8d72-bfa0576667a6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-color-vision",
@@ -7506,7 +7506,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-creatinine",
+      "fullUrl": "urn:uuid:46b23224-8924-5a8f-8a98-ea0c888f6ecb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-creatinine",
@@ -7567,7 +7567,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-glucose",
+      "fullUrl": "urn:uuid:1d2962c4-f913-5fcc-9bec-4005ea3d0fec",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-glucose",
@@ -7645,7 +7645,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-hct",
+      "fullUrl": "urn:uuid:937f9f1b-650d-5c5f-ab63-0b71f4e4546b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-hct",
@@ -7718,7 +7718,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-hgb",
+      "fullUrl": "urn:uuid:99dace9d-fb29-5a5f-a965-99904c1b79f7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-hgb",
@@ -7796,7 +7796,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-hr",
+      "fullUrl": "urn:uuid:a3e4242d-fe4e-5b63-afc9-f4c1e0149d8c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-hr",
@@ -7840,7 +7840,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-phq2",
+      "fullUrl": "urn:uuid:1e53823a-f307-5750-aabc-28cc59bd48b1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-phq2",
@@ -7895,7 +7895,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-plt",
+      "fullUrl": "urn:uuid:bd3fcc42-788d-5c96-bf74-72981650c765",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-plt",
@@ -7956,7 +7956,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-rr",
+      "fullUrl": "urn:uuid:58ee6e57-d070-5057-aed1-a8c0982431a6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-rr",
@@ -8000,7 +8000,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-spo2",
+      "fullUrl": "urn:uuid:21292fc4-e394-5c0e-96b0-749a7c32f2b0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-spo2",
@@ -8049,7 +8049,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-temp",
+      "fullUrl": "urn:uuid:49d5385b-a5f8-5e63-a914-a33a1a91ec3e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-temp",
@@ -8093,7 +8093,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-uric-acid",
+      "fullUrl": "urn:uuid:6021b0d4-9dd5-582c-b620-8f7d1a148e3e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-uric-acid",
@@ -8171,7 +8171,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-va-od",
+      "fullUrl": "urn:uuid:9f0e6b3f-9dc9-5634-b94f-fa9d4d2efc7b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-va-od",
@@ -8215,7 +8215,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-va-os",
+      "fullUrl": "urn:uuid:95374b1f-1e17-5575-b723-e30e6f337da2",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-va-os",
@@ -8259,7 +8259,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-wbc",
+      "fullUrl": "urn:uuid:cf33b717-594f-5b87-8142-972824c745ca",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-wbc",
@@ -8320,7 +8320,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-weight",
+      "fullUrl": "urn:uuid:f80a7c9c-b07f-5be5-820e-98f2f99b9db3",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-007-weight",
@@ -8364,7 +8364,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-afb-smear",
+      "fullUrl": "urn:uuid:5d849e16-669f-5447-be03-87c39341c885",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-afb-smear",
@@ -8423,7 +8423,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-alt",
+      "fullUrl": "urn:uuid:62366a75-b6bf-5383-bf4b-7cdc1883c1f0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-alt",
@@ -8489,7 +8489,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-ast",
+      "fullUrl": "urn:uuid:4f72018c-e58f-5b41-9e93-2ff34440d031",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-ast",
@@ -8555,7 +8555,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-bmi",
+      "fullUrl": "urn:uuid:97dbbf22-fedc-561b-a160-1ae5de5cc01f",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-bmi",
@@ -8599,7 +8599,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-bp",
+      "fullUrl": "urn:uuid:7d0b1208-53c9-5cb7-a680-1fcf1333aece",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-bp",
@@ -8675,7 +8675,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-creatinine",
+      "fullUrl": "urn:uuid:e905e5fd-d030-512c-b483-4144bf9e869c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-creatinine",
@@ -8736,7 +8736,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-glucose",
+      "fullUrl": "urn:uuid:c7dd1984-dff3-56b5-b028-919086f58efd",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-glucose",
@@ -8814,7 +8814,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-hct",
+      "fullUrl": "urn:uuid:168957c8-22c6-5e4b-8118-ae6795fe1b83",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-hct",
@@ -8887,7 +8887,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-hgb",
+      "fullUrl": "urn:uuid:09d38b47-bbe2-5274-9414-99094c4d7aa4",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-hgb",
@@ -8965,7 +8965,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-hr",
+      "fullUrl": "urn:uuid:c3b0bf04-f8e6-5faa-a5a0-9e02de90d3d8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-hr",
@@ -9009,7 +9009,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-plt",
+      "fullUrl": "urn:uuid:a6cdf45f-9aa7-531a-be8a-d383b8275ab5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-plt",
@@ -9070,7 +9070,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-potassium",
+      "fullUrl": "urn:uuid:7bc96088-241e-5806-92cb-4128bd1fe183",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-potassium",
@@ -9131,7 +9131,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-rr",
+      "fullUrl": "urn:uuid:9ccb32a3-322a-55d4-81be-fabea747191c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-rr",
@@ -9175,7 +9175,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-sodium",
+      "fullUrl": "urn:uuid:58f863d7-0884-5a35-a9ec-ff511ce3dca0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-sodium",
@@ -9236,7 +9236,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-spo2",
+      "fullUrl": "urn:uuid:3af85152-372a-5d07-ba5e-1cd64ad82693",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-spo2",
@@ -9280,7 +9280,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-temp",
+      "fullUrl": "urn:uuid:59f50cf5-e87c-51f3-b738-708ea9305b0d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-temp",
@@ -9324,7 +9324,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-va-od",
+      "fullUrl": "urn:uuid:f3c2feb4-5023-5cae-9a9e-74e749dfd2a5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-va-od",
@@ -9368,7 +9368,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-va-os",
+      "fullUrl": "urn:uuid:4722d7cf-21d1-536c-9032-6f86ac69f70a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-va-os",
@@ -9412,7 +9412,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-wbc",
+      "fullUrl": "urn:uuid:d7426aa7-ff93-5d57-8f54-59f69f917784",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-wbc",
@@ -9473,7 +9473,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-009-weight",
+      "fullUrl": "urn:uuid:432d4f22-d06b-51ae-89bd-1b67388b3db1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-009-weight",
@@ -9517,7 +9517,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-albumin",
+      "fullUrl": "urn:uuid:751ed689-de76-5d3b-bb46-9852afaa664a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-albumin",
@@ -9583,7 +9583,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-alp",
+      "fullUrl": "urn:uuid:6dc50d44-e876-5297-8b4a-716c8d96c4af",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-alp",
@@ -9644,7 +9644,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-alt",
+      "fullUrl": "urn:uuid:3be5d1cf-661e-557c-bf8a-509d6e651085",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-alt",
@@ -9710,7 +9710,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-ast",
+      "fullUrl": "urn:uuid:137794df-d21c-5909-8544-813c93fe646a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-ast",
@@ -9776,7 +9776,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-bun",
+      "fullUrl": "urn:uuid:199ae2a6-09db-5574-9a4d-aef4464c57da",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-bun",
@@ -9837,7 +9837,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-calcium",
+      "fullUrl": "urn:uuid:fdb1a6a7-7ffa-5d6a-8dc3-2942b375127d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-calcium",
@@ -9898,7 +9898,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-chloride",
+      "fullUrl": "urn:uuid:04b6ef89-fa2b-5b8f-b8f3-8b5e580a2409",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-chloride",
@@ -9959,7 +9959,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-cholesterol",
+      "fullUrl": "urn:uuid:4a7b8231-4c4a-5bd1-a5e6-cddd907cd4a6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-cholesterol",
@@ -10014,7 +10014,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-co2",
+      "fullUrl": "urn:uuid:a6cca5be-d6b9-5210-b6c1-655d729cf3cf",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-co2",
@@ -10075,7 +10075,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-creatinine",
+      "fullUrl": "urn:uuid:2c7b0584-2a56-545a-9abc-54eca98762da",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-creatinine",
@@ -10136,7 +10136,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-glucose",
+      "fullUrl": "urn:uuid:b77159d0-cd44-5836-a927-d0213a40b7fb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-glucose",
@@ -10202,7 +10202,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-hba1c",
+      "fullUrl": "urn:uuid:bd503939-03b2-519c-a634-f012187f3148",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-hba1c",
@@ -10268,7 +10268,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-hct",
+      "fullUrl": "urn:uuid:1b5b24b9-f61b-5fb7-b491-bfc6eb3c6e6c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-hct",
@@ -10329,7 +10329,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-hdl",
+      "fullUrl": "urn:uuid:38540d2e-9ba3-52a3-8c87-eacfbad9eddb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-hdl",
@@ -10384,7 +10384,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-hgb",
+      "fullUrl": "urn:uuid:a08a85ab-1d67-5820-86ba-eb5c567f0703",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-hgb",
@@ -10450,7 +10450,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-ldl",
+      "fullUrl": "urn:uuid:60e01641-00f4-5f45-abf3-87b7bdb4a5a0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-ldl",
@@ -10505,7 +10505,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-plt",
+      "fullUrl": "urn:uuid:98b78354-53a6-5ffd-acca-ed1a1b6251fa",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-plt",
@@ -10566,7 +10566,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-potassium",
+      "fullUrl": "urn:uuid:585bee2b-22bb-56f9-ade1-fd8acddaf1e0",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-potassium",
@@ -10627,7 +10627,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-sodium",
+      "fullUrl": "urn:uuid:76d23703-360a-5e70-8d96-a93082d3710a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-sodium",
@@ -10688,7 +10688,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-tbil",
+      "fullUrl": "urn:uuid:a11fb592-4d6b-5304-b757-6b23aa77bf16",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-tbil",
@@ -10749,7 +10749,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-triglycerides",
+      "fullUrl": "urn:uuid:326988a7-fd01-56f4-862b-a2e3675bbb32",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-triglycerides",
@@ -10809,7 +10809,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-uric-acid",
+      "fullUrl": "urn:uuid:4eba75b5-99b5-508a-8390-64808cabb7d1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-uric-acid",
@@ -10875,7 +10875,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-010-wbc",
+      "fullUrl": "urn:uuid:739f43e0-79e0-509e-8b2e-db24b449b972",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-010-wbc",
@@ -10936,7 +10936,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-afb-smear",
+      "fullUrl": "urn:uuid:3b291033-4c05-5e10-8b82-21c479e71d9d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-afb-smear",
@@ -10995,7 +10995,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-bmi",
+      "fullUrl": "urn:uuid:7cc11a2f-0ca5-568e-a593-c084b925999a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-bmi",
@@ -11039,7 +11039,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-bp",
+      "fullUrl": "urn:uuid:4c9260dd-4e9c-594d-b5b9-bda6f91ea986",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-bp",
@@ -11115,7 +11115,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-hba1c",
+      "fullUrl": "urn:uuid:2d988898-7476-5ed3-b9d1-7abfa91aa1c7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-hba1c",
@@ -11176,7 +11176,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-hgb",
+      "fullUrl": "urn:uuid:0aa8d160-344d-57e6-8db0-5c4687cc9eb1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-hgb",
@@ -11237,7 +11237,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-hr",
+      "fullUrl": "urn:uuid:c6301ae0-e37f-5179-b73c-ba4ddcd1749c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-hr",
@@ -11281,7 +11281,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-phq2",
+      "fullUrl": "urn:uuid:c0b42704-f7eb-5641-896c-fb42f3534b01",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-phq2",
@@ -11343,7 +11343,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-rr",
+      "fullUrl": "urn:uuid:df303caa-ba27-5912-a5a0-75bc0e7bd068",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-rr",
@@ -11387,7 +11387,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-spo2",
+      "fullUrl": "urn:uuid:9042d851-3a49-57c2-aa8a-15043522091c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-spo2",
@@ -11441,7 +11441,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-temp",
+      "fullUrl": "urn:uuid:7f0d54f4-4fcc-5e4d-a7b5-2a9f270771d8",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-temp",
@@ -11485,7 +11485,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-uric-acid",
+      "fullUrl": "urn:uuid:e8c36bc3-5041-5043-b8e2-cbc38bda95de",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-uric-acid",
@@ -11563,7 +11563,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-va-od",
+      "fullUrl": "urn:uuid:31256418-d180-58c7-9efc-47b562859546",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-va-od",
@@ -11602,7 +11602,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-va-os",
+      "fullUrl": "urn:uuid:c4acc74e-e311-54b9-9cdb-3eb727a6c4f1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-va-os",
@@ -11646,7 +11646,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-weight",
+      "fullUrl": "urn:uuid:413c2dc1-a520-5e1e-a607-a7804e4acfb5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-012-weight",
@@ -11690,7 +11690,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-afb-smear",
+      "fullUrl": "urn:uuid:d5b28e70-856c-52b8-aaf6-a3fbd189a9b9",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-afb-smear",
@@ -11749,7 +11749,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-alt",
+      "fullUrl": "urn:uuid:cf6e99df-3e3f-5983-962c-77e5af34c554",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-alt",
@@ -11815,7 +11815,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-ast",
+      "fullUrl": "urn:uuid:15531ed8-629d-5ab0-9064-69b08507eabc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-ast",
@@ -11881,7 +11881,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-bmi",
+      "fullUrl": "urn:uuid:a1ea365f-758f-5ac0-8a2b-71cafd000529",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-bmi",
@@ -11925,7 +11925,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-bp",
+      "fullUrl": "urn:uuid:cd0af6ba-e918-5f6b-86b5-e703b51e17f7",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-bp",
@@ -12001,7 +12001,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-creatinine",
+      "fullUrl": "urn:uuid:f8f8fa31-9736-59ed-ac12-19ab626b65bc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-creatinine",
@@ -12062,7 +12062,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-glucose",
+      "fullUrl": "urn:uuid:d6afe160-460f-501b-8cff-6b5e7ad13623",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-glucose",
@@ -12135,7 +12135,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-hct",
+      "fullUrl": "urn:uuid:08741c37-07bf-50c6-9d71-c6f662fad0e5",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-hct",
@@ -12196,7 +12196,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-hgb",
+      "fullUrl": "urn:uuid:7334974f-d458-53e6-9470-5b657fc0670d",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-hgb",
@@ -12274,7 +12274,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-hr",
+      "fullUrl": "urn:uuid:acbbbc29-a3a5-52f4-9c61-3e8b8f172fa4",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-hr",
@@ -12318,7 +12318,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-phq2",
+      "fullUrl": "urn:uuid:948d119f-cd70-5795-bcf8-059ebff2dc7c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-phq2",
@@ -12380,7 +12380,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-plt",
+      "fullUrl": "urn:uuid:5668c53a-110e-5930-9b4c-bbb97e6c4cce",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-plt",
@@ -12441,7 +12441,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-potassium",
+      "fullUrl": "urn:uuid:731d31ab-513e-5b18-a365-ad523a01a4ca",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-potassium",
@@ -12502,7 +12502,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-rr",
+      "fullUrl": "urn:uuid:27e09e51-0ae4-55ed-9d99-2a0c92cad3bf",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-rr",
@@ -12546,7 +12546,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-sodium",
+      "fullUrl": "urn:uuid:1e77cbb4-ff99-5e55-90b2-5b8f4a69d459",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-sodium",
@@ -12607,7 +12607,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-spo2",
+      "fullUrl": "urn:uuid:5f3c6d1f-f8c0-5a9c-91f4-b6697d75c3ec",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-spo2",
@@ -12651,7 +12651,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-temp",
+      "fullUrl": "urn:uuid:99747ce1-1336-5cde-9569-2417fdc35252",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-temp",
@@ -12695,7 +12695,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-uric-acid",
+      "fullUrl": "urn:uuid:e844d33c-be13-5ade-8a4c-d22711065d6c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-uric-acid",
@@ -12761,7 +12761,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-wbc",
+      "fullUrl": "urn:uuid:8fb60ab0-09c7-5443-82c4-bb3c47b307cb",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-wbc",
@@ -12822,7 +12822,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-weight",
+      "fullUrl": "urn:uuid:8a6673df-1f3f-5696-a14e-bbb6a7aad45c",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-014-weight",
@@ -12866,7 +12866,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-003-tb",
+      "fullUrl": "urn:uuid:a4e48abe-5629-5882-b71d-c8beebe0de97",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-003-tb",
@@ -12929,7 +12929,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-004-social-isolation",
+      "fullUrl": "urn:uuid:c275ac4c-26a1-547c-abd8-9605e080cb81",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-004-social-isolation",
@@ -12992,7 +12992,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-007-hyperuricemia",
+      "fullUrl": "urn:uuid:c07de57e-845f-5b05-9931-40004f9907c1",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-007-hyperuricemia",
@@ -13055,7 +13055,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-014-anemia",
+      "fullUrl": "urn:uuid:4f9d940a-83d3-58ac-8ec3-bf2fb4b67cdc",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-014-anemia",
@@ -13118,7 +13118,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-medrq-emb",
+      "fullUrl": "urn:uuid:6590ae8e-dc65-5f3a-9380-35eb754d3ecb",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-012-medrq-emb",
@@ -13211,7 +13211,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-012-medrq-pza",
+      "fullUrl": "urn:uuid:cb2d9d9d-d68b-5e9d-a72c-4173ae7fb3bb",
       "resource": {
         "resourceType": "MedicationRequest",
         "id": "enc-012-medrq-pza",

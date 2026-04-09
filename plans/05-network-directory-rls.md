@@ -303,7 +303,7 @@ Each returned `Endpoint` should include:
 
 Recommended identifier namespace:
 
-- `system = urn:smart-permission-tickets:endpoint-id`
+- `system = urn:example:smart-permission-ticket-demo:endpoint-id`
 
 ### Example RLS Response
 
@@ -319,7 +319,7 @@ Recommended identifier namespace:
         "id": "eastbay-primary-care",
         "identifier": [
           {
-            "system": "urn:smart-permission-tickets:endpoint-id",
+            "system": "urn:example:smart-permission-ticket-demo:endpoint-id",
             "value": "eastbay-primary-care"
           }
         ],

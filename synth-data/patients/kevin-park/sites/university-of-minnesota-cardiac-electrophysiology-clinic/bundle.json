@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-09T02:10:13.119Z",
+  "timestamp": "2026-04-09T18:47:38.177Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:5bd976dc-a3e0-4123-ac48-b7774a57978f",
@@ -57,7 +57,7 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"electrophysiology-consult-packet\",\"label\":\"Electrophysiology consult packet\",\"summary\":\"An electrophysiology specialist requests the PCP workup Kevin completed before referral for atrial fibrillation ablation evaluation.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/provider-consult-v1\",\"requester\":{\"resourceType\":\"PractitionerRole\",\"code\":[{\"text\":\"Electrophysiologist\"}],\"identifier\":[{\"system\":\"http://hl7.org/fhir/sid/us-npi\",\"value\":\"1881999001\"}],\"practitioner\":{\"display\":\"Dr. Amelia Chen\"},\"organization\":{\"display\":\"University of Minnesota Cardiac Electrophysiology\"}},\"context\":{\"reason\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"49436004\",\"display\":\"Atrial fibrillation\"}],\"text\":\"Atrial fibrillation ablation evaluation\"},\"consult_request\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-consult\",\"value\":\"EP-CONSULT-2026-208\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2025-01-01\",\"end\":\"2026-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Minnehaha Internal Medicine\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\":[{\"id\":\"electrophysiology-consult-packet\",\"label\":\"Electrophysiology consult packet\",\"summary\":\"An electrophysiology specialist requests the PCP workup Kevin completed before referral for atrial fibrillation ablation evaluation.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/provider-consult-v1\",\"requester\":{\"resourceType\":\"PractitionerRole\",\"code\":[{\"text\":\"Electrophysiologist\"}],\"identifier\":[{\"system\":\"http://hl7.org/fhir/sid/us-npi\",\"value\":\"1881999001\"}],\"practitioner\":{\"display\":\"Dr. Amelia Chen\"},\"organization\":{\"display\":\"University of Minnesota Cardiac Electrophysiology\"}},\"context\":{\"reason\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"49436004\",\"display\":\"Atrial fibrillation\"}],\"text\":\"Atrial fibrillation ablation evaluation\"},\"consult_request\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-consult\",\"value\":\"EP-CONSULT-2026-208\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2025-01-01\",\"end\":\"2026-12-31\"},\"responder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Minnehaha Internal Medicine\"}}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "identifier": [
@@ -77,7 +77,7 @@
             "value": "UMN-EP-900471"
           },
           {
-            "system": "urn:smart-permission-tickets:person-id",
+            "system": "urn:example:smart-permission-ticket-demo:person-id",
             "value": "person-d78ea2c16bb7050d18470a96"
           }
         ],
@@ -413,7 +413,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-afib",
+      "fullUrl": "urn:uuid:bd0904e2-54e0-5748-9d3a-3703a81ee109",
       "resource": {
         "resourceType": "Condition",
         "id": "enc-015-afib",
@@ -482,7 +482,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-bmi",
+      "fullUrl": "urn:uuid:74ed3acc-3871-5e27-8385-62772fbe61c1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-bmi",
@@ -526,7 +526,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-bp",
+      "fullUrl": "urn:uuid:82353c23-5313-59c0-90b7-41663813b2fa",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-bp",
@@ -602,7 +602,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-height",
+      "fullUrl": "urn:uuid:5bd9bcc9-021b-574d-8ebb-10e9f821a1fd",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-height",
@@ -646,7 +646,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-hr",
+      "fullUrl": "urn:uuid:40133204-3985-5d69-805a-0d37e1c0b163",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-hr",
@@ -695,7 +695,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-rr",
+      "fullUrl": "urn:uuid:71b847b3-7650-5091-b920-037830ebc4bc",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-rr",
@@ -739,7 +739,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-spo2",
+      "fullUrl": "urn:uuid:00379db2-3916-5320-b98e-023c06a603f1",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-spo2",
@@ -788,7 +788,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-temp",
+      "fullUrl": "urn:uuid:c791159a-55bd-5b78-ba99-c83f9475d759",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-temp",
@@ -832,7 +832,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-weight",
+      "fullUrl": "urn:uuid:60f7f02f-9763-5031-9db1-8e5183c4ba9b",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-015-weight",
@@ -876,7 +876,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-af-burden",
+      "fullUrl": "urn:uuid:d46b80ec-5ccd-5073-928c-d88a48ea008a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-af-burden",
@@ -942,7 +942,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-avg-hr",
+      "fullUrl": "urn:uuid:e2548cef-1eb4-5461-afa0-9f3e1a606970",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-avg-hr",
@@ -1015,7 +1015,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-events",
+      "fullUrl": "urn:uuid:54425442-493c-59fc-8ec1-8af60a58b2b4",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-events",
@@ -1074,7 +1074,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-longest-pause",
+      "fullUrl": "urn:uuid:e7e8171e-a75b-5b33-b638-7f69497442f6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-longest-pause",
@@ -1152,7 +1152,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-max-hr",
+      "fullUrl": "urn:uuid:a20a1d6c-5c21-596c-843a-4d44d1452d64",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-max-hr",
@@ -1218,7 +1218,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-min-hr",
+      "fullUrl": "urn:uuid:5cbe591d-81ec-5460-8fc4-bb27a086cc66",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-min-hr",
@@ -1284,7 +1284,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-pvc-burden",
+      "fullUrl": "urn:uuid:8e08a30d-f574-5b49-91df-07190cc5cd73",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-pvc-burden",
@@ -1357,7 +1357,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-recording-duration",
+      "fullUrl": "urn:uuid:186ea306-0337-54b7-9e48-5e3f60ef276a",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-recording-duration",
@@ -1423,7 +1423,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-rhythm",
+      "fullUrl": "urn:uuid:98345481-c941-5bf3-89e7-5ed9e67374ca",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-016-rhythm",
@@ -1481,7 +1481,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-bmi",
+      "fullUrl": "urn:uuid:8379add0-1732-5d2e-ba54-04581359e8f6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-bmi",
@@ -1531,7 +1531,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-bp",
+      "fullUrl": "urn:uuid:ef542739-5957-5e59-8a33-dfe4e2e06af2",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-bp",
@@ -1613,7 +1613,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-hr",
+      "fullUrl": "urn:uuid:ea85d461-5411-5a45-8923-f770cf9f5f55",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-hr",
@@ -1668,7 +1668,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-rr",
+      "fullUrl": "urn:uuid:f757c4b0-79ef-56c1-a226-986b1d413edd",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-rr",
@@ -1718,7 +1718,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-spo2",
+      "fullUrl": "urn:uuid:84725cb1-2ae2-5aed-a4d1-76d282d1d2d6",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-spo2",
@@ -1773,7 +1773,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-temp",
+      "fullUrl": "urn:uuid:c8314600-e9dc-5c5c-95e1-6f35f273d16e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-temp",
@@ -1823,7 +1823,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-weight",
+      "fullUrl": "urn:uuid:dd96e02f-6be5-5731-aa83-dadafca5b44e",
       "resource": {
         "resourceType": "Observation",
         "id": "enc-017-weight",
@@ -1873,7 +1873,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-holter",
+      "fullUrl": "urn:uuid:f7750134-2554-50d4-88ad-b657f96b8ef0",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-015-holter",
@@ -1947,7 +1947,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-cardiac-imaging",
+      "fullUrl": "urn:uuid:b86930a5-4cad-521d-8977-c369fb986cbf",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-017-cardiac-imaging",
@@ -1989,7 +1989,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-preop-labs",
+      "fullUrl": "urn:uuid:60174183-a880-5fab-821d-dbf51b97a447",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-017-preop-labs",
@@ -2031,7 +2031,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-pvi",
+      "fullUrl": "urn:uuid:736869ed-8b51-53f1-811b-f7b8607c987d",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "enc-017-pvi",
@@ -2073,7 +2073,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015-note",
+      "fullUrl": "urn:uuid:c24f0d24-0af4-5f7f-a3e0-5de6432c3234",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-015-note",
@@ -2150,7 +2150,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-note",
+      "fullUrl": "urn:uuid:8b918192-e7c1-5958-b072-b6f912a0fe03",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-016-note",
@@ -2227,7 +2227,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017-note",
+      "fullUrl": "urn:uuid:84e5f959-5c87-56d6-9ee6-77ff4009ba34",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "enc-017-note",
@@ -2301,7 +2301,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-015",
+      "fullUrl": "urn:uuid:d8ecc18f-39aa-54ec-824c-ba8929010baf",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-015",
@@ -2412,7 +2412,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016",
+      "fullUrl": "urn:uuid:4227de80-9cdc-59fd-b309-c61ea4f11adc",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-016",
@@ -2535,7 +2535,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-017",
+      "fullUrl": "urn:uuid:9caa879c-dcb6-578b-a762-93b77c5566e4",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-017",
@@ -2637,7 +2637,7 @@
       }
     },
     {
-      "fullUrl": "urn:uuid:enc-016-holter",
+      "fullUrl": "urn:uuid:a24711d1-5d5d-5a44-ae6e-5c4c0fa1b507",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "enc-016-holter",

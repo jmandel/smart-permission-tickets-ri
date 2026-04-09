@@ -728,7 +728,7 @@ function buildDemoPerson(resource: any, patientSlug: string): DemoPersonSummary 
   const name = resource.name?.[0] ?? {};
   const givenNames = Array.isArray(name.given) ? name.given.filter((value: unknown) => typeof value === "string") : [];
   const familyName = typeof name.family === "string" ? name.family : null;
-  const personId = (resource.identifier ?? []).find((identifier: any) => identifier?.system === "urn:smart-permission-tickets:person-id")?.value ?? patientSlug;
+  const personId = (resource.identifier ?? []).find((identifier: any) => identifier?.system === "urn:example:smart-permission-ticket-demo:person-id")?.value ?? patientSlug;
   const useCases = (resource.meta?.tag ?? [])
     .filter((tag: any) => tag?.system === USE_CASE_TAG_SYSTEM && tag?.code)
     .map((tag: any) => ({ system: tag.system, code: tag.code, display: tag.display ?? tag.code }));
