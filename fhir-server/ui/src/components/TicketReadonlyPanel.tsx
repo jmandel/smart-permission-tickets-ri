@@ -72,10 +72,10 @@ function CodeableConceptField({
       <span className="readonly-ticket-field-label">{label}</span>
       <div className="readonly-ticket-field-complex-body">
         {text && (
-          <div className="readonly-ticket-inline-pair">
-            <span className="readonly-ticket-inline-label">Text</span>
-            <span className="readonly-ticket-inline-value">{text}</span>
-          </div>
+          <CompactMatrix
+            columns={["text"]}
+            rows={[[text]]}
+          />
         )}
       {codings.length > 0 && (
         <CompactMatrix

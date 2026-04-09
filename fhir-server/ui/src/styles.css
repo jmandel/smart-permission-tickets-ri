@@ -388,25 +388,6 @@ p { line-height: 1.55; }
   gap: 8px;
 }
 
-.readonly-ticket-inline-pair {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 2px 2px 0;
-}
-
-.readonly-ticket-inline-label {
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.readonly-ticket-inline-value {
-  font-weight: 600;
-}
-
 .readonly-ticket-matrix {
   display: grid;
   gap: 1px;
@@ -414,6 +395,10 @@ p { line-height: 1.55; }
   border-radius: 10px;
   overflow: hidden;
   background: rgba(196, 199, 197, 0.9);
+}
+
+.readonly-ticket-matrix-1 {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .readonly-ticket-matrix-2 {
@@ -474,6 +459,7 @@ p { line-height: 1.55; }
     grid-column: auto;
   }
 
+  .readonly-ticket-matrix-1,
   .readonly-ticket-matrix-2,
   .readonly-ticket-matrix-3 {
     grid-template-columns: 1fr;
