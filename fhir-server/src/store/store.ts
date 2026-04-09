@@ -77,6 +77,7 @@ const PATIENT_TICKET_SCENARIOS_EXT = DEMO_TICKET_SCENARIOS_EXTENSION_URL;
 export class FhirStore {
   readonly db: Database;
   readonly loadResult: LoadResult;
+  private static readonly loadCache = new Map<string, { serialized: Uint8Array; loadResult: LoadResult }>();
 
   constructor(db: Database, loadResult: LoadResult) {
     this.db = db;
@@ -84,10 +85,18 @@ export class FhirStore {
   }
 
   static load(dataRoot = DATA_ROOT) {
+    const cached = this.loadCache.get(dataRoot);
+    if (cached) {
+      return new FhirStore(Database.deserialize(cached.serialized), cached.loadResult);
+    }
+
     const db = new Database(":memory:");
     initializeSchema(db);
     const loadResult = loadAllResources(db, dataRoot);
-    return new FhirStore(db, loadResult);
+    const serialized = new Uint8Array(db.serialize());
+    db.close();
+    this.loadCache.set(dataRoot, { serialized, loadResult });
+    return new FhirStore(Database.deserialize(serialized), loadResult);
   }
 
   hasVisibleEncounter(envelope: AuthorizationEnvelope, siteSlug?: string) {
