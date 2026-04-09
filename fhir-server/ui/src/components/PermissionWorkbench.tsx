@@ -57,6 +57,41 @@ function registrationModeLabel(registrationMode: DemoClientOption["registrationM
       : "UDAP DCR";
 }
 
+function ticketBindingHeadline(clientStory: NonNullable<ReturnType<typeof describeClientOption>>) {
+  if (clientStory.clientType === "udap" && clientStory.entityUri) return "SAN URI bound";
+  if (clientStory.ticketBinding.usesFrameworkBinding && clientStory.entityUri) return "Entity URI bound";
+  if (clientStory.ticketBinding.usesProofKeyBinding && clientStory.ticketBinding.proofJkt) return "JKT bound";
+  return "No binding";
+}
+
+function ticketBindingPreview(clientStory: NonNullable<ReturnType<typeof describeClientOption>>) {
+  if (clientStory.clientType === "udap" && clientStory.entityUri) {
+    return {
+      method: "framework_client",
+      detailLabel: "entity_uri",
+      detailHeading: "SAN entity URI",
+      value: clientStory.entityUri,
+    };
+  }
+  if (clientStory.ticketBinding.usesFrameworkBinding && clientStory.entityUri) {
+    return {
+      method: "framework_client",
+      detailLabel: "entity_uri",
+      detailHeading: "Entity URI",
+      value: clientStory.entityUri,
+    };
+  }
+  if (clientStory.ticketBinding.usesProofKeyBinding && clientStory.ticketBinding.proofJkt) {
+    return {
+      method: "jkt",
+      detailLabel: "jkt",
+      detailHeading: "JKT",
+      value: "generated at launch",
+    };
+  }
+  return null;
+}
+
 export function PermissionWorkbench({
   person,
   mode,
@@ -159,6 +194,7 @@ export function PermissionWorkbench({
         ? "Ticket uses presenter_binding.method = framework_client"
         : "No presenter binding";
   const selectedClientStory = selectedClientOption ? describeClientOption(mode, selectedClientOption) : null;
+  const selectedBindingPreview = selectedClientStory ? ticketBindingPreview(selectedClientStory) : null;
   const selectedScenarioRequester = selectedScenario ? scenarioRequesterLabel(selectedScenario) : null;
   const selectedScenarioContext = selectedScenario ? scenarioContextDetails(selectedScenario) : [];
 
@@ -292,7 +328,7 @@ export function PermissionWorkbench({
     const metadata = [
       clientStory?.ticketBinding ? { label: "Binding", value: clientStory.ticketBinding.label } : null,
       clientStory?.ticketBinding?.rationale ? { label: "Rationale", value: clientStory.ticketBinding.rationale } : null,
-      clientStory?.frameworkUri ? { label: "Framework", value: clientStory.frameworkUri } : null,
+      clientStory?.frameworkUri ? { label: "Trust framework", value: clientStory.frameworkUri } : null,
       clientStory?.entityUri ? { label: "Entity URI", value: clientStory.entityUri } : null,
     ].filter((entry): entry is { label: string; value: string } => Boolean(entry));
     const href = buildArtifactViewerHref(buildJwtArtifactPayload({
@@ -410,11 +446,11 @@ export function PermissionWorkbench({
                 </div>
                 <div className="demo-client-fact demo-client-fact--wide">
                   <span className="summary-label">Ticket binding</span>
-                  <strong>{selectedClientStory.ticketBinding.label}</strong>
+                  <strong>{ticketBindingHeadline(selectedClientStory)}</strong>
                 </div>
                 {selectedClientStory.frameworkDisplayName && (
                   <div className="demo-client-fact">
-                    <span className="summary-label">Framework</span>
+                    <span className="summary-label">Trust framework</span>
                     <strong>{selectedClientStory.frameworkDisplayName}</strong>
                   </div>
                 )}
@@ -422,12 +458,6 @@ export function PermissionWorkbench({
                   <span className="summary-label">Client id on wire</span>
                   <strong className="mono-value mono-wrap">{selectedClientStory.effectiveClientId}</strong>
                 </div>
-                {selectedClientStory.entityUri && (
-                  <div className="demo-client-fact demo-client-fact--full">
-                    <span className="summary-label">{selectedClientStory.clientType === "udap" ? "Entity URI (certificate SAN)" : "Entity URI"}</span>
-                    <strong className="mono-value mono-wrap">{selectedClientStory.entityUri}</strong>
-                  </div>
-                )}
               </div>
               <p className="subtle demo-client-binding-copy">{selectedClientStory.ticketBinding.rationale}</p>
               <p className="subtle demo-client-binding-copy">Client trust and ticket-issuer trust are shown separately in Protocol Trace and token diagnostics.</p>
@@ -474,7 +504,7 @@ export function PermissionWorkbench({
         </section>
       )}
 
-      {selectedScenario && <TicketReadonlyPanel scenario={selectedScenario} />}
+      {selectedScenario && <TicketReadonlyPanel scenario={selectedScenario} bindingPreview={selectedBindingPreview} />}
 
       <section className="panel section">
         <div className="workbench-header">

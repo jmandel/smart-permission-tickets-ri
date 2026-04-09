@@ -688,7 +688,11 @@ export function describeTicketBinding(
     : usesFrameworkBinding
       ? "presenter_binding.method=framework_client"
       : "none";
-  const label = shape === "none" ? "No presenter binding in ticket" : shape;
+  const label = shape === "none"
+    ? "No presenter binding in ticket"
+    : shape === "presenter_binding.method=jkt"
+      ? "jkt binding"
+      : "framework_client binding";
   const rationale = clientType === "unaffiliated"
     ? (usesProofKeyBinding
         ? "This app is outside any trust framework, so the ticket binds directly to the generated JWK thumbprint."
@@ -877,12 +881,12 @@ function buildClientStoryDescription(
         ? "Implicit"
         : "UDAP DCR";
   const authenticationLabel = clientType === "unaffiliated"
-    ? "private_key_jwt using a one-off JWK"
+    ? "private_key_jwt with a one-off JWK"
     : clientType === "well-known"
-      ? "private_key_jwt using the entity's current JWKS key"
+      ? "private_key_jwt with current entity JWKS"
       : clientType === "oidf"
-        ? "private_key_jwt using the entity's federation-resolved JWKS and a trust_chain JOSE header"
-      : "UDAP client assertion with x5c certificate chain; entity URI comes from the certificate SAN";
+        ? "private_key_jwt with resolved federation JWKS + trust_chain"
+      : "UDAP client assertion with x5c chain + SAN entity URI";
   const expectedClientId = effectiveClientId
     ?? (clientType === "well-known"
       ? `well-known:${entityUri ?? "<entity-uri>"}`

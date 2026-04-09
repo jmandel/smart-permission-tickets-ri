@@ -497,7 +497,7 @@ describe("demo helpers", () => {
   test("client story description explains well-known framework binding", () => {
     const story = describeClientOption("strict", wellKnownOption);
     expect(story.registrationLabel).toBe("Implicit");
-    expect(story.authenticationLabel).toBe("private_key_jwt using the entity's current JWKS key");
+    expect(story.authenticationLabel).toBe("private_key_jwt with current entity JWKS");
     expect(story.effectiveClientId).toBe("well-known:http://localhost:8091/demo/clients/well-known-alpha");
     expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");
     expect(story.whatThisDemonstrates).toContain("skip registration entirely");
@@ -519,7 +519,7 @@ describe("demo helpers", () => {
   test("client story description explains UDAP SAN-based entity binding", () => {
     const story = describeClientOption("strict", udapOption);
     expect(story.registrationLabel).toBe("UDAP DCR");
-    expect(story.authenticationLabel).toContain("certificate SAN");
+    expect(story.authenticationLabel).toContain("SAN entity URI");
     expect(story.entityUri).toBe("http://localhost:8091/demo/clients/udap/sample-client");
     expect(story.whatThisDemonstrates).toContain("Subject Alternative Name");
     expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");

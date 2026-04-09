@@ -364,6 +364,13 @@ p { line-height: 1.55; }
   line-height: 1.45;
 }
 
+.readonly-ticket-field-value-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
 .readonly-ticket-field-complex {
   align-items: start;
 }
@@ -946,9 +953,8 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 }
 
 .demo-client-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  grid-auto-flow: dense;
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -957,6 +963,8 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   border-radius: 10px;
   background: #fff;
   padding: 12px;
+  flex: 1 1 220px;
+  min-width: min(100%, 220px);
 }
 
 .demo-client-fact strong {
@@ -965,12 +973,18 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   overflow-wrap: anywhere;
 }
 
+.demo-client-fact-copy {
+  margin-top: 8px;
+}
+
 .demo-client-fact--wide {
-  grid-column: span 2;
+  flex-basis: 420px;
+  flex-grow: 2;
 }
 
 .demo-client-fact--full {
-  grid-column: 1 / -1;
+  flex-basis: 100%;
+  min-width: 100%;
 }
 
 .demo-client-binding-copy {
@@ -2154,7 +2168,8 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 @media (max-width: 960px) {
   .demo-client-fact--wide,
   .demo-client-fact--full {
-    grid-column: auto;
+    flex-basis: 100%;
+    min-width: 100%;
   }
 
   .artifact-context-layout {

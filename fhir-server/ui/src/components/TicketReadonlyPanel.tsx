@@ -6,19 +6,28 @@ function ReadonlyField({
   value,
   mono = false,
   stack = false,
+  scroll = false,
 }: {
   label: string;
   value: string;
   mono?: boolean;
   stack?: boolean;
+  scroll?: boolean;
 }) {
   return (
     <div className={`readonly-ticket-field${stack ? " readonly-ticket-field-stack" : ""}`}>
       <span className="readonly-ticket-field-label">{label}</span>
-      <div className={`readonly-ticket-field-value${mono ? " mono-value mono-wrap" : ""}`}>{value}</div>
+      <div className={`readonly-ticket-field-value${mono ? " mono-value" : ""}${mono && !scroll ? " mono-wrap" : ""}${scroll ? " readonly-ticket-field-value-scroll" : ""}`}>{value}</div>
     </div>
   );
 }
+
+type BindingPreview = {
+  method: string;
+  detailLabel?: string;
+  detailHeading?: string;
+  value?: string;
+};
 
 function CompactMatrix({
   columns,
@@ -209,7 +218,36 @@ function ContextSection({
   );
 }
 
-export function TicketReadonlyPanel({ scenario }: { scenario: DemoTicketScenario }) {
+function PresenterBindingSection({ bindingPreview }: { bindingPreview: BindingPreview | null | undefined }) {
+  if (!bindingPreview) return null;
+
+  return (
+    <section className="readonly-ticket-section readonly-ticket-section-full">
+      <div className="readonly-ticket-section-header">
+        <h4>Presenter Binding</h4>
+        <p className="subtle">Read-only client-binding claim that will be included in the signed ticket.</p>
+      </div>
+      <ReadonlyField label="presenter_binding.method" value={bindingPreview.method} stack />
+      {bindingPreview.detailLabel && bindingPreview.value && (
+        <ReadonlyField
+          label={bindingPreview.detailLabel}
+          value={bindingPreview.value}
+          mono
+          stack
+          scroll
+        />
+      )}
+    </section>
+  );
+}
+
+export function TicketReadonlyPanel({
+  scenario,
+  bindingPreview,
+}: {
+  scenario: DemoTicketScenario;
+  bindingPreview?: BindingPreview | null;
+}) {
   const hasRequester = "requester" in scenario.ticket;
   const hasContext = Boolean(scenario.ticket.context && Object.keys(scenario.ticket.context).length > 0);
   const singleDetailSection = Number(hasRequester) + Number(hasContext) <= 1;
@@ -220,7 +258,7 @@ export function TicketReadonlyPanel({ scenario }: { scenario: DemoTicketScenario
         <div>
           <p className="eyebrow">Included In Ticket</p>
           <h3>Read-only claims from the selected scenario</h3>
-          <p className="subtle">These fields come from the scenario and are included in the signed Permission Ticket. Use the controls below only to adjust access constraints.</p>
+          <p className="subtle">These fields are fixed by the selected scenario and client path and are included in the signed Permission Ticket. Use the controls below only to adjust access constraints.</p>
         </div>
       </div>
       <div className="readonly-ticket-grid">
@@ -230,6 +268,7 @@ export function TicketReadonlyPanel({ scenario }: { scenario: DemoTicketScenario
           </div>
           <ReadonlyField label="ticket_type" value={scenario.ticket.ticket_type} mono stack />
         </section>
+        <PresenterBindingSection bindingPreview={bindingPreview} />
         <RequesterSection scenario={scenario} fullWidth={singleDetailSection} />
         <ContextSection scenario={scenario} fullWidth={singleDetailSection} />
       </div>

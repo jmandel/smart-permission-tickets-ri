@@ -47,10 +47,24 @@ const scenario: DemoTicketScenario = {
 
 describe("TicketReadonlyPanel", () => {
   test("renders fixed ticket claims as read-only form content", () => {
-    const html = renderToStaticMarkup(<TicketReadonlyPanel scenario={scenario} />);
+    const html = renderToStaticMarkup(
+      <TicketReadonlyPanel
+        scenario={scenario}
+        bindingPreview={{
+          method: "framework_client",
+          detailLabel: "entity_uri",
+          value: "http://localhost:8091/demo/clients/well-known-alpha",
+        }}
+      />,
+    );
 
     expect(html).toContain("Included In Ticket");
     expect(html).toContain("Read-only claims from the selected scenario");
+    expect(html).toContain("Presenter Binding");
+    expect(html).toContain("presenter_binding.method");
+    expect(html).toContain("framework_client");
+    expect(html).toContain("entity_uri");
+    expect(html).toContain("http://localhost:8091/demo/clients/well-known-alpha");
     expect(html).toContain("ticket_type");
     expect(html).toContain("https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1");
     expect(html).toContain("Illinois Department of Public Health");
