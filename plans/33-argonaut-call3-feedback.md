@@ -30,7 +30,7 @@ If we do not define the full role vocabulary once and then editorially normalize
 - **Client** — the software application that presents the ticket
 - **Data Holder** — the party/system that evaluates the ticket and answers with data
 - **Authorization Server** — the token endpoint surface operated by or for a Data Holder
-- **Resource Server** — the API surface that serves data for a Data Holder
+- **Resource Server** — an API surface that serves data for a Data Holder
 - **Subject** — whose data the ticket concerns
 - **Requester** — the real-world party for whom the grant exists, as issuer attestation
 - **Organization** — the organizational identity used in `data_holder_filter.organization`
@@ -315,7 +315,7 @@ All draft language below is keyed to the item numbers above.
 > * **Client** — the software application that presents a Permission Ticket.
 > * **Data Holder** — the party or system that evaluates the ticket and answers with data.
 > * **Authorization Server** — the token endpoint surface operated by or for a Data Holder.
-> * **Resource Server** — the API surface that serves data for a Data Holder.
+> * **Resource Server** — an API surface that serves data for a Data Holder.
 > * **Subject** — the person whose data the ticket concerns.
 > * **Requester** — the real-world party for whom the grant exists, as attested by the issuer.
 > * **Organization** — the organizational identity used in `data_holder_filter.organization`.
