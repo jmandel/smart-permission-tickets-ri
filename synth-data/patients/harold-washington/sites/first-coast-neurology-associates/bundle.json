@@ -1,7 +1,7 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
-  "timestamp": "2026-04-08T21:57:41.477Z",
+  "timestamp": "2026-04-09T01:48:37.428Z",
   "entry": [
     {
       "fullUrl": "urn:uuid:9abd3fa2-00e3-443d-b159-a6b73cd80082",
@@ -46,6 +46,10 @@
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
             "valueMarkdown": "## Character\n79-year-old African American retired postal worker. Widowed in 2024 when his wife Dorothy passed from pancreatic cancer. Previously lived independently in Jacksonville, FL. Now lives with his adult daughter Margaret Washington-Clarke (age 52) in Decatur, GA (metro Atlanta), who holds his healthcare power of attorney.\n\n## Clinical Scenario\nHarold was diagnosed with early-stage Alzheimer's disease in 2022 by his neurologist in Jacksonville. He was managing reasonably well with his wife's support — on donepezil, with PCP visits for hypertension, hyperlipidemia, and type 2 diabetes (well controlled). After Dorothy's death in mid-2024, Harold's cognitive decline accelerated. He had a fall at home, forgot medications, and got lost driving to the grocery store. Margaret moved him to Georgia in late 2024.\n\nIn Georgia, Harold established with a new PCP and a geriatric neurologist at Emory. His MMSE dropped from 22/30 (mild) to 17/30 (moderate) over 6 months. He was switched from donepezil to a donepezil-memantine combination. His diabetes and hypertension management continued with his new PCP. He had one ED visit for a mechanical fall (no fracture, CT head negative).\n\nMargaret, as his authorized representative, uses a patient-facing app to access Harold's records across both the Florida and Georgia systems.\n\n## Sites\n- **Riverside Internal Medicine** — PCP in Jacksonville, FL (2015–2024). Managed hypertension, diabetes, hyperlipidemia, annual wellness.\n- **First Coast Neurology Associates** — Neurologist in Jacksonville, FL (2022–2024). Alzheimer's diagnosis, initial donepezil management, cognitive assessments.\n- **DeKalb Primary Care** — New PCP in Decatur, GA (2024–present). Continued chronic disease management post-move.\n- **Emory Cognitive Neurology Center** — Geriatric neurologist in Atlanta, GA (2025–present). Alzheimer's progression monitoring, medication changes.\n\nFour sites across two states (FL, GA). Tests Permission Ticket constraints on **jurisdictions** (FL vs GA), **organizations** (4 providers), **periods** (pre-move Florida records vs post-move Georgia records), and **scopes** (can filter to just cognitive assessments or just diabetes management)."
+          },
+          {
+            "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
+            "valueString": "{\"scenarios\":[{\"id\":\"daughter-caregiver-access\",\"label\":\"Daughter caregiver access\",\"summary\":\"Margaret Washington-Clarke requests Harold's records across Florida and Georgia to manage his Alzheimer's care after relocation.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/patient-delegated-access-v1\",\"requester\":{\"resourceType\":\"RelatedPerson\",\"relationship\":[{\"coding\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/v3-RoleCode\",\"code\":\"DAU\",\"display\":\"daughter\"}],\"text\":\"Daughter\"}],\"name\":[{\"family\":\"Washington-Clarke\",\"given\":[\"Margaret\"]}],\"identifier\":[{\"system\":\"urn:smart-permission-tickets:demo-related-person\",\"value\":\"margaret-washington-clarke\"}]},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"*\",\"interactions\":[\"read\",\"search\"]}],\"sensitive_data\":\"exclude\"}}}]}"
           }
         ],
         "name": [

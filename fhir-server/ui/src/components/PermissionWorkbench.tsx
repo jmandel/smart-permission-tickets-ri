@@ -7,12 +7,16 @@ import {
   buildViewerLaunchUrl,
   clientBindingForPlan,
   constrainedSites,
+  defaultScenarioForPerson,
   defaultConsentState,
   describeClientOption,
   describeClientPlan,
   proofJktForPlan,
+  scenarioContextDetails,
+  scenarioRequesterLabel,
   scopeOptionsForPerson,
   summarizeConsent,
+  ticketTypeLabel,
   ticketLifetimeOptions,
   validateConsent,
 } from "../demo";
@@ -20,6 +24,7 @@ import type { ConsentState, DemoClientOption, DemoClientType, ModeName, NetworkI
 import { buildArtifactViewerHref, buildJwtArtifactPayload } from "../lib/artifact-viewer";
 import { signPermissionTicket } from "../lib/ticket-client";
 import { SplitAction } from "./SplitAction";
+import { TicketReadonlyPanel } from "./TicketReadonlyPanel";
 
 function yearOptions(person: PersonInfo) {
   const years = [
@@ -44,6 +49,14 @@ type ArtifactState = {
   proofJkt: string | null;
 };
 
+function registrationModeLabel(registrationMode: DemoClientOption["registrationMode"]) {
+  return registrationMode === "dynamic-jwk"
+    ? "Dynamic registration"
+    : registrationMode === "implicit-well-known" || registrationMode === "oidf-automatic"
+      ? "Implicit"
+      : "UDAP DCR";
+}
+
 export function PermissionWorkbench({
   person,
   mode,
@@ -58,6 +71,7 @@ export function PermissionWorkbench({
   demoClientOptions: DemoClientOption[];
 }) {
   const [consent, setConsent] = useState<ConsentState | null>(null);
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string | null>(null);
   const [selectedClientType, setSelectedClientType] = useState<DemoClientType | null>(null);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -81,13 +95,16 @@ export function PermissionWorkbench({
   useEffect(() => {
     if (!person) {
       setConsent(null);
+      setSelectedScenarioId(null);
       setSelectedClientType(null);
       setArtifacts(null);
       setError(null);
       preparePromiseRef.current = null;
       return;
     }
-    setConsent(defaultConsentState(person));
+    const defaultScenario = defaultScenarioForPerson(person);
+    setSelectedScenarioId(defaultScenario?.id ?? null);
+    setConsent(defaultConsentState(person, defaultScenario));
     setSelectedClientType((current) => current ?? availableClientOptions[0]?.type ?? null);
     setArtifacts(null);
     setError(null);
@@ -99,7 +116,7 @@ export function PermissionWorkbench({
     setArtifacts(null);
     setError(null);
     preparePromiseRef.current = null;
-  }, [consent, mode, selectedClientType]);
+  }, [consent, mode, selectedClientType, selectedScenarioId]);
 
   if (!person || !consent) {
     return (
@@ -111,6 +128,8 @@ export function PermissionWorkbench({
   }
 
   const currentPerson = person;
+  const selectedScenario = currentPerson.ticketScenarios.find((scenario) => scenario.id === selectedScenarioId)
+    ?? defaultScenarioForPerson(currentPerson);
   const currentConsent = consent;
   const origin = window.location.origin;
   const sites = constrainedSites(currentPerson, currentConsent);
@@ -129,15 +148,9 @@ export function PermissionWorkbench({
   const selectedStartYear = currentConsent.dateRange.start?.slice(0, 4) ?? "";
   const selectedEndYear = currentConsent.dateRange.end?.slice(0, 4) ?? "";
   const showClientSelection = mode === "strict" && availableClientOptions.length > 0;
-  const selectedClientRegistration = selectedClientOption?.registrationMode === "dynamic-jwk"
-    ? "Dynamic registration"
-    : selectedClientOption?.registrationMode === "implicit-well-known"
-      ? "No registration"
-      : selectedClientOption?.registrationMode === "oidf-automatic"
-        ? "No registration"
-      : selectedClientOption?.registrationMode === "udap-dcr"
-        ? "UDAP DCR"
-        : "Not required";
+  const selectedClientRegistration = selectedClientOption?.registrationMode
+    ? registrationModeLabel(selectedClientOption.registrationMode)
+    : "Not required";
   const selectedBindingSummary = selectedClientOption?.type === "unaffiliated"
     ? ((mode === "strict" || mode === "key-bound") ? "Ticket uses presenter_binding.method = jkt" : "No presenter binding in ticket")
     : selectedClientOption?.type === "well-known"
@@ -146,6 +159,14 @@ export function PermissionWorkbench({
         ? "Ticket uses presenter_binding.method = framework_client"
         : "No presenter binding";
   const selectedClientStory = selectedClientOption ? describeClientOption(mode, selectedClientOption) : null;
+  const selectedScenarioRequester = selectedScenario ? scenarioRequesterLabel(selectedScenario) : null;
+  const selectedScenarioContext = selectedScenario ? scenarioContextDetails(selectedScenario) : [];
+
+  function chooseScenario(scenarioId: string) {
+    const scenario = currentPerson.ticketScenarios.find((entry) => entry.id === scenarioId) ?? null;
+    setSelectedScenarioId(scenarioId);
+    setConsent(defaultConsentState(currentPerson, scenario));
+  }
 
   function openArtifact(title: string, content: unknown, copyText?: string, subtitle?: string) {
     const href = buildArtifactViewerHref({ title, content, copyText, subtitle });
@@ -178,6 +199,7 @@ export function PermissionWorkbench({
     }
 
     const ticketPayload = buildTicketPayload(defaultTicketIssuer.issuerBaseUrl, origin, currentPerson, currentConsent, {
+      scenario: selectedScenario,
       proofJkt,
       frameworkClientBinding: frameworkPresenterBinding,
     });
@@ -297,6 +319,56 @@ export function PermissionWorkbench({
 
   return (
     <>
+      {selectedScenario && (
+        <section className="panel section">
+          <div className="section-header">
+            <div>
+              <p className="eyebrow">Selected Scenario</p>
+              <h2>Scenario details and starting ticket defaults</h2>
+              <p className="subtle">The workbench dials below start from this scenario’s ticket fragment, then stay editable.</p>
+            </div>
+          </div>
+          {currentPerson.ticketScenarios.length > 1 && (
+            <div className="scenario-picker-grid">
+              {currentPerson.ticketScenarios.map((scenario) => (
+                <button
+                  key={scenario.id}
+                  type="button"
+                  className={`scenario-card${selectedScenario.id === scenario.id ? " active" : ""}`}
+                  onClick={() => chooseScenario(scenario.id)}
+                >
+                  <span className="scenario-card-label">{scenario.label}</span>
+                  <strong>{ticketTypeLabel(scenario.ticket.ticket_type)}</strong>
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="summary-grid">
+            <div className="summary-card">
+              <span className="summary-label">Scenario</span>
+              <strong>{selectedScenario.label}</strong>
+              <p className="subtle">{selectedScenario.summary}</p>
+            </div>
+            <div className="summary-card">
+              <span className="summary-label">Ticket type</span>
+              <strong>{ticketTypeLabel(selectedScenario.ticket.ticket_type)}</strong>
+            </div>
+            {selectedScenarioRequester && (
+              <div className="summary-card">
+                <span className="summary-label">Requester</span>
+                <strong>{selectedScenarioRequester}</strong>
+              </div>
+            )}
+            {selectedScenarioContext.map((detail) => (
+              <div key={`${detail.label}:${detail.value}`} className="summary-card">
+                <span className="summary-label">{detail.label}</span>
+                <strong>{detail.value}</strong>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {showClientSelection && selectedClientOption && (
         <section className="panel section demo-client-panel">
           <div className="section-header">
@@ -315,13 +387,7 @@ export function PermissionWorkbench({
                 onClick={() => setSelectedClientType(option.type)}
               >
                 <span className="demo-client-label">{option.label}</span>
-                <strong>{option.registrationMode === "dynamic-jwk"
-                  ? "Dynamic registration"
-                  : option.registrationMode === "implicit-well-known"
-                    ? "No registration"
-                    : option.registrationMode === "oidf-automatic"
-                      ? "No registration"
-                    : "UDAP DCR"}</strong>
+                <strong>{registrationModeLabel(option.registrationMode)}</strong>
                 <p>{option.description}</p>
                 {option.framework && <span className="demo-client-meta">{option.framework.displayName}</span>}
               </button>
@@ -338,17 +404,13 @@ export function PermissionWorkbench({
                   <span className="summary-label">Registration</span>
                   <strong>{selectedClientStory.registrationLabel}</strong>
                 </div>
-                <div className="demo-client-fact">
+                <div className="demo-client-fact demo-client-fact--wide">
                   <span className="summary-label">Token auth</span>
                   <strong>{selectedClientStory.authenticationLabel}</strong>
                 </div>
-                <div className="demo-client-fact">
+                <div className="demo-client-fact demo-client-fact--wide">
                   <span className="summary-label">Ticket binding</span>
                   <strong>{selectedClientStory.ticketBinding.label}</strong>
-                </div>
-                <div className="demo-client-fact">
-                  <span className="summary-label">Client id on wire</span>
-                  <strong className="mono-value mono-wrap">{selectedClientStory.effectiveClientId}</strong>
                 </div>
                 {selectedClientStory.frameworkDisplayName && (
                   <div className="demo-client-fact">
@@ -356,8 +418,12 @@ export function PermissionWorkbench({
                     <strong>{selectedClientStory.frameworkDisplayName}</strong>
                   </div>
                 )}
+                <div className="demo-client-fact demo-client-fact--full">
+                  <span className="summary-label">Client id on wire</span>
+                  <strong className="mono-value mono-wrap">{selectedClientStory.effectiveClientId}</strong>
+                </div>
                 {selectedClientStory.entityUri && (
-                  <div className="demo-client-fact">
+                  <div className="demo-client-fact demo-client-fact--full">
                     <span className="summary-label">{selectedClientStory.clientType === "udap" ? "Entity URI (certificate SAN)" : "Entity URI"}</span>
                     <strong className="mono-value mono-wrap">{selectedClientStory.entityUri}</strong>
                   </div>
@@ -366,9 +432,6 @@ export function PermissionWorkbench({
               <p className="subtle demo-client-binding-copy">{selectedClientStory.ticketBinding.rationale}</p>
               <p className="subtle demo-client-binding-copy">Client trust and ticket-issuer trust are shown separately in Protocol Trace and token diagnostics.</p>
               <div className="button-row demo-client-actions">
-                <button type="button" className="secondary-button" onClick={() => openArtifact("Client Story", selectedClientStory)}>
-                  Open client story ↗
-                </button>
                 {selectedClientOption?.framework?.documentUrl && (
                   <button
                     type="button"
@@ -410,6 +473,8 @@ export function PermissionWorkbench({
           )}
         </section>
       )}
+
+      {selectedScenario && <TicketReadonlyPanel scenario={selectedScenario} />}
 
       <section className="panel section">
         <div className="workbench-header">
@@ -795,14 +860,6 @@ export function PermissionWorkbench({
                             {
                               label: "Open client plan ↗",
                               onSelect: openPreparedClientPlan,
-                              disabled: !canRun || running,
-                            },
-                            {
-                              label: "Open client story ↗",
-                              onSelect: async () => {
-                                if (!selectedClientStory) return;
-                                openArtifact("Client Story", selectedClientStory);
-                              },
                               disabled: !canRun || running,
                             },
                           ]

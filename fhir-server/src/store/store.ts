@@ -4,6 +4,11 @@ import { DATA_ROOT, IDENTITY_TYPES, SENSITIVE_LABELS, type AllowedPatientAlias, 
 import { initializeSchema, loadAllResources } from "./ingest.ts";
 import { normalizeText } from "./path-utils.ts";
 import { resourcePrimaryDisplay } from "../../shared/resource-display.ts";
+import {
+  DEMO_TICKET_SCENARIOS_EXTENSION_URL,
+  safeParseDemoTicketScenarioBundle,
+  type DemoTicketScenario,
+} from "../../../shared/demo-ticket-scenarios.ts";
 
 export type SiteSummary = {
   siteSlug: string;
@@ -56,6 +61,7 @@ export type DemoPersonSummary = {
   birthDate: string | null;
   gender: string | null;
   summary: string | null;
+  ticketScenarios: DemoTicketScenario[];
   useCases: Array<{ system: string; code: string; display: string }>;
   resourceCounts: Record<string, number>;
   sensitiveResourceCount: number;
@@ -66,6 +72,7 @@ export type DemoPersonSummary = {
 
 const PATIENT_SUMMARY_EXT = "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary";
 const ENCOUNTER_SUMMARY_EXT = "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary";
+const PATIENT_TICKET_SCENARIOS_EXT = DEMO_TICKET_SCENARIOS_EXTENSION_URL;
 
 export class FhirStore {
   readonly db: Database;
@@ -725,6 +732,7 @@ function buildDemoPerson(resource: any, patientSlug: string): DemoPersonSummary 
     birthDate: typeof resource.birthDate === "string" ? resource.birthDate : null,
     gender: typeof resource.gender === "string" ? resource.gender : null,
     summary: findExtensionString(resource, PATIENT_SUMMARY_EXT),
+    ticketScenarios: findTicketScenarios(resource),
     useCases,
     resourceCounts: {},
     sensitiveResourceCount: 0,
@@ -740,6 +748,26 @@ function findExtensionString(resource: any, url: string): string | null {
     : undefined;
   if (typeof extension?.valueMarkdown === "string") return extension.valueMarkdown;
   return null;
+}
+
+function findExtensionValueString(resource: any, url: string): string | null {
+  const extension = Array.isArray(resource.extension)
+    ? resource.extension.find((entry: any) => entry?.url === url)
+    : undefined;
+  return typeof extension?.valueString === "string" ? extension.valueString : null;
+}
+
+function findTicketScenarios(resource: any): DemoTicketScenario[] {
+  const raw = findExtensionValueString(resource, PATIENT_TICKET_SCENARIOS_EXT);
+  if (!raw) return [];
+
+  try {
+    const parsed = JSON.parse(raw);
+    const result = safeParseDemoTicketScenarioBundle(parsed);
+    return result.success ? result.data.scenarios : [];
+  } catch {
+    return [];
+  }
 }
 
 function mergeCounts(target: Record<string, number>, source: Record<string, number>) {

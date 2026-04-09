@@ -256,6 +256,238 @@ p { line-height: 1.55; }
   text-decoration: none;
 }
 
+.readonly-ticket-panel {
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(232, 240, 254, 0.42) 0%, rgba(248, 249, 250, 0.9) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  overflow: hidden;
+}
+
+.readonly-ticket-panel-header {
+  padding: 18px 20px 16px;
+  border-bottom: 1px solid rgba(196, 199, 197, 0.7);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.readonly-ticket-panel-header h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.readonly-ticket-panel-header p {
+  margin: 0;
+}
+
+.readonly-ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  padding: 18px 20px 20px;
+}
+
+.readonly-ticket-section {
+  border: 1px solid rgba(196, 199, 197, 0.75);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 14px 14px 12px;
+  min-width: 0;
+}
+
+.readonly-ticket-section-ticket-type {
+  grid-column: 1 / -1;
+}
+
+.readonly-ticket-section-full {
+  grid-column: 1 / -1;
+}
+
+.readonly-ticket-section-requester {
+  grid-column: span 4;
+}
+
+.readonly-ticket-section-context {
+  grid-column: span 8;
+}
+
+.readonly-ticket-section-header {
+  margin-bottom: 12px;
+}
+
+.readonly-ticket-section-header h4 {
+  margin: 0 0 4px;
+  font-size: 0.98rem;
+}
+
+.readonly-ticket-section-header p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.readonly-ticket-field {
+  display: grid;
+  grid-template-columns: minmax(118px, 132px) minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+  min-width: 0;
+  align-items: start;
+}
+
+.readonly-ticket-field:first-of-type {
+  margin-top: 0;
+}
+
+.readonly-ticket-field-stack {
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.readonly-ticket-field-label,
+.readonly-ticket-coding-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.readonly-ticket-field-value {
+  min-height: 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(196, 199, 197, 0.9);
+  border-radius: 10px;
+  background: rgba(248, 249, 250, 0.96);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.readonly-ticket-field-complex {
+  align-items: start;
+}
+
+.readonly-ticket-field-complex-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.readonly-ticket-inline-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  padding: 2px 2px 0;
+}
+
+.readonly-ticket-inline-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.readonly-ticket-inline-value {
+  font-weight: 600;
+}
+
+.readonly-ticket-matrix {
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(196, 199, 197, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(196, 199, 197, 0.9);
+}
+
+.readonly-ticket-matrix-2 {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.readonly-ticket-matrix-3 {
+  grid-template-columns: minmax(0, 1.5fr) minmax(90px, 0.7fr) minmax(0, 1.2fr);
+}
+
+.readonly-ticket-matrix-head,
+.readonly-ticket-matrix-cell {
+  min-width: 0;
+  padding: 8px 10px;
+  background: rgba(248, 249, 250, 0.98);
+}
+
+.readonly-ticket-matrix-head {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.readonly-ticket-matrix-cell {
+  line-height: 1.45;
+}
+
+.readonly-ticket-empty {
+  grid-column: 1 / -1;
+  padding: 12px;
+  border: 1px dashed rgba(196, 199, 197, 0.95);
+  border-radius: 10px;
+  background: rgba(248, 249, 250, 0.75);
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .readonly-ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .readonly-ticket-field {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .readonly-ticket-section-ticket-type {
+    grid-column: auto;
+  }
+
+  .readonly-ticket-section-full,
+  .readonly-ticket-section-requester,
+  .readonly-ticket-section-context {
+    grid-column: auto;
+  }
+
+  .readonly-ticket-matrix-2,
+  .readonly-ticket-matrix-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .readonly-ticket-matrix-head {
+    display: none;
+  }
+}
+
+.readonly-ticket-coding,
+.readonly-ticket-identifier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(196, 199, 197, 0.9);
+  border-radius: 10px;
+  background: rgba(248, 249, 250, 0.96);
+}
+
+.readonly-ticket-coding-cell,
+.readonly-ticket-identifier-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
 table { width: 100%; border-collapse: collapse; }
 th, td {
   padding: 12px 10px;
@@ -477,6 +709,13 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   color: var(--muted);
 }
 
+.patient-card-scenario-title {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .patient-card-summary {
   line-height: 1.55;
 }
@@ -490,31 +729,17 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 .patient-summary-box {
   margin: 12px 0 0;
-  padding: 10px 14px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card-inset, rgba(255, 255, 255, 0.03));
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #fff;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-}
-
-.patient-summary-box-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.patient-summary-box-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
+  gap: 8px;
 }
 
 .patient-summary-box-body {
-  color: var(--text);
+  color: var(--ink);
   font-size: 0.9rem;
   line-height: 1.55;
   position: relative;
@@ -534,12 +759,12 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .patient-summary-box-body h4,
 .patient-summary-box-body h5,
 .patient-summary-box-body h6 {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
-  margin: 14px 0 4px;
+  margin: 12px 0 4px;
 }
 
 .patient-summary-box-body p {
@@ -557,29 +782,19 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 }
 
 .patient-summary-box-body strong {
-  color: var(--text);
+  color: var(--ink);
 }
 
-.patient-summary-box.collapsible.collapsed .patient-summary-box-body {
-  max-height: 5.8em;
+/* Collapsed cap: keep in sync with the 12em threshold in PatientSummaryBox.tsx */
+.patient-summary-box.collapsed .patient-summary-box-body {
+  max-height: 12em;
   overflow: hidden;
-  mask-image: linear-gradient(to bottom, black 60%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
+  mask-image: linear-gradient(to bottom, black 75%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent);
 }
 
 .patient-summary-box-toggle {
   align-self: flex-start;
-  padding: 4px 8px;
-  background: transparent;
-  border: none;
-  color: var(--accent, var(--link, #6aa3ff));
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.patient-summary-box-toggle:hover {
-  text-decoration: underline;
 }
 
 .patient-card-tags {
@@ -615,6 +830,18 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
   align-items: flex-start;
 }
 
+.selected-person-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.selected-person-title h3 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
 .selected-person-header h3 {
   margin: 0;
   font-size: 1.18rem;
@@ -631,6 +858,10 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .selected-person-summary {
   margin-top: 14px;
   max-width: 88ch;
+}
+
+.selected-person-title .selected-person-use-cases {
+  margin-top: 0;
 }
 
 .selected-person-use-cases {
@@ -717,6 +948,7 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .demo-client-facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-flow: dense;
   gap: 12px;
 }
 
@@ -730,6 +962,15 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 .demo-client-fact strong {
   display: block;
   margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+
+.demo-client-fact--wide {
+  grid-column: span 2;
+}
+
+.demo-client-fact--full {
+  grid-column: 1 / -1;
 }
 
 .demo-client-binding-copy {
@@ -1911,6 +2152,11 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 }
 
 @media (max-width: 960px) {
+  .demo-client-fact--wide,
+  .demo-client-fact--full {
+    grid-column: auto;
+  }
+
   .artifact-context-layout {
     grid-template-columns: 1fr;
   }

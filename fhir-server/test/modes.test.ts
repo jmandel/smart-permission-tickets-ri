@@ -66,6 +66,10 @@ describe("mode surfaces", () => {
     const body = await response.json();
     expect(Array.isArray(body.persons)).toBe(true);
     expect(body.persons.length).toBeGreaterThan(0);
+    expect(Array.isArray(body.persons[0]?.ticketScenarios)).toBe(true);
+    const robert = body.persons.find((person: any) => person.patientSlug === "robert-davis");
+    expect(robert?.ticketScenarios?.[0]?.id).toBe("tb-public-health-investigation");
+    expect(robert?.ticketScenarios?.[0]?.ticket?.ticket_type).toBe("https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1");
     expect(Array.isArray(body.sites)).toBe(true);
     expect(Array.isArray(body.searchableResourceTypes)).toBe(true);
     expect(body.searchableResourceTypes).toContain("Patient");

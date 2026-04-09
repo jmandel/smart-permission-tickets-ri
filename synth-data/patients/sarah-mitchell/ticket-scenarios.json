@@ -1,0 +1,25 @@
+{
+  "scenarios": [
+    {
+      "id": "behavioral-health-continuity",
+      "label": "Behavioral-health continuity",
+      "summary": "Patient self-access spanning Sarah's Oregon and Washington records, with sensitive behavioral-health and substance-use data excluded by default.",
+      "ticket": {
+        "ticket_type": "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
+        "access": {
+          "permissions": [
+            {
+              "kind": "data",
+              "resource_type": "*",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            }
+          ],
+          "sensitive_data": "exclude"
+        }
+      }
+    }
+  ]
+}

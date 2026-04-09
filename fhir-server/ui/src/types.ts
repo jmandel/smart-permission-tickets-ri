@@ -1,3 +1,5 @@
+import type { DemoTicketScenario } from "../../../shared/demo-ticket-scenarios.ts";
+
 export type ModeName = "strict" | "registered" | "key-bound" | "open" | "anonymous";
 export type DemoClientType = "unaffiliated" | "well-known" | "udap" | "oidf";
 export type DemoClientRegistrationMode = "dynamic-jwk" | "implicit-well-known" | "udap-dcr" | "oidf-automatic";
@@ -33,6 +35,7 @@ export type PersonInfo = {
   birthDate: string | null;
   gender: string | null;
   summary: string | null;
+  ticketScenarios: DemoTicketScenario[];
   useCases: Array<{ system: string; code: string; display: string }>;
   resourceCounts: Record<string, number>;
   sensitiveResourceCount: number;

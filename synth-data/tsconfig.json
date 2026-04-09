@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "."
+    "rootDir": ".."
   },
-  "include": ["steps/**/*.ts", "scripts/**/*.ts", "templates/**/*.ts"]
+  "include": ["steps/**/*.ts", "scripts/**/*.ts", "templates/**/*.ts", "../shared/**/*.ts"]
 }

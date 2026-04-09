@@ -1,6 +1,10 @@
 import { basename } from "path";
 import { createHash } from "node:crypto";
 
+import {
+  DEMO_TICKET_SCENARIOS_EXTENSION_URL,
+  parseDemoTicketScenarioBundle,
+} from "../../shared/demo-ticket-scenarios.ts";
 import { loadEncounterTimeline, loadProviderMap, type EncounterRecord } from "./artifacts.ts";
 
 export const CROSS_SITE_PATIENT_IDENTIFIER_SYSTEM = "urn:smart-permission-tickets:person-id";
@@ -12,6 +16,7 @@ export const ENCOUNTER_SUMMARY_EXTENSION_URL =
 export interface EnrichmentContext {
   patientSlug: string;
   patientSummary?: string;
+  ticketScenariosJson?: string;
   encounterSummaries: Map<string, string>;
 }
 
@@ -20,14 +25,17 @@ export async function loadEnrichmentContext(patientDir: string): Promise<Enrichm
   const providerMapPath = `${patientDir}/provider-map.json`;
   const encountersPath = `${patientDir}/encounters.json`;
   const scenarioPath = `${patientDir}/scenario.md`;
+  const ticketScenariosPath = `${patientDir}/ticket-scenarios.json`;
 
   const providerMap = await loadProviderMap(providerMapPath);
   const timeline = await loadEncounterTimeline(encountersPath, providerMap);
   const scenarioText = await Bun.file(scenarioPath).text();
+  const ticketScenarioBundle = await loadTicketScenarios(ticketScenariosPath);
 
   return {
     patientSlug,
     patientSummary: buildPatientSummary(scenarioText),
+    ticketScenariosJson: ticketScenarioBundle ? JSON.stringify(ticketScenarioBundle) : undefined,
     encounterSummaries: new Map(
       timeline.encounters.map((encounter) => [encounter.encounter_id, buildEncounterSummary(encounter)]),
     ),
@@ -42,6 +50,9 @@ export function enrichResource(resource: any, context: EnrichmentContext, _siteS
     addCrossSitePatientIdentifier(resource, context.patientSlug);
     if (context.patientSummary) {
       upsertMarkdownExtension(resource, PATIENT_SUMMARY_EXTENSION_URL, context.patientSummary);
+    }
+    if (context.ticketScenariosJson) {
+      upsertStringExtension(resource, DEMO_TICKET_SCENARIOS_EXTENSION_URL, context.ticketScenariosJson);
     }
   }
 
@@ -91,6 +102,31 @@ function upsertMarkdownExtension(resource: any, url: string, value: string) {
     url,
     valueMarkdown: value,
   });
+}
+
+function upsertStringExtension(resource: any, url: string, value: string) {
+  if (!Array.isArray(resource.extension)) {
+    resource.extension = resource.extension ? [resource.extension] : [];
+  }
+
+  const existing = resource.extension.find((extension: any) => extension?.url === url);
+  if (existing) {
+    existing.valueString = value;
+    delete existing.valueMarkdown;
+    return;
+  }
+
+  resource.extension.push({
+    url,
+    valueString: value,
+  });
+}
+
+async function loadTicketScenarios(path: string) {
+  const file = Bun.file(path);
+  if (!(await file.exists())) return undefined;
+  const parsed = JSON.parse(await file.text());
+  return parseDemoTicketScenarioBundle(parsed);
 }
 
 function stableCrossSitePatientId(patientSlug: string) {

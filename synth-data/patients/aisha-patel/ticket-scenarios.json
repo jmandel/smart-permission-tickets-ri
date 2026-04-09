@@ -1,0 +1,116 @@
+{
+  "scenarios": [
+    {
+      "id": "mother-pediatric-management",
+      "label": "Mother managing pediatric asthma and allergies",
+      "summary": "Priya Patel requests Aisha's pediatric records with defaults focused on asthma, allergies, medications, emergency care, and immunizations.",
+      "ticket": {
+        "ticket_type": "https://smarthealthit.org/permission-ticket-type/patient-delegated-access-v1",
+        "requester": {
+          "resourceType": "RelatedPerson",
+          "relationship": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                  "code": "MTH",
+                  "display": "mother"
+                }
+              ],
+              "text": "Mother"
+            }
+          ],
+          "name": [
+            {
+              "given": [
+                "Priya"
+              ],
+              "family": "Patel"
+            }
+          ],
+          "identifier": [
+            {
+              "system": "urn:smart-permission-tickets:demo-related-person",
+              "value": "priya-patel"
+            }
+          ]
+        },
+        "access": {
+          "permissions": [
+            {
+              "kind": "data",
+              "resource_type": "Patient",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Encounter",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "AllergyIntolerance",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Immunization",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "MedicationRequest",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "DiagnosticReport",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "DocumentReference",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Observation",
+              "interactions": [
+                "read",
+                "search"
+              ],
+              "category_any_of": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                  "code": "laboratory"
+                }
+              ]
+            }
+          ],
+          "sensitive_data": "exclude"
+        }
+      }
+    }
+  ]
+}

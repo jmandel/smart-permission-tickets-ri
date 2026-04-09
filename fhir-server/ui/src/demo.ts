@@ -26,13 +26,16 @@ import type {
 import { computeJwkThumbprint, generateClientKeyMaterial } from "../../shared/private-key-jwt";
 import { buildAuthSurface } from "./lib/surfaces";
 import { PATIENT_SELF_ACCESS_TICKET_TYPE } from "../../shared/permission-tickets";
+import type { DemoTicketScenario } from "../../../shared/demo-ticket-scenarios";
 import type {
   DataPermission,
   FrameworkClientBinding,
+  OrganizationFilter,
   PermissionTicket,
   PresenterBinding,
   ResponderFilter,
 } from "../../../shared/permission-ticket-schema";
+import { bestCodeableText, resourcePrimaryDisplay } from "../../shared/resource-display";
 const OBSERVATION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/observation-category";
 const US_CORE_OBSERVATION_CATEGORY_SYSTEM = "http://hl7.org/fhir/us/core/CodeSystem/us-core-category";
 const CONDITION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/condition-category";
@@ -48,6 +51,7 @@ const SCOPE_OPTIONS: ScopeOption[] = [
   { scope: "patient/MedicationRequest.rs", resourceType: "MedicationRequest", label: "Medication requests", description: "Prescribed and ordered medications.", group: "clinical", kind: "resource" },
   { scope: "patient/Procedure.rs", resourceType: "Procedure", label: "Procedures", description: "Completed procedures and interventions.", group: "clinical", kind: "resource" },
   { scope: "patient/ServiceRequest.rs", resourceType: "ServiceRequest", label: "Service requests", description: "Requested tests, referrals, and services.", group: "clinical", kind: "resource" },
+  { scope: "patient/Task.rs", resourceType: "Task", label: "Tasks", description: "Workflow tracking and closed-loop status updates.", group: "clinical", kind: "resource" },
   { scope: `patient/Observation.rs?category=${OBSERVATION_CATEGORY_SYSTEM}|laboratory`, resourceType: "Observation", label: "Laboratory", description: "Lab results and related measurements.", group: "observation", kind: "category" },
   { scope: `patient/Observation.rs?category=${OBSERVATION_CATEGORY_SYSTEM}|vital-signs`, resourceType: "Observation", label: "Vital signs", description: "Blood pressure, pulse, temperature, weight, and similar vitals.", group: "observation", kind: "category" },
   { scope: `patient/Observation.rs?category=${OBSERVATION_CATEGORY_SYSTEM}|social-history`, resourceType: "Observation", label: "Social history", description: "Smoking, alcohol, occupation, and other social history observations.", group: "observation", kind: "category" },
@@ -115,7 +119,11 @@ function displayYear(date: string | null | undefined) {
   return date?.slice(0, 4) ?? null;
 }
 
-export function defaultConsentState(person: PersonInfo): ConsentState {
+export function defaultScenarioForPerson(person: PersonInfo): DemoTicketScenario | null {
+  return person.ticketScenarios?.[0] ?? null;
+}
+
+function baseConsentState(person: PersonInfo): ConsentState {
   const selectedSiteSlugs = Object.fromEntries(person.sites.map((site) => [site.siteSlug, false]));
   const selectedStateCodes = Object.fromEntries(
     uniqueStates(person.sites).map((state) => [state, false]),
@@ -134,6 +142,58 @@ export function defaultConsentState(person: PersonInfo): ConsentState {
     sensitiveMode: "deny",
     ticketLifetime: "1h",
   };
+}
+
+export function defaultConsentState(person: PersonInfo, scenario: DemoTicketScenario | null = defaultScenarioForPerson(person)): ConsentState {
+  const base = baseConsentState(person);
+  if (!scenario) return base;
+
+  const access = scenario.ticket.access;
+  const consent: ConsentState = {
+    ...base,
+    ticketLifetime: scenario.defaults?.ticket_lifetime ?? base.ticketLifetime,
+    sensitiveMode: access.sensitive_data === "include" ? "allow" : "deny",
+    dateMode: access.data_period?.start || access.data_period?.end ? "window" : "all",
+    dateRange: {
+      start: access.data_period?.start ?? null,
+      end: access.data_period?.end ?? null,
+    },
+  };
+
+  if (isAllResourcesScenario(access.permissions)) {
+    consent.resourceScopeMode = "all";
+  } else {
+    consent.resourceScopeMode = "selected";
+    consent.scopeSelections = Object.fromEntries(
+      scopeOptionsForPerson(person).flatMap((group) => group.options.map((option) => [option.scope, false])),
+    );
+
+    for (const permission of access.permissions) {
+      if (permission.kind !== "data") continue;
+      const option = SCOPE_OPTIONS.find((candidate) => permissionsEqual(projectSmartScopeToPermission(candidate.scope), permission));
+      if (!option) continue;
+      consent.scopeSelections[option.scope] = true;
+    }
+  }
+
+  if (access.responder_filter?.length) {
+    if (access.responder_filter.every((filter) => filter.kind === "jurisdiction")) {
+      consent.locationMode = "states";
+      for (const filter of access.responder_filter) {
+        const state = filter.address.state;
+        if (state) consent.selectedStateCodes[state] = true;
+      }
+    } else if (access.responder_filter.every((filter) => filter.kind === "organization")) {
+      consent.locationMode = "organizations";
+      for (const site of person.sites) {
+        if (access.responder_filter.some((filter) => organizationFilterMatchesSite(filter, site))) {
+          consent.selectedSiteSlugs[site.siteSlug] = true;
+        }
+      }
+    }
+  }
+
+  return consent;
 }
 
 export function constrainedSites(person: PersonInfo, consent: ConsentState) {
@@ -184,19 +244,31 @@ export function buildTicketPayload(
   audienceOrigin: string,
   person: PersonInfo,
   consent: ConsentState,
-  options?: { proofJkt?: string | null; frameworkClientBinding?: FrameworkClientBinding | null },
+  options?: {
+    scenario?: DemoTicketScenario | null;
+    proofJkt?: string | null;
+    frameworkClientBinding?: FrameworkClientBinding | null;
+  },
 ): PermissionTicket {
+  const scenario = options?.scenario ?? defaultScenarioForPerson(person);
   const sites = constrainedSites(person, consent);
   const responderFilter = buildResponderFilter(consent.locationMode, sites);
   const lifetimeSeconds = ticketLifetimeSeconds(consent.ticketLifetime);
   const presenterBinding = buildPresenterBinding(options?.proofJkt, options?.frameworkClientBinding);
+  const ticketType = scenario?.ticket.ticket_type ?? PATIENT_SELF_ACCESS_TICKET_TYPE;
+  const scenarioContext = scenario?.ticket.context && Object.keys(scenario.ticket.context).length > 0
+    ? scenario.ticket.context
+    : undefined;
+  const scenarioRequester = scenario && "requester" in scenario.ticket
+    ? (scenario.ticket as { requester: Record<string, any> }).requester
+    : undefined;
 
   return {
     iss: ticketIssuerBaseUrl,
     aud: audienceOrigin,
     exp: Math.floor(Date.now() / 1000) + lifetimeSeconds,
     jti: crypto.randomUUID(),
-    ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
+    ticket_type: ticketType,
     ...(presenterBinding ? { presenter_binding: presenterBinding } : {}),
     subject: {
       patient: {
@@ -210,13 +282,93 @@ export function buildTicketPayload(
         birthDate: person.birthDate ?? undefined,
       },
     },
+    ...(scenarioRequester ? { requester: scenarioRequester } : {}),
+    ...(scenarioContext ? { context: scenarioContext } : {}),
     access: {
       permissions: permissionsFromSelectedScopes(consent),
       data_period: buildDataPeriod(consent.dateMode, consent.dateRange),
       responder_filter: responderFilter.length ? responderFilter : undefined,
       sensitive_data: consent.sensitiveMode === "allow" ? "include" : "exclude",
     },
-  };
+  } as PermissionTicket;
+}
+
+export function ticketTypeLabel(ticketType: DemoTicketScenario["ticket"]["ticket_type"]) {
+  switch (ticketType) {
+    case "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1":
+      return "Patient self-access";
+    case "https://smarthealthit.org/permission-ticket-type/patient-delegated-access-v1":
+      return "Delegated access";
+    case "https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1":
+      return "Public health investigation";
+    case "https://smarthealthit.org/permission-ticket-type/social-care-referral-v1":
+      return "Social care referral";
+    case "https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1":
+      return "Payer claims adjudication";
+    case "https://smarthealthit.org/permission-ticket-type/research-study-access-v1":
+      return "Research study access";
+    case "https://smarthealthit.org/permission-ticket-type/provider-consult-v1":
+      return "Provider consult";
+    default:
+      return ticketType;
+  }
+}
+
+export function scenarioRequesterLabel(scenario: DemoTicketScenario) {
+  const requester = "requester" in scenario.ticket ? scenario.ticket.requester : undefined;
+  if (!requester) return null;
+
+  if (requester.resourceType === "PractitionerRole") {
+    const typedRequester = requester as Record<string, any>;
+    const practitioner = typeof typedRequester.practitioner?.display === "string" ? typedRequester.practitioner.display : null;
+    const organization = typeof typedRequester.organization?.display === "string" ? typedRequester.organization.display : null;
+    const role = requester.code?.map((entry) => bestCodeableText(entry)).find(Boolean) ?? "Practitioner role";
+    return [practitioner, role, organization].filter(Boolean).join(" · ");
+  }
+
+  return resourcePrimaryDisplay(requester, requester.resourceType);
+}
+
+export function scenarioContextDetails(scenario: DemoTicketScenario) {
+  const details: Array<{ label: string; value: string }> = [];
+  const context = scenario.ticket.context;
+  if (!context) return details;
+
+  if ("reportable_condition" in context) {
+    const condition = bestCodeableText(context.reportable_condition);
+    if (condition) details.push({ label: "Reportable condition", value: condition });
+  }
+  if ("concern" in context) {
+    const concern = bestCodeableText(context.concern);
+    if (concern) details.push({ label: "Concern", value: concern });
+  }
+  if ("referral" in context) {
+    const referralId = context.referral.identifier?.find((identifier) => identifier.value)?.value;
+    if (referralId) details.push({ label: "Referral", value: referralId });
+  }
+  if ("service" in context) {
+    const service = bestCodeableText(context.service);
+    if (service) details.push({ label: "Service", value: service });
+  }
+  if ("claim" in context) {
+    const claimId = context.claim.identifier?.find((identifier) => identifier.value)?.value;
+    if (claimId) details.push({ label: "Claim", value: claimId });
+  }
+  if ("study" in context) {
+    if (context.study.title) details.push({ label: "Study", value: context.study.title });
+    const studyId = context.study.identifier?.find((identifier) => identifier.value)?.value;
+    if (studyId) details.push({ label: "Study ID", value: studyId });
+  }
+  if ("reason" in context) {
+    const reason = bestCodeableText(context.reason);
+    if (reason) details.push({ label: "Consult reason", value: reason });
+  }
+  if ("consult_request" in context) {
+    const consultId = context.consult_request.identifier?.find((identifier) => identifier.value)?.value;
+    if (consultId) details.push({ label: "Consult request", value: consultId });
+  }
+
+  return details;
 }
 
 function buildResponderFilter(locationMode: LocationConstraintMode, selected: SiteOfCare[]): ResponderFilter[] {
@@ -253,6 +405,40 @@ function buildDataPeriod(mode: DateConstraintMode, dateRange: ConsentState["date
     start: dateRange.start ?? undefined,
     end: dateRange.end ?? undefined,
   };
+}
+
+function isAllResourcesScenario(permissions: Array<{ kind: string }>) {
+  return permissions.length === 1
+    && permissions[0]?.kind === "data"
+    && (permissions[0] as DataPermission).resource_type === "*"
+    && !(permissions[0] as DataPermission).category_any_of?.length
+    && !(permissions[0] as DataPermission).code_any_of?.length;
+}
+
+function permissionsEqual(left: DataPermission, right: DataPermission) {
+  return left.kind === right.kind
+    && left.resource_type === right.resource_type
+    && sortedValues(left.interactions).join("|") === sortedValues(right.interactions).join("|")
+    && codingListKey(left.category_any_of) === codingListKey(right.category_any_of)
+    && codingListKey(left.code_any_of) === codingListKey(right.code_any_of);
+}
+
+function sortedValues(values: string[]) {
+  return [...values].sort((left, right) => left.localeCompare(right));
+}
+
+function codingListKey(codings: Array<{ system?: string; code?: string }> | undefined) {
+  return (codings ?? [])
+    .map((coding) => `${coding.system ?? ""}|${coding.code ?? ""}`)
+    .sort((left, right) => left.localeCompare(right))
+    .join("||");
+}
+
+function organizationFilterMatchesSite(filter: OrganizationFilter, site: SiteOfCare) {
+  const filterName = filter.organization.name?.trim().toLowerCase();
+  const filterNpi = filter.organization.identifier?.find((identifier) => identifier.system === "http://hl7.org/fhir/sid/us-npi")?.value;
+  return (filterName && filterName === site.orgName.trim().toLowerCase())
+    || (filterNpi && filterNpi === site.organizationNpi);
 }
 
 function permissionsFromSelectedScopes(consent: ConsentState): DataPermission[] {
@@ -686,9 +872,9 @@ function buildClientStoryDescription(
   const registrationLabel = registrationMode === "dynamic-jwk"
     ? "Dynamic registration"
     : registrationMode === "implicit-well-known"
-      ? "No registration"
+      ? "Implicit"
       : registrationMode === "oidf-automatic"
-        ? "No registration"
+        ? "Implicit"
         : "UDAP DCR";
   const authenticationLabel = clientType === "unaffiliated"
     ? "private_key_jwt using a one-off JWK"

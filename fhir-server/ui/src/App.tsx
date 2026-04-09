@@ -7,6 +7,18 @@ import { ProtocolTrace } from "./components/ProtocolTrace";
 import { PermissionWorkbench } from "./components/PermissionWorkbench";
 import { Viewer } from "./components/Viewer";
 import { PatientSummaryBox } from "./components/PatientSummaryBox";
+import { nextSelectedUseCaseKey } from "./use-case-filter";
+import type { PersonInfo } from "./types";
+import type { DemoTicketScenario } from "../../../shared/demo-ticket-scenarios.ts";
+
+function cardScenarioPreview(person: PersonInfo): DemoTicketScenario | null {
+  return person.ticketScenarios[0] ?? null;
+}
+
+function cardScenarioDescriptor(person: PersonInfo) {
+  const scenario = cardScenarioPreview(person);
+  return scenario ? { label: scenario.label, summary: scenario.summary } : null;
+}
 
 export function App() {
   if (window.location.pathname === "/viewer") {
@@ -83,7 +95,7 @@ export function App() {
                   key={useCase.key}
                   type="button"
                   className={`scenario-card${selectedUseCaseKey === useCase.key ? " active" : ""}`}
-                  onClick={() => setSelectedUseCaseKey(useCase.key)}
+                  onClick={() => setSelectedUseCaseKey((current) => nextSelectedUseCaseKey(current, useCase.key))}
                 >
                   <span className="scenario-card-label">{useCase.display}</span>
                   <strong>{useCase.count} patient{useCase.count !== 1 && "s"}</strong>
@@ -92,11 +104,23 @@ export function App() {
             </div>
           </section>
         )}
-        {selectedPerson && (
+        {selectedPerson && !showPatientPicker && (
           <section className="selected-person-banner">
             <div className="selected-person-header">
               <div>
-                <h3>{selectedPerson.displayName}</h3>
+                <div className="selected-person-title">
+                  <h3>{selectedPerson.displayName}</h3>
+                  {selectedPerson.useCases.length > 0 && (
+                    <div className="patient-card-use-cases selected-person-use-cases">
+                      {selectedPerson.useCases.slice(0, 3).map((useCase) => (
+                        <span key={useCase.code} className="use-case-tag">{useCase.display}</span>
+                      ))}
+                      {selectedPerson.useCases.length > 3 && (
+                        <span className="use-case-tag">… and {selectedPerson.useCases.length - 3} more</span>
+                      )}
+                    </div>
+                  )}
+                </div>
                 <p className="subtle selected-person-meta">
                   {selectedPerson.birthDate ?? "unknown DOB"}
                   {selectedPerson.gender && <> · {selectedPerson.gender}</>}
@@ -105,16 +129,6 @@ export function App() {
                   {" · "}
                   {selectedPerson.sites.reduce((sum, site) => sum + site.encounters.length, 0)} encounters
                 </p>
-                {selectedPerson.useCases.length > 0 && (
-                  <div className="patient-card-use-cases selected-person-use-cases">
-                    {selectedPerson.useCases.slice(0, 3).map((useCase) => (
-                      <span key={useCase.code} className="use-case-tag">{useCase.display}</span>
-                    ))}
-                    {selectedPerson.useCases.length > 3 && (
-                      <span className="use-case-tag">… and {selectedPerson.useCases.length - 3} more</span>
-                    )}
-                  </div>
-                )}
               </div>
               {!showPatientPicker && (
                 <button type="button" className="button selected-person-cta" onClick={() => setShowPatientPicker(true)}>
@@ -143,6 +157,7 @@ export function App() {
                 person={person}
                 selected={person.personId === selectedPersonId}
                 onSelect={() => handleSelectPerson(person.personId)}
+                scenarioPreview={cardScenarioDescriptor(person)}
               />
             ))}
           </div>

@@ -1,0 +1,25 @@
+{
+  "scenarios": [
+    {
+      "id": "full-chronic-care-record",
+      "label": "Full chronic-care record",
+      "summary": "Patient self-access across Denise's Arizona and New Mexico care teams for diabetes, heart failure, kidney disease, and retina follow-up.",
+      "ticket": {
+        "ticket_type": "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
+        "access": {
+          "permissions": [
+            {
+              "kind": "data",
+              "resource_type": "*",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            }
+          ],
+          "sensitive_data": "exclude"
+        }
+      }
+    }
+  ]
+}

@@ -83,6 +83,8 @@ bun run steps/07-assemble.ts patients/maria-chen
 
 Each step is idempotent — it skips encounters that already have output. Pass `--force` to regenerate.
 
+Patient folders can also include `ticket-scenarios.json`, a machine-readable set of spec-shaped Permission Ticket fragments. The enrichment step injects those fragments onto every generated `Patient` alias so `/demo/bootstrap` can prefill requester, context, access defaults, and per-use-case case details in the demo UI.
+
 ### 4. Start the FHIR server
 
 ```bash
@@ -99,6 +101,7 @@ The pipeline generates realistic FHIR R4 patient data through 7 steps of fractal
 
 ```
 scenario.md                     (2-3 sentence brief)
+ticket-scenarios.json           (spec-shaped demo ticket fragments per patient)
   → biography.md                (rich patient narrative)
   → provider-map.json           (structured site registry)
   → encounters.md               (visit-by-visit timeline)

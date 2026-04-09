@@ -33,6 +33,7 @@ const person: PersonInfo = {
   birthDate: "1989-09-14",
   gender: "female",
   summary: "Synthetic test patient",
+  ticketScenarios: [],
   useCases: [],
   resourceCounts: {
     Patient: 2,
@@ -145,6 +146,69 @@ const udapOption: DemoClientOption = {
   privateKeyPem: "-----BEGIN PRIVATE KEY-----\nMIIB\n-----END PRIVATE KEY-----",
 };
 
+const scenarioPerson: PersonInfo = {
+  ...person,
+  ticketScenarios: [
+    {
+      id: "public-health",
+      label: "Public health investigation",
+      summary: "Focused scenario for testing requester, context, and access projection.",
+      ticket: {
+        ticket_type: "https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1",
+        requester: {
+          resourceType: "Organization",
+          name: "County Public Health"
+        },
+        context: {
+          reportable_condition: {
+            text: "Tuberculosis"
+          }
+        },
+        access: {
+          permissions: [
+            {
+              kind: "data",
+              resource_type: "Patient",
+              interactions: ["read", "search"],
+            },
+            {
+              kind: "data",
+              resource_type: "DiagnosticReport",
+              interactions: ["read", "search"],
+            },
+            {
+              kind: "data",
+              resource_type: "DocumentReference",
+              interactions: ["read", "search"],
+            },
+          ],
+          data_period: {
+            start: "2023-01-01",
+            end: "2025-12-31",
+          },
+          responder_filter: [
+            {
+              kind: "organization",
+              organization: {
+                resourceType: "Organization",
+                name: "Eastbay Primary Care Associates",
+              },
+            },
+            {
+              kind: "organization",
+              organization: {
+                resourceType: "Organization",
+                name: "Bay Area Rheumatology Associates",
+              },
+            },
+          ],
+          sensitive_data: "include",
+        },
+      },
+    },
+  ],
+};
+
 describe("demo helpers", () => {
   test("default consent enables every resource type present for the patient", () => {
     const consent = defaultConsentState(person);
@@ -152,6 +216,20 @@ describe("demo helpers", () => {
     expect(consent.locationMode).toBe("all");
     expect(consent.dateMode).toBe("all");
     expect(selectedResourceTypes(consent)).toEqual(["*"]);
+  });
+
+  test("scenario defaults project ticket access into editable consent state", () => {
+    const consent = defaultConsentState(scenarioPerson, scenarioPerson.ticketScenarios[0]);
+    expect(consent.resourceScopeMode).toBe("selected");
+    expect(consent.scopeSelections["patient/Patient.rs"]).toBe(true);
+    expect(consent.scopeSelections["patient/DiagnosticReport.rs"]).toBe(true);
+    expect(consent.scopeSelections["patient/DocumentReference.rs"]).toBe(true);
+    expect(consent.locationMode).toBe("organizations");
+    expect(consent.selectedSiteSlugs["eastbay-primary-care-associates"]).toBe(true);
+    expect(consent.selectedSiteSlugs["bay-area-rheumatology-associates"]).toBe(true);
+    expect(consent.dateMode).toBe("window");
+    expect(consent.dateRange).toEqual({ start: "2023-01-01", end: "2025-12-31" });
+    expect(consent.sensitiveMode).toBe("allow");
   });
 
   test("chooseSiteAuthSurface uses a site-bound surface", () => {
@@ -387,6 +465,23 @@ describe("demo helpers", () => {
     expect(ticket.context).toBeUndefined();
   });
 
+  test("ticket payload merges runtime fields onto a scenario fragment", () => {
+    const scenario = scenarioPerson.ticketScenarios[0];
+    const consent = defaultConsentState(scenarioPerson, scenario);
+    const ticket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", scenarioPerson, consent, {
+      scenario,
+      proofJkt: "demo-proof",
+    });
+
+    expect(ticket.ticket_type).toBe("https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1");
+    expect(ticket.requester as any).toEqual((scenario.ticket as any).requester);
+    expect(ticket.context).toEqual(scenario.ticket.context);
+    expect(ticket.presenter_binding).toEqual({ method: "jkt", jkt: "demo-proof" });
+    expect(ticket.access.data_period).toEqual({ start: "2023-01-01", end: "2025-12-31" });
+    expect(ticket.access.sensitive_data).toBe("include");
+    expect(ticket.access.responder_filter).toHaveLength(2);
+  });
+
   test("well-known client plan drives framework presenter binding without jkt binding", async () => {
     const clientPlan = await buildViewerClientPlan(person, wellKnownOption);
     expect(clientPlan.type).toBe("well-known");
@@ -401,7 +496,7 @@ describe("demo helpers", () => {
 
   test("client story description explains well-known framework binding", () => {
     const story = describeClientOption("strict", wellKnownOption);
-    expect(story.registrationLabel).toBe("No registration");
+    expect(story.registrationLabel).toBe("Implicit");
     expect(story.authenticationLabel).toBe("private_key_jwt using the entity's current JWKS key");
     expect(story.effectiveClientId).toBe("well-known:http://localhost:8091/demo/clients/well-known-alpha");
     expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");

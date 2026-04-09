@@ -1,0 +1,111 @@
+{
+  "scenarios": [
+    {
+      "id": "measles-public-health-investigation",
+      "label": "Measles outbreak investigation",
+      "summary": "Wisconsin public health access focused on Marcus's measles episode, exposure investigation window, and immunization history.",
+      "ticket": {
+        "ticket_type": "https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1",
+        "requester": {
+          "resourceType": "Organization",
+          "name": "Wisconsin Department of Health Services",
+          "identifier": [
+            {
+              "system": "urn:smart-permission-tickets:demo-requester-organization",
+              "value": "wisconsin-department-health-services"
+            }
+          ]
+        },
+        "context": {
+          "reportable_condition": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14189004",
+                "display": "Measles"
+              }
+            ],
+            "text": "Measles"
+          }
+        },
+        "access": {
+          "permissions": [
+            {
+              "kind": "data",
+              "resource_type": "Patient",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Encounter",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Condition",
+              "interactions": [
+                "read",
+                "search"
+              ],
+              "category_any_of": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                  "code": "encounter-diagnosis"
+                }
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Observation",
+              "interactions": [
+                "read",
+                "search"
+              ],
+              "category_any_of": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                  "code": "laboratory"
+                }
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "DiagnosticReport",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "DocumentReference",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            },
+            {
+              "kind": "data",
+              "resource_type": "Immunization",
+              "interactions": [
+                "read",
+                "search"
+              ]
+            }
+          ],
+          "data_period": {
+            "start": "2026-03-01",
+            "end": "2026-04-30"
+          },
+          "sensitive_data": "exclude"
+        }
+      }
+    }
+  ]
+}
