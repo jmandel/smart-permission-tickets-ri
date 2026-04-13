@@ -139,7 +139,7 @@ export class OidfFrameworkResolver implements FrameworkResolver {
         dynamic: false,
         authMode: "oidf",
         frameworkBinding: {
-          method: "framework_client",
+          method: "trust_framework_client",
           framework: framework.framework,
         framework_type: "oidf",
         entity_uri: clientId,

@@ -30,8 +30,8 @@ describe("UDAP token authentication and discovery", () => {
         jti: crypto.randomUUID(),
         ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: {
-          method: "framework_client",
-          framework: "https://example.org/frameworks/tefca",
+          method: "trust_framework_client",
+          trust_framework: "https://example.org/frameworks/tefca",
           framework_type: "udap",
           entity_uri: "https://client-a.example.org",
         },
@@ -534,8 +534,8 @@ describe("UDAP token authentication and discovery", () => {
         jti: crypto.randomUUID(),
         ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: {
-          method: "framework_client",
-          framework: frameworkUri,
+          method: "trust_framework_client",
+          trust_framework: frameworkUri,
           framework_type: "udap",
           entity_uri: "https://rs256-client.example.org",
         },

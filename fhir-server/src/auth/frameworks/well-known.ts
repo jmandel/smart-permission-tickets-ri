@@ -167,7 +167,7 @@ function registeredClientForEntity(entity: ResolvedFrameworkEntity): RegisteredC
     authMode: "well-known",
     frameworkBinding: entity.framework
       ? {
-        method: "framework_client",
+        method: "trust_framework_client",
         framework: entity.framework.uri,
         framework_type: entity.framework.type,
         entity_uri: entity.entityUri,
@@ -189,7 +189,7 @@ function resolveFrameworkBinding(
     if (!allowlist.includes(entityUri)) continue;
     return {
       binding: {
-        method: "framework_client",
+        method: "trust_framework_client",
         framework: framework.framework,
         framework_type: framework.frameworkType,
         entity_uri: entityUri,

@@ -69,7 +69,7 @@ export type OidfTrustedAnchor = {
 };
 
 export type FrameworkClientBinding = {
-  method: "framework_client";
+  method: "trust_framework_client";
   framework: string;
   framework_type: FrameworkType;
   entity_uri: string;

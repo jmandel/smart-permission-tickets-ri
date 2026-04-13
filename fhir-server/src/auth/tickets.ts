@@ -146,7 +146,7 @@ export async function validatePermissionTicket(
     why: "Ticket is within its validity window",
   });
   const audValues = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
-  if (!permissionTicketAudienceMatches(audValues, expectedAudiences, frameworks)) {
+  if (!permissionTicketAudienceMatches(audValues, payload.aud_type, expectedAudiences, frameworks)) {
     addAuditStep(diagnostics, {
       check: "Audience",
       passed: false,
@@ -207,10 +207,18 @@ export async function validatePermissionTicket(
 
 function permissionTicketAudienceMatches(
   audValues: string[],
+  audType: PermissionTicket["aud_type"],
   expectedAudiences: string[],
   frameworks: FrameworkRegistry,
 ) {
-  return audValues.some((audience) => expectedAudiences.includes(audience) || frameworks.hasLocalAudienceMembership(audience));
+  switch (audType) {
+    case "data_holder_url":
+      return audValues.some((audience) => expectedAudiences.includes(audience));
+    case "trust_framework":
+      return audValues.some((audience) => frameworks.hasLocalAudienceMembership(audience));
+    default:
+      return audValues.some((audience) => expectedAudiences.includes(audience) || frameworks.hasLocalAudienceMembership(audience));
+  }
 }
 
 export function compileAuthorizationEnvelope(
@@ -581,7 +589,7 @@ function resolveSubject(ticket: PermissionTicket, store: FhirStore): AllowedPati
 
 function compileAllowedSites(ticket: PermissionTicket, store: FhirStore, aliases: AllowedPatientAlias[]) {
   const aliasSites = new Set(aliases.map((alias) => alias.siteSlug));
-  const filters = ticket.access.responder_filter;
+  const filters = ticket.access.data_holder_filter;
   if (!filters?.length) return undefined;
 
   const matchedSites = new Set<string>();
@@ -786,10 +794,10 @@ function extractPresenterProofKey(binding: PresenterBinding | undefined) {
 }
 
 function toFrameworkClientBinding(binding: PresenterBinding | undefined): FrameworkClientBinding | undefined {
-  if (binding?.method !== "framework_client") return undefined;
+  if (binding?.method !== "trust_framework_client") return undefined;
   return {
-    method: "framework_client",
-    framework: binding.framework,
+    method: "trust_framework_client",
+    framework: binding.trust_framework,
     framework_type: binding.framework_type,
     entity_uri: binding.entity_uri,
   };

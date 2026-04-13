@@ -644,10 +644,10 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
     }
     try {
       const proofKeyJkt = ticket.ticket.presenter_binding?.method === "jkt" ? ticket.ticket.presenter_binding.jkt : undefined;
-      const frameworkClientBinding = ticket.ticket.presenter_binding?.method === "framework_client"
+      const frameworkClientBinding = ticket.ticket.presenter_binding?.method === "trust_framework_client"
         ? {
-            method: "framework_client" as const,
-            framework: ticket.ticket.presenter_binding.framework,
+            method: "trust_framework_client" as const,
+            framework: ticket.ticket.presenter_binding.trust_framework,
             framework_type: ticket.ticket.presenter_binding.framework_type,
             entity_uri: ticket.ticket.presenter_binding.entity_uri,
           }
@@ -1406,7 +1406,7 @@ function buildSmartConfig(context: AppContext, url: URL, contextRoute: RouteCont
         permission_ticket_profile: "v2",
         surface_kind: contextRoute.networkSlug ? "network" : contextRoute.siteSlug ? "site" : "global",
         surface_mode: contextRoute.mode,
-        supported_client_binding_types: ["jkt", "framework_client"],
+        supported_client_binding_types: ["jkt", "trust_framework_client"],
         supported_trust_frameworks: context.frameworks.getSupportedTrustFrameworks(),
         ...(contextRoute.networkSlug ? { record_location_operation: "$resolve-record-locations" } : {}),
       },
@@ -1512,7 +1512,7 @@ function summarizeTicketExpiry(exp: unknown) {
 }
 
 function summarizeTicketBinding(ticketPayload: PermissionTicket) {
-  if (ticketPayload.presenter_binding?.method === "framework_client") return "Framework-bound client";
+  if (ticketPayload.presenter_binding?.method === "trust_framework_client") return "Trust-framework-bound client";
   if (ticketPayload.presenter_binding?.method === "jkt") return "Proof-key client";
   return "No presenter binding";
 }

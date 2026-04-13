@@ -197,8 +197,8 @@ function mintOidfTicket(appContext: ReturnType<typeof createAppContext>, publicO
     jti: crypto.randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     presenter_binding: {
-      method: "framework_client",
-      framework: DEFAULT_DEMO_OIDF_FRAMEWORK_URI,
+      method: "trust_framework_client",
+      trust_framework: DEFAULT_DEMO_OIDF_FRAMEWORK_URI,
       framework_type: "oidf",
       entity_uri: entityUri,
     },

@@ -270,7 +270,7 @@ describe("mode surfaces", () => {
     const extension = smartConfig.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
     expect(smartConfig.grant_types_supported).toContain("client_credentials");
     expect(smartConfig.grant_types_supported).toContain("urn:ietf:params:oauth:grant-type:token-exchange");
-    expect(extension.supported_client_binding_types).toContain("framework_client");
+    expect(extension.supported_client_binding_types).toContain("trust_framework_client");
     expect(extension.supported_client_binding_types).toContain("jkt");
     expect(extension.supported_trust_frameworks).toEqual([
       {
@@ -777,7 +777,7 @@ describe("mode surfaces", () => {
         scopes: ["patient/Encounter.rs"],
         periods: [{ start: "2022-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        responderFilter: [
+        dataHolderFilter: [
           {
             kind: "organization",
             organization: {
@@ -1002,7 +1002,7 @@ describe("mode surfaces", () => {
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        responderFilter: [
+        dataHolderFilter: [
           { kind: "jurisdiction", address: { state: "CA" } },
           { kind: "jurisdiction", address: { state: "TX" } },
         ],
@@ -1022,7 +1022,7 @@ describe("mode surfaces", () => {
         scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        responderFilter: [
+        dataHolderFilter: [
           {
             kind: "organization",
             organization: {
@@ -1082,7 +1082,7 @@ describe("mode surfaces", () => {
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2021-01-01", end: "2025-12-31" }],
         sensitiveMode: "allow",
-        responderFilter: [
+        dataHolderFilter: [
           { kind: "jurisdiction", address: { state: "CA" } },
           {
             kind: "organization",
@@ -1104,7 +1104,7 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
-      responderFilter: [{ kind: "jurisdiction", address: { state: "CA" } }],
+      dataHolderFilter: [{ kind: "jurisdiction", address: { state: "CA" } }],
     });
 
     const allowed = await postFormJson(`${origin}/modes/open/sites/eastbay-primary-care-associates/token`, {
@@ -1128,7 +1128,7 @@ describe("mode surfaces", () => {
       scopes: ["patient/Patient.rs", "patient/Encounter.rs"],
       periods: [{ start: "2021-01-01", end: "2025-12-31" }],
       sensitiveMode: "allow",
-      responderFilter: [
+      dataHolderFilter: [
         {
           kind: "organization",
           organization: {
@@ -1584,7 +1584,7 @@ function mintTicket(input: {
   scopes: string[];
   periods: Array<{ start?: string; end?: string }>;
   sensitiveMode: "deny" | "allow";
-  presenterBinding?: { method: "jkt"; jkt: string } | { method: "framework_client"; framework: string; framework_type: "well-known" | "udap"; entity_uri: string };
+  presenterBinding?: { method: "jkt"; jkt: string } | { method: "trust_framework_client"; trust_framework: string; framework_type: "well-known" | "udap" | "oidf"; entity_uri: string };
   ticketType?: string;
   requester?: Record<string, unknown>;
   context?: Record<string, unknown>;
@@ -1592,7 +1592,7 @@ function mintTicket(input: {
   iat?: number;
   jti?: string | null;
   revocation?: { url: string; index: number };
-  responderFilter?: Array<
+  dataHolderFilter?: Array<
     | { kind: "jurisdiction"; address: { state?: string; country?: string } }
     | { kind: "organization"; organization: { resourceType: "Organization"; name?: string; identifier?: Array<{ system?: string; value?: string }> } }
   >;
@@ -1618,7 +1618,7 @@ function mintTicket(input: {
     access: {
       permissions: projectScopesToPermissions(input.scopes),
       data_period: normalizeDataPeriod(input.periods),
-      responder_filter: input.responderFilter,
+      data_holder_filter: input.dataHolderFilter,
       sensitive_data: input.sensitiveMode === "allow" ? "include" : "exclude",
       ...input.accessExtras,
     },

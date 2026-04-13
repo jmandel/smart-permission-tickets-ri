@@ -19,7 +19,7 @@ describe("framework-aware client auth", () => {
       const response = await fetch(`${appOrigin}/.well-known/smart-configuration`);
       expect(response.status).toBe(200);
       const body = await response.json();
-      expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_client_binding_types).toContain("framework_client");
+      expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_client_binding_types).toContain("trust_framework_client");
       expect(body.extensions["https://smarthealthit.org/smart-permission-tickets/smart-configuration"].supported_trust_frameworks).toEqual([
         {
           framework: "https://example.org/frameworks/smart-health-issuers",
@@ -33,8 +33,8 @@ describe("framework-aware client auth", () => {
     await withFrameworkHarness(async ({ appOrigin, appContext, frameworkEntityUri, frameworkClientKeys }) => {
       const ticket = mintTicket(appContext, appOrigin, {
         presenterBinding: {
-          method: "framework_client",
-          framework: "https://example.org/frameworks/smart-health-issuers",
+          method: "trust_framework_client",
+          trust_framework: "https://example.org/frameworks/smart-health-issuers",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
         },
@@ -59,8 +59,8 @@ describe("framework-aware client auth", () => {
     await withFrameworkHarness(async ({ appOrigin, appContext, frameworkEntityUri, frameworkClientKeys }) => {
       const mismatchedTicket = mintTicket(appContext, appOrigin, {
         presenterBinding: {
-          method: "framework_client",
-          framework: "https://example.org/frameworks/other",
+          method: "trust_framework_client",
+          trust_framework: "https://example.org/frameworks/other",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
         },
@@ -78,9 +78,10 @@ describe("framework-aware client auth", () => {
       appContext.config.frameworks[0]!.localAudienceMembership = { entityUri: appOrigin };
       const ticket = mintTicket(appContext, appOrigin, {
         aud: "https://example.org/frameworks/smart-health-issuers",
+        audType: "trust_framework",
         presenterBinding: {
-          method: "framework_client",
-          framework: "https://example.org/frameworks/smart-health-issuers",
+          method: "trust_framework_client",
+          trust_framework: "https://example.org/frameworks/smart-health-issuers",
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
         },
@@ -173,8 +174,8 @@ describe("framework-aware client auth", () => {
       const frameworkEntityUri = `${publicOrigin}/demo/clients/well-known-alpha`;
       const ticket = mintTicket(appContext, publicOrigin, {
         presenterBinding: {
-          method: "framework_client",
-          framework: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+          method: "trust_framework_client",
+          trust_framework: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
           framework_type: "well-known",
           entity_uri: frameworkEntityUri,
         },
@@ -270,12 +271,13 @@ async function withFrameworkHarness(
 function mintTicket(
   appContext: ReturnType<typeof createAppContext>,
   appOrigin: string,
-  input: { aud?: string | string[]; presenterBinding?: Record<string, string> & { method: "framework_client" } },
+  input: { aud?: string | string[]; audType?: "data_holder_url" | "trust_framework"; presenterBinding?: Record<string, string> & { method: "trust_framework_client" } },
 ) {
   const ticketType = input.presenterBinding ? PATIENT_SELF_ACCESS_TICKET_TYPE : PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE;
   return appContext.issuers.sign(appOrigin, appContext.config.defaultPermissionTicketIssuerSlug, {
     iss: `${appOrigin}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
     aud: input.aud ?? appOrigin,
+    ...(input.audType ? { aud_type: input.audType } : {}),
     exp: Math.floor(Date.now() / 1000) + 3600,
     jti: crypto.randomUUID(),
     ticket_type: ticketType,

@@ -1,0 +1,10 @@
+{
+  "name": "smart-permission-tickets-reference-implementation",
+  "private": true,
+  "scripts": {
+    "check:permission-ticket-schema": "bun run scripts/check-permission-ticket-schema.ts"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  }
+}
