@@ -108,7 +108,7 @@ describe("Permission Ticket revocation", () => {
     })).rejects.toThrow("Permission Ticket revocation status could not be determined");
   });
 
-  test("requires jti for revocable tickets", async () => {
+  test("requires jti when checking revocation", async () => {
     const revocations = new TicketRevocationRegistry();
 
     await expect(revocations.assertActive({
@@ -116,6 +116,6 @@ describe("Permission Ticket revocation", () => {
         url: "https://issuer.example.org/status.json",
         index: 9,
       },
-    })).rejects.toThrow("Revocable ticket missing jti");
+    })).rejects.toThrow("Permission Ticket missing jti");
   });
 });

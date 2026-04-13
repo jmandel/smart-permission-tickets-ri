@@ -22,7 +22,7 @@ export class TicketRevocationRegistry {
 
   async assertActive(ticket: Pick<PermissionTicket, "revocation"> & { jti?: string }) {
     if (!ticket.revocation) return;
-    if (typeof ticket.jti !== "string" || !ticket.jti) throw new Error("Revocable ticket missing jti");
+    if (typeof ticket.jti !== "string" || !ticket.jti) throw new Error("Permission Ticket missing jti");
 
     const revocationUrl = normalizeRevocationUrl(ticket.revocation.url);
     const statusList = await this.loadStatusList(revocationUrl);
