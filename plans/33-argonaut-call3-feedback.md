@@ -503,3 +503,97 @@ Body paragraph two.
 *Add to the "This specification does not define" list in Scope and Non-Goals:*
 
 > * Constraints on downstream data use, retention, or re-disclosure by the client after data has been received — these are governed by the trust framework under which the client operates and applicable law.
+
+## Implementation Follow-Up: Spec Artifact Repair and Reference Implementation Alignment
+
+The spec branch now owns the canonical executable Permission Ticket schema in the spec repo itself. That creates two immediate follow-on tasks:
+
+1. repair the spec repo artifacts so the IG is internally consistent after removing the old FSH logical model
+2. align the reference implementation so it consumes the spec-owned Zod schema instead of maintaining an independent copy
+
+### A. Spec Repo Repairs
+
+#### A1. Restore a valid published artifact set
+
+The spec branch intentionally removed the old `PermissionTicket.fsh` logical model, but the generated `ImplementationGuide` still must publish at least one artifact entry. The current generated IG has an empty `definition.resource[]`, which fails publisher validation.
+
+Implementation approach:
+
+- add back a deliberately minimal logical model only as a package anchor, not as a second normative schema source
+- state clearly in the model itself that it is non-normative and best-effort, and that it will only be populated after the actual spec stabilizes
+- regenerate the IG so `ImplementationGuide.definition.resource` is non-empty without reintroducing the old detailed hand-maintained model
+
+#### A2. Finish repo-level terminology cleanup
+
+The public spec content already uses the updated schema terms:
+
+- `data_holder_filter`
+- `trust_framework_client`
+- `trust_framework`
+
+The repository documentation must match. Specifically:
+
+- update repo README references that still say `framework_client`
+- verify generated snippets and downloaded artifacts remain consistent with the canonical schema
+
+### B. Reference Implementation Migration
+
+#### B1. Add the spec repo as a submodule inside the nested reference-implementation repo
+
+The reference implementation is its own git repository, so the spec dependency belongs there, not at the outer workspace root.
+
+Implementation approach:
+
+- add the top-level spec repo as a submodule inside `reference-implementation/`
+- use a stable path such as `vendor/smart-permission-tickets-spec`
+- pin the submodule to the spec commit consumed by the reference implementation branch
+
+#### B2. Keep a local import seam
+
+Do not spread raw submodule import paths throughout server, UI, and synth-data code. Instead:
+
+- add a local shim module in `reference-implementation/shared/`
+- have that shim re-export the canonical Zod schema and inferred types from the spec submodule
+- migrate all reference-implementation imports to the shim
+
+This keeps the dependency explicit while avoiding path churn everywhere.
+
+#### B3. Remove duplicate schema ownership
+
+The existing local file:
+
+- `reference-implementation/shared/permission-ticket-schema.ts`
+
+should stop being a second source of truth. After the shim is in place:
+
+- replace it with a re-export module or remove it entirely
+- keep any ref-impl-only helpers outside the canonical schema file
+
+#### B4. Align the reference implementation with current spec names and semantics
+
+The current ref impl still uses pre-spec-alignment names in runtime code, UI code, synthetic data, and tests. Required migration points include:
+
+- `access.responder_filter` -> `access.data_holder_filter`
+- `presenter_binding.method = "framework_client"` -> `"trust_framework_client"`
+- `presenter_binding.framework` -> `presenter_binding.trust_framework`
+- support for `framework_type = "oidf"` wherever framework-bound client handling is typed or displayed
+
+#### B5. Preserve current auth behavior while switching schema ownership
+
+The migration should preserve the existing server behavior unless the updated spec explicitly requires otherwise. In particular:
+
+- keep current `aud` handling behavior, but add support for `aud_type` when present
+- preserve existing presenter-binding enforcement logic
+- preserve existing site/data filtering behavior while renaming to the new `data_holder_filter` vocabulary
+
+#### B6. Regenerate derived data, do not hand-edit it
+
+Synthetic patient bundles and embedded scenario payloads currently contain the old wire shape. These must be regenerated from their scenario source files after the shared schema is swapped in.
+
+#### B7. Add guardrails
+
+The migration should leave behind checks that prevent silent drift:
+
+- a targeted test that validates a canonical ticket using the imported spec schema inside the ref impl
+- a targeted test for `aud_type = "trust_framework"`
+- a repo-level check or convention that prevents reintroducing a second handwritten canonical ticket schema

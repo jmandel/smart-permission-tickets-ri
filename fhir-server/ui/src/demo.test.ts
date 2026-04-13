@@ -203,7 +203,7 @@ const scenarioPerson: PersonInfo = {
             start: "2023-01-01",
             end: "2025-12-31",
           },
-          responder_filter: [
+          data_holder_filter: [
             {
               kind: "organization",
               organization: {
@@ -327,7 +327,7 @@ describe("demo helpers", () => {
     };
     consent.selectedStateCodes = { TX: true, CA: false };
     const ticket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, consent);
-    expect(ticket.access.responder_filter).toEqual([
+    expect(ticket.access.data_holder_filter).toEqual([
       { kind: "jurisdiction", address: { state: "TX" } },
     ]);
   });
@@ -341,7 +341,7 @@ describe("demo helpers", () => {
       "bay-area-rheumatology-associates": false,
     };
     const ticket = buildTicketPayload(ticketIssuer.issuerBaseUrl, "http://localhost:8091", person, consent);
-    expect(ticket.access.responder_filter).toEqual([
+    expect(ticket.access.data_holder_filter).toEqual([
       {
         kind: "organization",
         organization: {
@@ -496,15 +496,15 @@ describe("demo helpers", () => {
     expect(ticket.presenter_binding).toEqual({ method: "jkt", jkt: "demo-proof" });
     expect(ticket.access.data_period).toEqual({ start: "2023-01-01", end: "2025-12-31" });
     expect(ticket.access.sensitive_data).toBe("include");
-    expect(ticket.access.responder_filter).toHaveLength(2);
+    expect(ticket.access.data_holder_filter).toHaveLength(2);
   });
 
   test("well-known client plan drives framework presenter binding without jkt binding", async () => {
     const clientPlan = await buildViewerClientPlan(person, wellKnownOption);
     expect(clientPlan.type).toBe("well-known");
     expect(clientBindingForPlan(clientPlan)).toEqual({
-      method: "framework_client",
-      framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+      method: "trust_framework_client",
+      trust_framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
       framework_type: "well-known",
       entity_uri: "http://localhost:8091/demo/clients/well-known-alpha",
     });
@@ -516,7 +516,7 @@ describe("demo helpers", () => {
     expect(story.registrationLabel).toBe("Implicit");
     expect(story.authenticationLabel).toBe("private_key_jwt with current entity JWKS");
     expect(story.effectiveClientId).toBe("well-known:http://localhost:8091/demo/clients/well-known-alpha");
-    expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");
+    expect(story.ticketBinding.shape).toBe("presenter_binding.method=trust_framework_client");
     expect(story.whatThisDemonstrates).toContain("skip registration entirely");
   });
 
@@ -548,19 +548,19 @@ describe("demo helpers", () => {
     expect(story.authenticationLabel).toContain("SAN entity URI");
     expect(story.entityUri).toBe("http://localhost:8091/demo/clients/udap/sample-client");
     expect(story.whatThisDemonstrates).toContain("Subject Alternative Name");
-    expect(story.ticketBinding.shape).toBe("presenter_binding.method=framework_client");
+    expect(story.ticketBinding.shape).toBe("presenter_binding.method=trust_framework_client");
   });
 
   test("ticket binding description distinguishes proof and framework binding", () => {
     expect(describeTicketBinding("strict", "unaffiliated", "<jkt>", null).shape).toBe("presenter_binding.method=jkt");
     expect(
       describeTicketBinding("strict", "well-known", null, {
-        method: "framework_client",
-        framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
+        method: "trust_framework_client",
+        trust_framework: "https://smarthealthit.org/trust-frameworks/reference-demo-well-known",
         framework_type: "well-known",
         entity_uri: "http://localhost:8091/demo/clients/well-known-alpha",
       }).shape,
-    ).toBe("presenter_binding.method=framework_client");
+    ).toBe("presenter_binding.method=trust_framework_client");
   });
 
   test("copied curls inline the actual bearer token and proof header", () => {

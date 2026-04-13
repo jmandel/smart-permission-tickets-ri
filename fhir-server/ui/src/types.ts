@@ -195,13 +195,13 @@ export type TicketBindingDescription = {
   shape:
     | "none"
     | "presenter_binding.method=jkt"
-    | "presenter_binding.method=framework_client";
+    | "presenter_binding.method=trust_framework_client";
   label: string;
   rationale: string;
   usesProofKeyBinding: boolean;
-  usesFrameworkBinding: boolean;
+  usesTrustFrameworkBinding: boolean;
   proofJkt: string | null;
-  frameworkClientBinding: Record<string, any> | null;
+  trustFrameworkClientBinding: Record<string, any> | null;
 };
 
 export type ClientStoryDescription = {

@@ -221,7 +221,7 @@ export class UdapFrameworkResolver implements FrameworkResolver {
         why: "Presented certificate chain matches exactly one configured UDAP framework",
       });
       const frameworkBinding: FrameworkClientBinding = {
-        method: "framework_client",
+        method: "trust_framework_client",
         framework: framework.framework,
         framework_type: "udap",
         entity_uri: entityUri,

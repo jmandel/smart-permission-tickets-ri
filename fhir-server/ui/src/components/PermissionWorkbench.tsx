@@ -59,7 +59,7 @@ function registrationModeLabel(registrationMode: DemoClientOption["registrationM
 
 function ticketBindingHeadline(clientStory: NonNullable<ReturnType<typeof describeClientOption>>) {
   if (clientStory.clientType === "udap" && clientStory.entityUri) return "SAN URI bound";
-  if (clientStory.ticketBinding.usesFrameworkBinding && clientStory.entityUri) return "Entity URI bound";
+  if (clientStory.ticketBinding.usesTrustFrameworkBinding && clientStory.entityUri) return "Entity URI bound";
   if (clientStory.ticketBinding.usesProofKeyBinding && clientStory.ticketBinding.proofJkt) return "JKT bound";
   return "No binding";
 }
@@ -92,15 +92,15 @@ function ticketBindingPreview(
 
   if (clientStory.clientType === "udap" && clientStory.entityUri) {
     return {
-      method: "framework_client",
+      method: "trust_framework_client",
       detailLabel: "entity_uri",
       detailHeading: "SAN entity URI",
       value: clientStory.entityUri,
     };
   }
-  if (clientStory.ticketBinding.usesFrameworkBinding && clientStory.entityUri) {
+  if (clientStory.ticketBinding.usesTrustFrameworkBinding && clientStory.entityUri) {
     return {
-      method: "framework_client",
+      method: "trust_framework_client",
       detailLabel: "entity_uri",
       detailHeading: "Entity URI",
       value: clientStory.entityUri,
@@ -250,9 +250,9 @@ export function PermissionWorkbench({
   const selectedBindingSummary = selectedClientOption?.type === "unaffiliated"
     ? ((mode === "strict" || mode === "key-bound") ? "Ticket uses presenter_binding.method = jkt" : "No presenter binding in ticket")
     : selectedClientOption?.type === "well-known"
-      ? "Ticket uses presenter_binding.method = framework_client"
+      ? "Ticket uses presenter_binding.method = trust_framework_client"
       : selectedClientOption?.type === "udap"
-        ? "Ticket uses presenter_binding.method = framework_client"
+        ? "Ticket uses presenter_binding.method = trust_framework_client"
         : "No presenter binding";
   const selectedClientStory = selectedClientPlan
     ? describeClientPlan(mode, selectedClientPlan)
@@ -302,7 +302,7 @@ export function PermissionWorkbench({
     const ticketPayload = buildTicketPayload(defaultTicketIssuer.issuerBaseUrl, origin, currentPerson, currentConsent, {
       scenario: selectedScenario,
       proofJkt,
-      frameworkClientBinding: frameworkPresenterBinding,
+      trustFrameworkClientBinding: frameworkPresenterBinding,
     });
     const signedTicket = (await signPermissionTicket(origin, defaultTicketIssuer, ticketPayload, sessionId)).signedTicket;
 

@@ -29,11 +29,11 @@ import { PATIENT_SELF_ACCESS_TICKET_TYPE } from "../../shared/permission-tickets
 import type { DemoTicketScenario } from "../../../shared/demo-ticket-scenarios";
 import type {
   DataPermission,
+  DataHolderFilter,
   FrameworkClientBinding,
   OrganizationFilter,
   PermissionTicket,
   PresenterBinding,
-  ResponderFilter,
 } from "../../../shared/permission-ticket-schema";
 import { bestCodeableText, resourcePrimaryDisplay } from "../../shared/resource-display";
 const OBSERVATION_CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/observation-category";
@@ -176,17 +176,17 @@ export function defaultConsentState(person: PersonInfo, scenario: DemoTicketScen
     }
   }
 
-  if (access.responder_filter?.length) {
-    if (access.responder_filter.every((filter) => filter.kind === "jurisdiction")) {
+  if (access.data_holder_filter?.length) {
+    if (access.data_holder_filter.every((filter) => filter.kind === "jurisdiction")) {
       consent.locationMode = "states";
-      for (const filter of access.responder_filter) {
+      for (const filter of access.data_holder_filter) {
         const state = filter.address.state;
         if (state) consent.selectedStateCodes[state] = true;
       }
-    } else if (access.responder_filter.every((filter) => filter.kind === "organization")) {
+    } else if (access.data_holder_filter.every((filter) => filter.kind === "organization")) {
       consent.locationMode = "organizations";
       for (const site of person.sites) {
-        if (access.responder_filter.some((filter) => organizationFilterMatchesSite(filter, site))) {
+        if (access.data_holder_filter.some((filter) => organizationFilterMatchesSite(filter, site))) {
           consent.selectedSiteSlugs[site.siteSlug] = true;
         }
       }
@@ -247,14 +247,14 @@ export function buildTicketPayload(
   options?: {
     scenario?: DemoTicketScenario | null;
     proofJkt?: string | null;
-    frameworkClientBinding?: FrameworkClientBinding | null;
+    trustFrameworkClientBinding?: FrameworkClientBinding | null;
   },
 ): PermissionTicket {
   const scenario = options?.scenario ?? defaultScenarioForPerson(person);
   const sites = constrainedSites(person, consent);
-  const responderFilter = buildResponderFilter(consent.locationMode, sites);
+  const dataHolderFilter = buildDataHolderFilter(consent.locationMode, sites);
   const lifetimeSeconds = ticketLifetimeSeconds(consent.ticketLifetime);
-  const presenterBinding = buildPresenterBinding(options?.proofJkt, options?.frameworkClientBinding);
+  const presenterBinding = buildPresenterBinding(options?.proofJkt, options?.trustFrameworkClientBinding);
   const ticketType = scenario?.ticket.ticket_type ?? PATIENT_SELF_ACCESS_TICKET_TYPE;
   const scenarioContext = scenario?.ticket.context && Object.keys(scenario.ticket.context).length > 0
     ? scenario.ticket.context
@@ -287,7 +287,7 @@ export function buildTicketPayload(
     access: {
       permissions: permissionsFromSelectedScopes(consent),
       data_period: buildDataPeriod(consent.dateMode, consent.dateRange),
-      responder_filter: responderFilter.length ? responderFilter : undefined,
+      data_holder_filter: dataHolderFilter.length ? dataHolderFilter : undefined,
       sensitive_data: consent.sensitiveMode === "allow" ? "include" : "exclude",
     },
   } as PermissionTicket;
@@ -371,7 +371,7 @@ export function scenarioContextDetails(scenario: DemoTicketScenario) {
   return details;
 }
 
-function buildResponderFilter(locationMode: LocationConstraintMode, selected: SiteOfCare[]): ResponderFilter[] {
+function buildDataHolderFilter(locationMode: LocationConstraintMode, selected: SiteOfCare[]): DataHolderFilter[] {
   if (locationMode === "states") {
     return uniqueStates(selected).map((state) => ({
       kind: "jurisdiction" as const,
@@ -467,10 +467,10 @@ function projectSmartScopeToPermission(scope: string): DataPermission {
 
 function buildPresenterBinding(
   proofJkt: string | null | undefined,
-  frameworkClientBinding: FrameworkClientBinding | null | undefined,
+  trustFrameworkClientBinding: FrameworkClientBinding | null | undefined,
 ) {
   if (proofJkt) return { method: "jkt" as const, jkt: proofJkt };
-  if (frameworkClientBinding) return frameworkClientBinding;
+  if (trustFrameworkClientBinding) return trustFrameworkClientBinding;
   return undefined;
 }
 
@@ -674,24 +674,24 @@ export function clientBindingForPlan(clientPlan: ViewerClientPlan | null): Frame
   if (!clientPlan) return null;
   if (clientPlan.type === "well-known") {
     return {
-      method: "framework_client",
-      framework: clientPlan.framework.uri,
+      method: "trust_framework_client",
+      trust_framework: clientPlan.framework.uri,
       framework_type: "well-known",
       entity_uri: clientPlan.entityUri,
     };
   }
   if (clientPlan.type === "udap") {
     return {
-      method: "framework_client",
-      framework: clientPlan.framework.uri,
+      method: "trust_framework_client",
+      trust_framework: clientPlan.framework.uri,
       framework_type: "udap",
       entity_uri: clientPlan.entityUri,
     };
   }
   if (clientPlan.type === "oidf") {
     return {
-      method: "framework_client",
-      framework: clientPlan.framework.uri,
+      method: "trust_framework_client",
+      trust_framework: clientPlan.framework.uri,
       framework_type: "oidf",
       entity_uri: clientPlan.entityUri,
     };
@@ -709,26 +709,26 @@ export function describeTicketBinding(
   mode: ModeName,
   clientType: DemoClientType | null,
   proofJkt: string | null,
-  frameworkClientBinding: Record<string, any> | null,
+  trustFrameworkClientBinding: Record<string, any> | null,
 ): TicketBindingDescription {
   const usesProofKeyBinding = Boolean(proofJkt);
-  const usesFrameworkBinding = Boolean(frameworkClientBinding);
+  const usesTrustFrameworkBinding = Boolean(trustFrameworkClientBinding);
   const shape = usesProofKeyBinding
     ? "presenter_binding.method=jkt"
-    : usesFrameworkBinding
-      ? "presenter_binding.method=framework_client"
+    : usesTrustFrameworkBinding
+      ? "presenter_binding.method=trust_framework_client"
       : "none";
   const label = shape === "none"
     ? "No presenter binding in ticket"
     : shape === "presenter_binding.method=jkt"
       ? "jkt binding"
-      : "framework_client binding";
+      : "trust-framework binding";
   const rationale = clientType === "unaffiliated"
     ? (usesProofKeyBinding
         ? "This app is outside any trust framework, so the ticket binds directly to the generated JWK thumbprint."
         : "This demo path leaves the ticket unbound to a specific client.")
     : clientType === "well-known"
-      ? "This app is recognized as a framework-listed entity, so the ticket binds with presenter_binding.method=framework_client instead of a single JWK."
+      ? "This app is recognized as a trust-framework-listed entity, so the ticket binds with presenter_binding.method=trust_framework_client instead of a single JWK."
       : clientType === "udap"
         ? "This app proves its framework/entity identity through UDAP registration and certificate-based client authentication."
         : clientType === "oidf"
@@ -739,9 +739,9 @@ export function describeTicketBinding(
     label,
     rationale,
     usesProofKeyBinding,
-    usesFrameworkBinding,
+    usesTrustFrameworkBinding,
     proofJkt,
-    frameworkClientBinding,
+    trustFrameworkClientBinding,
   };
 }
 

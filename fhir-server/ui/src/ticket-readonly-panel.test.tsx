@@ -51,7 +51,7 @@ describe("TicketReadonlyPanel", () => {
       <TicketReadonlyPanel
         scenario={scenario}
         bindingPreview={{
-          method: "framework_client",
+          method: "trust_framework_client",
           detailLabel: "entity_uri",
           value: "http://localhost:8091/demo/clients/well-known-alpha",
         }}
@@ -62,7 +62,7 @@ describe("TicketReadonlyPanel", () => {
     expect(html).toContain("Read-only claims from the selected scenario");
     expect(html).toContain("Presenter Binding");
     expect(html).toContain("presenter_binding.method");
-    expect(html).toContain("framework_client");
+    expect(html).toContain("trust_framework_client");
     expect(html).toContain("entity_uri");
     expect(html).toContain("http://localhost:8091/demo/clients/well-known-alpha");
     expect(html).toContain("ticket_type");

@@ -73,7 +73,7 @@ In `strict` mode, the workbench now explicitly explains what each client path de
 - **UDAP client**: a framework-backed client registers just in time with UDAP DCR and then authenticates with `x5c`
 
 After launch, use the **Ticket** and **Client** artifact menus in the viewer to inspect:
-- the chosen presenter-binding shape (`presenter_binding.method = "jkt"`, `presenter_binding.method = "framework_client"`, or no binding)
+- the chosen presenter-binding shape (`presenter_binding.method = "jkt"`, `presenter_binding.method = "trust_framework_client"`, or no binding)
 - the client story and effective `client_id`
 - registration request/response payloads when registration occurs
 - the well-known framework document and entity JWKS for the implicit-registration path
@@ -429,7 +429,7 @@ The strict-mode demo now intentionally exercises four different client identity 
 
 - **Well-known client**
   - runtime behavior: skips registration and uses `client_id=well-known:<entity-uri>`
-  - ticket behavior: uses `presenter_binding.method = "framework_client"`
+  - ticket behavior: uses `presenter_binding.method = "trust_framework_client"`
   - discovery/demo metadata:
     - framework JSON: `/demo/frameworks/well-known-reference.json`
     - sample entity metadata: `/demo/clients/well-known-alpha`
@@ -438,14 +438,14 @@ The strict-mode demo now intentionally exercises four different client identity 
 - **OIDF client**
   - runtime behavior: skips registration and uses `client_id=<entity-id>`
   - token behavior: sends `trust_chain` in the `client_assertion` JOSE header
-  - ticket behavior: uses `presenter_binding.method = "framework_client"`
+  - ticket behavior: uses `presenter_binding.method = "trust_framework_client"`
   - discovery/demo metadata:
     - demo app entity configuration: `/federation/leafs/demo-app/.well-known/openid-federation`
     - app-network fetch endpoint: `/federation/networks/app/federation_fetch_endpoint`
 
 - **UDAP client**
   - runtime behavior: does just-in-time UDAP registration at `/register`, then authenticates with `x5c` and `udap=1`
-  - ticket behavior: uses `presenter_binding.method = "framework_client"`
+  - ticket behavior: uses `presenter_binding.method = "trust_framework_client"`
   - discovery/demo metadata:
     - UDAP discovery: `/.well-known/udap`
 

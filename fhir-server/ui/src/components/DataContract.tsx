@@ -146,7 +146,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>TX</code>, <code>CA</code>, <code>IL</code></td>
             <td>
               Jurisdiction-based ticket filtering. A ticket with{" "}
-              <code>access.responder_filter</code> jurisdiction entries are resolved to matching site slugs
+              <code>access.data_holder_filter</code> jurisdiction entries are resolved to matching site slugs
               during token exchange.
             </td>
           </tr>
@@ -155,7 +155,7 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>1437826095</code></td>
             <td>
               Organization-based ticket filtering. A ticket with{" "}
-              <code>access.responder_filter</code> organization entries can identify sites by NPI.
+              <code>access.data_holder_filter</code> organization entries can identify sites by NPI.
             </td>
           </tr>
         </tbody>

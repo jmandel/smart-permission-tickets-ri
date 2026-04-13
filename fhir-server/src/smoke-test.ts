@@ -83,7 +83,7 @@ try {
     assert(Array.isArray(body.grant_types_supported) && body.grant_types_supported.includes("client_credentials"), "root smart config should advertise client_credentials when supported");
     const extension = body.extensions?.["https://smarthealthit.org/smart-permission-tickets/smart-configuration"];
     assert(Array.isArray(extension?.supported_client_binding_types), "root smart config should advertise client binding types");
-    assert(extension.supported_client_binding_types.includes("framework_client"), "root smart config should advertise framework client binding");
+    assert(extension.supported_client_binding_types.includes("trust_framework_client"), "root smart config should advertise trust-framework client binding");
     assert(Array.isArray(extension?.supported_trust_frameworks) && extension.supported_trust_frameworks.length >= 2, "root smart config should advertise built-in trust frameworks");
   });
   await expectJson(`${origin}/.well-known/jwks.json`, (body) => {

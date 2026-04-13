@@ -53,7 +53,17 @@ Each patient exercises specific Permission Ticket constraint dimensions:
 - Java 11+ (for the FHIR validator)
 - An AI agent CLI: `claude`, `copilot`, or `codex` (for generating new patients)
 
-### 1. Build the terminology database
+### 1. Initialize the spec submodule and shared dependency
+
+```bash
+git submodule update --init --recursive
+bun install                  # installs the shared zod dependency used by the imported spec schema
+```
+
+The reference implementation imports the canonical Permission Ticket Zod schema from `vendor/smart-permission-tickets-spec/` through the local wrapper at `shared/permission-ticket-schema.ts`.
+Run `bun run check:permission-ticket-schema` from `reference-implementation/` to verify that the canonical schema is still sourced only through that shim.
+
+### 2. Build the terminology database
 
 ```bash
 cd synth-data
@@ -61,14 +71,14 @@ bun install
 bun run terminology:build    # Downloads SNOMED, LOINC, RxNorm, CVX from public sources (~50MB download, builds ~405MB SQLite DB)
 ```
 
-### 2. Set up the FHIR validator
+### 3. Set up the FHIR validator
 
 ```bash
 bun run setup                # Downloads validator.jar (~178MB)
 bun run validator:start      # Starts on port 8090
 ```
 
-### 3. Generate FHIR resources for existing patients
+### 4. Generate FHIR resources for existing patients
 
 The committed patient data includes scenarios, biographies, and encounter timelines. To generate the FHIR resources (steps 3–7):
 
@@ -85,7 +95,7 @@ Each step is idempotent — it skips encounters that already have output. Pass `
 
 Patient folders can also include `ticket-scenarios.json`, a machine-readable set of spec-shaped Permission Ticket fragments. The enrichment step injects those fragments onto every generated `Patient` alias so `/demo/bootstrap` can prefill requester, context, access defaults, and per-use-case case details in the demo UI.
 
-### 4. Start the FHIR server
+### 5. Start the FHIR server
 
 ```bash
 cd fhir-server
