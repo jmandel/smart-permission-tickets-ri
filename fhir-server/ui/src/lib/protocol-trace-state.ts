@@ -85,6 +85,17 @@ export function filterTraceQueryEvents(events: Array<DemoQueryResultEvent | Demo
   });
 }
 
+// True once the session's network leg has actually run: a network-level
+// token exchange or a record-location resolution. Sessions driven by
+// issuance endpoint hints (Proposal 003) never produce these — the hints
+// played the record-locator role at issuance time — so the trace can say
+// that instead of waiting forever.
+export function networkLegRan(state: TraceState): boolean {
+  return state.network.tokenEvents.length > 0
+    || state.network.sites.length > 0
+    || Boolean(state.network.resolveMatchEvent);
+}
+
 export function accumulateTraceState(events: DemoEvent[], previousSelection: TraceCellId | null = null): TraceState {
   const state = createEmptyTraceState();
   for (const event of [...events].sort((left, right) => left.seq - right.seq)) {

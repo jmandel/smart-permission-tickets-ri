@@ -482,3 +482,50 @@ describe("protocol trace state", () => {
     expect(tabs.map((tab) => tab.key)).toEqual(["request", "response"]);
   });
 });
+
+import { networkLegRan } from "./lib/protocol-trace-state";
+
+describe("networkLegRan", () => {
+  test("false for hint-routed sessions: site activity without a network leg", () => {
+    const state = accumulateTraceState([
+      {
+        seq: 1,
+        timestamp: 1,
+        sessionId: "s",
+        source: "server",
+        phase: "ticket",
+        type: "ticket-created",
+        label: "Permission Ticket created",
+        detail: { patientName: "Elena", patientDob: null, scopes: [], dateSummary: "", sensitiveSummary: "", expirySummary: "", bindingSummary: "" },
+      } as any,
+      {
+        seq: 2,
+        timestamp: 2,
+        sessionId: "s",
+        source: "server",
+        phase: "site",
+        type: "token-exchange",
+        label: "Token exchange",
+        detail: { siteSlug: "site-a", siteName: "Site A", outcome: "issued", steps: [] },
+      } as any,
+    ]);
+    expect(networkLegRan(state)).toBe(false);
+    expect(state.sites.size).toBe(1);
+  });
+
+  test("true once a network-level token exchange happens", () => {
+    const state = accumulateTraceState([
+      {
+        seq: 1,
+        timestamp: 1,
+        sessionId: "s",
+        source: "server",
+        phase: "network",
+        type: "token-exchange",
+        label: "Token exchange",
+        detail: { outcome: "issued", steps: [] },
+      } as any,
+    ]);
+    expect(networkLegRan(state)).toBe(true);
+  });
+});

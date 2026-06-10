@@ -4,6 +4,7 @@ import type { DemoEvent, DemoQueryFailedEvent, DemoQueryResultEvent, DemoSession
 import { buildDemoEventSummary } from "../lib/artifact-viewer";
 import { buildDemoEventArtifactTabs, splitSharedEventArtifactProvenance, type EventArtifactTab } from "../lib/demo-event-tabs";
 import {
+  networkLegRan,
   accumulateTraceState,
   buildTraceOverview,
   cellEventsForTrace,
@@ -128,6 +129,9 @@ export function ProtocolTrace() {
   const currentSession = sessions.find((session) => session.sessionId === selectedSessionId) ?? null;
   const currentSessionStatus = sessionLiveness(currentSession);
   const siteRows = useMemo(() => orderedSiteRows(traceState), [traceState]);
+  // Sessions launched from issuance endpoint hints never run the network
+  // leg; the hints settled record location at issuance (Proposal 003).
+  const hintRouted = !networkLegRan(traceState) && siteRows.length > 0;
   const detailModel = useMemo(
     () => buildDetailModel(traceState, resolvedSelectedCell, selectedQuery),
     [traceState, resolvedSelectedCell, selectedQuery],
@@ -256,11 +260,15 @@ export function ProtocolTrace() {
                     {
                       rowKey: "network",
                       label: "Network",
-                      subtitle: traceState.network.sites.length ? `${traceState.network.sites.length} sites discovered` : "Waiting for record locations",
+                      subtitle: traceState.network.sites.length
+                        ? `${traceState.network.sites.length} sites discovered`
+                        : hintRouted
+                          ? "No record-locator call: issuance endpoint hints routed the app"
+                          : "Waiting for record locations",
                       cellMap: {
-                        "resolve-match": buildCellPresentation(traceState, { row: "network", column: "resolve-match" }),
+                        "resolve-match": hintRouted ? "skipped" : buildCellPresentation(traceState, { row: "network", column: "resolve-match" }),
                         "client-setup": buildCellPresentation(traceState, { row: "network", column: "client-setup" }),
-                        token: buildCellPresentation(traceState, { row: "network", column: "token" }),
+                        token: hintRouted ? "skipped" : buildCellPresentation(traceState, { row: "network", column: "token" }),
                       },
                     },
                   ]}
@@ -374,7 +382,7 @@ function TraceSection({
     label: string;
     subtitle?: string | null;
     status?: string;
-    cellMap: Partial<Record<TraceColumn, TraceCellPresentation | null>>;
+    cellMap: Partial<Record<TraceColumn, TraceCellPresentation | null | "skipped">>;
   }>;
   selectedCell: TraceCellId | null;
   onSelectCell: (cell: TraceCellId) => void;
@@ -478,7 +486,7 @@ function TraceRow({
   subtitle?: string | null;
   status?: string;
   columns: TraceColumn[];
-  cellMap: Partial<Record<TraceColumn, TraceCellPresentation | null>>;
+  cellMap: Partial<Record<TraceColumn, TraceCellPresentation | null | "skipped">>;
   selectedCell: TraceCellId | null;
   onSelectCell: (cell: TraceCellId) => void;
 }) {
@@ -491,6 +499,19 @@ function TraceRow({
       {columns.map((column) => {
         const cell = cellMap[column];
         const selected = selectedCell?.row === rowKey && selectedCell.column === column;
+        if (cell === "skipped") {
+          return (
+            <div key={`${rowKey}:${column}`} className="protocol-trace-cell pending" aria-hidden="true">
+              <div className="protocol-trace-cell-line">
+                <div className="protocol-trace-cell-line-main">
+                  <span className="protocol-trace-cell-badge neutral">—</span>
+                  <span className="protocol-trace-cell-primary">Not used</span>
+                </div>
+              </div>
+              <div className="protocol-trace-cell-secondary">Endpoint hints from issuance routed the app straight to sites</div>
+            </div>
+          );
+        }
         if (!cell) {
           return (
             <div key={`${rowKey}:${column}`} className="protocol-trace-cell pending" aria-hidden="true">
