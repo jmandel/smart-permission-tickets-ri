@@ -53,11 +53,11 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
-            "valueMarkdown": "## Character\n42-year-old Chinese American woman, single mother of two school-age children (ages 8 and 11). Works part-time as a home health aide, ~25 hours/week. Lives in a small apartment in outer SE Portland, OR. Relies on public transit. Speaks English fluently, some Cantonese at home. Generally healthy — mild asthma, no other significant medical history. Has Medicaid (Oregon Health Plan).\n\n## Clinical Scenario\nMaria comes in for a routine annual visit at her community health center. During intake, the medical assistant administers the AHC HRSN (Accountable Health Communities Health-Related Social Needs) screening tool. Maria's responses flag food insecurity (\"within the past 12 months, worried food would run out before got money to buy more\" — often true) and transportation barriers (\"lack of reliable transportation has kept you from medical appointments\" — sometimes true).\n\nThe PCP addresses her mild asthma (well controlled on PRN albuterol), does routine preventive care, and then discusses the screening results. Maria is receptive to help. The PCP creates a closed-loop referral to Rose City Community Services, a local community-based organization that provides food pantry access, SNAP application assistance, and transit vouchers.\n\nThe CBO receives the referral, a case worker contacts Maria, and over the following weeks connects her with food pantry enrollment and helps her apply for SNAP benefits. The Task is updated as milestones are reached, and eventually marked completed when services are delivered.\n\n## Sites\n- **Cascade Community Health Center** — Federally qualified health center in Portland, OR. PCP visits, SDOH screening, referral creation.\n- **Rose City Community Services** — Community-based organization in Portland, OR. Receives referrals, assigns case workers, tracks service delivery via Task resources.\n\nTwo sites, one state (OR), one city. This tests Permission Ticket constraints on **scopes** — the CBO needs access only to the referral (ServiceRequest), tracking (Task), and screening results (Observation), not the patient's clinical records."
+            "valueMarkdown": "## Character\n42-year-old Chinese American woman, single mother of two school-age children (ages 8 and 11). Works part-time as a home health aide, ~25 hours/week. Lives in a small apartment in outer SE Portland, OR. Relies on public transit. Speaks English fluently, some Cantonese at home. Generally healthy \u2014 mild asthma, no other significant medical history. Has Medicaid (Oregon Health Plan).\n\n## Clinical Scenario\nMaria comes in for a routine annual visit at her community health center. During intake, the medical assistant administers the AHC HRSN (Accountable Health Communities Health-Related Social Needs) screening tool. Maria's responses flag food insecurity (\"within the past 12 months, worried food would run out before got money to buy more\" \u2014 often true) and transportation barriers (\"lack of reliable transportation has kept you from medical appointments\" \u2014 sometimes true).\n\nThe PCP addresses her mild asthma (well controlled on PRN albuterol), does routine preventive care, and then discusses the screening results. Maria is receptive to help. The PCP creates a closed-loop referral to Rose City Community Services, a local community-based organization that provides food pantry access, SNAP application assistance, and transit vouchers.\n\nThe CBO receives the referral, a case worker contacts Maria, and over the following weeks connects her with food pantry enrollment and helps her apply for SNAP benefits. The Task is updated as milestones are reached, and eventually marked completed when services are delivered.\n\n## Sites\n- **Cascade Community Health Center** \u2014 Federally qualified health center in Portland, OR. PCP visits, SDOH screening, referral creation.\n- **Rose City Community Services** \u2014 Community-based organization in Portland, OR. Receives referrals, assigns case workers, tracks service delivery via Task resources.\n\nTwo sites, one state (OR), one city. This tests Permission Ticket constraints on **scopes** \u2014 the CBO needs access only to the referral (ServiceRequest), tracking (Task), and screening results (Observation), not the patient's clinical records."
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"closed-loop-social-care-referral\",\"label\":\"Closed-loop social care referral\",\"summary\":\"Rose City Community Services requests only the referral and SDOH screening context needed to follow Maria's food and transportation support referral.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/social-care-referral-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Rose City Community Services\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"rose-city-community-services\"}]},\"context\":{\"concern\":{\"text\":\"Food insecurity and transportation barriers\"},\"referral\":{\"resourceType\":\"ServiceRequest\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-referral\",\"value\":\"REF-OR-2026-1048\"}],\"status\":\"active\",\"intent\":\"order\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"ServiceRequest\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://hl7.org/fhir/us/core/CodeSystem/us-core-category\",\"code\":\"sdoh\"}]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-12-31\"},\"data_holder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Cascade Community Health Center\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\": [{\"id\": \"closed-loop-social-care-referral\", \"label\": \"Closed-loop social care referral\", \"summary\": \"Rose City Community Services requests only the referral and SDOH screening context needed to follow Maria's food and transportation support referral.\", \"ticket\": {\"ticket_type\": \"https://smarthealthit.org/permission-ticket-type/social-care-referral-v1\", \"requester\": {\"resourceType\": \"Organization\", \"name\": \"Rose City Community Services\", \"identifier\": [{\"system\": \"urn:example:smart-permission-ticket-demo:demo-requester-organization\", \"value\": \"rose-city-community-services\"}]}, \"context\": {\"concern\": {\"text\": \"Food insecurity and transportation barriers\"}, \"referral\": {\"resourceType\": \"ServiceRequest\", \"status\": \"active\", \"intent\": \"order\", \"identifier\": [{\"system\": \"urn:example:smart-permission-ticket-demo:demo-referral\", \"value\": \"REF-OR-2026-1048\"}]}}, \"access\": {\"permissions\": [{\"kind\": \"data\", \"resource_type\": \"Patient\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"ServiceRequest\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"DocumentReference\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"Observation\", \"interactions\": [\"read\", \"search\"], \"category_any_of\": [{\"system\": \"http://hl7.org/fhir/us/core/CodeSystem/us-core-category\", \"code\": \"sdoh\"}]}], \"data_period\": {\"start\": \"2026-01-01\", \"end\": \"2026-12-31\"}, \"data_holder_filter\": [{\"kind\": \"organization\", \"organization\": {\"resourceType\": \"Organization\", \"name\": \"Cascade Community Health Center\"}}]}}}]}"
           }
         ],
         "name": [
@@ -9227,7 +9227,7 @@
               "display": "Positive (qualifier value)"
             }
           ],
-          "text": "Positive — food insecurity and transportation barriers identified"
+          "text": "Positive \u2014 food insecurity and transportation barriers identified"
         },
         "interpretation": [
           {
@@ -9249,27 +9249,27 @@
         "hasMember": [
           {
             "reference": "Observation/enc-016-food-insecurity-1",
-            "display": "Food insecurity item 1 — Often true"
+            "display": "Food insecurity item 1 \u2014 Often true"
           },
           {
             "reference": "Observation/enc-016-food-insecurity-2",
-            "display": "Food insecurity item 2 — Sometimes true"
+            "display": "Food insecurity item 2 \u2014 Sometimes true"
           },
           {
             "reference": "Observation/enc-016-transportation-screen",
-            "display": "Transportation barrier — Yes"
+            "display": "Transportation barrier \u2014 Yes"
           },
           {
             "reference": "Observation/enc-016-housing-screen",
-            "display": "Housing instability — Negative"
+            "display": "Housing instability \u2014 Negative"
           },
           {
             "reference": "Observation/enc-016-utility-screen",
-            "display": "Utility needs — Negative"
+            "display": "Utility needs \u2014 Negative"
           },
           {
             "reference": "Observation/enc-016-safety-screen",
-            "display": "Interpersonal safety — Negative"
+            "display": "Interpersonal safety \u2014 Negative"
           }
         ]
       }
@@ -9567,7 +9567,7 @@
               "display": "Housing status"
             }
           ],
-          "text": "AHC HRSN screening — housing instability domain"
+          "text": "AHC HRSN screening \u2014 housing instability domain"
         },
         "subject": {
           "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
@@ -9591,7 +9591,7 @@
               "display": "Negative (qualifier value)"
             }
           ],
-          "text": "Negative — stable housing for 3 years"
+          "text": "Negative \u2014 stable housing for 3 years"
         }
       }
     },
@@ -9798,7 +9798,7 @@
               "display": "Within the last year, have you been kicked, hit, slapped, or otherwise physically hurt by your partner or ex-partner"
             }
           ],
-          "text": "AHC HRSN screening — interpersonal safety domain"
+          "text": "AHC HRSN screening \u2014 interpersonal safety domain"
         },
         "subject": {
           "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
@@ -10029,7 +10029,7 @@
               "display": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]"
             }
           ],
-          "text": "AHC HRSN screening — utility needs domain"
+          "text": "AHC HRSN screening \u2014 utility needs domain"
         },
         "subject": {
           "reference": "Patient/bc606317-8b86-4886-9e03-d6a159f57952",
@@ -12794,11 +12794,11 @@
             "detail": [
               {
                 "reference": "Observation/enc-016-food-insecurity-1",
-                "display": "Food insecurity screening item 1 — Often true"
+                "display": "Food insecurity screening item 1 \u2014 Often true"
               },
               {
                 "reference": "Observation/enc-016-food-insecurity-2",
-                "display": "Food insecurity screening item 2 — Sometimes true"
+                "display": "Food insecurity screening item 2 \u2014 Sometimes true"
               }
             ]
           }
@@ -12876,7 +12876,7 @@
             "detail": [
               {
                 "reference": "Observation/enc-016-transportation-screen",
-                "display": "Transportation barrier screening — Yes"
+                "display": "Transportation barrier screening \u2014 Yes"
               }
             ]
           }
@@ -14487,7 +14487,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "Maria presents for her first annual wellness visit at Cascade. David Kim, MA, performs intake: BP 120/76, HR 72, weight 150 lbs (BMI 26.6), temperature 98.2°F, respirations 14, SpO2 98%."
+            "valueMarkdown": "Maria presents for her first annual wellness visit at Cascade. David Kim, MA, performs intake: BP 120/76, HR 72, weight 150 lbs (BMI 26.6), temperature 98.2\u00b0F, respirations 14, SpO2 98%."
           }
         ]
       }
@@ -14545,7 +14545,7 @@
         },
         "reasonCode": [
           {
-            "text": "Annual wellness labs — fasting blood draw"
+            "text": "Annual wellness labs \u2014 fasting blood draw"
           }
         ],
         "location": [
@@ -14657,7 +14657,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "Maria calls reporting 4 days of nasal congestion, sore throat, and a mild increase in albuterol use (3–4 times in the past week). No fever, no shortness of breath at rest."
+            "valueMarkdown": "Maria calls reporting 4 days of nasal congestion, sore throat, and a mild increase in albuterol use (3\u20134 times in the past week). No fever, no shortness of breath at rest."
           }
         ]
       }
@@ -14759,7 +14759,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "David Kim, MA, performs intake: BP 122/78, HR 74, weight 152 lbs (BMI 26.9), temperature 98.4°F, respirations 16, SpO2 98%. PHQ-2 score 1 (negative)."
+            "valueMarkdown": "David Kim, MA, performs intake: BP 122/78, HR 74, weight 152 lbs (BMI 26.9), temperature 98.4\u00b0F, respirations 16, SpO2 98%. PHQ-2 score 1 (negative)."
           }
         ]
       }
@@ -14937,7 +14937,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "David Kim, MA, performs intake: BP 118/76, HR 70, weight 152 lbs (BMI 26.9), temperature 98.6°F, respirations 14, SpO2 99%. PHQ-2 score 0 (negative)."
+            "valueMarkdown": "David Kim, MA, performs intake: BP 118/76, HR 70, weight 152 lbs (BMI 26.9), temperature 98.6\u00b0F, respirations 14, SpO2 99%. PHQ-2 score 0 (negative)."
           }
         ]
       }
@@ -15089,7 +15089,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "Priya Nair, RN, calls Maria for scheduled asthma follow-up. Maria reports significant improvement — albuterol use decreased to every other day, and she has been wearing a mask during cold weather and at her dusty client's home."
+            "valueMarkdown": "Priya Nair, RN, calls Maria for scheduled asthma follow-up. Maria reports significant improvement \u2014 albuterol use decreased to every other day, and she has been wearing a mask during cold weather and at her dusty client's home."
           }
         ]
       }
@@ -15191,7 +15191,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "David Kim, MA, performs intake: BP 120/78, HR 72, weight 154 lbs (BMI 27.3), temperature 98.4°F, respirations 16, SpO2 98%. PHQ-2 score 0 (negative)."
+            "valueMarkdown": "David Kim, MA, performs intake: BP 120/78, HR 72, weight 154 lbs (BMI 27.3), temperature 98.4\u00b0F, respirations 16, SpO2 98%. PHQ-2 score 0 (negative)."
           }
         ]
       }
@@ -15378,7 +15378,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "David Kim, MA, performs intake: BP 120/76, HR 74, weight 155 lbs (BMI 27.4), temperature 98.2°F, respirations 14, SpO2 98%. PHQ-2 score 1 (negative)."
+            "valueMarkdown": "David Kim, MA, performs intake: BP 120/76, HR 74, weight 155 lbs (BMI 27.4), temperature 98.2\u00b0F, respirations 14, SpO2 98%. PHQ-2 score 1 (negative)."
           }
         ]
       }
@@ -15565,7 +15565,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "David Kim, MA, performs intake: BP 122/78, HR 76, weight 156 lbs (BMI 27.6), temperature 98.4°F, respirations 16, SpO2 97%. PHQ-2 score 1 (negative)."
+            "valueMarkdown": "David Kim, MA, performs intake: BP 122/78, HR 76, weight 156 lbs (BMI 27.6), temperature 98.4\u00b0F, respirations 16, SpO2 97%. PHQ-2 score 1 (negative)."
           }
         ]
       }
@@ -15667,7 +15667,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "Maria presents with 3 days of nasal congestion, mild cough, and low-grade temperature (reported 99.5°F at home). She also wants her annual flu shot."
+            "valueMarkdown": "Maria presents with 3 days of nasal congestion, mild cough, and low-grade temperature (reported 99.5\u00b0F at home). She also wants her annual flu shot."
           }
         ]
       }
@@ -15769,7 +15769,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "Maria presents for her annual wellness visit. David Kim, MA, performs intake: BP 120/76, HR 72, weight 154 lbs (BMI 27.2), temperature 98.4°F, respirations 16, SpO2 98%."
+            "valueMarkdown": "Maria presents for her annual wellness visit. David Kim, MA, performs intake: BP 120/76, HR 72, weight 154 lbs (BMI 27.2), temperature 98.4\u00b0F, respirations 16, SpO2 98%."
           }
         ]
       }
@@ -17574,7 +17574,7 @@
         },
         "note": [
           {
-            "text": "Historical/reported — not administered at this encounter. Administered at community vaccination site approximately 03/02/2021. Second dose scheduled per standard dosing interval."
+            "text": "Historical/reported \u2014 not administered at this encounter. Administered at community vaccination site approximately 03/02/2021. Second dose scheduled per standard dosing interval."
           }
         ]
       }
@@ -17868,15 +17868,15 @@
         "reasonReference": [
           {
             "reference": "Observation/enc-016-food-insecurity-1",
-            "display": "Food insecurity screening — Often true"
+            "display": "Food insecurity screening \u2014 Often true"
           },
           {
             "reference": "Observation/enc-016-food-insecurity-2",
-            "display": "Food insecurity screening — Sometimes true"
+            "display": "Food insecurity screening \u2014 Sometimes true"
           },
           {
             "reference": "Observation/enc-016-transportation-screen",
-            "display": "Transportation barrier screening — Yes"
+            "display": "Transportation barrier screening \u2014 Yes"
           }
         ],
         "note": [

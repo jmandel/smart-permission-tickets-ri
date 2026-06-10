@@ -45,11 +45,11 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
-            "valueMarkdown": "## Character\n65-year-old Black man, retired CTA bus driver, lives alone in a small apartment on Chicago's South Side. Vietnam-era veteran. Former smoker (quit 10 years ago). Mild COPD, controlled hypertension, type 2 diabetes managed with metformin. Generally healthy and independent but doesn't always keep up with preventive care.\n\n## Clinical Scenario\nRobert presents to the University of Illinois Hospital ED with persistent cough, night sweats, and 15-pound unintentional weight loss over 2 months. Chest X-ray shows right upper lobe cavitary lesion. Sputum AFB smear positive. Admitted for isolation and workup. Active pulmonary TB confirmed by culture.\n\nPublic health is notified. Contact investigation initiated. Robert is started on RIPE therapy (rifampin, isoniazid, pyrazinamide, ethambutol). After clinical improvement he's discharged to outpatient directly observed therapy (DOT) at the affiliated TB clinic.\n\n## Sites\n- **University of Illinois Hospital** — ED visit, inpatient admission, initial workup and treatment. All in Chicago, IL.\n- **UI Health Ambulatory TB Clinic** — Outpatient DOT visits, follow-up sputum cultures, medication management. Same health system, same city.\n\nTwo sites, one health system, one state (IL). This tests Permission Ticket constraints on **period** (only the investigation window) and **scopes** (public health may only need specific resource types like Condition, DiagnosticReport, Observation for lab results)."
+            "valueMarkdown": "## Character\n65-year-old Black man, retired CTA bus driver, lives alone in a small apartment on Chicago's South Side. Vietnam-era veteran. Former smoker (quit 10 years ago). Mild COPD, controlled hypertension, type 2 diabetes managed with metformin. Generally healthy and independent but doesn't always keep up with preventive care.\n\n## Clinical Scenario\nRobert presents to the University of Illinois Hospital ED with persistent cough, night sweats, and 15-pound unintentional weight loss over 2 months. Chest X-ray shows right upper lobe cavitary lesion. Sputum AFB smear positive. Admitted for isolation and workup. Active pulmonary TB confirmed by culture.\n\nPublic health is notified. Contact investigation initiated. Robert is started on RIPE therapy (rifampin, isoniazid, pyrazinamide, ethambutol). After clinical improvement he's discharged to outpatient directly observed therapy (DOT) at the affiliated TB clinic.\n\n## Sites\n- **University of Illinois Hospital** \u2014 ED visit, inpatient admission, initial workup and treatment. All in Chicago, IL.\n- **UI Health Ambulatory TB Clinic** \u2014 Outpatient DOT visits, follow-up sputum cultures, medication management. Same health system, same city.\n\nTwo sites, one health system, one state (IL). This tests Permission Ticket constraints on **period** (only the investigation window) and **scopes** (public health may only need specific resource types like Condition, DiagnosticReport, Observation for lab results)."
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"tb-public-health-investigation\",\"label\":\"Tuberculosis investigation\",\"summary\":\"Illinois public health access focused on Robert's TB episode across the hospital and ambulatory TB clinic.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Illinois Department of Public Health\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"illinois-department-public-health\"}]},\"context\":{\"reportable_condition\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"56717001\",\"display\":\"Tuberculosis\"}],\"text\":\"Tuberculosis\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2026-01-01\",\"end\":\"2026-04-30\"},\"data_holder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"University of Illinois Hospital\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"UI Health Ambulatory TB Clinic\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\": [{\"id\": \"tb-public-health-investigation\", \"label\": \"Tuberculosis investigation\", \"summary\": \"Illinois public health access focused on Robert's TB episode across the hospital and ambulatory TB clinic.\", \"ticket\": {\"ticket_type\": \"https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1\", \"requester\": {\"resourceType\": \"Organization\", \"name\": \"Illinois Department of Public Health\", \"identifier\": [{\"system\": \"urn:example:smart-permission-ticket-demo:demo-requester-organization\", \"value\": \"illinois-department-public-health\"}]}, \"context\": {\"reportable_condition\": {\"coding\": [{\"system\": \"http://snomed.info/sct\", \"code\": \"56717001\", \"display\": \"Tuberculosis\"}], \"text\": \"Tuberculosis\"}}, \"access\": {\"permissions\": [{\"kind\": \"data\", \"resource_type\": \"Patient\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"Encounter\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"Condition\", \"interactions\": [\"read\", \"search\"], \"category_any_of\": [{\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\", \"code\": \"encounter-diagnosis\"}]}, {\"kind\": \"data\", \"resource_type\": \"Observation\", \"interactions\": [\"read\", \"search\"], \"category_any_of\": [{\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\", \"code\": \"laboratory\"}]}, {\"kind\": \"data\", \"resource_type\": \"DiagnosticReport\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"DocumentReference\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"MedicationRequest\", \"interactions\": [\"read\", \"search\"]}], \"data_period\": {\"start\": \"2026-01-01\", \"end\": \"2026-04-30\"}, \"data_holder_filter\": [{\"kind\": \"organization\", \"organization\": {\"resourceType\": \"Organization\", \"name\": \"University of Illinois Hospital\"}}, {\"kind\": \"organization\", \"organization\": {\"resourceType\": \"Organization\", \"name\": \"UI Health Ambulatory TB Clinic\"}}]}}}]}"
           }
         ],
         "identifier": [
@@ -1797,7 +1797,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "RN Patricia Gomez called Robert to discuss results from the February 19 lab draw and to relay the final inpatient sputum culture results. LFTs remain stable and acceptable — no dose adjustments needed."
+            "valueMarkdown": "RN Patricia Gomez called Robert to discuss results from the February 19 lab draw and to relay the final inpatient sputum culture results. LFTs remain stable and acceptable \u2014 no dose adjustments needed."
           }
         ]
       }
@@ -2441,7 +2441,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "RN Patricia Gomez called Robert one week after the phase transition to assess tolerance of the simplified two-drug regimen. Robert reported feeling well — no new symptoms."
+            "valueMarkdown": "RN Patricia Gomez called Robert one week after the phase transition to assess tolerance of the simplified two-drug regimen. Robert reported feeling well \u2014 no new symptoms."
           }
         ]
       }
@@ -2600,7 +2600,7 @@
             "display": "Sputum AFB Smear"
           }
         ],
-        "conclusion": "Sputum AFB smear positive, 1+ — decreased from 2+ at admission, indicating decreasing organism burden."
+        "conclusion": "Sputum AFB smear positive, 1+ \u2014 decreased from 2+ at admission, indicating decreasing organism burden."
       }
     },
     {
@@ -2782,7 +2782,7 @@
             "display": "ALT"
           }
         ],
-        "conclusion": "AST 35 U/L, ALT 38 U/L — mildly elevated from admission baseline (28/32) but within acceptable limits for continued RIPE therapy (less than 3× ULN)."
+        "conclusion": "AST 35 U/L, ALT 38 U/L \u2014 mildly elevated from admission baseline (28/32) but within acceptable limits for continued RIPE therapy (less than 3\u00d7 ULN)."
       }
     },
     {
@@ -2847,7 +2847,7 @@
             "display": "Glucose, Random"
           }
         ],
-        "conclusion": "Sodium 139, potassium 4.1, creatinine 1.0 — normal renal function and electrolytes. Random glucose 168 mg/dL, elevated, consistent with known type 2 diabetes."
+        "conclusion": "Sodium 139, potassium 4.1, creatinine 1.0 \u2014 normal renal function and electrolytes. Random glucose 168 mg/dL, elevated, consistent with known type 2 diabetes."
       }
     },
     {
@@ -2968,7 +2968,7 @@
             "display": "ALT"
           }
         ],
-        "conclusion": "AST 33 U/L, ALT 36 U/L — stable and within acceptable limits for continued RIPE therapy. No evidence of drug-induced hepatotoxicity."
+        "conclusion": "AST 33 U/L, ALT 36 U/L \u2014 stable and within acceptable limits for continued RIPE therapy. No evidence of drug-induced hepatotoxicity."
       }
     },
     {
@@ -3147,7 +3147,7 @@
             "display": "Sputum AFB Smear"
           }
         ],
-        "conclusion": "Sputum AFB smear NEGATIVE — smear conversion confirmed at 6 weeks of RIPE therapy. Previously positive (1+ at 2-week visit)."
+        "conclusion": "Sputum AFB smear NEGATIVE \u2014 smear conversion confirmed at 6 weeks of RIPE therapy. Previously positive (1+ at 2-week visit)."
       }
     },
     {
@@ -3358,7 +3358,7 @@
             "display": "Dr. Lena Okafor"
           }
         ],
-        "conclusion": "Sputum mycobacterial culture (specimen collected February 5, 2026) returned negative — no growth of Mycobacterium tuberculosis after 42 days of incubation. This is the first of two consecutive negative cultures needed to document sputum culture conversion."
+        "conclusion": "Sputum mycobacterial culture (specimen collected February 5, 2026) returned negative \u2014 no growth of Mycobacterium tuberculosis after 42 days of incubation. This is the first of two consecutive negative cultures needed to document sputum culture conversion."
       }
     },
     {
@@ -3411,7 +3411,7 @@
             "display": "Sputum AFB Smear"
           }
         ],
-        "conclusion": "Sputum AFB smear NEGATIVE — second consecutive negative smear at 8 weeks of RIPE therapy. Awaiting March 5 culture result for culture conversion confirmation."
+        "conclusion": "Sputum AFB smear NEGATIVE \u2014 second consecutive negative smear at 8 weeks of RIPE therapy. Awaiting March 5 culture result for culture conversion confirmation."
       }
     },
     {
@@ -3476,7 +3476,7 @@
             "display": "Fasting Glucose"
           }
         ],
-        "conclusion": "Na 140, K 4.0, Cr 1.0 — normal renal function and electrolytes. Fasting glucose 148 mg/dL, elevated but improved from prior values."
+        "conclusion": "Na 140, K 4.0, Cr 1.0 \u2014 normal renal function and electrolytes. Fasting glucose 148 mg/dL, elevated but improved from prior values."
       }
     },
     {
@@ -3598,7 +3598,7 @@
             "display": "ALT"
           }
         ],
-        "conclusion": "AST 30 U/L, ALT 32 U/L — stable and within normal limits. No evidence of drug-induced hepatotoxicity on RIPE therapy."
+        "conclusion": "AST 30 U/L, ALT 32 U/L \u2014 stable and within normal limits. No evidence of drug-induced hepatotoxicity on RIPE therapy."
       }
     },
     {
@@ -3886,7 +3886,7 @@
             "display": "Albumin"
           }
         ],
-        "conclusion": "AST 28 U/L, ALT 30 U/L — improved and well within normal limits. No hepatotoxicity from RIPE therapy."
+        "conclusion": "AST 28 U/L, ALT 30 U/L \u2014 improved and well within normal limits. No hepatotoxicity from RIPE therapy."
       }
     },
     {
@@ -4051,7 +4051,7 @@
             "display": "Dr. Lena Okafor"
           }
         ],
-        "conclusion": "Sputum mycobacterial culture (specimen collected March 5, 2026) returned negative — no growth of Mycobacterium tuberculosis after 25 days of incubation. This is the second consecutive negative culture (following the negative February 5 specimen), confirming sputum culture conversion."
+        "conclusion": "Sputum mycobacterial culture (specimen collected March 5, 2026) returned negative \u2014 no growth of Mycobacterium tuberculosis after 25 days of incubation. This is the second consecutive negative culture (following the negative February 5 specimen), confirming sputum culture conversion."
       }
     },
     {
@@ -4104,7 +4104,7 @@
             "display": "Sputum AFB Smear"
           }
         ],
-        "conclusion": "Sputum AFB smear NEGATIVE — third consecutive negative smear. Sputum culture conversion confirmed with two consecutive negative cultures. Completing intensive phase and transitioning to continuation phase."
+        "conclusion": "Sputum AFB smear NEGATIVE \u2014 third consecutive negative smear. Sputum culture conversion confirmed with two consecutive negative cultures. Completing intensive phase and transitioning to continuation phase."
       }
     },
     {
@@ -4151,7 +4151,7 @@
             "display": "Dr. Lena Okafor"
           }
         ],
-        "conclusion": "Hemoglobin 12.4 g/dL — anemia resolved. Full CBC component values not individually enumerated. Labs drawn 2026-03-26, reviewed at this visit."
+        "conclusion": "Hemoglobin 12.4 g/dL \u2014 anemia resolved. Full CBC component values not individually enumerated. Labs drawn 2026-03-26, reviewed at this visit."
       }
     },
     {
@@ -4403,7 +4403,7 @@
             "display": "Fasting Glucose"
           }
         ],
-        "conclusion": "Na 140, K 4.2, Cr 1.0 — normal renal function and electrolytes. Fasting glucose 140 mg/dL, mildly elevated."
+        "conclusion": "Na 140, K 4.2, Cr 1.0 \u2014 normal renal function and electrolytes. Fasting glucose 140 mg/dL, mildly elevated."
       }
     },
     {
@@ -4468,7 +4468,7 @@
             "display": "Platelet Count"
           }
         ],
-        "conclusion": "WBC 7.0 normal. Hgb 12.8 g/dL — mild anemia, improving. Hct 38.5%, Plt 270 normal."
+        "conclusion": "WBC 7.0 normal. Hgb 12.8 g/dL \u2014 mild anemia, improving. Hct 38.5%, Plt 270 normal."
       }
     },
     {
@@ -4565,7 +4565,7 @@
             "display": "ALT"
           }
         ],
-        "conclusion": "AST 26 U/L and ALT 28 U/L — both normal. Improved from intensive phase; normalization expected after pyrazinamide discontinuation."
+        "conclusion": "AST 26 U/L and ALT 28 U/L \u2014 both normal. Improved from intensive phase; normalization expected after pyrazinamide discontinuation."
       }
     },
     {
@@ -4618,7 +4618,7 @@
             "display": "Uric Acid"
           }
         ],
-        "conclusion": "Uric acid 6.8 mg/dL — normalized after pyrazinamide discontinuation (was 8.9 mg/dL at 6-week visit)."
+        "conclusion": "Uric acid 6.8 mg/dL \u2014 normalized after pyrazinamide discontinuation (was 8.9 mg/dL at 6-week visit)."
       }
     },
     {
@@ -4675,7 +4675,7 @@
         },
         "note": [
           {
-            "text": "Positive but decreased from 2+ at admission — fewer organisms on smear"
+            "text": "Positive but decreased from 2+ at admission \u2014 fewer organisms on smear"
           }
         ]
       }
@@ -4748,7 +4748,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "3.5–5.5 g/dL"
+            "text": "3.5\u20135.5 g/dL"
           }
         ],
         "note": [
@@ -4814,12 +4814,12 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–56 U/L"
+            "text": "7\u201356 U/L"
           }
         ],
         "note": [
           {
-            "text": "Mildly elevated from baseline of 32 at admission; within acceptable limits for RIPE therapy, less than 3× ULN"
+            "text": "Mildly elevated from baseline of 32 at admission; within acceptable limits for RIPE therapy, less than 3\u00d7 ULN"
           }
         ]
       }
@@ -4880,12 +4880,12 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "10–40 U/L"
+            "text": "10\u201340 U/L"
           }
         ],
         "note": [
           {
-            "text": "Mildly elevated from baseline of 28 at admission; within acceptable limits for RIPE therapy, less than 3× ULN"
+            "text": "Mildly elevated from baseline of 28 at admission; within acceptable limits for RIPE therapy, less than 3\u00d7 ULN"
           }
         ]
       }
@@ -5110,7 +5110,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.7–1.3 mg/dL"
+            "text": "0.7\u20131.3 mg/dL"
           }
         ]
       }
@@ -5183,7 +5183,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "70–100 mg/dL"
+            "text": "70\u2013100 mg/dL"
           }
         ],
         "note": [
@@ -5261,7 +5261,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "38.3–48.6% (male)"
+            "text": "38.3\u201348.6% (male)"
           }
         ]
       }
@@ -5334,7 +5334,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "13.5–17.5 g/dL (male)"
+            "text": "13.5\u201317.5 g/dL (male)"
           }
         ],
         "note": [
@@ -5504,7 +5504,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "150–400 × 10³/µL"
+            "text": "150\u2013400 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -5714,7 +5714,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "3.5–7.2 mg/dL"
+            "text": "3.5\u20137.2 mg/dL"
           }
         ],
         "note": [
@@ -5868,7 +5868,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "4.5–11.0 × 10³/µL"
+            "text": "4.5\u201311.0 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -5973,7 +5973,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–56 U/L"
+            "text": "7\u201356 U/L"
           }
         ],
         "note": [
@@ -6039,7 +6039,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "10–40 U/L"
+            "text": "10\u201340 U/L"
           }
         ],
         "note": [
@@ -6105,7 +6105,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.7–1.3 mg/dL"
+            "text": "0.7\u20131.3 mg/dL"
           }
         ]
       }
@@ -6178,7 +6178,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "70–140 mg/dL"
+            "text": "70\u2013140 mg/dL"
           }
         ],
         "note": [
@@ -6256,7 +6256,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "38.3–48.6% (male)"
+            "text": "38.3\u201348.6% (male)"
           }
         ]
       }
@@ -6329,7 +6329,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "13.5–17.5 g/dL (male)"
+            "text": "13.5\u201317.5 g/dL (male)"
           }
         ],
         "note": [
@@ -6395,7 +6395,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "150–400 × 10³/µL"
+            "text": "150\u2013400 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -6456,7 +6456,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mmol/L"
             },
-            "text": "3.5–5.0 mEq/L"
+            "text": "3.5\u20135.0 mEq/L"
           }
         ]
       }
@@ -6517,7 +6517,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mmol/L"
             },
-            "text": "136–145 mEq/L"
+            "text": "136\u2013145 mEq/L"
           }
         ]
       }
@@ -6590,7 +6590,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "3.5–7.2 mg/dL"
+            "text": "3.5\u20137.2 mg/dL"
           }
         ],
         "note": [
@@ -6656,7 +6656,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "4.5–11.0 × 10³/µL"
+            "text": "4.5\u201311.0 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -7126,7 +7126,7 @@
         },
         "note": [
           {
-            "text": "Sputum smear conversion confirmed — previously positive (1+ at 2-week visit, 2+ at admission). Significant clinical milestone."
+            "text": "Sputum smear conversion confirmed \u2014 previously positive (1+ at 2-week visit, 2+ at admission). Significant clinical milestone."
           }
         ]
       }
@@ -7199,7 +7199,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "3.5–5.5 g/dL"
+            "text": "3.5\u20135.5 g/dL"
           }
         ],
         "note": [
@@ -7265,7 +7265,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–56 U/L"
+            "text": "7\u201356 U/L"
           }
         ],
         "note": [
@@ -7331,7 +7331,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "10–40 U/L"
+            "text": "10\u201340 U/L"
           }
         ],
         "note": [
@@ -7561,7 +7561,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.7–1.3 mg/dL"
+            "text": "0.7\u20131.3 mg/dL"
           }
         ]
       }
@@ -7634,7 +7634,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "70–100 mg/dL"
+            "text": "70\u2013100 mg/dL"
           }
         ],
         "note": [
@@ -7712,7 +7712,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "38.3–48.6% (male)"
+            "text": "38.3\u201348.6% (male)"
           }
         ]
       }
@@ -7785,7 +7785,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "13.5–17.5 g/dL (male)"
+            "text": "13.5\u201317.5 g/dL (male)"
           }
         ],
         "note": [
@@ -7950,7 +7950,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "150–400 × 10³/µL"
+            "text": "150\u2013400 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -8160,7 +8160,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "3.4–7.0 mg/dL"
+            "text": "3.4\u20137.0 mg/dL"
           }
         ],
         "note": [
@@ -8314,7 +8314,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "4.5–11.0 × 10³/µL"
+            "text": "4.5\u201311.0 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -8478,7 +8478,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–56 U/L"
+            "text": "7\u201356 U/L"
           }
         ],
         "note": [
@@ -8544,7 +8544,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "10–40 U/L"
+            "text": "10\u201340 U/L"
           }
         ],
         "note": [
@@ -8730,7 +8730,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.7–1.3 mg/dL"
+            "text": "0.7\u20131.3 mg/dL"
           }
         ]
       }
@@ -8803,7 +8803,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "70–100 mg/dL"
+            "text": "70\u2013100 mg/dL"
           }
         ],
         "note": [
@@ -8881,7 +8881,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "38.3–48.6 %"
+            "text": "38.3\u201348.6 %"
           }
         ]
       }
@@ -8954,7 +8954,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "13.5–17.5 g/dL (male)"
+            "text": "13.5\u201317.5 g/dL (male)"
           }
         ],
         "note": [
@@ -9064,7 +9064,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "150–400 × 10³/µL"
+            "text": "150\u2013400 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -9125,7 +9125,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "3.5–5.0 mEq/L"
+            "text": "3.5\u20135.0 mEq/L"
           }
         ]
       }
@@ -9230,7 +9230,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "136–145 mEq/L"
+            "text": "136\u2013145 mEq/L"
           }
         ]
       }
@@ -9467,7 +9467,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "4.5–11.0 × 10³/µL"
+            "text": "4.5\u201311.0 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -9572,7 +9572,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "3.5–5.5 g/dL"
+            "text": "3.5\u20135.5 g/dL"
           }
         ],
         "note": [
@@ -9638,7 +9638,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "44–147 U/L"
+            "text": "44\u2013147 U/L"
           }
         ]
       }
@@ -9699,7 +9699,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–56 U/L"
+            "text": "7\u201356 U/L"
           }
         ],
         "note": [
@@ -9765,7 +9765,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "10–40 U/L"
+            "text": "10\u201340 U/L"
           }
         ],
         "note": [
@@ -9831,7 +9831,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "7–20 mg/dL"
+            "text": "7\u201320 mg/dL"
           }
         ]
       }
@@ -9892,7 +9892,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "8.5–10.5 mg/dL"
+            "text": "8.5\u201310.5 mg/dL"
           }
         ]
       }
@@ -9953,7 +9953,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "98–106 mEq/L"
+            "text": "98\u2013106 mEq/L"
           }
         ]
       }
@@ -10069,7 +10069,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "23–29 mEq/L"
+            "text": "23\u201329 mEq/L"
           }
         ]
       }
@@ -10130,7 +10130,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.7–1.3 mg/dL"
+            "text": "0.7\u20131.3 mg/dL"
           }
         ]
       }
@@ -10191,7 +10191,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "70–100 mg/dL"
+            "text": "70\u2013100 mg/dL"
           }
         ],
         "note": [
@@ -10257,7 +10257,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "4.0–5.6%"
+            "text": "4.0\u20135.6%"
           }
         ],
         "note": [
@@ -10323,7 +10323,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "38.3–48.6%"
+            "text": "38.3\u201348.6%"
           }
         ]
       }
@@ -10439,7 +10439,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "13.5–17.5 g/dL"
+            "text": "13.5\u201317.5 g/dL"
           }
         ],
         "note": [
@@ -10560,7 +10560,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "150–400 × 10³/µL"
+            "text": "150\u2013400 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -10621,7 +10621,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "3.5–5.0 mEq/L"
+            "text": "3.5\u20135.0 mEq/L"
           }
         ]
       }
@@ -10682,7 +10682,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "136–145 mEq/L"
+            "text": "136\u2013145 mEq/L"
           }
         ]
       }
@@ -10743,7 +10743,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.1–1.2 mg/dL"
+            "text": "0.1\u20131.2 mg/dL"
           }
         ]
       }
@@ -10803,7 +10803,7 @@
         ],
         "note": [
           {
-            "text": "Mildly elevated; not addressed at this visit — TB treatment is priority."
+            "text": "Mildly elevated; not addressed at this visit \u2014 TB treatment is priority."
           }
         ]
       }
@@ -10864,7 +10864,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "3.5–7.2 mg/dL"
+            "text": "3.5\u20137.2 mg/dL"
           }
         ],
         "note": [
@@ -10930,7 +10930,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "4.5–11.0 × 10³/µL"
+            "text": "4.5\u201311.0 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -11804,7 +11804,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–56 U/L"
+            "text": "7\u201356 U/L"
           }
         ],
         "note": [
@@ -11870,7 +11870,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "10–40 U/L"
+            "text": "10\u201340 U/L"
           }
         ],
         "note": [
@@ -12056,7 +12056,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.7–1.3 mg/dL"
+            "text": "0.7\u20131.3 mg/dL"
           }
         ]
       }
@@ -12129,7 +12129,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "70–100 mg/dL"
+            "text": "70\u2013100 mg/dL"
           }
         ]
       }
@@ -12190,7 +12190,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "%"
             },
-            "text": "38.3–48.6 %"
+            "text": "38.3\u201348.6 %"
           }
         ]
       }
@@ -12263,7 +12263,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "13.5–17.5 g/dL"
+            "text": "13.5\u201317.5 g/dL"
           }
         ],
         "note": [
@@ -12435,7 +12435,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "150–400 × 10³/µL"
+            "text": "150\u2013400 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -12496,7 +12496,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "3.5–5.0 mEq/L"
+            "text": "3.5\u20135.0 mEq/L"
           }
         ]
       }
@@ -12601,7 +12601,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "meq/L"
             },
-            "text": "136–145 mEq/L"
+            "text": "136\u2013145 mEq/L"
           }
         ]
       }
@@ -12750,7 +12750,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "3.5–7.2 mg/dL"
+            "text": "3.5\u20137.2 mg/dL"
           }
         ],
         "note": [
@@ -12816,7 +12816,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "10*3/uL"
             },
-            "text": "4.5–11.0 × 10³/µL"
+            "text": "4.5\u201311.0 \u00d7 10\u00b3/\u00b5L"
           }
         ]
       }
@@ -13112,7 +13112,7 @@
         "recordedDate": "2026-04-16",
         "note": [
           {
-            "text": "Improving — Hgb 12.8 g/dL (up from 11.2 g/dL at admission). Likely anemia of chronic disease/inflammation, resolving with TB treatment response."
+            "text": "Improving \u2014 Hgb 12.8 g/dL (up from 11.2 g/dL at admission). Likely anemia of chronic disease/inflammation, resolving with TB treatment response."
           }
         ]
       }
@@ -13173,7 +13173,7 @@
         ],
         "dosageInstruction": [
           {
-            "text": "Take 3 tablets (1200 mg total) by mouth once daily. DISCONTINUED 04/02/2026 — completing 2-month intensive phase, transitioning to continuation phase.",
+            "text": "Take 3 tablets (1200 mg total) by mouth once daily. DISCONTINUED 04/02/2026 \u2014 completing 2-month intensive phase, transitioning to continuation phase.",
             "timing": {
               "repeat": {
                 "frequency": 1,
@@ -13205,7 +13205,7 @@
         ],
         "note": [
           {
-            "text": "Discontinued 04/02/2026 — completing 2-month intensive phase of TB treatment, transitioning to continuation phase (rifampin + isoniazid only). No ethambutol-related visual toxicity identified."
+            "text": "Discontinued 04/02/2026 \u2014 completing 2-month intensive phase of TB treatment, transitioning to continuation phase (rifampin + isoniazid only). No ethambutol-related visual toxicity identified."
           }
         ]
       }
@@ -13266,7 +13266,7 @@
         ],
         "dosageInstruction": [
           {
-            "text": "Take 3 tablets (1500 mg total) by mouth once daily. DISCONTINUED 04/02/2026 — completing 2-month intensive phase, transitioning to continuation phase.",
+            "text": "Take 3 tablets (1500 mg total) by mouth once daily. DISCONTINUED 04/02/2026 \u2014 completing 2-month intensive phase, transitioning to continuation phase.",
             "timing": {
               "repeat": {
                 "frequency": 1,
@@ -13298,7 +13298,7 @@
         ],
         "note": [
           {
-            "text": "Discontinued 04/02/2026 — completing 2-month intensive phase of TB treatment, transitioning to continuation phase (rifampin + isoniazid only)."
+            "text": "Discontinued 04/02/2026 \u2014 completing 2-month intensive phase of TB treatment, transitioning to continuation phase (rifampin + isoniazid only)."
           }
         ]
       }

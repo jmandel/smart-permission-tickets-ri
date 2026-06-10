@@ -45,11 +45,11 @@
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-patient-summary",
-            "valueMarkdown": "## Character\n51-year-old Hispanic male, high school shop teacher and baseball coach. Lives in San Antonio, TX with his wife Rosa and youngest daughter (age 16). Born in San Antonio, lifelong Texan. Insurance: employer plan through the school district (Aetna). Active lifestyle compromised by progressive joint disease.\n\n## Clinical Scenario\nCarlos was diagnosed with seropositive rheumatoid arthritis in 2021 after 6 months of progressive symmetric polyarthritis (hands, wrists, feet). His PCP noted elevated inflammatory markers and referred him to a rheumatologist. Initial workup showed positive RF (78 IU/mL), positive anti-CCP (>250 U/mL), elevated ESR (42) and CRP (2.8), and erosive changes on hand X-rays.\n\nHe was started on methotrexate 15mg weekly with folic acid. After 4 months of adequate dosing, his DAS28-CRP remained elevated at 4.2 (moderate disease activity). Methotrexate was increased to 20mg weekly. At 6 months on 20mg, he developed elevated liver enzymes (ALT 98, AST 82) — methotrexate was discontinued for hepatotoxicity.\n\nHe was switched to leflunomide 20mg daily. After 6 months on leflunomide, his DAS28-CRP was 4.8 (moderate-high), with worsening hand grip strength and new wrist erosions on follow-up imaging. Leflunomide was deemed an inadequate response.\n\nHis rheumatologist recommends initiating adalimumab (Humira biosimilar — Hadlima) as step-up biologic therapy. The prior authorization requires documentation of: RA diagnosis, failed conventional DMARDs (methotrexate — hepatotoxicity; leflunomide — inadequate response), disease activity scores, functional status, and imaging showing progression.\n\nAetna uses a Permission Ticket to access Carlos's rheumatology and PCP records to adjudicate the prior authorization request.\n\n## Sites\n- **Alamo Family Practice** — PCP in San Antonio, TX (2015–present). General primary care, initial joint complaint workup, referral to rheumatology, routine management.\n- **South Texas Rheumatology** — Rheumatologist in San Antonio, TX (2021–present). RA diagnosis, DMARD management, disease activity monitoring, biologic prior auth documentation.\n\nTwo sites, one state (TX). Tests Permission Ticket constraints on **scopes** (payer needs Condition, Observation [disease activity scores, labs], DiagnosticReport [imaging], MedicationRequest [DMARD history], Procedure — focused on RA treatment) and **periods** (payer needs the full DMARD treatment history from 2021–present)."
+            "valueMarkdown": "## Character\n51-year-old Hispanic male, high school shop teacher and baseball coach. Lives in San Antonio, TX with his wife Rosa and youngest daughter (age 16). Born in San Antonio, lifelong Texan. Insurance: employer plan through the school district (Aetna). Active lifestyle compromised by progressive joint disease.\n\n## Clinical Scenario\nCarlos was diagnosed with seropositive rheumatoid arthritis in 2021 after 6 months of progressive symmetric polyarthritis (hands, wrists, feet). His PCP noted elevated inflammatory markers and referred him to a rheumatologist. Initial workup showed positive RF (78 IU/mL), positive anti-CCP (>250 U/mL), elevated ESR (42) and CRP (2.8), and erosive changes on hand X-rays.\n\nHe was started on methotrexate 15mg weekly with folic acid. After 4 months of adequate dosing, his DAS28-CRP remained elevated at 4.2 (moderate disease activity). Methotrexate was increased to 20mg weekly. At 6 months on 20mg, he developed elevated liver enzymes (ALT 98, AST 82) \u2014 methotrexate was discontinued for hepatotoxicity.\n\nHe was switched to leflunomide 20mg daily. After 6 months on leflunomide, his DAS28-CRP was 4.8 (moderate-high), with worsening hand grip strength and new wrist erosions on follow-up imaging. Leflunomide was deemed an inadequate response.\n\nHis rheumatologist recommends initiating adalimumab (Humira biosimilar \u2014 Hadlima) as step-up biologic therapy. The prior authorization requires documentation of: RA diagnosis, failed conventional DMARDs (methotrexate \u2014 hepatotoxicity; leflunomide \u2014 inadequate response), disease activity scores, functional status, and imaging showing progression.\n\nAetna uses a Permission Ticket to access Carlos's rheumatology and PCP records to adjudicate the prior authorization request.\n\n## Sites\n- **Alamo Family Practice** \u2014 PCP in San Antonio, TX (2015\u2013present). General primary care, initial joint complaint workup, referral to rheumatology, routine management.\n- **South Texas Rheumatology** \u2014 Rheumatologist in San Antonio, TX (2021\u2013present). RA diagnosis, DMARD management, disease activity monitoring, biologic prior auth documentation.\n\nTwo sites, one state (TX). Tests Permission Ticket constraints on **scopes** (payer needs Condition, Observation [disease activity scores, labs], DiagnosticReport [imaging], MedicationRequest [DMARD history], Procedure \u2014 focused on RA treatment) and **periods** (payer needs the full DMARD treatment history from 2021\u2013present)."
           },
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-demo-scenarios",
-            "valueString": "{\"scenarios\":[{\"id\":\"biologic-prior-authorization-review\",\"label\":\"Biologic prior-authorization review\",\"summary\":\"Aetna requests the RA treatment history needed to adjudicate Carlos's step-up biologic authorization after DMARD failure and toxicity.\",\"ticket\":{\"ticket_type\":\"https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1\",\"requester\":{\"resourceType\":\"Organization\",\"name\":\"Aetna Prior Authorization Operations\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-requester-organization\",\"value\":\"aetna-prior-authorization-operations\"}]},\"context\":{\"service\":{\"text\":\"Adalimumab biologic therapy for seropositive rheumatoid arthritis\"},\"claim\":{\"resourceType\":\"Claim\",\"identifier\":[{\"system\":\"urn:example:smart-permission-ticket-demo:demo-claim\",\"value\":\"AETNA-PA-2023-7715\"}],\"status\":\"active\",\"use\":\"preauthorization\"}},\"access\":{\"permissions\":[{\"kind\":\"data\",\"resource_type\":\"Patient\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Encounter\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"problem-list-item\"}]},{\"kind\":\"data\",\"resource_type\":\"Condition\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/condition-category\",\"code\":\"encounter-diagnosis\"}]},{\"kind\":\"data\",\"resource_type\":\"Observation\",\"interactions\":[\"read\",\"search\"],\"category_any_of\":[{\"system\":\"http://terminology.hl7.org/CodeSystem/observation-category\",\"code\":\"laboratory\"}]},{\"kind\":\"data\",\"resource_type\":\"DiagnosticReport\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"DocumentReference\",\"interactions\":[\"read\",\"search\"]},{\"kind\":\"data\",\"resource_type\":\"MedicationRequest\",\"interactions\":[\"read\",\"search\"]}],\"data_period\":{\"start\":\"2021-01-01\",\"end\":\"2023-12-31\"},\"data_holder_filter\":[{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"Alamo Family Practice\"}},{\"kind\":\"organization\",\"organization\":{\"resourceType\":\"Organization\",\"name\":\"South Texas Rheumatology\"}}],\"sensitive_data\":\"exclude\"}}}]}"
+            "valueString": "{\"scenarios\": [{\"id\": \"biologic-prior-authorization-review\", \"label\": \"Biologic prior-authorization review\", \"summary\": \"Aetna requests the RA treatment history needed to adjudicate Carlos's step-up biologic authorization after DMARD failure and toxicity.\", \"ticket\": {\"ticket_type\": \"https://smarthealthit.org/permission-ticket-type/payer-claims-adjudication-v1\", \"requester\": {\"resourceType\": \"Organization\", \"name\": \"Aetna Prior Authorization Operations\", \"identifier\": [{\"system\": \"urn:example:smart-permission-ticket-demo:demo-requester-organization\", \"value\": \"aetna-prior-authorization-operations\"}]}, \"context\": {\"service\": {\"text\": \"Adalimumab biologic therapy for seropositive rheumatoid arthritis\"}, \"claim\": {\"resourceType\": \"Claim\", \"status\": \"active\", \"use\": \"preauthorization\", \"identifier\": [{\"system\": \"urn:example:smart-permission-ticket-demo:demo-claim\", \"value\": \"AETNA-PA-2023-7715\"}]}}, \"access\": {\"permissions\": [{\"kind\": \"data\", \"resource_type\": \"Patient\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"Encounter\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"Condition\", \"interactions\": [\"read\", \"search\"], \"category_any_of\": [{\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\", \"code\": \"problem-list-item\"}]}, {\"kind\": \"data\", \"resource_type\": \"Condition\", \"interactions\": [\"read\", \"search\"], \"category_any_of\": [{\"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\", \"code\": \"encounter-diagnosis\"}]}, {\"kind\": \"data\", \"resource_type\": \"Observation\", \"interactions\": [\"read\", \"search\"], \"category_any_of\": [{\"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\", \"code\": \"laboratory\"}]}, {\"kind\": \"data\", \"resource_type\": \"DiagnosticReport\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"DocumentReference\", \"interactions\": [\"read\", \"search\"]}, {\"kind\": \"data\", \"resource_type\": \"MedicationRequest\", \"interactions\": [\"read\", \"search\"]}], \"data_period\": {\"start\": \"2021-01-01\", \"end\": \"2023-12-31\"}, \"data_holder_filter\": [{\"kind\": \"organization\", \"organization\": {\"resourceType\": \"Organization\", \"name\": \"Alamo Family Practice\"}}, {\"kind\": \"organization\", \"organization\": {\"resourceType\": \"Organization\", \"name\": \"South Texas Rheumatology\"}}]}}}]}"
           }
         ],
         "identifier": [
@@ -5132,7 +5132,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "g/dL"
             },
-            "text": "3.5–5.0 g/dL"
+            "text": "3.5\u20135.0 g/dL"
           }
         ]
       }
@@ -5212,7 +5212,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "44–147 U/L"
+            "text": "44\u2013147 U/L"
           }
         ]
       }
@@ -5292,7 +5292,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "7–45 U/L"
+            "text": "7\u201345 U/L"
           }
         ]
       }
@@ -5372,7 +5372,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "U/L"
             },
-            "text": "8–40 U/L"
+            "text": "8\u201340 U/L"
           }
         ]
       }
@@ -5568,7 +5568,7 @@
               "system": "http://unitsofmeasure.org",
               "code": "mg/dL"
             },
-            "text": "0.1–1.2 mg/dL"
+            "text": "0.1\u20131.2 mg/dL"
           }
         ]
       }
@@ -9708,7 +9708,7 @@
         },
         "interpretation": [
           {
-            "text": "Significant functional impairment (worsened from 1.2 — decline reflects inability to perform essential occupational tasks)"
+            "text": "Significant functional impairment (worsened from 1.2 \u2014 decline reflects inability to perform essential occupational tasks)"
           }
         ]
       }
@@ -13889,7 +13889,7 @@
               "display": "Drug-induced disorder of liver (disorder)"
             }
           ],
-          "text": "Hepatotoxicity — ALT 98 U/L and AST 82 U/L, more than twice upper limit of normal"
+          "text": "Hepatotoxicity \u2014 ALT 98 U/L and AST 82 U/L, more than twice upper limit of normal"
         },
         "intent": "order",
         "category": [
@@ -15430,7 +15430,7 @@
           },
           {
             "time": "2021-06-14",
-            "text": "3-month methotrexate follow-up: Partial response — DAS28-CRP improved from 5.1 to 4.2 (moderate disease activity range). Inflammatory markers trending down (ESR 42→32, CRP 2.8→1.8). Residual active synovitis in MCPs and wrists. Functional status modestly improved (HAQ-DI 1.2→1.0). Methotrexate dose increased from 15 mg to 20 mg weekly."
+            "text": "3-month methotrexate follow-up: Partial response \u2014 DAS28-CRP improved from 5.1 to 4.2 (moderate disease activity range). Inflammatory markers trending down (ESR 42\u219232, CRP 2.8\u21921.8). Residual active synovitis in MCPs and wrists. Functional status modestly improved (HAQ-DI 1.2\u21921.0). Methotrexate dose increased from 15 mg to 20 mg weekly."
           }
         ]
       }
@@ -15635,7 +15635,7 @@
         "recordedDate": "2021-11-03",
         "note": [
           {
-            "text": "LFTs trending toward normalization (ALT 98→38, AST 82→34). Hepatitis B and C serologies previously negative. Methotrexate permanently discontinued; will not be rechallenged given severity of transaminase elevation (>2x ULN)."
+            "text": "LFTs trending toward normalization (ALT 98\u219238, AST 82\u219234). Hepatitis B and C serologies previously negative. Methotrexate permanently discontinued; will not be rechallenged given severity of transaminase elevation (>2x ULN)."
           }
         ],
         "evidence": [
@@ -15791,7 +15791,7 @@
         "recordedDate": "2022-07-11",
         "note": [
           {
-            "text": "Worsening documented — HAQ-DI increased from 1.2 to 1.5. Patient unable to perform essential occupational tasks: cannot safely demonstrate power tools, has handed off batting practice. Grip strength severely diminished bilaterally (R 22 kg, L 18 kg vs pre-disease baseline >40 kg)."
+            "text": "Worsening documented \u2014 HAQ-DI increased from 1.2 to 1.5. Patient unable to perform essential occupational tasks: cannot safely demonstrate power tools, has handed off batting practice. Grip strength severely diminished bilaterally (R 22 kg, L 18 kg vs pre-disease baseline >40 kg)."
           }
         ],
         "evidence": [
@@ -16927,7 +16927,7 @@
         "extension": [
           {
             "url": "https://smarthealthit.org/fhir/StructureDefinition/smart-permission-tickets-encounter-summary",
-            "valueMarkdown": "Carlos presented for a planned visit to discuss biologic therapy escalation and initiate the prior authorization process with Aetna. He reported stable but unsatisfactory symptoms on leflunomide — morning stiffness of 45 minutes daily, continued difficulty with shop demonstrations and coaching activities."
+            "valueMarkdown": "Carlos presented for a planned visit to discuss biologic therapy escalation and initiate the prior authorization process with Aetna. He reported stable but unsatisfactory symptoms on leflunomide \u2014 morning stiffness of 45 minutes daily, continued difficulty with shop demonstrations and coaching activities."
           }
         ]
       }
