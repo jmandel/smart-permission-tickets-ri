@@ -111,6 +111,7 @@ function makeTicket(patientOverrides: Record<string, any>): PermissionTicket {
     iss: "https://issuer.example",
     aud: "https://server.example",
     exp: 1760000000,
+    iat: 1759990000,
     jti: "ticket-1",
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     subject: {

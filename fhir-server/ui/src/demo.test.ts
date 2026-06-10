@@ -219,8 +219,8 @@ const scenarioPerson: PersonInfo = {
               },
             },
           ],
-          sensitive_data: "include",
         },
+        sensitivity_policy: { unlisted_sensitive_data: "release_authorized" },
       },
     },
   ],
@@ -478,7 +478,8 @@ describe("demo helpers", () => {
     expect(typeof ticket.jti).toBe("string");
     expect(ticket.presenter_binding).toEqual({ method: "jkt", jkt: "demo-proof" });
     expect(ticket.subject.patient.resourceType).toBe("Patient");
-    expect(ticket.access.sensitive_data).toBe("exclude");
+    expect((ticket as any).sensitivity_policy).toEqual({ unlisted_sensitive_data: "withhold" });
+    expect(ticket.must_understand).toEqual(["sensitivity_policy"]);
     expect(ticket.context).toBeUndefined();
   });
 
@@ -495,7 +496,7 @@ describe("demo helpers", () => {
     expect(ticket.context).toEqual(scenario.ticket.context);
     expect(ticket.presenter_binding).toEqual({ method: "jkt", jkt: "demo-proof" });
     expect(ticket.access.data_period).toEqual({ start: "2023-01-01", end: "2025-12-31" });
-    expect(ticket.access.sensitive_data).toBe("include");
+    expect((ticket as any).sensitivity_policy).toEqual({ unlisted_sensitive_data: "release_authorized" });
     expect(ticket.access.data_holder_filter).toHaveLength(2);
   });
 

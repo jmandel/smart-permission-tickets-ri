@@ -152,7 +152,7 @@ export function defaultConsentState(person: PersonInfo, scenario: DemoTicketScen
   const consent: ConsentState = {
     ...base,
     ticketLifetime: scenario.defaults?.ticket_lifetime ?? base.ticketLifetime,
-    sensitiveMode: access.sensitive_data === "include" ? "allow" : "deny",
+    sensitiveMode: scenario.ticket.sensitivity_policy?.unlisted_sensitive_data === "release_authorized" ? "allow" : "deny",
     dateMode: access.data_period?.start || access.data_period?.end ? "window" : "all",
     dateRange: {
       start: access.data_period?.start ?? null,
@@ -263,10 +263,12 @@ export function buildTicketPayload(
     ? (scenario.ticket as { requester: Record<string, any> }).requester
     : undefined;
 
+  const now = Math.floor(Date.now() / 1000);
   return {
     iss: ticketIssuerBaseUrl,
     aud: audienceOrigin,
-    exp: Math.floor(Date.now() / 1000) + lifetimeSeconds,
+    exp: now + lifetimeSeconds,
+    iat: now,
     jti: crypto.randomUUID(),
     ticket_type: ticketType,
     ...(presenterBinding ? { presenter_binding: presenterBinding } : {}),
@@ -284,11 +286,17 @@ export function buildTicketPayload(
     },
     ...(scenarioRequester ? { requester: scenarioRequester } : {}),
     ...(scenarioContext ? { context: scenarioContext } : {}),
+    // Sensitivity handling rides as the Proposal 005 sensitivity_policy
+    // claim, must-understand so a holder that cannot enforce it rejects
+    // rather than silently disappointing the authorizing person.
+    must_understand: ["sensitivity_policy"],
+    sensitivity_policy: {
+      unlisted_sensitive_data: consent.sensitiveMode === "allow" ? "release_authorized" : "withhold",
+    },
     access: {
       permissions: permissionsFromSelectedScopes(consent),
       data_period: buildDataPeriod(consent.dateMode, consent.dateRange),
       data_holder_filter: dataHolderFilter.length ? dataHolderFilter : undefined,
-      sensitive_data: consent.sensitiveMode === "allow" ? "include" : "exclude",
     },
   } as PermissionTicket;
 }
@@ -700,7 +708,9 @@ export function clientBindingForPlan(clientPlan: ViewerClientPlan | null): Frame
 }
 
 export function proofJktForPlan(mode: ModeName, clientPlan: ViewerClientPlan | null) {
-  return (mode === "strict" || mode === "key-bound") && clientPlan?.type === "unaffiliated"
+  // Individual-access tickets require presenter binding, so bind in every
+  // mode where the client authenticates with a key it can prove.
+  return (mode === "strict" || mode === "key-bound" || mode === "registered") && clientPlan?.type === "unaffiliated"
     ? clientPlan.jwkThumbprint
     : null;
 }

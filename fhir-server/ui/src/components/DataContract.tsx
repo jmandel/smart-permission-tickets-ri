@@ -174,8 +174,10 @@ export function DataContract({ onClose }: { onClose: () => void }) {
             <td><code>http://terminology.hl7.org/CodeSystem/v3-ActCode</code></td>
             <td><code>SEX</code>, <code>MH</code>, <code>HIV</code>, <code>ETH</code>, <code>STD</code>, <code>SDV</code></td>
             <td>
-              Sensitive-data filtering. When a ticket carries <code>access.sensitive_data = exclude</code>,
-              resources with any of these labels are excluded from the visible set.
+              Sensitivity filtering via the <code>sensitivity_policy</code> claim. By default (and when
+              <code>unlisted_sensitive_data = withhold</code>), resources with any of these labels are
+              excluded from the visible set; <code>release_authorized</code> lets them flow, and
+              <code>withhold</code> entries exclude specific categories.
             </td>
           </tr>
         </tbody>

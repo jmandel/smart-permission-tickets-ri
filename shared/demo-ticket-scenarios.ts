@@ -24,6 +24,19 @@ export const DEMO_TICKET_SCENARIOS_EXTENSION_URL =
 const EmptyContextSchema = z.object({}).strict();
 const TicketLifetimeKeySchema = z.enum(["1h", "1d", "7d", "30d", "1y", "never"]);
 
+// Proposal 005 sensitivity_policy claim shape, as scenarios may carry it.
+const ScenarioSensitivityCodingSchema = z.object({
+  system: z.string().optional(),
+  code: z.string().min(1),
+  display: z.string().optional(),
+}).catchall(z.unknown());
+
+const ScenarioSensitivityPolicySchema = z.object({
+  withhold: z.array(ScenarioSensitivityCodingSchema).min(1).optional(),
+  release_authorized: z.array(ScenarioSensitivityCodingSchema).min(1).optional(),
+  unlisted_sensitive_data: z.enum(["local_policy", "withhold", "release_authorized"]).optional(),
+}).strict();
+
 const PractitionerRoleScenarioRequesterSchema = z.object({
   resourceType: z.literal("PractitionerRole"),
   code: z.array(z.any()).optional(),
@@ -33,6 +46,7 @@ const PractitionerRoleScenarioRequesterSchema = z.object({
 const PatientSelfScenarioTicketSchema = z.object({
   ticket_type: z.literal(PATIENT_SELF_ACCESS_TICKET_TYPE),
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
   context: EmptyContextSchema.optional(),
 }).strict();
 
@@ -40,6 +54,7 @@ const PatientDelegatedScenarioTicketSchema = z.object({
   ticket_type: z.literal(PATIENT_DELEGATED_ACCESS_TICKET_TYPE),
   requester: RelatedPersonSchema,
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
   context: EmptyContextSchema.optional(),
 }).strict();
 
@@ -48,6 +63,7 @@ const PublicHealthScenarioTicketSchema = z.object({
   requester: OrganizationSchema,
   context: PublicHealthContextSchema,
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
 }).strict();
 
 const SocialCareScenarioTicketSchema = z.object({
@@ -55,6 +71,7 @@ const SocialCareScenarioTicketSchema = z.object({
   requester: OrganizationSchema,
   context: SocialCareReferralContextSchema,
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
 }).strict();
 
 const PayerClaimsScenarioTicketSchema = z.object({
@@ -62,6 +79,7 @@ const PayerClaimsScenarioTicketSchema = z.object({
   requester: OrganizationSchema,
   context: PayerClaimsContextSchema,
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
 }).strict();
 
 const ResearchScenarioTicketSchema = z.object({
@@ -69,6 +87,7 @@ const ResearchScenarioTicketSchema = z.object({
   requester: OrganizationSchema,
   context: ResearchContextSchema,
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
 }).strict();
 
 const ProviderConsultScenarioTicketSchema = z.object({
@@ -76,6 +95,7 @@ const ProviderConsultScenarioTicketSchema = z.object({
   requester: PractitionerRoleScenarioRequesterSchema,
   context: ProviderConsultContextSchema,
   access: AccessGrantSchema,
+  sensitivity_policy: ScenarioSensitivityPolicySchema.optional(),
 }).strict();
 
 export const DemoTicketScenarioTicketSchema = z.discriminatedUnion("ticket_type", [

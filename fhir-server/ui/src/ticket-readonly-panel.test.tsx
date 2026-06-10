@@ -40,7 +40,6 @@ const scenario: DemoTicketScenario = {
           interactions: ["read", "search"],
         },
       ],
-      sensitive_data: "exclude",
     },
   },
 };
