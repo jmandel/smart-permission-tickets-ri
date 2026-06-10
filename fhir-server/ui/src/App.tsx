@@ -6,6 +6,7 @@ import { DataContract } from "./components/DataContract";
 import { ProtocolTrace } from "./components/ProtocolTrace";
 import { PermissionWorkbench } from "./components/PermissionWorkbench";
 import { Viewer } from "./components/Viewer";
+import { GuidedLaunch } from "./components/GuidedLaunch";
 import { PatientSummaryBox } from "./components/PatientSummaryBox";
 import { nextSelectedUseCaseKey } from "./use-case-filter";
 import type { PersonInfo } from "./types";
@@ -26,6 +27,9 @@ export function App() {
   }
   if (window.location.pathname === "/trace") {
     return <ProtocolTrace />;
+  }
+  if (window.location.pathname === "/launch") {
+    return <GuidedLaunch />;
   }
 
   const { loading, error, init, persons, demoClientOptions, selectedPersonId, selectPerson, selectedMode, defaultTicketIssuer, defaultNetwork } = useStore();

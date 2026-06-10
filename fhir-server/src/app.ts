@@ -142,6 +142,7 @@ export function startServer(context = createAppContext(), port = context.config.
       "/modes/:mode": landingHtml,
       "/viewer": landingHtml,
       "/trace": landingHtml,
+      "/launch": landingHtml,
     },
     fetch: (request, server) => handleRequest(context, request, server),
   });
@@ -356,6 +357,9 @@ export async function handleRequest(context: AppContext, request: Request, serve
   }
   if (url.pathname === "/demo/oidf/browser-client-instance") {
     return handleOidfBrowserClientInstanceRequest(context, request);
+  }
+  if (url.pathname === "/launch/callback") {
+    return htmlResponse(buildIssuanceCallbackPage());
   }
   const issuerRoute = resolveIssuerRoute(url.pathname);
   if (issuerRoute) {
@@ -760,6 +764,29 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
     }
     return tokenErrorResponse(oauthError);
   }
+}
+
+// Redirect target for the guided launch page: relays the authorization code
+// back to the opener window. The state echo lets the opener reject codes
+// from launches it did not start.
+function buildIssuanceCallbackPage() {
+  return `<!doctype html><html><head><title>Authorization complete</title></head><body>
+<p>Returning to the app&hellip;</p>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (window.opener) {
+    window.opener.postMessage({
+      type: "smart-permission-tickets-issuance-callback",
+      code: params.get("code"),
+      state: params.get("state"),
+      error: params.get("error"),
+    }, window.location.origin);
+    document.body.insertAdjacentHTML("beforeend", "<p>You can close this window.</p>");
+  } else {
+    document.body.insertAdjacentHTML("beforeend", "<p>Open this flow from the guided launch page.</p>");
+  }
+</script>
+</body></html>`;
 }
 
 function handleIssuerAuthorize(context: AppContext, request: Request, url: URL, issuerSlug: string) {

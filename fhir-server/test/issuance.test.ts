@@ -244,3 +244,69 @@ describe("Proposal 003 issuance", () => {
     expect(reuse.status).toBe(400);
   });
 });
+
+describe("guided launch page", () => {
+  test("/launch serves the app shell and /launch/callback relays the code", async () => {
+    const page = await fetch(`${origin}/launch`);
+    expect(page.status).toBe(200);
+    expect(await page.text()).toContain("<div id=\"root\">");
+
+    const callback = await fetch(`${origin}/launch/callback?code=abc&state=xyz`);
+    expect(callback.status).toBe(200);
+    const html = await callback.text();
+    expect(html).toContain("smart-permission-tickets-issuance-callback");
+    expect(html).toContain("postMessage");
+  });
+
+  test("launch-flow logic drives the full story end to end", async () => {
+    const flow = await import("../ui/src/lib/launch-flow.ts");
+
+    const discovery = await flow.discoverIssuer(origin, issuerSlug);
+    expect((discovery.response as any).smart_permission_ticket_issuer).toBe(true);
+
+    const keys = await flow.generateAppIdentity();
+    const registration = await flow.registerApp(origin, keys);
+    expect(registration.clientId).toBeTruthy();
+
+    const pkce = await flow.generatePkce();
+    const authorizeUrl = flow.buildAuthorizeUrl({
+      origin,
+      issuerSlug,
+      clientId: registration.clientId,
+      challenge: pkce.challenge,
+      state: "guided-state",
+    });
+    // The page opens this URL in a popup and the person picker appears;
+    // here we pick Elena by parameter, as the picker links do.
+    const authorizeResponse = await fetch(`${authorizeUrl}&person=elena-reyes`, { redirect: "manual" });
+    expect(authorizeResponse.status).toBe(302);
+    const location = new URL(authorizeResponse.headers.get("location")!);
+    expect(location.pathname).toBe("/launch/callback");
+    expect(location.searchParams.get("state")).toBe("guided-state");
+    const code = location.searchParams.get("code")!;
+
+    const tokens = await flow.redeemAuthorizationCode({
+      origin,
+      issuerSlug,
+      code,
+      clientId: registration.clientId,
+      verifier: pkce.verifier,
+    });
+    expect(tokens.tickets).toHaveLength(1);
+    expect(tokens.endpoints.length).toBeGreaterThan(0);
+    const payload = flow.decodeJwtPayload(tokens.tickets[0]);
+    expect(payload.ticket_type).toBe(PATIENT_SELF_ACCESS_TICKET_TYPE);
+
+    const firstHint = tokens.endpoints[0];
+    expect(flow.tokenEndpointForHint(firstHint)).toBe(firstHint.fhir_base_url.replace(/\/fhir$/, "/token"));
+    const exchange = await flow.redeemTicketAtSite({
+      hint: firstHint,
+      ticket: tokens.tickets[0],
+      keys,
+    });
+    expect(exchange.grantedScope).toContain("patient/");
+
+    const sample = await flow.sampleSiteData(firstHint, exchange.accessToken, keys.thumbprint);
+    expect(sample.encounters + sample.observations).toBeGreaterThan(0);
+  });
+});

@@ -23,6 +23,8 @@ const TICKET_TTL_SECONDS = 3600;
 const ACCESS_TOKEN_TTL_SECONDS = 300;
 export const PERMISSION_TICKET_MARKER_SCOPE = "permission_ticket";
 
+type SensitivityChoice = "release_authorized" | "withhold";
+
 type IssuanceGrant = {
   issuerSlug: string;
   clientId: string;
@@ -30,6 +32,7 @@ type IssuanceGrant = {
   codeChallenge: string;
   scopes: string[];
   personSlug: string;
+  sensitivity?: SensitivityChoice;
   expiresAt: number;
 };
 
@@ -125,6 +128,18 @@ export function handleAuthorizeRequest(
     return fail("invalid_scope", `scope must include ${PERMISSION_TICKET_MARKER_SCOPE}`);
   }
 
+  // Demo parameter: the authorizing person's sensitivity choice, captured
+  // here because this picker stands in for the issuer's approval workflow.
+  // It becomes a Proposal 005 sensitivity_policy claim on the minted ticket.
+  const sensitivityParam = params.get("sensitivity");
+  let sensitivity: SensitivityChoice | undefined;
+  if (sensitivityParam !== null) {
+    if (sensitivityParam !== "release_authorized" && sensitivityParam !== "withhold") {
+      return fail("invalid_request", "sensitivity must be release_authorized or withhold");
+    }
+    sensitivity = sensitivityParam;
+  }
+
   const persons = store.listDemoPersons();
   const personSlug = params.get("person");
   if (!personSlug) {
@@ -140,6 +155,7 @@ export function handleAuthorizeRequest(
     codeChallenge,
     scopes,
     personSlug,
+    sensitivity,
   });
   const target = new URL(redirectUri);
   target.searchParams.set("code", code);
@@ -230,7 +246,7 @@ async function buildTokenResponse(
   const person = input.store.listDemoPersons().find((candidate) => candidate.patientSlug === grant.personSlug);
   if (!person) throw new IssuanceTokenError("invalid_grant", "Authorized person no longer exists");
   const binding = resolvePresenterBinding(grant.clientId, input.clients);
-  const issuance = mintTicketsForPerson(input, person, grant.scopes, binding);
+  const issuance = mintTicketsForPerson(input, person, grant.scopes, binding, grant.sensitivity);
 
   const grantedScopes = grant.scopes.filter((scope) => scope !== "openid" && scope !== "fhirUser");
   const response: Record<string, unknown> = {
@@ -247,6 +263,7 @@ async function buildTokenResponse(
       clientId: grant.clientId,
       scopes: grant.scopes,
       personSlug: grant.personSlug,
+      sensitivity: grant.sensitivity,
     });
   }
   return response;
@@ -279,10 +296,17 @@ function mintTicketsForPerson(
   person: DemoPersonSummary,
   scopes: string[],
   binding: PresenterBinding,
+  sensitivity?: SensitivityChoice,
 ): TicketIssuanceResult {
   const permissions = permissionsFromScopes(scopes);
   const now = nowSeconds();
   const payload = {
+    ...(sensitivity
+      ? {
+          must_understand: ["sensitivity_policy"],
+          sensitivity_policy: { unlisted_sensitive_data: sensitivity },
+        }
+      : {}),
     iss: `${input.origin}/issuer/${input.issuerSlug}`,
     aud: input.origin,
     exp: now + TICKET_TTL_SECONDS,

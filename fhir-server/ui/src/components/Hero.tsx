@@ -18,6 +18,9 @@ export function Hero({ onToggleAbout, aboutOpen }: { onToggleAbout: () => void; 
           >
             IG
           </a>
+          <a className="menu-link" href="/launch" title="Guided demo: an app obtains Permission Tickets via SMART App Launch and uses them across sites.">
+            Guided Launch
+          </a>
           <a className="menu-link" href="/trace" title="Open the live protocol trace. Launch a session from Step 4 to populate it.">
             Protocol Trace
           </a>
