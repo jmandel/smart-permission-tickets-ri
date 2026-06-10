@@ -336,7 +336,7 @@ function resolvePresenterBinding(clientId: string, clients: ClientRegistry): Pre
 }
 
 function mintTicketsForPerson(
-  input: { origin: string; issuerSlug: string; issuers: TicketIssuerRegistry },
+  input: { origin: string; issuerSlug: string; issuers: TicketIssuerRegistry; store: FhirStore },
   person: DemoPersonSummary,
   scopes: string[],
   binding: PresenterBinding,
@@ -369,7 +369,16 @@ function mintTicketsForPerson(
   };
   const ticket = input.issuers.sign(input.origin, input.issuerSlug, payload);
 
-  const endpoints = person.sites.map((site) => ({
+  // Endpoint hints disclose where the patient receives care, and a site's
+  // name can reveal exactly what a withheld category protects (a women's
+  // health clinic in the list says plenty). So the grant's sensitivity
+  // decision applies to the hint list itself: unless the person authorized
+  // sensitive categories, sites with nothing else visible are not named.
+  const hintedSites = sensitivity === "release_authorized"
+    ? person.sites
+    : person.sites.filter((site) => input.store.countNonSensitiveEncounters(person.patientSlug, site.siteSlug) > 0);
+
+  const endpoints = hintedSites.map((site) => ({
     fhir_base_url: `${input.origin}/modes/open/sites/${site.siteSlug}/fhir`,
     organization: {
       resourceType: "Organization" as const,

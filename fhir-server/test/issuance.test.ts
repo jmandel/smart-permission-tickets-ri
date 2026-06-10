@@ -338,3 +338,25 @@ describe("guided launch page", () => {
     expect(sample.encounters + sample.observations).toBeGreaterThan(0);
   });
 });
+
+describe("disclosure-aware endpoint hints", () => {
+  test("a grant without sensitive categories does not name sites whose relationship would reveal them", async () => {
+    const run = async (includeSensitive: boolean) => {
+      const client = await registerClient(`Hints Client ${includeSensitive}`);
+      const { verifier, challengePromise } = pkcePair();
+      const code = await runAuthorize(client.clientId, await challengePromise, { includeSensitive });
+      const body = await (await redeemCode(code, client.clientId, verifier)).json();
+      return (body.smart_permission_ticket_endpoints as Array<{ fhir_base_url: string }>).map((hint) => hint.fhir_base_url);
+    };
+
+    const withoutSensitive = await run(false);
+    const withSensitive = await run(true);
+
+    // Elena's women's health site only has sensitivity-labeled encounters:
+    // hinting it under a non-sensitive grant would disclose the relationship.
+    expect(withSensitive.some((url) => url.includes("lone-star-womens-health"))).toBe(true);
+    expect(withoutSensitive.some((url) => url.includes("lone-star-womens-health"))).toBe(false);
+    expect(withoutSensitive.length).toBeLessThan(withSensitive.length);
+    expect(withoutSensitive.length).toBeGreaterThan(0);
+  });
+});

@@ -178,7 +178,7 @@ export function GuidedLaunch() {
       <StepCard
         index={3}
         title="Elena authorizes at the issuer"
-        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says who is authorizing or what they choose to share. Those decisions happen at the issuer: in the popup, pick Elena and check the sensitive-categories box (her women's health records stay withheld without it). The issuer redirects back with an authorization code."
+        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says who is authorizing or what they choose to share. Those decisions happen at the issuer: in the popup, pick Elena and choose whether to include sensitive categories. The choice shapes everything downstream: without it, her women's health site is not even named in the endpoint hints, because naming it would reveal what the withholding protects."
         status={code ? "done" : registration ? "ready" : "pending"}
         actionLabel="Open authorize popup"
         onAction={onAuthorize}
@@ -188,7 +188,7 @@ export function GuidedLaunch() {
         {authorizeUrl && (
           <pre className="launch-pre">{`GET ${authorizeUrl}`}</pre>
         )}
-        {authorizeUrl && !code && <p className="subtle">Waiting for the redirect… in the popup, pick <strong>Elena Reyes</strong> and check <strong>Include sensitive categories</strong>.</p>}
+        {authorizeUrl && !code && <p className="subtle">Waiting for the redirect… in the popup, pick <strong>Elena Reyes</strong>. Try it both with and without <strong>Include sensitive categories</strong> — the endpoint hints in step 4 change.</p>}
         {code && <p className="subtle">Received <code>code={code.slice(0, 8)}…</code> at the app's redirect_uri.</p>}
       </StepCard>
 

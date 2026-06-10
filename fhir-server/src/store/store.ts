@@ -103,6 +103,29 @@ export class FhirStore {
     return hasVisibleResourceType(this.db, envelope, "Encounter", siteSlug);
   }
 
+  // Encounters at a site that carry no sensitive security label. The demo
+  // issuer uses this to keep endpoint hints from disclosing a care
+  // relationship the grant's sensitivity decision is protecting.
+  countNonSensitiveEncounters(patientSlug: string, siteSlug: string): number {
+    const row = this.db
+      .query<{ visible_count: number }, string[]>(`
+        SELECT COUNT(*) AS visible_count
+        FROM resources r
+        WHERE r.resource_type = 'Encounter'
+          AND r.representative_patient_slug = ?
+          AND r.site_slug = ?
+          AND NOT EXISTS (
+            SELECT 1
+            FROM resource_labels rl
+            WHERE rl.resource_pk = r.resource_pk
+              AND rl.kind = 'security'
+              AND (${SENSITIVE_LABELS.map(() => "(rl.system = ? AND rl.code = ?)").join(" OR ")})
+          )
+      `)
+      .get(patientSlug, siteSlug, ...SENSITIVE_LABELS.flatMap((label) => [label.system, label.code]));
+    return row?.visible_count ?? 0;
+  }
+
   findPatientAliasesByReference(reference: string): AllowedPatientAlias[] {
     return this.db
       .query<AllowedPatientAlias, [string, string]>(`

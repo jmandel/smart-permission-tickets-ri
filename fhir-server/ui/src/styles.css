@@ -4062,14 +4062,22 @@ tbody tr:first-child td { border-top: 1px solid var(--line); }
 
 /* Guided launch (/launch) */
 .launch-pre {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 10px 12px;
+  background: #f8f9fa;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 10px 0 0;
+  color: var(--ink);
   font-size: 0.78rem;
-  line-height: 1.45;
+  line-height: 1.5;
   overflow: auto;
   max-height: 320px;
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-word;
+}
+
+.launch-pre + .launch-pre {
+  margin-top: 8px;
+  background: #f8fbff;
+  border-color: #d2e3fc;
 }
