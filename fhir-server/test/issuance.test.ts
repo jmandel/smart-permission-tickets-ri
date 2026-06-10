@@ -360,3 +360,58 @@ describe("disclosure-aware endpoint hints", () => {
     expect(withoutSensitive.length).toBeGreaterThan(0);
   });
 });
+
+describe("guided launch protocol trace", () => {
+  test("issuance with a demo session header populates the trace, and exchanges inherit it", async () => {
+    const sessionId = `guided-${crypto.randomUUID()}`;
+    const client = await registerClient("Trace Client");
+    const { verifier, challengePromise } = pkcePair();
+    const code = await runAuthorize(client.clientId, await challengePromise, { includeSensitive: true });
+
+    const tokenResponse = await fetch(`${origin}/issuer/${issuerSlug}/token`, {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded", "x-demo-session": sessionId },
+      body: new URLSearchParams({
+        grant_type: "authorization_code",
+        code,
+        redirect_uri: "https://app.example.com/callback",
+        client_id: client.clientId,
+        code_verifier: verifier,
+      }),
+    });
+    expect(tokenResponse.status).toBe(200);
+    const body = await tokenResponse.json();
+
+    // The ticket-created event lands in the session timeline.
+    const sessionInfo = async () => {
+      const body = await (await fetch(`${origin}/demo/sessions`)).json() as { sessions: Array<{ sessionId: string; eventCount: number }> };
+      return body.sessions.find((session) => session.sessionId === sessionId) ?? null;
+    };
+    const afterIssuance = await sessionInfo();
+    expect(afterIssuance).not.toBeNull();
+    expect(afterIssuance!.eventCount).toBeGreaterThan(0);
+
+    // A token exchange with NO header still lands in the same session,
+    // inferred from the ticket binding.
+    const { signPrivateKeyJwt: sign } = await import("../shared/private-key-jwt.ts");
+    const now = Math.floor(Date.now() / 1000);
+    const assertion = await sign(
+      { iss: client.clientId, sub: client.clientId, aud: `${origin}/token`, iat: now, exp: now + 300, jti: crypto.randomUUID() },
+      client.keyMaterial.privateJwk,
+    );
+    const exchange = await fetch(`${origin}/token`, {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+        subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+        subject_token: body.smart_permission_ticket[0],
+        client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+        client_assertion: assertion,
+      }),
+    });
+    expect(exchange.status).toBe(200);
+    const afterExchange = await sessionInfo();
+    expect(afterExchange!.eventCount).toBeGreaterThan(afterIssuance!.eventCount);
+  });
+});

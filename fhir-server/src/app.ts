@@ -26,6 +26,7 @@ import {
 } from "./auth/frameworks/oidf/demo-topology.ts";
 import { oidfEntityConfigurationPath } from "./auth/frameworks/oidf/urls.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
+import { decodeEs256Jwt } from "./auth/es256-jwt.ts";
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
 import {
   buildIssuerSmartConfiguration,
@@ -834,6 +835,21 @@ async function handleIssuerToken(context: AppContext, request: Request, url: URL
       clients: context.clients,
       issuers: context.issuers,
     });
+    // Attach issuance to the live protocol trace: bind each minted ticket to
+    // the caller's demo session so downstream token exchanges and FHIR reads
+    // inherit it, and emit a ticket-created event for the timeline.
+    const demoSessionId = extractDemoSessionId(request);
+    if (demoSessionId && Array.isArray(response.smart_permission_ticket)) {
+      for (const signedTicket of response.smart_permission_ticket as string[]) {
+        context.demoSessionLinks.bindTicket(demoSessionId, signedTicket);
+        try {
+          const decoded = decodeEs256Jwt<PermissionTicket>(signedTicket);
+          emitDemoEvent(context.demoEvents.observer(demoSessionId), buildTicketCreatedDemoEvent(decoded.payload, signedTicket));
+        } catch {
+          // Timeline decoration only; issuance already succeeded.
+        }
+      }
+    }
     return jsonResponse(response, 200, { "cache-control": "no-store" });
   } catch (error) {
     if (error instanceof IssuanceTokenError) {

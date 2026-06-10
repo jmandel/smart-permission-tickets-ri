@@ -38,20 +38,24 @@ export async function generatePkce() {
   return { verifier, challenge: base64UrlEncode(new Uint8Array(digest)) };
 }
 
-export async function discoverIssuer(origin: string, issuerSlug: string): Promise<RecordedCall> {
+function sessionHeaders(demoSessionId?: string | null): Record<string, string> {
+  return demoSessionId ? { "x-demo-session": demoSessionId } : {};
+}
+
+export async function discoverIssuer(origin: string, issuerSlug: string, demoSessionId?: string | null): Promise<RecordedCall> {
   const url = `${origin}/issuer/${issuerSlug}/.well-known/smart-configuration`;
-  const response = await fetch(url);
+  const response = await fetch(url, { headers: sessionHeaders(demoSessionId) });
   return { label: "Issuer discovery", request: { method: "GET", url }, status: response.status, response: await response.json() };
 }
 
-export async function registerApp(origin: string, keys: ClientKeyMaterial): Promise<RecordedCall & { clientId: string }> {
+export async function registerApp(origin: string, keys: ClientKeyMaterial, demoSessionId?: string | null): Promise<RecordedCall & { clientId: string }> {
   const url = `${origin}/register`;
   const body = JSON.stringify({
     client_name: LAUNCH_APP_NAME,
     token_endpoint_auth_method: "private_key_jwt",
     jwk: keys.publicJwk,
   }, null, 2);
-  const response = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body });
+  const response = await fetch(url, { method: "POST", headers: { "content-type": "application/json", ...sessionHeaders(demoSessionId) }, body });
   const json = await response.json();
   if (response.status !== 201) throw new Error(json.error_description ?? "Dynamic registration failed");
   return {
@@ -88,6 +92,7 @@ export async function redeemAuthorizationCode(input: {
   code: string;
   clientId: string;
   verifier: string;
+  demoSessionId?: string | null;
 }): Promise<RecordedCall & { tickets: string[]; endpoints: EndpointHint[]; refreshToken?: string }> {
   const url = `${input.origin}/issuer/${input.issuerSlug}/token`;
   const form = new URLSearchParams({
@@ -99,7 +104,7 @@ export async function redeemAuthorizationCode(input: {
   });
   const response = await fetch(url, {
     method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded" },
+    headers: { "content-type": "application/x-www-form-urlencoded", ...sessionHeaders(input.demoSessionId) },
     body: form,
   });
   const json = await response.json();
@@ -119,8 +124,8 @@ export async function redeemAuthorizationCode(input: {
 // discovers each Data Holder's endpoints from
 // ${fhir_base_url}/.well-known/smart-configuration rather than assuming
 // any URL layout.
-export async function discoverDataHolder(hint: EndpointHint) {
-  const response = await fetch(`${hint.fhir_base_url}/.well-known/smart-configuration`);
+export async function discoverDataHolder(hint: EndpointHint, demoSessionId?: string | null) {
+  const response = await fetch(`${hint.fhir_base_url}/.well-known/smart-configuration`, { headers: sessionHeaders(demoSessionId) });
   if (response.status !== 200) throw new Error(`Discovery failed at ${hint.organization.name}`);
   const config = await response.json();
   if (typeof config.token_endpoint !== "string") throw new Error(`No token endpoint advertised by ${hint.organization.name}`);
@@ -134,15 +139,16 @@ export async function redeemTicketAtSite(input: {
   hint: EndpointHint;
   ticket: string;
   keys: ClientKeyMaterial;
+  demoSessionId?: string | null;
 }): Promise<RecordedCall & { accessToken: string; grantedScope: string }> {
-  const endpoints = await discoverDataHolder(input.hint);
+  const endpoints = await discoverDataHolder(input.hint, input.demoSessionId);
   if (!endpoints.registrationEndpoint) throw new Error(`No registration endpoint advertised by ${input.hint.organization.name}`);
   // Registration is local to each Data Holder: the app introduces the same
   // key at each site and gets a site-scoped client_id. The ticket is the
   // portable part; the jkt presenter binding follows the key, not the id.
   const registerResponse = await fetch(endpoints.registrationEndpoint, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", ...sessionHeaders(input.demoSessionId) },
     body: JSON.stringify({
       client_name: LAUNCH_APP_NAME,
       token_endpoint_auth_method: "private_key_jwt",
@@ -177,7 +183,7 @@ export async function redeemTicketAtSite(input: {
   });
   const response = await fetch(tokenEndpoint, {
     method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded" },
+    headers: { "content-type": "application/x-www-form-urlencoded", ...sessionHeaders(input.demoSessionId) },
     body: form,
   });
   const json = await response.json();
@@ -197,10 +203,10 @@ export type SiteSample = {
   observations: number;
 };
 
-export async function sampleSiteData(hint: EndpointHint, accessToken: string): Promise<SiteSample> {
+export async function sampleSiteData(hint: EndpointHint, accessToken: string, demoSessionId?: string | null): Promise<SiteSample> {
   const count = async (resourceType: string) => {
     const response = await fetch(`${hint.fhir_base_url}/${resourceType}?_summary=count`, {
-      headers: { authorization: `Bearer ${accessToken}` },
+      headers: { authorization: `Bearer ${accessToken}`, ...sessionHeaders(demoSessionId) },
     });
     if (response.status !== 200) return 0;
     const bundle = await response.json();

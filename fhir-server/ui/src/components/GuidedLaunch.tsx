@@ -49,7 +49,9 @@ export function GuidedLaunch() {
   const [busy, setBusy] = useState(false);
   const pkceRef = useRef<{ verifier: string; challenge: string } | null>(null);
   const stateRef = useRef<string>(crypto.randomUUID());
+  const sessionRef = useRef<string>(crypto.randomUUID());
   const popupRef = useRef<Window | null>(null);
+  const traceHref = `/trace?session=${sessionRef.current}`;
 
   useEffect(() => {
     generateAppIdentity().then(setKeys).catch((cause) => setError(String(cause)));
@@ -75,12 +77,12 @@ export function GuidedLaunch() {
   };
 
   const onDiscover = () => run(async () => {
-    setDiscovery(await discoverIssuer(origin, ISSUER_SLUG));
+    setDiscovery(await discoverIssuer(origin, ISSUER_SLUG, sessionRef.current));
   });
 
   const onRegister = () => run(async () => {
     if (!keys) throw new Error("App keys not ready yet");
-    setRegistration(await registerApp(origin, keys));
+    setRegistration(await registerApp(origin, keys, sessionRef.current));
   });
 
   const onAuthorize = () => run(async () => {
@@ -106,6 +108,7 @@ export function GuidedLaunch() {
       code,
       clientId: registration.clientId,
       verifier: pkceRef.current.verifier,
+      demoSessionId: sessionRef.current,
     });
     setTokenCall(result);
     setSites(result.endpoints.map((hint) => ({ hint, status: "ready" })));
@@ -117,8 +120,8 @@ export function GuidedLaunch() {
     for (const [index, site] of sites.entries()) {
       setSites((current) => current.map((entry, i) => (i === index ? { ...entry, status: "running" } : entry)));
       try {
-        const exchange = await redeemTicketAtSite({ hint: site.hint, ticket, keys });
-        const sample = await sampleSiteData(site.hint, exchange.accessToken);
+        const exchange = await redeemTicketAtSite({ hint: site.hint, ticket, keys, demoSessionId: sessionRef.current });
+        const sample = await sampleSiteData(site.hint, exchange.accessToken, sessionRef.current);
         setSites((current) => current.map((entry, i) => (
           i === index
             ? { ...entry, status: "done", grantedScope: exchange.grantedScope, encounters: sample.encounters, observations: sample.observations }
@@ -143,7 +146,10 @@ export function GuidedLaunch() {
             <p className="eyebrow">Guided demo</p>
             <h2>An app gets Permission Tickets via SMART App Launch</h2>
           </div>
-          <a className="button" href="/">Back to workbench</a>
+          <div style={{ display: "flex", gap: 8 }}>
+            <a className="button" href={traceHref} target="_blank" rel="noreferrer">Watch in protocol trace</a>
+            <a className="button" href="/">Back to workbench</a>
+          </div>
         </div>
         <p className="subtle">
           The cast: <strong>Elena Reyes</strong>, a patient with records at five sites across Texas and
@@ -234,9 +240,9 @@ export function GuidedLaunch() {
         </p>
         <div className="patient-picker-grid">
           {sites.map((site) => (
-            <div key={site.hint.fhir_base_url} className="panel" style={{ padding: 12 }}>
+            <div key={site.hint.fhir_base_url} className="panel launch-site-card">
               <strong>{site.hint.organization.name}</strong>
-              <p className="subtle" style={{ margin: "4px 0" }}>{site.hint.fhir_base_url}</p>
+              <p className="subtle launch-card-url">{site.hint.fhir_base_url}</p>
               {site.status === "ready" && <p className="subtle">Waiting…</p>}
               {site.status === "running" && <p>Exchanging ticket…</p>}
               {site.status === "done" && (
@@ -253,7 +259,7 @@ export function GuidedLaunch() {
           <p>
             <strong>That's the whole story:</strong> one issuer ceremony produced one signed, presenter-bound,
             time-limited ticket, and {doneSites.length} independent sites each said yes to it on their own
-            terms. See the <a href="/trace">protocol trace</a> for every request this page just made.
+            terms. See the <a href={traceHref} target="_blank" rel="noreferrer">protocol trace</a> for every request this page just made.
           </p>
         )}
       </section>
