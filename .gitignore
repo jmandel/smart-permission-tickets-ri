@@ -2,3 +2,6 @@ node_modules/
 dist/
 bun.lock
 fhir-server/.demo-crypto-bundle.json
+
+# Local exe.dev/systemd deployment unit; installed copy lives in /etc/systemd/system/.
+fhir-server/fhir-server.service
