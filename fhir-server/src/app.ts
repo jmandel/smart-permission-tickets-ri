@@ -29,6 +29,7 @@ import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/pri
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
 import {
   buildIssuerSmartConfiguration,
+  completeAuthorization,
   handleAuthorizeRequest,
   IssuanceGrantStore,
   IssuanceTokenError,
@@ -375,6 +376,8 @@ export async function handleRequest(context: AppContext, request: Request, serve
           return jsonResponse(buildIssuerSmartConfiguration(url.origin, issuerRoute.issuerSlug), 200, { "cache-control": "public, max-age=300" });
         case "authorize":
           return handleIssuerAuthorize(context, request, url, issuerRoute.issuerSlug);
+        case "authorize-complete":
+          return handleIssuerAuthorizeComplete(context, request, url, issuerRoute.issuerSlug);
         case "issuance-token":
           return await handleIssuerToken(context, request, url, issuerRoute.issuerSlug);
       }
@@ -799,7 +802,21 @@ function handleIssuerAuthorize(context: AppContext, request: Request, url: URL, 
     case "redirect":
       return new Response(null, { status: 302, headers: { location: outcome.location } });
     case "picker":
-      return htmlResponse(renderPersonPicker(url.origin, issuerSlug, outcome.persons, outcome.resumeParams));
+      return htmlResponse(renderPersonPicker(url.origin, issuerSlug, outcome.persons, outcome.requestId));
+  }
+}
+
+function handleIssuerAuthorizeComplete(context: AppContext, request: Request, url: URL, issuerSlug: string) {
+  if (request.method !== "GET") return methodNotAllowed("GET");
+  if (!context.issuers.get(issuerSlug)) return notFound();
+  const outcome = completeAuthorization(context.store, context.issuanceGrants, issuerSlug, url.searchParams);
+  switch (outcome.kind) {
+    case "error":
+      return jsonResponse({ error: "invalid_request", error_description: outcome.message }, outcome.status);
+    case "redirect":
+      return new Response(null, { status: 302, headers: { location: outcome.location } });
+    case "picker":
+      return notFound();
   }
 }
 
@@ -868,7 +885,6 @@ async function handleIntrospect(context: AppContext, request: Request, url: URL,
       context,
       payload,
       contextRoute.mode,
-      request.headers.get("x-client-jkt"),
       absoluteUrl(url, buildFhirBasePath(context.config.strictDefaultMode, contextRoute)),
     );
     return jsonResponse({
@@ -1381,17 +1397,20 @@ function authenticateAccessToken(context: AppContext, request: Request, contextR
     context,
     payload,
     contextRoute.mode,
-    request.headers.get("x-client-jkt"),
     absoluteUrl(configuredPublicUrl(context.config, request), buildFhirBasePath(context.config.strictDefaultMode, contextRoute)),
   );
   return payload as AuthorizationEnvelope;
 }
 
+// Access tokens are ordinary OAuth 2.0 bearer tokens, matching SMART Backend
+// Services. The ticket's presenter_binding constrains redemption at the token
+// endpoint only; sender-constraining derived tokens would be a deployment
+// choice (for example DPoP), which the spec does not define and this server
+// does not implement.
 function enforceAccessToken(
   context: AppContext,
   payload: any,
   mode: ModeName,
-  proofJkt: string | null,
   expectedAudience?: string,
 ) {
   const now = Math.floor(Date.now() / 1000);
@@ -1399,7 +1418,6 @@ function enforceAccessToken(
   if (payload.exp <= now) throw new Error("Access token expired");
   if (payload.mode !== mode) throw new Error("Access token mode mismatch");
   if (expectedAudience && payload.aud !== expectedAudience) throw new Error("Access token audience mismatch");
-  if (payload.presenterProofKey?.jkt && proofJkt !== payload.presenterProofKey.jkt) throw new Error("Access token proof key mismatch");
 }
 
 function buildIssuerMetadata(context: AppContext, url: URL, issuerSlug: string) {
@@ -1877,6 +1895,7 @@ function resolveIssuerRoute(pathname: string):
   | { kind: "sign-ticket"; issuerSlug: string }
   | { kind: "smart-configuration"; issuerSlug: string }
   | { kind: "authorize"; issuerSlug: string }
+  | { kind: "authorize-complete"; issuerSlug: string }
   | { kind: "issuance-token"; issuerSlug: string }
   | null {
   const segments = pathname.split("/").filter(Boolean);
@@ -1892,6 +1911,9 @@ function resolveIssuerRoute(pathname: string):
   }
   if (segments[2] === "authorize" && segments.length === 3) {
     return { kind: "authorize", issuerSlug };
+  }
+  if (segments[2] === "authorize" && segments[3] === "complete" && segments.length === 4) {
+    return { kind: "authorize-complete", issuerSlug };
   }
   if (segments[2] === "token" && segments.length === 3) {
     return { kind: "issuance-token", issuerSlug };

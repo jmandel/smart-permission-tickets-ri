@@ -963,20 +963,16 @@ describe("mode surfaces", () => {
     }, boundClient);
     expect(typeof okBody.access_token).toBe("string");
 
-    const noProofRead = await fetch(`${origin}/modes/key-bound/fhir/Patient/${okBody.patient}`, {
+    // Presenter binding gates redemption at the token endpoint; the issued
+    // access token is an ordinary bearer token, matching SMART Backend
+    // Services. No proof-of-possession header is required at the FHIR layer.
+    const bearerRead = await fetch(`${origin}/modes/key-bound/fhir/Patient/${okBody.patient}`, {
       headers: {
         authorization: `Bearer ${okBody.access_token}`,
       },
     });
-    expect(noProofRead.status).toBe(400);
+    expect(bearerRead.status).toBe(200);
 
-    const okRead = await fetch(`${origin}/modes/key-bound/fhir/Patient/${okBody.patient}`, {
-      headers: {
-        authorization: `Bearer ${okBody.access_token}`,
-        "x-client-jkt": boundClient.jwkThumbprint,
-      },
-    });
-    expect(okRead.status).toBe(200);
   });
 
   test("anonymous mode allows read-only FHIR access without a token", async () => {
@@ -1528,11 +1524,31 @@ describe("issued token behavior", () => {
           periods: [{ start: "2021-01-01", end: "2025-12-31" }],
           sensitiveMode: "allow",
         }),
-        scope: "patient/Observation.rs",
+        scope: "patient/Encounter.rs",
       }),
       "invalid_scope",
       "Requested scope is not permitted by the ticket",
     );
+
+    // Ticket filters are not encoded in the scope string; they are enforced
+    // from the ticket itself. A client holding a category-filtered ticket can
+    // request the plain scope, but only the filtered data comes back.
+    const filteredTicketBody = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: ["patient/Observation.rs?category=laboratory"],
+        periods: [{ start: "2021-01-01", end: "2025-12-31" }],
+        sensitiveMode: "allow",
+      }),
+      scope: "patient/Observation.rs",
+    });
+    expect(filteredTicketBody.scope).toBe("patient/Observation.rs");
+    const allObs = await getJson(`${origin}/modes/open/fhir/Observation?_summary=count`, filteredTicketBody.access_token);
+    const labObs = await getJson(`${origin}/modes/open/fhir/Observation?category=laboratory&_summary=count`, filteredTicketBody.access_token);
+    expect(allObs.total).toBeGreaterThan(0);
+    expect(allObs.total).toBe(labObs.total);
   });
 
   test("broader resource types are searchable for supported patient-facing stories", async () => {
@@ -1705,7 +1721,6 @@ async function getJson(url: string, accessToken: string, proofJkt?: string) {
   const response = await fetch(url, {
     headers: {
       authorization: `Bearer ${accessToken}`,
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
   });
   expect(response.status).toBe(200);
@@ -1728,7 +1743,6 @@ async function postJsonWithBearer(url: string, body: Record<string, any>, access
     headers: {
       "content-type": "application/json",
       authorization: `Bearer ${accessToken}`,
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
     body: JSON.stringify(body),
   });
@@ -1943,7 +1957,6 @@ async function postFormWithClient(
     method: "POST",
     headers: {
       "content-type": "application/x-www-form-urlencoded",
-      ...(options?.proofJkt ? { "x-client-jkt": options.proofJkt } : {}),
     },
     body: new URLSearchParams({
       ...body,

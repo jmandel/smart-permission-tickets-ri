@@ -839,7 +839,6 @@ export function buildAuthorizedSearchCurl(
 export function buildFetchCurl(targetUrl: string, accessToken?: string | null, proofJkt?: string | null) {
   const parts = ["curl"];
   if (accessToken) parts.push("-H", shellQuote(`authorization: Bearer ${accessToken}`));
-  if (proofJkt) parts.push("-H", shellQuote(`x-client-jkt: ${proofJkt}`));
   parts.push(shellQuote(targetUrl));
   return parts.join(" ");
 }

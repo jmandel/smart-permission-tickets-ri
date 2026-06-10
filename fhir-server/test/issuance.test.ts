@@ -57,7 +57,11 @@ async function registerClient(clientName: string) {
   return { clientId: registration.client_id as string, keyMaterial };
 }
 
-async function runAuthorize(clientId: string, challenge: string, extraParams: Record<string, string> = {}) {
+// Runs the authorize request (spec params only), then completes the issuer's
+// approval ceremony the way the picker form does: the person and sensitivity
+// choices travel through the issuer-internal completion endpoint, never as
+// authorize request parameters.
+async function runAuthorize(clientId: string, challenge: string, options: { includeSensitive?: boolean } = {}) {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: clientId,
@@ -66,10 +70,19 @@ async function runAuthorize(clientId: string, challenge: string, extraParams: Re
     state: "xyz",
     code_challenge: challenge,
     code_challenge_method: "S256",
-    person: "elena-reyes",
-    ...extraParams,
   });
-  const response = await fetch(`${origin}/issuer/${issuerSlug}/authorize?${params}`, { redirect: "manual" });
+  const pickerResponse = await fetch(`${origin}/issuer/${issuerSlug}/authorize?${params}`);
+  expect(pickerResponse.status).toBe(200);
+  const pickerHtml = await pickerResponse.text();
+  const requestId = pickerHtml.match(/name="request" value="([^"]+)"/)?.[1];
+  expect(requestId).toBeTruthy();
+
+  const completeParams = new URLSearchParams({
+    request: requestId!,
+    person: "elena-reyes",
+    ...(options.includeSensitive ? { include_sensitive: "1" } : {}),
+  });
+  const response = await fetch(`${origin}/issuer/${issuerSlug}/authorize/complete?${completeParams}`, { redirect: "manual" });
   expect(response.status).toBe(302);
   const location = new URL(response.headers.get("location")!);
   expect(location.origin + location.pathname).toBe("https://app.example.com/callback");
@@ -104,7 +117,7 @@ describe("Proposal 003 issuance", () => {
     expect(config.smart_permission_ticket_types_issued).toEqual([PATIENT_SELF_ACCESS_TICKET_TYPE]);
   });
 
-  test("authorize without a person serves the demo approval picker", async () => {
+  test("authorize serves the approval picker; ceremony choices are not authorize parameters", async () => {
     const params = new URLSearchParams({
       response_type: "code",
       client_id: "well-known:https://app.example.com",
@@ -117,7 +130,13 @@ describe("Proposal 003 issuance", () => {
     expect(response.status).toBe(200);
     const html = await response.text();
     expect(html).toContain("who is authorizing");
-    expect(html).toContain("person=elena-reyes");
+    expect(html).toContain("elena-reyes");
+    expect(html).toContain("include_sensitive");
+    expect(html).toContain("authorize/complete");
+
+    // The completion endpoint rejects unknown or replayed requests.
+    const bogus = await fetch(`${origin}/issuer/${issuerSlug}/authorize/complete?request=nope&person=elena-reyes`);
+    expect(bogus.status).toBe(400);
   });
 
   test("full launch issues a redeemable, presenter-bound ticket with endpoint hints", async () => {
@@ -277,8 +296,15 @@ describe("guided launch page", () => {
       state: "guided-state",
     });
     // The page opens this URL in a popup and the person picker appears;
-    // here we pick Elena by parameter, as the picker links do.
-    const authorizeResponse = await fetch(`${authorizeUrl}&person=elena-reyes`, { redirect: "manual" });
+    // here we submit the picker form the way a user would: Elena selected,
+    // sensitive categories included.
+    const pickerResponse = await fetch(authorizeUrl);
+    expect(pickerResponse.status).toBe(200);
+    const requestId = (await pickerResponse.text()).match(/name="request" value="([^"]+)"/)?.[1]!;
+    const authorizeResponse = await fetch(
+      `${origin}/issuer/${issuerSlug}/authorize/complete?request=${requestId}&person=elena-reyes&include_sensitive=1`,
+      { redirect: "manual" },
+    );
     expect(authorizeResponse.status).toBe(302);
     const location = new URL(authorizeResponse.headers.get("location")!);
     expect(location.pathname).toBe("/launch/callback");
@@ -298,7 +324,9 @@ describe("guided launch page", () => {
     expect(payload.ticket_type).toBe(PATIENT_SELF_ACCESS_TICKET_TYPE);
 
     const firstHint = tokens.endpoints[0];
-    expect(flow.tokenEndpointForHint(firstHint)).toBe(firstHint.fhir_base_url.replace(/\/fhir$/, "/token"));
+    const discovered = await flow.discoverDataHolder(firstHint);
+    expect(discovered.tokenEndpoint).toContain("/token");
+    expect(discovered.registrationEndpoint).toContain("/register");
     const exchange = await flow.redeemTicketAtSite({
       hint: firstHint,
       ticket: tokens.tickets[0],
@@ -306,7 +334,7 @@ describe("guided launch page", () => {
     });
     expect(exchange.grantedScope).toContain("patient/");
 
-    const sample = await flow.sampleSiteData(firstHint, exchange.accessToken, keys.thumbprint);
+    const sample = await flow.sampleSiteData(firstHint, exchange.accessToken);
     expect(sample.encounters + sample.observations).toBeGreaterThan(0);
   });
 });

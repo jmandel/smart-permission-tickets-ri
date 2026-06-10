@@ -13,7 +13,6 @@ import {
   redeemTicketAtSite,
   registerApp,
   sampleSiteData,
-  tokenEndpointForHint,
   type EndpointHint,
   type RecordedCall,
 } from "../lib/launch-flow.ts";
@@ -119,7 +118,7 @@ export function GuidedLaunch() {
       setSites((current) => current.map((entry, i) => (i === index ? { ...entry, status: "running" } : entry)));
       try {
         const exchange = await redeemTicketAtSite({ hint: site.hint, ticket, keys });
-        const sample = await sampleSiteData(site.hint, exchange.accessToken, keys.thumbprint);
+        const sample = await sampleSiteData(site.hint, exchange.accessToken);
         setSites((current) => current.map((entry, i) => (
           i === index
             ? { ...entry, status: "done", grantedScope: exchange.grantedScope, encounters: sample.encounters, observations: sample.observations }
@@ -179,7 +178,7 @@ export function GuidedLaunch() {
       <StepCard
         index={3}
         title="Elena authorizes at the issuer"
-        narration="The app sends Elena to the issuer's authorize endpoint with PKCE. In a real deployment this is identity verification plus sharing preferences; in this demo, picking Elena in the popup stands in for that workflow. The issuer redirects back with an authorization code."
+        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says who is authorizing or what they choose to share. Those decisions happen at the issuer: in the popup, pick Elena and check the sensitive-categories box (her women's health records stay withheld without it). The issuer redirects back with an authorization code."
         status={code ? "done" : registration ? "ready" : "pending"}
         actionLabel="Open authorize popup"
         onAction={onAuthorize}
@@ -189,7 +188,7 @@ export function GuidedLaunch() {
         {authorizeUrl && (
           <pre className="launch-pre">{`GET ${authorizeUrl}`}</pre>
         )}
-        {authorizeUrl && !code && <p className="subtle">Waiting for the redirect… pick <strong>Elena Reyes</strong> in the popup.</p>}
+        {authorizeUrl && !code && <p className="subtle">Waiting for the redirect… in the popup, pick <strong>Elena Reyes</strong> and check <strong>Include sensitive categories</strong>.</p>}
         {code && <p className="subtle">Received <code>code={code.slice(0, 8)}…</code> at the app's redirect_uri.</p>}
       </StepCard>
 
@@ -227,8 +226,9 @@ export function GuidedLaunch() {
           </button>
         </div>
         <p className="subtle">
-          One authorization, many doors: at each site the app registers its key (registration is local to
-          each Data Holder), authenticates, and presents the same ticket via RFC 8693 token exchange. Each
+          One authorization, many doors: for each endpoint hint the app discovers the site's
+          smart-configuration, registers its key (registration is local to each Data Holder),
+          authenticates, and presents the same ticket via RFC 8693 token exchange. Each
           site verifies the issuer signature and the key binding, and matches Elena locally — no portal
           account, no per-site authorization screens, and Elena never reappears.
         </p>
@@ -236,7 +236,7 @@ export function GuidedLaunch() {
           {sites.map((site) => (
             <div key={site.hint.fhir_base_url} className="panel" style={{ padding: 12 }}>
               <strong>{site.hint.organization.name}</strong>
-              <p className="subtle" style={{ margin: "4px 0" }}>{tokenEndpointForHint(site.hint)}</p>
+              <p className="subtle" style={{ margin: "4px 0" }}>{site.hint.fhir_base_url}</p>
               {site.status === "ready" && <p className="subtle">Waiting…</p>}
               {site.status === "running" && <p>Exchanging ticket…</p>}
               {site.status === "done" && (

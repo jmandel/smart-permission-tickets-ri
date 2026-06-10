@@ -25,6 +25,20 @@ export const PERMISSION_TICKET_MARKER_SCOPE = "permission_ticket";
 
 type SensitivityChoice = "release_authorized" | "withhold";
 
+// An authorize request the issuer has accepted but whose approval ceremony
+// (the person picker, in this demo) has not finished yet. The ceremony's
+// outcomes — who is authorizing, and their sensitivity choice — are captured
+// by the issuer's own UI, never by parameters on the client's request.
+type PendingAuthorization = {
+  issuerSlug: string;
+  clientId: string;
+  redirectUri: string;
+  codeChallenge: string;
+  scopes: string[];
+  state: string | null;
+  expiresAt: number;
+};
+
 type IssuanceGrant = {
   issuerSlug: string;
   clientId: string;
@@ -39,8 +53,23 @@ type IssuanceGrant = {
 type IssuanceRefreshGrant = Omit<IssuanceGrant, "codeChallenge" | "redirectUri" | "expiresAt">;
 
 export class IssuanceGrantStore {
+  private readonly pending = new Map<string, PendingAuthorization>();
   private readonly codes = new Map<string, IssuanceGrant>();
   private readonly refreshTokens = new Map<string, IssuanceRefreshGrant>();
+
+  createPending(request: Omit<PendingAuthorization, "expiresAt">) {
+    const id = randomUUID();
+    this.pending.set(id, { ...request, expiresAt: nowSeconds() + CODE_TTL_SECONDS });
+    return id;
+  }
+
+  consumePending(id: string): PendingAuthorization | null {
+    const request = this.pending.get(id);
+    if (!request) return null;
+    this.pending.delete(id);
+    if (request.expiresAt <= nowSeconds()) return null;
+    return request;
+  }
 
   createCode(grant: Omit<IssuanceGrant, "expiresAt">) {
     const code = randomUUID();
@@ -91,8 +120,10 @@ export function buildIssuerSmartConfiguration(origin: string, issuerSlug: string
 export type AuthorizeOutcome =
   | { kind: "error"; status: number; message: string }
   | { kind: "redirect"; location: string }
-  | { kind: "picker"; persons: DemoPersonSummary[]; resumeParams: URLSearchParams };
+  | { kind: "picker"; persons: DemoPersonSummary[]; requestId: string };
 
+// Accepts only the SMART App Launch authorize parameters. Everything the
+// approval ceremony decides arrives later through completeAuthorization.
 export function handleAuthorizeRequest(
   url: URL,
   store: FhirStore,
@@ -128,53 +159,66 @@ export function handleAuthorizeRequest(
     return fail("invalid_scope", `scope must include ${PERMISSION_TICKET_MARKER_SCOPE}`);
   }
 
-  // Demo parameter: the authorizing person's sensitivity choice, captured
-  // here because this picker stands in for the issuer's approval workflow.
-  // It becomes a Proposal 005 sensitivity_policy claim on the minted ticket.
-  const sensitivityParam = params.get("sensitivity");
-  let sensitivity: SensitivityChoice | undefined;
-  if (sensitivityParam !== null) {
-    if (sensitivityParam !== "release_authorized" && sensitivityParam !== "withhold") {
-      return fail("invalid_request", "sensitivity must be release_authorized or withhold");
-    }
-    sensitivity = sensitivityParam;
-  }
-
-  const persons = store.listDemoPersons();
-  const personSlug = params.get("person");
-  if (!personSlug) {
-    return { kind: "picker", persons, resumeParams: params };
-  }
-  const person = persons.find((candidate) => candidate.patientSlug === personSlug);
-  if (!person) return fail("invalid_request", `Unknown person: ${personSlug}`);
-
-  const code = grants.createCode({
+  const requestId = grants.createPending({
     issuerSlug,
     clientId,
     redirectUri,
     codeChallenge,
     scopes,
-    personSlug,
+    state,
+  });
+  return { kind: "picker", persons: store.listDemoPersons(), requestId };
+}
+
+// Finishes the approval ceremony. In this demo the inputs come from the
+// issuer's own picker form; a real issuer would gather them from its
+// verification and consent workflow. Not part of the authorize request API.
+export function completeAuthorization(
+  store: FhirStore,
+  grants: IssuanceGrantStore,
+  issuerSlug: string,
+  params: URLSearchParams,
+): AuthorizeOutcome {
+  const requestId = params.get("request");
+  const pending = requestId ? grants.consumePending(requestId) : null;
+  if (!pending || pending.issuerSlug !== issuerSlug) {
+    return { kind: "error", status: 400, message: "Unknown or expired authorization request" };
+  }
+  const personSlug = params.get("person");
+  const person = store.listDemoPersons().find((candidate) => candidate.patientSlug === personSlug);
+  if (!person) return { kind: "error", status: 400, message: `Unknown person: ${personSlug ?? "(none)"}` };
+  const sensitivity: SensitivityChoice | undefined = params.get("include_sensitive") ? "release_authorized" : undefined;
+
+  const code = grants.createCode({
+    issuerSlug: pending.issuerSlug,
+    clientId: pending.clientId,
+    redirectUri: pending.redirectUri,
+    codeChallenge: pending.codeChallenge,
+    scopes: pending.scopes,
+    personSlug: person.patientSlug,
     sensitivity,
   });
-  const target = new URL(redirectUri);
+  const target = new URL(pending.redirectUri);
   target.searchParams.set("code", code);
-  if (state) target.searchParams.set("state", state);
+  if (pending.state) target.searchParams.set("state", pending.state);
   return { kind: "redirect", location: target.toString() };
 }
 
-export function renderPersonPicker(origin: string, issuerSlug: string, persons: DemoPersonSummary[], resumeParams: URLSearchParams) {
-  const links = persons.map((person) => {
-    const next = new URLSearchParams(resumeParams);
-    next.set("person", person.patientSlug);
+export function renderPersonPicker(origin: string, issuerSlug: string, persons: DemoPersonSummary[], requestId: string) {
+  const rows = persons.map((person, index) => {
     const label = `${person.displayName}${person.birthDate ? ` (${person.birthDate})` : ""}`;
-    return `<li><a href="${origin}/issuer/${issuerSlug}/authorize?${next.toString()}">${escapeHtml(label)}</a></li>`;
+    return `<li><label><input type="radio" name="person" value="${escapeHtml(person.patientSlug)}"${index === 0 ? "" : ""}/> ${escapeHtml(label)}</label></li>`;
   });
   return `<!doctype html><html><head><title>Permission Ticket Issuer</title></head><body>
 <h1>Demo issuer: who is authorizing?</h1>
 <p>In a real deployment this step is the issuer's identity verification and
 sharing-preference workflow. In this demo, picking a person stands in for it.</p>
-<ul>${links.join("\n")}</ul>
+<form method="GET" action="${origin}/issuer/${issuerSlug}/authorize/complete">
+  <input type="hidden" name="request" value="${escapeHtml(requestId)}"/>
+  <ul>${rows.join("\n")}</ul>
+  <p><label><input type="checkbox" name="include_sensitive" value="1"/> Include sensitive categories (becomes a sensitivity_policy claim on the ticket)</label></p>
+  <p><button type="submit">Authorize</button></p>
+</form>
 </body></html>`;
 }
 

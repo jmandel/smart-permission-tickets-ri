@@ -395,7 +395,6 @@ describe("demo event stream", () => {
         method: "POST",
         headers: {
           "content-type": "application/x-www-form-urlencoded",
-          "x-client-jkt": thumbprint,
         },
         body: new URLSearchParams({
           grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -414,7 +413,6 @@ describe("demo event stream", () => {
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${networkTokenBody.access_token}`,
-          "x-client-jkt": thumbprint,
         },
         body: JSON.stringify({ resourceType: "Parameters" }),
       });

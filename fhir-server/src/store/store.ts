@@ -498,6 +498,8 @@ export function materializeVisibleSet(db: Database, envelope: {
   deniedLabelsAny?: Label[];
   granularCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
   granularCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
+  requestedCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
+  requestedCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
 }, siteSlug?: string) {
   db.exec(`
     DROP TABLE IF EXISTS temp.allowed_patients;
@@ -546,6 +548,8 @@ function buildVisibleSql(
     deniedLabelsAny?: Label[];
     granularCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
     granularCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
+  requestedCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
+  requestedCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
   },
   routeSiteSlug?: string,
 ) {
@@ -568,6 +572,8 @@ function buildVisibleWhere(
     deniedLabelsAny?: Label[];
     granularCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
     granularCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
+  requestedCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
+  requestedCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
   },
   routeSiteSlug?: string,
   useTempAllowedPatients = true,
@@ -668,56 +674,45 @@ function buildVisibleWhere(
     for (const label of envelope.deniedLabelsAny) params.push(label.system, label.code);
   }
 
-  const groupedRules = new Map<string, Array<{ resourceType: string; system: string; code: string }>>();
-  for (const rule of envelope.granularCategoryRules ?? []) {
-    const existing = groupedRules.get(rule.resourceType) ?? [];
-    existing.push(rule);
-    groupedRules.set(rule.resourceType, existing);
-  }
-  for (const [resourceType, rules] of groupedRules) {
-    clauses.push(`
-      (
-        r.resource_type <> ?
-        OR EXISTS (
-          SELECT 1
-          FROM resource_tokens rt
-          WHERE rt.resource_pk = r.resource_pk
-            AND rt.param_name = 'category'
-            AND (${rules.map(() => "(rt.system = ? AND rt.code = ?)").join(" OR ")})
-        )
-      )
-    `);
-    params.push(resourceType);
-    for (const rule of rules) params.push(rule.system, rule.code);
-  }
-
-  // Code filters: OR within the rule set for a resource type, ANDed with any
-  // category filter above, per the spec's constraint algebra.
-  const groupedCodeRules = new Map<string, Array<{ resourceType: string; system: string | null; code: string }>>();
-  for (const rule of envelope.granularCodeRules ?? []) {
-    const existing = groupedCodeRules.get(rule.resourceType) ?? [];
-    existing.push(rule);
-    groupedCodeRules.set(rule.resourceType, existing);
-  }
-  for (const [resourceType, rules] of groupedCodeRules) {
-    clauses.push(`
-      (
-        r.resource_type <> ?
-        OR EXISTS (
-          SELECT 1
-          FROM resource_tokens rt
-          WHERE rt.resource_pk = r.resource_pk
-            AND rt.param_name = 'code'
-            AND (${rules.map((rule) => (rule.system ? "(rt.system = ? AND rt.code = ?)" : "(rt.code = ?)")).join(" OR ")})
-        )
-      )
-    `);
-    params.push(resourceType);
+  // Token-filter rule sets: OR within a set for a resource type, AND across
+  // sets, per the spec's constraint algebra. The ticket's rules and any
+  // client-requested narrowing rules are independent sets, so a client can
+  // only narrow what the ticket allows, never widen it.
+  const applyTokenRules = (
+    paramName: "category" | "code",
+    rules: Array<{ resourceType: string; system: string | null; code: string }>,
+  ) => {
+    const grouped = new Map<string, Array<{ resourceType: string; system: string | null; code: string }>>();
     for (const rule of rules) {
-      if (rule.system) params.push(rule.system, rule.code);
-      else params.push(rule.code);
+      const existing = grouped.get(rule.resourceType) ?? [];
+      existing.push(rule);
+      grouped.set(rule.resourceType, existing);
     }
-  }
+    for (const [resourceType, groupRules] of grouped) {
+      clauses.push(`
+        (
+          r.resource_type <> ?
+          OR EXISTS (
+            SELECT 1
+            FROM resource_tokens rt
+            WHERE rt.resource_pk = r.resource_pk
+              AND rt.param_name = '${paramName}'
+              AND (${groupRules.map((rule) => (rule.system ? "(rt.system = ? AND rt.code = ?)" : "(rt.code = ?)")).join(" OR ")})
+          )
+        )
+      `);
+      params.push(resourceType);
+      for (const rule of groupRules) {
+        if (rule.system) params.push(rule.system, rule.code);
+        else params.push(rule.code);
+      }
+    }
+  };
+
+  applyTokenRules("category", envelope.granularCategoryRules ?? []);
+  applyTokenRules("code", envelope.granularCodeRules ?? []);
+  applyTokenRules("category", envelope.requestedCategoryRules ?? []);
+  applyTokenRules("code", envelope.requestedCodeRules ?? []);
 
   return {
     whereSql: clauses.join(" AND "),

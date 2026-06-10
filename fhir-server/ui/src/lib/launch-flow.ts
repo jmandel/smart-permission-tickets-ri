@@ -78,10 +78,6 @@ export function buildAuthorizeUrl(input: {
     state: input.state,
     code_challenge: input.challenge,
     code_challenge_method: "S256",
-    // Pre-baked for the guided demo: Elena includes her sensitive records,
-    // so the ticket carries a sensitivity_policy claim and her women's
-    // health site lights up with the rest.
-    sensitivity: "release_authorized",
   });
   return `${input.origin}/issuer/${input.issuerSlug}/authorize?${params.toString()}`;
 }
@@ -119,14 +115,19 @@ export async function redeemAuthorizationCode(input: {
   };
 }
 
-// fhir_base_url ends in /fhir; its siblings /token and /register are the
-// site's token and registration endpoints, per this server's surface layout.
-export function tokenEndpointForHint(hint: EndpointHint) {
-  return hint.fhir_base_url.replace(/\/fhir$/, "/token");
-}
-
-export function registerEndpointForHint(hint: EndpointHint) {
-  return hint.fhir_base_url.replace(/\/fhir$/, "/register");
+// Per Proposal 003, endpoint hints carry a fhir_base_url; the client
+// discovers each Data Holder's endpoints from
+// ${fhir_base_url}/.well-known/smart-configuration rather than assuming
+// any URL layout.
+export async function discoverDataHolder(hint: EndpointHint) {
+  const response = await fetch(`${hint.fhir_base_url}/.well-known/smart-configuration`);
+  if (response.status !== 200) throw new Error(`Discovery failed at ${hint.organization.name}`);
+  const config = await response.json();
+  if (typeof config.token_endpoint !== "string") throw new Error(`No token endpoint advertised by ${hint.organization.name}`);
+  return {
+    tokenEndpoint: config.token_endpoint as string,
+    registrationEndpoint: typeof config.registration_endpoint === "string" ? config.registration_endpoint as string : null,
+  };
 }
 
 export async function redeemTicketAtSite(input: {
@@ -134,10 +135,12 @@ export async function redeemTicketAtSite(input: {
   ticket: string;
   keys: ClientKeyMaterial;
 }): Promise<RecordedCall & { accessToken: string; grantedScope: string }> {
+  const endpoints = await discoverDataHolder(input.hint);
+  if (!endpoints.registrationEndpoint) throw new Error(`No registration endpoint advertised by ${input.hint.organization.name}`);
   // Registration is local to each Data Holder: the app introduces the same
   // key at each site and gets a site-scoped client_id. The ticket is the
   // portable part; the jkt presenter binding follows the key, not the id.
-  const registerResponse = await fetch(registerEndpointForHint(input.hint), {
+  const registerResponse = await fetch(endpoints.registrationEndpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
@@ -152,7 +155,7 @@ export async function redeemTicketAtSite(input: {
   }
   const siteClientId = registration.client_id as string;
 
-  const tokenEndpoint = tokenEndpointForHint(input.hint);
+  const tokenEndpoint = endpoints.tokenEndpoint;
   const now = Math.floor(Date.now() / 1000);
   const assertion = await signPrivateKeyJwt(
     {
@@ -194,12 +197,10 @@ export type SiteSample = {
   observations: number;
 };
 
-export async function sampleSiteData(hint: EndpointHint, accessToken: string, proofJkt: string): Promise<SiteSample> {
+export async function sampleSiteData(hint: EndpointHint, accessToken: string): Promise<SiteSample> {
   const count = async (resourceType: string) => {
-    // The access token is bound to the app's key; this server's demo
-    // proof-of-possession mechanism is the x-client-jkt header.
     const response = await fetch(`${hint.fhir_base_url}/${resourceType}?_summary=count`, {
-      headers: { authorization: `Bearer ${accessToken}`, "x-client-jkt": proofJkt },
+      headers: { authorization: `Bearer ${accessToken}` },
     });
     if (response.status !== 200) return 0;
     const bundle = await response.json();

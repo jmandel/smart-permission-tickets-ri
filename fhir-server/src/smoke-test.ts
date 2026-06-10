@@ -380,7 +380,6 @@ async function getJson(url: string, accessToken: string, proofJkt?: string) {
   const response = await fetch(url, {
     headers: {
       authorization: `Bearer ${accessToken}`,
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
   });
   assert(response.ok, `${url} failed with ${response.status}`);
@@ -403,7 +402,6 @@ async function postJsonWithBearer(url: string, body: Record<string, any>, access
     headers: {
       "content-type": "application/json",
       authorization: `Bearer ${accessToken}`,
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
     body: JSON.stringify(body),
   });
@@ -440,7 +438,6 @@ async function postFormJsonWithClient(
     method: "POST",
     headers: {
       "content-type": "application/x-www-form-urlencoded",
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
     body: new URLSearchParams({
       ...body,

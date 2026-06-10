@@ -174,6 +174,9 @@ export type AuthorizationEnvelope = {
   deniedLabelsAny?: Label[];
   granularCategoryRules?: CategoryRule[];
   granularCodeRules?: CodeRule[];
+  /** Filters from client-requested granular scopes; ANDed with the ticket's rules. */
+  requestedCategoryRules?: CategoryRule[];
+  requestedCodeRules?: CodeRule[];
   presenterProofKey?: { jkt: string };
   presenterFrameworkClient?: FrameworkClientBinding;
 };

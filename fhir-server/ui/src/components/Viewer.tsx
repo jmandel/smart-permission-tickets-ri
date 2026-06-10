@@ -1723,7 +1723,6 @@ async function inspectRemoteArtifact(input: {
     const content = await fetchJson<unknown>(normalizedTarget, {
       headers: {
         ...(input.accessToken ? { authorization: `Bearer ${input.accessToken}` } : {}),
-        ...(input.proofJkt ? { "x-client-jkt": input.proofJkt } : {}),
       },
     });
     const payload: ArtifactViewerPayload = {

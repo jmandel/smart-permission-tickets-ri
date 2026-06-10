@@ -23,7 +23,6 @@ export async function postFormJson<T>(url: string, form: URLSearchParams, proofJ
     method: "POST",
     headers: {
       "content-type": "application/x-www-form-urlencoded",
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
     body: form.toString(),
   }, demoSessionId);
@@ -200,7 +199,6 @@ export async function fetchSurfaceFhir(
 ) {
   const headers: Record<string, string> = {};
   if (accessToken) headers.authorization = `Bearer ${accessToken}`;
-  if (proofJkt) headers["x-client-jkt"] = proofJkt;
   return fetchJson<any>(`${origin}${surface.fhirBasePath}/${stripLeadingSlash(relativePath)}`, { headers }, demoSessionId);
 }
 
@@ -213,7 +211,6 @@ export async function fetchFhirFromBase(
 ) {
   const headers: Record<string, string> = {};
   if (accessToken) headers.authorization = `Bearer ${accessToken}`;
-  if (proofJkt) headers["x-client-jkt"] = proofJkt;
   return fetchJson<any>(`${trimTrailingSlash(fhirBaseUrl)}/${stripLeadingSlash(relativePath)}`, { headers }, demoSessionId);
 }
 
@@ -231,7 +228,6 @@ export async function fetchSurfaceFhirAllPages(
 ) {
   const headers: Record<string, string> = {};
   if (accessToken) headers.authorization = `Bearer ${accessToken}`;
-  if (proofJkt) headers["x-client-jkt"] = proofJkt;
   return fetchPaginatedFhir(`${origin}${surface.fhirBasePath}/${stripLeadingSlash(relativePath)}`, headers, demoSessionId);
 }
 
@@ -244,7 +240,6 @@ export async function fetchFhirAllPagesFromBase(
 ) {
   const headers: Record<string, string> = {};
   if (accessToken) headers.authorization = `Bearer ${accessToken}`;
-  if (proofJkt) headers["x-client-jkt"] = proofJkt;
   return fetchPaginatedFhir(`${trimTrailingSlash(fhirBaseUrl)}/${stripLeadingSlash(relativePath)}`, headers, demoSessionId);
 }
 
@@ -306,7 +301,6 @@ export async function postJsonWithBearer<T>(url: string, body: Record<string, an
     headers: {
       "content-type": "application/json",
       authorization: `Bearer ${accessToken}`,
-      ...(proofJkt ? { "x-client-jkt": proofJkt } : {}),
     },
     body: JSON.stringify(body),
   }, demoSessionId);

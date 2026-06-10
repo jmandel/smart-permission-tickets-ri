@@ -601,15 +601,17 @@ export function narrowAuthorizationEnvelopeScopes(envelope: AuthorizationEnvelop
     }
   }
 
+  // The ticket's own filter rules always stay in force; requested granular
+  // scopes can only narrow further, so their rules are carried separately
+  // and ANDed with the ticket's at enforcement time.
   const narrowed = compileScopes(requestedScopes);
   return {
     ...envelope,
     scope: narrowed.scopeString,
     grantedScopes: narrowed.scopeStrings,
     allowedResourceTypes: narrowed.allowedResourceTypes,
-    granularCategoryRules: narrowed.granularCategoryRules,
-    requiredLabelsAll: narrowed.requiredLabelsAll,
-    deniedLabelsAny: narrowed.deniedLabelsAny,
+    requestedCategoryRules: narrowed.granularCategoryRules,
+    requestedCodeRules: narrowed.granularCodeRules,
   };
 }
 
@@ -691,16 +693,67 @@ function compileAllowedSites(ticket: PermissionTicket, store: FhirStore, aliases
   return [...aliasSites].filter((siteSlug) => matchedSites.has(siteSlug)).sort();
 }
 
+// Compiles ticket permissions straight into the authorization envelope.
+// Narrowing filters (category_any_of, code_any_of) become enforcement rules
+// and are never encoded into scope strings: the OAuth scope surface carries
+// only the resource-type and interaction grain, and the Data Holder enforces
+// the filters from the ticket itself.
 function compilePermissions(permissions: DataPermission[]) {
-  const projectedScopes = permissions
-    .map(projectDataPermissionToSmartScope)
-    .filter((scope): scope is string => scope !== null);
-  if (!projectedScopes.length) {
+  const allowedResourceTypes = new Set<string>();
+  const scopeLetters = new Map<string, Set<string>>();
+  const granularCategoryRules: CategoryRule[] = [];
+  const granularCodeRules: CodeRule[] = [];
+
+  for (const permission of permissions) {
     // Access calculation is an intersection: this read-only server narrows
-    // write interactions away, and if nothing remains there is no grant.
+    // write interactions away; a write-only permission contributes nothing.
+    const letters = new Set<string>();
+    if (permission.interactions.includes("read")) letters.add("r");
+    if (permission.interactions.includes("search")) letters.add("s");
+    if (!letters.size) continue;
+
+    if (!RESOURCE_WILDCARD.has(permission.resource_type)) {
+      throw new Error(`Unsupported resource type in ticket permissions: ${permission.resource_type}`);
+    }
+    const targetTypes = permission.resource_type === "*" ? [...SUPPORTED_RESOURCE_TYPES] : [permission.resource_type];
+    for (const type of targetTypes) allowedResourceTypes.add(type);
+    const existing = scopeLetters.get(permission.resource_type) ?? new Set<string>();
+    for (const letter of letters) existing.add(letter);
+    scopeLetters.set(permission.resource_type, existing);
+
+    for (const coding of permission.category_any_of ?? []) {
+      if (!coding.code) throw new Error("Unsupported access constraint: category_any_of entry without code");
+      const token = coding.system ? `${coding.system}|${coding.code}` : coding.code;
+      for (const type of targetTypes) {
+        const rule = compileCategoryRule(type, token);
+        if (!rule) throw new Error(`Unsupported category granular scope for ${type}`);
+        granularCategoryRules.push(rule);
+      }
+    }
+    for (const coding of permission.code_any_of ?? []) {
+      if (!coding.code) throw new Error("Unsupported access constraint: code_any_of entry without code");
+      const token = coding.system ? `${coding.system}|${coding.code}` : coding.code;
+      for (const type of targetTypes) granularCodeRules.push(compileCodeRule(type, token));
+    }
+  }
+
+  if (!scopeLetters.size) {
     throw new Error("No ticket permission projects to a scope this server can grant");
   }
-  return compileScopes(projectedScopes);
+
+  const scopeStrings = [...scopeLetters.entries()]
+    .map(([token, letters]) => `patient/${token}.${["r", "s"].filter((letter) => letters.has(letter)).join("")}`)
+    .sort();
+
+  return {
+    scopeStrings,
+    scopeString: scopeStrings.join(" "),
+    allowedResourceTypes: [...allowedResourceTypes].sort(),
+    granularCategoryRules: granularCategoryRules.length ? dedupeCategoryRules(granularCategoryRules) : undefined,
+    granularCodeRules: granularCodeRules.length ? dedupeCodeRules(granularCodeRules) : undefined,
+    requiredLabelsAll: undefined,
+    deniedLabelsAny: undefined,
+  };
 }
 
 function compileScopes(scopes: string[]) {
@@ -756,33 +809,6 @@ function compileScopes(scopes: string[]) {
     requiredLabelsAll: requiredLabelsAll.length ? requiredLabelsAll : undefined,
     deniedLabelsAny: deniedLabelsAny.length ? deniedLabelsAny : undefined,
   };
-}
-
-function projectDataPermissionToSmartScope(permission: DataPermission): string | null {
-  // The ticket's access is a maximum, not a promise: this server narrows to
-  // the interactions it can serve (read/search). A write-only permission
-  // contributes nothing rather than failing the whole ticket.
-  let scopePermissions = "";
-  if (permission.interactions.includes("read")) scopePermissions += "r";
-  if (permission.interactions.includes("search")) scopePermissions += "s";
-  if (!scopePermissions) return null;
-
-  const queryParts: string[] = [];
-  if (permission.category_any_of?.length) {
-    queryParts.push(`category=${codingTokens(permission.category_any_of, "category_any_of").join(",")}`);
-  }
-  if (permission.code_any_of?.length) {
-    queryParts.push(`code=${codingTokens(permission.code_any_of, "code_any_of").join(",")}`);
-  }
-
-  return `patient/${permission.resource_type}.${scopePermissions}${queryParts.length ? `?${queryParts.join("&")}` : ""}`;
-}
-
-function codingTokens(codings: Array<{ system?: string; code?: string }>, constraintName: string) {
-  return codings.map((coding) => {
-    if (!coding.code) throw new Error(`Unsupported access constraint: ${constraintName} entry without code`);
-    return encodeURIComponent(coding.system ? `${coding.system}|${coding.code}` : coding.code);
-  });
 }
 
 type ParsedSmartScope = {

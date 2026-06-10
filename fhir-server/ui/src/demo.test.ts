@@ -564,9 +564,9 @@ describe("demo helpers", () => {
     ).toBe("presenter_binding.method=trust_framework_client");
   });
 
-  test("copied curls inline the actual bearer token and proof header", () => {
+  test("copied curls inline the actual bearer token: access tokens are bearer tokens", () => {
     expect(buildFetchCurl("http://localhost:8091/fhir/Patient?_count=20", "abc123", "proof-1")).toBe(
-      "curl -H 'authorization: Bearer abc123' -H 'x-client-jkt: proof-1' 'http://localhost:8091/fhir/Patient?_count=20'",
+      "curl -H 'authorization: Bearer abc123' 'http://localhost:8091/fhir/Patient?_count=20'",
     );
   });
 });
