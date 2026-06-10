@@ -351,7 +351,7 @@ describe("mode surfaces", () => {
     expect(crlResponse.status).toBe(200);
     expect(crlResponse.headers.get("content-type")).toContain("application/pkix-crl");
     const crlText = describeDerCrl(new Uint8Array(await crlResponse.arrayBuffer()));
-    expect(crlText).toContain("Issuer: CN=UDAP RSA Root");
+    expect(crlText.replace(/\s*=\s*/g, "=")).toContain("Issuer: CN=UDAP RSA Root");
   });
 
   test("default config accepts built-in RS256 UDAP registrations", async () => {
