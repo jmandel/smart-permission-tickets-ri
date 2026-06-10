@@ -1,13 +1,19 @@
+import { z } from "zod";
+
 import type { FhirStore } from "../store/store.ts";
 import type { ServerConfig } from "../config.ts";
 import {
+  SENSITIVE_LABELS,
   SUPPORTED_RESOURCE_TYPES,
+  V3_ACTCODE_SYSTEM,
   type AllowedPatientAlias,
   type AuthorizationEnvelope,
   type CategoryRule,
+  type CodeRule,
   type DateRange,
   type DateSemantics,
   type FrameworkClientBinding,
+  type Label,
   type ModeName,
   type ResolvedIssuerTrust,
   type SensitiveMode,
@@ -17,7 +23,11 @@ import { decodeEs256Jwt, verifyEs256Jwt } from "./es256-jwt.ts";
 import { resolveConfiguredIssuerTrust } from "./issuer-trust.ts";
 import type { FrameworkRegistry } from "./frameworks/registry.ts";
 import type { TicketRevocationRegistry } from "./ticket-revocation.ts";
-import { SUPPORTED_PERMISSION_TICKET_TYPES } from "../../shared/permission-tickets.ts";
+import {
+  PATIENT_DELEGATED_ACCESS_TICKET_TYPE,
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
+  SUPPORTED_PERMISSION_TICKET_TYPES,
+} from "../../shared/permission-tickets.ts";
 import type {
   DemoArtifactProvenanceStep,
   DemoAuditStep,
@@ -30,14 +40,24 @@ import {
   type DataPermission,
   type FHIRHumanName,
   type FHIRIdentifier,
-  type PermissionRule,
   PermissionTicketSchema,
   type PermissionTicket,
   type PresenterBinding,
 } from "../../../shared/permission-ticket-schema.ts";
 
 const RESOURCE_WILDCARD = new Set(["*", "Patient", "Encounter", "Observation", "Condition", "DiagnosticReport", "DocumentReference", "MedicationRequest", "Procedure", "Immunization", "ServiceRequest", "Organization", "Practitioner", "Location", "AllergyIntolerance"]);
-const SUPPORTING_CONTEXT_TYPES = ["Organization", "Practitioner", "Location"] as const;
+
+// Ticket types whose profile requires presenter binding (UC1/UC2 per the
+// use case catalog). Enforced in strict/registered/key-bound modes; the
+// open and anonymous demo modes accept unbound tickets with an audit note,
+// since those surfaces exist to show degraded postures.
+const BINDING_REQUIRED_TICKET_TYPES = new Set<string>([
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
+  PATIENT_DELEGATED_ACCESS_TICKET_TYPE,
+]);
+
+// Extension claims this server understands for must_understand processing.
+const UNDERSTOOD_EXTENSION_CLAIMS = new Set(["sensitivity_policy"]);
 
 export type ValidatedPermissionTicket = {
   ticket: PermissionTicket;
@@ -63,6 +83,7 @@ export async function validatePermissionTicket(
   ticketRevocations: TicketRevocationRegistry,
   expectedAudiences: string[],
   diagnostics?: TokenExchangeDiagnostics,
+  options?: { mode?: ModeName },
 ): Promise<ValidatedPermissionTicket> {
   if (!subjectToken) throw new Error("No permission ticket provided");
   addRelatedArtifact(diagnostics, {
@@ -170,14 +191,35 @@ export async function validatePermissionTicket(
     evidence: payload.ticket_type,
     why: "Ticket type is supported",
   });
+  // Issuer trust is per ticket type: a policy may trust an issuer for
+  // self-access tickets without trusting it for delegated or B2B tickets.
+  if (issuer.ticketTypes && !issuer.ticketTypes.includes(payload.ticket_type)) {
+    addAuditStep(diagnostics, {
+      check: "Issuer Trust",
+      passed: false,
+      reason: "Ticket issuer not trusted for this ticket type",
+    });
+    throw new Error("Ticket issuer not trusted for this ticket type");
+  }
   addAuditStep(diagnostics, {
     check: "Issuer Trust",
     passed: true,
     evidence: issuer.displayName ?? issuer.issuerUrl,
-    why: `Issuer is trusted via ${issuer.source}`,
+    why: `Issuer is trusted via ${issuer.source}${issuer.ticketTypes ? " for this ticket type" : ""}`,
   });
   appendFrameworkIssuerDiagnostics(issuer, diagnostics);
+  enforcePresenterBindingRequirement(payload, options?.mode, diagnostics);
   enforceMustUnderstand(payload, diagnostics);
+  try {
+    parseSensitivityPolicy(payload); // shape check; compilation happens at envelope time
+  } catch (error) {
+    addAuditStep(diagnostics, {
+      check: "Extensions",
+      passed: false,
+      reason: error instanceof Error ? error.message : "Invalid sensitivity_policy claim",
+    });
+    throw error;
+  }
   try {
     await ticketRevocations.assertActive(payload);
   } catch (error) {
@@ -212,13 +254,38 @@ function permissionTicketAudienceMatches(
   frameworks: FrameworkRegistry,
 ) {
   switch (audType) {
-    case "data_holder_url":
-      return audValues.some((audience) => expectedAudiences.includes(audience));
     case "trust_framework":
       return audValues.some((audience) => frameworks.hasLocalAudienceMembership(audience));
+    case "data_holder_url":
     default:
-      return audValues.some((audience) => expectedAudiences.includes(audience) || frameworks.hasLocalAudienceMembership(audience));
+      // Absent aud_type means data_holder_url per the spec. A bare URL is
+      // never treated as a trust-framework identifier; issuers SHALL mark
+      // framework audiences explicitly with aud_type: "trust_framework".
+      return audValues.some((audience) => expectedAudiences.includes(audience));
   }
+}
+
+function enforcePresenterBindingRequirement(
+  ticket: PermissionTicket,
+  mode: ModeName | undefined,
+  diagnostics?: TokenExchangeDiagnostics,
+) {
+  if (!BINDING_REQUIRED_TICKET_TYPES.has(ticket.ticket_type) || ticket.presenter_binding) return;
+  if (mode === "open" || mode === "anonymous") {
+    addAuditStep(diagnostics, {
+      check: "Client Binding",
+      passed: true,
+      evidence: "presenter_binding absent",
+      why: "Spec requires presenter binding for individual-access tickets; accepted here only because this demo surface runs in open mode.",
+    });
+    return;
+  }
+  addAuditStep(diagnostics, {
+    check: "Client Binding",
+    passed: false,
+    reason: "Ticket presenter binding required for this ticket type",
+  });
+  throw new Error("Ticket presenter binding required for this ticket type");
 }
 
 export function compileAuthorizationEnvelope(
@@ -245,7 +312,7 @@ export function compileAuthorizationEnvelope(
   const scopeResult = compilePermissions(ticket.access.permissions);
   const dateRanges = compileDateRanges(ticket.access.data_period);
   const dateSemantics = compileDateSemantics();
-  const sensitiveMode = compileSensitiveMode(ticket);
+  const sensitivity = compileSensitivityControls(parseSensitivityPolicy(ticket));
 
   const filteredAliases = allowedSites === undefined
     ? allowedPatientAliases
@@ -257,7 +324,7 @@ export function compileAuthorizationEnvelope(
 
   const patient = choosePatientClaim(filteredAliases, allowedSites);
   const requiredLabelsAll = [...(scopeResult.requiredLabelsAll ?? [])];
-  const deniedLabelsAny = [...(scopeResult.deniedLabelsAny ?? [])];
+  const deniedLabelsAny = dedupeLabels([...(scopeResult.deniedLabelsAny ?? []), ...sensitivity.deniedLabels]);
 
   const envelope: AuthorizationEnvelope = {
     ticketIssuer: ticket.iss,
@@ -274,10 +341,11 @@ export function compileAuthorizationEnvelope(
     allowedResourceTypes: scopeResult.allowedResourceTypes,
     dateRanges,
     dateSemantics,
-    sensitive: { mode: sensitiveMode },
+    sensitive: { mode: sensitivity.mode },
     requiredLabelsAll: requiredLabelsAll.length ? requiredLabelsAll : undefined,
     deniedLabelsAny: deniedLabelsAny.length ? deniedLabelsAny : undefined,
     granularCategoryRules: scopeResult.granularCategoryRules,
+    granularCodeRules: scopeResult.granularCodeRules,
     presenterProofKey: extractPresenterProofKey(ticket.presenter_binding),
     presenterFrameworkClient: toFrameworkClientBinding(ticket.presenter_binding),
   };
@@ -573,18 +641,33 @@ export function compileClientCredentialsScopeRequest(
 }
 
 function resolveSubject(ticket: PermissionTicket, store: FhirStore): AllowedPatientAlias[] {
-  const recipientRecord = ticket.subject.recipient_record;
-  if (recipientRecord?.reference) {
-    return store.findPatientAliasesByReference(recipientRecord.reference);
-  }
-  if (recipientRecord?.identifier) {
-    return store.findPatientAliasesByIdentifiers([recipientRecord.identifier]);
-  }
-  return store.findPatientAliasesByTraits({
+  const demographicMatches = store.findPatientAliasesByTraits({
     name: ticket.subject.patient.name,
     birthDate: ticket.subject.patient.birthDate,
     identifier: ticket.subject.patient.identifier,
   });
+
+  // recipient_record is a resolution hint, never a verification shortcut:
+  // a record reached through it must still be consistent with the
+  // subject.patient demographics, and an unresolvable hint falls back to
+  // demographic matching.
+  const recipientRecord = ticket.subject.recipient_record;
+  let hinted: AllowedPatientAlias[] = [];
+  if (recipientRecord?.reference) {
+    hinted = store.findPatientAliasesByReference(recipientRecord.reference);
+  }
+  if (!hinted.length && recipientRecord?.identifier) {
+    hinted = store.findPatientAliasesByIdentifiers([recipientRecord.identifier]);
+  }
+  if (hinted.length) {
+    const demographicSlugs = new Set(demographicMatches.map((alias) => alias.patientSlug));
+    const consistent = hinted.filter((alias) => demographicSlugs.has(alias.patientSlug));
+    if (!consistent.length) {
+      throw new Error("recipient_record does not match the ticket subject demographics");
+    }
+    return consistent;
+  }
+  return demographicMatches;
 }
 
 function compileAllowedSites(ticket: PermissionTicket, store: FhirStore, aliases: AllowedPatientAlias[]) {
@@ -608,14 +691,22 @@ function compileAllowedSites(ticket: PermissionTicket, store: FhirStore, aliases
   return [...aliasSites].filter((siteSlug) => matchedSites.has(siteSlug)).sort();
 }
 
-function compilePermissions(permissions: PermissionRule[]) {
-  const projectedScopes = permissions.map(projectPermissionRuleToSmartScope);
+function compilePermissions(permissions: DataPermission[]) {
+  const projectedScopes = permissions
+    .map(projectDataPermissionToSmartScope)
+    .filter((scope): scope is string => scope !== null);
+  if (!projectedScopes.length) {
+    // Access calculation is an intersection: this read-only server narrows
+    // write interactions away, and if nothing remains there is no grant.
+    throw new Error("No ticket permission projects to a scope this server can grant");
+  }
   return compileScopes(projectedScopes);
 }
 
 function compileScopes(scopes: string[]) {
   const allowedResourceTypes = new Set<string>();
   const granularCategoryRules: CategoryRule[] = [];
+  const granularCodeRules: CodeRule[] = [];
   const requiredLabelsAll: Array<{ system: string; code: string }> = [];
   const deniedLabelsAny: Array<{ system: string; code: string }> = [];
 
@@ -631,23 +722,29 @@ function compileScopes(scopes: string[]) {
 
     if (!query) continue;
     const params = new URLSearchParams(query);
+    // Constraint algebra: OR within each filter group (comma-separated
+    // values), AND across groups (category and code clauses both apply).
     const category = params.get("category");
     if (category) {
-      for (const type of targetTypes) {
-        const rule = compileCategoryRule(type, category);
-        if (!rule) throw new Error(`Unsupported category granular scope for ${type}`);
-        granularCategoryRules.push(rule);
+      for (const value of category.split(",").filter(Boolean)) {
+        for (const type of targetTypes) {
+          const rule = compileCategoryRule(type, value);
+          if (!rule) throw new Error(`Unsupported category granular scope for ${type}`);
+          granularCategoryRules.push(rule);
+        }
       }
       params.delete("category");
     }
-    if (params.get("sensitive") === "allow") {
-      params.delete("sensitive");
+    const code = params.get("code");
+    if (code) {
+      for (const value of code.split(",").filter(Boolean)) {
+        for (const type of targetTypes) {
+          granularCodeRules.push(compileCodeRule(type, value));
+        }
+      }
+      params.delete("code");
     }
     if ([...params.keys()].length) throw new Error(`Unsupported granular scope query: ${scope}`);
-  }
-
-  for (const type of SUPPORTING_CONTEXT_TYPES) {
-    allowedResourceTypes.add(type);
   }
 
   return {
@@ -655,46 +752,37 @@ function compileScopes(scopes: string[]) {
     scopeString: scopes.join(" "),
     allowedResourceTypes: [...(allowedResourceTypes.size ? allowedResourceTypes : new Set<string>(SUPPORTED_RESOURCE_TYPES))].sort(),
     granularCategoryRules: granularCategoryRules.length ? dedupeCategoryRules(granularCategoryRules) : undefined,
+    granularCodeRules: granularCodeRules.length ? dedupeCodeRules(granularCodeRules) : undefined,
     requiredLabelsAll: requiredLabelsAll.length ? requiredLabelsAll : undefined,
     deniedLabelsAny: deniedLabelsAny.length ? deniedLabelsAny : undefined,
   };
 }
 
-function projectPermissionRuleToSmartScope(permission: PermissionRule) {
-  if (permission.kind === "operation") {
-    throw new Error(`Unsupported access permission: operation ${permission.name}`);
-  }
-  return projectDataPermissionToSmartScope(permission);
-}
-
-function projectDataPermissionToSmartScope(permission: DataPermission) {
-  const unsupportedInteractions = permission.interactions.filter((interaction) => !["read", "search"].includes(interaction));
-  if (unsupportedInteractions.length) {
-    throw new Error(`Unsupported access interaction: ${unsupportedInteractions[0]}`);
-  }
-
+function projectDataPermissionToSmartScope(permission: DataPermission): string | null {
+  // The ticket's access is a maximum, not a promise: this server narrows to
+  // the interactions it can serve (read/search). A write-only permission
+  // contributes nothing rather than failing the whole ticket.
   let scopePermissions = "";
   if (permission.interactions.includes("read")) scopePermissions += "r";
   if (permission.interactions.includes("search")) scopePermissions += "s";
-  if (!scopePermissions) {
-    throw new Error(`Permission does not project to a SMART read/search scope for ${permission.resource_type}`);
-  }
-
-  if (permission.code_any_of?.length) {
-    throw new Error(`Unsupported access constraint: code_any_of`);
-  }
+  if (!scopePermissions) return null;
 
   const queryParts: string[] = [];
   if (permission.category_any_of?.length) {
-    if (permission.category_any_of.length !== 1) {
-      throw new Error(`Unsupported access constraint: category_any_of`);
-    }
-    const category = permission.category_any_of[0];
-    if (!category.code) throw new Error("Unsupported access constraint: category_any_of");
-    queryParts.push(`category=${encodeURIComponent(category.system ? `${category.system}|${category.code}` : category.code)}`);
+    queryParts.push(`category=${codingTokens(permission.category_any_of, "category_any_of").join(",")}`);
+  }
+  if (permission.code_any_of?.length) {
+    queryParts.push(`code=${codingTokens(permission.code_any_of, "code_any_of").join(",")}`);
   }
 
   return `patient/${permission.resource_type}.${scopePermissions}${queryParts.length ? `?${queryParts.join("&")}` : ""}`;
+}
+
+function codingTokens(codings: Array<{ system?: string; code?: string }>, constraintName: string) {
+  return codings.map((coding) => {
+    if (!coding.code) throw new Error(`Unsupported access constraint: ${constraintName} entry without code`);
+    return encodeURIComponent(coding.system ? `${coding.system}|${coding.code}` : coding.code);
+  });
 }
 
 type ParsedSmartScope = {
@@ -756,6 +844,24 @@ function compileCategoryRule(resourceType: string, category: string): CategoryRu
   }
 }
 
+function compileCodeRule(resourceType: string, token: string): CodeRule {
+  if (token.includes("|")) {
+    const [system, code] = token.split("|", 2);
+    return { resourceType, system: system || null, code };
+  }
+  return { resourceType, system: null, code: token };
+}
+
+function dedupeCodeRules(rules: CodeRule[]) {
+  const seen = new Set<string>();
+  return rules.filter((rule) => {
+    const key = `${rule.resourceType}|${rule.system ?? ""}|${rule.code}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function compileDateRanges(period: { start?: string; end?: string } | undefined): DateRange[] | undefined {
   if (!period) return undefined;
   const normalized = [{ start: period.start?.slice(0, 10), end: period.end?.slice(0, 10) }]
@@ -764,14 +870,73 @@ function compileDateRanges(period: { start?: string; end?: string } | undefined)
 }
 
 function compileDateSemantics(): DateSemantics {
-  return "generated-during-period";
+  return "designated-date";
 }
 
-function compileSensitiveMode(ticket: PermissionTicket): SensitiveMode {
-  // The spec leaves the absent-case to recipient policy. This reference server
-  // uses a conservative local default and excludes sensitive data unless the
-  // ticket explicitly opts in.
-  return ticket.access.sensitive_data === "include" ? "allow" : "deny";
+// ─── sensitivity_policy (Proposal 005) ───────────────────────────────────────
+
+const SensitivityCodingSchema = z.object({
+  system: z.string().optional(),
+  code: z.string().min(1),
+  display: z.string().optional(),
+}).catchall(z.unknown());
+
+const SensitivityPolicySchema = z.object({
+  withhold: z.array(SensitivityCodingSchema).min(1).optional(),
+  release_authorized: z.array(SensitivityCodingSchema).min(1).optional(),
+  unlisted_sensitive_data: z.enum(["local_policy", "withhold", "release_authorized"]).optional(),
+}).strict().refine(
+  (policy) => policy.withhold || policy.release_authorized || policy.unlisted_sensitive_data,
+  { message: "sensitivity_policy requires at least one of withhold, release_authorized, or unlisted_sensitive_data" },
+);
+
+export type SensitivityPolicy = z.infer<typeof SensitivityPolicySchema>;
+
+export function parseSensitivityPolicy(ticket: PermissionTicket): SensitivityPolicy | undefined {
+  const raw = (ticket as Record<string, unknown>).sensitivity_policy;
+  if (raw === undefined) return undefined;
+  if (!ticket.must_understand?.includes("sensitivity_policy")) {
+    throw new Error("sensitivity_policy must be listed in must_understand");
+  }
+  const parsed = SensitivityPolicySchema.safeParse(raw);
+  if (!parsed.success) {
+    throw new Error(`Invalid sensitivity_policy claim: ${parsed.error.issues[0]?.message ?? "schema mismatch"}`);
+  }
+  return parsed.data;
+}
+
+/**
+ * Local policy on this server: everything carrying a SENSITIVE_LABELS
+ * security label is withheld unless a sensitivity_policy says otherwise.
+ * The policy compiles to a concrete denied-label list:
+ *   - unlisted local_policy/withhold (or no policy): start from all
+ *     sensitive labels
+ *   - unlisted release_authorized: start empty
+ *   - release_authorized entries are carved out of the starting set
+ *   - withhold entries are added last, so withhold wins over release
+ */
+function compileSensitivityControls(policy: SensitivityPolicy | undefined): { mode: SensitiveMode; deniedLabels: Label[] } {
+  const unlisted = policy?.unlisted_sensitive_data ?? "local_policy";
+  const denyUnlisted = unlisted !== "release_authorized";
+  const denied = new Map<string, Label>();
+  const put = (label: Label) => denied.set(`${label.system}|${label.code}`, label);
+  const drop = (label: Label) => denied.delete(`${label.system}|${label.code}`);
+
+  if (denyUnlisted) for (const label of SENSITIVE_LABELS) put(label);
+  for (const coding of policy?.release_authorized ?? []) {
+    drop({ system: coding.system ?? V3_ACTCODE_SYSTEM, code: coding.code });
+  }
+  for (const coding of policy?.withhold ?? []) {
+    put({ system: coding.system ?? V3_ACTCODE_SYSTEM, code: coding.code });
+  }
+
+  return { mode: denyUnlisted ? "deny" : "allow", deniedLabels: [...denied.values()] };
+}
+
+function dedupeLabels(labels: Label[]) {
+  const seen = new Map<string, Label>();
+  for (const label of labels) seen.set(`${label.system}|${label.code}`, label);
+  return [...seen.values()];
 }
 
 function choosePatientClaim(aliases: AllowedPatientAlias[], allowedSites?: string[]) {
@@ -838,11 +1003,19 @@ function schemaIssueCheckLabel(pathHead: PropertyKey | undefined): DemoAuditStep
 
 function enforceMustUnderstand(ticket: PermissionTicket, diagnostics?: TokenExchangeDiagnostics) {
   if (!ticket.must_understand?.length) return;
-  const first = ticket.must_understand[0];
+  const unrecognized = ticket.must_understand.find((claim) => !UNDERSTOOD_EXTENSION_CLAIMS.has(claim));
+  if (unrecognized) {
+    addAuditStep(diagnostics, {
+      check: "Extensions",
+      passed: false,
+      reason: `Unrecognized must_understand claim: ${unrecognized}`,
+    });
+    throw new Error(`Unrecognized must_understand claim: ${unrecognized}`);
+  }
   addAuditStep(diagnostics, {
     check: "Extensions",
-    passed: false,
-    reason: `Unrecognized must_understand claim: ${first}`,
+    passed: true,
+    evidence: ticket.must_understand.join(", "),
+    why: "All must_understand claims are recognized and enforced",
   });
-  throw new Error(`Unrecognized must_understand claim: ${first}`);
 }

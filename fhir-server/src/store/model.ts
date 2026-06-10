@@ -12,7 +12,16 @@ export type CategoryRule = {
   code: string;
 };
 
-export type DateSemantics = "generated-during-period" | "care-overlap";
+export type CodeRule = {
+  resourceType: string;
+  system: string | null;
+  code: string;
+};
+
+// data_period enforcement per the spec's Data Period Enforcement section:
+// each resource type filters on its designated date element, as if every
+// search carried ge/le constraints on the designated search parameter.
+export type DateSemantics = "designated-date";
 export type SensitiveMode = "deny" | "allow";
 export type ModeName = "strict" | "registered" | "key-bound" | "open" | "anonymous";
 export type ClientAuthMode = "unaffiliated" | "well-known" | "udap" | "oidf";
@@ -36,16 +45,20 @@ export type IssuerTrustPredicate =
 export type DirectJwksIssuerTrustPolicy = {
   type: "direct_jwks";
   trustedIssuers: string[];
+  /** Ticket types this policy trusts the issuer for. Absent means all supported types. */
+  ticketTypes?: string[];
 };
 
 export type OidfIssuerTrustPolicy = {
   type: "oidf";
   require?: IssuerTrustPredicate;
+  ticketTypes?: string[];
 };
 
 export type UdapIssuerTrustPolicy = {
   type: "udap";
   require?: IssuerTrustPredicate;
+  ticketTypes?: string[];
 };
 
 export type IssuerTrustPolicy =
@@ -130,6 +143,8 @@ export type TicketIssuerTrust = {
 export type ResolvedIssuerTrust = TicketIssuerTrust & {
   publicJwks: JsonWebKey[];
   metadata?: Record<string, any>;
+  /** From the matching trust policy: ticket types this issuer is trusted for. Absent means all. */
+  ticketTypes?: string[];
 };
 
 export type AllowedPatientAlias = {
@@ -158,6 +173,7 @@ export type AuthorizationEnvelope = {
   requiredLabelsAll?: Label[];
   deniedLabelsAny?: Label[];
   granularCategoryRules?: CategoryRule[];
+  granularCodeRules?: CodeRule[];
   presenterProofKey?: { jkt: string };
   presenterFrameworkClient?: FrameworkClientBinding;
 };

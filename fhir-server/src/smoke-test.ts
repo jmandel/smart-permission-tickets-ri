@@ -59,7 +59,6 @@ try {
           { kind: "data", resource_type: "Encounter", interactions: ["read", "search"] },
         ],
         data_period: { start: "2023-01-01", end: "2025-12-31" },
-        sensitive_data: "exclude",
       },
     }),
   });
@@ -298,7 +297,7 @@ function mintTicket(input: {
   patient: any;
   permissions: Array<Record<string, any>>;
   dataPeriod: { start?: string; end?: string };
-  sensitiveData: "exclude" | "include";
+  sensitiveData?: "exclude" | "include";
   presenterBinding?: { method: "jkt"; jkt: string };
 }) {
   const ticketOrigin = input.iss;
@@ -324,10 +323,15 @@ function mintTicket(input: {
           },
         }
       : {}),
+    ...(input.sensitiveData === "include"
+      ? {
+          must_understand: ["sensitivity_policy"],
+          sensitivity_policy: { unlisted_sensitive_data: "release_authorized" },
+        }
+      : {}),
     access: {
       permissions: input.permissions,
       data_period: input.dataPeriod,
-      sensitive_data: input.sensitiveData,
     },
     ...(!input.presenterBinding
       ? { context: { reportable_condition: { text: "Public health investigation" } } }

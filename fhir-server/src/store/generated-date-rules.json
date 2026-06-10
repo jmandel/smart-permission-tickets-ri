@@ -1,9 +1,56 @@
 {
+  "_comment": "Designated date elements per the spec's Data Period Enforcement table. One designated element per resource type, no fallbacks: a resource with no value in its designated element does not match a data_period window. Resource types absent here and not identity-exempt are excluded entirely when data_period is present.",
   "default": {
     "allowEncounterFallback": false,
     "rules": []
   },
   "resourceTypes": {
+    "AllergyIntolerance": {
+      "allowEncounterFallback": false,
+      "rules": [
+        {
+          "label": "AllergyIntolerance.recordedDate",
+          "kind": "instant",
+          "startPaths": ["recordedDate"]
+        }
+      ]
+    },
+    "Condition": {
+      "allowEncounterFallback": false,
+      "rules": [
+        {
+          "label": "Condition.recordedDate",
+          "kind": "instant",
+          "startPaths": ["recordedDate"]
+        }
+      ]
+    },
+    "DiagnosticReport": {
+      "allowEncounterFallback": false,
+      "rules": [
+        {
+          "label": "DiagnosticReport.effectivePeriod",
+          "kind": "period",
+          "startPaths": ["effectivePeriod.start"],
+          "endPaths": ["effectivePeriod.end"]
+        },
+        {
+          "label": "DiagnosticReport.effectiveDateTime",
+          "kind": "instant",
+          "startPaths": ["effectiveDateTime"]
+        }
+      ]
+    },
+    "DocumentReference": {
+      "allowEncounterFallback": false,
+      "rules": [
+        {
+          "label": "DocumentReference.date",
+          "kind": "instant",
+          "startPaths": ["date"]
+        }
+      ]
+    },
     "Encounter": {
       "allowEncounterFallback": false,
       "rules": [
@@ -15,82 +62,18 @@
         }
       ]
     },
-    "Observation": {
-      "allowEncounterFallback": true,
+    "Immunization": {
+      "allowEncounterFallback": false,
       "rules": [
         {
-          "label": "Observation.issued",
+          "label": "Immunization.occurrenceDateTime",
           "kind": "instant",
-          "startPaths": ["issued"]
-        },
-        {
-          "label": "Observation.effectiveDateTime",
-          "kind": "instant",
-          "startPaths": ["effectiveDateTime"]
-        },
-        {
-          "label": "Observation.effectivePeriod",
-          "kind": "period",
-          "startPaths": ["effectivePeriod.start"],
-          "endPaths": ["effectivePeriod.end"]
-        }
-      ]
-    },
-    "DiagnosticReport": {
-      "allowEncounterFallback": true,
-      "rules": [
-        {
-          "label": "DiagnosticReport.issued",
-          "kind": "instant",
-          "startPaths": ["issued"]
-        },
-        {
-          "label": "DiagnosticReport.effectiveDateTime",
-          "kind": "instant",
-          "startPaths": ["effectiveDateTime"]
-        },
-        {
-          "label": "DiagnosticReport.effectivePeriod",
-          "kind": "period",
-          "startPaths": ["effectivePeriod.start"],
-          "endPaths": ["effectivePeriod.end"]
-        }
-      ]
-    },
-    "DocumentReference": {
-      "allowEncounterFallback": true,
-      "rules": [
-        {
-          "label": "DocumentReference.date",
-          "kind": "instant",
-          "startPaths": ["date"]
-        },
-        {
-          "label": "DocumentReference.context.period",
-          "kind": "period",
-          "startPaths": ["context.period.start"],
-          "endPaths": ["context.period.end"]
-        }
-      ]
-    },
-    "Procedure": {
-      "allowEncounterFallback": true,
-      "rules": [
-        {
-          "label": "Procedure.performedDateTime",
-          "kind": "instant",
-          "startPaths": ["performedDateTime"]
-        },
-        {
-          "label": "Procedure.performedPeriod",
-          "kind": "period",
-          "startPaths": ["performedPeriod.start"],
-          "endPaths": ["performedPeriod.end"]
+          "startPaths": ["occurrenceDateTime"]
         }
       ]
     },
     "MedicationRequest": {
-      "allowEncounterFallback": true,
+      "allowEncounterFallback": false,
       "rules": [
         {
           "label": "MedicationRequest.authoredOn",
@@ -99,48 +82,45 @@
         }
       ]
     },
-    "Condition": {
-      "allowEncounterFallback": true,
+    "Observation": {
+      "allowEncounterFallback": false,
       "rules": [
         {
-          "label": "Condition.recordedDate",
+          "label": "Observation.effectivePeriod",
+          "kind": "period",
+          "startPaths": ["effectivePeriod.start"],
+          "endPaths": ["effectivePeriod.end"]
+        },
+        {
+          "label": "Observation.effectiveDateTime",
           "kind": "instant",
-          "startPaths": ["recordedDate"]
+          "startPaths": ["effectiveDateTime"]
         }
       ]
     },
-    "Immunization": {
-      "allowEncounterFallback": true,
+    "Procedure": {
+      "allowEncounterFallback": false,
       "rules": [
         {
-          "label": "Immunization.recorded",
-          "kind": "instant",
-          "startPaths": ["recorded"]
+          "label": "Procedure.performedPeriod",
+          "kind": "period",
+          "startPaths": ["performedPeriod.start"],
+          "endPaths": ["performedPeriod.end"]
         },
         {
-          "label": "Immunization.occurrenceDateTime",
+          "label": "Procedure.performedDateTime",
           "kind": "instant",
-          "startPaths": ["occurrenceDateTime"]
+          "startPaths": ["performedDateTime"]
         }
       ]
     },
     "ServiceRequest": {
-      "allowEncounterFallback": true,
+      "allowEncounterFallback": false,
       "rules": [
         {
           "label": "ServiceRequest.authoredOn",
           "kind": "instant",
           "startPaths": ["authoredOn"]
-        }
-      ]
-    },
-    "AllergyIntolerance": {
-      "allowEncounterFallback": true,
-      "rules": [
-        {
-          "label": "AllergyIntolerance.recordedDate",
-          "kind": "instant",
-          "startPaths": ["recordedDate"]
         }
       ]
     }

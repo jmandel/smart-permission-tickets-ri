@@ -604,7 +604,6 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       throw new OAuthTokenError("invalid_request", "No permission ticket provided");
     }
 
-    let ticket;
     const demoValidationContext = contextRoute.siteSlug
       ? {
           phase: "site-auth" as const,
@@ -614,18 +613,9 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       : {
           phase: "network-auth" as const,
         };
-    try {
-      ticket = await validatePermissionTicket(
-        body.subject_token,
-        context.config,
-        context.frameworks,
-        context.ticketRevocations,
-        buildKnownTicketAudienceUrls(url, context.config, contextRoute),
-        tokenDiagnostics,
-      );
-    } catch (error) {
-      throw new OAuthTokenError("invalid_grant", error instanceof Error ? error.message : "Invalid permission ticket");
-    }
+    // Layer 1 (client authentication) runs before Layer 2 (ticket
+    // validation), per the spec pipeline: an unauthenticated caller must not
+    // be able to drive issuer JWKS or revocation-list fetches.
     let client: AuthenticatedClientIdentity | null;
     try {
       client = await authenticateClient(
@@ -641,6 +631,20 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       authenticatedClientId = client?.clientId;
     } catch (error) {
       throw new OAuthTokenError("invalid_client", error instanceof Error ? error.message : "Client authentication failed", 401);
+    }
+    let ticket;
+    try {
+      ticket = await validatePermissionTicket(
+        body.subject_token,
+        context.config,
+        context.frameworks,
+        context.ticketRevocations,
+        buildKnownTicketAudienceUrls(url, context.config, contextRoute),
+        tokenDiagnostics,
+        { mode: contextRoute.mode },
+      );
+    } catch (error) {
+      throw new OAuthTokenError("invalid_grant", error instanceof Error ? error.message : "Invalid permission ticket");
     }
     try {
       const proofKeyJkt = ticket.ticket.presenter_binding?.method === "jkt" ? ticket.ticket.presenter_binding.jkt : undefined;
@@ -1163,7 +1167,7 @@ function buildClientCredentialsEnvelope(
     allowedSites,
     allowedResourceTypes: scopeResult.allowedResourceTypes,
     dateRanges: undefined,
-    dateSemantics: "generated-during-period",
+    dateSemantics: "designated-date",
     sensitive: { mode: "allow" },
     requiredLabelsAll: scopeResult.requiredLabelsAll,
     deniedLabelsAny: scopeResult.deniedLabelsAny,
@@ -1436,6 +1440,9 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
   const candidate = {
     ...payload,
     aud: payload.aud ?? audienceOrigin,
+    // iat is a required claim; the demo issuer stamps it at normalization
+    // time so validation sees the same payload that gets signed.
+    iat: payload.iat ?? Math.floor(Date.now() / 1000),
     ticket_type: payload.ticket_type ?? PATIENT_SELF_ACCESS_TICKET_TYPE,
   };
   const parsed = PermissionTicketSchema.safeParse(candidate);
@@ -1459,11 +1466,7 @@ function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTick
       patientDob: typeof ticketPayload.subject.patient.birthDate === "string" ? ticketPayload.subject.patient.birthDate : null,
       scopes,
       dateSummary: summarizeTicketPeriod(ticketPayload.access.data_period),
-      sensitiveSummary: ticketPayload.access.sensitive_data === "include"
-        ? "Sensitive included"
-        : ticketPayload.access.sensitive_data === "exclude"
-          ? "Sensitive excluded"
-          : "Sensitive policy uses recipient default",
+      sensitiveSummary: summarizeSensitivityPolicy(ticketPayload),
       expirySummary: summarizeTicketExpiry(ticketPayload.exp),
       bindingSummary: summarizeTicketBinding(ticketPayload),
     },
@@ -1487,6 +1490,19 @@ function formatTicketPatientName(patient: PermissionTicket["subject"]["patient"]
   const given = Array.isArray(first.given) ? first.given.filter((item: unknown) => typeof item === "string") : [];
   const family = typeof first.family === "string" ? first.family : null;
   return [...given, ...(family ? [family] : [])].join(" ").trim() || null;
+}
+
+function summarizeSensitivityPolicy(ticketPayload: PermissionTicket) {
+  const raw = (ticketPayload as Record<string, unknown>).sensitivity_policy as
+    | { withhold?: unknown[]; release_authorized?: unknown[]; unlisted_sensitive_data?: string }
+    | undefined;
+  if (!raw) return "Sensitive handling uses recipient default";
+  const parts: string[] = [];
+  if (raw.withhold?.length) parts.push(`withhold ${raw.withhold.length} categor${raw.withhold.length === 1 ? "y" : "ies"}`);
+  if (raw.release_authorized?.length) parts.push(`release authorized for ${raw.release_authorized.length} categor${raw.release_authorized.length === 1 ? "y" : "ies"}`);
+  if (raw.unlisted_sensitive_data === "withhold") parts.push("unlisted sensitive withheld");
+  if (raw.unlisted_sensitive_data === "release_authorized") parts.push("unlisted sensitive release authorized");
+  return parts.length ? `Sensitivity policy: ${parts.join("; ")}` : "Sensitivity policy: recipient default";
 }
 
 function summarizeTicketPeriod(period: { start?: string; end?: string } | undefined) {
@@ -2074,7 +2090,7 @@ function buildAnonymousEnvelope(context: AppContext): AuthorizationEnvelope {
     allowedSites: undefined,
     allowedResourceTypes: [...SUPPORTED_RESOURCE_TYPES],
     dateRanges: undefined,
-    dateSemantics: "generated-during-period",
+    dateSemantics: "designated-date",
     sensitive: { mode: "allow" },
   };
 }

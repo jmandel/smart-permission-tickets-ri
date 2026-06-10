@@ -13,7 +13,9 @@ export async function resolveConfiguredIssuerTrust(
   const policies = config.issuerTrust?.policies ?? [];
   for (const policy of policies) {
     const resolved = await resolveIssuerTrustViaPolicy(policy, normalizedIssuerUrl, config, frameworks, fetchImpl);
-    if (resolved) return resolved;
+    // Trust is per ticket type: the matching policy's ticketTypes (absent
+    // means all) ride along so ticket validation can enforce the scope.
+    if (resolved) return policy.ticketTypes ? { ...resolved, ticketTypes: policy.ticketTypes } : resolved;
   }
   throw new Error("Unknown Permission Ticket issuer");
 }

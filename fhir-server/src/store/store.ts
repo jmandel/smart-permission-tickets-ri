@@ -497,6 +497,7 @@ export function materializeVisibleSet(db: Database, envelope: {
   requiredLabelsAll?: Label[];
   deniedLabelsAny?: Label[];
   granularCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
+  granularCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
 }, siteSlug?: string) {
   db.exec(`
     DROP TABLE IF EXISTS temp.allowed_patients;
@@ -544,6 +545,7 @@ function buildVisibleSql(
     requiredLabelsAll?: Label[];
     deniedLabelsAny?: Label[];
     granularCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
+    granularCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
   },
   routeSiteSlug?: string,
 ) {
@@ -565,6 +567,7 @@ function buildVisibleWhere(
     requiredLabelsAll?: Label[];
     deniedLabelsAny?: Label[];
     granularCategoryRules?: Array<{ resourceType: string; system: string; code: string }>;
+    granularCodeRules?: Array<{ resourceType: string; system: string | null; code: string }>;
   },
   routeSiteSlug?: string,
   useTempAllowedPatients = true,
@@ -618,9 +621,11 @@ function buildVisibleWhere(
   }
 
   if (envelope.dateRanges?.length) {
-    const columns = envelope.dateSemantics === "care-overlap"
-      ? { start: "care_start", end: "care_end" }
-      : { start: "generated_start", end: "generated_end" };
+    // Designated-date semantics: the generated_* columns hold each resource's
+    // designated date element (see generated-date-rules.json). Identity-exempt
+    // types pass through; everything else must have a designated date inside
+    // the window, so undated and unlisted resource types are excluded.
+    const columns = { start: "generated_start", end: "generated_end" };
     const rangeParams: string[] = [];
     const rangeClauses = envelope.dateRanges.map((range) => buildDateRangeClause(columns.start, columns.end, range, rangeParams));
     clauses.push(`(
@@ -631,18 +636,11 @@ function buildVisibleWhere(
     params.push(...rangeParams);
   }
 
-  if (envelope.sensitive.mode === "deny") {
-    clauses.push(`
-      NOT EXISTS (
-        SELECT 1
-        FROM resource_labels rl
-        WHERE rl.resource_pk = r.resource_pk
-          AND rl.kind = 'security'
-          AND (${SENSITIVE_LABELS.map(() => "(rl.system = ? AND rl.code = ?)").join(" OR ")})
-      )
-    `);
-    for (const label of SENSITIVE_LABELS) params.push(label.system, label.code);
-  }
+  // Sensitivity filtering is expressed entirely through deniedLabelsAny.
+  // Ticket compilation maps sensitivity_policy (and the local default of
+  // withholding everything in SENSITIVE_LABELS) into that list, so a
+  // release_authorized category can be carved out by omitting its label.
+  // envelope.sensitive.mode is informational (introspection and demo UI).
 
   for (const label of envelope.requiredLabelsAll ?? []) {
     clauses.push(`
@@ -663,6 +661,7 @@ function buildVisibleWhere(
         SELECT 1
         FROM resource_labels rl
         WHERE rl.resource_pk = r.resource_pk
+          AND rl.kind = 'security'
           AND (${envelope.deniedLabelsAny.map(() => "(rl.system = ? AND rl.code = ?)").join(" OR ")})
       )
     `);
@@ -690,6 +689,34 @@ function buildVisibleWhere(
     `);
     params.push(resourceType);
     for (const rule of rules) params.push(rule.system, rule.code);
+  }
+
+  // Code filters: OR within the rule set for a resource type, ANDed with any
+  // category filter above, per the spec's constraint algebra.
+  const groupedCodeRules = new Map<string, Array<{ resourceType: string; system: string | null; code: string }>>();
+  for (const rule of envelope.granularCodeRules ?? []) {
+    const existing = groupedCodeRules.get(rule.resourceType) ?? [];
+    existing.push(rule);
+    groupedCodeRules.set(rule.resourceType, existing);
+  }
+  for (const [resourceType, rules] of groupedCodeRules) {
+    clauses.push(`
+      (
+        r.resource_type <> ?
+        OR EXISTS (
+          SELECT 1
+          FROM resource_tokens rt
+          WHERE rt.resource_pk = r.resource_pk
+            AND rt.param_name = 'code'
+            AND (${rules.map((rule) => (rule.system ? "(rt.system = ? AND rt.code = ?)" : "(rt.code = ?)")).join(" OR ")})
+        )
+      )
+    `);
+    params.push(resourceType);
+    for (const rule of rules) {
+      if (rule.system) params.push(rule.system, rule.code);
+      else params.push(rule.code);
+    }
   }
 
   return {
