@@ -284,7 +284,6 @@ export type ViewerLaunch = {
   };
   ticketPayload: PermissionTicket | null;
   signedTicket: string | null;
-  proofJkt: string | null;
   clientPlan: ViewerClientPlan | null;
   demoSummary: {
     dateSummary: string;

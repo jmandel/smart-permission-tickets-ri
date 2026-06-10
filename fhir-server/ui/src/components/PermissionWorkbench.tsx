@@ -315,7 +315,6 @@ export function PermissionWorkbench({
       defaultTicketIssuer,
       ticketPayload,
       signedTicket,
-      proofJkt,
       clientPlan,
       {
         dateSummary: consentSummary.dates,

@@ -18,7 +18,7 @@ export async function postJson<T>(url: string, body: Record<string, any>, demoSe
   }, demoSessionId);
 }
 
-export async function postFormJson<T>(url: string, form: URLSearchParams, proofJkt?: string | null, demoSessionId?: string | null): Promise<T> {
+export async function postFormJson<T>(url: string, form: URLSearchParams, demoSessionId?: string | null): Promise<T> {
   return fetchJson<T>(url, {
     method: "POST",
     headers: {
@@ -129,7 +129,6 @@ export async function exchangeSurfaceToken(
   signedTicket: string,
   client: RegisteredClientInfo | null,
   clientPlan: ViewerClientPlan | null,
-  proofJkt: string | null,
   demoSessionId?: string | null,
 ) {
   const form = new URLSearchParams({
@@ -138,7 +137,7 @@ export async function exchangeSurfaceToken(
     subject_token: signedTicket,
   });
   await appendClientAuth(form, `${origin}${surface.tokenPath}`, client, clientPlan);
-  const tokenResponse = await postFormJson<TokenResponseInfo>(`${origin}${surface.tokenPath}`, form, proofJkt, demoSessionId);
+  const tokenResponse = await postFormJson<TokenResponseInfo>(`${origin}${surface.tokenPath}`, form, demoSessionId);
   const tokenClaims = decodeJwtPayload(tokenResponse.access_token) as Record<string, any>;
   return { tokenResponse, tokenClaims };
 }
@@ -148,7 +147,6 @@ export async function exchangeTokenAtEndpoint(
   signedTicket: string,
   client: RegisteredClientInfo | null,
   clientPlan: ViewerClientPlan | null,
-  proofJkt: string | null,
   demoSessionId?: string | null,
 ) {
   const form = new URLSearchParams({
@@ -157,7 +155,7 @@ export async function exchangeTokenAtEndpoint(
     subject_token: signedTicket,
   });
   await appendClientAuth(form, tokenEndpoint, client, clientPlan);
-  const tokenResponse = await postFormJson<TokenResponseInfo>(tokenEndpoint, form, proofJkt, demoSessionId);
+  const tokenResponse = await postFormJson<TokenResponseInfo>(tokenEndpoint, form, demoSessionId);
   const tokenClaims = decodeJwtPayload(tokenResponse.access_token) as Record<string, any>;
   return { tokenResponse, tokenClaims };
 }
@@ -168,12 +166,11 @@ export async function introspectSurfaceToken(
   accessToken: string,
   client: RegisteredClientInfo | null,
   clientPlan: ViewerClientPlan | null,
-  proofJkt: string | null,
   demoSessionId?: string | null,
 ) {
   const form = new URLSearchParams({ token: accessToken });
   await appendClientAuth(form, `${origin}${surface.introspectPath}`, client, clientPlan);
-  return postFormJson<Record<string, any>>(`${origin}${surface.introspectPath}`, form, proofJkt, demoSessionId);
+  return postFormJson<Record<string, any>>(`${origin}${surface.introspectPath}`, form, demoSessionId);
 }
 
 export async function introspectTokenAtEndpoint(
@@ -181,12 +178,11 @@ export async function introspectTokenAtEndpoint(
   accessToken: string,
   client: RegisteredClientInfo | null,
   clientPlan: ViewerClientPlan | null,
-  proofJkt: string | null,
   demoSessionId?: string | null,
 ) {
   const form = new URLSearchParams({ token: accessToken });
   await appendClientAuth(form, introspectionEndpoint, client, clientPlan);
-  return postFormJson<Record<string, any>>(introspectionEndpoint, form, proofJkt, demoSessionId);
+  return postFormJson<Record<string, any>>(introspectionEndpoint, form, demoSessionId);
 }
 
 export async function fetchSurfaceFhir(
@@ -194,7 +190,6 @@ export async function fetchSurfaceFhir(
   surface: AuthSurface,
   relativePath: string,
   accessToken?: string | null,
-  proofJkt?: string | null,
   demoSessionId?: string | null,
 ) {
   const headers: Record<string, string> = {};
@@ -206,7 +201,6 @@ export async function fetchFhirFromBase(
   fhirBaseUrl: string,
   relativePath: string,
   accessToken?: string | null,
-  proofJkt?: string | null,
   demoSessionId?: string | null,
 ) {
   const headers: Record<string, string> = {};
@@ -223,7 +217,6 @@ export async function fetchSurfaceFhirAllPages(
   surface: AuthSurface,
   relativePath: string,
   accessToken?: string | null,
-  proofJkt?: string | null,
   demoSessionId?: string | null,
 ) {
   const headers: Record<string, string> = {};
@@ -235,7 +228,6 @@ export async function fetchFhirAllPagesFromBase(
   fhirBaseUrl: string,
   relativePath: string,
   accessToken?: string | null,
-  proofJkt?: string | null,
   demoSessionId?: string | null,
 ) {
   const headers: Record<string, string> = {};
@@ -252,14 +244,12 @@ export async function resolveRecordLocations(
   mode: ModeName,
   networkSurface: AuthSurface,
   accessToken: string,
-  proofJkt?: string | null,
   demoSessionId?: string | null,
 ): Promise<{ bundle: any; sites: ViewerLaunchSite[] }> {
   const bundle = await postJsonWithBearer<any>(
     `${origin}${networkSurface.fhirBasePath}/$resolve-record-locations`,
     { resourceType: "Parameters" },
     accessToken,
-    proofJkt,
     demoSessionId,
   );
   const organizations = new Map<string, any>();
@@ -295,7 +285,7 @@ export async function resolveRecordLocations(
   return { bundle, sites };
 }
 
-export async function postJsonWithBearer<T>(url: string, body: Record<string, any>, accessToken: string, proofJkt?: string | null, demoSessionId?: string | null): Promise<T> {
+export async function postJsonWithBearer<T>(url: string, body: Record<string, any>, accessToken: string, demoSessionId?: string | null): Promise<T> {
   return fetchJson<T>(url, {
     method: "POST",
     headers: {
@@ -306,24 +296,24 @@ export async function postJsonWithBearer<T>(url: string, body: Record<string, an
   }, demoSessionId);
 }
 
-export async function exchangeSiteToken(origin: string, site: ViewerLaunchSite, signedTicket: string, client: RegisteredClientInfo | null, privateJwk: JsonWebKey | null, proofJkt: string | null) {
+export async function exchangeSiteToken(origin: string, site: ViewerLaunchSite, signedTicket: string, client: RegisteredClientInfo | null, privateJwk: JsonWebKey | null) {
   throw new Error("exchangeSiteToken is deprecated; use exchangeTokenAtEndpoint with a client plan");
 }
 
-export async function introspectSiteToken(origin: string, site: ViewerLaunchSite, accessToken: string, client: RegisteredClientInfo | null, privateJwk: JsonWebKey | null, proofJkt: string | null) {
+export async function introspectSiteToken(origin: string, site: ViewerLaunchSite, accessToken: string, client: RegisteredClientInfo | null, privateJwk: JsonWebKey | null) {
   throw new Error("introspectSiteToken is deprecated; use introspectTokenAtEndpoint with a client plan");
 }
 
-export async function fetchSiteFhir(origin: string, site: ViewerLaunchSite, relativePath: string, accessToken?: string | null, proofJkt?: string | null, demoSessionId?: string | null) {
-  return fetchSurfaceFhir(origin, site.authSurface, relativePath, accessToken, proofJkt, demoSessionId);
+export async function fetchSiteFhir(origin: string, site: ViewerLaunchSite, relativePath: string, accessToken?: string | null, demoSessionId?: string | null) {
+  return fetchSurfaceFhir(origin, site.authSurface, relativePath, accessToken, demoSessionId);
 }
 
 export async function fetchPreviewSiteFhir(origin: string, site: ViewerLaunchSite, relativePath: string, demoSessionId?: string | null) {
   return fetchPreviewSurfaceFhir(origin, site.authSurface, relativePath, demoSessionId);
 }
 
-export async function fetchSiteFhirAllPages(origin: string, site: ViewerLaunchSite, relativePath: string, accessToken?: string | null, proofJkt?: string | null, demoSessionId?: string | null) {
-  return fetchSurfaceFhirAllPages(origin, site.authSurface, relativePath, accessToken, proofJkt, demoSessionId);
+export async function fetchSiteFhirAllPages(origin: string, site: ViewerLaunchSite, relativePath: string, accessToken?: string | null, demoSessionId?: string | null) {
+  return fetchSurfaceFhirAllPages(origin, site.authSurface, relativePath, accessToken, demoSessionId);
 }
 
 export async function fetchPreviewSiteFhirAllPages(origin: string, site: ViewerLaunchSite, relativePath: string, demoSessionId?: string | null) {

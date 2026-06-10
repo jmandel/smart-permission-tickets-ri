@@ -299,7 +299,6 @@ describe("demo helpers", () => {
       ticketIssuer,
       ticketPayload,
       "signed-ticket",
-      null,
       clientPlan,
       {
         dateSummary: "All dates",
@@ -565,7 +564,7 @@ describe("demo helpers", () => {
   });
 
   test("copied curls inline the actual bearer token: access tokens are bearer tokens", () => {
-    expect(buildFetchCurl("http://localhost:8091/fhir/Patient?_count=20", "abc123", "proof-1")).toBe(
+    expect(buildFetchCurl("http://localhost:8091/fhir/Patient?_count=20", "abc123")).toBe(
       "curl -H 'authorization: Bearer abc123' 'http://localhost:8091/fhir/Patient?_count=20'",
     );
   });

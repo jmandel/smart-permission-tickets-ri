@@ -11,7 +11,6 @@ export type ViewerSiteRun = {
   tokenResponse: Record<string, any> | null;
   tokenClaims: Record<string, any> | null;
   introspection: Record<string, any> | null;
-  proofJkt: string | null;
   error: string | null;
   queryErrors: Array<{ label: string; relativePath: string; message: string }>;
   resources: ViewerResourceItem[];

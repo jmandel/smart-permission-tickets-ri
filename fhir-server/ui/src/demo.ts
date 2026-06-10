@@ -800,7 +800,6 @@ export function buildTokenExchangeCurl(
   surface: AuthSurface,
   signedTicket: string,
   client?: { clientId: string } | null,
-  proofJkt?: string | null,
 ) {
   const parts = [
     "curl",
@@ -822,7 +821,7 @@ export function buildTokenExchangeCurl(
   return parts.join(" ");
 }
 
-export function buildSearchCurl(origin: string, surface: AuthSurface, resourceType: string, proofJkt?: string | null) {
+export function buildSearchCurl(origin: string, surface: AuthSurface, resourceType: string) {
   throw new Error("buildSearchCurl requires an access token; use buildAuthorizedSearchCurl or buildFetchCurl");
 }
 
@@ -831,12 +830,11 @@ export function buildAuthorizedSearchCurl(
   surface: AuthSurface,
   resourceType: string,
   accessToken: string,
-  proofJkt?: string | null,
 ) {
-  return buildFetchCurl(`${origin}${surface.fhirBasePath}/${resourceType}`, accessToken, proofJkt);
+  return buildFetchCurl(`${origin}${surface.fhirBasePath}/${resourceType}`, accessToken);
 }
 
-export function buildFetchCurl(targetUrl: string, accessToken?: string | null, proofJkt?: string | null) {
+export function buildFetchCurl(targetUrl: string, accessToken?: string | null) {
   const parts = ["curl"];
   if (accessToken) parts.push("-H", shellQuote(`authorization: Bearer ${accessToken}`));
   parts.push(shellQuote(targetUrl));
@@ -852,7 +850,6 @@ export function buildViewerLaunch(
   ticketIssuer: TicketIssuerInfo | null,
   ticketPayload: ViewerLaunch["ticketPayload"],
   signedTicket: string | null,
-  proofJkt: string | null,
   clientPlan: ViewerLaunch["clientPlan"],
   demoSummary: ViewerLaunch["demoSummary"],
 ): ViewerLaunch {
@@ -872,7 +869,6 @@ export function buildViewerLaunch(
     },
     ticketPayload,
     signedTicket,
-    proofJkt,
     clientPlan,
     demoSummary,
   };
@@ -910,7 +906,7 @@ function buildClientStoryDescription(
         framework_type: clientType === "well-known" ? "well-known" : clientType === "oidf" ? "oidf" : "udap",
         entity_uri: entityUri ?? "",
       };
-  const proofJkt = clientType === "unaffiliated" && (mode === "strict" || mode === "key-bound") ? "<jkt>" : null;
+  const proofJkt = clientType === "unaffiliated" && (mode === "strict" || mode === "key-bound" || mode === "registered") ? "<jkt>" : null;
   const ticketBinding = describeTicketBinding(mode, clientType, proofJkt, frameworkPresenterBinding);
   const registrationLabel = registrationMode === "dynamic-jwk"
     ? "Dynamic registration"

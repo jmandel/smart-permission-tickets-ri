@@ -742,8 +742,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                               buildFetchCurl(
                                                 note.fullUrl!,
                                                 accessTokenForSite(siteRuns, note.siteSlug),
-                                                proofForSite(siteRuns, note.siteSlug),
-                                              ),
+                                                ),
                                             ),
                                           feedbackLabel: "Copied",
                                         },
@@ -795,8 +794,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                                   buildFetchCurl(
                                                     encounter.fullUrl!,
                                                     accessTokenForSite(siteRuns, encounter.siteSlug),
-                                                    proofForSite(siteRuns, encounter.siteSlug),
-                                                  ),
+                                                    ),
                                                 ),
                                               feedbackLabel: "Copied",
                                             },
@@ -858,8 +856,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                       buildFetchCurl(
                                         item.fullUrl!,
                                         accessTokenForSite(siteRuns, item.siteSlug),
-                                        proofForSite(siteRuns, item.siteSlug),
-                                      ),
+                                        ),
                                     ),
                                   feedbackLabel: "Copied",
                                 },
@@ -912,8 +909,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                       buildFetchCurl(
                                         item.fullUrl!,
                                         accessTokenForSite(siteRuns, item.siteSlug),
-                                        proofForSite(siteRuns, item.siteSlug),
-                                      ),
+                                        ),
                                     ),
                                   feedbackLabel: "Copied",
                                 },
@@ -965,14 +961,12 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                 subtitle: result.relativePath,
                                 targetUrl: result.fullUrl,
                                 accessToken: accessTokenForSite(siteRuns, result.siteSlug),
-                                proofJkt: proofForSite(siteRuns, result.siteSlug),
                                 metadata: buildInspectionMetadata({
                                   url: result.fullUrl,
                                   curl: buildFetchCurl(
                                     result.fullUrl,
                                     accessTokenForSite(siteRuns, result.siteSlug),
-                                    proofForSite(siteRuns, result.siteSlug),
-                                  ),
+                                    ),
                                 }),
                               }),
                           }}
@@ -984,8 +978,7 @@ function ViewerApp({ encodedSession }: { encodedSession: string }) {
                                   buildFetchCurl(
                                     result.fullUrl,
                                     accessTokenForSite(siteRuns, result.siteSlug),
-                                    proofForSite(siteRuns, result.siteSlug),
-                                  ),
+                                    ),
                                 ),
                               feedbackLabel: "Copied",
                             },
@@ -1510,10 +1503,6 @@ function accessTokenForSite(siteRuns: ViewerSiteRun[], siteSlug: string) {
   return siteRuns.find((run) => run.site.siteSlug === siteSlug)?.tokenResponse?.access_token ?? null;
 }
 
-function proofForSite(siteRuns: ViewerSiteRun[], siteSlug: string) {
-  return siteRuns.find((run) => run.site.siteSlug === siteSlug)?.proofJkt ?? null;
-}
-
 function normalizeTarget(target: string) {
   const url = new URL(target, window.location.origin);
   if (url.origin !== window.location.origin) throw new Error("Viewer only supports same-origin targets");
@@ -1715,7 +1704,6 @@ async function inspectRemoteArtifact(input: {
   subtitle?: string;
   targetUrl: string;
   accessToken?: string | null;
-  proofJkt?: string | null;
   metadata?: Array<{ label: string; value: string }>;
 }) {
   try {
@@ -1772,7 +1760,6 @@ function buildClinicalArtifactPayload(
   const addNode = (item: ViewerResourceItem) => {
     if (nodes.has(item.key)) return;
     const accessToken = accessTokenForSite(siteRuns, item.siteSlug);
-    const proofJkt = proofForSite(siteRuns, item.siteSlug);
     nodes.set(item.key, {
       ref: item.key,
       title: item.label,
@@ -1786,7 +1773,7 @@ function buildClinicalArtifactPayload(
       metadata: item.fullUrl
         ? buildInspectionMetadata({
             url: item.fullUrl,
-            curl: buildFetchCurl(item.fullUrl, accessToken, proofJkt),
+            curl: buildFetchCurl(item.fullUrl, accessToken),
           })
         : undefined,
     });

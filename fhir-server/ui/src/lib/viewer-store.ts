@@ -206,7 +206,6 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
         launch.signedTicket,
         sharedClient,
         launch.clientPlan,
-        launch.proofJkt,
         undefined,
       );
       if (cancelled()) return;
@@ -221,7 +220,6 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
           networkTokenResponse.access_token,
           sharedClient,
           launch.clientPlan,
-          launch.proofJkt,
           undefined,
         ),
         resolveRecordLocations(
@@ -229,7 +227,6 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
           launch.mode,
           launch.network.authSurface,
           networkTokenResponse.access_token,
-          launch.proofJkt,
           undefined,
         ),
       ]);
@@ -313,7 +310,7 @@ export const useViewerStore = create<ViewerStore>((set, get) => ({
             launch.mode === "anonymous"
               ? await fetchPreviewSiteFhir(launch.origin, run.site, relativePath)
               : run.tokenResponse?.access_token
-                ? await fetchFhirFromBase(siteFhirBaseUrl, relativePath, run.tokenResponse.access_token, run.proofJkt)
+                ? await fetchFhirFromBase(siteFhirBaseUrl, relativePath, run.tokenResponse.access_token)
                 : null;
           const { shownCount, totalCount } = inferPayloadCounts(payload);
           return {
@@ -388,7 +385,6 @@ async function loadOneSite(
   updateRun(encodedSession, site.siteSlug, { smartConfig, capabilityStatement }, set, get);
 
   let accessToken: string | null = null;
-  let proofJkt: string | null = launch.proofJkt;
   let patientId: string | null = null;
   let siteClient: RegisteredClientInfo | null = null;
 
@@ -414,12 +410,11 @@ async function loadOneSite(
       launch.signedTicket,
       siteClient,
       launch.clientPlan,
-      proofJkt,
       undefined,
     );
     accessToken = tokenResponse.access_token;
     if (cancelled()) return;
-    updateRun(encodedSession, site.siteSlug, { tokenResponse, tokenClaims, proofJkt }, set, get);
+    updateRun(encodedSession, site.siteSlug, { tokenResponse, tokenClaims }, set, get);
 
     // Introspection and patient-id resolution are independent of each
     // other — both only need the access token.  Fire them in parallel.
@@ -430,18 +425,17 @@ async function loadOneSite(
           accessToken,
           siteClient,
           launch.clientPlan,
-          proofJkt,
           undefined,
         ),
       typeof tokenResponse.patient === "string"
         ? Promise.resolve(tokenResponse.patient)
-        : resolveSitePatientId(launch, site, null, accessToken, proofJkt, smartConfig),
+        : resolveSitePatientId(launch, site, null, accessToken, smartConfig),
     ]);
     if (cancelled()) return;
     patientId = resolvedPatientId;
     updateRun(encodedSession, site.siteSlug, { introspection, patientId }, set, get);
   } else {
-    patientId = await resolveSitePatientId(launch, site, null, null, null, smartConfig);
+    patientId = await resolveSitePatientId(launch, site, null, null, smartConfig);
   }
 
   if (!patientId) {
@@ -453,7 +447,7 @@ async function loadOneSite(
   // -----------------------------------------------------------------------
   updateRun(encodedSession, site.siteSlug, { phase: "loading-data" }, set, get);
   const { resources, queryErrors } = await loadSiteResources(
-    launch, site, patientId, capabilityStatement, accessToken, proofJkt, smartConfig,
+    launch, site, patientId, capabilityStatement, accessToken, smartConfig,
   );
   if (cancelled()) return;
   updateRun(encodedSession, site.siteSlug, { phase: "ready", resources, queryErrors, error: null, patientId }, set, get);
@@ -473,7 +467,6 @@ function initialSiteRun(site: ViewerLaunchSite): ViewerSiteRun {
     tokenResponse: null,
     tokenClaims: null,
     introspection: null,
-    proofJkt: null,
     error: null,
     queryErrors: [],
     resources: [],
@@ -503,7 +496,6 @@ async function loadSiteResources(
   patientId: string,
   capabilityStatement: Record<string, any> | null,
   accessToken: string | null,
-  proofJkt: string | null,
   smartConfig: Record<string, any> | null,
 ) {
   const allResources: ViewerResourceItem[] = [];
@@ -520,7 +512,7 @@ async function loadSiteResources(
       const payload =
         launch.mode === "anonymous"
           ? await fetchPreviewSiteFhirAllPages(launch.origin, site, query.relativePath)
-          : await fetchFhirAllPagesFromBase(siteFhirBaseUrl, query.relativePath, accessToken, proofJkt);
+          : await fetchFhirAllPagesFromBase(siteFhirBaseUrl, query.relativePath, accessToken);
       const summarized = summarizeSiteResources(site, payload, fullUrl);
       allResources.push(...summarized);
     } catch (error) {
@@ -562,7 +554,6 @@ async function resolveSitePatientId(
   site: ViewerLaunchSite,
   _capabilityStatement: Record<string, any> | null,
   accessToken: string | null,
-  proofJkt: string | null,
   smartConfig: Record<string, any> | null,
 ) {
   const relativePath =
@@ -570,7 +561,7 @@ async function resolveSitePatientId(
   const payload =
     launch.mode === "anonymous"
       ? await fetchPreviewSiteFhir(launch.origin, site, relativePath)
-      : await fetchFhirFromBase(String(smartConfig?.fhir_base_url ?? `${launch.origin}${site.authSurface.fhirBasePath}`), relativePath, accessToken, proofJkt);
+      : await fetchFhirFromBase(String(smartConfig?.fhir_base_url ?? `${launch.origin}${site.authSurface.fhirBasePath}`), relativePath, accessToken);
   const entries = payload?.entry ?? [];
   if (!entries.length) return null;
   const match = entries[0]?.resource;
