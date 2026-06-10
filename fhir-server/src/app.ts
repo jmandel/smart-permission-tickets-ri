@@ -27,6 +27,14 @@ import {
 import { oidfEntityConfigurationPath } from "./auth/frameworks/oidf/urls.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
+import {
+  buildIssuerSmartConfiguration,
+  handleAuthorizeRequest,
+  IssuanceGrantStore,
+  IssuanceTokenError,
+  redeemAuthorizationCode,
+  renderPersonPicker,
+} from "./auth/issuance.ts";
 import { signJwt, verifyJwt } from "./auth/jwt.ts";
 import { TicketRevocationRegistry } from "./auth/ticket-revocation.ts";
 import {
@@ -70,6 +78,7 @@ export type AppContext = {
   ticketRevocations: TicketRevocationRegistry;
   demoEvents: DemoEventBus;
   demoSessionLinks: DemoSessionLinks;
+  issuanceGrants: IssuanceGrantStore;
   usesDefaultIssuerTrustPolicy: boolean;
 };
 
@@ -119,7 +128,7 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
   const demoSessionLinks = new DemoSessionLinks();
-  return { config, store, clients, frameworks, oidfTopology, issuers, ticketRevocations, demoEvents, demoSessionLinks, usesDefaultIssuerTrustPolicy };
+  return { config, store, clients, frameworks, oidfTopology, issuers, ticketRevocations, demoEvents, demoSessionLinks, issuanceGrants: new IssuanceGrantStore(), usesDefaultIssuerTrustPolicy };
 }
 
 import landingHtml from "../ui/index.html";
@@ -358,6 +367,12 @@ export async function handleRequest(context: AppContext, request: Request, serve
           return jsonResponse(buildIssuerJwks(context, issuerRoute.issuerSlug));
         case "sign-ticket":
           return await handleSignTicket(context, request, url, issuerRoute.issuerSlug);
+        case "smart-configuration":
+          return jsonResponse(buildIssuerSmartConfiguration(url.origin, issuerRoute.issuerSlug), 200, { "cache-control": "public, max-age=300" });
+        case "authorize":
+          return handleIssuerAuthorize(context, request, url, issuerRoute.issuerSlug);
+        case "issuance-token":
+          return await handleIssuerToken(context, request, url, issuerRoute.issuerSlug);
       }
     } catch (error) {
       return operationOutcome(error instanceof Error ? error.message : "Request failed", 400);
@@ -744,6 +759,43 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       }));
     }
     return tokenErrorResponse(oauthError);
+  }
+}
+
+function handleIssuerAuthorize(context: AppContext, request: Request, url: URL, issuerSlug: string) {
+  if (request.method !== "GET") return methodNotAllowed("GET");
+  if (!context.issuers.get(issuerSlug)) return notFound();
+  const outcome = handleAuthorizeRequest(url, context.store, context.issuanceGrants, issuerSlug);
+  switch (outcome.kind) {
+    case "error":
+      return jsonResponse({ error: "invalid_request", error_description: outcome.message }, outcome.status);
+    case "redirect":
+      return new Response(null, { status: 302, headers: { location: outcome.location } });
+    case "picker":
+      return htmlResponse(renderPersonPicker(url.origin, issuerSlug, outcome.persons, outcome.resumeParams));
+  }
+}
+
+async function handleIssuerToken(context: AppContext, request: Request, url: URL, issuerSlug: string) {
+  if (request.method !== "POST") return methodNotAllowed("POST");
+  if (!context.issuers.get(issuerSlug)) return notFound();
+  const body = await parseBody(request);
+  try {
+    const response = await redeemAuthorizationCode({
+      origin: url.origin,
+      issuerSlug,
+      body,
+      grants: context.issuanceGrants,
+      store: context.store,
+      clients: context.clients,
+      issuers: context.issuers,
+    });
+    return jsonResponse(response, 200, { "cache-control": "no-store" });
+  } catch (error) {
+    if (error instanceof IssuanceTokenError) {
+      return jsonResponse({ error: error.oauthError, error_description: error.message }, 400);
+    }
+    return jsonResponse({ error: "invalid_request", error_description: error instanceof Error ? error.message : "Token request failed" }, 400);
   }
 }
 
@@ -1796,6 +1848,9 @@ function resolveIssuerRoute(pathname: string):
   | { kind: "metadata"; issuerSlug: string }
   | { kind: "jwks"; issuerSlug: string }
   | { kind: "sign-ticket"; issuerSlug: string }
+  | { kind: "smart-configuration"; issuerSlug: string }
+  | { kind: "authorize"; issuerSlug: string }
+  | { kind: "issuance-token"; issuerSlug: string }
   | null {
   const segments = pathname.split("/").filter(Boolean);
   if (segments[0] !== "issuer") return null;
@@ -1804,6 +1859,15 @@ function resolveIssuerRoute(pathname: string):
   if (segments.length === 2) return { kind: "metadata", issuerSlug };
   if (segments[2] === ".well-known" && segments[3] === "jwks.json" && segments.length === 4) {
     return { kind: "jwks", issuerSlug };
+  }
+  if (segments[2] === ".well-known" && segments[3] === "smart-configuration" && segments.length === 4) {
+    return { kind: "smart-configuration", issuerSlug };
+  }
+  if (segments[2] === "authorize" && segments.length === 3) {
+    return { kind: "authorize", issuerSlug };
+  }
+  if (segments[2] === "token" && segments.length === 3) {
+    return { kind: "issuance-token", issuerSlug };
   }
   if (segments[2] === "sign-ticket" && segments.length === 3) {
     return { kind: "sign-ticket", issuerSlug };
