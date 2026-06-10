@@ -190,6 +190,7 @@ function mintTicket(context: ReturnType<typeof createAppContext>, publicOrigin: 
     iss: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
     aud: publicOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
+    iat: Math.floor(Date.now() / 1000),
     jti: crypto.randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     subject: {
@@ -206,7 +207,6 @@ function mintTicket(context: ReturnType<typeof createAppContext>, publicOrigin: 
         interactions: ["read", "search"],
       }],
       data_period: { start: "2023-01-01", end: "2025-12-31" },
-      sensitive_data: "exclude",
     },
   });
 }

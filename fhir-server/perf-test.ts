@@ -110,9 +110,10 @@ async function benchmarkPatient(person: any) {
     subject: {
       patient: { resourceType: "Patient", name: [{ family: familyName, given: givenNames }], birthDate },
     },
+    must_understand: ["sensitivity_policy"],
+    sensitivity_policy: { unlisted_sensitive_data: "release_authorized" },
     access: {
       permissions: [{ kind: "data", resource_type: "*", interactions: ["read", "search"] }],
-      sensitive_data: "include",
     },
   };
 

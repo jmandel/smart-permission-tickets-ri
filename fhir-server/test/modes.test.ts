@@ -166,6 +166,7 @@ describe("mode surfaces", () => {
           iss: `${publicOrigin}/issuer/reference-demo`,
           aud: publicOrigin,
           exp: Math.floor(Date.now() / 1000) + 3600,
+          iat: Math.floor(Date.now() / 1000),
           jti: crypto.randomUUID(),
           ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
           presenter_binding: { method: "jkt", jkt: "public-origin-test-jkt" },
@@ -209,6 +210,7 @@ describe("mode surfaces", () => {
         iss: `${origin}/issuer/reference-demo`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: { method: "jkt", jkt: "sign-ticket-test-jkt" },
@@ -222,7 +224,6 @@ describe("mode surfaces", () => {
             interactions: ["read", "search"],
           }],
           data_period: { start: "2023-01-01", end: "2025-12-31" },
-          sensitive_data: "exclude",
         },
       }),
     });
@@ -438,6 +439,7 @@ describe("mode surfaces", () => {
       subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
       subject_token: mintTicket({
         aud: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+        audType: "trust_framework",
         subject: elenaPatient(),
         scopes: ["patient/Patient.rs"],
         periods: [{ start: "2023-01-01", end: "2025-12-31" }],
@@ -456,6 +458,7 @@ describe("mode surfaces", () => {
         subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
         subject_token: mintTicket({
           aud: "https://example.org/frameworks/not-a-member",
+          audType: "trust_framework",
           subject: elenaPatient(),
           scopes: ["patient/Patient.rs"],
           periods: [{ start: "2023-01-01", end: "2025-12-31" }],
@@ -654,13 +657,13 @@ describe("mode surfaces", () => {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
         requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
         access: {
           permissions: projectScopesToPermissions(["patient/Patient.rs"]),
           data_period: { start: "2023-01-01", end: "2025-12-31" },
-          sensitive_data: "exclude",
         },
         context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
         subject: {
@@ -677,13 +680,13 @@ describe("mode surfaces", () => {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
         requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
         access: {
           permissions: projectScopesToPermissions(["patient/Patient.rs"]),
           data_period: { start: "2023-01-01", end: "2025-12-31" },
-          sensitive_data: "exclude",
         },
         context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
         subject: "not-an-object",
@@ -700,6 +703,7 @@ describe("mode surfaces", () => {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
         requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
@@ -709,7 +713,6 @@ describe("mode surfaces", () => {
         access: {
           permissions: projectScopesToPermissions(["patient/Patient.rs"]),
           data_period: { start: "2023-01-01", end: "2025-12-31" },
-          sensitive_data: "exclude",
         },
         context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
       } as any),
@@ -1049,8 +1052,10 @@ describe("mode surfaces", () => {
     expect(disallowedSiteEncounters.status).toBe(400);
   });
 
-  test("supporting context resources remain queryable under narrow clinical scopes", async () => {
-    const tokenBody = await postFormJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/token`, {
+  test("supporting context resources require a granting permission", async () => {
+    // Narrow clinical scopes grant exactly what the ticket's permissions
+    // cover: directory types are not silently appended to the grant.
+    const narrowToken = await postFormJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/token`, {
       grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
       subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
       subject_token: mintTicket({
@@ -1064,13 +1069,24 @@ describe("mode surfaces", () => {
       }),
     });
 
-    const organizationBundle = await getJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/fhir/Organization?_count=10`, tokenBody.access_token);
-    const practitionerBundle = await getJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/fhir/Practitioner?_count=10`, tokenBody.access_token);
-    const locationBundle = await getJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/fhir/Location?_count=10`, tokenBody.access_token);
+    const narrowOrganizations = await getJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/fhir/Organization?_count=10`, narrowToken.access_token);
+    const narrowPractitioners = await getJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/fhir/Practitioner?_count=10`, narrowToken.access_token);
+    expect(narrowOrganizations.total).toBe(0);
+    expect(narrowPractitioners.total).toBe(0);
 
-    expect(organizationBundle.total).toBeGreaterThan(0);
-    expect(practitionerBundle.total).toBeGreaterThan(0);
-    expect(locationBundle.total).toBeGreaterThan(0);
+    // A wildcard permission covers them.
+    const wideToken = await postFormJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: "https://smarthealthit.org/token-type/permission-ticket",
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: ["patient/*.rs"],
+        periods: [{ start: "2023-01-01", end: "2025-12-31" }],
+        sensitiveMode: "allow",
+      }),
+    });
+    const wideOrganizations = await getJson(`${origin}/modes/open/sites/bay-area-rheumatology-associates/fhir/Organization?_count=10`, wideToken.access_token);
+    expect(wideOrganizations.total).toBeGreaterThan(0);
   });
 
   test("responder filters widen by union across organization and jurisdiction matches", async () => {
@@ -1456,7 +1472,6 @@ describe("issued token behavior", () => {
       access: {
         permissions: projectScopesToPermissions(["patient/Patient.rs"]),
         data_period: { start: "2023-01-01", end: "2025-12-31" },
-        sensitive_data: "exclude",
       },
       context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
     } as any);
@@ -1580,6 +1595,7 @@ function denisePatient() {
 function mintTicket(input: {
   issuer?: string;
   aud?: string | string[];
+  audType?: "data_holder_url" | "trust_framework";
   subject: any;
   scopes: string[];
   periods: Array<{ start?: string; end?: string }>;
@@ -1597,6 +1613,8 @@ function mintTicket(input: {
     | { kind: "organization"; organization: { resourceType: "Organization"; name?: string; identifier?: Array<{ system?: string; value?: string }> } }
   >;
   accessExtras?: Record<string, unknown>;
+  permissions?: Array<Record<string, unknown>>;
+  sensitivityPolicy?: Record<string, unknown>;
   rawSign?: boolean;
 }) {
   const ticketOrigin = input.issuer ?? origin;
@@ -1607,19 +1625,32 @@ function mintTicket(input: {
   const payload = {
     iss: `${ticketOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
     aud: input.aud ?? ticketOrigin,
+    ...(input.audType ? { aud_type: input.audType } : {}),
     ...(typeof input.exp === "number" ? { exp: input.exp } : { exp: Math.floor(Date.now() / 1000) + 3600 }),
-    ...(typeof input.iat === "number" ? { iat: input.iat } : {}),
+    iat: typeof input.iat === "number" ? input.iat : Math.floor(Date.now() / 1000),
     ...(input.jti === null ? {} : (typeof input.jti === "string" ? { jti: input.jti } : { jti: crypto.randomUUID() })),
     ticket_type: ticketType,
     ...(input.presenterBinding ? { presenter_binding: input.presenterBinding } : {}),
     ...(input.revocation ? { revocation: input.revocation } : {}),
     subject: normalizeSubject(input.subject),
     ...(requester ? { requester } : {}),
+    // "allow" opts in to sensitive categories via the Proposal 005 claim;
+    // "deny" matches this server's local default, so the ticket says nothing.
+    ...(input.sensitivityPolicy
+      ? {
+          must_understand: ["sensitivity_policy"],
+          sensitivity_policy: input.sensitivityPolicy,
+        }
+      : input.sensitiveMode === "allow"
+        ? {
+            must_understand: ["sensitivity_policy"],
+            sensitivity_policy: { unlisted_sensitive_data: "release_authorized" },
+          }
+        : {}),
     access: {
-      permissions: projectScopesToPermissions(input.scopes),
+      permissions: input.permissions ?? projectScopesToPermissions(input.scopes),
       data_period: normalizeDataPeriod(input.periods),
       data_holder_filter: input.dataHolderFilter,
-      sensitive_data: input.sensitiveMode === "allow" ? "include" : "exclude",
       ...input.accessExtras,
     },
     ...(effectiveContext ? { context: effectiveContext } : {}),
@@ -1968,3 +1999,274 @@ function withTempBinaryFile<T>(bytes: Uint8Array, extension: string, run: (fileP
     rmSync(workspace, { recursive: true, force: true });
   }
 }
+
+describe("spec alignment", () => {
+  const wide = [{ start: "2000-01-01", end: "2030-12-31" }];
+
+  test("framework audience without aud_type is rejected: absent aud_type means data_holder_url", async () => {
+    await expectTokenError(
+      await postForm(`${origin}/modes/open/token`, {
+        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+        subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+        subject_token: mintTicket({
+          aud: DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI,
+          subject: elenaPatient(),
+          scopes: ["patient/Patient.rs"],
+          periods: wide,
+          sensitiveMode: "deny",
+        }),
+      }),
+      "invalid_grant",
+      "audience mismatch",
+    );
+  });
+
+  test("individual-access tickets without presenter binding are rejected outside open modes", async () => {
+    const client = await registerDynamicClient(`${origin}/register`, "Binding Required Client");
+    const response = await postFormWithClient(`${origin}/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: ["patient/Patient.rs"],
+        periods: wide,
+        sensitiveMode: "deny",
+        ticketType: PATIENT_SELF_ACCESS_TICKET_TYPE,
+      }),
+    }, client);
+    await expectTokenError(response, "invalid_grant", "presenter binding required");
+
+    // The open demo surface accepts the same ticket, with an audit note.
+    const openResponse = await postForm(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: ["patient/Patient.rs"],
+        periods: wide,
+        sensitiveMode: "deny",
+        ticketType: PATIENT_SELF_ACCESS_TICKET_TYPE,
+      }),
+    });
+    expect(openResponse.status).toBe(200);
+  });
+
+  test("recipient_record inconsistent with subject demographics is rejected", async () => {
+    const otherPatient = context.store.findPatientAliasesByTraits({ name: [{ family: "Walker" }] });
+    expect(otherPatient.length).toBeGreaterThan(0);
+    const response = await postForm(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: { type: "reference", reference: otherPatient[0].serverPatientRef },
+        scopes: ["patient/Patient.rs"],
+        periods: wide,
+        sensitiveMode: "deny",
+      }),
+    });
+    await expectTokenError(response, "invalid_grant", "does not match the ticket subject demographics");
+  });
+
+  test("unresolvable recipient_record falls back to demographic matching", async () => {
+    const response = await postForm(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: { type: "reference", reference: "Patient/does-not-exist-anywhere" },
+        scopes: ["patient/Patient.rs"],
+        periods: wide,
+        sensitiveMode: "deny",
+      }),
+    });
+    expect(response.status).toBe(200);
+  });
+
+  test("write-only permissions narrow to nothing and the exchange fails", async () => {
+    const response = await postForm(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: [],
+        permissions: [{ kind: "data", resource_type: "ServiceRequest", interactions: ["create", "update"] }],
+        periods: wide,
+        sensitiveMode: "deny",
+      }),
+    });
+    await expectTokenError(response, "invalid_grant", "No ticket permission projects");
+  });
+
+  test("mixed-interaction permissions narrow to read/search instead of failing", async () => {
+    const body = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: [],
+        permissions: [{ kind: "data", resource_type: "Observation", interactions: ["read", "search", "create"] }],
+        periods: wide,
+        sensitiveMode: "deny",
+      }),
+    });
+    expect(body.scope).toBe("patient/Observation.rs");
+  });
+
+  test("code_any_of filters search results to the listed codes", async () => {
+    const wideBody = await issueOpenToken(["patient/*.rs"], "allow", wide);
+    const allObservations = await getJson(`${origin}/modes/open/fhir/Observation?_count=200`, wideBody.access_token);
+    expect(allObservations.total).toBeGreaterThan(1);
+    const codings = new Map<string, { system?: string; code: string }>();
+    for (const entry of allObservations.entry ?? []) {
+      const coding = entry.resource?.code?.coding?.[0];
+      if (coding?.code) codings.set(`${coding.system}|${coding.code}`, coding);
+    }
+    expect(codings.size).toBeGreaterThan(1);
+    const [target] = [...codings.values()];
+
+    const filteredBody = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: [],
+        permissions: [{
+          kind: "data",
+          resource_type: "Observation",
+          interactions: ["read", "search"],
+          code_any_of: [{ system: target.system, code: target.code }],
+        }],
+        periods: wide,
+        sensitiveMode: "allow",
+      }),
+    });
+    const filtered = await getJson(`${origin}/modes/open/fhir/Observation?_count=200`, filteredBody.access_token);
+    expect(filtered.total).toBeGreaterThan(0);
+    expect(filtered.total).toBeLessThan(allObservations.total);
+    for (const entry of filtered.entry ?? []) {
+      const codes = (entry.resource?.code?.coding ?? []).map((coding: any) => `${coding.system}|${coding.code}`);
+      expect(codes).toContain(`${target.system}|${target.code}`);
+    }
+  });
+
+  test("multi-valued category_any_of widens by OR", async () => {
+    const mintCategoryTicket = (categories: Array<{ system: string; code: string }>) => mintTicket({
+      subject: elenaPatient(),
+      scopes: [],
+      permissions: [{
+        kind: "data",
+        resource_type: "Observation",
+        interactions: ["read", "search"],
+        category_any_of: categories,
+      }],
+      periods: wide,
+      sensitiveMode: "allow",
+    });
+    const labOnly = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintCategoryTicket([
+        { system: "http://terminology.hl7.org/CodeSystem/observation-category", code: "laboratory" },
+      ]),
+    });
+    const labAndVitals = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintCategoryTicket([
+        { system: "http://terminology.hl7.org/CodeSystem/observation-category", code: "laboratory" },
+        { system: "http://terminology.hl7.org/CodeSystem/observation-category", code: "vital-signs" },
+      ]),
+    });
+    const labTotal = (await getJson(`${origin}/modes/open/fhir/Observation?_count=200`, labOnly.access_token)).total;
+    const widenedTotal = (await getJson(`${origin}/modes/open/fhir/Observation?_count=200`, labAndVitals.access_token)).total;
+    expect(labTotal).toBeGreaterThan(0);
+    expect(widenedTotal).toBeGreaterThan(labTotal);
+  });
+
+  test("sensitivity_policy without must_understand is rejected", async () => {
+    const response = await postForm(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: context.issuers.sign(origin, context.config.defaultPermissionTicketIssuerSlug, {
+        iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
+        aud: origin,
+        exp: Math.floor(Date.now() / 1000) + 3600,
+        jti: crypto.randomUUID(),
+        ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
+        requester: defaultRequester(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+        subject: { patient: elenaPatient() },
+        sensitivity_policy: { unlisted_sensitive_data: "release_authorized" },
+        access: { permissions: projectScopesToPermissions(["patient/Patient.rs"]) },
+        context: defaultContext(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE),
+      }),
+    });
+    await expectTokenError(response, "invalid_grant", "must_understand");
+  });
+
+  test("withholding every sensitive category equals the local default; release_authorized opens it up", async () => {
+    const countEncounters = async (token: string) =>
+      (await getJson(`${origin}/modes/open/fhir/Encounter?_count=200`, token)).total as number;
+
+    const denyBody = await issueOpenToken(["patient/*.rs"], "deny", wide);
+    const allowBody = await issueOpenToken(["patient/*.rs"], "allow", wide);
+    const withholdAllBody = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: ["patient/*.rs"],
+        periods: wide,
+        sensitiveMode: "deny",
+        sensitivityPolicy: {
+          release_authorized: [
+            { system: "http://terminology.hl7.org/CodeSystem/v3-ActCode", code: "SEX" },
+            { system: "http://terminology.hl7.org/CodeSystem/v3-ActCode", code: "MH" },
+          ],
+          // withhold wins over release_authorized, so this nets out to deny.
+          withhold: [
+            { system: "http://terminology.hl7.org/CodeSystem/v3-ActCode", code: "SEX" },
+            { system: "http://terminology.hl7.org/CodeSystem/v3-ActCode", code: "MH" },
+          ],
+          unlisted_sensitive_data: "withhold",
+        },
+      }),
+    });
+
+    const denyTotal = await countEncounters(denyBody.access_token);
+    const allowTotal = await countEncounters(allowBody.access_token);
+    const withholdAllTotal = await countEncounters(withholdAllBody.access_token);
+
+    expect(allowTotal).toBeGreaterThan(denyTotal);
+    expect(withholdAllTotal).toBe(denyTotal);
+  });
+
+  test("release_authorized can carve one category out of an otherwise-withheld set", async () => {
+    const countAll = async (token: string) => {
+      const encounters = (await getJson(`${origin}/modes/open/fhir/Encounter?_count=200`, token)).total as number;
+      const observations = (await getJson(`${origin}/modes/open/fhir/Observation?_count=200`, token)).total as number;
+      return encounters + observations;
+    };
+    const denyBody = await issueOpenToken(["patient/*.rs"], "deny", wide);
+    const allowBody = await issueOpenToken(["patient/*.rs"], "allow", wide);
+    const sexOnlyBody = await postFormJson(`${origin}/modes/open/token`, {
+      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+      subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+      subject_token: mintTicket({
+        subject: elenaPatient(),
+        scopes: ["patient/*.rs"],
+        periods: wide,
+        sensitiveMode: "deny",
+        sensitivityPolicy: {
+          release_authorized: [{ system: "http://terminology.hl7.org/CodeSystem/v3-ActCode", code: "SEX" }],
+          unlisted_sensitive_data: "withhold",
+        },
+      }),
+    });
+
+    const denyTotal = await countAll(denyBody.access_token);
+    const allowTotal = await countAll(allowBody.access_token);
+    const sexOnlyTotal = await countAll(sexOnlyBody.access_token);
+
+    expect(sexOnlyTotal).toBeGreaterThan(denyTotal);
+    expect(sexOnlyTotal).toBeLessThanOrEqual(allowTotal);
+  });
+});

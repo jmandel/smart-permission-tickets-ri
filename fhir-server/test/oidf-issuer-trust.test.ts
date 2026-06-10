@@ -324,7 +324,6 @@ function signIssuerTicket(
         interactions: ["read", "search"],
       }],
       data_period: { start: "2023-01-01", end: "2025-12-31" },
-      sensitive_data: "exclude",
     },
   }, signingKey, { kid });
 }

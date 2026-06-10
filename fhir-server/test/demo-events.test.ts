@@ -284,6 +284,7 @@ describe("demo event stream", () => {
           iss: "http://example.test/issuer/reference-demo",
           aud: "http://example.test/networks/reference/token",
           exp: Math.floor(Date.now() / 1000) + 3600,
+          iat: Math.floor(Date.now() / 1000),
           jti: crypto.randomUUID(),
           ticket_type: "https://smarthealthit.org/permission-ticket-type/public-health-investigation-v1",
           requester: {
@@ -300,7 +301,6 @@ describe("demo event stream", () => {
           },
           access: {
             permissions: [{ kind: "data", resource_type: "*", interactions: ["read", "search"] }],
-            sensitive_data: "exclude",
           },
           context: {
             reportable_condition: { text: "Public health investigation" },
@@ -341,6 +341,7 @@ describe("demo event stream", () => {
           iss: `${publicOrigin}/issuer/reference-demo`,
           aud: publicOrigin,
           exp: Math.floor(Date.now() / 1000) + 3600,
+          iat: Math.floor(Date.now() / 1000),
           jti: crypto.randomUUID(),
           ticket_type: "https://smarthealthit.org/permission-ticket-type/patient-self-access-v1",
           presenter_binding: { method: "jkt", jkt: thumbprint },
@@ -356,7 +357,6 @@ describe("demo event stream", () => {
               { kind: "data", resource_type: "Patient", interactions: ["read", "search"] },
               { kind: "data", resource_type: "Observation", interactions: ["read", "search"] },
             ],
-            sensitive_data: "exclude",
           },
         }),
       });

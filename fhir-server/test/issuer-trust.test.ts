@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 
 import { generateClientKeyMaterial } from "../shared/private-key-jwt.ts";
 import {
+  PATIENT_SELF_ACCESS_TICKET_TYPE,
   PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
   PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
 } from "../shared/permission-tickets.ts";
@@ -63,6 +64,7 @@ describe("issuer trust policy", () => {
           iss: issuerUrl,
           aud: origin,
           exp: Math.floor(Date.now() / 1000) + 3600,
+          iat: Math.floor(Date.now() / 1000),
           jti: crypto.randomUUID(),
           ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
           requester: {
@@ -84,7 +86,6 @@ describe("issuer trust policy", () => {
               interactions: ["read", "search"],
             }],
             data_period: { start: "2023-01-01", end: "2025-12-31" },
-            sensitive_data: "exclude",
           },
           context: {
             reportable_condition: { text: "Public health investigation" },
@@ -148,6 +149,7 @@ describe("issuer trust policy", () => {
         iss: `${publicOrigin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
         aud: publicOrigin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
         requester: {
@@ -169,7 +171,6 @@ describe("issuer trust policy", () => {
             interactions: ["read", "search"],
           }],
           data_period: { start: "2023-01-01", end: "2025-12-31" },
-          sensitive_data: "exclude",
         },
         context: {
           reportable_condition: { text: "Public health investigation" },
@@ -252,6 +253,7 @@ describe("issuer trust policy", () => {
           iss: issuerUrl,
           aud: origin,
           exp: Math.floor(Date.now() / 1000) + 3600,
+          iat: Math.floor(Date.now() / 1000),
           jti: crypto.randomUUID(),
           ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
           requester: {
@@ -273,7 +275,6 @@ describe("issuer trust policy", () => {
               interactions: ["read", "search"],
             }],
             data_period: { start: "2023-01-01", end: "2025-12-31" },
-            sensitive_data: "exclude",
           },
           context: {
             reportable_condition: { text: "Public health investigation" },
@@ -314,3 +315,99 @@ function jsonResponse(body: unknown, status = 200, headers: Record<string, strin
     },
   });
 }
+
+describe("ticket-type-scoped issuer trust", () => {
+  test("a policy scoped to one ticket type rejects other ticket types from the same issuer", async () => {
+    const issuerKeys = await generateClientKeyMaterial();
+    const issuerKid = computeEcJwkThumbprintSync(issuerKeys.publicJwk);
+
+    const jwksServer = Bun.serve({
+      port: 0,
+      fetch(request) {
+        const url = new URL(request.url);
+        if (url.pathname === "/demo/issuer-scoped/.well-known/jwks.json") {
+          return new Response(JSON.stringify({ keys: [{ ...issuerKeys.publicJwk, kid: issuerKid }] }), {
+            headers: { "content-type": "application/json" },
+          });
+        }
+        return new Response("Not found", { status: 404 });
+      },
+    });
+
+    const issuerUrl = `http://127.0.0.1:${jwksServer.port}/demo/issuer-scoped`;
+    const context = createAppContext({
+      port: 0,
+      issuerTrust: {
+        policies: [
+          {
+            type: "direct_jwks",
+            trustedIssuers: [issuerUrl],
+            // Trusted for patient self-access only: a public health ticket
+            // from this issuer must be rejected even though the signature
+            // and JWKS resolution succeed.
+            ticketTypes: [PATIENT_SELF_ACCESS_TICKET_TYPE],
+          },
+        ],
+      },
+    });
+    const server = startServer(context, 0);
+    const origin = `http://127.0.0.1:${server.port}`;
+    context.config.publicBaseUrl = origin;
+    context.config.issuer = origin;
+
+    try {
+      const mint = (ticketType: string, extras: Record<string, unknown>) => signEs256Jwt(
+        {
+          iss: issuerUrl,
+          aud: origin,
+          exp: Math.floor(Date.now() / 1000) + 3600,
+          iat: Math.floor(Date.now() / 1000),
+          jti: crypto.randomUUID(),
+          ticket_type: ticketType,
+          subject: {
+            patient: {
+              resourceType: "Patient",
+              name: [{ family: "Reyes", given: ["Elena"] }],
+              birthDate: "1989-09-14",
+            },
+          },
+          access: {
+            permissions: [{ kind: "data", resource_type: "Patient", interactions: ["read", "search"] }],
+          },
+          ...extras,
+        },
+        issuerKeys.privateJwk,
+        { kid: issuerKid },
+      );
+
+      const exchange = (ticket: string) => fetch(`${origin}/modes/open/token`, {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+          subject_token_type: PERMISSION_TICKET_SUBJECT_TOKEN_TYPE,
+          subject_token: ticket,
+        }),
+      });
+
+      const selfAccessResponse = await exchange(mint(PATIENT_SELF_ACCESS_TICKET_TYPE, {}));
+      expect(selfAccessResponse.status).toBe(200);
+
+      const publicHealthResponse = await exchange(mint(PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE, {
+        requester: {
+          resourceType: "Organization",
+          identifier: [{ system: "urn:example:org", value: "public-health-dept" }],
+          name: "Public Health Department",
+        },
+        context: { reportable_condition: { text: "Public health investigation" } },
+      }));
+      expect(publicHealthResponse.status).toBe(400);
+      const body = await publicHealthResponse.json();
+      expect(body.error).toBe("invalid_grant");
+      expect(body.error_description).toContain("not trusted for this ticket type");
+    } finally {
+      server.stop(true);
+      jwksServer.stop(true);
+    }
+  });
+});

@@ -194,6 +194,7 @@ function mintOidfTicket(appContext: ReturnType<typeof createAppContext>, publicO
     iss: `${publicOrigin}/issuer/${appContext.config.defaultPermissionTicketIssuerSlug}`,
     aud: publicOrigin,
     exp: Math.floor(Date.now() / 1000) + 3600,
+    iat: Math.floor(Date.now() / 1000),
     jti: crypto.randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     presenter_binding: {
@@ -216,7 +217,6 @@ function mintOidfTicket(appContext: ReturnType<typeof createAppContext>, publicO
         interactions: ["read", "search"],
       }],
       data_period: { start: "2023-01-01", end: "2025-12-31" },
-      sensitive_data: "exclude",
     },
   });
 }

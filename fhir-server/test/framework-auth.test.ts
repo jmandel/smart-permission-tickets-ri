@@ -279,6 +279,7 @@ function mintTicket(
     aud: input.aud ?? appOrigin,
     ...(input.audType ? { aud_type: input.audType } : {}),
     exp: Math.floor(Date.now() / 1000) + 3600,
+    iat: Math.floor(Date.now() / 1000),
     jti: crypto.randomUUID(),
     ticket_type: ticketType,
     ...(input.presenterBinding ? { presenter_binding: input.presenterBinding } : {}),
@@ -305,7 +306,6 @@ function mintTicket(
         interactions: ["read", "search"],
       }],
       data_period: { start: "2023-01-01", end: "2025-12-31" },
-      sensitive_data: "exclude",
     },
     ...(ticketType === PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE
       ? {

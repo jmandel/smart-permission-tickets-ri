@@ -27,6 +27,7 @@ describe("UDAP token authentication and discovery", () => {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: {
@@ -49,7 +50,6 @@ describe("UDAP token authentication and discovery", () => {
             interactions: ["read", "search"],
           }],
           data_period: { start: "2023-01-01", end: "2025-12-31" },
-          sensitive_data: "exclude",
         },
       });
 
@@ -531,6 +531,7 @@ describe("UDAP token authentication and discovery", () => {
         iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
         aud: origin,
         exp: Math.floor(Date.now() / 1000) + 3600,
+        iat: Math.floor(Date.now() / 1000),
         jti: crypto.randomUUID(),
         ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
         presenter_binding: {
@@ -552,7 +553,6 @@ describe("UDAP token authentication and discovery", () => {
             resource_type: "Patient",
             interactions: ["read", "search"],
           }],
-          sensitive_data: "exclude",
         },
       });
 
@@ -733,6 +733,7 @@ function mintTicket(context: ReturnType<typeof createAppContext>, origin: string
     iss: `${origin}/issuer/${context.config.defaultPermissionTicketIssuerSlug}`,
     aud: origin,
     exp: Math.floor(Date.now() / 1000) + 3600,
+    iat: Math.floor(Date.now() / 1000),
     jti: crypto.randomUUID(),
     ticket_type: PUBLIC_HEALTH_INVESTIGATION_TICKET_TYPE,
     requester: {
@@ -754,7 +755,6 @@ function mintTicket(context: ReturnType<typeof createAppContext>, origin: string
         interactions: ["read", "search"],
       }],
       data_period: { start: "2023-01-01", end: "2025-12-31" },
-      sensitive_data: "exclude",
     },
     context: {
       reportable_condition: { text: "Public health investigation" },

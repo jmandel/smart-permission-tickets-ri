@@ -11,6 +11,7 @@ describe("spec-owned Permission Ticket schema", () => {
       aud: "https://example.org/frameworks/smart-health-issuers",
       aud_type: "trust_framework",
       exp: Math.floor(Date.now() / 1000) + 3600,
+      iat: Math.floor(Date.now() / 1000),
       jti: "ticket-example-001",
       ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
       presenter_binding: {
@@ -37,7 +38,6 @@ describe("spec-owned Permission Ticket schema", () => {
             },
           },
         ],
-        sensitive_data: "exclude",
       },
     });
 
