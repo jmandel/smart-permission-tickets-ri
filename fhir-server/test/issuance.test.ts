@@ -552,7 +552,7 @@ describe("per-site ticket selection", () => {
 });
 
 describe("embedded identity evidence", () => {
-  test("issued tickets carry an issuer-signed IAL2 id_token matching the subject", async () => {
+  test("issued tickets carry a CSP-signed IAL2 id_token whose audience names the issuer (T1)", async () => {
     const client = await registerClient("Evidence Client");
     const { verifier, challengePromise } = pkcePair();
     const code = await runAuthorize(client.clientId, await challengePromise);
@@ -565,9 +565,13 @@ describe("embedded identity evidence", () => {
 
     const idToken = decodeEs256Jwt<any>(evidence.jwt);
     const issuerUrl = `${origin}/issuer/${issuerSlug}`;
+    const cspUrl = `${origin}/csp/demo-csp`;
     expect(idToken.header.alg).toBe("ES256");
-    // aud names the issuer (the CSP stand-in), never the data holder.
-    expect(idToken.payload.iss).toBe(issuerUrl);
+    // T1: the issuer was the relying party at an external CSP. The evidence
+    // iss is the CSP, not the ticket issuer, and aud names the issuer —
+    // never the data holder.
+    expect(idToken.payload.iss).toBe(cspUrl);
+    expect(idToken.payload.iss).not.toBe(decoded.payload.iss);
     expect(idToken.payload.aud).toBe(issuerUrl);
     expect(typeof idToken.payload.sub).toBe("string");
     expect(idToken.payload.sub.length).toBeGreaterThan(0);
@@ -578,6 +582,19 @@ describe("embedded identity evidence", () => {
     expect(idToken.payload.family_name).toBe("Reyes");
     expect(idToken.payload.given_name).toContain("Elena");
     expect(idToken.payload.birthdate).toBe(decoded.payload.subject.patient.birthDate);
+
+    // The evidence verifies against the CSP's published JWKS — keys resolved
+    // from the evidence iss URL, not from any ticket-issuer key set.
+    const jwksResponse = await fetch(`${cspUrl}/.well-known/jwks.json`);
+    expect(jwksResponse.status).toBe(200);
+    const jwks = await jwksResponse.json() as { keys: Array<JsonWebKey & { kid?: string }> };
+    const signingKey = jwks.keys.find((key) => key.kid === idToken.header.kid);
+    expect(signingKey).toBeTruthy();
+    const { verifyEs256Jwt } = await import("../src/auth/es256-jwt.ts");
+    expect(() => verifyEs256Jwt(evidence.jwt, signingKey!)).not.toThrow();
+    // And the CSP key is not a ticket-issuer key.
+    const issuerJwks = await (await fetch(`${issuerUrl}/.well-known/jwks.json`)).json() as { keys: Array<JsonWebKey & { kid?: string }> };
+    expect(issuerJwks.keys.some((key) => key.kid === idToken.header.kid)).toBe(false);
   });
 
   test("redemption verifies the evidence and traces it; tampered evidence is rejected", async () => {
@@ -628,7 +645,8 @@ describe("embedded identity evidence", () => {
     const evidenceStep = steps.find((step) => step.check === "Identity evidence");
     expect(evidenceStep?.passed).toBe(true);
     expect(evidenceStep?.evidence).toContain("IAL2 id_token verified");
-    expect(evidenceStep?.evidence).toContain(`${origin}/issuer/${issuerSlug}`);
+    expect(evidenceStep?.evidence).toContain(`CSP ${origin}/csp/demo-csp`);
+    expect(evidenceStep?.evidence).toContain("audience = ticket issuer");
 
     // Tampered evidence: re-sign a workbench ticket carrying the evidence jwt
     // with its payload swapped out, so the evidence signature no longer
@@ -669,6 +687,62 @@ describe("embedded identity evidence", () => {
     const rejection = await rejected.json();
     expect(rejection.error).toBe("invalid_grant");
     expect(rejection.error_description).toContain("subject_identity_evidence");
+
+    // Untrusted evidence issuer: an id_token signed by the ticket issuer's
+    // own key (the old self-issued T3 shape) is rejected, because the ticket
+    // issuer is not on the data holder's evidence-issuer trust list — that
+    // list is configured separately from ticket-issuer trust.
+    const issuerSelfSignedIdToken = context.issuers.sign(origin, issuerSlug, {
+      aud: `${origin}/issuer/${issuerSlug}`,
+      sub: "elena-reyes",
+      exp: Math.floor(Date.now() / 1000) + 3600,
+      auth_time: Math.floor(Date.now() / 1000),
+      identity_assurance_level: 2,
+    });
+    const selfIssuedEvidenceTicket = await signTicket({
+      ...baseTicket,
+      jti: crypto.randomUUID(),
+      subject_identity_evidence: { source: "embedded", token_type: "id_token", jwt: issuerSelfSignedIdToken },
+    });
+    const selfIssuedRejected = await exchangeAt(selfIssuedEvidenceTicket);
+    expect(selfIssuedRejected.status).toBe(400);
+    const selfIssuedRejection = await selfIssuedRejected.json();
+    expect(selfIssuedRejection.error).toBe("invalid_grant");
+    expect(selfIssuedRejection.error_description).toContain("not a configured evidence issuer");
+
+    // Label rule: CSP-signed evidence whose audience names neither the
+    // ticket issuer nor the presenting client is rejected — a sign-in at
+    // another app must not launder through this presenter.
+    const mislabeledIdToken = context.csps.signIdToken(origin, "demo-csp", {
+      audience: "https://some-other-app.example.com",
+      subject: "elena-reyes",
+      claims: { given_name: "Elena", family_name: "Reyes", birthdate: "1989-09-14" },
+    });
+    const mislabeledTicket = await signTicket({
+      ...baseTicket,
+      jti: crypto.randomUUID(),
+      subject_identity_evidence: { source: "embedded", token_type: "id_token", jwt: mislabeledIdToken },
+    });
+    const mislabeledRejected = await exchangeAt(mislabeledTicket);
+    expect(mislabeledRejected.status).toBe(400);
+    const mislabeledRejection = await mislabeledRejected.json();
+    expect(mislabeledRejection.error).toBe("invalid_grant");
+    expect(mislabeledRejection.error_description).toContain("neither the ticket issuer nor the presenting client");
+
+    // T2 arm: CSP evidence labeled for the presenting client itself (the
+    // client obtained the sign-in and handed it to the issuer) is accepted.
+    const clientLabeledIdToken = context.csps.signIdToken(origin, "demo-csp", {
+      audience: client.clientId,
+      subject: "elena-reyes",
+      claims: { given_name: "Elena", family_name: "Reyes", birthdate: "1989-09-14" },
+    });
+    const clientLabeledTicket = await signTicket({
+      ...baseTicket,
+      jti: crypto.randomUUID(),
+      subject_identity_evidence: { source: "embedded", token_type: "id_token", jwt: clientLabeledIdToken },
+    });
+    const clientLabeledAccepted = await exchangeAt(clientLabeledTicket);
+    expect(clientLabeledAccepted.status).toBe(200);
 
     // Absence stays valid: the same workbench ticket without evidence redeems.
     const evidenceFreeTicket = await signTicket(baseTicket);

@@ -6,20 +6,24 @@
 // Permission Tickets plus endpoint hints for where they should work.
 //
 // In this demo the "verification and approval workflow" between authorize
-// and redirect is Elena Reyes's consent screen: it stands in for the identity
-// proofing and sharing-preference capture a real issuer would run. Elena is
-// fixed (the demo's story is about her), and the screen captures two choices:
-// whether to include sensitive categories, and whether to share with any site
-// in the network or only an explicit subset of her sites.
+// and redirect is Elena Reyes's consent screen plus a sign-in at an external
+// CSP. The issuer does not verify identities itself: it is a relying party at
+// the demo CSP (topology T1), which signs Elena in at IAL2 the moment she
+// authorizes and hands the issuer an id_token naming the issuer as audience.
+// Elena is fixed (the demo's story is about her), and the screen captures two
+// choices: whether to include sensitive categories, and whether to share with
+// any site in the network or only an explicit subset of her sites.
 
 import { randomUUID } from "node:crypto";
 
 import type { DemoPersonSummary, DemoSiteSummary, FhirStore } from "../store/store.ts";
+import { cspBasePathFor, type CredentialServiceProviderRegistry } from "./csp.ts";
 import { DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI } from "./demo-frameworks.ts";
+import { decodeEs256Jwt } from "./es256-jwt.ts";
 import { PATIENT_SELF_ACCESS_TICKET_TYPE } from "../../shared/permission-tickets.ts";
 import type { PresenterBinding } from "../../../shared/permission-ticket-schema.ts";
 import type { ClientRegistry } from "./clients.ts";
-import type { TicketIssuerRegistry } from "./issuers.ts";
+import { issuerBasePathFor, type TicketIssuerRegistry } from "./issuers.ts";
 
 const CODE_TTL_SECONDS = 300;
 const TICKET_TTL_SECONDS = 3600;
@@ -59,6 +63,10 @@ type IssuanceGrant = {
   // sites and each gets its own site-scoped ticket. Carried through refresh so
   // re-minted tickets preserve the choice.
   selectedSites?: string[];
+  // The CSP-signed id_token from Elena's IAL2 sign-in at authorization time.
+  // Embedded evidence records that verification event, so refreshed tickets
+  // carry the same id_token rather than fabricating a fresh sign-in.
+  identityEvidenceJwt?: string;
   expiresAt: number;
 };
 
@@ -221,6 +229,7 @@ export function completeAuthorization(
   grants: IssuanceGrantStore,
   issuerSlug: string,
   params: URLSearchParams,
+  identity: CspSignInContext,
 ): AuthorizeOutcome {
   const requestId = params.get("request");
   const pending = requestId ? grants.consumePending(requestId) : null;
@@ -231,6 +240,17 @@ export function completeAuthorization(
   const person = findConsentPerson(store);
   if (!person) return { kind: "error", status: 500, message: `Demo consent person ${CONSENT_PERSON_SLUG} is not loaded` };
   const sensitivity: SensitivityChoice | undefined = params.get("include_sensitive") ? "release_authorized" : undefined;
+
+  // CSP sign-in at the moment Elena authorizes (topology T1): the external
+  // CSP signs her in at IAL2 and mints an id_token whose iss is the CSP and
+  // whose aud names this issuer. The issuer validates the token as relying
+  // party before any ticket will embed it.
+  let identityEvidenceJwt: string;
+  try {
+    identityEvidenceJwt = runCspSignIn(identity, issuerSlug, person);
+  } catch (error) {
+    return { kind: "error", status: 502, message: error instanceof Error ? error.message : "CSP sign-in failed" };
+  }
 
   // Site selection: "any" (no data_holder_filter, one blanket ticket) or an
   // explicit subset. Only sites visible under the sensitivity decision count;
@@ -247,11 +267,54 @@ export function completeAuthorization(
     personSlug: person.patientSlug,
     sensitivity,
     selectedSites,
+    identityEvidenceJwt,
   });
   const target = new URL(pending.redirectUri);
   target.searchParams.set("code", code);
   if (pending.state) target.searchParams.set("state", pending.state);
   return { kind: "redirect", location: target.toString() };
+}
+
+export type CspSignInContext = {
+  origin: string;
+  csps: CredentialServiceProviderRegistry;
+  cspSlug: string;
+};
+
+// One IAL2 sign-in, two halves. The CSP half mints the id_token; the issuer
+// half validates it the way any relying party must: signature against the CSP
+// JWKS, aud naming this issuer, and demographics matching the person it is
+// about to put in tickets. The issuer never embeds evidence it could not
+// validate.
+function runCspSignIn(identity: CspSignInContext, issuerSlug: string, person: DemoPersonSummary) {
+  const issuerUrl = `${identity.origin}${issuerBasePathFor(issuerSlug)}`;
+  const cspUrl = `${identity.origin}${cspBasePathFor(identity.cspSlug)}`;
+  const jwt = identity.csps.signIdToken(identity.origin, identity.cspSlug, {
+    audience: issuerUrl,
+    subject: person.personId,
+    ttlSeconds: TICKET_TTL_SECONDS,
+    claims: {
+      ...(person.givenNames.length ? { given_name: person.givenNames.join(" ") } : {}),
+      ...(person.familyName ? { family_name: person.familyName } : {}),
+      ...(person.birthDate ? { birthdate: person.birthDate } : {}),
+    },
+  });
+
+  const { header } = decodeEs256Jwt<Record<string, unknown>>(jwt);
+  if (header.alg !== "ES256") throw new Error("CSP id_token must be signed with ES256");
+  const { payload: claims } = identity.csps.verifyIdTokenSignature<Record<string, unknown>>(identity.cspSlug, jwt);
+  if (claims.iss !== cspUrl) throw new Error("CSP id_token iss does not name the CSP");
+  if (claims.aud !== issuerUrl) throw new Error("CSP id_token audience does not name this issuer");
+  if (claims.identity_assurance_level !== 2) throw new Error("CSP id_token does not assert IAL2");
+  const fullGivenName = person.givenNames.join(" ");
+  if (
+    (person.familyName && claims.family_name !== person.familyName)
+    || (fullGivenName && claims.given_name !== fullGivenName)
+    || (person.birthDate && claims.birthdate !== person.birthDate)
+  ) {
+    throw new Error("CSP id_token demographics do not match the authorized person");
+  }
+  return jwt;
 }
 
 // Maps the consent form's site-selection inputs to a concrete list of site
@@ -283,6 +346,7 @@ export function renderConsentScreen(
   person: DemoPersonSummary,
   sites: ConsentSite[],
   requestId: string,
+  csp: { name: string; cspBaseUrl: string },
 ) {
   const personLabel = `${person.displayName}${person.birthDate ? ` (${person.birthDate})` : ""}`;
   const siteRows = sites
@@ -294,10 +358,19 @@ export function renderConsentScreen(
     .join("\n");
   return `<!doctype html><html><head><title>Permission Ticket Issuer</title></head><body>
 <h1>Authorize sharing for ${escapeHtml(person.displayName)}</h1>
-<p>In a real deployment this step is the issuer's identity verification and
-sharing-preference workflow. In this demo it is ${escapeHtml(personLabel)}'s consent screen.</p>
+<p>This issuer does not verify identities itself: authorizing runs an IAL2
+sign-in at ${escapeHtml(csp.name)}, an external credential service provider.
+In this demo the consent screen is ${escapeHtml(personLabel)}'s.</p>
 <form method="GET" action="${origin}/issuer/${issuerSlug}/authorize/complete">
   <input type="hidden" name="request" value="${escapeHtml(requestId)}"/>
+  <fieldset>
+    <legend>Identity verification</legend>
+    <p>Sign in as <strong>${escapeHtml(personLabel)}</strong> via
+    <strong>${escapeHtml(csp.name)}</strong> (<code>${escapeHtml(csp.cspBaseUrl)}</code>).
+    The CSP returns a signed id_token naming this issuer as its audience; the
+    issuer validates it and embeds it in every ticket as
+    <code>subject_identity_evidence</code>.</p>
+  </fieldset>
   <p><label><input type="checkbox" name="include_sensitive" value="1" id="include_sensitive"/> Include sensitive categories (becomes a sensitivity_policy claim on the ticket)</label></p>
   <fieldset>
     <legend>Which sites may receive this authorization?</legend>
@@ -305,7 +378,7 @@ sharing-preference workflow. In this demo it is ${escapeHtml(personLabel)}'s con
     <p><label><input type="radio" name="site_mode" value="selected"/> Only these sites:</label></p>
     <ul id="site-list">${siteRows}</ul>
   </fieldset>
-  <p><button type="submit">Authorize</button></p>
+  <p><button type="submit">Sign in with ${escapeHtml(csp.name)} and authorize</button></p>
 </form>
 <script>
   // Reveal sensitive-only sites only after sensitive categories are included,
@@ -404,7 +477,7 @@ async function buildTokenResponse(
   const person = input.store.listDemoPersons().find((candidate) => candidate.patientSlug === grant.personSlug);
   if (!person) throw new IssuanceTokenError("invalid_grant", "Authorized person no longer exists");
   const binding = resolvePresenterBinding(grant.clientId, input.clients);
-  const issuance = mintTicketsForPerson(input, person, grant.scopes, binding, grant.sensitivity, grant.selectedSites);
+  const issuance = mintTicketsForPerson(input, person, grant.scopes, binding, grant);
 
   // Proposal 003: an issuer that mints no tickets SHALL NOT grant the
   // permission_ticket scope, and the ticket fields are omitted entirely.
@@ -429,6 +502,7 @@ async function buildTokenResponse(
       personSlug: grant.personSlug,
       sensitivity: grant.sensitivity,
       selectedSites: grant.selectedSites,
+      identityEvidenceJwt: grant.identityEvidenceJwt,
     });
   }
   return response;
@@ -461,9 +535,9 @@ function mintTicketsForPerson(
   person: DemoPersonSummary,
   scopes: string[],
   binding: PresenterBinding,
-  sensitivity?: SensitivityChoice,
-  selectedSites?: string[],
+  grant: Pick<IssuanceRefreshGrant, "sensitivity" | "selectedSites" | "identityEvidenceJwt">,
 ): TicketIssuanceResult {
+  const { sensitivity, selectedSites } = grant;
   const permissions = permissionsFromScopes(scopes);
   const issuerUrl = `${input.origin}/issuer/${input.issuerSlug}`;
   const subject = {
@@ -473,11 +547,13 @@ function mintTicketsForPerson(
       birthDate: person.birthDate ?? undefined,
     },
   };
-  // Identity proofing stand-in: a real signed id_token from the issuer (a CSP
-  // would sign this in production) asserting IAL2 verification of Elena, with
-  // demographics matching the ticket subject. Embedded so each Data Holder can
-  // verify the evidence without a back-channel to the CSP.
-  const identityEvidence = buildSubjectIdentityEvidence(input, person, subject.patient);
+  // The CSP-signed id_token from Elena's sign-in at authorization time,
+  // already validated by the issuer as relying party. Embedded so each Data
+  // Holder can verify the evidence without a back-channel to the CSP. If the
+  // ceremony produced no validated evidence, none is embedded.
+  const identityEvidence = grant.identityEvidenceJwt
+    ? { source: "embedded" as const, token_type: "id_token" as const, jwt: grant.identityEvidenceJwt }
+    : undefined;
 
   const basePayload = (extra: Record<string, unknown>) => ({
     ...(sensitivity
@@ -493,7 +569,7 @@ function mintTicketsForPerson(
     jti: randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     presenter_binding: binding,
-    subject_identity_evidence: identityEvidence,
+    ...(identityEvidence ? { subject_identity_evidence: identityEvidence } : {}),
     subject,
     ...extra,
   });
@@ -563,32 +639,6 @@ function siteOrganization(site: DemoSiteSummary) {
       ? { identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: site.organizationNpi }] }
       : {}),
   };
-}
-
-// A real ES256-signed id_token, signed by the ticket issuer's own key (a
-// verisimilitude stand-in for a CSP). Per spec the evidence aud names the
-// issuer or presenting client, never the data holder — here, the issuer URL.
-function buildSubjectIdentityEvidence(
-  input: { origin: string; issuerSlug: string; issuers: TicketIssuerRegistry },
-  person: DemoPersonSummary,
-  patient: { name: Array<{ family?: string; given: string[] }>; birthDate?: string },
-) {
-  const issuerUrl = `${input.origin}/issuer/${input.issuerSlug}`;
-  const now = nowSeconds();
-  const idTokenPayload: Record<string, unknown> = {
-    iss: issuerUrl,
-    aud: issuerUrl,
-    sub: person.personId,
-    iat: now,
-    exp: now + TICKET_TTL_SECONDS,
-    auth_time: now,
-    identity_assurance_level: 2,
-    ...(patient.name[0]?.given.length ? { given_name: patient.name[0].given.join(" ") } : {}),
-    ...(patient.name[0]?.family ? { family_name: patient.name[0].family } : {}),
-    ...(patient.birthDate ? { birthdate: patient.birthDate } : {}),
-  };
-  const jwt = input.issuers.sign(input.origin, input.issuerSlug, idTokenPayload);
-  return { source: "embedded" as const, token_type: "id_token" as const, jwt };
 }
 
 // SMART scopes from the authorize request describe the access the resulting

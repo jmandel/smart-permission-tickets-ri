@@ -139,6 +139,7 @@ export function buildDemoEventSummary(event: DemoEvent): ArtifactViewerEventSumm
           { label: "Sensitive", value: event.detail.sensitiveSummary },
           { label: "Expires", value: event.detail.expirySummary },
           { label: "Binding", value: event.detail.bindingSummary },
+          ...(event.detail.identitySummary ? [{ label: "Identity", value: event.detail.identitySummary }] : []),
         ],
         noteText,
       };

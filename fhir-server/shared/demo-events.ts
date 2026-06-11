@@ -82,6 +82,9 @@ export type DemoTicketCreatedEvent = DemoEventEnvelope<
     sensitiveSummary: string;
     expirySummary: string;
     bindingSummary: string;
+    // Embedded subject identity evidence, when present: who signed the
+    // subject in (the CSP) and at what assurance.
+    identitySummary?: string;
     // Proposal 003 per-site issuance: where this ticket sits in its minted
     // batch, so the trace can show how many tickets one authorization produced.
     ticketIndex?: number;

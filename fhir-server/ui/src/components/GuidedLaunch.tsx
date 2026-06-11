@@ -143,6 +143,17 @@ export function GuidedLaunch() {
   const ticketPayloads = tokenCall?.tickets.map((ticket) => decodeJwtPayload(ticket)) ?? [];
   const ticketCount = tokenCall?.tickets.length ?? 0;
   const doneSites = sites.filter((site) => site.status === "done");
+  // The CSP sign-in artifact, decoded from the first ticket: every ticket in
+  // the batch embeds the same id_token from Elena's sign-in at authorization.
+  const evidencePayload = (() => {
+    const evidence = ticketPayloads[0]?.subject_identity_evidence as { jwt?: string } | undefined;
+    if (!evidence?.jwt) return null;
+    try {
+      return decodeJwtPayload(evidence.jwt);
+    } catch {
+      return null;
+    }
+  })();
 
   return (
     <main className="shell">
@@ -160,8 +171,9 @@ export function GuidedLaunch() {
         <p className="subtle">
           The cast: <strong>Elena Reyes</strong>, a patient with records at five sites across Texas and
           California; <strong>{LAUNCH_APP_NAME}</strong>, which generated a fresh P-256 keypair when this page
-          loaded; and this server's demo <strong>ticket issuer</strong>. Every step below runs the real protocol
-          call — nothing is canned. Requested scope: <code>{LAUNCH_SCOPE}</code>.
+          loaded; this server's demo <strong>ticket issuer</strong>; and the demo <strong>CSP</strong>, an
+          external IAL2 identity service the issuer relies on to sign Elena in. Every step below runs the real
+          protocol call — nothing is canned. Requested scope: <code>{LAUNCH_SCOPE}</code>.
         </p>
       </section>
 
@@ -189,8 +201,8 @@ export function GuidedLaunch() {
 
       <StepCard
         index={3}
-        title="Elena authorizes at the issuer"
-        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says what she chooses to share. Those decisions happen at the issuer: the popup is Elena's consent screen, where she chooses whether to include sensitive categories and whether to share with any site in the network or only specific sites. The choices shape everything downstream: without including sensitive categories, her women's health site is not even named, because naming it would reveal what the withholding protects; choosing specific sites mints one ticket per site instead of a single blanket ticket."
+        title="Elena authorizes at the issuer, signing in via the CSP"
+        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says what she chooses to share. Those decisions happen at the issuer: the popup is Elena's consent screen, where she chooses whether to include sensitive categories and whether to share with any site in the network or only specific sites. The issuer does not verify her identity itself: authorizing runs an IAL2 sign-in at the external demo CSP, which hands the issuer an id_token naming the issuer as audience. That id_token rides inside every minted ticket as subject_identity_evidence. The consent choices shape everything downstream: without including sensitive categories, her women's health site is not even named, because naming it would reveal what the withholding protects; choosing specific sites mints one ticket per site instead of a single blanket ticket."
         status={code ? "done" : registration ? "ready" : "pending"}
         actionLabel="Open authorize popup"
         onAction={onAuthorize}
@@ -228,6 +240,16 @@ export function GuidedLaunch() {
                 <pre className="launch-pre">{JSON.stringify(payload, null, 2)}</pre>
               </details>
             ))}
+            {evidencePayload && (
+              <details>
+                <summary>
+                  Decoded <code>subject_identity_evidence</code> id_token — <code>iss</code> is the CSP
+                  (<code>{String(evidencePayload.iss)}</code>), not the ticket issuer
+                  (<code>{String(ticketPayloads[0]?.iss)}</code>); <code>aud</code> names the issuer (T1)
+                </summary>
+                <pre className="launch-pre">{JSON.stringify(evidencePayload, null, 2)}</pre>
+              </details>
+            )}
           </div>
         )}
       </StepCard>
