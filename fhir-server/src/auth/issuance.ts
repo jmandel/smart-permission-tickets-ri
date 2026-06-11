@@ -6,29 +6,40 @@
 // Permission Tickets plus endpoint hints for where they should work.
 //
 // In this demo the "verification and approval workflow" between authorize
-// and redirect is a person picker: choosing a demo person stands in for the
-// identity proofing and sharing-preference capture a real issuer would run.
+// and redirect is Elena Reyes's consent screen plus a sign-in at an external
+// CSP. The issuer does not verify identities itself: it is a relying party at
+// the demo CSP (topology T1), which signs Elena in at IAL2 the moment she
+// authorizes and hands the issuer an id_token naming the issuer as audience.
+// Elena is fixed (the demo's story is about her), and the screen captures two
+// choices: whether to include sensitive categories, and whether to share with
+// any site in the network or only an explicit subset of her sites.
 
 import { randomUUID } from "node:crypto";
 
-import type { DemoPersonSummary, FhirStore } from "../store/store.ts";
+import type { DemoPersonSummary, DemoSiteSummary, FhirStore } from "../store/store.ts";
+import { cspBasePathFor, type CredentialServiceProviderRegistry } from "./csp.ts";
 import { DEFAULT_DEMO_WELL_KNOWN_FRAMEWORK_URI } from "./demo-frameworks.ts";
+import { decodeEs256Jwt } from "./es256-jwt.ts";
 import { PATIENT_SELF_ACCESS_TICKET_TYPE } from "../../shared/permission-tickets.ts";
 import type { PresenterBinding } from "../../../shared/permission-ticket-schema.ts";
 import type { ClientRegistry } from "./clients.ts";
-import type { TicketIssuerRegistry } from "./issuers.ts";
+import { issuerBasePathFor, type TicketIssuerRegistry } from "./issuers.ts";
 
 const CODE_TTL_SECONDS = 300;
 const TICKET_TTL_SECONDS = 3600;
 const ACCESS_TOKEN_TTL_SECONDS = 300;
 export const PERMISSION_TICKET_MARKER_SCOPE = "permission_ticket";
 
+// The demo's protagonist. The issuer's consent screen is hers and hers only;
+// other demo persons exist for the workbench, not this issuance flow.
+const CONSENT_PERSON_SLUG = "elena-reyes";
+
 type SensitivityChoice = "release_authorized" | "withhold";
 
 // An authorize request the issuer has accepted but whose approval ceremony
-// (the person picker, in this demo) has not finished yet. The ceremony's
-// outcomes — who is authorizing, and their sensitivity choice — are captured
-// by the issuer's own UI, never by parameters on the client's request.
+// (Elena's consent screen, in this demo) has not finished yet. The ceremony's
+// outcomes — the sensitivity choice and the site selection — are captured by
+// the issuer's own UI, never by parameters on the client's request.
 type PendingAuthorization = {
   issuerSlug: string;
   clientId: string;
@@ -47,6 +58,15 @@ type IssuanceGrant = {
   scopes: string[];
   personSlug: string;
   sensitivity?: SensitivityChoice;
+  // Site selection from the consent screen. Undefined means "any site in the
+  // network" (one blanket ticket); a non-empty list means Elena chose explicit
+  // sites and each gets its own site-scoped ticket. Carried through refresh so
+  // re-minted tickets preserve the choice.
+  selectedSites?: string[];
+  // The CSP-signed id_token from Elena's IAL2 sign-in at authorization time.
+  // Embedded evidence records that verification event, so refreshed tickets
+  // carry the same id_token rather than fabricating a fresh sign-in.
+  identityEvidenceJwt?: string;
   expiresAt: number;
 };
 
@@ -117,10 +137,19 @@ export function buildIssuerSmartConfiguration(origin: string, issuerSlug: string
   };
 }
 
+export type ConsentSite = {
+  siteSlug: string;
+  orgName: string;
+  // A site whose only encounters carry sensitive security labels: naming it at
+  // all discloses the care relationship, so it is offered for selection only
+  // when Elena chooses to include sensitive categories.
+  sensitiveOnly: boolean;
+};
+
 export type AuthorizeOutcome =
   | { kind: "error"; status: number; message: string }
   | { kind: "redirect"; location: string }
-  | { kind: "picker"; persons: DemoPersonSummary[]; requestId: string };
+  | { kind: "consent"; person: DemoPersonSummary; sites: ConsentSite[]; requestId: string };
 
 // Accepts only the SMART App Launch authorize parameters. Everything the
 // approval ceremony decides arrives later through completeAuthorization.
@@ -159,6 +188,11 @@ export function handleAuthorizeRequest(
     return fail("invalid_scope", `scope must include ${PERMISSION_TICKET_MARKER_SCOPE}`);
   }
 
+  const person = findConsentPerson(store);
+  if (!person) {
+    return { kind: "error", status: 500, message: `Demo consent person ${CONSENT_PERSON_SLUG} is not loaded` };
+  }
+
   const requestId = grants.createPending({
     issuerSlug,
     clientId,
@@ -167,27 +201,62 @@ export function handleAuthorizeRequest(
     scopes,
     state,
   });
-  return { kind: "picker", persons: store.listDemoPersons(), requestId };
+  return { kind: "consent", person, sites: consentSitesForPerson(store, person), requestId };
 }
 
-// Finishes the approval ceremony. In this demo the inputs come from the
-// issuer's own picker form; a real issuer would gather them from its
-// verification and consent workflow. Not part of the authorize request API.
+// Elena is the only person the consent screen offers; the demo's whole story
+// is about her records moving across sites with one authorization.
+function findConsentPerson(store: FhirStore): DemoPersonSummary | undefined {
+  return store.listDemoPersons().find((candidate) => candidate.patientSlug === CONSENT_PERSON_SLUG);
+}
+
+// The sites the consent screen may offer, flagged for the sensitivity rule:
+// a site whose only encounters are sensitivity-labeled is "sensitive-only" and
+// is offered for selection only after Elena includes sensitive categories.
+function consentSitesForPerson(store: FhirStore, person: DemoPersonSummary): ConsentSite[] {
+  return person.sites.map((site) => ({
+    siteSlug: site.siteSlug,
+    orgName: site.orgName,
+    sensitiveOnly: store.countNonSensitiveEncounters(person.patientSlug, site.siteSlug) === 0,
+  }));
+}
+
+// Finishes the approval ceremony. In this demo the inputs come from Elena's
+// consent form; a real issuer would gather them from its verification and
+// consent workflow. Not part of the authorize request API.
 export function completeAuthorization(
   store: FhirStore,
   grants: IssuanceGrantStore,
   issuerSlug: string,
   params: URLSearchParams,
+  identity: CspSignInContext,
 ): AuthorizeOutcome {
   const requestId = params.get("request");
   const pending = requestId ? grants.consumePending(requestId) : null;
   if (!pending || pending.issuerSlug !== issuerSlug) {
     return { kind: "error", status: 400, message: "Unknown or expired authorization request" };
   }
-  const personSlug = params.get("person");
-  const person = store.listDemoPersons().find((candidate) => candidate.patientSlug === personSlug);
-  if (!person) return { kind: "error", status: 400, message: `Unknown person: ${personSlug ?? "(none)"}` };
+  // Elena is fixed: the consent screen never offers anyone else.
+  const person = findConsentPerson(store);
+  if (!person) return { kind: "error", status: 500, message: `Demo consent person ${CONSENT_PERSON_SLUG} is not loaded` };
   const sensitivity: SensitivityChoice | undefined = params.get("include_sensitive") ? "release_authorized" : undefined;
+
+  // CSP sign-in at the moment Elena authorizes (topology T1): the external
+  // CSP signs her in at IAL2 and mints an id_token whose iss is the CSP and
+  // whose aud names this issuer. The issuer validates the token as relying
+  // party before any ticket will embed it.
+  let identityEvidenceJwt: string;
+  try {
+    identityEvidenceJwt = runCspSignIn(identity, issuerSlug, person);
+  } catch (error) {
+    return { kind: "error", status: 502, message: error instanceof Error ? error.message : "CSP sign-in failed" };
+  }
+
+  // Site selection: "any" (no data_holder_filter, one blanket ticket) or an
+  // explicit subset. Only sites visible under the sensitivity decision count;
+  // a sensitive-only site selected without including sensitive categories is
+  // silently dropped, never named.
+  const selectedSites = resolveSelectedSites(store, person, params, sensitivity);
 
   const code = grants.createCode({
     issuerSlug: pending.issuerSlug,
@@ -197,6 +266,8 @@ export function completeAuthorization(
     scopes: pending.scopes,
     personSlug: person.patientSlug,
     sensitivity,
+    selectedSites,
+    identityEvidenceJwt,
   });
   const target = new URL(pending.redirectUri);
   target.searchParams.set("code", code);
@@ -204,21 +275,137 @@ export function completeAuthorization(
   return { kind: "redirect", location: target.toString() };
 }
 
-export function renderPersonPicker(origin: string, issuerSlug: string, persons: DemoPersonSummary[], requestId: string) {
-  const rows = persons.map((person, index) => {
-    const label = `${person.displayName}${person.birthDate ? ` (${person.birthDate})` : ""}`;
-    return `<li><label><input type="radio" name="person" value="${escapeHtml(person.patientSlug)}"${index === 0 ? "" : ""}/> ${escapeHtml(label)}</label></li>`;
+export type CspSignInContext = {
+  origin: string;
+  csps: CredentialServiceProviderRegistry;
+  cspSlug: string;
+};
+
+// One IAL2 sign-in, two halves. The CSP half mints the id_token; the issuer
+// half validates it the way any relying party must: signature against the CSP
+// JWKS, aud naming this issuer, and demographics matching the person it is
+// about to put in tickets. The issuer never embeds evidence it could not
+// validate.
+function runCspSignIn(identity: CspSignInContext, issuerSlug: string, person: DemoPersonSummary) {
+  const issuerUrl = `${identity.origin}${issuerBasePathFor(issuerSlug)}`;
+  const cspUrl = `${identity.origin}${cspBasePathFor(identity.cspSlug)}`;
+  const jwt = identity.csps.signIdToken(identity.origin, identity.cspSlug, {
+    audience: issuerUrl,
+    subject: person.personId,
+    ttlSeconds: TICKET_TTL_SECONDS,
+    claims: {
+      ...(person.givenNames.length ? { given_name: person.givenNames.join(" ") } : {}),
+      ...(person.familyName ? { family_name: person.familyName } : {}),
+      ...(person.birthDate ? { birthdate: person.birthDate } : {}),
+    },
   });
+
+  const { header } = decodeEs256Jwt<Record<string, unknown>>(jwt);
+  if (header.alg !== "ES256") throw new Error("CSP id_token must be signed with ES256");
+  const { payload: claims } = identity.csps.verifyIdTokenSignature<Record<string, unknown>>(identity.cspSlug, jwt);
+  if (claims.iss !== cspUrl) throw new Error("CSP id_token iss does not name the CSP");
+  if (claims.aud !== issuerUrl) throw new Error("CSP id_token audience does not name this issuer");
+  if (claims.identity_assurance_level !== 2) throw new Error("CSP id_token does not assert IAL2");
+  const fullGivenName = person.givenNames.join(" ");
+  if (
+    (person.familyName && claims.family_name !== person.familyName)
+    || (fullGivenName && claims.given_name !== fullGivenName)
+    || (person.birthDate && claims.birthdate !== person.birthDate)
+  ) {
+    throw new Error("CSP id_token demographics do not match the authorized person");
+  }
+  return jwt;
+}
+
+// Maps the consent form's site-selection inputs to a concrete list of site
+// slugs, or undefined for "any site in the network". An explicit selection
+// that nets zero valid sites stays an empty array: the person asked for "only
+// these sites" and named none we can honor, so zero tickets are minted rather
+// than silently widening to a blanket grant. The chosen sites are always
+// intersected with the sites visible under the sensitivity decision, so a
+// sensitive-only site can never leak in without the sensitive opt-in.
+function resolveSelectedSites(
+  store: FhirStore,
+  person: DemoPersonSummary,
+  params: URLSearchParams,
+  sensitivity: SensitivityChoice | undefined,
+): string[] | undefined {
+  if (params.get("site_mode") !== "selected") return undefined;
+  const visible = new Set(
+    consentSitesForPerson(store, person)
+      .filter((site) => sensitivity === "release_authorized" || !site.sensitiveOnly)
+      .map((site) => site.siteSlug),
+  );
+  const chosen = params.getAll("site").filter((slug) => visible.has(slug));
+  return [...new Set(chosen)];
+}
+
+export function renderConsentScreen(
+  origin: string,
+  issuerSlug: string,
+  person: DemoPersonSummary,
+  sites: ConsentSite[],
+  requestId: string,
+  csp: { name: string; cspBaseUrl: string },
+) {
+  const personLabel = `${person.displayName}${person.birthDate ? ` (${person.birthDate})` : ""}`;
+  const siteRows = sites
+    .map((site) => {
+      const sensitiveAttr = site.sensitiveOnly ? ' data-sensitive="1" style="display:none"' : "";
+      const sensitiveNote = site.sensitiveOnly ? " <em>(sensitive — shown only with sensitive categories)</em>" : "";
+      return `<li${sensitiveAttr}><label><input type="checkbox" name="site" value="${escapeHtml(site.siteSlug)}"/> ${escapeHtml(site.orgName)}${sensitiveNote}</label></li>`;
+    })
+    .join("\n");
   return `<!doctype html><html><head><title>Permission Ticket Issuer</title></head><body>
-<h1>Demo issuer: who is authorizing?</h1>
-<p>In a real deployment this step is the issuer's identity verification and
-sharing-preference workflow. In this demo, picking a person stands in for it.</p>
+<h1>Authorize sharing for ${escapeHtml(person.displayName)}</h1>
+<p>This issuer does not verify identities itself: authorizing runs an IAL2
+sign-in at ${escapeHtml(csp.name)}, an external credential service provider.
+In this demo the consent screen is ${escapeHtml(personLabel)}'s.</p>
 <form method="GET" action="${origin}/issuer/${issuerSlug}/authorize/complete">
   <input type="hidden" name="request" value="${escapeHtml(requestId)}"/>
-  <ul>${rows.join("\n")}</ul>
-  <p><label><input type="checkbox" name="include_sensitive" value="1"/> Include sensitive categories (becomes a sensitivity_policy claim on the ticket)</label></p>
-  <p><button type="submit">Authorize</button></p>
+  <fieldset>
+    <legend>Identity verification</legend>
+    <p>Sign in as <strong>${escapeHtml(personLabel)}</strong> via
+    <strong>${escapeHtml(csp.name)}</strong> (<code>${escapeHtml(csp.cspBaseUrl)}</code>).
+    The CSP returns a signed id_token naming this issuer as its audience; the
+    issuer validates it and embeds it in every ticket as
+    <code>subject_identity_evidence</code>.</p>
+  </fieldset>
+  <p><label><input type="checkbox" name="include_sensitive" value="1" id="include_sensitive"/> Include sensitive categories (becomes a sensitivity_policy claim on the ticket)</label></p>
+  <fieldset>
+    <legend>Which sites may receive this authorization?</legend>
+    <p><label><input type="radio" name="site_mode" value="any" checked/> Any site in the network</label></p>
+    <p><label><input type="radio" name="site_mode" value="selected"/> Only these sites:</label></p>
+    <ul id="site-list">${siteRows}</ul>
+  </fieldset>
+  <p><button type="submit">Sign in with ${escapeHtml(csp.name)} and authorize</button></p>
 </form>
+<script>
+  // Reveal sensitive-only sites only after sensitive categories are included,
+  // so a withheld care relationship is never even named in the list.
+  (function () {
+    var include = document.getElementById("include_sensitive");
+    function sync() {
+      var show = include.checked;
+      document.querySelectorAll('#site-list li[data-sensitive="1"]').forEach(function (item) {
+        item.style.display = show ? "" : "none";
+        if (!show) {
+          var box = item.querySelector('input[name="site"]');
+          if (box) box.checked = false;
+        }
+      });
+    }
+    include.addEventListener("change", sync);
+    sync();
+    // Ticking any site checkbox is an explicit selection: flip the radio.
+    var selectedRadio = document.querySelector('input[name="site_mode"][value="selected"]');
+    document.getElementById("site-list").addEventListener("change", function (event) {
+      if (event.target && event.target.name === "site" && event.target.checked) {
+        selectedRadio.checked = true;
+      }
+    });
+  })();
+</script>
 </body></html>`;
 }
 
@@ -290,17 +477,23 @@ async function buildTokenResponse(
   const person = input.store.listDemoPersons().find((candidate) => candidate.patientSlug === grant.personSlug);
   if (!person) throw new IssuanceTokenError("invalid_grant", "Authorized person no longer exists");
   const binding = resolvePresenterBinding(grant.clientId, input.clients);
-  const issuance = mintTicketsForPerson(input, person, grant.scopes, binding, grant.sensitivity);
+  const issuance = mintTicketsForPerson(input, person, grant.scopes, binding, grant);
 
-  const grantedScopes = grant.scopes.filter((scope) => scope !== "openid" && scope !== "fhirUser");
+  // Proposal 003: an issuer that mints no tickets SHALL NOT grant the
+  // permission_ticket scope, and the ticket fields are omitted entirely.
+  const grantedScopes = grant.scopes
+    .filter((scope) => scope !== "openid" && scope !== "fhirUser")
+    .filter((scope) => issuance.tickets.length > 0 || scope !== "permission_ticket");
   const response: Record<string, unknown> = {
     access_token: `issuance-${randomUUID()}`,
     token_type: "Bearer",
     expires_in: ACCESS_TOKEN_TTL_SECONDS,
     scope: grantedScopes.join(" "),
-    smart_permission_ticket: issuance.tickets,
-    smart_permission_ticket_endpoints: issuance.endpoints,
   };
+  if (issuance.tickets.length > 0) {
+    response.smart_permission_ticket = issuance.tickets;
+    response.smart_permission_ticket_endpoints = issuance.endpoints;
+  }
   if (grant.scopes.includes("offline_access")) {
     response.refresh_token = input.grants.createRefreshToken({
       issuerSlug: grant.issuerSlug,
@@ -308,6 +501,8 @@ async function buildTokenResponse(
       scopes: grant.scopes,
       personSlug: grant.personSlug,
       sensitivity: grant.sensitivity,
+      selectedSites: grant.selectedSites,
+      identityEvidenceJwt: grant.identityEvidenceJwt,
     });
   }
   return response;
@@ -340,34 +535,44 @@ function mintTicketsForPerson(
   person: DemoPersonSummary,
   scopes: string[],
   binding: PresenterBinding,
-  sensitivity?: SensitivityChoice,
+  grant: Pick<IssuanceRefreshGrant, "sensitivity" | "selectedSites" | "identityEvidenceJwt">,
 ): TicketIssuanceResult {
+  const { sensitivity, selectedSites } = grant;
   const permissions = permissionsFromScopes(scopes);
-  const now = nowSeconds();
-  const payload = {
+  const issuerUrl = `${input.origin}/issuer/${input.issuerSlug}`;
+  const subject = {
+    patient: {
+      resourceType: "Patient" as const,
+      name: [{ family: person.familyName ?? undefined, given: person.givenNames }],
+      birthDate: person.birthDate ?? undefined,
+    },
+  };
+  // The CSP-signed id_token from Elena's sign-in at authorization time,
+  // already validated by the issuer as relying party. Embedded so each Data
+  // Holder can verify the evidence without a back-channel to the CSP. If the
+  // ceremony produced no validated evidence, none is embedded.
+  const identityEvidence = grant.identityEvidenceJwt
+    ? { source: "embedded" as const, token_type: "id_token" as const, jwt: grant.identityEvidenceJwt }
+    : undefined;
+
+  const basePayload = (extra: Record<string, unknown>) => ({
     ...(sensitivity
       ? {
           must_understand: ["sensitivity_policy"],
           sensitivity_policy: { unlisted_sensitive_data: sensitivity },
         }
       : {}),
-    iss: `${input.origin}/issuer/${input.issuerSlug}`,
+    iss: issuerUrl,
     aud: input.origin,
-    exp: now + TICKET_TTL_SECONDS,
-    iat: now,
+    exp: nowSeconds() + TICKET_TTL_SECONDS,
+    iat: nowSeconds(),
     jti: randomUUID(),
     ticket_type: PATIENT_SELF_ACCESS_TICKET_TYPE,
     presenter_binding: binding,
-    subject: {
-      patient: {
-        resourceType: "Patient" as const,
-        name: [{ family: person.familyName ?? undefined, given: person.givenNames }],
-        birthDate: person.birthDate ?? undefined,
-      },
-    },
-    access: { permissions },
-  };
-  const ticket = input.issuers.sign(input.origin, input.issuerSlug, payload);
+    ...(identityEvidence ? { subject_identity_evidence: identityEvidence } : {}),
+    subject,
+    ...extra,
+  });
 
   // Endpoint hints disclose where the patient receives care, and a site's
   // name can reveal exactly what a withheld category protects (a women's
@@ -378,19 +583,62 @@ function mintTicketsForPerson(
     ? person.sites
     : person.sites.filter((site) => input.store.countNonSensitiveEncounters(person.patientSlug, site.siteSlug) > 0);
 
-  const endpoints = hintedSites.map((site) => ({
-    fhir_base_url: `${input.origin}/modes/open/sites/${site.siteSlug}/fhir`,
-    organization: {
-      resourceType: "Organization" as const,
-      name: site.orgName,
-      ...(site.organizationNpi
-        ? { identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: site.organizationNpi }] }
-        : {}),
-    },
-    ticket_indices: [0],
-  }));
+  // "Any site in the network": one blanket ticket with no data_holder_filter;
+  // every hinted endpoint points at ticket index 0. An explicit-but-empty
+  // selection falls through to the per-site path and mints zero tickets.
+  if (!selectedSites) {
+    const ticket = input.issuers.sign(input.origin, input.issuerSlug, basePayload({ access: { permissions } }));
+    const endpoints = hintedSites.map((site) => ({
+      fhir_base_url: siteFhirBaseUrl(input.origin, site.siteSlug),
+      organization: siteOrganization(site),
+      ticket_indices: [0],
+    }));
+    return { tickets: [ticket], endpoints };
+  }
 
-  return { tickets: [ticket], endpoints };
+  // Explicit sites: one site-scoped ticket each, carrying a data_holder_filter
+  // with the chosen site's Organization. Each endpoint hint points at its own
+  // ticket's index, so the client presents the right ticket at each door.
+  const chosen = new Set(selectedSites);
+  const chosenSites = hintedSites.filter((site) => chosen.has(site.siteSlug));
+  const tickets: string[] = [];
+  const endpoints: TicketIssuanceResult["endpoints"] = [];
+  for (const site of chosenSites) {
+    const organization = siteOrganization(site);
+    const ticketIndex = tickets.length;
+    tickets.push(
+      input.issuers.sign(
+        input.origin,
+        input.issuerSlug,
+        basePayload({
+          access: {
+            permissions,
+            data_holder_filter: [{ kind: "organization" as const, organization }],
+          },
+        }),
+      ),
+    );
+    endpoints.push({
+      fhir_base_url: siteFhirBaseUrl(input.origin, site.siteSlug),
+      organization,
+      ticket_indices: [ticketIndex],
+    });
+  }
+  return { tickets, endpoints };
+}
+
+function siteFhirBaseUrl(origin: string, siteSlug: string) {
+  return `${origin}/modes/open/sites/${siteSlug}/fhir`;
+}
+
+function siteOrganization(site: DemoSiteSummary) {
+  return {
+    resourceType: "Organization" as const,
+    name: site.orgName,
+    ...(site.organizationNpi
+      ? { identifier: [{ system: "http://hl7.org/fhir/sid/us-npi", value: site.organizationNpi }] }
+      : {}),
+  };
 }
 
 // SMART scopes from the authorize request describe the access the resulting

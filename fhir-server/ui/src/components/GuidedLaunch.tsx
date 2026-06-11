@@ -29,6 +29,8 @@ type StepStatus = "pending" | "ready" | "running" | "done" | "error";
 
 type SiteProgress = {
   hint: EndpointHint;
+  // Which minted ticket this endpoint's hint points at (ticket_indices[0]).
+  ticketIndex: number;
   status: StepStatus;
   grantedScope?: string;
   encounters?: number;
@@ -97,7 +99,7 @@ export function GuidedLaunch() {
       state: stateRef.current,
     });
     setAuthorizeUrl(url);
-    popupRef.current = window.open(url, "issuance-authorize", "width=560,height=680");
+    popupRef.current = window.open(url, "_blank");
   });
 
   const onRedeemCode = () => run(async () => {
@@ -111,15 +113,18 @@ export function GuidedLaunch() {
       demoSessionId: sessionRef.current,
     });
     setTokenCall(result);
-    setSites(result.endpoints.map((hint) => ({ hint, status: "ready" })));
+    setSites(result.endpoints.map((hint) => ({ hint, ticketIndex: hint.ticket_indices[0] ?? 0, status: "ready" })));
   });
 
   const onRedeemSites = () => run(async () => {
     if (!tokenCall || !registration || !keys) throw new Error("Get tickets first");
-    const ticket = tokenCall.tickets[0];
     for (const [index, site] of sites.entries()) {
       setSites((current) => current.map((entry, i) => (i === index ? { ...entry, status: "running" } : entry)));
       try {
+        // Each endpoint hint names its own ticket via ticket_indices; with
+        // per-site tickets these differ, so we never assume a single ticket.
+        const ticket = tokenCall.tickets[site.ticketIndex];
+        if (!ticket) throw new Error(`No ticket at index ${site.ticketIndex} for ${site.hint.organization.name}`);
         const exchange = await redeemTicketAtSite({ hint: site.hint, ticket, keys, demoSessionId: sessionRef.current });
         const sample = await sampleSiteData(site.hint, exchange.accessToken, sessionRef.current);
         setSites((current) => current.map((entry, i) => (
@@ -135,8 +140,20 @@ export function GuidedLaunch() {
     }
   });
 
-  const ticketPayload = tokenCall?.tickets[0] ? decodeJwtPayload(tokenCall.tickets[0]) : null;
+  const ticketPayloads = tokenCall?.tickets.map((ticket) => decodeJwtPayload(ticket)) ?? [];
+  const ticketCount = tokenCall?.tickets.length ?? 0;
   const doneSites = sites.filter((site) => site.status === "done");
+  // The CSP sign-in artifact, decoded from the first ticket: every ticket in
+  // the batch embeds the same id_token from Elena's sign-in at authorization.
+  const evidencePayload = (() => {
+    const evidence = ticketPayloads[0]?.subject_identity_evidence as { jwt?: string } | undefined;
+    if (!evidence?.jwt) return null;
+    try {
+      return decodeJwtPayload(evidence.jwt);
+    } catch {
+      return null;
+    }
+  })();
 
   return (
     <main className="shell">
@@ -154,8 +171,9 @@ export function GuidedLaunch() {
         <p className="subtle">
           The cast: <strong>Elena Reyes</strong>, a patient with records at five sites across Texas and
           California; <strong>{LAUNCH_APP_NAME}</strong>, which generated a fresh P-256 keypair when this page
-          loaded; and this server's demo <strong>ticket issuer</strong>. Every step below runs the real protocol
-          call — nothing is canned. Requested scope: <code>{LAUNCH_SCOPE}</code>.
+          loaded; this server's demo <strong>ticket issuer</strong>; and the demo <strong>CSP</strong>, an
+          external IAL2 identity service the issuer relies on to sign Elena in. Every step below runs the real
+          protocol call — nothing is canned. Requested scope: <code>{LAUNCH_SCOPE}</code>.
         </p>
       </section>
 
@@ -183,8 +201,8 @@ export function GuidedLaunch() {
 
       <StepCard
         index={3}
-        title="Elena authorizes at the issuer"
-        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says who is authorizing or what they choose to share. Those decisions happen at the issuer: in the popup, pick Elena and choose whether to include sensitive categories. The choice shapes everything downstream: without it, her women's health site is not even named in the endpoint hints, because naming it would reveal what the withholding protects."
+        title="Elena authorizes at the issuer, signing in via the CSP"
+        narration="The app sends Elena to the issuer's authorize endpoint with PKCE — nothing in this request says what she chooses to share. Those decisions happen at the issuer: the popup is Elena's consent screen, where she chooses whether to include sensitive categories and whether to share with any site in the network or only specific sites. The issuer does not verify her identity itself: authorizing runs an IAL2 sign-in at the external demo CSP, which hands the issuer an id_token naming the issuer as audience. That id_token rides inside every minted ticket as subject_identity_evidence. The consent choices shape everything downstream: without including sensitive categories, her women's health site is not even named, because naming it would reveal what the withholding protects; choosing specific sites mints one ticket per site instead of a single blanket ticket."
         status={code ? "done" : registration ? "ready" : "pending"}
         actionLabel="Open authorize popup"
         onAction={onAuthorize}
@@ -194,7 +212,7 @@ export function GuidedLaunch() {
         {authorizeUrl && (
           <pre className="launch-pre">{`GET ${authorizeUrl}`}</pre>
         )}
-        {authorizeUrl && !code && <p className="subtle">Waiting for the redirect… in the popup, pick <strong>Elena Reyes</strong>. Try it both with and without <strong>Include sensitive categories</strong> — the endpoint hints in step 4 change.</p>}
+        {authorizeUrl && !code && <p className="subtle">Waiting for the redirect… in the popup, this is <strong>Elena Reyes</strong>'s consent screen. Try it with and without <strong>Include sensitive categories</strong>, and with <strong>Any site</strong> vs <strong>Only these sites</strong> — the ticket count and endpoint hints in step 4 change.</p>}
         {code && <p className="subtle">Received <code>code={code.slice(0, 8)}…</code> at the app's redirect_uri.</p>}
       </StepCard>
 
@@ -208,10 +226,30 @@ export function GuidedLaunch() {
         busy={busy}
         call={tokenCall}
       >
-        {ticketPayload && (
+        {ticketCount > 0 && (
           <div>
-            <p className="subtle">Decoded ticket payload — note <code>ticket_type</code>, <code>presenter_binding</code> (bound to the app's key), <code>subject</code>, and <code>access</code>:</p>
-            <pre className="launch-pre">{JSON.stringify(ticketPayload, null, 2)}</pre>
+            <p className="subtle">
+              The issuer minted <strong>{ticketCount}</strong> ticket{ticketCount === 1 ? "" : "s"}.{" "}
+              {ticketCount === 1
+                ? "One blanket ticket (no data_holder_filter): Elena shared with any site in the network."
+                : "One ticket per chosen site, each carrying access.data_holder_filter for its Organization; the endpoint hints' ticket_indices point each site at its own ticket."}
+            </p>
+            {ticketPayloads.map((payload, index) => (
+              <details key={index} open={ticketCount === 1}>
+                <summary>Ticket index <code>{index}</code> — <code>ticket_type</code>, <code>presenter_binding</code>, <code>subject</code>, <code>subject_identity_evidence</code>, <code>access</code></summary>
+                <pre className="launch-pre">{JSON.stringify(payload, null, 2)}</pre>
+              </details>
+            ))}
+            {evidencePayload && (
+              <details>
+                <summary>
+                  Decoded <code>subject_identity_evidence</code> id_token — <code>iss</code> is the CSP
+                  (<code>{String(evidencePayload.iss)}</code>), not the ticket issuer
+                  (<code>{String(ticketPayloads[0]?.iss)}</code>); <code>aud</code> names the issuer (T1)
+                </summary>
+                <pre className="launch-pre">{JSON.stringify(evidencePayload, null, 2)}</pre>
+              </details>
+            )}
           </div>
         )}
       </StepCard>
@@ -220,7 +258,7 @@ export function GuidedLaunch() {
         <div className="section-header">
           <div>
             <p className="eyebrow">Step 5</p>
-            <h2>App presents the same ticket at every site</h2>
+            <h2>App presents the right ticket at every site</h2>
           </div>
           <button
             type="button"
@@ -234,15 +272,17 @@ export function GuidedLaunch() {
         <p className="subtle">
           One authorization, many doors: for each endpoint hint the app discovers the site's
           smart-configuration, registers its key (registration is local to each Data Holder),
-          authenticates, and presents the same ticket via RFC 8693 token exchange. Each
-          site verifies the issuer signature and the key binding, and matches Elena locally — no portal
-          account, no per-site authorization screens, and Elena never reappears.
+          authenticates, and presents the ticket named by that hint's <code>ticket_indices</code> via
+          RFC 8693 token exchange. Each site verifies the issuer signature and the key binding, and
+          matches Elena locally — no portal account, no per-site authorization screens, and Elena
+          never reappears.
         </p>
         <div className="patient-picker-grid">
           {sites.map((site) => (
             <div key={site.hint.fhir_base_url} className="panel launch-site-card">
               <strong>{site.hint.organization.name}</strong>
               <p className="subtle launch-card-url">{site.hint.fhir_base_url}</p>
+              <p className="subtle">Redeems ticket index <code>{site.ticketIndex}</code></p>
               {site.status === "ready" && <p className="subtle">Waiting…</p>}
               {site.status === "running" && <p>Exchanging ticket…</p>}
               {site.status === "done" && (

@@ -21,6 +21,7 @@ import {
 } from "../store/model.ts";
 import { decodeEs256Jwt, verifyEs256Jwt } from "./es256-jwt.ts";
 import { resolveConfiguredIssuerTrust } from "./issuer-trust.ts";
+import { resolveDirectJwksIssuerTrust } from "./issuers.ts";
 import type { FrameworkRegistry } from "./frameworks/registry.ts";
 import type { TicketRevocationRegistry } from "./ticket-revocation.ts";
 import {
@@ -78,12 +79,17 @@ type DemoValidationContext = {
 
 export async function validatePermissionTicket(
   subjectToken: string,
-  config: Pick<ServerConfig, "issuerTrust" | "publicBaseUrl" | "internalBaseUrl">,
+  config: Pick<ServerConfig, "issuerTrust" | "trustedEvidenceIssuers" | "publicBaseUrl" | "internalBaseUrl">,
   frameworks: FrameworkRegistry,
   ticketRevocations: TicketRevocationRegistry,
   expectedAudiences: string[],
   diagnostics?: TokenExchangeDiagnostics,
-  options?: { mode?: ModeName },
+  options?: {
+    mode?: ModeName;
+    // Identifiers this data holder bound to the presenting client at its own
+    // registration, for the evidence label rule's T2 arm.
+    presenterLabels?: string[];
+  },
 ): Promise<ValidatedPermissionTicket> {
   if (!subjectToken) throw new Error("No permission ticket provided");
   addRelatedArtifact(diagnostics, {
@@ -210,6 +216,7 @@ export async function validatePermissionTicket(
   appendFrameworkIssuerDiagnostics(issuer, diagnostics);
   enforcePresenterBindingRequirement(payload, options?.mode, diagnostics);
   enforceMustUnderstand(payload, diagnostics);
+  await verifySubjectIdentityEvidence(payload, config, options?.presenterLabels ?? [], diagnostics);
   try {
     parseSensitivityPolicy(payload); // shape check; compilation happens at envelope time
   } catch (error) {
@@ -286,6 +293,98 @@ function enforcePresenterBindingRequirement(
     reason: "Ticket presenter binding required for this ticket type",
   });
   throw new Error("Ticket presenter binding required for this ticket type");
+}
+
+// Proposal 003 embeds an id_token as subject_identity_evidence: a CSP-signed
+// assertion that the subject was identity-proofed at issuance time. Its
+// presence is optional — workbench-built tickets omit it and stay valid — but
+// when present:
+//   - the evidence issuer must be on this data holder's evidence-issuer trust
+//     list, which is configured separately from ticket-issuer trust;
+//   - its keys resolve from the evidence iss URL and the signature verifies;
+//   - the client label (aud) must resolve to the ticket issuer (T1: the
+//     issuer was the relying party at the CSP) or the presenting client (T2:
+//     the client brought its own evidence to issuance). The label never names
+//     the data holder, and evidence labeled for one client inside a ticket
+//     presented by a different party fails by design — a sign-in at app A
+//     must not launder through presenter B.
+async function verifySubjectIdentityEvidence(
+  ticket: PermissionTicket,
+  config: Pick<ServerConfig, "trustedEvidenceIssuers" | "publicBaseUrl" | "internalBaseUrl">,
+  presenterLabels: string[],
+  diagnostics?: TokenExchangeDiagnostics,
+) {
+  const evidence = ticket.subject_identity_evidence;
+  if (!evidence) return;
+  const fail = (reason: string): never => {
+    addAuditStep(diagnostics, { check: "Identity evidence", passed: false, reason });
+    throw new Error(reason);
+  };
+  let header: { alg?: string; kid?: string };
+  let claims: Record<string, unknown>;
+  try {
+    const decoded = decodeEs256Jwt<Record<string, unknown>>(evidence.jwt);
+    header = decoded.header;
+    claims = decoded.payload;
+  } catch {
+    return fail("Malformed subject_identity_evidence id_token");
+  }
+  if (header.alg !== "ES256") {
+    return fail("subject_identity_evidence must be signed with ES256");
+  }
+  if (typeof claims.iss !== "string" || !claims.iss) {
+    return fail("subject_identity_evidence id_token missing iss");
+  }
+  const trustedEvidenceIssuers = (config.trustedEvidenceIssuers ?? []).map(normalizeEvidenceIssuerUrl);
+  let evidenceIssuerUrl: string;
+  try {
+    evidenceIssuerUrl = normalizeEvidenceIssuerUrl(claims.iss);
+  } catch {
+    return fail("subject_identity_evidence iss is not a valid URL");
+  }
+  if (!trustedEvidenceIssuers.includes(evidenceIssuerUrl)) {
+    return fail("subject_identity_evidence issuer is not a configured evidence issuer");
+  }
+  let evidenceIssuerKeys: JsonWebKey[];
+  try {
+    const resolved = await resolveDirectJwksIssuerTrust(evidenceIssuerUrl, config);
+    evidenceIssuerKeys = resolved.publicJwks;
+  } catch (error) {
+    return fail(`subject_identity_evidence issuer keys could not be resolved: ${error instanceof Error ? error.message : "fetch failed"}`);
+  }
+  try {
+    verifyPermissionTicketSignature(evidence.jwt, header.kid, evidenceIssuerKeys);
+  } catch {
+    return fail("subject_identity_evidence signature verification failed");
+  }
+  // Label rule: aud (the CSP's client label) must resolve to the ticket
+  // issuer or to the presenting client, under the identifier scheme this
+  // data holder already uses for those parties.
+  const audValues = (Array.isArray(claims.aud) ? claims.aud : [claims.aud]).filter(
+    (value): value is string => typeof value === "string" && !!value,
+  );
+  const namesTicketIssuer = audValues.includes(ticket.iss);
+  const namesPresenter = audValues.some((value) => presenterLabels.includes(value));
+  if (!namesTicketIssuer && !namesPresenter) {
+    return fail("subject_identity_evidence audience resolves to neither the ticket issuer nor the presenting client");
+  }
+  const ial = typeof claims.identity_assurance_level === "number" ? `IAL${claims.identity_assurance_level}` : "id_token";
+  addAuditStep(diagnostics, {
+    check: "Identity evidence",
+    passed: true,
+    evidence: `${ial} id_token verified (CSP ${claims.iss}, audience = ${namesTicketIssuer ? "ticket issuer" : "presenting client"})`,
+    why: "Embedded subject identity evidence was signed by a separately trusted CSP, and its client label resolves to a party in this presentation.",
+  });
+}
+
+function normalizeEvidenceIssuerUrl(raw: string) {
+  const parsed = new URL(raw);
+  parsed.hash = "";
+  parsed.search = "";
+  if (parsed.pathname.length > 1 && parsed.pathname.endsWith("/")) {
+    parsed.pathname = parsed.pathname.replace(/\/+$/, "");
+  }
+  return parsed.toString();
 }
 
 export function compileAuthorizationEnvelope(

@@ -870,10 +870,13 @@ export function buildCellPresentation(traceState: ReturnType<typeof accumulateTr
     const resourceLabel = "detail" in event && Array.isArray((event as any).detail.scopes)
       ? `${(event as any).detail.scopes.length} permissions`
       : "Permission ticket";
+    // Per-site issuance can mint several tickets from one authorization; show
+    // the batch size so the trace says how many tickets exist.
+    const ticketCount = (event as any).detail.ticketCount;
     return {
       badge: "JWT",
       badgeTone: "warn",
-      primary: "Signed ticket",
+      primary: typeof ticketCount === "number" && ticketCount > 1 ? `Signed tickets (${ticketCount} minted)` : "Signed ticket",
       secondary: `${resourceLabel} · ${(event as any).detail.expirySummary}`,
       meta: (event as any).detail.patientName,
       tone: "tone-ticket",

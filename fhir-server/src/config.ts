@@ -1,4 +1,11 @@
 import type { FrameworkDefinition, IssuerTrustConfig, ModeName, RegisteredClient } from "./store/model.ts";
+import {
+  cspBasePathFor,
+  DEFAULT_DEMO_CSP_NAME,
+  DEFAULT_DEMO_CSP_PRIVATE_JWK,
+  DEFAULT_DEMO_CSP_SLUG,
+  type CredentialServiceProviderSeed,
+} from "./auth/csp.ts";
 import { buildDefaultFrameworks } from "./auth/demo-frameworks.ts";
 import {
   DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
@@ -24,6 +31,13 @@ export type ServerConfig = {
   defaultPermissionTicketIssuerSlug: string;
   defaultPermissionTicketIssuerName: string;
   permissionTicketIssuers: TicketIssuerSeed[];
+  // The external IAL2 CSP the demo ticket issuer relies on for sign-in at
+  // authorization time (topology T1). Not a ticket issuer.
+  defaultCspSlug: string;
+  credentialServiceProviders: CredentialServiceProviderSeed[];
+  // Evidence-issuer trust, configured separately from ticket-issuer trust:
+  // subject_identity_evidence is accepted only from these issuer URLs.
+  trustedEvidenceIssuers: string[];
   demoCryptoBundlePath: string;
   demoCryptoBundle?: DemoCryptoBundle;
 };
@@ -67,9 +81,22 @@ export function loadConfig(): ServerConfig {
         privateJwk: DEFAULT_PERMISSION_TICKET_ISSUER_PRIVATE_JWK,
       },
     ],
+    defaultCspSlug: DEFAULT_DEMO_CSP_SLUG,
+    credentialServiceProviders: [
+      {
+        slug: DEFAULT_DEMO_CSP_SLUG,
+        name: DEFAULT_DEMO_CSP_NAME,
+        privateJwk: DEFAULT_DEMO_CSP_PRIVATE_JWK,
+      },
+    ],
+    trustedEvidenceIssuers: buildDefaultTrustedEvidenceIssuers(publicBaseUrl, [{ slug: DEFAULT_DEMO_CSP_SLUG }]),
     demoCryptoBundlePath,
     demoCryptoBundle: undefined,
   };
+}
+
+export function buildDefaultTrustedEvidenceIssuers(publicBaseUrl: string, csps: Pick<CredentialServiceProviderSeed, "slug">[]): string[] {
+  return csps.map((csp) => `${publicBaseUrl}${cspBasePathFor(csp.slug)}`);
 }
 
 export function buildDefaultIssuerTrustConfig(publicBaseUrl: string, issuers: Pick<TicketIssuerSeed, "slug">[]): IssuerTrustConfig {

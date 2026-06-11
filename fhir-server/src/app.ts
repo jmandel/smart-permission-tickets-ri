@@ -26,6 +26,7 @@ import {
 } from "./auth/frameworks/oidf/demo-topology.ts";
 import { oidfEntityConfigurationPath } from "./auth/frameworks/oidf/urls.ts";
 import { decodeJwtWithoutVerification, verifyPrivateKeyJwt } from "../shared/private-key-jwt.ts";
+import { CredentialServiceProviderRegistry, cspJwksPathFor, cspSlugFromPath } from "./auth/csp.ts";
 import { decodeEs256Jwt } from "./auth/es256-jwt.ts";
 import { TicketIssuerRegistry } from "./auth/issuers.ts";
 import {
@@ -35,7 +36,7 @@ import {
   IssuanceGrantStore,
   IssuanceTokenError,
   redeemAuthorizationCode,
-  renderPersonPicker,
+  renderConsentScreen,
 } from "./auth/issuance.ts";
 import { signJwt, verifyJwt } from "./auth/jwt.ts";
 import { TicketRevocationRegistry } from "./auth/ticket-revocation.ts";
@@ -47,10 +48,10 @@ import {
   validatePermissionTicket,
 } from "./auth/tickets.ts";
 import { DemoEventBus } from "./demo/event-bus.ts";
-import { DemoSessionLinks } from "./demo/session-links.ts";
+import { DemoSessionLinks, type TicketMintInfo } from "./demo/session-links.ts";
 import { findUdapFrameworkByCrlPath, generateCertificateRevocationList } from "./auth/udap-crl.ts";
 import { buildSignedUdapMetadata } from "./auth/udap-server-metadata.ts";
-import { buildDefaultIssuerTrustConfig, loadConfig, type ServerConfig } from "./config.ts";
+import { buildDefaultIssuerTrustConfig, buildDefaultTrustedEvidenceIssuers, loadConfig, type ServerConfig } from "./config.ts";
 import { ensureDemoCryptoBundle } from "./demo-crypto-bundle.ts";
 import { buildNetworkCapabilityStatement, buildNetworkInfo, readNetworkDirectory, resolveRecordLocationsBundle, searchNetworkDirectory } from "./network-directory.ts";
 import { executeRead, executeSearch, getSupportedSearchParams } from "./store/search.ts";
@@ -77,11 +78,13 @@ export type AppContext = {
   frameworks: FrameworkRegistry;
   oidfTopology: OidfDemoTopology;
   issuers: TicketIssuerRegistry;
+  csps: CredentialServiceProviderRegistry;
   ticketRevocations: TicketRevocationRegistry;
   demoEvents: DemoEventBus;
   demoSessionLinks: DemoSessionLinks;
   issuanceGrants: IssuanceGrantStore;
   usesDefaultIssuerTrustPolicy: boolean;
+  usesDefaultEvidenceIssuerTrust: boolean;
 };
 
 export function createAppContext(overrides: Partial<ServerConfig> = {}) {
@@ -90,6 +93,12 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   const usesDefaultIssuerTrustPolicy = !overrides.issuerTrust;
   if (usesDefaultIssuerTrustPolicy) {
     config.issuerTrust = buildDefaultIssuerTrustConfig(config.publicBaseUrl, config.permissionTicketIssuers);
+  }
+  // Evidence-issuer trust is configured separately from ticket-issuer trust:
+  // by default the data holder surfaces accept evidence only from the demo CSP.
+  const usesDefaultEvidenceIssuerTrust = !overrides.trustedEvidenceIssuers;
+  if (usesDefaultEvidenceIssuerTrust) {
+    config.trustedEvidenceIssuers = buildDefaultTrustedEvidenceIssuers(config.publicBaseUrl, config.credentialServiceProviders);
   }
   const store = FhirStore.load();
   const siteSlugs = store.listSiteSummaries().map((site) => site.siteSlug);
@@ -125,12 +134,13 @@ export function createAppContext(overrides: Partial<ServerConfig> = {}) {
   }
   const clients = new ClientRegistry(config.defaultRegisteredClients, config.clientRegistrationSecret);
   const issuers = new TicketIssuerRegistry(config.permissionTicketIssuers);
+  const csps = new CredentialServiceProviderRegistry(config.credentialServiceProviders);
   const oidfTopology = buildOidfTopologyForPublicBaseUrl(config, store, issuers);
   const frameworks = buildFrameworkRegistry(config, clients, oidfTopology);
   const ticketRevocations = new TicketRevocationRegistry();
   const demoEvents = new DemoEventBus();
   const demoSessionLinks = new DemoSessionLinks();
-  return { config, store, clients, frameworks, oidfTopology, issuers, ticketRevocations, demoEvents, demoSessionLinks, issuanceGrants: new IssuanceGrantStore(), usesDefaultIssuerTrustPolicy };
+  return { config, store, clients, frameworks, oidfTopology, issuers, csps, ticketRevocations, demoEvents, demoSessionLinks, issuanceGrants: new IssuanceGrantStore(), usesDefaultIssuerTrustPolicy, usesDefaultEvidenceIssuerTrust };
 }
 
 import landingHtml from "../ui/index.html";
@@ -241,6 +251,9 @@ function extractProviderSiteKeyMaterial(topology: OidfDemoTopology, siteSlug: st
 function syncOidfTopologyWithConfig(context: AppContext) {
   if (context.usesDefaultIssuerTrustPolicy) {
     context.config.issuerTrust = buildDefaultIssuerTrustConfig(context.config.publicBaseUrl, context.config.permissionTicketIssuers);
+  }
+  if (context.usesDefaultEvidenceIssuerTrust) {
+    context.config.trustedEvidenceIssuers = buildDefaultTrustedEvidenceIssuers(context.config.publicBaseUrl, context.config.credentialServiceProviders);
   }
   const currentOrigin = new URL(context.oidfTopology.trustAnchorEntityId).origin;
   if (currentOrigin === context.config.publicBaseUrl) return;
@@ -362,6 +375,29 @@ export async function handleRequest(context: AppContext, request: Request, serve
   }
   if (url.pathname === "/launch/callback") {
     return htmlResponse(buildIssuanceCallbackPage());
+  }
+  // Demo CSP surfaces, deliberately outside the /issuer/* namespaces: the
+  // CSP publishes its keys so relying parties (the ticket issuer) and data
+  // holders verifying embedded evidence can resolve them from its iss URL.
+  const cspSlug = cspSlugFromPath(url.pathname);
+  if (cspSlug) {
+    const csp = context.csps.get(cspSlug);
+    if (!csp) return notFound();
+    const cspInfo = context.csps.describe(url.origin, cspSlug);
+    if (url.pathname === cspJwksPathFor(cspSlug)) {
+      return jsonResponse({ keys: [csp.publicJwk] });
+    }
+    if (url.pathname === cspInfo.cspBasePath) {
+      return jsonResponse({
+        issuer: cspInfo.cspBaseUrl,
+        name: cspInfo.name,
+        jwks_uri: cspInfo.jwksUrl,
+        role: "credential-service-provider",
+        identity_assurance_level: 2,
+        note: "Signs IAL2 id_tokens for relying parties. Not a Permission Ticket issuer.",
+      });
+    }
+    return notFound();
   }
   const issuerRoute = resolveIssuerRoute(url.pathname);
   if (issuerRoute) {
@@ -627,6 +663,20 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       throw new OAuthTokenError("invalid_request", "No permission ticket provided");
     }
 
+    // Trace decoration: when this ticket came out of a Proposal 003 issuance
+    // batch in a live demo session, record which ticket index the client chose
+    // to present here — the issuance endpoint hints' ticket_indices pointed it
+    // at this ticket for this site.
+    const mintInfo = context.demoSessionLinks.mintInfoForTicket(body.subject_token);
+    if (mintInfo) {
+      tokenDiagnostics.steps.push({
+        check: "Ticket Selection",
+        passed: true,
+        evidence: `Client presented ticket index ${mintInfo.ticketIndex} of ${mintInfo.ticketCount} minted by the issuer`,
+        why: "The issuance response's endpoint hints use ticket_indices to point each site at its own ticket.",
+      });
+    }
+
     const demoValidationContext = contextRoute.siteSlug
       ? {
           phase: "site-auth" as const,
@@ -664,7 +714,14 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
         context.ticketRevocations,
         buildKnownTicketAudienceUrls(url, context.config, contextRoute),
         tokenDiagnostics,
-        { mode: contextRoute.mode },
+        {
+          mode: contextRoute.mode,
+          // Labels this surface bound to the presenting client, for the
+          // evidence label rule's T2 arm (client-obtained evidence).
+          presenterLabels: client
+            ? [client.clientId, ...(client.frameworkBinding ? [client.frameworkBinding.entity_uri] : [])]
+            : [],
+        },
       );
     } catch (error) {
       throw new OAuthTokenError("invalid_grant", error instanceof Error ? error.message : "Invalid permission ticket");
@@ -802,21 +859,30 @@ function handleIssuerAuthorize(context: AppContext, request: Request, url: URL, 
       return jsonResponse({ error: "invalid_request", error_description: outcome.message }, outcome.status);
     case "redirect":
       return new Response(null, { status: 302, headers: { location: outcome.location } });
-    case "picker":
-      return htmlResponse(renderPersonPicker(url.origin, issuerSlug, outcome.persons, outcome.requestId));
+    case "consent": {
+      const cspInfo = context.csps.describe(url.origin, context.config.defaultCspSlug);
+      return htmlResponse(renderConsentScreen(url.origin, issuerSlug, outcome.person, outcome.sites, outcome.requestId, {
+        name: cspInfo.name,
+        cspBaseUrl: cspInfo.cspBaseUrl,
+      }));
+    }
   }
 }
 
 function handleIssuerAuthorizeComplete(context: AppContext, request: Request, url: URL, issuerSlug: string) {
   if (request.method !== "GET") return methodNotAllowed("GET");
   if (!context.issuers.get(issuerSlug)) return notFound();
-  const outcome = completeAuthorization(context.store, context.issuanceGrants, issuerSlug, url.searchParams);
+  const outcome = completeAuthorization(context.store, context.issuanceGrants, issuerSlug, url.searchParams, {
+    origin: url.origin,
+    csps: context.csps,
+    cspSlug: context.config.defaultCspSlug,
+  });
   switch (outcome.kind) {
     case "error":
       return jsonResponse({ error: "invalid_request", error_description: outcome.message }, outcome.status);
     case "redirect":
       return new Response(null, { status: 302, headers: { location: outcome.location } });
-    case "picker":
+    case "consent":
       return notFound();
   }
 }
@@ -837,14 +903,18 @@ async function handleIssuerToken(context: AppContext, request: Request, url: URL
     });
     // Attach issuance to the live protocol trace: bind each minted ticket to
     // the caller's demo session so downstream token exchanges and FHIR reads
-    // inherit it, and emit a ticket-created event for the timeline.
+    // inherit it, and emit a ticket-created event for the timeline. The mint
+    // position rides along so the trace can show how many tickets this one
+    // authorization produced and which index each site later redeems.
     const demoSessionId = extractDemoSessionId(request);
     if (demoSessionId && Array.isArray(response.smart_permission_ticket)) {
-      for (const signedTicket of response.smart_permission_ticket as string[]) {
-        context.demoSessionLinks.bindTicket(demoSessionId, signedTicket);
+      const signedTickets = response.smart_permission_ticket as string[];
+      for (const [ticketIndex, signedTicket] of signedTickets.entries()) {
+        const mint = { ticketIndex, ticketCount: signedTickets.length };
+        context.demoSessionLinks.bindTicket(demoSessionId, signedTicket, mint);
         try {
           const decoded = decodeEs256Jwt<PermissionTicket>(signedTicket);
-          emitDemoEvent(context.demoEvents.observer(demoSessionId), buildTicketCreatedDemoEvent(decoded.payload, signedTicket));
+          emitDemoEvent(context.demoEvents.observer(demoSessionId), buildTicketCreatedDemoEvent(decoded.payload, signedTicket, mint));
         } catch {
           // Timeline decoration only; issuance already succeeded.
         }
@@ -1566,14 +1636,21 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
   return parsed.data;
 }
 
-function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTicket: string): DemoEventDraft {
+function buildTicketCreatedDemoEvent(
+  ticketPayload: PermissionTicket,
+  signedTicket: string,
+  mint?: TicketMintInfo,
+): DemoEventDraft {
   const patientName = formatTicketPatientName(ticketPayload.subject.patient) ?? "Permission Ticket";
   const scopes = expandPermissionLabels(ticketPayload.access.permissions);
+  const identity = summarizeIdentityEvidence(ticketPayload);
   return {
     source: "server",
     phase: "ticket",
     type: "ticket-created",
-    label: "Permission Ticket created",
+    label: mint && mint.ticketCount > 1
+      ? `Permission Ticket created (index ${mint.ticketIndex} of ${mint.ticketCount} minted)`
+      : "Permission Ticket created",
     detail: {
       patientName,
       patientDob: typeof ticketPayload.subject.patient.birthDate === "string" ? ticketPayload.subject.patient.birthDate : null,
@@ -1582,6 +1659,8 @@ function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTick
       sensitiveSummary: summarizeSensitivityPolicy(ticketPayload),
       expirySummary: summarizeTicketExpiry(ticketPayload.exp),
       bindingSummary: summarizeTicketBinding(ticketPayload),
+      ...(identity ? { identitySummary: identity.summary } : {}),
+      ...(mint ? { ticketIndex: mint.ticketIndex, ticketCount: mint.ticketCount } : {}),
     },
     artifacts: {
       related: [
@@ -1591,9 +1670,35 @@ function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTick
           content: signedTicket,
           copyText: signedTicket,
         },
+        ...(identity
+          ? [{
+              label: "Subject identity evidence (CSP id_token)",
+              kind: "jwt" as const,
+              content: identity.jwt,
+              copyText: identity.jwt,
+            }]
+          : []),
       ],
     },
   };
+}
+
+// Decodes the embedded subject_identity_evidence for the timeline: the CSP
+// sign-in that happened when the person authorized issuance. iss here is the
+// CSP, not the ticket issuer.
+function summarizeIdentityEvidence(ticketPayload: PermissionTicket) {
+  const evidence = ticketPayload.subject_identity_evidence;
+  if (!evidence?.jwt) return null;
+  try {
+    const { payload } = decodeEs256Jwt<Record<string, unknown>>(evidence.jwt);
+    const ial = typeof payload.identity_assurance_level === "number" ? `IAL${payload.identity_assurance_level}` : "id_token";
+    return {
+      jwt: evidence.jwt,
+      summary: `${ial} sign-in at CSP ${payload.iss} (audience: ${payload.aud})`,
+    };
+  } catch {
+    return null;
+  }
 }
 
 function formatTicketPatientName(patient: PermissionTicket["subject"]["patient"]) {
