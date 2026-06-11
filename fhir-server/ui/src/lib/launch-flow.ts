@@ -1,8 +1,8 @@
 // Logic for the guided app-driven launch (/launch): a scripted walk through
 // Proposal 003 issuance and ticket redemption, where every step performs the
 // real protocol call against this server. Pre-baked for the demo: one app
-// persona with a fresh P-256 keypair per visit, fixed scopes, and the demo
-// person picker standing in for the issuer's verification workflow.
+// persona with a fresh P-256 keypair per visit, fixed scopes, and Elena's
+// consent screen standing in for the issuer's verification workflow.
 
 import {
   generateClientKeyMaterial,

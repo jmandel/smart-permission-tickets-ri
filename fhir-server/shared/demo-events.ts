@@ -82,6 +82,10 @@ export type DemoTicketCreatedEvent = DemoEventEnvelope<
     sensitiveSummary: string;
     expirySummary: string;
     bindingSummary: string;
+    // Proposal 003 per-site issuance: where this ticket sits in its minted
+    // batch, so the trace can show how many tickets one authorization produced.
+    ticketIndex?: number;
+    ticketCount?: number;
   }
 >;
 

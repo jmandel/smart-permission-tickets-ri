@@ -210,6 +210,7 @@ export async function validatePermissionTicket(
   appendFrameworkIssuerDiagnostics(issuer, diagnostics);
   enforcePresenterBindingRequirement(payload, options?.mode, diagnostics);
   enforceMustUnderstand(payload, diagnostics);
+  verifySubjectIdentityEvidence(payload, issuer, diagnostics);
   try {
     parseSensitivityPolicy(payload); // shape check; compilation happens at envelope time
   } catch (error) {
@@ -286,6 +287,52 @@ function enforcePresenterBindingRequirement(
     reason: "Ticket presenter binding required for this ticket type",
   });
   throw new Error("Ticket presenter binding required for this ticket type");
+}
+
+// Proposal 003 embeds an id_token as subject_identity_evidence: a CSP-signed
+// (here, issuer-signed) assertion that the subject was identity-proofed. Its
+// presence is optional — workbench-built tickets omit it and stay valid — but
+// when present its signature must verify. The evidence's iss equals the
+// ticket's iss in this demo, so the issuer keys already resolved for the
+// ticket signature verify it too.
+function verifySubjectIdentityEvidence(
+  ticket: PermissionTicket,
+  issuer: ResolvedIssuerTrust,
+  diagnostics?: TokenExchangeDiagnostics,
+) {
+  const evidence = ticket.subject_identity_evidence;
+  if (!evidence) return;
+  let header: { alg?: string; kid?: string };
+  let claims: Record<string, unknown>;
+  try {
+    const decoded = decodeEs256Jwt<Record<string, unknown>>(evidence.jwt);
+    header = decoded.header;
+    claims = decoded.payload;
+  } catch {
+    addAuditStep(diagnostics, { check: "Identity evidence", passed: false, reason: "Malformed subject_identity_evidence id_token" });
+    throw new Error("Malformed subject_identity_evidence id_token");
+  }
+  if (header.alg !== "ES256") {
+    addAuditStep(diagnostics, { check: "Identity evidence", passed: false, reason: "subject_identity_evidence must be signed with ES256" });
+    throw new Error("subject_identity_evidence must be signed with ES256");
+  }
+  if (typeof claims.iss !== "string" || claims.iss !== ticket.iss) {
+    addAuditStep(diagnostics, { check: "Identity evidence", passed: false, reason: "subject_identity_evidence iss does not match the ticket issuer" });
+    throw new Error("subject_identity_evidence iss does not match the ticket issuer");
+  }
+  try {
+    verifyPermissionTicketSignature(evidence.jwt, header.kid, issuer.publicJwks);
+  } catch {
+    addAuditStep(diagnostics, { check: "Identity evidence", passed: false, reason: "subject_identity_evidence signature verification failed" });
+    throw new Error("subject_identity_evidence signature verification failed");
+  }
+  const ial = typeof claims.identity_assurance_level === "number" ? `IAL${claims.identity_assurance_level}` : "id_token";
+  addAuditStep(diagnostics, {
+    check: "Identity evidence",
+    passed: true,
+    evidence: `${ial} id_token verified (issuer ${claims.iss})`,
+    why: "Embedded subject identity evidence was signed by the ticket issuer and asserts the subject was identity-proofed.",
+  });
 }
 
 export function compileAuthorizationEnvelope(

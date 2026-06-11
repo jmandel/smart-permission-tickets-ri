@@ -35,7 +35,7 @@ import {
   IssuanceGrantStore,
   IssuanceTokenError,
   redeemAuthorizationCode,
-  renderPersonPicker,
+  renderConsentScreen,
 } from "./auth/issuance.ts";
 import { signJwt, verifyJwt } from "./auth/jwt.ts";
 import { TicketRevocationRegistry } from "./auth/ticket-revocation.ts";
@@ -47,7 +47,7 @@ import {
   validatePermissionTicket,
 } from "./auth/tickets.ts";
 import { DemoEventBus } from "./demo/event-bus.ts";
-import { DemoSessionLinks } from "./demo/session-links.ts";
+import { DemoSessionLinks, type TicketMintInfo } from "./demo/session-links.ts";
 import { findUdapFrameworkByCrlPath, generateCertificateRevocationList } from "./auth/udap-crl.ts";
 import { buildSignedUdapMetadata } from "./auth/udap-server-metadata.ts";
 import { buildDefaultIssuerTrustConfig, loadConfig, type ServerConfig } from "./config.ts";
@@ -627,6 +627,20 @@ async function handleToken(context: AppContext, request: Request, url: URL, cont
       throw new OAuthTokenError("invalid_request", "No permission ticket provided");
     }
 
+    // Trace decoration: when this ticket came out of a Proposal 003 issuance
+    // batch in a live demo session, record which ticket index the client chose
+    // to present here — the issuance endpoint hints' ticket_indices pointed it
+    // at this ticket for this site.
+    const mintInfo = context.demoSessionLinks.mintInfoForTicket(body.subject_token);
+    if (mintInfo) {
+      tokenDiagnostics.steps.push({
+        check: "Ticket Selection",
+        passed: true,
+        evidence: `Client presented ticket index ${mintInfo.ticketIndex} of ${mintInfo.ticketCount} minted by the issuer`,
+        why: "The issuance response's endpoint hints use ticket_indices to point each site at its own ticket.",
+      });
+    }
+
     const demoValidationContext = contextRoute.siteSlug
       ? {
           phase: "site-auth" as const,
@@ -802,8 +816,8 @@ function handleIssuerAuthorize(context: AppContext, request: Request, url: URL, 
       return jsonResponse({ error: "invalid_request", error_description: outcome.message }, outcome.status);
     case "redirect":
       return new Response(null, { status: 302, headers: { location: outcome.location } });
-    case "picker":
-      return htmlResponse(renderPersonPicker(url.origin, issuerSlug, outcome.persons, outcome.requestId));
+    case "consent":
+      return htmlResponse(renderConsentScreen(url.origin, issuerSlug, outcome.person, outcome.sites, outcome.requestId));
   }
 }
 
@@ -816,7 +830,7 @@ function handleIssuerAuthorizeComplete(context: AppContext, request: Request, ur
       return jsonResponse({ error: "invalid_request", error_description: outcome.message }, outcome.status);
     case "redirect":
       return new Response(null, { status: 302, headers: { location: outcome.location } });
-    case "picker":
+    case "consent":
       return notFound();
   }
 }
@@ -837,14 +851,18 @@ async function handleIssuerToken(context: AppContext, request: Request, url: URL
     });
     // Attach issuance to the live protocol trace: bind each minted ticket to
     // the caller's demo session so downstream token exchanges and FHIR reads
-    // inherit it, and emit a ticket-created event for the timeline.
+    // inherit it, and emit a ticket-created event for the timeline. The mint
+    // position rides along so the trace can show how many tickets this one
+    // authorization produced and which index each site later redeems.
     const demoSessionId = extractDemoSessionId(request);
     if (demoSessionId && Array.isArray(response.smart_permission_ticket)) {
-      for (const signedTicket of response.smart_permission_ticket as string[]) {
-        context.demoSessionLinks.bindTicket(demoSessionId, signedTicket);
+      const signedTickets = response.smart_permission_ticket as string[];
+      for (const [ticketIndex, signedTicket] of signedTickets.entries()) {
+        const mint = { ticketIndex, ticketCount: signedTickets.length };
+        context.demoSessionLinks.bindTicket(demoSessionId, signedTicket, mint);
         try {
           const decoded = decodeEs256Jwt<PermissionTicket>(signedTicket);
-          emitDemoEvent(context.demoEvents.observer(demoSessionId), buildTicketCreatedDemoEvent(decoded.payload, signedTicket));
+          emitDemoEvent(context.demoEvents.observer(demoSessionId), buildTicketCreatedDemoEvent(decoded.payload, signedTicket, mint));
         } catch {
           // Timeline decoration only; issuance already succeeded.
         }
@@ -1566,14 +1584,20 @@ function normalizeTicketPayload(body: Record<string, any>, audienceOrigin: strin
   return parsed.data;
 }
 
-function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTicket: string): DemoEventDraft {
+function buildTicketCreatedDemoEvent(
+  ticketPayload: PermissionTicket,
+  signedTicket: string,
+  mint?: TicketMintInfo,
+): DemoEventDraft {
   const patientName = formatTicketPatientName(ticketPayload.subject.patient) ?? "Permission Ticket";
   const scopes = expandPermissionLabels(ticketPayload.access.permissions);
   return {
     source: "server",
     phase: "ticket",
     type: "ticket-created",
-    label: "Permission Ticket created",
+    label: mint && mint.ticketCount > 1
+      ? `Permission Ticket created (index ${mint.ticketIndex} of ${mint.ticketCount} minted)`
+      : "Permission Ticket created",
     detail: {
       patientName,
       patientDob: typeof ticketPayload.subject.patient.birthDate === "string" ? ticketPayload.subject.patient.birthDate : null,
@@ -1582,6 +1606,7 @@ function buildTicketCreatedDemoEvent(ticketPayload: PermissionTicket, signedTick
       sensitiveSummary: summarizeSensitivityPolicy(ticketPayload),
       expirySummary: summarizeTicketExpiry(ticketPayload.exp),
       bindingSummary: summarizeTicketBinding(ticketPayload),
+      ...(mint ? { ticketIndex: mint.ticketIndex, ticketCount: mint.ticketCount } : {}),
     },
     artifacts: {
       related: [
