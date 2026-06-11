@@ -99,7 +99,7 @@ export function GuidedLaunch() {
       state: stateRef.current,
     });
     setAuthorizeUrl(url);
-    popupRef.current = window.open(url, "issuance-authorize", "width=560,height=680");
+    popupRef.current = window.open(url, "_blank");
   });
 
   const onRedeemCode = () => run(async () => {

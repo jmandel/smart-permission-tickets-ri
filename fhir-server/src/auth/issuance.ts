@@ -255,9 +255,12 @@ export function completeAuthorization(
 }
 
 // Maps the consent form's site-selection inputs to a concrete list of site
-// slugs, or undefined for "any site in the network". The chosen sites are
-// always intersected with the sites visible under the sensitivity decision, so
-// a sensitive-only site can never leak in without the sensitive opt-in.
+// slugs, or undefined for "any site in the network". An explicit selection
+// that nets zero valid sites stays an empty array: the person asked for "only
+// these sites" and named none we can honor, so zero tickets are minted rather
+// than silently widening to a blanket grant. The chosen sites are always
+// intersected with the sites visible under the sensitivity decision, so a
+// sensitive-only site can never leak in without the sensitive opt-in.
 function resolveSelectedSites(
   store: FhirStore,
   person: DemoPersonSummary,
@@ -271,7 +274,7 @@ function resolveSelectedSites(
       .map((site) => site.siteSlug),
   );
   const chosen = params.getAll("site").filter((slug) => visible.has(slug));
-  return chosen.length ? [...new Set(chosen)] : undefined;
+  return [...new Set(chosen)];
 }
 
 export function renderConsentScreen(
@@ -321,6 +324,13 @@ sharing-preference workflow. In this demo it is ${escapeHtml(personLabel)}'s con
     }
     include.addEventListener("change", sync);
     sync();
+    // Ticking any site checkbox is an explicit selection: flip the radio.
+    var selectedRadio = document.querySelector('input[name="site_mode"][value="selected"]');
+    document.getElementById("site-list").addEventListener("change", function (event) {
+      if (event.target && event.target.name === "site" && event.target.checked) {
+        selectedRadio.checked = true;
+      }
+    });
   })();
 </script>
 </body></html>`;
@@ -396,15 +406,21 @@ async function buildTokenResponse(
   const binding = resolvePresenterBinding(grant.clientId, input.clients);
   const issuance = mintTicketsForPerson(input, person, grant.scopes, binding, grant.sensitivity, grant.selectedSites);
 
-  const grantedScopes = grant.scopes.filter((scope) => scope !== "openid" && scope !== "fhirUser");
+  // Proposal 003: an issuer that mints no tickets SHALL NOT grant the
+  // permission_ticket scope, and the ticket fields are omitted entirely.
+  const grantedScopes = grant.scopes
+    .filter((scope) => scope !== "openid" && scope !== "fhirUser")
+    .filter((scope) => issuance.tickets.length > 0 || scope !== "permission_ticket");
   const response: Record<string, unknown> = {
     access_token: `issuance-${randomUUID()}`,
     token_type: "Bearer",
     expires_in: ACCESS_TOKEN_TTL_SECONDS,
     scope: grantedScopes.join(" "),
-    smart_permission_ticket: issuance.tickets,
-    smart_permission_ticket_endpoints: issuance.endpoints,
   };
+  if (issuance.tickets.length > 0) {
+    response.smart_permission_ticket = issuance.tickets;
+    response.smart_permission_ticket_endpoints = issuance.endpoints;
+  }
   if (grant.scopes.includes("offline_access")) {
     response.refresh_token = input.grants.createRefreshToken({
       issuerSlug: grant.issuerSlug,
@@ -492,8 +508,9 @@ function mintTicketsForPerson(
     : person.sites.filter((site) => input.store.countNonSensitiveEncounters(person.patientSlug, site.siteSlug) > 0);
 
   // "Any site in the network": one blanket ticket with no data_holder_filter;
-  // every hinted endpoint points at ticket index 0.
-  if (!selectedSites?.length) {
+  // every hinted endpoint points at ticket index 0. An explicit-but-empty
+  // selection falls through to the per-site path and mints zero tickets.
+  if (!selectedSites) {
     const ticket = input.issuers.sign(input.origin, input.issuerSlug, basePayload({ access: { permissions } }));
     const endpoints = hintedSites.map((site) => ({
       fhir_base_url: siteFhirBaseUrl(input.origin, site.siteSlug),

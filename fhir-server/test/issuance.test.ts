@@ -84,7 +84,7 @@ async function runAuthorize(
   const completeParams = new URLSearchParams({
     request: requestId!,
     ...(options.includeSensitive ? { include_sensitive: "1" } : {}),
-    ...(options.selectedSites ? { site_mode: "selected" } : {}),
+    ...(options.selectedSites !== undefined ? { site_mode: "selected" } : {}),
   });
   for (const siteSlug of options.selectedSites ?? []) completeParams.append("site", siteSlug);
   const response = await fetch(`${origin}/issuer/${issuerSlug}/authorize/complete?${completeParams}`, { redirect: "manual" });
@@ -457,6 +457,20 @@ describe("per-site ticket selection", () => {
     }
   });
 
+  test("choosing only-these-sites with zero sites mints zero tickets", async () => {
+    const client = await registerClient("Zero Sites Client");
+    const { verifier, challengePromise } = pkcePair();
+    const code = await runAuthorize(client.clientId, await challengePromise, {
+      selectedSites: [],
+    });
+    const body = await (await redeemCode(code, client.clientId, verifier)).json();
+
+    expect(body.smart_permission_ticket).toBeUndefined();
+    expect(body.smart_permission_ticket_endpoints).toBeUndefined();
+    expect(body.scope.split(" ")).not.toContain("permission_ticket");
+    expect(body.access_token).toBeTruthy();
+  });
+
   test("a sensitive-only site cannot be selected without including sensitive categories", async () => {
     const client = await registerClient("Sensitive Guard Client");
     const { verifier, challengePromise } = pkcePair();
@@ -465,13 +479,12 @@ describe("per-site ticket selection", () => {
     });
     const body = await (await redeemCode(code, client.clientId, verifier)).json();
 
-    // The selection is silently dropped: one blanket ticket, and the
-    // sensitive-only site is never named in the hints.
-    expect(body.smart_permission_ticket).toHaveLength(1);
-    const decoded = decodeEs256Jwt<any>(body.smart_permission_ticket[0]);
-    expect(decoded.payload.access.data_holder_filter).toBeUndefined();
-    const urls = body.smart_permission_ticket_endpoints.map((hint: { fhir_base_url: string }) => hint.fhir_base_url);
-    expect(urls.some((url: string) => url.includes("lone-star-womens-health"))).toBe(false);
+    // The selection nets zero honorable sites, so zero tickets are minted:
+    // no blanket fallback that could redeem at the very site that was
+    // withheld from the hints, and no permission_ticket scope granted.
+    expect(body.smart_permission_ticket).toBeUndefined();
+    expect(body.smart_permission_ticket_endpoints).toBeUndefined();
+    expect(body.scope.split(" ")).not.toContain("permission_ticket");
 
     // With the sensitive opt-in the same selection works and is site-scoped.
     const optIn = await registerClient("Sensitive Opt-In Client");
